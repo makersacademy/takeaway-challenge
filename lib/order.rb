@@ -22,6 +22,17 @@ class Order
 
   def order_complete
     basket.return_order
+    confirmed?
+  end
+
+  def confirmed?
+    puts 'please press enter to confirm order'
+    answer = gets.chomp
+    complete if answer == ""
+  end
+
+  def complete
+    "yay"
   end
 
 end

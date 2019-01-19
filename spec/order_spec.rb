@@ -4,7 +4,7 @@ describe Order do
 
   let(:order)   { described_class.new(menu, basket) }
   let(:menu)    { double(:menu, display: nil, list: [hummus, pizza] ) }
-  let(:basket)  { double(:basket, add: nil, basket: [hummus, pizza]) }
+  let(:basket)  { double(:basket, add: nil, basket: [hummus, pizza], return_order: nil) }
   let(:hummus)  { { name: "Hummus", price: 2 } }
   let(:pizza)   { { name: "Pizza", price: 10 } }
 
@@ -29,7 +29,16 @@ describe Order do
 
   describe "Completing an order" do
     it 'Should return an order summary when the user indicates that their order is complete' do
+      $stdout.stub(:write)
+      order.stub(:gets).and_return("")
       expect(basket).to receive(:return_order)
+      order.order_complete
+    end
+
+    it 'should ask the user for confirmation if the order is correct' do
+      $stdout.stub(:write)
+      order.stub(:gets).and_return("")
+      expect(order).to receive(:complete)
       order.order_complete
     end
   end
