@@ -29,4 +29,7 @@ attr_reader :food_order, :menu
     total_cost == price
   end
 
+  def checkout(price)
+  raise "Incorrect total cost!" if !correct_cost(price)
+end
 end
