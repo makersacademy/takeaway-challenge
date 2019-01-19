@@ -5,8 +5,10 @@ takeaway = Takeaway.new
 order = Order.new
 menu = Menu.new
 
-p takeaway.menu
-#p takeaway.order
-p order.menu
-p order.order_summary
-p menu.dish
+p takeaway.read_menu
+takeaway.add_order(:seafood,1)
+p takeaway.basket
+takeaway.add_order(:garlic_bread,2)
+p takeaway.basket
+takeaway.add_order(:romana,1)
+p takeaway.basket

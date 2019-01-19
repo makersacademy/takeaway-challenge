@@ -8,10 +8,10 @@ def initialize (dish=DEFAULT_MENU.sort)
   @dish = dish
 end
 
-def print_menu
-  display = @dish.each{ |key, value|
-  puts "#{key} £#{value}"}  # tested in Repl
-end
+#def read
+#  display = @dish.each{ |key, value|
+#  puts "#{key} £#{value}"}  # tested in Repl
+#end
 
 end
 

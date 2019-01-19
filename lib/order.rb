@@ -9,8 +9,13 @@ def initialize(menu=Menu.new)
     @order_summary = []
 end
 
-def add_order(dish)
-  @order_summary << dish
+def add_order(dish,number)
+  number.times {@order_summary << dish }
+end
+
+def checkout
+  # run dish name in order summary and check for its value => array
+  # reduce (:+) to get the sum
 end
 
 end
