@@ -5,7 +5,11 @@ RSpec.describe Menu do
   context "#menu" do
     let(:pizza) { described_class.new("Pizza", 10.50) }
     it "should print a menu in an hash" do
-      expect(subject.menu_list).to be_kind_of Hash
+      expect(subject.menu_list).to be_kind_of Array
+    end
+    it "should contain instances of Dish" do
+      subject.add("Burger", 6.50)
+      expect(subject.menu_list[0]).to be_kind_of Dish
     end
   end
   context "#to_string" do
