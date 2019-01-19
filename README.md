@@ -59,7 +59,8 @@ Initialize with array of food to go on menu. This initializes all the other key 
 2.5.0 :003 >menu.print_menu
  => ["fish --- £8\n", "pasta --- £6\n", "pizza --- £5\n"]
 ```
-user_input allows interaction with stdin for choice, volume and loops if not all. NB while the methods adding this to the order are tested, the user input itself isn't currently.s
+**user_input** allows interaction with stdin for choice, volume and loops if not all.
+_NB while the methods adding this to the order are tested, the user input itself isn't currently._
 ```
 2.5.0 :006 > menu.user_input
 Please select your option
@@ -70,13 +71,13 @@ Is that all?
 Yes
  => nil
 ```
-Return the total price with:  
+**return_order_total** to return the total price
 ```
 2.5.0 :007 > menu.return_order_total
  => 10
 ```
 
-confirm_order recalculates price and raises error if ther e is a mistake. Otherwise a confirmation text is sent.
+**confirm_order** recalculates price and raises error if ther e is a mistake. Otherwise a confirmation text is sent.
 
 ```
 2.5.0 :009 > menu.confirm_order
