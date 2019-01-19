@@ -13,7 +13,12 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Method of working
+------------
+Placeholder text for initial git push.
 
+Original README Content
+=======
 Instructions
 -------
 
