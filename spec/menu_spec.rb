@@ -23,4 +23,16 @@ describe Menu do
     expect(@ppp_cafe.dish_list[0]).to eq "#{@ppp_menu[0][:item]} - £#{@ppp_menu[0][:price]}"
   end
 
+  # As a customer
+  # So that I can order the meal I want
+  # I would like to be able to select some number of several available dishes
+  it 'responds to #order' do
+    expect(@ppp_cafe).to respond_to(:order)
+  end
+
+  it '#order creates new order instance' do
+    items = [2, "pizza", 1, "pasta"]
+    expect{ @ppp_cafe.order(items) }.to change{ @ppp_cafe.orders.length }.by (1)
+  end
+
 end
