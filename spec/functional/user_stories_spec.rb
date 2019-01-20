@@ -9,7 +9,7 @@ RSpec.describe 'Functional tests' do
   # I would like to see a list of dishes with prices
 
   it 'shows list of dishes with prices' do
-    expect(menu.list).to eq "item                price\nVegetable pie       2\nLamb pie            3\nSteak pie           3\nKangaroo pie        4\nDog pie             1\nMonkey pie          5\nWhale pie           6\n"
+    expect(pieshop.show_menu).to eq "item                price\nVegetable pie       2\nLamb pie            3\nSteak pie           3\nKangaroo pie        4\nDog pie             1\nMonkey pie          5\nWhale pie           6\n"
   end
 
   # As a customer
