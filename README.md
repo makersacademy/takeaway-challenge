@@ -57,7 +57,9 @@ So the customer can select a number of dishes, an Order class was set up with th
 
 A text message is sent to the customer to confirm that their order was placed and it would be delivered in an hour. This was done using Twilio API. Sensitive information - such as my personal mobile number and the number that Twilio provided as part of their free trial service - are stored and accessed as environment variables. I used the dotenv gem for this.
 
-Known Issues 
+*(The menu items are from Unity Diner's menu)*
+
+Known Issues
 -------
 I haven't implemented a basket summary for the customer to check against the order total. This is because at first I didn't understand the concept, and I left this to the end. I did not have enough time to implement it.
 
