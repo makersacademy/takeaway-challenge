@@ -15,8 +15,8 @@ Takeaway Challenge
  ```
 Method of working
 ------------
-- I analysed the user stories and inferred the classes needed in my program. Order was the first class.
-- I drew a diagram to show the relationship between objects and the messages they take i.e their interface methods.
+- I analysed the user stories and inferred the classes needed in my program. These were Order, Menu and SMSText.
+- I drew a sequence diagram - see below - to show the relationship between objects and the messages they take i.e their interface methods.
 - In irb I performed the feature test for the behaviour that I was currently testing
 - I then created the simplest test for the interface method. Using RSpec: 
   * I saw my test fail (RED)
@@ -26,7 +26,7 @@ Method of working
 - I updated this README when a unit test was passed and staged all the files in Git (git add .) and did a git commit with a descriptive message.
 - I ran rubocop to check adherence to coding style and format before every commit and sometimes while doing rspec.
 - At certain times I did a git push to see all the changes in Github. This was useful to make sure my Git/Github was working fine and also it was a good to see the README updated in my Github homepage.
-- I tried to follow a 20min period for the read & refine cycle in the context of the TDD process but I found it very difficult to do this. I hope to improve with practise.
+- I tried to follow a 15min period for the read & refine cycle in the context of the TDD process but I found it very difficult to do this. I hope to improve with practise.
 
 Sequence diagram
 --------------
@@ -36,15 +36,15 @@ Classes are Order, Menu and SMSText
      ┌─────┐          ┌────┐
      │Order│          │Menu│
      └──┬──┘          └─┬──┘
-        │ choose_dish   │   
+        │   see_menu    │   
         │──────────────>│   
         │               │   
-        │   add_dish    │   
+        │     menu      │   
         │<──────────────│   
      ┌──┴──┐          ┌─┴──┐
      │Order│          │Menu│
      └─────┘          └────┘
-```
+     ```
 
 Original README content
 =======
