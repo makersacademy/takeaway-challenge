@@ -28,6 +28,24 @@ Method of working
 - At certain times I did a git push to see all the changes in Github. This was useful to make sure my Git/Github was working fine and also it was a good to see the README updated in my Github homepage.
 - I tried to follow a 20min period for the read & refine cycle in the context of the TDD process but I found it very difficult to do this. I hope to improve with practise.
 
+Sequence diagram
+--------------
+Classes are Order, Menu and SMSText
+
+```
+     ┌─────┐          ┌────┐
+     │Order│          │Menu│
+     └──┬──┘          └─┬──┘
+        │ choose_dish   │   
+        │──────────────>│   
+        │               │   
+        │   add_dish    │   
+        │<──────────────│   
+     ┌──┴──┐          ┌─┴──┐
+     │Order│          │Menu│
+     └─────┘          └────┘
+```
+
 Original README content
 =======
 Instructions
