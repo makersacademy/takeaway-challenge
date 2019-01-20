@@ -15,13 +15,19 @@ describe Restaurant do
       expect(takeaway).to respond_to(:display_menu)
     end
     it 'prints the menu items and prices of the instanced menu' do
-      expect(takeaway.display_menu).to include(:ratsoup)
+      expect(takeaway.display_menu).to include("juice")
     end
   end
 
   describe 'Ordering mechanics:' do
-    it 'responds to  requiest to add an item into an order' do
+    it 'responds to request to add an item into an order' do
       expect(takeaway).to respond_to(:order).with(2).arguments
+    end
+    it 'stores quantity and item ordered when #order is called' do
+      takeaway.order("rat soup", 2)
+      takeaway.order("bread", 3)
+      expect(takeaway.current_order.items[0]).to include("rat soup")
+      expect(takeaway.current_order.items[1]).to include("bread")
     end
   end
 end
