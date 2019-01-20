@@ -42,6 +42,10 @@ Using RSpec to test drive my program:
 order_spec.rb: to test the class Order responsiveness to the method check_order, and that this method sends the correct information to class CheckOrderIsValid.
 
 ## How to use?
+When placing a new order:
+1- Check menu using check_menu.rb using method #display_menu
+2- Place order by calling the method #send_order and use a parameter of an array of hashes for each dish and its quantity, then the last item in the array should be the total to be paid. Ex: [{dish: "your first dish", total: 2}, {dish: "your second dish", total: 1}, 7.35]
+3-
 If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
 
 ## Contribute
