@@ -11,12 +11,12 @@ attr_reader :basket, :menu
     @message = message
   end
 
-  def order_food(food, quantity)
+  def order_food(food, quantity = 1)
     @menu.contains_item?(food) ? add_to_basket(food, quantity) : NO_ITEM_MESSAGE
   end
    
   def menu
-    @menu.item_list
+    @menu.menu
   end 
 
 
@@ -26,9 +26,6 @@ attr_reader :basket, :menu
    cost
  end 
 
-  def is_correct_cost?(price)
-    total_cost == price
-  end
   
 
   def checkout(value)
@@ -40,5 +37,9 @@ attr_reader :basket, :menu
 
   def add_to_basket(food, quantity)
       @basket << {:food => food.to_sym, :quantity => quantity}
+  end
+
+  def is_correct_cost?(price)
+    total_cost == price
   end
 end
