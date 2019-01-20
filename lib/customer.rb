@@ -1,16 +1,25 @@
-require_relative 'dishes'
+require_relative 'menu'
 require_relative 'cart'
 
 class Customer
 
-  attr_reader :dishes
+  attr_reader :menu, :cart
 
-  def initialize(dishes = Dishes.new)
-    @dishes = dishes
+  def initialize(menu = Menu.new, cart = Cart.new)
+    @menu = menu
+    @cart = cart
   end
 
-  def view_dishes
-    dishes.list
+  def view_menu
+    menu.print
   end
+
+  def select_dishes(*args)
+    args.each do |arg|
+      cart.contents << menu.items[ arg - 1 ]
+    end
+  end
+
+  private
 
 end
