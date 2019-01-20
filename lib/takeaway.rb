@@ -3,13 +3,15 @@ require_relative 'text'
 
 class Takeaway
 
+  SID = ENV['SID']
+  TOKEN = ENV['TOKEN']
+  TAKEAWAY_NUMBER = ENV['NUMBER']
+  CLIENT_NUMBER = ENV['CLIENT']
+
   def initialize(name)
     @takeaway_name = name
     @menu = Menu.new(@takeaway_name + ".csv")
     @order = []
-    @sid = ENV['SID']
-    @token = ENV['TOKEN']
-    @takeaway_number = ENV['NUMBER']
   end
 
   def order(item, quantity = 1)
@@ -25,15 +27,14 @@ class Takeaway
   end
 
   def complete_order
-    @client_number = ENV['CLIENT']
     @sms = Text.new({
                      name: @takeaway_name,
-                     number: @takeaway_number,
-                     sid: @sid,
-                     token: @token
+                     number: TAKEAWAY_NUMBER,
+                     sid: SID,
+                     token: TOKEN
                      })
     @order = []
-    @sms.send_confirmation(@client_number)
+    @sms.send_confirmation(CLIENT_NUMBER)
   end
 
 private
