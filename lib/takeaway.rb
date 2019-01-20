@@ -6,8 +6,9 @@ require_relative 'sms'
 class Takeaway
   attr_reader :order
 
-  def initialize(restaurant_menu, order = Order)
+  def initialize(restaurant_menu, order = Order, sms = SMS)
     @order = order.new(restaurant_menu)
+    @sms = sms.new
   end
 
   def print_menu
@@ -25,4 +26,9 @@ class Takeaway
   def receipt
     @order.receipt
   end
+
+  def confirm_order
+    sms.send(receipt)
+  end
+
 end
