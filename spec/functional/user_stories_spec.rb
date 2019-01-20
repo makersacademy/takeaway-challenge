@@ -1,4 +1,4 @@
-require 'Takeaway'
+require 'takeaway'
 
 RSpec.describe 'Functional tests' do
   let(:pieshop) { Takeaway.new('pieshop') }

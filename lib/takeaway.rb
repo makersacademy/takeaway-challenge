@@ -5,7 +5,6 @@ class Takeaway
 
   def initialize(name)
     @takeaway_name = name
-    @takeaway_name
     @menu = Menu.new(@takeaway_name + ".csv")
     @order = []
     @sid = ENV['SID']

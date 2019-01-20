@@ -4,7 +4,7 @@ RSpec.describe Text do
   let(:twilio_class) { class_double('Twilio::REST::Client') }
   let(:twilio_instance) { instance_double('Twilio::REST::Client') }
   let(:twillio_message_instance) { double('TwilioMessageInstance') }
-  let(:text) { Text.new({ client: twilio_class, name: 'takeaway', number: '+4412345678', sid: 'abc', token: 'abc'}) }
+  let(:text) { Text.new({ client: twilio_class, name: 'takeaway', number: '+4412345678', sid: 'abc', token: 'abc' }) }
 
   subject { text }
 

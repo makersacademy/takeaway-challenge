@@ -8,7 +8,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # SimpleCov::Formatter::HTMLFormatter
 ])
 SimpleCov.start do
-  add_filter "lib/Takeaway.rb"
   add_filter "spec/functional/user_stories_spec.rb"
 end
 
