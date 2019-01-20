@@ -8,8 +8,10 @@ class Takeaway
   TAKEAWAY_NUMBER = ENV['NUMBER']
   CLIENT_NUMBER = ENV['CLIENT']
 
-  def initialize(name)
+  def initialize(name, printer = Printer, texter = Text)
     @takeaway_name = name
+    @printer = printer
+    @texter = texter
     @menu = Menu.new(@takeaway_name + ".csv")
     @order = []
   end
@@ -19,11 +21,11 @@ class Takeaway
   end
 
   def show_menu
-    Printer.print_nicely(@menu.hashed_menu)
+    @printer.print_nicely(@menu.hashed_menu)
   end
 
   def show_order
-    Printer.print_nicely(@order)
+    @printer.print_nicely(@order)
   end
 
   def check_total(given_total)
@@ -33,7 +35,7 @@ class Takeaway
   def complete_order(given_total)
     raise 'Total incorrect' unless check_total(given_total)
 
-    @sms = Text.new({
+    @sms = @texter.new({
                      name: @takeaway_name,
                      number: TAKEAWAY_NUMBER,
                      sid: SID,
