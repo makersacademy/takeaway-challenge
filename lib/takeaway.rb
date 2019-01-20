@@ -5,6 +5,7 @@ class Takeaway
 
   def initialize(name)
     @takeaway_name = name
+    @takeaway_name
     @menu = Menu.new(@takeaway_name + ".csv")
     @order = []
     @sid = ENV['SID']
@@ -32,8 +33,8 @@ class Takeaway
                      sid: @sid,
                      token: @token
                      })
-    @sms.send_confirmation(@client_number)
     @order = []
+    @sms.send_confirmation(@client_number)
   end
 
 private

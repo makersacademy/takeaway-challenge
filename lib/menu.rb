@@ -4,7 +4,7 @@ class Menu
 
   def initialize(menu_csv)
     @menu_csv = menu_csv
-    @output = "Item\t\tPrice\n"
+    @output = "Item name\t\tPrice\n"
     read_csv
   end
 
@@ -35,3 +35,6 @@ private
     @hashed_menu = @menu_read.map { |d| d.to_hash }
   end
 end
+
+menu = Menu.new('menu.csv')
+puts menu.list

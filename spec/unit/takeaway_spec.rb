@@ -13,7 +13,8 @@ RSpec.describe Takeaway do
   end
 
   it 'lets you show the order' do
-    expect(pieshop.show_order).to be_a(Array)
+    pieshop.order('Dog pie', 2)
+    expect(pieshop.show_order).to eq [{:item=>"Dog pie", :quantity=>2}]
   end
 
   xit 'confirms sending of text message when order is complete' do
