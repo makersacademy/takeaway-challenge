@@ -3,7 +3,7 @@ class Menu
   def dishes_and_prices
   end
 
-  def get_menu
+  def see_menu
   end
 
 end

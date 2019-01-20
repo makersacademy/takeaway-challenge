@@ -35,7 +35,7 @@ Classes are Takeaway, Order, Menu and SMSText
      ┌────────┐          ┌────┐
      │Takeaway│          │Menu│
      └───┬────┘          └─┬──┘
-         │     get_menu    │   
+         │     see_menu    │   
          │ ────────────────>   
          │                 │   
          │       menu      │   
