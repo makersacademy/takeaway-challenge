@@ -4,6 +4,8 @@ class Menu
   end
 
   def print_menu
-    @dishes
+    @dishes.map { |name, price|
+      "#{name} £#{price.to_f}"
+    }.join(', ')
   end
 end
