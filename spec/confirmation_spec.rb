@@ -4,7 +4,7 @@ describe Confirmation do
 let(:item) { double(:item) }
 
   it "should sent a text when the order is confirmed" do
-    expect(subject.confirmation_text).to eq("Text")
+    expect(subject.confirmation_text).to eq "This is a message to confirm the order of your food delivery to arrive at #{Confermation::TIMEPLUS1}"
   end
 
   context '#confirm order (e.g. enter pressed as input)' do
