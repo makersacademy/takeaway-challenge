@@ -20,4 +20,9 @@ class Takeaway
     @order.basket
   end
 
+  def total_order
+    total = @order.total_order
+    print "Your order total is £#{total}"
+  end
+
 end

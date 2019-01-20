@@ -30,6 +30,11 @@ RSpec.describe Takeaway do
       subject.add_to_order("pizza")
       expect(subject.basket).to eq(["pizza"])
     end
-#
+
+    it 'can view a total' do
+      subject.add_to_order("pizza")
+      subject.add_to_order("curry")
+      expect{subject.total_order}.to output("Your order total is £12").to_stdout
+    end
   end
 end
