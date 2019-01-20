@@ -99,13 +99,38 @@ I've made an effort to ensure code readability by using semantic names for metho
 
 As best as possible, my tests check for behaviour of the system under test (i.e. the isolated class) by mocking/stubbing external dependencies and checking for correct behaviour, for eg: `ordering a dish should add it to the order summary (basket_summary)`.
 
-**A few places where I didn't create features: **
+### Encapsulation
 
-- The `order` method assumes that the user types in foods that exist, doesn't make a typo etc.
-I did this because a) It wasn't explicitly mentioned in the user stories, and b) there was some discussion around the separation of business logic and the presentation/view layer where validation is done in one of the workshops. Of course, adding this functionality isn't difficult and would be fairly quick. 
+In order to restrict direct access to the 'worker' methods in my `Order` class, I chose to encapsulate them. 
+
+```ruby
+
+class Order
+
+# Code Omitted
+
+ private
+
+  def basket_with_prices
+    @basket.map { |arr|
+      [arr[0], arr[1], @menu[arr[0]]]
+    }
+  end
+
+  def repeat_order(dish, quantity)
+    "#{quantity}x #{dish}(s) added to basket"
+  end
+
+  def dish_exists?(dish)
+    @menu.key?(dish)
+  end
+end
+```
+
+**Features I chose not to create:**
 
 - Lack of a presentation layer
-Initially, I played around with the idea of displaying the dishes in a more presentational manner, however I chose to stick closely with the user stories. 
+Initially, I played around with the idea of displaying the dishes in a more presentational manner, however I chose to stick closely with the user stories (following the YAGNI principle). Also, last week, there was a discussion around having a new layer for the presentation of the dishes which can be added on top of my code. 
 
 
 User Stories
