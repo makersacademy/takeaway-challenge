@@ -10,6 +10,7 @@ class Interface
     @chosen_quantity = nil
   end
 
+  # Stores input and requests action
   def launch
     until action == '4'
       show_action_menu
