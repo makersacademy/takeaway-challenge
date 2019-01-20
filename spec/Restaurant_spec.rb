@@ -8,8 +8,11 @@ RSpec.describe Restaurant do
     expect(restaurant.bill).to eq(15)
   end
 
+  it 'will raise an error if meal is not selected' do
+    expect { restaurant.place_your_order }.to raise_error('Please select your meal')
+  end
+
   it 'places an order and message is being sent to customer' do
-    allow(restaurant).to receive(:place_your_order).and_return(false)
     expect(restaurant).to respond_to(:place_your_order)
   end
 
