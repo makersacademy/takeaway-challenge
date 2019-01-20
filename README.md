@@ -39,17 +39,20 @@ The number is the number given to you by twilio and the client is the phone numb
 of the test client. For production use the number can be pushed as an argument to
 override this.
 
-set NUMBER=+44xxxxxxxxxx
-set CLIENT=+44xxxxxxxxxx
-set SID=yyyyyyyyyyyyyyyyyyyyyyyyy
-set TOKEN=yyyyyyyyyyyyyyyyyyyyyyyyy
+`set NUMBER=+44xxxxxxxxxx`
+
+`set CLIENT=+44xxxxxxxxxx`
+
+`set SID=yyyyyyyyyyyyyyyyyyyyyyyyy`
+
+`set TOKEN=yyyyyyyyyyyyyyyyyyyyyyyyy`
 
 Running the application
 -----------------------
 
 To initialise the takeaway:
 
-`Takeaway.new(takeaway_name)``
+`Takeaway.new(takeaway_name)`
 
 To view the menu:
 
@@ -57,15 +60,15 @@ To view the menu:
 
 To order an item:
 
-`Takeaway.order(item, quantity)``
+`Takeaway.order(item, quantity)`
 
 To check your total matches:
 
-`Takeaway.check_total(your_total)``
+`Takeaway.check_total(your_total)`
 
 To complete the order:
 
-`Takeaway.complete_order(your_total)``
+`Takeaway.complete_order(your_total)`
 
 User Stories
 -----
@@ -87,3 +90,8 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+Testing/Coverage
+-----
+
+100% test coverage, no rubocop offenses
