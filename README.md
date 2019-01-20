@@ -39,10 +39,10 @@ The number is the number given to you by twilio and the client is the phone numb
 of the test client. For production use the number can be pushed as an argument to
 override this.
 
-`set NUMBER=+44xxxxxxxxxx
-set CLIENT=+44xxxxxxxxxx
-set SID=yyyyyyyyyyyyyyyyyyyyyyyyy
-set TOKEN=yyyyyyyyyyyyyyyyyyyyyyyyy`
+`set NUMBER=+44xxxxxxxxxx`
+`set CLIENT=+44xxxxxxxxxx`
+`set SID=yyyyyyyyyyyyyyyyyyyyyyyyy`
+`set TOKEN=yyyyyyyyyyyyyyyyyyyyyyyyy`
 
 Running the application
 -----------------------
