@@ -19,6 +19,15 @@ describe Takeaway do
    takeaway.add_order(:seafood,1)
    takeaway.add_order(:garlic_bread,2)
    expect(takeaway.checkout).to eq 24
+   expect(takeaway.complete?).to eq true
  end
+
+ it "has no order" do
+   expect{takeaway.checkout}.to raise_error "No order yet."
+ end
+
+ it "check total" do
+   expect{takeaway.complete?}.to raise_error "Bill is not correct."
+end
 
 end
