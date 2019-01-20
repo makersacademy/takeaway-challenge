@@ -7,7 +7,7 @@ class Order
   end
 
   def complete?
-    # fail if ((@items.length)-1)/2) != @items
+    fail "quantity mismatch" if @items[0].values.inject(0, :+) != @items[1]
   end
 
 end

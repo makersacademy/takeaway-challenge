@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   before(:each) {
-    @ppp_items = [[2, "pizza", 1, "pasta"], 4]
+    @ppp_items = [{:pizza => 2, :pasta => 1}, 4]
     @incomplete_order = Order.new(@ppp_items)
   }
 
