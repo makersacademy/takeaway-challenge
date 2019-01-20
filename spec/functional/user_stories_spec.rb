@@ -2,7 +2,11 @@ require 'takeaway'
 
 RSpec.describe 'Functional tests' do
   let(:pieshop) { Takeaway.new('pieshop') }
+  let(:pieshop_no_text) { Takeaway.new('pieshop',Printer, text_class) }
   let(:menu) { Menu.new('menu.csv') }
+  let(:text_class) { class_double('Text') }
+  let(:text_instance) { instance_double('Text') }
+  let(:twillio_message_instance) { double('TwilioMessageInstance') }
 
   # As a customer
   # So that I can check if I want to order something
@@ -38,12 +42,16 @@ RSpec.describe 'Functional tests' do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-  xit 'allows a customer to have a text sent once order is complete' do
-    pieshop.order('Dog pie', 2)
-    pieshop.order('Steak pie', 3)
-    pieshop.order('Dog pie')
-    pieshop.check_total(12)
-    expect(pieshop.complete_order(12)).to have_attributes(error_code: 0)
+  it 'allows a customer to have a text sent once order is complete' do
+    allow(text_class).to receive(:new).and_return(text_instance)
+    allow(text_instance).to receive_message_chain(:send_confirmation).and_return(twillio_message_instance)
+    allow(twillio_message_instance).to receive(:error_code).and_return(0)
+    
+    pieshop_no_text.order('Dog pie', 2)
+    pieshop_no_text.order('Steak pie', 3)
+    pieshop_no_text.order('Dog pie')
+    pieshop_no_text.check_total(12)
+    expect(pieshop_no_text.complete_order(12)).to have_attributes(error_code: 0)
   end
 
 end
