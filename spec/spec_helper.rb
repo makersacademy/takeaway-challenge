@@ -1,6 +1,8 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'dotenv'
+require 'twilio-ruby'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -8,6 +10,8 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # SimpleCov::Formatter::HTMLFormatter
 ])
 SimpleCov.start
+
+Dotenv.load
 
 RSpec.configure do |config|
   config.after(:suite) do
