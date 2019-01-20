@@ -22,4 +22,6 @@ def add_to_order(item_code)
 end
 
 add_to_order(6)
-p @order[0][:item]
+add_to_order(6)
+# p @basket.delete_at(@basket.find_index(:item_code))
+p @order

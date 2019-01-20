@@ -29,30 +29,45 @@ describe Basket do
     end
   end
 
-  describe '#remove_from_basket' do
-    it 'allows the remove_from_basket method to take one argument' do
-      expect(subject).to respond_to(:remove_from_basket).with(2).argument
+  # describe '#remove_from_basket' do
+  #   it 'allows the remove_from_basket method to take two argument' do
+  #     expect(subject).to respond_to(:remove_from_basket).with(2).argument
+  #   end
+  #   it 'takes item code and quantity, and deletes from basket' do
+  #     basket = Basket.new
+  #     subject.add_to_basket(2, 2)
+  #     subject.remove_from_basket(2)
+  #     expect(basket.basket).to eq [{ item_code: 2, item: "haddock", price: 5 }]
+  #   end
+  #   context '#raising errors' do
+  #     it 'raises an error if the basket is empty' do
+  #       expect { subject.remove_from_basket(2) }.to raise_error("Error. Your basket is already empty.")
+  #     end
+  #     it 'raises error when the item code is below 1' do
+  #       basket = Basket.new
+  #       subject.add_to_basket(2, 2)
+  #       expect { subject.remove_from_basket(0) }.to raise_error("Please enter a valid item code.")
+  #     end
+  #     it 'raises error when the item code is above 10' do
+  #       basket = Basket.new
+  #       subject.add_to_basket(2, 2)
+  #       expect { subject.remove_from_basket(88) }.to raise_error("Please enter a valid item code.")
+  #     end
+  #   end
+  # end
+
+  describe '#return_basket_total' do
+    it 'returns all items in basket and a running total' do
+      subject.add_to_basket(2)
+      expect(subject.return_basket_total).to eq("Total cost: £5")
     end
-    it 'takes item code and quantity, and deletes from basket' do
-      basket = Basket.new
+  end
+
+  describe '#cost' do
+    it 'returns the total basket cost at that time' do
       subject.add_to_basket(2, 2)
-      subject.remove_from_basket(2, 2)
-      expect(basket.basket).to eq []
-    end
-    context '#raising errors' do
-      it 'raises an error if the basket is empty' do
-        expect { subject.remove_from_basket(2) }.to raise_error("Error. Your basket is already empty.")
-      end
-      it 'raises error when the item code is below 1' do
-        basket = Basket.new
-        subject.add_to_basket(2, 2)
-        expect { subject.remove_from_basket(0) }.to raise_error("Please enter a valid item code.")
-      end
-      it 'raises error when the item code is above 10' do
-        basket = Basket.new
-        subject.add_to_basket(2, 2)
-        expect { subject.remove_from_basket(88) }.to raise_error("Please enter a valid item code.")
-      end
+      subject.add_to_basket(1)
+      expect(subject.cost).to eq 15
     end
   end
 end
