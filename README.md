@@ -40,8 +40,11 @@ of the test client. For production use the number can be pushed as an argument t
 override this.
 
 `set NUMBER=+44xxxxxxxxxx`
+
 `set CLIENT=+44xxxxxxxxxx`
+
 `set SID=yyyyyyyyyyyyyyyyyyyyyyyyy`
+
 `set TOKEN=yyyyyyyyyyyyyyyyyyyyyyyyy`
 
 Running the application
