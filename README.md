@@ -31,7 +31,6 @@ Method of working
 Sequence diagram
 --------------
 Classes are Order, Menu and SMSText
-
 ```
      ┌─────┐          ┌────┐
      │Order│          │Menu│
@@ -44,7 +43,7 @@ Classes are Order, Menu and SMSText
      ┌──┴──┐          ┌─┴──┐
      │Order│          │Menu│
      └─────┘          └────┘
-     ```
+```
 
 Original README content
 =======
