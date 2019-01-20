@@ -9,7 +9,6 @@ describe Restaurant do
     end
   end
 
-
   describe 'Display requests:' do
     it 'responds to a request to display a restaurant menu' do
       expect(takeaway).to respond_to(:display_menu)
@@ -29,6 +28,12 @@ describe Restaurant do
       takeaway.order("moldy bread", 3)
       expect(takeaway.current_order.items).to include("rat soup")
       expect(takeaway.current_order.items).to include("moldy bread")
+    end
+
+    it 'can report the total value of the present order' do
+      takeaway.order("rat soup")
+      takeaway.order("mystery meat pie")
+      expect(takeaway.get_total).to eq(9)
     end
   end
 end

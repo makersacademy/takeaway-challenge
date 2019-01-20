@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Restaurant
   attr_reader :menu
@@ -6,6 +7,8 @@ class Restaurant
   def initialize(menu = Menu.new, current_order = Order.new)
     @menu = menu
     @current_order = current_order
+    @total_order_value = 0
+
   end
 
   def display_menu
@@ -14,22 +17,14 @@ class Restaurant
 
   def order(item, quantity = 1)
     @current_order.add(item, quantity)
+    @total_order_value += @menu.menu_items["#{item}"]
+
   end
 
-end
-
-
-class Order
-  attr_accessor :items
-  attr_reader :menu
-  def initialize
-    @items = Array.new
+  def get_total
+    @total_order_value
   end
-
-  def add(item, quantity)
-    quantity.times do
-      @items << item
-    end
+  def print_total
+    "You owe Rat Cafe £#{@total_order_value}. Please pay now."
   end
-
 end
