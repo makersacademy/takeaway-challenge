@@ -16,7 +16,7 @@ class Menu
   def display
     num = 1
     @menu.each do |dish, value|
-      puts "#{num}. #{dish} - £#{value}"
+    puts "#{num}. #{dish} - £#{value}"
       num += 1
     end
   end

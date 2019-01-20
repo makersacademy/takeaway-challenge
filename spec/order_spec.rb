@@ -2,8 +2,9 @@ require 'order'
 
 RSpec.describe Order do
 
-  it 'has an order basket' do
-    expect(subject.order).to eq []
+  it 'can add a dish to basket' do
+    dish = double("pizza")
+    expect(subject.order("pizza")).to eq([:pizza, 5])
   end
 
   end
