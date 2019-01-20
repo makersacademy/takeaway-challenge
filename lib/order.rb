@@ -1,12 +1,12 @@
 require 'twilio-ruby'
-require_relative 'menu'
 require_relative 'sms'
+require_relative 'takeaway'
 
 class Order
   attr_reader :receipt, :menu
 
   def initialize
-    @menu = Menu.new
+    @menu = Takeaway.new
     @receipt = []
   end
 
@@ -20,7 +20,6 @@ class Order
   end
 
   def checkout
-    sms = Sms.new
-    sms.send_sms
+    Sms.new.send_sms
   end
 end
