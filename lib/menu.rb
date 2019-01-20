@@ -1,16 +1,15 @@
 require 'csv'
+require 'printer'
 
 class Menu
 
   def initialize(menu_csv)
     @menu_csv = menu_csv
-    @output = "Item name\t\tPrice\n"
     read_csv
   end
 
   def list
-    prettify_menu
-    @output
+    Printer.prettify_menu(@hashed_menu)
   end
 
   def price?(dish)
@@ -18,12 +17,6 @@ class Menu
   end
 
 private
-
-  def prettify_menu
-    @hashed_menu.each do |entry|
-      @output += "#{entry[:item]}\t\t#{entry[:price]}\n"
-    end
-  end
 
   def read_csv
     @menu_read = CSV.read(@menu_csv, {
@@ -35,6 +28,3 @@ private
     @hashed_menu = @menu_read.map { |d| d.to_hash }
   end
 end
-
-menu = Menu.new('menu.csv')
-puts menu.list
