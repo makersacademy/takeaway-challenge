@@ -1,12 +1,3 @@
-# nouns: list, dishes, prices, meal, total, text
-
-# list = object Menu
-# dish = subset of Menu
-# meal = chosen items
-# total =  total price
-# takeaway = main program
-# text = text object - pass hash, not arguments
-
 require 'Takeaway'
 
 RSpec.describe 'Functional tests' do
@@ -47,7 +38,7 @@ RSpec.describe 'Functional tests' do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-  it 'allows a customer to have a text sent once order is complete' do
+  xit 'allows a customer to have a text sent once order is complete' do
     pieshop.order('Dog pie', 2)
     pieshop.order('Steak pie', 3)
     pieshop.order('Dog pie')

@@ -5,7 +5,6 @@ RSpec.describe Text do
   let(:twilio_instance) { instance_double('Twilio::REST::Client') }
   let(:twillio_message_instance) { double('TwilioMessageInstance') }
   let(:text) { Text.new({ client: twilio_class, name: 'takeaway', number: '+4412345678', sid: 'abc', token: 'abc'}) }
-  # allow(:text).to recieve(:send_confirmation).and_return({:error_code => 0})
 
   subject { text }
 

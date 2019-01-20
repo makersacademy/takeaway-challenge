@@ -7,7 +7,10 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # Want a nice code coverage website? Uncomment this next line!
   # SimpleCov::Formatter::HTMLFormatter
 ])
-SimpleCov.start
+SimpleCov.start do
+  add_filter "lib/Takeaway.rb"
+  add_filter "spec/functional/user_stories_spec.rb"
+end
 
 RSpec.configure do |config|
   config.after(:suite) do

@@ -17,7 +17,4 @@ RSpec.describe Takeaway do
     expect(pieshop.show_order).to eq [{:item=>"Dog pie", :quantity=>2}]
   end
 
-  xit 'confirms sending of text message when order is complete' do
-    expect(pieshop.complete_order).to have_attributes(:error_code => 0)
-  end
 end
