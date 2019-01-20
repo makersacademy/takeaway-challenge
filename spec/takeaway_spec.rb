@@ -20,13 +20,13 @@ describe Takeaway do
 
   context "Ordering from the menu" do
     it 'orders food from menu' do
-      expect(@takeaway.order_food("pizza")).to eq [{:food => :pizza, :quantity => 1}]
+      expect {@takeaway.order_food("pizza")}.to change{@takeaway.basket.count}.by 1
     end
   
     it 'orders multiple items' do
       @takeaway.order_food("pizza", 2)
       @takeaway.order_food("chips")
-      expect(@takeaway.basket).to eq [{:food => :pizza, :quantity => 2}, {:food => :chips, :quantity => 1}]
+      expect(@takeaway.basket).to eq({:pizza => 2, :chips => 1})
     end
 
     it 'gives a message if trying to order item not on the menu' do
@@ -39,7 +39,7 @@ describe Takeaway do
       @takeaway.order_food("chips")
       allow(@menu).to receive(:contains_item?).and_return(false)
       @takeaway.order_food("curry")
-      expect(@takeaway.basket).to eq [{:food => :pizza, :quantity => 2}, {:food => :chips, :quantity => 1}]
+      expect(@takeaway.basket).to eq({:pizza => 2, :chips => 1})
     end
   end
 

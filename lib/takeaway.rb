@@ -7,7 +7,7 @@ NO_ITEM_MESSAGE = "Item not on menu"
 attr_reader :basket, :menu
   def initialize(menu = Menu.new, message = Sendsms.new)
     @menu = menu
-    @basket = []
+    @basket = Hash.new(0)
     @message = message
   end
 
@@ -22,7 +22,7 @@ attr_reader :basket, :menu
 
  def total_cost
    cost = 0
-   @basket.each { |food| cost += @menu.menu[food[:food]] * food[:quantity] }
+   @basket.each { |food, quantity| cost += @menu.menu[food] * quantity }
    cost
  end 
 
@@ -36,7 +36,7 @@ attr_reader :basket, :menu
   private
 
   def add_to_basket(food, quantity)
-      @basket << {:food => food.to_sym, :quantity => quantity}
+      @basket[food.to_sym] += quantity
   end
 
   def is_correct_cost?(price)
