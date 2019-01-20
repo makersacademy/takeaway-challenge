@@ -43,12 +43,7 @@ describe Takeaway do
     end
   end
 
-  context "end of order" do
-    it 'calculates total price of order' do
-      @takeaway.order_food(:pizza, 3)
-      expect(@takeaway.total_cost).to eq 9
-    end
-   
+  context "End of order" do
     it 'raises an error when total_cost at checkout is incorrect' do
       @takeaway.order_food(:pizza, 3)
       expect { @takeaway.checkout(10) }.to raise_error "Incorrect total"

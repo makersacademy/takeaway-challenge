@@ -4,7 +4,7 @@ require_relative 'send_sms'
 class Takeaway
 
 NO_ITEM_MESSAGE = "Item not on menu"
-attr_reader :basket, :menu
+attr_reader :basket
   def initialize(menu = Menu.new, message = Sendsms.new)
     @menu = menu
     @basket = Hash.new(0)
@@ -19,18 +19,9 @@ attr_reader :basket, :menu
     @menu.menu
   end 
 
-
- def total_cost
-   cost = 0
-   @basket.each { |food, quantity| cost += @menu.menu[food] * quantity }
-   cost
- end 
-
-  
-
   def checkout(value)
     raise "Incorrect total" if !is_correct_cost?(value)
-    @message.send_message("Thank you! Your order was placed and will be delivered within 1 hour")
+    @message.send_message("Thank you! Your order was placed and will be delivered at #{time_delivered}. The total cost is £#{total_cost}")
   end
 
   private
@@ -41,5 +32,17 @@ attr_reader :basket, :menu
 
   def is_correct_cost?(price)
     total_cost == price
+  end
+
+ def total_cost
+   cost = 0
+   @basket.each { |food, quantity| cost += @menu.menu[food] * quantity }
+   cost
+ end
+
+  def time_delivered
+   one_hour = 3600
+   now = Time.now + one_hour
+   now.strftime('%H:%M') 
   end
 end
