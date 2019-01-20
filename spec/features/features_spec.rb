@@ -19,7 +19,7 @@ end
 it 'so that customer can order, they can select a number of the dishes they want' do
   restaurant = Restaurant.new
   restaurant.order("rat soup")
-  restaurant.order("bread", 2)
+  restaurant.order("moldy bread", 2)
   expect {restaurant.current_order}.not_to raise_error
   p restaurant.current_order
 end

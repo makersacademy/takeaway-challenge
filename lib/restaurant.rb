@@ -9,11 +9,11 @@ class Restaurant
   end
 
   def display_menu
-    p @menu.menu_items
+    @menu.menu_items
   end
 
   def order(item, quantity = 1)
-      @current_order.add(item, quantity)
+    @current_order.add(item, quantity)
   end
 
 end
@@ -21,13 +21,15 @@ end
 
 class Order
   attr_accessor :items
-
+  attr_reader :menu
   def initialize
     @items = Array.new
   end
 
   def add(item, quantity)
-    @items << [item, quantity]
+    quantity.times do
+      @items << item
+    end
   end
 
 end
