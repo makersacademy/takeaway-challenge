@@ -2,13 +2,15 @@ require_relative 'menu'
 require_relative 'send_sms'
 require_relative 'order'
 require 'dotenv/load'
+require 'order_printer'
 
 class Takeaway
+  include OrderPrinter
 
   CONFIRMATION_MESSAGE = "Thank you! Your order was placed and will be " +
                          "delivered before "
 
-  def initialize(args)
+  def initialize(args = {})
     @menu = args[:menu] || Menu.new
     @messenger = args[:twilio] || SendSms.new
     @order = args[:order] || Order.new(@menu)
@@ -29,7 +31,8 @@ class Takeaway
   end
 
   def print_basket
-    output_orders + output_total
+    OrderPrinter.print_order(@order.basket, @order.total)
+
   end
 
   private
@@ -45,20 +48,4 @@ class Takeaway
     text
   end
 
-  def collate_output(dish, hash)
-    "#{dish} x #{hash[:quantity]} (£#{sprintf('%.2f',
-                                      hash[:price] * hash[:quantity])}), "
-  end
-
-  def output_orders
-    output = ""
-    @order.basket.each_pair do |dish, hash|
-      output << collate_output(dish, hash)
-    end
-    output.chomp(", ")
-  end
-
-  def output_total
-    "\nThe total is £#{sprintf('%.2f', @order.total)}"
-  end
 end
