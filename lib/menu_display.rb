@@ -1,11 +1,10 @@
-require_relative 'menu'
-
 class MenuDisplay
 
   def list_menu(hash:)
     list = []
-    hash.each { |key, value|
-      next_line = [print_item(key), price_to_sterling(value)].join(': ')
+    hash.each_with_index { |key_value_pair, index|
+      numerator = '#' + (index + 1).to_s + '.'
+      next_line = [numerator, print_item(key_value_pair[0]), price_to_sterling(key_value_pair[1])].join(' ')
       list.push(next_line)
     }
     list.join("\n")

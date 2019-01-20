@@ -7,7 +7,7 @@ describe MenuDisplay do
   describe '#list_menu' do
     it 'lists the menu in pleasant format' do
       allow(menu).to receive(:hash).and_return(Menu::DEFAULT_MENU)
-      expect(menudisplay.list_menu(hash: menu.hash)).to eq "Chips: £1\nLentil Stew: £3\nUncooked Pasta: £2"
+      expect(menudisplay.list_menu(hash: menu.hash)).to eq "#1. Chips £1\n#2. Lentil Stew £3\n#3. Uncooked Pasta £2"
     end
   end
 

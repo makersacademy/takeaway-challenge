@@ -1,13 +1,14 @@
 require 'menu'
 
 describe Menu do
-  let(:menu) { Menu.new }
+  let(:hash) { { sausage: 0.5 } }
+  let(:menu) { Menu.new(hash: hash) }
 
-  it { is_expected.to respond_to(:menu).with(0).arguments }
+  it { is_expected.to respond_to(:hash).with(0).arguments }
 
-  describe '#menu' do
+  describe '#hash' do
     it 'returns a hash' do
-      expect(menu.menu).to be_a Hash
+      expect(menu.hash).to be_a Hash
     end
   end
 

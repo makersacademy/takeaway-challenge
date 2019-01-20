@@ -1,6 +1,8 @@
+require_relative 'menu_display'
+
 class Menu
 
-  attr_reader :menu
+  attr_reader :hash
 
   DEFAULT_MENU = {
     chips: 1,
@@ -8,8 +10,8 @@ class Menu
     uncooked_pasta: 2
   }
 
-  def initialize(menu = DEFAULT_MENU)
-    @menu = menu
+  def initialize(hash: DEFAULT_MENU)
+    @hash = hash
   end
 
 end
