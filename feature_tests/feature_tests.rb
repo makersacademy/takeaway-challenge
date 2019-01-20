@@ -6,8 +6,7 @@ def ft_do
   goat = Dish.new("Goat", 22)
   m.add_to(pizza)
   m.add_to(goat)
-  i = Interface.new(m)
-  puts "see_list = #{i.see_list}"
-  i.select_dish("Pizza", 3)
-  puts "verify_order = #{i.verify_order}"
+  h = OrderHandler.new(m)
+  i = Interface.new(h)
+  i.launch
 end
