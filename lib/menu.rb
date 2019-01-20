@@ -15,7 +15,7 @@ class Menu
   end
 
   def print_menu
-    @print.print_menu(@list)
+    puts @print.print_menu(@list)
   end
 
 end

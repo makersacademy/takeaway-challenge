@@ -5,9 +5,12 @@ describe Takeaway do
   let(:chips) { double(:chips, price: 2, name: "Chips") }
   let(:menu) { double(:menu, print_menu: true, list: [pizza, chips]) }
   let(:menu_class) { double(:menu_class, new: menu) }
-  let(:order) { double(:order, add: true)}
+  let(:order) { double(:order, add: true) }
   let(:order_class) { double(:order_class, new: order) }
-  let(:takeaway) { Takeaway.new(menu_class, order_class) }
+  let(:sms) { double(:sms, send_confirmation: true)}
+  let(:sms_class) {double(:sms_class, new: sms)}
+  let(:takeaway) { Takeaway.new(menu_class, order_class, sms_class) }
+  let(:time) { (Time.new + 3600).strftime("%H:%M:%S") }
 
   describe '#initialize' do
 
@@ -40,24 +43,21 @@ describe Takeaway do
       takeaway.add_to_order(1, 3)
     end
 
-    it 'should tell order to respond to current_total' do
-      expect(order).to receive(:current_total)
-      takeaway.current_total
-    end
-
-    it 'should show the contents of the current order' do
-      expect(order).to receive(:contents)
-      takeaway.order_content
-    end
-
   end
 
   describe '#place_order' do
 
     it 'should raise an error if the price given is wrong' do
-    expect { subject.place_order(1, 1, 9) }.to raise_error("Total given is not correct")
+      error = "Total given is not correct"
+      allow(takeaway).to receive(:total).and_return(8)
+      expect { takeaway.place_order(9) }.to raise_error(error)
+    end
+
+    it 'should tell sms to respond to send_confirmation' do
+      allow(takeaway).to receive(:total).and_return(9)
+      expect(sms).to receive(:send_confirmation)
+      takeaway.place_order(9)
     end
 
   end
-
 end
