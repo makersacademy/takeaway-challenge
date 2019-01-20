@@ -12,17 +12,33 @@ To confirm to myself before anyone else that I've improved over that past two we
 - Twilio API
 
 ## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
-## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
+- Order will initiate a new CheckOrder object with the required dishes, their quantities and the total to be charged to client.
+- Menu (module) will contain an array of hashes of all available dishes with their prices.
+- CheckOrderIsValid will then check the validity of the order (that the total matches the total prices of the required items as present in the Menu module) then if ok will pass instruction to PlaceOrder to send txt, otherwise will raise an error.
+- PlaceOrder will send confirmation message.
 
-## API Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+Module: Menu
+Vars: menu (array of hashes of all available dishes along with their prices)
+
+Class: Order (responsible of initiating a new order)
+Vars: new_order (to hold an array of hashes with the required dishes and the total price.)
+Methods: check_order
+
+Class: CheckOrderIsValid (responsible of checking the total passed from Order is correct)
+Vars:
+Methods: check_order_is_valid (compares received order with the module and confirms total price)
+
+Class: PlaceOrder
+Vars: meals [{meal => "def", quantity => 2, price => 2.4}, other meals ordered]
+Methods: place_order
+How it works: Will take the order from the user and forward it to the CheckOrderIsValid class to check it's all valid. If ok, then it will pass the order to ConfirmOrder
 
 ## Tests
-Describe and show how to run the tests with code examples.
+Using RSpec to test drive my program:
+
+order_spec.rb: to test the class Order responsiveness to the method check_order, and that this method sends the correct information to class CheckOrderIsValid.
 
 ## How to use?
 If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
