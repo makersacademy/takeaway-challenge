@@ -23,7 +23,7 @@ RSpec.describe Takeaway do
   it { is_expected.to respond_to(:checkout) }
 
   it "can display a list of dishes with prices" do
-    expect(@takeaway.read_menu).to be_a(Hash)
+    expect(@takeaway.read_menu).to eq({ @dish => 10 })
   end
 
   it "can order any dish in various quantities" do
