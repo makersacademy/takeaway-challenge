@@ -15,35 +15,24 @@ describe Customer do
       allow(menu).to receive(:print).and_return('the menu items')
       expect(customer.view_menu).to eq 'the menu items'
     end
-
   end
 
   describe '#select_dishes' do
     it 'responds to select_dishes' do
       expect(customer).to respond_to :select_dishes
     end
-
-    # it 'puts the selections into the cart' do
-    #   allow(cart).to receive(:contents) {[]}
-    #   allow(menu).to receive(:items)
-    #   customer.select_dishes(2)
-    #   expect(cart.contents).to receive(1)
-    # end
-
-    describe '#view_total' do
-      it 'responds to view_total' do
-        expect(customer).to respond_to :view_total
-      end
-    end
-
-    describe '#review_cart_contents' do
-      it 'reveals the contents of the cart' do
-        allow(cart).to receive(:format_contents) { print 'formatted contents' }
-        expect{customer.review_cart_contents}.to output('formatted contents').to_stdout
-      end
-    end
-
   end
 
+  describe '#view_total' do
+    it 'responds to view_total' do
+      expect(customer).to respond_to :view_total
+    end
+  end
 
+  describe '#review_cart_contents' do
+    it 'reveals the contents of the cart' do
+      allow(cart).to receive(:format_contents) { print 'formatted contents' }
+      expect{customer.review_cart_contents}.to output('formatted contents').to_stdout
+    end
+  end
 end

@@ -21,8 +21,9 @@ attr_accessor :items
 
   def formatted_menu
     items.each_with_index do |hash, index|
-      puts "#{index + 1}. #{hash[:item]} --- £#{hash[:price]}"
+      puts "#{index + 1}. #{hash[:item]} " + "£#{hash[:price]}".rjust(30 - (hash[:item].length) )
     end
   end
+
 
 end
