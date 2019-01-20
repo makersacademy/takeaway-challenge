@@ -6,6 +6,7 @@ I would like to see a list of dishes with prices
 
 | Object | Message |
 | :----: | :----: |
+| Takeaway | show_menu |
 | Menu | show_dish, show_price |
 
 >As a customer
@@ -30,4 +31,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Object | Message |
 | :----: | :----: |
-| Order | send_text |
+| Text | send_text |

@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'text'
 class Takeaway
 
 attr_reader :menu, :order_summary, :basket, :bill, :total, :bill_summary, :each_check
@@ -10,6 +11,7 @@ def initialize(menu=Menu.new)
   @basket = @order.order_summary
   @bill_summary = []
   @each_check = 0
+  @send_sms = Text.new
 end
 
   def read_menu
@@ -33,8 +35,13 @@ end
   end
 
   def complete?
-    fail 'Bill is not correct.' if @each_check != @total
-    !!@basket
+    @each_check == @total
+    return @send_sms if !!@basket
+  end
+
+  def confirm_order
+    fail 'Bill is not correct.' if !complete?
+    @send_sms
   end
 
 end
