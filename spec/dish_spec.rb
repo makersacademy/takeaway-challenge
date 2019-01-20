@@ -6,7 +6,7 @@ require 'dish'
       expect(dish.name).to eq 'Steak'
     end
 
-    it 'should have a price associated when createdd' do
+    it 'should have a price associated when created' do
       dish = Dish.new('Steak', 5)
       expect(dish.price).to eq 5
     end
