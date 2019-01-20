@@ -8,7 +8,7 @@ describe Takeaway do
   let(:dish1)        { double :dish, name: "Pizza", price: 5.00 }
   let(:dish2)        { double :dish, name: "Fries", price: 1.99 }
   let(:sms_class)    { double :sms_class, new: sms }
-  let(:sms)          { double :sms, send: "Nothing sent"}
+  let(:sms)          { double :sms, send: "Nothing sent!"}
 
   describe '#new' do
     it 'Should initialize with an order object' do
@@ -43,7 +43,6 @@ describe Takeaway do
 
   describe '#confirm_order' do
     it 'Should respond to confirm_order' do
-      allow(takeaway).to receive(:confirm_order) { "Nothing sent!" }
       expect(takeaway.confirm_order).to eq "Nothing sent!"
     end
   end
