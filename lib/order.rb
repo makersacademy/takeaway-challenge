@@ -1,13 +1,15 @@
 require_relative 'menu'
 require_relative 'basket'
+require_relative 'text'
 
 class Order
 
   attr_reader :basket
 
-  def initialize(menu = Menu.new, basket = Basket.new)
+  def initialize(menu = Menu.new, basket = Basket.new, text = Text.new)
     @menu = menu
     @basket = basket
+    @text = text
   end
 
   def view_menu
@@ -32,7 +34,7 @@ class Order
   end
 
   def complete
-    "yay"
+    @text.send_text
   end
 
 end

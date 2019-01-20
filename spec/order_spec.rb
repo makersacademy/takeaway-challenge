@@ -2,11 +2,12 @@ require 'order'
 
 describe Order do
 
-  let(:order)   { described_class.new(menu, basket) }
+  let(:order)   { described_class.new(menu, basket, text) }
   let(:menu)    { double(:menu, display: nil, list: [hummus, pizza] ) }
   let(:basket)  { double(:basket, add: nil, basket: [hummus, pizza], return_order: nil) }
   let(:hummus)  { { name: "Hummus", price: 2 } }
   let(:pizza)   { { name: "Pizza", price: 10 } }
+  let(:text)    { double(:text, send_text: nil)}
 
   describe 'Viewing the Menu' do
     it 'should have a method which allows a user to view the menu' do
@@ -39,6 +40,13 @@ describe Order do
       $stdout.stub(:write)
       order.stub(:gets).and_return("")
       expect(order).to receive(:complete)
+      order.order_complete
+    end
+
+    it 'should create a new text object and send a send_text method' do
+      expect(text).to receive(:send_text)
+      $stdout.stub(:write)
+      order.stub(:gets).and_return("")
       order.order_complete
     end
   end

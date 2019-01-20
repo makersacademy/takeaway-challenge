@@ -1,14 +1,24 @@
-require 'twilio-ruby'
+require_relative 'details'
 
-account_sid = 'AC42a31d75e3c4bcf930f9c7494fd8b410'
-auth_token = 'f45439aa05314955301fd5855d4825f3'
-client = Twilio::REST::Client.new(account_sid, auth_token)
+class Text
 
-from = '+441329800133' # Your Twilio number
-to = '+447985234870' # Your mobile phone number
+  include Details
 
-client.messages.create(
-from: from,
-to: to,
-body: "Hey friend!"
-)
+  def send_text
+    require 'twilio-ruby'
+
+    account_sid = @id
+    auth_token = @token
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = @from
+    to = @to
+
+    client.messages.create(
+    from: from,
+    to: to,
+    body: "Thank you for your order! Your food will arrive before #{Time.now + 1*60*60}"
+    )
+  end
+
+end
