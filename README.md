@@ -45,9 +45,15 @@ The user completes an order by calling the complete_order method with the amount
 2.5.0 :008 > ratcafe.print_total
  => "You owe Rat Cafe £9. Please pay now."
 2.5.0 :009 > ratcafe.complete_order(9)
+=> "£9 paid. Order complete. It will arrive by 22:33"
 ```
 The system will give an error if the bill due and the amount paid do not match:
-
+```
+2.5.0 :008 > ratcafe.print_total
+ => "You owe Rat Cafe £9. Please pay now."
+2.5.0 :009 > ratcafe.complete_order(2)
+ => RuntimeError (Incorrect amount paid, please retry)
+ ```
 
 Instructions
 -------

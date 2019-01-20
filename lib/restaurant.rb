@@ -33,7 +33,7 @@ class Restaurant
   def complete_order(total)
     fail "Incorrect amount paid, please retry" if total != @total_order_value
     t = Time.now
-    return "#{total} paid. Order complete. It will arrive at #{(t.hour + 1)}:#{t.min}"
+    return "£#{total} paid. Order complete. It will arrive by #{(t.hour + 1)}:#{t.min}"
   end
 
 end
