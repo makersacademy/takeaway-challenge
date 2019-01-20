@@ -79,7 +79,7 @@ Approach
 
 I followed the YAGNI (you aren't gonna need it) principle here and tried to stick to the user stories as best as possible. 
 
-## Single Responsibility & Delegation
+### Single Responsibility & Delegation
 
 In order to keep things as single responsibility as possible, I chose to go with the following classes:
 
@@ -91,24 +91,21 @@ In order to keep things as single responsibility as possible, I chose to go with
 
 Delegating responsibilities has allowed me to ensure that all my methods are 3 lines or less, ensuring easy updating and debugging. 
 
-## Semantic naming
+### Semantic naming
 
 I've made an effort to ensure code readability by using semantic names for methods (for eg: `@menu.display`, `@order.take(dish, quantity)`, `@order.display`, `@text.send(MESSAGE)`)
 
-## Testing for behavior and not state
+### Testing for behavior and not state
 
 As best as possible, my tests check for behaviour of the system under test (i.e. the isolated class) by mocking/stubbing external dependencies and checking for correct behaviour, for eg: `ordering a dish should add it to the order summary (basket_summary)`.
 
-A few places where I didn't create features: 
+**A few places where I didn't create features: **
 
 - The `order` method assumes that the user types in foods that exist, doesn't make a typo etc.
 I did this because a) It wasn't explicitly mentioned in the user stories, and b) there was some discussion around the separation of business logic and the presentation/view layer where validation is done in one of the workshops. Of course, adding this functionality isn't difficult and would be fairly quick. 
 
 - Lack of a presentation layer
 Initially, I played around with the idea of displaying the dishes in a more presentational manner, however I chose to stick closely with the user stories. 
-
-
-
 
 
 User Stories
