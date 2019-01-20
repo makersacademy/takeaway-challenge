@@ -5,7 +5,7 @@ describe Menu do
     subject(:menu) { described_class.new(@menu) }
   
     before(:each) do
-      @menu = {:pizza => 2, :chips => 4}
+      @menu = { :pizza => 2, :chips => 4 }
     end
   
     it 'should display the  menu' do
