@@ -13,11 +13,11 @@ describe Menu do
     end  
   
     it 'should know if a dish is on the menu' do
-      expect(subject.has_dish?("pizza")).to eq true
+      expect(subject.contains_item?("pizza")).to eq true
     end
 
     it 'should know if a dish is not on the menu' do
-      expect(subject.has_dish?("cake")).to eq false
+      expect(subject.contains_item?("cake")).to eq false
     end
   end
 end

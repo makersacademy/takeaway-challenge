@@ -8,7 +8,7 @@ class Menu
     @menu
   end
   
-  def has_dish?(dish)
-    @menu.has_key?(dish.to_sym)
+  def contains_item?(item)
+    @menu.has_key?(item.to_sym)
   end
 end
