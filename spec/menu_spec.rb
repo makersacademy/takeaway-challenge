@@ -29,4 +29,10 @@ RSpec.describe Menu do
       expect(subject.dishes).to include(dish)
     end
   end
+  describe '#print_menu' do
+    it 'prints the menu' do
+      subject.print_menu
+      expect(subject.print_menu).to eq dishes
+    end
+  end
 end

@@ -11,8 +11,11 @@ class Menu
       { name: "garlic bread", price: 3.99 }]
   end
 
-
   def add_dishes(dish)
     dishes << dish
+  end
+
+  def print_menu
+    @dishes
   end
 end
