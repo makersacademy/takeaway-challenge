@@ -16,6 +16,9 @@ describe Restaurant do
     it 'prints the menu items and prices of the instanced menu' do
       expect(takeaway.display_menu).not_to be_empty
     end
+    it 'prints a total balance statement when requested' do
+      expect(takeaway.print_total).to include("You owe")
+    end
   end
 
   describe 'Ordering mechanics:' do
