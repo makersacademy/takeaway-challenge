@@ -2,7 +2,7 @@ require 'takeaway'
 
 RSpec.describe 'Functional tests' do
   let(:pieshop) { Takeaway.new('pieshop') }
-  let(:pieshop_no_text) { Takeaway.new('pieshop',Printer, text_class) }
+  let(:pieshop_no_text) { Takeaway.new('pieshop', Printer, text_class) }
   let(:menu) { Menu.new('menu.csv') }
   let(:text_class) { class_double('Text') }
   let(:text_instance) { instance_double('Text') }
@@ -46,7 +46,7 @@ RSpec.describe 'Functional tests' do
     allow(text_class).to receive(:new).and_return(text_instance)
     allow(text_instance).to receive_message_chain(:send_confirmation).and_return(twillio_message_instance)
     allow(twillio_message_instance).to receive(:error_code).and_return(0)
-    
+
     pieshop_no_text.order('Dog pie', 2)
     pieshop_no_text.order('Steak pie', 3)
     pieshop_no_text.order('Dog pie')

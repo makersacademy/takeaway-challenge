@@ -20,7 +20,7 @@ RSpec.describe Takeaway do
 
   it 'gives an error when total is incorrect' do
     pieshop.order('Steak pie', 2)
-    expect{ pieshop.complete_order(9) }.to raise_error "Total incorrect"
+    expect { pieshop.complete_order(9) }.to raise_error "Total incorrect"
   end
 
   it 'lets you show the order' do
