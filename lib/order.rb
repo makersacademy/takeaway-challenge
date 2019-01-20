@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_accessor :basket, :total_order, :order_amount
+  attr_accessor :basket, :total_order, :order_amount, :add_to_order
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -22,13 +22,13 @@ class Order
         if item == dish
           @order_amount << price.to_i
         else
-        "Error with order"
+          "Error with order"
+        end
       end
     end
-    end
-    @order_amount
-    total = order_amount.sum
-    return total
+  @order_amount
+  total = order_amount.sum
+  return total
 end
 
 end
