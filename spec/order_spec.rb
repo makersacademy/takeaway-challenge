@@ -6,11 +6,19 @@ describe Order do
   let(:menu) { double 'menu' }
   let(:menu_display_class) { double 'menu_display_class' }
   let(:menu_display) { double 'menu_display' }
-  let(:order) { Order.new(menu_display_class: menu_display_class, menu: menu) }
+
+  let(:order_display_class) { double 'order_display_class' }
+  let(:order_display) { double 'order_display' }
+
+  let(:order) { Order.new(menu_display_class: menu_display_class, menu: menu, order_display_class: order_display_class) }
+
+
 
   describe '#take_order' do
     # May be cheating because I'm skirting around the issue of rspec getting stuck in get_input
     it 'asks the user for an order' do
+      allow(order_display_class).to receive(:new).and_return(order_display)
+      allow(order_display).to receive(:print_order)
       allow(menu_display_class).to receive(:new).and_return(menu_display)
       allow(menu_display).to receive(:list_menu)
       allow(order).to receive(:get_input).and_return('')
@@ -19,7 +27,7 @@ describe Order do
   end
 
   describe '#get_input' do
-    # Was unable to make this work in the time available
+    # Was unable to make this work in the time available - it just stops
     xit 'takes inputs until it receives an empty line' do
       allow(menu).to receive(:hash).and_return(hash)
       allow(STDIN).to receive(:gets).and_return("3, 2\n")
