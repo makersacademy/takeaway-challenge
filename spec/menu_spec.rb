@@ -31,7 +31,7 @@ describe Menu do
   end
 
   it '#order creates new order instance' do
-    items = [2, "pizza", 1, "pasta"]
+    items = [{:pizza => 2, :pasta => 1}, 3]
     expect{ @ppp_cafe.order(items) }.to change{ @ppp_cafe.orders.length }.by (1)
   end
 
