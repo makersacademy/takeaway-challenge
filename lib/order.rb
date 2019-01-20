@@ -4,12 +4,16 @@ class Order
   attr_reader :menu
   attr_reader :basket
 
+  ERROR = "Item not found or unavailable"
+
   def initialize(menu = Menu.new)
     @basket = []
     @menu = menu.display
   end
 
   def take(dish, quantity = 1)
+    raise ERROR unless dish_exists?(dish)
+
     @basket << [dish,  quantity]
     repeat_order(dish, quantity)
   end
@@ -34,5 +38,9 @@ class Order
 
   def repeat_order(dish, quantity)
     "#{quantity}x #{dish}(s) added to basket"
+  end
+
+  def dish_exists?(dish)
+    @menu.key?(dish)
   end
 end
