@@ -1,7 +1,7 @@
 require 'takeaway'
 
 RSpec.describe Takeaway do
-  let(:order) { double :order, add: 'Added to Basket', items: order_spec }
+  let(:order) { double :order, add: 'Added to Basket', items: order_spec, total: 27.15 }
   subject(:takeaway) { described_class.new(menu, order) }
 
   let(:menu) { double :menu, dishes: menu_items, print_menu: printed_menu }
@@ -19,5 +19,9 @@ RSpec.describe Takeaway do
 
   it 'stores the order' do
     expect(takeaway.basket).to eq order_spec
+  end
+
+  it 'returns the sum of the basket' do
+    expect(takeaway.total).to eq 27.15
   end
 end

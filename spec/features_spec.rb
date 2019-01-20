@@ -3,10 +3,10 @@ require 'menu'
 require 'order'
 
 RSpec.describe 'Feature Tests' do
-  subject(:takeaway) { Takeaway.new(menu, Order.new) }
+  subject(:takeaway) { Takeaway.new(menu, Order.new(menu)) }
   
   let(:menu) { Menu.new(dishes) }
-  let(:dishes) {{ "Classic Chicken": 8.85, "Chick Chick Boom": 9.45 }}
+  let(:dishes) { { "Classic Chicken": 8.85, "Chick Chick Boom": 9.45 } }
   let(:printed_menu) { "Classic Chicken £8.85, Chick Chick Boom £9.45" }
 
   let(:order_spec) { { "Classic Chicken": 2, "Chick Chick Boom": 1 } }
@@ -17,5 +17,10 @@ RSpec.describe 'Feature Tests' do
 
   it 'select some number of several available dishes' do
     expect(takeaway.add_to_basket(order_spec)).to eq 'Added to Basket'
+  end
+
+  it 'sum given matches the sum of the various dishes in my order' do
+    takeaway.add_to_basket(order_spec)
+    expect(takeaway.total).to eq 27.15
   end
 end

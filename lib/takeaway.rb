@@ -16,4 +16,8 @@ class Takeaway
   def basket
     @order.items
   end
+
+  def total
+    @order.total
+  end
 end
