@@ -1,16 +1,8 @@
 require 'menu'
 
 describe Menu do
-  let(:curry) { double(:dish, name: 'Curry', price: 5) }
-  let(:rice) { double(:dish, name: 'Rice', price: 2) }
-
-  describe '#defaults' do
-    context 'when created' do
-      it 'has a menu list array' do
-        expect(subject.menu_list).to be_empty
-      end
-    end
-  end
+  let(:curry) { double(:dish, name: 'Curry', price: 5, formatted_display: "Curry - £5") }
+  let(:rice) { double(:dish, name: 'Rice', price: 2, formatted_display: "Rice - £2") }
 
   describe '#add' do
     it 'adds a dish to menu list' do
