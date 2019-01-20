@@ -22,4 +22,8 @@ RSpec.describe Order do
       expect(subject.calculate_bill).to eq 19.98
     end
   end
+  it 'checks for correct total' do
+   subject.take_order('pizza', 2)
+   expect(subject.is_correct_cost?(19.98)).to eq true
+ end
 end

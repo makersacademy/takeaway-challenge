@@ -19,4 +19,8 @@ attr_reader :menu, :order_list
     end
     sum
   end
+
+  def correct_total?(total_price)
+    calculate_bill == total_price
+  end
 end
