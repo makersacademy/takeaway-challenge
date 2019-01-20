@@ -1,6 +1,6 @@
 require 'menuprinter'
 describe MenuPrinter do
-  let(:takeaway) { double(:takeaway, items: { chips: 2, curry: 3.25 }) }
+  let(:takeaway) { double(:takeaway, items: [ {name: "Chips", price: 2}, {name: "Curry", price: 3.25 } ]) }
 
   describe "#print_items" do
     it "outputs formatted items to stdout" do
