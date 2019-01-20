@@ -25,7 +25,11 @@ Create a new instance of your restaurant like this:
 2.5.0 :001 > ratcafe = Restaurant.new
  => #<Restaurant:0x00007fe5551570b0 @menu=#<Menu:0x00007fe555157088 @menu_items={"rat soup"=>4, "mystery meat pie"=>5, "moldy bread"=>1, "stale juice"=>2}>, @current_order=#<Order:0x00007fe555157038 @items=[]>, @total_order_value=0>
 ```
-
+You can also call up the menu of available dishes at any point using the display_menu method:
+```
+2.5.0 :005 > r.display_menu
+ => {"rat soup"=>4, "mystery meat pie"=>5, "moldy bread"=>1, "stale juice"=>2}
+```
 add items to your order by calling their name in the order() method:
 ```
 2.5.0 :002 > ratcafe.order("rat soup")
