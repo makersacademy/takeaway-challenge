@@ -23,7 +23,11 @@ RSpec.describe Order do
     end
   end
   it 'checks for correct total' do
-   subject.take_order('pizza', 2)
-   expect(subject.is_correct_cost?(19.98)).to eq true
- end
+    subject.take_order('pizza', 2)
+    expect(subject.correct_total?(19.98)).to eq true
+  end
+  it 'raises error when bill total is incorrect' do
+    subject.take_order('kebab', 3)
+    expect { subject.finish_order(10) }.to raise_error "Wrong total!"
+  end
 end

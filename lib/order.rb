@@ -19,8 +19,18 @@ attr_reader :menu, :order_list
     end
     sum
   end
+  def total_cost
+    cost = 0
+    @basket.each { |food, quantity| cost += @menu.menu[food] * quantity }
+    cost
+  end
 
   def correct_total?(total_price)
     calculate_bill == total_price
   end
+
+  def finish_order(amount)
+   raise "Wrong total!" unless correct_total?(amount)
+   @message.send_message("Thank you! Your order was placed and will be delivered at #{time_delivered}.The total cost is #{total_cost}.")
+ end
 end
