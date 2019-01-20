@@ -20,6 +20,10 @@ class Takeaway
     @order.add_to_order(item, quantity)
   end
 
+  def new_order
+    @order = create_order
+  end
+
   def price
     @order.total_price
   end

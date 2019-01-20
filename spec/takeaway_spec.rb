@@ -23,6 +23,9 @@ let(:new_order) { double(:new_order) }
       subject.place_order(item, 1)
     end
 
+    it "should start a new order" do
+      expect { subject.new_order }.to change { subject.order }
+    end
   end
 
   describe '#price' do
