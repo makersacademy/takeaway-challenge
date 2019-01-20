@@ -1,10 +1,18 @@
+require_relative 'menu'
+
 class Order
 
-  attr_accessor :order
+  attr_accessor :basket
 
-  def initialize(dish)
-    @dish = dish
-    @order = []
+  def initialize(menu = Menu.new.menu)
+    @menu = menu
+    @basket = Hash.new(0)
+
+  end
+
+  def add_to_order(choice, quantity = 1)
+    @basket[choice] += quantity
+    print "#{quantity} x #{choice} added to your order."
   end
 
 end

@@ -3,22 +3,21 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = {
-    :pizza => 5,
-    :fish => 7,
-    :chips => 2,
-    :kebab => 5,
-    :curry => 7,
-    }
-
+    @menu = [
+      {"pizza" => 5},
+      {"fish" => 7},
+      {"chips" => 2},
+      {"kebab" => 5},
+      {"curry" => 7}
+      ]
+      
   end
 
   def display
-    num = 1
-    @menu.each do |dish, value|
-    puts "#{num}. #{dish} - £#{value}"
-      num += 1
+    @menu.each do |list_item|
+      list_item.each do |key, value|
+        puts "#{key} - £#{value}"
+      end
     end
   end
-
 end

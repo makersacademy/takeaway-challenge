@@ -8,7 +8,7 @@ class Takeaway
   end
 
   def issue_menu
-    @menu.menu
+    @menu.display
   end
 
 end
