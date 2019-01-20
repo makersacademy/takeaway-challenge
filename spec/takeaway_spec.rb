@@ -2,13 +2,7 @@ require 'takeaway'
 
 RSpec.describe Takeaway do
 
-  # subject(:takeaway) { described_class.new(menu, order) }
-  # let(:order) { double :order }
-  # let(:menu) { double :menu }
-  # let(:curry) { double "curry" => 7 }
-  # let(:pizza) { double "pizza" => 5 }
-
-  describe '#diplay' do
+  describe '#display' do
 
     it 'has a method to issue the menu' do
       expect(subject).to respond_to(:display)
@@ -16,7 +10,7 @@ RSpec.describe Takeaway do
 
   end
 
-  describe '#order' do
+  describe 'order process' do
 
     it 'has a method to accept an order' do
       expect(subject).to respond_to(:add_to_order)
@@ -36,5 +30,7 @@ RSpec.describe Takeaway do
       subject.add_to_order("curry")
       expect{subject.total_order}.to output("Your order total is £12").to_stdout
     end
+
   end
+
 end

@@ -1,6 +1,5 @@
 # Download the twilio-ruby library from twilio.com/docs/libraries/ruby
 require 'twilio-ruby'
-require_relative 'takeaway'
 
 account_sid = 'AC08196a18dcd6a00b48a124bde35a2f4d'
 auth_token = '9d9889aebdc3e72ee438d90228d31525'
@@ -12,5 +11,5 @@ to = 'xx' # Your mobile phone number
 client.messages.create(
 from: from,
 to: to,
-body: "Hey, thanks for your order, it is on its way."
+body: "Hey friend!"
 )

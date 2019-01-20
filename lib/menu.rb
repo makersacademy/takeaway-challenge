@@ -9,7 +9,6 @@ class Menu
       "chips" => 2,
       "kebab" => 5,
       "curry" => 7}
-
   end
 
   def display

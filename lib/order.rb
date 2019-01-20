@@ -8,7 +8,6 @@ class Order
     @menu = menu
     @basket = []
     @order_amount = []
-
   end
 
   def add_to_order(choice)
