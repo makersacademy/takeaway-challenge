@@ -21,7 +21,7 @@ class MenuDisplay
   end
 
   def print_item(item)
-    item.to_s.split('_').each{ |item| item.capitalize! }.join(' ')
+    item.to_s.split('_').each { |it| it.capitalize! }.join(' ')
   end
 
 end
