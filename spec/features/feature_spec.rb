@@ -7,8 +7,8 @@ RSpec.describe 'features' do
     # So that I can check if I want to order something
     # I would like to see a list of dishes with prices
   
-    # menu = Menu.new
-    # menu.print
+    menu = Menu.new
+    menu.print
   end
 
   context 'User Story 2' do
