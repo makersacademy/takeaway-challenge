@@ -9,8 +9,8 @@ def initialize(menu=Menu.new)
   @menu = menu
   @order = Order.new
   @basket = @order.order_summary
-  @bill_summary = []
-  @each_check = 0
+  @bill_summary = @order.bill_summary
+  @each_check = @order.each_check
   @send_sms = Text.new
 end
 
@@ -20,9 +20,6 @@ end
 
   def add_order(dish,number)
     @order.add_order(dish,number)
-    sub_total = self.read_menu[dish] * number
-    @each_check += sub_total
-    @bill_summary << "#{dish.to_s} x#{number} = #{sub_total}"
     puts "#{number}x #{dish.to_s}(s) is added to your basket"
   end
 
@@ -34,14 +31,16 @@ end
     @total = bill.inject(:+)
   end
 
-  def complete?
-    @each_check == @total
-    return @send_sms if !!@basket
+  def confirm_order
+    fail 'Bill is not correct.' if !check_bill
+    puts "Your total order is £#{@total}"
+    @send_sms
   end
 
-  def confirm_order
-    fail 'Bill is not correct.' if !complete?
-    @send_sms
+  private
+  def check_bill
+    check_total = @each_check.inject(:+)
+    return true if check_total == @total
   end
 
 end
