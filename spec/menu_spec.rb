@@ -7,10 +7,8 @@ RSpec.describe Menu do
   end
   
   it 'has a list of food items and prices' do
-    expect(subject.menu_items).to eq({pizza: 2.99, burger: 3.50, burrito: 4.50, 
-    lobster: 50.00})
+    expect(subject.menu_items).to eq({ pizza: 2.99, burger: 3.50, burrito: 4.50, 
+    lobster: 50.00 })
   end
 
 end
-
-
