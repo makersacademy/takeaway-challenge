@@ -10,7 +10,7 @@ class Menu
   end
 
   def price?(dish)
-    @hashed_menu.each { |e| return e[:price] if e[:item] == dish }
+    hashed_menu.each { |e| return e[:price] if e[:item] == dish }
   end
 
 private
