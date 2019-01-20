@@ -23,4 +23,8 @@ class Takeaway
     sprintf('%.2f', (@total_order += (quantity * @menu.menu[dish_wanted]))).to_f
   end
 
+  def complete_order(estimate_total)
+    raise 'Total incorrect' if estimate_total != @total_order
+    'Order confirmed'
+  end
 end

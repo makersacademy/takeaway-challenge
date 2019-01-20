@@ -18,4 +18,16 @@ RSpec.describe Takeaway do
       expect(subject.place_order(2, "Chicken Wings")).to eq(25.56)
     end
   end
+
+  context "#update_total_order" do
+    it "should raise an error for wrong estimated total" do
+      subject.place_order(2, "Cheeseburger")
+      expect { subject.complete_order(4) }.to raise_error 'Total incorrect'
+    end
+
+    it "should confirm the order" do
+      subject.place_order(2, "Cheeseburger")
+      expect(subject.complete_order(13.58)).to eq 'Order confirmed'
+    end
+  end
 end
