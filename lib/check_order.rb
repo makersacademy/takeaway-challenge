@@ -15,10 +15,10 @@ class CheckOrder
   end
 
   def check_dishes_are_valid
-    order_dishes, menu_dishes = [], []
-    @new_order[0..-2].each { |dish| order_dishes << dish[:dish] }
-    @menu.each { |dish| menu_dishes << dish[:dish] }
-    order_dishes.each { |dish| return false unless menu_dishes.include?(dish) }
+    @order_dishes, @menu_dishes = [], []
+    @new_order[0..-2].each { |i| @order_dishes << i[:dish] }
+    @menu.each { |i| @menu_dishes << i[:dish] }
+    @order_dishes.each { |i| return false unless @menu_dishes.include?(i) }
     return true
   end
 
