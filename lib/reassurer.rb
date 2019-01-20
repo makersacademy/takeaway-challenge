@@ -1,6 +1,6 @@
 require 'bundler'
 Bundler.require()
-
+=begin
 account_sid = 'AC.......' # Could use ENV['TWILIO_ACCOUNT_SID']
 auth_token = '........' # Could use ENV['TWILIO_AUTH_TOKEN']
 
@@ -11,7 +11,7 @@ auth_token = '........' # Could use ENV['TWILIO_AUTH_TOKEN']
   from: '+44twilio number',
   body: 'Text message'
 )
-
+=end
 # Receives instruction from the interface to send
 # a text message to the customer, and sends that
 # message on to the API
