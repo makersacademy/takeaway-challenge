@@ -16,6 +16,10 @@ describe Cart do
     expect(cart.contents).to eq ['item 1', 'item 2']
   end
 
+  it 'should be able to add up a total price for items' do
+    cart.contents << {item: :cod, price: 6.00}
+    expect(cart.total).to eq 6
+  end
 
 
 end

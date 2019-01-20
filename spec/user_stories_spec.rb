@@ -32,11 +32,19 @@ describe Customer do
 
   describe '#view_total' do
     it 'returns the (formatted) total price from the items in the cart' do
-      expect(customer.view_total).to output("Your total: £#{cart.total}").to_stdout
+      customer.select_dishes(1,2)
+      expect{customer.view_total}.to output("Your total: £#{customer.cart.total}\n").to_stdout
     end
   end
 
   describe '#review_cart_contents' do
-
+    it 'allows the customer to see the contents of the cart and check the total' do
+      customer.select_dishes(1)
+      expect{customer.review_cart_contents}.to output(customer.cart.format_contents).to_stdout
+    end
   end
+
+
+
+  
 end

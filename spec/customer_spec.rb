@@ -2,9 +2,9 @@ require 'customer'
 
 describe Customer do
 
-  let (:customer)   { Customer.new(menu) }
   let (:menu)       { double :menu }
   let (:cart)       { double :cart }
+  let (:customer)   { Customer.new(menu, cart) }
 
   describe '#view_menu' do
     it 'responds to the instruction to view menu' do
@@ -30,7 +30,18 @@ describe Customer do
     #   expect(cart.contents).to receive(1)
     # end
 
+    describe '#view_total' do
+      it 'responds to view_total' do
+        expect(customer).to respond_to :view_total
+      end
+    end
 
+    describe '#review_cart_contents' do
+      it 'reveals the contents of the cart' do
+        allow(cart).to receive(:format_contents) { print 'formatted contents' }
+        expect{customer.review_cart_contents}.to output('formatted contents').to_stdout
+      end
+    end
 
   end
 

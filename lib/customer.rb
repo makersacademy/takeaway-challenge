@@ -20,6 +20,14 @@ class Customer
     end
   end
 
+  def view_total
+    puts "Your total: £#{cart.total}"
+  end
+
+  def review_cart_contents
+    cart.format_contents
+  end
+
   private
 
 end
