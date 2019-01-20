@@ -15,4 +15,11 @@ RSpec.describe Order do
       expect(subject.take_order(item)).to include(item)
     end
   end
+  describe '#calculate_bill' do
+    it 'gets the bill total' do
+      subject.take_order('pizza')
+      subject.take_order('kebab')
+      expect(subject.calculate_bill).to eq 'Your bill total is £14.98'
+    end
+  end
 end
