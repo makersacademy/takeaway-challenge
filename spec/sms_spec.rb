@@ -27,11 +27,11 @@ describe SMS do
     end
   end
 
-  # describe '#delivery_time' do
-  #   it 'Returns the current time + 1 hour' do
-  #     allow(Time).to receive(:now).and_return(Time.parse("12:00")
-  #     expect(sms.delivery_time).to eq "13:00"
-  #   end
-  # end
+  describe '#delivery_time' do
+    it 'Returns the current time + 1 hour' do
+      allow(Time).to receive(:now).and_return(Time.parse("12:00"))
+      expect(sms.delivery_time).to eq "13:00"
+    end
+  end
 
 end
