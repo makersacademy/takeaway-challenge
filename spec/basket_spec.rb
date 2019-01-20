@@ -9,15 +9,12 @@ describe Basket do
   end
 
   describe '#add_to_basket' do
-    it 'responds to the add_to_basket method' do
-      expect(subject).to respond_to(:add_to_basket)
+    it 'allows the add_to_basket method to take two argument' do
+      expect(subject).to respond_to(:add_to_basket).with(2).argument
     end
-    it 'allows the add_to_basket method to take one argument' do
-      expect(subject).to respond_to(:add_to_basket).with(1).argument
-    end
-    it 'takes item code, and adds the required hash to order' do
-      subject.add_to_basket(2)
-      expect(subject.basket).to eq([{ item_code: 2, item: "haddock", price: 5 }])
+    it 'takes item code and quantity, and adds to basket' do
+      subject.add_to_basket(2, 2)
+      expect(subject.basket).to eq([{ item_code: 2, item: "haddock", price: 5 }, { item_code: 2, item: "haddock", price: 5 }])
     end
     context '#raising errors' do
       it 'raises error when the item code is a string' do
@@ -33,11 +30,8 @@ describe Basket do
   end
 
   describe '#remove_from_basket' do
-    it 'responds to the remove_from_basket method' do
-      expect(subject).to respond_to(:remove_from_basket)
-    end
     it 'allows the remove_from_basket method to take one argument' do
-      expect(subject).to respond_to(:remove_from_basket).with(1).argument
+      expect(subject).to respond_to(:remove_from_basket).with(2).argument
     end
   end
 end
