@@ -9,11 +9,11 @@ describe UserInterface do
     @printmenu = PrintMenu.new
     @printbasket = PrintBasket.new
     @menu = Menu.new
-    @menu.add_dish(Dish.new("a dish",1))
-    @menu.add_dish(Dish.new("another dish",2))
+    @menu.add_dish(Dish.new("a dish", 1))
+    @menu.add_dish(Dish.new("another dish", 2))
     @basket = Basket.new
   end
-  subject { UserInterface.new(@menu,@basket) }
+  subject { UserInterface.new(@menu, @basket) }
   context "#see_menu" do
     it "prints the menu to screen" do
       expect(subject.see_menu).to eq(print(@printmenu.print(@menu)))
@@ -28,7 +28,7 @@ describe UserInterface do
       expect(subject.add_to_basket("2")).to eq(@basket.add(@menu.lookup.by_number(2)))
     end
     it "throws error if no match found" do
-      expect {subject.add_to_basket("hello moto")}.to raise_error("Dish not on menu!")
+      expect { subject.add_to_basket("hello moto") }.to raise_error("Dish not on menu!")
     end
   end
   context "#remove_from_basket" do

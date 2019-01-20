@@ -8,7 +8,7 @@ describe Basket do
   end
   context "#add" do
     it "adds a dish to basket#contents" do
-      pointer = Dish.new("a dish",15)
+      pointer = Dish.new("a dish", 15)
       subject.add(pointer)
       expect(subject.contents).to include(pointer)
     end
@@ -21,14 +21,14 @@ describe Basket do
       expect(subject.contents).to_not include(pointer)
     end
     it "just removes one object when removing object with more than two calls" do
-      pointer = Dish.new("a dish",15)
+      pointer = Dish.new("a dish", 15)
       subject.add(pointer)
       subject.add(pointer)
       expect(subject.contents.length).to eq(2)
-      expect { subject.remove(pointer) }.to change{subject.contents.length}.by -1
+      expect { subject.remove(pointer) }.to change { subject.contents.length }.by(-1)
     end
     it "raises error when trying to remove dish not in contents" do
-      expect { subject.remove(Dish.new("a new guy",1))}.to raise_error("dish not found!")
+      expect { subject.remove(Dish.new("a new guy", 1)) }.to raise_error("dish not found!")
     end
   end
 end

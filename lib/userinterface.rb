@@ -15,7 +15,7 @@ class UserInterface
 
   def see_menu
     print(@printmenu.print(@menu))
-    #call it FormatMenu.to_s
+    # call it FormatMenu.to_s
   end
 
   def add_to_basket(item)
@@ -37,14 +37,14 @@ class UserInterface
   def place_order
     see_basket
     puts "Is this correct? (y/n)"
-    @order.place_order(@basket) if gets.chomp.downcase == 'y'
+    @order.place_order(@basket) if gets.chomp.casecmp('y').zero?
     exit
   end
 
   private
 
   def input_type(input)
-      return :string if input.to_i == 0
-      return :integer
+    return :string if input.to_i.zero?
+    return :integer
   end
 end

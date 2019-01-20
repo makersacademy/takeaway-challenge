@@ -8,6 +8,7 @@ class Menu
     @available_dishes = []
     @lookup = LookUp.new(@available_dishes)
   end
+
   def add_dish(dish)
     raise(TypeError, "expecting Dish class object") unless dish.is_a?(Dish)
     @available_dishes << dish

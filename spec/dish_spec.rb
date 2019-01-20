@@ -7,7 +7,7 @@ describe Dish do
       expect(subject.name).to be_kind_of(Symbol)
     end
     it "converts spaces in name into _ in symbols" do
-      expect(Dish.new("Hello World",1).name).to eq(:Hello_World)
+      expect(Dish.new("Hello World", 1).name).to eq(:Hello_World)
     end
   end
   context "#price" do

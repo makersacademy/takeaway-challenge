@@ -4,17 +4,16 @@ require_relative 'printbasket.rb'
 class Order
   def place_order(basket)
     send_message(PrintBasket.new.string(basket))
-    #just sends text
-    #prints basket (or do that in user!)
+    # just sends text
+    # prints basket (or do that in user!)
   end
 
   private
 
   def send_message(body)
     @client = Twilio::REST::Client.new(
-      account_sid=ENV['TWILIO_ACCOUNT_SID'],
-      auth_token=ENV['TWILIO_AUTH_TOKEN']
-    )
+      account_sid = ENV['TWILIO_ACCOUNT_SID'],
+      auth_token = ENV['TWILIO_AUTH_TOKEN'])
     message = @client.messages
       .create(
          body: body,

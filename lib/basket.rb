@@ -13,7 +13,7 @@ class Basket
   end
 
   def remove(dish)
-    raise("dish not found!") if @contents.index(dish) == nil
+    raise("dish not found!") if @contents.index(dish).nil?
     @contents.delete_at(@contents.index(dish))
     return @contents
   end
