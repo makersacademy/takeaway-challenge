@@ -9,7 +9,7 @@ class Menu
   end
 
   def list
-    Printer.prettify_menu(@hashed_menu)
+    Printer.print_nicely(@hashed_menu)
   end
 
   def price?(dish)
@@ -20,7 +20,6 @@ private
 
   def read_csv
     @menu_read = CSV.read(@menu_csv, {
-                                      encoding: "UTF-8",
                                       headers: true,
                                       header_converters: :symbol,
                                       converters: :all

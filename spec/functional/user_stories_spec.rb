@@ -9,7 +9,7 @@ RSpec.describe 'Functional tests' do
   # I would like to see a list of dishes with prices
 
   it 'shows list of dishes with prices' do
-    expect(menu.list).to eq "Item name\t\tPrice\nVegetable pie\t\t2\nLamb pie\t\t3\nSteak pie\t\t3\nKangaroo pie\t\t4\nDoggy pie\t\t1\nMonkey pie\t\t5\nWhale pie\t\t6\n"
+    expect(menu.list).to eq "item                price\nVegetable pie       2\nLamb pie            3\nSteak pie           3\nKangaroo pie        4\nDog pie             1\nMonkey pie          5\nWhale pie           6\n"
   end
 
   # As a customer
@@ -20,7 +20,7 @@ RSpec.describe 'Functional tests' do
     pieshop.order('Vegetable pie', 4)
     pieshop.order('Whale pie', 3)
     pieshop.order('Dog pie')
-    expect(pieshop.show_order).to eq [{ :item => "Vegetable pie", :quantity => 4 }, { :item => "Whale pie", :quantity => 3 }, { :item => "Dog pie", :quantity => 1 }]
+    expect(pieshop.show_order).to eq "item                quantity\nVegetable pie       4\nWhale pie           3\nDog pie             1\n"
   end
 
   # As a customer

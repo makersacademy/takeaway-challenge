@@ -20,7 +20,7 @@ RSpec.describe Takeaway do
 
   it 'lets you show the order' do
     pieshop.order('Dog pie', 2)
-    expect(pieshop.show_order).to eq [{ :item => "Dog pie", :quantity => 2 }]
+    expect(pieshop.show_order).to eq "item                quantity\nDog pie             2\n"
   end
 
 end

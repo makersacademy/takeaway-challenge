@@ -19,7 +19,7 @@ class Takeaway
   end
 
   def show_order
-    @order
+    Printer.print_nicely(@order)
   end
 
   def check_total(given_total)
