@@ -129,7 +129,9 @@ end
 
 **Features I chose not to create:**
 
-- Lack of a presentation layer
+- **Lack of a presentation layer**
+
+
 Initially, I played around with the idea of displaying the dishes in a more presentational manner, however I chose to stick closely with the user stories (following the YAGNI principle). Also, last week, there was a discussion around having a new layer for the presentation of the dishes which can be added on top of my code. 
 
 
