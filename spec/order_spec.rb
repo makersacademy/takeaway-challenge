@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
 
-  let(:hash) { { chips: 1, hot_dogs: 5, chips: 1 } }
+  let(:hash) { { chips: 1, hot_dogs: 5, peanuts: 1 } }
   let(:menu) { double 'menu' }
   let(:menu_display_class) { double 'menu_display_class' }
   let(:menu_display) { double 'menu_display' }
@@ -10,9 +10,15 @@ describe Order do
   let(:order_display_class) { double 'order_display_class' }
   let(:order_display) { double 'order_display' }
 
-  let(:order) { Order.new(menu_display_class: menu_display_class, menu: menu, order_display_class: order_display_class) }
+  let(:totalizer_class) { double 'totalizer_class' }
+  let(:totalizer) { double 'totalizer' }
 
-
+  let(:order) { Order.new(
+    menu_display_class: menu_display_class,
+    menu: menu,
+    order_display_class: order_display_class,
+    totalizer_class: totalizer_class)
+  }
 
   describe '#take_order' do
     # May be cheating because I'm skirting around the issue of rspec getting stuck in get_input
@@ -21,21 +27,25 @@ describe Order do
       allow(order_display).to receive(:print_order)
       allow(menu_display_class).to receive(:new).and_return(menu_display)
       allow(menu_display).to receive(:list_menu)
-      allow(order).to receive(:get_input).and_return('')
-      expect{ order.take_order }.to output(/#{Order::ORDER_MESSAGE}/).to_stdout
+      allow(order).to receive(:take_input).and_return('')
+      expect { order.take_order }.to output(/#{Order::ORDER_MESSAGE}/).to_stdout
     end
   end
 
-  describe '#get_input' do
-    # Was unable to make this work in the time available - it just stops
-    xit 'takes inputs until it receives an empty line' do
+  describe '#take_input' do
+    it 'takes inputs until it receives an empty line' do
       allow(menu).to receive(:hash).and_return(hash)
-      allow(STDIN).to receive(:gets).and_return("3, 2\n")
-      order.get_input
       allow(STDIN).to receive(:gets).and_return("\n")
-      order.get_input
-      expected_hash = { chips: 2 }
-      expect(order.analyzed_order).to eq expected_hash
+      order.take_input
+      expect(order.analyzed_order).to eq Hash.new
+    end
+
+    it 'confirms the order if it receives the right number' do
+      allow(order).to receive(:correct_total).and_return(10.5)
+      allow(menu).to receive(:hash).and_return(hash)
+      allow(STDIN).to receive(:gets).and_return("10.50\n")
+      order.take_input
+      expect(order.order_confirmed).to be true
     end
   end
 
