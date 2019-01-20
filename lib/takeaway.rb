@@ -4,7 +4,6 @@ require_relative 'send_sms'
 class Takeaway
 
   NO_ITEM_MESSAGE = "Item not on menu"
-  DELIVERY_MESSAGE = "Thank you! Your order was placed and will be delivered at #{time_delivered}.The total cost is #{total_cost}."
   attr_reader :basket
   def initialize(menu = Menu.new, message = Sendsms.new)
     @menu = menu
@@ -22,13 +21,14 @@ class Takeaway
 
   def checkout(value)
     raise "Incorrect total" unless correct_cost?(value)
-    @message.send_message(DELIVERY_MESSAGE)
+    @message.send_message("Thank you! Your order was placed and will be delivered at #{time_delivered}.The total cost is #{total_cost}.")
   end
-
+  
   private
 
   def add_to_basket(food, quantity)
     @basket[food.to_sym] += quantity
+    "#{quantity} x #{food}(s) added to your basket"
   end
 
   def correct_cost?(price)
