@@ -18,7 +18,6 @@ it 'so that customer can order, they can select a number of the dishes they want
   restaurant.order("rat soup")
   restaurant.order("moldy bread", 2)
   expect { restaurant.current_order }.not_to raise_error
-  p restaurant.current_order
 end
 # As a customer
 # So that I can verify that my order is correct

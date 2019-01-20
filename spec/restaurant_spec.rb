@@ -38,5 +38,9 @@ describe Restaurant do
       takeaway.order("mystery meat pie")
       expect(takeaway.get_total).to eq(9)
     end
+
+    it 'fails neatly if order item is mistyped from what is on menu' do
+        expect { takeaway.order("") }.to raise_error('Item not on menu!')
+    end
   end
 end

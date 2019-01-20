@@ -16,6 +16,7 @@ class Restaurant
   end
 
   def order(item, quantity = 1)
+    fail 'Item not on menu!' if @menu.menu_items.include?(item) == false
     @current_order.add(item, quantity)
     @total_order_value += @menu.menu_items["#{item}"]
 
