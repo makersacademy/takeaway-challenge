@@ -12,4 +12,11 @@ attr_reader :menu, :order_list
     @order_list << {:item => item, :quantity => quantity}
   end
 
+  def calculate_bill
+    sum = 0
+    @order_list.each do |thing|
+      sum += @menu.dishes[thing[:item]] * thing[:quantity]
+    end
+    sum
+  end
 end

@@ -16,4 +16,10 @@ RSpec.describe Order do
       expect(subject.take_order(item, quantity)).to eq [{:item => item, :quantity => quantity}]
     end
   end
+  describe '#calculate_bill' do
+    it 'returns the order total' do
+      subject.take_order('pizza', 2)
+      expect(subject.calculate_bill).to eq 19.98
+    end
+  end
 end
