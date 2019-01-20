@@ -20,4 +20,8 @@ class Takeaway
   def total
     @order.total
   end
+
+  def checkout
+    @order.checkout
+  end
 end

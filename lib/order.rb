@@ -1,9 +1,12 @@
+require 'order_sms'
+
 class Order
   attr_reader :items
 
-  def initialize(menu)
+  def initialize(menu, sms)
     @items = nil
     @menu = menu
+    @sms = sms
   end
 
   def add(items)
@@ -13,11 +16,14 @@ class Order
 
   def total
     sum = 0
-
     @items.each do |item, quantity|
       sum += @menu.dishes[item] * quantity
     end
 
     sum
-  end 
+  end
+
+  def checkout
+    @sms.send("Your order will be with you soon!")
+  end
 end

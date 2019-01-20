@@ -1,9 +1,11 @@
 require 'takeaway'
 require 'menu'
 require 'order'
+require 'order_sms'
 
 RSpec.describe 'Feature Tests' do
-  subject(:takeaway) { Takeaway.new(menu, Order.new(menu)) }
+
+  subject(:takeaway) { Takeaway.new(menu, Order.new(menu, OrderSMS)) }
   
   let(:menu) { Menu.new(dishes) }
   let(:dishes) { { "Classic Chicken": 8.85, "Chick Chick Boom": 9.45 } }
@@ -22,5 +24,9 @@ RSpec.describe 'Feature Tests' do
   it 'sum given matches the sum of the various dishes in my order' do
     takeaway.add_to_basket(order_spec)
     expect(takeaway.total).to eq 27.15
+  end
+
+  it 'sends a verification text' do
+    # expect(takeaway.checkout).to eq 'Thank you'
   end
 end
