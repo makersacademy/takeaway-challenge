@@ -17,8 +17,9 @@ class Order
 
   def receipt
     receipt = "Order: "
-    ordered.map { |key, value| receipt << "#{key}, £#{value[0].round(2)} x#{value[1].round(2)} = £#{(value[0] * value[1]).round(2)} \n" }
+    ordered.each do |key, value|
+      receipt << "#{key}, £#{value[0].round(2)} x#{value[1].round(2)} = £#{(value[0] * value[1]).round(2)} \n"
+    end
     receipt << "Total Price: comes to #{total}"
   end
-
 end

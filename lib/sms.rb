@@ -1,6 +1,6 @@
 require "twilio-ruby"
 
-class SMS
+class Sms
   TIME_FORMAT = "%H:%M"
   attr_reader :account_sid, :auth_token, :client, :receipt
 
