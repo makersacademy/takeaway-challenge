@@ -8,4 +8,8 @@ attr_reader :menu, :order_list
     @order_list = []
   end
 
+  def take_order(item)
+    @order_list << item
+  end
+
 end
