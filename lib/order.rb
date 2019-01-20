@@ -1,11 +1,13 @@
 require_relative 'menu'
 require_relative 'order_display'
 require_relative 'totalizer'
+require_relative 'phone'
 
 class Order
 
-  attr_reader :menu_display_class, :analyzed_order, :menu, :order_display_class
-  attr_reader :totalizer_class, :order_confirmed
+  attr_reader :menu_display_class, :analyzed_order,
+  :menu, :order_display_class, :phone_class,
+  :totalizer_class, :order_confirmed
   ORDER_MESSAGE = 'Place order by entering the number of the dish, a comma,
   and the quantity, e.g. \'3, 4\'. New line for new item.  When order is
   complete enter what you think the total should be, to confirm.'
@@ -14,7 +16,8 @@ class Order
     menu_display_class:               MenuDisplay,
     menu:                             Menu.new,
     order_display_class:              OrderDisplay,
-    totalizer_class:                  Totalizer
+    totalizer_class:                  Totalizer,
+    phone_class:                      Phone
     )
     @menu_display_class = menu_display_class
     @menu = menu
@@ -22,6 +25,7 @@ class Order
     @order_display_class = order_display_class
     @order_confirmed = false
     @totalizer_class = totalizer_class
+    @phone_class = phone_class
   end
 
   def take_order
@@ -50,8 +54,9 @@ class Order
   end
 
   def confirm_order
-    puts "Thank you! Your order was placed and will be
+    message = "Thank you! Your order was placed and will be
     delivered before #{Time.new + 3600}"
+    phone_class.new.send_text(message)
     @order_confirmed = true
   end
 
@@ -91,5 +96,4 @@ class Order
   def total_format?(line)
     line =~ /\d+.*\d*/
   end
-
 end

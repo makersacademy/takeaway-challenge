@@ -4,6 +4,10 @@ describe Order do
 
   let(:hash) { { chips: 1, hot_dogs: 5, peanuts: 1 } }
   let(:menu) { double 'menu' }
+
+  let(:phone_class) { double 'phone_class' }
+  let(:phone) { double 'phone' }
+
   let(:menu_display_class) { double 'menu_display_class' }
   let(:menu_display) { double 'menu_display' }
 
@@ -17,7 +21,8 @@ describe Order do
     menu_display_class: menu_display_class,
     menu: menu,
     order_display_class: order_display_class,
-    totalizer_class: totalizer_class)
+    totalizer_class: totalizer_class,
+    phone_class: phone_class )
   }
 
   describe '#take_order' do
@@ -44,6 +49,8 @@ describe Order do
       allow(order).to receive(:correct_total).and_return(10.5)
       allow(menu).to receive(:hash).and_return(hash)
       allow(STDIN).to receive(:gets).and_return("10.50\n")
+      allow(phone_class).to receive(:new).and_return(phone)
+      allow(phone).to receive(:send_text)
       order.take_input
       expect(order.order_confirmed).to be true
     end
