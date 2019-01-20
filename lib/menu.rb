@@ -3,16 +3,19 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = [{ name: "pizza", price: 9.99 },
-      { name: "calzone", price: 11.50 },
-      { name: "kebab", price: 4.99 },
-      { name: "soup", price: 5.50 },
-      { name: "sandwich", price: 3.50 },
-      { name: "garlic bread", price: 3.99 }]
+    @dishes = {
+      'pizza' => 9.99,
+      'calzone' => 11.50,
+      'kebab'=> 4.99,
+      'soup' => 5.50,
+      'sandwich' => 3.50,
+      'garlic bread' => 3.99
+    }
   end
 
-  def add_dishes(dish)
-    dishes << dish
+  def add_dishes(dish, price)
+    @dishes[dish] = price
+    @dishes
   end
 
   def print_menu
