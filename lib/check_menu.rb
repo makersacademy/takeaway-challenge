@@ -14,5 +14,6 @@ class CheckMenu
 
   def send_order(order)
     order_status = Order.new(order).check_order
+    # order_status ? 
   end
 end
