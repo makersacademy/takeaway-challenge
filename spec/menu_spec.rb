@@ -1,7 +1,7 @@
 require 'menu'
 
 RSpec.describe Menu do
-  let(:dishes) { { "Classic Chicken": 9.95 } }
+  let(:dishes) { { "Classic Chicken": 8.85 } }
 
   subject(:menu) { described_class.new(dishes) }
 
