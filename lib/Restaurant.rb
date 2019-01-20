@@ -16,7 +16,7 @@ class Restaurant
   end
 
   def place_your_order
-    fail 'Please select your meal' if @order == [].empty?
+    fail 'Please select your meal' if @order == nil
     require_relative 'twilio.rb'
   end
 
