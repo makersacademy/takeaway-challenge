@@ -1,6 +1,8 @@
 Suggestion for how to use takeaway in IRB:
 
-``` 2.5.0 :001 > require './lib/takeaway.rb'
+```
+
+2.5.0 :001 > require './lib/takeaway.rb'
  => true
 2.5.0 :002 > t = Takeaway.new
  => #<Takeaway:0x00007f93808271c8 @menu=#<Menu:0x00007f93808271a0 @menu_hash={"pizza"=>5, "fish"=>7, "chips"=>2, "kebab"=>5, "curry"=>7}>, @order=#<Order:0x00007f9380827150 @menu=#<Menu:0x00007f9380827128 @menu_hash={"pizza"=>5, "fish"=>7, "chips"=>2, "kebab"=>5, "curry"=>7}>, @basket=[], @order_amount=[]>>
@@ -23,7 +25,9 @@ Added chips to your order.
 2.5.0 :007 > t.basket
  => ["pizza", "curry", "chips"]
 2.5.0 :008 > t.total_order
-Your order total is £14 => nil```
+Your order total is £14 => nil
+
+```
 
 
 

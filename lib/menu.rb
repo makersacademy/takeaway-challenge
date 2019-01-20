@@ -16,4 +16,5 @@ class Menu
       puts "#{key} - £#{value}"
     end
   end
+  
 end
