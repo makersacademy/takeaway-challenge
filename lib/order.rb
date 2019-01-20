@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_accessor :basket, :total_order
+  attr_accessor :basket, :total_order, :order_amount
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -12,18 +12,26 @@ class Order
   end
 
   def add_to_order(choice)
-    tally_order
     @basket << choice
-    print "Added #{choice} to your order."
+    puts "Added #{choice} to your order."
   end
 
   def tally_order
-    @basket.each do |order_item|
+    @basket.each do |item|
       @menu.menu_hash.each do |dish, price|
-        @order_amount << price.to_i if order_item == dish
-        end
-        return @order_amount
+        if item == dish
+          @order_amount << price.to_i
+        else
+        "Error with order"
+      end
     end
+    end
+  end
+
+  def sum_total_order
+    @order_amount
+    total = order_amount.sum
+    return total
   end
 
 end
