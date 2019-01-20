@@ -7,9 +7,6 @@ describe Menu do
     @ppp_cafe = Menu.new(@ppp_menu)
   }
 
-  # As a customer
-  # So that I can check if I want to order something
-  # I would like to see a list of dishes with prices
   it 'has a list of dishes' do
     expect(@ppp_cafe.dishes.length).to be > (-1)
   end
@@ -23,9 +20,6 @@ describe Menu do
     expect(@ppp_cafe.dish_list[0]).to eq "#{@ppp_menu[0][:item]} - £#{@ppp_menu[0][:price]}"
   end
 
-  # As a customer
-  # So that I can order the meal I want
-  # I would like to be able to select some number of several available dishes
   it 'responds to #order' do
     expect(@ppp_cafe).to respond_to(:order)
   end
@@ -34,13 +28,5 @@ describe Menu do
     items = [{:pizza => 2, :pasta => 1}, 3]
     expect{ @ppp_cafe.order(items) }.to change{ @ppp_cafe.orders.length }.by (1)
   end
-
-  # As a customer
-  # So that I can verify that my order is correct
-  # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  # it 'allows customer to check total quantity' do
-  #   expect(@ppp_cafe).to respond_to(:quantity_check).with(1)
-  # end
-
 
 end
