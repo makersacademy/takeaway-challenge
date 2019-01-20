@@ -1,15 +1,10 @@
 require_relative 'menu'
 
 class MenuDisplay
-  attr_reader :menu
 
-  def initialize(menu = Menu.new)
-    @menu = menu.menu
-  end
-
-  def list_menu
+  def list_menu(hash:)
     list = []
-    menu.each { |key, value|
+    hash.each { |key, value|
       next_line = [print_item(key), price_to_sterling(value)].join(': ')
       list.push(next_line)
     }
