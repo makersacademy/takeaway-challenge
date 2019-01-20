@@ -6,7 +6,7 @@ RSpec.describe Takeaway do
   subject { pieshop }
 
   it 'responds to complete order' do
-    is_expected.to respond_to(:complete_order)
+    is_expected.to respond_to(:complete_order).with(1).argument
   end
 
   it 'lets you add an order' do
@@ -16,6 +16,11 @@ RSpec.describe Takeaway do
   it 'lets you check the total' do
     pieshop.order('Steak pie', 2)
     expect(pieshop.check_total(6)).to be true
+  end
+
+  it 'gives an error when total is incorrect' do
+    pieshop.order('Steak pie', 2)
+    expect{ pieshop.complete_order(9) }.to raise_error "Total incorrect"
   end
 
   it 'lets you show the order' do

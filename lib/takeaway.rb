@@ -30,7 +30,9 @@ class Takeaway
     true if given_total == calculate_total
   end
 
-  def complete_order
+  def complete_order(given_total)
+    raise 'Total incorrect' unless check_total(given_total)
+
     @sms = Text.new({
                      name: @takeaway_name,
                      number: TAKEAWAY_NUMBER,

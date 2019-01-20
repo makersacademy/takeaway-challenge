@@ -43,7 +43,7 @@ RSpec.describe 'Functional tests' do
     pieshop.order('Steak pie', 3)
     pieshop.order('Dog pie')
     pieshop.check_total(12)
-    expect(pieshop.complete_order).to have_attributes(error_code: 0)
+    expect(pieshop.complete_order(12)).to have_attributes(error_code: 0)
   end
 
 end
