@@ -11,9 +11,10 @@ class Sms
 
   def send_sms
     message = @client.messages.create(
-     body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60*60).strftime("%H:%M")}",
+     body: "Thank you! Your order was placed and will be delivered
+     before #{(Time.now + 60 * 60).strftime("%H:%M")}",
      to: ENV["TO_MOBILE"],
      from: ENV["FROM_MOBILE"])
-    puts message.sid
+     puts message.sid
   end
 end

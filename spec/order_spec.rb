@@ -1,6 +1,7 @@
 require 'order'
 
 describe Order do
+
   it "customer can select a dish and add price to bill" do
     subject.select_dish("Tofish Bites", 3)
     expect(subject.receipt).to eq [6, 6, 6]
@@ -12,5 +13,10 @@ describe Order do
   it "adds up total of selected dishes" do
     subject.select_dish("Tofish Bites", 3)
     expect(subject.total).to eq "Total: £18"
+  end
+
+  it "sends sms on checkout" do
+    subject.select_dish("Tofish Bites", 3)
+    expect(subject.checkout).to eq nil
   end
 end
