@@ -10,13 +10,13 @@ class Menu
       {"kebab" => 5},
       {"curry" => 7}
       ]
-      
+
   end
 
   def display
     @menu.each do |list_item|
       list_item.each do |key, value|
-        puts "#{key} - £#{value}"
+      puts "#{key} - £#{value}"
       end
     end
   end

@@ -15,4 +15,16 @@ class Order
     print "#{quantity} x #{choice} added to your order."
   end
 
+  def total_order
+    total = 0
+    @basket.each do |choice, quantity|
+      @menu.each do |menu|
+        if menu[choice]
+          total += menu[choice] * quantity
+        end
+      end
+    end
+
+  end
+
 end
