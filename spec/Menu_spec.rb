@@ -1,8 +1,7 @@
 require 'Menu'
 
-
 RSpec.describe Menu do
-  subject(:menu) { menu = Menu.new }
+  subject(:menu) { described_class.new }
 
   it 'checks whether list of dishes exist' do
     expect(menu).to respond_to(:list_of_dishes)
@@ -15,6 +14,5 @@ RSpec.describe Menu do
   it 'allows to select number of dishes' do
     expect(menu).to respond_to(:select_dish).with(2).arguments
   end
-
 
 end
