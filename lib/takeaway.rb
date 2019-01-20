@@ -18,6 +18,10 @@ class Takeaway
     @order << { item: item, quantity: quantity }
   end
 
+  def show_menu
+    Printer.print_nicely(@menu.hashed_menu)
+  end
+
   def show_order
     Printer.print_nicely(@order)
   end

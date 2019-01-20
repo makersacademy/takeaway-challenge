@@ -23,4 +23,8 @@ RSpec.describe Takeaway do
     expect(pieshop.show_order).to eq "item                quantity\nDog pie             2\n"
   end
 
+  it 'prints the menu in a nice format' do
+    expect(pieshop.show_menu).to eq "item                price\nVegetable pie       2\nLamb pie            3\nSteak pie           3\nKangaroo pie        4\nDog pie             1\nMonkey pie          5\nWhale pie           6\n"
+  end
+
 end

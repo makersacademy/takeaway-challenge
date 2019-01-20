@@ -2,14 +2,11 @@ require 'csv'
 require 'printer'
 
 class Menu
+  attr_reader :hashed_menu
 
   def initialize(menu_csv)
     @menu_csv = menu_csv
     read_csv
-  end
-
-  def list
-    Printer.print_nicely(@hashed_menu)
   end
 
   def price?(dish)
