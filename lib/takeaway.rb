@@ -28,6 +28,10 @@ class Takeaway
     @order.total_price
   end
 
+  def confirmation
+    @confirm.confirmation_of_order(@order)
+  end
+
   private
 
   def create_order

@@ -34,4 +34,11 @@ let(:new_order) { double(:new_order) }
       subject.price
     end
   end
+
+  describe '#confirmation' do
+    it "can call the confirmation of order method on an instance of confirmation" do
+      expect_any_instance_of(Confirmation).to receive(:confirmation_of_order)
+      subject.confirmation
+    end
+  end
 end
