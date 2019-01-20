@@ -16,7 +16,7 @@ class Order
     puts "Added #{choice} to your order."
   end
 
-  def tally_order
+  def total_order
     @basket.each do |item|
       @menu.menu_hash.each do |dish, price|
         if item == dish
@@ -26,12 +26,9 @@ class Order
       end
     end
     end
-  end
-
-  def sum_total_order
     @order_amount
     total = order_amount.sum
     return total
-  end
+end
 
 end
