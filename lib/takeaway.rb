@@ -1,7 +1,7 @@
 require_relative 'menu'
 require_relative 'send_sms'
 
-class Order
+class Takeaway
 
 attr_reader :food_order, :menu
   def initialize(menu = Menu.new, message = Sendsms.new)

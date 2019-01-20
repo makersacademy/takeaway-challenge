@@ -1,6 +1,6 @@
-require 'order'
+require 'takeaway'
 
-describe Order do
+describe Takeaway do
   let(:food) { double :food}
   let(:quantity) {double :quantity}
   it 'orders food from menu' do
