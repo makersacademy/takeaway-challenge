@@ -8,4 +8,9 @@ describe Order do
   it "customer can order a number of dishes from the menu" do
     expect(subject.select_dish("Tofish Bites", 2)).to eq("2x Tofish Bites(s) added to your basket.")
   end
+
+  it "adds up total of selected dishes" do
+    subject.select_dish("Tofish Bites", 3)
+    expect(subject.total).to eq "Total: £18"
+  end
 end
