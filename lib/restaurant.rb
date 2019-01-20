@@ -27,6 +27,10 @@ class Restaurant
   end
 
   def print_total
-    "You owe Rat Cafe £#{@total_order_value}. Please pay now."
+    "You owe Rat Cafe £#{get_total}. Please pay now."
   end
+
+  def complete_order(total)
+  end
+
 end

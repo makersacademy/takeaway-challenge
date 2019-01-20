@@ -43,4 +43,10 @@ describe Restaurant do
         expect { takeaway.order("") }.to raise_error('Item not on menu!')
     end
   end
+
+  describe 'Completing order:' do
+    it 'responds to #complete_order method' do
+      expect(takeaway).to respond_to(:complete_order).with(1)
+    end
+  end
 end
