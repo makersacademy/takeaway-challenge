@@ -48,5 +48,13 @@ describe Restaurant do
     it 'responds to #complete_order method' do
       expect(takeaway).to respond_to(:complete_order).with(1)
     end
+    it 'checks the amount paid against amount due and throws an error if wrong' do
+      takeaway.order("rat soup")
+      expect {takeaway.complete_order(0)}.to raise_error('Incorrect amount paid, please retry')
+    end
+    it 'does not raise any error if the amount paid is correct' do
+      takeaway.order("rat soup")
+      expect {takeaway.complete_order(4)}.not_to raise_error
+    end
   end
 end

@@ -14,6 +14,41 @@ Takeaway Challenge
 
  ```
 
+Implementation
+-------
+Loading up in ```irb``` using:
+```
+irb -r './lib/restaurant.rb'
+```
+Create a new instance of your restaurant like this:
+```
+2.5.0 :001 > ratcafe = Restaurant.new
+ => #<Restaurant:0x00007fe5551570b0 @menu=#<Menu:0x00007fe555157088 @menu_items={"rat soup"=>4, "mystery meat pie"=>5, "moldy bread"=>1, "stale juice"=>2}>, @current_order=#<Order:0x00007fe555157038 @items=[]>, @total_order_value=0>
+```
+
+add items to your order by calling their name in the order() method:
+```
+2.5.0 :002 > ratcafe.order("rat soup")
+1 x rat soup added
+```
+The method can take quantity arguments to add multiple entries of the same item:
+```2.5.0 :003 > ratcafe.order("moldy bread", 2)
+2 x moldy bread added
+```
+The user can also request to see their total bill at any given time:
+```
+2.5.0 :005 > ratcafe.print_total
+ => "You owe Rat Cafe £5. Please pay now."
+ ```
+The user completes an order by calling the complete_order method with the amount they owe:
+```
+2.5.0 :008 > ratcafe.print_total
+ => "You owe Rat Cafe £9. Please pay now."
+2.5.0 :009 > ratcafe.complete_order(9)
+```
+The system will give an error if the bill due and the amount paid do not match:
+
+
 Instructions
 -------
 
