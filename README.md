@@ -36,7 +36,8 @@ add items to your order by calling their name in the order() method:
 1 x rat soup added
 ```
 The method can take quantity arguments to add multiple entries of the same item:
-```2.5.0 :003 > ratcafe.order("moldy bread", 2)
+```
+2.5.0 :003 > ratcafe.order("moldy bread", 2)
 2 x moldy bread added
 ```
 The user can also request to see their total bill at any given time:
