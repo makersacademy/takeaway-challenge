@@ -19,15 +19,16 @@ RSpec.describe Takeaway do
     end
   end
 
-  context "#update_total_order" do
+  context "#update_total_cost" do
     it "should raise an error for wrong estimated total" do
       subject.place_order(2, "Cheeseburger")
       expect { subject.complete_order(4) }.to raise_error 'Total incorrect'
     end
 
     it "should confirm the order" do
+      allow(subject).to receive(:delivery).and_return('SMS confirmation sent')
       subject.place_order(2, "Cheeseburger")
-      expect(subject.complete_order(13.58)).to eq 'Order confirmed'
+      expect(subject.complete_order(13.58)).to eq 'SMS confirmation sent'
     end
   end
 end
