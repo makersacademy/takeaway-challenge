@@ -13,6 +13,7 @@ To confirm to myself before anyone else that I've improved over that past two we
 
 ## Code Example
 
+- CheckMenu will present the available menu and take the order from client and forward to class Order.
 - Order will initiate a new CheckOrder object with the required dishes, their quantities and the total to be charged to client.
 - Menu (module) will contain an array of hashes of all available dishes with their prices.
 - CheckOrderIsValid will then check the validity of the order (that the total matches the total prices of the required items as present in the Menu module) then if ok will pass instruction to PlaceOrder to send txt, otherwise will raise an error.

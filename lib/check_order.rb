@@ -1,12 +1,10 @@
-class Order
-
-  attr_accessor :new_order
+class CheckOrder
 
   def initialize(new_order = [])
     @new_order = new_order
   end
 
-  def check_order
-    return true
+  def check_order_is_valid
+    true
   end
 end
