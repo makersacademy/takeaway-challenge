@@ -1,4 +1,7 @@
 class Order
-  def total
+  attr_reader :total_price
+
+  def total_price
   end  
+
 end
