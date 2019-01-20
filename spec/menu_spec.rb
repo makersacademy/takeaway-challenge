@@ -1,21 +1,15 @@
 require 'menu'
 
 describe Menu do
-  let(:curry) { double(:dish, name: 'Curry', price: 5, formatted_display: "Curry - £5") }
-  let(:rice) { double(:dish, name: 'Rice', price: 2, formatted_display: "Rice - £2") }
-
-  describe '#add' do
-    it 'adds a dish to menu list' do
-      subject.add(curry)
-      expect(subject.menu_list).to include curry
+  describe '#display' do
+    it 'displays all dishes in the menu list' do
+      expect { subject.display }.to output("Menu List:\n1. Curry - £5\n2. Rice - £2\n3. Naan bread - £2\n").to_stdout
     end
   end
 
-  describe '#display' do
-    it 'displays all dishes in the menu list' do
-      subject.add(curry)
-      subject.add(rice)
-      expect { subject.display }.to output("Menu List:\nCurry - £5\nRice - £2\n").to_stdout
+  describe '#choose' do
+    it 'returns the name and price of the dish' do
+      expect(subject.choose(1)).to eq({ number: 1, name: 'Curry', price: 5, quantity: 1 })
     end
   end
 end

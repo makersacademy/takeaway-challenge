@@ -1,20 +1,22 @@
 require 'basket'
 
 describe Basket do
-  let(:curry) { double(:dish, price: 5, formatted_display: 'Curry - £5') }
-
   describe '#add' do
+    let(:menu) { double(:menu, choose: { number: 1, name: 'Curry', price: 5 }) }
     it 'responds to add' do
       expect(subject).to respond_to(:add).with(1).argument
     end
-  end
-
-  describe '#show' do
-    it 'responds to show' do
-      expect(subject).to respond_to(:show)
+    it 'has an empty basket' do
+      expect(subject.contents).to eq([])
     end
-    it 'shows the contents of the basket' do
-      
+    it 'adds a dish to the basket' do
+      subject.add(1)
+      expect(subject.contents).to include({ number: 1, name: 'Curry', price: 5, quantity: 1 })
+    end
+    it 'adds 2 dishes to the basket' do
+      subject.add(1)
+      subject.add(1)
+      expect(subject.contents).to include({ number: 1, name: 'Curry', price: 5, quantity: 2 })
     end
   end
 end
