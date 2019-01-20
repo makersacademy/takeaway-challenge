@@ -3,8 +3,8 @@ require_relative 'Calculator_module'
 
 class Restaurant
 
-attr_reader :menu
-include Calculator
+  attr_reader :menu
+  include Calculator
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -13,6 +13,11 @@ include Calculator
   def bill
     @order = menu.your_order
     calculate(@order)
+  end
+
+  def place_your_order
+    fail 'Please select your meal' if @order == [].empty?
+    require_relative 'twilio.rb'
   end
 
 end
