@@ -30,19 +30,19 @@ Method of working
 
 Sequence diagram
 --------------
-Classes are Order, Menu and SMSText
+Classes are Takeaway, Order, Menu and SMSText
 ```
-     ┌─────┐          ┌────┐
-     │Order│          │Menu│
-     └──┬──┘          └─┬──┘
-        │   see_menu    │   
-        │──────────────>│   
-        │               │   
-        │     menu      │   
-        │<──────────────│   
-     ┌──┴──┐          ┌─┴──┐
-     │Order│          │Menu│
-     └─────┘          └────┘
+     ┌────────┐          ┌────┐
+     │Takeaway│          │Menu│
+     └───┬────┘          └─┬──┘
+         │     get_menu    │   
+         │ ────────────────>   
+         │                 │   
+         │       menu      │   
+         │ <────────────────   
+     ┌───┴────┐          ┌─┴──┐
+     │Takeaway│          │Menu│
+     └────────┘          └────┘
 ```
 
 Original README content
