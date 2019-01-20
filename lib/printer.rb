@@ -1,19 +1,19 @@
 class Printer
 
   def self.print_nicely(array_hash)
-    @array_hash = array_hash
+    @a_h = array_hash
     set_headers
-    @array_hash.each { |e| @output += "#{e[@key1]}".ljust(20,' ') + "#{e[@key2]}\n" }
+    @a_h.each { |e| @output += "#{e[@k1]}".ljust(20, ' ') + "#{e[@k2]}\n" }
     @output
   end
 
-private
+  private_class_method
 
   def self.set_headers
-    @keys = @array_hash[0].keys
-    @key1 = @keys[0]
-    @key2 = @keys[1]
-    @output = "#{@key1}".ljust(20,' ') + "#{@key2}\n"
+    @keys = @a_h[0].keys
+    @k1 = @keys[0]
+    @k2 = @keys[1]
+    @output = "#{@k1}".ljust(20, ' ') + "#{@k2}\n"
   end
 
 end
