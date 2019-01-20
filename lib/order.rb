@@ -1,6 +1,3 @@
-require 'meatdish'
-require 'menu'
-
 class Order
     attr_reader :menu
     attr_accessor :balance
@@ -36,7 +33,6 @@ class Order
 
     def check_out(total)
         raise "Incorrect amount" if total != @balance
-
     end
 
 end
