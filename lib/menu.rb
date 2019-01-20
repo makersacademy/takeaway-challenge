@@ -13,7 +13,7 @@ class Menu
 
   def list_dishes
     @dishes.each do |hash|
-       @dish_list << "#{hash[:item]} - £#{hash[:price]}"
+      @dish_list << "#{hash[:item]} - £#{hash[:price]}"
     end
   end
 

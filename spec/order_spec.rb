@@ -3,14 +3,12 @@ require 'order'
 describe Order do
 
   before(:each) {
-    @ppp_items = [{:pizza => 2, :pasta => 1}, 4]
+    @ppp_items = [{ :pizza => 2, :pasta => 1 }, 4]
     @incomplete_order = Order.new(@ppp_items)
-    @complete_order = Order.new([{:pizza => 2, :pasta => 1}, 3])
+    @complete_order = Order.new([{ :pizza => 2, :pasta => 1 }, 3])
   }
 
   it 'initializes with list of items' do
-    # dbl_plane = double("Plane", flying: 0, airborne: true, grounded: false)
-    # dbl_order = double("order", items: [2, "pizza", 1, "pasta"])
     expect(@incomplete_order.items).to eq @ppp_items
   end
 
@@ -21,6 +19,5 @@ describe Order do
   it 'sends text if order complete' do
     expect(@complete_order.complete?).to eq true
   end
-
 
 end
