@@ -10,3 +10,9 @@ class Menu
       { name: "sandwich", price: 3.50 },
       { name: "garlic bread", price: 3.99 }]
   end
+
+
+  def add_dishes(dish)
+    dishes << dish
+  end
+end

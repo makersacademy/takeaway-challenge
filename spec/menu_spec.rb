@@ -14,4 +14,19 @@ RSpec.describe Menu do
     expect(subject.dishes).not_to be_empty
   end
 
+  describe '#list_of_dishes' do
+    let(:name) { double :name }
+    let(:price) { double :price}
+
+      it 'stores dishes with prices' do
+        expect(subject.dishes).to eq dishes
+    end
+  end
+  describe '#add_dishes' do
+    it 'adds a new dish' do
+      dish = { name: 'lasagna', price: 8.95 }
+      subject.add_dishes(dish)
+      expect(subject.dishes).to include(dish)
+    end
+  end
 end
