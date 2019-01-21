@@ -11,7 +11,6 @@ class Order
     end
 
     def add_food (dish, quantity = 1)
-        #raise "Item not on menu" if @menu.includes_item?(dish) == false
         @basket[dish] = quantity
     end
 

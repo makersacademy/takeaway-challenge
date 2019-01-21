@@ -5,7 +5,6 @@ describe Order do
     before(:each) do
         @dish = double('dish')
         @quantity = double('quantity')
-        # @total = double('price')
         @order = Order.new
         @menu = double('menu')
         allow(@menu).to receive(:includes_item?).with('test') {true}
@@ -13,9 +12,6 @@ describe Order do
 
     describe '#add_food' do
         it {is_expected.to respond_to(:add_food).with(2).arguments}
-        # it 'raises an error if an item not on the menu is added' do
-        #     expect{@order.add_food('london')}.to raise_error "Item not on menu"
-        # end
         it 'is expected to add an item, and quantity to your order' do
             expect(@order.add_food(@dish, @quantity)).to eq (@quantity)
         end
