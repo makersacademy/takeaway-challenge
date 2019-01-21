@@ -1,11 +1,13 @@
 require_relative 'menu'
+require_relative 'twilio'
 
 class Order
 attr_reader :menu, :order_list
 
-  def initialize
+  def initialize(message = Sendsms.new)
     @menu = Menu.new
     @order_list = []
+    @message = message
   end
 
   def take_order(item, quantity = 1)
@@ -19,11 +21,6 @@ attr_reader :menu, :order_list
     end
     sum
   end
-  def total_cost
-    cost = 0
-    @basket.each { |food, quantity| cost += @menu.menu[food] * quantity }
-    cost
-  end
 
   def correct_total?(total_price)
     calculate_bill == total_price
@@ -31,6 +28,6 @@ attr_reader :menu, :order_list
 
   def finish_order(amount)
    raise "Wrong total!" unless correct_total?(amount)
-   @message.send_message("Thank you! Your order was placed and will be delivered at #{time_delivered}.The total cost is #{total_cost}.")
+   @message.send_message("Order complete! Your food is being prepared and will be with you shortly!")
  end
 end
