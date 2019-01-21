@@ -30,20 +30,54 @@ Method of working
 
 Sequence diagram
 --------------
-Classes are Takeaway, Order, Menu and SMSText
+Classes are Takeaway, Menu, Order and SMSText
+
 ```
-     ┌────────┐          ┌────┐
-     │Takeaway│          │Menu│
-     └───┬────┘          └─┬──┘
-         │     see_menu    │   
-         │ ────────────────>   
-         │                 │   
-         │       menu      │   
-         │ <────────────────   
-     ┌───┴────┐          ┌─┴──┐
-     │Takeaway│          │Menu│
-     └────────┘          └────┘
+     ┌────────┐          ┌────┐          ┌─────┐          ┌───────┐
+     │Takeaway│          │Menu│          │Order│          │SMSText│
+     └───┬────┘          └─┬──┘          └──┬──┘          └───┬───┘
+         │     see_menu    │                │                 │    
+         │ ────────────────>                │                 │    
+         │                 │                │                 │    
+         │       menu      │                │                 │    
+         │ <────────────────                │                 │    
+         │                 │                │                 │    
+         │           select_items           │                 │    
+         │ ────────────────────────────────>│                 │    
+         │                 │                │                 │    
+         │        confirm_selection         │                 │    
+         │ <────────────────────────────────│                 │    
+         │                 │                │                 │    
+         │      see_all_selected_items      │                 │    
+         │ ────────────────────────────────>│                 │    
+         │                 │                │                 │    
+         │          selected_items          │                 │    
+         │ <────────────────────────────────│                 │    
+         │                 │                │                 │    
+         │          request_total           │                 │    
+         │ ────────────────────────────────>│                 │    
+         │                 │                │                 │    
+         │              total               │                 │    
+         │ <────────────────────────────────│                 │    
+         │                 │                │                 │    
+         │             checkout             │                 │    
+         │ ────────────────────────────────>│                 │    
+         │                 │                │                 │    
+         │                 │                │      send       │    
+         │                 │                │────────────────>│    
+         │                 │                │                 │    
+         │                 │                │  confirm_send   │    
+         │                 │                │<────────────────│    
+         │                 │                │                 │    
+         │         confirm_checkout         │                 │    
+         │ <────────────────────────────────│                 │    
+     ┌───┴────┐          ┌─┴──┐          ┌──┴──┐          ┌───┴───┐
+     │Takeaway│          │Menu│          │Order│          │SMSText│
+     └────────┘          └────┘          └─────┘          └───────┘
 ```
+
+### Acknowledgement
+Many thanks to [Ibrahim Butt](https://github.com/ibrahimbutt) who helped me massively in understanding how the program should be structured to follow the OOP principles of single responsibility, open/closed principle, cohesion and delegation.
 
 Original README content
 =======

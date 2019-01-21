@@ -1,6 +1,5 @@
 require 'menu'
 
 describe Menu do
-  it { is_expected.to respond_to :dishes }
   it { is_expected.to respond_to :see_menu }
 end
