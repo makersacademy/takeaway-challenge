@@ -1,4 +1,5 @@
 require_relative 'twilio'
+require_relative 'menu'
 
 class Order
 
@@ -29,13 +30,17 @@ class Order
   def complete_order(estimate_total)
     raise 'Total incorrect' if estimate_total != @total_cost
     delivery
+    clear_order
   end
 
   def delivery
     @confirmation_app.send_confirmation
+    return 'SMS confirmation sent'
+  end
+
+  def clear_order
     @new_order_list.clear
     @total_cost = 0
-    return 'SMS confirmation sent'
   end
 
 end

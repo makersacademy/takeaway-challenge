@@ -1,16 +1,19 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'display'
 
 class Takeaway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :display
 
   def initialize
     @order = Order.new
     @menu = @order.menu
+    @display = Display.new
   end
 
   def show_menu
+    @display.to_string(@menu.menu_list)
   end
 
   def place_order(dish_wanted, quantity = 1)
