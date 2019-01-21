@@ -11,4 +11,9 @@ Takeaway Challenge
  - In the unit test, write the expected behaviour of a method and **pass the test** through resolving the error messages, i.e. coding the behaviour.
  - When the test is passed, **refactor** and **encapsulate** my code.
 
- 
+
+ ##### New Skills Aquired:
+
+ - Use the **Twillio API** to generate a confirmation text.
+ - Use **environment variables** to store personal details.
+ - Class **delegation**.
