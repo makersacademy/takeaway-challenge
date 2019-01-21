@@ -34,7 +34,7 @@ end
 # @client = Twilio::REST::Client.new account_sid, auth_token
 # message = @client.messages.create(
 #     body: "Hello from Ruby",
-#     to: "+447763570468",    # Replace with your phone number
-#     from: "+447449455805")  # Replace with your Twilio number
+#     to: "+44*************",    # Replace with your phone number
+#     from: "+***************")  # Replace with your Twilio number
 #
 # puts message.sid
