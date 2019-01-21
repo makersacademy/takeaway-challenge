@@ -10,6 +10,7 @@ class Text
   auth_token = ENV['auth_token']
   @client = Twilio::REST::Client.new(account_sid, auth_token)
   @time = Time.new.strftime("at %I:%M%p")
+  
   message = @client.messages
     .create(
        body: "Thank you! Your order was placed and will be delivered " + @time,
