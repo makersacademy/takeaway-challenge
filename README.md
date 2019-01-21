@@ -1,5 +1,5 @@
 ## Week-2 challenge (Takeaway)
-This is the weekend challenge of my week 2 in Makers academy. I acts as an application allowing users to place orders from a restaurant's menu for delivery, and if their order is successful, they shall receive a text message on their mobile confirming when they'll receive their meal(s).
+This is the weekend challenge of my week 2 in Makers academy. It acts as an application allowing users to place orders from a restaurant's menu for delivery, and if their order is successful, they shall receive a text message on their mobile confirming when they'll receive their meal(s).
 
 ## Motivation
 To confirm to myself before anyone else that I've improved over that past two weeks and that I'm comfortable putting all new skills learnt to practice.
