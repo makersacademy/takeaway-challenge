@@ -3,12 +3,12 @@ require 'takeaway'
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order, text_message: text_message) }
 
-  let (:menu) { double(:menu, view: displayed_menu) }
-  let (:order) { double(:order, total: 8.50) }
-  let (:text_message) { double(:text_message, deliver: nil)}
-  let (:displayed_menu) { "Side: £2.50" }
+  let(:menu) { double(:menu, view: displayed_menu) }
+  let(:order) { double(:order, total: 8.50) }
+  let(:text_message) { double(:text_message, deliver: nil) }
+  let(:displayed_menu) { "Side: £2.50" }
 
-  let (:dishes) { {starter: 2, main: 1} }
+  let(:dishes) { { starter: 2, main: 1 } }
 
   before do
     allow(order).to receive(:add)

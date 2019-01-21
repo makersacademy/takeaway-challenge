@@ -5,7 +5,13 @@ class Menu
   attr_reader :dishes
 
   def initialize(dishes)
-    @dishes = dishes
+    @dishes =
+    {
+      starter: 1.75,
+      main: 5.00,
+      sides: 2.50,
+      sweets: 4.20
+    }
   end
 
   def view

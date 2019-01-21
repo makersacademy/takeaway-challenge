@@ -6,10 +6,10 @@ describe Order do
   let(:menu) { double(:menu) }
 
   let(:dishes) do
-  {
-    starter: 2,
-    main: 1
-  }
+    {
+      starter: 2,
+      main: 1
+    }
   end
 
   before do

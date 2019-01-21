@@ -26,6 +26,4 @@ class Takeaway
       order.add(dish, quantity)
     end
   end
-
-
 end

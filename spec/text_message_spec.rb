@@ -1,7 +1,7 @@
 require 'text_message'
 
 describe TextMessage do
-  subject(:text_message) {described_class.new(config, client: client) }
+  subject(:text_message) { described_class.new(config, client: client) }
   let(:client) { double(:client, messages: messages) }
   let(:messages) { double(:messages) }
 
