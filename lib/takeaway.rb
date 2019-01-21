@@ -3,25 +3,32 @@ require_relative 'twilio'
 
 class Takeaway
 
-  attr_reader :menu, :new_order_list, :total_order
+  attr_reader :menu, :new_order_list, :total_cost
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @new_order_list = Array.new
     @total_cost = 0
+    @new_order_list = Array.new
+    @confirmation_app = SMS.new
   end
 
   def show_menu
     @menu
   end
 
-  def place_order(quantity, dish_wanted)
+  def place_order(dish_wanted, quantity = 1)
     @new_order_list.push({ quantity => dish_wanted })
-    update_total_cost(quantity, dish_wanted)
+    update_total_cost(dish_wanted, quantity)
   end
 
-  def update_total_cost(quantity, dish_wanted)
-    sprintf('%.2f', (@total_cost += (quantity * @menu.menu[dish_wanted]))).to_f
+  def update_total_cost(dish_wanted, quantity)
+    (@total_cost += (quantity * find_price(dish_wanted))).round(2)
+  end
+
+  def find_price(dish_wanted)
+      @menu.menu_list.map { |dish|
+        dish.price if dish.dish_name == dish_wanted
+      }.compact[0]
   end
 
   def complete_order(estimate_total)
@@ -30,7 +37,7 @@ class Takeaway
   end
 
   def delivery
-    Twilio.send_confirmation
+    @confirmation_app.send_confirmation
     @new_order_list.clear
     @total_cost = 0
     return 'SMS confirmation sent'
