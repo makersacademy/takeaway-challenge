@@ -1,5 +1,5 @@
 require_relative "takeaway.rb"
 require "pry"
 
-food = Takeaway.new
+my_order = Takeaway.new
 binding.pry
