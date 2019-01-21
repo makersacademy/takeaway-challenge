@@ -18,6 +18,10 @@ class CheckMenu
   def send_order(order)
     @order_status = Order.new(order).check_order
     raise "Invalid order!" unless order_status
-    #place_order
+    place_order
+  end
+
+  def place_order
+    require_relative '../send-sms.rb'
   end
 end
