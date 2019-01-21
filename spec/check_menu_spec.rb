@@ -11,9 +11,9 @@ RSpec.describe CheckMenu do
     end
 
     it "send a valid order to class Order and get true" do
+      allow(subject).to receive(:place_order).and_return(true)
       order = [{ dish: "Dish-02", total: 2 }, { dish: "Dish-03", total: 1 }, 10.73]
-      subject.send_order(order)
-      expect(subject.order_status).to eq true
+      expect(subject.send_order(order)).to eq true
     end
 
     it "send a valid order to class Order and get false " do
