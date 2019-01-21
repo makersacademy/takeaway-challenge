@@ -1,4 +1,4 @@
-Thank you for reviewing my code!
+# Hi! Thank you for reviewing my code!
 
 I'm aware I need to refactor the massive Order class. I'm just happy I got it working.
 
