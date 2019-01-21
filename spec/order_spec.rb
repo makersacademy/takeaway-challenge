@@ -2,16 +2,16 @@ require 'order'
 
 describe Order do
   let(:item) { double(:item, to_sym: :item) }
-  let(:menu) { double(:menu, view_food_and_price: {item: 7.7}) }
+  let(:menu) { double(:menu, view_food_and_price: { item: 7.7 }) }
   let(:order) { described_class.new(menu) }
+
+  it 'should by default return an empty basket' do
+    expect(order.basket).to eq []
+  end
 
   context '#item_is_on_menu' do
     before(:each) do
       allow(menu).to receive_message_chain("view_food_and_price.include?") { true }
-    end
-
-    it 'should by default return an empty basket' do
-      expect(order.basket).to eq []
     end
 
     it 'should store an item which has been added to the basket' do
@@ -19,7 +19,7 @@ describe Order do
       expect(order.basket).to eq [:item]
     end
 
-    it 'should add the item the quantity number of times' do
+    it 'should add the item the quantity amount of times' do
       expect(order.add_to_order(item, 2)).to eq [item, item]
     end
 

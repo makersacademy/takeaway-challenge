@@ -6,7 +6,9 @@ class Takeaway
 
   attr_reader :menu, :order
 
-  def initialize(menu_class = Pizza.new, order_class = Order.new, confirmation_class = Confirmation.new)
+  def initialize(menu_class = Pizza.new,
+     order_class = Order.new,
+      confirmation_class = Confirmation.new)
     @menu = menu_class
     @order = order_class
     @confirm = confirmation_class

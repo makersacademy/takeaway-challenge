@@ -8,7 +8,7 @@ describe Confirmation do
   end
 
   context '#confirm order (e.g. enter pressed as input)' do
-    it 'should get the user input of '' return confirmation text' do
+    it 'should send a confirmation text' do
       allow($stdout).to receive(:write)
       allow(subject).to receive(:gets).and_return("")
       expect(subject.confirmation_of_order(Order.new)).to eq("This is a message to confirm the order of your food delivery to arrive at #{Confirmation::TIMEPLUS1}")
@@ -16,7 +16,7 @@ describe Confirmation do
   end
 
   context '#do not confirm order (e.g. abc pressed as input)' do
-    it 'should get the user input of "abc" and return "Order not confirmed"' do
+    it 'should return "Order not confirmed"' do
       allow($stdout).to receive(:write)
       allow(subject).to receive(:gets).and_return("abc")
       expect(subject.confirmation_of_order(Order.new)).to eq("Order not confirmed")

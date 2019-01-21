@@ -1,7 +1,5 @@
 class Pizza
 
-  attr_reader :view_food_and_price
-
   def initialize
   end
 
@@ -16,5 +14,4 @@ class Pizza
   oasis: 2.99
   }
   end
-
 end
