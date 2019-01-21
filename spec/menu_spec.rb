@@ -1,7 +1,7 @@
 require "menu"
 
 describe Menu do 
-  subject(:my_order) {described_class.new}
+  subject(:my_order) { described_class.new }
   it 'is expected to respond to print ' do 
     expect(my_order).to respond_to(:print_menu)
   end 

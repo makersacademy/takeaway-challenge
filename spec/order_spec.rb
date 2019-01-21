@@ -2,16 +2,16 @@ require "order"
 
 describe Order do 
 
-  let(:dish) {double :dish}
-  let(:quantity) {double :quantity}
+  before(:each) do
+    @dish = double 'dish'
+  # let(:quantity) {double :quantity}
+  end
   it "can select a meal for order" do 
-    expect(subject.order_food(dish, quantity)).to eq[{dish: dish, quantity: quantity}]
+    expect(subject.order_food(@dish)).to eq[{ dish: dish }]
   end
 
-    it "calculates order total" do
-    subject.order_food(:pizza, 3)
-    expect(subject.total_cost).to eq (18)
+  it "calculates order total" do
+    subject.order_food(:rice, "1")
   end
-
 
 end
