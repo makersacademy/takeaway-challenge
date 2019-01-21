@@ -5,11 +5,11 @@ class Order
 
   attr_reader :menu, :new_order_list, :total_cost
 
-  def initialize(menu = Menu.new, confirmation_app = SMS.new)
+  def initialize(menu = Menu.new, sms_app = SMS.new)
     @menu = menu
     @total_cost = 0
     @new_order_list = Array.new
-    @confirmation_app = confirmation_app
+    @sms_app = sms_app
   end
 
   def place(dish_wanted, quantity)
@@ -29,12 +29,12 @@ class Order
 
   def complete_order(estimate_total)
     raise 'Total incorrect' if estimate_total != @total_cost
-    delivery
     clear_order
+    return delivery
   end
 
   def delivery
-    @confirmation_app.send_confirmation
+    @sms_app.send_confirmation
     return 'SMS confirmation sent'
   end
 

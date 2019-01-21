@@ -4,7 +4,7 @@ require_relative 'display'
 
 class Takeaway
 
-  attr_reader :menu, :order, :display
+  attr_reader :menu, :order, :display, :sms
 
   def initialize
     @order = Order.new

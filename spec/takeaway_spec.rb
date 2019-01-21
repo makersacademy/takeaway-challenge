@@ -3,7 +3,7 @@ require 'takeaway'
 RSpec.describe Takeaway do
 
   context "#show_menu" do
-    it "should print the menu" do
+    it "should show the menu" do
       subject.menu.add("Cheeseburger", 6.50)
       expect(subject.show_menu).to eq "Cheeseburger at £6.50\n"
     end
@@ -31,7 +31,7 @@ RSpec.describe Takeaway do
     end
 
     it "should confirm the order" do
-      allow(subject).to receive(:delivery).and_return('SMS confirmation sent')
+      allow(subject.order).to receive(:delivery).and_return 'SMS confirmation sent'
       subject.menu.add("Cheeseburger", 6.79)
       subject.place_order("Cheeseburger", 2)
       expect(subject.checkout(13.58)).to eq 'SMS confirmation sent'
@@ -47,6 +47,7 @@ RSpec.describe Takeaway do
 
     it "should clear the total cost" do
       allow(subject.order).to receive(:delivery).and_return('SMS confirmation sent')
+      subject.menu.add("Cheeseburger", 6.79)
       subject.menu.add("Cheeseburger", 6.79)
       subject.place_order("Cheeseburger", 2)
       subject.checkout(13.58)
