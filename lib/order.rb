@@ -9,6 +9,6 @@ class Order
   end
 
   def check_order
-    order_check = CheckOrder.new(@new_order).check_order_is_valid
+    CheckOrder.new(@new_order).check_order_is_valid
   end
 end

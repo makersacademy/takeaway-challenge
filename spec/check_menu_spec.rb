@@ -10,9 +10,15 @@ RSpec.describe CheckMenu do
       expect(subject.display_menu).to include({ dish: "Dish-01", price: 3.45 })
     end
 
-    it "send an order to class Order" do
+    it "send a valid order to class Order and get true" do
       order = [{ dish: "Dish-02", total: 2 }, { dish: "Dish-03", total: 1 }, 10.73]
-      expect(subject.send_order(order)).to eq true
+      subject.send_order(order)
+      expect(subject.order_status).to eq true
+    end
+
+    it "send a valid order to class Order and get false " do
+      order = [{ dish: "Dish-02", total: 2 }, { dish: "Dish-03", total: 1 }, 10.72]
+      expect { subject.send_order(order) }.to raise_error("Invalid order!")
     end
   end
 end

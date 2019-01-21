@@ -15,14 +15,20 @@ class CheckOrder
   end
 
   def check_dishes_are_valid
-    @order_dishes, @menu_dishes = [], []
-    @new_order[0..-2].each { |i| @order_dishes << i[:dish] }
-    @menu.each { |i| @menu_dishes << i[:dish] }
-    @order_dishes.each { |i| return false unless @menu_dishes.include?(i) }
+    @o_dishes, @m_dishes = [], []
+    @new_order[0..-2].each { |i| @o_dishes << i[:dish] }
+    @menu.each { |i| @m_dishes << i[:dish] }
+    @o_dishes.each { |i| return false unless @m_dishes.include?(i) }
     return true
   end
 
   def check_total
-    true
+    t_in_o, total = @new_order[-1], 0
+    @new_order[0..-2].each { |i|
+      @menu.each { |j|
+        total += (j[:price] * i[:total]) if j[:dish] == i[:dish]
+      }
+    }
+    total == t_in_o
   end
 end

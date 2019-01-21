@@ -21,5 +21,17 @@ RSpec.describe CheckOrder do
 
       expect(subject.check_order_is_valid).to eq false
     end
+
+    it "returns true if total is right" do
+      subject.new_order = [{ dish: "Dish-02", total: 2 }, { dish: "Dish-04", total: 3 }, 10.45]
+
+      expect(subject.check_total).to eq true
+    end
+
+    it "returns false if total is not right" do
+      subject.new_order = [{ dish: "Dish-02", total: 2 }, { dish: "Dish-04", total: 3 }, 10.43]
+
+      expect(subject.check_total).to eq false
+    end
   end
 end
