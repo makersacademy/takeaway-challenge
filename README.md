@@ -14,15 +14,49 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+[project description]
+___________________________________
+### Getting Started
+#### Prerequisites
+__________________________________
+### How it works
+_________________________________
+### Testing it
+___________________________________
+### Goals
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### Focus goals
 
+<dl>
+  <dt>I write code that is easy to change</dt>
+  <dd>Writing easy to change software is highly prized amongst developers and employers. By developers because most of a developer's time is spent changing software. By employers because their teams can deliver value to customers faster.</dd>
+  <dt>I can test-drive my code</dt>
+  <dd>Tested software is easier to change because you can tell when it's broken just by running a command, even the tricky edge cases.</dd>
+  <dt>I can build with objects</dt>
+  <dd>Most code in the world is structured in small pieces called objects. This is done because it is easier to change than having everything in one place.</dd>
+</dl>
+
+## Approach to problem solving for this project
+
+### User Stories
+To get started using the user stories was extremley helpful. Throughout the challenge, I employed a test driven development approach to fulfil each user story to my fullest ability.
+
+### TDD
+I used the RED - YELLOW - GREEN method of failing, passing and refactoring the code, before moving on to the next user story.
+
+### Test Errors
+When I encountered test error, I used the method of 'tightening the loop' and gaining more visibility on each error to help solve them. Where I would then research common error or use the documentation to help find solutions.
+
+### Partially Completed Project
+AI found this project very interesting and challenging.  Unfortunately I was unable to finish it, but had great experience writing tests first to have better code. 
+
+### Going Forwards
+Over the week, I plan to continue to learn through the project to complete the last user story. Especially having gained more experience writing tests during the week, this will help me to create a process to solve such challenges in the future.
+
+
+___________________________________
+#### Acknolegements
+______________________________________
 Task
 -----
 
