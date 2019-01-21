@@ -22,12 +22,11 @@ describe Order do
     menu: menu,
     order_display_class: order_display_class,
     totalizer_class: totalizer_class,
-    phone_class: phone_class )
+    phone_class: phone_class)
   }
 
   describe '#take_order' do
-    # May be cheating because I'm skirting around the issue of rspec getting stuck in get_input
-    it 'asks the user for an order' do
+    it 'asks the user for an order (stubbing #take_input)' do
       allow(order_display_class).to receive(:new).and_return(order_display)
       allow(order_display).to receive(:print_order)
       allow(menu_display_class).to receive(:new).and_return(menu_display)
@@ -45,7 +44,7 @@ describe Order do
       expect(order.analyzed_order).to eq Hash.new
     end
 
-    it 'confirms the order if it receives the right number' do
+    it 'confirms the order if it receives the right number (this test sends a text unless stubbing #send_text)' do
       allow(order).to receive(:correct_total).and_return(10.5)
       allow(menu).to receive(:hash).and_return(hash)
       allow(STDIN).to receive(:gets).and_return("10.50\n")
@@ -53,6 +52,16 @@ describe Order do
       allow(phone).to receive(:send_text)
       order.take_input
       expect(order.order_confirmed).to be true
+    end
+
+    it 'complains if it receives the wrong number' do
+      # Just to be able to escape the loop on line 'break if order_confirmed'
+      order.instance_variable_set(:@order_confirmed, true)
+
+      allow(order).to receive(:correct_total).and_return(10.5)
+      allow(menu).to receive(:hash).and_return(hash)
+      allow(STDIN).to receive(:gets).and_return("999\n")
+      expect { order.take_input }.to output(/Oops! You gave a wrong total./).to_stdout
     end
   end
 
