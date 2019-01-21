@@ -56,10 +56,10 @@ describe Basket do
   #   end
   # end
 
-  describe '#return_basket_total' do
+  describe '#basket_summary' do
     it 'returns all items in basket and a running total' do
       subject.add_to_basket(2)
-      expect(subject.return_basket_total).to eq("Total cost: £5")
+      expect(subject.basket_summary).to eq("Total cost: £5")
     end
   end
 

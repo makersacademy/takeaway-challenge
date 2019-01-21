@@ -22,11 +22,9 @@ let(:menu) { [
   end
 
   describe '#view' do
-
     it 'shows the full menu' do
       # menu = subject.menu
       expect(subject.menu).to eq(menu)
     end
   end
-
 end

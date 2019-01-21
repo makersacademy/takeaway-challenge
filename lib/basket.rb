@@ -6,9 +6,9 @@ class Basket
   MAXIMUM_ITEM_CODE = 10
   MINIMUM_QUANTITY = 1
 
-  def initialize
+  def initialize(menu = Menu.new)
     @basket = []
-    @menu = Menu.new
+    @menu = menu
   end
 
   def add_to_basket(item_code, quantity = MINIMUM_QUANTITY)
@@ -23,7 +23,7 @@ class Basket
   #   remove_item_success_message(item_code, quantity)
   # end
 
-  def return_basket_total
+  def basket_summary
     total_message
   end
 
@@ -33,9 +33,18 @@ class Basket
     cost
   end
 
-
+  # def finalise_order
+  #   basket_summary
+  #   confirmation
+  # end
 
   private
+
+  def confirmation
+    "Press enter to confirm order"
+    input = gets.chomp
+    # send text if input == ""
+  end
 
   def total_message
     @basket.each { |item| puts "#{item[:item]}: #{item[:price]}" }
