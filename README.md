@@ -30,6 +30,9 @@ commands from the `Takeaway` class. The `SendSMS` class is something of a black 
 
 The optional placing of orders by text was not implemented due to time constraints. 
 
+All `RSpec` tests pass and test coverage is 100% for original classes. Overall project coverage is 98% due to lack
+of coverage for the `SendSMS` class.
+
 Instructions for use
 -----
 
