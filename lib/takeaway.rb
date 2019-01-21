@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'send_sms'
 require_relative 'order'
 require 'dotenv/load'
-require 'order_printer'
+require_relative 'order_printer'
 
 class Takeaway
   include OrderPrinter
