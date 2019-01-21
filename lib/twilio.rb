@@ -17,8 +17,9 @@ class SMS
   end
 
   def send_confirmation
-    message = @client.messages.create(
-      body: "Thank you! Your order was placed and will be delivered before #{@hour}:#{@min}",
+    @client.messages.create(
+      body: "Thank you! Your order was placed and will be delivered before
+      #{@hour}:#{@min}",
       from: ENV['TWILIO_NUM'],
       to: ENV['MY_NUM']
     )

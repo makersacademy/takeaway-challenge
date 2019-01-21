@@ -23,8 +23,8 @@ class Order
 
   def find_price(dish_wanted)
     @menu.menu_list.map { |dish|
-        dish.price if dish.dish_name == dish_wanted
-      }.compact[0]
+      dish.price if dish.dish_name == dish_wanted
+    }.compact[0]
   end
 
   def complete_order(estimate_total)
