@@ -32,6 +32,13 @@ Sequence diagram
 --------------
 Classes are Takeaway, Menu, Order and SMSText
 
+Takeaway is passed 2 variables on initialization
+- menu, an instance of Menu class > @menu instance variable
+- order, an instance of Order class > @order instance variable
+
+Menu is passed dishes on initialization, this is a hash containing all the dishes and their prices > @dishes instance variable
+
+Order creates the instance variable @total_price on initialization.
 ```
      ┌────────┐          ┌────┐          ┌─────┐          ┌───────┐
      │Takeaway│          │Menu│          │Order│          │SMSText│
