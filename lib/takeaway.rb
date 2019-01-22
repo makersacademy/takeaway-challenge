@@ -1,12 +1,15 @@
 class Takeaway
 
-  def initialize(menu, order)
+  def initialize(menu:)
     @menu = menu
-    @order = order
   end
 
-  def show_menu
-    @menu.see_menu
+  def print_menu
+    menu.print
   end
+
+  private
+
+  attr_reader :menu
 
 end

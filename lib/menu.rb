@@ -2,8 +2,7 @@ class Menu
 
   attr_reader :dishes
 
-  def initialize(dishes)
-    @dishes = dishes
+  def initialize
   end
 
   def see_menu
