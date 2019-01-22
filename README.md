@@ -1,5 +1,6 @@
 ## TakeAway Challenge (week 2) - Debora Piu
 
+
 This weekend challenge's instructions are summarised below:
 <li> create a TakeAway with a menu
 <li> show the menu
@@ -15,7 +16,7 @@ If the cost is correct the customer is sent a text saying that the order was pla
 The text sending functionality should be implemented using <b>Twilio API</b>.
 Use mocks and/or stubs, as necessary to not to send texts when your tests are run.
 
-### My approach
+### My approach [![Build Status](https://travis-ci.org/Debora38/takeaway-challenge.svg?branch=master)](https://travis-ci.org/Debora38/takeaway-challenge)
 
 | NOUN | VERB |
 |-------|------|
