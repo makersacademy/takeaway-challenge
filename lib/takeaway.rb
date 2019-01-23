@@ -30,5 +30,4 @@ class Restaurant
     puts "total price : "
     price
   end
-
 end
