@@ -34,5 +34,5 @@ Takeaway Challenge
 
 An example on how methods can be used:
 <div style='float: center'>
-<img style='width: 400px' src="./public/images/screenshot_irb.png">
+<img style='width: 400px' src="./public/images/Screenshot_irb.png">
 </div>
