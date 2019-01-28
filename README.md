@@ -31,3 +31,8 @@ Takeaway Challenge
 - `takeaway.checkout` will show the total amount as well as sub-total of each order.
 
 - `takeaway.confirm_order` will check if the bill is the correct sum through the provate method `checl_bill`. If the bill is correct, a confirmation sms will be sent to the customer.
+
+An example on how methods can be used:
+<div style='float: center'>
+<img style='width: 400px' src="./public/images/screenshot_irb.png">
+</div>
