@@ -14,7 +14,6 @@
 
  ```
 
-Test Edit
 A weekend challenge set by Makers Academy to tests our understanding of:
 * OOP
 * Test driven development
