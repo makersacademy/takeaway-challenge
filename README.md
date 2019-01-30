@@ -22,7 +22,7 @@ A weekend challenge set by Makers Academy to tests our understanding of:
 * Isolating tests through mocking behaviour of dependent classes
 
 
-## Setup
+## Installing and Running the App
 
 To run this application, either download or clone this repository.
 
