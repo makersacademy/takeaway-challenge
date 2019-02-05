@@ -1,6 +1,6 @@
 # Takeaway Challenge
 
-Makers Week 1 (Friday) - This project is an app to order takeaway.
+Makers Week 2 (Friday) - This project is an app to order takeaway.
 
 ## Getting started
 
