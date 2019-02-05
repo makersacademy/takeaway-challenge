@@ -1,10 +1,10 @@
 # Takeaway Challenge
 
-This project is an app to order takeaway.
+Makers Week 1 (Friday) - This project is an app to order takeaway.
 
 ## Getting started
 
-In the location of your choice:
+In the location of your choice, in Terminal:
 
 `git@github.com:alittlecross/takeaway-challenge.git`
 
