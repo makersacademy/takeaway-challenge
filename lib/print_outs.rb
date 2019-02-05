@@ -1,5 +1,7 @@
-class PrintOut
+# frozen_string_literal: true
 
+# onscreen messages
+class PrintOut
   def checkout
     print "(type 'checkout' to submit order)\n"
   end
@@ -24,11 +26,12 @@ class PrintOut
   end
 
   def match_menu_format(user_input)
-    user_input.split.map(&:capitalize).join(" ")
+    user_input.split.map(&:capitalize).join(' ')
   end
 
   def message_content(total, now = Time.now + 3600)
-    "\n\nRuby's Ramen!\n\nYour order total is £#{'%.2f' % total}." +
+    currency = format('%.2f', total)
+    "\n\nRuby's Ramen!\n\nYour order total is £#{currency}." \
     "Your order will be delivered by #{now.strftime('%H:%M')}"
   end
 
@@ -45,7 +48,7 @@ class PrintOut
     print "\n      Welcome to Ruby's Ramen!\n"
     print "------------------------------------\n"
   end
-  
+
   def what_is_your_mobile_number
     wipe
     print "What is your mobile number?\n(e.g. 01234567890)\n"
@@ -60,7 +63,7 @@ class PrintOut
   end
 
   def wipe
-    system "clear"
+    system 'clear'
   end
 
   def farewell

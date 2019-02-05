@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require_relative 'menu'
 require_relative 'text_message'
 require_relative 'print_outs'
 
+# records what has been ordered
 class Order
   attr_reader :menu, :order, :total, :print_out
 
@@ -16,7 +19,7 @@ class Order
     order << { item: item, num: num }
     @total += menu.items[item] * num
   end
-  
+
   def checkout(phone_number, text_message = TextMessage.new)
     content = print_out.message_content(total)
     text_message.send(phone_number, content)
@@ -30,16 +33,18 @@ class Order
 
   def receipt_middle
     order.each do |item|
+      currency = format('%.2f', menu.items[(item[:item])])
       print "#{item[:num]} x #{item[:item]}"
-      print "#{' ' * space_calculator(item)}"
-      print "£#{'%.2f' % menu.items[(item[:item])]}\n"
+      print ' ' * space_calculator(item)
+      print "£#{currency}\n"
     end
   end
 
   def receipt_footer
+    currency = format('%.2f', total)
     print "------------------------------------\n"
-    print "Total:#{' ' * (29 - ('%.2f' % total).to_s.length)}"
-    print "£#{'%.2f' % total}\n\n"
+    print "Total:#{' ' * (29 - currency.to_s.length)}"
+    print "£#{currency}\n\n"
   end
 
   private
@@ -57,6 +62,7 @@ class Order
   end
 
   def cost_length(item)
-    ('%.2f' % menu.items[(item[:item])]).to_s.length
+    currency = format('%.2f', menu.items[(item[:item])])
+    currency.to_s.length
   end
 end

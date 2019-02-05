@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'twilio-ruby'
 
+# text message functionality
 class TextMessage
   attr_reader :client
 
@@ -13,6 +16,6 @@ class TextMessage
     to = ('+44' + phone_number.to_s).to_i
     from = ('+44' + '01942316170'.to_s).to_i
     client.messages.create(body: content, to: to, from: from)
-    return "sent"
+    'sent'
   end
 end
