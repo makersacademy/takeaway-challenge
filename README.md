@@ -6,7 +6,7 @@ Makers Week 2 (Friday) - This project is an app to order takeaway.
 
 In the location of your choice, in Terminal:
 
-`git@github.com:alittlecross/takeaway-challenge.git`
+`git clone git@github.com:alittlecross/takeaway-challenge.git`
 
 In that same location, in Terminal:
 
