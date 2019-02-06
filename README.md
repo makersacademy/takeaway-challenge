@@ -10,7 +10,7 @@ In the location of your choice, in Terminal:
 
 In that same location, in Terminal:
 
-`bundler`
+`bundle`
 
 ## Usage
 
