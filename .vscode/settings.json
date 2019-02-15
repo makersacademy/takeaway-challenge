@@ -1,0 +1,4 @@
+{ 
+  "ruby.rubocop.configFilePath": "/Users/simon/Projects/takeaway/takeaway-challenge/.rubocop.yml",
+  "editor.formatOnSaveTimeout": 1500,
+}
