@@ -29,5 +29,17 @@ class Takeaway
   end
 
   def send_text
+    account_sid = 'AC7b5c9ad95b7241e75887aa2d396413f0'
+    auth_token = '274da3a26e6a7adf5749d969ca2374a9'
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = "+441412801981" # Your Twilio number
+    to = '+15555555555' # Your mobile phone number
+
+    client.messages.create(
+    from: from,
+    to: to,
+    body: "Hey friend!"
+    )
   end
 end
