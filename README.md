@@ -1,3 +1,18 @@
+The implementation of a Takeaway service that shows customers a
+list of dishes, allows them to order dishes and sends a text
+message confirmation.   
+This is the Makers week 2 weekend Challenge - see below for details.
+
+Approach
+========
+Built up a user story at a time, writing the feature test, the unit tests
+and code to make it work.
+Researched the use of Twilio in ruby on the internet.
+Got enough outline of the required code to test my Takeaway class with a
+mocked text client.
+Finally used environment variables from within irb to run feature test
+and receive a real text.
+
 Feature tests
 =============
 Note these feature tests require the following environment variables to be set:
