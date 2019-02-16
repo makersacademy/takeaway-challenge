@@ -9,7 +9,11 @@ describe Interface do
   end
 
   it "shows you a welcome screen" do
-    expect { interface.welcome }.to output("Welcome to Samurai Pizza.\n").to_stdout
+    expect { interface.welcome }.to output("Welcome to Samurai Pizza.\nOur pizzas represent the cutting edge of quality and taste:\n#1 - Kenjutsu: Chicken, Pepperoni, Green Chili\n#2 - Ninjitsu: Spicy Beef, Sweetcorn, Onion, Sausage\n#3 - Taijutsu: Prawn, Anchovy, Pineapple, Tripe\n").to_stdout
+  end
+
+  it "shows you the welcome screen with the menu" do
+    expect { interface.welcome }.to output("Welcome to Samurai Pizza.\nOur pizzas represent the cutting edge of quality and taste:\n#1 - Kenjutsu: Chicken, Pepperoni, Green Chili\n#2 - Ninjitsu: Spicy Beef, Sweetcorn, Onion, Sausage\n#3 - Taijutsu: Prawn, Anchovy, Pineapple, Tripe\n").to_stdout
   end
 
 end
