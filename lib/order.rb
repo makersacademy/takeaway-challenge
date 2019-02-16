@@ -1,11 +1,13 @@
 class Order
 
-  #   def initialize(menu)
-  #     @menu = menu
+  # def initialize(menu = Menu.new)
+  #   @menu = menu
   #
-  #   end
-  #
-  # def place_order
+  # end
+
+
+
+  # def select_dish(dish, quantity = 1)
   #
   # end
 
