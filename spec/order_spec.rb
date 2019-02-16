@@ -4,36 +4,37 @@ describe Order do
 
   let(:menu) { double :menu }
 
+  let(:menu_double) do
+    [{ "chips" => 1.00 },
+          { "chicken chow mein" => 2.80 },
+          { "doner kebab" => 3.20 }]
+  end
+
+  before(:each) do
+    @order = Order.new
+    allow(@order).to receive(:view_menu).and_return(menu_double)
+    @order.select_dish("chips", 2)
+    @order.select_dish("chicken chow mein")
+    @order.select_dish("doner kebab", 4)
+  end
+
   it "imports a menu when initialized" do
-    o = Order.new(menu)
-    expect(o.view_menu).to eq(menu)
+    @order_init = Order.new(menu)
+    expect(@order_init.view_menu).to eq(menu)
   end
 
   it "user can select dishes and they can be viewed in basket" do
-    view_menu_double = double([{ "chips" => 1.00 },
-        { "chicken chow mein" => 2.80 },
-        { "doner kebab" => 3.20 }])
-    o = Order.new
-    allow(o).to receive(:view_menu).and_return(view_menu_double)
-    o.select_dish("chips", 2)
-    o.select_dish("chicken chow mein")
-    o.select_dish("doner kebab", 4)
-    view_basket = [{ dish: "chips", quantity: 2, price: 2.00 },
+    expect(@order.view_basket).to eq([{ dish: "chips", quantity: 2, price: 2.00 },
       { dish: "chicken chow mein", quantity: 1, price: 2.80 },
-      { dish: "doner kebab", quantity: 4, price: 12.80 }]
-    expect(o.view_basket).to eq(view_basket)
+      { dish: "doner kebab", quantity: 4, price: 12.80 }])
   end
 
   it "calculates total" do
-    view_menu_double = double([{ "chips" => 1.00 },
-        { "chicken chow mein" => 2.80 },
-        { "doner kebab" => 3.20 }])
-    o = Order.new
-    allow(o).to receive(:view_menu).and_return(view_menu_double)
-    o.select_dish("chips", 2)
-    o.select_dish("chicken chow mein")
-    o.select_dish("doner kebab", 4)
-    expect(o.total).to eq(17.60)
+    expect(@order.total).to eq(17.60)
   end
+
+  # it "uses TotalChecker to check total" do
+  #   expect(@order.check(5.00)
+  # end
 
 end
