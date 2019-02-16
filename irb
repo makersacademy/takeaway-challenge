@@ -2,3 +2,10 @@ irb
 require './lib/menu/'
 m = Menu.new
 m.print_menu
+
+
+
+irb
+require './lib/takeaway/'
+t = Takeaway.new
+t.view_menu
