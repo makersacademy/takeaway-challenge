@@ -1,9 +1,14 @@
 # a Takeaway in your neighbourhood
 class Takeaway
-  attr_reader :order, :menu, :dishes
+  attr_reader :order, :dishes
 
   def initialize
-    @dishes = { rice: 3, noodles: 3.5, prawn_crackers: 1, spring_rolls: 2.5 }
+    @dishes = [
+      { name: :rice, price: 3 }, 
+      { name: :noodles, price: 3.5 }, 
+      { name: :prawn_crackers, price: 1 }, 
+      { name: :spring_rolls, price: 2.5 }
+    ]
   end
 
   def new_order(order = Order.new)
@@ -11,9 +16,19 @@ class Takeaway
   end
 
   def place_order
-    # send sms?
     @order.place
-    exit
+  end
+
+  def menu
+    these_dishes = []
+    @dishes.each do |dish|
+      these_dishes << dish
+    end
+    these_dishes
+  end
+
+  def add_to_order(dish)
+    @order.add_dish(dish)
   end
 
 end
