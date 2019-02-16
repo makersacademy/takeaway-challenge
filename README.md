@@ -9,12 +9,16 @@ _In these messages,_ `{ object }` _is an object returned and as in Ruby,_ `(obje
 | Object         | Messages                     |  
 | -------------  | ---------------------------- |  ---
 | **Dish**           | `name` { `attr_reader :name` }<br>`price` { `attr_reader :price` } |
-| **Menu** | `list_dishes` { `dishes` }         |
+| **Menu** | `list_dishes` { `dishes` }         | 
 | **Order**          | `add`(`dish`, `quantity`)<br>`remove`(`dish`, `quantity`)<br>`review_order` { `selected_dishes` }<br>`total` { _sum of prices of all dishes in_ `selected_dishes` }    |  
 | **Order_submission** | `submit_order`(`order`) |
 | **Order_confirmation** | `send_text`(`confirmation_message`)  |
   
-## Feature Tests
+### Refining the domain model
+Considering that the user stories focus on the `customer` it may not be necessary to have a separate `Dish` class - the user stories of a customer do not require any manipulation of `Dish` objects.
+
+
+## Features
 
 ### Overview
 
@@ -32,18 +36,16 @@ I would like to see a list of dishes with prices
 menu = Menu.new
 
 menu.list_dishes
-
 =>
-
-1.  Burger - £3.00
-2.  Steak Burger - £4.00
-3.  Chicken Burger - £3.00
-4.  Veggie Burger - £2.75
-5.  Small Lemonade - £0.60
-6.  Small Cola - £0.60
-7.  Bottled water (500ml) - £0.75
-8.  Large Lemonade - £1.00
-9.  Large Cola - £1.00
+1. Burger - £3.00
+2. Steak Burger - £4.00
+3. Chicken Burger - £3.00
+4. Veggie Burger - £2.75
+5. Small Lemonade - £0.60
+6. Small Cola - £0.60
+7. Bottled water (500ml) - £0.75
+8. Large Lemonade - £1.00
+9. Large Cola - £1.00
 10. Small Fries - £1.00
 11. Large Fries - £1.50
 12. Garlic Bread - £2.00
@@ -54,10 +56,31 @@ menu.list_dishes
 
 ```
 
-```
-As a customer
-So that I can order the meal I want
+### (2) Can select some number of several available dishes
+
+>As a customer  
+So that I can **order** the meal I want  
 I would like to be able to select some number of several available dishes
+
+```ruby
+
+menu = Menu.new
+menu.list_dishes
+=>
+# prints the menu, as shown above
+
+order = Order.new
+
+order.add(4,1)
+=> "1x Veggie Burger added to your order"
+
+order.add(5,1)
+=> "1x Small Lemonade added to your order"
+
+order.add(10,2)
+=> "2x Small Fries added to your order"
+
+```
 
 As a customer
 So that I can verify that my order is correct
