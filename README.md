@@ -20,6 +20,7 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
+WARNING: syntax invalidated by development of later user stories
   takeaway = Takeaway.new
   order = { "burger" => 2, "chips" => 1 }
   takeaway.place_order(order)
