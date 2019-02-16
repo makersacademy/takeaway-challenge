@@ -11,15 +11,15 @@ describe Order do
   end
 
   it 'can remove a dish from the order' do
-    @order.add(dish_double)
-    @order.add(dish_double)
+    @order.add(dish_double, 1)
+    @order.add(dish_double, 1)
     @order.remove(dish_double)
     expect(@order.contents).to be_empty
   end
 
   it 'can return the total cost of the order' do
-    @order.add(dish_double)
-    @order.add(dish_double)
+    @order.add(dish_double, 1)
+    @order.add(dish_double, 1)
     expect(@order.cost).to eq 10
   end
 end

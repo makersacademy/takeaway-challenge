@@ -4,8 +4,8 @@ class Order
     @contents = []
   end
 
-  def add(dish)
-    @contents << dish
+  def add(dish, quantity = 1)
+   quantity.times { @contents << dish }
   end
 
   def remove(dish)
