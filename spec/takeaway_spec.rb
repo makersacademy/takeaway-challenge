@@ -1,9 +1,10 @@
 require './lib/takeaway'
-require './lib/order'
 
 describe Takeaway do
-  it 'displays a menu of dishes on offer' do
-    expect(subject.menu).to include 'noodles'
+  it 'builds a menu of dishes' do
+    rice = double('rice', :name => 'rice', :price => 3)
+    allow(subject).to receive(:menu).and_return([rice])
+    expect(subject.menu).to include rice
   end
 
   it 'allows an order to be initiated' do
@@ -16,4 +17,5 @@ describe Takeaway do
     subject.place_order
     expect(subject.order.placed?).to eq true
   end
+
 end
