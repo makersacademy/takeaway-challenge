@@ -7,6 +7,7 @@ class Takeaway
   end
 
   def read_menu
-    menu.print
+    menu.show
   end
+  
 end
