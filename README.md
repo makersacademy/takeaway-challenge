@@ -7,3 +7,9 @@ Solution to the Makers Takeaway Challenge - original spec: https://github.com/ma
 This solution is written in Ruby, and designed to be run in IRB.
 
 ## Context
+
+(outline problem here)
+
+## instructions
+
+(outline instructions to place order)
