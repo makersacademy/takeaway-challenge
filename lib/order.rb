@@ -21,6 +21,10 @@ class Order
     t = checker_class.new(@view_basket, @total).check
   end
 
+  def place_order
+    true
+  end 
+
 private
   def price_look_up(dish)
     @view_menu.each do |e|
