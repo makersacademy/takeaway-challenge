@@ -23,6 +23,13 @@ class Takeaway
     @current_order.add(current_dish, quantity)
   end
 
+  def remove_from_order(dish_num)
+    current_dish = @menu.dishes.find do |dish|
+      dish.dish_number == dish_num
+    end
+    @current_order.remove(current_dish)
+  end
+
   def view_order
     puts "Here is your current order"
     @current_order.contents.each do |dish|

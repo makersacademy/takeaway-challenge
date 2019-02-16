@@ -3,7 +3,7 @@ describe Takeaway do
 
   let(:dish_double) { double :dish, dish_number: 1, dish_name: 'Chicken Tikka', dish_cost: 5 }
   let(:menu_double) { double :menu, dishes: [dish_double] }
-  let(:order_double) { double :order, add: [dish_double], contents: [dish_double], cost: 5 }
+  let(:order_double) { double :order, add: [dish_double], contents: [dish_double], cost: 5, remove: [] }
   before :each do
     @takeaway = Takeaway.new(menu_double, order_double)
   end
@@ -36,6 +36,14 @@ describe Takeaway do
         expect(@takeaway.current_order.contents).to include dish_double
       end
     end
-  
+
+    describe '#remove from order' do
+      it 'removes the stated dish from the current order' do
+        @takeaway.add_to_order(dish_double.dish_number, 2)
+        @takeaway.remove_from_order(dish_double.dish_number)
+        @takeaway.instance_variable_set(:@current_order, [])
+        expect(@takeaway.current_order).not_to include dish_double
+      end
+    end
   end
 end
