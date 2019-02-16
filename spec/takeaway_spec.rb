@@ -29,4 +29,8 @@ describe Takeaway do
     subject.add_to_order(rice)
     expect(subject.order.dishes).to include rice
   end
+
+  it 'shows a list of generic options' do
+    expect(subject.options).to include '[S]how order'
+  end
 end

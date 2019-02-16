@@ -9,4 +9,7 @@ describe SMS do
     expect(subject.message_set?).to eq true
   end
 
+  it 'sends an sms confirmation' do
+  end
+
 end

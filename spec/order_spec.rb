@@ -23,12 +23,13 @@ describe Order do
     expect(subject.placed?).to be true
   end
 
-  it 'shows a list of all items within' do
+  it 'shows a list of all items ordered' do
     subject.add_dish(rice)
     expect(subject.show_items).to include rice
   end
 
-  pending 'prevents empty orders from being placed' do
-    expect(subject.place).to raise_error "Order empty!"
+  it 'prevents empty orders from being placed' do
+    subject.place
+    expect(subject.placed?).to eq false
   end
 end

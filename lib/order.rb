@@ -12,6 +12,7 @@ class Order
 
   def add_dish(dish)
     @dishes << dish
+    puts "#{dish[:name]} has been added to your order."
     recalculate_total
   end
 
@@ -20,22 +21,25 @@ class Order
   end
 
   def place
-    raise "Order empty!" if @dishes.empty?
-
-    @complete = true
-    send_sms_confirmation
+    if @total.positive?
+      @complete = true
+    else
+      puts 'You have no items in your order'
+    end
   end
 
   def show_items
+    system('clear')
+    puts 'Here are the items in your order:'
     @dishes.each do |dish|
-      puts dish[:name]
+      puts "#{dish[:name]} (£#{dish[:price]})"
     end
   end
 
   def send_sms_confirmation
     sms = SMS.new
     # sms.send
-    # print(sms)
+    puts sms.message
   end
 
   private
@@ -44,5 +48,6 @@ class Order
     @dishes.each do |dish|
       @total += dish[:price]
     end
+    puts "Your order is currently at £#{@total}."
   end
 end

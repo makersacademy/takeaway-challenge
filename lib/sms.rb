@@ -2,11 +2,12 @@ require './lib/secret'
 require 'twilio-ruby'
 
 class SMS
+  attr_reader :message
 
   def initialize
     @secret = Secret.new
     eta = Time.now + 3600
-    @message = "Thank you! Your order was placed and will be delivered before #{eta.hour}:#{eta.min}"
+    @message = "Thank you! Your order was placed and will be delivered before #{eta.strftime("%H:%M")}"
     @destination = @secret.destination
     @origin = @secret.origin
   end
