@@ -6,5 +6,6 @@ class Menu
   def load_menu
     #load up from file stuff
   end
+  
 
 end
