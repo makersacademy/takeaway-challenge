@@ -46,10 +46,10 @@ Verbs: check_total
 ```
 require './lib/takeway.rb'
 takeaway = Takeaway.new
-takeaway.see_menu
-takeaway.order(1,2)
+takeaway.show_menu
+takeaway.add_to_order(1,2)
+takeaway.add_to_order(2,2)
 takeaway.view_order
-takeaway.check_order_total
 
 => Expect check order total to return true
 ```
@@ -61,12 +61,12 @@ I would like to receive a text such as \
 Nouns: Order, Text
 Verbs: confirm_order, receive_text
 ```
+```
 require './lib/takeway.rb'
 takeaway = Takeaway.new
 takeaway.see_menu
 takeaway.order(1,2)
 takeaway.view_order
-takeaway.check_order_total
 takeaway.confirm_order
 
 => Expect to receive a text saying a message with current time + 1 hour
