@@ -5,7 +5,7 @@ describe Order do
   let(:menu) { double :menu }
 
   it "imports a menu when initialized" do
-    o = Order.new
+    o = Order.new(menu)
     expect(o.menu).to eq(menu)
   end
 
