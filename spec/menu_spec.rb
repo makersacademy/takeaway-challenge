@@ -12,4 +12,8 @@ describe Menu do
     expect(subject.print_menu).to eq(["Chicken £3.50", "Pizza £4"])
   end
 
+  it 'lets me select a certain number of dishes' do
+    expect(subject.select_dishes("Chicken", 2)).to eq(["Chicken, 2"])
+  end
+
 end
