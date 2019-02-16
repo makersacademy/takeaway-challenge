@@ -1,13 +1,21 @@
 # tracks an Order
 class Order
-  attr_reader :selected_dishes, :total
+  attr_reader :dishes, :total
 
   def initialize
-    @selected_dishes = []
-    @total = 10
+    @dishes = []
+    @total = 0
   end
 
   def add_dish(dish)
-    @selected_dishes << dish
+    @dishes << dish
+    recalculate_total
+  end
+
+  def recalculate_total
+    @total = 0
+    @dishes.each do |dish|
+      @total += dish.price
+    end
   end
 end
