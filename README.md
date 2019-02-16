@@ -8,11 +8,11 @@ _In these messages,_ `{ object }` _is an object returned and as in Ruby,_ `(obje
   
 | Object         | Messages                     |  
 | -------------  | ---------------------------- |  ---
-| **Dish**           | `name` { `attr_reader :name` }<br>`price` { `attr_reader :price` } |
-| **Menu** | `list_dishes` { `dishes` }         | 
+| **Dish**           | `name` { `attr_reader :name` }<br>`price` { `attr_reader :price` } |  
+| **Menu** | `list_dishes` { `dishes` }         |  
 | **Order**          | `add`(`dish`, `quantity`)<br>`remove`(`dish`, `quantity`)<br>`review_order` { `selected_dishes` }<br>`total` { _sum of prices of all dishes in_ `selected_dishes` }    |  
-| **Order_submission** | `submit_order`(`order`) |
-| **Order_confirmation** | `send_text`(`confirmation_message`)  |
+| **Order_submission** | `submit_order`(`order`) |  
+| **Order_confirmation** | `send_text`(`confirmation_message`)  |  
   
 ### Refining the domain model
 Considering that the user stories focus on the `customer` it may not be necessary to have a separate `Dish` class - the user stories of a customer do not require any manipulation of `Dish` objects.
