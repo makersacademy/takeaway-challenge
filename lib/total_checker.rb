@@ -5,7 +5,8 @@ class TotalChecker
   end
 
   def check
-    true if @total == 17.60
+    raise "Please check total again." if @total != 17.60
+    true
   end
 
 end
