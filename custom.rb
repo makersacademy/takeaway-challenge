@@ -8,4 +8,5 @@ menu = Menu.new([dish])
 basket = Basket.new
 puts menu.dishes
 selected_dish = menu.select_dish(dish)
-menu.buy(selected_dish, 2)
+p basket.add_item(selected_dish, 2)
+puts basket.basket_items
