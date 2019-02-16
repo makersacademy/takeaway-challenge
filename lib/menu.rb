@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :dishes
+  attr_reader :dishes, :selection
 
   def initialize
     @dishes = [{ :dish => "Chicken", :price => "£3.50" },
@@ -11,10 +11,16 @@ class Menu
     @dishes.map { |x| x.values.join(" ") }
   end
 
+  # def select_dishes(dish, quantity)
+  #     @selections = []
+  #     @selections << {dish_selected: dish, quantity_selected: quantity}
+  #     @selections.map { |x| x.values.join(", ") }
+  # end
+
   def select_dishes(dish, quantity)
-    @order = []
-    @order << {dish_selected: dish, quantity_selected: quantity}
-    @order.map { |x| x.values.join(", ") }
+    @selections = []
+    selection = {dish_selected: dish, quantity_selected: quantity}
+    @selections << selection
   end
 
 end
