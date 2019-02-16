@@ -9,4 +9,10 @@ describe Basket do
     subject.add_item(a_basket_item)
     expect(subject.basket_items).to include(a_basket_item)
   end
+
+  it 'removes a basket item from the list of basket items' do
+    subject.add_item(a_basket_item)
+    subject.remove_item(a_basket_item)
+    expect(subject.basket_items).not_to include(a_basket_item)
+  end
 end

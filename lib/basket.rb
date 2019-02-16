@@ -7,4 +7,8 @@ class Basket
     def add_item(basket_item)
       @basket_items << basket_item
     end
+
+    def remove_item(basket_item)
+      @basket_items.delete(basket_item)
+    end
 end
