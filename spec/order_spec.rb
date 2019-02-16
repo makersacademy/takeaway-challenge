@@ -9,18 +9,17 @@ describe Order do
     expect(o.menu).to eq(menu)
   end
 
-
-  # it "user can select dishes and they can be viewed in basket" do
-  #   o = Order.new
-  #   chips_double = double(:dish => "chips", :price => 1.00)
-  #   c_c_m_double = double(:dish => "chicken chow mein", :price => 2.80)
-  #   d_kb_double = double(:dish => "doner kebab", :price => 3.20)
-  #   o.select_dish(chips_double, 2)
-  #   o.select_dish(c_c_m_double)
-  #   o.select_dish(d_kb_double, 4)
-  #   expect(o.view_basket).to eq([{ dish: chips_double, quantity: 2, price: 2.00 },
-  #     { dish: c_c_m_double, quantity: 1, price: 2.80 },
-  #     { dish: d_kb_double, quantity: 4, price: 12.80 }])
-  # end
+  it "user can select dishes and they can be viewed in basket" do
+    menu_double = double [{ "chips" => 1.00 },
+      { "chicken chow mein" => 2.80 },
+      { "doner kebab" => 3.20 }]
+    o = Order.new(menu_double)
+    o.select_dish("chips", 2)
+    o.select_dish("chicken chow mein")
+    o.select_dish("doner kebab", 4)
+    expect(o.view_basket).to eq([{ dish: chips_double, quantity: 2, price: 2.00 },
+      { dish: c_c_m_double, quantity: 1, price: 2.80 },
+      { dish: d_kb_double, quantity: 4, price: 12.80 }])
+  end
 
 end
