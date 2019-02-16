@@ -7,9 +7,9 @@ describe TotalChecker do
     expect(t.check).to eq(true)
   end
 
-  # it "raises an error if the figure provided is not equal to total" do
-  #   t = TotalChecker.new(5.00)
-  #   expect{ t.check }.to raise_error("Please check total again.")
-  # end
+  it "raises an error if the figure provided is not equal to total" do
+    t = TotalChecker.new(5.00)
+    expect{ t.check }.to raise_error("Please check total again.")
+  end
 
 end
