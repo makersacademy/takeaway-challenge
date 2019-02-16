@@ -23,7 +23,7 @@ class Order
 
   def place_order
     true
-  end 
+  end
 
 private
   def price_look_up(dish)
