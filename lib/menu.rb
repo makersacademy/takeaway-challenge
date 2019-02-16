@@ -11,4 +11,10 @@ class Menu
     @dishes.map { |x| x.values.join(" ") }
   end
 
+  def select_dishes(dish, quantity)
+    @order = []
+    @order << {dish_selected: dish, quantity_selected: quantity}
+    @order.map { |x| x.values.join(", ") }
+  end
+
 end

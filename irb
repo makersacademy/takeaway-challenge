@@ -2,6 +2,8 @@ irb
 require './lib/menu/'
 m = Menu.new
 m.print_menu
+m.select_dishes("Chicken", 2)
+order = {order:  [dish], quantity: [quantity]}
 
 
 
