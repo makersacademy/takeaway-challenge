@@ -48,18 +48,19 @@ def check_sum
   @check_total == @total_price ? true : false
 end
 
+
 def place_order
   raise "Incorrect total" if check_sum == false
-  summary = Hash.new(0)
-  @ordered_items_name.each { |counts|  summary[counts] += 1 }
-  p summary
-  p "You have ordered the following:"
-  summary.each do |dish, counts|
+  ordered_food = Hash.new(0)
+  @ordered_items_name.each { |counts|  ordered_food[counts] += 1 }
+   p "You have ordered:"
+  ordered_food.each do |dish, counts|
     p "#{dish}: x #{counts}"
   end
-   p "Total cost: GBP #{@total_price}"
-   p "Thank you! Your order was placed and will be delivered before 18:52."
+    p "Total cost: GBP #{@total_price}"
+    p "Thank you! Your order was placed and will be delivered before 18:52."
  end
+
 
 end
 
@@ -88,4 +89,4 @@ end
   order.select_dish("MAC AND CHEESE", 1)
  p order.ordered_total
  p order.check_sum
-  order.place_order
+ order.place_order
