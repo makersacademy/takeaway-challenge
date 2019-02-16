@@ -1,10 +1,6 @@
 require 'takeaway'
 
 describe Takeaway do
-  it { is_expected.to respond_to(:order) }
-  it { is_expected.to respond_to(:correct?) }
-  it { is_expected.to respond_to(:total) }
-  it { is_expected.to respond_to(:send_txt) }
 
   it 'has a set menu with prices' do
     expect(subject.menu).to include({ dish: 'ceviche', price: 10 },
@@ -38,4 +34,26 @@ describe Takeaway do
     subject.order('ceviche')
     expect(subject.ordered).to include({ :dish => "ceviche", :price => 10 })
   end
+
+  it 'can store multiple dishes' do
+    subject.order('ceviche')
+    subject.order('alfajor')
+    expect(subject.ordered).to include({ :dish => "ceviche", :price => 10 },
+      { :dish => "alfajor", :price => 3 }
+    )
+  end
+
+  it 'tells the total price of the order' do
+    subject.order('ceviche')
+    subject.order('alfajor')
+    expect(subject.total_price).to eq 13
+  end
+
+  it 'tells you the quantity' do
+    subject.order('ceviche')
+    subject.order('ceviche')
+    subject.order('ceviche')
+    expect(subject.quantities).to eq([[{ :dish => "ceviche", :price => 10 }, 3]])
+  end
+
 end

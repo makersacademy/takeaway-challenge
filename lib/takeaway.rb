@@ -23,16 +23,19 @@ class Takeaway
     ordered << Hash(*food)
   end
 
-  def correct?
+  def place_order
+    quantities
+    total_price
   end
 
-  def total
+  def quantities
+    ordered.group_by(&:itself).map do |k, v|
+      [k, v.count]
+    end
   end
 
-  def send_txt
+  def total_price
+    ordered.map { |precio| precio[:price] }.sum
   end
 
 end
-
-# ceviche => 10, causa => 9, chicharron => 11, anticucho => 12, empanada => 6,
-# yuca => 5, cancha => 3, helado => 5, alfajor => 3, picarones => 7
