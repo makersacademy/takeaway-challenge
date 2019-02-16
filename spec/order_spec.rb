@@ -109,4 +109,23 @@ it 'checks that the total is correct' do
   expect(order.check_sum). to eq true
 end
 
+it 'raises an error if the total is incorrect' do
+
+  dishes_double = double :dishes
+  dishes_class_double = double :dishes_class, new: dishes_double
+  hash_double = double :hash
+
+  allow(dishes_class_double).to receive(:new).and_return(dishes_double)
+  allow(dishes_double).to receive(:dish_list).and_return(list)
+
+  order = Order.new(dishes_class_double)
+  order.select_dish(food_item, 2)
+
+  allow(order).to receive(:ordered_total).and_return(34)
+  order.ordered_total
+  order.check_sum
+  expect{ order.place_order }.to raise_error "Incorrect total"
+
+end
+
 end
