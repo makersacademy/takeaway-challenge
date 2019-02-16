@@ -17,7 +17,7 @@ class Messenger
   def send_message
     @client.messages.create(
       to: ENV["MY_PHONE_NUMBER"],
-      from: "+441344567021",
+      from: ENV["TWILIO_PHONE_NUMBER"],
       body: @message_contents
     )
   end
