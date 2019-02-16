@@ -40,7 +40,7 @@ def ordered_total
   @ordered_items_price.each do |price|
     @total_price += price
   end
-  @total_price
+   @total_price
 end
 
 def check_sum
@@ -54,12 +54,12 @@ def place_order
   @ordered_items_name.each { |counts|  summary[counts] += 1 }
   p summary
   p "You have ordered the following:"
-   summary.each do |dish, counts|
-   p "#{dish}: x #{counts}"
-   end
-   p "Total cost: GBP #{@total}"
-   p "Thank-you for your order."
-end
+  summary.each do |dish, counts|
+    p "#{dish}: x #{counts}"
+  end
+   p "Total cost: GBP #{@total_price}"
+   p "Thank you! Your order was placed and will be delivered before 18:52."
+ end
 
 end
 
@@ -88,4 +88,4 @@ end
   order.select_dish("MAC AND CHEESE", 1)
  p order.ordered_total
  p order.check_sum
- p order.place_order
+  order.place_order
