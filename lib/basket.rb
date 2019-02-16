@@ -10,7 +10,14 @@ class Basket
       @basket_items << basket_item
     end
 
-    def remove_item(basket_item)
-      @basket_items.delete(basket_item)
+    def remove_item(dish)
+      index = @basket_items.find_index { |each_basket_item| each_basket_item.dish == dish }
+      @basket_items.delete_at(index)
+    end
+
+    def basket_total_price
+      basket_total = 0.00
+      @basket_items.each { |basket_item| basket_total += basket_item.dish_total_price }
+      basket_total
     end
 end
