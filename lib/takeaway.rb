@@ -1,7 +1,10 @@
 class Takeaway
 
-
-  def menu
+  def initialize(menu:)
+    @menu = menu
+  end
+  
+  def print_menu
 
   end
 
