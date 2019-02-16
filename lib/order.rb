@@ -13,6 +13,10 @@ class Order
     @view_basket << { dish: dish, quantity: quantity, price: price }
   end
 
+  def total
+    @view_basket.inject(0) {|sum, hash| sum + hash[:price]}
+  end
+
 private
   def price_look_up(dish)
     @view_menu.each do |e|
