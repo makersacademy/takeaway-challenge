@@ -5,7 +5,7 @@ describe Takeaway do
   let (:text_client_double) { double :text_client, messages: messages_double}
 
   before (:all) do
-    @order = { "burger" => 2, "chips" => 1}
+    @order = { "burger" => 2, "chips" => 1 }
   end
 
   it "gives a list of dishes" do

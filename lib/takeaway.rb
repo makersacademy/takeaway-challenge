@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Takeaway
   DISHES =
   { "burger" => 10,
@@ -6,7 +8,7 @@ class Takeaway
     "lemonade" => 2
   }
 
-  def initialize(client = Twilio::REST::Client.new($ACCOUNT_SID, $AUTH_TOKEN))
+  def initialize(client = Twilio::REST::Client.new(ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"]))
     @text_client = client
   end
 
@@ -39,8 +41,8 @@ class Takeaway
 
   def send_text(msg)
     @text_client.messages.create(
-    from: $TAKEAWAY_PHONE_NO,
-    to: $CUST_PHONE_NO,
+    from: ENV["TAKEAWAY_PHONE_NO"],
+    to: ENV["CUST_PHONE_NO"],
     body: msg
     )
   end
