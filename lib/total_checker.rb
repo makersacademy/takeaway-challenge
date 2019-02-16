@@ -1,16 +1,18 @@
 class TotalChecker
 
-  def initialize(total = 0)
+  def initialize(basket, total = 0)
+    @basket = basket
     @total = total
   end
 
-  def calc(basket)
-    basket.inject(0) {|sum, hash| sum + hash[:price]}
+  def check
+    raise "Please check total again." unless @total == calc
+    true
   end
 
-  def check
-    raise "Please check total again." if @total != 17.60
-    true
+private
+  def calc
+    @basket.inject(0) {|sum, hash| sum + hash[:price]}
   end
 
 end

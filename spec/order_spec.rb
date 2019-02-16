@@ -4,6 +4,8 @@ describe Order do
 
   let(:menu) { double :menu }
 
+  let(:total_checker) { double :total_checker }
+
   let(:menu_double) do
     [{ "chips" => 1.00 },
       { "chicken chow mein" => 2.80 },
@@ -33,8 +35,8 @@ describe Order do
     expect(@order.total).to eq(17.60)
   end
 
-  # it "uses TotalChecker to check total" do
-  #   expect(@order.check(5.00)
+  # it "total checker returns true if total_checker return true" do
+  #   expect(@order.total_checker(total_checker)).to eq true
   # end
 
 end
