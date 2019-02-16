@@ -5,5 +5,4 @@ class Order
 # review_order
 # clear_order
 
-
 end

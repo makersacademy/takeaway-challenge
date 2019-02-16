@@ -5,7 +5,4 @@ class Restaurant
   # place_order
   # print_receipt
   # checkout?
-
-
-  
 end

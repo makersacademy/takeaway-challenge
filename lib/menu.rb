@@ -4,8 +4,7 @@ class Menu
   end
 
   def load_menu
-    #load up from file stuff
+    # load up from file stuff
   end
-  
 
 end
