@@ -33,4 +33,10 @@ describe Menu do
     menu.remove_dish(double_dish)
     expect(menu.dishes).not_to include double_dish
   end
+
+  it 'returns the dish when it is selected from the dish list' do
+    dish_list = [double_dish, another_double_dish]
+    menu = Menu.new(dish_list)
+    expect(menu.select_dish(double_dish)).to eq double_dish
+  end
 end

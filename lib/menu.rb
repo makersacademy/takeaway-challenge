@@ -14,4 +14,10 @@ class Menu
   def remove_dish(dish)
     @dishes.delete(dish)
   end
+
+  def select_dish(dish)
+   index = @dishes.index(dish)
+   @dishes[index]
+  end
+  
 end
