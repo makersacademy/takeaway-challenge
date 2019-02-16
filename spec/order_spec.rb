@@ -12,7 +12,7 @@ describe Order do
   end
 
   it 'adds a dish to its selected_dishes instance variable' do
-    rice = double(:price => 3, :name => "rice")
+    rice = double(:price => 3, :name => 'rice')
     subject.add_dish(rice)
     expect(subject.dishes). to include rice
   end
@@ -22,5 +22,9 @@ describe Order do
     expect(subject.placed?).to be true
   end
 
-  pending 'it sends an SMS confirmaton'
+  it 'shows a list of all items within' do
+    rice = double(:price => 3, :name => 'rice')
+    subject.add_dish(rice)
+    expect(subject.show_items).to include rice
+  end
 end
