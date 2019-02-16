@@ -1,5 +1,13 @@
 Feature tests
 =============
+Note these feature tests require the following environment variables to be set:
+```
+ACCOUNT_SID   # from Twilio
+AUTH_TOKEN    # from Twilio
+TAKEAWAY_PHONE_NO   # from Twilio
+CUST_PHONE_NO   #your mobile number
+```
+
 ```
 As a customer
 So that I can check if I want to order something

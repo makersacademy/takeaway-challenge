@@ -1,10 +1,10 @@
 require 'takeaway'
 
 describe Takeaway do
-  let (:messages_double) { double :messages }
-  let (:text_client_double) { double :text_client, messages: messages_double}
+  let(:messages_double) { double :messages }
+  let(:text_client_double) { double :text_client, messages: messages_double }
 
-  before (:all) do
+  before :all do
     @order = { "burger" => 2, "chips" => 1 }
   end
 

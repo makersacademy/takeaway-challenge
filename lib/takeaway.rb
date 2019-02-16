@@ -8,7 +8,8 @@ class Takeaway
     "lemonade" => 2
   }
 
-  def initialize(client = Twilio::REST::Client.new(ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"]))
+  def initialize(client = Twilio::REST::Client.new(
+    ENV["ACCOUNT_SID"], ENV["AUTH_TOKEN"]))
     @text_client = client
   end
 
