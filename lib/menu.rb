@@ -11,6 +11,7 @@ class Menu
     @dishes.map { |x| x.values.join(" ") }
   end
 
+<<<<<<< HEAD
   # def select_dishes(dish, quantity)
   #     @selections = []
   #     @selections << {dish_selected: dish, quantity_selected: quantity}
@@ -21,6 +22,12 @@ class Menu
     @selections = []
     selection = {dish_selected: dish, quantity_selected: quantity}
     @selections << selection
+=======
+  def select_dishes(dish, quantity)
+    @order = []
+    @order << {dish_selected: dish, quantity_selected: quantity}
+    @order.map { |x| x.values.join(", ") }
+>>>>>>> 7b3ebab4aabd03c627c11888a7f5b02a20159340
   end
 
 end
