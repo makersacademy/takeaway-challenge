@@ -1,3 +1,68 @@
+The implementation of a Takeaway service that shows customers a
+list of dishes, allows them to order dishes and sends a text
+message confirmation.   
+This is the Makers week 2 weekend Challenge - see below for details.
+
+Approach
+========
+Built up a user story at a time, writing the feature test (below), the unit tests
+and code to make it work.
+Researched the use of Twilio in ruby on the internet.
+Got enough outline of the required code to test my Takeaway class with a
+mocked text client.
+Finally used environment variables from within irb to run feature test
+and receive a real text.
+
+What I'd do next
+================
+Extract the dishes out into a separate class so menu can be changed.
+Extract out order into a separate class so takeaway can have history of orders
+for customer.
+
+Feature tests
+=============
+Note these feature tests require the following environment variables to be set:
+```
+ACCOUNT_SID   # from Twilio
+AUTH_TOKEN    # from Twilio
+TAKEAWAY_PHONE_NO   # from Twilio
+CUST_PHONE_NO   #your mobile number
+```
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+  takeaway = Takeaway.new
+  takeaway.dishes
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+WARNING: syntax invalidated by development of later user stories
+  takeaway = Takeaway.new
+  order = { "burger" => 2, "chips" => 1 }
+  takeaway.place_order(order)
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  takeaway = Takeaway.new
+  order = { "burger" => 2, "chips" => 1 }
+  takeaway.place_order(order, 20)
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  takeaway = Takeaway.new
+  order = { "burger" => 2, "chips" => 1 }
+  takeaway.place_order(order, 24)
+```
+
 Takeaway Challenge
 ==================
 ```
