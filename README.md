@@ -3,6 +3,20 @@
 [Original challenge README](challenge-README.md)
 
 
+## Domain Modelling
+
+_In these messages,_ `{ object }` _is an object returned and as in Ruby,_ `(object)` _after a message name is an object received (i.e. argument)_
+  
+| Object         | Messages                     |   
+| -------------  | ---------------------------- | ---
+| **dish**           | `name` { `attr_reader :name` }<br>`price` { `attr_reader :price` } |
+| **list_of_dishes** | `list_dishes` { `dishes` }         |
+| **order**          | `add`(`dish`)<br>`remove`(`dish`)<br>`review_order` { `selected_dishes` }<br>`order_total` { _sum of prices of all dishes in_ `selected_dishes` }    | 
+| **order_submission** | `submit_order`(`order`) |
+| **order_confirmation** | `send_text`(`confirmation_message`)  |
+  
+## Feature Tests
+
 ```
 As a customer
 So that I can check if I want to order something
