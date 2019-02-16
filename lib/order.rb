@@ -1,3 +1,5 @@
+require_relative 'dish'
+
 class Order
   attr_reader :contents
   def initialize
@@ -5,7 +7,7 @@ class Order
   end
 
   def add(dish, quantity = 1)
-   quantity.times { @contents << dish }
+    quantity.times { @contents << dish }
   end
 
   def remove(dish)

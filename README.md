@@ -27,9 +27,9 @@ Nouns: Order, Dish, Menu
 Verbs: select, available?
 ```
 ```
-require './lib/takeway.rb'
+require './lib/takeaway.rb'
 takeaway = Takeaway.new
-takeaway.see_menu
+takeaway.show_menu
 takeaway.add_to_order(1,2)
 takeaway.view_order
 

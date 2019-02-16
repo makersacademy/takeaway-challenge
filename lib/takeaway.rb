@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
   attr_reader :current_order
@@ -10,15 +11,24 @@ class Takeaway
   def show_menu
     puts "Hello, Here is a list of our tasty food"
     @menu.dishes.each do |dish|
-      puts "Menu Number: #{dish.dish_number},"\
+      puts "Dish Number: #{dish.dish_number},"\
       " Name: #{dish.dish_name}, Price: #{dish.dish_cost}"
     end
   end
 
-  def add_to_order(dish_num, quantity)
-    dish = @menu.select do |dish|
+  def add_to_order(dish_num, quantity = 1)
+    current_dish = @menu.dishes.find do |dish|
       dish.dish_number == dish_num
     end
-    @current_order.add(dish, quantity)
+    @current_order.add(current_dish, quantity)
+  end
+
+  def view_order
+    puts "Here is your current order"
+    @current_order.contents.each do |dish|
+      puts "Dish Number: #{dish.dish_number},"\
+      " Name: #{dish.dish_name}, Price: #{dish.dish_cost}"
+    end
+    puts "The total cost of your order is #{@current_order.cost}"
   end
 end
