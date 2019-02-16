@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
 
 subject(:menu) { described_class.new }
-  it 'MMMMis created with a list of dishes and prices' do
+  it 'is created with a list of dishes and prices' do
     expect(subject.dishes).to eq([{:dish => "Chicken", :price => "£3.50"},
       {:dish => "Pizza", :price => "£4"}])
   end

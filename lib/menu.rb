@@ -8,13 +8,6 @@ attr_reader :dishes
       ]
     end
 
-    # def print_menu
-    #   printed_menu = []
-    #   @dishes.each do |dish, price|
-    #     puts "#{dish}, #{price}"
-    #   end
-    # end
-
     def print_menu
       @dishes.map {|x| x.values.join(" ") }
     end
