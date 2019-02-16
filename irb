@@ -1,0 +1,4 @@
+irb
+require './lib/menu/'
+m = Menu.new
+m.print_menu
