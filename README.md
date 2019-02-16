@@ -30,7 +30,7 @@ Verbs: select, available?
 require './lib/takeway.rb'
 takeaway = Takeaway.new
 takeaway.see_menu
-takeaway.order(1,2)
+takeaway.add_to_order(1,2)
 takeaway.view_order
 
 => Expect to see list containing the items selected and the total cost
