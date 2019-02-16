@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 class Menu
 
   def initialize
