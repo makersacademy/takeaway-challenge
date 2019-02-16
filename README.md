@@ -13,9 +13,9 @@ Nouns: Customer, Dish, Menu, Takeaway
 Verbs: see_menu
 ```
 ```
-require './lib/takeway.rb'
+require './lib/takeaway.rb'
 takeaway = Takeaway.new
-takeaway.see_menu
+takeaway.show_menu
 
 => Expect list of menu items with price
 ```
