@@ -39,4 +39,8 @@ describe Order do
   #   expect(@order.total_checker(total_checker)).to eq true
   # end
 
+  it "can place an order" do
+    expect(@order.place_order).to eq true
+  end
+
 end
