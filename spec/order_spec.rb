@@ -23,7 +23,7 @@ describe Order do
 
   it 'doesnt let me select dishes that are not on the menu' do
     allow(menu).to receive(:has_dish?).with(:beef).and_return(false)
-    expect{ order.add(:beef, 2)}.to raise_error "Beef is not on the menu!"
+    expect{ order.add(:beef, 2)}.to raise_error NoItemError, "Beef is not on the menu!"
   end
 
 end
