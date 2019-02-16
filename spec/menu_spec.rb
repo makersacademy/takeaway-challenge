@@ -1,7 +1,7 @@
 require 'menu'
 describe Menu do
-  let (:double_dish) { double :dish }
-  let (:another_double_dish) { double :another_dish }
+  let(:double_dish) { double :dish }
+  let(:another_double_dish) { double :another_dish }
 
   it 'gets created with an empty list of dishes when list of dishes not passed in' do
     menu = Menu.new
@@ -24,6 +24,13 @@ describe Menu do
   it 'adds dish to dish list' do
     menu = Menu.new
     menu.add_dish(double_dish)
-    expect(menu.dishes).to include double_dish 
+    expect(menu.dishes).to include double_dish
+  end
+
+  it 'removes dish from dish list' do
+    dish_list = [double_dish, another_double_dish]
+    menu = Menu.new(dish_list)
+    menu.remove_dish(double_dish)
+    expect(menu.dishes).not_to include double_dish
   end
 end
