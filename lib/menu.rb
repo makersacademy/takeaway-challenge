@@ -1,5 +1,5 @@
 class Menu
-  def initialize
-    @dishes = []
+  def initialize(dish_list = [])
+    @dishes = dish_list
   end
 end
