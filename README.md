@@ -6,8 +6,8 @@
 
 _In these messages,_ `{ object }` _is an object returned and as in Ruby,_ `(object)` _after a message name is an object received (i.e. argument)_
   
-| Object         | Messages                     |  
-| -------------  | ---------------------------- |  ---
+| Object         | Messages                     |           
+| -------------  | ---------------------------- |
 | **Dish**           | `name` { `attr_reader :name` }<br>`price` { `attr_reader :price` } |  
 | **Menu** | `list_dishes` { `dishes` }         |  
 | **Order**          | `add`(`dish`, `quantity`)<br>`remove`(`dish`, `quantity`)<br>`review_order` { `selected_dishes` }<br>`total` { _sum of prices of all dishes in_ `selected_dishes` }    |  
