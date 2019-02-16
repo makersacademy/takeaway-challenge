@@ -15,6 +15,7 @@ describe Takeaway do
 
   it 'allows an order to be placed' do
     subject.new_order
+    subject.order.add_dish(rice)
     subject.place_order
     expect(subject.order.placed?).to eq true
   end

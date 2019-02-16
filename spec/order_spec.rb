@@ -1,8 +1,8 @@
-require 'order'
+require './lib/order'
 
 describe Order do
   let(:rice) { { name: :rice, price: 3 } }
-  
+
   it 'is initialized with a blank list of dishes' do
     expect(subject.dishes).to eq []
   end
@@ -18,6 +18,7 @@ describe Order do
   end
 
   it 'can tell if it has been placed' do
+    subject.add_dish(rice)
     subject.place
     expect(subject.placed?).to be true
   end
@@ -27,5 +28,7 @@ describe Order do
     expect(subject.show_items).to include rice
   end
 
-  pending 'prevents empty orders from being placed'
+  pending 'prevents empty orders from being placed' do
+    expect(subject.place).to raise_error "Order empty!"
+  end
 end

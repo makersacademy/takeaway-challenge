@@ -20,6 +20,8 @@ class Order
   end
 
   def place
+    raise "Order empty!" if @dishes.empty?
+
     @complete = true
     send_sms_confirmation
   end
