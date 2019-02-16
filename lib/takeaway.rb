@@ -32,7 +32,6 @@ class Takeaway
     quantities.each do |dish, qty|
       order_total += qty * DISHES[dish]
     end
-    order_total
   end
 
   def confirmation_msg
