@@ -7,6 +7,5 @@ describe BasketItem do
     expect(basket_item.dish).to equal dish_double
     expect(basket_item.quantity).to equal dish_quantity
     expect(basket_item.dish_total_price).to equal (dish_double.price * dish_quantity)
-  #([{dish: dish_double, quantity: 2, dish_total_price: 20.00}])
   end
 end

@@ -1,7 +1,7 @@
 class Basket
-  attr_reader :items
-    def initialize(dish, dish_quantity)
+  attr_reader :basket_items
+    def initialize
 
-      @items = [{dish: dish, quantity: dish_quantity, dish_total_price: dish.price * dish_quantity}]
+      @basket_items = []
     end
 end
