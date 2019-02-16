@@ -1,10 +1,14 @@
 class Takeaway
   DISHES =
-    { "burger" => 10,
-      "chips" => 4,
-      "salad" => 5,
-      "lemonade" => 2
-    }
+  { "burger" => 10,
+    "chips" => 4,
+    "salad" => 5,
+    "lemonade" => 2
+  }
+
+  def initialize(client = Twilio::REST::Client.new($ACCOUNT_SID, $AUTH_TOKEN))
+    @text_client = client
+  end
 
   def dishes
     puts "You can order from:"
@@ -15,7 +19,7 @@ class Takeaway
 
   def place_order(quantities, total)
     fail "incorrect total" if total(quantities) != total
-    send_text
+    send_text(confirmation_msg)
   end
 
   private
@@ -28,18 +32,16 @@ class Takeaway
     order_total
   end
 
-  def send_text
-    account_sid = 'AC7b5c9ad95b7241e75887aa2d396413f0'
-    auth_token = '274da3a26e6a7adf5749d969ca2374a9'
-    client = Twilio::REST::Client.new(account_sid, auth_token)
+  def confirmation_msg
+    time = Time.now + (60 * 60)
+    "Thank you! Your order was placed and will be delivered before #{time}"
+  end
 
-    from = "+441412801981" # Your Twilio number
-    to = '+15555555555' # Your mobile phone number
-
-    client.messages.create(
-    from: from,
-    to: to,
-    body: "Hey friend!"
+  def send_text(msg)
+    @text_client.messages.create(
+    from: $TAKEAWAY_PHONE_NO,
+    to: $CUST_PHONE_NO,
+    body: msg
     )
   end
 end
