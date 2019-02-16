@@ -17,6 +17,14 @@ describe Takeaway do
     dish = "Pizza"
     quantity = 2
     order_double = double(:dish => dish, :quantity => quantity)
-    expect(subject.add_order(order_double)).to eq "#{dish}\n#{quantity}"
+    expect(subject.add_order(order_double)).to eq "#{dish}, #{quantity}"
   end
+
+  describe '#calculates total'
+  it 'check that the total I have been given matches the sum of the various dishes in my order' do
+
+  end
+
+  end
+
 end

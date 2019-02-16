@@ -1,7 +1,7 @@
 class Takeaway
 
-attr_reader :order
-  def initialize(menu = Menu.new)
+attr_reader :menu, :order
+  def initialize(menu = Menu.new, order: nil)
     @menu = menu
     @order = []
   end
@@ -11,9 +11,7 @@ attr_reader :order
   end
 
   def add_order(order)
-    @order << order
-    p @order
-    return @order
+    p @order << order
   end
 
 end
@@ -30,17 +28,14 @@ class Menu
   end
 end
 
+
 class Order
+
   attr_reader :dish, :quantity
+
   def initialize(dish, quantity)
     @dish = dish
     @quantity = quantity
   end
-end
 
-# # t = Takeaway.new(m = Menu.new)
-# # t.view_menu
-# o = Order.new("Pizza", 2)
-# # t.add_order(o)
-# # p = Order.new("Chicken", 1)
-# # t.add_order(p)
+end
