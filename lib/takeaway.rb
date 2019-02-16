@@ -32,12 +32,13 @@ end
 
 
 class Order
+   attr_reader :dishes
 
-  attr_reader :dish, :quantity
+   def initialize
+     @dishes = {}
+   end
 
-  def initialize(dish, quantity)
-    @dish = dish
-    @quantity = quantity
+   def add(dish, quantity)
+     dishes[dish] = quantity
   end
-
 end
