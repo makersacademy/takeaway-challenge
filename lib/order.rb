@@ -14,8 +14,12 @@ class Order
   end
 
   def total
-    @view_basket.inject(0) {|sum, hash| sum + hash[:price]}
+    @total = @view_basket.inject(0) {|sum, hash| sum + hash[:price]}
   end
+
+  # def total_checker
+  #   TotalChecker.new(@total).calc(@view_basket).check
+  # end
 
 private
   def price_look_up(dish)

@@ -6,8 +6,8 @@ describe Order do
 
   let(:menu_double) do
     [{ "chips" => 1.00 },
-          { "chicken chow mein" => 2.80 },
-          { "doner kebab" => 3.20 }]
+      { "chicken chow mein" => 2.80 },
+      { "doner kebab" => 3.20 }]
   end
 
   before(:each) do
