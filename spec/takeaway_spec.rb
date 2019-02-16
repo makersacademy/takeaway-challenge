@@ -10,4 +10,10 @@ describe Takeaway do
     subject.new_order
     expect(subject.order).to be_a Order
   end
+
+  it 'allows an order to be placed' do
+    subject.new_order
+    subject.place_order
+    expect(subject.order.placed?).to eq true
+  end
 end

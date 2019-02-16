@@ -17,5 +17,10 @@ describe Order do
     expect(subject.dishes). to include rice
   end
 
+  it 'can tell if it has been placed' do
+    subject.place
+    expect(subject.placed?).to be true
+  end
+
   pending 'it sends an SMS confirmaton'
 end
