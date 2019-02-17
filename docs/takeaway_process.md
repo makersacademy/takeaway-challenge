@@ -10,7 +10,7 @@ Created Takeaway class and described it.
 
 RED - Expected takeaway.menu to show a meal and a price
 
-(expected: "Vindaloo: £6"
+(expected: {"Vindaloo" => 6, "Chips" => 3}
             got: nil)
 
 RED - Passed menu to test initialize of takeaway class and made it a readable attribute
@@ -20,46 +20,67 @@ RED - Passed menu to test initialize of takeaway class and made it a readable at
 
 RED - Doubled menu class for takeaway test
 
-(expected: "Vindaloo: £6"
+(expected: {"Vindaloo" => 6, "Chips" => 3}
             got: nil)
 
-RED - made read_menu method print menu object
-
-(#<Double :menu> received unexpected message :print with (no args))
-
-GREEN - Passed print method to the menu double with result
-
-REFACTOR - Passed print method result as a method rather than a string, refactored test
+GREEN - made read_menu method print @menu
 
 PASSED, 100% COVERAGE
 
 
-RED - Made menu and menu_spec, described menu
-
-(NameError:
-  uninitialized constant Menu)
-
-GREEN - Defined Menu class
+RED - Made order class and spec, described and defined class
 
 PASSED, 100% COVERAGE
 
-RED - Renamed methods to remove word 'print', expected menu.show to print a list
+RED - Expected order.show_menu to return full_menu
 
 ( NoMethodError:
-       undefined method 'show')
+       undefined method 'menu')
 
-RED - Defined show method to return @show_menu
+GREEN - Initialized order with menu instance
 
-( NameError:
-       undefined local variable or method 'show_menu')
+PASSED, 100% COVERAGE
+USER CAN NOW SEE LIST OF MEALS AND PRICES, USER STORY 1
 
-RED - Initialized Menu to have @show_menu variable with dishes and prices
+RED - Expected order.add to return the total of the meals
 
-( NameError:
-       undefined local variable or method 'show_menu')
+(NoMethodError:
+       undefined method 'add')
 
-GREEN - Made @show_menu a visible attribute
+RED - Defined add
 
-REFACTOR - Made @show_menu a hash of dishes and prices, updated the test to expect a string
+(NoMethodError:
+       undefined method '+' for nil:NilClass)
+
+GREEN - Added total variable to Order
+
+PASSED, 100% COVERAGE
+
+REFACTOR - Changed test to expect a string stating total cost, and code to matches
+
+PASSED, 100% COVERAGE
+USER CAN NOW SELECT MEALS AND SEE TOTAL PRICE, PART USER STORY 2/3
+
+RED - Expected order.add to run basket_add, adding a number of a dish to the basket
+
+(expected: "2 portions of Vindaloo"
+            got: nil)
+
+GREEN - Changed test to read return of basket_add instead of @basket
+
+PASSED, 100% COVERAGE
+USER CAN NOW SELECT MEALS AND ADD THEM TO BASKET, USER STORY 2
+
+RED - Expected verify_price to compare the final cost with the cost of the basket
+
+(NoMethodError:
+       undefined method 'verify_price')
+
+RED - Defined verify_price
+
+(expected: "Your total is £12 - Vindaloo (£6) x2 = £12"
+            got: nil)
+
+GREEN - Wrote the verify_price method
 
 PASSED, 100% COVERAGE

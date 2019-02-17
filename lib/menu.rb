@@ -1,16 +1,14 @@
-require_relative('takeaway')
+require_relative('order')
 
 class Menu
 
-  attr_reader :show_menu
+  attr_reader :full_menu
 
   def initialize
-    @show_menu = {'Vindaloo' => 6, 'Fish & Chips' => 7, 'Fries with that' => 1, 'Pictures of spiderman' => 200}
+    @full_menu = {"Vindaloo" => 6, "Chips" => 3}
   end
 
   def show
-    @show_menu.map do |dish, price|
-      "#{dish} £#{price}"
-    end.join(', ')
+    @full_menu
   end
 end
