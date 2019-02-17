@@ -14,13 +14,13 @@ class Takeaway
 
   def main_menu
     loop do
-      menu
+      food_menu
       puts '--------------------'
       options
     end
   end
 
-  def menu
+  def food_menu
     index = 1
     @dishes.each do |dish|
       puts "#{index}: #{dish[:name]} (£#{dish[:price]})"

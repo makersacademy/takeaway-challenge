@@ -28,5 +28,5 @@ class SMS
   def destination_set?
     true unless @destination.empty?
   end
-  
+
 end

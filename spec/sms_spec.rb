@@ -9,9 +9,4 @@ describe SMS do
     expect(subject.message_set?).to eq true
   end
 
-  it 'sends an sms confirmation' do
-    allow(subject).to receive(:send).and_return(true)
-    expect(subject.send).to eq true
-  end
-
 end
