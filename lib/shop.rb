@@ -1,7 +1,8 @@
-require_relative 'order'
+require './lib/order.rb'
+require './lib/messenger.rb'
 
 class Shop
-  attr_reader :menu, :current_order
+  attr_reader :menu, :current_order, :menu_string
   def initialize
     @menu = {
       :burger => 9,
@@ -15,9 +16,9 @@ class Shop
   end
 
   def show_menu
-    menu_string = "you can choose from...\n"
-    menu.each { |item, price| menu_string << "#{item} - £#{price} \n" }
-    puts menu_string
+    @menu_string = "you can choose from...\n"
+    menu.each { |item, price| @menu_string << "#{item} - £#{price} \n" }
+    puts @menu_string
   end
 
   def start_order
@@ -25,7 +26,9 @@ class Shop
   end
 
   def add_to_order(order, item, quantity = 1)
-    order.add(item, quantity)
+    fail "sorry we don't sell #{item}" unless @menu.key?(item.to_sym)
+    item_price = @menu[item.to_sym]
+    order.add(item, item_price, quantity)
   end
 
 end

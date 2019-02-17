@@ -15,6 +15,11 @@ describe Shop do
       expect { subject.show_menu }.to output(String).to_stdout
       subject.show_menu
     end
+
+    it 'has specific items' do
+      subject.show_menu
+      expect(subject.menu_string).to include("burger")
+    end
   end
 
   context 'creates orders when requested' do
@@ -25,10 +30,15 @@ describe Shop do
     end
 
     it 'adds items to order' do
-      allow(order).to receive(:add).with(kind_of(String), kind_of(Integer))
-      expect(order).to receive(:add).with("fish", 1)
+      allow(order).to receive(:add).with(kind_of(String), kind_of(Integer), kind_of(Integer))
+      expect(order).to receive(:add).with("fish", 8, 1)
       subject.add_to_order(order, "fish")
     end
-
   end
+
+  it 'raises error when ordering something not on the menu' do
+    order = double("order")
+    expect { subject.add_to_order(order, "prawns") }.to raise_error "sorry we don't sell prawns"
+  end
+
 end
