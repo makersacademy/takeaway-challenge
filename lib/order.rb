@@ -21,31 +21,28 @@ class Order
     "\u00A3#{total}"
   end
 
-  def review
+  def review(check_total = total())
+    puts "actual total: #{total}"
+    puts "test total: #{check_total}"
+    puts "print_total says: #{print_total}"
 
-    puts "Order Summary:"
-    puts
-
-    @selected_dishes.each do |dish|
-      puts dish[:dish]
-      puts "\u00A3%0.2f each, x#{dish[:quantity]}, subtotal: \u00A3%0.2f" % [dish[:price], dish[:subtotal]]
-      puts
-    end
-
-    puts "GRAND TOTAL: #{print_total}".rjust(31)
 
     error_text = "Error: Order aborted because GRAND TOTAL does not match actual total value of dishes."
+
+    raise error_text if (check_total != @selected_dishes.map { | dish | (dish[:price] * dish[:quantity]) }.sum)
+
+    order_summary = ""
+    order_summary << "Order Summary:\n\n"
     
-    # total_check = @selected_dishes.map do | dish |
-    #   (dish[:price] * dish[:quantity])
-    # end.sum
+    @selected_dishes.each do |dish|
+      order_summary <<  dish[:dish]
+      order_summary <<  "\n\u00A3%0.2f each, x#{dish[:quantity]}, " % [dish[:price]]
+      order_summary <<  "subtotal: \u00A3%0.2f\n\n" % [dish[:subtotal]]
+    end
 
-    #puts total_check
+    order_summary << "GRAND TOTAL: #{print_total}".rjust(31)
 
-    raise error_text if total != @selected_dishes.map { | dish | (dish[:price] * dish[:quantity]) }.sum
-
-    # In case I have to access from within Menu class DISHES variable:
-    # Menu::DISHES.select{ |dish| dish.has_value?("Large Cola") }[0][:price]
+    order_summary
   end
 
 end

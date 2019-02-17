@@ -30,7 +30,7 @@ describe Order do
   end
 
   describe '.review' do
-    it 'displays order summary' do
+    let (:expected_output) {
       expected_output = ""
       
       expected_output << "Order Summary:\n\n"
@@ -42,7 +42,16 @@ describe Order do
       expected_output << "\u00A31.00 each, x2, subtotal: \u00A32.00\n\n"
       expected_output << "             GRAND TOTAL: \u00A35.35"
 
-      expect { order.review }.to output { expected_output }.to_stdout
+      expected_output
+    }
+
+    it 'displays order summary' do
+      expect(order.review).to eq expected_output
+    end
+    
+
+    it 'raises error if GRAND TOTAL and actual total do not match' do
+      expect{order.review(9.5)}.to raise_error ("Error: Order aborted because GRAND TOTAL does not match actual total value of dishes.")
     end
   end
 
