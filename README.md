@@ -85,3 +85,29 @@ We will write the irb tests(feature tests.)
 
 require "./lib/customer.rb"
 customer = Customer.new(1234)
+
+,,,, Now we are able to make a customer with a phone number."
+
+
+,,,, In the next step, we must be able to make a restaurant.
+
+require "./lib/customer.rb"
+customer = Customer.new(1234)
+require "./lib/restaurant.rb"
+restaurant = Restaurant.new()
+
+,,,, In the next step, we when we call the method "ask_order" on a restaurant object and with the customer number as an argument, the customer with the phone number should receive the list of dishes and the order in which he or she should send the order.
+There are something done in order to make the problem solvable.
+
+1. My twilio phone number, my phone number, my twilio account_sid and my twilio auth_token are saved as environment variables to be secure for github publishing.
+2. I am making a free Twilio account, so I am able to send message to myself only, so my phone number which is already saved as an instance variable is used to make a new customer.
+
+so the next feature test will be the below thing:
+
+require "./lib/customer.rb"
+customer = Customer.new(ENV['MY_NUMBER'])
+require "./lib/restaurant.rb"
+restaurant = Restaurant.new()
+restaurant.ask_order(customer)
+
+After using the above commands in irb, I am supposed to receive a message on my phone, Asking me about the order I want to make. so, we command the code in "irb" to see what happens.
