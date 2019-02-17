@@ -84,3 +84,7 @@ RED - Defined verify_price
 GREEN - Wrote the verify_price method
 
 PASSED, 100% COVERAGE
+
+REFACTOR - Rewrote basket_add to increment meal variables instead of pushing hashes, removed @basket
+
+PASSED, 100% COVERAGE

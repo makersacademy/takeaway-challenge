@@ -2,7 +2,8 @@ class Order
   def initialize
     @menu = Menu.new
     @total = 0
-    @basket = []
+    @vindaloo = 0
+    @chips = 0
   end
 
   def show_menu
@@ -18,10 +19,12 @@ class Order
   end
 
   def basket_add(meal, quantity)
-    @basket << "#{quantity} portion(s) of #{meal}"
+    @vindaloo += quantity if meal == "Vindaloo"
+    @chips += quantity if meal == "Chips"
+    "#{@vindaloo} x Vindaloo and #{@chips} x Chips so far"
   end
 
-  def verify_price(meal, quantity)
-    "Your total is £#{@total} - #{meal} (£#{@menu.full_menu[meal]}) x#{quantity} = £#{quantity * @menu.full_menu[meal]}"
+  def verify_price
+    "Your total is £#{@total} - #{@vindaloo} lots of Vindaloo at £#{@vindaloo * @menu.full_menu["Vindaloo"]}, and #{@chips} lots of Chips at £#{@chips * @menu.full_menu["Chips"]}"
   end
 end

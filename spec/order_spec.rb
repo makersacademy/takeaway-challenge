@@ -8,7 +8,7 @@ describe Order do
   end
 
   it "allows the user to select from meals and add to basket" do
-    expect(order.basket_add("Vindaloo", 2)).to eq(["2 portion(s) of Vindaloo"])
+    expect(order.basket_add("Vindaloo", 2)).to eq("2 x Vindaloo and 0 x Chips so far")
   end
 
   it "allows the user to select from the available meals and get the price" do
@@ -17,6 +17,8 @@ describe Order do
 
   it "lets the user to compare their total with the prices" do
     order.add("Vindaloo", 2)
-    expect(order.verify_price("Vindaloo", 2)).to eq("Your total is £12 - Vindaloo (£6) x2 = £12")
+    order.add("Chips", 1)
+    order.add("Vindaloo", 1)
+    expect(order.verify_price).to eq("Your total is £21 - 3 lots of Vindaloo at £18, and 1 lots of Chips at £3")
   end
 end
