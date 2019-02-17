@@ -51,17 +51,18 @@ class Order
     time_str = "Thank you! Your order was placed and will be delivered before"
     p time_str
     p time.strftime("%k:%M")
+    time_str 
   end
 
-  def expected_total
+  def return_expected_total
     @expected_total
   end
 
-  def total
+  def return_total
     @total.round(2)
   end
 
-  def basket
+  def return_basket
     @basket
   end
 
