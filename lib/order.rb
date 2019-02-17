@@ -31,10 +31,13 @@ class Order
     "£#{'%.2f' % total}"
   end
 
-  def checkout(expected_total)
+  def checkout(expected_total:, mobile_number:)
     check_matches_order_total(expected_total)
 
-    @messenger.send(order_confirmation_message)
+    @messenger.send(
+      message: order_confirmation_message,
+      mobile_number: mobile_number
+    )
   end
 
   def order_confirmation_message
@@ -43,7 +46,7 @@ class Order
 
   def delivery_time
     time = DateTime.now
-    delivery_time = (time + 60 * 60).strftime("%H:%M")
+    (time + 60 * 60).strftime("%H:%M")
   end
 
   def check_matches_order_total(expected_total)

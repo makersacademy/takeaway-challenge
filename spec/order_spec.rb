@@ -10,6 +10,7 @@ describe Order do
   let (:dish_no) { 1 }
   let (:qty) { 5 }
 
+  let (:mobile_number) { '077361387311' }
   let (:checkout_timestamp) { Time.new(2018,11,1,18,0,0, "+00:00") }
   let (:delivery_time) { "19:00" }
 
@@ -54,7 +55,11 @@ describe Order do
       it 'should throw error' do
         order.add_dish(dish_no: dish_no, qty: qty)
         
-        expect { order.checkout(25.75) }.to raise_error(
+        expect { order.checkout(
+          expected_total: 25.75, 
+          mobile_number: mobile_number
+          ) }
+          .to raise_error(
           'Your expected total does not match order total'
         )
       end
@@ -64,11 +69,12 @@ describe Order do
       it 'should request messenger to send confirmation message to customer' do
         order.add_dish(dish_no: dish_no, qty: qty)
 
-        order.checkout(25)
+        order.checkout(expected_total: 25, mobile_number: mobile_number)
 
-         expected_message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+        expected_message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
         
-        expect(messenger_double).to have_received(:send).with(expected_message)
+        expect(messenger_double).to have_received(:send)
+          .with(message: expected_message, mobile_number: mobile_number)
       end
     end
   end
