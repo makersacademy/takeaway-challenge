@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { described_class.new(dishes)}
+  subject(:menu) { described_class.new(dishes) }
   let(:dishes) { { chicken: 3.50, falafel: 4.50 } }
 
   describe '#intialize'

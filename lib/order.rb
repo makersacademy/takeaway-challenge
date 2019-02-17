@@ -18,10 +18,10 @@ class Order
    end
 
    def item_totals
-    dishes.map {|dish, quantity| menu.price(dish) * quantity }
-  end
+     dishes.map { |dish, quantity| menu.price(dish) * quantity }
+   end
 
-  private
-  attr_reader :menu
+   private
+   attr_reader :menu
 
 end

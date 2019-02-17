@@ -4,11 +4,10 @@ describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
   # we've injected our order, and now we interact with it using place_order
-  let(:menu) {double(:menu, print: printed_menu)}
+  let(:menu) { double(:menu, print: printed_menu) }
   let(:printed_menu) { "Chicken £3.50" }
   let(:order) { double(:order, total: 15.50) }
-  let(:dishes) { {chicken: 2, pizza: 1} }
-
+  let(:dishes) { { chicken: 2, pizza: 1 } }
 
   describe "#view_menu"
   it 'allows me to view a menu' do

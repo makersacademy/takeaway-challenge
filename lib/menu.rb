@@ -7,13 +7,13 @@ class Menu
   end
 
   def print_menu
-    dishes.map do |title,_price|
-      "%s £%.2f" % [title.to_s.capitalize, _price]
+    dishes.map do |title, price|
+      "%s £%.2f" % [title.to_s.capitalize, price]
     end.join(", ")
   end
 
   def price(dish)
-    dishes[dish] 
+    dishes[dish]
   end
 
 end

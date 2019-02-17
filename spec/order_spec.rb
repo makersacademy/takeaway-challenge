@@ -6,7 +6,7 @@ describe Order do
   subject(:order) { described_class.new(menu) }
   let(:menu) { double(:menu) } # You can use a verifying double, here, which
   # is {instance_double("Menu")}. It lets us check the menu class for the has_dish? method.
-  let(:dishes) { {chicken: 2, fish: 1} }
+  let(:dishes) { { chicken: 2, fish: 1 } }
 
   before do
     allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
@@ -35,7 +35,7 @@ describe Order do
   describe "calculate total for dishes added"
   it 'calculates the total for the order' do
     create_order
-    total = 8.50
+    # total = 8.50
     expect(order.total).to eq 8.50
   end
 
