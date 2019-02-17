@@ -1,7 +1,9 @@
 require_relative 'menu'
+
 class Order
 
    attr_reader :dishes
+
    def initialize(menu)
      @dishes = {}
      @menu = menu
@@ -12,7 +14,7 @@ class Order
    end
 
    def total
-     item_totals
+     item_totals.reduce(:+)
    end
 
    def item_totals
@@ -20,7 +22,6 @@ class Order
   end
 
   private
-  
   attr_reader :menu
 
 end

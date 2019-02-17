@@ -15,6 +15,7 @@ describe Order do
     allow(menu).to receive(:price).with(:fish).and_return(2.50)
   end
 
+  describe "#add order"
   it 'lets me select several dishes' do
     order.add(:chicken, 2)
     order.add(:fish, 1)
@@ -26,6 +27,7 @@ describe Order do
   #   expect{ order.add(:beef, 2)}.to raise_error NoItemError, "Beef is not on the menu!"
   # end
 
+  describe "calculate total for dishes added"
   it 'calculates the total for the order' do
     order.add(:chicken, 2)
     order.add(:fish, 1)
