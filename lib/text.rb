@@ -22,9 +22,9 @@ class Text
     }
   end
 
-  def del_time
-    (Time.now + 60*60)
-  end
+  # def del_time
+  #   (Time.now + 60*60)
+  # end
 
 # @client = Twilio::REST::Client.new account_sid, auth_token
 # message = @client.messages.create(
