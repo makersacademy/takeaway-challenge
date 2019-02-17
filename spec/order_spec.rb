@@ -3,11 +3,19 @@ require './lib/order.rb'
 describe Order do
   let (:dish_double) { double(:dish, price: 5.00)}
   let (:menu_double) { double(:menu, select: dish_double)}
+  let (:messenger_double) { double(:messenger, send: nil) }
 
-  let (:order) { Order.new(menu_double) }
+  let (:order) { Order.new(menu: menu_double, messenger: messenger_double) }
 
   let (:dish_no) { 1 }
   let (:qty) { 5 }
+
+  let (:checkout_timestamp) { Time.new(2018,11,1,18,0,0, "+00:00") }
+  let (:delivery_time) { "19:00" }
+
+  before(:each) do
+    allow(DateTime).to receive(:now).and_return(checkout_timestamp)
+  end
 
   describe 'when customer selects to add dish to their order' do
     it 'should request menu to return that dish' do
@@ -49,6 +57,18 @@ describe Order do
         expect { order.checkout(25.75) }.to raise_error(
           'Your expected total does not match order total'
         )
+      end
+    end
+
+    describe 'and the total the customer expects to pay matches total' do
+      it 'should request messenger to send confirmation message to customer' do
+        order.add_dish(dish_no: dish_no, qty: qty)
+
+        order.checkout(25)
+
+         expected_message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+        
+        expect(messenger_double).to have_received(:send).with(expected_message)
       end
     end
   end
