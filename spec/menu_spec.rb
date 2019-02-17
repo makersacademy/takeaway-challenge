@@ -1,12 +1,20 @@
 require './lib/menu.rb'
 
 describe Menu do
-  let (:menu) { Menu.new }
+  let (:dish_double_1) { double(:dish, name: 'Southern fried chicken', price: 9.00) }
+  let (:dish_double_2) { double(:dish, name: 'Chicken-skin fries', price: 3.00) }
+  
+  let (:dishes) { {
+    1 => dish_double_1,
+    2 => dish_double_2
+   } }
 
-  def dish_to_string(dish)
-    dish_price = '%.2f' % dish[:price]
-    dish_as_string = "#{dish[:number].to_s}. "\
-      "#{dish[:name]} - £#{dish_price}"
+  let (:menu) { Menu.new(dishes: dishes) }
+
+  def dish_to_string(number, dish)
+    dish_price = '%.2f' % dish.price
+    dish_as_string = "#{number.to_s}. "\
+      "#{dish.name} - £#{dish_price}"
   end
 
   it 'should display the menu, showing each dish and its number' do
@@ -14,12 +22,14 @@ describe Menu do
 
     menu.display_menu
 
-    Menu::DISHES.each do |dish|
-      expect(STDOUT).to have_received(:puts).with(dish_to_string(dish))
+    dishes.each do |number, dish|
+      expect(STDOUT).to have_received(:puts).with(dish_to_string(number, dish))
     end
   end
 
-  describe 'when customer selects a dish to add to their order' do
-    it 'should '
+  describe 'when dish is selected from menu' do
+    it 'should return that dish' do
+      expect(menu.select(dish_no: 2)).to eq(dish_double_2)
+    end
   end
 end
