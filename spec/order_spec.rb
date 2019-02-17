@@ -14,7 +14,5 @@ describe Order do
       order = order = Order.new("1,meat dish, 2, vegeterian dish,3")
       expect {order.check_order}.not_to raise_error("Sum of dishes is not correct")
     end
-
-
   end
 end

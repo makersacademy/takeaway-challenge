@@ -139,3 +139,13 @@ Now, We have orders, so it would be good to make an order class. every order has
 require "./lib/order.rb"
 
 order = Order.new("1,meat dish, 2, vegeterian dish,3")
+
+Now, we are able to make an order. We should be able to see if the sum of the meals is correct or not, so we should check the order to be correct.
+
+require "./lib/order.rb"
+
+order = Order.new("1,meat dish, 2, vegeterian dish,4")
+
+order.check_order()
+
+we are supposed to receive an error after using the above command.
