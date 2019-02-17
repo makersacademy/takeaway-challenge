@@ -20,7 +20,7 @@ class Menu
     file = File.open(filename, "r")
     File.foreach(file) do |line|
       name, price, description = line.chomp.split(',')
-      @dishes << Dish.new(name, '%.2f' % price, description)
+      @dishes << Dish.new(name, '%.2f' %price, description)
     end
   end
 
