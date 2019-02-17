@@ -1,3 +1,5 @@
+require 'dotenv/load'
+
 class Submission
   def initialize(order = Order.new)
     @order = order
