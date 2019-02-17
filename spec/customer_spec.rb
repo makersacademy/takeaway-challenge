@@ -43,7 +43,7 @@ describe Customer do
 
   describe "reciept" do
 
-    let(:pepperoni){double :pepperoni, :price => 700, :name => "pepperoni"} 
+    let(:pepperoni){double :pepperoni, :price => 700, :name => "pepperoni"}
     let(:marinara){double :marinara, :price => 500, :name => "marinara" }
     let(:four_cheeses){double :four_cheeses, :price => 700, :name => "four cheeses"}
 
@@ -55,14 +55,15 @@ describe Customer do
       it "pepperoni and 2 marinara" do
         @customer.add_to_order(pepperoni)
         @customer.add_to_order(marinara, 2)
-        message = "pepperoni : 700\n marinara : 500\n marinara : 500"
+        message = "pepperoni : £7.00\nmarinara : £5.00\nmarinara : £5.00\n"
         expect{@customer.reciept}.to output(message).to_stdout
       end
 
       it "four cheeses and 3 pepperoni" do
         @customer.add_to_order(four_cheeses)
         @customer.add_to_order(pepperoni, 3)
-        message = "four_cheeses : 700\n pepperoni : 700\n pepperoni : 700\n pepperoni : 700"
+        message = "four cheeses : £7.00\npepperoni : £7.00\npepperoni : £7.00\npepperoni : £7.00\n"
+        expect{@customer.reciept}.to output(message).to_stdout
       end
     end
   end

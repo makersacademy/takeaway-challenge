@@ -15,4 +15,10 @@ class Customer
     @order.each { |dish| total += dish.price }
     total
   end
+
+  def reciept
+    @order.each do |dish|
+      puts "#{dish.name} : £#{'%.2f' % (dish.price/100)}"
+    end
+  end
 end
