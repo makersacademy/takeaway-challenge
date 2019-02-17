@@ -44,4 +44,8 @@ class Order
     order_summary
   end
 
+  def submit_order
+    
+  end
+
 end

@@ -1,6 +1,21 @@
 # Weekend Challenge 2: Takeaway
 
-[Original challenge README](challenge-README.md)
+([Original challenge README](challenge-README.md))
+
+## Contents
+
+[Domain Modelling](#domain-modelling)  
+- [Initial domain Model](#initial-domain-model)  
+- [Refining the domain model](#refining-the-domain-model)  
+
+[Features](#features)  
+- [Overview](#overview)  
+- [(1) See a list of dishes with prices](#1-see-a-list-of-dishes-with-prices)  
+- [(2) From a list of several available dishes, select some number to order](#2-from-a-list-of-several-available-dishes-select-some-number-to-order)  
+- [(3) Review order and check total matches sum of dish prices in the order](#3-review-order-and-check-total-matches-sum-of-dish-prices-in-the-order)  
+- [(4) After placing an order, receive a text message confirmation](#4-after-placing-an-order-receive-a-text-message-confirmation)
+
+
 
 ## Domain Modelling
 
@@ -25,17 +40,20 @@ This is the domain model in practice. I was unsure if it was valid to amend or d
 | Object         | Messages                     |  
 | -------------  | ---------------------------- |
 | **Menu** | `list_dishes` { `dishes` }         |  
-| **Order**          | `add`(`dish`, `quantity`)<br>`review` { `selected_dishes` }<br>`print_total` { `total`, including currency symbol }    |  
+| **Order**          | `add`(`dish`, `quantity`)<br>`review` { `selected_dishes` }<br>`print_total` { `total`, including currency symbol }<br>`submit  { Submission.new(order) }`    |  
 | **Submission** | `submit_order`(`order`) |  
 
-- **Dish**  
+- **`Dish`**  
 Considering that the user stories focus on the customer it may not be necessary to have a separate `Dish` class - the user stories of a customer do not require any manipulation of `Dish` objects.  
 
 - **`Order::remove()`**  
 It seemed logical to have a `Order::remove()` method to go with `Order::add()` but the user stories do not support it. Perhaps this is something that could be implemented once everything else is done.
 
-- **Order_Submission** and **Order_Confirmation**  
+- **`Order_Submission`** and **`Order_Confirmation`**  
 With the benefit of greater knowledge of the system and better understanding of problem domain, I realise that the actual sending of the `Order_Confirmation` is not something my system has to handle. After submitting an order, it is expected that an SMS is sent via Twilio: this would be triggered by `Submission`, and then it's down to the `twilio-ruby` gem.
+
+- **`Order::submit`**  
+A `submit_order` method in the `Submission` class is justified since it would definitely be responsible for submitting the order. However, maybe it also makes sense for `Order` to provide a `submit` instance method so that the customer never needs to have any knowledge of the `Submission` class
 
 ## Features
 
