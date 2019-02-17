@@ -4,21 +4,38 @@
 
 ## Domain Modelling
 
+### Initial domain Model
+
+This table represents my initial understanding of the domain, and is likely to change as the project goes on.
+
 _In these messages,_ `{ object }` _is an object returned and as in Ruby,_ `(object)` _after a message name is an object received (i.e. argument)_
   
 | Object         | Messages                     |  
 | -------------  | ---------------------------- |
 | **Dish**           | `name` { `attr_reader :name` }<br>`price` { `attr_reader :price` } |  
 | **Menu** | `list_dishes` { `dishes` }         |  
-| **Order**          | `add`(`dish`, `quantity`)<br>`remove`(`dish`, `quantity`)<br>`review` { `selected_dishes` }<br>`print_total` { prints `@total`, including currency symbol }    |  
+| **Order**          | `add`(`dish`, `quantity`)<br>`remove`(`dish`, `quantity`)<br>`review` { `selected_dishes` }<br>`print_total` { `total`, including currency symbol }    |  
 | **Order_Submission** | `submit_order`(`order`) |  
 | **Order_Confirmation** | `send_text`(`confirmation_message`)  |  
   
 ### Refining the domain model
 
-- Considering that the user stories focus on the customer it may not be necessary to have a separate `Dish` class - the user stories of a customer do not require any manipulation of `Dish` objects.  
+This is the domain model in practice. I was unsure if it was valid to amend or delete from the above during the course of TDD but it turns out that it's perfectly acceptable. [Expected, even](https://www.scaledagileframework.com/domain-modeling/) ("Refactoring the Model").
 
-- While it would appear logical to have a `Order::remove()` method to go with `Order::add()`, the user stories do not support it. Perhaps this would be something to be dealt with when everything else is done.
+| Object         | Messages                     |  
+| -------------  | ---------------------------- |
+| **Menu** | `list_dishes` { `dishes` }         |  
+| **Order**          | `add`(`dish`, `quantity`)<br>`review` { `selected_dishes` }<br>`print_total` { `total`, including currency symbol }    |  
+| **Submission** | `submit_order`(`order`) |  
+
+- **Dish**  
+Considering that the user stories focus on the customer it may not be necessary to have a separate `Dish` class - the user stories of a customer do not require any manipulation of `Dish` objects.  
+
+- **`Order::remove()`**  
+It seemed logical to have a `Order::remove()` method to go with `Order::add()` but the user stories do not support it. Perhaps this is something that could be implemented once everything else is done.
+
+- **Order_Submission** and **Order_Confirmation**  
+With the benefit of greater knowledge of the system and better understanding of problem domain, I realise that the actual sending of the `Order_Confirmation` is not something my system has to handle. After submitting an order, it is expected that an SMS is sent via Twilio: this would be triggered by `Submission`, and then it's down to the `twilio-ruby` gem.
 
 ## Features
 
@@ -91,7 +108,7 @@ So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order  
 
 ```ruby
-# continuing from (2)
+# omitted: commands as in (2)
 
 order.print_total
 => £5.35
@@ -118,3 +135,10 @@ Small Fries
 >As a customer  
 So that I am reassured that my order will be delivered on time  
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered  
+
+```ruby
+# omitted: commands as in (3)
+
+order_submission = Submission.new(order)
+
+```

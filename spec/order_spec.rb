@@ -3,16 +3,18 @@ require_relative '../lib/order'
 describe Order do
   let(:order) { Order.new }
 
+  describe '.add' do
+    it 'selected dishes are added to order' do
+      expect { order.add(10, 2) }
+        .to change { order.selected_dishes }
+        .to include({ quantity: 2, dish: "Small Fries", price: 1.00, subtotal: 2.00 })
+    end
+  end
+
   before do
     order.add(4, 1)
     order.add(5, 1)
     order.add(10, 2)
-  end
-
-  describe '.add' do
-    it 'selected dishes are added to order' do
-      expect { order.add(10, 2) }.to change { order.selected_dishes }.to include({ quantity: 2, dish: "Small Fries", price: 1.00, subtotal: 2.00 })
-    end
   end
 
   describe '.total' do
@@ -23,12 +25,12 @@ describe Order do
 
   describe '.print_total' do
     it 'outputs the total cost of the order' do
-      expect(order.print_total).to eq ("\u00A35.35")
+      expect(order.print_total).to eq "\u00A35.35"
     end
   end
 
   describe '.review' do
-    it 'displays order summary so that customer can compare total to the cost of dishes' do
+    it 'displays order summary' do
       expected_output = ""
       
       expected_output << "Order Summary:\n\n"
