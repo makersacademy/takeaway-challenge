@@ -1,11 +1,13 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'send_sms'
 
 class Takeaway
   attr_reader :current_order
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, con = Confirmation.new)
     @menu = menu
     @current_order = order
+    @confirmation = con
   end
 
   def show_menu
@@ -37,5 +39,9 @@ class Takeaway
       " Name: #{dish.dish_name}, Price: #{dish.dish_cost}"
     end
     puts "The total cost of your order is #{@current_order.cost}"
+  end
+
+  def confirm_order
+    @confirmation.send_confirmation
   end
 end

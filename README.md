@@ -62,10 +62,10 @@ Nouns: Order, Text
 Verbs: confirm_order, receive_text
 ```
 ```
-require './lib/takeway.rb'
+require './lib/takeaway.rb'
 takeaway = Takeaway.new
-takeaway.see_menu
-takeaway.order(1,2)
+takeaway.show_menu
+takeaway.add_to_order(1,2)
 takeaway.view_order
 takeaway.confirm_order
 

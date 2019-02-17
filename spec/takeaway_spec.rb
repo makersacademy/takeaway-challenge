@@ -4,8 +4,9 @@ describe Takeaway do
   let(:dish_double) { double :dish, dish_number: 1, dish_name: 'Chicken Tikka', dish_cost: 5 }
   let(:menu_double) { double :menu, dishes: [dish_double] }
   let(:order_double) { double :order, add: [dish_double], contents: [dish_double], cost: 5, remove: [] }
+  let(:confirmation_double) { double :confirmation, send_confirmation: 'Hey James!, Your order has been confirmed' }
   before :each do
-    @takeaway = Takeaway.new(menu_double, order_double)
+    @takeaway = Takeaway.new(menu_double, order_double, confirmation_double)
   end
 
   describe 'Interacting with the menu' do
@@ -43,6 +44,15 @@ describe Takeaway do
         @takeaway.remove_from_order(dish_double.dish_number)
         @takeaway.instance_variable_set(:@current_order, [])
         expect(@takeaway.current_order).not_to include dish_double
+      end
+    end
+
+    describe '#confirm order' do
+      it 'send a confirm order call to the confirmation class' do
+        @takeaway.add_to_order(dish_double.dish_number, 2)
+       
+        expect(confirmation_double).to receive(:send_confirmation).and_return('Hey James!, Your order has been confirmed')
+        @takeaway.confirm_order
       end
     end
   end
