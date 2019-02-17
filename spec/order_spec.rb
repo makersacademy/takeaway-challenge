@@ -62,9 +62,18 @@ describe Order do
 
     let (:submission_class) { double(:submission_class, new: submission_dbl) }
 
+    let (:submission_test) {instance_double(:submission)}
+
     it 'calls Submission to submit the order' do
       allow(order).to receive(:submit).and_return(submission_dbl)
+
       expect(order.submit).to eq (submission_dbl)
+    end
+
+    it 'actually passes the order to the Submission initializer' do
+
+      # submission = instance_double(submission)
+      # expect(submission).to receive(:new).with(order)
     end
   end
 end

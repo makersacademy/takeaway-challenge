@@ -5,17 +5,17 @@
 ## Contents
 
 [Domain Modelling](#domain-modelling)  
+
 - [Initial domain Model](#initial-domain-model)  
 - [Refining the domain model](#refining-the-domain-model)  
 
 [Features](#features)  
+
 - [Overview](#overview)  
 - [(1) See a list of dishes with prices](#1-see-a-list-of-dishes-with-prices)  
 - [(2) From a list of several available dishes, select some number to order](#2-from-a-list-of-several-available-dishes-select-some-number-to-order)  
 - [(3) Review order and check total matches sum of dish prices in the order](#3-review-order-and-check-total-matches-sum-of-dish-prices-in-the-order)  
 - [(4) After placing an order, receive a text message confirmation](#4-after-placing-an-order-receive-a-text-message-confirmation)
-
-
 
 ## Domain Modelling
 

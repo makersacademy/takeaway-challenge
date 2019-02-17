@@ -45,8 +45,9 @@ class Order
     order_summary
   end
 
-  def submit
-    Submission.new(self)
+  # Is this dependency injection?
+  def submit(submission = Submission.submit_order(self))
+    submission
   end
 
 end

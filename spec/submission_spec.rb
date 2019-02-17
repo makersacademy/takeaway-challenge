@@ -29,8 +29,17 @@ describe Submission do
   end
 
   describe '.submit_order' do
-    it 'submits the valid order, and a confirmation is sent by SMS' do
-      # expect { submission.submit_order }
+
+    let (:valid_submission) { Submission.new(valid_order) }
+    it 'sends SMS order confirmation' do
+      allow(valid_submission).to receive(:send_text)
+
+      sms_text = "Thank you! Your order was placed at 17:52 and should be with you by 18:52."
+      expect(valid_submission).to receive(:send_text).with(sms_text)
+
+      valid_submission.submit_order
+
+ 
     end
   end
 end
