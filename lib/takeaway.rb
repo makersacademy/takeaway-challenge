@@ -10,7 +10,7 @@ class Takeaway
     ]
   end
 
-  def food_menu
+  def menu
     index = 1
     @dishes.each do |dish|
       puts "#{index}: #{dish[:name]} (£#{dish[:price]})"
@@ -18,22 +18,27 @@ class Takeaway
     end
   end
 
+  def show_order(order = @order)
+    order.show_items
+  end
+
   def add_to_order(dish_number)
     dish = @dishes[dish_number - 1]
     @order.add_dish(dish)
   end
 
-  def new_order(order)
+  def new_order(order = Order.new)
     @order = order
   end
 
-  def place_order(order)
+  def place_order(order = @order)
     order.place
+    send_sms_confirmation
   end
 
   def send_sms_confirmation
     sms = SMS.new
-    sms.send
+    # sms.send
     puts sms.message
   end
 

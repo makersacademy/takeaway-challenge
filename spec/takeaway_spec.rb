@@ -10,13 +10,13 @@ describe Takeaway, error_on_call: [Order] do
   end
 
   it 'shows a list of selectable items' do
-    expect(subject.food_menu).to be_a Array
+    expect(subject.menu).to be_a Array
   end
 
   it 'places an order' do
     subject.new_order(order)
     allow(order).to receive(:place)
-    subject.place_order(order)
+    allow(subject).to receive(:place_order).with(:order)
     allow(order).to receive(:placed?) { true }
     expect(subject.order.placed?).to eq true
   end
@@ -26,6 +26,10 @@ describe Takeaway, error_on_call: [Order] do
     expect(order.dishes).to include rice
   end
 
-  it ''
+  it 'shows the items on the order' do
+    allow(order).to receive(:dishes).and_return([rice])
+    allow(order).to receive(:show_items)
+    expect(order.dishes).to include rice
+  end
 
 end
