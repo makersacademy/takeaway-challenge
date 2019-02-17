@@ -3,6 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
+  # we've injected our order, and now we need to interact with it
   let(:menu) {double(:menu, print: printed_menu)}
   let(:printed_menu) { "Chicken £3.50" }
   let(:order) { double(:order) }
