@@ -19,13 +19,6 @@ describe Order do
     expect(order.dishes).to eq(dishes)
   end
 
-  # it 'lets me order any quantity of available dishes' do
-  #   dish = "Pizza"
-  #   quantity = 2
-  #   order_double = double(:dish => dish, :quantity => quantity)
-  #   expect(subject.add(order_double)).to eq "#{dish}, #{quantity}"
-  # end
-
   # it 'doesnt let me select dishes that are not on the menu' do
   #   allow(menu).to receive(:has_dish?).with(:beef).and_return(false)
   #   expect{ order.add(:beef, 2)}.to raise_error NoItemError, "Beef is not on the menu!"

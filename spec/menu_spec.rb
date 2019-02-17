@@ -3,9 +3,6 @@ require 'menu'
 describe Menu do
 
   subject(:menu) { described_class.new(dishes)}
-  # it's not a good to create the menu is the class itself, so here
-  # we're injecting the dishes hash into the class object when it
-  # is initialized.
   let(:dishes) { { chicken: 3.50, falafel: 4.50 } }
 
   it 'is created with a list of dishes and prices' do

@@ -14,14 +14,6 @@ describe Takeaway do
     expect(subject.print_menu).to eq(printed_menu)
   end
 
-  # describe "#place order"
-  # it 'lets me order any quantity of available dishes' do
-  #   dish = "Pizza"
-  #   quantity = 2
-  #   order_double = double(:dish => dish, :quantity => quantity)
-  #   expect(subject.add_order(order_double)).to eq "#{dish}, #{quantity}"
-  # end
-
   it 'can order some number of several available dishes' do
     expect(order).to receive(:add).twice
     takeaway.place_order(dishes)
