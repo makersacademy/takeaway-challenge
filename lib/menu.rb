@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :dishes, :selection
+  attr_reader :dishes
 
   def initialize
     @dishes = [{ :dish => "Chicken", :price => "£3.50" },
@@ -11,4 +11,7 @@ class Menu
     @dishes.map { |x| x.values.join(" ") }
   end
 
+  # def has_dish?(dish)
+  #   !@dishes[dish].nil?
+  # end
 end
