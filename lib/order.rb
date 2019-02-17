@@ -51,14 +51,9 @@ end
 
 def place_order
   raise "Incorrect total" if check_sum == false
-  ordered_food = Hash.new(0)
-  @ordered_items_name.each { |counts|  ordered_food[counts] += 1 }
-   p "You have ordered:"
-  ordered_food.each do |dish, counts|
-    p "#{dish}: x #{counts}"
-  end
+    total_each_item
     p "Total cost: GBP #{@total_price}"
-    p "Thank you! Your order was placed and will be delivered before 18:52."
+    p "Thank you for your order. You will shortly receive a text."
  end
 
 
@@ -76,17 +71,26 @@ def sorted
       @sorted_by_name[name_of_dish].push(price_of_dish)
     end
   end
+
+  def total_each_item
+    @ordered_food_name = Hash.new(0)
+    @ordered_items_name.each { |counts|  @ordered_food_name[counts] += 1 }
+    @ordered_food_price = Hash.new(0)
+    @ordered_items_price.each { |counts|  @ordered_food_price[counts] += 1 }
+    p "You have ordered:"
+    @ordered_food_name.each do |dish, counts|
+      p "#{dish}: #{@sorted_by_name[dish]} x #{counts}"
+    end
+  end
+
 end
 
+order = Order.new
 
-
-
- order = Order.new
-
- p order.has_dish("NACHOS")
- p order.has_dish("PIZZA")
-  order.select_dish("NACHOS", 2)
-  order.select_dish("MAC AND CHEESE", 1)
- p order.ordered_total
- p order.check_sum
- order.place_order
+p order.has_dish("NACHOS")
+p order.has_dish("PIZZA")
+order.select_dish("NACHOS", 2)
+order.select_dish("MAC AND CHEESE", 1)
+p order.ordered_total
+p order.check_sum
+order.place_order

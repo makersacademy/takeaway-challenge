@@ -22,7 +22,13 @@ class Dishes
       end
   end
 
+  def price(dish_name)
+    price_hash = @dish_list.find {|dish_list| dish_list[:name] == dish_name }
+    price_hash[:price]
+  end
+
 end
 
-# dishes = Dishes.new
-# dishes.see_dishes
+ dishes = Dishes.new
+ dishes.see_dishes
+ p dishes.price("NACHOS")
