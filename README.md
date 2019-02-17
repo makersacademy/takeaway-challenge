@@ -68,6 +68,19 @@ I've used Rubocop to keep the code quality in-line with expected standards.
 ## Using this Code
 - Clone this repo to your local machine.
 - Run ```bundle install``` to install necessary gems
+- Run ```touch lib/secret.rb``` to create a file to hold all of Twilio API key, etc and use the following code:
+```
+class Secret
+  attr_reader :account_sid, :auth_token, :origin, :destination
+
+  def initialize
+    @account_sid = 'YOUR_SID_HERE'
+    @auth_token = 'YOUR_TOKEN_HERE'
+    @destination = '+000000000'
+    @origin = '+00000000'
+  end
+end
+```
 - Use IRB as described below to interact with the Takeaway
 
 Run IRB with the Ruby files required-in:
