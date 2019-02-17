@@ -11,5 +11,6 @@ describe Submission do
   end
 
   it 'receives a valid order, and it is submitted' do
+    
   end
 end

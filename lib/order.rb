@@ -44,8 +44,8 @@ class Order
     order_summary
   end
 
-  def submit_order
-    
+  def submit
+    Submission.new(self)
   end
 
 end

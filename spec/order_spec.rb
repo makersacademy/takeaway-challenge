@@ -56,12 +56,15 @@ describe Order do
 
   describe '.submit' do
 
+    # Need to figure out how to test that submit is actually able to call Submission
+
     let (:submission_dbl) { double(:submission_dbl, order: order ) }
 
     let (:submission_class) { double(:submission_class, new: submission_dbl) }
 
     it 'calls Submission to submit the order' do
-      expect(order.submit).to change(submission_dbl.order).to(order)
+      allow(order).to receive(:submit).and_return(submission_dbl)
+      expect(order.submit).to eq (submission_dbl)
     end
   end
 end
