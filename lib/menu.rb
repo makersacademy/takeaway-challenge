@@ -12,7 +12,7 @@ class Menu
   end
 
   def list
-    @menu.each { |hash| puts " #{hash[:item]}. $#{hash[:price]}" }
+    @menu.each { |hash| puts "#{hash[:item]}. $#{hash[:price]}" }
   end
 
 end
