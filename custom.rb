@@ -3,7 +3,7 @@ require './lib/menu.rb'
 require './lib/basket_item.rb'
 require './lib/basket.rb'
 require './lib/order.rb'
-
+require './lib/message_sender.rb'
 pizza = Dish.new("Pizza", 10.00)
 pasta = Dish.new("Pasta", 15.00)
 rice = Dish.new("Rice", 5.00)
@@ -20,4 +20,6 @@ p basket.basket_total_price
 p basket.remove_item(selected_dish)
 p basket.basket_items
 p basket.basket_total_price
-p order = Order.new(basket.basket_items, basket.basket_total_price, "My address", "+447540166527")
+p messenger = MessageSender.new
+p order = Order.new(basket.basket_items, basket.basket_total_price, "My address", "+447540166527", messenger)
+p order.confirm
