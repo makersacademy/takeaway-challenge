@@ -3,7 +3,9 @@ require_relative 'order'
 
 class Takeaway
 
-  def initialize(order = nil, sms = nil)
+attr_reader :menu
+
+  def initialize(order_class = Order, text = nil)
     @order = Order.new
   end
 
