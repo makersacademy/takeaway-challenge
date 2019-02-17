@@ -23,6 +23,8 @@ class Order
   def place
     if @total.positive?
       @complete = true
+      @total = 0
+      @dishes = []
     else
       puts 'You have no items in your order'
     end
@@ -38,7 +40,7 @@ class Order
 
   def send_sms_confirmation
     sms = SMS.new
-    # sms.send
+    sms.send
     puts sms.message
   end
 

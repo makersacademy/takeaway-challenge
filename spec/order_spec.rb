@@ -32,4 +32,17 @@ describe Order do
     subject.place
     expect(subject.placed?).to eq false
   end
+
+  it 'has no items inside once placed' do
+    subject.add_dish(rice)
+    subject.place
+    expect(subject.dishes).to eq []
+  end
+
+  it 'has a zero total once placed' do
+    subject.add_dish(rice)
+    subject.place
+    expect(subject.total).to eq 0
+  end
+
 end
