@@ -134,7 +134,8 @@ restaurant.confirmation_sending("1, meat dish, 4, pesceterian, 5")
 
 After the above commands done on the irb, I should receive a message telling that my order was placed and it will be delivered in an hour.
 
+Now, We have orders, so it would be good to make an order class. every order has a string as the argument.
 
-Now, I think a class named order would be a good class to make. we will try it like below:
+require "./lib/order.rb"
 
-require "order.rb"
+order = Order.new("1,meat dish, 2, vegeterian dish,3")
