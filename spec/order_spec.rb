@@ -15,10 +15,15 @@ describe Order do
     allow(menu).to receive(:price).with(:fish).and_return(2.50)
   end
 
-  describe "#add order"
-  it 'lets me select several dishes' do
+  def create_order
     order.add(:chicken, 2)
     order.add(:fish, 1)
+  end
+# we create a create_order method here in the spec file to DRY out the tests
+
+  describe "#add order"
+  it 'lets me select several dishes' do
+    create_order
     expect(order.dishes).to eq(dishes)
   end
 
@@ -29,8 +34,7 @@ describe Order do
 
   describe "calculate total for dishes added"
   it 'calculates the total for the order' do
-    order.add(:chicken, 2)
-    order.add(:fish, 1)
+    create_order
     total = 8.50
     expect(order.total).to eq 8.50
   end
