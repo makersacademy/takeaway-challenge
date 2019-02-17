@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'submission'
 
 class Order
   attr_reader :total, :selected_dishes
