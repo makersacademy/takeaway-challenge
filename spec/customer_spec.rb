@@ -1,7 +1,7 @@
 require 'customer'
 
 describe Customer do
-  let(:dish) {double :dish}
+  let(:dish) { double :dish }
 
   before :each do
     @customer = Customer.new
@@ -43,12 +43,12 @@ describe Customer do
 
   describe "reciept" do
 
-    let(:pepperoni){double :pepperoni, :price => 700, :name => "pepperoni"}
-    let(:marinara){double :marinara, :price => 500, :name => "marinara" }
-    let(:four_cheeses){double :four_cheeses, :price => 700, :name => "four cheeses"}
+    let(:pepperoni) { double :pepperoni, :price => 700, :name => "pepperoni" }
+    let(:marinara) { double :marinara, :price => 500, :name => "marinara" }
+    let(:four_cheeses) { double :four_cheeses, :price => 700, :name => "four cheeses" }
 
     it "outputs nothing when nothing has been ordered" do
-      expect{@customer.reciept}.to_not output.to_stdout
+      expect { @customer.reciept }.to_not output.to_stdout
     end
 
     context "outputs a list of what has been orderd" do
@@ -56,19 +56,19 @@ describe Customer do
         @customer.add_to_order(pepperoni)
         @customer.add_to_order(marinara, 2)
         message = "pepperoni : £7.00\nmarinara : £5.00\nmarinara : £5.00\n"
-        expect{@customer.reciept}.to output(message).to_stdout
+        expect { @customer.reciept }.to output(message).to_stdout
       end
 
       it "four cheeses and 3 pepperoni" do
         @customer.add_to_order(four_cheeses)
         @customer.add_to_order(pepperoni, 3)
         message = "four cheeses : £7.00\npepperoni : £7.00\npepperoni : £7.00\npepperoni : £7.00\n"
-        expect{@customer.reciept}.to output(message).to_stdout
+        expect { @customer.reciept }.to output(message).to_stdout
       end
     end
   end
 
   it "Sends a text when order is complete" do
-    @customer.complete_order #and a text is recieved irl
+    @customer.complete_order # and a text is recieved irl
   end
 end

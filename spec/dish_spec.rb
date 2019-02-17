@@ -2,7 +2,7 @@ require 'dish'
 
 describe Dish do
   it "Has a name after creation that is readable" do
-    dish = Dish.new("dish",600)
+    dish = Dish.new("dish", 600)
     expect(dish.name).to eq "dish"
   end
 
