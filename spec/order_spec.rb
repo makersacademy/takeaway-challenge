@@ -7,10 +7,7 @@ describe Order do
   let(:menu) {double(:menu)} # You can use a verifying double, here, which
   # is {instance_double("Menu")}. It lets us check the menu class for the has_dish? method.
 
-  let(:dishes) do
-    {chicken: 2,
-    fish: 1}
-  end
+  let(:dishes) {{chicken: 2, fish: 1}}
 
   before do
     allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)

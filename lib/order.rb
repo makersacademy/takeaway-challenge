@@ -6,4 +6,6 @@ class Order
      @quantity = quantity
    end
 
+   def add
+   end
 end
