@@ -18,4 +18,8 @@ describe Menu do
       expect(STDOUT).to have_received(:puts).with(dish_to_string(dish))
     end
   end
+
+  describe 'when customer selects a dish to add to their order' do
+    it 'should '
+  end
 end
