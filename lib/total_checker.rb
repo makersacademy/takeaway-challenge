@@ -12,7 +12,7 @@ class TotalChecker
 
 private
   def calc
-    @basket.inject(0) {|sum, hash| sum + hash[:price]}
+    @basket.inject(0) { |sum, hash| sum + hash[:price] }
   end
 
 end

@@ -15,7 +15,7 @@ describe TotalChecker do
 
   it "raises an error if the figure provided is not equal to total" do
     t = TotalChecker.new(basket_double, 5.00)
-    expect{ t.check }.to raise_error("Please check total again.")
+    expect { t.check }.to raise_error("Please check total again.")
   end
 
 end

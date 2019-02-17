@@ -14,15 +14,11 @@ class Order
   end
 
   def total
-    @total = @view_basket.inject(0) {|sum, hash| sum + hash[:price]}
+    @total = @view_basket.inject(0) { |sum, hash| sum + hash[:price] }
   end
 
-  def total_checker(checker_class = TotalChecker)
-    checker_class.new(@view_basket, @total).check
-  end
-
-  def place_order
-    true
+  def place_order(total, sms = SendSMS.new)
+    sms.send if total_checker(total)
   end
 
 private
@@ -32,6 +28,10 @@ private
         return menu_price if menu_dish == dish
       end
     end
+  end
+
+  def total_checker(total)
+    TotalChecker.new(@view_basket, total).check
   end
 
 end

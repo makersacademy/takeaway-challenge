@@ -35,12 +35,11 @@ describe Order do
     expect(@order.total).to eq(17.60)
   end
 
-  # it "total checker returns true if total_checker return true" do
-  #   expect(@order.total_checker(total_checker)).to eq true
-  # end
-
   it "can place an order" do
-    expect(@order.place_order).to eq true
+    sms_double = double(:sms)
+    allow(sms_double).to receive(:send).and_return("message sent")
+    allow(@order).to receive(:total_checker).and_return true
+    expect(@order.place_order(17.60, sms_double)).to eq "message sent"
   end
 
 end
