@@ -6,4 +6,8 @@ class Order
     @delivery_address = delivery_address
     @contact_phone = contact_phone
   end
+
+  def summary
+    self
+  end
 end
