@@ -11,20 +11,34 @@ class Order
 
     @items << { dish: dish, qty: qty }
 
-    view_total
+    formatted_total
   end
 
-  def view_total
+  def formatted_total
+    format_with_currency(calculate_total)
+  end
+
+  def calculate_total
     total = 0
     @items.each do |item|
       total += item[:dish].price * item[:qty]
     end
-    format_with_currency(total)    
+    total
   end
 
   def format_with_currency(total)
     "£#{'%.2f' % total}"
   end
 
-  private :view_total, :format_with_currency
+  def checkout(expected_total)
+    check_matches_order_total(expected_total)
+
+  end
+
+  def check_matches_order_total(expected_total)
+    error_message = 'Your expected total does not match order total'
+    raise error_message if expected_total != calculate_total
+  end
+
+  private :formatted_total, :format_with_currency, :formatted_total
 end
