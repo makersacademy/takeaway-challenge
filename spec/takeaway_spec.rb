@@ -3,6 +3,7 @@ require './lib/takeaway'
 describe Takeaway, error_on_call: [Order] do
   let(:rice) { { name: :rice, price: 3 } }
   let(:order) { { total: 0, dishes: [] } }
+  subject(:takeaway) { Takeaway.new }
 
   it 'has a menu of dishes' do
     allow(subject).to receive(:dishes).and_return([rice])

@@ -20,6 +20,7 @@ class Takeaway
 
   def show_order(order = @order)
     order.show_items
+    puts "TOTAL: (£#{@order.total})"
   end
 
   def add_to_order(dish_number)
@@ -38,7 +39,7 @@ class Takeaway
 
   def send_sms_confirmation
     sms = SMS.new
-    # sms.send
+    sms.send
     puts sms.message
   end
 
