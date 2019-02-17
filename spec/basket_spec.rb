@@ -2,6 +2,8 @@ require 'basket'
 
 describe Basket do
 
+  let ( :your_basket ) { Basket.new }
+
   it "initializes a new basket with an empty array" do
     expect(subject.basket).to eq([])
 
@@ -17,6 +19,11 @@ describe Basket do
 
   it "has a Total method" do
     expect(subject).to respond_to(:total)
+  end
+
+  it "can put something in the basket with add" do
+    your_basket.add("Tasty treats")
+    expect(your_basket.basket).to include("Tasty treats")
   end
 
 end

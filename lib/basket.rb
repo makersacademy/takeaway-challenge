@@ -7,7 +7,7 @@ class Basket
   end
 
   def add(item_to_add)
-
+    @basket << item_to_add
   end
 
   def remove(item_to_remove)
