@@ -15,10 +15,14 @@ class Takeaway
   end
 
   def place_order(dishes)
+    add_dishes(dishes)
+    order.total
+  end
+
+  def add_dishes(dishes)
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
-    order.total
   end
 
 end

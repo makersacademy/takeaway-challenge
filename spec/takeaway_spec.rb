@@ -3,7 +3,6 @@ require 'takeaway'
 describe Takeaway do
 
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
-  # we've injected our order, and now we interact with it using place_order
   let(:menu) { double(:menu, print: printed_menu) }
   let(:printed_menu) { "Chicken £3.50" }
   let(:order) { double(:order, total: 15.50) }
@@ -26,5 +25,9 @@ describe Takeaway do
     total = takeaway.place_order(dishes)
     expect(total).to eq(15.50)
   end
+
+  # it 'sends an SMS when the order has been placed' do
+  #   takeaway.place_order(dishes)
+  # end
 
 end
