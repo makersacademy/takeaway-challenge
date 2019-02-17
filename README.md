@@ -144,4 +144,3 @@ Submission.new(order)
 "Thank you! Your order was placed at 17:52 and should be with you by 18:52."
 
 ```
-

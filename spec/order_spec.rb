@@ -30,23 +30,23 @@ describe Order do
   end
 
   describe '.review' do
-    let (:expected_output) {
-      expected_output = ""
+    let (:order_summary) {
+      order_summary = ""
       
-      expected_output << "Order Summary:\n\n"
-      expected_output << "Veggie Burger\n"
-      expected_output << "\u00A32.75 each, x1, subtotal: \u00A32.75\n\n"
-      expected_output << "Small Lemonade\n"
-      expected_output << "\u00A30.60 each, x1, subtotal: \u00A30.60\n\n"
-      expected_output << "Small Fries\n"
-      expected_output << "\u00A31.00 each, x2, subtotal: \u00A32.00\n\n"
-      expected_output << "             GRAND TOTAL: \u00A35.35"
+      order_summary << "Order Summary:\n\n"
+      order_summary << "Veggie Burger\n"
+      order_summary << "\u00A32.75 each, x1, subtotal: \u00A32.75\n\n"
+      order_summary << "Small Lemonade\n"
+      order_summary << "\u00A30.60 each, x1, subtotal: \u00A30.60\n\n"
+      order_summary << "Small Fries\n"
+      order_summary << "\u00A31.00 each, x2, subtotal: \u00A32.00\n\n"
+      order_summary << "             GRAND TOTAL: \u00A35.35"
 
-      expected_output
+      order_summary
     }
 
     it 'displays order summary' do
-      expect(order.review).to eq expected_output
+      expect(order.review).to eq order_summary
     end
 
     it 'raises error if GRAND TOTAL and actual total do not match' do

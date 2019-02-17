@@ -20,12 +20,16 @@ class Menu
   ]
 
   def list_dishes
-    list_of_dishes = []
+    list_of_dishes = ""
 
     DISHES.each_with_index do |dish, index|
       list_of_dishes << "#{index + 1}. #{dish[:name]} - \u00A3%0.2f\n" % dish[:price]
     end
 
-    puts "#{list_of_dishes.join}"
+    puts list_of_dishes
+
+    list_of_dishes
+
+    #puts "#{list_of_dishes.join}"
   end
 end
