@@ -48,7 +48,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 I worked on this solution solo for the first day, implementing the higher level functionality with the three main classes (Takeaway, Menu, Order).
-On the second day I followed this walkthrough to add functionality (dependency injections, etc)
+On the second day I followed this walkthrough to add functionality, inject objects, etc
 Source: https://www.youtube.com/watch?v=mgiJKdH9x8c
 
 ____________
