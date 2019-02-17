@@ -20,23 +20,26 @@ class Restaurant
 
   def ask_order(customer, twilio_class = Twilio::REST::Client)
     client = twilio_class.new(TWILIO_SID, TWILIO_TOKEN)
-    client.messages.create(from: TWILIO_NUMBER,to: customer.phone_number(),body: order_taking_message
+    client.messages.create(from: TWILIO_NUMBER, to: customer.phone_number(),
+    body: order_taking_message
     )
   end
 
   def check_order(order_string)
     order_split = order_splitting(order_string)
     order_numbers = order_number_array(order_split)
-    raise "Sum of dishes is not correct" if order_numbers[0..(order_numbers.length-2)].sum != order_numbers.last
+    if order_numbers[0..(order_numbers.length - 2)].sum != order_numbers.last
+      raise "Sum of dishes is not correct"
+    end
   end
 
   def confirmation_sending(customer, order_string, twilio_class = Twilio::REST::Client)
     check_order(order_string)
     client = twilio_class.new(TWILIO_SID, TWILIO_TOKEN)
-    client.messages.create(from: TWILIO_NUMBER,to: customer.phone_number(),body: confirmation_message
+    client.messages.create(from: TWILIO_NUMBER, to: customer.phone_number(),
+    body: confirmation_message
     )
   end
-
 
   private
 
@@ -53,15 +56,15 @@ class Restaurant
 
   def order_number_array(order_array)
     ar = []
-    i=0
+    i = 0
     while i <= order_array.length
-      ar.push(order_array[i].to_i)if i%2 == 0
+      ar.push(order_array[i].to_i)if (i%2).zero?
       i += 1
     end
     return ar
   end
 
   def confirmation_message(time_class = Time)
-    "Thank you! Your order was placed and will be delivered before #{Time.new().hour+1}:#{Time.new().min} "
+    "Thank you! Your order was placed and will be delivered before #{time_class.new().hour+1}:#{Time.new().min} "
   end
 end

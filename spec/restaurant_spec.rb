@@ -19,11 +19,11 @@ describe Restaurant do
 
   describe "#check order" do
     it "An error is raised when the sum of dishes is not equal to the sum of dishes ordered." do
-      expect {subject.check_order("1,meat dish,2,vegeterian dish,4")}.to raise_error("Sum of dishes is not correct")
+      expect { subject.check_order("1,meat dish,2,vegeterian dish,4") }.to raise_error("Sum of dishes is not correct")
     end
 
     it "Does not show an error when the sum of the dishes is equal to the sum of dishes ordered" do
-      expect {subject.check_order("1,meat dish,2,vegeterian dish,3")}.not_to raise_error
+      expect { subject.check_order("1,meat dish,2,vegeterian dish,3") }.not_to raise_error
     end
   end
 
@@ -32,7 +32,7 @@ describe Restaurant do
       order_string_double = double()
       customer_double = double()
       message_double = double()
-      client_double = double( messages: message_double)
+      client_double = double(messages: message_double)
       twilio_class_double = double(new: client_double)
 
       expect(message_double).to receive(:create)
