@@ -40,4 +40,30 @@ describe Customer do
     @customer.add_to_order(dish)
     expect(@customer.order_total).to eq 3000
   end
+
+  describe "reciept" do
+
+    let(:pepperoni){double :pepperoni, :price => 700, :name => "pepperoni"} 
+    let(:marinara){double :marinara, :price => 500, :name => "marinara" }
+    let(:four_cheeses){double :four_cheeses, :price => 700, :name => "four cheeses"}
+
+    it "outputs nothing when nothing has been ordered" do
+      expect{@customer.reciept}.to_not output.to_stdout
+    end
+
+    context "outputs a list of what has been orderd" do
+      it "pepperoni and 2 marinara" do
+        @customer.add_to_order(pepperoni)
+        @customer.add_to_order(marinara, 2)
+        message = "pepperoni : 700\n marinara : 500\n marinara : 500"
+        expect{@customer.reciept}.to output(message).to_stdout
+      end
+
+      it "four cheeses and 3 pepperoni" do
+        @customer.add_to_order(four_cheeses)
+        @customer.add_to_order(pepperoni, 3)
+        message = "four_cheeses : 700\n pepperoni : 700\n pepperoni : 700\n pepperoni : 700"
+      end
+    end
+  end
 end
