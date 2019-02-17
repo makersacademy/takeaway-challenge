@@ -17,3 +17,5 @@ t = TotalChecker.new([{:dish=>"chips", :quantity=>2, :price=>2.0}, {:dish=>"chic
 t.check
 
 o.place_order
+
+bundle exec ruby ./lib/send-sms.rb

@@ -18,7 +18,7 @@ class Order
   end
 
   def total_checker(checker_class = TotalChecker)
-    t = checker_class.new(@view_basket, @total).check
+    checker_class.new(@view_basket, @total).check
   end
 
   def place_order
