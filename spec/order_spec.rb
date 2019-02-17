@@ -3,7 +3,7 @@ require './lib/order.rb'
 describe Order do
   let(:dish_double) { double(:dish, price: 5.00) }
   let(:menu_double) { double(:menu, select: dish_double) }
-  let(:messenger_double) { double(:messenger, send: nil) }
+  let(:messenger_double) { double(:messenger, send_message: nil) }
 
   let(:order) { Order.new(menu: menu_double, messenger: messenger_double) }
 
@@ -74,7 +74,7 @@ describe Order do
 
         expected_message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
         
-        expect(messenger_double).to have_received(:send)
+        expect(messenger_double).to have_received(:send_message)
           .with(message: expected_message, mobile_number: mobile_number)
       end
     end
