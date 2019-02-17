@@ -26,4 +26,6 @@ describe Takeaway, error_on_call: [Order] do
     expect(order.dishes).to include rice
   end
 
+  it ''
+
 end

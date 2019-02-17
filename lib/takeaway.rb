@@ -31,4 +31,10 @@ class Takeaway
     order.place
   end
 
+  def send_sms_confirmation
+    sms = SMS.new
+    sms.send
+    puts sms.message
+  end
+
 end
