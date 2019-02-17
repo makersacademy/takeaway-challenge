@@ -1,21 +1,21 @@
 require './lib/order.rb'
 
 describe Order do
-  let (:dish_double) { double(:dish, price: 5.00)}
-  let (:menu_double) { double(:menu, select: dish_double)}
-  let (:messenger_double) { double(:messenger, send: nil) }
+  let(:dish_double) { double(:dish, price: 5.00) }
+  let(:menu_double) { double(:menu, select: dish_double) }
+  let(:messenger_double) { double(:messenger, send: nil) }
 
-  let (:order) { Order.new(menu: menu_double, messenger: messenger_double) }
+  let(:order) { Order.new(menu: menu_double, messenger: messenger_double) }
 
-  let (:dish_no) { 1 }
-  let (:qty) { 5 }
+  let(:dish_no) { 1 }
+  let(:qty) { 5 }
 
-  let (:mobile_number) { '077361387311' }
-  let (:checkout_timestamp) { Time.new(2018,11,1,18,0,0, "+00:00") }
-  let (:delivery_time) { "19:00" }
+  let(:mobile_number) { '077361387311' }
+  let(:checkout_timestamp) { Time.new(2018, 11, 1, 18, 0, 0, "+00:00") }
+  let(:delivery_time) { "19:00" }
 
   before(:each) do
-    allow(DateTime).to receive(:now).and_return(checkout_timestamp)
+    allow(Time).to receive(:now).and_return(checkout_timestamp)
   end
 
   describe 'when customer selects to add dish to their order' do
@@ -58,7 +58,8 @@ describe Order do
         expect { order.checkout(
           expected_total: 25.75, 
           mobile_number: mobile_number
-          ) }
+          )
+        }        
           .to raise_error(
           'Your expected total does not match order total'
         )

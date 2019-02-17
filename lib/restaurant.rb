@@ -1,7 +1,7 @@
 
 
 class Restaurant
-  def initialize(menu_class: menu_class, order_class: order_class)
+  def initialize(menu_class:, order_class:)
     @menu = menu_class.new
     @order_class = order_class
   end

@@ -1,19 +1,19 @@
 require './lib/menu.rb'
 
 describe Menu do
-  let (:dish_double_1) { double(:dish, name: 'Southern fried chicken', price: 9.00) }
-  let (:dish_double_2) { double(:dish, name: 'Chicken-skin fries', price: 3.00) }
-  
-  let (:dishes) { {
+  let(:dish_double_1) { double(:dish, name: 'Southern fried chicken', price: 9.00) }
+  let(:dish_double_2) { double(:dish, name: 'Chicken-skin fries', price: 3.00) }
+
+  let(:dishes) { {
     1 => dish_double_1,
     2 => dish_double_2
    } }
 
-  let (:menu) { Menu.new(dishes: dishes) }
+  let(:menu) { Menu.new(dishes: dishes) }
 
   def dish_to_string(number, dish)
     dish_price = '%.2f' % dish.price
-    dish_as_string = "#{number.to_s}. "\
+    "#{number}. "\
       "#{dish.name} - £#{dish_price}"
   end
 

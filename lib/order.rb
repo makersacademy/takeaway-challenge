@@ -41,11 +41,12 @@ class Order
   end
 
   def order_confirmation_message
-    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    "Thank you! Your order was placed and will " + 
+    "be delivered before #{delivery_time}"
   end
 
   def delivery_time
-    time = DateTime.now
+    time = Time.now
     (time + 60 * 60).strftime("%H:%M")
   end
 
@@ -54,5 +55,12 @@ class Order
     raise error_message if expected_total != calculate_total
   end
 
-  private :formatted_total, :format_with_currency, :formatted_total, :delivery_time, :check_matches_order_total, :order_confirmation_message
+  private(
+    :formatted_total, 
+    :format_with_currency, 
+    :formatted_total, 
+    :delivery_time, 
+    :check_matches_order_total, 
+    :order_confirmation_message
+  )
 end

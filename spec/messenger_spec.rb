@@ -1,15 +1,15 @@
 require './lib/messenger.rb'
 
 describe Messenger do
-  let (:messenger) { Messenger.new }
-  let (:messages_double) { double('messages', create: nil)}
-  let (:twilio_client_double) { double('twilio_client', messages: messages_double) }
-  let (:twilio_class_double) { double('twilio_class', new: twilio_client_double) }
-  
-  let (:mobile_number) { '077361387311' }
-  let (:message) { 'some message' }
+  let(:messenger) { Messenger.new }
+  let(:messages_double) { double('messages', create: nil) }
+  let(:twilio_client_double) { double('twilio_client', messages: messages_double) }
+  let(:twilio_class_double) { double('twilio_class', new: twilio_client_double) }
 
-  let (:expected_message) { 
+  let(:mobile_number) { '077361387311' }
+  let(:message) { 'some message' }
+
+  let(:expected_message) { 
     {
       from: Messenger::TWILIO_PHONE_NUMBER,
       to: mobile_number,

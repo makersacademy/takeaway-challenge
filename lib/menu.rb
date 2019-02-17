@@ -11,7 +11,7 @@ class Menu
 
   def display_dish(number, dish)
     dish_price = '%.2f' % dish.price
-    dish_as_string = "#{number.to_s}. "\
+    dish_as_string = "#{number}. "\
       "#{dish.name} - £#{dish_price}"
     puts dish_as_string
   end

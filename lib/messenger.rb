@@ -6,11 +6,11 @@ class Messenger
   AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
 
   def initialize
-    client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
+    @twilio_client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
   end
 
   def send_message(mobile_number:, message:)
-    client.messages.create(
+    @twilio_client.messages.create(
       from: TWILIO_PHONE_NUMBER,
       to: mobile_number,
       body: message
