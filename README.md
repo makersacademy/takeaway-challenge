@@ -53,10 +53,17 @@ I wanted this program to have an interactive feel to it, which I think prevented
 This project is built with Ruby, using the Twilio API.
 
 ## Problems
-As mentioned above, my test coverage is not at 100% where I'd like to have it. 93.23% is below the recommended 95% for this project. I'm still learning to test in isolation, and given more time/expertise, I would raise this percentage even higher.
+As mentioned above, my test coverage is not at 100% where I'd like to have it. 93.28% is below the recommended 95% for this project. I'm still learning to test in isolation, and given more time/expertise, I would raise this percentage even higher.
 
 ## Improvements
 Originally, I wanted this to have an interactive feel, and earlier versions did, but this led to problems with RSpec unit tests and coverage, so I opted for a less interactive version to keep testing happy. In the future, I'd like to put this feature back in.
+
+## Testing
+RSpec tests are all passing, with 93.28% which I would like to improve given more time and expertise.
+All tests are isolated from other classes.
+
+## Code Quality
+I've used Rubocop to keep the code quality in-line with expected standards.
 
 ## Using this Code
 - Clone this repo to your local machine.
