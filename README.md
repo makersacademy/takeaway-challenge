@@ -122,3 +122,14 @@ restaurant.check_order("1, meat dish, 4, pesceterian, 10")
 
 ,,,, We want an error to be raised by the above order, because 10 is not the sum of 4 and 1...
 Here we will have some assumption. We will only test if the sum is correct or not. We will not test edge cases like not making the order in the proper string variable.
+
+
+Now, we want to send a message to a customer and say the order was placed and the food will be delivered in 1 hour from now.
+
+require "./lib/customer.rb"
+customer = Customer.new(ENV['MY_NUMBER'])
+require "./lib/restaurant.rb"
+restaurant = Restaurant.new()
+restaurant.confirmation_sending("1, meat dish, 4, pesceterian, 5")
+
+After the above commands done on the irb, I should receive a message telling that my order was placed and it will be delivered in an hour.

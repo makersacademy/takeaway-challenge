@@ -26,4 +26,19 @@ describe Restaurant do
       expect {subject.check_order("1,meat dish,2,vegeterian dish,3")}.not_to raise_error
     end
   end
+
+  describe "#confirmation_sending" do
+    it "Sends a message to me when I make a correct order" do
+      order_string_double = double()
+      customer_double = double()
+      message_double = double()
+      client_double = double( messages: message_double)
+      twilio_class_double = double(new: client_double)
+
+      expect(message_double).to receive(:create)
+      expect(customer_double).to receive(:phone_number)
+      expect(subject).to receive(:check_order).with(order_string_double)
+      subject.confirmation_sending(customer_double, order_string_double, twilio_class_double)
+    end
+  end
 end
