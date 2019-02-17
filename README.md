@@ -37,5 +37,19 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 ### Approach
+Firstly, I built the domain model by pulling out the objects and methods from the user stories above (Order, Order.place, etc). Once I had this diagram, I used the TDD approach with IRB to run feature test on how I wnated the program to behave:
+```
+ta = Takeaway.new
+Traceback (most recent call last):
+        2: from /Users/admin/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        1: from (irb):1
+NameError (uninitialized constant Takeaway)
+```
+Chasing errors like the above, I created RSpec tests to reproduce the above NameError. Once RSpec gave me the same error above, I created the class to satisfy it, as per the Red-Green-Refactor cycle of TDD.
+
+I wanted this program to have an interactive feel to it, which I think prevented me from reaching 100% test coverage, so, given more time, I would like to learn more about testing with ```gets.chomp```, else find another method to achieve the same result of interactivity.
+
+### Problems
+As mentioned above, my test coverage is not at 100% where I'd like to have it. 92.25% is below the recommended 95% for this project. I have a feeling that ```gets.chomp``` is a possible reason for the lower-than-desired score, and given more time I would like to find a way to improve this score.
 
 ### Using this Code
