@@ -32,12 +32,12 @@ describe Customer do
     dish2 = double(:dish2, :price => 1000)
     @customer.add_to_order(dish, 2)
     @customer.add_to_order(dish2, 1)
-    expect(@customer.order_total).to eq "£20.00"
+    expect(@customer.order_total).to eq 2000
   end
 
   it "has an order that costs £30 when £30 worth of dishes are ordered" do
     allow(dish).to receive(:price).and_return(3000)
     @customer.add_to_order(dish)
-    expect(@customer.order_total).to eq "£30.00"
+    expect(@customer.order_total).to eq 3000
   end
 end
