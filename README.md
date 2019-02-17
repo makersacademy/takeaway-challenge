@@ -6,17 +6,19 @@
 
 _In these messages,_ `{ object }` _is an object returned and as in Ruby,_ `(object)` _after a message name is an object received (i.e. argument)_
   
-| Object         | Messages                     |           
+| Object         | Messages                     |  
 | -------------  | ---------------------------- |
 | **Dish**           | `name` { `attr_reader :name` }<br>`price` { `attr_reader :price` } |  
 | **Menu** | `list_dishes` { `dishes` }         |  
-| **Order**          | `add`(`dish`, `quantity`)<br>`remove`(`dish`, `quantity`)<br>`review_order` { `selected_dishes` }<br>`total` { _sum of prices of all dishes in_ `selected_dishes` }    |  
-| **Order_submission** | `submit_order`(`order`) |  
-| **Order_confirmation** | `send_text`(`confirmation_message`)  |  
+| **Order**          | `add`(`dish`, `quantity`)<br>`remove`(`dish`, `quantity`)<br>`review` { `selected_dishes` }<br>`print_total` { prints `@total`, including currency symbol }    |  
+| **Order_Submission** | `submit_order`(`order`) |  
+| **Order_Confirmation** | `send_text`(`confirmation_message`)  |  
   
 ### Refining the domain model
-Considering that the user stories focus on the `customer` it may not be necessary to have a separate `Dish` class - the user stories of a customer do not require any manipulation of `Dish` objects.
 
+- Considering that the user stories focus on the customer it may not be necessary to have a separate `Dish` class - the user stories of a customer do not require any manipulation of `Dish` objects.  
+
+- While it would appear logical to have a `Order::remove()` method to go with `Order::add()`, the user stories do not support it. Perhaps this would be something to be dealt with when everything else is done.
 
 ## Features
 
@@ -24,7 +26,7 @@ Considering that the user stories focus on the `customer` it may not be necessar
 
 _Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52"._
 
-### (1) Can see a list of dishes with prices
+### (1) See a list of dishes with prices
 
 >As a customer  
 So that I can check if I want to order something  
@@ -56,7 +58,7 @@ menu.list_dishes
 
 ```
 
-### (2) Can select some number of several available dishes
+### (2) From a list of several available dishes, select some number to order
 
 >As a customer  
 So that I can **order** the meal I want  
@@ -82,11 +84,37 @@ order.add(10,2)
 
 ```
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+### (3) Review order and check total matches sum of dish prices in the order
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+>As a customer  
+So that I can verify that my order is correct  
+I would like to check that the total I have been given matches the sum of the various dishes in my order  
+
+```ruby
+# continuing from (2)
+
+order.print_total
+=> £5.35
+
+order.review
+=>
+"Order Summary:
+
+Veggie Burger
+£2.75 each, x1, subtotal: £2.75
+
+Small Lemonade
+£0.60 each, x1, subtotal: £0.60
+
+Small Fries
+£1.00 each, x2, subtotal: £2.00
+
+             GRAND TOTAL: £5.35"
+
 ```
+
+### (4) After placing an order, receive a text message confirmation
+
+>As a customer  
+So that I am reassured that my order will be delivered on time  
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered  
