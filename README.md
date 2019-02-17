@@ -157,7 +157,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```ruby
 # omitted: commands as in (3)
 
-Submission.new(order)
+order.submit
 =>
 "Thank you! Your order was placed at 17:52 and should be with you by 18:52."
 

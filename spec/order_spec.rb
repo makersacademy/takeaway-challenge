@@ -56,7 +56,7 @@ describe Order do
 
   describe '.submit' do
 
-    # Need to figure out how to test that submit is actually able to call Submission
+    # Need figure out how to test that submit does actually call Submission
 
     let (:submission_dbl) { double(:submission_dbl, order: order ) }
 
