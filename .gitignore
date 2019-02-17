@@ -1,2 +1,5 @@
 /**/.DS_Store
 /coverage
+send_sms.rb
+send_sms_spec.rb
+quick_start.rb
