@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+  {
+      "name": "Run RSpec - all",
+      "type": "Ruby",
+      "request": "launch",
+      "program": "${workspaceRoot}/bin/rspec",
+  },
+
+  {
+    "name": "Run unit tests",
+    "type": "Ruby",
+    "request": "launch",
+    "args": ["./spec/unit"],
+    "program": "${workspaceRoot}/bin/rspec",
+  },
+
+  {
+    "name": "Run feature tests",
+    "type": "Ruby",
+    "request": "launch",
+    "args": ["./spec/feature"],
+    "program": "${workspaceRoot}/bin/rspec",
+  },
+  ]
+}
