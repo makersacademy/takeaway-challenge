@@ -49,6 +49,8 @@ end
 
 end
 
+describe "#select_dish(food_item)" do
+
 it 'collects the selected items and their multiples' do
 
   dishes_double = double :dishes
@@ -79,6 +81,9 @@ it 'raises an error if the item is not on the list' do
   expect{ order.select_dish no_food_item,1 }.to raise_error "This item is not on the list"
 end
 
+end
+
+describe "#ordered_total(food_item)" do
 
 it 'returns the total of the selected items' do
 
@@ -93,6 +98,10 @@ it 'returns the total of the selected items' do
   order.select_dish(food_item, 2)
   expect(order.ordered_total).to eq 15
 end
+
+end
+
+describe "#check_sum" do
 
 it 'checks that the total is correct' do
 
@@ -125,6 +134,8 @@ it 'raises an error if the total is incorrect' do
   order.ordered_total
   order.check_sum
   expect{ order.place_order }.to raise_error "Incorrect total"
+
+end
 
 end
 

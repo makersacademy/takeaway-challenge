@@ -29,6 +29,6 @@ class Dishes
 
 end
 
- dishes = Dishes.new
- dishes.see_dishes
- p dishes.price("NACHOS")
+ # dishes = Dishes.new
+ # dishes.see_dishes
+ # p dishes.price("NACHOS")

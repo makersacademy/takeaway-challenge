@@ -2,7 +2,7 @@
 require_relative 'dishes'
 
 class Order
-attr_reader :ordered_items_name, :ordered_items_price
+attr_reader :ordered_items_name, :ordered_items_price, :sorted_by_name
 
   def initialize(dishes_class = Dishes)
     @dishes_class = dishes_class
@@ -70,6 +70,7 @@ def sorted
     else
       @sorted_by_name[name_of_dish].push(price_of_dish)
     end
+    @sorted_by_name
   end
 
   def total_each_item
@@ -79,18 +80,19 @@ def sorted
     @ordered_items_price.each { |counts|  @ordered_food_price[counts] += 1 }
     p "You have ordered:"
     @ordered_food_name.each do |dish, counts|
-      p "#{dish}: #{@sorted_by_name[dish]} x #{counts}"
+       p "#{dish}: #{@sorted_by_name[dish]} x #{counts}"
     end
   end
 
-end
+end 
 
-order = Order.new
 
-p order.has_dish("NACHOS")
-p order.has_dish("PIZZA")
-order.select_dish("NACHOS", 2)
-order.select_dish("MAC AND CHEESE", 1)
-p order.ordered_total
-p order.check_sum
-order.place_order
+# order = Order.new
+#
+# p order.has_dish("NACHOS")
+# p order.has_dish("PIZZA")
+# order.select_dish("NACHOS", 2)
+# order.select_dish("MAC AND CHEESE", 1)
+# p order.ordered_total
+# p order.check_sum
+# order.place_order
