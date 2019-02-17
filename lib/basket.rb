@@ -15,7 +15,12 @@ class Basket
   end
 
   def total
-
+    @total = []
+    @basket.each { |hash| @total << hash[:price].to_f }
+    puts "Your current order:"
+    puts ""
+    @basket.each { |hash| puts hash[:item] }
+    print "\nAnd your current total is $#{@total.reduce(:+)}"
   end
 
 end
