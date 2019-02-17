@@ -17,8 +17,6 @@ class Customer
   end
 
   def reciept
-    @order.each do |dish|
-      puts "#{dish.name} : £#{'%.2f' % (dish.price/100)}"
-    end
+    @order.each {|dish| puts "#{dish.name} : £#{'%.2f' % (dish.price/100)}"}
   end
 end
