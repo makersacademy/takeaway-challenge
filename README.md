@@ -139,6 +139,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```ruby
 # omitted: commands as in (3)
 
-order_submission = Submission.new(order)
+Submission.new(order)
+=>
+"Thank you! Your order was placed at 17:52 and should be with you by 18:52."
 
 ```
+

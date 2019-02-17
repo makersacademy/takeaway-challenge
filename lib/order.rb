@@ -13,7 +13,8 @@ class Order
     price = Menu::DISHES[dish - 1][:price]
     line_total = quantity * price
     @total += line_total
-    @selected_dishes << { quantity: quantity, dish: name, price: price, subtotal: line_total }
+    selected_dish = { quantity: quantity, dish: name, price: price, subtotal: line_total }
+    @selected_dishes << selected_dish
     puts "#{quantity}x #{name} added to your order"
   end
 
@@ -21,18 +22,12 @@ class Order
     "\u00A3#{total}"
   end
 
-  def review(check_total = total())
-    puts "actual total: #{total}"
-    puts "test total: #{check_total}"
-    puts "print_total says: #{print_total}"
+  def review(check_total = total)
+    error_text = "Error: GRAND TOTAL does not match actual total value of dishes."
+    actual_total = @selected_dishes.map { |dish| (dish[:price] * dish[:quantity]) }.sum
+    raise error_text if (check_total != actual_total)
 
-
-    error_text = "Error: Order aborted because GRAND TOTAL does not match actual total value of dishes."
-
-    raise error_text if (check_total != @selected_dishes.map { | dish | (dish[:price] * dish[:quantity]) }.sum)
-
-    order_summary = ""
-    order_summary << "Order Summary:\n\n"
+    order_summary = "" << "Order Summary:\n\n"
     
     @selected_dishes.each do |dish|
       order_summary <<  dish[:dish]
@@ -42,6 +37,10 @@ class Order
 
     order_summary << "GRAND TOTAL: #{print_total}".rjust(31)
 
+    # Must be `puts` to stdout so that customer can see order summary
+    puts order_summary
+
+    # returns the string object for easier testing
     order_summary
   end
 

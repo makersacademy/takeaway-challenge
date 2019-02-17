@@ -48,10 +48,9 @@ describe Order do
     it 'displays order summary' do
       expect(order.review).to eq expected_output
     end
-    
 
     it 'raises error if GRAND TOTAL and actual total do not match' do
-      expect{order.review(9.5)}.to raise_error ("Error: Order aborted because GRAND TOTAL does not match actual total value of dishes.")
+      expect{order.review(9.5)}.to raise_error ("Error: GRAND TOTAL does not match actual total value of dishes.")
     end
   end
 
