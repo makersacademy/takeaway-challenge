@@ -34,7 +34,7 @@ class Order
   def checkout(expected_total:, mobile_number:)
     check_matches_order_total(expected_total)
 
-    @messenger.send(
+    @messenger.send_message(
       message: order_confirmation_message,
       mobile_number: mobile_number
     )
