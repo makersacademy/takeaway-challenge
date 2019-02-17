@@ -11,7 +11,7 @@ class Basket
   end
 
   def remove(item_to_remove)
-
+    @basket.delete(item_to_remove)
   end
 
   def total

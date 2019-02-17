@@ -36,4 +36,11 @@ describe Basket do
     expect { your_basket.total }.to output("Your current order:\n\n1 - Kenjutsu: Chicken, Pepperoni, Green Chili\n2 - Ninjitsu: Spicy Beef, Sweetcorn, Onion, Sausage\n\nAnd your current total is $23.48").to_stdout
   end
 
+  it "will remove the item you told it to from your basket" do
+    your_basket.add(item_1)
+    your_basket.add(item_2)
+    your_basket.remove(item_2)
+    expect { your_basket.total }.to output("Your current order:\n\n1 - Kenjutsu: Chicken, Pepperoni, Green Chili\n\nAnd your current total is $10.99").to_stdout
+  end
+
 end
