@@ -16,4 +16,14 @@ describe Restaurant do
       subject.ask_order(customer_double, twilio_class_double)
     end
   end
+
+  describe "#check order" do
+    it "An error is raised when the sum of dishes is not equal to the sum of dishes ordered." do
+      expect {subject.check_order("1,meat dish,2,vegeterian dish,4")}.to raise_error("Sum of dishes is not correct")
+    end
+
+    it "Does not show an error when the sum of the dishes is equal to the sum of dishes ordered" do
+      expect {subject.check_order("1,meat dish,2,vegeterian dish,3")}.not_to raise_error
+    end
+  end
 end
