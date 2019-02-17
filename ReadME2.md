@@ -19,3 +19,10 @@ I would like to check that the total I have been given matches the sum of the va
 - As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+
+##Can get it to run seperately. That's about it. Sorry.
+#To run add your own number to the 'to' variable in the 'send_sms.rb' file (& the company number to the 'from' variable)
+
+
+gave up on rspec when it kept replying that it couldnt access the 'twilio-ruby' even though it works fine in IRB :/   ??

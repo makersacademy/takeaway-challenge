@@ -2,6 +2,7 @@ require 'takeaway'
 
 describe Menu do
 
+  context "#initialize" do
     it 'menu is truthy' do
       menu = Menu.new
       puts menu
@@ -14,6 +15,13 @@ describe Menu do
       expect(menu.menulist.keys).not_to include "Bob"
     end
 
+  end
+
+  it "has a choice" do
+    menu = Menu.new
+    menu.choice
+  end
+
   context "#order" do
 
     it "takes an order" do
@@ -24,6 +32,17 @@ describe Menu do
     it "fails if wrong sum expected" do
       menu = Menu.new
       expect(menu.order("Indian", 2)).not_to eq 10
+    end
+
+  end
+
+  context "#bill" do
+
+    it "compares total to menu" do
+      puts "*******"
+      menu = Menu.new
+      menu.order("Chinese", 2)
+      expect(menu.bill).to include(menu.dishes)
     end
 
   end
