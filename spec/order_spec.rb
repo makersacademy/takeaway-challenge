@@ -54,4 +54,14 @@ describe Order do
     end
   end
 
+  describe '.submit' do
+
+    let (:submission_dbl) { double(:submission_dbl, order: order ) }
+
+    let (:submission_class) { double(:submission_class, new: submission_dbl) }
+
+    it 'calls Submission to submit the order' do
+      expect(order.submit).to change(submission_dbl.order).to(order)
+    end
+  end
 end
