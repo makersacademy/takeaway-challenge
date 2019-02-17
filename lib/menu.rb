@@ -4,11 +4,18 @@ class Menu
     { number: 2, name: 'Chicken-skin fries', price: 3.00 }
   ]
 
-  def view_menu
+  def display_menu
     DISHES.each do |dish|
-      dish_price = '%.2f' % dish[:price]
-      dish_as_string = "#{dish[:number].to_s}. #{dish[:name]} - £#{dish_price}"
-      puts dish_as_string
+      display_dish(dish)
     end
   end
+
+  def display_dish(dish)
+    dish_price = '%.2f' % dish[:price]
+    dish_as_string = "#{dish[:number].to_s}. "\
+      "#{dish[:name]} - £#{dish_price}"
+    puts dish_as_string
+  end
+
+  private :display_dish
 end

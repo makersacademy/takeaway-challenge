@@ -3,14 +3,19 @@ require './lib/menu.rb'
 describe Menu do
   let (:menu) { Menu.new }
 
+  def dish_to_string(dish)
+    dish_price = '%.2f' % dish[:price]
+    dish_as_string = "#{dish[:number].to_s}. "\
+      "#{dish[:name]} - £#{dish_price}"
+  end
+
   it 'should display the menu, showing each dish and its number' do
     allow(STDOUT).to receive(:puts)
 
-    menu.view_menu
+    menu.display_menu
 
-    expected_displayed_menu = 
-      "1. Southern fried chicken - £9.00"
-    
-    expect(STDOUT).to have_received(:puts).with(expected_displayed_menu)
+    Menu::DISHES.each do |dish|
+      expect(STDOUT).to have_received(:puts).with(dish_to_string(dish))
+    end
   end
 end
