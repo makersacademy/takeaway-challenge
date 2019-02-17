@@ -26,7 +26,8 @@ class Interface
         puts "Which item would you like to remove?"
         puts @basket.basket
         choice = gets.chomp
-        @basket.remove(@menu.menu[choice - 1])
+        choice = choice.to_i - 1
+        @basket.remove(@menu.menu[choice])
       when "e" then exit
     else
       puts "Please select an option from the above menu."
