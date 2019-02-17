@@ -2,22 +2,12 @@
 class Takeaway
   attr_reader :order, :dishes
 
-  def initialize(order = Order.new)
-    @order = order
+  def initialize
     @dishes = [
       { name: :rice, price: 3.00 }, { name: :noodles, price: 3.50 }, 
       { name: :prawn_crackers, price: 1.00 }, 
       { name: :spring_rolls, price: 2.50 }
     ]
-    main_menu
-  end
-
-  def main_menu
-    loop do
-      food_menu
-      puts '--------------------'
-      options
-    end
   end
 
   def food_menu
@@ -28,25 +18,17 @@ class Takeaway
     end
   end
 
-  def options
-    puts '[S]how order'
-    puts '[P]lace order'
-    puts '[C]ancel order/quit'
-    puts 'Please key-in your choice from the options above:'
-    process_input(gets.chomp)
+  def add_to_order(dish_number)
+    dish = @dishes[dish_number - 1]
+    @order.add_dish(dish)
   end
 
-  def process_input(input)
-    case input.to_s.downcase
-    when 'c'
-      exit
-    when 's'
-      @order.show_items
-    when 'p'
-      @order.place
-    else
-      @order.add_dish(@dishes[input.to_i - 1])
-    end
+  def new_order(order)
+    @order = order
+  end
+
+  def place_order(order)
+    order.place
   end
 
 end
