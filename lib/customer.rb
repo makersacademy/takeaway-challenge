@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Customer
 
   attr_reader :order
@@ -18,5 +20,15 @@ class Customer
 
   def reciept
     @order.each {|dish| puts "#{dish.name} : £#{'%.2f' % (dish.price/100)}"}
+  end
+
+  def complete_order
+    t = Time.new + (60*60)
+    client = Twilio::REST::Client.new(ENV['TWILIO_ACC_SID'],ENV['TWILIO_AUTH_TOKEN'])
+    client.messages.create(
+      from: ENV['TWILIO_PHONE_NUM'],
+      to: ENV['PHONE'],
+      body: "You're order has been recived and will be with you at #{t.strftime('%R')}"
+    )
   end
 end

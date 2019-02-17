@@ -67,4 +67,8 @@ describe Customer do
       end
     end
   end
+
+  it "Sends a text when order is complete" do
+    @customer.complete_order #and a text is recieved irl
+  end
 end
