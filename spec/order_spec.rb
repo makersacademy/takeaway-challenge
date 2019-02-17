@@ -3,7 +3,7 @@ require 'menu' # if we remove the verifying double, this becomes redundant
 
 describe Order do
 
-  subject(:order) { described_class.new }
+  subject(:order) { described_class.new(menu) }
   let(:menu) { double(:menu) } # You can use a verifying double, here, which
   # is {instance_double("Menu")}. It lets us check the menu class for the has_dish? method.
   let(:dishes) { {chicken: 2, fish: 1} }
@@ -11,6 +11,8 @@ describe Order do
   before do
     allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
     allow(menu).to receive(:has_dish?).with(:fish).and_return(true)
+    allow(menu).to receive(:price).with(:chicken).and_return(3.00)
+    allow(menu).to receive(:price).with(:fish).and_return(2.50)
   end
 
   it 'lets me select several dishes' do
@@ -23,5 +25,12 @@ describe Order do
   #   allow(menu).to receive(:has_dish?).with(:beef).and_return(false)
   #   expect{ order.add(:beef, 2)}.to raise_error NoItemError, "Beef is not on the menu!"
   # end
+
+  it 'calculates the total for the order' do
+    order.add(:chicken, 2)
+    order.add(:fish, 1)
+    total = 8.50
+    expect(order.total).to eq 8.50
+  end
 
 end

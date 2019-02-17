@@ -16,5 +16,6 @@ attr_reader :menu, :order
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
+    order.total
   end
 end
