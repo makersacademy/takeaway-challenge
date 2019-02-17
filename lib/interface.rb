@@ -8,8 +8,8 @@ class Interface
   end
 
   def welcome
-    puts "Welcome to Samurai Pizza."
-    puts "Our pizzas represent the cutting edge of quality and taste:"
+    puts "Welcome to Samurai Pizza.\n\n"
+    puts "Our pizzas represent the cutting edge of quality and taste:\n\n"
     @menu.list
   end
 
