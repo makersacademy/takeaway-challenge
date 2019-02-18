@@ -1,6 +1,6 @@
 class Dishes
 
-  attr_reader :choices
+  attr_reader :choices, :meal, :quantity
 
   def initialize
     @dishes = [
@@ -25,21 +25,28 @@ class Dishes
     }
   end
 
-  def choose(meal_choice, quantity)
-    if meal_choice == 'None' && quantity == 0
+  def choose
+    ask_choice
+    if @meal == 'none'
       @choices
     else
       @dishes.each { |dish|
-        if dish['Meal'] == meal_choice
-          dish['Quantity'] = quantity
+        if dish['Meal'] == @meal
+          dish['Quantity'] = @quantity
           @choices << dish
         end
       }
-      @choices
-      choose(meal_choice, quantity)
+      choose
     end
   end
 
-  private :format_dishes
+  def ask_choice
+    puts 'Choose a meal'
+    @meal = gets.chomp
+    puts 'Choose a quantity'
+    @quantity = gets.chomp.to_i
+  end
+
+  private :format_dishes, :ask_choice
 
 end
