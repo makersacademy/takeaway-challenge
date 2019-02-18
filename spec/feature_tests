@@ -1,0 +1,7 @@
+# As a customer
+# So that I can check if I want to order something
+# I would like to see a list of dishes with prices
+
+dishes = Dishes.new #initializes with a hash of dishes and prices
+list = [{name1: value1}, {name2: value2}, {name3, value3}...]
+expect(dishes.dishes_list).to eq list
