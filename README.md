@@ -1,3 +1,18 @@
+# In this project, we will try to write an app for making orders from a restaurant by texting messages.
+
+The procedure is that we receive a message from the restaurant which shows us the dishes and their price.
+
+we will send back a message to the restaurant which includes the number of each dish we want, the dish name and a number at the end of the order showing the sum of the dishes we have ordered.(eg "1, burger, 2, fish, 3")
+
+The message sent as the order, is first tested to check if the sum number at the end is equal to the sum of the number of dishes.
+
+If it is not equal, an error will be raised, otherwise a message will be sent to the customer saying that your order was confirmed and you will get the food in an hour from the ordering time.
+
+Something need to be done in future for the project:
+
+The process of receiving the order by message and handling it is not included here. We will make the order manually every time. 
+
+
 Takeaway Challenge
 ==================
 ```
@@ -80,3 +95,72 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+We will write the irb tests(feature tests.)
+
+require "./lib/customer.rb"
+customer = Customer.new(1234)
+
+,,,, Now we are able to make a customer with a phone number."
+
+
+,,,, In the next step, we must be able to make a restaurant.
+
+require "./lib/customer.rb"
+customer = Customer.new(1234)
+require "./lib/restaurant.rb"
+restaurant = Restaurant.new()
+
+,,,, In the next step, we when we call the method "ask_order" on a restaurant object and with the customer number as an argument, the customer with the phone number should receive the list of dishes and the order in which he or she should send the order.
+There are something done in order to make the problem solvable.
+
+1. My twilio phone number, my phone number, my twilio account_sid and my twilio auth_token are saved as environment variables to be secure for github publishing.
+2. I am making a free Twilio account, so I am able to send message to myself only, so my phone number which is already saved as an instance variable is used to make a new customer.
+
+so the next feature test will be the below thing:
+
+require "./lib/customer.rb"
+customer = Customer.new(ENV['MY_NUMBER'])
+require "./lib/restaurant.rb"
+restaurant = Restaurant.new()
+restaurant.ask_order(customer)
+
+After using the above commands in irb, I am supposed to receive a message on my phone, Asking me about the order I want to make. so, we command the code in "irb" to see what happens.
+
+After the previous steps, we suppose we have the order of a customer in a string including the number of each dish, name of dish, and finally the sum of the number of all dishes e.g. 1, meat dish, 2, pesceterian, 3. at first, we want an error when the sum of the dishes is not correct. so, as a feature test in irb, we will have the following:
+
+require "./lib/customer.rb"
+customer = Customer.new(ENV['MY_NUMBER'])
+require "./lib/restaurant.rb"
+restaurant = Restaurant.new()
+restaurant.check_order("1, meat dish, 4, pesceterian, 10")
+
+,,,, We want an error to be raised by the above order, because 10 is not the sum of 4 and 1...
+Here we will have some assumption. We will only test if the sum is correct or not. We will not test edge cases like not making the order in the proper string variable.
+
+
+Now, we want to send a message to a customer and say the order was placed and the food will be delivered in 1 hour from now.
+
+require "./lib/customer.rb"
+customer = Customer.new(ENV['MY_NUMBER'])
+require "./lib/restaurant.rb"
+restaurant = Restaurant.new()
+restaurant.confirmation_sending("1, meat dish, 4, pesceterian, 5")
+
+After the above commands done on the irb, I should receive a message telling that my order was placed and it will be delivered in an hour.
+
+Now, We have orders, so it would be good to make an order class. every order has a string as the argument.
+
+require "./lib/order.rb"
+
+order = Order.new("1,meat dish, 2, vegeterian dish,3")
+
+Now, we are able to make an order. We should be able to see if the sum of the meals is correct or not, so we should check the order to be correct.
+
+require "./lib/order.rb"
+
+order = Order.new("1,meat dish, 2, vegeterian dish,4")
+
+order.check_order()
+
+we are supposed to receive an error after using the above command.
