@@ -1,3 +1,18 @@
+# In this project, we will try to write an app for making orders from a restaurant by texting messages.
+
+The procedure is that we receive a message from the restaurant which shows us the dishes and their price.
+
+we will send back a message to the restaurant which includes the number of each dish we want, the dish name and a number at the end of the order showing the sum of the dishes we have ordered.(eg "1, burger, 2, fish, 3")
+
+The message sent as the order, is first tested to check if the sum number at the end is equal to the sum of the number of dishes.
+
+If it is not equal, an error will be raised, otherwise a message will be sent to the customer saying that your order was confirmed and you will get the food in an hour from the ordering time.
+
+Something need to be done in future for the project:
+
+The process of receiving the order by message and handling it is not included here. We will make the order manually every time. 
+
+
 Takeaway Challenge
 ==================
 ```
