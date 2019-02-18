@@ -8,11 +8,11 @@ describe Submission do
   let(:selected_dishes) { [
     { quantity: 2, dish: "Small Cola", price: 0.60, subtotal: 1.20 },
     { quantity: 2, dish: "Cheesy Garlic Bread", price: 2.80, subtotal: 5.60 },
-    { quantity: 1, dish: "Coconut Cake Slice", price: 1.50, subtotal: 1.50 }
-  ]}
+    { quantity: 1, dish: "Coconut Cake Slice", price: 1.50, subtotal: 1.50 }]
+  }
   
   let(:valid_order) {
-    double(:valid_order, selected_dishes: selected_dishes, total: 8.30 )
+    double(:valid_order, selected_dishes: selected_dishes, total: 8.30)
   }
 
   # Valid order:

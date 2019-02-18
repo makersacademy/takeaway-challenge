@@ -20,7 +20,7 @@ class Order
   end
 
   def print_total
-    "\u00A3#{total}"
+    "\u00A3%0.2f" % [total]
   end
 
   def review(check_total = total)
@@ -46,8 +46,8 @@ class Order
   end
 
   # Is this dependency injection?
-  def submit(submission = Submission.submit_order(self))
-    submission
+  def submit(submission = Submission.new(self))
+    # submission
   end
 
 end

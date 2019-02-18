@@ -9,9 +9,9 @@
   // linters are only run when typing has finished and not for every keypress
   "ruby.lintDebounceTime": 500,
 
-  "[ruby]": {
-    "editor.formatOnSave": true
-  },
+  // "[ruby]": {
+  //   "editor.formatOnSave": true
+  // },
   
   "ruby.format": "rubocop",
   "editor.formatOnSaveTimeout": 3000,

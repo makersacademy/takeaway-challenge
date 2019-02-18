@@ -4,6 +4,8 @@
 
 ## Contents
 
+[Introduction](#introduction)
+
 [Domain Modelling](#domain-modelling)  
 
 - [Initial domain Model](#initial-domain-model)  
@@ -16,6 +18,14 @@
 - [(2) From a list of several available dishes, select some number to order](#2-from-a-list-of-several-available-dishes-select-some-number-to-order)  
 - [(3) Review order and check total matches sum of dish prices in the order](#3-review-order-and-check-total-matches-sum-of-dish-prices-in-the-order)  
 - [(4) After placing an order, receive a text message confirmation](#4-after-placing-an-order-receive-a-text-message-confirmation)
+
+[Opportunities for Refactoring](#opportunities-for-refactoring)
+
+## Introduction
+
+The _Domain Modelling_ section is an overview of my design choices during the course of this project, from the initial design to insights gained in the process of developing the solution.
+
+The _Features_ section (1) to (4) is a complete tour of the project from beginning to end, demonstrating how it behaves.
 
 ## Domain Modelling
 
@@ -162,3 +172,9 @@ order.submit
 "Thank you! Your order was placed at 17:52 and should be with you by 18:52."
 
 ```
+
+## Opportunities for Refactoring
+
+- Currently, selected dishes are stored in an `Array` but a `Hash` might be better. The default value of a `Hash` could be used to hold the order total and make the instance variable unnecessary.
+
+- I was unable to figure out the RSpec syntax to verify that the `submit` instance method of the `Order` class passes the `order` to the initializer of the `Submission` class

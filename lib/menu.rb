@@ -29,7 +29,5 @@ class Menu
     puts list_of_dishes
 
     list_of_dishes
-
-    #puts "#{list_of_dishes.join}"
   end
 end

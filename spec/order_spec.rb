@@ -50,7 +50,8 @@ describe Order do
     end
 
     it 'raises error if GRAND TOTAL and actual total do not match' do
-      expect{order.review(9.5)}.to raise_error ("Error: GRAND TOTAL does not match actual total value of dishes.")
+      expect { order.review(9.5) }
+        .to raise_error "Error: GRAND TOTAL does not match actual total value of dishes."
     end
   end
 
@@ -58,16 +59,16 @@ describe Order do
 
     # Need figure out how to test that submit does actually call Submission
 
-    let (:submission_dbl) { double(:submission_dbl, order: order ) }
+    let (:submission_dbl) { double(:submission_dbl, order: order) }
 
     let (:submission_class) { double(:submission_class, new: submission_dbl) }
 
-    let (:submission_test) {instance_double(:submission)}
+    let (:submission_test) { instance_double(:submission) }
 
     it 'calls Submission to submit the order' do
       allow(order).to receive(:submit).and_return(submission_dbl)
 
-      expect(order.submit).to eq (submission_dbl)
+      expect(order.submit).to eq submission_dbl
     end
 
     it 'actually passes the order to the Submission initializer' do
