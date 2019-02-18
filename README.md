@@ -1,3 +1,8 @@
+I had only half a day to attempt to complete this challenge. I think I've managed as much as I could in such a short time.
+-Using TDD I've tested first and second user stories, wrote the code in Ruby. 
+-Registered an account with Twilio and successfully send a text message to my phone. 
+-This work is a fair reflection on the skills I've got know.
+
 Takeaway Challenge
 ==================
 ```
