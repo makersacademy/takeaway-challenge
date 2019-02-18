@@ -1,4 +1,4 @@
-require 'display'
+require 'printer'
 
 describe Printer do
   subject(:print) { described_class.new }
