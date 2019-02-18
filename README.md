@@ -1,4 +1,8 @@
 ## The Take Away Challenge
+# Please note that this is not complete.
+# The stubs and doubles have not been checked in because they are not yet working
+# The code does not send a text when an order is successful
+# It does fully carry out the user story apart from the texting
 
 
 ## User Stories
