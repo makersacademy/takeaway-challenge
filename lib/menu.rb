@@ -18,6 +18,7 @@ class Menu
   def select_dish(dish)
    index = @dishes.index(dish)
    @dishes[index]
+
   end
-  
+
 end
