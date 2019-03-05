@@ -35,6 +35,7 @@ end
     fail 'Bill is not correct.' if !check_bill
     puts "Your total order is £#{@total}"
     @send_sms
+    return true
   end
 
   private

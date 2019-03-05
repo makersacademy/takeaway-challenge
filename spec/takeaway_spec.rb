@@ -4,7 +4,6 @@ describe Takeaway do
 
   subject(:takeaway) {Takeaway.new}
   subject(:menu) {Menu.new}
-  #subject(:text) {Text:0x00007faa5b84db10}
   let(:seafood) {double :seafood_pizza}
 
   it 'reads a menu' do
@@ -19,15 +18,15 @@ describe Takeaway do
 
  it "checkout" do
    takeaway.add_order(:seafood,1)
-   takeaway.add_order(:garlic_bread,2)
-   expect(takeaway.checkout).to eq 24
+   takeaway.add_order(:seafood,1)
+   expect(takeaway.checkout).to eq 28
  end
 
  it "sends confirmation text" do
-   takeaway.add_order(:garlic_bread,2)
+   takeaway.add_order(:seafood, 2)
    takeaway.checkout
    #allow(weather).to receive(:text).and_return text
-   #expect(takeaway.confirm_order).to eq text
+   expect(takeaway.confirm_order).to eq (true)
  end
 
 context "Edge cases" do
