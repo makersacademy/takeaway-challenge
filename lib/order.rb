@@ -2,27 +2,26 @@ require_relative 'menu'
 
 class Order
 
-attr_reader :menu, :order_summary, :bill_summary, :each_check, :total
+attr_reader :menu, :basket, :bill_summary, :subtotal, :total
 
 def initialize(menu=Menu.new)
     @menu = menu.dish.to_h
-    @order_summary = []
+    @basket = []
     @bill_summary = []
-    @each_check = []
+    @subtotal = []
 end
 
 def add_order(dish,number)
-  number.times {@order_summary << dish }
-  sub_total = self.menu[dish] * number
-  @each_check << sub_total
-  @bill_summary << "#{dish.to_s} x#{number} = £#{sub_total}"
+  number.times {@basket << dish }
+  @subtotal << @menu[dish] * number
+  @bill_summary << "#{dish.to_s} x#{number} = £#{@subtotal}"
 end
 
 def checkout
-  fail "No order yet." if @order_summary[0] == nil
+  fail "No order yet." if @basket[0] == nil
   puts "You ordered:"
   puts @bill_summary.join("\n")
-  bill = @order_summary.map {|dish| @menu[dish]}
+  bill = @basket.map {|dish| @menu[dish]}
   @total = bill.inject(:+)
 end
 
