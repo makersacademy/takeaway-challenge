@@ -10,8 +10,11 @@ class Menu
 
   def read
     @dish.to_h
+  end
+
+  # def print
     # display = @dish.each{ |key, value|
     #   puts "#{key} £#{value}"}  # tested in Repl
-    end
+  # end
 
-  end
+end
