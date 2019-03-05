@@ -12,7 +12,7 @@ def initialize(menu=Menu.new, order=Order.new, text=Text.new)
 end
 
   def read_menu
-    @menu.dish.to_h
+    @menu.read
   end
 
   def add_order(dish,number)
