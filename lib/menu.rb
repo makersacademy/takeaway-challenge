@@ -6,14 +6,11 @@ attr_reader :menu
     @menu = menu
   end
 
-  # def food_menu
-  #     {:Pizza => 6.00,
-  #     :Burger => 7.00,
-  #     :Katsuwrap => 4.50,
-  #     :Curry => 5.50 }
-  #   end
-
     def display_menu
-      p @menu
+    @menu
     end
+
+    def contains_dish?(dish)
+    @menu.has_key?(dish.to_sym)
   end
+end
