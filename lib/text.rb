@@ -9,8 +9,8 @@ class Text
   account_sid = ENV['account_sid']
   auth_token = ENV['auth_token']
   @client = Twilio::REST::Client.new(account_sid, auth_token)
-  @time = Time.new.strftime("at %I:%M%p")
-  
+  @time = (Time.new + 30*60).strftime("at %I:%M%p") # 30 minutes from checkout
+
   message = @client.messages
     .create(
        body: "Thank you! Your order was placed and will be delivered " + @time,

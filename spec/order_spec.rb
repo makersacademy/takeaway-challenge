@@ -37,7 +37,7 @@ describe Order do
       expect{@order.checkout}.to raise_error "No order yet."
     end
 
-    it "check sums" do
+    it "throws error when the bill is wrong" do
       @order.add_order(@dish,1)
       allow(@order).to receive(:check?).and_return(false)
       expect{@order.checkout}.to raise_error "Bill is not correct."

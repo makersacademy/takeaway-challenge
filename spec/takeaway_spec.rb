@@ -1,33 +1,40 @@
 require 'takeaway'
 
 describe Takeaway do
-  # before(:each) do
-    subject(:takeaway) {Takeaway.new}
-    subject(:menu) {Menu.new}
-    let(:seafood) {double :seafood_pizza}
-  # end
+  # Mocking and stubing other classes
+  before do
+    @menu = double(:menu)
+    @dish = double(:dish)
+    @order = double(:order)
+    @text = double(:text)
+    allow(@menu).to receive(:read).and_return({ @dish => 10 })
+  end
+
+  subject(:takeaway) {Takeaway.new(@menu,@order,@text)}
 
   it 'reads a menu' do
-    expect(takeaway.read_menu).to eq Menu::DEFAULT_MENU
+    expect(takeaway.menu).to eq ({@dish => 10})
   end
 
-  it "orders 2 seafood pizza" do
-    takeaway.add_order(:seafood, 2)
-    expect(takeaway.basket[-1]).to eq :seafood
-    expect(takeaway.basket[-2]).to eq :seafood
-  end
+  describe "#takes order" do
+    before do
+      allow(@order).to receive(:add_order).and_return([@dish, 1])
+      allow(@order).to receive(:basket).and_return([@dish])
+    end
+    it "adds order to basket" do
+      expect do
+        takeaway.add_order(@dish, 1)
+      end.to output("1x #{@dish}(s) is added to your basket").to_stdout
+      expect(takeaway.basket[-1]).to be @dish
+    end
 
-  it "checkout" do
-    takeaway.add_order(:seafood,1)
-    takeaway.add_order(:seafood,1)
-    expect(takeaway.checkout).to eq 28
+    it "sends confirmation text when checkout" do
+      allow(@order).to receive(:checkout).and_return([@dish, 1])
+      allow(@order).to receive(:total).and_return(10)
+      takeaway.add_order(@dish, 1)
+      expect do
+        takeaway.checkout
+      end.to output("Your total order is £10").to_stdout
+    end
   end
-
-  it "sends confirmation text" do
-    takeaway.add_order(:seafood, 2)
-    takeaway.checkout
-    # allow(takeaway).to receive(:checkout)
-    expect(takeaway.confirm_order).to eq (true)
-  end
-
 end
