@@ -29,20 +29,8 @@ end
   end
 
   def confirm_order
-    fail 'Bill is not correct.' if !check_bill
     puts "Your total order is £#{@order.total}"
     @text # seems that text is still being send if check bill is not correct.
-    return true
-  end
-
-  def total
-    @order.total
-  end
-
-  private
-  def check_bill
-    check_total = @order.subtotal.inject(:+)
-    return true if check_total == @order.total
   end
 
 end
