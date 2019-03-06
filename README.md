@@ -2,7 +2,7 @@ Takeaway Challenge
 ==================
  Instructions to this challenge can be found [here](https://github.com/jesslns/takeaway-challenge/blob/master/README.md).
 
- #### Approach to the problem
+ ### Approach to the problem
 
  - Read the **user stories** and identify the object and message.
  - Draft a **domain model** based on user stories.
@@ -11,7 +11,13 @@ Takeaway Challenge
  - In the unit test, write the expected behaviour of a method and **pass the test** through resolving the error messages, i.e. coding the behaviour.
  - When the test is passed, **refactor** and **encapsulate** my code.
 
- ##### Skills Aquired:
+ #### Class Diagram
+
+ <div style='float: center'>
+ <img style='width: 400px' src="./public/images/Class Method Diagram - Takeaway.png">
+ </div>
+
+ ##### Skills Acquired:
 
  - Use the **Twillio API** to generate a confirmation text.
  - Use **environment variables** to store personal details.
@@ -28,9 +34,8 @@ Takeaway Challenge
 
 - `takeaway.basket` will show the order summary.
 
-- `takeaway.checkout` will show the total amount as well as sub-total of each order.
-
-- `takeaway.confirm_order` will check if the bill is the correct sum through the provate method `checl_bill`. If the bill is correct, a confirmation sms will be sent to the customer.
+- `takeaway.checkout` will confirm order and send a confirmation text that tells the time that the food will be delivered. <br>
+N.B. `takeaway.checkout` calls on `order.checkout` that has the calculation logic, and can ensure the bill has the correct sum with the help of the private method `check?`.
 
 An example on how methods can be used:
 <div style='float: center'>
