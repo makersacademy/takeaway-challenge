@@ -30,4 +30,9 @@ RSpec.describe Order do
     subject.take_order('kebab', 3)
     expect { subject.finish_order(10) }.to raise_error "Wrong total!"
   end
+  it "should confirm the order" do
+    allow(subject).to receive(:finish_order).and_return('SMS confirmation sent')
+    subject.take_order('pizza', 2)
+    expect(subject.finish_order(19.98)).to eq 'SMS confirmation sent'
+  end
 end
