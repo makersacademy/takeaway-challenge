@@ -28,6 +28,7 @@ attr_reader :menu, :order_list
 
   def finish_order(amount)
    raise "Wrong total!" unless correct_total?(amount)
-   @message.send_message("Order complete! Your food is being prepared and will be with you shortly!")
+   @message.send_confirmation
+   return 'SMS confirmation sent'
  end
 end
