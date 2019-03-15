@@ -1,4 +1,5 @@
 class Dish
+  attr_reader :description, :price
   def initialize(menu_number, description, price, available = true)
     @menu_number = menu_number
     @description = description
@@ -18,11 +19,11 @@ class Dish
     @available = false
   end
 
-  def price
-    @price
-  end
+  # def price
+  #   @price
+  # end
 
-  private
+  # private
   def available?
     @available
   end
