@@ -7,8 +7,9 @@ describe Takeaway do
     expect(Takeaway.new)
   end
 
-  it { is_expected.to respond_to(:list) }
+  it { is_expected.to respond_to(:display) }
 
-  let(:takaway) { Takeaway.new }
+  let(:takeaway) { Takeaway.new }
+
 
 end

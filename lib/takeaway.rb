@@ -4,7 +4,7 @@ require_relative 'menu_list'
 
 class Takeaway
 
-  def list
+  def display
   end
 
 end
