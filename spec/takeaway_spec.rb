@@ -9,10 +9,10 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:display) }
 
-  # let(:takeaway) { Takeaway.new }
-  # it 'displays list' do
-  #   list = double :list
-  #   expect(takeaway.display).to eq list
-  # end
+  let(:takeaway) { Takeaway.new }
+  it 'displays list' do
+    # list = double :list
+    expect(takeaway.display).to eq List::LIST
+  end
 
 end

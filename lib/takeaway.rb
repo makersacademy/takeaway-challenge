@@ -5,6 +5,7 @@ require_relative 'menu_list'
 class Takeaway
 
   def display
+    List::LIST
   end
 
 end
