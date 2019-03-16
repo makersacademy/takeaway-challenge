@@ -1,5 +1,5 @@
 require 'dotenv'
-Dotenv.load('takeaway.env')
+Dotenv.load
 require 'twilio-ruby'
 
 class Text
@@ -14,11 +14,11 @@ class Text
 
 
   def send(message)
-    @client.api.account.messages.create({
-      from: ['TWILIO_TRIAL_NUMBER'],
-      to: ['MOBILE'],
+    @client.api.account.messages.create(
+      from: ENV['TWILIO_TRIAL_NUMBER'],
+      to: ENV['MOBILE'],
       body: message
-    })
+    )
   end
 
 end
