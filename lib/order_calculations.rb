@@ -15,4 +15,10 @@ module OrderCalculations
     end
     cost
   end
+
+  def self.check_total(order)
+    fail("Total cost is incorrect") unless calculate_total(order) == order.total
+
+    order
+  end
 end

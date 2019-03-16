@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do
-  subject(:order) { Order.new }
+  subject(:order) { Order.new(order_calculations) }
   let(:dish) { double :dish }
   let(:order_calculations) { double :order_calculations }
 
@@ -13,13 +13,19 @@ describe Order do
   end
   it 'should push an order to the orderlines attribute when create_order is called' do
     allow(dish).to receive(:price) { 7.5 }
-    order.create_order([{ dish: dish, number: 2 }])
+    allow(order_calculations).to receive(:check_total)
+    order.create_order([{ dish: dish, number: 2 }], 20)
     expect(order.orderlines).to eq [{ dish: dish, number: 2 }]
   end
-  it 'should set @total attribute by calling calculate_total method from OrderCalculations module when create_order is called' do
+  it 'should set @total attribute to second argument passed into create_order method' do
     allow(dish).to receive(:price) { 7.5 }
-    allow(order_calculations).to receive(:calculate_total) { 22.5 }
-    order.create_order([{ dish: dish, number: 3 }],order_calculations)
-    expect(order.total).to eq 22.5
+    allow(order_calculations).to receive(:check_total)
+    order.create_order([{ dish: dish, number: 3 }], 20)
+    expect(order.total).to eq 20
+  end
+  it 'should return order when create_order method is called with correct total' do
+    allow(dish).to receive(:price) { 7.5 }
+    allow(order_calculations).to receive(:check_total) { order }
+    expect(order.create_order([{ dish: dish, number: 3 }], 20)).to eq order
   end
 end
