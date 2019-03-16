@@ -13,7 +13,7 @@ describe Menu do
       expect(menu.view).to eq "#{dish_display}\n"
     end
 
-    it "returns 1 menu item" do
+    it "returns 1 menu item in a nice string" do
       menu.add(Dish.new(36, "Chicken Korma", 7.95))
       expect(menu.view).to eq "36. Chicken Korma £7.95\n"
     end

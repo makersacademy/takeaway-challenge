@@ -12,7 +12,10 @@ class Order
         end
       end
     end
+    check_total(order_cost, total_cost)
+  end
 
+  def check_total(order_cost, total_cost)
     return "order placed" if order_cost == total_cost
     raise "order cost does not match expected cost"
   end

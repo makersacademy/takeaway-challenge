@@ -5,7 +5,7 @@ describe Dish do
   let(:dish_27) { Dish.new(27, "Vegetable Biryani", 6.45) }
 
   context '#When checking what a dish is' do
-    it "returns a string version of a Chicken Korma dish" do
+    it "returns a string version of the Chicken Korma dish" do
       current_dish = "36. Chicken Korma £7.95"
       expect(dish_36.display).to eq current_dish
     end
