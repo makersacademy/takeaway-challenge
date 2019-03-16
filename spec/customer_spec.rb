@@ -13,6 +13,10 @@ describe Customer do
   end
 
   it 'responds to basket method' do
+    expect(customer).to respond_to(:add)
+  end
+
+  it 'responds to basket method' do
     expect(customer).to respond_to(:basket)
   end
 

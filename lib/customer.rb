@@ -11,6 +11,6 @@ class Customer
   end
 
   def basket
-  end
+  end 
 
 end
