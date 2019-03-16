@@ -2,11 +2,12 @@ require_relative 'menu_list'
 
 class Customer
 
-  attr_reader :name, :contents
+  attr_reader :name, :contents, :cost
 
   def initialize(name)
     @name = name
     @contents = []
+    @cost = 0
   end
 
   def add(dish, quantity)
@@ -14,10 +15,13 @@ class Customer
     @name = dish
     @price = List::LIST[dish]
     @quantity = quantity
+    @cost += @quantity * @price
     @contents << { name: @name, price: @price, quantity: quantity }
   end
 
   def basket
+    @contents
+    @cost
   end
 
 end
