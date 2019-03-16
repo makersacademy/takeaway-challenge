@@ -1,13 +1,13 @@
 require 'text_message'
 
 describe Text do
-  subject(:text) { double Text.new }
+  subject(:text) { described_class.new }
 
   before do
     allow(text).to receive(:send)
   end
 
-  it 'sends a payment confirmation text message' do
-    expect(text).to receive(:send).with("Hello")
+  it 'Send message to customer' do
+    expect(text).to respond_to(:send).with(1).arguments
   end
 end

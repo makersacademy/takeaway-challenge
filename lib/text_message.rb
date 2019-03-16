@@ -12,7 +12,6 @@ class Text
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
-
   def send(message)
     @client.api.account.messages.create(
       from: ENV['TWILIO_TRIAL_NUMBER'],
