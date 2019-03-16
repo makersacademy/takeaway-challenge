@@ -1,5 +1,6 @@
 require_relative 'takeaway_menu'
 require_relative 'basket'
+require_relative 'messager'
 
 class TakeAway
 
@@ -21,6 +22,12 @@ class TakeAway
 
   def view_basket
     @basket.view
+  end
+
+  def complete_order(customer_number, messager = Messager.new(customer_number),
+    time_in_30 = (Time.now + 30*60).strftime("%I:%M%p"))
+    messager.send_sms("Thank you! Your order was placed and will be delivered before #{time_in_30}")
+    "Thank you for your order. A confirmation text has been sent to #{customer_number}."
   end
 
 end
