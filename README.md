@@ -90,9 +90,7 @@ Run this program like so:
 
 ## Author
 
-* **Tomé Jesus** - *Initial work* - (https://github.com/saypop)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Tomé Jesus** - (https://github.com/saypop)
 
 ## Acknowledgments
 
@@ -100,3 +98,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 * Big up to the Mad March squad over at Makers Academy - I couldn't see you but I felt you the whole way along this journey.
 * Huge thanks to meditation - namaste, jai ma, om shanti shanti, mo' fire.
 * Mad respect to da real OG... my brain - you're taking some hard knocks like a champ and you keep getting up for more, fo real tho homie I don't know where I'd be without you. Much love.
+
+## Feature Tests
+
+See the spec.rb file in the spec folder for all feature tests performed.
