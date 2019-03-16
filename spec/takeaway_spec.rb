@@ -4,7 +4,7 @@ describe Takeaway do
   let(:menu) { double :menu }
   let(:dish) { double :dish }
   let(:order) { double :order }
-  let(:order_class) { double :order_class, new: order}
+  let(:order_class) { double :order_class, new: order }
   subject(:takeaway) { Takeaway.new(menu, order_class) }
 
   it "should return a menu object when view_menu method is called" do
