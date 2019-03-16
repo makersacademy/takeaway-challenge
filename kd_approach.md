@@ -105,25 +105,29 @@ I would like to see a list of dishes with prices
 ##### MESSAGES
 
 - User uses `irb` to interface with the Takeaway
-- The takeway will have a `see_dishes` method to view the dishes
+- A takeway will have a `see_dishes` method to view the dishes
 - The dishes will be held by `FoodMenu` object
+
+
+- Multiple takeaways can be created, with different `FoodMenu`s
+- A takeaway can be associated with a `FoodMenu` on creation e.g. Chinese Takeaway will have chinese food.
 
 ##### TEST CASE(S)
 
 Takeaway:
 
-1. [] Takeaway object has `see_dishes` method
-2. [] Takeaway object`see_dishes` method outputs a dish
-3. [] Check `see_dishes` method outputs multiple dishes (possibly from `FoodMenu` object where dishes will be stored as sometimes the `FoodMenu` can change)
+1. [X] Takeaway object has `see_dishes` method
+2. [X] Takeaway object`see_dishes` method outputs a dish
+3. [X] Check `see_dishes` method outputs multiple dishes (possibly using `FoodMenu` object where dishes will be stored as sometimes the `FoodMenu` can change depending on which takeaway it is)
 
 FoodMenu:
 
-1. [] Check that the `FoodMenu` holds some yummy dishes
-2. [] Check `FoodMenu` shows the list of yummy dishes
+1. [X] Check that the `FoodMenu` holds some yummy dishes
+2. [X] Check `FoodMenu` shows the list of yummy dishes
 
 Interaction:
 
-1. Check that Takeaway object `see_dishes` method calls `FoodMenu` to show list of yummy dishes
+1. [X] Check that Takeaway object `see_dishes` method calls `FoodMenu` to show list of yummy dishes
 
 
 ##### TEST CASE(S) - EDGE CASES
