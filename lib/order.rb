@@ -1,6 +1,5 @@
-class Takeaway
+class Order
 
-  attr_reader :order_price
   attr_accessor :order
 
   def initialize(menu = Menu.new)
@@ -13,17 +12,21 @@ class Takeaway
     @menu.print
   end
 
-  def add_to_order(item, quantity = 1)
+  def add(item, quantity = 1)
     raise "Item not available" unless @menu.items.include?(item)
 
     @order[item] = quantity
   end
 
-  def total_price
+  def total
     @order.each do |item, quantity|
       @order_price += (@menu.items[item] * quantity)
     end
     @order_price
   end
+
+  private
+
+  attr_reader :order_price
 
 end
