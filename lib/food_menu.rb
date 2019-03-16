@@ -8,7 +8,7 @@ class FoodMenu
 
   def print
     food.map{ |dish, price| 
-      "#{dish}: #{price}"}.sort
+      "#{dish.capitalize}: #{price}"}.sort
     .join(", ")
   end
 

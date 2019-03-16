@@ -130,6 +130,49 @@ Interaction:
 1. [X] Check that Takeaway object `see_dishes` method calls `FoodMenu` to show list of yummy dishes
 
 
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+```
+
+##### OBJECTS
+
+- Takeaway
+- FoodMenu
+- OrderManagement
+
+##### MESSAGES
+
+- Customer can place order by interfacing with the takeaway
+- Customer calls the method `place_the_order` at the Takeaway
+- The Takeaway goes through the customer's `selected_dishes` list and then sends the name of the dish and the number of that dish to the `add_to_order` method which is the job of the `OrderManagement` object
+- `add_to_order` adds each order into the OrderManagement
+
+Validation:
+
+- There is some sort of validation within `OrderManagement` to verify that the dish is on the `FoodMenu`
+- There is built-in verification within the program to check that the total cost/bill of the order matches what is expected given what the user has ordered.
+- `checker` checks that the dish is on the `FoodMenu`
+- `total` calculates the total cost of the ordered food
+
+##### TEST CASE(S)
+
+Takeaway:
+
+1. [X] Takeaway object has `place_the_order` method
+2. [] `place_the_order` method takes one parameter for the customer's selected dishes
+
+OrderManagement:
+
+1. [] has the `add_to_order` method to collect and store the orders against selected_dishes
+2. [] has the `checker` to verify that the dish is on the FoodMenu
+3. [] has a `total` method to calculate the cost of the food ordered
+
+
+
+
 ##### TEST CASE(S) - EDGE CASES
 
 
