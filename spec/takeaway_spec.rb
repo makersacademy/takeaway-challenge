@@ -22,14 +22,18 @@ describe Takeaway do
   end
 
   describe "#basket" do
-    before do
-      [[4, 1], [5, 1]].each do |item, quantity|
-        takeaway.add_to_order(takeaway.menu[item], quantity)
-      end
-      @total = takeaway.basket.map { |item| item[:price] }.sum
+    it 'is empty when initialised' do
+      expect(takeaway.basket).to be_empty
     end
 
     context 'after adding some items to an order' do
+      before do
+        [[4, 1], [5, 1]].each do |item, quantity|
+          takeaway.add_to_order(takeaway.menu[item], quantity)
+        end
+        @total = takeaway.basket.map { |item| item[:price] }.sum
+      end
+  
       it 'includes my items' do
         expect(takeaway.basket).to include(takeaway.menu[4], takeaway.menu[5])
       end
