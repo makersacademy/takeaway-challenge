@@ -3,7 +3,7 @@ class Dish
   def initialize(menu_number, description, price, available = true)
     @menu_number = menu_number
     @description = description
-    @price = price
+    @price = price.to_f
     @available = available
   end
 
@@ -20,7 +20,6 @@ class Dish
   end
 
   private
-
   def available?
     @available
   end

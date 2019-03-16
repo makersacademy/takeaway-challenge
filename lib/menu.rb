@@ -1,4 +1,5 @@
 class Menu
+  attr_reader :menu_items
   def initialize(dish_class = Dish)
     @dish_class = dish_class
     @menu_items = []

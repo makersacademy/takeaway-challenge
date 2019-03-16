@@ -5,7 +5,7 @@ class Order
 
   def place(order_list, total_cost)
     order_cost = order_list.calculate_cost(@menu_items)
-    check_total(order_cost, total_cost)
+    check_total(order_cost, total_cost.to_f)
   end
 
   private
