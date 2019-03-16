@@ -49,7 +49,7 @@ describe Customer do
     # customer.add(pizza, quantity)
     # hit my raise error when using mocks, need to discuss
     customer.add("Pepperoni", 2)
-    expect(customer.send(:display_contents)).to eq [{:name=>"Pepperoni", :price=>7, :quantity=>2}]
+    expect(customer.send(:display_contents)).to eq [{ :name => "Pepperoni", :price => 7, :quantity => 2 }]
   end
 
   # private methods
