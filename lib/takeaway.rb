@@ -21,8 +21,8 @@ class Takeaway
 
   def total_price
     @order.each do |items|
-      items.each do |item, _quantity|
-        @order_price += @menu.items[item]
+      items.each do |item, quantity|
+        @order_price += (@menu.items[item] * quantity)
       end
     end
     @order_price

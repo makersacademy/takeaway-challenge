@@ -36,11 +36,15 @@ describe Takeaway do
 
   describe '#total_price' do
 
-    it 'shows user the price of their order' do
+    it 'shows user the price of their order for one item' do
       subject.place_order("Nan", 1)
-      allow(menu).to receive(:items).and_return({ "Nan" => 2.2 })
       expect { subject.total_price }.to change { subject.order_price }.by(2.2)
     end
 
+    it 'shows user the price of their order for two items' do
+      subject.place_order("Nan", 2)
+      subject.place_order("Aloo Gobi", 1)
+      expect { subject.total_price }.to change { subject.order_price }.by(8.5)
+    end
   end
 end
