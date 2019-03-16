@@ -43,6 +43,12 @@ describe Customer do
     expect(customer).to respond_to(:basket)
   end
 
+  it "doesn't change cost when basket called" do
+    customer.add("Pepperoni", 2)
+    customer.basket
+    expect(customer.cost).to eq 14
+  end
+
   it 'return correct contents' do
     # pizza = double("pizza")
     # quantity = double(1)
