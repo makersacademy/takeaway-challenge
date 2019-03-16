@@ -43,12 +43,16 @@ $ cd takeaway-challenge
 $ rspec
 ```
 
+All 7 rspec tests pass. Coverage is at 84.68%, but this is counting private methods. If you don't include private methods (which should probably be another class called Line_Item) then coverage is around 93%. The reason it is so low is because I don't know how to test the Twilio messager.
+
 and
 
 ```sh
 $ cd takeaway-challenge
 $ rubocop
 ```
+
+Rubocop detects 3 errors which have to do with line or method length.
 
 ## Deployment
 
