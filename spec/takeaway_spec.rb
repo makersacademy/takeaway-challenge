@@ -15,4 +15,8 @@ describe Takeaway do
   # it 'prints the menu' do
   #     allow(menu).to receive(:print).and_output("Nan: £2.20\nRice: £2.70\nAloo Gobi: £4.10\nSag Paneer: £4.30\nDaal Makhani: £6.10\n").to_stdout
   # end
+
+  it 'allows user to place order' do
+    expect(subject.place_order("Nan", 1)).to eq [{ "Nan" => 1 }]
+  end
 end
