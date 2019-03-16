@@ -1,10 +1,11 @@
 require 'item'
 
 describe Item do
-  let(:name) {double :name }
+  let(:name) { double :name }
   let(:value) { double :value }
   let(:quantity) { double :quantity }
   let(:total) { double :total }
+  
   it 'returns price when called' do
     expect(subject).to respond_to(:price)
   end
@@ -27,6 +28,4 @@ describe Item do
     item = Item.new(name, 5, 10)
     expect(item.total).to eq(50)
   end
-
-
 end
