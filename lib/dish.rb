@@ -19,11 +19,8 @@ class Dish
     @available = false
   end
 
-  # def price
-  #   @price
-  # end
+  private
 
-  # private
   def available?
     @available
   end

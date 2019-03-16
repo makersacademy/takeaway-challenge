@@ -8,6 +8,8 @@ class Order
     check_total(order_cost, total_cost)
   end
 
+  private
+
   def check_total(order_cost, total_cost)
     return "order placed" if order_cost == total_cost
     raise "order cost does not match expected cost"
