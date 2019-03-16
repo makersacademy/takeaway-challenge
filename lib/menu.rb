@@ -2,7 +2,7 @@ require_relative "dish"
 require_relative "order"
 
 class Menu
-  attr_reader :dishes # <- made attr_reader so could publicly call to add dish to order from irb
+  attr_reader :dishes, :orders # <- made attr_reader so could publicly call to add dish to order and view orders from irb
 
   def initialize
     @dishes = []
