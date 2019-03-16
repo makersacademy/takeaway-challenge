@@ -1,8 +1,9 @@
 require 'order'
 
 describe Order do
-  let(:price) { double :price}
-  let(:quantity) { double :quantity}
+  let(:name) { double :name}
+  let(:price) { double :price }
+  let(:quantity) { double :quantity }
   let(:item) { double(Item.new(price, quantity), :total => 10) }
   it 'can add items to itself with price and quantity' do
     expect(subject).to respond_to(:add).with(1).argument
@@ -24,6 +25,7 @@ describe Order do
   end
 
   it 'returns total of 20 for 2 items worth 10' do
+    item = double(Item.new(name, price, quantity), :total => 10)
     subject.add(item)
     subject.add(item)
     expect(subject.total).to eq 20
