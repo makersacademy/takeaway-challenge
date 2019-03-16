@@ -53,5 +53,12 @@ describe Order do
     it 'raises an error if no items added to order' do
       expect { subject.place } .to raise_error "No items in order"
     end
+
+    it 'returns confirmation with time that order should arrive' do
+      subject.add("Nan", 2)
+      subject.add("Aloo Gobi", 1)
+      allow(Time).to receive(:now).and_return(Time.parse("17:52"))
+      expect(subject.place).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+    end
   end
 end

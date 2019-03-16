@@ -26,8 +26,10 @@ class Order
   end
 
   def place
+    delivery_time = Time.now + 60 * 60
     raise "No items in order" if @order.empty?
-    @order
+
+    "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime("%k:%M")}"
   end
 
   private
