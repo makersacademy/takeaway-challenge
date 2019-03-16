@@ -15,7 +15,7 @@ describe OrderList do
   it "checks the cost of an item" do
     current_price = 7.95
     subject.add("Chicken Korma", 1)
-    allow(dish).to receive(:price) { 7.95 }
+    allow(dish).to receive(:price) { current_price }
     allow(dish).to receive(:description) { "Chicken Korma" }
     expect(subject.calculate_cost([dish])).to eq current_price
   end

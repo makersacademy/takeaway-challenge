@@ -18,9 +18,4 @@ describe Menu do
       expect(menu.view).to eq "36. Chicken Korma £7.95\n"
     end
   end
-
-  # context '#selecting a dish' do
-  #
-  # end
-
 end

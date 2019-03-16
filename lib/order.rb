@@ -1,5 +1,5 @@
 class Order
-  def initialize(menu)
+  def initialize(menu = Menu.new)
     @menu_items = menu
   end
 

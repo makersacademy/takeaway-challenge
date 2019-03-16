@@ -20,11 +20,11 @@ describe Order do
     expect { order.place(order_items, 14.50) }.to raise_error "order cost does not match expected cost"
   end
 
-  # let(:menu_class) { double :menu_class }
+  # let(:menu_double) { double :menu }
   # let(:dish_curry) { double :dish, display: "36. Chicken Korma £8.00" }
   # let(:dish_rice) { double :dish, display: "55. Pilau Rice £2.50"}
   # let(:dish_bread) { double :dish, display: "86. Peshwari Naan £3.00"}
-
+  #
   # it "receives an order and returns a total cost" do
   #   order_list = [{item: "Chicken Korma", quantity: 1},
   #               {item: "Pilau Rice", quantity: 1},
