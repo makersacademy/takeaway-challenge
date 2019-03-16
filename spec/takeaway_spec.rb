@@ -19,4 +19,10 @@ describe Takeaway do
   it 'allows user to place order' do
     expect(subject.place_order("Nan", 1)).to eq [{ "Nan" => 1 }]
   end
+
+  it 'shows user the price of their order' do
+    subject.place_order("Nan", 1)
+    allow(menu).to receive(:items).and_return({ "Nan" => 2.2 })
+    expect { subject.total_price }.to change { subject.order_price }.by(2.2)
+  end
 end
