@@ -28,7 +28,7 @@ class Takeaway
 
   def verify(price)
     raise "Cannot verify order: the price was wrong. "\
-          "Check your maths! 😜" unless price == basket_total
+          "Check your maths! 😜" if price != basket_total
     true
   end
 
