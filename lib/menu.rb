@@ -2,14 +2,15 @@ class Menu
   attr_reader :list
 
   def initialize
-    @list = []
+    @menu = []
   end
 
   def add(item)
-    @list << [item.name, item.price, item.quantity]
+    @menu << item.str
   end
 
   def show
-    @list
+    @menu
   end
+  
 end
