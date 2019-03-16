@@ -22,14 +22,15 @@ describe Takeaway do
     # end
   end
 
-  describe '#place_order' do
+  describe '#add_to_order' do
 
     it 'allows user to place order' do
-      expect(subject.place_order("Nan", 1)).to eq [{ "Nan" => 1 }]
+      subject.add_to_order("Nan", 1)
+      expect(subject.order).to include("Nan" => 1)
     end
 
     it 'raises an error if a dish is not available' do
-      expect { subject.place_order("Chicken Korma") }.to raise_error "Item not available"
+      expect { subject.add_to_order("Chicken Korma") }.to raise_error "Item not available"
     end
 
   end
@@ -37,13 +38,13 @@ describe Takeaway do
   describe '#total_price' do
 
     it 'shows user the price of their order for one item' do
-      subject.place_order("Nan", 1)
+      subject.add_to_order("Nan", 1)
       expect { subject.total_price }.to change { subject.order_price }.by(2.2)
     end
 
     it 'shows user the price of their order for two items' do
-      subject.place_order("Nan", 2)
-      subject.place_order("Aloo Gobi", 1)
+      subject.add_to_order("Nan", 2)
+      subject.add_to_order("Aloo Gobi", 1)
       expect { subject.total_price }.to change { subject.order_price }.by(8.5)
     end
   end

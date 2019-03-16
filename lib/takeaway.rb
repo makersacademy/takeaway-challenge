@@ -5,7 +5,7 @@ class Takeaway
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @order = []
+    @order = {}
     @order_price = 0
   end
 
@@ -13,17 +13,15 @@ class Takeaway
     @menu.print
   end
 
-  def place_order(item, quantity = 1)
+  def add_to_order(item, quantity = 1)
     raise "Item not available" unless @menu.items.include?(item)
 
-    @order << { item => quantity }
+    @order[item] = quantity
   end
 
   def total_price
-    @order.each do |items|
-      items.each do |item, quantity|
-        @order_price += (@menu.items[item] * quantity)
-      end
+    @order.each do |item, quantity|
+      @order_price += (@menu.items[item] * quantity)
     end
     @order_price
   end
