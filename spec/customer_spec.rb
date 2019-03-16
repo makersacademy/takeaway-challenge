@@ -30,6 +30,10 @@ describe Customer do
     { :name => "Pepperoni", :price => 7, :quantity => 2 }]
   end
 
+  it "should only work for dishes on menu" do
+   expect { customer.add("Kebab", 1) }.to raise_error "Item not on menu"
+ end
+
   it 'responds to basket method' do
     expect(customer).to respond_to(:basket)
   end
