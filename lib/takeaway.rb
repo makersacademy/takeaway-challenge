@@ -1,7 +1,9 @@
 require_relative 'basket'
+require_relative 'confirmation_sender_stdout'
 
 class Takeaway
-  def initialize(basket = Basket.new)
+  def initialize(confirmation_sender = ConfirmationSenderStdout, basket = Basket.new)
+    @confirmation_sender = confirmation_sender
     @basket = basket
   end
 
@@ -32,6 +34,17 @@ class Takeaway
     raise "Cannot verify order: the price was wrong. "\
           "Check your maths! 😜" if price != @basket.total
 
+    send_confirmation_message
     true
+  end
+
+  private
+
+  attr_reader :confirmation_sender
+
+  def send_confirmation_message
+    one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
+    message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}."
+    confirmation_sender.send(message)
   end
 end

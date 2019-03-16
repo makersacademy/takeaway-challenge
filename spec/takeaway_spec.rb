@@ -1,13 +1,15 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new() }
+  subject(:takeaway) { described_class.new(confirmation_sender) }
+  let(:confirmation_sender) { double :confirmation_sender }
   
   describe "#menu" do
     it 'returns an array' do
       expect(takeaway.menu).to_not be_empty
     end
-    # anything else to check for here?
+    xit 'should add more stuff in here' do
+    end
   end
 
   describe "#add_to_order" do
@@ -49,12 +51,24 @@ describe Takeaway do
       @total = takeaway.basket.map { |item| item[:price] }.sum
     end
 
-    it 'returns true if the total is correct' do
-      expect(takeaway.verify(@total)).to be true
+    context 'the total is correct' do
+      it 'returns true if the total is correct' do
+        allow(confirmation_sender).to receive(:send)
+        expect(takeaway.verify(@total)).to be true
+      end
+
+      it 'uses confirmation_sender to send a confirmation message' do
+        one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
+        message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}."
+        expect(confirmation_sender).to receive(:send).with(message)
+        takeaway.verify(@total)
+      end
     end
 
-    it 'raises an error if the total is wrong' do
-      expect { takeaway.verify(@total - 1) }.to raise_error "Cannot verify order: the price was wrong. Check your maths! 😜"
+    context 'the total is incorrect' do
+      it 'raises an error if the total is wrong' do
+        expect { takeaway.verify(@total - 1) }.to raise_error "Cannot verify order: the price was wrong. Check your maths! 😜"
+      end
     end
   end
 end

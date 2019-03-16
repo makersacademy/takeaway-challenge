@@ -45,20 +45,36 @@ describe 'User Stories' do
       @total = takeaway.basket.map { |item| item[:price] }.sum
     end
 
-    it 'it gives me confirmation if I give the correct price' do
-      expect(takeaway.verify(@total)).to be true
+    context 'if i add my bill up correctly' do
+      it 'it gives me confirmation' do
+        expect(takeaway.verify(@total)).to be true
+      end
     end
     
-    it 'raises an error if my price is wrong' do
-      expect { takeaway.verify(@total + 1) }.to raise_error "Cannot verify order: the price was wrong. Check your maths! 😜"
+    context 'if i add my bill up incorrectly' do
+      it 'raises an error' do
+        expect { takeaway.verify(@total + 1) }.to raise_error "Cannot verify order: the price was wrong. Check your maths! 😜"
+      end
     end
   end
   
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-  context 'so that i know my order is on the way' do
-    it 'sends me a text message when the order is confirmed' do
+  context 'when i verify my order' do
+    before do
+      [[0, 1], [1, 3], [2, 1], [4, 1], [5, 1]].each do |item, quantity|
+        takeaway.add_to_order(takeaway.menu[item], quantity)
+      end
+      @total = takeaway.basket.map { |item| item[:price] }.sum
+    end
+    
+    context 'so that i know my order is on the way' do
+      it 'sends me a message when the order is confirmed' do
+        one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
+        message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}.\n"
+        expect { takeaway.verify(@total) }.to output(message).to_stdout
+      end
     end
   end
 end
