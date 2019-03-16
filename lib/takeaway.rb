@@ -14,6 +14,8 @@ class Takeaway
   end
 
   def place_order(item, quantity = 1)
+    raise "Item not available" unless @menu.items.include?(item)
+
     @order << { item => quantity }
   end
 
