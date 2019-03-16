@@ -33,9 +33,9 @@ describe Basket do
 
   describe '#total' do
     it 'returns the total value of the basket' do
-      subject.add({price: 2})
-      subject.add({price: 7})
-      subject.add({price: 1})
+      subject.add({ price: 2 })
+      subject.add({ price: 7 })
+      subject.add({ price: 1 })
       expect(subject.total).to eq 10
     end
   end

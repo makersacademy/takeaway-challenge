@@ -10,13 +10,14 @@ class Basket
   end
 
   def remove(item)
-    raise "Couldn't remove item: it was not in the basket." unless @contents.include? item
+    raise "Couldn't remove item: "\
+          "it was not in the basket." unless @contents.include? item
 
     remove_one_item(item)
   end
 
   def total
-    @contents.map{ |item| item[:price] }.sum
+    @contents.map { |item| item[:price] }.sum
   end
 
   private

@@ -13,7 +13,7 @@ describe 'User Stories' do
     it 'the menu items have prices' do
       expect(takeaway.menu).to all have_key :price
     end
-    
+
     it 'the menu items have names' do
       expect(takeaway.menu).to all have_key :name
     end
@@ -46,13 +46,19 @@ describe 'User Stories' do
     end
 
     it 'it gives me confirmation if I give the correct price' do
-      # p takeaway.get_order
-      # p @total
       expect(takeaway.verify(@total)).to be true
     end
     
     it 'raises an error if my price is wrong' do
       expect { takeaway.verify(@total + 1) }.to raise_error "Cannot verify order: the price was wrong. Check your maths! 😜"
     end
-  end  
+  end
+  
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  context 'so that i know my order is on the way' do
+    it 'sends me a text message when the order is confirmed' do
+    end
+  end
 end
