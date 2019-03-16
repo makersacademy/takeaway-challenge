@@ -10,7 +10,7 @@ class Customer
   end
 
   def add(dish, quantity)
-    raise "Item not on menu" if  !List::LIST.include?(dish)
+    raise "Item not on menu" unless List::LIST.include?(dish)
     @name = dish
     @price = List::LIST[dish]
     @quantity = quantity
