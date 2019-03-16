@@ -20,13 +20,11 @@ describe Customer do
     # dish = double :dish, name: "Pepperoni", price: 7
     # quantity = 2
     customer.add("Pepperoni", 2)
-    expect(customer.contents).to eq [{:name => "Pepperoni", :price=>7, :quantity=>2}]
+    expect(customer.contents).to eq [{ :name => "Pepperoni", :price => 7, :quantity => 2 }]
   end
 
   it 'responds to basket method' do
     expect(customer).to respond_to(:basket)
   end
-
-
 
 end

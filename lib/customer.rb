@@ -13,7 +13,7 @@ class Customer
     @name = dish
     @price = List::LIST[dish]
     @quantity = quantity
-    @contents << {name: @name, price: @price, quantity: quantity}
+    @contents << { name: @name, price: @price, quantity: quantity }
   end
 
   def basket
