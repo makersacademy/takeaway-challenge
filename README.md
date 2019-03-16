@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+**==================**
 ```
                             _________
               r==           |       |
@@ -12,71 +12,93 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+The task was to build a program that displayed a menu, adds things to a basket, displays a basket, completes an order and sends a text message confirming the order.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## Getting Started
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+```sh
+$ git clone https://github.com/saypop/takeaway-challenge.git
+$ cd takeaway-challenge
+```
+Then see Deployment below.
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+### Prerequisites
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+You'll need ruby installed on your system.
+```sh
+$ brew install ruby
+```
+
+And you'll need Twilio.
+```sh
+$ gem 'twilio-ruby'
+```
+
+## Running the tests
+
+```sh
+$ cd takeaway-challenge
+$ rspec
+```
+
+All 7 rspec tests pass. Coverage is at 84.68%, but this is counting private methods. If you don't include private methods (which should probably be another class called Line_Item) then coverage is around 93%. The reason it is so low is because I don't know how to test the Twilio messager.
+
+and
+
+```sh
+$ cd takeaway-challenge
+$ rubocop
+```
+
+Rubocop detects 3 errors which have to do with line or method length.
+
+## Deployment
+
+Run this program like so:
+
+```sh
+2.5.0 :001 > require './lib/takeaway.rb'
+
+ => true
+2.5.0 :002 > t = TakeAway.new
+ => #<TakeAway:0x00007fb16f24cb38 @menu=#<TakeAwayMenu:0x00007fb16f24cb10 @read={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>, @basket=#<Basket:0x00007fb16f24cac0 @basket=[], @menu=#<TakeAwayMenu:0x00007fb16f24cb10 @read={"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}>>>
+2.5.0 :003 > t.read_menu
+ => {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
+2.5.0 :004 > t.add_to_basket("spring roll")
+ => "spring roll added to basket"
+2.5.0 :005 > t.add_to_basket("spring roll")
+ => "spring roll added to basket"
+2.5.0 :006 > t.add_to_basket("peking duck")
+ => "peking duck added to basket"
+2.5.0 :007 > t.view_basket
+ => "Your basket total is 10.96 and it contains:\n1 x spring roll for 0.99 each\n2 x spring roll for 0.99 each\n1 x peking duck for 7.99 each"
+2.5.0 :008 > t.add_to_basket("pork dumpling")
+ => "pork dumpling added to basket"
+2.5.0 :009 > t.view_basket
+ => "Your basket total is 13.95 and it contains:\n1 x spring roll for 0.99 each\n2 x spring roll for 0.99 each\n1 x peking duck for 7.99 each\n1 x pork dumpling for 2.99 each"
+2.5.0 :010 > t.complete_order('+44712345678')
+ => "Thank you for your order. A confirmation text has been sent to +44712345678."
+```
 
 
-In code review we'll be hoping to see:
+## Built With
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* Ruby
+* Twilio
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+## Author
 
-Notes on Test Coverage
-------------------
+* **Tomé Jesus** - (https://github.com/saypop)
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+## Acknowledgments
+
+* Shout out to my peeps over at Twilio - nice looking out yo (https://www.twilio.com).
+* Big up to the Mad March squad over at Makers Academy - I couldn't see you but I felt you the whole way along this journey.
+* Huge thanks to meditation - namaste, jai ma, om shanti shanti, mo' fire.
+* Mad respect to da real OG... my brain - you're taking some hard knocks like a champ and you keep getting up for more, fo real tho homie I don't know where I'd be without you. Much love.
+
+## Feature Tests
+
+See the spec.rb file in the spec folder for all feature tests performed.
