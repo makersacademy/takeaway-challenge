@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+**==================**
 ```
                             _________
               r==           |       |
@@ -12,71 +12,190 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
- ```
+```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The task was to build a program that displayed a menu, adds things to a basket, displays a basket,
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+```
+e.g.
+With this in the spec.rb file:
+```ruby
+t = TakeAway.new
+t.read_menu
+```
+Run spec.rb from terminal and get:
+```sh
+saypops-mac:takeaway-challenge tomedejesus$ ruby spec/spec.rb
+saypops-mac:takeaway-challenge tomedejesus$ {"spring roll"=>0.99, "char sui bun"=>3.99, "pork dumpling"=>2.99, "peking duck"=>7.99, "fu-king fried rice"=>5.99}
+```
 
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
+e.g.
+With this in the spec.rb file:
+```ruby
+t = TakeAway.new
+t.add_to_basket("spring roll")
+t.add_to_basket("pork dumpling")
+t.add_to_basket("pork dumpling")
+t.add_to_basket("fu-king fried rice")
+```
+Run spec.rb from terminal and get:
+```sh
+saypops-mac:takeaway-challenge tomedejesus$ ruby spec/spec.rb
+saypops-mac:takeaway-challenge tomedejesus$ spring roll added to basket
+saypops-mac:takeaway-challenge tomedejesus$ pork dumpling added to basket
+saypops-mac:takeaway-challenge tomedejesus$ pork dumpling added to basket
+saypops-mac:takeaway-challenge tomedejesus$ fu-king fried rice added to basket
+```
 
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+e.g.
+With this in the spec.rb file:
+```ruby
+t = TakeAway.new
+t.add_to_basket("spring roll")
+t.add_to_basket("pork dumpling")
+t.add_to_basket("pork dumpling")
+t.add_to_basket("fu-king fried rice")
+t.view_basket
+```
+Run spec.rb from terminal and get:
+```sh
+saypops-mac:takeaway-challenge tomedejesus$ ruby spec/spec.rb
+saypops-mac:takeaway-challenge tomedejesus$ spring roll added to basket
+saypops-mac:takeaway-challenge tomedejesus$ pork dumpling added to basket
+saypops-mac:takeaway-challenge tomedejesus$ pork dumpling added to basket
+saypops-mac:takeaway-challenge tomedejesus$ fu-king fried rice added to basket
+saypops-mac:takeaway-challenge tomedejesus$ Your basket total is 12.96 and it contains:
+1 x spring roll 0.99
+2 x pork dumpling 5.98
+1 x fu-king fried rice 5.99
+```
 
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+e.g.
+With this in the spec.rb file:
+```ruby
+t = TakeAway.new
+t.add_to_basket("spring roll")
+t.add_to_basket("pork dumpling")
+t.add_to_basket("pork dumpling")
+t.add_to_basket("fu-king fried rice")
+t.checkout("your_mobile_number")
+```
+Run spec.rb from terminal and get:
+```sh
+saypops-mac:takeaway-challenge tomedejesus$ ruby spec/spec.rb
+saypops-mac:takeaway-challenge tomedejesus$ spring roll added to basket
+saypops-mac:takeaway-challenge tomedejesus$ pork dumpling added to basket
+saypops-mac:takeaway-challenge tomedejesus$ pork dumpling added to basket
+saypops-mac:takeaway-challenge tomedejesus$ fu-king fried rice added to basket
+saypops-mac:takeaway-challenge tomedejesus$ Thank you for your order. A confirmation text has been sent to your_mobile_number.
+```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+**bonus**
+```
+As a customer
+So that I can order my food from my phone
+I would like to send orders via text message
+```
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## Getting Started
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+### Prerequisites
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+What things you need to install the software and how to install them
 
+```
+Give examples
+```
 
-In code review we'll be hoping to see:
+### Installing
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+A step by step series of examples that tell you how to get a development env running
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Say what the step will be
 
-Notes on Test Coverage
-------------------
+```
+Give the example
+```
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
