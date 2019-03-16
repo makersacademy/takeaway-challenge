@@ -20,14 +20,20 @@ class Customer
   end
 
   def basket
-    @contents
+    display_contents
     @cost
   end
 
   private
 
   def calculate_cost
+    puts @cost
     @cost += @quantity * @price
+    puts @cost
+  end
+
+  def display_contents
+    @contents
   end
 
 end
