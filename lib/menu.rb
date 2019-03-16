@@ -1,42 +1,30 @@
+require_relative 'takeaway'
+
 # Menu class
 class TakeawayMenu
-  def initialize
-    @menu_options = MenuHeader.new
-    menu_header = MenuHeader.new
-    menu_header.print_header
-    @line_length = 61
-    splash = SplashScreen.new
-    splash.animation
-    menu(:main)
+  def initialize(takeaway = Takeaway.new)
+    @takeaway = takeaway
+    @contents = 1
+    # print_menu(1)
   end
 
-  def menu_arrays(menu)
-    return ["Veggie", "Meaty", "Fishy", "Which category would you like to see?"] if menu == :main
-  end
-
-  def menu(menu)
-    case menu
-    when :main
-      menu_arrays(:main).each_with_index { |item, index| puts '|' + index + item.center(40) + '|' }
-      puts '-' * @line_length
-      option = gets.strip
-      @menu_options.options(:main, option)
+  def print_menu(menu)
+    print_header
+    fetch_contents(menu)
+    @contents.each_with_index do |item, index|
+      puts "| #{index + 1}. #{item}".ljust(81) + "|"
     end
+    puts "-" * 82
   end
-end
 
-class MenuHeader
+  def fetch_contents(contents)
+    @contents = @takeaway.show(contents)
+  end
+
   def print_header
     system 'clear'
-    puts '-' * @line_length
-    puts '|'.ljust(22) + "Slice, slice baby".center(10) + "|".rjust(22)
-    puts '-' * @line_length
-  end
-end
-
-class MenuOptions
-
-  def options(menu, option)
-
+    puts "-" * 82
+    puts "|" + "Slice, Slice Baby!".center(80) + "|"
+    puts "-" * 82
   end
 end

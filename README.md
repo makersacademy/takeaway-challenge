@@ -5,5 +5,10 @@
 This is a emulation of a online takeaway service set by the Makers academy weekend challenge.
 
 
-More details to come.
-Version history will be updatd shortly.
+**More details to come.**
+
+To use, type:
+
+`ruby menu.rb`
+
+Version history will be updated shortly.
