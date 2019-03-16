@@ -11,7 +11,7 @@ The user will confirm that they want to place the order. Once the order is place
 #### USER STORIES
 
 ```
-As a customer
+[X] As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
