@@ -18,12 +18,6 @@ RSpec.describe 'User_stories' do
       expect { menu.show_dishes }.to output("dish1: 10\ndish2: 11\n").to_stdout
     end
 
-    context 'when list is empty' do
-      it 'raises an error' do
-        
-      end
-    end
-
   end
 
 # User story 2
@@ -43,12 +37,6 @@ RSpec.describe 'User_stories' do
       expect(menu.show_selected_dishes).to eq(['dish1','dish2'])
     end
 
-    context 'when dish is not on the menu' do
-      it 'raises an error' do
-       
-      end
-    end
-    
   end
 
 end
