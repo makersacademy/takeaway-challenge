@@ -38,9 +38,8 @@ describe Customer do
     expect(customer).to respond_to(:basket)
   end
 
-  it 'stores correct price in basket' do
+  it 'stores correct price' do
     customer.add("Pepperoni", 2)
-    customer.basket
     expect(customer.cost).to eq 14
   end
 
