@@ -25,6 +25,11 @@ class Order
     @order_price
   end
 
+  def place
+    raise "No items in order" if @order.empty?
+    @order
+  end
+
   private
 
   attr_reader :order_price

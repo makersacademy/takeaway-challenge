@@ -48,4 +48,10 @@ describe Order do
       expect(subject.total).to eq 8.5
     end
   end
+
+  describe '#place' do
+    it 'raises an error if no items added to order' do
+      expect { subject.place } .to raise_error "No items in order"
+    end
+  end
 end
