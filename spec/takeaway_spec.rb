@@ -16,6 +16,7 @@ describe Takeaway do
       takeaway.add_to_order(item, 2)
       expect(takeaway.basket.count(item)).to eq 2
     end
+    
     it 'raises an error if the item is not on the menu' do
       expect { takeaway.add_to_order("", 1) }.to raise_error "Cannot add to order: item is not available. Select items from the menu."
     end

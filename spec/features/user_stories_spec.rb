@@ -9,9 +9,11 @@ describe 'User Stories' do
     it 'i can get a list of menu items' do
       expect(takeaway.menu).to_not be_empty
     end
+    
     it 'the menu items have prices' do
       expect(takeaway.menu).to all have_key :price
     end
+    
     it 'the menu items have names' do
       expect(takeaway.menu).to all have_key :name
     end

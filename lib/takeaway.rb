@@ -1,10 +1,8 @@
-require_relative 'dish'
+require_relative 'basket'
 
 class Takeaway
-  attr_reader :basket
-
-  def initialize
-    @basket = []
+  def initialize(basket = Basket.new)
+    @basket = basket
   end
 
   def menu
@@ -22,19 +20,18 @@ class Takeaway
     raise "Cannot add to order: item is not available. "\
           "Select items from the menu." unless menu.include? dish
 
-    quantity.times { basket << dish }
-    basket
+    quantity.times { @basket.add(dish) }
+    @basket
   end
 
+  def basket
+    @basket.contents
+  end
+  
   def verify(price)
     raise "Cannot verify order: the price was wrong. "\
-          "Check your maths! 😜" if price != basket_total
+          "Check your maths! 😜" if price != @basket.total
+
     true
-  end
-
-  private
-
-  def basket_total
-    basket.map { |item| item[:price] }.sum
   end
 end
