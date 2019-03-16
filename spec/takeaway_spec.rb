@@ -11,5 +11,5 @@ describe Takeaway do
   it 'checks if show_menu is displaying price list' do
     expect(subject.show_menu).to include({'chicken curry' => 6, 'veg rice' => 5})
   end
-  
+
 end
