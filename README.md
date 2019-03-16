@@ -11,4 +11,4 @@ To use, type:
 
 `ruby menu.rb`
 
-Version history will be updated shortly.
+Version history avainlabe [HERE](https://github.com/fo0s/takeaway-challenge/blob/master/version_history.md)
