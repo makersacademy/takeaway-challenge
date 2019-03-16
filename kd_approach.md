@@ -154,7 +154,7 @@ Validation:
 
 - There is some sort of validation within `OrderManagement` to verify that the dish is on the `FoodMenu`
 - There is built-in verification within the program to check that the total cost/bill of the order matches what is expected given what the user has ordered.
-- `checker` checks that the dish is on the `FoodMenu`
+- `we_serve?` checks that the dish is on the `FoodMenu`
 - `total` calculates the total cost of the ordered food
 
 ##### TEST CASE(S)
@@ -166,8 +166,9 @@ Takeaway:
 
 OrderManagement:
 
-1. [] has the `add_to_order` method to collect and store the orders against selected_dishes
-2. [] has the `checker` to verify that the dish is on the FoodMenu
+1. [X] has the `add_to_order` method to collect and store the orders against selected_dishes
+2. [X] `add_to_order` raises an error if the dish is not served by the Takeaway `we_serve?`
+2. [] has the `we_serve?` method to verify that the dish is on the FoodMenu
 3. [] has a `total` method to calculate the cost of the food ordered
 
 
