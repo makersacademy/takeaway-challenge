@@ -1,5 +1,36 @@
-Takeaway Challenge
-==================
+Matt Thompson - Takeaway Challenge
+==================================
+
+## Description
+
+This appliction does...
+
+
+## Steps
+
+1. Break down user stories into an [object model]()
+
+2. Create initial view of [class model]() and [sequence diagram]()
+
+3. Test drive design of first `Class` and `methods`
+
+
+
+## Steps to run
+
+
+
+## Steps to download
+
+
+
+## Steps to test
+
+
+
+
+Original Readme - Takeaway Challenge
+====================================
 ```
                             _________
               r==           |       |
