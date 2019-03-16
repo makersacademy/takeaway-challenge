@@ -153,8 +153,8 @@ I would like to be able to select some number of several available dishes
 Validation:
 
 - There is some sort of validation within `OrderManagement` to verify that the dish is on the `FoodMenu`
-- There is built-in verification within the program to check that the total cost/bill of the order matches what is expected given what the user has ordered.
 - `we_serve?` checks that the dish is on the `FoodMenu`
+- There is built-in verification within the program to check that the total cost/bill of the order matches what is expected given what the user has ordered.
 - `total` calculates the total cost of the ordered food
 
 ##### TEST CASE(S)
@@ -162,15 +162,17 @@ Validation:
 Takeaway:
 
 1. [X] Takeaway object has `place_the_order` method
-2. [] `place_the_order` method takes one parameter for the customer's selected dishes
+2. [X] `place_the_order` method takes one parameter for the customer's selected dishes
+
+FoodMenu:
+
+1. [X] has the `we_serve?(dish)` method to verify that the dish is on the FoodMenu
 
 OrderManagement:
 
 1. [X] has the `add_to_order` method to collect and store the orders against selected_dishes
-2. [X] `add_to_order` raises an error if the dish is not served by the Takeaway `we_serve?`
-2. [] has the `we_serve?` method to verify that the dish is on the FoodMenu
+2. [X] `add_to_order` raises an error if the dish is not served by the Takeaway
 3. [] has a `total` method to calculate the cost of the food ordered
-
 
 
 

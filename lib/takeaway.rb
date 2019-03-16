@@ -4,7 +4,7 @@ class Takeaway
 
   attr_reader :food_menu, :order_management
 
-  def initialize(food_menu, order_management = OrderManagement.new)
+  def initialize(food_menu, order_management)
     @food_menu = food_menu
     @order_management = order_management
   end

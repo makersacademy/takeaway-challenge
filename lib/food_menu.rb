@@ -12,4 +12,8 @@ class FoodMenu
     .join(", ")
   end
 
+  def we_serve?(dish)
+    food[dish] != nil
+  end
+
 end

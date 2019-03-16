@@ -17,4 +17,12 @@ describe FoodMenu do
 
   end
 
+  context '#we_serve' do
+
+    it 'returns false if the dish is not served by the takeaway FoodMenu' do
+      expect(food_menu.we_serve?(:spare_ribs)).to eq(false)
+    end
+
+  end
+
 end
