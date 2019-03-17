@@ -21,4 +21,8 @@ describe Menu do
     expect(dishes.include?(:pasta)).to be false
   end
 
+  it 'shows if a dish is on menu' do
+    expect(dishes.include?(:wings)).to be true
+  end
+
 end 
