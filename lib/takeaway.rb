@@ -1,29 +1,22 @@
 require_relative 'basket'
-require_relative 'confirmation_sender_twilio'
+require_relative 'messager_twilio'
+require_relative 'menu'
 
 class Takeaway
-  def initialize(confirmation_sender = ConfirmationSenderTwilio.new,
-                 basket = Basket.new)
-    @confirmation_sender = confirmation_sender
+  def initialize(messager = MessagerTwilio.new,
+                 basket = Basket.new,
+                 menu = Menu.new)
+    @messager = messager
     @basket = basket
+    @menu = menu
   end
 
   def menu
-    [
-      { name: "mixed meze", price: 10 },
-      { name: "lahmacun", price: 4 },
-      { name: "chicken shish", price: 10 },
-      { name: "iskender kebab", price: 12 },
-      { name: "icli kofe", price: 12 },
-      { name: "baklava", price: 6 }
-    ]
+    @menu.all
   end
 
-  def add_to_order(dish, quantity)
-    raise "Cannot add to order: item is not available. "\
-          "Select items from the menu." unless menu.include? dish
-
-    quantity.times { @basket.add(dish) }
+  def add_to_order(index, quantity)
+    quantity.times { @basket.add(@menu.get(index)) }
     @basket
   end
 
@@ -31,8 +24,8 @@ class Takeaway
     @basket.contents
   end
   
-  def verify(price)
-    raise "Cannot verify order: the price was wrong. "\
+  def confirm(price)
+    raise "Cannot confirm order: the price was wrong. "\
           "Check your maths! 😜" if price != @basket.total
 
     send_confirmation_message
@@ -41,12 +34,12 @@ class Takeaway
 
   private
 
-  attr_reader :confirmation_sender
+  attr_reader :messager
 
   def send_confirmation_message
     one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
     message = "Thank you! Your order was placed and will be delivered before "\
               "#{one_hour_from_now}."
-    confirmation_sender.send(message)
+    messager.send(message)
   end
 end
