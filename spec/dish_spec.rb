@@ -1,4 +1,5 @@
 require 'dish'
+require 'takeaway'
 
 describe Dish do 
   describe '#display_list' do 
@@ -8,13 +9,7 @@ describe Dish do
     end 
   end 
 
-  describe '#select(item)' do 
-    it 'returns an array of hashes of selected item'
-      subject.select('chicken')
-      subject.select('chinese')
-      expect()
-    end 
-  end  
+
 
 
 

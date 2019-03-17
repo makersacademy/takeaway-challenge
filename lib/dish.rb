@@ -1,3 +1,5 @@
+require 'order'
+require 'takeaway'
 
 class Dish
   attr_reader :dishes
@@ -17,10 +19,10 @@ class Dish
   end 
 
 
-  def select(item)
 
 
-  end
+
+
 
   private 
 

@@ -1,30 +1,33 @@
-# require_relative './dish.rb'
+require 'dish.rb'
+require 'order'
 
 class Takeaway
+attr_reader :order
 
-  def initialize
-    @takeaway = []
+
+  def initialize(order = Order.new)
+    @order = order
     @total = 0
   end 
 
 
-  def check_menu(dishes= Dish.new)
-    @alldishes = dishes
+  def check_menu(all_dishes= Dish.new)
+    @alldishes = all_dishes
     # p @dishes
-
     #@dishes is dishes class
     @alldishes.display_list
 
   end 
 
-  # def select(meal)
-  #   # @alldishes.each do |x|
-  #   # if 
+  def place_order(dishes)
+    #make dishes to be a hash
+    @order = [dishes]
+    
+    # dishes.each do |dish, quantity|
+    #   @order.dishes.add(dish, quantity)
 
-  #   # @takeaway << meal
 
-
-  # end 
+  end 
 
 
 

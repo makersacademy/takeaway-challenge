@@ -1,17 +1,28 @@
 require 'takeaway'
 require 'dish'
+require 'order'
 
 describe Takeaway do 
 
-#subject(:takeaway) { described_class.new}
+
 let(:dish_class) {double(:dish_class, new: dish)}
-let(:dish) {double(:dish)}
+let(:dish) { double(:dish) }
+
+
+#need to double order
+subject(:takeaway) { described_class.new(order: order)}
+let(:order) { double(:order) }
+
+let(:dishes) {{chicken: 1, chinese: 2}}
+
+
 #is this dish the dish above?
 
   describe '#check_menu' do 
     before do
     allow(dish_class).to receive(:new) {[{name: 'chinese', price: 8}, {name: 'fishandchips', price: 7}, {name: 'chicken', price: 5}, {name: 'beef', price: 6}]}
-    end
+    allow(order).to receive(:add)  
+  end
 
     it 'displays list of dishes and prices' do 
       
@@ -26,16 +37,13 @@ let(:dish) {double(:dish)}
     end 
   end 
 
-  # describe '#select_meal' do 
-  #   it 'selects meal and returns the whole meal' do 
-      
-  #     subject.select('chicken')
-  #     subject.select('chinese')
-  #     expect(subject.takeaway).to eq [{name: 'chicken', price: 5}, {name: 'chinese', price: 8}]
-    
-  #   end
+  describe '#place_order' do 
+    it 'adds dishes to order' do 
+      takeaway.place_order(dishes)
+      expect(takeaway.order).to eq [dishes]
+    end
 
-  # end 
+  end 
 
 
 
