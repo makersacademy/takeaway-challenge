@@ -24,12 +24,7 @@ RSpec.describe 'User_stories' do
   describe '#select_dishes' do
     context 'when dishes are included' do
       it 'allows user to use the select option with n arguments' do
-        expect { menu.select_dishes('dish1', 'dish2') }.not_to raise_error
-      end
-
-      it 'selects available dishes' do
-        result = menu.select_dishes(1)[0].details
-        expect(result).to eq("Onion, Rosemary & Cheddar - 11")
+        expect { menu.select_dishes(['dish1', 'dish2']) }.not_to raise_error
       end
 
     end
@@ -43,27 +38,28 @@ RSpec.describe 'User_stories' do
   describe '#total' do
     context "when correct total" do
       it 'returns the total for the 2 selected dishes' do
-        menu.select_dishes(1,2)
+        menu.select_dishes([1,2])
+
         # stubbing the correct_total method
         allow(menu).to receive(:check_total).and_return true
         expect(menu.total).to eq 31
       end
 
       it 'verifies if the order is correct' do
-        menu.select_dishes(1,2) # selects dishes
+        menu.select_dishes([1,2]) # selects dishes
         menu.total # creates total
         expect { menu.verify_order }.to output("Total of #{menu.total} is correct\n").to_stdout
       end
 
       it 'shows selected dishes' do
-        selected_dish = menu.select_dishes(1)
+        selected_dish = menu.select_dishes([1])
         expect { menu.show_selected_dishes}.to output("#{selected_dish[0].name} = #{selected_dish[0].price}\nTotal: #{menu.total}\n").to_stdout
       end
     end
 
     context "when incorrect total" do
       it 'return an error' do
-        menu.select_dishes('dish1', 'dish2') # selects dishes
+        menu.select_dishes([1,2]) # selects dishes
         menu.total # creates total
         # stubbing the correct_total method to return false
         allow(menu).to receive(:check_total).and_return false

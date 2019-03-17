@@ -1,4 +1,5 @@
 require './lib/menu'
+require_relative 'reply_messaging'
 
 class Options
 

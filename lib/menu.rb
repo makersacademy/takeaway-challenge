@@ -1,5 +1,6 @@
 require_relative 'list'
 require_relative 'messaging'
+require_relative 'reply_messaging'
 
 class Menu 
 
@@ -13,8 +14,8 @@ class Menu
     @list.show_dishes
   end
 
-  def select_dishes(*args)
-    @selected_dishes = @list.select_dishes(args.flatten)
+  def select_dishes(selection)
+    @selected_dishes = @list.select_dishes(selection)
   end
 
   def total
@@ -31,6 +32,7 @@ class Menu
   end
 
   def put_order
+    total
     @message.send("Thank you! Your order of £#{@total} was placed and will be delivered before #{expected_delivery}")
   end
 
