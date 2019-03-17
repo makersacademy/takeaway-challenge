@@ -28,16 +28,14 @@ Oº°‘¨ Welcome to Grill Communication! ¨‘°ºO
 4: Icli Kofe, £12
 5: Baklava, £6
  => nil 
-2.5.0 :004 > t.add_to_order 1, 5
- => [{:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}] 
 2.5.0 :005 > t.add_to_order 2, 1
- => [{:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Shish", :price=>10}] 
-2.5.0 :006 > t.basket
- => [{:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Shish", :price=>10}] 
+ => [{:name=>"Chicken Shish", :price=>10}] 
+2.5.0 :006 > t.add_to_order 1, 2
+ => [{:name=>"Chicken Shish", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}] 
 2.5.0 :007 > t.total
- => 30 
-2.5.0 :008 > t.confirm(30)
- => true  
+ => 18 
+2.5.0 :008 > t.confirm(18)
+ => true 
 ```
 
 We will confirm delivery time by text message. Bon appetit! 👨‍🍳
