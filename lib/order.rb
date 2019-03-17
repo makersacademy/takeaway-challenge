@@ -1,4 +1,4 @@
-require 'dish'
+require 'menu'
 
 class Order
 

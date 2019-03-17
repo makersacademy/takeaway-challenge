@@ -1,12 +1,12 @@
 require 'takeaway'
-require 'dish'
+require 'menu'
 require 'order'
 
 describe Takeaway do 
 
 
-let(:dish_class) {double(:dish_class, new: dish)}
-let(:dish) { double(:dish) }
+let(:menu_class) {double(:menu_class, new: menu)}
+let(:menu) { double(:menu) }
 
 
 #need to double order
@@ -20,18 +20,18 @@ let(:dishes) {{chicken: 1, chinese: 2}}
 
   describe '#check_menu' do 
     before do
-    allow(dish_class).to receive(:new) {[{name: 'chinese', price: 8}, {name: 'fishandchips', price: 7}, {name: 'chicken', price: 5}, {name: 'beef', price: 6}]}
+    allow(menu_class).to receive(:new) {[{name: 'chinese', price: 8}, {name: 'fishandchips', price: 7}, {name: 'chicken', price: 5}, {name: 'beef', price: 6}]}
     allow(order).to receive(:add)  
   end
 
     it 'displays list of dishes and prices' do 
       
-      dish = dish_class.new
+      menu = menu_class.new
       #how to use the double dish above, instead of creating a new double here. (it didnt work)
-      p dish
-      expect(dish).to receive(:display_list) 
+      p menu
+      expect(menu).to receive(:display_list) 
       #couldnt put dish_class.new here
-      subject.check_menu(dish)
+      subject.check_menu(menu)
  
       #?? return vs puts
     end 

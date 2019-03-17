@@ -1,8 +1,33 @@
+require 'order'
+require 'takeaway'
+
 class Menu
+  #Dish class here is like Menu of dishes
+  attr_reader :dishes
 
-def has_dish?
+  def initialize(dishes = [{name: 'chinese', price: 8}, {name: 'fishandchips', price: 7}, {name: 'chicken', price: 5}, {name: 'beef', price: 6}])
+    @dishes = dishes
+  end 
 
-end 
+  def display_list
+     @dishes.each do |x|
+      puts "#{x[:name]} #{x[:price]}"
+      #how to make this a return statement and not puts
+     end 
+  end 
+
+  def has_dish?(dish)
+    @dishes.any? {|h| h[:name] == dish}
+  end 
+
+
+
+  private 
+
+  def to_string
+
+
+  end 
 
 
 

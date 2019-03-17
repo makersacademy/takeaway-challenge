@@ -1,4 +1,4 @@
-require 'dish.rb'
+require 'menu'
 require 'order'
 
 class Takeaway
@@ -11,7 +11,7 @@ attr_reader :order
   end 
 
 
-  def check_menu(all_dishes= Dish.new)
+  def check_menu(all_dishes= Menu.new)
     @alldishes = all_dishes
     # p @dishes
     #@dishes is dishes class
