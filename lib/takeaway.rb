@@ -28,6 +28,10 @@ class Takeaway
     order.basket
   end
   
+  def total
+    order.total
+  end
+  
   def confirm(price)
     raise "Cannot confirm order: the total was wrong. "\
           "Check your maths! 😜" unless order.confirm(price)

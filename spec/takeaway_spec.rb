@@ -8,7 +8,9 @@ describe Takeaway do
   let(:menu) { double :menu }
   let(:menu_list) { double :menu_list }
   let(:menu_item) { double :menu_item }
-  
+  let(:total) { double :total }
+  let(:not_the_total) { double :not_the_total }
+
   describe "#menu" do
     it 'returns the menu' do
       allow(menu).to receive(:all).and_return(menu_list)
@@ -46,10 +48,14 @@ describe Takeaway do
     end
   end
 
-  describe "#confirm" do
-    let(:total) { double :total }
-    let(:not_the_total) { double :not_the_total }
+  describe '#total' do
+    it 'returns the total' do
+      allow(order).to receive(:total).and_return(total)
+      expect(takeaway.total).to eq (total)
+    end
+  end
 
+  describe "#confirm" do
     before do
       allow(order).to receive(:confirm).with(total).and_return(true)
       allow(order).to receive(:confirm).with(not_the_total).and_return(false)
