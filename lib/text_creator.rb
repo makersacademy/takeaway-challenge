@@ -5,7 +5,7 @@ class TextCreator
   end
 
   def time_limit
-    "#{@time.hour+1}:#{@time.min}"
+    "#{@time.hour + 1}:#{@time.min}"
   end
 
   def text
