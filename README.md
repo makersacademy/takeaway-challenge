@@ -1,3 +1,4 @@
+```
   _______    _                                     _____ _           _ _                       
  |__   __|  | |                                   / ____| |         | | |                      
     | | __ _| | _____  __ ___      ____ _ _   _  | |    | |__   __ _| | | ___ _ __   __ _  ___ 
@@ -7,7 +8,7 @@
                                            __/ |                                     __/ |     
                                           |___/                                     |___/      
                                           
-                                          
+```                                     
 Takeaway challenge is a program run in REPL. It allows a customer to view a menu, build an order, check the price of the order and place an order. Reference has been made to the following repository [Takeaway-Challenge](https://github.com/amyj0rdan/takeaway-challenge)
 
 [See here](https://github.com/makersacademy/airport_challenge) for Makers' original repo.
