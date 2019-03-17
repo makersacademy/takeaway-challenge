@@ -4,8 +4,8 @@ class Order
 attr_reader :total
 attr_reader :dishes, :menu
 
-  def initialize(menu)
-    @dishes = {}
+  def initialize(menu, dishes = {})
+    @dishes = dishes
     @menu = menu
   end 
 

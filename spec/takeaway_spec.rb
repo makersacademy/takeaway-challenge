@@ -5,12 +5,15 @@ require 'order'
 describe Takeaway do 
 
 let(:menu_class) {double(:menu_class, new: menu)}
-let(:menu) { double(:menu) }
+let(:menu) { double(:menu)}
 
 #need to double order
-subject(:takeaway) { described_class.new(order: order)}
+subject(:takeaway) { described_class.new(order: order, sms: sms, config: {})}
+
 let(:order) { double( :order, total: 21) }
 let(:dishes) {{chicken: 1, chinese: 2}}
+
+let(:sms) {instance_double("sms", deliver: nil)}
 
 #is this dish the dish above?
 before do
@@ -42,12 +45,16 @@ end
     it 'knows order total' do
       allow(order).to receive(:add)
       allow(order).to receive(:total).and_return(21)
-  
         expect(takeaway.total(order)).to eq 21
     end 
-
   end 
 
+  it "sends an sms when the order has been placed" do 
+    expect(sms).to receive(:deliver)
+    takeaway.place_order(dishes)
+
+
+  end 
 
 
 
