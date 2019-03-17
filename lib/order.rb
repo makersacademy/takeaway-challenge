@@ -1,58 +1,32 @@
+# code from walkthrough
 
 class Order
 
-  attr_reader :the_order
+  attr_reader :dishes
 
-  def initialize
-    @the_order = []
-  end 
+  def initialize(menu)
+    @dishes = {}
+    @menu = menu
+  end
 
-  def add(dish, count = 1)
-    count.times do
-      @the_order << dish
+  def add(dish, quantity)
+    fail NoItemError, "#{dish.capitalize} is not on the menu!" unless menu.has_dish?(dish)
+    dishes[dish] = quantity
+  end
+
+  def total
+    item_totals.inject(:+)
+  end
+
+  private
+
+  attr_reader :menu
+
+  def item_totals
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
     end
   end
 end
 
-#   attr_reader :order_array
-
-#   def initialize
-#     order_array = []
-#   end
-
-#   def add_to_order(this_dish)
-#     order_array << this_dish
-
-
-# end
-
-# feedme = Order.new
-
-# p order_array
-# p 
-
-# def initialize(orderRequest = Customer.new, )
-#   #
-# end
-
-# def gather_order 
-#   #get order from customer
-# end
-
-# def place_order
-#   #gather an arrary of hases from the menu 
-# end
-
-# def check_total
-#   #check that the ord
-# end
-
-# def print_order
-# end
-
-
-#   def print_menu
-#     puts @items
-#     # MAKE THIS LOOP PRETTY LATER
-#   end
-# end
+class NoItemError < StandardError; end

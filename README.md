@@ -1,3 +1,101 @@
+## Project title
+
+This is the takeaway challenge, a week(end) 2 project from Makers Academy, used to develop my skills as a junior developer over the weekend following week 2 at Makers Academy Coding Bootcamp.
+
+```
+                            _________
+              r==           |       |
+           _  //            |  M.A. |   ))))
+          |_)//(''''':      |       |
+            //  \_____:_____.-------D     )))))
+           //   | ===  |   /        \
+       .:'//.   \ \=|   \ /  .:'':./    )))))
+      :' // ':   \ \ ''..'--:'-.. ':
+      '. '' .'    \:.....:--'.-'' .'
+       ':..:'                ':..:'
+
+ ```
+
+## Motivation
+
+This project was started to build my skills with Ruby and Rspec at the suggestion of Makers Academy. 
+
+The aims:
+> All tests passing
+> High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
+> The code is elegant: every class has a clear responsibility, methods are short etc.
+
+
+## Build status
+
+No further development expected.
+
+## Testing 
+
+96.75% test coverage.
+
+## Customer story
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+## Code style
+
+Rubocop 0.65.0 was used for linting and styling the Ruby code.
+ 
+## Screenshots
+
+Although UML (class and sequence diagrams) were created on paper before coding started photos of them were not taken. The diagrams were binned after many alterations and they were not fit for purpose.
+
+## Tech/framework used
+
+Ruby was used as the main language, with RSpec used for testing.
+
+## Features
+
+The code is complex for my current level of skill, features include API integration with and external source, considerate use of mocks, stubs, dependency injection. There are other features, such a loops, hashes, arrays, symbols, errors being raised. There is use of time and date and gems.
+
+## Installation
+
+Ruby v 2.5.0 was used in the construction of the project, if gems were used (such as twilio here), please find attached a gem file listing those gems for installation.
+
+## API Reference
+
+Twilio API was a feature, for sending text messages.
+
+## Tests
+
+A TDD process was used in the development of this project, please see the attached RSpec files for details of the testing that was carried out. However I stress that I had to revert to follow the walkthrough exercise online to complete the project as found the project too complex for me at this time.
+
+## How to use?
+
+You should be able to run the code via irb.
+
+## Contribute
+
+No contributions are required at this time, as this is a training exercise, provided by Makers Academy.
+
+## Credits
+
+Full credit given to Makers Academy who created the challenge and provided the walkthrough which i followed (strictly) for this exercise after trying unsuccessfully for an extended period of time. Their youtube video is here: https://www.youtube.com/watch?v=mgiJKdH9x8c which I verbatim followed, which helped me understand the reasons why a more experienced developer did what he did (and allowed me to play with his code).
+
+#### Comments
+
+Although I have developed a system and have got fairly confident in writing code, I don't think I have enough experience to complete a project of this complexity (after only 2 weeks onsite!) I look forward to the day that i call this project easy.
+
 
 <!-- * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
@@ -19,125 +117,4 @@
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
 
-In code review we'll be hoping to see:
-
-
-
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend. -->
-
-
-## Project title
-
-This is the takeaway challenge, a week(end) 2 project from Makers Academy, used to develop my skills as a junior developer over the weekend of week 2 at Makers Academy Bootcamp. 
-
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
-
-## Motivation
-
-This project was made to develop Ruby and software development skills.
-
-I am to have:
-> All tests pgit stassing
-> High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-> The code is elegant: every class has a clear responsibility, methods are short etc.
-
-
-## Build status
-
-The project is currently under construction, it may not be completed as this is a practice exercise to build myskills.  
-
-## Testing 
-
-XXXXXXX the project has XXXXX Test Coverage. 
-
-TDD was used to bulid the project with Rspec. 
-
-## Customer story
-
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
-|   	|   	|   	|
-|---	|---	|---	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-|   	|   	|   	|
-
-## Code style
-
-Rubocop 0.65.0 was used for linting and stylying the Ruby code. 
- 
-## Screenshots
-
-XXXXXXXXXXXXXXXXX I maybe want to include photos of the class diagrams and system diagrams here?
-
-## Tech/framework used
-
-Ruby was used as the main language, with RSpec used for testing. 
-
-## Features
-
-> Used double to create a menu object in the takeaway rspec to simulate the object and encapsulate the code. 
-> 
-XXXXXXXXXXXXXXXXXX
-
-## Installation
-
-Ruby v 2.5.0 was used in the construction of the project, if gems were used, please find attached a gem file listing those gems for installation. 
-
-## API Reference
-
-No API used in this project. 
-
-## Tests
-
-A TDD process was used in the development of this project, please see the attached RSpec files for details of the testing that was carried out. 
-
-## How to use?
-
-You should be able to run the code via irb. 
-
-## Contribute
-
-No contributions are required at this time, as this is a training exercise. 
-
-## Credits
-
-Full credit given to Makers Academy who have suggested the project. 
-
-#### Anything else that seems useful
-
-Code written by Jeremyrrsmith

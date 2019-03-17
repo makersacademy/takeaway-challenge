@@ -1,27 +1,30 @@
-class Takeaway
+require "./lib/order"
+require "./lib/sms"
 
-  @menu = [
-    { 'California Roll' => 5.00 },
-    { 'Chicken Gyoza' => 4.50 }, 
-    { 'Sashimi Salad' => 3.50 },
-    { 'Katsu Curry' => 7.50 },
-    { 'Miso Soup' => 2.50 },
-    { 'Tokyo Ramen Noodles' => 4.00 },
-    { 'Bento Box' => 6.50 },
-  ]
+class Takeaway
+  def initialize(menu:, config:, order: nil, sms: nil)
+    @menu = menu
+    @order = order || Order.new(menu)
+    @sms = sms || SMS.new(config)
+  end
 
   def print_menu
-    @menu
+    menu.print
+  end
+
+  def place_order(dishes)
+    add_dishes(dishes)
+    sms.deliver
+    order.total
+  end
+
+  private
+
+  attr_reader :menu, :order, :sms
+
+  def add_dishes(dishes)
+    dishes.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
   end
 end
-# #   attr_reader :menu
-
-# #   def initialize(menu)
-# #     @menu = menu
-# #   end
-
-#   def print_menu
-#     # menu.print
-#   end
-
-
