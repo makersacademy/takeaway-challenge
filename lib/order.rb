@@ -1,17 +1,25 @@
-require_relative 'item'
+require_relative 'choice'
 class Order
-  attr_reader :order, :total
+  attr_reader :order
   def initialize
     @order = []
-    @total = 0
   end
 
-  def add(item = Item)
-    @order << item
-    @total += item.total
+  def add(choice = Choice, quantity = 0)
+    @order << { choice: choice, quantity: quantity }
   end
 
-  def full
-    @order
+  def show
+    @order.each.map { |item|
+      item[:choice].str + " : #{item[:quantity]}"
+    }.join("\n")
+  end
+
+  def total
+    if @order.length != 0
+      @order.each.map { |item| item[:choice].price * item[:quantity] }.reduce(:+)
+    else
+      0
+    end
   end
 end
