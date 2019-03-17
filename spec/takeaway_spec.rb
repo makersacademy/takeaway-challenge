@@ -51,7 +51,7 @@ describe Takeaway do
   describe '#total' do
     it 'returns the total' do
       allow(order).to receive(:total).and_return(total)
-      expect(takeaway.total).to eq (total)
+      expect(takeaway.total).to eq total
     end
   end
 

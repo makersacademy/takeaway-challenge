@@ -14,13 +14,13 @@ class Menu
     @name = name
   end
   
+  def all
+    items
+  end
+  
   def pretty
     heading = ["Oº°‘¨ Welcome to #{name}! ¨‘°ºO"]
     (heading + pretty_format_items).join("\n")
-  end
-  
-  def all
-    items
   end
 
   def get(index)
