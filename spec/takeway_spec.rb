@@ -7,7 +7,7 @@ describe Takeaway do
 # I would like to see a list of dishes with prices
 
   it 'should show list of dishes with prices' do
-    takeaway = Takeaway.new
+    takeaway = Takeaway.new({ "rice" => 1.25, "banana" => 1.00, "fries" => 2.10 })
 
     expect(takeaway.show_list).to eq takeaway.dishes
     
@@ -18,7 +18,7 @@ describe Takeaway do
 # I would like to be able to select some number of several available dishes
 
   it 'allows to select available dish' do
-    takeaway = Takeaway.new
+    takeaway = Takeaway.new({ "rice" => 1.25, "banana" => 1.00, "fries" => 2.10 })
 
     takeaway.add_to_order("rice")
 
@@ -27,7 +27,7 @@ describe Takeaway do
   end
 
   it 'does not allow to select unavailable dish' do
-    takeaway = Takeaway.new
+    takeaway = Takeaway.new({ "rice" => 1.25, "banana" => 1.00, "fries" => 2.10 })
 
     takeaway.add_to_order("ham")
 
@@ -40,7 +40,7 @@ describe Takeaway do
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   it 'checks total price of order is correct' do
-    takeaway = Takeaway.new
+    takeaway = Takeaway.new({ "rice" => 1.25, "banana" => 1.00, "fries" => 2.10 })
     takeaway.add_to_order("rice")
     takeaway.add_to_order("banana")
 

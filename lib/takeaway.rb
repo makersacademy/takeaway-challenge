@@ -2,8 +2,8 @@ class Takeaway
   
   attr_reader :dishes, :order, :price
 
-  def initialize
-    @dishes = { "rice" => 1.25, "banana" => 1.00, "fries" => 2.10 }
+  def initialize(items)
+    @dishes = items
     @order = []
     @price = 0
   end
