@@ -51,7 +51,7 @@ before 18:52 after I have ordered
 Domain modelling
 -----
 
-Started the weekeend challenge by utilizing my recently learned skills in domain modelling, I much rather start using a model as I am visual person. This way I can fully understand what the user stories are and the functionality req'd. I did a Sequence diagram and then a class diagram which I will add once I transfer it from paper.
+Started the weekeend challenge by utilizing my recently learned skills in domain modelling, I much rather start using a model as I am visual person. This way I can fully understand what the user stories are and the functionality req'd.
 
 
 ![sequence diagram](https://i.ibb.co/JsLTbkL/takeaway-challenge-sequence.png "Takeaway model")

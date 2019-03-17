@@ -1,23 +1,32 @@
 require 'takeaway'
 
 RSpec.describe Takeaway do
-
-  # As a customer
-  # So that I can check if I want to order something
-  # I would like to see a list of dishes with prices
-
-
-  it { is_expected.to respond_to(:order).with(2).arguments }
-
-
+  subject(:thai) { Takeaway.new }
   describe '#Read menu functionality' do
+    # As a customer
+    # So that I can check if I want to order something
+    # I would like to see a list of dishes with prices
     it { is_expected.to respond_to(:show_menu) }
 
     it 'When passed menu object, show menu' do
-      thai = Takeaway.new
       expect(thai.show_menu).to eq(Menu::MENU)
     end
   end
 
+  describe '#Order dishes functionality' do
+    # As a customer
+    # So that I can order the meal I want
+    # I would like to be able to select some number of several available dishes
+
+    it { is_expected.to respond_to(:order).with(2).arguments }
+
+    it 'Stores order in the order_basket array' do
+      expect(thai.order('Chicken Pad Thai')).to eq [['Chicken Pad Thai', 1]]
+    end
+
+    it 'Stores more than 1 quantity in array' do
+      expect(thai.order('Chicken Pad Thai', 5)).to eq [['Chicken Pad Thai', 5]]
+    end
+  end
 
 end
