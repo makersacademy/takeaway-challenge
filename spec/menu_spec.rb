@@ -16,5 +16,9 @@ describe Menu do
   it 'calculates the price' do
     expect(subject.price(:chips)).to eq dishes[:chips]
   end
+  
+  it 'shows if a dish is not on menu' do
+    expect(dishes.include?(:pasta)).to be false
+  end
 
 end 
