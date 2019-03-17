@@ -1,5 +1,5 @@
-module ConfirmationSenderStdout
-  def self.send(message)
+class ConfirmationSenderStdout
+  def send(message)
     puts message
   end
 end

@@ -1,8 +1,9 @@
 require_relative 'basket'
-require_relative 'confirmation_sender_stdout'
+require_relative 'confirmation_sender_twilio'
 
 class Takeaway
-  def initialize(confirmation_sender = ConfirmationSenderStdout, basket = Basket.new)
+  def initialize(confirmation_sender = ConfirmationSenderTwilio.new,
+                 basket = Basket.new)
     @confirmation_sender = confirmation_sender
     @basket = basket
   end
@@ -44,7 +45,8 @@ class Takeaway
 
   def send_confirmation_message
     one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
-    message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}."
+    message = "Thank you! Your order was placed and will be delivered before "\
+              "#{one_hour_from_now}."
     confirmation_sender.send(message)
   end
 end

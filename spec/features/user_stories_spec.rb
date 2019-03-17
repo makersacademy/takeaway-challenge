@@ -1,7 +1,9 @@
+require 'takeaway'
+
 describe 'User Stories' do
-  let(:takeaway) { Takeaway.new }
-  # let(:dish) { Dish.new }
-  
+  let(:takeaway) { Takeaway.new(confirmation_sender) }
+  let(:confirmation_sender) { double :confirmation_sender }
+
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -47,6 +49,7 @@ describe 'User Stories' do
 
     context 'if i add my bill up correctly' do
       it 'it gives me confirmation' do
+        allow(confirmation_sender).to receive(:send)
         expect(takeaway.verify(@total)).to be true
       end
     end
@@ -70,10 +73,11 @@ describe 'User Stories' do
     end
     
     context 'so that i know my order is on the way' do
-      it 'sends me a message when the order is confirmed' do
+      it 'sends a message when the order is confirmed' do
         one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
-        message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}.\n"
-        expect { takeaway.verify(@total) }.to output(message).to_stdout
+        message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}."
+        expect(confirmation_sender).to receive(:send).with(message)
+        takeaway.verify(@total)
       end
     end
   end
