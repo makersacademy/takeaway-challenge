@@ -10,4 +10,8 @@ class Menu
       wings: 5
       }
   end
+
+  def price(dish)
+    @dishes[dish]
+  end
 end

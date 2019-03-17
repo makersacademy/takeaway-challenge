@@ -11,4 +11,10 @@ class Order
     @bucket[dish] = quantity
   end
   
+  def total
+    @bucket.map { |dish,quantity|
+    (@menu.price(dish) * quantity)
+    }.inject(:+)
+  end
+
 end
