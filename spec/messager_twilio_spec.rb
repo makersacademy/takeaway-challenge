@@ -1,4 +1,4 @@
-require 'confirmation_sender_twilio'
+require 'messager_twilio'
 
 describe ConfirmationSenderTwilio do
   subject(:confirmation_sender) { described_class.new(twilio_client) }

@@ -1,4 +1,4 @@
-require 'confirmation_sender_stdout'
+require 'messager_stdout'
 
 describe ConfirmationSenderStdout do
   subject(:confirmation_sender) { described_class.new }
