@@ -12,7 +12,7 @@ describe FoodMenu do
   context '#print' do
 
     it 'prints the list of yummy dishes with their prices' do
-      expect(food_menu.print).to eq("Pizza: 5.00")
+      expect(food_menu.print).to eq("pizza: 5.00")
     end
 
   end

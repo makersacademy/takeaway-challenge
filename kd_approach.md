@@ -15,7 +15,7 @@ The user will confirm that they want to place the order. Once the order is place
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
-As a customer
+[X] As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
@@ -152,10 +152,9 @@ I would like to be able to select some number of several available dishes
 
 Validation:
 
-- There is some sort of validation within `OrderManagement` to verify that the dish is on the `FoodMenu`
+- [X] There is some sort of validation within `OrderManagement` to verify that the dish is on the `FoodMenu`
 - `we_serve?` checks that the dish is on the `FoodMenu`
-- There is built-in verification within the program to check that the total cost/bill of the order matches what is expected given what the user has ordered.
-- `total` calculates the total cost of the ordered food
+
 
 ##### TEST CASE(S)
 
@@ -172,8 +171,35 @@ OrderManagement:
 
 1. [X] has the `add_to_order` method to collect and store the orders against selected_dishes
 2. [X] `add_to_order` raises an error if the dish is not served by the Takeaway
-3. [] has a `total` method to calculate the cost of the food ordered
 
+
+
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+```
+
+##### OBJECTS
+
+- Takeaway
+- FoodMenu
+- OrderManagement
+
+##### MESSAGES
+
+- There is built-in verification within the program to check that the total cost/bill of the order matches what is expected given what the user has ordered.
+
+- The OrderManagement calculates a total of the `selected_dishes`
+- The OrderManagement `sum_total` method calculates the total cost of the ordered food
+- Takeaway `place_the_order` receives this total to present to the customer
+
+
+##### TEST CASE(S)
+
+OrderManagement:
+1. [X] has a `sum_total` method to calculate the cost of the food ordered
 
 
 ##### TEST CASE(S) - EDGE CASES

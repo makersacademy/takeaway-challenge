@@ -31,10 +31,9 @@ describe Takeaway do
 
     it 'customer places `place_the_order` at the takeaway for a select number of dishes' do
       allow(order_management_2).to receive(:add_to_order)
+      allow(order_management_2).to receive(:sum_total)
       indian_takeaway.place_the_order(selected_dishes)
     end
-
-
 
   end
 

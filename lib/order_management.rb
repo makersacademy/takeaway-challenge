@@ -15,4 +15,11 @@ class OrderManagement
     selected_dishes[dish] = number
   end
 
+  def sum_total
+    calc_dishes = selected_dishes.map do |dish, number|
+      sums = number * food_menu.price(dish)
+    end
+    calc_dishes.inject(:+)
+  end
+
 end

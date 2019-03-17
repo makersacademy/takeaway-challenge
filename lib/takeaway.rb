@@ -1,10 +1,11 @@
 require_relative 'food_menu.rb'
+require_relative 'order_management.rb'
 
 class Takeaway
 
   attr_reader :food_menu, :order_management
 
-  def initialize(food_menu, order_management)
+  def initialize(food_menu, order_management = OrderManagement.new)
     @food_menu = food_menu
     @order_management = order_management
   end
@@ -17,6 +18,7 @@ class Takeaway
     selected_dishes.each do |dish, number|
       order_management.add_to_order(dish, number)
     end
+    order_management.sum_total
   end
 
 end

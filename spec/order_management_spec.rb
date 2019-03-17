@@ -25,6 +25,21 @@ describe OrderManagement do
 
   end
 
+  context '#sum_total' do
+
+    it 'has `sum_total` method to determine the total of the order' do
+      allow(food_menu).to receive(:we_serve?).with(:naan).and_return(true)
+      allow(food_menu).to receive(:we_serve?).with(:penang_curry).and_return(true)
+      order_management.add_to_order(:naan, 2)
+      order_management.add_to_order(:penang_curry, 2)
+      allow(food_menu).to receive(:price).with(:naan).and_return(0.90)
+      allow(food_menu).to receive(:price).with(:penang_curry).and_return(5.00)
+      expected_total = 11.80
+      expect(order_management.sum_total).to eq(expected_total)
+    end
+
+  end
+
 
 
 end
