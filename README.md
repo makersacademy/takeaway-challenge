@@ -11,7 +11,9 @@
 
 ## Instructions
 
-Load Twilio credentials: `source ./twilio-config-PRIVATE`. Then:
+First load Twilio credentials: `source ./twilio-config-PRIVATE`.
+
+Then:
 
 ```ruby
 ➜ irb -r ./lib/takeaway.rb      
@@ -42,4 +44,19 @@ We will confirm delivery time by text message. Bon appetit! 👨‍🍳
 
 ## My method
 
-1. Be clear about the responsibilities of my classes
+I tried my best to use a strict TDD approach:
+1. Convert user story into a feature test in `spec/features/user_stories_spec.rb`
+2. When that fails make a unit test for the failing class which fails in the same way
+3. Write the minimal code to fix the feature and unit test failures
+4. Repeat until the feature is implemented
+5. Refactor, rinse, repeat
+
+Classes and responsibilities:
+- `Takeaway` - provides the user interface
+- `Menu` - contains the menu items and methods for getting and checking menu items, and formatting the menu for display
+- `Order` - provides a basket to hold order items, methods to add and remove from it, and to confirm the order
+- `MessagerTwilio` - provides a method to send an SMS via the Twilio service
+- `MessagerStdout` - provides a method to print a message to STDOUT. A drop-in replacement for `MessagerTwilio` that I used in testing
+- `Dish` - I was close to extracting a class for a `dish` object for the menu items, but it seemed too pointless since the functionality you need for the current implementation can be achieved with a hash... but I think it could help make the program more extensible, e.g. by allowing you to keep a record of how many times particular dishes have been ordered
+
+Rubocop is clear and RSpec test coverage is 100% and green at time of writing.
