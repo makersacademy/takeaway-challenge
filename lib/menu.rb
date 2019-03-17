@@ -3,7 +3,7 @@ require_relative 'list'
 class Menu 
   def initialize(list = List)
     @list = list #List class used here
-    @selected_dishes = []
+    @selected_dishes = [] # why do we need this here?
   end
 
   def show_dishes #Display class?
@@ -18,13 +18,18 @@ class Menu
     @total = @list.total(@selected_dishes)
   end
 
+  def show_selected_dishes
+    @list.show_selected_dishes
+  end
+
   def verify_order
+    check_total(@total) ? "Total of #{@total} is correct" : "We have made an error"
     check_total(@total)
   end
 
   private 
 
   def check_total(total)
-    total == @selected_dishes.reduce(0) {|total,dish| total + dish[:price]}
+    @total == @selected_dishes.reduce(0) {|total,dish| total + dish[:price]}
   end
 end
