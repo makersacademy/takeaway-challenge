@@ -1,15 +1,17 @@
 # Takeaway Challenge
 
+[Exercise instructions are here](takeaway-challenge.md)
+
 ## Installation
 
 1. Fork and clone this repo
 2. `bundle install`
 3. Copy `twilio-config-EXAMPLE` to `twilio-config-PRIVATE` (the latter is protected by `.gitignore`)
-4. Enter your Twilio credentials in `twilio-config-PRIVATE`
+4. Enter your Twilio credentials and phone numbers in `twilio-config-PRIVATE`
 
 ## Instructions
 
-1. `source ./twilio-config-PRIVATE`
+1. `source ./twilio-config-PRIVATE` to load Twilio details
 2. `irb -r ./lib/takeaway.rb`
 3. Create a new takeaway object:
    ```ruby
