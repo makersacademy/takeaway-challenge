@@ -50,7 +50,7 @@ RSpec.describe Menu do
         menu.total
         # stubb check total method to get a false result
         allow(menu).to receive(:check_total).and_return false
-        expect(menu.verify_order).to eq "We have made an error"
+        expect { menu.verify_order }.to output("We have made an error\n").to_stdout
         # implement return of error message
       end
     end

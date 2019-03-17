@@ -29,8 +29,8 @@ class List
     end
   end
   
-  def select_dishes(*args)
-    args.each do |order_number|
+  def select_dishes(selected_dishes)
+    selected_dishes.each do |order_number|
       @selected_dishes << @list[order_number] if available_dish(order_number)
     end
     @selected_dishes

@@ -52,7 +52,7 @@ RSpec.describe 'User_stories' do
       it 'verifies if the order is correct' do
         menu.select_dishes(1,2) # selects dishes
         menu.total # creates total
-        expect(menu.verify_order).to eq "Total of #{menu.total} is correct"
+        expect { menu.verify_order }.to output("Total of #{menu.total} is correct\n").to_stdout
       end
 
       it 'shows selected dishes' do
@@ -67,7 +67,7 @@ RSpec.describe 'User_stories' do
         menu.total # creates total
         # stubbing the correct_total method to return false
         allow(menu).to receive(:check_total).and_return false
-        expect(menu.verify_order).to eq "We have made an error"
+        expect { menu.verify_order }.to output("We have made an error\n").to_stdout
       end
     end
   end

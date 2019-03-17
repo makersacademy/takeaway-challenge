@@ -3,7 +3,7 @@ require_relative 'messaging'
 
 class Menu 
 
-  def initialize(list = List, message = Messaging)
+  def initialize(list = List.new, message = Messaging)
     @message = message.new
     @list = list #List class used here
     @selected_dishes = [] # why do we need this here?
@@ -14,7 +14,7 @@ class Menu
   end
 
   def select_dishes(*args)
-    @selected_dishes = @list.select_dishes(*args)
+    @selected_dishes = @list.select_dishes(args.flatten)
   end
 
   def total
@@ -26,17 +26,21 @@ class Menu
   end
 
   def verify_order
-    check_total(@total) ? "Total of #{@total} is correct" : "We have made an error"
+    total
+    puts check_total(@total) ? "Total of #{@total} is correct" : "We have made an error"
   end
 
   def put_order
-    expected_delivery = (Time.now + 60*30).strftime "%H:%M"
-    @message.send("Thank you! Your order was placed and will be delivered before #{expected_delivery}")
+    @message.send("Thank you! Your order of £#{@total} was placed and will be delivered before #{expected_delivery}")
   end
 
   private 
 
   def check_total(total)
     @total == @selected_dishes.reduce(0) {|total,dish| total + dish.price} # undefined method []
+  end
+
+  def expected_delivery
+    expected_delivery = (Time.now + 60*30).strftime "%H:%M"
   end
 end
