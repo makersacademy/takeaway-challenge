@@ -5,7 +5,7 @@ module OrderCalculations
   end
 
   def self.dish_number(order_hash)
-    order_hash[:number]
+    order_hash[:quantity]
   end
 
   def self.calculate_total(order)
@@ -16,9 +16,7 @@ module OrderCalculations
     cost
   end
 
-  def self.check_total(order)
-    fail("Total cost is incorrect") unless calculate_total(order) == order.total
-
-    order
+  def self.check_total(user_total, order)
+    calculate_total(order) == user_total
   end
 end
