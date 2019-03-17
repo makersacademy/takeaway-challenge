@@ -28,7 +28,9 @@ Takeaway Challenge
 > 'What would you like to order'?
 and then giving them a response.
 
-For version 1, my project is functional in technical implementation, but is not responsive to user input.
+For version 1, my project is functional in technical implementation, but is not responsive to user input. I would also like to improve the way the dishes are stored and presented. 
+
+- At the moment, the messaging is hard-coded to my mobile number. This is an area to improve by asking the user to provide a mobile number and for that mobile number to work with the Twilio service!
 
 
 ## Introduction to the project
@@ -108,28 +110,66 @@ I will be checking my code conforms to the [Rubocop](https://github.com/bbatsov/
 
 ### 1. Getting Started
 
--  For the first iteration of the product, this software will be usable in Interactive Ruby via the terminal using `irb`.
+-  For the first iteration of the product, this software will be usable in Interactive Ruby via the terminal using `irb`. Note this functional, but there are usability improvements to be made for the user experience.
 
 -  Go to the terminal and type in `irb` from the root directory (main folder) to get started.
 
 - Once in `irb`, type in the following to `require` the dependencies.
 
 ```
-
+require './lib/takeaway.rb'
+require './lib/order_management.rb'
+require './lib/food_menu.rb'
+require './lib/twilio_message.rb'
 
 ```
 
 All the files are now available! Next, you can follow the following steps to create your world!
 
-### 2. Creating a takeaway
+### 2. Creating a Menu
 
-- To create a takeaway, type in the following into your `irb`
-
-```
+- To create a menu, type in the following into your `irb`
 
 ```
 
-You can create as many takeaways as you like!
+food_menu = FoodMenu.new({naan: 0.90, penang_curry: 5.00, spare_ribs: 6.00})
+
+```
+
+*Note* For this implementation, there is additional setup for the order management and twilio messaging to work. 
+I hope to refactor this later on. 
+
+```
+#Associate the `order_management` to the `food_menu`
+order_management = OrderManagement.new(food_menu)
+twilio_message = Message.new
+
+```
+
+You can create as many menus as you like!
+
+### 3. Creating a Takeaway
+
+- Once we have a menu, order management and messaging system in place, we can associate it with a takeaway, type in the following into your `irb`
+
+```
+
+takeaway = Takeaway.new(food_menu, order_management)
+
+```
+
+### 4. Placing an order
+
+Now, you can place the order at the takeaway.
+
+```
+takeaway.place_the_order({naan: 2, penang_curry: 2})
+
+```
+
+### 5. Check the message received
+
+At the moment, this is hard-coded to my mobile number. This is an area to improve.
 
 **Enhancements:**
 

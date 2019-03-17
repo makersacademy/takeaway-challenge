@@ -71,18 +71,6 @@ With my notes, I will go through the TDD process.
 
 ##### Takeaway
 
-Has a:
-
-- 
-- 
-- 
-
-Methods:
-
-- 
-- 
-
-
 #### DOMAIN MODEL: MESSAGES/INTERACTIONS
 
 Here is a screenshot of my domain model.
@@ -222,6 +210,10 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 - I haven't implemented the test for this yet.
 
+- [] `place_the_order` sends message to `Message` object
+- [] Message asks user for mobile number to send the message to
+- [] Message deliver is successful
+
 **To improve my project, next time I would like to:**
 
 - Get test coverage from 99.14% to 100%
@@ -233,8 +225,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 > 'What would you like to order'?
 and then giving them a response.
 
-For version 1, my project is functional in technical implementation, but is not responsive to user input.
+For version 1, my project is functional in technical implementation, but is not responsive to user input. I would also like to improve the way the dishes are stored and presented. 
 
+- At the moment, the messaging is hard-coded to my mobile number. This is an area to improve by asking the user to provide a mobile number and for that mobile number to work with the Twilio service!
 
 ##### TEST CASE(S) - EDGE CASES
 
