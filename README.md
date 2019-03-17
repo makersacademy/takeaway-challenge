@@ -51,12 +51,18 @@ I tried my best to use a strict TDD approach:
 4. Repeat until the feature is implemented
 5. Refactor, rinse, repeat
 
-Classes and responsibilities:
+I didn't attempt to implement ordering via SMS, but I did have it in my mind as I was working on the exercise. That's why I chose for my `Takeaway.add_to_order` method to identify the menu items via an index which is printed in the `Takeaway.pretty_menu` - I thought that would be an easier interface to interact with via SMS then having to e.g. type out the name of each order item.
+
+Having the identifier for the menu items being the array index seems fragile - it means adding more items to the menu will cause the identifiers to change. Not a problem with the current implementation, but for future extensibility I think it would be better for each menu item to have a fixed, unique identifier.
+
+I'd also like the basket to be emptied when you confirm your order, but I didn't get around to that :)
+
+Rubocop is clear and RSpec test coverage is 100% and green at time of writing.
+
+### Classes and responsibilities:
 - `Takeaway` - provides the user interface
 - `Menu` - contains the menu items and methods for getting and checking menu items, and formatting the menu for display
 - `Order` - provides a basket to hold order items, methods to add and remove from it, and to confirm the order
 - `MessagerTwilio` - provides a method to send an SMS via the Twilio service
 - `MessagerStdout` - provides a method to print a message to STDOUT. A drop-in replacement for `MessagerTwilio` that I used in testing
 - `Dish` - I was close to extracting a class for a `dish` object for the menu items, but it seemed too pointless since the functionality you need for the current implementation can be achieved with a hash... but I think it could help make the program more extensible, e.g. by allowing you to keep a record of how many times particular dishes have been ordered
-
-Rubocop is clear and RSpec test coverage is 100% and green at time of writing.
