@@ -13,10 +13,15 @@ class MessagerTwilio
   end
   
   def send(message)
-    @client.messages.create(
+    client.messages.create(
       from: FROM,
       to: TO,
       body: message
       )
   end
+
+  private
+
+  attr_reader :client
+
 end

@@ -20,17 +20,17 @@ class Takeaway
   end
 
   def add_to_order(index, quantity)
-    quantity.times { @order.add(@menu.get(index)) }
+    quantity.times { order.add(@menu.get(index)) }
     basket
   end
 
   def basket
-    @order.basket
+    order.basket
   end
   
   def confirm(price)
     raise "Cannot confirm order: the total was wrong. "\
-          "Check your maths! 😜" if price != @order.total
+          "Check your maths! 😜" unless order.confirm(price)
 
     send_confirmation_message
     true
@@ -38,7 +38,7 @@ class Takeaway
 
   private
 
-  attr_reader :messager
+  attr_reader :messager, :order
 
   def send_confirmation_message
     one_hour_from_now = (Time.new + 3600).strftime("%H:%M")

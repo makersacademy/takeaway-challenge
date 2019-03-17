@@ -15,30 +15,31 @@ class Menu
   end
   
   def pretty
-    heading = ["Oº°‘¨ Welcome to #{@name}! ¨‘°ºO"]
-    items = pretty_format_items
-    (heading + items).join("\n")
+    heading = ["Oº°‘¨ Welcome to #{name}! ¨‘°ºO"]
+    (heading + pretty_format_items).join("\n")
   end
   
   def all
-    @items
+    items
   end
 
   def get(index)
     raise "Could not find item: item does not exist. "\
           "Try checking the menu again." if @items[index].nil?
 
-    @items[index]
+    items[index]
   end
 
   def include?(item)
-    @items.include? item
+    items.include? item
   end
 
   private
 
+  attr_reader :items, :name
+
   def pretty_format_items
-    @items.map.each_with_index do |item, index|
+    items.map.each_with_index do |item, index|
       ["#{index}: #{item[:name]}, £#{item[:price]}"]
     end
   end

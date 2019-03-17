@@ -44,34 +44,19 @@ describe Takeaway do
       allow(order).to receive(:basket).and_return(basket)
       expect(takeaway.basket).to eq basket
     end
-    # it 'is empty when initialised' do
-    #   expect(takeaway.basket).to be_empty
-    # end
-
-    # context 'after adding some items to an order' do
-    #   before do
-    #     [[4, 1], [5, 1]].each do |item, quantity|
-    #       # takeaway.add_to_order(takeaway.menu[item], quantity)
-    #       takeaway.add_to_order(item, quantity)
-    #     end
-    #     @total = takeaway.basket.map { |item| item[:price] }.sum
-    #   end
-  
-    #   it 'includes my items' do
-    #     expect(takeaway.basket).to include(takeaway.menu[4], takeaway.menu[5])
-    #   end
-    # end
   end
 
   describe "#confirm" do
     let(:total) { double :total }
+    let(:not_the_total) { double :not_the_total }
 
     before do
-      allow(order).to receive(:total).and_return(total)
+      allow(order).to receive(:confirm).with(total).and_return(true)
+      allow(order).to receive(:confirm).with(not_the_total).and_return(false)
     end
 
-    context 'the total is correct' do     
-      it 'returns true if the total is correct' do
+    context 'the order is confirmed' do     
+      it 'returns true' do
         allow(messager).to receive(:send)
         expect(takeaway.confirm(total)).to be true
       end
@@ -84,9 +69,7 @@ describe Takeaway do
       end
     end
 
-    context 'the total is incorrect' do
-      let(:not_the_total) { double :not_the_total } 
-
+    context 'the order is not confirmed' do
       it 'raises an error if the total is wrong' do
         expect { takeaway.confirm(not_the_total) }.to raise_error "Cannot confirm order: the total was wrong. Check your maths! 😜"
       end

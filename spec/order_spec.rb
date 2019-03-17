@@ -31,12 +31,27 @@ describe Order do
     end
   end
 
-  describe '#total' do
-    it 'returns the total value of the order' do
+  context 'doing stuff with the total' do
+    before do
       subject.add({ price: 2 })
       subject.add({ price: 7 })
       subject.add({ price: 1 })
-      expect(subject.total).to eq 10
+    end
+
+    describe '#total' do
+      it 'returns the total value of the order' do
+        expect(subject.total).to eq 10
+      end
+    end
+
+    describe '#confirm' do
+      it 'returns true if the total is correct' do
+        expect(subject.confirm(10)).to be true
+      end
+
+      it 'returns false if the total is incorrect' do
+        expect(subject.confirm(9)).to be false
+      end
     end
   end
 end
