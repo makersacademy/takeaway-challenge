@@ -4,9 +4,9 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
 
   let(:menu) { double :menu }
+
   before(:each) do
     allow(menu).to receive(:dishes).and_return({ "Chicken Korma" => 6.75, "Lamb Bhuna" => 7.25, "Basmati Rice" => 2.00 })
-    allow(menu).to receive(:include?).and_return false
   end
 
   describe '#display_menu' do
@@ -25,4 +25,11 @@ describe Takeaway do
       expect { takeaway.add("Beef Vindaloo", 1) }.to raise_error("Item not on menu")
     end
   end
+  describe '#calculate_total' do
+    it 'calculates the total of the items in the order' do
+      takeaway.add("Chicken Korma", 1)
+      expect(takeaway.total).to eq 6.75
+    end
+  end
+  
 end

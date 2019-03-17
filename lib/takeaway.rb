@@ -15,4 +15,12 @@ class Takeaway
     raise "Item not on menu" unless @menu.dishes.include?(item)
     @order[item] = quantity
   end
+
+  def total
+    order.each do |item, quantity|
+      @total += @menu.dishes[item] * quantity
+    end
+    @total
+  end
+
 end
