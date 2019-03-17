@@ -1,15 +1,33 @@
 require 'dotenv/load'
+require 'twilio-ruby'
 
 class Message
 
   def send_text
-    "Message sent"
+    text_content = create_text
+    # connect(text_content)
+    text_content #needs replacing with the twilio response message
   end
 
-  def create
+  def create_text
     delivery_window = 60*60 # 60*60 seconds = 1 hour
     delivery_time = Time.now + delivery_window
     arrival_time = "#{delivery_time.strftime('%H')}:#{delivery_time.strftime('%M')}"
     "Thank you! Your order was placed and will be delivered before #{arrival_time}"
+  end
+
+  def connect(text_content)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = ENV['MOBILE_NUMBER'] # Your Twilio number
+    to = ENV['MOBILE_NUMBER'] # Your mobile phone number
+
+    client.messages.create(
+    from: from,
+    to: to,
+    body: text_content
+    )
   end
 end

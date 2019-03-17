@@ -40,4 +40,7 @@ describe Order do
       expect { order.place(this_order, total_cost) }.to raise_error "order cost does not match expected cost"
     end
   end
+
+  # context '#testing sending of text message'
+  #   it ""
 end
