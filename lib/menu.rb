@@ -1,28 +1,30 @@
+require_relative 'list'
+
 class Menu 
-  def initialize
-    @list = { dish1: 10, dish2: 11 }
+  def initialize(list = List)
+    @list = list #List class used here
     @selected_dishes = []
   end
 
-  def show_dishes
-    @list.each { |key, value| puts "#{key}: #{value}" }
+  def show_dishes #Display class?
+    @list.show_dishes
   end
 
   def select_dishes(*args)
-    args.each do |order_item|
-      # conver order_item -> which will be a string -> to a symbol -> to test for if dish is on menu
-      @selected_dishes << order_item if available_dish(order_item)
-    end
+    @selected_dishes = @list.select_dishes(*args)
   end
 
-  def show_selected_dishes
-    @selected_dishes
+  def total
+    @total = @list.total(@selected_dishes)
+  end
+
+  def verify_order
+    check_total(@total)
   end
 
   private 
 
-  def available_dish(dish)
-    @list.key?(dish.to_sym)
+  def check_total(total)
+    total == @selected_dishes.reduce(0) {|total,dish| total + dish[:price]}
   end
-
 end
