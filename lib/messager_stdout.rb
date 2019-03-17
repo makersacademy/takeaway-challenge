@@ -1,5 +1,5 @@
-# class ConfirmationSenderStdout
-#   def send(message)
-#     puts message
-#   end
-# end
+class MessagerStdout
+  def send(message)
+    puts message
+  end
+end

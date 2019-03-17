@@ -25,7 +25,7 @@ class Takeaway
   end
   
   def confirm(price)
-    raise "Cannot confirm order: the price was wrong. "\
+    raise "Cannot confirm order: the total was wrong. "\
           "Check your maths! 😜" if price != @basket.total
 
     send_confirmation_message

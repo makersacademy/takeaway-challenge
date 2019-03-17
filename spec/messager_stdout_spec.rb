@@ -1,6 +1,6 @@
 require 'messager_stdout'
 
-describe ConfirmationSenderStdout do
+describe MessagerStdout do
   subject(:confirmation_sender) { described_class.new }
   describe "#send" do
     it 'outputs a message to STDOUT' do

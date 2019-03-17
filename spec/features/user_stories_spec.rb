@@ -27,12 +27,12 @@ describe 'User Stories' do
   context 'so that I can order the meal I want' do
     it 'I can select from particular quantities of the available dishes' do
       dish = takeaway.menu[3]
-      takeaway.add_to_order(dish, 2)
+      takeaway.add_to_order(3, 2)
       expect(takeaway.basket.count(dish)).to eq 2 
     end
 
     it 'it raises an error if I order something not on the menu' do
-      expect { takeaway.add_to_order("", 1) }.to raise_error "Cannot add to order: item is not available. Select items from the menu."
+      expect { takeaway.add_to_order(99, 1) }.to raise_error "Could not find item: item does not exist. Try checking the menu again."
     end
   end
 
@@ -42,7 +42,7 @@ describe 'User Stories' do
   context 'so that I can verify that my order is correct' do
     before do
       [[0, 1], [1, 3], [2, 1], [4, 1], [5, 1]].each do |item, quantity|
-        takeaway.add_to_order(takeaway.menu[item], quantity)
+        takeaway.add_to_order(item, quantity)
       end
       @total = takeaway.basket.map { |item| item[:price] }.sum
     end
@@ -50,13 +50,13 @@ describe 'User Stories' do
     context 'if i add my bill up correctly' do
       it 'it gives me confirmation' do
         allow(confirmation_sender).to receive(:send)
-        expect(takeaway.verify(@total)).to be true
+        expect(takeaway.confirm(@total)).to be true
       end
     end
     
     context 'if i add my bill up incorrectly' do
       it 'raises an error' do
-        expect { takeaway.verify(@total + 1) }.to raise_error "Cannot verify order: the price was wrong. Check your maths! 😜"
+        expect { takeaway.confirm(@total + 1) }.to raise_error "Cannot confirm order: the total was wrong. Check your maths! 😜"
       end
     end
   end
@@ -67,7 +67,7 @@ describe 'User Stories' do
   context 'when i verify my order' do
     before do
       [[0, 1], [1, 3], [2, 1], [4, 1], [5, 1]].each do |item, quantity|
-        takeaway.add_to_order(takeaway.menu[item], quantity)
+        takeaway.add_to_order(item, quantity)
       end
       @total = takeaway.basket.map { |item| item[:price] }.sum
     end
@@ -77,7 +77,7 @@ describe 'User Stories' do
         one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
         message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}."
         expect(confirmation_sender).to receive(:send).with(message)
-        takeaway.verify(@total)
+        takeaway.confirm(@total)
       end
     end
   end

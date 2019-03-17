@@ -1,6 +1,6 @@
 require 'messager_twilio'
 
-describe ConfirmationSenderTwilio do
+describe MessagerTwilio do
   subject(:confirmation_sender) { described_class.new(twilio_client) }
   let(:twilio_client) { double :twilio_client }
   let(:twilio_messages) { double :twilio_messages }

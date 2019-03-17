@@ -73,7 +73,7 @@ describe Takeaway do
       let(:not_the_total) { double :not_the_total } 
 
       it 'raises an error if the total is wrong' do
-        expect { takeaway.confirm(not_the_total) }.to raise_error "Cannot confirm order: the price was wrong. Check your maths! 😜"
+        expect { takeaway.confirm(not_the_total) }.to raise_error "Cannot confirm order: the total was wrong. Check your maths! 😜"
       end
     end
   end
