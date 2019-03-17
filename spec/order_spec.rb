@@ -1,46 +1,28 @@
 require 'order'
 
 describe Order do
-  context '#test with actual values to check all functionality works - these should be removed' do
-    let(:menu) { Menu.new }
-    let(:order) { Order.new(menu) }
-    let(:order_items) { OrderList.new }
+  let(:text_message) { double :message }
+  let(:order) { Order.new(Menu.new, text_message) }
+  let(:this_order) { double :order_list }
 
-    before(:each) do
-      menu.add(Dish.new(36, "Chicken Korma", 7.95))
-      order_items.add("Chicken Korma", 1)
-      @order_total = 7.95
-    end
-
-    it "creates a new order from the menu with a total price" do
-      order_total = 7.95
-      expect(order.place(order_items, order_total)).to eq "order placed"
-    end
-
-    it "throws an error when the total is wrong" do
-      order_items.add("Pilau Rice", 1)
-      order_items.add("Peshwari Naan", 2)
-      expect { order.place(order_items, @order_total - 1) }.to raise_error "order cost does not match expected cost"
-    end
+  it "receives a new order and returns a success message" do
+    total_cost = 9
+    allow(this_order).to receive(:calculate_cost) { total_cost }
+    allow(text_message).to receive(:send_text) # needs amending to be twilio response
+    expect(order.place(this_order, total_cost)).to eq "order placed"
   end
 
-  context '#When testing with doubles' do
-    let(:order) { Order.new }
-    let(:this_order) { double :order_list }
-
-    it "receives a new order and returns a success message" do
-      total_cost = 9
-      allow(this_order).to receive(:calculate_cost) { total_cost }
-      expect(order.place(this_order, total_cost)).to eq "order placed"
-    end
-
-    it "receives a new order and returns a failure message" do
-      total_cost = 9
-      allow(this_order).to receive(:calculate_cost) { total_cost - 1 }
-      expect { order.place(this_order, total_cost) }.to raise_error "order cost does not match expected cost"
-    end
+  it "receives a new order and returns a failure message" do
+    total_cost = 9
+    allow(this_order).to receive(:calculate_cost) { total_cost - 1 }
+    allow(text_message).to receive(:send_text)
+    expect { order.place(this_order, total_cost) }.to raise_error "order cost does not match expected cost"
   end
 
-  # context '#testing sending of text message'
-  #   it ""
+  it "receives a new order and calls the send_text method" do
+    total_cost = 9
+    allow(this_order).to receive(:calculate_cost) { total_cost }
+    expect(text_message).to receive(:send_text) # needs amending to be twilio response
+    order.place(this_order, total_cost)
+  end
 end
