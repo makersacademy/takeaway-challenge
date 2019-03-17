@@ -10,4 +10,9 @@ class Takeaway
   def display_menu
     @menu.print
   end
+
+  def add(item, quantity)
+    raise "Item not on menu" unless @menu.dishes.include?(item)
+    @order[item] = quantity
+  end
 end
