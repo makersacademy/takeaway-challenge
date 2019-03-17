@@ -4,12 +4,18 @@ describe Customer do
 
   let(:customer) { Customer.new("Joe Bloggs") }
 
-  it 'has a name when initialized' do
-    expect(customer.name).to eq 'Joe Bloggs'
-  end
+  context 'initialized' do
+    it 'has a name when initialized' do
+      expect(customer.name).to eq 'Joe Bloggs'
+    end
 
-  it 'can create an array' do
-    expect(customer.contents).to eq []
+    it 'can create an array' do
+      expect(customer.contents).to eq []
+    end
+
+    it 'cost starts at 0' do
+      expect(customer.cost).to eq 0
+    end
   end
 
   it 'responds to basket method' do
