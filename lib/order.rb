@@ -12,7 +12,7 @@ class Order
   def add_to_order(dish = Dish.new, quantity)
     counter = 0
     while counter < quantity
-      @items << dish
+      @items << { dish.name => dish.price }
       @total << dish.price
       counter += 1
     end

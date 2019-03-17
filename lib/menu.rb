@@ -8,7 +8,7 @@ class Menu
   end
 
   def add_dish(dish = Dish.new)
-    @dishes << dish
+    @dishes << { dish.name => dish.price }
   end
 
   def print
