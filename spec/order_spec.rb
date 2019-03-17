@@ -33,16 +33,13 @@ describe Order do
   context "when finalising order" do
     it { is_expected.to respond_to(:confirm_order) }
 
-    before do
-      subject.confirm_order
-    end
-
     it "sets order to confirmed" do
+      subject.confirm_order
       expect(subject).to be_confirmed
     end
 
-    # it "sends a confirmation message" do
-    #   expect...
-    # end
+    it "sends a confirmation message" do
+      expect(subject.confirm_order).to eq "Order confirmed!"
+    end
   end
 end

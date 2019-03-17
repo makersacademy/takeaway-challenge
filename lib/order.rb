@@ -25,6 +25,7 @@ class Order
 
   def confirm_order
     @confirmed = true
+    "Order confirmed!"
   end
 
   def confirmed?

@@ -119,19 +119,19 @@ ConfirmedOrder | send_confirmation
 takeaway-challenge git:(master) ✗ irb -r ./lib/menu.rb
 ```ruby
 2.5.0 :001 > m = Menu.new
- => #<Menu:0x00007f8d78865120 @dishes=[], @orders=[]> 
+ => #<Menu:0x00007f817c8414f8 @dishes=[], @orders=[]> 
 2.5.0 :002 > m.add_dish("burger", 10)
- => [#<Dish:0x00007f8d799068d0 @name="burger", @price=10>] 
+ => [#<Dish:0x00007f817a9168a8 @name="burger", @price=10>] 
 2.5.0 :003 > m.add_dish("chips", 5)
- => [#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>] 
+ => [#<Dish:0x00007f817a9168a8 @name="burger", @price=10>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>] 
 2.5.0 :004 > m.select_dish(m.dishes[0])
- => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>], @confirmed=false, @total=10> 
+ => #<Order:0x00007f817a9062a0 @selected_dishes=[#<Dish:0x00007f817a9168a8 @name="burger", @price=10>], @confirmed=false, @total=10> 
 2.5.0 :005 > m.select_dish(m.dishes[1], 2)
- => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>], @confirmed=false, @total=20> 
+ => #<Order:0x00007f817a9062a0 @selected_dishes=[#<Dish:0x00007f817a9168a8 @name="burger", @price=10>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>], @confirmed=false, @total=20> 
 2.5.0 :006 > m.orders[0].view_total
  => 20 
 2.5.0 :007 > m.orders[0].confirm_order
- => true 
+ => "Order confirmed!" 
 2.5.0 :008 > m.orders[0]
- => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>], @confirmed=true, @total=20> 
+ => #<Order:0x00007f817a9062a0 @selected_dishes=[#<Dish:0x00007f817a9168a8 @name="burger", @price=10>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>], @confirmed=true, @total=20> 
 ```
