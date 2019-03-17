@@ -26,13 +26,13 @@ end
 def show_single_key
     c = read_char
   case c
-  when "\e"
+  when "\e" # esc key
     exit
-  when "\177"
+  when "\177" # backspace key
     puts "BACKSPACE"
-  when /^.$/
+  when /^.$/ # any other single key
   puts "SINGLE CHAR HIT: #{c} otherwise #{c.inspect}"
-  else
+else # error handling
     puts "Key not recognised"
   end
 end
