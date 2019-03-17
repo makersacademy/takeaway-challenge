@@ -1,10 +1,11 @@
+require 'time'
 class TextCreator
   def initialize(time = Time.now)
     @time = time
   end
 
   def time_limit
-    "#{@time.hour+1}:#{@time.minutes}"
+    "#{@time.hour+1}:#{@time.min}"
   end
 
   def text

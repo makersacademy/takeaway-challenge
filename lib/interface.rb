@@ -7,7 +7,7 @@ class Interface
     @order = order
   end
 
-  def get(choice, quantity)
+  def get(choice, quantity = 0)
     @order.add(choice, quantity)
   end
 
@@ -19,12 +19,15 @@ class Interface
     @order.show
   end
 
-  def checkout(money)
+  def checkout(money, number)
     raise "sums don't match!" if money < show_total
-    finish
+    finish(number)
   end
 private
-  def finish
-    TextCreator.new.send_text
+  def finish(number)
+    text = TextCreator.new
+    text = text.text
+    sender = TextSender.new
+    sender.send_text(text, number)
   end
 end
