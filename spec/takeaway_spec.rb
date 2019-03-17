@@ -15,6 +15,7 @@ describe Takeaway do
       expect(takeaway.display_menu).to eq Menu::DISHES
     end
   end
+
   describe '#add' do
     it 'adds an item to the order' do
       takeaway.add("Chicken Korma", 1)
@@ -25,10 +26,18 @@ describe Takeaway do
       expect { takeaway.add("Beef Vindaloo", 1) }.to raise_error("Item not on menu")
     end
   end
+
   describe '#calculate_total' do
     it 'calculates the total of the items in the order' do
       takeaway.add("Chicken Korma", 1)
       expect(takeaway.total).to eq 6.75
+    end
+  end
+
+  describe '#place order' do
+    it 'confirms order has been placed' do
+      takeaway.add("Chicken Korma", 1)
+      expect
     end
   end
   
