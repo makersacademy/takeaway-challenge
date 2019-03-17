@@ -7,13 +7,13 @@ class Order
   end
    
   def add(dish, quantity)
-    fail 'Not in menu!' if !menu.include(dish)
+    fail 'Not in menu!' unless menu.include(dish)
     @bucket[dish] = quantity
   end
   
   def total
-    @bucket.map { |dish,quantity|
-    (@menu.price(dish) * quantity)
+    @bucket.map { |dish, quantity|
+      (@menu.price(dish) * quantity)
     }.inject(:+)
   end
 

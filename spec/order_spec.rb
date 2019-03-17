@@ -3,7 +3,7 @@ require 'order'
 describe Order do
   subject(:order) { Order.new(menu) }
 
-  let(:menu) {double(:menu) }
+  let(:menu) { double(:menu) }
   let(:bucket) do
     { curry: 1, 
       chips: 2 }
@@ -20,12 +20,12 @@ describe Order do
   it "selects several dishes from the menu" do
     order.add(:curry, 1)
     order.add(:chips, 2)
-    expect(order.bucket).to eq (bucket)
+    expect(order.bucket).to eq bucket
   end
 
   it "prevents items from adding to bucket that are not in menu" do
     allow(menu).to receive(:include).with(:pasta).and_return(false)
-    expect{order.add(:pasta, 1)}.to raise_error 'Not in menu!'
+    expect { order.add(:pasta, 1) }.to raise_error 'Not in menu!'
   end
 
   it 'calculates the total for order' do

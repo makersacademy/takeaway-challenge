@@ -7,10 +7,10 @@ describe Menu do
     burger: 4,
     chips: 2,
     wings: 5 }
-}
+  }
 
   it 'shows a list of dishes' do
-    expect(subject.dishes).to eq (dishes)
+    expect(subject.dishes).to eq dishes
   end
   
   it 'calculates the price' do
