@@ -6,7 +6,7 @@ class Message
   def send_text
     text_content = create_text
     connect(text_content)
-    text_content # needs replacing with the twilio response message
+    text_content
   end
 
   def create_text
@@ -17,13 +17,15 @@ class Message
     "Thank you! Your order was placed and will be delivered before #{arrival}"
   end
 
+  private
+
   def connect(text_content)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    from = ENV['MOBILE_NUMBER'] # Your Twilio number
-    to = ENV['MOBILE_NUMBER'] # Your mobile phone number
+    from = ENV['FROM_MOBILE_NUMBER'] # Your Twilio number
+    to = ENV['TO_MOBILE_NUMBER'] # Your mobile phone number
 
     client.messages.create(
     from: from,

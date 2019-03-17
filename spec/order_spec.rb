@@ -8,7 +8,7 @@ describe Order do
   it "receives a new order and returns a success message" do
     total_cost = 9
     allow(this_order).to receive(:calculate_cost) { total_cost }
-    allow(text_message).to receive(:send_text) # needs amending to be twilio response
+    allow(text_message).to receive(:send_text)
     expect(order.place(this_order, total_cost)).to eq "order placed"
   end
 
@@ -22,7 +22,7 @@ describe Order do
   it "receives a new order and calls the send_text method" do
     total_cost = 9
     allow(this_order).to receive(:calculate_cost) { total_cost }
-    expect(text_message).to receive(:send_text) # needs amending to be twilio response
+    expect(text_message).to receive(:send_text)
     order.place(this_order, total_cost)
   end
 end
