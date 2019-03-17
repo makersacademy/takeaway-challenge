@@ -1,7 +1,7 @@
 require 'menu'
 
 class Order
-
+attr_reader :total
 attr_reader :dishes, :menu
 
   def initialize(menu)

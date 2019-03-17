@@ -4,26 +4,21 @@ require 'order'
 
 describe Takeaway do 
 
-
 let(:menu_class) {double(:menu_class, new: menu)}
 let(:menu) { double(:menu) }
 
-
 #need to double order
 subject(:takeaway) { described_class.new(order: order)}
-let(:order) { double(:order, total: 21) }
-
+let(:order) { double( :order, total: 21) }
 let(:dishes) {{chicken: 1, chinese: 2}}
 
-
 #is this dish the dish above?
+before do
+  allow(menu_class).to receive(:new) {[{name: 'chinese', price: 8}, {name: 'fishandchips', price: 7}, {name: 'chicken', price: 5}, {name: 'beef', price: 6}]}
+  allow(order).to receive(:add) 
+end 
 
   describe '#check_menu' do 
-    before do
-    allow(menu_class).to receive(:new) {[{name: 'chinese', price: 8}, {name: 'fishandchips', price: 7}, {name: 'chicken', price: 5}, {name: 'beef', price: 6}]}
-    allow(order).to receive(:add)  
-  end
-
     it 'displays list of dishes and prices' do 
       
       menu = menu_class.new
@@ -39,15 +34,16 @@ let(:dishes) {{chicken: 1, chinese: 2}}
 
   describe '#place_order' do 
     it 'adds dishes to order' do 
+      allow(order).to receive(:total)
       takeaway.place_order(dishes)
-      expect(takeaway.order).to eq [dishes]
+      expect(takeaway.order).to eq dishes
     end
 
     it 'knows order total' do
-      allow(order).to receive(:add)  
-      total = takeaway.place_order(dishes)
-      
-
+      allow(order).to receive(:add)
+      allow(order).to receive(:total).and_return(21)
+  
+        expect(takeaway.total(order)).to eq 21
     end 
 
   end 

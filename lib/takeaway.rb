@@ -4,10 +4,10 @@ require 'order'
 class Takeaway
 attr_reader :order
 
-
   def initialize(order = Order.new)
     @order = order
-    @total = 0
+    #this is order object
+    # @total = 0
   end 
 
 
@@ -20,17 +20,11 @@ attr_reader :order
   end 
 
   def place_order(dishes)
-    #make dishes to be a hash
-    @order = [dishes]
-
-    # @order.total
-    
-    # dishes.each do |dish, quantity|
-    #   @order.dishes.add(dish, quantity)
-
-
+    @order = dishes
   end 
 
-
+  def total(order)
+    order.total
+  end
 
 end 
