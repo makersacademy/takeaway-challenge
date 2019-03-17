@@ -1,3 +1,6 @@
+require_relative 'order'
+require_relative 'text_creator'
+require_relative 'text_sender'
 class Interface
   def initialize(menu = nil, order = Order.new)
     @menu = menu
@@ -18,5 +21,10 @@ class Interface
 
   def checkout(money)
     raise "sums don't match!" if money < show_total
+    finish
+  end
+private
+  def finish
+    TextCreator.new.send_text
   end
 end
