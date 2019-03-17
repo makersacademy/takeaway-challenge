@@ -13,7 +13,7 @@ class Order
 
   def check_total(order_cost, total_cost)
     raise "order cost does not match expected cost" if order_cost != total_cost
-
+    
     @text_message.send_text
     "order placed"
   end

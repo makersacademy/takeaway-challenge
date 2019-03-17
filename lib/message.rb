@@ -5,7 +5,7 @@ class Message
 
   def send_text
     text_content = create_text
-    # connect(text_content)
+    connect(text_content)
     text_content # needs replacing with the twilio response message
   end
 

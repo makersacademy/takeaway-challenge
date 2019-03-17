@@ -6,6 +6,7 @@ describe Message do
   it "should create a useful text message with a delivery window an hour later" do
     time = Time.now + 60 * 60
     delivery_time = "#{time.strftime('%H')}:#{time.strftime('%M')}"
+    allow(message).to receive(:connect) { "Message sent" }
     expect(message.send_text).to eq "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   end
 
