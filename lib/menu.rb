@@ -1,19 +1,17 @@
+require "./lib/dish.rb"
 class Menu
 
-  require "dish"
+  attr_reader :dishes
 
-attr_reader :takeaway
-
-  def initialize(takeaway)
-    @takeaway = takeaway
+  def initialize
     @dishes = []
   end
 
-  def add_dish(dish)
-    @dishes < dish
+  def add_dish(dish = Dish.new)
+    @dishes << dish
   end
 
   def print
-    print
+    @dishes
   end
-end 
+end
