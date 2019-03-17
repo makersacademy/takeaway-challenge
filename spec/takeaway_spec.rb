@@ -1,5 +1,6 @@
 require 'takeaway'
 require 'food_menu'
+require 'twilio_message'
 
 describe Takeaway do
 
@@ -14,6 +15,8 @@ describe Takeaway do
   let(:order_management_2) { double :OrderManagement }
 
   let(:selected_dishes) { {fish: 1, chips: 3} }
+
+  let(:message) { double :Message }
 
   context '#see_dishes' do
 
@@ -36,5 +39,15 @@ describe Takeaway do
     end
 
   end
+
+  context '#message' do
+
+    it 'sends a text message to the customer once customer has placed the order' do
+      allow(message).to receive(:deliver_message)
+      indian_takeaway.place_the_order(selected_dishes)
+    end
+
+  end
+
 
 end
