@@ -13,6 +13,13 @@ This Ruby application allows users to browse a menu, select dishes, place an ord
 - Twilio
 
 
+#### Personal motivation
+
+- Encapsulation and delegation between classes
+- Using test doubles and dependency injection to isolate classes in tests
+- Testing behaviour over state
+
+
 ## Steps to download
 
 1. Fork this [repo](https://github.com/mattTea/takeaway-challenge)
@@ -83,7 +90,7 @@ directly in root of project
 
 1. Break down user stories into an [object model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/user_stories.md)
 
-2. Create initial view of [class model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/class_model.jpg) and [sequence diagram](https://github.com/mattTea/takeaway-challenge/blob/master/problem/sequence_diagram.jpg)
+2. Create initial view of [class model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/takeaway_class_model.jpg) and [sequence diagram](https://github.com/mattTea/takeaway-challenge/blob/master/problem/takeaway_sequence_diagram.jpg)
 
 3. Test drive design of first `Class` and `methods`
 
