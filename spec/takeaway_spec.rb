@@ -8,8 +8,9 @@ describe Takeaway do
   let(:order_class) { double :order_class, new: order }
   subject(:takeaway) { Takeaway.new(menu, order_class, text_message) }
 
-  it 'should return a menu object when view_menu method is called' do
-    expect(takeaway.view_menu).to eq menu
+  it 'should return an array of dishes when view_menu method is called' do
+    allow(menu).to receive(:dishes) { [dish] }
+    expect(takeaway.view_menu).to eq [dish]
   end
 
   it 'should send confirmation text when place_order method is called succesfully' do
