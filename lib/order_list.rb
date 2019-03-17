@@ -17,8 +17,6 @@ class OrderList
   def calculate_cost(menu)
     order_cost = 0
     @order_items.each do |item|
-      # p menu.menu_items
-      p menu
       menu.menu_items.each do |dish|
         if dish.description.include?(item[:item])
           order_cost += (dish.price * item[:quantity])
