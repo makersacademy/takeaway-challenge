@@ -10,7 +10,28 @@ describe Takeaway do
     takeaway = Takeaway.new
 
     expect(takeaway.show_list).to eq takeaway.dishes
+    
+  end
+
+# As a customr
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
+
+  it 'allows to select available dish' do
+    takeaway = Takeaway.new
+
+    takeaway.add_to_order("rice")
+
+    takeaway.order.should include("rice")
 
   end
 
+  it 'does not allow to select unavailable dish' do
+    takeaway = Takeaway.new
+
+    takeaway.add_to_order("ham")
+
+    takeaway.order.should_not include("ham")
+
+  end
 end
