@@ -1,8 +1,13 @@
 require "order"
 
 describe Order do
-  let(:dish) { double :dish }
   subject { Order.new(dish) }
+
+  to = "+447942604825"
+  let(:dish) { double :dish }
+  let(:sms) { double :sms }
+  let(:message_class) { double :message_class, new: sms }
+  let(:time) { double :time }
 
   before do
     allow(dish).to receive(:price).and_return(10)
@@ -35,12 +40,22 @@ describe Order do
     it { is_expected.to respond_to(:calculate_time) }
 
     it "sets order to confirmed" do
-      subject.confirm_order
+      subject.confirm_order(to, message_class)
       expect(subject).to be_confirmed
     end
 
-    it "displays a confirmation message" do
-      expect(subject.confirm_order).to be_an_instance_of(String)
+    it "responds to sms send method" do
+      expect(sms).to respond_to(:send)
+    end
+
+    before do
+      allow(sms).to receive(:send)
+    end
+
+    it "sends a confirmation message" do 
+      message = "Thank you! Your order was placed and will be delivered before 18:30"
+      expect(sms).to receive(:send).with(message)
+      subject.confirm_order(to, message_class, "18:30")
     end
   end
 end

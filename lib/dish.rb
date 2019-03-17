@@ -1,4 +1,6 @@
 class Dish
+  attr_reader :price
+  
   def initialize(name, price)
     @name = name
     @price = price
@@ -6,9 +8,5 @@ class Dish
 
   def view
     { @name => @price }
-  end
-
-  def price
-    @price
   end
 end

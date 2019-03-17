@@ -1,3 +1,6 @@
+require_relative "send_sms"
+require 'dotenv/load'
+
 class Order
   def initialize(dish, quantity = 1)
     @selected_dishes = []
@@ -23,9 +26,16 @@ class Order
     @total = total
   end
 
-  def confirm_order
+  def confirm_order(
+    _to = ENV['TWILIO_TO_NUMBER'],
+    message_class = Sms,
+    time = calculate_time
+  )
+    sms = message_class.new
     @confirmed = true
-    "Thank you! Your order was placed and will be delivered before #{calculate_time}"
+    message = "Thank you! "\
+    "Your order was placed and will be delivered before #{time}"
+    sms.send(message)
   end
 
   def calculate_time

@@ -3,29 +3,92 @@ Matt Thompson - Takeaway Challenge
 
 ## Description
 
-This appliction does...
+This Ruby application allows users to browse a menu, select dishes, place an order and receive a text message to confirm their order delivery time.
 
 
-## Steps
+#### Technologies used
 
-1. Break down user stories into an [object model]()
-
-2. Create initial view of [class model]() and [sequence diagram]()
-
-3. Test drive design of first `Class` and `methods`
-
-
-
-## Steps to run
-
+- Ruby
+- RSpec
+- Twilio
 
 
 ## Steps to download
 
+1. Fork this [repo](https://github.com/mattTea/takeaway-challenge)
+
+2. 
+```
+git clone git@github.com:<userName>/takeaway-challenge.git
+```
+onto your local machine
+
+
+## Steps to run
+
+1. To set up some base objects and data...
+
+Run `irb -r ./lib/menu.rb` in root project directory
+
+```ruby
+2.5.0 :001 > m = Menu.new
+ => #<Menu:0x00007fb6d5848148 @dishes=[]> 
+2.5.0 :002 > m.add_dish("burger", 10)
+ => [#<Dish:0x00007fb6d4961c88 @name="burger", @price=10>] 
+2.5.0 :003 > m.add_dish("chips", 5)
+ => [#<Dish:0x00007fb6d4961c88 @name="burger", @price=10>, #<Dish:0x00007fb6d49506e0 @name="chips", @price=5>] 
+2.5.0 :004 > m
+ => #<Menu:0x00007fb6d5848148 @dishes=[#<Dish:0x00007fb6d4961c88 @name="burger", @price=10>, #<Dish:0x00007fb6d49506e0 @name="chips", @price=5>]> 
+2.5.0 :005 > m.view_dishes
+ => [#<Dish:0x00007fb6d4961c88 @name="burger", @price=10>, #<Dish:0x00007fb6d49506e0 @name="chips", @price=5>] 
+
+```
+
+2. To run some example methods...
+
+`select` dish to add to order
+```ruby
+2.5.0 :001 > m.select_dish(m.dishes[0])
+ => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>], @confirmed=false, 
+```
+
+`view_total` cost of order
+```ruby
+2.5.0 :001 > m.orders[0].view_total
+ => 10
+```
+
+`confirm_order`
+```ruby
+2.5.0 :001 > m.orders[0].confirm_order
+ => <Twilio.Api.V2010.MessageInstance account_sid: **** api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 14:59 date_created: 2019-03-17 13:59:10 +0000 date_updated: 2019-03-17 13:59:10 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: **** messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: **** status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/****/Media.json"} to: **** uri: /2010-04-01/Accounts/****.json>
+```
+`orders` to view list of orders
+```ruby
+2.5.0 :001 > m.orders[0]
+ => #<Order:0x00007f817a9062a0 @selected_dishes=[#<Dish:0x00007f817a9168a8 @name="burger", @price=10>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>], @confirmed=true, @total=20> 
+```
 
 
 ## Steps to test
 
+To run `rspec` test suite, run
+```
+rspec
+```
+directly in root of project
+
+
+## My approach
+
+1. Break down user stories into an [object model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/user_stories.md)
+
+2. Create initial view of [class model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/class_model.jpg) and [sequence diagram](https://github.com/mattTea/takeaway-challenge/blob/master/problem/sequence_diagram.jpg)
+
+3. Test drive design of first `Class` and `methods`
+
+
+------
 
 
 

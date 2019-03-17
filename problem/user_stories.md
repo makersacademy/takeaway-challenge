@@ -131,7 +131,7 @@ takeaway-challenge git:(master) ✗ irb -r ./lib/menu.rb
 2.5.0 :006 > m.orders[0].view_total
  => 20 
 2.5.0 :007 > m.orders[0].confirm_order
- => "Thank you! Your order was placed and will be delivered before 12:33" 
+ => <Twilio.Api.V2010.MessageInstance account_sid: **** api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 14:59 date_created: 2019-03-17 13:59:10 +0000 date_updated: 2019-03-17 13:59:10 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: **** messaging_service_sid:  num_media: 0 num_segments: 1 price: 0.0 price_unit: USD sid: **** status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/****/Media.json"} to: **** uri: /2010-04-01/Accounts/****.json>
 2.5.0 :008 > m.orders[0]
  => #<Order:0x00007f817a9062a0 @selected_dishes=[#<Dish:0x00007f817a9168a8 @name="burger", @price=10>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>, #<Dish:0x00007f817a90e630 @name="chips", @price=5>], @confirmed=true, @total=20> 
 ```
