@@ -55,4 +55,12 @@ RSpec.describe Menu do
       end
     end
   end
+
+  describe '#put_order' do
+    it 'sends a message to the user confirming delivery' do
+      expected_delivery = (Time.now + 60*30).strftime "%H:%M"
+      allow(menu).to receive(:put_order).and_return("Thank you! Your order was placed and will be delivered before #{expected_delivery}")
+      expect(menu.put_order).to eq "Thank you! Your order was placed and will be delivered before #{expected_delivery}"
+    end
+  end
 end

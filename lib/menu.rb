@@ -1,7 +1,10 @@
 require_relative 'list'
+require_relative 'messaging'
 
 class Menu 
-  def initialize(list = List)
+
+  def initialize(list = List, message = Messaging)
+    @message = message.new
     @list = list #List class used here
     @selected_dishes = [] # why do we need this here?
   end
@@ -24,6 +27,11 @@ class Menu
 
   def verify_order
     check_total(@total) ? "Total of #{@total} is correct" : "We have made an error"
+  end
+
+  def put_order
+    expected_delivery = (Time.now + 60*30).strftime "%H:%M"
+    @message.send("Thank you! Your order was placed and will be delivered before #{expected_delivery}")
   end
 
   private 

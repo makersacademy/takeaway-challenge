@@ -23,10 +23,6 @@ class List
     @list = list
   end
 
-  def add_item(dish)
-
-  end
-
   def show_dishes
     @list.each do |order, dish|
       puts "#{order}: #{dish.details}"

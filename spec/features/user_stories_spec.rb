@@ -70,6 +70,25 @@ RSpec.describe 'User_stories' do
         expect(menu.verify_order).to eq "We have made an error"
       end
     end
-  end 
+  end
+
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as 
+# "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  describe 'Messaging system' do
+    it 'sends a message after the order is placed' do
+      expected_delivery = (Time.now + 60*30).strftime "%H:%M"
+      messaging_system = double 'Twilio'
+      allow(messaging_system).to receive(:new).and_return(messaging_system)
+      allow(messaging_system).to receive(:send).and_return("Thank you! Your order was placed and will be delivered before #{expected_delivery}")
+      
+      list = List.new
+      menu = Menu.new(list, messaging_system)
+      
+      expect(menu.put_order).to eq "Thank you! Your order was placed and will be delivered before #{expected_delivery}"
+    end
+  end
 
 end
