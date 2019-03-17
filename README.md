@@ -77,7 +77,7 @@ Require the main application file in irb
  Environment Variables
  -----
  Environment variables have been used for the Twillio (sending text) configuration. To configure your own environment, follow these steps:
-1. Navigate to your project directory root and create a file called .environment
+1. Navigate to your project directory root and create a file called .env
 2. Populate your .env file with the following:
 ```TWILIO_ACCOUNT_SID="your twilio account sid"
  TWILIO_AUTH_TOKEN="your twillio auth token"
