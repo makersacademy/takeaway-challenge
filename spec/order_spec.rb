@@ -3,23 +3,24 @@ require 'order'
 describe Order do
 
   let(:menu) { double :menu }
+  let(:message_class) { double :message_class }
+  let(:message) { double :message }
+  let(:customer_number) { double :customer_number }
 
   subject { described_class.new(menu) }
 
   before(:each) do
     allow(menu).to receive(:items).and_return({ "Nan" => 2.2, "Rice" => 2.70, "Aloo Gobi" => 4.10, "Sag Paneer" => 4.30, "Daal Makhani" => 6.10 })
+    allow(message_class).to receive(:new).with(any_args).and_return message
   end
 
   describe '#print_menu' do
 
     it 'returns the menu' do
-      allow(menu).to receive(:print).and_return Menu::ITEMS
-      expect(subject.print_menu).to eq Menu::ITEMS
+      allow(menu).to receive(:print).and_return "List of items"
+      expect(subject.print_menu).to eq "List of items"
     end
-    # unsure how to test this or whether to test this - it is behaviour of the menu class that I have already tested
-    # it 'prints the menu' do
-    #     allow(menu).to receive(:print).and_output("Nan: £2.20\nRice: £2.70\nAloo Gobi: £4.10\nSag Paneer: £4.30\nDaal Makhani: £6.10\n").to_stdout
-    # end
+
   end
 
   describe '#add' do
@@ -47,18 +48,23 @@ describe Order do
       subject.add("Aloo Gobi", 1)
       expect(subject.total).to eq 8.5
     end
+
   end
 
   describe '#place' do
+
     it 'raises an error if no items added to order' do
       expect { subject.place } .to raise_error "No items in order"
     end
 
-    it 'returns confirmation with time that order should arrive' do
+# The below test is failing - been unable to solve this weekend
+
+    it 'sends a text to the customer' do
       subject.add("Nan", 2)
-      subject.add("Aloo Gobi", 1)
-      allow(Time).to receive(:now).and_return(Time.parse("17:52"))
-      expect(subject.place).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+      allow(message).to receive(:send).with(customer_number).and_return { "Text is sent" }
+      expect(subject.place).to eq "Text is sent"
     end
+
   end
+
 end

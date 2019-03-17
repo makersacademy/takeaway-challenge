@@ -6,6 +6,8 @@ class Order
     @menu = menu
     @order = {}
     @order_price = 0
+    @customer_number = ENV['PHONE_NUMBER']
+    @message = Message.new
   end
 
   def print_menu
@@ -26,10 +28,9 @@ class Order
   end
 
   def place
-    delivery_time = Time.now + 60 * 60
     raise "No items in order" if @order.empty?
 
-    "Thank you! Your order was placed and will be delivered before #{delivery_time.strftime("%k:%M")}"
+    @message.send(@customer_number)
   end
 
   private
