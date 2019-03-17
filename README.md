@@ -24,16 +24,12 @@ This Ruby application allows users to browse a menu, select dishes, place an ord
 
 1. Fork this [repo](https://github.com/mattTea/takeaway-challenge)
 
-2. 
-```
-git clone git@github.com:<userName>/takeaway-challenge.git
-```
-onto your local machine
+2. `git clone git@github.com:<userName>/takeaway-challenge.git` onto your local machine
 
 
 ## Steps to run
 
-1. To set up some base objects and data...
+#### To set up some base objects and data...
 
 Run `irb -r ./lib/menu.rb` in root project directory
 
@@ -51,7 +47,7 @@ Run `irb -r ./lib/menu.rb` in root project directory
 
 ```
 
-2. To run some example methods...
+#### To run some example methods...
 
 `select` dish to add to order
 ```ruby
@@ -77,23 +73,21 @@ Run `irb -r ./lib/menu.rb` in root project directory
 ```
 
 
-## Steps to test
+## To run tests
 
-To run `rspec` test suite, run
-```
-rspec
-```
-directly in root of project
+Run `rspec` directly in root of your local project
 
 
 ## My approach
 
 1. Break down user stories into an [object model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/user_stories.md)
 
-2. Create initial view of [class model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/takeaway_class_model.jpg) and [sequence diagram](https://github.com/mattTea/takeaway-challenge/blob/master/problem/takeaway_sequence_diagram.jpg)
+2. Create initial view of [class model](https://github.com/mattTea/takeaway-challenge/blob/master/problem/takeaway_class_diagram.jpg) and [sequence diagram](https://github.com/mattTea/takeaway-challenge/blob/master/problem/takeaway_sequence_diagram.jpg)
 
 3. Test drive design of first `Class` and `methods`
 
+
+------
 
 ------
 
