@@ -39,7 +39,7 @@ class Menu
 
   def pretty_format_items
     @items.map.each_with_index do |item, index|
-      ["#{index}: #{item[:name]}, £#{item[:price].to_s}"]
+      ["#{index}: #{item[:name]}, £#{item[:price]}"]
     end
   end
 end

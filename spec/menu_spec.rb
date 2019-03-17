@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new(items, restaurant_name) }
-  let(:items) { [{name: "name 1", price: 1}, {name: "name 2", price: 2}] }
+  let(:items) { [{ name: "name 1", price: 1 }, { name: "name 2", price: 2 }] }
   let(:restaurant_name) { "My name" }
   
   describe '#all' do
@@ -38,7 +38,6 @@ describe Menu do
       expect { menu.get(99) }.to raise_error "Could not find item: item does not exist. Try checking the menu again."
     end
   end
-
 
   describe '#include?' do
     it 'returns true if the item is in the menu' do
