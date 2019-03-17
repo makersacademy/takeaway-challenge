@@ -9,14 +9,14 @@
                                           |___/                                     |___/      
                                           
 ```                                     
-Takeaway challenge is a program run in REPL. It allows a customer to view a menu, build an order, check the price of the order and place an order. Reference has been made to the following repository [Takeaway-Challenge](https://github.com/amyj0rdan/takeaway-challenge)
+Takeaway challenge is a program run in REPL. It allows a customer to view a menu, build an order, check the price of the order and place an order. Reference has been made to the following repository: [Takeaway-Challenge](https://github.com/amyj0rdan/takeaway-challenge)
 
 [See here](https://github.com/makersacademy/airport_challenge) for Makers' original repo.
 
 ### Getting started
 
 Fork or clone this repo:      
-`git clone git@github.com:arthurashman/takeaway-challenge.git    
+`git clone git@github.com:arthurashman/takeaway-challenge.git`    
 `gem install bundle`     
 `bundle`     
 
