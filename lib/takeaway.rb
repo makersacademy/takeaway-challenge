@@ -6,14 +6,16 @@ require 'io/console'
 class Takeaway
   attr_accessor :menu
 
-  def initialize(file = "./data/testsheet.csv")
+  def initialize(file = "./data/menu.csv")
     @loaded_file = file
     @menu = []
     load_file
   end
 
   def show(selection)
-    @menu.map { |item| item[selection] }
+    output = []
+    @menu.map { |item| output << item[selection] if !output.include? item[selection] }
+    return output
   end
 
   def load_file

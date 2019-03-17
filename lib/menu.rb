@@ -4,28 +4,33 @@ require_relative 'takeaway'
 class TakeawayMenu
   def initialize(takeaway = Takeaway.new)
     @takeaway = takeaway
-    @contents = 1
-    # print_menu(1)
+    @contents = 0
+    @menu_location = 0
+    navigator = Navigation.new
+    print_menu(@menu_location)
+    navigator.show_single_key while(true)
+  end
+
+  def print_text(file)
+    file_location = './data/' + file
+    banner = File.open(file_location).read
+    puts banner
   end
 
   def print_menu(menu)
-    print_header
+    system 'clear'
+    print_text('header.txt')
     fetch_contents(menu)
     @contents.each_with_index do |item, index|
       puts "| #{index + 1}. #{item}".ljust(81) + "|"
     end
     puts "-" * 82
+    puts 'Press the backspace key to go back or escape key to exit.'
+    system 'clear'
   end
 
   def fetch_contents(contents)
     @contents = @takeaway.show(contents)
-  end
-
-  def print_header
-    system 'clear'
-    puts "-" * 82
-    puts "|" + "Slice, Slice Baby!".center(80) + "|"
-    puts "-" * 82
   end
 end
 
