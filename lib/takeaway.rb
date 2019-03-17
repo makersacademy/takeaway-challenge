@@ -1,4 +1,6 @@
 require 'csv'
+require 'io/console'
+
 
 # Takeaway menu class does the brunt of the work
 class Takeaway
