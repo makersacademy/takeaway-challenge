@@ -50,4 +50,14 @@ describe Customer do
     end
   end
 
+  context 'works through happy case' do
+    it 'should not fail' do
+      italian.display
+      customer.add("Pepperoni", 7)
+      expect(customer.basket).to eq 49
+      customer.add("Meat feast", 1)
+      expect(customer.basket).to eq 57
+    end
+  end
+
 end
