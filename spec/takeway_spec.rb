@@ -34,4 +34,18 @@ describe Takeaway do
     takeaway.order.should_not include("ham")
 
   end
+
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  it 'checks total price of order is correct' do
+    takeaway = Takeaway.new
+    takeaway.add_to_order("rice")
+    takeaway.add_to_order("banana")
+
+    expect(takeaway.total_price).to eq 2.25
+
+  end
+
 end
