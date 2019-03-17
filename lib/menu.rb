@@ -15,7 +15,7 @@ class Menu
   end
   
   def pretty
-    heading = ["Oº°‘¨ #{@name} ¨‘°ºO"]
+    heading = ["Oº°‘¨ Welcome to #{@name}! ¨‘°ºO"]
     items = pretty_format_items
     (heading + items).join("\n")
   end

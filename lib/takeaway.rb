@@ -15,6 +15,10 @@ class Takeaway
     @menu.all
   end
 
+  def pretty_menu
+    puts @menu.pretty
+  end
+
   def add_to_order(index, quantity)
     quantity.times { @basket.add(@menu.get(index)) }
     @basket

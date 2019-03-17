@@ -16,6 +16,14 @@ describe Takeaway do
     end
   end
 
+  describe "#pretty_menu" do
+    it "`puts` out the pretty version of the menu" do
+      formatted_menu = "some\nstring"
+      allow(menu).to receive(:pretty).and_return(formatted_menu)
+      expect { takeaway.pretty_menu }.to output(formatted_menu + "\n").to_stdout
+    end
+  end
+
   describe "#add_to_order" do
     it 'adds a dish to the order in the correct quantity' do
       allow(menu).to receive(:get).with(1).and_return(menu_item)
