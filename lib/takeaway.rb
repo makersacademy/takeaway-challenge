@@ -1,13 +1,13 @@
-require_relative 'basket'
+require_relative 'order'
 require_relative 'messager_twilio'
 require_relative 'menu'
 
 class Takeaway
   def initialize(messager = MessagerTwilio.new,
-                 basket = Basket.new,
+                 order = Order.new,
                  menu = Menu.new)
     @messager = messager
-    @basket = basket
+    @order = order
     @menu = menu
   end
 
@@ -20,17 +20,17 @@ class Takeaway
   end
 
   def add_to_order(index, quantity)
-    quantity.times { @basket.add(@menu.get(index)) }
-    @basket
+    quantity.times { @order.add(@menu.get(index)) }
+    basket
   end
 
   def basket
-    @basket.contents
+    @order.basket
   end
   
   def confirm(price)
     raise "Cannot confirm order: the total was wrong. "\
-          "Check your maths! 😜" if price != @basket.total
+          "Check your maths! 😜" if price != @order.total
 
     send_confirmation_message
     true

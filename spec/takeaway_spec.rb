@@ -1,10 +1,10 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(messager, basket, menu) }
+  subject(:takeaway) { described_class.new(messager, order, menu) }
   let(:messager) { double :messager }
+  let(:order) { double :order }
   let(:basket) { double :basket }
-  let(:basket_contents) { double :basket_contents }
   let(:menu) { double :menu }
   let(:menu_list) { double :menu_list }
   let(:menu_item) { double :menu_item }
@@ -25,17 +25,24 @@ describe Takeaway do
   end
 
   describe "#add_to_order" do
-    it 'adds a dish to the order in the correct quantity' do
+    before do
       allow(menu).to receive(:get).with(1).and_return(menu_item)
-      expect(basket).to receive(:add).with(menu_item).twice
+      allow(order).to receive(:basket).and_return(basket)
+      allow(order).to receive(:add)
+    end
+    it 'adds a dish to the order in the correct quantity' do
+      expect(order).to receive(:add).with(menu_item).twice
       takeaway.add_to_order(1, 2)
+    end
+    it 'returns the basket' do
+      expect(takeaway.add_to_order(1, 2)).to eq(basket)
     end
   end
 
   describe "#basket" do
     it 'returns the basket' do
-      allow(basket).to receive(:contents).and_return(basket_contents)
-      expect(takeaway.basket).to eq basket_contents
+      allow(order).to receive(:basket).and_return(basket)
+      expect(takeaway.basket).to eq basket
     end
     # it 'is empty when initialised' do
     #   expect(takeaway.basket).to be_empty
@@ -60,7 +67,7 @@ describe Takeaway do
     let(:total) { double :total }
 
     before do
-      allow(basket).to receive(:total).and_return(total)
+      allow(order).to receive(:total).and_return(total)
     end
 
     context 'the total is correct' do     
