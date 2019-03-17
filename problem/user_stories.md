@@ -84,20 +84,17 @@ Order | view_total
 takeaway-challenge git:(master) ✗ irb -r ./lib/menu.rb
 ```ruby
 2.5.0 :001 > m = Menu.new
- => #<Menu:0x00007fe13891bcb8 @dishes=[], @orders=[]> 
+ => #<Menu:0x00007f8d78865120 @dishes=[], @orders=[]> 
 2.5.0 :002 > m.add_dish("burger", 10)
- => [#<Dish:0x00007fe13a81f448 @name="burger", @price=10>] 
+ => [#<Dish:0x00007f8d799068d0 @name="burger", @price=10>] 
 2.5.0 :003 > m.add_dish("chips", 5)
- => [#<Dish:0x00007fe13a81f448 @name="burger", @price=10>, #<Dish:0x00007fe13a8171a8 @name="chips", @price=5>] 
+ => [#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>] 
 2.5.0 :004 > m.select_dish(m.dishes[0])
- => #<Order:0x00007fe13a80edf0 @selected_dishes=[{#<Dish:0x00007fe13a81f448 @name="burger", @price=10>=>1}], @confired=false> 
-2.5.0 :005 > m.select_dish(m.dishes[1])
- => #<Order:0x00007fe13a80edf0 @selected_dishes=[{#<Dish:0x00007fe13a81f448 @name="burger", @price=10>=>1}, {#<Dish:0x00007fe13a8171a8 @name="chips", @price=5>=>1}], @confired=false> 
-2.5.0 :006 > m.orders[0].view_selected
- => [{#<Dish:0x00007fe13a81f448 @name="burger", @price=10>=>1}, {#<Dish:0x00007fe13a8171a8 @name="chips", @price=5>=>1}]
-
-2.5.0 :007 > m.orders[0].view_total
- => 15 
+ => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>], @confirmed=false, @total=10> 
+2.5.0 :005 > m.select_dish(m.dishes[1], 2)
+ => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>], @confirmed=false, @total=20> 
+2.5.0 :006 > m.orders[0].view_total
+ => 20 
 ```
 
 #### Story 4
@@ -110,8 +107,31 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Object | Messages
 ------------------------------- | ---------------------------------------
 Menu | view_dishes
-Dish | select
+Menu | select_dish
+Dish | view
 Order | view_selected
 Order | view_total
-Order | place_order
+Order | confirm_order
 ConfirmedOrder | send_confirmation
+
+**Feature test**
+
+takeaway-challenge git:(master) ✗ irb -r ./lib/menu.rb
+```ruby
+2.5.0 :001 > m = Menu.new
+ => #<Menu:0x00007f8d78865120 @dishes=[], @orders=[]> 
+2.5.0 :002 > m.add_dish("burger", 10)
+ => [#<Dish:0x00007f8d799068d0 @name="burger", @price=10>] 
+2.5.0 :003 > m.add_dish("chips", 5)
+ => [#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>] 
+2.5.0 :004 > m.select_dish(m.dishes[0])
+ => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>], @confirmed=false, @total=10> 
+2.5.0 :005 > m.select_dish(m.dishes[1], 2)
+ => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>], @confirmed=false, @total=20> 
+2.5.0 :006 > m.orders[0].view_total
+ => 20 
+2.5.0 :007 > m.orders[0].confirm_order
+ => true 
+2.5.0 :008 > m.orders[0]
+ => #<Order:0x00007f8d798f62a0 @selected_dishes=[#<Dish:0x00007f8d799068d0 @name="burger", @price=10>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>, #<Dish:0x00007f8d798fe658 @name="chips", @price=5>], @confirmed=true, @total=20> 
+```

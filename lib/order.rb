@@ -2,11 +2,13 @@ class Order
   def initialize(dish, quantity = 1)
     @selected_dishes = []
     quantity.times { @selected_dishes.push(dish) }
-    @confired = false
+    @confirmed = false
+    view_total
   end
 
   def update(dish, quantity = 1)
     quantity.times { @selected_dishes.push(dish) }
+    view_total
   end
 
   def view_selected
@@ -18,10 +20,14 @@ class Order
     @selected_dishes.each do |dish|
       total += dish.price
     end
-    total
+    @total = total
+  end
+
+  def confirm_order
+    @confirmed = true
   end
 
   def confirmed?
-    @confired
+    @confirmed
   end
 end

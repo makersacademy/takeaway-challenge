@@ -46,12 +46,6 @@ describe Menu do
         expect(order).to receive(:view_selected).and_return(dish)
         subject.orders[0].view_selected
       end
-  
-      # it "displays total cost" do
-  
-      # end
     end
-  end
-  
-  
+  end  
 end

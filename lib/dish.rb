@@ -5,6 +5,10 @@ class Dish
   end
 
   def view
-    {@name => @price}
+    { @name => @price }
+  end
+
+  def price
+    @price
   end
 end
