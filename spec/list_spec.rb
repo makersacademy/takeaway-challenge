@@ -17,7 +17,6 @@ describe List do
   it 'shows a list of dishes with prices' do
     mock_list = { dish1.order => {name: dish1.name, price: dish1.price}, dish2.order => {name: dish2.name, price: dish2.price}}
     list.add_list(mock_list)
-    p list.show_dishes
     expect { list.show_dishes }.to output("#{dish1.order}: #{dish1.name} - #{dish1.price}\n#{dish2.order}: #{dish2.name} - #{dish2.price}\n").to_stdout
   end
 
