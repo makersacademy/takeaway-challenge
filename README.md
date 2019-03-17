@@ -20,20 +20,20 @@ Then:
 2.5.0 :001 > t = Takeaway.new
  => #<Takeaway...> 
 2.5.0 :002 > t.menu
- => [{:name=>"Mixed Meze", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Shish", :price=>10}, {:name=>"Iskender", :price=>12}, {:name=>"Icli Kofe", :price=>12}, {:name=>"Baklava", :price=>6}] 
+ => [{:name=>"Mixed Meze", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Beyti", :price=>10}, {:name=>"Iskender", :price=>12}, {:name=>"Icli Kofe", :price=>12}, {:name=>"Baklava", :price=>6}] 
 2.5.0 :003 > t.pretty_menu
 Oº°‘¨ Welcome to Grill Communication! ¨‘°ºO
 0: Mixed Meze, £10
 1: Lahmacun, £4
-2: Chicken Shish, £10
+2: Chicken Beyti, £10
 3: Iskender, £12
 4: Icli Kofe, £12
 5: Baklava, £6
  => nil 
 2.5.0 :005 > t.add_to_order 2, 1
- => [{:name=>"Chicken Shish", :price=>10}] 
+ => [{:name=>"Chicken Beyti", :price=>10}] 
 2.5.0 :006 > t.add_to_order 1, 2
- => [{:name=>"Chicken Shish", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}] 
+ => [{:name=>"Chicken Beyti", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}] 
 2.5.0 :007 > t.total
  => 18 
 2.5.0 :008 > t.confirm(18)

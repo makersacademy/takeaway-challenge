@@ -2,7 +2,7 @@ class Menu
   TURKISH_MENU = [
     { name: "Mixed Meze", price: 10 },
     { name: "Lahmacun", price: 4 },
-    { name: "Chicken Shish", price: 10 },
+    { name: "Chicken Beyti", price: 10 },
     { name: "Iskender", price: 12 },
     { name: "Icli Kofe", price: 12 },
     { name: "Baklava", price: 6 }
