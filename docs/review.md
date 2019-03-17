@@ -111,7 +111,7 @@ This ensures that Takeaway#complete_order gets some test coverage and that no SM
 
 ## Unit vs Integration tests
 
-Note that if you create real objects (not doubles) in your unit tests other than that which is the subject, then you are using the [Chicago style)[http://programmers.stackexchange.com/questions/123627/what-are-the-london-and-chicago-schools-of-tdd] of unit testing (also called [integration testing](http://stackoverflow.com/a/7876055/316729)).  In general you want to separate up your unit from your integration (or "feature") tests.  Unit tests can just rest in the root of the spec folder, but features of integration tests should go in a subfolder (spec/features or spec/integration) or even in a separate folder on the root directory to allow them to run completely separately.
+Note that if you create real objects (not doubles) in your unit tests other than that which is the subject, then you are using the [Chicago style)[http://programmers.stackexchange.com/questions/123627/what-are-the-london-and-chicago-schools-of-tdd] of unit testing (also called [integration testing](http://stackoverflow.com/a/7876055/316729)). In general you want to separate up your unit from your integration (or "feature") tests. Unit tests can just rest in the root of the spec folder, but features of integration tests should go in a subfolder (spec/features or spec/integration) or even in a separate folder on the root directory to allow them to run completely separately.
 
 At Makers Academy we recommend using the London style with doubles to effectively isolate the single class being tested in a unit test.
 
