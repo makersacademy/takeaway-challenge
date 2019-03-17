@@ -11,41 +11,37 @@
 
 ## Instructions
 
-1. `source ./twilio-config-PRIVATE` to load Twilio details
-2. `irb -r ./lib/takeaway.rb`
-3. Create a new takeaway object:
-   ```ruby
-   > takeaway = Takeaway.new
-    => #<Takeaway...>
-   ```
-4. Check the menu:
-   ```ruby
-   > takeaway.menu
-    => [{:name=>"mixed meze", :price=>10}, {:name=>"lahmacun", :price=>4} ... ] 
-   ```
-5. Add an item to your order with `takeaway.add_to_order(item, quantity)`:
-   ```ruby
-   > takeaway.add_to_order(takeaway.menu[1], 2)
-    => #<Basket... @contents=[{:name=>"lahmacun", :price=>4}, {:name=>"lahmacun", :price=>4}]> 
-   ```
-6. Check your order
-   ```ruby
-   > takeaway.basket
-    => [{:name=>"lahmacun", :price=>4}, {:name=>"lahmacun", :price=>4}]
-   ```
-7. Confirm your order by verifying the price:
-   ```ruby
-   > takeaway.verify(8)
-    => true
-   ```
-8. We will confirm delivery time by text.
-9. Bon appetit 👨‍🍳
+Load Twilio credentials: `source ./twilio-config-PRIVATE`. Then:
 
-## To do
+```ruby
+➜ irb -r ./lib/takeaway.rb      
+2.5.0 :001 > t = Takeaway.new
+ => #<Takeaway...> 
+2.5.0 :002 > t.menu
+ => [{:name=>"Mixed Meze", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Shish", :price=>10}, {:name=>"Iskender", :price=>12}, {:name=>"Icli Kofe", :price=>12}, {:name=>"Baklava", :price=>6}] 
+2.5.0 :003 > t.pretty_menu
+Oº°‘¨ Welcome to Grill Communication! ¨‘°ºO
+0: Mixed Meze, £10
+1: Lahmacun, £4
+2: Chicken Shish, £10
+3: Iskender, £12
+4: Icli Kofe, £12
+5: Baklava, £6
+ => nil 
+2.5.0 :004 > t.add_to_order 1, 5
+ => [{:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}] 
+2.5.0 :005 > t.add_to_order 2, 1
+ => [{:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Shish", :price=>10}] 
+2.5.0 :006 > t.basket
+ => [{:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Shish", :price=>10}] 
+2.5.0 :007 > t.total
+ => 30 
+2.5.0 :008 > t.confirm(30)
+ => true  
+```
 
-1. Generally check for refactoring possibilities
-2. Be clear about the responsibilities of my classes
-3. Extract `Menu` class - menu items shouldn't be hard-coded in `Takeaway`
-4. Give menu items an id number you can use when ordering? Also better for ordering by text
-5. Maybe `basket` should be `order`, and it could look after the `verify` method?
-6. Pretty-print menu?
+We will confirm delivery time by text message. Bon appetit! 👨‍🍳
+
+## My method
+
+1. Be clear about the responsibilities of my classes
