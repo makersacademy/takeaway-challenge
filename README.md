@@ -19,9 +19,16 @@ Takeaway Challenge
 
 **To improve my project, next time I would like to:**
 
-- 
-- 
--
+- Get test coverage from 99.14% to 100%
+- I haven't tested the Twilio API implementation for sending the text message to the customer. Next time, I would like to learn how to implement RSpec tests for APIs
+- I would like to learn how to stub out the behaviour of the Twilio API in my RSpec tests. At the moment, when I run my tests, the Twilio API sends a text message to the customer
+
+- For an improved user experience, I would like to create an interface for usability, asking the customer questions such as: 
+> 'Would you like to view the food menu?'
+> 'What would you like to order'?
+and then giving them a response.
+
+For version 1, my project is functional in technical implementation, but is not responsive to user input.
 
 
 ## Introduction to the project
@@ -88,6 +95,10 @@ The RubyGem `twilio-ruby` provides a simple library for communicating with the T
 See documentation for more info:
 https://rubygems.org/gems/twilio-ruby/versions/4.11.1
 https://www.twilio.com/docs/usage/api
+
+**Managing environmental variables - API key / auth**
+I used the RubyGem `dotenv` to manage environmental variables for the Twilio API - account_sid and auth_token.
+https://rubygems.org/gems/dotenv/versions/2.2.1
 
 ## Code Style
 

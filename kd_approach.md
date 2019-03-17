@@ -23,7 +23,7 @@ I would like to be able to select some number of several available dishes
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-As a customer
+[X] As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
@@ -211,7 +211,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ##### OBJECTS
 
 - Takeaway
-- Messaging Service (via Twilio API)
+- Message (Messaging Service (via Twilio API))
 - Twilio API - Authentication (account_sid, auth_token)
 
 ##### MESSAGES
@@ -220,8 +220,20 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ##### TEST CASE(S)
 
+- I haven't implemented the test for this yet.
 
+**To improve my project, next time I would like to:**
 
+- Get test coverage from 99.14% to 100%
+- I haven't tested the Twilio API implementation for sending the text message to the customer. Next time, I would like to learn how to implement RSpec tests for APIs
+- I would like to learn how to stub out the behaviour of the Twilio API in my RSpec tests. At the moment, when I run my tests, the Twilio API sends a text message to the customer
+
+- For an improved user experience, I would like to create an interface for usability, asking the customer questions such as: 
+> 'Would you like to view the food menu?'
+> 'What would you like to order'?
+and then giving them a response.
+
+For version 1, my project is functional in technical implementation, but is not responsive to user input.
 
 
 ##### TEST CASE(S) - EDGE CASES

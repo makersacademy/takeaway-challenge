@@ -11,7 +11,7 @@ describe Takeaway do
 
   subject(:indian_takeaway) { Takeaway.new(indian_food, order_management_2) }
   let(:indian_food) { double :FoodMenu, print: multiple_dishes }
-  let(:multiple_dishes) { {naan: 0.90, penang_curry: 5.00} }
+  let(:multiple_dishes) { {naan: 0.90, penang_curry: 5.00, spare_ribs: 6.00} }
   let(:order_management_2) { double :OrderManagement }
 
   let(:selected_dishes) { {fish: 1, chips: 3} }
@@ -38,14 +38,8 @@ describe Takeaway do
       indian_takeaway.place_the_order(selected_dishes)
     end
 
-  end
-
-  context '#message' do
-
-    it 'sends a text message to the customer once customer has placed the order' do
-      allow(message).to receive(:deliver_message)
-      indian_takeaway.place_the_order(selected_dishes)
-    end
+    # it 'sends a text message to the customer once customer has placed the order' do
+    # end
 
   end
 
