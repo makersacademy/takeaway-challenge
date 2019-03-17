@@ -29,7 +29,7 @@ This Ruby application allows users to browse a menu, select dishes, place an ord
 
 ## Steps to run
 
-#### To set up some base objects and data...
+#### To set up base objects and data
 
 Run `irb -r ./lib/menu.rb` in root project directory
 
@@ -44,10 +44,9 @@ Run `irb -r ./lib/menu.rb` in root project directory
  => #<Menu:0x00007fb6d5848148 @dishes=[#<Dish:0x00007fb6d4961c88 @name="burger", @price=10>, #<Dish:0x00007fb6d49506e0 @name="chips", @price=5>]> 
 2.5.0 :005 > m.view_dishes
  => [#<Dish:0x00007fb6d4961c88 @name="burger", @price=10>, #<Dish:0x00007fb6d49506e0 @name="chips", @price=5>] 
-
 ```
 
-#### To run some example methods...
+#### To run example methods
 
 `select` dish to add to order
 ```ruby
