@@ -20,6 +20,16 @@ class Menu
     @dishes.any? {|h| h[:name] == dish}
   end 
 
+  def price(dish)
+    @dishes.each do |x|
+      if x.has_value?(dish)
+        return x[:price]
+      end 
+    end  
+  end 
+
+
+
 
 
   private 

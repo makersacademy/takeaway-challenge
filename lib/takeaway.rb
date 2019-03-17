@@ -22,6 +22,8 @@ attr_reader :order
   def place_order(dishes)
     #make dishes to be a hash
     @order = [dishes]
+
+    # @order.total
     
     # dishes.each do |dish, quantity|
     #   @order.dishes.add(dish, quantity)

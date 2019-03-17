@@ -3,7 +3,7 @@ require 'takeaway'
 
 describe Menu do 
   subject(:menu) {described_class.new}
-  
+
   describe '#display_list' do 
 
     it 'displays all the dishes and prices' do   
@@ -15,7 +15,9 @@ describe Menu do
     expect(menu.has_dish?('chicken')).to be true
   end 
 
-
+  it 'calculates price' do 
+    expect(menu.price('chicken')).to eq 5
+  end 
 
 end 
 

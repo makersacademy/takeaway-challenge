@@ -14,6 +14,9 @@ describe Order do
   before do 
     allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
     allow(menu).to receive(:has_dish?).with(:chinese).and_return(true)
+    allow(menu).to receive(:price).with(:chinese).and_return(8)
+    allow(menu).to receive(:price).with(:chicken).and_return(5)
+  
   end 
 
   it "selects several dishes" do 
@@ -29,6 +32,12 @@ describe Order do
     expect{order.add(:beef, 2)}.to raise_error "item is not on the menu"
   end 
 
+  it 'calculates total' do
+    order.add(:chicken, 1)
+    order.add(:chinese, 2)
+    expect(order.total).to eq 21
+  end 
 
 
 end 
+

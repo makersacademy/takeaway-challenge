@@ -11,7 +11,7 @@ let(:menu) { double(:menu) }
 
 #need to double order
 subject(:takeaway) { described_class.new(order: order)}
-let(:order) { double(:order) }
+let(:order) { double(:order, total: 21) }
 
 let(:dishes) {{chicken: 1, chinese: 2}}
 
@@ -42,6 +42,13 @@ let(:dishes) {{chicken: 1, chinese: 2}}
       takeaway.place_order(dishes)
       expect(takeaway.order).to eq [dishes]
     end
+
+    it 'knows order total' do
+      allow(order).to receive(:add)  
+      total = takeaway.place_order(dishes)
+      
+
+    end 
 
   end 
 

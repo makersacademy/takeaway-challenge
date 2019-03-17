@@ -3,6 +3,7 @@ require 'menu'
 class Order
 
 attr_reader :dishes, :menu
+
   def initialize(menu)
     @dishes = {}
     @menu = menu
@@ -16,5 +17,16 @@ attr_reader :dishes, :menu
   end
 
 
+  def total
+    item_totals.inject(:+)
+  end 
+
+
+  private
+  def item_totals
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end
+  end 
 
 end 
