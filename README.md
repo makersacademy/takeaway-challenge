@@ -20,7 +20,7 @@ Twilio
 RSpec
 
 ## How to use?
-- Clone the directory and run './lib/interface.rb' in irb
+- Clone the directory and run ```'./lib/interface.rb' in irb```
 -  to open new interface with pre-loaded menu
   ```new_user = Interface.new(menu)```
 - to add an item to the order
