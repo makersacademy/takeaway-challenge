@@ -25,7 +25,12 @@ class Order
 
   def confirm_order
     @confirmed = true
-    "Order confirmed!"
+    "Thank you! Your order was placed and will be delivered before #{calculate_time}"
+  end
+
+  def calculate_time
+    time = Time.now
+    "#{time.hour + 1}:#{time.min}"
   end
 
   def confirmed?
