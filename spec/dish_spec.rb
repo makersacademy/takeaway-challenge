@@ -9,7 +9,7 @@ describe Dish do
 
   it 'shows its contents' do
     dish = Dish.new('Onion, Rosemary & Cheddar',11,true)
-    expect { dish.details } .to output("Onion, Rosemary & Cheddar - 11 - true\n").to_stdout
+    expect(dish.details).to eq("Onion, Rosemary & Cheddar - 11")
   end
 
 end

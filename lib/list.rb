@@ -1,18 +1,20 @@
+require_relative 'dish'
+
 class List
 
-  def initialize
+  def initialize(dish = Dish)
     @list = {
-      1 => { name: "Onion, Rosemary & Cheddar",  price: 11},
-      2 => { name: "Smoked Cod’s Roe, Fermented Cabbage & Caraway",  price: 20},
-      3 => { name: "Duck Sausage & Fennel",  price: 25},
-      4 => { name: "Nest Soda Bread with Whipped Duck Fat",  price: 10},
-      5 => { name: "Beetroot & Smoked Eel",  price: 12},
-      6 => { name: "Scottish Langoustine (+£7)",  price: 10},
-      7 => { name: "Cornish Halibut, Squid & Mushroom",  price: 8},
-      8 => { name: "Goosnagh Duck",  price: 10},
-      9 => { name: "Chocolate & Stout",  price: 13},
-      10 => { name: "British Cheeses",  price: 15},
-      11 => { name: "Homemade Oatcakes",  price: 10},
+      1 => dish.new("Onion, Rosemary & Cheddar", 11),
+      2 => dish.new("Smoked Cod’s Roe, Fermented Cabbage & Caraway", 20),
+      3 => dish.new("Duck Sausage & Fennel", 25),
+      4 => dish.new("Nest Soda Bread with Whipped Duck Fat", 10),
+      5 => dish.new("Beetroot & Smoked Eel", 12),
+      6 => dish.new("Scottish Langoustine (+£7)", 10),
+      7 => dish.new("Cornish Halibut, Squid & Mushroom", 8),
+      8 => dish.new("Goosnagh Duck", 10),
+      9 => dish.new("Chocolate & Stout", 13),
+      10 => dish.new("British Cheeses", 15),
+      11 => dish.new("Homemade Oatcakes", 10),
     }
     @selected_dishes = []
   end
@@ -21,20 +23,22 @@ class List
     @list = list
   end
 
+  def add_item(dish)
+
+  end
+
   def show_dishes
     @list.each do |order, dish|
-       puts "#{order}: #{dish[:name]} - #{dish[:price]}"
+      puts "#{order}: #{dish.details}"
     end
   end
   
   def select_dishes(*args)
     args.each do |order_number|
-      @selected_dishes << Dish.new(@list[order_number][:name], @list[order_number][:price]) if available_dish(order_number)
+      @selected_dishes << @list[order_number] if available_dish(order_number)
     end
     @selected_dishes
   end
-
-  Dish = Struct.new(:name, :price) # move to a class?
 
   def show_selected_dishes
     @selected_dishes.each do |dish|
@@ -44,7 +48,7 @@ class List
   end
 
   def total(selected_dishes)
-    selected_dishes.reduce(0) {|total,dish| total + dish[:price]}
+    selected_dishes.reduce(0) {|total,dish| total + dish.price}
   end
 
   private

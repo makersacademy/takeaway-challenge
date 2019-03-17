@@ -3,8 +3,8 @@ require 'list'
 describe List do
 
   subject(:list) { described_class.new}
-  let(:dish1) {double 'Dish', order: 1, name: 'dish1', price: 11}
-  let(:dish2) {double 'Dish', order: 2, name: 'dish2', price: 12}
+  let(:dish1) {double 'Dish', details: "dish1 - 11 - true"}
+  let(:dish2) {double 'Dish', details: "dish2 - 12 - true"}
 
   it 'responds to add_list' do
     expect(list).to respond_to(:add_list)
@@ -15,9 +15,9 @@ describe List do
   end
 
   it 'shows a list of dishes with prices' do
-    mock_list = { dish1.order => {name: dish1.name, price: dish1.price}, dish2.order => {name: dish2.name, price: dish2.price}}
+    mock_list = { 1 => dish1, 2 => dish2}
     list.add_list(mock_list)
-    expect { list.show_dishes }.to output("#{dish1.order}: #{dish1.name} - #{dish1.price}\n#{dish2.order}: #{dish2.name} - #{dish2.price}\n").to_stdout
+    expect { list.show_dishes }.to output("1: #{dish1.details}\n2: #{dish2.details}\n").to_stdout
   end
 
   it 'responds to select_dishes' do
@@ -28,6 +28,12 @@ describe List do
     context 'when passed correct dishes' do
       it 'raises no error' do 
         expect { list.select_dishes('dish1', 'dish2') }.not_to raise_error
+      end
+
+      it 'returns an array of selected dishes' do
+        mock_list = { 1 => dish1, 2 => dish2}
+        list.add_list(mock_list)
+        expect(list.select_dishes(1,2)).to eq([dish1,dish2])
       end
     end
   end

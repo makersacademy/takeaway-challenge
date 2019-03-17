@@ -1,12 +1,15 @@
 class Dish
 
-  def initialize(name, price, availability)
+  attr_reader :name, :price
+
+  def initialize(name, price, availability = true)
     @name = name 
     @price = price
     @availability = availability
   end
 
   def details
-    puts "#{@name} - #{@price} - #{@availability}"
+    "#{@name} - #{@price}"
   end
+
 end

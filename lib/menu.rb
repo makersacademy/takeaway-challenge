@@ -24,12 +24,11 @@ class Menu
 
   def verify_order
     check_total(@total) ? "Total of #{@total} is correct" : "We have made an error"
-    check_total(@total)
   end
 
   private 
 
   def check_total(total)
-    @total == @selected_dishes.reduce(0) {|total,dish| total + dish[:price]}
+    @total == @selected_dishes.reduce(0) {|total,dish| total + dish.price} # undefined method []
   end
 end

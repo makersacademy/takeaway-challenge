@@ -32,15 +32,16 @@ RSpec.describe Menu do
   describe '#total' do
     context "when correct total" do
       it 'returns a total if order is correct' do
-        menu.select_dishes(dish1,dish2)
+        menu.select_dishes(1,2)
         expect(menu.total).to eq 31
       end
 
-      it 'verifies that the order is correct' do
-        menu.select_dishes(dish1,dish2)
-        menu.total
-        expect(menu.verify_order).to be true
-      end
+      # it 'verifies that the order is correct' do
+      #   menu.select_dishes(1,2)
+      #   allow(menu).to receive(:check_total).and_return(true)
+      #   allow(menu).to receive(:total).and_return(31)
+      #   expect(menu.verify_order).to eq "Total of #{menu.total} is correct"
+      # end
     end
 
     context "when incorrect total" do
@@ -49,7 +50,7 @@ RSpec.describe Menu do
         menu.total
         # stubb check total method to get a false result
         allow(menu).to receive(:check_total).and_return false
-        expect(menu.verify_order).to be false
+        expect(menu.verify_order).to eq "We have made an error"
         # implement return of error message
       end
     end

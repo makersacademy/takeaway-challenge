@@ -27,8 +27,9 @@ RSpec.describe 'User_stories' do
         expect { menu.select_dishes('dish1', 'dish2') }.not_to raise_error
       end
 
-      it 'selectes available dishes' do
-        expect(menu.select_dishes(1)[0].name).to eq("Onion, Rosemary & Cheddar")
+      it 'selects available dishes' do
+        result = menu.select_dishes(1)[0].details
+        expect(result).to eq("Onion, Rosemary & Cheddar - 11")
       end
 
     end
@@ -49,9 +50,9 @@ RSpec.describe 'User_stories' do
       end
 
       it 'verifies if the order is correct' do
-        menu.select_dishes('dish1', 'dish2') # selects dishes
+        menu.select_dishes(1,2) # selects dishes
         menu.total # creates total
-        expect(menu.verify_order).to be true # checks if total is correct
+        expect(menu.verify_order).to eq "Total of #{menu.total} is correct"
       end
 
       it 'shows selected dishes' do
@@ -66,7 +67,7 @@ RSpec.describe 'User_stories' do
         menu.total # creates total
         # stubbing the correct_total method to return false
         allow(menu).to receive(:check_total).and_return false
-        expect(menu.verify_order).to be false
+        expect(menu.verify_order).to eq "We have made an error"
       end
     end
   end 
