@@ -3,10 +3,11 @@ require "twilio-ruby"
 class SMS
   attr_reader :client, :config
 
-  def initialize(config, client = nil)
-    @client = client || Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
-    @config = config 
-  end 
+  def initialize(config, client: nil)
+    @client = client || 
+    Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
+    @config = config
+  end
 
   def deliver
     client.messages.create(message_args)
@@ -14,12 +15,13 @@ class SMS
 
   private
   def message_args
-    {
-    from: config[:from],
+    { from: config[:from],
     to: config[:to],
-    body: config[:body] 
-    }
+    body: config[:body] }
+  end
 
-  end 
+  def delivery_time
+    (Time.now + 60 * 60).strftime(TIME_FORMAT)
+  end
 
 end

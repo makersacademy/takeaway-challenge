@@ -9,7 +9,7 @@ describe Takeaway do
   let(:menu) { double(:menu) }
 
 # need to double order
-  subject(:takeaway) { described_class.new(order: order, sms: sms, config: {}) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms, config: {}) }
 
   let(:order) { double(:order, total: 21) }
   let(:dishes) { { chicken: 1, chinese: 2 } }

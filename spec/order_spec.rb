@@ -9,11 +9,11 @@ describe Order do
     { chicken: 1, chinese: 2 }
   end 
 
-  let(:menu) { double(:menu) }
+  let(:menu) { instance_double("Menu") }
 
   before do 
-    allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
-    allow(menu).to receive(:has_dish?).with(:chinese).and_return(true)
+    allow(menu).to receive(:dish?).with(:chicken).and_return(true)
+    allow(menu).to receive(:dish?).with(:chinese).and_return(true)
     allow(menu).to receive(:price).with(:chinese).and_return(8)
     allow(menu).to receive(:price).with(:chicken).and_return(5)
   
@@ -28,7 +28,7 @@ describe Order do
   end 
 
   it "doesnt allow items to be added that are not on the menu" do 
-    allow(menu).to receive(:has_dish?).with(:beef).and_return(false)
+    allow(menu).to receive(:dish?).with(:beef).and_return(false)
     expect { order.add(:beef, 2) }.to raise_error "item is not on the menu"
   end 
 

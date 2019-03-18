@@ -1,14 +1,13 @@
 require 'order'
 require 'takeaway'
+require 'dish'
 
 class Menu
   # Dish class here is like Menu of dishes
   attr_reader :dishes
 
-  def initialize(dishes = [{ name: 'chinese', price: 8 }, 
-  { name: 'fishandchips', price: 7 }, 
-  { name: 'chicken', price: 5 }, { name: 'beef', price: 6 }])
-    @dishes = dishes
+  def initialize(dishes = Dish.new)
+    @dishes = dishes.dishes
   end 
 
   def display_list
@@ -29,11 +28,4 @@ class Menu
       end 
     end  
   end 
-
-  private 
-
-  def to_string
-
-  end 
-
 end
