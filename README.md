@@ -56,4 +56,4 @@ Started the weekeend challenge by utilizing my recently learned skills in domain
 
 ![sequence diagram](https://i.ibb.co/JsLTbkL/takeaway-challenge-sequence.png "Takeaway model")
 
-
+![class diagram](https://i.ibb.co/JsLTbkL/takeaway-challenge-sequence.png "Takeaway model")
