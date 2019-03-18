@@ -5,7 +5,7 @@ class SMS
 
   def initialize(config, client = nil)
     @client = client || Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
-    @config = config
+    @config = config 
   end 
 
   def deliver
@@ -22,4 +22,4 @@ class SMS
 
   end 
 
-end 
+end
