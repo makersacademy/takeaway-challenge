@@ -58,8 +58,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Areas for improvement
 
-- Low test coverage in Message class - I think I need to mock out more Twilio behaviour to increase coverage
-- 'print_menu' method in Order class return is tested but not the actual printing. However, this is covered in the Menu class so I have left it as is.
-- Failing test in Order class for 'sends a text to a customer' - ArgumentError: wrong number of arguments (given 0, expected 1+). Yet to resolve.     
+- Increased test coverage to 73.33% in the Message class - still room for improvement but much better.
+- 'print_menu' method in Order class return is tested. However, I think this is just testing the return of the Menu class rather than the behaviour of the Order class.
+- Resolved failing test in Order class for 'sending a test to the customer'.    
 - Could give more though to edge cases (eg, typos in adding items to the order)
 - Could have had another class of Takeaway that interacted with the other classes of Order, Menu and Message. However, could this become a god class?
