@@ -20,10 +20,6 @@ RSpec.describe Takeaway do
 
     it { is_expected.to respond_to(:order).with(2).arguments }
 
-    it 'Stores order in the order_basket array' do
-      expect(thai.order('Chicken Pad Thai')).to eq [['Chicken Pad Thai', 1]]
-    end
-
     it 'Stores more than 1 quantity in array' do
       expect(thai.order('Chicken Pad Thai', 5)).to eq [['Chicken Pad Thai', 5]]
     end
