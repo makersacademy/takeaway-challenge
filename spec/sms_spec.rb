@@ -16,7 +16,7 @@ describe SMS do
     from: "+123",
     to: "+123",
     body: "Thank you! Your order is being delivered"
-  }
+  }  
   end 
 
   it 'delivers an sms' do
