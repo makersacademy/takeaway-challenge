@@ -3,14 +3,18 @@ require 'dotenv/load'
 
 class Message
 
-  def initialize(account_sid = ENV['TWILIO_ACCOUNT_SID'], auth_token = ENV['TWILIO_AUTH_TOKEN'], twilio_number = ENV['TWILIO_NUMBER'])
-    @account_sid = account_sid
-    @auth_token = auth_token
+  def initialize(client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']), twilio_number = ENV['TWILIO_NUMBER'])
     @twilio_number = twilio_number
-    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+    @client = client
   end
 
-  def send(phone_number = ENV['PHONE_NUMBER'])
+  def send
+
+    create_message
+
+  end
+
+  def create_message(phone_number = ENV['PHONE_NUMBER'])
 
     from = @twilio_number
     to = phone_number
@@ -20,7 +24,6 @@ class Message
     to: to,
     body: "Thank you! Your order was placed and will be delivered before #{delivery_time}"
     )
-
   end
 
   private

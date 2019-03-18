@@ -2,12 +2,12 @@ class Order
 
   attr_reader :order
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, message = Message.new)
     @menu = menu
     @order = {}
     @order_price = 0
     @customer_number = ENV['PHONE_NUMBER']
-    @message = Message.new
+    @message = message
   end
 
   def print_menu
@@ -30,7 +30,7 @@ class Order
   def place
     raise "No items in order" if @order.empty?
 
-    @message.send(@customer_number)
+    @message.send
   end
 
   private
