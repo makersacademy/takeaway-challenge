@@ -1,7 +1,9 @@
 require './lib/menu'
-require_relative 'reply_messaging'
 
-class Options
+class App
+
+  attr_reader :options
+  attr_reader :menu
 
   def initialize(menu = Menu.new)
     @options = [
@@ -68,5 +70,5 @@ class Options
   end
 end
 
-menu = Options.new
+menu = App.new
 menu.show_options
