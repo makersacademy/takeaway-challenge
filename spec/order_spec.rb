@@ -3,7 +3,7 @@ require "order"
 describe Order do
   subject { Order.new(dish) }
 
-  to = "+447942604825"
+  to = "+441234567890"
   let(:dish) { double :dish }
   let(:sms) { double :sms }
   let(:message_class) { double :message_class, new: sms }
