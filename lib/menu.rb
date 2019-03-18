@@ -4,9 +4,9 @@ require_relative "order"
 class Menu
   attr_reader :dishes, :orders
 
-  def initialize
-    @dishes = []
-    @orders = []
+  def initialize(orders = [], dishes = [])
+    @dishes = dishes
+    @orders = orders
   end
   
   def add_dish(name, price, dish_class = Dish)
@@ -18,11 +18,14 @@ class Menu
   end
 
   def select_dish(dish, quantity = 1, order_class = Order)
-    if @orders.empty? || @orders.last.confirmed?
-      @orders << order_class.new(dish, quantity)
+    if check_order_status
+      @orders << order_class.new(dish, quantity) 
     else
       @orders.last.update(dish, quantity)
     end
-    @orders.last
+  end
+
+  def check_order_status
+    @orders.empty? || @orders.last.confirmed?
   end
 end
