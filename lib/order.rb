@@ -1,6 +1,6 @@
 class Order
 
-  attr_accessor :order
+  attr_reader :order
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -15,7 +15,7 @@ class Order
   end
 
   def add(item, quantity = 1)
-    raise "Item not available" unless @menu.items.include?(item)
+    raise "Item not available" unless @menu.includes_item?(item)
 
     @order[item] = quantity
   end

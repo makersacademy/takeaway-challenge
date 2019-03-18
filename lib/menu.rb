@@ -11,4 +11,8 @@ class Menu
     end.join("")
   end
 
+  def includes_item?(item)
+    !@items[item].nil?
+  end
+
 end

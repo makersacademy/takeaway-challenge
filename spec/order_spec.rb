@@ -26,11 +26,13 @@ describe Order do
   describe '#add' do
 
     it 'allows user to place order' do
+      allow(menu).to receive(:includes_item?).with("Nan").and_return true
       subject.add("Nan", 1)
       expect(subject.order).to include("Nan" => 1)
     end
 
     it 'raises an error if a dish is not available' do
+      allow(menu).to receive(:includes_item?).with("Chicken Korma").and_return false
       expect { subject.add("Chicken Korma") }.to raise_error "Item not available"
     end
 
@@ -38,6 +40,11 @@ describe Order do
 
   describe '#total_price' do
 
+    before(:each) do
+      allow(menu).to receive(:includes_item?).with("Nan").and_return true
+      allow(menu).to receive(:includes_item?).with("Aloo Gobi").and_return true
+    end
+    
     it 'shows user the price of their order for one item' do
       subject.add("Nan", 1)
       expect(subject.total).to eq 2.2
