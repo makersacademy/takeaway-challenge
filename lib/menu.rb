@@ -8,7 +8,7 @@ class TakeawayMenu
     @menu_location = 0
     navigator = Navigation.new
     print_menu(@menu_location)
-    navigator.show_single_key while(true)
+    navigator.show_single_key while true
   end
 
   def print_text(file)
@@ -42,9 +42,9 @@ class Navigation
       system "stty raw -echo"
       c = STDIN.getc.chr
       # gather next two characters of special keys
-      if(c=="\e")
-        extra_thread = Thread.new{
-          c = c + STDIN.getc.chr
+      if (c == "\e")
+        extra_thread = Thread.new {
+          c += STDIN.getc.chr
         }
         extra_thread.join(0.00001)
         extra_thread.kill
@@ -62,14 +62,14 @@ class Navigation
 
   # takes a single character command
   def show_single_key
-      c = read_char
+    c = read_char
     case c
     when "\e" # esc key
       exit
     when "\177" # backspace key
       puts "BACKSPACE"
     when /^.$/ # any other single key
-      puts "SINGLE CHAR HIT: #{c} otherwise #{c.inspect}"
+      puts "Key pressed: #{c}"
     else # error handling
       puts "Key not recognised"
     end

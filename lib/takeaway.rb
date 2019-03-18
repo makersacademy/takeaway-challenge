@@ -1,7 +1,6 @@
 require 'csv'
 require 'io/console'
 
-
 # Takeaway menu class does the brunt of the work
 class Takeaway
   attr_accessor :menu
@@ -12,9 +11,9 @@ class Takeaway
     load_file
   end
 
-  def show(selection)
+  def show(select)
     output = []
-    @menu.map { |item| output << item[selection] if !output.include? item[selection] }
+    @menu.map { |item| output << item[select] unless output.include? item[select] }
     return output
   end
 
