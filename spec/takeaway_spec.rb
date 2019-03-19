@@ -13,6 +13,8 @@ describe Takeaway do
 
   describe "#menu" do
     it 'returns the menu' do
+      # is this vacuous?
+      # many similar tests to this in this spec, but can't see another way to do it?
       allow(menu).to receive(:all).and_return(menu_list)
       expect(takeaway.menu).to eq menu_list
     end
@@ -67,7 +69,11 @@ describe Takeaway do
         expect(takeaway.confirm(total)).to be true
       end
 
-      it 'uses Messager to send a confirmation message' do
+      it 'uses a messager to send a confirmation message' do
+        # is it necessary to send the actual message?
+        # would it be sufficient to send any old message?
+        # this is the class where the message is created, so seems like
+        # we should test the message?
         one_hour_from_now = (Time.new + 3600).strftime("%H:%M")
         message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}."
         expect(messager).to receive(:send).with(message)

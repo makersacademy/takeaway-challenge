@@ -2,7 +2,9 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new }
+  let(:item) { double :item }
 
+  # is this pointless??????
   context 'when initialized' do
     it 'is empty' do
       expect(subject.basket).to be_empty
@@ -11,7 +13,6 @@ describe Order do
 
   describe '#add' do
     it 'adds an item to the order' do
-      item = double(:item)
       subject.add(item)
       expect(subject.basket.count(item)).to eq 1
     end
@@ -19,15 +20,13 @@ describe Order do
 
   describe '#remove' do
     it 'raises an error if the item is not in the order' do
-      item = double(:item)
       expect { subject.remove(item) }.to raise_error "Couldn't remove item: it was not in the basket."
     end
 
     it 'removes an item from the order' do
-      item = double(:item)
-      3.times { subject.add(item) }
+      2.times { subject.add(item) }
       subject.remove(item)
-      expect(subject.basket.count(item)).to eq 2
+      expect(subject.basket.count(item)).to eq 1
     end
   end
 

@@ -52,8 +52,6 @@ describe Menu do
   describe 'defaults' do
     subject(:default_menu) { described_class.new }
     it 'has defaults for the name and menu items' do
-      # default_items = default_menu.all
-      # expect(default_items).to include({name: "Mixed Meze", price: 10})
       expect { subject }.not_to raise_error
     end
   end
