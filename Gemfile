@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.3.4'
+ruby '2.6.0'
 
+gem 'twilio-ruby'
+gem 'dotenv'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
