@@ -1,0 +1,4 @@
+export TWILIO_ACCOUNT_SID='your-twilio-account-sid-here'
+export TWILIO_AUTH_TOKEN='your-twilio-auth-token-here'
+export TWILIO_FROM='your-twilio-number-here'
+export TWILIO_TO='your-twilio-to-number-here'

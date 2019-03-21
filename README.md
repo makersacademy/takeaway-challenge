@@ -1,82 +1,87 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge
 
- ```
+[Exercise instructions are here](takeaway-challenge.md)
 
-Instructions
--------
+## Installation
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+1. Fork and clone this repo
+2. `bundle install`
+3. Copy `twilio-config-EXAMPLE` to `twilio-config-PRIVATE` (the latter is protected by `.gitignore`)
+4. Enter your Twilio credentials and phone numbers in `twilio-config-PRIVATE`
 
-Task
------
+## Instructions
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+First load Twilio credentials: `source ./twilio-config-PRIVATE`.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+Then:
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```ruby
+➜ irb -r ./lib/takeaway.rb      
+2.5.0 :001 > t = Takeaway.new
+ => #<Takeaway...> 
+2.5.0 :002 > t.menu
+ => [{:name=>"Mixed Meze", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Chicken Beyti", :price=>10}, {:name=>"Iskender", :price=>12}, {:name=>"Icli Kofe", :price=>12}, {:name=>"Baklava", :price=>6}] 
+2.5.0 :003 > t.pretty_menu
+Oº°‘¨ Welcome to Grill Communication! ¨‘°ºO
+0: Mixed Meze, £10
+1: Lahmacun, £4
+2: Chicken Beyti, £10
+3: Iskender, £12
+4: Icli Kofe, £12
+5: Baklava, £6
+ => nil 
+2.5.0 :005 > t.add_to_order 2, 1
+ => [{:name=>"Chicken Beyti", :price=>10}] 
+2.5.0 :006 > t.add_to_order 1, 2
+ => [{:name=>"Chicken Beyti", :price=>10}, {:name=>"Lahmacun", :price=>4}, {:name=>"Lahmacun", :price=>4}] 
+2.5.0 :007 > t.total
+ => 18 
+2.5.0 :008 > t.confirm(18)
+ => true 
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+We will confirm delivery time by text message. Bon appetit! 👨‍🍳
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## My method
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+I tried my best to use a strict TDD approach:
+1. Convert user story into a feature test in `spec/features/user_stories_spec.rb`
+2. When that fails make a unit test for the failing class which fails in the same way
+3. Write the minimal code to fix the feature and unit test failures
+4. Repeat until the feature is implemented
+5. Refactor, rinse, repeat
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+I didn't attempt to implement ordering via SMS, but I did have it in my mind as I was working on the exercise. That's why I chose for my `Takeaway.add_to_order` method to identify the menu items via an index which is printed in the `Takeaway.pretty_menu` - I thought that would be an easier interface to interact with via SMS then having to e.g. type out the name of each order item.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Having the identifier for the menu items being the array index seems fragile - it means adding more items to the menu will cause the identifiers to change. Not a problem with the current implementation, but for future extensibility I think it would be better for each menu item to have a fixed, unique identifier. Or even be an object
 
+As per the Airport Challenge Exemplar video, I tried to keep all my public methods as readable as possible by moving more complex statements into private methods, e.g. the `Order.remove_one_item` method which is used by `Order.remove`.
 
-In code review we'll be hoping to see:
+### Test coverage
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+RSpec test coverage is 100% and green at time of writing. All public methods have tests, except maybe `Order.basket`... although that is used in some tests on that class... is that good enough? Rubocop is clear too.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+### SRP vibes
 
-Notes on Test Coverage
-------------------
+I tried to keep all my methods short and focussed. None are longer than 3 lines, many are 1 line. I used four main classes, with the following responsibilities:
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+- `Takeaway` - provides the user interface
+- `Menu` - contains the menu items and methods for getting and checking menu items, and formatting the menu for display
+- `Order` - provides a basket to hold order items, methods to add and remove from it, and to confirm the order
+- `MessagerTwilio` - provides a method to send an SMS via the Twilio service
+- `MessagerStdout` - provides a method to print a message to STDOUT. A drop-in replacement for `MessagerTwilio` that I used in testing
+- `Dish` - I was close to extracting a class for a `dish` object for the menu items, but it seemed too pointless since the functionality you need for the current implementation can be achieved with a hash... but I think it could help make the program more extensible, e.g. by adding a method to record how many times a particular dish has been ordered
+
+### Dependency injection
+
+Dependent classes are injected and then stubbed out in the tests, so that tests for each class will still pass if all the other classes are commented out.
+
+## TODO
+
+- Bonus round - order via text
+- Basket should be emptied when you confirm your order
+- I think my [messager_twilio_spec](spec/messager_twilio_spec.rb) is not very 'test behaviour not state'... would it be better to test for the output of `MessagerTwilio.send`? I think something similar could be said for `Takeaway.confirm` and `Takeaway.send_confirmation_message`
+- Check [this pill](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md) on different strategies for stubbing out 3rd party APIs
+- Could have used [modules](https://github.com/Hives/takeaway-challenge/blob/master/docs/review.md#use-of-modules) for the Messager objects. Is that a good idea?
+- Use [dotenv gem](https://github.com/bkeepers/dotenv) to manage environment variables
+- I'm sure there's loads of other stuff I missed!
