@@ -2,6 +2,7 @@ require("bundler")
 Bundler.require()
 
 class Messenger
+  attr_reader :account_sid, :auth_token, :client
   def initialize
     @account_sid = ENV["TWILIO_ACCOUNT_SID"]
     @auth_token = ENV["TWILIO_AUTH_TOKEN"]

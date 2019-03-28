@@ -1,7 +1,9 @@
 require 'messenger'
+
 describe Messenger do
-  # it 'generates message string' do
-  #  subject.generate_message
-  #  expect(subject.message_contents).not_to be_empty
-  # end
+  it 'initialises with correct attributes' do
+    subject = Messenger.new()
+    expect(subject.account_sid).to eq(ENV["TWILIO_ACCOUNT_SID"])
+    expect(subject.auth_token).to eq(ENV["TWILIO_AUTH_TOKEN"])
+  end
 end
