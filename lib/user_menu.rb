@@ -16,13 +16,13 @@ class UserMenu
   end
 
   def options
-  return "Please Select An Option\n
-  1. Show Menu\n
-  2. Order\n
-  3. Show Order\n
-  4. Total Cost\n
-  5. Place Order\n
-  "
+    return  "Please Select An Option\n
+    1. Show Menu\n
+    2. Order\n
+    3. Show Order\n
+    4. Total Cost\n
+    5. Place Order\n
+    "
   end
 
   def process_menu_selection(option)
@@ -44,7 +44,7 @@ class UserMenu
     elsif option == "exit"
       exit
     else
-      "Please select an option 1 - 4"
+      "Please select an option 1 - 5"
       print_options
     end
   end
@@ -76,17 +76,16 @@ class UserMenu
 
   def are_you_sure?
     @total.calc(@food_order.orders)
-    if @total.total_cost == 0
+    if @total.total_cost.zero?
       puts "You haven't ordered anything"
       print_options
     else
-      @total.total_cost
       puts "Are you sure you are ready to finalise your order?"
       input = gets.chomp
       if input == "yes"
+        puts "Thank You for your order! You should receive text confirmation shortly"
         done = PlaceOrder.new(@total.total_cost)
         done.send_text
-        return "Thank You for your order! You should receive text confirmation shortly"
       else
         print_options
       end
@@ -95,5 +94,5 @@ class UserMenu
 
 end
 
-um = UserMenu.new
-um.print_options
+#um = UserMenu.new
+#um.print_options

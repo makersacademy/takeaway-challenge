@@ -14,8 +14,7 @@ describe Order do
   end
 
   it 'takes orders' do
-    neworder = Order.new
-    neworder.order_into_hash(:food_number, :quantity)
-    expect(neworder.orders).to eq [{food: 1, quantity: "1"}]
+    subject.order_into_hash(1, "1")
+    expect(subject.orders).to eq [{ food: 1, quantity: "1" }]
   end
 end
