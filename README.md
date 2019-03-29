@@ -39,4 +39,4 @@ In this class we will store the information of the dish and puts methods to prin
 We will have a list of the available dishes for the customer to select from.
 
 #### Order
-Give the tools to the customer to add, remove, check and place the order
+Give the tools to the customer to add, remove, check and place the order. It will have one dish item per quantity, given by menu.

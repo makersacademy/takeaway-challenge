@@ -5,7 +5,6 @@ class Dish
     @name = name
     @price = price
     @id = id
-    @quantity = quantity
   end
 
   def print_dish
