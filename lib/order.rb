@@ -1,6 +1,7 @@
 require_relative 'food_menu'
 
 class Order
+attr_reader :orders
 
   def initialize
     @orders = []
@@ -19,10 +20,11 @@ class Order
   end
 
   def order_into_hash(food_number, quantity)
-    @orders << {food: food_number, quantity: quantity}
+    @orders << {food: food_number.to_i, quantity: quantity}
   end
 
   def show_orders
+    @showorder = []
     @orders.each do |y|
       @showorder << ("#{@fm.get_name(y[:food])} x #{y[:quantity]}")
     end
