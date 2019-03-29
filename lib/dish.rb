@@ -1,6 +1,6 @@
 class Dish
   attr_reader :name, :price, :id, :quantity
-  
+
   def initialize(name, price, id, quantity = 1)
     @name = name
     @price = price
@@ -9,6 +9,6 @@ class Dish
   end
 
   def print_dish
-    "#{id}: #{name} ------- #{price}"
+    p "#{id}: #{name} ------- #{price}"
   end
 end
