@@ -12,33 +12,29 @@ PRICES = [
       { "food" => 10, "name" => "Water", "price" => 1 },
       { "food" => 11, "name" => "Beer", "price" => 3 }
     ]
-
-  def print
-    return menu_options
-  end
-
+    
   def menu_options
-    "
-    ----------------------\n
-    Mains\n
-    ----------------------\n
+    return "
+    ----------------------
+    Mains
+    ----------------------
     1. Burger - £8\n
     2. Pizza - £10\n
     3. Burrito - £8\n
-    4. Curry - £9\n
-    ----------------------\n
-    Sides\n
-    ----------------------\n
+    4. Curry - £9
+    ----------------------
+    Sides
+    ----------------------
     5. Chips - £2\n
     6. Halloumi - £2\n
-    7. Salad - £1\n
-    ----------------------\n
-    Drinks\n
-    ----------------------\n
+    7. Salad - £1
+    ----------------------
+    Drinks
+    ----------------------
     8. Coke - £2\n
     9. Diet Coke -£2\n
     10. Water - £1\n
-    11. Beer - £3\n
+    11. Beer - £3
     ----------------------"
   end
 

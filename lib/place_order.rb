@@ -2,7 +2,7 @@ require 'twilio-ruby'
 require_relative 'total'
 
 class PlaceOrder
-attr_reader :output
+attr_reader :output, :totalcost
 
   def initialize(cost)
     @totalcost = cost

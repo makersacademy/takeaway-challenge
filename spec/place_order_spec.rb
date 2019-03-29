@@ -6,4 +6,10 @@ describe PlaceOrder do
     allow(order).to receive(:totalcost).and_return(10)
     expect(order.totalcost).to eq 10
   end
+
+  it 'accepts total cost' do
+    order = PlaceOrder.new(10)
+    expect(order.totalcost).to eq 10
+  end
+
 end

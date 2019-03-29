@@ -18,12 +18,12 @@ class UserMenu
   end
 
   def options
-    return  "Please Select An Option\n
-    1. Show Menu\n
-    2. Order\n
-    3. Show Order\n
-    4. Total Cost\n
-    5. Place Order\n
+    return  "\nPlease Select An Option\n
+    1. Show Menu
+    2. Order
+    3. Show Order
+    4. Total Cost
+    5. Place Order
     "
   end
 
@@ -46,18 +46,20 @@ class UserMenu
     elsif option == "exit"
       exit
     else
-      "Please select an option 1 - 5"
+      return "\nPlease select an option 1 - 5"
     end
   end
 
   def show_menu
     fm = FoodMenu.new
-    puts fm.print
+    puts fm.menu_options
+    return "menushown"
   end
 
   def order_food
-    puts "Enter Menu Number and Qty"
+    puts "Enter Menu Number"
     puts @food_order.take_order
+    return "orderfood"
   end
 
   def show_order
@@ -65,20 +67,18 @@ class UserMenu
     puts "-----------------------------"
     puts @food_order.show_orders
     puts "-----------------------------"
+    return "option3"
   end
 
   def show_total
     puts @total.calc(@food_order.orders)
-<<<<<<< HEAD
-=======
-    @has_show_total_been
->>>>>>> a27ab571c0b6411d44008bb9ff1cb103a23313a4
+    return "totalprinted"
   end
 
   def are_you_sure?
     @total.calc(@food_order.orders)
     if @total.total_cost.zero?
-      puts "You haven't ordered anything"
+      return "You haven't ordered anything"
     else
       puts "Are you sure you are ready to finalise your order?"
       input = gets.chomp

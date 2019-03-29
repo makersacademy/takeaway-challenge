@@ -12,7 +12,7 @@ attr_reader :orders
   def take_order
   food_number = gets.chomp
     while !food_number.empty? do
-      puts "How Many?"
+      puts "How Many Would You Like?"
       quantity = gets.chomp
       order_into_hash(food_number, quantity)
       food_number = gets.chomp
