@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) { { dish: 'fish', price: 5 } }
+  let(:dish) { ["fish", 5, 1] }
 
   it 'has a menu' do
     expect(subject.menu).to include dish

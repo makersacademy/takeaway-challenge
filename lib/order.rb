@@ -9,7 +9,7 @@ class Order
 
   def check_total(order = @menu.order)
     order.each { |item|
-      @total += item[:price]
+      @total += item[1] * item [2]
     }
     @total
   end
