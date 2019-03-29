@@ -11,8 +11,10 @@ class UserMenu
   end
 
   def print_options
-    puts options
-    process_menu_selection(gets.chomp)
+    loop do
+      puts options
+      process_menu_selection(gets.chomp)
+    end
   end
 
   def options
@@ -45,20 +47,17 @@ class UserMenu
       exit
     else
       "Please select an option 1 - 5"
-      print_options
     end
   end
 
   def show_menu
     fm = FoodMenu.new
     puts fm.print
-    print_options
   end
 
   def order_food
     puts "Enter Menu Number and Qty"
     puts @food_order.take_order
-    print_options
   end
 
   def show_order
@@ -66,19 +65,16 @@ class UserMenu
     puts "-----------------------------"
     puts @food_order.show_orders
     puts "-----------------------------"
-    print_options
   end
 
   def show_total
     puts @total.calc(@food_order.orders)
-    print_options
   end
 
   def are_you_sure?
     @total.calc(@food_order.orders)
     if @total.total_cost.zero?
       puts "You haven't ordered anything"
-      print_options
     else
       puts "Are you sure you are ready to finalise your order?"
       input = gets.chomp
@@ -86,8 +82,6 @@ class UserMenu
         puts "Thank You for your order! You should receive text confirmation shortly"
         done = PlaceOrder.new(@total.total_cost)
         done.send_text
-      else
-        print_options
       end
     end
   end
