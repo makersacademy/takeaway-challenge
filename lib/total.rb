@@ -14,7 +14,7 @@ class TotalCost
       @show_cost << "#{@fm.get_name(y[:food])} x #{y[:quantity]} = £#{(y[:quantity].to_i * @fm.pricing(y[:food]))}"
       @total_cost += (y[:quantity].to_i * @fm.pricing(y[:food]))
     end
-    return "#{@show_cost.join(",\n")}. \nTotal Cost = #{@total_cost}"
+    return "#{@show_cost.join(",\n")}. \nTotal Cost = £#{@total_cost}"
   end
 
   def total_cost

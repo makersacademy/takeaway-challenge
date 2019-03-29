@@ -14,7 +14,7 @@ class PlaceOrder
 
     client = Twilio::REST::Client.new(account_sid, auth_token)
     from = '+447449818019' # Your Twilio number
-    to = '+447478737300' # Your mobile phone number
+    to = ENV["NUMBER"] # Your mobile phone number
 
     client.messages.create(
     from: from,

@@ -12,7 +12,7 @@ class UserMenu
 
   def print_options
     puts options
-    process_menu_selection(STDIN.gets.chomp)
+    process_menu_selection(gets.chomp)
   end
 
   def options
@@ -28,19 +28,19 @@ class UserMenu
   def process_menu_selection(option)
     if option == "1"
       puts "Showing Menu"
-      return show_menu
+      show_menu
     elsif option == "2"
       puts "Order Your Meal"
-      return order_food
+      order_food
     elsif option == "3"
       puts "Showing Your Order"
-      return show_order
+      show_order
     elsif option == "4"
       puts "Showing Total Cost of Order"
-      return show_total
+      show_total
     elsif option == "5"
       puts "Finalise Your Order"
-      return are_you_sure?
+      are_you_sure?
     elsif option == "exit"
       exit
     else
@@ -75,14 +75,21 @@ class UserMenu
   end
 
   def are_you_sure?
-    puts "Are you sure you are ready to finalise your order?"
-    input = STDIN.gets.chomp
-    if input == "yes"
-      done = PlaceOrder.new(@total.total_cost)
-      done.send_text
-      return "Thank You for your order! You should receive text confirmation shortly"
-    else
+    @total.calc(@food_order.orders)
+    if @total.total_cost == 0
+      puts "You haven't ordered anything"
       print_options
+    else
+      @total.total_cost
+      puts "Are you sure you are ready to finalise your order?"
+      input = gets.chomp
+      if input == "yes"
+        done = PlaceOrder.new(@total.total_cost)
+        done.send_text
+        return "Thank You for your order! You should receive text confirmation shortly"
+      else
+        print_options
+      end
     end
   end
 
