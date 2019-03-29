@@ -1,11 +1,9 @@
 require 'twilio-ruby'
 require 'dotenv/load'
 
-
 class Texting
 
-  def self.test
-  
+  def self.send_sms(order_confirmation)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new(account_sid, auth_token)
@@ -16,7 +14,7 @@ class Texting
     client.messages.create(
     from: from,
     to: to,
-    body: "probando, probando"
+    body: order_confirmation
     )
   end
 end

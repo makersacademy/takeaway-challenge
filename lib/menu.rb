@@ -15,16 +15,17 @@ class Menu
   end
 
   def list
-    dishes.each { |dish| puts dish.print_dish }
+    dishes.each { |dish| p dish.print_dish }
   end
 
   def load_csv(file_name, dish_class)
-    if File.exist?(file_name)
-      CSV.open(file_name, "r") do |newfile|
-        newfile.readlines.each do |line|
-          @dishes << dish_class.new(line[0].to_i, line[1].to_s, line[2].to_i)
-        end
+    fail "File doesn't exist" unless File.exist?(file_name)
+    # if File.exist?(file_name)
+    CSV.open(file_name, "r") do |newfile|
+      newfile.readlines.each do |line|
+        @dishes << dish_class.new(line[0].to_i, line[1].to_s, line[2].to_i)
       end
     end
+    # end
   end
 end

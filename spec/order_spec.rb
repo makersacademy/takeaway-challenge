@@ -5,7 +5,7 @@ describe Order do
   let(:dish_class) { double :dish_class, new: dish }
   let(:menu) { double :menu, print_dish: true, get_by_id: dish_double }
   let(:subject) { described_class.new(menu) }
-
+  let(:texting_class) { double :texting, send_sms: "algo" }
   describe "#initialize" do
     it "makes empty order" do
       expect(subject.dishes).to be_empty
@@ -39,8 +39,8 @@ describe Order do
 
   describe "#place_order" do
     it "sends a text" do
-      pending "Will implement at the end"
-      fail
+      subject.place_order(texting_class)
+      expect(texting_class).to have_received(:send_sms)
     end
   end
 end

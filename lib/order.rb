@@ -24,13 +24,16 @@ class Order
   def check_order
     print_header
     @dishes.each do |item|
-      puts item[:dish].print_dish + "---- #{item[:quantity]}"
+      p item[:dish].print_dish + "---- #{item[:quantity]}"
     end
     print_footer
   end
 
-  def place_order
-
+  def place_order(texting_class = Texting)
+    # puts "Thank you! Your order was placed and will be delivered"\
+    #  " before #{DateTime.now.hour + 1}:#{DateTime.now.min}"
+    texting_class.send_sms("Thank you! Your order was placed and will be"\
+    " delivered before #{Time.now.hour + 1}:#{Time.now.min}")
   end
 
   private
