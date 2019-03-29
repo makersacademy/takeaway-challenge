@@ -10,7 +10,7 @@ class Menu
     load_csv(DEFAULT_MENU, dish_class)
   end
 
-  def get_by_id(given_id) # will give a COPY of the dish with the given id
+  def get_by_id(given_id)
     @dishes.select { |dish| dish.id == given_id }.pop
   end
 
@@ -25,8 +25,6 @@ class Menu
           @dishes << dish_class.new(line[0].to_i, line[1].to_s, line[2].to_i)
         end
       end
-    else
-      puts "ERROR"
     end
   end
 end

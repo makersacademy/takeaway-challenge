@@ -14,13 +14,17 @@ class Order
   end
 
   def remove_from_order(id, quantity = 1)
-    @dishes.each { |item| item[:quantity] -= quantity if item[:dish] == @menu.get_by_id(id) }
+    @dishes.each do |item|
+      item[:quantity] -= quantity if item[:dish] == @menu.get_by_id(id)
+    end
     clean_order
   end
 
   def check_order
     print_header
-    @dishes.each { |item| puts item[:dish].print_dish + "------ #{item[:quantity]}"}
+    @dishes.each do |item|
+      puts item[:dish].print_dish + "---- #{item[:quantity]}"
+    end
     print_footer
   end
 
@@ -44,7 +48,7 @@ class Order
 
   def total_price
     total = 0
-    @dishes.each { |item| total += ( item[:dish].price * item[:quantity] ) }
+    @dishes.each { |item| total += (item[:dish].price * item[:quantity]) }
     total
   end
 end
