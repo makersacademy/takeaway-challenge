@@ -48,7 +48,7 @@ class FoodMenu
   def pricing(option)
     @prices.each do |y|
       if y["food"] == option
-        return y["price"]
+        return y["price"].to_i
       end
     end
   end

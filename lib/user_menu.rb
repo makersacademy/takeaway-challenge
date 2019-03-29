@@ -1,10 +1,13 @@
 require_relative 'food_menu'
 require_relative 'order'
+require_relative 'total'
+require_relative 'place_order'
 
 class UserMenu
 
   def initialize
     @food_order = Order.new
+    @total = TotalCost.new
   end
 
   def print_options
@@ -33,9 +36,11 @@ class UserMenu
       puts "Showing Your Order"
       return show_order
     elsif option == "4"
-      return "Showing Total Cost of Order"
+      puts "Showing Total Cost of Order"
+      return show_total
     elsif option == "5"
-      return "Finalise Your Order"
+      puts "Finalise Your Order"
+      return are_you_sure?
     elsif option == "exit"
       exit
     else
@@ -58,11 +63,30 @@ class UserMenu
 
   def show_order
     puts "Here is What You Have Ordered"
+    puts "-----------------------------"
     puts @food_order.show_orders
+    puts "-----------------------------"
     print_options
+  end
+
+  def show_total
+    puts @total.calc(@food_order.orders)
+    print_options
+  end
+
+  def are_you_sure?
+    puts "Are you sure you are ready to finalise your order?"
+    input = STDIN.gets.chomp
+    if input == "yes"
+      done = PlaceOrder.new(@total.total_cost)
+      done.send_text
+      return "Thank You for your order! You should receive text confirmation shortly"
+    else
+      print_options
+    end
   end
 
 end
 
-#um = UserMenu.new
-#um.print_options
+um = UserMenu.new
+um.print_options
