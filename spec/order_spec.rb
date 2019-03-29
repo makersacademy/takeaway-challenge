@@ -9,7 +9,7 @@ describe Order do
   end
 
   it 'sends a text' do
-    expect(subject.send_text(SMSClient.new)).to eq 'hello'
+    expect(subject.send_text(FakeSMS)).to eq 'hello'
   end
 end
 

@@ -1,6 +1,5 @@
 require 'menu'
 require 'send_sms'
-require 'fake_sms'
 
 class Order
   def initialize
@@ -15,7 +14,7 @@ class Order
     @total
   end
 
-  def send_text(client = SMSClient.new)
-    client.messages.create
+  def send_text(sms = client)
+    sms.messages.create
   end
 end
