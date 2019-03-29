@@ -10,10 +10,7 @@ class Menu
   end
 
   def list_dishes
-    @menu.each { |item|
-      item[:dish]
-      item[:price]
-    }
+    @menu
   end
 
   def order_dishes(dish)
