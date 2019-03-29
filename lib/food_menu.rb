@@ -1,20 +1,17 @@
 class FoodMenu
-
-  def initialize
-    @prices = [
-      {"food" => 1, "name" => "Burger", "price" => 8},
-      {"food" => 2, "name" => "Pizza", "price" => 10},
-      {"food" => 3, "name" => "Burrito", "price" => 8},
-      {"food" => 4, "name" => "Curry", "price" => 9},
-      {"food" => 5, "name" => "Chips", "price" => 2},
-      {"food" => 6, "name" => "Halloumi", "price" => 2},
-      {"food" => 7, "name" => "Salad", "price" => 1},
-      {"food" => 8, "name" => "Coke", "price" => 2},
-      {"food" => 9, "name" => "Diet Coke", "price" => 2},
-      {"food" => 10, "name" => "Water", "price" => 1},
-      {"food" => 11, "name" => "Beer", "price" => 3}
+PRICES = [
+      { "food" => 1, "name" => "Burger", "price" => 8 },
+      { "food" => 2, "name" => "Pizza", "price" => 10 },
+      { "food" => 3, "name" => "Burrito", "price" => 8 },
+      { "food" => 4, "name" => "Curry", "price" => 9 },
+      { "food" => 5, "name" => "Chips", "price" => 2 },
+      { "food" => 6, "name" => "Halloumi", "price" => 2 },
+      { "food" => 7, "name" => "Salad", "price" => 1 },
+      { "food" => 8, "name" => "Coke", "price" => 2 },
+      { "food" => 9, "name" => "Diet Coke", "price" => 2 },
+      { "food" => 10, "name" => "Water", "price" => 1 },
+      { "food" => 11, "name" => "Beer", "price" => 3 }
     ]
-  end
 
   def print
     return menu_options
@@ -46,7 +43,7 @@ class FoodMenu
   end
 
   def pricing(option)
-    @prices.each do |y|
+    PRICES.each do |y|
       if y["food"] == option
         return y["price"].to_i
       end
@@ -54,7 +51,7 @@ class FoodMenu
   end
 
   def get_name(option)
-    @prices.each do |y|
+    PRICES.each do |y|
       if y["food"] == option
         return y["name"]
       end

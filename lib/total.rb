@@ -10,6 +10,7 @@ class TotalCost
 
   def calc(order)
     @show_cost = []
+    @total_cost = 0
     order.each do |y|
       @show_cost << "#{@fm.get_name(y[:food])} x #{y[:quantity]} = £#{(y[:quantity].to_i * @fm.pricing(y[:food]))}"
       @total_cost += (y[:quantity].to_i * @fm.pricing(y[:food]))

@@ -20,13 +20,13 @@ attr_reader :orders
   end
 
   def order_into_hash(food_number, quantity)
-    @orders << {food: food_number.to_i, quantity: quantity}
+    @orders << { food: food_number.to_i, quantity: quantity }
   end
 
   def show_orders
     @showorder = []
     @orders.each do |y|
-      @showorder << ("#{@fm.get_name(y[:food])} x #{y[:quantity]}")
+      @showorder << "#{@fm.get_name(y[:food])} x #{y[:quantity]}"
     end
     return @showorder.join(", ")
   end
