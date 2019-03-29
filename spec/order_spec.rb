@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do
-  it 'accepts menu items' do
+  it 'stores orders in hash' do
     subject.order_into_hash(1, 1)
     expect(subject.show_orders).to include "Burger x 1"
   end
@@ -13,4 +13,9 @@ describe Order do
     expect(subject.show_orders).to include "Chips x 1"
   end
 
+  it 'takes orders' do
+    neworder = Order.new
+    neworder.order_into_hash(:food_number, :quantity)
+    expect(neworder.orders).to eq [{food: 1, quantity: "1"}]
+  end
 end
