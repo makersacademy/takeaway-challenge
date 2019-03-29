@@ -19,7 +19,9 @@ class Order
   end
 
   def check_order
-    @dishes.each { |item| item[:dish].print_dish}
+    print_header
+    @dishes.each { |item| puts item[:dish].print_dish + "------ #{item[:quantity]}"}
+    print_footer
   end
 
   def place_order
@@ -30,5 +32,19 @@ class Order
 
   def clean_order
     @dishes.delete_if { |item| item[:quantity] <= 0 }
+  end
+
+  def print_header
+    puts "ID: dish -------- price per dish ------ quantity"
+  end
+
+  def print_footer
+    puts "Total: #{total_price}"
+  end
+
+  def total_price
+    total = 0
+    @dishes.each { |item| total += ( item[:dish].price * item[:quantity] ) }
+    total
   end
 end

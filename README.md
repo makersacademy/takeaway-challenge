@@ -25,18 +25,19 @@ list menu (only listing?)
 order (store dishes)
 dishes (data and print)
 
-We eant to have a menu class method to list the menu beforehand, in the menu we will store the dishes we have available (load from file?)
+We want to have a menu class method to list the menu beforehand, in the menu we will store the dishes we have available (load from file?)
 
-The dishes will have the information of the dishes itself and will print themselfs.
+The dishes will have the information of the dishes itself and will print themselves.
 
-order will be where the user add remove dishes, check the order and place it.
+Order will add items from the menu object given and its quantity. We will use the id of the dishes to add them to the order.
 
 
 #### Dish
-In this class we will store the information of the dish and puts methods to print it.
+In this class we will store the information of the dish (name, price and id) and puts methods to print it.
+
 
 #### Menu
-We will have a list of the available dishes for the customer to select from.
+We will have a list of the available dishes for the customer to select from. Will give the desired dish by id when requested by the order.
 
 #### Order
 Give the tools to the customer to add, remove, check and place the order. It will have one dish item per quantity, given by menu.

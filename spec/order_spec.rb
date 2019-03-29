@@ -1,7 +1,7 @@
 require "order"
 
 describe Order do
-  let(:dish_double) { double :dish, print_dish: true, id:81 }
+  let(:dish_double) { double :dish, print_dish: "true", id:81, price: 1 }
   let(:dish_class) { double :dish_class, new: dish }
   let(:menu) { double :menu, print_dish: true, get_by_id: dish_double  }
   let(:subject) { described_class.new(menu) }

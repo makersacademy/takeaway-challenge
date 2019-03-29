@@ -1,8 +1,8 @@
 require "dish.rb"
 
 describe Dish do
-  name, price, id, quantity = "Lemon chicken", 515, 81
-  let(:subject) { described_class.new(name, price, id) }
+  name, price, id = "Lemon chicken", 515, 81
+  let(:subject) { described_class.new(id, name, price) }
 
   describe "#initialize" do
     it "creates a dish with the given name" do
