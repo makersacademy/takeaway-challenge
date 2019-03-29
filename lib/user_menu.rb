@@ -78,6 +78,7 @@ class UserMenu
   def are_you_sure?
     @total.calc(@food_order.orders)
     if @total.total_cost.zero?
+      puts "You haven't ordered anything"
       return "You haven't ordered anything"
     else
       puts "Are you sure you are ready to finalise your order?"
@@ -86,11 +87,12 @@ class UserMenu
         puts "Thank You for your order! You should receive text confirmation shortly"
         done = PlaceOrder.new(@total.total_cost)
         done.send_text
+        exit
       end
     end
   end
 
 end
 
-#um = UserMenu.new
-#um.print_options
+um = UserMenu.new
+um.print_options
