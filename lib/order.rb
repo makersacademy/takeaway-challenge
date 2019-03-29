@@ -1,5 +1,6 @@
 require_relative "./dish.rb"
 require_relative "./menu.rb"
+require_relative "./texting.rb"
 
 class Order
   attr_reader :dishes
