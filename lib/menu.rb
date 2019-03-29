@@ -7,10 +7,7 @@ class Menu
   end
 
   def list_dishes
-    @menu.each { |item|
-      item[0]
-      item[1]
-    }
+    @menu.each { |item| "#{item[0]} #{item[1]}" }
   end
 
   def order_dishes(dish, quantity = 1)
