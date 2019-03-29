@@ -10,12 +10,12 @@ attr_reader :orders
   end
 
   def take_order
-  food_number = STDIN.gets.chomp
+  food_number = gets.chomp
     while !food_number.empty? do
       puts "How Many?"
-      quantity = STDIN.gets.chomp
+      quantity = gets.chomp
       order_into_hash(food_number, quantity)
-      food_number = STDIN.gets.chomp
+      food_number = gets.chomp
     end
   end
 
