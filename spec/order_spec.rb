@@ -18,6 +18,17 @@ describe Order do
       hash = { :dish => dish_double, :quantity => 2 }
       expect(subject.dishes).to include hash
     end
+    it "adds a the quantity when already ordered that dish" do
+      subject.add_to_order(dish_double.id, 2)
+      subject.add_to_order(dish_double.id, 1)
+      hash = { :dish => dish_double, :quantity => 3 }
+      expect(subject.dishes).to include hash
+    end
+
+    it "raise an error if there is not such dish to add" do
+      allow(menu).to receive(:get_by_id).and_return(nil)
+      expect { subject.add_to_order(1) }.to raise_error "Dish not in the menu"
+    end
   end
 
   describe "#remove_from_order" do
@@ -26,6 +37,9 @@ describe Order do
       hash = { :dish => dish_double, :quantity => 1 }
       subject.remove_from_order(dish_double.id)
       expect(subject.dishes).not_to include hash
+    end
+    it "raise an error if there is not such item to remove" do
+      expect { subject.remove_from_order(dish_double.id) }.to raise_error "Not such dish"
     end
   end
 

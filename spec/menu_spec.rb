@@ -22,5 +22,8 @@ describe Menu do
     it "gives a dish with the given id" do
       expect(subject.get_by_id(2)).to eq dish
     end
+    it "text" do
+
+    end
   end
 end

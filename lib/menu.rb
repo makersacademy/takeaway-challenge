@@ -17,7 +17,8 @@ class Menu
   def list
     dishes.each { |dish| p dish.print_dish }
   end
-
+  private
+  
   def load_csv(file_name, dish_class)
     fail "File doesn't exist" unless File.exist?(file_name)
     # if File.exist?(file_name)
