@@ -69,6 +69,7 @@ class UserMenu
 
   def show_total
     puts @total.calc(@food_order.orders)
+    @has_show_total_been
   end
 
   def are_you_sure?
