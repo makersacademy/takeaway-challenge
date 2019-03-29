@@ -1,4 +1,5 @@
 require 'menu'
+require 'send_sms'
 
 class Order
   def initialize

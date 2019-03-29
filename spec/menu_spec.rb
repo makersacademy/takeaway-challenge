@@ -1,8 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) { { dish: 'fish', price: 5, quantity: 0 } }
-  let(:dish2) { { dish: 'fish', price: 5, quantity: 2 } }
+  let(:dish) { { dish: 'fish', price: 5 } }
 
   it 'has a menu' do
     expect(subject.menu).to include dish
@@ -20,8 +19,8 @@ describe Menu do
 
   describe '#order_dishes' do
     it 'can order a dish' do
-      subject.order_dishes(dish2, 2)
-      expect(subject.order).to eq [dish2]
+      subject.order_dishes("fish")
+      expect(subject.order).to eq [dish]
     end
   end
 end
