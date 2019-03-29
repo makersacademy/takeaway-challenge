@@ -14,7 +14,7 @@ class Order
     @total
   end
 
-  def send_text(sms = client)
+  def send_text(sms = Text.new)
     sms.send_text
   end
 end
