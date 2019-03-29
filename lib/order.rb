@@ -3,18 +3,18 @@ require 'send_sms'
 
 class Order
   def initialize
-    @menu_instance = Menu.new
+    @menu = Menu.new
     @total = 0
   end
 
-  def check_total(order = @menu_instance.order)
+  def check_total(order = @menu.order)
     order.each { |item|
       @total += item[:price]
     }
     @total
   end
 
-  def send_text(sms = Text.new)
-    sms.send_text
+  def send_text(client = Text.new)
+    client.send_text
   end
 end
