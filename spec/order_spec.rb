@@ -2,19 +2,13 @@ require 'order'
 
 describe Order do
   let(:order) { [{ dish: 'fish', price: 5 }] }
-  let(:FakeSMS) { double :FakeSMS, :messages => self, :create => true }
+  let(:fake) { double :sms, :send_text => "sent" }
 
   it 'checks total of order' do
     expect(subject.check_total(order)).to eq 5
   end
 
   it 'sends a text' do
-    expect(subject.send_text(FakeSMS)).to eq 'hello'
+    expect(subject.send_text(fake)).to eq "sent"
   end
 end
-
-# RSpec.configure. do |config|
-  # config.before(:each) do
-  #  stub_const("Twilio::REST::Client", FakeSMS)
-  # end
-# end

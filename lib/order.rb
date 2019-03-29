@@ -15,6 +15,6 @@ class Order
   end
 
   def send_text(sms = client)
-    sms.messages.create
+    sms.send_text
   end
 end
