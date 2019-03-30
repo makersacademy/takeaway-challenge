@@ -4,9 +4,9 @@ require 'food_menu'
 describe OrderManagement do
   subject(:order_management) { OrderManagement.new(food_menu) }
   let(:food_menu) { double :FoodMenu, print: multiple_dishes }
-  let(:multiple_dishes) { {naan: 0.90, penang_curry: 5.00} }
+  let(:multiple_dishes) { { naan: 0.90, penang_curry: 5.00 } }
 
-  let(:selected_dishes) { {naan: 2, penang_curry: 2} }
+  let(:selected_dishes) { { naan: 2, penang_curry: 2 } }
 
   context '#add_to_order' do
 
@@ -40,7 +40,4 @@ describe OrderManagement do
 
   end
 
-
-
 end
-
