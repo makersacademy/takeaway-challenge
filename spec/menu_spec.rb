@@ -19,12 +19,7 @@ describe Menu do
   end
 
   describe '#order_dishes' do
-    it 'can order a dish' do
-      subject.order_dishes("fish")
-      expect(subject.order).to eq [dish]
-    end
-
-    it 'can order multiple items' do
+    it 'can order multiple dishes' do
       subject.order_dishes("fish")
       subject.order_dishes("burger")
       expect(subject.order).to eq [dish, dish2]
