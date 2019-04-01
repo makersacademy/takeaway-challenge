@@ -26,6 +26,6 @@ class Order
   end
 end
 
- order = Order.new
- order.add_to_order("korma", 2)
- order.expected_total (14)
+ #order = Order.new
+ #order.add_to_order("korma", 2)
+ #order.expected_total (14)
