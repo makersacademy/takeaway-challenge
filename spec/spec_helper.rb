@@ -7,7 +7,9 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # Want a nice code coverage website? Uncomment this next line!
   # SimpleCov::Formatter::HTMLFormatter
 ])
-SimpleCov.start
+SimpleCov.start do
+  add_filter "lib/texting.rb"
+end
 
 RSpec.configure do |config|
   config.after(:suite) do

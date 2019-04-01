@@ -20,16 +20,18 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 ### Approach
+The solution we have think in involves four different classes handling different responsibilities of the problem.
 
-list menu (only listing?)
-order (store dishes)
-dishes (data and print)
+We have a `Dish` class only responsible of storing the name, id and price of each different dish (one instance per dish) and printing its contents when listing is needed.
 
-We want to have a menu class method to list the menu beforehand, in the menu we will store the dishes we have available (load from file?)
+We will also have a `Menu` class, which be instantiated once per order, will be responsible of initializiong and storing the new dishes, loading them from a menu.csv file. Listing its content of dishes (delegating to `Dish`) and finding a dish by its ID will be the other methods of this class.
 
-The dishes will have the information of the dishes itself and will print themselves.
 
-Order will add items from the menu object given and its quantity. We will use the id of the dishes to add them to the order.
+The main class will be `Order` with will be initialized with a menu object to choose from. It will store the desired dishes with quantities, giving methods to add and remove from this list, print the current order with its total price and placing the order (using the class method from `Texting`).
+
+The last class, `Texting`, will be only responsible to load the variables needed to work will Twillio (using the "dotenv" gem) and send a SMS text with the order confirmation.
+
+![Class Diagram](./images/takeaway_classes.jpg "Class Diagram")
 
 
 #### Dish
