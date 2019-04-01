@@ -43,3 +43,5 @@ We will have a list of the available dishes for the customer to select from. Wil
 
 #### Order
 Give the tools to the customer to add, remove, check and place the order. It will have one dish item per quantity, given by menu.
+
+#### Texting
