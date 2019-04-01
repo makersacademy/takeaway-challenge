@@ -94,5 +94,5 @@ class UserMenu
 
 end
 
-um = UserMenu.new
-um.print_options
+#um = UserMenu.new
+#um.print_options
