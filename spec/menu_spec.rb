@@ -11,4 +11,13 @@ describe Menu do
       expect(subject.order).to be_empty
     end
   end
+
+  describe '#take_order' do
+    it { is_expected.to respond_to(:take_order).with(1).argument }
+
+    it 'selects some number of dishes' do
+      item = ""
+      expect(subject.take_order(item)).to include(item)
+    end
+  end
 end
