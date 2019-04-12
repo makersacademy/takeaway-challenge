@@ -12,4 +12,8 @@ class Menu
     @order = []
   end
 
+  def take_order(item)
+    @order << item
+  end
+
 end

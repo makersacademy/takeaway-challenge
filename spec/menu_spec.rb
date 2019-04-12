@@ -13,4 +13,13 @@ describe Menu do
     end
   end
 
+  describe '#take_order' do
+    it { is_expected.to respond_to(:take_order).with(1).argument}
+
+    it 'adds item to order list' do
+      item = "Chips"
+      expect(subject.take_order(item)).to include(item)
+    end
+  end
+
 end
