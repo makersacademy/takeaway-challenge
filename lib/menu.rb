@@ -1,7 +1,6 @@
 class Menu
 
-  def view_menu 
-    dishes = {
+  MAIN_MENU = {
       "Chicken Katsu Curry" => 10,
       "Tofu Katsu Curry" => 8,
       "Prawn Tempura" => 5,
@@ -9,6 +8,9 @@ class Menu
       "Yakisoba" => 7,
       "Miso Soup" => 2
     }
+
+  def view_menu
+    MAIN_MENU
   end
 
 end

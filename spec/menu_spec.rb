@@ -3,9 +3,9 @@ require 'menu'
 describe Menu do
   subject(:menu) { described_class.new }
 
-  describe '#view_menu' do
-    it 'return list of dishes and prices' do
-      expect(menu.view_menu).to eq menu.view_menu
+  context '#viewing a list of dishes and prices' do
+    it 'prints menu' do
+      expect(menu.view_menu).to eq Menu::MAIN_MENU
     end
   end
 end
