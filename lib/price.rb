@@ -5,7 +5,7 @@ class Price
     @true_total = 0
   end
 
-  def price_conversion(array)
+  def food_conversion(array)
     food_prices = {
       "Mozzarella Sticks" => 3.49,
       "Garlic Bread" => 3.99,

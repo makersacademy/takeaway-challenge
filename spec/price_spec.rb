@@ -1,9 +1,9 @@
 require 'price'
 
 describe Price do
-  describe '#price_conversion' do
+  describe '#food_conversion' do
     it 'calculates the true total of the order' do
-      subject.price_conversion(["Mozzarella Sticks", "Pepperoni Pizza"])
+      subject.food_conversion(["Mozzarella Sticks", "Pepperoni Pizza"])
       expect(subject.true_total).to eq 20.48
     end
   end

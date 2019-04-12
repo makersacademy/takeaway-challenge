@@ -21,4 +21,9 @@ class Takeout
       @order << food
     end
   end
+
+  def finish_order
+    price = Price.new
+    price.food_conversion(@order)
+  end
 end
