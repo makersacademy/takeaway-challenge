@@ -24,6 +24,8 @@ class Takeout
 
   def finish_order
     price = Price.new
-    price.food_conversion(@order)
+    true_total = price.food_conversion(@order)
+    raise "Total given does not match true total." if true_total != @total_given
+    true_total
   end
 end
