@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Menu
 
   attr_reader :dishes, :order
@@ -28,5 +30,22 @@ class Menu
       total += @dishes[dish.to_sym]
     end
     copy + "Total #{total}"
+  end
+
+  def send_text
+
+    a = "AC1bdf39b8064195f175d7b57f1db23404"
+    b = "e67db5ae4fa141fb42daea58a4cc9311"
+    client = Twilio::REST::Client.new(a,b)
+
+    from = "+442891042502"
+    to = "+447982904608"
+
+    client.messages.create(
+      from: from,
+      to: to,
+      body: "Thank you! Your order has been places and will be with you soon"
+    )
+      "Text sent"
   end
 end
