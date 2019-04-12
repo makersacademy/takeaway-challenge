@@ -25,8 +25,8 @@ class Menu
     copy = ""
     @order.each do |dish|
       copy += "#{dish} #{@dishes[dish.to_sym]} \n"
-        total += @dishes[dish.to_sym]
+      total += @dishes[dish.to_sym]
     end
-    copy_of_receipt = copy + "Total #{total}"
+    copy + "Total #{total}"
   end
 end
