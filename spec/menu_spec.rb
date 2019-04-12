@@ -12,12 +12,35 @@ describe Menu do
     end
   end
 
-  describe '#take_order' do
-    it { is_expected.to respond_to(:take_order).with(1).argument }
+  describe '#print_menu' do
+    it 'lists the menu' do
+      expect(subject.print_menu).to eq(subject.dishes)
+    end
+  end
 
-    it 'selects some number of dishes' do
-      item = ""
-      expect(subject.take_order(item)).to include(item)
+  describe '#select' do
+    it 'select some dishes' do
+      subject.select("pizza")
+      subject.select("pasta")
+      expect(subject.order).to eq ["pizza", "pasta"]
+    end
+  end
+
+  describe "#receipt" do
+    it 'prints order summary and total' do
+      subject.select("pizza")
+      subject.select("pasta")
+      copy_of_receipt = "pizza 6.0 \npasta 6.5 \nTotal 12.5"
+      expect(subject.receipt).to eq copy_of_receipt
     end
   end
 end
+
+#   describe '#take_order' do
+#     it { is_expected.to respond_to(:take_order).with(1).argument }
+#
+#     it 'selects some number of dishes' do
+#       item = ""
+#       expect(subject.take_order(item)).to include(item)
+#     end
+#   end
