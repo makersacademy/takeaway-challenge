@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :dishes
+  attr_reader :dishes, :order
 
   def initialize
     @dishes = [{ name: "pizza", price: 6.00 },
@@ -8,7 +8,8 @@ class Menu
       { name: "chips", price: 3.00 },
       { name: "halloumi fries", price: 5.50 },
       { name: "calamari", price: 7.00 },
-      { name: "bruschetta", price: 3.50 }]                             
+      { name: "bruschetta", price: 3.50 }]
+    @order = []
   end
 
 end
