@@ -18,7 +18,7 @@ describe Takeout do
     end
     it 'adds price to total price' do
       subject.add_order("Mozzarella Sticks", 2, 6.98)
-      expect(subject.total).to eq 6.98
+      expect(subject.total_given).to eq 6.98
     end
   end
 end
