@@ -1,8 +1,8 @@
-class TakeoutMenu
-  attr_reader :menu
+class Menu
+  attr_reader :menu_list
 
   def initialize
-    @menu = [
+    @menu_list = [
       "Mozzarella Sticks",
       "Garlic Bread",
       "Chicken Bites",
@@ -12,7 +12,7 @@ class TakeoutMenu
     ]
   end
 
-  def menu_list
+  def menu_display
     puts " "
     puts "~~~~~~~~~~ MENU ~~~~~~~~~~".center(40)
     puts " "

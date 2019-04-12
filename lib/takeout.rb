@@ -1,20 +1,20 @@
-require_relative 'takeout_menu'
+require_relative 'menu'
 
 class Takeout
   attr_reader :order, :total_given
 
   def initialize
-    @takeout_menu = TakeoutMenu.new
+    @menu = Menu.new
     @order = []
     @total_given = 0
   end
 
   def show_menu
-    @takeout_menu.menu_list
+    @menu.menu_display
   end
 
   def add_order(food, quantity, price)
-    raise "That is not on the menu!" unless @takeout_menu.menu.include?(food)
+    raise "That is not on the menu!" unless @menu.menu_list.include?(food)
 
     @total_given += price
     quantity.times do

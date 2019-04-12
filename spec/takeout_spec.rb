@@ -1,11 +1,11 @@
 require 'takeout'
-require 'takeout_menu'
+require 'menu'
 
 describe Takeout do
   describe '#show_menu' do
     it 'displays the menu' do
-      menu = TakeoutMenu.new
-      expect(subject.show_menu).to eq menu.menu_list
+      menu = Menu.new
+      expect(subject.show_menu).to eq menu.menu_display
     end
   end
   describe '#add_order' do
