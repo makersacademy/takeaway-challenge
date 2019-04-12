@@ -15,6 +15,6 @@
 ## How to get this program
 
   1. Fork the repository onto your profile.
-  2. Clone the respository onto your device.
+  2. Clone the repository onto your device.
   3. Run 'bundle' into your command line.
   4. You should be good to go!
