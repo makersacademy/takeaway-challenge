@@ -19,4 +19,9 @@ class Menu
       "#{dish.capitalize}: £#{price}"
     }.join(', ')
   end
+
+  def price(dish)
+    @dishes[dish]
+  end
+
 end

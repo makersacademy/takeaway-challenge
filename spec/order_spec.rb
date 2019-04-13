@@ -11,4 +11,13 @@ describe Order do
     expect(order.selection).to eq(selection)
   end
 end
+
+  describe '#total' do
+    it 'returns the total price' do
+      order.add_order(:burger, 2)
+      order.add_order(:chips, 2)
+      total = 22 
+    expect(order.order_total).to eq(total)
+    end
+end
 end

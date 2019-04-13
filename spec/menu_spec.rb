@@ -20,4 +20,8 @@ describe Menu do
     viewed_menu = "Pizza: £10, Chips: £5, Burger: £6, Falafel: £4, Halloumi: £5"
     expect(menu.view_menu).to eq(viewed_menu)
     end
-  end
+
+    it 'calculates prices' do
+    expect(menu.price(:pizza)).to eq(dishes[:pizza])
+end
+end
