@@ -1,32 +1,20 @@
-require_relative 'order'
+require_relative 'takeaway'
 
 class Menu
 
-attr_reader :selection
-attr_reader :price
-attr_reader :selection
+  attr_reader :dishes
 
-def initialize
-  @selection = Order.new
-end
+  def initialize(dishes)
+    @dishes = dishes
+  end
 
-  MAIN_MENU = {
-      "Chicken Katsu Curry" => 10,
-      "Tofu Katsu Curry" => 8,
-      "Prawn Tempura" => 5,
-      "Vegetable Tempura" => 5,
-      "Yakisoba" => 7,
-      "Miso Soup" => 2
-    }
+  def add_dish(dish, quantity = 1)
+    @dishes[dish] += quantity
+  end
 
   def view_menu
-    MAIN_MENU
+    @dishes.map  do |dish, price|
+      [dish.to_s.capitalize, price]
+    end.join(', ')
   end
-
-  def place_order(dish, quantity)
-    @selection = MAIN_MENU[dish]
-    @amount = @selection * quantity
-    add_order
-  end
-
 end
