@@ -31,15 +31,19 @@ class Menu
     receipt = ""
     @order.each do |item|
       dish = item.to_sym
-      receipt += "#{item} #{@dishes[dish]} \n"
+      receipt += "#{item} #{@dishes[dish]}, "
       total += @dishes[item.to_sym]
     end
-    copy = "#{receipt}| Total: #{total}"
+    copy = "#{receipt}Total: #{total}"
+  end
+
+  def checkout
+    send_text
   end
 
   def send_text
     time = Time.now
-    future_time = time + 3600
+    future_time = time + ((@order.count)*480)
     delivery_time = future_time.strftime("%I:%M")
     account_sid = 'AC86548f9527c898cfeeb3d566b1c98587'
     auth_token = '4eecdbf45b9a6433d78d16d808e8171b'

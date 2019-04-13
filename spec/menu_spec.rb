@@ -63,7 +63,7 @@ describe Menu do
     it 'prints copy of order and total' do
       subject.select("pizza")
       subject.select("pasta")
-      copy = "pizza 6.0 \npasta 8.0 \n| Total: 14.0"
+      copy = "pizza 6.0, pasta 8.0, Total: 14.0"
       expect(subject.calculate_total).to eq copy
     end
   end
