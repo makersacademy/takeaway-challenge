@@ -53,9 +53,9 @@ describe Menu do
     end
   end
 
-  describe '#send_text' do
+  describe '#checkout' do
     it 'sends text to customer' do
-      expect(subject.send_text).to eq("Text sent")
+      expect(subject.checkout).to eq("Text sent")
     end
   end
 
