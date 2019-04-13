@@ -29,9 +29,9 @@ Takeaway Challenge
 - Run 'bundle'
 
 ## Technologies used
-RSpec
-Ruby
-Twilio
+- RSpec
+- Ruby
+- Twilio
 
 Instructions
 -------
