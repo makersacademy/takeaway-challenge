@@ -2,11 +2,15 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:menu) { { pizza: 10, burger: 6 } }
-
   describe '#check_menu' do
-    it "displays menu" do
-      expect(subject.check_menu).to include menu
+    it "displays the menu" do
+      expect { subject.check_menu }.to output.to_stdout
+    end
+  end
+
+  describe '#add_to_order' do
+    it "adds to order" do
+      # needs test
     end
   end
 
