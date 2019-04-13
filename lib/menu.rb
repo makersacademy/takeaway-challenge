@@ -21,4 +21,9 @@ class Menu
     @dishes
   end
 
+  def select(item)
+    @order << item
+  end
+
+
 end
