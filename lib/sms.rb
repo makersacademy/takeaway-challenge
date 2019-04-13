@@ -2,11 +2,8 @@
 require 'twilio-ruby'
 require 'dotenv'
 require_relative 'order'
-require_relative 'menu'
 
 class Sms
-
-
 
   def send_text(order)
 

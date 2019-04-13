@@ -4,12 +4,12 @@ describe Menu do
   subject(:menu) { described_class.new }
   let(:dishes) { double :dishes }
   let(:dishes) do {
-      pizza: 10,
-      chips: 5,
-      burger: 6,
-      falafel: 4,
-      halloumi: 5
-    }
+    "pizza" => 10,
+    "chips" => 5,
+    "burger" => 6,
+    "falafel" => 4,
+   "halloumi" => 5
+ }
   end
 
   it 'has a list of dishes and prices' do
@@ -21,7 +21,5 @@ describe Menu do
     expect(menu.view_menu).to eq(viewed_menu)
     end
 
-    it 'calculates prices' do
-    expect(menu.price(:pizza)).to eq(dishes[:pizza])
-end
+    
 end
