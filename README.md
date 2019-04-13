@@ -24,7 +24,7 @@ Takeaway Challenge
  
 ## Setup 
 
-- Git clone git@github.com:Xa1n/takeaway-challenge.git
+- Git clone https://github.com/Xa1n/takeaway-challenge.git
 - Cd takeaway-challenge
 - Run 'bundle'
 
