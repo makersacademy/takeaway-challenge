@@ -45,6 +45,14 @@ describe Menu do
     end
   end
 
+  describe '#price' do
+    it 'tells the customer the price of the item' do
+      item = "pizza"
+      subject.price(item)
+      expect(subject.price(item)).to eq 6.0
+    end
+  end
+
   # describe '#send_text' do
   #   it 'sends text to customer' do
   #     expect(subject.send_text).to eq("Text sent")
