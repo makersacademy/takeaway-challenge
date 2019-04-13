@@ -53,18 +53,19 @@ describe Menu do
     end
   end
 
-  # describe '#send_text' do
-  #   it 'sends text to customer' do
-  #     expect(subject.send_text).to eq("Text sent")
-  #   end
-  # end
+  describe '#send_text' do
+    it 'sends text to customer' do
+      expect(subject.send_text).to eq("Text sent")
+    end
+  end
 
-  # describe '#calculate_total' do
-  #   it 'prints copy of order and total' do
-  #     subject.select("Pizza")
-  #     subject.select("Pasta")
-  #     expect(subject.calculate_total).to eq(subject.copy)
-  #   end
-  # end
+  describe '#calculate_total' do
+    it 'prints copy of order and total' do
+      subject.select("pizza")
+      subject.select("pasta")
+      copy = "pizza 6.0 \npasta 8.0 \n| Total: 14.0"
+      expect(subject.calculate_total).to eq copy
+    end
+  end
 
 end
