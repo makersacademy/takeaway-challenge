@@ -15,7 +15,6 @@ require 'menu'
 
 describe Menu do
 
-  let(:item) { double :item}
   describe '#initialize' do
 
     it 'has a list of dishes with prices' do
@@ -37,11 +36,8 @@ describe Menu do
     it { is_expected.to respond_to(:select).with(1).argument }
     it 'selects some dishes' do
       subject.select("pizza")
-      expect(subject.order).to eq([{"pizza"=>6.0}])
-    end
-    it 'adds dish to the order' do
-      subject.select("pizza")
-      expect(subject.order).to include(subject.dish)
+      subject.select("pasta")
+      expect(subject.order).to eq({"pizza"=>6.0 ,"pasta"=>8.0})
     end
   end
 
