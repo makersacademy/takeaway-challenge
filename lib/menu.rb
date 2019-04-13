@@ -4,8 +4,14 @@ class Menu
 
   attr_reader :dishes
 
-  def initialize(dishes)
-    @dishes = dishes
+  def initialize
+    @dishes = {
+      pizza: 10,
+      chips: 5,
+      burger: 6,
+      falafel: 4,
+      halloumi: 5
+    }
   end
 
   def view_menu
@@ -13,9 +19,4 @@ class Menu
       "#{dish.capitalize}: £#{price}"
     }.join(', ')
   end
-
-  def prices(dish)
-    dishes[dish]
-  end
-
 end

@@ -1,11 +1,11 @@
 require_relative 'menu'
 
 class Order
-attr_reader :order, :menu, :dishes, :selection
 
-def initialize(menu)
+  attr_reader :selection
+
+def initialize
   @selection = {}
-  @menu = menu
 end
 
 def add_order(dish, quantity)
