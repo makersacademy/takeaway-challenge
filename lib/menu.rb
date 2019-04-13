@@ -1,4 +1,4 @@
-require_relative 'takeaway'
+require_relative 'order'
 
 class Menu
 
@@ -8,13 +8,14 @@ class Menu
     @dishes = dishes
   end
 
-  def add_dish(dish, quantity = 1)
-    @dishes[dish] += quantity
+  def view_menu
+    @dishes.map  { |dish, price|
+      "#{dish.capitalize}: £#{price}"
+    }.join(', ')
   end
 
-  def view_menu
-    @dishes.map  do |dish, price|
-      [dish.to_s.capitalize, price]
-    end.join(', ')
+  def prices(dish)
+    dishes[dish]
   end
+
 end

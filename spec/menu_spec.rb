@@ -18,7 +18,7 @@ describe Menu do
   end
 
   it 'prints menu' do
-    viewed_menu = "Pizza, 10, Chips, 5, Burger, 8, Curry, 5, Tofu, 6"
+    viewed_menu = "Pizza: £10, Chips: £5, Burger: £8, Curry: £5, Tofu: £6"
     expect(menu.view_menu).to eq(viewed_menu)
     end
   end

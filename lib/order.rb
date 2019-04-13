@@ -1,16 +1,15 @@
 require_relative 'menu'
 
 class Order
-attr_reader :order
-attr_reader :order_array
+attr_reader :order, :menu, :dishes, :selection
 
-def initialize
-  @order_array = []
+def initialize(menu)
+  @selection = {}
+  @menu = menu
 end
 
-def add_order
-  @order = { :dish => @selection, price: @amount }
-  @order_array << @order
+def add_order(dish, quantity)
+  @selection[dish] = quantity
 end
 
 end
