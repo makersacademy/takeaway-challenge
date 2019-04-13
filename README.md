@@ -21,6 +21,12 @@ Takeaway Challenge
  - I will introduce a function that asks the user to confirm their order by displaying the total under a list of dishes they have selected (and any number of them) with individual prices beside them, so that they can check if the prices match. Then they can proceed and confirm their order. This will require an Order class to interact with the Menu class.
  
  - Once they have confirmed their order, they will receive a text (either following user input of a mobile number or with a fixed number to test the function) that tells them the exact time they confirmed their order. I'm not sure if this will require a separate class, but I will update this when I have decided. For now, I think it can be integrated without a third class.
+ 
+## Setup 
+
+Git clone git@github.com:Xa1n/takeaway-challenge.git
+Cd takeaway-challenge
+Run 'bundle'
 
 Instructions
 -------
