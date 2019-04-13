@@ -13,4 +13,8 @@ end
   def has_dish?(dish)
     !dishes[dish].nil?
   end
+
+  def price(dish)
+    dishes[dish]
+  end
 end

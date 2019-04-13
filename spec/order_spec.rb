@@ -8,22 +8,37 @@ describe Order do
 
   let(:dishes) do
     {
-      chicken: 1,
-      beef: 2
+      Chicken_balls: 2,
+      beef_in_blackbeans: 1
     }
   end
 
   before do
-    allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
-    allow(menu).to receive(:has_dish?).with(:beef).and_return(true)
+    allow(menu).to receive(:has_dish?).with(:Chicken_balls).and_return(true)
+    allow(menu).to receive(:has_dish?).with(:beef_in_blackbeans).and_return(true)
+
+    allow(menu).to receive(:price).with(:Chicken_balls).and_return(3.00)
+    allow(menu).to receive(:price).with(:beef_in_blackbeans).and_return(2.50)
 end
   it 'selects items from the menu' do
-    order.add(:chicken, 1)
-    order.add(:beef, 2)
+    create_order
     expect(order.dishes).to eq(dishes)
   end
+
   it "doesn't allow non menu items to be ordered" do
     allow(menu).to receive(:has_dish?).with(:fish).and_return(false)
     expect { order.add(:fish, 2) }.to raise_error NoItemError,"Fish is not on the menu"
   end
-end
+
+  it "calculates the order total" do
+    create_order
+    total = 8.50
+    expect(order.total).to eq(total)
+  end
+
+    def create_order
+      order.add(:Chicken_balls, 2)
+      order.add(:beef_in_blackbeans, 1)
+    end
+
+  end

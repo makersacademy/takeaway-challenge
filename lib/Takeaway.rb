@@ -14,6 +14,7 @@ end
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
   end
+  order.total
 end
 
 private
