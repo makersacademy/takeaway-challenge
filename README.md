@@ -13,6 +13,13 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+## How to order from our restaurant
+
+Please initialise IRB and require './lib/order.rb'
+Create a new order by typing order = Order.new
+To see the menu, just type order.print
+To select a dish and add it to your basket, please type order.select("dish") [Don't forget the inverted commas!] :)
+
 
 User Stories
 -------

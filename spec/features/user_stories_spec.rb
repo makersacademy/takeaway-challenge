@@ -6,8 +6,7 @@ describe "user_stories" do
 
   it 'so I can check if I want to order, see a list of dishes with prices' do
     order = Order.new
-    dish = Dish.new
-    expect { order.print(dish) }.not_to raise_error
+    expect { order.print }.not_to raise_error
   end
 
   # As a customer
@@ -16,7 +15,7 @@ describe "user_stories" do
 
   it "so I can order a meal, I want to select dishes from a list" do
     order = Order.new
-    dish = Dish.new
+    dish = "lamb"
     expect { order.select(dish) }.not_to raise_error
   end
 
