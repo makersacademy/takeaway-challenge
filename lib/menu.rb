@@ -25,5 +25,4 @@ class Menu
     @order << item
   end
 
-
 end

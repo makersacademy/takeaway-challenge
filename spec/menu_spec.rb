@@ -1,5 +1,18 @@
 require 'menu'
 
+# Customer:
+# - see list of dishes with prices
+# - select some dishes
+# - check total is correct
+# - receive a text
+# 
+# System:
+# - have a Menu
+# - take an order
+# - print Menu
+# - send a text
+# - calculate total
+
 describe Menu do
 
   describe '#initialize' do
@@ -13,10 +26,8 @@ describe Menu do
     end
   end
 
-  it { is_expected.to respond_to(:take_order).with(1).argument}
-
   describe '#take_order' do
-
+    it { is_expected.to respond_to(:take_order).with(1).argument }
     it 'adds item to order list' do
       item = "Chips"
       expect(subject.take_order(item)).to include(item)
@@ -29,10 +40,14 @@ describe Menu do
     end
   end
 
-  it 'selects some dishes' do
-    subject.select("item1")
-    subject.select("item2")
-    expect(subject.order).to eq [ "item1", "item2"]
+  describe '#select' do
+    it { is_expected.to respond_to(:select).with(1).argument }
+    it 'selects some dishes' do
+      subject.select("item1")
+      subject.select("item2")
+      expect(subject.order).to eq ["item1", "item2"]
+    end
+
   end
 
 end
