@@ -16,7 +16,9 @@ Takeaway Challenge
  
 ## My approach / RDD
 
- - I will aim to create a system that allows a user/customer to view a list of available dishes (which I will make up myself), and select any number of them (including selecting any number of the same dish) and place an order. I will introduce a function that asks the user to confirm their order by displaying the total under a list of dishes they have selected (and any number of them) with individual prices beside them, so that they can check if the prices match. Then they can proceed and confirm their order. Once they have confirmed their order, they will receive a text (either following user input of a mobile number or with a fixed number to test the function) that tells them the exact time they confirmed their order.
+ - I will aim to create a system that allows a user/customer to view a list of available dishes (which I will make up myself), and select any number of them (including selecting any number of the same dish) and place an order. 
+ - I will introduce a function that asks the user to confirm their order by displaying the total under a list of dishes they have selected (and any number of them) with individual prices beside them, so that they can check if the prices match. Then they can proceed and confirm their order. 
+ - Once they have confirmed their order, they will receive a text (either following user input of a mobile number or with a fixed number to test the function) that tells them the exact time they confirmed their order.
 
 Instructions
 -------
