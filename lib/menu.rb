@@ -23,7 +23,7 @@ class Menu
   end
 
   def calculate_total
-
+    @order.map { |item| "#{item} (£#{@order[item]})"}.join("; ")
   end
 
   # def send_text
