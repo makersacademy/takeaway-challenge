@@ -16,4 +16,8 @@ class Takeaway
    ]
  end
 
+ def create_order(order)
+   @order = order
+ end
+
 end
