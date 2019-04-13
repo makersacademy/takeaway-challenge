@@ -6,11 +6,12 @@ require_relative 'menu'
 
 class Sms
 
-  def send_text
-    order = Order.new
-      client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-      message = "Thank you for your order"
-      client.messages.create(
+  def send_text(order)
+    account_sid = 'AC76c14aab19096e38a8a6f8f94e82a8b9'
+    auth_token = '8cd904bf9b544d99c3295066a568b694'
+
+    message = "Thank you for your order"
+    Twilio::REST::Client.new(account_sid, auth_token).messages.create(
 
       from: ENV['TWILIO_PHONE'],
       to: ENV['TWILIO_DESTINATION_PHONE'],

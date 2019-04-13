@@ -1,16 +1,23 @@
-require_relative 'order'
-require_relative 'sms'
+
 class Menu
 
   attr_reader :dishes
 
   def initialize
-    @dishes = {
-      pizza: 10,
-      chips: 5,
-      burger: 6,
-      falafel: 4,
-      halloumi: 5
+    # @dishes = {
+    #   pizza: 10,
+    #   chips: 5,
+    #   burger: 6,
+    #   falafel: 4,
+    #   halloumi: 5
+    # }
+
+     @dishes = {
+       "pizza" => 10,
+       "chips" => 5,
+       "burger" => 6,
+       "falafel" => 4,
+      "halloumi" => 5
     }
   end
 
@@ -18,10 +25,6 @@ class Menu
     @dishes.map  { |dish, price|
       "#{dish.capitalize}: £#{price}"
     }.join(', ')
-  end
-
-  def price(dish)
-    @dishes[dish]
   end
 
 end
