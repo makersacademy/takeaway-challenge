@@ -4,8 +4,11 @@ class Order
     @basket = []
   end
 
-  def print(list)
+  def print(dish)
 
+  end
+
+  def select(dish)
   end
 
 end

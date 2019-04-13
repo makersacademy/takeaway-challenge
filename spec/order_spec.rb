@@ -10,4 +10,10 @@ describe Order do
     end
   end
 
+  describe '#select' do
+    it "selects a dish" do
+      expect(order).to respond_to(:select).with(1).argument
+    end
+  end
+
 end
