@@ -1,7 +1,7 @@
 require 'twilio-ruby'
 class Menu
 
-  attr_reader :dishes, :order, :quantity
+  attr_reader :dishes, :order, :quantity, :dish
 
   def initialize
     @dishes = { pizza: 6.00 ,
@@ -10,7 +10,8 @@ class Menu
       burger: 10.00 ,
       lobster: 25.00 ,
       oysters: 20.00 }
-    @order = {}
+    @dish = {}
+    @order = []
   end
 
   def print_menu
@@ -18,8 +19,9 @@ class Menu
   end
 
   def select(item)
-    dish = item.to_sym
-    @order[item] = @dishes[dish]
+    choice = item.to_sym
+    @dish[item] = @dishes[choice]
+    @order << @dish
   end
 
   def calculate_total
