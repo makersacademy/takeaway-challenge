@@ -1,15 +1,15 @@
 require 'menu'
 
 # Customer:
-# - see list of dishes with prices
-# - select some dishes
+# - see list of dishes with prices **
+# - select some dishes **
 # - check total is correct
 # - receive a text
 #
 # System:
-# - have a Menu
-# - take an order
-# - print Menu
+# - have a Menu **
+# - take an order **
+# - print Menu **
 # - send a text
 # - calculate total
 
