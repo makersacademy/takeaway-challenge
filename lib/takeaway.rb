@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require 'time'
 
 class Takeaway
 
@@ -17,10 +18,17 @@ class Takeaway
   end
 
   def summary
-    # returns order so far
+    @order.summary
   end
 
   def total
-    # completes order returns total
+    puts "total - £#{@order.total}"
+  end
+
+  def place_order(given_total)
+    raise "given total is not correct" if @order.total != given_total
+
+    time = Time.now + 3600
+    "Thank you! Your order will be delivered before #{time.hour}:#{time.min}"
   end
 end
