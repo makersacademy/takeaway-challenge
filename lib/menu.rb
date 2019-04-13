@@ -1,5 +1,5 @@
 require_relative 'order'
-
+require_relative 'sms'
 class Menu
 
   attr_reader :dishes

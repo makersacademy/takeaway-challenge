@@ -16,8 +16,10 @@ end
     it 'returns the total price' do
       order.add_order(:burger, 2)
       order.add_order(:chips, 2)
-      total = 22 
-    expect(order.order_total).to eq(total)
+      total = 22
+    expect(order.order_total).to eq 22
     end
 end
+
+
 end
