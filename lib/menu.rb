@@ -17,9 +17,12 @@ class Menu
     @dishes
   end
 
-  def select(item)
-    dish = item.to_sym
-    @order[item] = @dishes[dish]
+  def select(item, quantity)
+    @order[item] = quantity
+  end
+
+  def price(dish)
+    @dishes[dish]
   end
 
   def calculate_total

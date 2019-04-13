@@ -35,9 +35,13 @@ describe Menu do
   describe '#select' do
     it { is_expected.to respond_to(:select).with(1).argument }
     it 'selects some dishes' do
-      subject.select("pizza")
-      subject.select("pasta")
-      expect(subject.order).to eq({"pizza"=>6.0 ,"pasta"=>8.0})
+      subject.select("item1")
+      subject.select("item2")
+      expect(subject.order).to eq ["item1", "item2"]
+    end
+    it 'adds item to order list' do
+      item = "Chips"
+      expect(subject.select(item)).to include(item)
     end
   end
 
