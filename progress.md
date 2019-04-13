@@ -11,8 +11,8 @@ See <= a list of dishes with prices
 Feature test plan;
 
 require ‘./lib/takeaway.rb’
-takeaway = Takeway.new
-takeway.menu
+takeaway = Takeaway.new
+takeaway.menu
 
 => {
 	spring_rolls: 4.55,
@@ -72,7 +72,7 @@ beer: 2,
 =>raise error:  “ bear and beef_steak are not available”
 
 
-User Story 3
+## User Story 3
 
 As a customer
 So that I can verify that my order is correct
@@ -101,7 +101,7 @@ takeaway.order_match?(6)
 takeaway.order_match?(4)
 => false
 
-User Story 4
+## User Story 4
 
 As a customer
 So that I am reassured that my order will be delivered on time
