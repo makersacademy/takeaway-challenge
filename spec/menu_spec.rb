@@ -5,7 +5,7 @@ require 'menu'
 # - select some dishes
 # - check total is correct
 # - receive a text
-# 
+#
 # System:
 # - have a Menu
 # - take an order
@@ -26,14 +26,6 @@ describe Menu do
     end
   end
 
-  describe '#take_order' do
-    it { is_expected.to respond_to(:take_order).with(1).argument }
-    it 'adds item to order list' do
-      item = "Chips"
-      expect(subject.take_order(item)).to include(item)
-    end
-  end
-
   describe '#print_menu' do
     it 'prints out menu' do
       expect(subject.print_menu).to eq(subject.dishes)
@@ -47,7 +39,10 @@ describe Menu do
       subject.select("item2")
       expect(subject.order).to eq ["item1", "item2"]
     end
-
+    it 'adds item to order list' do
+      item = "Chips"
+      expect(subject.select(item)).to include(item)
+    end
   end
 
 end
