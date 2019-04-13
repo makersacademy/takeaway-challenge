@@ -1,6 +1,11 @@
 class Order
 
-  def show(list)
+  def initialize
+    @basket = []
+  end
+
+  def print(list)
+
   end
 
 end

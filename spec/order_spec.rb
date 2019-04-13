@@ -6,7 +6,7 @@ describe Order do
 
   describe "#show" do
     it "a list of dishes" do
-      expect(order).to respond_to(:show).with(1).argument
+      expect(order).to respond_to(:print).with(1).argument
     end
   end
 

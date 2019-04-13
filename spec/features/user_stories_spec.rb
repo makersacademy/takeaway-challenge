@@ -7,7 +7,7 @@ describe "user_stories" do
   it 'so I can check if I want to order, see a list of dishes with prices' do
     order = Order.new
     list = List.new
-    expect { order.show(list) }.not_to raise_error
+    expect { order.print(list) }.not_to raise_error
   end
 
 end

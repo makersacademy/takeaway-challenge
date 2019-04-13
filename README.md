@@ -35,21 +35,21 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 --------
-Domain Model
+## Domain Model
 
 Nouns: customer, list of dishes and prices, total, sum, time, text
 Verbs: order, select, check (the total matches the sum), receive
 
 
-|----------------|----------------|
 | customer       | receive        |
-|----------------|----------------|
+|----------------|:---------------|
 | order          | select, check  |
-|----------------|----------------|
+|----------------|:---------------|
 | list of dishes | see, select    |
-|----------------|----------------|
+
 
 -------
+## Dev
 
 Developed by Gui Heurich as part of a weekend challenge at Makers Academy, London.
 
