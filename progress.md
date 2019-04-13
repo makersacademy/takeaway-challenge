@@ -100,3 +100,31 @@ takeaway.order_match?(6)
 
 takeaway.order_match?(4)
 => false
+
+User Story 4
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as “Thank you! Your order was placed and will be delivered before 18:52” after I have ordered
+
+
+domain model
+
+Receive  => text   after_ordered
+
+
+feature tests:
+
+
+Feature test plan
+
+require ‘./lib/takeaway.rb’
+takeaway = Takeway.new
+
+takeaway.take_order({
+spring_rolls: 2,
+won_tom: 1,
+ice_tea: 3,
+})
+
+=> receive a text “Thank you! Your order was placed and will be delivered before  current time + 1hr “

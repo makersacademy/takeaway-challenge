@@ -1,5 +1,13 @@
+require './lib/twilio_sms'
+require './lib/telinfo'
+
 class Takeaway
   attr_reader :order
+  include TelInfo
+
+  def initialize(takeaway_phone = Telephone.new)
+    @takeaway_phone = takeaway_phone
+  end
 
   def menu
     {
@@ -13,9 +21,12 @@ class Takeaway
     }
   end
 
-  def take_order(order)
+  def take_order(order, customertel = CUSTOMERTEL)
     @order = order
     validate_dishes
+    text = "Thank you! Your order was placed and will be delivered before"
+    body = "#{text}  #{(Time.now + 3600).strftime('%H:%M')}"
+    @takeaway_phone.send_sms(customertel, body)
   end
 
   def order_match?(num)
