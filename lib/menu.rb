@@ -1,22 +1,27 @@
+require_relative 'basket'
+
 class Menu
 
-  attr_reader :menu_list
   attr_reader :basket
 
-  def initialize
-  @menu_list = [
-    {:dish => "kebab" , :price => 5 },
-    {:dish => "curry" , :price => 6 },
-    {:dish => "pizza" , :price => 4 },
-    {:dish => "sushi" , :price => 8 },
-    {:dish => "burrito" , :price => 6 }
+  MENU_LIST = [
+    { :kebab => 5 },
+    { :curry => 6 },
+    { :pizza => 4 },
+    { :sushi => 8 },
+    { :burrito => 6 }
   ]
-  @basket = []
+
+  def initialize
+    @basket = []
   end
 
-  def add_to_basket(dish)
-    @basket << dish
+  def view_menu
+    MENU_LIST.each { |item| item.each { |key, value| puts "#{key}, £#{value}" }}
   end
 
-
+  def add_to_basket(dish_number, quantity)
+    quantity.times do @basket << MENU_LIST[dish_number - 1]
+    end
+  end
 end

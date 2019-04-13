@@ -1,15 +1,11 @@
 require 'menu'
 
 describe Menu do
+  let(:dish_number){double 1}
+  let(:quantity){double 1}
 
   it 'allows user to view a list of food items and prices' do
-    expect(subject.menu_list).to include(
-      {:dish => "kebab" , :price => 5 },
-      {:dish => "curry" , :price => 6 },
-      {:dish => "pizza" , :price => 4 },
-      {:dish => "sushi" , :price => 8 },
-      {:dish => "burrito" , :price => 6 }
-    )
+    expect(subject.view_menu).to eq(Menu::MENU_LIST)
   end
 
   describe '#initialize' do
@@ -20,18 +16,18 @@ describe Menu do
 
 
   describe '#add_to_basket' do
-    let(:dish) {double :dish}
-    it { is_expected.to respond_to(:add_to_basket).with(1).argument }
+
+    it { is_expected.to respond_to(:add_to_basket).with(2).argument }
   end
 
-    it 'returns the users choice of dish' do
-      expect(subject.add_to_basket(:dish)).to eq [:dish]
-    end
 
     it 'places dish in basket' do
-      subject.add_to_basket(:dish)
-      expect(subject.basket).to include :dish
+      subject.add_to_basket(1,1)
+      expect(subject.basket).to include({:kebab=>5})
     end
 
-
-end
+    it 'places multiple dishes in basket' do
+      subject.add_to_basket(1,5)
+      expect(subject.basket).to eq [{:kebab=>5},{:kebab=>5},{:kebab=>5},{:kebab=>5},{:kebab=>5}]
+    end
+  end
