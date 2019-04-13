@@ -80,3 +80,47 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+===========================================
+
+
+# Takeaway Challenge
+
+
+### Motivation
+
+This is a weekend project conducted as part of the Makers Academy course. The aim of the project is to develop and test skills independently. Particular areas of focus will be:
+
+- TDD, test driving from start to finish. Practice feature testing with rspec.
+- Creating classes and identifying if one is exceeding a single responsibility. Extracting classes if that becomes the case and doing so whilst maintaining test coverage.
+- Unit testing classes in isolation using mocking.
+- Practice using a Gemfile to manage gems.
+- Use an API (Twilio)
+
+### Build status
+
+### Screenshots
+
+### Tech/framework used
+
+__Built with__
+
+* Ruby
+* Rspec
+
+### Features
+
+### Code Example
+
+### Installation
+
+To make use of this project clone it from GitHub by doing the following:
+
+1. Clone the repository using `git clone <repo url>` in your terminal.
+2. Then type `bundle install` to install gemrs (Rspec)
+
+### API Reference
+
+### Tests
+
+### How to use
