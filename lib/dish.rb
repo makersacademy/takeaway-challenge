@@ -1,13 +1,6 @@
 class Dish
 
-#attribute reader
-  def name
-    @name
-  end
-#attribute reader
-  def price
-    @price
-  end
+attr_reader :price, :name
 
   def initialize(name, price)
     @name = name

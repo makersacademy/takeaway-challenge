@@ -1,23 +1,16 @@
+require 'takeaway'
+require 'order'
+
 class Takeaway
 
-#attribute reader
+attr_reader :menu
+
   def menu
-    @menu
+    'pizza'
   end
 
- def initialize
-   @menu = [
-     Dish.new("Original Cheese & Tomato", 8),
-     Dish.new("Pepperoni", 10),
-     Dish.new("Vegi Supreme", 9),
-     Dish.new("Hawaiian", 10),
-     Dish.new("Ranch BBQ", 12),
-     Dish.new("Garlic", 8),
-   ]
- end
-
- def create_order(order)
-   @order = order
- end
+  def create_order(order = Order.new)
+    @order = order
+  end
 
 end
