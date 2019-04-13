@@ -10,7 +10,7 @@ require 'menu'
 # - have a Menu **
 # - take an order **
 # - print Menu **
-# - send a text
+# - send a text **
 # - calculate total
 
 describe Menu do

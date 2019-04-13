@@ -35,7 +35,7 @@ class Menu
     to: to,
     body: "Thank you for your order!"
     )
-    return "Text sent"
+    puts "Text sent"
   end
 
 end
