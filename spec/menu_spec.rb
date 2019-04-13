@@ -22,4 +22,10 @@ describe Menu do
     end
   end
 
+  describe '#print_menu' do
+    it 'prints out menu' do
+      expect(subject.print_menu).to eq(subject.dishes)
+    end
+  end
+
 end

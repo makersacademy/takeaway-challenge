@@ -17,14 +17,8 @@ class Menu
     @order << item
   end
 
-  def quantities
-    @order.map {|item| item[:price]}
-    # @quantity << @order.count("Pizza")
-    # @quantity << @order.count("Pasta")
-    # @quantity << @order.count("Chips")
-    # @quantity << @order.count("Burger")
-    # @quantity << @order.count("Lobster")
-    # @quantity << @order.count("Oysters")
+  def print_menu
+    @dishes
   end
 
 end
