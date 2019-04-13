@@ -28,6 +28,11 @@ Takeaway Challenge
 - Cd takeaway-challenge
 - Run 'bundle'
 
+## Technologies used
+RSpec
+Ruby
+Twilio
+
 Instructions
 -------
 
