@@ -19,8 +19,19 @@ describe Menu do
   end
 
 
-  
+  describe '#add_to_basket' do
+    let(:dish) {double :dish}
+    it { is_expected.to respond_to(:add_to_basket).with(1).argument }
+  end
 
+    it 'returns the users choice of dish' do
+      expect(subject.add_to_basket(:dish)).to eq [:dish]
+    end
+
+    it 'places dish in basket' do
+      subject.add_to_basket(:dish)
+      expect(subject.basket).to include :dish
+    end
 
 
 end
