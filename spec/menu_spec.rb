@@ -17,4 +17,12 @@ end
     printed_menu = "Chicken_balls £3.99, Beef_in_blackbeans £4.50"
     expect(menu.print).to eq(printed_menu)
 end
+
+it "tells if a dish is on the menu" do
+  expect(menu.has_dish?(:Chicken_balls)).to be (true)
+end
+
+  it "tells if a dish is not on the menu" do
+    expect(menu.has_dish?(:fish)).to be (false)
+  end
 end
