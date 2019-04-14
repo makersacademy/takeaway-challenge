@@ -8,6 +8,7 @@
 #   def initialize
 #     @current_order = []
 #   end
+# end
 #
 #
 #   def view_menu
