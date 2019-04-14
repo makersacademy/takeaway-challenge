@@ -10,4 +10,8 @@ class Takeaway
       kids_meal: 3.30 }
   end
 
+  def display_menu
+    @menu
+  end
+
 end
