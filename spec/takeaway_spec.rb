@@ -12,7 +12,7 @@ describe Takeaway do
 
   let(:subject) { described_class.new(menu_class) }
 
-  let(:order) { double(:order, current_order: []) }
+  let(:order) { double(:order, current_order: [], add_item: [{ 'Spring rolls' => 2.99 }]) }
   let(:order_class) { double(:order_class, new: order) }
 
   describe '#view_menu' do
@@ -31,7 +31,7 @@ describe Takeaway do
     it 'adds selected item to oder' do
       subject.new_order(order_class)
       subject.add_item('Spring rolls')
-      expect(subject.order.current_order).to include({ 'Spring rolls' => 2.99 })
+      expect(subject.order.add_item('Spring rolls')).to include({ 'Spring rolls' => 2.99 })
     end
   end
 
