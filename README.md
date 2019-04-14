@@ -18,3 +18,17 @@
   2. Clone the repository onto your device.
   3. Run 'bundle' into your command line.
   4. You should be good to go!
+
+## How to use in irb
+```shell
+2.5.0 :001 > require './lib/takeout.rb'
+ => true
+2.5.0 :002 > takeout = Takeout.new
+ => #<Takeout:0x00007ff6c053c938 @menu=#<Menu:0x00007ff6c053c910 @menu_list=["Mozzarella Sticks", "Garlic Bread", "Chicken Bites", "Margherita Pizza", "Pepperoni Pizza", "Vegetarian Pizza"]>, @order=[], @total_given=0>
+2.5.0 :003 > takeout.add_order("Garlic Bread", 3, 11.97)
+ => 3
+2.5.0 :004 > takeout.add_order("Mozzarella Sticks", 1, 3.49)
+ => 1
+2.5.0 :005 > takeout.finish_order
+Your total is £15.46. You have been sent a text to confirm.
+```

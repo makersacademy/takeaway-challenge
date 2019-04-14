@@ -28,7 +28,7 @@ describe Takeout do
     end
     it 'raises an error if total given and true total are not equal' do
       subject.add_order("Mozzarella Sticks", 2, 5.98)
-      expect { subject.finish_order }.to raise_error "Total given does not match true total."
+      expect { subject.finish_order }.to raise_error "Total given doesn't match true total."
     end
   end
 end

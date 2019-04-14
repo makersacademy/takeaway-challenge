@@ -1,4 +1,6 @@
 require_relative 'menu'
+require_relative 'price'
+require_relative 'send_sms'
 
 class Takeout
   attr_reader :order, :total_given
@@ -24,8 +26,15 @@ class Takeout
 
   def finish_order
     price = Price.new
-    true_total = price.food_conversion(@order)
-    raise "Total given does not match true total." if true_total != @total_given
-    true_total
+    @true_total = price.food_conversion(@order)
+    raise "Total given doesn't match true total." if @true_total != @total_given
+    puts "Your total is £#{@true_total}. You have been sent a text to confirm."
+    send_text
   end
+
+  def send_text
+    text = SendText.new
+    text.send
+  end
+
 end
