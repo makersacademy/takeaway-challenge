@@ -7,4 +7,8 @@ attr_reader :dishes
     @dishes = dishes
   end
 
+  def print
+    
+  end
+
 end
