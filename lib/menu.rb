@@ -1,19 +1,20 @@
 class Menu
 
-  MENU = {
-    'half-rack of ribs' => 10,
-    'full-rack of ribs' => 15,
-    'burger' => 8
+  MENU_LIST = {
+    'cheeseburger' => 10,
+    'hamburger' => 15,
+    'baconburger' => 8.5,
+    'chickenburger' => 12.5
     }
 
-  attr_reader :menu
+  attr_reader :menu_list
 
-  def initialize(menu = MENU)
-    @menu = menu
+  def initialize(menu_list = MENU_LIST)
+    @menu_list = menu_list
   end
 
   def display_menu
-    @menu.each { |item, price| "#{item}: £#{price}" }
+    @menu_list.each { |item, price| "#{item}: £#{price}" }
   end
 
 end
