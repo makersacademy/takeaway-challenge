@@ -2,7 +2,7 @@ require 'dishes'
 
 describe Dishes do
   describe '#initialize' do
-    it { expect(subject.menu).not_to be_empty }
+    it { expect(subject.price_list).not_to be_empty }
   end
   describe '#view' do
     it 'prints dishes to stdout' do
