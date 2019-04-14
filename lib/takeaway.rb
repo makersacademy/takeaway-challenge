@@ -1,7 +1,15 @@
 class Takeaway
 
-  def list(selection)
-    [{ :burger_meal => 5, :steak_meal => 20, :sausage_meal => 3 }]
+attr_reader :menu
+
+  def initialize
+    @menu = { burger: 5.00,
+      steak: 45.00,
+      chips: 3.00,
+      strawberry_milkshake: 4.50,
+      kids_meal: 3.30 }
   end
+
+
 
 end
