@@ -16,12 +16,20 @@ class Takeaway
     @menu
   end
 
-  def order(menu)
-    @selection << menu
+  def order(food_choice)
+    @selection << food_choice
   end
 
   def order_confirmation
     @selection.join(", ")
   end
+
+  def total
+    @selection.sum(&:to_f)
+  end
+
+#What was intended next was to have the order confirmation
+#and total combined and displayed. The tests all pass up
+#until this point.
 
 end

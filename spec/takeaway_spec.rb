@@ -18,4 +18,11 @@ describe Takeaway do
     subject.order("strawberry_milkshake")
     expect(subject.order_confirmation).to eq "steak, chips, strawberry_milkshake"
   end
+
+  it 'must provide the total cost' do
+    subject.order("steak: 45.00")
+    subject.order("chips: 3.00")
+    subject.order("strawberry_milkshake: 4.50")
+    expect(subject.total).to eq 52.50
+  end
 end
