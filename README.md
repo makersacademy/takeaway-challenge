@@ -14,14 +14,21 @@ Takeaway Challenge
 
  ```
 
-Instructions
+How To Use This Application.
 -------
+- Fork this repo.
+- clone it on your local computer `` git clone.``
+- cd into the directory.
+- Run bundle intall to install all the dependencies or the application.
+- In terminal ``type irb ``
+- ``require './lib/take_away ``
+- Create a new menu object ``menu = Menu.new() ``|| ``Note: menu can takes one optional argument ``
+- Create a new take way object ``take_away = TakeAway.new(menu)``
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+# To see find 
+- Type take_away.show_menu
+
+
 
 Task
 -----
