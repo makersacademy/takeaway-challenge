@@ -15,7 +15,6 @@ RSpec.describe TakeAway do
    
   describe 'show_menu' do
     it 'must be able to show menu' do
-      
       expect(take_away.show_menu).to eq(printed_dish)
     end
   end

@@ -1,4 +1,5 @@
 class TakeAway
+    
   def initialize(menu)
     @menu = menu
   end
