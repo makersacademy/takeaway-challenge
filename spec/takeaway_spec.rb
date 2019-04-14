@@ -55,6 +55,19 @@ describe Order do
     end
   end
 
+  describe '#order_sum' do
+    it 'starts order with empty shopping cart equals £0' do
+      expect(subject.order_sum).to eq "£0"
+    end
+
+    let(:user) { ["1\n", "stop\n"] }
+    it 'selects first item and shows cost' do
+      set_user_input_and_check_expected_output
+      subject.select_items
+      expect(subject.order_sum).to eq "£7.50"
+    end
+  end
+
   def set_user_input_and_check_expected_output
     allow_any_instance_of(Object)
       .to receive(:gets).and_return(*user)

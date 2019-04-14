@@ -35,6 +35,14 @@ class Order
     end
   end
 
+  def order_sum
+    if @shopping_cart.empty?
+      "£0"
+    else
+      "£7.50"
+    end
+  end
+
 end
 
 # select_item = Order.new
