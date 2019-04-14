@@ -35,11 +35,11 @@ class Menu
   def send_text
     arr = []
     time = Time.now
-    time = time + ((@order.count)*480)
-    formatted_time = arr.push(time).join('').slice!(0, 19)
+    time += (@order.count * 480)
+    format_time = arr.push(time).join('').slice!(0, 19)
     a = "AC1bdf39b8064195f175d7b57f1db23404"
     b = "e67db5ae4fa141fb42daea58a4cc9311"
-    client = Twilio::REST::Client.new(a,b)
+    client = Twilio::REST::Client.new(a, b)
 
     from = "+442891042502"
     to = "+447982904608"
@@ -47,8 +47,8 @@ class Menu
     client.messages.create(
       from: from,
       to: to,
-      body: "Thank you! Your order has been places and will be with you by #{formatted_time}"
+      body: "Your order has been places and will be with you by #{format_time}"
     )
-      "Text sent"
+    "Text sent"
   end
 end
