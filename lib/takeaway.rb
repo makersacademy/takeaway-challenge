@@ -1,35 +1,47 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
-  attr_reader :basket
+  attr_reader :basket, :menu
 
   def initialize
     @menu = Menu.new
-    @basket = {}
+    @basket = []
   end
 
   def menu
     @menu.show
   end
 
-  def order(choice, *number)
-    # fail "Sorry we don't have that" if !available?
-    choice
+  def place_order(item, *number)
+    fail "Sorry we don't sell #{item}" if !available?(item)
 
+    @basket << add_item(item)
   end
 
-  # def available?(choice)
-  #   if Menu::MAINS.has_key?(choice) || Menu::SIDES.has_key?(choice) || Menu::DRINKS.has_key?(choice)
-  #     true
-  #   else
-  #     "Sorry, we don't have that right now."
-  #   end
+  private
+
+  def available?(choice)
+    return true if Menu::MAINS.has_key?(choice) || Menu::SIDES.has_key?(choice) || Menu::DRINKS.has_key?(choice)
+  end
+
+  def add_item(choice)
+    if Menu::MAINS.has_key?(choice)
+       Menu::MAINS.select { |k,v| k == choice }
+    elsif Menu::SIDES.has_key?(choice)
+       Menu::SIDES.select { |k,v| k == choice }
+    else Menu::DRINKS.has_key?(choice)
+      Menu::DRINKS.select { |k,v| k == choice }
+    end
+  end
+
+  #
+  # def total
+  #
   # end
-
-
-  # def price(str)                     intended to take out price when given
-  #   DISHES[str] || DISHES.key(str)     string ie dish.
+  #
+  # def confirmed?
   # end
 
 end
