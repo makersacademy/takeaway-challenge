@@ -37,6 +37,7 @@ class Takeaway
 
   def place_order(order = @order)
     order.confirm_order
+    puts "Order successfully placed!"
   end
 
 end
