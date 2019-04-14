@@ -11,6 +11,12 @@ RSpec.describe Takeaway do
     end
   end
 
+  describe '#price' do
+    it 'returns price of an item in the options hash' do
+    expect(item.price).to eq 8.00
+    end
+  end
+
   describe '#place_order' do
     it 'raises error when item is not recognised' do
       choice = "Lobster"
@@ -21,7 +27,7 @@ RSpec.describe Takeaway do
     context 'when an order is placed' do
       it 'puts the order into the basket' do
         subject.place_order(item)
-        expect(subject.basket).to include(item.to_sym)
+        expect(subject.basket).to include(item)
       end
 
       it 'calculates the price values of each item' do

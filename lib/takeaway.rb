@@ -19,14 +19,15 @@ class Takeaway
   def place_order(dish, quantity = 1)
     fail "Sorry we don't have that, check our menu" if !@menu.available?(dish)
 
-    @basket[dish.to_sym] += quantity
+    @basket[dish] += quantity
   end
 
   def total
-    @basket
+
   end
 
-  def order_summary
+  def price
+
   end
 
   private
