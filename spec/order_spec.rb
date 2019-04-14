@@ -14,7 +14,11 @@ describe Order do
     end
   end
   
-  # descibe '#create' do
-    
-  # end
+  describe '#create' do
+    it 'accepts dish selections' do
+      dish_order = "chips:3, curry_sauce:3"
+      subject.create(dish_order)
+      expect(subject.selection).to eq dish_order
+    end
+  end
 end
