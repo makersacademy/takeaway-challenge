@@ -2,12 +2,10 @@ require 'order'
 
 describe Order do
 
-  xit {is_expected.to respond_to(:add)}
-
   describe '#add' do
     it 'add item to basket' do
       subject.add("item", 2)
-      expect(subject.basket).to eq({"item" => 2})
+      expect(subject.basket).to eq({ "item" => 2 })
     end
   end
 

@@ -11,8 +11,8 @@ describe Takeaway do
     "Chips" => 3
   } }
   let(:order) { Order.new }
-
-  it {is_expected.to respond_to(:menu)}
+  let(:message) { instance_double("MESSAGE", deliver: nil) }
+  it { is_expected.to respond_to(:menu) }
 
   describe '#print_menu' do
     it 'prints a menu when called' do
@@ -27,8 +27,15 @@ describe Takeaway do
   end
 
   # describe '#view_order' do
-  #   # it 'includes the current order summary' do
-  #   #   expect(subject.view_order).to include order.order_summary
-  #   # end
+  #   it 'includes the current order summary' do
+  #     allow(subject.view_order).to receive @order.order_summary
+  #   end
+  # end
+
+  # describe '#confirm_order' do
+  #   it 'sends a text when order is confirmed' do
+  #     expect(message).to receive(:deliver)
+  #     subject.confirm_order
+  #   end
   # end
 end

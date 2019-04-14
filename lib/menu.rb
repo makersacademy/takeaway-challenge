@@ -2,7 +2,7 @@ require_relative 'order'
 require_relative 'takeaway'
 
 class Menu
-attr_reader :dishes, :price
+  attr_reader :dishes, :price
 
   def menu
     {
