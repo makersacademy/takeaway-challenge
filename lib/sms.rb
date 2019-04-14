@@ -3,13 +3,12 @@ require 'time'
 
 class Sms
 
-  def initialize
-    @eta = (Time.now + 3600).to_s[11..15]
+  def initialize(time = Time.now)
+    @eta = (time + 3600).to_s[11..15]
   end
 
   def send
-    client = client_info
-    create(client)
+    create(client_info)
   end
 
   private

@@ -1,7 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'sms'
-require 'time'
 
 class Takeaway
 
@@ -29,12 +28,12 @@ class Takeaway
   def place_order(given_total)
     fail "given total is incorrect" if @order.total != given_total
 
-    send_confirmation_sms
+    send_sms
   end
 
   private
 
-  def send_confirmation_sms
+  def send_sms
     Sms.new.send
   end
 
