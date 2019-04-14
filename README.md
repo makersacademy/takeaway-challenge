@@ -29,7 +29,7 @@ How To Use This Application.
 <img width="336" alt="Screen Shot 2019-04-14 at 23 37 11" src="https://user-images.githubusercontent.com/37377831/56100418-60d1fa00-5f10-11e9-9b55-2df745a04e06.png">
 <img width="321" alt="Screen Shot 2019-04-14 at 23 37 56" src="https://user-images.githubusercontent.com/37377831/56100431-7e06c880-5f10-11e9-86c7-e214c1c4a3c6.png">
 
-# Creating Objects & Subject from User Model.
+# Objects & Subject from User Story.
 
 | object   | subjects |
 |----------|----------|
