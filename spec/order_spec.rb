@@ -24,4 +24,14 @@ RSpec.describe Order do
       expect { order.user_choice(:pizza,3) }.to raise_error 'choice not found'
     end
   end
+
+  describe '#order_total' do
+    it 'calculates the total order' do
+      dish = :kenkey
+      quantity = 2
+      total = 4.98
+      message = "Your total order is currently £%.2f" % [total]
+      expect(order.total_order(dish, quantity)).to eq(message)
+    end
+  end
 end
