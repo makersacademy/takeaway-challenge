@@ -22,11 +22,11 @@ class Takeaway
   end
 
   def total
-    puts "total - £#{@order.total}"
+    "total - £#{@order.total}"
   end
 
   def place_order(given_total)
-    raise "given total is not correct" if @order.total != given_total
+    raise "given total is incorrect" if @order.total != given_total
 
     time = Time.now + 3600
     "Thank you! Your order will be delivered before #{time.hour}:#{time.min}"
