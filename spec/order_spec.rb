@@ -10,6 +10,9 @@ describe Order do
 before do
   allow(menu).to receive(:include).with(:tacos).and_return(true)
   allow(menu).to receive(:include).with(:burrito).and_return(true)
+
+  allow(menu).to receive(:price).with(:tacos).and_return(6)
+  allow(menu).to receive(:price).with(:burrito).and_return(3)
 end
 
 
@@ -22,5 +25,12 @@ end
  it 'raises error if meal is not in the menu' do
    allow(menu).to receive(:include).with(:chimichanga).and_return(false)
    expect {order.add(:chimichanga, 1)}.to raise_error "Not in the menu!"
+ end
+
+ it 'calculates order total' do
+   order.add(:tacos, 1)
+   order.add(:burrito, 2)
+   total = 12
+   expect(subject.total).to eq(total)
  end
 end

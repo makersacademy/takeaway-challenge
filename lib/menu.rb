@@ -9,4 +9,8 @@ def initialize
     Burrito: 3
   }
 end
+
+def price(meals)
+  @meals[meals]
+end
 end

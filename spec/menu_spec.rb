@@ -10,4 +10,7 @@ describe Menu do
   it 'prints menu list' do
     expect(subject.meals).to eq meals
   end
+  it 'calculates price' do
+    expect(subject.price(:tacos)).to eq(meals[:tacos])
+  end
 end
