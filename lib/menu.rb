@@ -1,11 +1,12 @@
 
 class Menu
+  attr_reader :dishes
   DEFAULT_MENU = {
         Waakye: 3.99,
         Kenkey: 2.49,
-        Koko: 1.50,
-        Banku: 3.50,
-        Ampesi: 4.50
+        Koko: 1.55,
+        Banku: 3.59,
+        Ampesi: 4.95
        }
 
   def initialize(dishes = DEFAULT_MENU)
