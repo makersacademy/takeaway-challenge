@@ -1,4 +1,5 @@
 
+require_relative 'order'
 
 class Takeaway
 
