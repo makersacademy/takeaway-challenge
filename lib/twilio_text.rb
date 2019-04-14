@@ -1,7 +1,7 @@
 
 require 'twilio-ruby'
 require 'denv'
-Denv.load
+Dotenv.load
 
 class SMS
   def text_message

@@ -13,9 +13,9 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
-    denv (0.2.6)
     diff-lcs (1.3)
     docile (1.3.1)
+    dotenv (2.7.2)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     hirb (0.7.3)
@@ -80,7 +80,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  denv
+  dotenv
   rake
   rspec
   rubocop (= 0.56.0)
