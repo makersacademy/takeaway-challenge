@@ -13,7 +13,7 @@ describe Takeaway do
 
   let(:subject) { described_class.new(menu_class) }
 
-  let(:order) { double(:order, current_order: [], add_item: [{ 'Spring rolls' => 2.99 }], display_order: { 'Spring rolls' => 2.99 } ) }
+  let(:order) { double(:order, current_order: [], add_price: 2.99, add_item: [{ 'Spring rolls' => 2.99 }], display_order: { 'Spring rolls' => 2.99 } ) }
   let(:order_class) { double(:order_class, new: order) }
 
   describe '#view_menu' do
