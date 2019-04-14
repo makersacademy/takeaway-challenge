@@ -39,7 +39,7 @@ describe Order do
     describe '#display_order' do
       it 'should show the current order and total' do
         expect { subject.display_order }.to output(<<~PRINTOUT
-        Receipt
+        Current Order
         -----------
         Spring rolls: £2.99
         Special Chow Mein: £6.5

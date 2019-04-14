@@ -20,7 +20,7 @@ class Order
   end
 
   def display_order
-    puts "Receipt"
+    puts "Current Order"
     puts "-----------"
     @current_order.each { |item|
       item.each { |item, price|
