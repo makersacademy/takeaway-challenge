@@ -4,9 +4,9 @@ class Order
 
   def initialize
     @items = [
-      { item: "Vegan kebab", price: "£7.50" }, 
-      { item: "chips", price: "2.50" }, 
-      { item: "garlic sauce", price: "£0.50" }
+      { item: "Vegan kebab", price: 7.50 }, 
+      { item: "chips", price: 2.50 }, 
+      { item: "garlic sauce", price: 0.50 }
     ]
     @shopping_cart = []
   end
@@ -31,15 +31,19 @@ class Order
   
   def print_shopping_cart
     @shopping_cart.each_with_index do |item, price|
-      puts "#{item[:item]}: #{item[:price]}"
+      puts "#{item[:item]}: £#{'%.2f' % item[:price]}"
     end
   end
 
   def order_sum
     if @shopping_cart.empty?
-      "£0"
-    else
-      "£7.50"
+      0.00
+    elsif @shopping_cart.length == 1
+      @shopping_cart[0][:price]
+    elsif @shopping_cart.length == 2
+      @shopping_cart[0][:price] + @shopping_cart[1][:price]
+      elsif @shopping_cart.length == 3
+        @shopping_cart[0][:price] + @shopping_cart[1][:price] + @shopping_cart[2][:price]
     end
   end
 

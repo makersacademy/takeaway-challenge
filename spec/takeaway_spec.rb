@@ -15,7 +15,7 @@ describe Order do
       it "`selects item (1)" do
         set_user_input_and_check_expected_output
         subject.select_items
-        expect(subject.shopping_cart).to eq [{ item: "Vegan kebab", price: "£7.50" }]
+        expect(subject.shopping_cart).to eq [{ item: "Vegan kebab", price: 7.50 }]
       end
     end
     context "user selects second item" do
@@ -23,7 +23,7 @@ describe Order do
       it "`selects item (2)" do
         set_user_input_and_check_expected_output
         subject.select_items
-        expect(subject.shopping_cart).to eq [{ item: "chips", price: "2.50" }]
+        expect(subject.shopping_cart).to eq [{ item: "chips", price: 2.50 }]
       end
     end
     
@@ -32,16 +32,16 @@ describe Order do
       it "`selects item (3)" do
         set_user_input_and_check_expected_output
         subject.select_items
-        expect(subject.shopping_cart).to eq [{ item: "garlic sauce", price: "£0.50" }]
+        expect(subject.shopping_cart).to eq [{ item: "garlic sauce", price: 0.50 }]
       end
     end
 
-    context "user selects first and second item" do
+    context 'user selects first and second item' do
       let(:user) { ["1\n", "2\n", "stop\n"] }
       it "`selects item (1) and (3)" do
         set_user_input_and_check_expected_output
         subject.select_items
-        expect(subject.shopping_cart).to eq [{ item: "Vegan kebab", price: "£7.50" }, { item: "chips", price: "2.50" }]
+        expect(subject.shopping_cart).to eq [{ item: "Vegan kebab", price: 7.50 }, { item: "chips", price: 2.50 }]
       end
     end
   end
@@ -57,15 +57,63 @@ describe Order do
 
   describe '#order_sum' do
     it 'starts order with empty shopping cart equals £0' do
-      expect(subject.order_sum).to eq "£0"
+      expect(subject.order_sum).to eq 0.00
     end
 
-    let(:user) { ["1\n", "stop\n"] }
-    it 'selects first item and shows cost' do
-      set_user_input_and_check_expected_output
-      subject.select_items
-      expect(subject.order_sum).to eq "£7.50"
+    context 'user selects first item to purchase it' do
+      let(:user) { ["1\n", "stop\n"] }
+      it 'selects first item and shows cost' do
+        set_user_input_and_check_expected_output
+        subject.select_items
+        expect(subject.order_sum).to eq 7.50
+      end
     end
+
+    context 'user selects second item to purchase it' do
+      let(:user) { ["2\n", "stop\n"] }
+      it 'selects second item and shows cost' do
+        set_user_input_and_check_expected_output
+        subject.select_items
+        expect(subject.order_sum).to eq 2.50
+      end
+    end
+
+    context 'user selects third item to purchase it' do
+      let(:user) { ["3\n", "stop\n"] }
+      it 'selects third item and shows cost' do
+        set_user_input_and_check_expected_output
+        subject.select_items
+        expect(subject.order_sum).to eq 0.50
+      end
+    end
+
+    context 'user selects first and third item to purchase it' do
+      let(:user) { ["1\n", "3\n", "stop\n"] }
+      it 'selects first and third item and shows cost' do
+        set_user_input_and_check_expected_output
+        subject.select_items
+        expect(subject.order_sum).to eq 8.00
+      end
+    end
+
+    context 'user selects first, second, and third item to purchase it' do
+      let(:user) { ["1\n", "2\n", "3\n", "stop\n"] }
+      it 'selects first, second, and third item and shows cost' do
+        set_user_input_and_check_expected_output
+        subject.select_items
+        expect(subject.order_sum).to eq 10.50
+      end
+    end
+
+    context 'user selects item multiple times' do
+      let(:user) { ["1\n", "2\n", "3\n", "stop\n"] }
+      it 'selects first, second, and third item and shows cost' do
+        set_user_input_and_check_expected_output
+        subject.select_items
+        expect(subject.order_sum).to eq 10.50
+      end
+    end
+
   end
 
   def set_user_input_and_check_expected_output
