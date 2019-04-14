@@ -4,9 +4,9 @@
 # Knowleged Needed To solve This Challenge.
 - Encapsulation.
 - RSpec doubles.
-- Abstraction
+- Abstraction.
 - Dependency Injection.
-- Working with API (Twilio API)
+- Working with API (Twilio API).
 
 How To Use This Application.
 -------
