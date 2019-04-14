@@ -14,6 +14,12 @@ attr_reader :basket, :menu
     @basket[dish] = quantity
   end
 
+  def order_summary
+    @basket.each do |item, quantity|
+      puts "#{quantity}x #{item}: £#{Menu.new.menu[item] * quantity}"
+    end
+  end
+
   def basket_total
     @basket.inject(0) do |total, (item, quantity)|
       @item_total = total + @menu.menu[item] * quantity

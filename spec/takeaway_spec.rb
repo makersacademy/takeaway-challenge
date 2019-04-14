@@ -25,4 +25,10 @@ describe Takeaway do
       expect(subject.add_item("item", 2)).to eq(order.add("item", 2))
     end
   end
+
+  # describe '#view_order' do
+  #   # it 'includes the current order summary' do
+  #   #   expect(subject.view_order).to include order.order_summary
+  #   # end
+  # end
 end

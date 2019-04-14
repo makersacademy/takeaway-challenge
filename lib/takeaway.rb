@@ -18,6 +18,7 @@ attr_reader :menu, :order
   end
 
   def view_order
+    @order.order_summary
     @order.basket_total
   end
 end

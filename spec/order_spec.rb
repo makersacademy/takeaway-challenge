@@ -17,4 +17,11 @@ describe Order do
       expect(subject.basket_total).to eq 25
     end
   end
+
+  describe '#order_summary' do
+    it "prints summary for each item" do
+      subject.add("Burger", 5)
+      expect { subject.order_summary }.to output("5x Burger: £25\n").to_stdout
+    end
+  end
 end
