@@ -1,8 +1,8 @@
 require 'menu'
 
 RSpec.describe Menu do
-  let(:menu) {described_class.new(dishes)}
-  let(:dishes) do
+  let(:menu) {described_class.new(dish_on_menu)}
+  let(:dish_on_menu) do
     {
         keykey: 2.49,
         waakye: 3.99
