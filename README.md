@@ -45,7 +45,7 @@ How To Use This Application.
 - Improving object struction.
 - Improving test.
 # To Do
-- Integrate Twillo API to the application.
+- Integrate Twillo API into the application.
 - Create a friendly user interface.
 
 # Test Coverage
