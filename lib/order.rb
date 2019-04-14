@@ -9,7 +9,7 @@ class Order
   end
 
   def add_selected_pizza(name)
-    @select_pizza << (name)
+    @select_pizza << name
     calculate_price
   end
 

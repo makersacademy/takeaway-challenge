@@ -25,9 +25,18 @@ attr_reader :order, :pizzas
     @order = order
   end
 
-  def confirm_order
-    @order.confirm_order
-    exit
+  def display_order(order = @order)
+    order.display_pizzas
+    puts "Order Total = £#{@order.total_price}"
+  end
+
+  def add_order(pizza_no)
+    pizza = @pizzas[pizza_no - 1]
+    @order.add_selected_pizza(pizza)
+  end
+
+  def place_order(order = @order)
+    order.confirm_order
   end
 
 end
