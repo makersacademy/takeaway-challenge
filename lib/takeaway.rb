@@ -2,8 +2,9 @@
 
 class Takeaway
 
-  def initialize(menu:)
+  def initialize(menu:, order: nil)
     @menu = menu
+    @order = order 
   end
 
   def print_menu
