@@ -26,5 +26,9 @@ describe Menu do
   it 'tells if a dish is not on the menu' do
     expect(menu.has_dish?(:Brownies)).to be false
   end
+
+  it 'calculates the price of the selected dishes' do
+    expect(menu.price(:pizza)).to eq(dishes[:pizza])
+  end
 end
 

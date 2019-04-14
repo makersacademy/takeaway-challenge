@@ -15,13 +15,20 @@ class Selection
     dishes[dish] = number_of_dish
   end
 
-  def has_dish?
-
+  def total
+    dish_total.inject(:+)
   end
 
   private 
 
   attr_reader :menu
+
+  def dish_total 
+    dishes.map { | dish, number_of_dish |
+    menu.price(dish) * number_of_dish
+    }
+  end
+
 end
 
 

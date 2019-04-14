@@ -15,6 +15,7 @@ class Takeaway
     dishes.each { | dish, number_of_dish |
       selection.add(dish, number_of_dish)
     }
+    selection.total
   end
 
   private 
