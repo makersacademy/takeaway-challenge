@@ -2,6 +2,7 @@ require 'order'
 
 describe Order do
   # let (:menu) { double :menu }
+  let (:order) {subject}
   describe '#view_menu' do
     it 'returns the menu' do
 
@@ -21,6 +22,20 @@ describe Order do
     end
   end
 
+  describe '#dish' do
+    it 'takes users dish choice' do
+      allow(subject).to receive(:dish).and_return("Spare Ribs")
+      expect(subject.dish).to eq("Spare Ribs")
+    end
+  end
+
+  describe '#quantity' do
+    it 'allows user to input quantity of ordered dish' do
+      allow(subject).to receive(:quantity).and_return(1)
+      expect(subject.quantity).to eq(1)
+    end
+  end
+
   describe '#add_to_order' do
     it 'records the current order' do
       # allow(menu).to receive(:dishes).and_return([
@@ -34,11 +49,9 @@ describe Order do
       #   { dish: 'Beef Chow Mein', price: 6.00 },
       #   { dish: 'Chips', price: 2.00 }
       # ])
-
-      current_order = []
-      menu = Menu.new.dishes
-      current_order << menu.detect {|dish| dish["Spare Ribs"] }
-      expect(subject.current_order).to eq [{ dish: 'Spare Ribs', price: 6.00 }]
+      dish = "Spare Ribs"
+      quantity = 1
+      expect(subject.add_to_order(dish, quantity)).to eq ["Spare Ribs"]
 
     end
   end
