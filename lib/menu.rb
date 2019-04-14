@@ -1,5 +1,3 @@
-require_relative './order'
-
 class Menu
 
   MENU_LIST = {
