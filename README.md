@@ -1,10 +1,10 @@
 # # The Takeaway Challenge
-## `Context
+## Context
 Weekend (ruby coding) Challenge for the second week of Makers Academy Course.
 
 ## Documents Organisation
 * The Original README.md file containing the requirements of this challenge is renamed to Challenge_Instruction.md.  
-*   Progess.md contains the snapshot of codes for each steps.
+* Progess.md contains the 'user story - domain model - feature test plan' approach for each step.
 * Programme code in ./lib dictionary.  
 * Unit test code in ./spec dictionary.
 
@@ -45,11 +45,10 @@ In the terminal, navigate and enter the programme directory.
 
 * take an order    
 Input: dishes, number of each dish, customer telephone number.
-	* use the customer telephone number in TelInfo as default.    
+	* take order {dish: quantity, ... } from default customer telephone number in TelInfo.    
 	>  takeaway.order({spring_rolls: 2, won_tom: 1, ice_tea: 3,}).
-	* order from different  customer (number)  
-		* check the plane in apron.  
-		> takeaway.order({spring_rolls: 2, won_tom: 1, ice_tea: 3,}, ‘+44…’).
+	* order from different customer (telephone number)      
+	> takeaway.order({spring_rolls: 2, won_tom: 1, ice_tea: 3,}, ‘+44…’).
 
 * match the order .  
 > takeaway.order_match?(num_of_dishes_received).
@@ -58,4 +57,4 @@ Input: dishes, number of each dish, customer telephone number.
 Please feel free to explore:  
 
 * raise error if dish not available.
-* customer will  receive a text after taking order successfully. 
+* customer will  receive a text after taking order successfully.
