@@ -18,6 +18,14 @@ describe Basket do
     end
   end
 
+# WHY DOESN'T THIS WORK?!
+  describe "#total_price" do
+    it "calculates the total price of all dishes in the basket" do
+      allow(subject).to receive(:basket).and_return([{dish: "A", price: 1}, {dish: "B", price: 2}])
+      expect(subject.total_price).to eq(3)
+    end
+  end
+
   # describe "#print_basket" do
   #   it "prints the basket contents to the console with a total price" do
   #     allow(subject).to receive(:basket).and_return([{dish: "A", price: 1}, {dish: "B", price: 2}])

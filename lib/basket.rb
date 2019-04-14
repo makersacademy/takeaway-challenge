@@ -5,12 +5,19 @@ class Basket
   attr_reader :basket
 
   def initialize
-    @menu = Menu.new
     @basket = []
   end
 
   def add(dish)
     @basket << dish
+  end
+
+  def total_price
+    total = 0
+    @basket.each do |item|
+      total += item[:price]
+    end
+    return total
   end
 
   def print_basket
