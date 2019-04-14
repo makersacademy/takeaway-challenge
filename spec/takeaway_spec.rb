@@ -16,7 +16,8 @@ describe Takeaway do
 
   describe '#place_order' do
     it 'can order a number of dishes available' do
-      expect(takeaway.place_order(dishes)).to eq ('Your order comes to £15.50')
+      expect(order).to receive(:add).twice
+      takeaway.place_order(dishes)
     end
   end
 
