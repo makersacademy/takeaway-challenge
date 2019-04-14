@@ -42,7 +42,7 @@ How To Use This Application.
 - Difficulty in modelling the objects.
 # Improvement
 - Refactoring the codebase.
-- Improving object struction.
+- Improving object structure.
 - Improving test.
 # To Do
 - Integrate Twillo API into the application.
