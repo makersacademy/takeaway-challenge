@@ -9,5 +9,11 @@ describe Takeaway do
     end
   end
 
-  
+  describe '#add_to_order' do
+    it 'adds user food selection to current order' do
+      takeaway.add_to_order("Spare Ribs")
+      expect(takeaway.order).to eq ["Spare Ribs"]
+
+    end
+  end
 end
