@@ -31,7 +31,7 @@ Takeaway Challenge
 ## Technologies used
 - RSpec
 - Ruby
-- Twilio
+- Twilio (doesn't work currently)
 
 Instructions
 -------
