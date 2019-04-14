@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  items =  { 'Spring rolls' => 2.99,
+  items = { 'Spring rolls' => 2.99,
   'Prawn toast' => 4.00,
   'Special Chow Mein' => 6.50,
   'Egg Fried Rice' => 2.99 }
@@ -31,7 +31,7 @@ describe Takeaway do
     it 'adds selected item to oder' do
       subject.new_order(order_class)
       subject.add_item('Spring rolls')
-      expect(subject.order.current_order).to include({'Spring rolls' => 2.99})
+      expect(subject.order.current_order).to include({ 'Spring rolls' => 2.99 })
     end
   end
 

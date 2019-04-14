@@ -18,6 +18,6 @@ class Takeaway
   end
 
   def add_item(item)
-    @order.current_order << {item => @menu.dishes[item]}
+    @order.current_order << { item => @menu.dishes[item] }
   end
 end
