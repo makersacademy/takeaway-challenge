@@ -22,10 +22,9 @@ describe TakeAway do
   end
 
   describe '#receipt' do
-    it 'prints the receipt with the total' do
-      allow(@order).to receive(:add_dish)
-      expect(@order).to receive(:print_order)
-      @take_away.order_dish('pizza', 3)
+    it 'prints the receipt with the total taking the prices
+    from the menu' do
+      expect(@order).to receive(:print_order).with(@menu)
       @take_away.receipt
     end
   end

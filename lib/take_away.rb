@@ -17,6 +17,6 @@ class TakeAway
   end
 
   def receipt
-    @order.print_order
+    @order.print_order(@menu)
   end
 end
