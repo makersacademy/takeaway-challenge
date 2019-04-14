@@ -1,11 +1,12 @@
 require 'Order'
 
 describe Order do
-  order = described_class.new
-  
-  describe '#select' do
-    it 'logs quantities' do
-      expect(order.select('quantity')).to eq('quantity')
-    end
+let(:order) { described_class.new }
+
+  it 'recieves and logs dishes and quantities' do
+    selected = { 'steamed_bun' => 4,'seafood_ramen' => 1 }
+    order.add('steamed_bun', 4)
+    order.add('seafood_ramen', 1)
+    expect(order.selected).to eq(selected)
   end
 end
