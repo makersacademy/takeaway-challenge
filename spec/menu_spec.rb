@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:dishes) { double :dishes}
+  let(:dishes) { double :dishes }
   let(:dishes) do {
         edamame: 4,
         chilli_squid: 6,

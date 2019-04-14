@@ -19,9 +19,8 @@ describe 'User Stories' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-
   it 'so customers can order dishes, recieve and log dishes and quantities' do
-    selected = { 'steamed_bun' => 4,'seafood_ramen' => 1 }
+    selected = { steamed_bun: 4, seafood_ramen: 1 }
     order = Order.new
     order.add('steamed_bun', 4)
     order.add('seafood_ramen', 1)
@@ -31,6 +30,10 @@ describe 'User Stories' do
   # # As a customer
   # # So that I can verify that my order is correct
   # # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  #  'so customers can verify their order, return order total'
-
+  it 'so customers can verify their order, return order total price' do
+    order = Order.new
+    order.add('steamed_bun', 4)
+    order.add('seafood_ramen', 1)
+    expect(order.total).to eq('Your order total is £28')
+  end
 end
