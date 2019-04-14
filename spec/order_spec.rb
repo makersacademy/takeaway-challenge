@@ -25,12 +25,20 @@ let(:pizza) { { name: :pizza, price: 8 } }
 
   context 'to confirm that the order has been placed successfully' do
     it 'should return true' do
-      subject.confirm_order
-      expect(subject.confirm_order?).to be true
+      order.add_selected_pizza(pizza)
+      order.confirm_order
+      expect(order.confirm_order?).to be true
     end
     it 'shows list of pizzas ordered' do
-      subject.add_selected_pizza(pizza)
-      expect(subject.display_pizzas).to include pizza
+      order.add_selected_pizza(pizza)
+      expect(order.display_pizzas).to include pizza
+    end
+  end
+
+  context 'To avoid user errors' do
+    it 'prevents empty orders from being placed' do
+    order.confirm_order
+    expect(order.confirm_order?).to eq false
     end
   end
 end

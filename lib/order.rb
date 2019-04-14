@@ -18,7 +18,13 @@ class Order
   end
 
   def confirm_order
-    @successful = true
+    if @total_price.positive?
+      @successful = true
+      @total_price = 0
+      @select_pizza = []
+    else
+      puts 'You have not selected any Pizzas on your order!'
+    end
   end
 
   def display_pizzas
