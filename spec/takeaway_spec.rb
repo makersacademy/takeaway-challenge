@@ -1,9 +1,10 @@
 require 'takeaway'
+require 'order'
 describe Takeaway do
   subject(:takeaway) { Takeaway.new(menu: menu, order: order) }
   let(:menu) { double(:menu, print: "Tacos, £6" ) }
-  let(:order) { double(:order) }
-  let(:meals) { { tacos: 6, quesadillas: 5, torta: 4, burrito: 3} }
+  let(:order) { double(:order, total: 12) }
+  let(:meals) { { tacos: 1, burrito: 2} }
 
 
   it 'prints meals menu with prices' do
@@ -11,7 +12,13 @@ describe Takeaway do
   end
 
   it 'select meals to order' do
-     4.times { expect(subject.order).to receive(:add) }
+     2.times { expect(subject.order).to receive(:add) }
      subject.place_order(meals)
+  end
+
+  it 'gives order total' do
+    allow(order).to receive(:add)
+    total = subject.place_order(meals)
+    expect(total).to eq(12)
   end
 end

@@ -13,8 +13,9 @@ class Takeaway
   end
 
   def place_order(meals)
-    meals.each do |meal, quantity|
+    meals.each do |meal,quantity|
       @order.add(meal, quantity)
     end
+    @order.total
   end
 end
