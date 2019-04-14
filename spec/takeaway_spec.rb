@@ -40,7 +40,7 @@ describe Takeaway do
     it 'shows the current order' do
       subject.new_order(order_class)
       subject.add_item('Spring rolls')
-      expect(subject.view_receipt).to eq subject.order.display_order
+      expect(subject.view_order).to eq subject.order.display_order
     end
   end
 
