@@ -10,13 +10,8 @@ class Order
     @current_order << item
   end
 
-  def order_total
-    @current_order.each { |item|
-      item.each { |_item, price|
-        @order_total += price
-      }
-    }
-    @order_total
+  def add_price(price)
+    @order_total += price
   end
 
   def display_order
@@ -26,6 +21,6 @@ class Order
       item.each { |item, price|
       puts "#{item}: £#{price}" }
     }
-    puts "Total due: £#{order_total}"
+    puts "Total: £#{@order_total}"
   end
 end

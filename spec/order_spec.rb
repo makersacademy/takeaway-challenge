@@ -28,12 +28,9 @@ describe Order do
       subject.add_item('Spring rolls' => 2.99)
       subject.add_item('Special Chow Mein' => 6.50)
       subject.add_item('Egg Fried Rice' => 2.99)
-    end
-
-    describe '#order_total' do
-      it 'should add up the total cost for the current order' do
-        expect(subject.order_total).to eq 12.48
-      end
+      subject.add_price(2.99)
+      subject.add_price(6.50)
+      subject.add_price(2.99)
     end
 
     describe '#display_order' do
@@ -44,7 +41,7 @@ describe Order do
         Spring rolls: £2.99
         Special Chow Mein: £6.5
         Egg Fried Rice: £2.99
-        Total due: £12.48
+        Total: £12.48
         PRINTOUT
       ).to_stdout
       end
