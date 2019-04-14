@@ -29,9 +29,10 @@ class Order
 
   def display_pizzas
    @select_pizza.each do |pizza|
-     puts "#{pizza[:name]} + #{pizza[:price]}"
+     puts "Pizza: #{pizza[:name]} Price: #{pizza[:price]}"
    end
   end
+end
 
   private
 
@@ -42,4 +43,3 @@ class Order
     end
     puts "Your total price is: £#{@total_price}"
   end
-end

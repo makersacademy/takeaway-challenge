@@ -24,11 +24,6 @@ describe Takeaway do
       allow(order).to receive(:confirm_order?) { true }
       expect(takeaway.order.confirm_order?).to eq true
     end
-    # it 'allows User to confirm order' do
-    #   takeaway.create_order
-    #   takeaway.confirm_order
-    #   expect(takeaway.order.confirm_order?).to eq true
-    # end
     it 'should add a pizza to create order' do
       allow(order).to receive(:pizzas) { [pizza] }
       expect(order.pizzas).to include pizza
