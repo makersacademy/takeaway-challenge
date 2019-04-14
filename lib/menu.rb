@@ -33,7 +33,6 @@ class Menu
   end
 
   def send_text
-
     a = "AC1bdf39b8064195f175d7b57f1db23404"
     b = "e67db5ae4fa141fb42daea58a4cc9311"
     client = Twilio::REST::Client.new(a,b)

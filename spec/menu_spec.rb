@@ -19,6 +19,7 @@ describe Menu do
   end
 
   describe '#select' do
+    it { is_expected.to respond_to(:select).with(1).argument }
     it 'select some dishes' do
       subject.select("pizza")
       subject.select("pasta")
@@ -34,13 +35,10 @@ describe Menu do
       expect(subject.receipt).to eq copy_of_receipt
     end
   end
-end
 
-#   describe '#take_order' do
-#     it { is_expected.to respond_to(:take_order).with(1).argument }
-#
-#     it 'selects some number of dishes' do
-#       item = ""
-#       expect(subject.take_order(item)).to include(item)
-#     end
-#   end
+  describe '#send_text' do
+    it 'sends a text to customer' do
+      expect(subject.send_text).to eq("Text sent")
+	   end
+	 end
+end
