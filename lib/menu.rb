@@ -1,10 +1,15 @@
-class Menu
+require_relative 'order'
+require_relative 'takeaway'
 
-  def initialize
-    @menu_list = menu_list
-  end
+class Menu
+attr_reader :dishes, :price
 
   def menu
-    menu_list
+    {
+      "Chicken bits" => 5,
+      "Burger" => 5,
+      "Pizza" => 8,
+      "Chips" => 3
+    }
   end
 end
