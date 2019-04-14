@@ -1,6 +1,6 @@
 class Takeaway
 
-attr_reader :order, :pizzas
+  attr_reader :order, :pizzas
 
   def initialize
     @pizzas = [
@@ -10,7 +10,7 @@ attr_reader :order, :pizzas
       { name: :Hawaiian, price: 10 },
       { name: :Ranch, price: 12 },
       { name: :Garlic, price: 8 }
-    ]
+      ]
   end
 
   def menu

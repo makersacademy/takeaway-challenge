@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
 
-subject(:order) { described_class.new }
-let(:pizza) { { name: :pizza, price: 8 } }
+  subject(:order) { described_class.new }
+  let(:pizza) { { name: :pizza, price: 8 } }
 
   context 'to select some number of available pizzas' do
     it 'initialize with an empty array of pizzas' do
