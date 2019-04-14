@@ -1,6 +1,9 @@
 require_relative 'menu'
 
 class Takeaway
+
+  attr_reader :order
+
   def initialize(menu = Menu)
     @menu = menu.new
   end
@@ -11,5 +14,9 @@ class Takeaway
 
   def new_order(order = Order)
     @order = order.new
+  end
+
+  def add_item(item)
+    @order.current_order << {item => @menu.dishes[item]}
   end
 end
