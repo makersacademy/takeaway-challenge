@@ -23,7 +23,6 @@ attr_reader :basket, :menu
   def basket_total
     @basket.inject(0) do |total, (item, quantity)|
       @item_total = total + @menu.menu[item] * quantity
-      #p "#{item}, x#{quantity}: £#{total}"
     end
   end
 end
