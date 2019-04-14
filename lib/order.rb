@@ -7,7 +7,7 @@ class Order
   attr_reader :basket, :total
 
   def initialize
-    @basket = {}
+    @basket = []
     @total = 0
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
   end
@@ -15,9 +15,9 @@ class Order
   def select(dish)
     dishes = Dish.new
     raise "Dish not available!" unless dishes.on_the_menu?(dish)
-    @basket[dish.to_sym] = dishes.menu[dish.to_sym]
+    selected_dish = { dish.to_sym => dishes.menu[dish.to_sym] }
+    @basket << selected_dish
     @total += dishes.menu[dish.to_sym]
-    print
   end
 
   def print
