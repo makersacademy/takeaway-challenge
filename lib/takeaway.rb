@@ -1,9 +1,10 @@
-require 'order'
+require_relative 'order.rb'
+require_relative 'twilio_text.rb'
 
 class Takeaway
   attr_reader :menu, :order
 
-  def initialize(menu:, order: nil)
+  def initialize(menu:, order: nil )
     @menu = menu
     @order = order
   end
