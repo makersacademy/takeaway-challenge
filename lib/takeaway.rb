@@ -16,8 +16,12 @@ class Takeaway
     @menu
   end
 
-  def order(order)
-    @selection << order
+  def order(menu)
+    @selection << menu
+  end
+
+  def order_confirmation
+    @selection.join(", ")
   end
 
 end
