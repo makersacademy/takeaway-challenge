@@ -13,25 +13,31 @@ class Order
 
   def select_items
     puts "Please select from the menu"
-    user = gets.chomp
-    if user == "1"
-      @shopping_cart.push(@items[0])
-    elsif user == "2"
-      @shopping_cart.push(@items[1])
-    elsif user == "3"
-      @shopping_cart.push(@items[2])
+    user = ''
+    while true
+      print_shopping_cart
+      user = gets.chomp
+      if user == "1"
+        @shopping_cart.push(@items[0])
+      elsif user == "2"
+        @shopping_cart.push(@items[1])
+      elsif user == "3"
+        @shopping_cart.push(@items[2])
+      else
+        break
+      end
     end
   end
   
-  # def print_shopping_cart
-  #   @shopping_cart.each_with_index do |item, price|
-  #     puts "#{item[:item]}: #{item[:price]}"
-  #   end
-  # end
+  def print_shopping_cart
+    @shopping_cart.each_with_index do |item, price|
+      puts "#{item[:item]}: #{item[:price]}"
+    end
+  end
 
 end
 
 # select_item = Order.new
 # select_item.class
 
-# select_item.selected_items
+# select_item.select_items
