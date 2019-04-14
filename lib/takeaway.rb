@@ -1,6 +1,6 @@
 class Takeaway
 
-attr_reader :menu
+  attr_reader :menu
 
   def initialize
     @menu = { burger: 5.00,
@@ -9,7 +9,5 @@ attr_reader :menu
       strawberry_milkshake: 4.50,
       kids_meal: 3.30 }
   end
-
-
 
 end
