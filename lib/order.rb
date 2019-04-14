@@ -18,4 +18,14 @@ class Order
     }
     @order_total
   end
+
+  def display_order
+    puts "Receipt"
+    puts "-----------"
+    @current_order.each { |item|
+      item.each { |item, price|
+      puts "#{item}: £#{price}" }
+    }
+    puts "Total due: £#{order_total}"
+  end
 end

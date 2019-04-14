@@ -23,13 +23,31 @@ describe Order do
     end
   end
 
-  describe '#order_total' do
-    it 'should add up the total cost for the current order' do
+  context 'items have been added to an order' do
+    before do
       subject.add_item('Spring rolls' => 2.99)
       subject.add_item('Special Chow Mein' => 6.50)
       subject.add_item('Egg Fried Rice' => 2.99)
+    end
 
-      expect(subject.order_total).to eq 12.48
+    describe '#order_total' do
+      it 'should add up the total cost for the current order' do
+        expect(subject.order_total).to eq 12.48
+      end
+    end
+
+    describe '#display_order' do
+      it 'should show the current order and total' do
+        expect { subject.display_order }.to output(<<~PRINTOUT
+        Receipt
+        -----------
+        Spring rolls: £2.99
+        Special Chow Mein: £6.5
+        Egg Fried Rice: £2.99
+        Total due: £12.48
+        PRINTOUT
+      ).to_stdout
+      end
     end
   end
 end
