@@ -40,6 +40,6 @@ class Order
     @select_pizza.each do |pizza|
       @total_price += pizza[:price]
     end
-    puts "Your total price is: "
+    puts "Your total price is: £#{@total_price}"
   end
 end
