@@ -1,11 +1,10 @@
 require 'takeaway'
 require 'order'
-require 'time'
+require 'sms'
 
 describe Takeaway do
 
   let(:order) { Order.new }
-  let(:time) { Time.now + 3600 }
 
   describe '#check_menu' do
     it "displays the menu" do
@@ -34,10 +33,6 @@ describe Takeaway do
   describe '#place_order' do
     it "raises error if given total is different from order total" do
       expect { subject.place_order(-1) }.to raise_error("given total is incorrect")
-    end
-
-    it "pretty prints order confirmation and delivery time" do
-      expect(subject.place_order(0)).to eq("Thank you! Your order will be delivered before #{time.hour}:#{time.min}")
     end
   end
 

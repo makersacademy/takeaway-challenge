@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'sms'
 require 'time'
 
 class Takeaway
@@ -26,9 +27,15 @@ class Takeaway
   end
 
   def place_order(given_total)
-    raise "given total is incorrect" if @order.total != given_total
+    fail "given total is incorrect" if @order.total != given_total
 
-    time = Time.now + 3600
-    "Thank you! Your order will be delivered before #{time.hour}:#{time.min}"
+    send_confirmation_sms
   end
+
+  private
+
+  def send_confirmation_sms
+    Sms.new.send
+  end
+
 end
