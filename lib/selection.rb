@@ -15,13 +15,19 @@ class Selection
     dishes[dish] = number_of_dish
   end
 
+<<<<<<< HEAD
   def total
     dish_total.inject(:+)
+=======
+  def has_dish?
+
+>>>>>>> 3e3a9aa6a5ad2fbd5599a0587e75847e5c2151e5
   end
 
   private 
 
   attr_reader :menu
+<<<<<<< HEAD
 
   def dish_total 
     dishes.map { | dish, number_of_dish |
@@ -29,6 +35,8 @@ class Selection
     }
   end
 
+=======
+>>>>>>> 3e3a9aa6a5ad2fbd5599a0587e75847e5c2151e5
 end
 
 
