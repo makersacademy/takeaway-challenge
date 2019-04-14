@@ -4,12 +4,6 @@ describe Order do
 
   subject(:order) { described_class.new }
 
-  describe "#print" do
-    it "the menu" do
-      expect(order).to respond_to(:print)
-    end
-  end
-
   describe '#select' do
     it "selects a dish" do
       expect(order).to respond_to(:select).with(1).argument
@@ -21,21 +15,21 @@ describe Order do
     end
   end
 
-  describe "#print_order" do
-    it "shows what is in the basket" do
+  describe "#print" do
+    it "the basket" do
       order.select("lamb")
-      expect(order.print_order).to include "lamb"
+      expect(order.print).to include "lamb"
     end
 
-    it "shows each individual price" do
+    it "individual prices" do
       order.select("lamb")
-      expect(order.print_order).to include "6"
+      expect(order.print).to include "6"
     end
 
-    it "shows the total" do
+    it "the total sum" do
       order.select("lamb")
-      total = order.total
-      expect(order.print_order).to include "#{total}"
+      total = 6
+      expect(order.print).to include "#{total}"
     end
   end
 

@@ -5,8 +5,8 @@ describe "user_stories" do
   # I would like to see a list of dishes with prices
 
   it 'so I can check if I want to order, see a list of dishes with prices' do
-    order = Order.new
-    expect { order.print }.not_to raise_error
+    menu = Dish.new
+    expect { menu.menu }.not_to raise_error
   end
 
   # As a customer
@@ -26,7 +26,7 @@ describe "user_stories" do
 
   it "verify that order is correct and check that sum is correct" do
     order = Order.new
-    expect { order.print_order }.not_to raise_error
+    expect { order.print }.not_to raise_error
   end
 
 end
