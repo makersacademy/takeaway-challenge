@@ -12,7 +12,10 @@ class Order
   end
 
   def select_items
-    puts "Please select from the menu"
+    puts "Please select from the menu below."
+    @items.each_with_index do |item, index|
+      puts "#{index +1}. #{item[:item]}: £#{'%.2f' % item[:price]}"
+    end
     user = ''
     while true
       print_shopping_cart
@@ -44,7 +47,6 @@ class Order
         sum += item[:price]
       end
       puts "Here your order total. Is that correct?"
-      print sum
       sum
     end
   end
