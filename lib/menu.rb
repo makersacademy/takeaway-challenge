@@ -1,20 +1,14 @@
 class Menu
   attr_reader :food_list
 
-  def initialize
-    @food_list = []
-  end
-
-  def list
-    food =
-      { name: "Chicken Satay", price: 6 },
-      { name: "Fried Spring Rolls", price: 6 },
-      { name: "Green Curry", price: 10 },
-      { name: "Salmon Red Curry", price: 12 },
-      { name: "Stir Fried Aubergine", price: 8 },
-      { name: "Grilled Steak", price: 13 },
-      { name: "Egg Fried Rice", price: 2 },
-      { name: "Organic Coconut Water", price: 3 }
-    @food_list << food
+  def food_list
+    { "Chicken Satay" => 6,
+      "Fried Spring Rolls" => 6,
+      "Green Curry" => 10,
+      "Salmon Red Curry" => 12,
+      "Stir Fried Aubergine" => 8,
+      "Grilled Steak" => 13,
+      "Egg Fried Rice" => 2,
+      "Organic Coconut Water" => 3 }
   end
 end
