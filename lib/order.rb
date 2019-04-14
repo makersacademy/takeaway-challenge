@@ -13,6 +13,4 @@ class Order
     puts "#{@order_total}\n#{@current_order}\n"
     @order_total = 0
   end
-
-
 end

@@ -3,7 +3,6 @@ class Menu
 
   attr_reader :basket
 
-
   MENU_LIST = [
     { :kebab => 5 },
     { :curry => 6 },
