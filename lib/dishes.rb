@@ -1,12 +1,12 @@
 class Dishes
-  attr_reader :list
+  attr_reader :menu
   
   def initialize
-    @list = { fish: 5, chips: 2, curry_sauce: 1 }
+    @menu = { fish: 5, chips: 2, curry_sauce: 1 }
   end
   
   def view
-    list.each do |key, value|
+    menu.each do |key, value|
       puts "#{key} - £#{value}"
     end
   end
