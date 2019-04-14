@@ -1,4 +1,4 @@
-# # The Takeaway Challenge
+# The Takeaway Challenge
 ## Context
 Weekend (ruby coding) Challenge for the second week of Makers Academy Course.
 

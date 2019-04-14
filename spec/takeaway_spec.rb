@@ -50,7 +50,7 @@ describe Takeaway do
           won_tom: 1,
           beer: 2,
           }, tel)
-      }      .to raise_error(RuntimeError) { "bear is not available" }
+      }      .to raise_error(RuntimeError)
     end
 
     it 'validate whether the dishes are available' do
@@ -59,7 +59,7 @@ describe Takeaway do
         beef_steak: 1,
         beer: 2,
         }, tel)
-      }      .to raise_error(RuntimeError) { "beef_steak and bear are not available" }
+      }      .to raise_error(RuntimeError)
     end
 
   end
