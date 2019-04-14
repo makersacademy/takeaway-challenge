@@ -1,7 +1,7 @@
 # Task
 
 Write a Takeaway program with the following user stories:
-
+```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -17,7 +17,7 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
+```
 # Approach
 I designed a domain model by extracting the objects and methods from the user stories. For example takeaway.create_order, takeaway.display_order, takeaway.add_order etc. This enabled me to move forward with a TDD approach, running feature tests in IRB to picture the behaviour of the program.
 
