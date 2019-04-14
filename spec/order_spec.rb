@@ -33,4 +33,10 @@ describe Order do
     end
   end
 
+  describe "#send_text" do
+    it "sends a text to the user" do
+      expect(order).to respond_to(:send_text)
+    end
+  end
+
 end

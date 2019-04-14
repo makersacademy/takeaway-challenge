@@ -49,9 +49,9 @@ Verbs: order, select, check (the total matches the sum), receive
 
 
 | customer       | receive        |
-|----------------|:---------------|
+|----------------|---------------:|
 | order          | select, check  |
-|----------------|:---------------|
+|----------------|---------------:|
 | list of dishes | see, select    |
 
 

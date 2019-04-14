@@ -29,4 +29,15 @@ describe "user_stories" do
     expect { order.print }.not_to raise_error
   end
 
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as
+  # "Thank you! Your order was placed and will be delivered before 18:52"
+  # after I have ordered
+
+  it "submits the order and sends a text message" do
+    order = Order.new
+    expect { order.send_text }.not_to raise_error
+  end
+
 end
