@@ -35,7 +35,7 @@ class Menu
   def send_text
     arr = []
     time = Time.now
-    time += 3600
+    time = time + ((@order.count)*480)
     formatted_time = arr.push(time).join('').slice!(0, 19)
     a = "AC1bdf39b8064195f175d7b57f1db23404"
     b = "e67db5ae4fa141fb42daea58a4cc9311"
