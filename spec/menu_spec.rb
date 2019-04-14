@@ -1,25 +1,17 @@
 require 'menu'
 
 RSpec.describe Menu do
-  let(:menu) { described_class.new(dishes) }
+  let(:menu) {described_class.new(dishes)}
   let(:dishes) do
     {
-        kenkey_and_shito: 4,
-        banku_and_shrimp: 5
+        keykey: 2.49,
+        waakye: 3.99
     }
   end
-
-  describe '#menu' do
-    it 'returns dishes' do
-      expect(menu.dishes).to eq(dishes)
-    end
+  describe 'ínitialize' do
+    it 'has a list of dishes when initilized' do
+      printed_dish = 'keykey £2.49, waakye £3.99'
+      expect(menu.list_dishes).to eq(printed_dish)
+    end  
   end
-
-  describe '#show_dish' do
-    it 'shows a list of dishes' do
-      print_dish = 'kenkey_and_shito £4, banku_and_shrimp £5'
-      expect(menu.show_dish).to eq(print_dish)
-    end
-  end
-
 end
