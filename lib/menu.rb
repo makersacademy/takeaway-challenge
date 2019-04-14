@@ -4,7 +4,7 @@ class Menu
   def initialize
     @dishes = {
     'Spring rolls' => 2.99,
-    'Prawn toast' => 4.00 ,
+    'Prawn toast' => 4.00,
     'Special Chow Mein' => 6.50,
     'Egg Fried Rice' => 2.99,
     }
