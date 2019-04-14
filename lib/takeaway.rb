@@ -1,6 +1,6 @@
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :selection
 
   def initialize
     @menu = { burger: 5.00,
@@ -8,10 +8,16 @@ class Takeaway
       chips: 3.00,
       strawberry_milkshake: 4.50,
       kids_meal: 3.30 }
+
+    @selection = []
   end
 
   def display_menu
     @menu
+  end
+
+  def order(order)
+    @selection << order
   end
 
 end

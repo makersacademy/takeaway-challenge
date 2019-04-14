@@ -8,4 +8,7 @@ describe Takeaway do
     end
   end
 
+  describe '#order' do
+    it { is_expected.to respond_to(:order).with(1).argument }
+  end
 end
