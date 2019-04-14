@@ -13,6 +13,14 @@ attr_reader :order, :pizzas
     ]
   end
 
+  def menu
+    index = 1
+    @pizzas.each do |pizza|
+      puts "#{index}: #{pizza[:name]} (£#{pizza[:price]})"
+      index += 1
+    end
+  end
+
   def create_order(order = Order.new)
     @order = order
   end

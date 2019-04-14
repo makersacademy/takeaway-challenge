@@ -8,9 +8,12 @@ describe Takeaway do
 
 
   context 'To check if User wants to order something' do
-    it 'creates a menu of pizzas with prices' do
+    it 'creates a menu of pizzas' do
       allow(takeaway).to receive(:select_pizza).and_return([pizza])
       expect(takeaway.select_pizza).to include pizza
+    end
+    it 'displays menu of selectable pizzas' do
+      expect(takeaway.menu).to be_a Array
     end
   end
 
