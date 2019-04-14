@@ -17,9 +17,10 @@ class Order
   def display_order
     puts "Current Order"
     puts "-----------"
-    @current_order.each { |item|
-      item.each { |item, price|
-      puts "#{item}: £#{price}" }
+    @current_order.each { |element|
+      element.each { |item, price|
+        puts "#{item}: £#{price}"
+      }
     }
     puts "Total: £#{@order_total}"
   end
