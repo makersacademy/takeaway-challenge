@@ -35,10 +35,20 @@ let(:pizza) { { name: :pizza, price: 8 } }
     end
   end
 
-  context 'To avoid user errors' do
+  context 'To avoid order errors' do
     it 'prevents empty orders from being placed' do
-    order.confirm_order
-    expect(order.confirm_order?).to eq false
+      order.confirm_order
+      expect(order.confirm_order?).to eq false
+    end
+    it 'once order is placed select_pizza array should be empty' do
+      order.add_selected_pizza(pizza)
+      order.confirm_order
+      expect(order.select_pizza).to eq []
+    end
+    it 'total_price is reset after order is confirmed' do
+      order.add_selected_pizza(pizza)
+      order.confirm_order
+      expect(order.total_price).to eq 0
     end
   end
 end
