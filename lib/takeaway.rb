@@ -1,10 +1,12 @@
 require 'selection'
+require 'sms'
 
 class Takeaway
 
-  def initialize(menu: menu, selection: nil)
+  def initialize(menu: menu, selection: nil, sms: nil)
     @menu = menu 
     @selection = selection || Selection.new(menu)
+    @sms = sms || SMS.new 
   end
 
   def print_menu
@@ -12,18 +14,18 @@ class Takeaway
   end
 
   def select_dishes(dishes)
-    dishes.each { | dish, number_of_dish |
-      selection.add(dish, number_of_dish)
-    }
-<<<<<<< HEAD
+    add_dishes(dishes)
+    sms.deliver
     selection.total
-=======
->>>>>>> 3e3a9aa6a5ad2fbd5599a0587e75847e5c2151e5
   end
 
   private 
 
-  
+  def add_dishes(dishes)
+    dishes.each { | dish, number_of_dish |
+      selection.add(dish, number_of_dish)
+    }
+  end
 
-  attr_reader :menu, :selection
+  attr_reader :menu, :selection, :sms
 end
