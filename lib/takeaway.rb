@@ -43,6 +43,8 @@ class Order
       @shopping_cart.each do |item|
         sum += item[:price]
       end
+      puts "Here your order total. Is that correct?"
+      print sum
       sum
     end
   end
