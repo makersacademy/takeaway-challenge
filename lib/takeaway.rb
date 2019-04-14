@@ -30,7 +30,7 @@ class Order
   end
   
   def print_shopping_cart
-    @shopping_cart.each_with_index do |item, price|
+    @shopping_cart.each_with_index do |item|
       puts "#{item[:item]}: £#{'%.2f' % item[:price]}"
     end
   end
@@ -38,12 +38,12 @@ class Order
   def order_sum
     if @shopping_cart.empty?
       0.00
-    elsif @shopping_cart.length == 1
-      @shopping_cart[0][:price]
-    elsif @shopping_cart.length == 2
-      @shopping_cart[0][:price] + @shopping_cart[1][:price]
-      elsif @shopping_cart.length == 3
-        @shopping_cart[0][:price] + @shopping_cart[1][:price] + @shopping_cart[2][:price]
+    else
+      sum = 0
+      @shopping_cart.each do |item|
+        sum += item[:price]
+      end
+      sum
     end
   end
 

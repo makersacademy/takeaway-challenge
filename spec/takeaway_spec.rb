@@ -106,11 +106,20 @@ describe Order do
     end
 
     context 'user selects item multiple times' do
-      let(:user) { ["1\n", "2\n", "3\n", "stop\n"] }
+      let(:user) { ["1\n", "1\n", "1\n", "1\n", "1\n", "stop\n"] }
       it 'selects first, second, and third item and shows cost' do
         set_user_input_and_check_expected_output
         subject.select_items
-        expect(subject.order_sum).to eq 10.50
+        expect(subject.order_sum).to eq 37.50
+      end
+    end
+
+    context 'user selects item multiple times' do
+      let(:user) { ["1\n", "2\n", "1\n", "2\n", "1\n", "stop\n"] }
+      it 'selects first, second, and third item and shows cost' do
+        set_user_input_and_check_expected_output
+        subject.select_items
+        expect(subject.order_sum).to eq 27.50
       end
     end
 
