@@ -21,4 +21,29 @@ describe Order do
       expect(subject.selection).to eq dish_order
     end
   end
+  
+  context 'total provided equals calculated total' do
+    describe '#verify' do
+      it 'outputs verification message' do
+        price_list = { "fish" => 5, "chips" => 2, "curry-sauce" => 1 }
+        subject = described_class.new(price_list)
+        subject.create("chips*2,curry-sauce*3")
+        user_total = 7
+        expect(subject.verify(user_total)).to eq "Order Verified"
+      end
+    end
+  end
+  
+  context 'total provided does not equal calculated total' do
+    describe '#verify' do
+      it 'raises error' do
+        price_list = { "fish" => 5, "chips" => 2, "curry-sauce" => 1 }
+        subject = described_class.new(price_list)
+        subject.create("chips*2,curry-sauce*3")
+        user_total = 8
+        msg = "Order Error - Total does not match to price list"
+        expect { subject.verify(user_total) }.to raise_error msg
+      end
+    end
+  end
 end
