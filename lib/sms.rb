@@ -4,8 +4,8 @@ require_relative 'order'
 
 class Sms
 
-  def send_text(order)
-
+  def send_text
+    # (order)
     time = Time.new
 
     message = "Thank you for your order. It will be delivered at
