@@ -1,10 +1,11 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'textmessage'
 
 
 class Takeaway
 
-  attr_reader :order
+  attr_reader :order, :order_total
 
 def initialize
   @menu = Menu.new
@@ -26,7 +27,12 @@ def calculated_total
     @order_total += @menu.dishes[dish]
   end
   @order_total
+end
 
+def confirm_order(total)
+  raise("That is not the correct total!") if total != @order_total
+text = TextMessage.new
+text.send_text
 end
 
 end
