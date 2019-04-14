@@ -1,9 +1,9 @@
 require 'takeaway'
 describe Order do
-  let(:items) { double:items }
-  let(:shopping_cart) { double:shopping_cart }
+  let(:items) { double :items }
+  let(:shopping_cart) { double :shopping_cart }
+
   describe "#items" do
-    items = [{ food1: 3 }, { food2: 5 }, { food3: 7 }]
     it 'has items' do
       expect(subject).to respond_to :items
     end

@@ -11,29 +11,26 @@ class Order
     @shopping_cart = []
   end
 
-  def select_items
+  def show_menu
     puts "Please select from the menu below."
     @items.each_with_index do |item, index|
-      puts "#{index +1}. #{item[:item]}: £#{'%.2f' % item[:price]}"
+      puts "#{index + 1}. #{item[:item]}: £#{'%.2f' % item[:price]}"
     end
-    user = ''
-    while true
+  end 
+
+  def select_items
+    show_menu
+    @user = ''
+    loop do
       print_shopping_cart
       user = gets.chomp
-      if user == "1"
-        @shopping_cart.push(@items[0])
-      elsif user == "2"
-        @shopping_cart.push(@items[1])
-      elsif user == "3"
-        @shopping_cart.push(@items[2])
-      else
-        break
-      end
+      break unless /^[0-9]*$/.match?(user)
+      @shopping_cart.push(@items[user.to_i - 1])
     end
   end
   
   def print_shopping_cart
-    @shopping_cart.each_with_index do |item|
+    @shopping_cart.each do |item|
       puts "#{item[:item]}: £#{'%.2f' % item[:price]}"
     end
   end
