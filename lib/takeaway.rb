@@ -20,4 +20,8 @@ class Takeaway
   def add_item(item)
     @order.add_item({ item => @menu.dishes[item] })
   end
+
+  def view_receipt
+    @order.display_order
+  end
 end

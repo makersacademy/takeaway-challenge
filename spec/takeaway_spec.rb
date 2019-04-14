@@ -7,12 +7,13 @@ describe Takeaway do
   'Special Chow Mein' => 6.50,
   'Egg Fried Rice' => 2.99 }
 
+
   let(:menu_class) { double(:menu_class, new: menu) }
   let(:menu) { double(:menu, dishes: items, show_menu: items) }
 
   let(:subject) { described_class.new(menu_class) }
 
-  let(:order) { double(:order, current_order: [], add_item: [{ 'Spring rolls' => 2.99 }]) }
+  let(:order) { double(:order, current_order: [], add_item: [{ 'Spring rolls' => 2.99 }], display_order: { 'Spring rolls' => 2.99 } ) }
   let(:order_class) { double(:order_class, new: order) }
 
   describe '#view_menu' do
@@ -32,6 +33,14 @@ describe Takeaway do
       subject.new_order(order_class)
       subject.add_item('Spring rolls')
       expect(subject.order.add_item('Spring rolls')).to include({ 'Spring rolls' => 2.99 })
+    end
+  end
+
+  describe '#view_receipt' do
+    it 'shows the current order' do
+      subject.new_order(order_class)
+      subject.add_item('Spring rolls')
+      expect(subject.view_receipt).to eq subject.order.display_order
     end
   end
 
