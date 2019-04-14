@@ -1,6 +1,6 @@
-Takeaway Challenge
-> This was our week two challenge at makers academy.
+# Takeaway Challenge
 
+##### In terminal type `` rspec`` to run test.
 # Knowleged Needed To solve This Challenge.
 - Encapsulation.
 - RSpec doubles.
@@ -14,10 +14,10 @@ How To Use This Application.
 - clone it on your local computer `` git clone.``
 - cd into the directory.
 - Run bundle intall to install all the dependencies or the application.
-- In terminal ``type irb ``
+- In terminal ``type irb. ``
 - ``require './lib/take_away ``
-- Create a new menu object ``menu = Menu.new() ``|| ``Note: menu can takes one optional argument ``
-- Create a new take way object ``take_away = TakeAway.new(menu)``
+- Create a new menu object ``menu = Menu.new() ``|| ``Note: menu can takes one optional argument. ``
+- Create a new take way object ``take_away = TakeAway.new(menu).``
 
 # Takeaway-Challenge In IRB.
 > How the application works currently.
@@ -36,6 +36,17 @@ How To Use This Application.
 |  Menu    |list_dish |
 |TakeAway  |show_menu / select_dish|
 |Order     |user_choice / total_order|
+
+# challenges
+- I was only able to complete the first 3 user stories.
+- Difficulty in modelling the objects.
+# Improvement
+- Refactoring the codebase.
+- Improving object struction.
+- Improving test.
+# To Do
+- Integrate Twillo API to the application.
+- Create a friendly user interface.
 
 # Test Coverage
 > 100%
