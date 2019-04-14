@@ -1,17 +1,13 @@
 
 class Menu
-  attr_reader :dishes
-  
+
   def initialize(dishes)
     @dishes = dishes
   end
 
-  def show_dish
-    @dishes.map(&array_map).join(', ')
-  end
-
-  private 
-  def array_map
-    Proc.new { |value, key| '%s £%d' % [value, key] }
+  def list_dishes
+    @dishes.map do |dish_name, price|
+      '%s £%.2f' % [dish_name, price]
+    end.join(', ')
   end
 end
