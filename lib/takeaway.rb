@@ -16,6 +16,7 @@ class Takeaway
     dishes.each do |dishes, quantity|
       order.add(dishes, quantity)
     end
+    order.total
   end
 
   private
