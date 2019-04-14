@@ -1,47 +1,36 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'message'
 
 class Takeaway
 
   attr_reader :basket, :menu
 
   def initialize
-    @menu = Menu.new
-    @basket = []
-  end
+   @menu = Menu.new
+   @order = Order.new
+   @basket = Hash.new(0)
+ end
 
   def menu
     @menu.show
   end
 
-  def place_order(item, *number)
-    fail "Sorry we don't sell #{item}" if !available?(item)
+  def place_order(dish, quantity = 1)
+    fail "Sorry we don't have that, check our menu" if !@menu.available?(dish)
 
-    @basket << add_item(item)
+    @basket[dish.to_sym] += quantity
+  end
+
+  def total
+    @basket
+  end
+
+  def order_summary
   end
 
   private
 
-  def available?(choice)
-    return true if Menu::MAINS.has_key?(choice) || Menu::SIDES.has_key?(choice) || Menu::DRINKS.has_key?(choice)
-  end
 
-  def add_item(choice)
-    if Menu::MAINS.has_key?(choice)
-       Menu::MAINS.select { |k,v| k == choice }
-    elsif Menu::SIDES.has_key?(choice)
-       Menu::SIDES.select { |k,v| k == choice }
-    else Menu::DRINKS.has_key?(choice)
-      Menu::DRINKS.select { |k,v| k == choice }
-    end
-  end
-
-  #
-  # def total
-  #
-  # end
-  #
-  # def confirmed?
-  # end
 
 end
