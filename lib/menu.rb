@@ -1,8 +1,8 @@
-require_relative 'basket'
 
 class Menu
 
   attr_reader :basket
+
 
   MENU_LIST = [
     { :kebab => 5 },
@@ -21,7 +21,7 @@ class Menu
   end
 
   def add_to_basket(dish_number, quantity)
-    quantity.times do @basket << MENU_LIST[dish_number - 1]
-    end
+    quantity.times { @basket << MENU_LIST[dish_number - 1] }
+    "You added #{quantity} #{MENU_LIST[dish_number - 1]} to your basket!"
   end
 end
