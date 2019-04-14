@@ -1,18 +1,12 @@
 Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+> This was our week two challenge at makers academy.
 
- ```
+# Knowleged Needed To solve This Challenge
+- Encapsulation.
+- RSpec doubles.
+- Abstraction
+- Dependency Injection.
+- Working with API (Twilio API)
 
 How To Use This Application.
 -------
@@ -35,35 +29,12 @@ How To Use This Application.
 <img width="336" alt="Screen Shot 2019-04-14 at 23 37 11" src="https://user-images.githubusercontent.com/37377831/56100418-60d1fa00-5f10-11e9-9b55-2df745a04e06.png">
 <img width="321" alt="Screen Shot 2019-04-14 at 23 37 56" src="https://user-images.githubusercontent.com/37377831/56100431-7e06c880-5f10-11e9-86c7-e214c1c4a3c6.png">
 
+| object   | subjects |
+|----------|----------|
+|  Menu    |list_dish |
+|TakeAway  |show_menu / select_dish|
+|Order     |user_choice / total_order|
 
-
-
-
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
