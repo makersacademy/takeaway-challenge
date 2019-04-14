@@ -4,6 +4,8 @@ describe Order do
 
   subject(:order) { described_class.new }
 
+  let(:mocker) { TwilioMock::Mocker.new }
+
   describe '#select' do
     it "selects a dish" do
       expect(order).to respond_to(:select).with(1).argument
@@ -33,9 +35,9 @@ describe Order do
     end
   end
 
-  describe "#send_text" do
-    it "sends a text to the user" do
-      expect(order).to respond_to(:send_text)
+  describe "#fake_text" do
+    it "uses TwilioMock to send a fake test" do
+      expect(mocker).to respond_to(:messages)
     end
   end
 

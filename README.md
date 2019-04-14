@@ -15,10 +15,13 @@ Takeaway Challenge
  ```
 ## How to order from our restaurant
 
-Please initialise IRB and require './lib/order.rb'
-Create a new order by typing order = Order.new
-To see the menu, just type order.print
-To select a dish and add it to your basket, please type order.select("dish") [Don't forget the inverted commas!] :)
+Please initialise IRB and require ```'./lib/order.rb'```
+Create a new list of dishes by typing ```menu = Dish.new```
+  To have a look at the menu, type ```menu.menu```
+Create a new order by typing ```order = Order.new```
+To select a dish and add it to your basket, please type ```order.select("dish")``` [Don't forget the inverted commas!] :)
+After selecting all your dishes, see your by typing ```order.print```
+Finally, to receive an SMS confirming your order, type ```order.send_text```
 
 
 User Stories
@@ -51,7 +54,6 @@ Verbs: order, select, check (the total matches the sum), receive
 | customer       | receive        |
 |----------------|---------------:|
 | order          | select, check  |
-|----------------|---------------:|
 | list of dishes | see, select    |
 
 
