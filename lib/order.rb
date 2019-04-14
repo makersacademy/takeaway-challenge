@@ -2,8 +2,11 @@ require_relative 'dish.rb'
 
 class Order
 
+  attr_reader :basket, :total
+
   def initialize
     @basket = {}
+    @total = 0
   end
 
   def print
@@ -20,7 +23,8 @@ class Order
     print
   end
 
-  # def add(dish)
-  #  In the near future, this can be a method that adds the selected dish into the basket, thus replacing line 19
-  # end
+  def print_order
+    "Your order is: #{@basket.map { |key, value| "#{key}: #{value}" }} and the total is #{@total} pounds"
+  end
+
 end

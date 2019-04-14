@@ -19,4 +19,14 @@ describe "user_stories" do
     expect { order.select(dish) }.not_to raise_error
   end
 
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given
+      # matches the sum of the various dishes in my order
+
+  it "verify that order is correct and check that sum is correct" do
+    order = Order.new
+    expect { order.print_order }.not_to raise_error
+  end
+
 end
