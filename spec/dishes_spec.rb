@@ -6,7 +6,7 @@ describe Dishes do
   end
   describe '#view' do
     it 'prints dishes to stdout' do
-      expect { subject.view }.to output("fish - £5\nchips - £2\ncurry_sauce - £1\n").to_stdout
+      expect { subject.view }.to output("fish - £5\nchips - £2\ncurry-sauce - £1\n").to_stdout
     end
   end
 end
