@@ -1,3 +1,5 @@
+require_relative 'send_sms'
+
 class Order
   
   attr_reader :price_list, :selection
