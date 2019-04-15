@@ -23,3 +23,7 @@ This app allows you to view menu, select dishes, view basket, calc total and pla
 - I still don't seem to always be able to use doubles properly. Every time you place an order, a message is sent regardless of whether totals match, and this even happens when running rspec tests.
 - I haven't made my phone number private on Github.
 - I didn't finish the 'stretch' user story to allow orders to be placed via text message. I gave up at the "ngrok http 4567" stage. I was getting the following error: "bash: ngrok: command not found".
+
+### Diagram of model
+I used this diagram to help me plan my modelling.
+![](https://github.com/clarepins/takeaway-challenge/blob/master/takeaway_diagram.JPG)
