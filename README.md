@@ -47,6 +47,17 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
  Steps
  -------
+ 
+ * Create source file and test file
+ * Create Menu class
+ * Initialize a menu which is not empty
+ * Add menu with prices
+ * Add order method
+ * Add print menu method
+ * Add select method
+ * Set up twilio API
+ * Add SMS functionality
+ 
 
  Learning Objectives
  -------
