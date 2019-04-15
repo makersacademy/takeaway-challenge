@@ -24,7 +24,8 @@ describe Takeout do
   describe '#finish_order' do
     it 'confirms that the total is equal to the accumulated price of each item ordered' do
       subject.add_order("Mozzarella Sticks", 2, 6.98)
-      expect(subject.finish_order).to eq subject.total_given
+      subject.finish_order
+      expect(subject.true_total).to eq subject.total_given
     end
     it 'raises an error if total given and true total are not equal' do
       subject.add_order("Mozzarella Sticks", 2, 5.98)

@@ -3,7 +3,7 @@ require_relative 'price'
 require_relative 'send_sms'
 
 class Takeout
-  attr_reader :order, :total_given
+  attr_reader :order, :total_given, :true_total
 
   def initialize
     @menu = Menu.new
