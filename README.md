@@ -17,7 +17,19 @@
   1. Fork the repository onto your profile.
   2. Clone the repository onto your device.
   3. Run 'bundle' into your command line.
-  4. You should be good to go!
+  4. Set up your .env file.
+  5. You should be good to go!
+
+## How to set up your .env file
+
+  Create a `twilio.env` file and add the following code (ensure you replace the templates with your actual number, account sid, and auth token):
+
+```shell
+export TWILIO_ACCOUNT_SID='your_account_sid'
+export TWILIO_AUTH_TOKEN='your_auth_token'
+export PHONE='your_number'
+```
+  Add this file to your .gitignore file in order to avoid pushing your personal information to GitHub.
 
 ## How to use in irb
 
