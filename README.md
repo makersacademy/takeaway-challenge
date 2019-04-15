@@ -26,8 +26,8 @@ How To Use This Application.
 <img width="753" alt="Screen Shot 2019-04-14 at 23 31 38" src="https://user-images.githubusercontent.com/37377831/56100331-3fbcd980-5f0f-11e9-8e0d-b90e2e04be30.png">
 <img width="1074" alt="Screen Shot 2019-04-14 at 23 32 40" src="https://user-images.githubusercontent.com/37377831/56100397-1f414f00-5f10-11e9-8d87-6674b369a93a.png">
 <img width="583" alt="Screen Shot 2019-04-14 at 23 34 23" src="https://user-images.githubusercontent.com/37377831/56100405-3d0eb400-5f10-11e9-9a7a-7d8d49aa29ec.png">
-<img width="336" alt="Screen Shot 2019-04-14 at 23 37 11" src="https://user-images.githubusercontent.com/37377831/56100418-60d1fa00-5f10-11e9-9b55-2df745a04e06.png">
-<img width="321" alt="Screen Shot 2019-04-14 at 23 37 56" src="https://user-images.githubusercontent.com/37377831/56100431-7e06c880-5f10-11e9-86c7-e214c1c4a3c6.png">
+<img width="297" alt="Screen Shot 2019-04-15 at 09 31 12" src="https://user-images.githubusercontent.com/37377831/56118102-82a79d00-5f61-11e9-9936-a31b6d95de25.png">
+<img width="311" alt="Screen Shot 2019-04-15 at 09 32 09" src="https://user-images.githubusercontent.com/37377831/56118209-acf95a80-5f61-11e9-880a-aa6f6a9824f4.png">
 
 # Objects & Subject from User Story.
 
