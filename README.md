@@ -23,6 +23,26 @@ Instructions
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
+How it works
+-------
+
+In irb:
+
+```shell
+> take_away = TakeAway.new
+> take_away.show_menu
+>> Pizza ... £5
+   Pasta ... £6
+> take_away.order_dish(pizza, 1)
+> take_away.order_dish(pasta, 3)
+> take_away.receipt
+>> pizza x1 ... £5
+   pasta x3 ... £18
+   TOTAL ...... £23
+> take_away.confirm_order
+>> Thank you! Your order was placed and will be delivered before 18:52
+```
+
 Task
 -----
 
