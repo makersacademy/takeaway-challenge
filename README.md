@@ -20,6 +20,13 @@
   4. You should be good to go!
 
 ## How to use in irb
+
+  Before starting irb, ensure you type this into your command line first.
+```
+source ./twilio.env
+```
+  Now you can start irb testing.
+
 ```shell
 2.5.0 :001 > require './lib/takeout.rb'
  => true
