@@ -2,9 +2,10 @@ require 'order'
 
 describe Order do
   let(:price_list_double) { double :price_list }
+  let(:sms_double) { double(:send_sms, send: true) }
   let(:subject) { 
     dishes_double = double(:dishes, price_list: :price_list_double)
-    described_class.new(dishes_double.price_list)
+    described_class.new(dishes_double.price_list, sms_double)
   }
 
   
@@ -26,10 +27,12 @@ describe Order do
     describe '#verify' do
       it 'outputs verification message' do
         price_list = { "fish" => 5, "chips" => 2, "curry-sauce" => 1 }
-        subject = described_class.new(price_list)
+        subject = described_class.new(price_list, sms_double)
         subject.create("chips*2,curry-sauce*3")
         user_total = 7
-        expect(subject.verify(user_total)).to eq "Order Verified"
+        msg = "Order placed and sms message sent to confirm delivery"
+        allow(subject)
+        expect(subject.verify(user_total)).to eq msg
       end
     end
   end
@@ -38,7 +41,7 @@ describe Order do
     describe '#verify' do
       it 'raises error' do
         price_list = { "fish" => 5, "chips" => 2, "curry-sauce" => 1 }
-        subject = described_class.new(price_list)
+        subject = described_class.new(price_list, sms_double)
         subject.create("chips*2,curry-sauce*3")
         user_total = 8
         msg = "Order Error - Total does not match to price list"

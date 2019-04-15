@@ -1,5 +1,5 @@
-require 'twilio-ruby'
 require 'dotenv/load'
+require 'twilio-ruby'
 
 class SendSMS
   
@@ -16,7 +16,7 @@ class SendSMS
     @client.messages.create(
       from: @from,
       to: @to,
-      body: "Twilio test!"
+      body: "Thank you! Your order was placed and will be delivered before #{Time.now}"
       )
   end
 end

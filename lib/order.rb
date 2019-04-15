@@ -2,8 +2,9 @@ class Order
   
   attr_reader :price_list, :selection
   
-  def initialize(price_list)
+  def initialize(price_list, sms = SendSMS.new)
     @price_list = price_list
+    @sms = sms
   end
   
   def create(selection)
@@ -20,6 +21,7 @@ class Order
     end
     error_msg = "Order Error - Total does not match to price list"
     raise error_msg if total != user_total
-    "Order Verified"
+    @sms.send
+    "Order placed and sms message sent to confirm delivery"
   end
 end
