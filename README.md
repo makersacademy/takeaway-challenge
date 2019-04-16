@@ -83,7 +83,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-This user story was the most challenging. First of all I created a new class which would be responsible for sending this text - the Sms class. First of all I set the time to be one hour ahead (which I found from Ruby docs). I then used the Twilio API to implement the send_text function. I first tested this by hard-coding in the auth token, account sid and phone numbers but before pushing to Github I used environment variables, as explained above. When testing this in irb, an actual text does get sent to my phone with the time an hour ahead. 
+This user story was the most challenging. First of all I created a new class which would be responsible for sending this text - the Sms class. First of all I set the time to be one hour ahead (which I found from Ruby docs). I then used the Twilio API to implement the send_text function. I first tested this by hard-coding in the auth token, account sid and phone numbers but before pushing to Github I used environment variables, as explained above. When testing this in irb, an actual text does get sent to my phone with the time an hour ahead.
 
 
 What I learned from this challenge
