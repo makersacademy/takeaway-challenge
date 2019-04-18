@@ -1,4 +1,6 @@
 # Takeaway-challenge
+## Objective
+This was a Makers academy weekend challenge where the aim is to get familiar with OOP concepts, TDD, dependency injection, and use of mocks in testing. The user orders a takeaway and gets order total and a sms sent to his number. 
 
 ## Technologies used
 - Ruby
@@ -9,8 +11,6 @@
 - To run tests: rspec
 
 ## TASK SUMMARY
-
-
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -30,14 +30,13 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-* Hints on functionality to implement:
+* Functionality to implement:
 
 Ensure you have a list of dishes with prices
 
 Place the order by giving the list of dishes, their quantities and a number that should be the exact total. 
 
 If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-
 
 The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
 Use the twilio-ruby gem to access the API
@@ -51,6 +50,7 @@ Note that you can only send texts in the same country as you have your account. 
 
 
 ## APPROACH
+My approach is completely test driven. 
 
 **Drew diagram to illustrate domain modelling**
 
@@ -62,9 +62,7 @@ Note that you can only send texts in the same country as you have your account. 
 
 - Takeaway - (select dish/ place order) - leads to send message, (display/checks total price matches with dishes), method: place order?, see_menu, 
 
-
 - dishes -  (displays prices of all dishes), @price, @name
-
 
 - sendmessage - (sends message, twillo)
 (use mock for takeaway?  or mock for sendmessage)
