@@ -49,10 +49,10 @@ However, if your Takeaway is loaded into IRB and the order is placed, the text s
 Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
 
-## APPROACH
+# APPROACH
 My approach is completely test driven. 
 
-**Drew diagram to illustrate domain modelling**
+## Drew diagram to illustrate domain modelling**
 
 - idea/diagarm generation
 
