@@ -1,10 +1,16 @@
-Instructions
--------
+# Takeaway-challenge
+
+## Technologies used
+- Ruby
+- Rspec
+
+## Setup instructions
 * Run the command 'bundle' in the project directory to ensure you have all the gems
+- To run tests: rspec
+
+## TASK SUMMARY
 
 
-**TASK SUMMARY**
--
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -24,7 +30,6 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
 * Hints on functionality to implement:
 
 Ensure you have a list of dishes with prices
@@ -39,45 +44,33 @@ Use the twilio-ruby gem to access the API
 Use the Gemfile to manage your gems
 
 Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-(not sure what mock to use)
-(mock dish? message?)
-
 
 However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
 
 Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
 
-**APPROACH**
+## APPROACH
 
 **Drew diagram to illustrate domain modelling**
 
-idea/diagarm generation
+- idea/diagarm generation
 
-2 objects- takeaway, dishes
+- 2 objects- takeaway, dishes
 
-3rd object- message
+- 3rd object- message
 
-Takeaway
-
-(select dish/ place order) - leads to send message
-(display/checks total price matches with dishes)
-method: place order?, see_menu, 
+- Takeaway - (select dish/ place order) - leads to send message, (display/checks total price matches with dishes), method: place order?, see_menu, 
 
 
-dishes
-(displays prices of all dishes)
-@price, @name
+- dishes -  (displays prices of all dishes), @price, @name
 
 
-sendmessage
-(sends message, twillo)
+- sendmessage - (sends message, twillo)
 (use mock for takeaway?  or mock for sendmessage)
 
 
-
-
-**Write tests for each user story**
+## Write tests for each user story
 
 ```
 As a customer
@@ -105,27 +98,23 @@ So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ````
 
-note: combined
-
 Tests: 
 selecting dishes would return dishes selected and total
  
 Checks wether total amount given(by user) of selected dishes matches with sum of order
 
-
-
 ````
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+````
 
 Tests: 
 Receives text message that it would be delivered if amount matches
 
 
 
-**What i didn't do:**
+## What i didn't do:
 
 -Use mock so that texts are not sent when texts are run
 
