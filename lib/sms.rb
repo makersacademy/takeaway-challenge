@@ -7,10 +7,13 @@ class SMS
     @client = client || 
     Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
     @config = config
+    #not quite understand this part
+    #had to rearrange for double client to accept 'messages'
   end
 
   def deliver
     client.messages.create(message_args)
+    #not quite understand this part
   end
 
   private

@@ -9,7 +9,7 @@ class Takeaway
     @order = order || Order.new(menu)
     @sms = sms || SMS.new(config)
   end 
-
+gi
   def check_menu(all_dishes = Menu.new)
     @alldishes = all_dishes
     # p @dishes
