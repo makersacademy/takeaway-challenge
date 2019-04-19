@@ -52,7 +52,7 @@ Note that you can only send texts in the same country as you have your account. 
 # APPROACH
 My approach is completely test driven. 
 
-## Drew diagram to illustrate domain modelling**
+## Drew diagram to illustrate domain modelling
 
 - idea/diagarm generation
 
