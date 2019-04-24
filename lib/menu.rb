@@ -54,7 +54,7 @@ def send_text
   client = Twilio::REST::Client.new(account_sid, auth_token)
 
   from = '+441163264476' # Your Twilio number
-  to = '+447950843624' # Your mobile phone number
+  to = '+447000000000' # Your mobile phone number
 
   client.messages.create(
     from: from,
