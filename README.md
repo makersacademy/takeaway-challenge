@@ -14,25 +14,6 @@ Takeaway Challenge
 
  ```
 
-## I documented my approach in 'kd_approach.md' <---- Please read me! :)
-- I documented and explained the processes and approaches I used for this Takeaway Challenge
-
-**To improve my project, next time I would like to:**
-
-- Get test coverage from 99.14% to 100%
-- I haven't tested the Twilio API implementation for sending the text message to the customer. Next time, I would like to learn how to implement RSpec tests for APIs
-- I would like to learn how to stub out the behaviour of the Twilio API in my RSpec tests. At the moment, when I run my tests, the Twilio API sends a text message to the customer
-
-- For an improved user experience, I would like to create an interface for usability, asking the customer questions such as: 
-> 'Would you like to view the food menu?'
-> 'What would you like to order'?
-and then giving them a response.
-
-For version 1, my project is functional in technical implementation, but is not responsive to user input. I would also like to improve the way the dishes are stored and presented. 
-
-- At the moment, the messaging is hard-coded to my mobile number. This is an area to improve by asking the user to provide a mobile number and for that mobile number to work with the Twilio service!
-
-
 ## Introduction to the project
 
 This project is part of Week 2 of the Makers Academy 12-week software engineering programme. It focuses on test-driven development and object-oriented programming skills to satisfy the client's requirements presented in 'challenge_instructions.md'.
@@ -173,6 +154,20 @@ At the moment, this is hard-coded to my mobile number. This is an area to improv
 
 **Enhancements:**
 
+**To improve my project, next time I would like to:**
+
+- Get test coverage from 99.14% to 100%
+- I haven't tested the Twilio API implementation for sending the text message to the customer. Next time, I would like to learn how to implement RSpec tests for APIs
+- I would like to learn how to stub out the behaviour of the Twilio API in my RSpec tests. At the moment, when I run my tests, the Twilio API sends a text message to the customer
+
+- For an improved user experience, I would like to create an interface for usability, asking the customer questions such as: 
+> 'Would you like to view the food menu?'
+> 'What would you like to order'?
+and then giving them a response.
+
+For version 1, my project is functional in technical implementation, but is not responsive to user input. I would also like to improve the way the dishes are stored and presented.
+
+At the moment, the messaging is hard-coded to my mobile number. This is an area to improve by asking the user to provide a mobile number and for that mobile number to work with the Twilio service!
 
 
 ## Images/Screenshots
