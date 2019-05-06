@@ -1,82 +1,53 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge #
+
+  This program replicates a takeaway delivery service (specifically the online aspect of ordering food from a menu).
+
+  I approached this challenge by using TDD and debugging with Rspec tests to reach my final version. I wrote out a Rspec test that described my aim and then followed the error messages to create source-code that corresponded to those errors.
+
+  It acts as practice for my Ruby and Rspec skills, as well as introducing new skills (such as using Twilio to send texts using my code).
+
+## What criteria should this program satisfy?
+  - Prints the menu.
+  - Ability to select food from the menu.
+  - Check that the given total matches the sum of selected food.
+  - Sends a text thanking you for your placed order, with delivery time attached.
+
+## How to get this program
+
+  1. Fork the repository onto your profile.
+  2. Clone the repository onto your device.
+  3. Run 'bundle' into your command line.
+  4. Set up your .env file.
+  5. You should be good to go!
+
+## How to set up your .env file
+
+  Create a `twilio.env` file and add the following code (ensure you replace the templates with your actual number, account sid, and auth token):
+
+```shell
+export TWILIO_ACCOUNT_SID='your_account_sid'
+export TWILIO_AUTH_TOKEN='your_auth_token'
+export PHONE='your_number'
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+  Add this file to your .gitignore file in order to avoid pushing your personal information to GitHub.
 
- ```
+## How to use in irb
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+  Before starting irb, ensure you type this into your command line first.
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+source ./twilio.env
 ```
+  Now you can start irb testing.
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```shell
+2.5.0 :001 > require './lib/takeout.rb'
+ => true
+2.5.0 :002 > takeout = Takeout.new
+ => #<Takeout:0x00007ff6c053c938 @menu=#<Menu:0x00007ff6c053c910 @menu_list=["Mozzarella Sticks", "Garlic Bread", "Chicken Bites", "Margherita Pizza", "Pepperoni Pizza", "Vegetarian Pizza"]>, @order=[], @total_given=0>
+2.5.0 :003 > takeout.add_order("Garlic Bread", 3, 11.97)
+ => 3
+2.5.0 :004 > takeout.add_order("Mozzarella Sticks", 1, 3.49)
+ => 1
+2.5.0 :005 > takeout.finish_order
+Your total is £15.46. You have been sent a text to confirm.
+```
