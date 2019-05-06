@@ -21,6 +21,7 @@ RSpec.describe 'User_stories' do
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
+
   describe '#select_dishes' do
     context 'when dishes are included' do
       it 'allows user to use the select option with n arguments' do
@@ -38,7 +39,7 @@ RSpec.describe 'User_stories' do
   describe '#total' do
     context "when correct total" do
       it 'returns the total for the 2 selected dishes' do
-        menu.select_dishes([1,2])
+        menu.select_dishes([1, 2])
 
         # stubbing the correct_total method
         allow(menu).to receive(:check_total).and_return true
@@ -46,20 +47,20 @@ RSpec.describe 'User_stories' do
       end
 
       it 'verifies if the order is correct' do
-        menu.select_dishes([1,2]) # selects dishes
+        menu.select_dishes([1, 2]) # selects dishes
         menu.total # creates total
         expect { menu.verify_order }.to output("Total of #{menu.total} is correct\n").to_stdout
       end
 
       it 'shows selected dishes' do
         selected_dish = menu.select_dishes([1])
-        expect { menu.show_selected_dishes}.to output("#{selected_dish[0].name} = #{selected_dish[0].price}\nTotal: #{menu.total}\n").to_stdout
+        expect { menu.show_selected_dishes }.to output("#{selected_dish[0].name} = #{selected_dish[0].price}\nTotal: #{menu.total}\n").to_stdout
       end
     end
 
     context "when incorrect total" do
       it 'return an error' do
-        menu.select_dishes([1,2]) # selects dishes
+        menu.select_dishes([1, 2]) # selects dishes
         menu.total # creates total
         # stubbing the correct_total method to return false
         allow(menu).to receive(:check_total).and_return false
@@ -75,7 +76,7 @@ RSpec.describe 'User_stories' do
 
   describe 'Messaging system' do
     it 'sends a message after the order is placed' do
-      expected_delivery = (Time.now + 60*30).strftime "%H:%M"
+      expected_delivery = (Time.now + 60 * 30).strftime "%H:%M"
       messaging_system = double 'Twilio'
       allow(messaging_system).to receive(:new).and_return(messaging_system)
       allow(messaging_system).to receive(:send).and_return("Thank you! Your order was placed and will be delivered before #{expected_delivery}")

@@ -29,7 +29,7 @@ class List
     end
   end
   
-  def select_dishes(selection)
+  def select_dishes(selection) 
     selection.each do |order_number|
       @selected_dishes << @list[order_number] if available_dish(order_number)
     end

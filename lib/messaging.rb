@@ -2,24 +2,23 @@ require 'twilio-ruby'
 require 'dotenv'
 
 class Messaging
-  def initialize
-    Dotenv.load('twilio.env')
-    account_sid = ENV['SID']
-    auth_token = ENV['TOKEN']
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+  Dotenv.load('twilio.env')
+  FROM = ENV['SENDER_NUMBER'] # Your Twilio number
+  TO = ENV['RECEIVER_NUMBER'] # Your mobile phone number
+    
+
+  def initialize(client = Twilio::REST::Client.new(ENV['SID'], ENV['TOKEN']))
+    @client = client
   end
   
   def send(message)
-    from = ENV['SENDER_NUMBER'] # Your Twilio number
-    to = ENV['RECEIVER_NUMBER'] # Your mobile phone number
-
+    
     @client.messages.create(
-    from: from,
-    to: to,
-    body: "#{message}"
-    )
+      from: FROM,
+      to: TO,
+      body: message
+      )
 
-    puts "Order succesfully submitted"
   end
 
 end
