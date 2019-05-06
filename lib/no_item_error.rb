@@ -1,0 +1,1 @@
+class NoItemError < StandardError; end 
