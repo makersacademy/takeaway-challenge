@@ -1,23 +1,18 @@
 # Takeaway Challenge
 
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+[![Build Status](https://travis-ci.org/micosmin/takeaway-challenge.svg?branch=master)](https://travis-ci.org/micosmin/takeaway-challenge)
 
-```
+![Coverage](badge.svg)
 
-## Task
+[Task](#task) | [User stories](#stories) | [Clone and run](#clone) | [Details](#details)
 
-Week 2 Makers Academy challenge:  
-Description of user stories expected to be implemented:
+## <a name='task'> Task </a>
+
+Week 2 Makers Academy challenge:
+
+Implement a takeaway ordering system with a list of items an ability to send a confirmation message to the user once an item as been selected and ordered
+
+## <a name="stories"> User stories </a>
 
 ```
 As a customer
@@ -37,9 +32,14 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-# Installation
+## <a name="clone"> Clone and run the project </a>
 
-Copy repo to your own machine
+```
+git clone https://github.com/micosmin/takeaway-challenge.git
+cd takeaway-challenge
+bundle
+rspec
+```
 
 Set up a twilio account and create an .env folder to load into the app  
 Use the following keys to set it up.  
@@ -151,8 +151,6 @@ Submit order
 Order succesfully submitted
 ```
 
-NOT IMPLEMENTED: Feature to use any user's phone number when using this app
-
 Twilio message sent to user
 
 ```
@@ -161,7 +159,7 @@ Thank you! Your order of £42 was placed and will be delivered before 21:24
 
 - app takes into account current time and adds 30 minutes for delivery
 
-## Details about app and process:
+## <a name="details"> Details about app and process </a>
 
 To develop this application I have followed a strict TDD approach and the RED-GREEN-REFACTOR process.
 
