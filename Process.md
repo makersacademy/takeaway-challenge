@@ -35,6 +35,8 @@ I would like to check that the total I have been given matches the sum of the va
 
 - check total price(order) is sum of all dishes
 order_total = order.value.inject(:+)
+if customer_price == order_price
+complete_order
 
 Red Feature Test
 
