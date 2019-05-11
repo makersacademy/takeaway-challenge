@@ -1,11 +1,11 @@
 class Menu
 
-  def initialize
-
+  def initialize(dishes)
+    @dishes = dishes
   end
 
   def show
-    'dish - £9.99'
+    @dishes
   end
 
 end
