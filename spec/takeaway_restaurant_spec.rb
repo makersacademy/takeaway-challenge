@@ -1,9 +1,17 @@
 require 'takeaway_restaurant'
 
 describe TakeawayRestaurant do
-  it 'has a menu' do
-    dishes = [double("Burrito"), double("Pizza")]
+  let(:burrito) { double("Burrito") }
+  let(:pizza) { double("Pizza") }
+  let(:takeaway_restaurant) { TakeawayRestaurant.new([burrito, pizza]) }
 
-    expect(TakeawayRestaurant.new(dishes).menu).to eq(dishes)
+  it 'has a menu' do
+    expect(takeaway_restaurant.menu).to eq([burrito, pizza])
+  end
+
+  describe '#order' do
+    it 'accepts the orders and the expected total' do
+      expect(takeaway_restaurant).to respond_to(:order).with(2).arguments
+    end
   end
 end

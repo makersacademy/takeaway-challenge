@@ -4,4 +4,8 @@ class TakeawayRestaurant
   def initialize(dishes)
     @menu = dishes
   end
+
+  def order(dishes_and_portions, expected_total)
+    
+  end
 end
