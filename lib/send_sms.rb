@@ -8,7 +8,7 @@ class Send_sms
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from =  '+447723451767'# Your Twilio number
-    to =  '+447521393921'# Your mobile phone number
+    to =  '+44'# Your mobile phone number
 
     client.messages.create(
     from: from,
