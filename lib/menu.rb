@@ -2,10 +2,10 @@ class Menu
 
   MENU_ITEMS = {
     "Gunpowder green" => 1.80,
-    "Nepalese 'silver needle' white" => 6,
+    "Silver Needle white" => 6,
     "Earl Grey" => 2.75,
-    "Ssuk-cha (korean mugwort)" => 5.20,
-    "Ssanghwa-cha (korean medicinal)" => 4
+    "Ssuk-cha (mugwort)" => 5.20,
+    "Ssanghwa-cha (medicinal)" => 4
   }
 
   attr_reader :menu_items, :formatted_menu
@@ -27,4 +27,12 @@ class Menu
     @formatted_menu += "\n\n"
   end
 
+  def select_tea(input)
+    @menu_items.each do |key, value|
+      if key.include? input
+        puts "the selected tea is: #{key}, costing £#{value}"
+        return {key => value}
+      end
+    end
+  end
 end

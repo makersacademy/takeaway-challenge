@@ -9,12 +9,20 @@ describe Menu do
   it 'format the menu' do
     expect(subject.formatted_menu).to eq("
 - Gunpowder green, £1.8
-- Nepalese 'silver needle' white, £6
+- Silver Needle white, £6
 - Earl Grey, £2.75
-- Ssuk-cha (korean mugwort), £5.2
-- Ssanghwa-cha (korean medicinal), £4
+- Ssuk-cha (mugwort), £5.2
+- Ssanghwa-cha (medicinal), £4
 
 ")
+  end
+
+  it 'selects green tea based on input' do
+    expect(subject.select_tea("green")).to eq("Gunpowder green" => 1.80)
+  end
+
+  it 'selects white tea based on input' do
+    expect(subject.select_tea("white")).to eq("Silver Needle white" => 6)
   end
 
 end
