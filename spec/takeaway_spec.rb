@@ -11,7 +11,6 @@ describe Takeaway do
   end
 
   it "add quantity of selected items to basket" do
-    #3.times basket.choose("dish_one")
     takeaway.add_to_basket("dish_one", 3)
     expect(takeaway.basket.length).to eq(3)
   end
