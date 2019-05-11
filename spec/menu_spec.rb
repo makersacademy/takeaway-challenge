@@ -17,7 +17,7 @@ describe Menu do
     it { is_expected.to respond_to(:select_dish).with(2).arguments }
     it "adds a dish to the basket" do
       subject.select_dish(2, 1)
-      expect(subject.basket).to eq [{"2. Ham and Pineapple" => 9}]
+      expect(subject.basket).to eq [{ "2. Ham and Pineapple" => 9 }]
     end
     it "notifies user the quantity of items that have been added" do
       added_message = "You have added 2 of the #{Menu::MENU_LIST[0]} pizzas to your basket"
@@ -25,7 +25,7 @@ describe Menu do
     end
     it "adds 3 dishes to the basket" do
       subject.select_dish(2, 3)
-      expect(subject.basket).to eq [{"2. Ham and Pineapple" => 9}, {"2. Ham and Pineapple" => 9}, {"2. Ham and Pineapple" => 9}]
+      expect(subject.basket).to eq [{ "2. Ham and Pineapple" => 9 }, { "2. Ham and Pineapple" => 9 }, { "2. Ham and Pineapple" => 9 }]
     end
   end
 end

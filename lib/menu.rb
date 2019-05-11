@@ -23,6 +23,7 @@ class Menu
 
   def select_dish(dish_number, quantity)
     quantity.times { @basket << MENU_LIST[dish_number - 1] }
-    "You have added #{quantity} of the #{MENU_LIST[dish_number - 1] } pizzas to your basket"
+    "You have added #{quantity} of the #{MENU_LIST[dish_number - 1]}
+    pizzas to your basket"
   end
 end
