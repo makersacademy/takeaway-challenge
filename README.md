@@ -80,3 +80,15 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+Approach
+--------
+
+In order to list a menu, I will create a text file that contains items and their price. This will allow business to edit the file and change the menu.
+
+The text file will be read and displayed to the customer with item numbers.
+
+The customer will select their dishes by entering the numbers for the associated dishes they wish to order. A total amount payable will be printed with the price break-down by item.
+
+The customer will pay, and, if the amount payable equals the total amount, the order will be placed and they will receive a text of its expected arrival time.
