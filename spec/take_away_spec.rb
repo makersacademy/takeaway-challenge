@@ -1,10 +1,14 @@
 require 'take_away'
 
-describe Takeaway do
-  it 'responds to #menu' do
-    expect(subject).to respond_to(:menu)
+describe TakeAway do
+  context '#read_menu' do
+
+    it 'exists' do
+      expect(subject).to respond_to(:read_menu)
+    end
+
+    it 'returns an array' do
+      expect(subject.read_menu).to be_instance_of(Array)
+    end
   end
-
-
-
 end
