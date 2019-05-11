@@ -22,9 +22,19 @@ class Website
   def confirm_amount(num)
     @num = num
   end
-end
 
+  def actual_amount
+    @pricelist.inject(:+)
+  end
 
+  def order_processed?
+    @num == actual_amount
+  end
+
+  def confirmation
+    raise 'There was a problem placing your order, please try again.' unless order_processed?
+    "Thank you! Your order was placed and will be delivered before 18:52"
+  end
 
 private
 
@@ -35,3 +45,4 @@ private
       end
     end
   end
+end

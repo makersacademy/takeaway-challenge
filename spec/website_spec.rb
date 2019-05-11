@@ -3,7 +3,8 @@ require 'website'
 describe Website do
 
   let(:menu) { double(:menu, list: { 'Dough balls' => 4, 'Bruschetta' => 6, 'Olives' => 3,
-    'Margherita' => 9, 'Padana' => 13, 'Giardinera' => 11 } ) }
+    'Margherita' => 9, 'Padana' => 13, 'Giardinera' => 11 })
+  }
 
   describe '#show_menu' do
     it 'will show the menu' do
@@ -22,6 +23,14 @@ describe Website do
     it 'will allow me to select the quantity I want' do
       subject.select("Dough balls", 2)
       expect(subject.quantity).to be_an_instance_of(Integer)
+    end
+  end
+
+  describe '#confirmation' do
+    it 'will raise an error if the customer cannot confirm the amount' do
+      subject.select("Dough balls", 2)
+      subject.confirm_amount(10)
+      expect{subject.confirmation}.to raise_error('There was a problem placing your order, please try again.')
     end
   end
 end

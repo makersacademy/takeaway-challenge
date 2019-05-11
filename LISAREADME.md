@@ -10,7 +10,7 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
-Website class created and delegates showing the food items and prices to the menu class.
+Website class created and delegates showing the food items and prices to the Menu class:
 
 
 2.5.0 :001 > require './lib/website.rb'
@@ -27,7 +27,7 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
-Using the select method the user will type the desired item and the quantity.
+Using the select method the user will type the desired item and the quantity:
 
 2.5.0 :004 > pizza.select("Dough balls", 2)
 
@@ -37,7 +37,7 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-Using the confirm_amount method the customer will input the total they expect to be paying.
+Using the confirm_amount method the customer will input the total they expect to be paying:
 
 2.5.0 :005 > pizza.confirm_amount(16)
 
