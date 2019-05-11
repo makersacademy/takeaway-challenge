@@ -34,11 +34,31 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 My Approach to building the challenge: 
+- Listing the potential classes - customer, menu - and their messages
+- Drawing a functional representation of how the classes communicate with each other
+- Installing bundle and setting up the RSpec environment
 
 
+IRB TESTING
+Display menu
 
 
-
+Francescas-MacBook-Pro:takeaway-challenge francescachater$ irb
+2.5.0 :001 > require './lib/menu.rb'
+ => true 
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007fadcb0b2a18 @items={}, @dish=nil, @price=nil> 
+2.5.0 :003 > menu.display
+ => {:dish=>nil, :price=>nil} 
+2.5.0 :004 > exit
+Francescas-MacBook-Pro:takeaway-challenge francescachater$ irb
+2.5.0 :001 > require './lib/menu.rb'
+ => true 
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007fdd66946ba0 @items={}, @dish="carrot cake", @price=2> 
+2.5.0 :003 > menu.display
+ => {:dish=>"carrot cake", :price=>2} 
+2.5.0 :004 > 
 
 
 
