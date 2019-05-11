@@ -4,7 +4,7 @@ class Menu
     @dishes = dishes
   end
 
-  def show
+  def view
     @dishes
   end
 

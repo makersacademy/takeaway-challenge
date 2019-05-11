@@ -11,15 +11,19 @@ Object | Message
 -|-
 Menu | View
 
-IRB test
+IRB test input:
 ```
-menu = Menu.new
+menu = Menu.new({ burrito: '£6.80' })
 menu.view
 ```
 
-`NameError (uninitialized constant Menu)`
-`NoMethodError (undefined method 'view' for nil:NilClass)`
-
+output:
+```
+2.5.0 :002 > menu = Menu.new({ burrito: '£6.80' })
+ => #<Menu:0x00007ff48d0b2e10 @dishes={:burrito=>"£6.80"}>
+2.5.0 :003 > menu.view
+ => {:burrito=>"£6.80"}
+ ```
 ---
 ```
 As a customer
@@ -27,6 +31,20 @@ So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
 
+Object | Message
+-|-
+Order | add
+Dishes | select
+
+IRB test input:
+```
+menu = Menu.new({ burrito: '£6.80' })
+menu.view
+order = Order.new
+order.add(burrito)
+```
+
+---
 ```
 As a customer
 So that I can verify that my order is correct
