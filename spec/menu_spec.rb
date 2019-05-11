@@ -1,10 +1,7 @@
 require 'menu'
+require 'takeaway'
 
 describe Menu do
   subject(:menu) { described_class.new }
-
-  it "can list items with prices" do
-    expect(menu.display).to eq(menu.items)
-  end
-
+  let(:takeaway) { double :takeaway }
 end
