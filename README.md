@@ -47,7 +47,7 @@ The LFC Pizza, £15
  => [{"Margarita"=>8}, {"Ham and Pineapple"=>9}, {"The Mo Salah"=>12}, {"Meatilicious"=>11}, {"Veggie McVegface"=>7}, {"The LFC Pizza"=>15}]
  ```
 
- Above demonstrates how when the print_menu method is called on a new instance of our menu, it shows a list of pizzas and their prices. The tests ensure that any new instance of our Menu class initializes with an empty basket
+ Above demonstrates how when the print_menu method is called on a new instance of menu, it shows a list of pizzas and their prices. The tests ensure that any new instance of our Menu class initializes with an empty basket.
 
  ---
 
@@ -61,7 +61,28 @@ Object | Message
 - | -
 user | select_dish
 
-
+```
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007fc0ba1d8080 @basket=[]>
+2.5.0 :003 > menu.print_menu
+Here is our list of pizzas:
+1. Margarita, £8
+2. Ham and Pineapple, £9
+3. The Mo Salah, £12
+4. Meatilicious, £11
+5. Veggie McVegface, £7
+6. The LFC Pizza, £15
+ => [{"1. Margarita"=>8}, {"2. Ham and Pineapple"=>9}, {"3. The Mo Salah"=>12}, {"4. Meatilicious"=>11}, {"5. Veggie McVegface"=>7}, {"6. The LFC Pizza"=>15}]
+2.5.0 :004 > menu.select_dish(2, 2)
+ => "You have added 2 of the {\"2. Ham and Pineapple\"=>9} pizzas to your basket"
+2.5.0 :005 > menu.select_dish(4, 1)
+ => "You have added 1 of the {\"4. Meatilicious\"=>11} pizzas to your basket"
+ 2.5.0 :006 > menu.basket
+  => [{"2. Ham and Pineapple"=>9}, {"2. Ham and Pineapple"=>9}, {"4. Meatilicious"=>11}]
+```
+Above demonstrates that after the menu has been printed, the user is able to use the select_dish method to select the number of the dish they want, and how many of the dish they want. They are then notified that their order has been added to the basket. The user can see what is in their basket by calling basket on their menu object.
 
 
 
