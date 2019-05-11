@@ -61,5 +61,17 @@ Francescas-MacBook-Pro:takeaway-challenge francescachater$ irb
 2.5.0 :004 > 
 
 
+REFACTOR
+
+Francescas-MacBook-Pro:takeaway-challenge francescachater$ irb
+2.5.0 :001 > require './lib/takeaway.rb'
+ => true 
+2.5.0 :002 > takeaway = Takeaway.new
+ => #<Takeaway:0x00007fabe50d6680 @menu=#<Menu:0x00007fabe50d6630 @items=[{"dish_one"=>2}, {"dish_two"=>4}, {"dish_three"=>12}, {"dish_four"=>15}]>> 
+2.5.0 :003 > menu = Menu.new
+ => #<Menu:0x00007fabe50b5ac0 @items=[{"dish_one"=>2}, {"dish_two"=>4}, {"dish_three"=>12}, {"dish_four"=>15}]> 
+2.5.0 :005 > takeaway.display(menu)
+ => [{"dish_one"=>2}, {"dish_two"=>4}, {"dish_three"=>12}, {"dish_four"=>15}] 
+2.5.0 :006 > 
 
 

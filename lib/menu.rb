@@ -5,7 +5,7 @@ class Menu
   attr_reader :items
 
   def initialize
-   @items = [
+    @items = [
       { "dish_one" => 2 },
       { "dish_two" => 4 },
       { "dish_three" => 12 },
@@ -13,12 +13,7 @@ class Menu
     ]
   end
 
-  # def display
-  #   @items
-  # end
-
 end
-
 
   # attr_reader :items, :dish, :price
   #
@@ -27,9 +22,6 @@ end
   #   @dish = dish
   #   @price = price
   # end
-
-
-
 
   #
   # def items
