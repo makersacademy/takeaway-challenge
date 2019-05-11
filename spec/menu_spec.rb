@@ -1,8 +1,6 @@
 require 'menu'
 
 describe Menu do
-
-
   describe '#initialize' do
     it "initializes with an empty basket" do
       expect(subject.basket).to be_empty

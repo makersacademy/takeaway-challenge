@@ -50,7 +50,7 @@ The LFC Pizza, £15
  Above demonstrates how when the print_menu method is called on a new instance of menu, it shows a list of pizzas and their prices. The tests ensure that any new instance of our Menu class initializes with an empty basket.
 
  ---
-
+## Second User Story
 ```
 As a customer
 So that I can order the meal I want
@@ -83,6 +83,18 @@ Here is our list of pizzas:
   => [{"2. Ham and Pineapple"=>9}, {"2. Ham and Pineapple"=>9}, {"4. Meatilicious"=>11}]
 ```
 Above demonstrates that after the menu has been printed, the user is able to use the select_dish method to select the number of the dish they want, and how many of the dish they want. They are then notified that their order has been added to the basket. The user can see what is in their basket by calling basket on their menu object.
+
+---
+## Third User Story
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+
+Object | Message
+- | -
+customer | check_total
 
 
 
