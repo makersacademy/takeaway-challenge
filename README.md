@@ -29,8 +29,38 @@ I would like to see a list of dishes with prices
 
 Object | Message
 - | -
-user | order
-user | menu
+user | print_menu
+
+```
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007f9d2f1884a8 @basket=[]>
+2.5.0 :003 > menu.print_menu
+Here is our list of pizzas:
+Margarita, £8
+Ham and Pineapple, £9
+The Mo Salah, £12
+Meatilicious, £11
+Veggie McVegface, £7
+The LFC Pizza, £15
+ => [{"Margarita"=>8}, {"Ham and Pineapple"=>9}, {"The Mo Salah"=>12}, {"Meatilicious"=>11}, {"Veggie McVegface"=>7}, {"The LFC Pizza"=>15}]
+ ```
+
+ Above demonstrates how when the print_menu method is called on a new instance of our menu, it shows a list of pizzas and their prices. The tests ensure that any new instance of our Menu class initializes with an empty basket
+
+ ---
+
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+
+Object | Message
+- | -
+user | select_dish
+
 
 
 
