@@ -5,6 +5,7 @@ describe Website do
   let(:menu) { double(:menu, list: { 'Dough balls' => 4, 'Bruschetta' => 6, 'Olives' => 3,
     'Margherita' => 9, 'Padana' => 13, 'Giardinera' => 11 })
   }
+  let(:send_sms) { double(:send_sms, new: "Thank you! Your order was placed and will be delivered before 18:52")}
 
   describe '#show_menu' do
     it 'will show the menu' do
@@ -21,8 +22,8 @@ describe Website do
     end
 
     it 'will allow me to select the quantity I want' do
-      subject.select("Dough balls", 2)
-      expect(subject.quantity).to be_an_instance_of(Integer)
+      subject.select('Dough balls', 2)
+      expect(subject.quantity).to eq(2)
     end
   end
 
@@ -32,22 +33,11 @@ describe Website do
       subject.confirm_amount(10)
       expect{subject.confirmation}.to raise_error('There was a problem placing your order, please try again.')
     end
+
+    it 'will send an sms if the order is correct' do
+      subject.select("Dough balls", 2)
+      subject.confirm_amount(8)
+      expect(subject.confirmation).to eq(send_sms.new)
+    end
   end
 end
-
-#   describe '#input_total' do
-#     it 'will allow me to put the exact total of my order' do
-#       subject.select("Dough balls", 2)
-#       menu.list.each do |k, v|
-#         if k == subject.item
-#            @val = v
-#         end
-#       end
-#       expect(subject.exact_total).to eq(@val * subject.quantity)
-#     end
-#   end
-# end
-
-#   describe '#show' do
-#     it 'will '
-# end

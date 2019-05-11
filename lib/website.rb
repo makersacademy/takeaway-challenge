@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'send_sms'
 
 class Website
 
@@ -17,23 +18,16 @@ class Website
     @item = item.to_s
     @quantity = quantity.to_i
     add_totals
+    "#{quantity} #{item}(s) added"
   end
 
   def confirm_amount(num)
     @num = num
   end
 
-  def actual_amount
-    @pricelist.inject(:+)
-  end
-
-  def order_processed?
-    @num == actual_amount
-  end
-
   def confirmation
     raise 'There was a problem placing your order, please try again.' unless order_processed?
-    "Thank you! Your order was placed and will be delivered before 18:52"
+    Send_sms.new
   end
 
 private
@@ -44,5 +38,13 @@ private
         @pricelist << (v * @quantity)
       end
     end
+  end
+
+  def actual_amount
+    @pricelist.inject(:+)
+  end
+
+  def order_processed?
+    @num == actual_amount
   end
 end
