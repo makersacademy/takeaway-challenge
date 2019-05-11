@@ -5,8 +5,8 @@ class TakeAway
     @menu = []
   end
 
-  def read_menu(file = import_file)
-    file
+  def read_menu
+    import_file
     menu.each do |item|
       puts "#{item[:index]}. #{item[:item]}: #{item[:amount]}"
     end
