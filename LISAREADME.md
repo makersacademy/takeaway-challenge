@@ -27,6 +27,22 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
-Using the select method the user will type the desired item and the quantity:
+Using the select method the user will type the desired item and the quantity.
 
 2.5.0 :004 > pizza.select("Dough balls", 2)
+
+3rd user story
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+Using the confirm_amount method the customer will input the total they expect to be paying.
+
+2.5.0 :005 > pizza.confirm_amount(16)
+
+4th user story
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered

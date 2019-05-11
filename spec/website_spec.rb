@@ -15,13 +15,30 @@ describe Website do
 
   describe '#select' do
     it 'will allow me to select the dish I want' do
-      subject.select("Dough balls", 1)
+      subject.select("Dough balls", 2)
       expect(menu.list).to include(subject.item)
     end
 
     it 'will allow me to select the quantity I want' do
-      subject.select("Dough balls", 1)
+      subject.select("Dough balls", 2)
       expect(subject.quantity).to be_an_instance_of(Integer)
     end
   end
 end
+
+#   describe '#input_total' do
+#     it 'will allow me to put the exact total of my order' do
+#       subject.select("Dough balls", 2)
+#       menu.list.each do |k, v|
+#         if k == subject.item
+#            @val = v
+#         end
+#       end
+#       expect(subject.exact_total).to eq(@val * subject.quantity)
+#     end
+#   end
+# end
+
+#   describe '#show' do
+#     it 'will '
+# end
