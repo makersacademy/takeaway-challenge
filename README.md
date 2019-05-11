@@ -13,6 +13,31 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+---
+# My Approach
+For this challenge I have looked at each user story, and mapped out how I will approach this along with what classes and methods will be needed to implement that functionality. Then I will use a feature test to explore how this feature will work using the program, then begin to write unit tests based on the functionality I need. Then I will implement the code needed to make these tests pass.
+
+I have mapped this out in a table below each user story. I will then demonstrate in irb how this functionality works correctly.
+
+---
+## First User Story
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
+
+Object | Message
+- | -
+user | order
+user | menu
+
+
+
+
+
+
+
 
 Instructions
 -------
