@@ -12,6 +12,11 @@ class TakeAway
     end
   end
 
+  def order(item_number)
+    dish = menu[item_number - 1]
+    "You have added #{dish[:item]} to your basket."
+  end
+
   private
 
   def import_file
