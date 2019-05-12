@@ -64,8 +64,22 @@ describe TakeawayService do
     end
   end
 
-  # describe '#delete from basket' do
-  #
-  #   xit 'deletes'
-  # end
+  describe '#order_summary' do
+
+    it 'prints a summary of the order' do
+      takeaway_service.add_to_basket("Chicken", 2)
+      takeaway_service.add_to_basket("Soup", 2)
+      order_summary = "Chicken x2 = £17.0, Soup x2 = £7.0"
+      expect { takeaway_service.order_summary }.to output(order_summary).to_stdout
+    end
+  end
+
+  describe '#order_total' do
+
+    it 'prints the toal cost' do
+      takeaway_service.add_to_basket("Chicken", 2)
+      takeaway_service.add_to_basket("Soup", 4)
+      expect { takeaway_service.total_cost }.to output("£31.0").to_stdout
+    end
+  end
 end

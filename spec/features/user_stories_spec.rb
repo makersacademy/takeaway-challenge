@@ -24,8 +24,22 @@ describe 'user stories' do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+  it "so customers can verify their order, instruct the takeaway service to show an order summary" do
+    tas = TakeawayService.new
+    tas.add_to_basket("Chicken", 2)
+    tas.add_to_basket("Soup", 4)
+    expect { tas.order_summary }.to_not raise_error
+  end
+
+  it "so customers can verify their order cost, instruct the takeaway service to show the total cost" do
+    tas = TakeawayService.new
+    tas.add_to_basket("Chicken", 2)
+    tas.add_to_basket("Soup", 4)
+    expect { tas.total_cost }.to_not raise_error
+  end
+
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
+  
 end
