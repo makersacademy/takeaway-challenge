@@ -2,17 +2,94 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
-- create a hash with a list of dishes, quantities available and prices (menu)
-<!-- [ {Dish = pizza, price = 10} ] -->
+- create a hash with a list of dishes and prices (menu)
 {"dish" => 2, "dish" => 4}
 
 Red Feature Test
 
+1)
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+Traceback (most recent call last):
+        2: from /Users/lucybarber/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        1: from (irb):2
+NameError (uninitialized constant Menu)
+
+2)
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007fa4bb1b8f70>
+2.5.0 :003 > menu.italian
+Traceback (most recent call last):
+        2: from /Users/lucybarber/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        1: from (irb):3
+NoMethodError (undefined method `italian' for #<Menu:0x00007fa4bb1b8f70>)
+
 Green Feature Test
+
+1)
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007fa4bb1b8f70>
+
+2)
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007fe139924538>
+2.5.0 :003 > menu.italian
+ => {"Pizza"=>10} 
 
 Red Unit Test
 
+1)
+Failure/Error:
+  describe Menu do
+
+  it "allows me to see a new menu" do
+    expect(subject.new).to eq subject
+  end
+
+  end
+
+NameError:
+  uninitialized constant Menu
+
+  2)
+  Failures:
+
+    1) Menu allows me to list the items and prices on a menu
+       Failure/Error: expect(subject.italian).to eq "Pizza" => 10
+
+       NoMethodError:
+         undefined method `italian' for #<Menu:0x00007fc3aed3a468>
+       # ./spec/menu_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  Finished in 0.00227 seconds (files took 0.44612 seconds to load)
+  2 examples, 1 failure
+
 Green Unit Test
+
+1)
+Finished in 0.00324 seconds (files took 0.4456 seconds to load)
+1 example, 0 failures
+
+2)
+Menu
+  allows me to see a new menu
+  allows me to list the items and prices on a menu
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.00256 seconds (files took 0.42831 seconds to load)
+2 examples, 0 failures
+
+
+
 
 As a customer
 So that I can order the meal I want
@@ -55,7 +132,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 time = Time.now
 delivery_time = time + 1*00*00
 fail "error" if customer_price != order_total
-"Thank you! Your order was placed and will be delivered before #{delivery_time}"
+send_sms
 
 
 Red Feature Test
