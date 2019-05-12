@@ -2,11 +2,13 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :list
+  attr_reader :list, :total, :formatted_order
 
   def initialize
     @list = []
     @menu = Menu.new
+    @total = 0
+    @formatted_order = ""
   end
 
   def choose_from_menu
@@ -39,5 +41,40 @@ class Order
     else
       selection
     end
+  end
+
+  def checkout
+    @total = calculate_total
+    @formatted_order = format_order(total)
+    check_order
+  end
+
+  def calculate_total
+    t = 0
+    list.each do |i|
+      i.each do |key, value|
+        t += value
+      end
+    end
+    t
+  end
+
+  def format_order(total)
+    chosen_items = ""
+    list.each do |i|
+      i.each do |key, value|
+        chosen_items += "\n- #{key}, £#{value}"
+      end
+    end
+    chosen_items += "\n\n- Total:           £#{@total}\n\n"
+    chosen_items
+  end
+
+  def check_order
+    puts "Is this correct?"
+    puts "Enter yes to place order or no to cancel."
+    puts @formatted_order
+    input = gets.chomp
+    raise "order not correct, cancelling" if input == "no"
   end
 end
