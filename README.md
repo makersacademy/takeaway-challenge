@@ -1,9 +1,8 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            | EDINA |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -13,23 +12,16 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+## Description
 
-Instructions
--------
+This is the result of the second weekend challenge for submission to Makers Academy. The program represents a takeaway restaurant with the following functionalities:
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* The restaurant exposes its menu
+* Clients can order a number of several available dishes
+* Clients can check whether the total is correct
+* Clients receive confirmation message on successful order
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+## User Stories
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,35 +40,98 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Getting Started
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+1. Clone this repo to your local machine using `git@github.com:EdinaBMakers/takeaway-challenge.git`
+2. Run `gem install bundle` (if it is not installed already)
+3. Run `bundle`
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+## Objects
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+#### TakeawayRestaurant
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+This class represents a takeaway restaurant. It exposes its menu with available `Dish`es and can take orders. It also notifies the client if order is successful.
 
+#### Dish
 
-In code review we'll be hoping to see:
+This class represents an item on the menu with name and price.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+#### MessageService
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+This class is responsible for sending text messages to the client. It uses the `Twilio API` to achieve this goal.
 
-Notes on Test Coverage
-------------------
+#### MessageServiceConfig
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+This class is a container for the pieces of configuration data required when connecting to the `Twilio API`.
+
+## Usage
+
+Run `irb` in the terminal and execute the following statements:
+
+```
+require './lib/takeaway_restaurant.rb'
+
+# Create dishes and the menu
+burrito = Dish.new("Burrito", 7.50)
+pizza = Dish.new("Pizza", 9.50)
+menu = [burrito, pizza]
+
+# Create a MessageServiceConfig instance with the following arguments:
+# <Account SID>: Your Account SID from Twilio
+# <Auth Token>: Your Authorization Token from Twilio
+# <From>: Your Twilio phone number
+# <To>: Recipient phone number
+config = MessageServiceConfig.new('<Account SID>', '<Auth Token>', '<From>', '<To>')
+
+# Create a MessageService instance with the config
+message_service = MessageService.new(config)
+
+# Create a TakeawayRestaurant instance with the menu and message service
+takeaway_restaurant = TakeawayRestaurant.new(menu, message_service)
+
+orders = [{ :dish => burrito, :portion => 2 }, { :dish => pizza, :portion => 1 }]
+expected_total = burrito.price * 2 + pizza.price
+
+# Place orders
+takeaway_restaurant.order(orders, expected_total)
+```
+
+The code snippet above places a valid order and providing the message service is configured to use valid `Twilio` credentials and phone numbers, recipient should receive a confirmation text message with the expected delivery time.
+
+`Note: ` You need to sign up on [Twilio](https://www.twilio.com/try-twilio) to get your connection details.  
+
+## Dependencies
+
+This program uses the following gems:
+
+```
+source 'https://rubygems.org'
+
+ruby '2.5.0'
+
+gem 'capybara'
+gem 'rake'
+gem 'rspec'
+gem 'rubocop', '0.56.0'
+gem 'simplecov', require: false, group: :test
+gem 'simplecov-console', require: false, group: :test
+gem 'twilio-ruby', '~> 5.22', '>= 5.22.3'
+```
+
+## Testing
+
+#### Running Tests
+
+Tests can be run from the root directory using the `rspec` command.
+
+#### Doubles and Stubs
+
+To reduce complexity, ensure deterministic test results and prevent unwanted messages from `Twilio` during test runs, I used doubles and stubs. For the actual implementation please open the spec files in the `spec` folder.
+
+#### Test Results and Coverage
+
+All tests pass and `simplecov` reported a test coverage of `100%`.
+
+## Code Style
+
+I used [Rubocop](https://rubocop.readthedocs.io/en/latest/) before each commit to ensure that Ruby coding standards are followed.
