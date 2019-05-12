@@ -17,7 +17,9 @@ class Texting
     @auth_token = AUTH_TOKEN
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
     @from = T_NUMBER
-    @to = NUMBER 
+    @to = NUMBER
+
+  end
 
   def delivery_time
     "#{Time.new.hour + 1}.#{Time.new.min}"
@@ -27,7 +29,7 @@ class Texting
     @client.messages.create(
     from: @from,
     to: @to,
-    body: "Your tea should arrive before #{@delivery_time} (^ v ^)"
+    body: "Your tea should arrive before #{@delivery_time} (^ - ^)"
     )
   end
 

@@ -1,19 +1,27 @@
 # Takeaway Challenge
 
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
+                       .
+                        `:.
+                          `:.
+                  .:'     ,::
+                 .:'      ;:'
+                 ::      ;:'
+                  :    .:'
+                   `.  :.
+          _________________________
+         : _ _ _ _ _ _ _ _ _ _ _ _ :
+     ,---:".".".".".".".".".".".".":
+    : ,'"`::.:.:.:.:.:.:.:.:.:.:.::'
+    `.`.  `:-===-===-===-===-===-:'
+      `.`-._:                   :
+        `-.__`.               ,'
+    ,--------`"`-------------'--------.
+     `"--.__                   __.--"'
+            `""-------------""'
 
+```
 I've chosen to theme my takeaway on tea.
 
 The menu lists the choices:
@@ -27,10 +35,57 @@ The menu lists the choices:
 
 ## How to use:
 
+Require the main file and open IRB:
 ```
-* irb instructions
+$ irb -r ./lib/order
 ```
+Create a new order and look at the menu:
+```
+2.5.0 :001 > order = Order.new
+2.5.0 :002 > order.choose_from_menu
 
+Would you like to order something?
+Enter the tea or finish
+
+- Gunpowder green, £1.8
+- Silver Needle white, £6
+- Earl Grey, £2.75
+- Ssuk-cha (mugwort), £5.2
+- Ssanghwa-cha (medicinal), £4
+```
+Input the kind of tea you would like:
+```
+white
+the selected tea is: Silver Needle white, costing £6
+how many would you like?
+```
+and how many:
+```
+2
+ => 2
+ ```
+Look at the menu again if you want to add more.
+When you are ready, go to the checkout:
+ ```
+2.5.0 :003 > order.checkout
+
+- Silver Needle white, £6
+- Silver Needle white, £6
+
+- Total:           £12
+
+Is this correct?
+Enter yes to place order or no to cancel.
+```
+You can actually enter anything except 'yes' and it will cancel here. It will cancel no matter what you type if your order is empty.
+```
+yes
+ => "A text has been sent with your delivery time!"
+```
+Your order has been placed and you receive a text like this:
+```
+"Your tea should arrive before 20.15 (^ - ^)"
+```
 ---
 
 ### User stories:
@@ -200,3 +255,9 @@ yes
 ---
 
 ## Things I would change
+
+The Order class got too big so I would refactor it, extracting some methods that could maybe be used by the Menu class too. It also has a patch method because it was giving a strange result and couldn't figure out how to stop it and had to manually change it after.
+
+Format the time to use am and pm.
+
+Represent the order with multiples ie. '- Gunpowder green, £1.80 x 3'
