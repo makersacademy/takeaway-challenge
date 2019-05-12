@@ -115,8 +115,48 @@ The above demonstrates that once a dish has been selected and the customer has m
 
 ---
 ## Fourth User Story
+```
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+Object | Message
+- | -
+user | receive_text
 
+```
+2.5.0 :001 > require './lib/text'
+ => true
+2.5.0 :002 > text = Text.new
+ => #<Text:0x00007ff4e1bfdcd0 @time=2019-05-12 17:44:05 +0100, @eta="18:44">
+2.5.0 :003 > text.client_info
+ => # Has been deleted for security
+2.5.0 :004 > text.send_text
+ => <Twilio.Api.V2010.MessageInstance account_sid: api_version: 2010-04-01 body: Sent from your Twilio trial account - Thanks for your order from Sam's pizza! Your food will be delivered before 18:44. date_created: 2019-05-12 16:44:14 +0000 date_updated: 2019-05-12 16:44:14 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +447723429606
+```
 
+Above demonstrates how when the send text method is called, the user will be notified that his order will arrive 1 hour from now.
+
+However, I have had trouble using delegation to require my text class into the order class, and have been receiving the following error when running rspec:
+
+```
+An error occurred while loading ./spec/text_spec.rb.
+Failure/Error: require 'twilio-ruby'
+
+LoadError:
+  cannot load such file -- twilio-ruby
+# ./spec/text_spec.rb:1:in `require'
+# ./spec/text_spec.rb:1:in `<top (required)>'
+No examples found.
+```
+
+Ideally I would have liked for the send text method to have been called from within the order class, but I have struggled with getting this to work!
+
+I have also struggled with testing my text.rb file due to the problems rspec is having with the twilio gem.
+
+After googling it, I can't seem to find many solutions and would welcome any advice on this from anyone reading!
+
+---
 
 
 
