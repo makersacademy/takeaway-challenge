@@ -1,3 +1,7 @@
 class Takeaway
 
-end 
+def print_menu
+  
+end
+
+end
