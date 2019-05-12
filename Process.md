@@ -16,7 +16,7 @@ I would like to see a list of dishes with prices
 ```
 
 Objects     |    Messages<br/>
-            |<br/>
+            |            <br/>
 takeaway    |    view_menu<br/>
 menu        |    prices
 
@@ -281,34 +281,171 @@ So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
 
-Failed Feature Test
+*For the user story 2 I will create a new class 'Order' that will be able to manage the orders requested by the customer<br/>. Orders can be requested from the Takeaway class*<br/>
+
+Objects     |    Messages<br/>
+            |            <br/>
+Order       |    add_to_order<br/>
+            |    basket<br/>
 
 
 
+Failed Feature Test<br/>
+
+A) 2.5.0 :001 > require './order'<br/>
+ => true<br/>
+2.5.0 :002 > order = Order.new<br/>
+Traceback (most recent call last):<br/>
+        2: from /Users/yems/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'<br/>
+        1: from (irb):2<br/>
+NameError (uninitialized constant Order)<br/>
+
+B) i) 2.5.0 :001 > require './order'<br/>
+ => true<br/>
+2.5.0 :002 > order = Order.new<br/>
+ => #<Order:0x00007ffbda998fa8><br/>
+2.5.0 :003 > order.add_to_order("spaghetti bolognese", 5)
+Traceback (most recent call last):<br/>
+        2: from /Users/yems/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'<br/>
+        1: from (irb):3<br/>
+NoMethodError (undefined method `add_to_order' for<br/> #<Order:0x00007ffbda998fa8>)<br/>
+
+*Add a brief description of what has been added to the order*<br/>
+
+ii) 2.5.0 :001 > require './order'v
+ => true<br/>
+2.5.0 :002 > order = Order.new<br/>
+ => #<Order:0x00007ffb7d063558 @order=0, @basket=0><br/>
+2.5.0 :003 > order.add_to_order("spaghetti bolognese", 5)
+ => nil<br/>
+
+For the final step I would like the method add_to_order to be accessible by the Takeaway class<br/>
+
+C) 2.5.0 :001 > require './takeaway'<br/>
+ => true<br/>
+2.5.0 :002 > takeaway = Takeaway.new<br/>
+ => #<Takeaway:0x00007fdecd0f87b0<br/> @menu=#<Menu:0x00007fdecd0f8788 @menu={"spaghetti bolognese"=>4.55, "ham and cheese panca
+ke"=>3.75, "double-cheeseburger"=>4.25, "curly fries"=>1.75}>, @order=#<Order:0x00007fdecd0f8620<br/> @order=0, @quantity=0>><br/>
+2.5.0 :003 > takeaway.select_order<br/>
+Traceback (most recent call last):<br/>
+        2: from /Users/yems/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'<br/>
+        1: from (irb):3<br/>
+NoMethodError (undefined method `select_order' for #<Takeaway:0x00007fdecd0f87b0>)<br/>
 
 
+Green Feature Test<br/>
 
 
-Green Feature Test
+A) 2.5.0 :001 > require './order'<br/>
+ => true
+2.5.0 :002 > order = Order.new<br/>
+ => #<Order:0x00007f93608b51c8><br/>
 
+B) i) 2.5.0 :001 > require './order'<br/>
+ => true<br/>
+2.5.0 :002 > order = Order.new<br/>
+ => #<Order:0x00007ffb7d063558 @order=0, @basket=0><br/>
+2.5.0 :003 > order.add_to_order("spaghetti bolognese", 5)
+ => nil<br/>
 
+ ii) 2.5.0 :001 > require './order'<br/>
+ => true<br/>
+2.5.0 :002 > order = Order.new<br/>
+ => #<Order:0x00007feaa6883bf8 @order=0, @basket=0><br/>
+2.5.0 :003 > order.add_to_order("spaghetti bolognese", 5)<br/>
+ => "You added 5x spaghetti bolognese(s) to the basket"<br/>
 
-
-
+ C) 2.5.0 :001 > require './takeaway'<br/>
+ => true
+2.5.0 :002 > takeaway = Takeaway.new<br/>
+ => #<Takeaway:0x00007f8b3f0a4110<br/> @menu=#<Menu:0x00007f8b3f0a40e8 @menu={"spaghetti<br/> bolognese"=>4.55, "ham and cheese panca
+ke"=>3.75, "double-cheeseburger"=>4.25, "curly<br/> fries"=>1.75}>, @order=#<Order:0x00007f8b3f0a40c0<br/> @order=0, @quantity=0>><br/>
+2.5.0 :003 > takeaway.select_order("ham and cheese<br/> pancake", 6)<br/>
+ => "You added 6x ham and cheese pancake(s) to the basket"
+<br/>
 
 
 RED Unit Test
+<br/>
+A) Failure/Error:<br/>
+  describe Order do
+<br/>
+  end
+<br/>
+NameError:
+  uninitialized constant Order<br/>
 
 
+B) Order should respond to #add_to_order with 2 arguments<br/>
+     Failure/Error: it { is_expected.to respond_to(:add_to_order).with(2).arguments }
+       expected #<Order:0x00007ffe7705bc70> to respond to :add_to_order with 2 arguments
+     # ./spec/order_spec.rb:5:in `block (2 levels) in <top (required)>'
+
+Finished in 0.03686 seconds (files took 0.4813 seconds to load)<br/>
+3 examples, 1 failure<br/>
+
+C) 1) Takeaway#select_order delegates to add_to_order<br/> method<br/>
+     Failure/Error: expect(takeaway.select_order).to eq("You added #{@quantity}x #{@order}(s) to the basket")<br/>
+
+     NoMethodError:<br/>
+       undefined method `select_order' for #<Takeaway:0x00007fb1bcc82d08><br/>
+     # ./spec/takeaway_spec.rb:26:in `block (3 levels) in <top (required)>'<br/>
+
+Finished in 0.01809 seconds (files took 0.81403 seconds to load)<br/>
+4 examples, 1 failure<br/>
 
 
+GREEN Unit Test<br/>
+
+A) Finished in 0.02977 seconds (files took 0.48852 seconds to load)<br/>
+2 examples, 0 failures<br/>
+
+B) i) Order<br/>
+  should respond to #add_to_order with 2 arguments
+
+Takeaway<br/>
+  #view_menu
+    delegates to prices method<br/>
+
+Have you considered running rubocop? It will help you<br/> improve your code!<br/>
+Try it now! Just run: rubocop<br/>
+
+Finished in 0.01941 seconds (files took 0.80009 seconds to load)<br/>
+3 examples, 0 failures<br/>
+
+ii) Order<br/>
+  #add_to_order
+    adds selection to basket<br/>
+
+Takeaway<br/>
+  #view_menu
+    delegates to prices methodv
+
+Have you considered running rubocop? It will help you improve your code!<br/>
+Try it now! Just run: rubocop<br/>
+
+Finished in 0.01253 seconds (files took 0.51308 seconds to load)<br/>
+3 examples, 0 failures<br/>
+<br/>
+C) Takeaway<br/>
+  #view_menu<br/><br/>
+    delegates to prices method<br/>
+  #select_order
+    delegates to add_to_order method<br/>
+
+Have you considered running rubocop? It will help you improve your code!<br/>
+Try it now! Just run: rubocop<br/>
+
+Finished in 0.01374 seconds (files took 0.46238 seconds to load)<br/>
+4 examples, 0 failures<br/>
+
+rubocop (before commit)<br/>
 
 
-
-GREEN Unit Test
-
-
-
+Inspecting 9 files<br/>
+.........
+<br/>
+9 files inspected, no offenses detected<br/><br/>
 
 **THREE**
 
