@@ -1,11 +1,17 @@
 class Menu
+  attr_reader :menu
 
-  def initalize
-    @menu = {}
+  MENU_ITEMS = { "Pizza" => 10,
+    "Pasta" => 12,
+    "Spaghetti" => 8 }
+
+  def initialize
+    @menu_items = MENU_ITEMS
   end
 
-  def italian
-    @menu = { "Pizza" => 10, "Pasta" => 12, "Spaghetti" => 8, }
+  def print_menu
+    @menu_items.each { |dish, price| puts "#{dish}: £#{price}" }
+
   end
 
 end
