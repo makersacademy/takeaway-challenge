@@ -10,7 +10,7 @@ class TakeawayRestaurant
   end
 
   def order(dishes_and_portions, expected_total)
-    total = count_total(dishes_and_portions)
+    total = calculate_total(dishes_and_portions)
     raise "Total is not correct" if total != expected_total
 
     time_now = Time.now
@@ -22,7 +22,7 @@ class TakeawayRestaurant
 
   private
 
-  def count_total(dishes_and_portions)
+  def calculate_total(dishes_and_portions)
     dishes_and_portions.map do |dish_and_portion|
       dish_and_portion[:dish].price * dish_and_portion[:portion]
     end.sum
