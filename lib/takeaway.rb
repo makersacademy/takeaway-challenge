@@ -1,7 +1,7 @@
 class Takeaway
 
-def print_menu
-  
-end
+  def print_menu
+
+  end
 
 end

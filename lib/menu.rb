@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :dishes, :menu_list
+  attr_reader :menu_list
 
   DISH_LIST = {
     "pizza" => 5,
