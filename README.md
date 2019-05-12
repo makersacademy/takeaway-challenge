@@ -118,3 +118,58 @@ To see the menu and order a dish:
 
 `guest.basket_summary`
 `guest.total`
+
+An example of how the app functions:
+
+```
+2.5.0 :001 > require './lib/take_away.rb'
+ => true
+
+2.5.0 :002 > guest = TakeAway.new
+ => #<TakeAway:0x00007fd92a086528 @menu=[{:index=>1, :item=>"Miso Soup", :amount=>"2.00"}, {:index=>2, :item=>"Salty Edamam
+e", :amount=>"2.95"}, {:index=>3, :item=>"Spicy Edamame", :amount=>"2.95"}, {:index=>4, :item=>"Seaweed Salad", :amount=>"5
+.25"}, {:index=>5, :item=>"Wilted Spinach", :amount=>"5.50"}, {:index=>6, :item=>"Vegetarian Spring Rolls", :amount=>"4.25"
+}, {:index=>7, :item=>"Salmon Spring Rolls", :amount=>"4.50"}, {:index=>8, :item=>"Panko crusted prawns", :amount=>"6.50"},
+ {:index=>9, :item=>"Miso Dengaku", :amount=>"6.50"}, {:index=>10, :item=>"Agadashi tofu", :amount=>"4.00"}, {:index=>11, :
+item=>"Nippon 'mock duck'", :amount=>"5.95"}, {:index=>12, :item=>"Kale and Quinoa Salad", :amount=>"6.00"}, {:index=>13, :
+item=>"Japanese Buffalo Wings", :amount=>"4.95"}, {:index=>14, :item=>"Sesame Brocoli", :amount=>"2.50"}, {:index=>15, :ite
+m=>"Extra Soy Sauce", :amount=>"0.50"}, {:index=>16, :item=>"Extra Ginger", :amount=>"0.50"}, {:index=>17, :item=>"Extra Wa
+sabi", :amount=>"0.50"}], @basket=[], @total=0>
+2.5.0 :003 > guest.read_menu
+1. Miso Soup: £2.00
+2. Salty Edamame: £2.95
+3. Spicy Edamame: £2.95
+4. Seaweed Salad: £5.25
+5. Wilted Spinach: £5.50
+6. Vegetarian Spring Rolls: £4.25
+7. Salmon Spring Rolls: £4.50
+8. Panko crusted prawns: £6.50
+9. Miso Dengaku: £6.50
+10. Agadashi tofu: £4.00
+11. Nippon 'mock duck': £5.95
+12. Kale and Quinoa Salad: £6.00
+13. Japanese Buffalo Wings: £4.95
+14. Sesame Brocoli: £2.50
+15. Extra Soy Sauce: £0.50
+16. Extra Ginger: £0.50
+17. Extra Wasabi: £0.50
+ => [{:index=>1, :item=>"Miso Soup", :amount=>"2.00"}, {:index=>2, :item=>"Salty Edamame", :amount=>"2.95"}, {:index=>3, :i
+tem=>"Spicy Edamame", :amount=>"2.95"}, {:index=>4, :item=>"Seaweed Salad", :amount=>"5.25"}, {:index=>5, :item=>"Wilted Sp
+inach", :amount=>"5.50"}, {:index=>6, :item=>"Vegetarian Spring Rolls", :amount=>"4.25"}, {:index=>7, :item=>"Salmon Spring
+ Rolls", :amount=>"4.50"}, {:index=>8, :item=>"Panko crusted prawns", :amount=>"6.50"}, {:index=>9, :item=>"Miso Dengaku",
+:amount=>"6.50"}, {:index=>10, :item=>"Agadashi tofu", :amount=>"4.00"}, {:index=>11, :item=>"Nippon 'mock duck'", :amount=
+>"5.95"}, {:index=>12, :item=>"Kale and Quinoa Salad", :amount=>"6.00"}, {:index=>13, :item=>"Japanese Buffalo Wings", :amo
+unt=>"4.95"}, {:index=>14, :item=>"Sesame Brocoli", :amount=>"2.50"}, {:index=>15, :item=>"Extra Soy Sauce", :amount=>"0.50
+"}, {:index=>16, :item=>"Extra Ginger", :amount=>"0.50"}, {:index=>17, :item=>"Extra Wasabi", :amount=>"0.50"}]
+2.5.0 :004 > guest.order(1)
+ => "You have added 1 x Miso Soup to your basket."
+2.5.0 :005 > guest.order(3, 5)
+ => "You have added 5 x Spicy Edamame to your basket."
+2.5.0 :006 > guest.basket_summary
+1 x Miso Soup = £2.00
+5 x Spicy Edamame = £14.75
+ => [{:item_number=>1, :quantity=>1}, {:item_number=>3, :quantity=>5}]
+2.5.0 :007 > guest.total
+Total: £16.75
+ => nil
+```

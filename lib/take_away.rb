@@ -3,9 +3,9 @@ class TakeAway
 
   def initialize
     @menu = []
-    import_file
     @basket = []
     @total = 0
+    import_file
   end
 
   def read_menu
