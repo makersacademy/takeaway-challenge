@@ -1,3 +1,5 @@
+require_relative 'takeaway'
+
 class Menu
 
   attr_reader :menu_list
