@@ -1,13 +1,32 @@
-require("bundler")
+require 'bundler'
+require 'dotenv'
+Dotenv.load('~/Documents/Makers/Ruby/takeaway-challenge/.env')
 Bundler.require()
+require 'time'
 
-account_sid = ENV["TWILIO_ACCOUNT_SID"]
-auth_token = ENV["TWILIO_AUTH_TOKEN"]
+class Message
+  def initialize(time = Time.now)
+    @time = time
+  end
 
-@client = Twilio::REST::Client.new(account_sid, auth_token)
+  def send_text
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
-@client.messages.create(
-  to: ENV["MY_PHONE_NUMBER"],
-  from:
-  body: "Thank you! Your order was placed and will be delivered before x"
-)
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    @client.messages.create(
+      to: ENV["PHONE_NUMBER"],
+      from: "+447723431770",
+      body: text_message
+    )
+  end
+
+  def order_time
+    "#{@time.hour + 1}:#{@time.min}"
+  end
+
+  def text_message
+    "Thank you! Your order was placed and will be delivered before #{order_time}"
+  end
+end

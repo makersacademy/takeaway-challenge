@@ -39,4 +39,17 @@ describe TakeAway do
       expect { subject.total }.to output("Total: £4.00\n").to_stdout
     end
   end
+
+  context '#checkout' do
+    subject(:takeaway) { described_class.new }
+
+    before do
+      allow(takeaway).to receive(:send_text)
+    end
+
+    it 'sends a payment confirmation text message' do
+      expect(takeaway).to receive(:send_text)
+      takeaway.checkout
+    end
+  end
 end

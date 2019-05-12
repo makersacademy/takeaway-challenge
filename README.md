@@ -118,13 +118,13 @@ To see the menu and order a dish:
 
 `guest.basket_summary`
 `guest.total`
+`guest.checkout(total_value)`
 
 An example of how the app functions:
 
 ```
 2.5.0 :001 > require './lib/take_away.rb'
  => true
-
 2.5.0 :002 > guest = TakeAway.new
  => #<TakeAway:0x00007fd92a086528 @menu=[{:index=>1, :item=>"Miso Soup", :amount=>"2.00"}, {:index=>2, :item=>"Salty Edamam
 e", :amount=>"2.95"}, {:index=>3, :item=>"Spicy Edamame", :amount=>"2.95"}, {:index=>4, :item=>"Seaweed Salad", :amount=>"5

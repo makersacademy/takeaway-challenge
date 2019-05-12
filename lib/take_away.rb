@@ -1,3 +1,5 @@
+require_relative 'send_sms'
+
 class TakeAway
   attr_reader :menu
 
@@ -32,9 +34,21 @@ class TakeAway
 
   def total
     puts "Total: £#{convert(@total)}"
+    @total
+  end
+
+  def checkout(sum = 0)
+    raise "Incorrect amount, please enter the total." if sum != total
+
+    send_text
   end
 
   private
+
+  def send_message
+    phone = Message.new
+    phone.send_text
+  end
 
   def convert(price, quantity = 1)
     "%.2f" % (price.to_f * quantity.to_i)
