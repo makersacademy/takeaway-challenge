@@ -145,3 +145,58 @@ Traceback (most recent call last):
         1: from /Users/student/Projects/takeaway-challenge/lib/order.rb:78:in `check_order'
 RuntimeError (order not correct, cancelling)
 ```
+
+---
+
+FOUR
+
+```
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+objects | behaviours
+-|-
+customer | confirm order
+order | send text
+menu |
+
+![user_story_04](./modelling/user_story_04.png)
+
+```
+$ irb -r ./lib/order
+
+2.5.0 :001 > order = Order.new
+2.5.0 :002 > order.choose_from_menu
+Would you like to order something?
+Enter the tea or finish
+
+- Gunpowder green, £1.8
+- Silver Needle white, £6
+- Earl Grey, £2.75
+- Ssuk-cha (mugwort), £5.2
+- Ssanghwa-cha (medicinal), £4
+
+Ssanghwa
+the selected tea is: Ssanghwa-cha (medicinal), costing £4
+how many would you like?
+3
+ => 3
+2.5.0 :003 > order.checkout
+
+- Ssanghwa-cha (medicinal), £4
+- Ssanghwa-cha (medicinal), £4
+- Ssanghwa-cha (medicinal), £4
+
+- Total:           £12
+
+Is this correct?
+Enter yes to place order or no to cancel.
+yes
+ => "A text has been sent with your delivery time!"
+```
+
+---
+
+## Things I would change

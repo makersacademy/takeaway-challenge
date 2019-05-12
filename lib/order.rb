@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'texting'
 
 class Order
 
@@ -44,8 +45,8 @@ class Order
   end
 
   def checkout
-    @total = calculate_total
-    @formatted_order = format_order(total)
+    calculate_total
+    @formatted_order = format_order
     check_order
   end
 
@@ -56,10 +57,10 @@ class Order
         t += value
       end
     end
-    t
+    @total = t
   end
 
-  def format_order(total)
+  def format_order
     chosen_items = ""
     list.each do |i|
       i.each do |key, value|
@@ -67,14 +68,31 @@ class Order
       end
     end
     chosen_items += "\n\n- Total:           £#{@total}\n\n"
-    chosen_items
+    @formatted_order = chosen_items
   end
 
   def check_order
+    puts @formatted_order
+
     puts "Is this correct?"
     puts "Enter yes to place order or no to cancel."
-    puts @formatted_order
     input = gets.chomp
-    raise "order not correct, cancelling" if input == "no"
+    raise "cancelled" if input != "yes"
+    send_confirmation
+
   end
+
+  def send_confirmation
+    raise("You can't place an empty order!") if @total == 0
+    confirmation = Texting.new()
+    confirmation.send_text
+    reset_order
+    confirmation.confirmation
+  end
+
+  def reset_order
+    @list = []
+    @formatted_order = ""
+  end
+
 end
