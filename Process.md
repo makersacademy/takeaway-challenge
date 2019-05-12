@@ -200,12 +200,72 @@ if customer_price == order_price
 complete_order
 
 Red Feature Test
+1)
+2.5.0 :001 > require './lib/order'
+ => true
+2.5.0 :002 > order = Order.new
+ => #<Order:0x00007f8894857c70 @menu=#<Menu:0x00007f8894857bf8 @menu_items={"Pizza"=>10, "Pasta"=>12, "Spaghetti"=>8}>, @order_list=[]>
+2.5.0 :003 > order.add("Pasta", 2)
+ => [{:dish=>"Pasta", :quantity=>2}]
+2.5.0 :004 > order.add("Spaghetti", 1)
+ => [{:dish=>"Pasta", :quantity=>2}, {:dish=>"Spaghetti", :quantity=>1}]
+2.5.0 :005 > order_total
+Traceback (most recent call last):
+        2: from /Users/lucybarber/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        1: from (irb):5
+NameError (undefined local variable or method `order_total' for main:Object)
 
 Green Feature Test
+1)
+2.5.0 :001 > require './lib/order'
+ => true
+2.5.0 :002 > order = Order.new
+ => #<Order:0x00007f9a978ab4f0 @menu={"Pizza"=>10, "Pasta"=>12, "Spaghetti"=>8}, @order_list={}>
+2.5.0 :003 > order.add("Pasta", 2)
+ => {"Pasta"=>2}
+2.5.0 :004 > order.add("Spaghetti", 1)
+ => {"Pasta"=>2, "Spaghetti"=>1}
+2.5.0 :005 > order.total
+ => "Your order total is £32"
+
 
 Red Unit Test
+1)
+Failures:
+
+  1) Order will tell me the order total
+     Failure/Error: expect(subject.total).to eq(32)
+
+     NoMethodError:
+       undefined method `total' for #<Order:0x00007fc81116ebe0>
+     # ./spec/order_spec.rb:16:in `block (2 levels) in <top (required)>'
+
+Finished in 0.00363 seconds (files took 0.4598 seconds to load)
+5 examples, 1 failure
+
 
 Green Unit Test
+1)
+Menu
+  allows me to see a new menu
+Pizza: £10
+Pasta: £12
+Spaghetti: £8
+  allows me to list the items and prices on a menu
+
+Order
+  allows me to create a new order
+  allows me to add dishes and quantities to order
+  will tell me the order total
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.00365 seconds (files took 0.47116 seconds to load)
+5 examples, 0 failures
+
+
+
 
 As a customer
 So that I am reassured that my order will be delivered on time

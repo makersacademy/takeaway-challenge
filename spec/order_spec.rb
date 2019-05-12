@@ -7,7 +7,13 @@ describe Order do
   end
 
   it "allows me to add dishes and quantities to order" do
-    expect(subject.add("Pasta", 2)).to eq [{ dish: "Pasta", quantity: 2 }]
+    expect(subject.add("Pasta", 2)).to eq "Pasta" => 2
+  end
+
+  it "will tell me the order total" do
+    subject.add("Pasta", 2)
+    subject.add("Spaghetti", 1)
+    expect(subject.total).to eq("Your order total is £32")
   end
 
 end
