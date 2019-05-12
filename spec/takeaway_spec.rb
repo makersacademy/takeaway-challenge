@@ -1,5 +1,8 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { Takeway.new }
+  subject(:takeaway) { Takeaway.new }
+
+  it { is_expected.to respond_to(:view_menu) }
+
 end
