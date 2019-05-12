@@ -1,19 +1,30 @@
+require_relative 'dish'
+require_relative 'message_service'
+
 class TakeawayRestaurant
   attr_reader :menu
 
-  def initialize(dishes)
+  def initialize(dishes, message_service)
     @menu = dishes
+    @message_service = message_service
   end
 
   def order(dishes_and_portions, expected_total)
-    total = 0
+    total = count_total(dishes_and_portions)
+    raise "Total is not correct" if total != expected_total
 
-    dishes_and_portions.each do |dish_and_portion|
-      dish = dish_and_portion[:dish]
-      portion = dish_and_portion[:portion]
+    time_now = Time.now
+    delivery_time_str = (time_now + 3600).strftime("%H:%M")
+    @message_service.send_message\
+    "Thank you! Your order was placed and will be delivered before" + \
+    delivery_time_str
+  end
 
-      total += dish.price * portion
-    end
-    raise "Total is not correct" if @total != expected_total
+  private
+
+  def count_total(dishes_and_portions)
+    dishes_and_portions.map do |dish_and_portion|
+      dish_and_portion[:dish].price * dish_and_portion[:portion]
+    end.sum
   end
 end
