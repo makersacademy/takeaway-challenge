@@ -1,8 +1,11 @@
 # User Story 1
 
 As a customer
+
 So that I can check if I want to order something
+
 I would like to see a list of dishes with prices
+
 
 - create a hash with a list of dishes and prices (menu)
 {"dish" => 2, "dish" => 4}
@@ -11,45 +14,69 @@ I would like to see a list of dishes with prices
 
 
 1)
-2.5.0 :001 > require './lib/menu'
+(2.5.0 :001 > require './lib/menu'
+
  => true
+ 
 2.5.0 :002 > menu = Menu.new
+
 Traceback (most recent call last):
+
         2: from /Users/lucybarber/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        
         1: from (irb):2
-NameError (uninitialized constant Menu)
+        
+NameError (uninitialized constant Menu))
 
 2)
-2.5.0 :001 > require './lib/menu'
+
+(2.5.0 :001 > require './lib/menu'
+
  => true
+ 
 2.5.0 :002 > menu = Menu.new
+
  => #<Menu:0x00007fa4bb1b8f70>
+ 
 2.5.0 :003 > menu.italian
+
 Traceback (most recent call last):
+
         2: from /Users/lucybarber/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
         1: from (irb):3
-NoMethodError (undefined method `italian' for #<Menu:0x00007fa4bb1b8f70>)
+NoMethodError (undefined method `italian' for #<Menu:0x00007fa4bb1b8f70>))
 
 ## Green Feature Test
 
 1)
 2.5.0 :001 > require './lib/menu'
+
  => true
+ 
 2.5.0 :002 > menu = Menu.new
+
  => #<Menu:0x00007fa4bb1b8f70>
+ 
 
 2)
+
 2.5.0 :001 > require './lib/menu'
+
  => true
+ 
 2.5.0 :002 > menu = Menu.new
+
  => #<Menu:0x00007fe139924538>
+ 
 2.5.0 :003 > menu.italian
+
  => {"Pizza"=>10}
 
 ## Red Unit Test
 
 1)
 Failure/Error:
+
   describe Menu do
 
   it "allows me to see a new menu" do
@@ -58,10 +85,10 @@ Failure/Error:
 
   end
 
-NameError:
-  uninitialized constant Menu
+NameError: uninitialized constant Menu
 
   2)
+  
   Failures:
 
     1) Menu allows me to list the items and prices on a menu
