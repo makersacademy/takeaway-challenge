@@ -24,4 +24,5 @@ class Order
     end
     "Your order total is £#{total}"
   end
+
 end

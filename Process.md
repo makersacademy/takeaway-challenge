@@ -1,3 +1,5 @@
+# User Story 1
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -5,7 +7,8 @@ I would like to see a list of dishes with prices
 - create a hash with a list of dishes and prices (menu)
 {"dish" => 2, "dish" => 4}
 
-Red Feature Test
+## Red Feature Test
+
 
 1)
 2.5.0 :001 > require './lib/menu'
@@ -27,7 +30,7 @@ Traceback (most recent call last):
         1: from (irb):3
 NoMethodError (undefined method `italian' for #<Menu:0x00007fa4bb1b8f70>)
 
-Green Feature Test
+## Green Feature Test
 
 1)
 2.5.0 :001 > require './lib/menu'
@@ -43,7 +46,7 @@ Green Feature Test
 2.5.0 :003 > menu.italian
  => {"Pizza"=>10}
 
-Red Unit Test
+## Red Unit Test
 
 1)
 Failure/Error:
@@ -71,7 +74,7 @@ NameError:
   Finished in 0.00227 seconds (files took 0.44612 seconds to load)
   2 examples, 1 failure
 
-Green Unit Test
+## Green Unit Test
 
 1)
 Finished in 0.00324 seconds (files took 0.4456 seconds to load)
@@ -88,6 +91,7 @@ Try it now! Just run: rubocop
 Finished in 0.00256 seconds (files took 0.42831 seconds to load)
 2 examples, 0 failures
 
+# User Story 2
 
 As a customer
 So that I can order the meal I want
@@ -95,8 +99,7 @@ I would like to be able to select some number of several available dishes
 
 - select several dishes from menu - dishes, quantities
 
-
-Red Feature Test
+## Red Feature Test
 1)
 2.5.0 :001 > require './lib/order'
  => true
@@ -117,9 +120,7 @@ Traceback (most recent call last):
         1: from (irb):3
 NoMethodError (undefined method `order_list' for #<Order:0x00007f8d0498f808>)
 
-
-
-Green Feature Test
+## Green Feature Test
 1)
 2.5.0 :001 > require './lib/order'
  => true
@@ -128,7 +129,7 @@ Green Feature Test
 
 2)
 
-Red Unit Test
+## Red Unit Test
 1)
 Failure/Error:
   describe Order do
@@ -153,7 +154,7 @@ Failures:
      # ./spec/order_spec.rb:10:in `block (2 levels) in <top (required)>'
 
 
-Green Unit Test
+## Green Unit Test
 1)
 Menu
   allows me to see a new menu
@@ -190,6 +191,8 @@ Order
 Finished in 0.00302 seconds (files took 0.4192 seconds to load)
 4 examples, 0 failures
 
+# User Story 3
+
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
@@ -197,7 +200,7 @@ I would like to check that the total I have been given matches the sum of the va
 - check total of order
 - raise error message if cant add total
 
-Red Feature Test
+## Red Feature Test
 1)
 2.5.0 :001 > require './lib/order'
  => true
@@ -234,7 +237,7 @@ Traceback (most recent call last):
         1: from /Users/lucybarber/Documents/Makers/weekend_challenges/takeaway-challenge/lib/order.rb:20:in `*'
 TypeError (nil can't be coerced into Integer)
 
-Green Feature Test
+## Green Feature Test
 1)
 2.5.0 :001 > require './lib/order'
  => true
@@ -261,8 +264,7 @@ Green Feature Test
  2.5.0 :004 > order.add("Pasta", 2)
   => {"Pasta"=>2}
 
-
-Red Unit Test
+## Red Unit Test
 1)
 Failures:
 
@@ -293,7 +295,7 @@ Failures:
 Finished in 0.00404 seconds (files took 0.44376 seconds to load)
 6 examples, 1 failure
 
-Green Unit Test
+## Green Unit Test
 1)
 Menu
   allows me to see a new menu
@@ -336,25 +338,27 @@ Finished in 0.00838 seconds (files took 0.46346 seconds to load)
 
 COVERAGE: 100.00% -- 42/42 lines in 4 files
 
-
-
-
+# User Story 4
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-- raise error if numbers don't match
-- if they do match send text
 time = Time.now
 delivery_time = time + 1*00*00
-fail "error" if customer_price != order_total
 send_sms
 
 
-Red Feature Test
+## Red Feature Test
+1)
 
-Green Feature Test
 
-Red Unit Test
+## Green Feature Test
+1)
 
-Green Unit Test
+
+## Red Unit Test
+1)
+
+
+## Green Unit Test
+1)
