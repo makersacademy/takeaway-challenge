@@ -13,6 +13,155 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+---
+# My Approach
+For this challenge I have looked at each user story, and mapped out how I will approach this along with what classes and methods will be needed to implement that functionality. Then I will use a feature test to explore how this feature will work using the program, then begin to write unit tests based on the functionality I need. Then I will implement the code needed to make these tests pass.
+
+I have mapped this out in a table below each user story. I will then demonstrate in irb how this functionality works correctly.
+
+---
+## First User Story
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
+
+Object | Message
+- | -
+user | print_menu
+
+```
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007f9d2f1884a8 @basket=[]>
+2.5.0 :003 > menu.print_menu
+Here is our list of pizzas:
+Margarita, £8
+Ham and Pineapple, £9
+The Mo Salah, £12
+Meatilicious, £11
+Veggie McVegface, £7
+The LFC Pizza, £15
+ => [{"Margarita"=>8}, {"Ham and Pineapple"=>9}, {"The Mo Salah"=>12}, {"Meatilicious"=>11}, {"Veggie McVegface"=>7}, {"The LFC Pizza"=>15}]
+ ```
+
+ Above demonstrates how when the print_menu method is called on a new instance of menu, it shows a list of pizzas and their prices. The tests ensure that any new instance of our Menu class initializes with an empty basket.
+
+ ---
+## Second User Story
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+
+Object | Message
+- | -
+user | select_dish
+
+```
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007fc0ba1d8080 @basket=[]>
+2.5.0 :003 > menu.print_menu
+Here is our list of pizzas:
+1. Margarita, £8
+2. Ham and Pineapple, £9
+3. The Mo Salah, £12
+4. Meatilicious, £11
+5. Veggie McVegface, £7
+6. The LFC Pizza, £15
+ => [{"1. Margarita"=>8}, {"2. Ham and Pineapple"=>9}, {"3. The Mo Salah"=>12}, {"4. Meatilicious"=>11}, {"5. Veggie McVegface"=>7}, {"6. The LFC Pizza"=>15}]
+2.5.0 :004 > menu.select_dish(2, 2)
+ => "You have added 2 of the {\"2. Ham and Pineapple\"=>9} pizzas to your basket"
+2.5.0 :005 > menu.select_dish(4, 1)
+ => "You have added 1 of the {\"4. Meatilicious\"=>11} pizzas to your basket"
+ 2.5.0 :006 > menu.basket
+  => [{"2. Ham and Pineapple"=>9}, {"2. Ham and Pineapple"=>9}, {"4. Meatilicious"=>11}]
+```
+Above demonstrates that after the menu has been printed, the user is able to use the select_dish method to select the number of the dish they want, and how many of the dish they want. They are then notified that their order has been added to the basket. The user can see what is in their basket by calling basket on their menu object.
+
+---
+## Third User Story
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+
+Object | Message
+- | -
+customer | total_order
+```
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007faa0c836798 @basket=[], @order=#<Order:0x00007faa0c836770 @total=0, @final_order=[]>>
+2.5.0 :003 > menu.select_dish(1,1)
+ => "You have added 1 of the {\"1. Margarita\"=>8} pizzas to your basket"
+2.5.0 :004 > menu.checkout
+ => [{"1. Margarita"=>8}]
+2.5.0 :005 > menu.order.total_order
+ => [{"1. Margarita"=>8}]
+2.5.0 :006 > menu.order.total
+ => 8
+```
+Here a new class for Order has been created, which contains a method to add the total of the order.
+
+The above demonstrates that once a dish has been selected and the customer has moved to checkout, the basket is moved to a new final order array within the Order class. Then total order is called on this and this returns the total price of the selections.
+
+---
+## Fourth User Story
+```
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+Object | Message
+- | -
+user | receive_text
+
+```
+2.5.0 :001 > require './lib/text'
+ => true
+2.5.0 :002 > text = Text.new
+ => #<Text:0x00007ff4e1bfdcd0 @time=2019-05-12 17:44:05 +0100, @eta="18:44">
+2.5.0 :003 > text.client_info
+ => # Has been deleted for security
+2.5.0 :004 > text.send_text
+ => <Twilio.Api.V2010.MessageInstance account_sid: api_version: 2010-04-01 body: Sent from your Twilio trial account - Thanks for your order from Sam's pizza! Your food will be delivered before 18:44. date_created: 2019-05-12 16:44:14 +0000 date_updated: 2019-05-12 16:44:14 +0000 date_sent:  direction: outbound-api error_code: 0 error_message:  from: +447723429606
+```
+
+Above demonstrates how when the send text method is called, the user will be notified that his order will arrive 1 hour from now.
+
+However, I have had trouble using delegation to require my text class into the order class, and have been receiving the following error when running rspec:
+
+```
+An error occurred while loading ./spec/text_spec.rb.
+Failure/Error: require 'twilio-ruby'
+
+LoadError:
+  cannot load such file -- twilio-ruby
+# ./spec/text_spec.rb:1:in `require'
+# ./spec/text_spec.rb:1:in `<top (required)>'
+No examples found.
+```
+
+Ideally I would have liked for the send text method to have been called from within the order class, but I have struggled with getting this to work!
+
+I have also struggled with testing my text.rb file due to the problems rspec is having with the twilio gem.
+
+After googling it, I can't seem to find many solutions and would welcome any advice on this from anyone reading!
+
+---
+
+
+
+
+
 
 Instructions
 -------
