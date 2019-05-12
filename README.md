@@ -117,3 +117,4 @@ To see the menu and order a dish:
 `guest.order(3, 5)`
 
 `guest.basket_summary`
+`guest.total`

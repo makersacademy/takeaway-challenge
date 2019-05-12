@@ -3,20 +3,20 @@ class TakeAway
 
   def initialize
     @menu = []
+    import_file
     @basket = []
     @total = 0
   end
 
   def read_menu
-    import_file
     menu.each do |item|
-      puts "#{item[:index]}. #{item[:item]}: #{item[:amount]}"
+      puts "#{item[:index]}. #{item[:item]}: £#{item[:amount]}"
     end
   end
 
   def order(item_number, quantity = 1)
     dish = menu[item_number - 1]
-    @basket << { item_number: item_number, quantity: quantity}
+    @basket << { item_number: item_number, quantity: quantity }
     "You have added #{quantity} x #{dish[:item]} to your basket."
   end
 
@@ -25,9 +25,13 @@ class TakeAway
       dish = menu[order[:item_number] - 1]
       item_total = convert(dish[:amount], order[:quantity])
       @total += item_total.to_f
-      
+
       puts "#{order[:quantity]} x #{dish[:item]} = £#{item_total}"
     end
+  end
+
+  def total
+    puts "Total: £#{convert(@total)}"
   end
 
   private
