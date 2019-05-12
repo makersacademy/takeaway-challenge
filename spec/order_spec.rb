@@ -16,4 +16,9 @@ describe Order do
     expect(subject.total).to eq("Your order total is £32")
   end
 
+  it "raises an error if item is not in menu" do
+    message = "Item(s) not available, please order again!"
+    expect { subject.add("Garlic Bread", 1) }.to raise_error message
+  end
+
 end

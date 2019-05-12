@@ -9,6 +9,9 @@ class Order
   end
 
   def add(dish, quantity = 1)
+    raise "Item(s) not available, please order again!" unless
+    @menu.has_key?(dish)
+
     @order_list[dish] = 0 unless @order_list[dish]
     @order_list[dish] += quantity
     @order_list

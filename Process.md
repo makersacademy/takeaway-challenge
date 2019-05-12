@@ -194,10 +194,8 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-- check total price(order) is sum of all dishes
-order_total = order.value.inject(:+)
-if customer_price == order_price
-complete_order
+- check total of order
+- raise error message if cant add total
 
 Red Feature Test
 1)
@@ -215,6 +213,27 @@ Traceback (most recent call last):
         1: from (irb):5
 NameError (undefined local variable or method `order_total' for main:Object)
 
+2)
+2.5.0 :001 > require './lib/order'
+ => true
+2.5.0 :002 > order = Order.new
+ => #<Order:0x00007fc9659871b0 @menu={"Pizza"=>10, "Pasta"=>12, "Spaghetti"=>8}, @order_list={}>
+2.5.0 :003 > order.add("Garlic Bread", 1)
+ => {"Garlic Bread"=>1}
+2.5.0 :004 > order.add("Pasta", 2)
+ => {"Garlic Bread"=>1, "Pasta"=>2}
+2.5.0 :005 > order.add("Spaghetti", 1)
+ => {"Garlic Bread"=>1, "Pasta"=>2, "Spaghetti"=>1}
+2.5.0 :006 > order.total
+Traceback (most recent call last):
+        6: from /Users/lucybarber/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+        5: from (irb):6
+        4: from /Users/lucybarber/Documents/Makers/weekend_challenges/takeaway-challenge/lib/order.rb:19:in `total'
+        3: from /Users/lucybarber/Documents/Makers/weekend_challenges/takeaway-challenge/lib/order.rb:19:in `each'
+        2: from /Users/lucybarber/Documents/Makers/weekend_challenges/takeaway-challenge/lib/order.rb:20:in `block in total'
+        1: from /Users/lucybarber/Documents/Makers/weekend_challenges/takeaway-challenge/lib/order.rb:20:in `*'
+TypeError (nil can't be coerced into Integer)
+
 Green Feature Test
 1)
 2.5.0 :001 > require './lib/order'
@@ -227,6 +246,20 @@ Green Feature Test
  => {"Pasta"=>2, "Spaghetti"=>1}
 2.5.0 :005 > order.total
  => "Your order total is £32"
+
+ 2)
+ 2.5.0 :001 > require './lib/order'
+  => true
+ 2.5.0 :002 > order = Order.new
+  => #<Order:0x00007fca601870e0 @menu={"Pizza"=>10, "Pasta"=>12, "Spaghetti"=>8}, @order_list={}>
+ 2.5.0 :003 > order.add("Garlic Bread", 1)
+ Traceback (most recent call last):
+         3: from /Users/lucybarber/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `<main>'
+         2: from (irb):3
+         1: from /Users/lucybarber/Documents/Makers/weekend_challenges/takeaway-challenge/lib/order.rb:12:in `add'
+ RuntimeError (Item(s) not available, please order again!)
+ 2.5.0 :004 > order.add("Pasta", 2)
+  => {"Pasta"=>2}
 
 
 Red Unit Test
@@ -243,6 +276,22 @@ Failures:
 Finished in 0.00363 seconds (files took 0.4598 seconds to load)
 5 examples, 1 failure
 
+2)
+Failures:
+
+  1) Order raises an error if item is not in menu
+     Failure/Error: total += quantity * @menu[dish]
+
+     TypeError:
+       nil can't be coerced into Integer
+     # ./lib/order.rb:20:in `*'
+     # ./lib/order.rb:20:in `block in total'
+     # ./lib/order.rb:19:in `each'
+     # ./lib/order.rb:19:in `total'
+     # ./spec/order_spec.rb:23:in `block (2 levels) in <top (required)>'
+
+Finished in 0.00404 seconds (files took 0.44376 seconds to load)
+6 examples, 1 failure
 
 Green Unit Test
 1)
@@ -263,6 +312,29 @@ Try it now! Just run: rubocop
 
 Finished in 0.00365 seconds (files took 0.47116 seconds to load)
 5 examples, 0 failures
+
+2)
+Menu
+  allows me to see a new menu
+Pizza: £10
+Pasta: £12
+Spaghetti: £8
+  allows me to list the items and prices on a menu
+
+Order
+  allows me to create a new order
+  allows me to add dishes and quantities to order
+  will tell me the order total
+  raises an error if item is not in menu
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.00838 seconds (files took 0.46346 seconds to load)
+6 examples, 0 failures
+
+
+COVERAGE: 100.00% -- 42/42 lines in 4 files
 
 
 
