@@ -9,7 +9,7 @@ class Menu
     "kebab" => 4,
     "burger" => 6,
     "tacos" => 4,
-    "chips" => 1,
+    "chips" => 1
   }
 
   def initialize

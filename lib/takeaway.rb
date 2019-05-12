@@ -8,7 +8,7 @@ class Takeaway
     "kebab" => 4,
     "burger" => 6,
     "tacos" => 4,
-    "chips" => 1,
+    "chips" => 1
   }
 
   def initialize
@@ -17,6 +17,6 @@ class Takeaway
 
   def place_order(items, quantity)
     quantity.times { @cart << DISH_LIST[items] }
-      "#{DISH_LIST[items]} #{items} added to cart"
+      "#{quantity} #{items} added to cart"
   end
 end
