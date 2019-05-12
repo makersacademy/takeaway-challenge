@@ -3,6 +3,8 @@ class TakeAway
 
   def initialize
     @menu = []
+    @basket = []
+    @total = 0
   end
 
   def read_menu
@@ -12,12 +14,27 @@ class TakeAway
     end
   end
 
-  def order(item_number)
+  def order(item_number, quantity = 1)
     dish = menu[item_number - 1]
-    "You have added #{dish[:item]} to your basket."
+    @basket << { item_number: item_number, quantity: quantity}
+    "You have added #{quantity} x #{dish[:item]} to your basket."
+  end
+
+  def basket_summary
+    @basket.each do |order|
+      dish = menu[order[:item_number] - 1]
+      item_total = convert(dish[:amount], order[:quantity])
+      @total += item_total.to_f
+      
+      puts "#{order[:quantity]} x #{dish[:item]} = £#{item_total}"
+    end
   end
 
   private
+
+  def convert(price, quantity = 1)
+    "%.2f" % (price.to_f * quantity.to_i)
+  end
 
   def import_file
     file = File.open("./lib/menu.csv", "r")

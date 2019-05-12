@@ -108,7 +108,12 @@ To run the application in IRB, type:
 `irb -r './lib/take_away.rb'`
 
 Create a new take-away instance:  
-`order = TakeAway.new`
+`guest = TakeAway.new`
 
-To see the menu:  
-`order.read_menu`
+To see the menu and order a dish:  
+`guest.read_menu`
+
+`guest.order(1)`
+`guest.order(3, 5)`
+
+`guest.basket_summary`
