@@ -69,7 +69,7 @@ This class is a container for the pieces of configuration data required when con
 Run `irb` in the terminal and execute the following statements:
 
 ```
-require 'takeaway_restaurant'
+require './lib/takeaway_restaurant.rb'
 
 # Create dishes and the menu
 burrito = Dish.new("Burrito", 7.50)
@@ -89,10 +89,7 @@ message_service = MessageService.new(config)
 # Create a TakeawayRestaurant instance with the menu and message service
 takeaway_restaurant = TakeawayRestaurant.new(menu, message_service)
 
-orders = [
-  { :dish => burrito, :portion => 2 },
-  { :dish => pizza, :portion => 1 }
-]
+orders = [{ :dish => burrito, :portion => 2 }, { :dish => pizza, :portion => 1 }]
 expected_total = burrito.price * 2 + pizza.price
 
 # Place orders
