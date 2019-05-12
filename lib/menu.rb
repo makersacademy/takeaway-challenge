@@ -1,5 +1,8 @@
+require_relative 'order'
+
 class Menu
   attr_reader :basket
+  attr_reader :order
 
   MENU_LIST = [
     { "1. Margarita" => 8 },
@@ -10,8 +13,9 @@ class Menu
     { "6. The LFC Pizza" => 15 }
   ]
 
-  def initialize
+  def initialize(order = Order.new)
     @basket = []
+    @order = order
   end
 
   def print_menu
@@ -23,7 +27,10 @@ class Menu
 
   def select_dish(dish_number, quantity)
     quantity.times { @basket << MENU_LIST[dish_number - 1] }
-    "You have added #{quantity} of the #{MENU_LIST[dish_number - 1]}
-    pizzas to your basket"
+    "You have added #{quantity} of the #{MENU_LIST[dish_number - 1]} pizzas to your basket"
+  end
+
+  def checkout
+    @order.final_order.concat(@basket)
   end
 end

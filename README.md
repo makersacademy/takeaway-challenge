@@ -94,7 +94,28 @@ I would like to check that the total I have been given matches the sum of the va
 
 Object | Message
 - | -
-customer | check_total
+customer | total_order
+```
+2.5.0 :001 > require './lib/menu'
+ => true
+2.5.0 :002 > menu = Menu.new
+ => #<Menu:0x00007faa0c836798 @basket=[], @order=#<Order:0x00007faa0c836770 @total=0, @final_order=[]>>
+2.5.0 :003 > menu.select_dish(1,1)
+ => "You have added 1 of the {\"1. Margarita\"=>8} pizzas to your basket"
+2.5.0 :004 > menu.checkout
+ => [{"1. Margarita"=>8}]
+2.5.0 :005 > menu.order.total_order
+ => [{"1. Margarita"=>8}]
+2.5.0 :006 > menu.order.total
+ => 8
+```
+Here a new class for Order has been created, which contains a method to add the total of the order.
+
+The above demonstrates that once a dish has been selected and the customer has moved to checkout, the basket is moved to a new final order array within the Order class. Then total order is called on this and this returns the total price of the selections.
+
+---
+## Fourth User Story
+
 
 
 
