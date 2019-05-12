@@ -2,12 +2,12 @@ class Menu
   attr_reader :menu_items
 
   def initialize
-    @menu_items = { :Starters => [["Onion soup", "£3.50"],
-                                ["Potato fritter", "£4"]],
-                  :Mains => [["Roast chicken", "£8.50"],
-                            ["Vegetarian Lasagne", "£7.50"]],
-                  :Deserts => [["Apple Crumble", "£3.50"],
-                            ["Vanilla Icecream", "£3"]] }
+    @menu_items = { :Starters => [["Soup", "£3.50"],
+                                ["Fritter", "£4"]],
+                  :Mains => [["Chicken", "£8.50"],
+                            ["Lasagne", "£7.50"]],
+                  :Deserts => [["Crumble", "£3.50"],
+                            ["Icecream", "£3"]] }
   end
 
   def view

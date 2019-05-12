@@ -13,9 +13,12 @@ describe 'user stories' do
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
 
-  # it "so customers can order, they can select dishes" do
-  #
-  # end
+  it 'so customers can place an order, they can add multiple dishes with quantities to their order' do
+    tas = TakeawayService.new
+    tas.add_to_basket("Chicken", 2)
+    tas.add_to_basket("Soup", 4)
+    expect(tas.basket).to include({ "Chicken" => 2 }).and include({ "Soup" => 4 })
+  end
 
   # As a customer
   # So that I can verify that my order is correct
