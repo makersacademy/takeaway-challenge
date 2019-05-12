@@ -30,6 +30,7 @@ I would like to be able to select some number of several available dishes
 Using the select method the user will type the desired item and the quantity:
 
 2.5.0 :004 > pizza.select("Dough balls", 2)
+ => "2 Dough balls(s) added"
 
 3rd user story
 
@@ -39,10 +40,15 @@ I would like to check that the total I have been given matches the sum of the va
 
 Using the confirm_amount method the customer will input the total they expect to be paying:
 
-2.5.0 :005 > pizza.confirm_amount(16)
+2.5.0 :005 > pizza.confirm_amount(8)
+
 
 4th user story
 
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+If the confirm_amount is correct the confirmation method will send the above text.  If the confirm_amount is incorrect an error will be raised:
+
+2.3.0 :006 > pizza.confirmation
