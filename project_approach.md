@@ -44,6 +44,8 @@ order = Order.new
 order.add(burrito)
 ```
 
+Current outstanding issues: the customer can order anything, even if it does not appear on the menu. 
+
 ---
 ```
 As a customer

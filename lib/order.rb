@@ -6,8 +6,9 @@ class Order
     @choice = []
   end
 
-  def add(food, number = 1)
-    number.times { @choice << food }
+  def add(dish, number = 1)
+    raise "#{dish} is not available" if dish.available? == false
+    number.times { @choice << dish }
     choice
   end
 
