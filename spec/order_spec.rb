@@ -3,11 +3,12 @@ require 'order'
 describe Order do
 
   let(:subject) { Order.new }
-  let(:dish) { double(:menu) }
-  let(:not_dish) { double(:menu) }
+  dish = "burrito"
+  not_dish = "not dish"
 
   describe "#add" do
     it "adds an item to the order" do
+      # These stubs are not currently doing anything
       allow(dish).to receive(:available?).and_return(true)
       expect(subject.add(dish)).to include(dish)
     end
