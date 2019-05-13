@@ -27,28 +27,26 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
-irb
-require './lib/takeaway_service'
-tas = TakeawayService.new
-tas.view_menu
+  irb
+  require './lib/takeaway_service'
+  tas = TakeawayService.new
+  tas.view_menu
 
-2.3.7 :001 > require './lib/takeaway_service'
- => true
-2.3.7 :002 > tas = TakeawayService.new
- => #<TakeawayService:0x00007f9651365558 @menu_class=#<Menu:0x00007f9651365530 @menu_items={:Starters=>[["Soup", "3.50"], ["Fritter", "4"]], :Mains=>[["Chicken", "8.50"], ["Lasagne", "7.50"]], :Deserts=>[["Crumble", "3.50"], ["Icecream", "3"]]}>, @basket={}>
-2.3.7 :003 > tas.view_menu
-Starters:
-Soup - £3.50
-Fritter - £4
-Mains:
-Chicken - £8.50
-Lasagne - £7.50
-Deserts:
-Crumble - £3.50
-Icecream - £3
- => nil
-
-
+    2.3.7 :001 > require './lib/takeaway_service'
+    => true
+    2.3.7 :002 > tas = TakeawayService.new
+    => #<TakeawayService:0x00007f9651365558 @menu_class=#<Menu:0x00007f9651365530 @menu_items={:Starters=>[["Soup", "3.50"], ["Fritter", "4"]], :Mains=>[["Chicken", "8.50"], ["Lasagne", "7.50"]], :Deserts=>[["Crumble", "3.50"], ["Icecream", "3"]]}>, @basket={}>
+    2.3.7 :003 > tas.view_menu
+    Starters:
+    Soup - £3.50
+    Fritter - £4
+    Mains:
+    Chicken - £8.50
+    Lasagne - £7.50
+    Deserts:
+    Crumble - £3.50
+    Icecream - £3
+    => nil
 
 As a customer
 So that I can order the meal I want
