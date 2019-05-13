@@ -182,8 +182,9 @@ I would like to see a list of dishes with prices
 
 **MESSAGES**
 
-* 
-* 
+* A list of dishes and prices will be held in `menu`
+* `takeaway` will have a `print_menu` method in which it will delegate responsibility to `menu`
+* `menu` will have a `print` method
 
 Instructions
 -------
