@@ -1,3 +1,7 @@
+require 'menu'
+require 'takeaway'
+
+describe "Feature" do
 
 # As a customer
 # So that I can check if I want to order something
@@ -5,6 +9,12 @@
 
 # verbs - check, order, see
 # nouns - list, dishes, prices
+
+  it "should allow customer to view the menu" do
+    restaurant = Takeaway.new
+    menu = Menu.new
+    expect(restaurant.see_menu).to eq(menu.view_all)
+  end
 
 # As a customer
 # So that I can order the meal I want
@@ -26,3 +36,4 @@
 
 # verbs - reassured, delivered, recieve, ordered, placed
 # nouns - my order,
+end
