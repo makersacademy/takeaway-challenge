@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'dish'
+require_relative 'send_sms'
 
 class TakeawayService
   attr_reader :basket
@@ -34,6 +35,10 @@ class TakeawayService
 
   def total_cost
     print cost
+  end
+
+  def place_order
+    SendSms.new.message
   end
 
   private

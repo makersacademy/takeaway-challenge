@@ -82,4 +82,16 @@ describe TakeawayService do
       expect { takeaway_service.total_cost }.to output("£31.0").to_stdout
     end
   end
+
+  describe '#place_order' do
+
+    let(:takeaway_service) { double(:takeaway_service) }
+
+    it 'sends an sms to the customer' do
+      one_hour_from_now = DateTime.now + (1 / 24.0)
+      one_hour_from_now = one_hour_from_now.hour.to_s + ":" + one_hour_from_now.min.to_s
+      allow(takeaway_service).to receive(:place_order).and_return "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}"
+      expect(takeaway_service.place_order).to eq(SendSms.new.message)
+    end
+  end
 end

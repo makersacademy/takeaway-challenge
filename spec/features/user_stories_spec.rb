@@ -41,5 +41,13 @@ describe 'user stories' do
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+  let(:tas) { double(:tas) }
   
+  it "when customers place an order, they receive a confirmatory text" do
+    one_hour_from_now = DateTime.now + (1 / 24.0)
+    one_hour_from_now = one_hour_from_now.hour.to_s + ":" + one_hour_from_now.min.to_s
+    allow(tas).to receive(:place_order).and_return "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}"
+    expect(tas.place_order).to eq(SendSms.new.message)
+  end
 end

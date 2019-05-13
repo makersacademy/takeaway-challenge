@@ -1,18 +1,23 @@
-# Download the helper library from https://www.twilio.com/docs/ruby/install
 require 'rubygems'
 require 'twilio-ruby'
+require 'dotenv/load'
 
-# Your Account Sid and Auth Token from twilio.com/console
-# DANGER! This is insecure. See http://twil.io/secure
-account_sid = ENV['TWILIO_ACCOUNT_SID']
-auth_token = ENV['TWILIO_AUTH_TOKEN']
-@client = Twilio::REST::Client.new(account_sid, auth_token)
-
-message = @client.messages
-  .create(
-     body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-     from: '+447746206048',
-     to: '+447746206048'
-   )
-
-puts message.sid
+class SendSms
+  attr_reader :message
+  def initialize
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+    from = ENV["TWILIO_PHONE_NUM"]
+    to = ENV["MY_PHONE_NUM"]
+    one_hour_from_now = DateTime.now + (1 / 24.0)
+    one_hour_from_now = one_hour_from_now.hour.to_s + ":" +
+      one_hour_from_now.min.to_s
+    @message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}"
+    client.messages.create(
+    from: from,
+    to: to,
+    body: @message
+    )
+  end
+end
