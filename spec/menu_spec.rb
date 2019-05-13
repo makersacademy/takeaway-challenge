@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  
+
   let(:subject) { Menu.new }
   let(:dish) { "burrito" }
   let(:notdish) { "burger" }
