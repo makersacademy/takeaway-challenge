@@ -87,7 +87,7 @@ describe TakeawayService do
 
     let(:takeaway_service) { double(:takeaway_service) }
     let(:message) { double(:message) }
-    let(:send_sms_class) { double(:send_sms_class, new: message)}
+    let(:send_sms_class) { double(:send_sms_class, new: message) }
 
     it 'sends an sms to the customer' do
       allow(takeaway_service).to receive(:place_order).and_return "Thank you! Your order was placed and will be delivered before 18:52"

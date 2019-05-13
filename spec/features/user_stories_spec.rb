@@ -44,7 +44,7 @@ describe 'user stories' do
 
   let(:tas) { double(:tas) }
   let(:message) { double(:message) }
-  let(:send_sms_class) { double(:send_sms_class, new: message)}
+  let(:send_sms_class) { double(:send_sms_class, new: message) }
 
   it "when customers place an order, they receive a confirmatory text" do
     allow(tas).to receive(:place_order).and_return "Thank you! Your order was placed and will be delivered before 18:52"
