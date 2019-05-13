@@ -6,8 +6,12 @@ This challenge was set as our second weekend challenge of the Makers Academy cou
 Steps to run this program
 -------
 1. Clone this repo to your local machine
-2. Run the command 'gem install bundle' (if you don't have bundle already)
-3. When the installation completes, run 'bundle'
+2. Run the command `gem install bundle` (if you don't have bundle already)
+3. When the installation completes, run `bundle` to install all the required gems
+
+Steps to test this program
+-------
+1. From the command line, run `rspec` to test.
 
 Using this program
 -------
@@ -54,6 +58,11 @@ export TWILIO_DESTINATION_PHONE=your verified Twilio phone number (this was my p
 export TWILIO_AUTH_TOKEN=your auth token from your Twilio account
 export TWILIO_ACCOUNT_SID=your account sid from your Twilio account
 ```
+
+<div align="center">
+    <img src="phonescreenshot.jpg" width="300px"</img>
+</div>
+
 My Approach
 -----
 At the beginning of the challenge, I was given the following tasks and user stories. I have explained my approach to problem solving under each individual user story below:
