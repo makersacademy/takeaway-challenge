@@ -1,3 +1,8 @@
+
+UNFINISHED
+- Will finish by Tuesday 14th May.
+
+
 Takeaway Challenge
 ==================
 ```
@@ -73,5 +78,27 @@ Francescas-MacBook-Pro:takeaway-challenge francescachater$ irb
 2.5.0 :005 > takeaway.display(menu)
  => [{"dish_one"=>2}, {"dish_two"=>4}, {"dish_three"=>12}, {"dish_four"=>15}] 
 2.5.0 :006 > 
+
+
+IRB TESTING TO RECEIVE TOTAL IN BASKET
+
+2.5.0 :001 > require './lib/takeaway.rb'
+ => true 
+2.5.0 :002 > takeaway = Takeaway.new
+ => #<Takeaway:0x00007fd89991a9f0 @menu=#<Menu:0x00007fd89991a9c8 @items={"thing_one"=>2, "thing_two"=>4, "thing_three"=>12, "thing_four"=>15}>, @basket=[]> 
+2.5.0 :003 > menu = Menu.new
+ => #<Menu:0x00007fd8990ec530 @items={"thing_one"=>2, "thing_two"=>4, "thing_three"=>12, "thing_four"=>15}> 
+2.5.0 :004 > takeaway.display(menu)
+thing_one: £2
+thing_two: £4
+thing_three: £12
+thing_four: £15
+ => {"thing_one"=>2, "thing_two"=>4, "thing_three"=>12, "thing_four"=>15} 
+2.5.0 :005 > takeaway.add_to_basket("thing_two", 4)
+ => [4, 4, 4, 4] 
+2.5.0 :006 > takeaway.basket.sum
+ => 16 
+2.5.0 :007 > 
+
 
 
