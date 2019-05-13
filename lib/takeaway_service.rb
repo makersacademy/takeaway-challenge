@@ -5,8 +5,9 @@ require_relative 'send_sms'
 class TakeawayService
   attr_reader :basket
 
-  def initialize(menu_class = Menu.new)
+  def initialize(menu_class = Menu.new, text_service_class = SendSms)
     @menu_class = menu_class
+    @text_service_class = text_service_class
     @basket = {}
   end
 
@@ -38,7 +39,7 @@ class TakeawayService
   end
 
   def place_order
-    SendSms.new.message
+    @text_service_class.new.message
   end
 
   private
