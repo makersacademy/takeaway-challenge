@@ -1,8 +1,8 @@
 class Menu
   attr_reader :menu
 
-  MENU = { "spaghetti bolognese" => 4.55, "ham and cheese pancake" => 3.75,
-        "double-cheeseburger" => 4.25, "curly fries" => 1.75
+  MENU = { "spaghetti bolognese" => 4.50, "ham and cheese pancake" => 3.70,
+        "double-cheeseburger" => 4.40, "curly fries" => 1.50
         }
 
   def initialize

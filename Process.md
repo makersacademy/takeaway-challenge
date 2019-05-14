@@ -448,48 +448,65 @@ Inspecting 9 files<br/>
 9 files inspected, no offenses detected<br/><br/>
 
 **THREE**
-
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
 
-Failed Feature Test
+For feature test 3 it became apparent that it would be better for me to instead use two classes Takeaway and Menu, whereby 'Takeaway class' will take on the methods that belonged to Order. I made this decision since this would help maintain the same instance of Menu used and because I believed using two classes will be more user friendly for the feature testing (see below for feature test with 3 classes i.e when things go wrong)
+
+````
+#<Takeaway:0x00007fd0308b5eb8<br/> @menu=#<Menu:0x00007fd0308b5e40 @menu={"spaghetti<br/> bolognese"=>4.55, "ham and cheese panca<br/>
+ke"=>3.75, "double-cheeseburger"=>4.25, "curly<br/> fries"=>1.75}>, @order=#<Order:0x00007fd0308b5cb0 @order=0, @quantity=0, @me
+nu=#<Menu:0x00007fd0308b58c8 @menu={"spaghetti<br/> bolognese"=>4.55, "ham and cheese pancake"=>3.75, "double-cheeseburger"=>4.2<br/>
+5, "curly fries"=>1.75}>, @basket=[]>><br/>
+````
+
+Green Unit Test <br/>
+
+Menu<br/>
+spaghetti bolognese: £4.5<br/>
+ham and cheese pancake: £3.7<br/>
+double-cheeseburger: £4.4<br/>
+curly fries: £1.5<br/>
+  prints a dish list with prices<br/>
+
+Takeaway<br/>
+delegates to prices method<br/>
+#add_dish<br/>
+can add menu dishes to the order<br/>
+#total_price<br/>
+calculates total order<br/>
+
+Have you considered running rubocop? It will help you<br/> improve your code!<br/>
+Try it now! Just run: rubocop<br/>
+
+Finished in 0.01708 seconds (files took 0.81719 seconds to load)<br/>
+4 examples, 0 failures<br/>
+
+rubocop<br/>
+
+Inspecting 7 files<br/>
+.......
+<br/>
+7 files inspected, no offenses detected<br/>
 
 
-
-
-
-
-
-Green Feature Test
-
-
-
-
-
-
-
-RED Unit Test
-
-
-
-
-
-
-
-GREEN Unit Test
-
-
-
-
-
+COVERAGE: 100.00% -- 52/52 lines in 4 files<br/>
 
 
 **FOUR**
 
+Final stage - reflecting on what I have learnt so far... I have greatly enjoyed the process of learning how to work with classes and am now eager to learn how an API works. It's late at night where I am, but I will plan stage 4 and commit my final solution soon :)<br/>
+
+*Note to self - In step 3 what if the customer enters an incorrect order - verify whether the order is correct*
+
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
 
 
 Failed Feature Test

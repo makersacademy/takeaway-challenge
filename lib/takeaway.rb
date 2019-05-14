@@ -1,22 +1,33 @@
 require_relative 'menu'
-require_relative 'order'
 
 class Takeaway
-  # attr_accessor :order
-  def initialize(menu = Menu.new, order = Order.new)
+  attr_reader :menu
+  attr_accessor :order, :quantity
+
+  def initialize(menu = Menu.new)
     @menu = menu
-    @order = order
+    @order = 0
+    @quantity = 0
+    @basket = []
   end
 
   def view_menu
     @menu.prices
   end
 
-  def select_order(order, quantity)
-    @order.add_to_order(order, quantity)
+  def add_dish(order, quantity = 1)
+    quantity.times { @basket << order }
+    @order = order
+    @quantity = quantity
+    basket
   end
 
   def basket
-    @order.basket
+    "You added #{@quantity}x #{@order}(s) to the basket"
+  end
+
+  def total_price
+    total = @basket.map { |order| @menu.menu[order] }.inject(:+)
+    "The total price for your order is £#{total}"
   end
 end
