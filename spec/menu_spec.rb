@@ -12,12 +12,13 @@ describe Menu do
     }
   end
 
-  it 'contains a list of dishes with their prices' do
+  it "contains a list of dishes with their prices" do
     expect(menu.dishes).to eq(dishes)
   end
 
-  it 'prints a list of dishes with prices' do
+  it "prints a list of dishes with prices" do
     printed_menu = "Pak Tod: £4.90, Satay Gai: £5.50, Pad Thai: £7.90"
     expect(menu.print).to eq(printed_menu)
   end
+  
 end

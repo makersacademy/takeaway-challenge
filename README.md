@@ -206,6 +206,14 @@ I would like to be able to select some number of several available dishes
 
 **OBJECTS**
 
+* Takeaway
+* Menu
+* Order
+
+**MESSAGES**
+
+*
+
 Instructions
 -------
 * Challenge time: rest of the day and weekend, until Monday 9am
