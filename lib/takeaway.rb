@@ -1,14 +1,9 @@
 require_relative 'menu'
-require_relative 'order'
 
 class Takeaway
-  attr_reader :menu
-
-  def intitialize(menu = Menu.new)
-    @menu = menu
-  end
-
+  
   def view_menu
+    @menu = Menu.new
     @menu.view_all
   end
 
