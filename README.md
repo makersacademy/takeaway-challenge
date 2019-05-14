@@ -212,7 +212,20 @@ I would like to be able to select some number of several available dishes
 
 **MESSAGES**
 
-*
+* Customer calls `place_order` method in Takeaway
+* `place_order` method delegates to the `order` class which calls it's own method to `add` items with two arguments, a `dish` and a `quantity`
+* Items are added to a `dishes` hash
+
+**TEST CASES**
+
+Takeaway:
+
+-[X] It can order some number of several available dishes
+
+Order:
+
+-[X] It selects several dishes from the menu
+-[X] It doesn't allow items to be added that are not on the menu
 
 Instructions
 -------

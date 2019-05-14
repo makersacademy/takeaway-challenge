@@ -1,4 +1,4 @@
-require 'order'
+require './lib/order'
 
 class Takeaway
 
