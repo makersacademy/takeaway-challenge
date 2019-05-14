@@ -20,5 +20,13 @@ describe Menu do
     printed_menu = "Pak Tod: £4.90, Satay Gai: £5.50, Pad Thai: £7.90"
     expect(menu.print).to eq(printed_menu)
   end
+
+  it "tells if a dish is on the menu" do
+    expect(menu.has_dish?(:pak_tod)).to be true
+  end
+
+  it "tells if a dish is not on the menu" do
+    expect(menu.has_dish?(:chicken)).to be false
+  end
   
 end

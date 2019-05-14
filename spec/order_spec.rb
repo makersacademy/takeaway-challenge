@@ -1,9 +1,10 @@
 require 'order'
+require 'menu'
 
 describe Order do
   subject(:order) { described_class.new(menu) }
 
-  let(:menu) { double(:menu) }
+  let(:menu) { instance_double("Menu") }
 
   let(:dishes) do
     {
