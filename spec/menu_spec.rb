@@ -6,9 +6,9 @@ describe Menu do
 
   let(:dishes) do
     {
-      'Pak Tod': 4.90,
-      'Satay Gai': 5.50,
-      'Pad Thai': 7.90,
+      pak_tod: 4.90,
+      satay_gai: 5.50,
+      pad_thai: 7.90,
     }
   end
 
@@ -17,7 +17,7 @@ describe Menu do
   end
 
   it 'prints a list of dishes with prices' do
-    printed_menu = "Pak Tod £4.90, Satay Gai £5.50, Pad Thai £7.90"
+    printed_menu = "Pak Tod: £4.90, Satay Gai: £5.50, Pad Thai: £7.90"
     expect(menu.print).to eq(printed_menu)
   end
 end

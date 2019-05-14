@@ -186,6 +186,26 @@ I would like to see a list of dishes with prices
 * `takeaway` will have a `print_menu` method in which it will delegate responsibility to `menu`
 * `menu` will have a `print` method
 
+**TEST CASES**
+
+Takeaway:
+
+-[X] It shows a menu with dishes and prices
+
+Menu:
+
+-[X] It contains a list of dishes with their prices
+-[X] It prints a list of dishes with prices
+
+### STORY 2
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+
+**OBJECTS**
+
 Instructions
 -------
 * Challenge time: rest of the day and weekend, until Monday 9am

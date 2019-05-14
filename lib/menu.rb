@@ -8,7 +8,7 @@ class Menu
 
   def print
     dishes.map do |title, price|
-      "%s £%.2f" % [title, price]
+      "%s: £%.2f" % [title.to_s.gsub("_"," ").split.map(&:capitalize).join(' '), price]
     end.join(", ")
   end
 end
