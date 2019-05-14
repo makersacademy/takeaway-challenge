@@ -37,3 +37,6 @@
 # # verbs - reassured, delivered, recieve, ordered, placed
 # # nouns - my order,
 # end
+
+# Have an interactive menu that the customer can interact with
+# which allows them to view menu, order, and text. 
