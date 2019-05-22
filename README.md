@@ -26,7 +26,7 @@ This project is provided by Makers Academy. It is the second weekend challenge a
 Motivation
 ----------
 
-The purpose of this project is to work of my weekly focus goals:
+The purpose of this project is to work on my weekly focus goals:
 
 ### I can TDD anything
 
@@ -226,6 +226,23 @@ Order:
 
 -[X] It selects several dishes from the menu
 -[X] It doesn't allow items to be added that are not on the menu
+
+Menu:
+
+-[X] It tells if a dish is on the menu
+-[X] It tells if a dish is not on the menu
+
+### STORY 3
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+
+**OBJECTS**
+
+* Order
+
 
 Instructions
 -------

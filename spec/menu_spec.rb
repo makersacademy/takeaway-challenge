@@ -28,5 +28,9 @@ describe Menu do
   it "tells if a dish is not on the menu" do
     expect(menu.has_dish?(:chicken)).to be false
   end
-  
+
+  it "calculates a price" do
+    expect(menu.price(:pak_tod)).to eq(dishes[:pak_tod])
+  end
+   
 end
