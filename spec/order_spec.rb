@@ -22,8 +22,7 @@ describe Order do
   end
 
   it "selects several dishes from the menu" do
-    order.add(:burger, 1)
-    order.add(:pak_tod, 3)
+    create_order
     expect(order.dishes).to eq(dishes)
   end
 
@@ -33,12 +32,14 @@ describe Order do
   end
 
   it "calculates the total for the order" do
-    order.add(:burger, 1)
-    order.add(:pak_tod, 3)
+    create_order
     total = 8.50
     expect(order.total).to eq(total)
   end
 
-
+  def create_order
+    order.add(:burger, 1)
+    order.add(:pak_tod, 3)
+  end
 
 end
