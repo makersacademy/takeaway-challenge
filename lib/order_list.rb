@@ -14,6 +14,7 @@ class OrderList
     "#{last_item[:item]} - #{last_item[:quantity]}"
   end
 
+# Could calculate_cost be simplified, any other methods extracted?
   def calculate_cost(menu)
     order_cost = 0
     @order_items.each do |item|
