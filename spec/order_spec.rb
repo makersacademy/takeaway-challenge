@@ -1,12 +1,21 @@
-require 'order'
+# require 'order'
 
-describe Order do
-  subject         { Order.new }
+# describe Order do
+#   subject         { Order.new }
+#   let(:pasta)     { double(:past, )}
   
-  it 'lists order summary'do
+#     it 'can list items in order summary'do
+#       expect(subject.basket_summary).to eq()
+#     end
 
-  end
-  # it 'adds menu items to order' do
-  # it 'displays total' do 
+#     it 'can add items to order' do
+  
+  
+#     it 'can add price of items to total cost' do
+#       expect{subject.add(pasta)}.to change{subject.total}.by(...)
+#     end
 
-end
+#     it 'can display total' do
+
+
+# end
