@@ -11,6 +11,8 @@ describe Order do
     expect(updated_items).to include("Margherita")
   end 
   
-  it 'calculates the total of an order' do 
+  it 'calculates the total of an order' do
+    order.add_to_cart({item: "Margherita", price: 10, quantity: 2})
+    expect(order.total).to eq(20)
   end 
 end 
