@@ -10,9 +10,10 @@ class App
   end
   
   def new_order
-    order_class.new
+    @current_order = order_class.new
   end 
+
   def select_dish(item, quantity)
-    list.select(item, quantity)
+    selected = list.select(item, quantity)
   end 
 end

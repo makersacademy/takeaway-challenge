@@ -16,10 +16,6 @@ describe App do
     expect(app.new_order).to be(order)
   end
 
-  # it "initializes with a journey" do
-  #   expect(log.journey).to be(journey_class)
-  # end
-
   it 'asks the dish_list to select the item and quantity' do 
     expect(list).to receive(:select)
     app.select_dish("Item", 2)
