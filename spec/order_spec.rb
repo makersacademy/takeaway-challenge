@@ -14,8 +14,10 @@ describe Order do
   end
      
   it 'should return an itemised total' do
-    subject.add(menu,1,1)
-    subject.add(menu,2,1)
+    subject.add(menu, 1, 1)
+    subject.add(menu, 2, 1)
     expect { subject.total }.to output("1 x Guacamole Deep @ £2.69\n1 x Not Yo Cheese @ £3.99\nTOTAL: £6.68\n").to_stdout
   end
+
+  it { should respond_to :place }
 end
