@@ -10,15 +10,15 @@ class TextSender
   end
 
   def send_message
-    message = @client.messages.create(
-                                 from: ENV.fetch('TWILIO_SEND_NUMBER'),
-                                 body: generate_message_body,
-                                 to: ENV.fetch('MOBILE_NUMBER')
-                                 )
+    @client.messages.create(
+                           from: ENV.fetch('TWILIO_SEND_NUMBER'),
+                           body: generate_message_body,
+                           to: ENV.fetch('MOBILE_NUMBER')
+                           )
   end
 
   def generate_message_body
-    "Thank you! Your order was placed and will be delivered before #{ @time.hour + 1 }:#{ @time.min }"
+    "Thank you! Your order was placed and will be delivered before #{@time.hour + 1}:#{@time.min}"
   end
 
 end

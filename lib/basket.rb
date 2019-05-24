@@ -25,5 +25,4 @@ class Basket
     total
   end
 
-
 end

@@ -21,16 +21,16 @@ class Takeaway
     @text_sender.send_message
   end
 
-  def get_basket
+  def retrieve_basket
     @basket.basket
   end
 
-  def get_cost
+  def retrieve_cost
     @basket.total_cost
   end
 
   def correct_price?(expected_price)
-    get_cost == expected_price
+    retrieve_cost == expected_price
   end
 
 end

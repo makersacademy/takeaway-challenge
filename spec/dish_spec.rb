@@ -11,5 +11,5 @@ describe Dish do
   it 'can tell met its price' do
     expect(dish.price).to eq(10)
   end
-
+  
 end

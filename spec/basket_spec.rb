@@ -5,7 +5,7 @@ describe Basket do
   let(:basket)      { Basket.new(menu_class) }
   let(:menu_class)  { double(:menu_class, new: menu) }
   let(:menu)        { double(:menu, get_dish: dish) }
-  let(:dish)        { double(:dish, price: 10)}
+  let(:dish)        { double(:dish, price: 10) }
 
   it 'can store an item in the basket' do
     expect(menu).to receive(:get_dish)
@@ -31,5 +31,5 @@ describe Basket do
     basket.add_item('Margherita', 5)
     expect(basket.basket.length).to eq(5)
   end
-
+  
 end
