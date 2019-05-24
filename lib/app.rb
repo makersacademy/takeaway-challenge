@@ -1,12 +1,12 @@
 class App
-  attr_reader :list, :order_class
-  def initialize(list_class = DishList, order_class = Order)
-    @list = list_class.new
+  attr_reader :menu, :order_class
+  def initialize(menu_class = Menu, order_class = Order)
+    @menu = menu_class.new
     @order_class = order_class
   end 
 
   def display_menu
-    list.display
+    menu.display
   end
   
   def new_order
@@ -14,6 +14,11 @@ class App
   end 
 
   def select_dish(item, quantity)
-    selected = list.select(item, quantity)
+    if @current_order = nil 
+      new_order
+    end
+    selected = menu.select(item, quantity)
+    @current_order.push(selected)
   end 
+  
 end
