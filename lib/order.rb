@@ -6,6 +6,7 @@ class Order
   def initialize(menu = Menu.new)
     @menu = menu
     @order = {}
+    @total_price
   end
 
   def add(item, quantity)
@@ -19,8 +20,12 @@ class Order
     "#{quantity} #{item}(s) added to your order"
   end
 
-  # def checkout(order)
-  #   @order << @menu.price
-  # end
+  def checkout
+    total_price = 0
+    @order.each do |item, quantity|
+    total += quantity * menu.price(item)
+    end
+    @total_price
+  end
 
 end
