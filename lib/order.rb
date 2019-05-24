@@ -38,6 +38,7 @@ class Order
     @basket.each do |item|
       @total += (item[:price] * item[:quantity])
     end
+    raise "Could not place order, payment amount does not meet total!" if payment < @total
     @total
   end
 

@@ -54,5 +54,13 @@ describe Order do
       order.add("Chicken Red Thai Curry", 1, dish_double_class)
       expect(order.place(7.25)).to eq(7.25)
     end
+
+    it 'raises an error if payment is lower than the sum total' do
+      allow(dish).to receive(:add).and_return({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
+      order.add("Jasmine Rice", 1, dish_double_class)
+      allow(dish).to receive(:add).and_return({ dish: "Chicken Red Thai Curry", price: 4.75, quantity: 1 })
+      order.add("Chicken Red Thai Curry", 1, dish_double_class)
+      expect{order.place(5.00)}.to raise_error "Could not place order, payment amount does not meet total!"
+    end
   end
 end
