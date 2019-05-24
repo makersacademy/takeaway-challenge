@@ -6,19 +6,7 @@ describe Order do
   let(:dish) { double(:dish) }
 
   it 'initializes a menu of dishes and their prices' do
-    expect(order.menu).to eq([
-      {dish: "Jasmine Rice", price: 2.50},
-      {dish: "Coconut Rice", price: 3.50},
-      {dish: "Egg Noodles", price: 4.75},
-      {dish: "Egg Fried Rice", price: 3.50},
-      {dish: "Chicken Red Thai Curry", price: 4.75},
-      {dish: "Pork Green Thai Curry", price: 5.75},
-      {dish: "Stir-fry Duck with Ginger", price: 5.75},
-      {dish: "Stir-fry Beef with Mushroom", price: 5.75},
-      {dish: "Stir-fry Squid with Veg", price: 5.75},
-      {dish: "Mixed Seafood", price: 4.75},
-      {dish: "Spring Rolls (6)", price: 3.50}
-      ])
+    expect(order.menu).to eq(Order::MENU)
   end
 
   context '#view_menu' do
@@ -60,7 +48,7 @@ describe Order do
       order.add("Jasmine Rice", 1, dish_double_class)
       allow(dish).to receive(:add).and_return({ dish: "Chicken Red Thai Curry", price: 4.75, quantity: 1 })
       order.add("Chicken Red Thai Curry", 1, dish_double_class)
-      expect{order.place(5.00)}.to raise_error "Could not place order, payment amount does not meet total!"
+      expect { order.place(5.00) }.to raise_error "#{Order::ERROR_MSG}"
     end
   end
 end
