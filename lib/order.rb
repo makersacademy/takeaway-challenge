@@ -16,4 +16,8 @@ class Order
       {dish: "Spring Rolls (6)", price: 3.50}
       ]
   end
+
+  def view_menu
+    @menu
+  end
 end

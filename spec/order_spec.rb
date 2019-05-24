@@ -17,4 +17,11 @@ describe Order do
       {dish: "Spring Rolls (6)", price: 3.50}
       ])
   end
+
+  context '#view' do
+    it 'display the full menu to the customer' do
+      order = Order.new
+      expect(order.view_menu).to eq(order.menu)
+    end
+  end
 end
