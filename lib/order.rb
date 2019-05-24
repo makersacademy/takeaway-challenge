@@ -2,8 +2,11 @@ require 'bigdecimal'
 
 class Order
 
-  def initialize
+  attr_reader :time
+
+  def initialize(time = Time.now)
     @order_items = []
+    @time = time
   end
  
   def add(dish)
@@ -17,4 +20,7 @@ class Order
     end
   end
 
+  def delivery_time
+    (@time + (60 * 60)).strftime('%H:%M')
+  end
 end
