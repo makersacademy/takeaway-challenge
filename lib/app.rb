@@ -27,16 +27,17 @@ class App
   def check_total(number)
     @current_order.check_total(number)
   end
-
-  def correct_total?(number)
-    check_total(number)
-  end
   
   def send_message
     @twilio.send_message
   end
 
   def place_order(total)
+    if check_total(total) == false
+      raise "Incorrect total"
+    else 
+      send_message
+    end
   end
 end
 

@@ -34,13 +34,14 @@ describe App do
     expect(twilio).to receive(:send_message)
     app.send_message
   end 
-  it 'can check if it\'s the correct total' do 
-    app.new_order
-    allow(order).to receive(:check_total).and_return(true)
-    expect(app.correct_total?(20)).to eq(true)
-  end 
+
   it 'confirms an order' do 
     expect(app).to respond_to(:place_order).with(1).argument
   end 
-
+  
+  it 'raises an error if total is incorrect' do 
+    app.new_order
+    allow(order).to receive(:check_total).and_return(false)
+    expect{app.place_order(20)}.to raise_error("Incorrect total")
+  end 
 end 
