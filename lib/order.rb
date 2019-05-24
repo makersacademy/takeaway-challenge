@@ -12,10 +12,6 @@ class Order
     items.push(full_item)
   end
 
-  def get_the_cost_from_menu(name)
-    @menu.cost_of(name)
-  end
-
   def show
     puts "You are ordering:"
     @items.each { |item|
@@ -29,5 +25,10 @@ class Order
       cost += full_item[:price] * full_item[:amount]
     }
     cost
+  end
+
+  private 
+  def get_the_cost_from_menu(name)
+    @menu.cost_of(name)
   end
 end
