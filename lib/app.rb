@@ -1,11 +1,11 @@
 
 class App
   attr_reader :menu, :order_class, :current_order
-  def initialize(menu_class = Menu, order_class = Order, twilio_class = Twilio)
+  def initialize(menu_class = Menu, order_class = Order, message_sender_class = MessageSender)
     @menu = menu_class.new
     @order_class = order_class
     @current_order = nil
-    @twilio = twilio_class.new
+    @message_sender_class = message_sender_class.new
   end 
 
   def display_menu
@@ -29,7 +29,7 @@ class App
   end
   
   def send_message
-    @twilio.send_message
+    @message_sender_class.send_message
   end
 
   def place_order(total)
