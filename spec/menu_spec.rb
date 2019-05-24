@@ -16,7 +16,7 @@ describe Menu do
   
     it 'should allow me to select items' do
       subject.select(1, 2)
-      expect(subject.selection).to eq([dish1, dish1])
+      expect(subject.selection).to eq([{item: 1, name: 'Guacamole Deep', qty: 2, unit_cost: 269, price: 538}])
     end
   end
 end
