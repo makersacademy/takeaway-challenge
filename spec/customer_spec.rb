@@ -16,4 +16,9 @@ describe Customer do
     expect(order).to receive(:add)
     customer.choice(dish, 2)
   end
+
+  it "verifies total cost" do
+    allow(order).to receive(:cost).and_return(14)
+    expect { customer.checkout(10) }.to raise_error("You are charging me the incorrect price")
+  end
 end

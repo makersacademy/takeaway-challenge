@@ -14,7 +14,8 @@ class Customer
     @order.add(name, amount)
   end
 
-  def checkout
-    #whats in my basket
+  def checkout(my_idea_of_the_cost)
+    raise "You are charging me the incorrect price" if @order.cost != my_idea_of_the_cost
+    puts "You will pay £#{@order.cost}"
   end
 end
