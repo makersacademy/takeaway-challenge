@@ -7,12 +7,8 @@ require './lib/send_sms'
 
 cust = Customer.new
 cust.look
-cust.choice("Burger",2)
+cust.choice("Burger", 2)
 cust.choice("Soup", 3)
 # cust.choice("Burger")
 
 cust.checkout(43.95)
-
-
-o = Order.new
-
