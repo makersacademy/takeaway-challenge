@@ -1,0 +1,27 @@
+require 'menu'
+
+describe Menu do
+  let(:menu)      { Menu.new }
+  let(:food_item) { double(:food_item) }
+  let(:food_item_1) { double(:food_item_1) }
+
+  it 'should respond to Menu class' do
+    expect(menu).to be_a_kind_of(Menu)
+  end
+
+  it 'should have a menu array' do
+    expect(menu).to respond_to(:menu)
+  end
+
+  it 'should add food items to a menu' do
+    3.times { menu.add(food_item) }
+    expect(menu.menu).to eq([food_item, food_item, food_item])
+  end
+
+  it 'should remove a food item' do
+    2.times { menu.add(food_item) }
+    menu.add(food_item_1)
+    menu.add(food_item)
+    expect(menu.remove(food_item_1)).to eq([food_item, food_item, food_item])
+  end
+end
