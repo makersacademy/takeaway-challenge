@@ -1,14 +1,14 @@
 class Menu
   def initialize
     @menu = [
-      {:name => "Burger", :price => 12.99},
-      {:name => "Soup", :price => 5.99},
-      {:name => "Sandwich", :price => 7.99},
-      {:name => "Curry", :price => 14.99},
-      {:name => "Steak", :price => 18.99},
-      {:name => "Beer", :price => 3.99},
-      {:name => "Juice", :price => 2.99},
-      {:name => "Salad", :price => 9.99}
+      { :name => "Burger", :price => 12.99 },
+      { :name => "Soup", :price => 5.99 },
+      { :name => "Sandwich", :price => 7.99 },
+      { :name => "Curry", :price => 14.99 },
+      { :name => "Steak", :price => 18.99 },
+      { :name => "Beer", :price => 3.99 },
+      { :name => "Juice", :price => 2.99 },
+      { :name => "Salad", :price => 9.99 }
     ]
   end
 

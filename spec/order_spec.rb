@@ -14,10 +14,10 @@ describe Order do
     order.get_the_cost_from_menu("Soup")
   end
 
-  it "shows the full order" do 
+  it "shows the full order" do
     allow(menu).to receive(:cost_of)
     order.add("Soup", 1)
-    expect{order.show}.to output(a_string_including("You are ordering:")).to_stdout
+    expect { order.show }.to output(a_string_including("You are ordering:")).to_stdout
   end
 
   it "knows how much it costs" do

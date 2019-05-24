@@ -15,7 +15,8 @@ class Customer
   end
 
   def checkout(my_idea_of_the_cost)
-    raise "You are charging me the incorrect price" if @order.cost != my_idea_of_the_cost
+    message = "You are charging me the incorrect price"
+    raise message if @order.cost != my_idea_of_the_cost
     puts "You will pay £#{@order.cost}"
   end
 end

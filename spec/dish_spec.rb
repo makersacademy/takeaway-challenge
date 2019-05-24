@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-  let(:dish) { Dish.new("Burger", 12.99)}
+  let(:dish) { Dish.new("Burger", 12.99) }
 
   it "has a name" do
     expect(dish.name).to eq("Burger")
