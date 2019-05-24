@@ -5,7 +5,7 @@ class Order
   end
 
   def view_dishes
-    @dish_list
+    @dish_list.menu
   end
 
 

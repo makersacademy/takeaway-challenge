@@ -6,11 +6,17 @@ class DishList
     @dish_list_prices = { spaghetti_bolognese: 30,
                           chicken_pesto: 44,
                           fettuccine_beef: 42,
-                          chiili_chicken: 45,
+                          chilli_chicken: 45,
                           sabor_salad: 32,
                           tiramisu: 15,
                           banoffee_pie: 15
                         }
+  end
+
+  def menu
+    @dish_list_prices.each do |item, price|
+      puts "#{item} - £#{price}"
+    end
   end
 
 end
