@@ -20,9 +20,11 @@ class Order
   end
 
   def total
-    @order_list.map do |item, quantity|
-      menu.price(item) * quantity
+    total_price = 0
+    @order_list.each do |item, quantity|
+      total_price += quantity * @menu.price(item)
     end
+    total_price
   end
   
 
