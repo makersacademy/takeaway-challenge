@@ -1,4 +1,5 @@
 require './lib/dish_list.rb'
+require './lib/twilio.rb'
 
 class Order
 
@@ -20,4 +21,8 @@ class Order
   def check_total(estimate)
     @price_tracker.sum == estimate
   end
+
+  # def place_order
+  #
+  # end
 end

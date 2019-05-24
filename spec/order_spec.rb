@@ -38,5 +38,9 @@ describe Order do
     expect(o.check_total(134)).to eq(true)
   end
 
+  # it 'can send you a message when you place an order' do
+  #   o = Order.new
+  #   expect(o.place_order).to eq("Your order has been placed")
+  # end
 
 end
