@@ -26,5 +26,8 @@ class App
   def check_total(number)
     @current_order.check_total(number)
   end
+
+  def confirm_order
+  end
 end
 

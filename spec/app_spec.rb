@@ -27,4 +27,8 @@ describe App do
     expect(order).to receive(:check_total)
     app.check_total(20)
   end 
+
+  it 'should confirm an order' do 
+    expect(app).to respond_to(:confirm_order)
+  end 
 end 
