@@ -37,6 +37,12 @@ describe Order do
       order.add("Jasmine Rice", 1, dish_double_class)
       expect(order.basket).to include({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
     end
+
+    it 'updates the quantity of the dish if it already exsists in the basket' do
+      order.basket.push({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
+      order.add("Jasmine Rice", 1, dish_double_class)
+      expect(order.basket).to eq([{ dish: "Jasmine Rice", price: 2.50, quantity: 2 }])
+    end
   end
 
   context '#place' do
