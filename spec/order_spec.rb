@@ -4,14 +4,11 @@ describe Order do
   let(:order) { Order.new(menu_class) }
   let(:menu_class) { double(:menu_class, :new => menu) }
   let(:menu) { double(:menu) }
+  
   it "lists items ordered" do
     allow(menu).to receive(:cost_of)
     order.add("Soup", 1)
     expect(order.items.size).to eq(1)
-  end
-  it "finds out the price" do
-    expect(menu).to receive(:cost_of)
-    order.get_the_cost_from_menu("Soup")
   end
 
   it "shows the full order" do
