@@ -24,9 +24,12 @@ describe Order do
     expect(o.price_tracker).to eq([45, 45])
   end
 
-  # it 'can select multiple items and quantities and store these in an order' do
-  #   expect(order.price_tracker).to eq([6.5])
-  # end
+  it 'can select multiple items and quantities and store these' do
+    o = Order.new
+    o.food_selection(:chilli_chicken, 2)
+    o.food_selection(:chicken_pesto)
+    expect(o.price_tracker).to eq([45, 45, 44])
+  end
 
 
 

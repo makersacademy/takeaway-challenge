@@ -15,7 +15,8 @@ class Order
 
   def food_selection(item, quantity=1)
     quantity.times {@price_tracker << @dish_list.price(item)}
-
   end
 
+  def check_total(estimate)
+  end
 end
