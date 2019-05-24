@@ -10,7 +10,13 @@ class Menu
   end
 
   def price(item)
-    menu_items[item]
+    @menu_items[item]
+  end
+
+  def print_menu
+    @menu_items.each do |item, price|
+      puts "#{item}: £#{sprintf("%.2f", price)}"
+    end
   end
 
 end
