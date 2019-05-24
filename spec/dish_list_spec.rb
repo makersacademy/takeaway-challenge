@@ -16,5 +16,8 @@ let(:dishes) { DishList.new }
                         })
   end
 
+  it 'can give the price of one item' do
+    expect(dishes.price(:chicken_pesto)).to eq(44)
+  end
 
 end

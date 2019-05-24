@@ -19,4 +19,8 @@ class DishList
     end
   end
 
+  def price(item)
+    @dish_list_prices[item]
+  end
+
 end

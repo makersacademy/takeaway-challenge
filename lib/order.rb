@@ -13,8 +13,9 @@ class Order
     @dish_list.menu
   end
 
-  # def food_selection(item, quantity=1)
-  #   @dishlist.dish_list_prices[item]
-  # end
+  def food_selection(item, quantity=1)
+    quantity.times {@price_tracker << @dish_list.price(item)}
+
+  end
 
 end

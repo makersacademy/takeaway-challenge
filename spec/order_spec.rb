@@ -17,6 +17,13 @@ describe Order do
     o = Order.new
     expect(o.dish_list.dish_list_prices[:chicken_pesto]).to eq(44)
   end
+
+  it 'can record the price of multiples of an item' do
+    o = Order.new
+    o.food_selection(:chilli_chicken, 2)
+    expect(o.price_tracker).to eq([45, 45])
+  end
+
   # it 'can select multiple items and quantities and store these in an order' do
   #   expect(order.price_tracker).to eq([6.5])
   # end
