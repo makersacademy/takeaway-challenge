@@ -8,7 +8,7 @@ class Menu
   end
   
   def items
-    { "pasta" => 4.99, "bread" => 0.99, "rice" => 5.99 }
+    { "pasta" => 4.99, "bread" => 0.99, "pizza" => 5.99 }
   end
   
   def price(dish)
