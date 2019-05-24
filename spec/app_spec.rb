@@ -1,11 +1,13 @@
 require 'app'
 
 describe App do 
-  subject(:app) { described_class.new(menu_class, order_class) }
+  subject(:app) { described_class.new(menu_class, order_class, twilio_class) }
   let(:menu_class) {double(:menu_class, :new => menu)}
   let(:menu) { double(:menu, :items => {item: "Margherita", price: 10 })}
   let(:order_class) { double(:order_class, :new => order)}
   let(:order) {double(:order)}
+  let(:twilio_class) {double(:twilio_class, :new => twilio)}
+  let(:twilio) {double(:twilio)}
 
   it 'asks the menu to display list' do 
     expect(menu).to receive(:display)
@@ -27,8 +29,9 @@ describe App do
     expect(order).to receive(:check_total)
     app.check_total(20)
   end 
-
-  it 'should confirm an order' do 
-    expect(app).to respond_to(:confirm_order)
+  it 'can tell twilio to send a message' do 
+    expect(twilio).to receive(:send_message)
+    app.send_message
   end 
+
 end 

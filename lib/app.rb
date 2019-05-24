@@ -1,10 +1,11 @@
 
 class App
   attr_reader :menu, :order_class, :current_order
-  def initialize(menu_class = Menu, order_class = Order)
+  def initialize(menu_class = Menu, order_class = Order, twilio_class = Twilio)
     @menu = menu_class.new
     @order_class = order_class
     @current_order = nil
+    @twilio = twilio_class.new
   end 
 
   def display_menu
@@ -27,7 +28,8 @@ class App
     @current_order.check_total(number)
   end
 
-  def confirm_order
+  def send_message
+    @twilio.send_message
   end
 end
 
