@@ -11,11 +11,16 @@ class Order
   def add(item, quantity)
     # puts "what do you want to order?"
     # wants = gets.chomp.to_s
-    @order << wants
+    if @order.include?(item)
+      @order[item] += quantity
+    else
+      "You already ordered that. A reminder, you ordered #{quantity} #{item}(s)"
+    end
+    "#{quantity} #{item}(s) added to your order"
   end
 
-  def checkout(order)
-    @order << @menu.price
-  end
+  # def checkout(order)
+  #   @order << @menu.price
+  # end
 
 end
