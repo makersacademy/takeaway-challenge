@@ -1,8 +1,9 @@
 require './lib/order.rb'
 
 describe Order do
+  let(:order) { Order.new }
+
   it 'initializes a menu of dishes and their prices' do
-    order = Order.new
     expect(order.menu).to eq([
       {dish: "Jasmine Rice", price: 2.50},
       {dish: "Coconut Rice", price: 3.50},
@@ -20,7 +21,6 @@ describe Order do
 
   context '#view_menu' do
     it 'display the full menu to the customer' do
-      order = Order.new
       expect(order.view_menu).to eq(order.menu)
     end
   end
