@@ -16,7 +16,14 @@ class Menu
     }
   end
 
-  def select(dish_index, quantity)
-    quantity.times { @selection << @dishes[dish_index - 1] }
+  def select(item_no, qty)
+    current = @selection.find { |entry| entry[:item] == item_no }
+    if current == nil
+    hash = { item: item_no, name: @dishes[item_no - 1].name, qty: qty, unit_cost: @dishes[item_no - 1].price, price: qty * @dishes[item_no - 1].price}
+    @selection << hash
+    else
+      current[:qty] += qty
+      current[:price] = current[:qty] * current[:unit_cost]
+    end
   end
 end
