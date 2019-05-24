@@ -17,7 +17,7 @@ class Menu
     selected = {}
     items.each do |item|
       if selection == item[:item] 
-        selected = {item: item[:item], price: item[:price].to_i, quantity: quantity.to_i }
+        selected = {item: item[:item], price: item[:price], quantity: quantity }
       end
     end
     selected

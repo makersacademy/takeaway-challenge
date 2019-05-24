@@ -5,7 +5,7 @@ ruby '2.6.0'
 gem 'capybara'
 gem 'rake'
 gem 'rspec'
-gem 'rubocop'
+gem 'rubocop', '0.69.0'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false, group: :test
 gem 'twilio-ruby'
