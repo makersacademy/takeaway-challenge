@@ -1,13 +1,15 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
   attr_accessor :menu
   attr_accessor :order_list
   DEFAULT_QUANTITY = 1
 
-  def initialize(menu = Menu.new)
-    @menu = menu
+  def initialize(menu = Menu.new, notification = Notification.new)
     @order_list = {}
+    @menu = menu
+    @notification = notification
   end
 
   def add(item, quantity = DEFAULT_QUANTITY)
@@ -29,9 +31,9 @@ class Order
   
 
   def complete
-    switchy = total.to_i
-    formatted_total = "£#{sprintf("%.2f", switchy)}"
-    formatted_total
+    formatted_total = "£#{sprintf("%.2f", total)}"
+    message = "You complete legend, thanks for ordering. Your total to pay is #{formatted_total}."
+    @notification.send_text(message)
   end
 
 end
