@@ -5,7 +5,7 @@ class Dish
 
   def initialize(name, price)
     @name = name
-    @price = BigDecimal(price, 2)
+    @price = BigDecimal(price, 4)
   end
 
   def to_s
