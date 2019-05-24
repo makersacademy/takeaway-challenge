@@ -22,8 +22,9 @@ describe App do
     app.select_dish("Item", 2)
   end
 
-  # it 'checks the order total against user\'s total' do 
-  #   allow(order).to receive(:total).and_return(20)
-  #   expect(app.check_total(20)).to eq(true)
-  # end 
+  it 'tells the order to check total against user\'s total' do 
+    app.new_order
+    expect(order).to receive(:check_total)
+    app.app_check_total(20)
+  end 
 end 
