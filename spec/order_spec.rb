@@ -31,7 +31,12 @@ describe Order do
     expect(o.price_tracker).to eq([45, 45, 44])
   end
 
-
+  it 'can check if customer\'s estimate matches total' do
+    o = Order.new
+    o.food_selection(:chilli_chicken, 2)
+    o.food_selection(:chicken_pesto)
+    expect(o.check_total(134)).to eq(true)
+  end
 
 
 end

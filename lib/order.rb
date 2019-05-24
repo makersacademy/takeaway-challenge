@@ -18,5 +18,6 @@ class Order
   end
 
   def check_total(estimate)
+    @price_tracker.sum == estimate
   end
 end
