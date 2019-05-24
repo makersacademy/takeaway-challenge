@@ -1,3 +1,5 @@
+require './lib/dish.rb'
+
 class Order
   attr_reader :menu, :basket, :dish
 
