@@ -14,11 +14,11 @@ class App
   end 
 
   def select_dish(item, quantity)
-    if @current_order = nil 
+    if @current_order == nil 
       new_order
     end
     selected = menu.select(item, quantity)
-    @current_order.push(selected)
+    # @current_order.push(selected)
   end 
   
 end
