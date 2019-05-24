@@ -19,11 +19,13 @@ require 'order'
       expect(subject.basket_summary).to include({"pasta" => 3}, {"bread" => 2})
     end
   
+    # OUTSTANDING - CALCULATE A PRICE PER DISH AND ADD TO A TOTAL COST
     it 'can add item price to total cost' do
       subject.add("pasta")
       expect{subject.add("pasta")}.to change{subject.total_cost}.by(4.99)
     end
 
+    # DISPLAY A TOTAL COST (just an integer) WHEN USER CALLS TOTAL
     # it 'can display total' do
     #   expect
     # end

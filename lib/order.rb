@@ -23,5 +23,5 @@ class Order
       puts qty
     end
 end
-
+# add dishes price calculation (i.e. qty * dish price, per menu class items) 
 end
