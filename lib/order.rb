@@ -25,7 +25,27 @@ class Order
   end
 
   def add(dish_name, quantity, dish = Dish)
-    dish_selected = @menu.select { |item| item[:dish] == dish_name}
-    @basket << dish.new(dish_name, quantity, dish_selected[0][:price]).add
+    if is_in_basket?(dish_name)
+      (find_in_basket(dish_name))[:quantity] += 1
+    else
+      @basket << dish.new(dish_name, quantity, select_dish(dish_name)[0][:price]).add
+    end
+  end
+
+  def place(expected_total)
+    
+  end
+
+  private
+  def is_in_basket?(dish_name)
+    @basket.any? {|item| item[:dish] == dish_name}
+  end
+
+  def find_in_basket(dish_name)
+    @basket.detect { |item| item[:dish] == dish_name }
+  end
+
+  def select_dish(dish_name)
+    @menu.select { |item| item[:dish] == dish_name}
   end
 end

@@ -38,4 +38,12 @@ describe Order do
       expect(order.basket).to include({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
     end
   end
+
+  context '#place' do
+    it 'can sum the price of dishes in the basket' do
+      # order.add("Jasmine Rice", 1, dish_double_class)
+      # order.add("Chicken Red Thai Curry", 1, dish_double_class)
+      # expect(order.place(7.25)).to eq(7.25)
+    end
+  end
 end
