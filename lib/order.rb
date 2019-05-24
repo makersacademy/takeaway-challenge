@@ -18,6 +18,7 @@ class Order
       {dish: "Spring Rolls (6)", price: 3.50}
       ]
     @basket = []
+    @total = 0
   end
 
   def view_menu
@@ -32,8 +33,12 @@ class Order
     end
   end
 
-  def place(expected_total)
-    
+  def place(payment)
+    puts @basket
+    @basket.each do |item|
+      @total += (item[:price] * item[:quantity])
+    end
+    @total
   end
 
   private

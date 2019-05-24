@@ -3,7 +3,7 @@ require './lib/order.rb'
 describe Order do
   let(:order) { Order.new }
   let(:dish_double_class) { double(:dish_double_class, :new => dish) }
-  let(:dish) { double(:dish, :add => { dish: "Jasmine Rice", price: 2.50, quantity: 1 }) }
+  let(:dish) { double(:dish) }
 
   it 'initializes a menu of dishes and their prices' do
     expect(order.menu).to eq([
@@ -34,6 +34,7 @@ describe Order do
     end
 
     it 'adds dish to basket with quantity and price' do
+      allow(dish).to receive(:add).and_return({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
       order.add("Jasmine Rice", 1, dish_double_class)
       expect(order.basket).to include({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
     end
@@ -47,9 +48,11 @@ describe Order do
 
   context '#place' do
     it 'can sum the price of dishes in the basket' do
-      # order.add("Jasmine Rice", 1, dish_double_class)
-      # order.add("Chicken Red Thai Curry", 1, dish_double_class)
-      # expect(order.place(7.25)).to eq(7.25)
+      allow(dish).to receive(:add).and_return({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
+      order.add("Jasmine Rice", 1, dish_double_class)
+      allow(dish).to receive(:add).and_return({ dish: "Chicken Red Thai Curry", price: 4.75, quantity: 1 })
+      order.add("Chicken Red Thai Curry", 1, dish_double_class)
+      expect(order.place(7.25)).to eq(7.25)
     end
   end
 end
