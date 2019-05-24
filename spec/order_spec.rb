@@ -2,6 +2,8 @@ require './lib/order.rb'
 
 describe Order do
   let(:order) { Order.new }
+  let(:dish_double_class) { double(:dish_double_class, :new => dish) }
+  let(:dish) { double(:dish) }
 
   it 'initializes a menu of dishes and their prices' do
     expect(order.menu).to eq([
@@ -22,6 +24,13 @@ describe Order do
   context '#view_menu' do
     it 'display the full menu to the customer' do
       expect(order.view_menu).to eq(order.menu)
+    end
+  end
+
+  context '#add' do
+    it 'tells dish to add the dish to basket in order' do
+      expect(dish).to receive(:add)
+      order.add("Jasmine Rice", 1, dish_double_class)
     end
   end
 end

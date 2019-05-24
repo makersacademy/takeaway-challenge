@@ -1,5 +1,5 @@
 class Order
-  attr_reader :menu
+  attr_reader :menu, :basket, :dish
 
   def initialize
     @menu = [
@@ -15,9 +15,15 @@ class Order
       {dish: "Mixed Seafood", price: 4.75},
       {dish: "Spring Rolls (6)", price: 3.50}
       ]
+    @basket = []
   end
 
   def view_menu
     @menu
+  end
+
+  def add(dish_name, quantity, dish = Dish)
+    dish_selected = @menu.select { |item| item[:dish] == dish_name}
+    @basket << dish.new(dish_name, quantity, dish_selected[0][:price]).add
   end
 end
