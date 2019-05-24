@@ -7,7 +7,7 @@ describe App do
   let(:order_class) { double(:order_class, :new => order)}
   let(:order) {double(:order)}
 
-  it 'asks the dishlist to display list' do 
+  it 'asks the menu to display list' do 
     expect(menu).to receive(:display)
     app.display_menu
   end 
@@ -16,7 +16,8 @@ describe App do
     expect(app.new_order).to be(order)
   end
 
-  it 'asks the dish_list to select the item and quantity' do 
+  it 'asks the menu to select the item and quantity' do 
+    allow(order).to receive(:add_to_cart)
     expect(menu).to receive(:select)
     app.select_dish("Item", 2)
   end

@@ -1,5 +1,5 @@
 class App
-  attr_reader :menu, :order_class
+  attr_reader :menu, :order_class, :current_order
   def initialize(menu_class = Menu, order_class = Order)
     @menu = menu_class.new
     @order_class = order_class
@@ -18,7 +18,7 @@ class App
       new_order
     end
     selected = menu.select(item, quantity)
-    # @current_order.push(selected)
+    current_order.add_to_cart(selected)
   end 
   
 end
