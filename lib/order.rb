@@ -25,13 +25,13 @@ class Order
       qty = @basket_summary[food]
       price = menu.price(food)
       cost = price * qty
-      puts cost       
+      cost
     end
   end
 # OUTSTANDING - add dishes price calculation (i.e. qty * dish price, per menu class items) 
 end
 
-o = Order.new
-o.add("pizza",3)
-puts o.basket_summary
-o.price_calc
+# o = Order.new
+# o.add("pizza",3)
+# puts o.basket_summary
+# o.price_calc
