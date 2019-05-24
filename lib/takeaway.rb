@@ -1,7 +1,11 @@
+require 'basket'
+require 'text_sender'
+
 class Takeaway
 
-  def initialize(basket_class = Basket)
+  def initialize(basket_class = Basket, text_class = TextSender)
     @basket = basket_class.new
+    @text_sender = text_class.new
   end
 
   def show_menu
@@ -14,6 +18,7 @@ class Takeaway
 
   def checkout(expected_price)
     raise "Price given is not equal to actual price" unless correct_price?(expected_price)
+    @text_sender.send_message
   end
 
   def get_basket

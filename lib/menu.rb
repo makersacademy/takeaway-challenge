@@ -1,3 +1,5 @@
+require 'dish'
+
 class Menu
 
   attr_reader :items
