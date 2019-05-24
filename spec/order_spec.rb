@@ -22,4 +22,13 @@ describe Order do
     end
   end
 
+  context "#total" do
+    it "should give the customer a correct order total" do
+      ordermock.add("Burger")
+      ordermock.add("Pizza")
+      expect(ordermock.total).to eq(2)
+    end
+  end
+
+  
 end
