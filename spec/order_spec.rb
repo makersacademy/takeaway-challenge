@@ -10,4 +10,7 @@ describe Order do
     updated_items = order.add_to_cart("Margherita")
     expect(updated_items).to include("Margherita")
   end 
+  
+  it 'calculates the total of an order' do 
+  end 
 end 
