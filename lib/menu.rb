@@ -2,7 +2,13 @@
 class Menu
   attr_reader :dishes, :selection
   def initialize
-    @dishes = []
+    @dishes = [Dish.new('Guacamole Deep', 269), 
+               Dish.new('Not Yo Cheese', 399),
+               Dish.new('Jalapeno Business', 450),
+               Dish.new('Taco Shellebration', 699),
+               Dish.new('In Queso Emergency', 599),
+               Dish.new('Tequila Mockingbird',750)
+              ]
     @selection = []
   end
 

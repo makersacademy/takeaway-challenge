@@ -18,6 +18,6 @@ describe Order do
 
   it 'should raise error if basket total is different from selection' do
     subject.confirm_basket(menu)
-    expect { subject.place }.not_to raise_error
+    expect { subject.pay }.not_to raise_error
   end
 end

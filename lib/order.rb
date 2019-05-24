@@ -1,21 +1,19 @@
-# require 'rubygems'
-# require 'twilio-ruby'
-
+require 'twilio-ruby'
 # contains a list of items and quantity
 class Order
-  
-  account_sid = 'TWILIO_ACCOUNT_SID'
-  auth_token = 'TWILIO_AUTH_TOKEN'
-  @client = Twilio::REST::Client.new(account_sid, auth_token)
-  attr_reader :basket
+  attr_reader :basket, :total
   PAY_ERROR = "Please amend your payment total. Amount due: #{@total}"
 
-  def initialize(basket = Basket)
-    @basket = basket.new
+  def initialize(basket = Basket.new)
+    @basket = basket
+    @total = 0
   end
-
+  
   def confirm_basket(menu)
     @basket.add(menu)
+    @basket.contents.each { |dish|
+    @total += dish[:price]
+    }
   end
 
   def view
@@ -26,24 +24,14 @@ class Order
 
   def pay(amount = @total)
     raise PAY_ERROR if amount != @total
-
-    message = @client.messages
-      .create(
-        body: "Thank you! Your order was placed and will be delivered before #{Time.now + 1}",
-        from: '+441484599374',
-        to: '+4407976237519'
-      )
-      puts message.sid
-
+    # send_confirmation COMMENTED OUT TO AVOID SMS SENDS 
   end
   
   private
   
   def order_details
-    @total = 0
     @basket.contents.each { |item|
       puts "#{item[:qty]} x #{item[:name]} @ £#{'%.2f' % (item[:unit_cost] / 100.00)} : £#{'%.2f' % (item[:price] / 100.00)}"
-      @total += item[:price]
     }
   end
   
@@ -57,4 +45,14 @@ class Order
     puts "TOTAL: £#{'%.2f' % (@total / 100.00)}"
   end
 
+  def send_confirmation(phone = ENV['TO_PHONE'])
+    client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+
+    message = client.messages.create(
+    from: ENV['FROM_PHONE'],
+    to: phone,
+    body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M %d-%m-%Y")}"
+    )
+    message.sid
+  end
 end
