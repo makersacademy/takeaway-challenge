@@ -1,3 +1,4 @@
+
 class App
   attr_reader :menu, :order_class, :current_order
   def initialize(menu_class = Menu, order_class = Order)
@@ -22,7 +23,8 @@ class App
     current_order.add_to_cart(selected)
   end 
   
-  def app_check_total(number)
+  def check_total(number)
     @current_order.check_total(number)
   end
 end
+

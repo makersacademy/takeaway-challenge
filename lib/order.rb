@@ -9,12 +9,11 @@ class Order
   end 
 
   def total 
-    total = 0
+    total_cost = 0
     items.each do |item|
-      item_total = item[:price].to_i * item[:quantity].to_i 
-      total += item_total
+      total_cost += ( item[:price] * item[:quantity])
     end
-    total
+    total_cost
   end 
 
   def check_total(number)

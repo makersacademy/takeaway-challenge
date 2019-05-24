@@ -14,10 +14,10 @@ class Menu
   end
   
   def select(selection, quantity)
-    selected = []
+    selected = {}
     items.each do |item|
       if selection == item[:item] 
-        selected << {item: item[:item], price: item[:price], quantity: quantity }
+        selected = {item: item[:item], price: item[:price].to_i, quantity: quantity.to_i }
       end
     end
     selected

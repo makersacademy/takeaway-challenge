@@ -11,6 +11,6 @@ describe Menu do
   end 
 
   it 'returns a specific dish and quantity' do 
-    expect(menu.select("Margherita", 2)).to eq([{item: "Margherita", price: 10, quantity: 2}])
+    expect(menu.select("Margherita", 2)).to eq({item: "Margherita", price: 10, quantity: 2})
   end 
 end
