@@ -16,4 +16,8 @@ class Order
     end
     total
   end 
+
+  def check_total(number)
+    total == number
+  end 
 end 
