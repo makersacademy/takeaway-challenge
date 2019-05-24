@@ -1,13 +1,11 @@
-# require_relative 'menu'
+require 'menu'
 class Order
   attr_reader :ordered_items, :total, :menu_dishes
-
   def initialize 
-    # (menu = Menu.new)
-    # @menu = menu
+    menu = Menu.new
+    @menu_dishes = menu.menu_dishes
     @ordered_items = []
     @total = 0
-    @menu_dishes = { :pizza => 4.00, :sausage => 2.00, :curry => 6.50, :rice => 2.00, :chilli => 6.00, :salad => 3.50 }
   end
 
   def select_dishes(item_chosen, quantity)
@@ -19,12 +17,9 @@ class Order
     @total
   end
 
-  def text_order_confirmation
-    if !@ordered_items.empty? && @total > 0
-      return "Thank you! Your order was placed and will be delivered before 18:52"
-    else
-      return "Order incomplete"
-    end
+  def place_order
+    raise "Order incomplete" if total == 0 || @ordered_items.empty?
+    !@ordered_items.empty? && @total > 0
+    return "Thank you! Your order was placed and will be delivered before 18:52"
   end
-
 end
