@@ -5,5 +5,4 @@ describe Dish do
   expect(dish).to respond_to :price 
   expect(dish).to respond_to :name 
   end
-
 end

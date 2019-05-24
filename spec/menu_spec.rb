@@ -8,9 +8,6 @@ describe Menu do
   it 'should return a list of dishes and their prices' do
     subject.add(dish1)
     subject.add(dish2)
-    puts'**********'
-    puts dish1.name
     expect { subject.view }.to output("1. Guacamole Deep - £2.69\n2. Not Yo Cheese - £3.99\n").to_stdout
   end
-
 end
