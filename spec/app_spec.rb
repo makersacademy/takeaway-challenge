@@ -29,9 +29,18 @@ describe App do
     expect(order).to receive(:check_total)
     app.check_total(20)
   end 
+
   it 'can tell twilio to send a message' do 
     expect(twilio).to receive(:send_message)
     app.send_message
+  end 
+  it 'can check if it\'s the correct total' do 
+    app.new_order
+    allow(order).to receive(:check_total).and_return(true)
+    expect(app.correct_total?(20)).to eq(true)
+  end 
+  it 'confirms an order' do 
+    expect(app).to respond_to(:place_order).with(1).argument
   end 
 
 end 

@@ -28,8 +28,15 @@ class App
     @current_order.check_total(number)
   end
 
+  def correct_total?(number)
+    check_total(number)
+  end
+  
   def send_message
     @twilio.send_message
+  end
+
+  def place_order(total)
   end
 end
 
