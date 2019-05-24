@@ -1,6 +1,6 @@
 # An object storing a list of meal dishes
 class Menu
-
+  attr_reader :dishes
   def initialize
     @dishes = []
   end
