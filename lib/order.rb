@@ -1,14 +1,18 @@
+# require_relative 'menu'
 class Order
-  attr_reader :ordered_items, :total
-  def initialize
+  attr_reader :ordered_items, :total, :menu_dishes
+
+  def initialize 
+    # (menu = Menu.new)
+    # @menu = menu
     @ordered_items = []
     @total = 0
     @menu_dishes = { :pizza => 4.00, :sausage => 2.00, :curry => 6.50, :rice => 2.00, :chilli => 6.00, :salad => 3.50 }
   end
 
-  def select_dishes(item_chosen)
+  def select_dishes(item_chosen, quantity)
     @ordered_items.push(item_chosen)
-    @total += @menu_dishes[item_chosen]
+    @total += (@menu_dishes[item_chosen] * quantity)
   end
 
   def price
