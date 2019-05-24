@@ -32,5 +32,9 @@ describe Order do
       expect(dish).to receive(:add)
       order.add("Jasmine Rice", 1, dish_double_class)
     end
+
+    it 'adds dish to basket with quantity and price' do
+
+    end
   end
 end
