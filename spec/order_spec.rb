@@ -1,9 +1,11 @@
 require './lib/order.rb'
 
 describe Order do
-  let(:order) { Order.new }
+  let(:order) { Order.new(sms_double_class) }
   let(:dish_double_class) { double(:dish_double_class, :new => dish) }
   let(:dish) { double(:dish) }
+  let(:sms_double_class) { double(:message, :new => sms) }
+  let(:sms) { double(:sms, :send => "Success!") }
 
   it 'initializes a menu of dishes and their prices' do
     expect(order.menu).to eq(Order::MENU)
@@ -49,6 +51,17 @@ describe Order do
       allow(dish).to receive(:add).and_return({ dish: "Chicken Red Thai Curry", price: 4.75, quantity: 1 })
       order.add("Chicken Red Thai Curry", 1, dish_double_class)
       expect { order.place(5.00) }.to raise_error "#{Order::ERROR_MSG}"
+    end
+
+    it 'tells Message to create new message' do
+      allow(dish).to receive(:add).and_return({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
+      order.add("Jasmine Rice", 1, dish_double_class)
+      expect(sms).to receive(:send)
+      order.place(2.50)
+    end
+
+    it 'sends sms message if order it successfully placed' do
+      # expect()
     end
   end
 end

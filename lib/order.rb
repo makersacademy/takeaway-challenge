@@ -17,10 +17,11 @@ class Order
     { dish: "Spring Rolls (6)", price: 3.50 }
     ]
 
-  def initialize
+  def initialize(message = Message)
     @menu = MENU
     @basket = []
     @total = 0
+    @message = message.new
   end
 
   def view_menu
@@ -37,11 +38,11 @@ class Order
   end
 
   def place(payment)
-    puts @basket
     @basket.each do |item|
       @total += (item[:price] * item[:quantity])
     end
     raise ERROR_MSG if payment < @total
+    @message.send
     @total
   end
 
