@@ -18,7 +18,7 @@ describe Order do
       ])
   end
 
-  context '#view' do
+  context '#view_menu' do
     it 'display the full menu to the customer' do
       order = Order.new
       expect(order.view_menu).to eq(order.menu)
