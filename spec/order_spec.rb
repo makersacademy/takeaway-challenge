@@ -54,8 +54,6 @@ describe Order do
     end
 
     it 'tells Message to create new message' do
-      allow(dish).to receive(:add).and_return({ dish: "Jasmine Rice", price: 2.50, quantity: 1 })
-      order.add("Jasmine Rice", 1, dish_double_class)
       expect(sms).to receive(:send)
       order.place(2.50)
     end
