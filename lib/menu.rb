@@ -1,3 +1,4 @@
+# Creates a menu of takeaway items and displays menu
 class Menu
   attr_reader :display , :items
 
