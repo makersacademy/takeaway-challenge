@@ -13,4 +13,10 @@ class Basket
       @total += dish[:price]
     }
   end
+
+  def itemise
+    @contents.each { |dish|
+    puts "#{@contents.count(dish)} x #{dish.name} @ £#{'%.2f' % (dish.cost / 100.00)} each"
+    }
+  end
 end
