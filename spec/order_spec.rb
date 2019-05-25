@@ -57,9 +57,5 @@ describe Order do
       expect(sms).to receive(:send)
       order.place(2.50)
     end
-
-    it 'sends sms message if order it successfully placed' do
-      # expect()
-    end
   end
 end
