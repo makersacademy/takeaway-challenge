@@ -91,3 +91,23 @@ Branch out
 -----
 I got a rather clunky solution to ordering via text implemented in a branch 
 https://github.com/melanierogan/takeaway-challenge/tree/orderviatext
+
+
+
+1. Text your order
+![IMG_4471](https://user-images.githubusercontent.com/16557524/58373196-36695880-7f22-11e9-8423-ee5dd43dc2b4.PNG)
+
+2. Run the ruby app
+```
+irb
+require './lib/order'
+o = Order.new
+o.text_request
+o.total
+o.complete
+```
+
+
+3. Get your text confirmation
+![IMG_4472](https://user-images.githubusercontent.com/16557524/58373202-53059080-7f22-11e9-8f9f-a838ab04f480.PNG)
+
