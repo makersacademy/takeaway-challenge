@@ -40,7 +40,7 @@ Confirmation text
 -----
 
 This is a sample of the confirmation text
-![IMG_4469](https://user-images.githubusercontent.com/16557524/58369129-29cb0d00-7eee-11e9-830d-d087672ecd08.jpg=120)
+![IMG_4469](https://user-images.githubusercontent.com/16557524/58369129-29cb0d00-7eee-11e9-830d-d087672ecd08.jpg =120x)
 
 
 
