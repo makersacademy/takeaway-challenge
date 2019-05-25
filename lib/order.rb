@@ -12,6 +12,15 @@ class Order
     @notification = notification
   end
 
+  def user_request
+    puts menu.print_menu
+    puts "what would you like to order? Enter an item"
+    user_input_item = gets.chomp.downcase
+    puts "how many?"
+    user_input_quantity = gets.chomp.to_i
+    add(user_input_item, user_input_quantity)
+  end
+
   def add(item, quantity = DEFAULT_QUANTITY)
     if @order_list.include?(item)
       @order_list[item] += quantity
