@@ -2,6 +2,7 @@ class Order
   attr_reader :items
 
   def initialize(menu = Menu)
+    # I want to use dependency injection but then the order object carries the menu in its state all the time
     @items = []
     @menu = menu.new
   end

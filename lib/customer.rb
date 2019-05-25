@@ -19,6 +19,7 @@ class Customer
     message = "You are charging me the incorrect price"
     raise message if @order.cost != my_idea_of_the_cost
     puts "You will pay £#{@order.cost}"
+    Pub.new(@order)
     @message.new
   end
 end
