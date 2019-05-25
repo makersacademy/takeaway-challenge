@@ -13,4 +13,5 @@ class Notification
       from: ENV["TWILIO_NUMBER"],
       body: message)
   end
+
 end
