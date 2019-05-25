@@ -20,10 +20,10 @@ describe Order do
       ordermock.add("pizza", 3)
       expect(ordermock.order_list["pizza"]).to eq(4)
     end
-    it "should allow user to say what to order" do
-      ordermock.user_request
-      expect(ordermock.order_list["pizza"]).to eq(3)
-    end
+    # it "should allow user to say what to order" do
+    #   ordermock.user_request
+    #   expect(ordermock.order_list["pizza"]).to eq(3)
+    # end
   end
 
   context "#total" do
