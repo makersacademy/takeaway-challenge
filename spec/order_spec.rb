@@ -21,4 +21,26 @@ describe Order do
 
     expect(my_order.show_total).to eq("£0.00")
   end
+
+  it 'can add an item to the order' do
+    my_order = Order.new
+    item_double = double('item_double')
+
+    my_order.add_item(item_double)
+
+    expect(my_order.items).to include(item_double)
+  end
+
+  it 'can add multiple items to the order' do
+    my_order = Order.new
+    item_double_1 = double('item_double')
+    item_double_2 = double('item_double')
+    item_double_3 = double('item_double')
+
+    my_order.add_item(item_double_1)
+    my_order.add_item(item_double_2)
+    my_order.add_item(item_double_3)
+
+    expect(my_order.items).to include(item_double_1, item_double_2, item_double_3)
+  end
 end

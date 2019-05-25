@@ -1,8 +1,9 @@
 class Takeaway
-  attr_reader :menu, :order_class, :current_order
-  def initialize(menu, order_class)
+  attr_reader :menu, :order_class, :current_order, :sms_sender
+  def initialize(menu, order_class, sms_sender)
     @menu = menu
     @order_class = order_class
+    @sms_sender = sms_sender
   end
 
   def view_menu
@@ -23,5 +24,11 @@ class Takeaway
     item_from_menu = @menu.get_item(item)
 
     @current_order.add_item(item_from_menu) unless item_from_menu.nil?
+  end
+
+  def place_order(price)
+    raise 'Amount paid does not equal price of order' if price != show_total
+
+    @sms_sender.confirm_order
   end
 end
