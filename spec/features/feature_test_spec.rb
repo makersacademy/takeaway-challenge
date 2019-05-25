@@ -11,4 +11,5 @@ p order
 
 p order.total
 
-p order.complete
+# p order.complete
+# comment out above to fully feature test without sending a text
