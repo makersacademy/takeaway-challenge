@@ -40,7 +40,7 @@ class Order
   
   def complete
     formatted_total = "£#{sprintf("%.2f", total)}"
-    message = "You complete legend, thanks for ordering from MeRo Resto. Your total to pay is #{formatted_total} and your order will arrive by #{(Time.now + (60*60)).strftime("%H:%M")}...in your mind"
+    message = "You complete legend, thanks for ordering from MeRo Resto. Your total to pay is #{formatted_total} and your order will arrive by #{(Time.now + (60 * 60)).strftime("%H:%M")}...in your mind"
     @notification.send_text(message)
   end
 

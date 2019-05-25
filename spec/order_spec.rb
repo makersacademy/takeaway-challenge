@@ -12,20 +12,24 @@ describe Order do
 
   context "#add_item" do
     it "should add one order of a menu item" do
-      ordermock.add("Pizza")
-      expect(ordermock.order_list["Pizza"]).to eq(Order::DEFAULT_QUANTITY)
+      ordermock.add("pizza")
+      expect(ordermock.order_list["pizza"]).to eq(Order::DEFAULT_QUANTITY)
     end
     it "should add multiple orders of a menu item" do
-      ordermock.add("Pizza")
-      ordermock.add("Pizza", 3)
-      expect(ordermock.order_list["Pizza"]).to eq(4)
+      ordermock.add("pizza")
+      ordermock.add("pizza", 3)
+      expect(ordermock.order_list["pizza"]).to eq(4)
+    end
+    it "should allow user to say what to order" do
+      ordermock.user_request
+      expect(ordermock.order_list["pizza"]).to eq(3)
     end
   end
 
   context "#total" do
     it "should give the customer a correct order total" do
       ordermock.add("Burger")
-      ordermock.add("Pizza")
+      ordermock.add("pizza")
       expect(ordermock.total).to eq(2)
     end
   end
