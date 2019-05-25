@@ -18,7 +18,7 @@ module FoodList
 
   def load_items(file)
     menu_data = CSV.read(file)
-    menu_data.drop(1).map{|dish|
+    menu_data.drop(1).map { |dish|
       items.push(item_class.new(dish[0], dish[1]))
     }
   end

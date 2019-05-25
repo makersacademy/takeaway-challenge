@@ -1,12 +1,11 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:my_take_away){Takeaway.new(menu_double, order_class, sms_sender_double)}
-  let(:menu_double){double('menu_double', view_items: "a menu")}
-  let(:order_double){double('order_double', add_item: false)}
-  let(:order_class){double('order_class', :new => order_double)}
-  let(:sms_sender_double){ double('sms_sender_double') }
-
+  let(:my_take_away) { Takeaway.new(menu_double, order_class, sms_sender_double) }
+  let(:menu_double) { double('menu_double', view_items: "a menu") }
+  let(:order_double) { double('order_double', add_item: false) }
+  let(:order_class) { double('order_class', :new => order_double) }
+  let(:sms_sender_double) { double('sms_sender_double') }
 
   it 'can show a customer a menu' do
     expect(my_take_away.view_menu).to eq("a menu")

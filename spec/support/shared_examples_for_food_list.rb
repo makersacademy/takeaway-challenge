@@ -1,7 +1,7 @@
 require 'food_list'
 
 shared_examples_for FoodList do
-  let(:subject) {described_class}
+  let(:subject) { described_class }
 
   it 'can be initialized with a list of items' do
     menu_items_double = double("Menu items")

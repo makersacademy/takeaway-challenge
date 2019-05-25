@@ -16,7 +16,7 @@ describe Order do
     expect(my_order.show_total).to eq("£6.00")
   end
 
-  it 'can show an orders total if no items ordered'  do
+  it 'can show an orders total if no items ordered' do
     my_order = Order.new
 
     expect(my_order.show_total).to eq("£0.00")
