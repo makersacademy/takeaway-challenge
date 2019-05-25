@@ -67,9 +67,10 @@ see if I can get it working on a branch first. This was a more fun app to build,
 Technologies used
 -----
 
-Ruby! 
-Rspec
-Twilio gem
-dotenv gem
+- Ruby! 
+- Rspec
+- Twilio gem
+- dotenv gem
+
 The last two of these I've never used for Ruby and it took a lot of messing around to get it working. You'll see my env file is listed in
 `.gitignore` but I can see one or two security based things I'd like to fix. 
