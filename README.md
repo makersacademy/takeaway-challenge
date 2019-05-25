@@ -85,3 +85,9 @@ Once I had everything working I wanted to add user input, to make it a little mo
 This meant my 96% test coverage went down to 90%, I'm going to try and sort that out now. I also decided I'd like some ascii art on my menu,
 this probably added redudant code that wasn't needed, but it looks kinda cool. I'd also really like to do the order by text option, let's
 see if I can get it working on a branch first. This was a more fun app to build, it's made me want to go back and try the Airport Challenge again.
+
+
+Branch out
+-----
+I got a rather clunky solution to ordering via text implemented in a branch 
+https://github.com/melanierogan/takeaway-challenge/tree/orderviatext
