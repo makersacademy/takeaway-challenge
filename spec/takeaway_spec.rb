@@ -14,33 +14,40 @@ describe Takeaway do
     expect(my_take_away.current_order).to eq(nil)
   end
 
-  it 'can can initalize an order when an item is ordered' do
-    my_take_away.order('an item')
+  it 'can start a new order' do
+    my_take_away.start_new_order
+
     expect(my_take_away.current_order).to eq(order_double)
   end
 
-  it 'can wont initalize an order when an item is alredy in progress' do
-    expect(order_class).to receive(:new).once
-    my_take_away.order('an item')
-    my_take_away.order('another item')
-  end
-
-  it 'can tell order to add an item' do
-    allow(order_double).to receive(:add_item).with(1)
-    expect(order_double).to receive(:add_item).with('an item')
-
-    my_take_away.order('an item')
-  end
-
   it 'can show me my order total' do
-    my_take_away.order('an item')
-
     expect(order_double).to receive(:show_total).once
-
+    my_take_away.start_new_order
     my_take_away.show_total
   end
 
   it 'can return a message if we dont have an order ongoing' do
     expect(my_take_away.show_total).to eq("There isn't an order in process.")
+  end
+
+  it 'can add an new item to the order that is in the menu' do
+    my_take_away.start_new_order
+    item_double = double('item double')
+
+    allow(menu_double).to receive(:get_item).with('cheese').and_return(item_double)
+
+    expect(order_double).to receive(:add_item).with(item_double)
+
+    my_take_away.order_item('cheese')
+  end
+
+  it 'cant add an item to the order that is not in the menu' do
+    my_take_away.start_new_order
+
+    allow(menu_double).to receive(:get_item).with('cheese').and_return(nil)
+
+    expect(order_double).to_not receive(:add_item)
+
+    my_take_away.order_item('cheese')
   end
 end

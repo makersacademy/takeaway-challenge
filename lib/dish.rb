@@ -7,10 +7,10 @@ class Dish
 
   def initialize(name, price)
     @name = name
-    @price = Money.new(price, "GBP")
+    @price = price
   end
 
   def formatted
-    "#{name}: #{price.format}"
+    "#{name}: #{Money.new(price, "GBP").format}"
   end
 end

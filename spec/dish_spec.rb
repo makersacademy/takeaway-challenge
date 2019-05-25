@@ -8,7 +8,7 @@ describe Dish do
   end
 
   it 'can be initialized with a price' do
-    expect(my_dish.price).to eq(Money.new(100, "GBP"))
+    expect(my_dish.price).to eq(100)
   end
 
   it 'can print the item and price formatted' do
