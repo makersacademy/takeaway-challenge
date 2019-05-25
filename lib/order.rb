@@ -4,7 +4,8 @@ class Order
   attr_reader :basket, :total
   PAY_ERROR = "Please amend your payment total. Amount due: #{@total}"
 
-  def initialize(basket = Basket.new)
+  def initialize(basket = Basket.new, messenger = Messenger.new)
+    @messenger = messenger
     @basket = basket
     @total = 0
   end
@@ -46,13 +47,6 @@ class Order
   end
 
   def send_confirmation(phone = ENV['TO_PHONE'])
-    client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-
-    message = client.messages.create(
-    from: ENV['FROM_PHONE'],
-    to: phone,
-    body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60 * 60).strftime("%H:%M %d-%m-%Y")}"
-    )
-    message.sid
+    @messenger.confirm(phone)
   end
 end
