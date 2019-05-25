@@ -1,14 +1,16 @@
-# Keeps track of shopper's current menu choices
+# Stores menu selections
 class Basket
-  attr_reader :contents
+  attr_reader :contents, :total
 
   def initialize
     @contents = []
+    @total = 0
   end
-  
+
   def add(menu)
-    menu.selection.each { |entry|
-      @contents << entry
+    menu.selection.each { |dish|
+      @contents << dish
+      @total += dish[:price]
     }
   end
 end

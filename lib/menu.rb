@@ -1,4 +1,7 @@
 # An object storing a list of meal dishes
+# Initializes with set menu. New dishes can be added.
+# All dishes can be viewed
+# Allows selection of items for subsequent addition to basket
 class Menu
   attr_reader :dishes, :selection
   def initialize
