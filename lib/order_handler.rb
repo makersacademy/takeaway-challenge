@@ -2,15 +2,17 @@ class OrderHandler
 
   ERROR_MESSAGE = "Sorry, your order was invalid."
 
-  def initialize(menu, order_class)
+  def initialize(menu, order_class, messenger = Messenger.new)
     @menu = menu
     @order_class = order_class
+    @messenger = messenger
   end
 
   def handle_order(order_string, customer_total, time = Time.now)
     create_new_order(time)
     add_all_to_order(order_string)
     fail(ERROR_MESSAGE) if invalid_total?(customer_total)
+    send_order_message
     order_success
   end
 
@@ -38,8 +40,16 @@ class OrderHandler
     @menu.get(string) ? @menu.get(string) : fail(ERROR_MESSAGE)
   end
 
+  def send_order_message
+    @messenger.send_message(success_message)
+  end
+
   def order_success
-    "Thank you! Your order was placed and will be delivered before #{@current_order.delivery_time}. You will also receive a text message with these details"
+     "#{success_message} You will also receive a text message with these details"
+  end
+
+  def success_message
+    "Thank you! Your order was placed and will be delivered before #{@current_order.delivery_time}."
   end
 
   def invalid_total?(customer_total)

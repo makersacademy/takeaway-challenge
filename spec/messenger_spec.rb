@@ -2,10 +2,8 @@ require 'messenger'
 require 'dotenv/load'
 
 describe 'messenger' do
-  let(:messenger) { Messenger.new(twilio_class) }
-  let(:twilio) { double(:twilio) }
-  let(:twilio_class) { double(:twilio_class, new: twilio) }
-  
+  let(:messenger) { Messenger.new(twilio) }
+  let(:twilio) { double(:twilio) }  
   
   before(:each) do
     allow(twilio).to receive_message_chain(:api, :account, :messages, :create)
@@ -26,5 +24,4 @@ describe 'messenger' do
       messenger.send_message('Test String')
     end
   end
-
 end
