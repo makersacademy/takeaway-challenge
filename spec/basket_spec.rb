@@ -13,8 +13,8 @@ describe Basket do
     end
 
     it 'should return an itemised list of contents' do
-      expect(subject.itemise).to eq("1 x Guacamole Deep @ £2.69 each
-1 x Not Yo Cheese @ £3.99 each\n")
+      expect { subject.itemise }.to output("1 x Guacamole Deep @ £2.69 each
+1 x Not Yo Cheese @ £3.99 each\n").to_stdout
     end
   end
 end

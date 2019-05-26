@@ -16,8 +16,7 @@ class Basket
   end
 
   def itemise
-    unique_dishes = @contents.uniq
-    unique_dishes.each { |dish|
+    @contents.uniq.each { |dish|
     puts "#{@contents.count(dish)} x #{dish.name} @ £#{'%.2f' % (dish.price / 100.00)} each"
     }
   end
