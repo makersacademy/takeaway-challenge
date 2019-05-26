@@ -25,6 +25,13 @@ require 'order'
       expect{subject.price_calc}.to change{subject.total}.by(5.99)
     end
 
+    it 'can add multiple items to total cost' do
+      subject.add("pizza",10)
+      subject.add("bread",3)
+      subject.add("pasta",4)
+      expect{subject.price_calc}.to change{subject.total}.by(82.83000000000001)
+    end
+
     it 'can display total' do
       subject.add("pizza")
       subject.price_calc

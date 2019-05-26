@@ -20,6 +20,7 @@ class Order
       price = menu.price(food)
       cost = price * qty
       @total += cost
+      @total
     end
   end
 
