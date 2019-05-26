@@ -19,14 +19,15 @@ describe 'order_handler' do
     allow(menu).to receive(:get).with("Pizza").and_return(pizza)
     allow(menu).to receive(:get).with("Sushi").and_return(sushi)
   end
+  let(:time) { Time.now }
 
   context '#handle_order' do
     context 'when ordering one item' do
       context 'when total is correct' do
         it 'creates a new order' do
           allow(order).to receive(:total).and_return(BigDecimal(1.50, 4))
-          expect(order_class).to receive(:new)
-          order_handler.handle_order("Pizza *1", 1.50)
+          expect(order_class).to receive(:new).with(time)
+          order_handler.handle_order("Pizza *1", 1.50, time)
         end
 
         it 'calls the add method on the order, with the correct dish object' do

@@ -32,7 +32,6 @@ class OrderHandler
     order_arr = []
     order_items.each { |item| order_arr.concat(item.split(' *')) }
     order_arr
-
   end 
 
   def get_dish(string)
