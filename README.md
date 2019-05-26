@@ -1,3 +1,31 @@
+-Use only the app class to interact with the programme which refers to menu, order and message class. 
+-100% test coverage for my own implemented method but not for the API
+-added a Twilio spec to test my delivery time method, possibly could've added this to the order class but decided not to as twilio didn't need to know about the order's info. 
+
+2.6.0 :001 > require './lib/app'
+ => true 
+2.6.0 :002 > require './lib/menu'
+ => true 
+2.6.0 :003 > require './lib/order'
+ => true 
+2.6.0 :004 > require './lib/twilio'
+ => true 
+2.6.0 :005 > app = App.new
+ => #<App:0x00007fd1572b6fd0 @menu=#<Menu:0x00007fd1572b6fa8 @items=[{:item=>"Margherita", :price=>10}, {:item=>"Hawaiin", :price=>12}, {:item=>"Pepperoni", :price=>11}, {:item=>"Ham and Mushroom", :price=>11}]>, @order_class=Order, @current_order=nil, @sender_class=#<Sender:0x00007fd1572b6e18 @mobile="+447588496067", @twilio_number="+447723464572", @account_sid="AC776a9489673a798e4bd586b38b049469", @auth_token="277dfe5814dac05cab858cb9d4cd7d0c">> 
+2.6.0 :006 > app.display_menu
+Margherita £10
+Hawaiin £12
+Pepperoni £11
+Ham and Mushroom £11
+ => [{:item=>"Margherita", :price=>10}, {:item=>"Hawaiin", :price=>12}, {:item=>"Pepperoni", :price=>11}, {:item=>"Ham and Mushroom", :price=>11}] 
+2.6.0 :007 > app.select_dish("Margherita")
+ => [{:item=>"Margherita", :price=>10, :quantity=>1}] 
+2.6.0 :008 > app.select_dish("Pepperoni", 2)
+ => [{:item=>"Margherita", :price=>10, :quantity=>1}, {:item=>"Pepperoni", :price=>11, :quantity=>2}] 
+2.6.0 :009 > app.place_order(32)
+SMba25070c38d0447d8227e0c7ed762c75
+ => nil 
+
 Takeaway Challenge
 ==================
 ```
