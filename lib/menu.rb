@@ -25,7 +25,7 @@ class Menu
     }
   end
 
-  def select(item_no, qty = 1)
+  def select(item_no, qty)
     qty.times { @selection << @dishes[item_no - 1] }
   end
 end

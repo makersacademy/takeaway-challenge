@@ -23,6 +23,6 @@ TOTAL: £6.68\n").to_stdout
 
   it 'should raise error if basket total is different from selection' do
     subject.add_to_basket(menu)
-    expect { subject.pay }.not_to raise_error
+    expect { subject.pay(700) }.to raise_error("Please amend your payment. Incorrect amount tendered.")
   end
 end

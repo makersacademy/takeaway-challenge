@@ -20,10 +20,10 @@ class Order
     order_summary
   end
 
-  def pay(amount = @basket.total)
+  def pay(amount)
     tendered = amount.to_s.tr('.','').to_i
     raise PAY_ERROR if tendered != @basket.total
-    # send_confirmation COMMENTED OUT TO AVOID SMS SENDS 
+    send_confirmation
   end
   
   private
