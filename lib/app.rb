@@ -14,8 +14,8 @@ class App
   def new_order
     @current_order = order_class.new
   end 
-
-  def select_dish(item, quantity)
+  
+  def select_dish(item, quantity = 1)
     new_order if @current_order.nil?
     current_order.add_to_cart(menu.select(item, quantity))
   end 
