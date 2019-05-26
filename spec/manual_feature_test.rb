@@ -22,6 +22,22 @@ order.add(sushi)
 order.total
 # => 17.50 (bigdecimal)
 
+dishes = {
+  "Pizza" => Dish.new('Pizza', 1.50),
+  "Sushi" => Dish.new('Sushi', 16.00)
+}
+
+menu = menu.new(dishes)
+
+menu.available?("Pizza")
+# => true
+
+menu.get("Pizza")
+# => Dish object (Pizza)
+
+menu.list
+# => list of formatted dishes
+
 takeaway = takeaway.new()
 # (optional list of items, optional order class)
 

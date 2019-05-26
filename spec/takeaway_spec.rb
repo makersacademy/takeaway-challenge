@@ -10,43 +10,32 @@ describe 'takeaway' do
       "Sushi" => sushi
     }
   end
+  let(:menu) { double(:menu) }
+  let(:menu_class) { double(:menu, new: menu)}
   let(:order_class) { double(:order, new: order) }
   let(:order) { double(:order, delivery_time: "18:01").as_null_object }
-  let(:takeaway) { Takeaway.new(dishes, order_class)}
+  let(:order_handler) { double(:order_handler) }
+  let(:order_handler_class) { double(:order_handler, new: order_handler) }
+  let(:takeaway) { Takeaway.new(dishes, order_class, menu_class, order_handler_class)}
+
+
 
   describe '#dishes' do
-    it 'prints a friendly list of dishes' do
-      expect(takeaway.dishes).to eq("Pizza: £1.50\nSushi: £16.00\n")
+    it 'calls list on menu' do
+      expect(menu).to receive(:list)
+      takeaway.dishes
     end
   end
 
   describe '#order' do
-    context 'ordering one item with the correct total' do
-      it 'creates a new order' do
-        expect(order_class).to receive(:new)
-        takeaway.order("Pizza *1", 1.50)
-      end
-
-      it 'calls the add method on the order, with the correct dish object' do
-        expect(order).to receive(:add).with(pizza)
-        takeaway.order("Pizza *1", 1.50)
-      end
-
-      it 'returns a friendly string' do
-        expected_output = "Thank you! Your order was placed and will be delivered before 18:01. You will also receive a text message with these details"
-        expect(takeaway.order("Pizza *1", 1.50)).to eq(expected_output)
-      end
-
-      it 'sends a text message' 
-
+    it 'calls handle_order on order_handler with order string' do
+      expect(order_handler).to receive(:handle_order).with("Pizza *1", 17.50)
+      takeaway.order("Pizza *1", 17.50)
     end
 
-    context 'ordering one item with the incorrect total'
-
-    context 'ordering multiple items with the correct total'
-
-    context 'ordering multiple items with the incorrect total'
-
+    it 'passes through the return value from handle_order' do
+      allow(order_handler).to receive(:handle_order).and_return('Return string')
+      expect(takeaway.order("Order String", 1)).to eq("Return string")
+    end
   end
-
 end
