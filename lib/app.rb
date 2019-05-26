@@ -31,9 +31,14 @@ class App
     @sender_class.send_message
   end
 
+  def complete_order
+    @current_order = nil
+  end
+
   def place_order(total)
     raise "Incorrect total" if check_total(total) == false
     
     send_message
+    complete_order
   end
 end

@@ -44,4 +44,12 @@ describe App do
     allow(order).to receive(:check_total).and_return(false)
     expect { app.place_order(20) }.to raise_error("Incorrect total")
   end 
+
+  it 'changes current order to nil' do 
+    app.new_order
+    allow(order).to receive(:check_total).and_return(true)
+    allow(sender).to receive(:send_message)
+    app.place_order(20)
+    expect(app.current_order).to eq(nil)
+  end 
 end
