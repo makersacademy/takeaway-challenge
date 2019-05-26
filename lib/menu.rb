@@ -3,7 +3,9 @@ class Menu
   def initialize 
     @items = [
               { item: "Margherita", price: 10 },
-              { item: "Hawaiin", price: 12 }
+              { item: "Hawaiin", price: 12 },
+              { item: "Pepperoni", price: 11 },
+              { item: "Ham and Mushroom", price: 11 }
             ]
   end
 

@@ -16,11 +16,8 @@ class App
   end 
 
   def select_dish(item, quantity)
-    if @current_order.nil? 
-      new_order
-    end
-    selected = menu.select(item, quantity)
-    current_order.add_to_cart(selected)
+    new_order if @current_order.nil?
+    current_order.add_to_cart(menu.select(item, quantity))
   end 
   
   def check_total(number)

@@ -7,7 +7,7 @@ describe Menu do
   end 
   
   it 'displays the list of dishes' do
-    expect { menu.display }.to output("Margherita £10\nHawaiin £12\n").to_stdout
+    expect { menu.display }.to output("Margherita £10\nHawaiin £12\nPepperoni £11\nHam and Mushroom £11\n").to_stdout
   end 
 
   it 'returns a specific dish and quantity' do 
