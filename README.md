@@ -55,11 +55,11 @@ To run in IRB
 * ``` load './lib/takeaway.rb' ```
 * To get started, create a new instance of the Takeaway class. 
 * It accepts the following methods
- * view_menu
- * order(item_number, qty) - qty is an optional parameter
- * confirm_order
- * view_summary
- * pay(amount)
+  * view_menu
+  * order(item_number, qty) - qty is an optional parameter
+  * confirm_order
+  * view_summary
+  * pay(amount)
 
 * An example purchase is as follows;
 
