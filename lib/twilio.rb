@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 
 class Sender
+  attr_reader :client
   def initialize
     @mobile = ENV['mobile']
     @twilio_number = ENV['twilio_number']
@@ -13,6 +14,7 @@ class Sender
     delivery = t.strftime("%H").to_i + 1
     "#{delivery}:#{t.strftime("%M")}"
   end
+
   def send_message
     @client = Twilio::REST::Client.new @account_sid, @auth_token
     message = @client.messages.create(
