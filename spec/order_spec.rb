@@ -25,7 +25,6 @@ require 'order'
       expect{subject.price_calc}.to change{subject.total}.by(5.99)
     end
 
-    # DISPLAY A TOTAL COST (just an integer) WHEN USER CALLS TOTAL
     it 'can display total' do
       subject.add("pizza")
       subject.price_calc
