@@ -2,9 +2,9 @@ require 'twilio-ruby'
 # Stores basket containing menu selections
 # Tracks cost of 
 class Order
-  attr_reader :basket, :total
-  PAY_ERROR = "Please amend your payment. Amount due: #{@total}"
-
+  attr_reader :basket
+  PAY_ERROR = "Please amend your payment. Incorrect amount tendered."
+  
   def initialize(basket = Basket.new, messenger = Messenger.new)
     @messenger = messenger
     @basket = basket
@@ -21,7 +21,8 @@ class Order
   end
 
   def pay(amount = @basket.total)
-    raise PAY_ERROR if amount != @basket.total
+    tendered = amount.to_s.tr('.','').to_i
+    raise PAY_ERROR if tendered != @basket.total
     # send_confirmation COMMENTED OUT TO AVOID SMS SENDS 
   end
   
@@ -33,9 +34,7 @@ class Order
   end
   
   def order_details
-    @basket.contents.each { |item|
-      puts "#{item[:qty]} x #{item[:name]} @ £#{'%.2f' % (item[:unit_cost] / 100.00)} : £#{'%.2f' % (item[:price] / 100.00)}"
-    }
+    basket.itemise
   end
   
   def order_summary
