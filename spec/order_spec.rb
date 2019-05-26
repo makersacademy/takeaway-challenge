@@ -15,14 +15,15 @@ require 'order'
   
     it 'can add multiple items to basket' do
       subject.add("pasta", 3)
-      subject.add("bread", 2)
-      expect(subject.basket_summary).to include({"pasta" => 3}, {"bread" => 2})
+      subject.add("bread", 5)
+      subject.add("pasta", 1)
+      expect(subject.basket_summary).to include({"pasta" => 4}, {"bread" => 5})
     end
   
     # OUTSTANDING - CALCULATE A PRICE PER DISH AND ADD TO A TOTAL COST
     it 'can add item price to total cost' do
-      subject.add("pasta")
-      expect{subject.add("pasta")}.to change{subject.total_cost}.by(4.99)
+      subject.add("pizza")
+      expect{subject.price_calc}.to change{subject.total}.by(5.99)
     end
 
     # DISPLAY A TOTAL COST (just an integer) WHEN USER CALLS TOTAL

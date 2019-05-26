@@ -2,7 +2,7 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :basket_summary
+  attr_reader :basket_summary , :total
 
   def initialize
     @basket_summary = Hash.new(0)
@@ -12,12 +12,6 @@ class Order
   def add(dish, quantity = 1)
     @basket_summary[dish] += quantity
   end
-  
-  def total_cost
-    @basket_summary.map do |dish|
-      @total += dish.price_calc
-    end
-  end
 
   def price_calc
     menu = Menu.new
@@ -25,13 +19,15 @@ class Order
       qty = @basket_summary[food]
       price = menu.price(food)
       cost = price * qty
-      cost
+      @total += cost
+      puts "Your order total is currently: #{@total}"
     end
   end
-# OUTSTANDING - add dishes price calculation (i.e. qty * dish price, per menu class items) 
 end
 
 # o = Order.new
 # o.add("pizza",3)
+# o.add("pasta",2)
+# o.add("bread",1)
 # puts o.basket_summary
 # o.price_calc
