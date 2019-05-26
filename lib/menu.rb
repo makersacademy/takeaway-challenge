@@ -7,10 +7,10 @@ class Menu
   def initialize
     @dishes = [Dish.new('Guacamole Deep', 269), 
                Dish.new('Not Yo Cheese', 399),
-               Dish.new('Jalapeno Business', 450),
+               Dish.new('Jalapeno Business', 449),
                Dish.new('Taco Shellebration', 699),
                Dish.new('In Queso Emergency', 599),
-               Dish.new('Tequila Mockingbird',750)
+               Dish.new('Tequila Mockingbird',749)
               ]
     @selection = []
   end

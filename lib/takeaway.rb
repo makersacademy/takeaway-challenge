@@ -1,15 +1,15 @@
-require_relative './lib/menu.rb'
-require_relative './lib/messenger.rb'
-require_relative './lib/order.rb'
-require_relative './lib/dish.rb'
-require_relative './lib/basket.rb'
+require_relative 'menu'
+require_relative 'messenger'
+require_relative 'order'
+require_relative 'dish'
+require_relative 'basket'
 
 class Takeaway
 
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
-  end
+  end; "why not .view the menu"
 
   def view_menu
     @menu.view 
