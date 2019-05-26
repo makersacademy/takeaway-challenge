@@ -20,9 +20,15 @@ class Order
       price = menu.price(food)
       cost = price * qty
       @total += cost
-      puts "Your order total is currently: #{@total}"
     end
   end
+
+  def display_total
+    order = Order.new
+    order.price_calc
+    "Your order total is currently £#{@total}"
+  end
+
 end
 
 # o = Order.new
@@ -31,3 +37,4 @@ end
 # o.add("bread",1)
 # puts o.basket_summary
 # o.price_calc
+# o.display_total

@@ -4,7 +4,7 @@ class Menu
 
   def display
     items.each do |dish,price|
-      puts "#{dish}: #{price}"
+      "#{dish}: #{price}"
     end
   end
   

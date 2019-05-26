@@ -20,15 +20,16 @@ require 'order'
       expect(subject.basket_summary).to include({"pasta" => 4}, {"bread" => 5})
     end
   
-    # OUTSTANDING - CALCULATE A PRICE PER DISH AND ADD TO A TOTAL COST
     it 'can add item price to total cost' do
       subject.add("pizza")
       expect{subject.price_calc}.to change{subject.total}.by(5.99)
     end
 
     # DISPLAY A TOTAL COST (just an integer) WHEN USER CALLS TOTAL
-    # it 'can display total' do
-    #   expect
-    # end
+    it 'can display total' do
+      subject.add("pizza")
+      subject.price_calc
+      expect(subject.display_total).to eq("Your order total is currently £5.99")
+    end
 
   end
