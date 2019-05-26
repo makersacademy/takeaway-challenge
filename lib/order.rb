@@ -11,7 +11,7 @@ class Order
   def total 
     total_cost = 0
     items.each do |item|
-      total_cost += ( item[:price] * item[:quantity])
+      total_cost += (item[:price] * item[:quantity])
     end
     total_cost
   end 
@@ -19,4 +19,4 @@ class Order
   def check_total(number)
     total == number
   end 
-end 
+end

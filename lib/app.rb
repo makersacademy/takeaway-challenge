@@ -1,11 +1,10 @@
-
 class App
   attr_reader :menu, :order_class, :current_order
-  def initialize(menu_class = Menu, order_class = Order, message_sender_class = MessageSender)
+  def initialize(menu_class = Menu, order_class = Order, sender_class = Sender)
     @menu = menu_class.new
     @order_class = order_class
     @current_order = nil
-    @message_sender_class = message_sender_class.new
+    @sender_class = sender_class.new
   end 
 
   def display_menu
@@ -17,7 +16,7 @@ class App
   end 
 
   def select_dish(item, quantity)
-    if @current_order == nil 
+    if @current_order.nil? 
       new_order
     end
     selected = menu.select(item, quantity)
@@ -29,15 +28,12 @@ class App
   end
   
   def send_message
-    @message_sender_class.send_message
+    @sender_class.send_message
   end
 
   def place_order(total)
-    if check_total(total) == false
-      raise "Incorrect total"
-    else 
-      send_message
-    end
+    raise "Incorrect total" if check_total(total) == false
+    
+    send_message
   end
 end
-

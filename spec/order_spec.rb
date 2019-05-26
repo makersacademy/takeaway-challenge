@@ -12,13 +12,13 @@ describe Order do
   end 
   
   it 'calculates the total of an order' do
-    order.add_to_cart({item: "Margherita", price: 10, quantity: 2})
+    order.add_to_cart({ item: "Margherita", price: 10, quantity: 2 })
     expect(order.total).to eq(20)
   end 
 
   it 'checks the order total against user\'s total' do 
-    order.add_to_cart({item: "Margherita", price: 10, quantity: 2})
+    order.add_to_cart({ item: "Margherita", price: 10, quantity: 2 })
 
     expect(order.check_total(20)).to eq(true)
   end 
-end 
+end

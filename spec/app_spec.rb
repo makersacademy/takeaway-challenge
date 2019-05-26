@@ -1,13 +1,13 @@
 require 'app'
 
 describe App do 
-  subject(:app) { described_class.new(menu_class, order_class, message_sender_class) }
-  let(:menu_class) {double(:menu_class, :new => menu)}
-  let(:menu) { double(:menu, :items => {item: "Margherita", price: 10 })}
-  let(:order_class) { double(:order_class, :new => order)}
-  let(:order) {double(:order)}
-  let(:message_sender_class) {double(:message_sender_class, :new => message_sender)}
-  let(:message_sender) {double(:message_sender)}
+  subject(:app) { described_class.new(menu_class, order_class, sender_class) }
+  let(:menu_class) { double(:menu_class, :new => menu) }
+  let(:menu) { double(:menu, :items => { item: "Margherita", price: 10 }) }
+  let(:order_class) { double(:order_class, :new => order) }
+  let(:order) { double(:order) }
+  let(:sender_class) { double(:sender_class, :new => sender) }
+  let(:sender) { double(:sender) }
 
   it 'asks the menu to display list' do 
     expect(menu).to receive(:display)
@@ -31,7 +31,7 @@ describe App do
   end 
 
   it 'can tell twilio to send a message' do 
-    expect(message_sender).to receive(:send_message)
+    expect(sender).to receive(:send_message)
     app.send_message
   end 
 
@@ -42,6 +42,6 @@ describe App do
   it 'raises an error if total is incorrect' do 
     app.new_order
     allow(order).to receive(:check_total).and_return(false)
-    expect{app.place_order(20)}.to raise_error("Incorrect total")
+    expect { app.place_order(20) }.to raise_error("Incorrect total")
   end 
-end 
+end
