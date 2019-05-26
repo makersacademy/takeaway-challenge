@@ -1,34 +1,102 @@
 Takeaway Challenge
 ==================
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+___________    .__/\      ___________       __                                       
+\_   _____/  __| _)/_____ \__    ___/____  |  | __ ____ _____ __  _  _______  ___.__.
+ |    __)_  / __ |/  ___/   |    |  \__  \ |  |/ // __ \\__  \\ \/ \/ /\__  \<   |  |
+ |        \/ /_/ |\___ \    |    |   / __ \|    <\  ___/ / __ \\     /  / __ \\___  |
+/_______  /\____ /____  >   |____|  (____  /__|_ \\___  >____  /\/\_/  (____  / ____|
+        \/      \/    \/                 \/     \/    \/     \/             \/\/     
 
+     
+     
+                                                ,▓µ
+                                                ▓▓▓µ
+                                                ▀▓▓⌐
+              ,,╓╖▄▄▄▄▄,                          ╠
+      {▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄▄╥,              ,  ▌
+      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓           ▀▓µ▌╒
+      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓            ╟▓▓▓▓▄
+      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓           ⌐╟▀▓▓▓▓▓ ▓▓▓▓▓╦
+     ]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          | ▓ ▓▓▓▓▓▓ ▓▓▓▓▓▓▄
+     ▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌            .▌██▀▀▀▀▀▀▓▓▓▓▓▓▓▄
+     ▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌                       '▀▓▓▓▓▓▓╦
+       ▐▌╙▓▓▀▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ,▓∩               ╙█▓▓▓▓
+            `▀▀█▌▀▓█▓▄',▓T                   └ └▄            `▄╦▄⌠▀▓▓▓╦
+               ⁿW▓▓▄▄▄▓▓▓▄▄,                    "▄µ    '' ..  ╙▓▓▓▓▒▄╙╜
+                !░░▀▓▓▓▓▓▓▓▓▓▒╦                   ▓▄  ░^~ '░░░░.▀▓▓╬▓▓▓
+                    └└▀▀▀▓▓▓▓▓▓▓▓▓▓▓▓╬▓▓╦          ▓▒⌂░░░  ⁿ ░░░░╙▓▓▓▓▓░
+                           ^▀▓▓▓▓▓▓▓▓▓▓▓▓▓▄         ▓▓Q░▄╗░ /,N,'░░⌠▀▀'
+             .┬▄▄,    ▄▓▓▒▄╖  ¬▀▀▓▓▓▓▓▓▓▓▓▓▓µ       ╓▓▀▄░░░╬╦╦╬╠▒▄▄▄▄▄▄
+              ╟▓▓▓▓▄  '▀▓▓▓▓▓▓M   '╙▀▀▓▓▓▓▓▓▓▄    ,╬░░░╠╬▓▓░╣╢▓▓▓▓▓▓▓▓▓
+         ▓▓╖ ▓▓▓▓▓▓▓`  ;░▀▀▀.░░░░»    '..▀▀▀▓▓▓▄▄█░░░░j▓▓▓▓▓▓▓▓▓▓▓▓▓⌐▀█
+        ╫▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓╙Θ░░░░░░░░░░░╦,  "░░░;.░░░░░░▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ²⌐
+         ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄╖▓▓▓▓▓▓▓▓▓▓▄▄░░╦╓,░░░░░░j▄▓▀   ▄▓▓▓▓▓▓▓▓▓▓▌^   ,
+          ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄▄░░▄▓▓▀    ▓▓▓▓▓▓▓▓▓▓▓▓▓▌  ▓▓▓▓▓▄
+            ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀    ╓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄ ▓▓▓▓▓▓▓
+             ╟▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀     ]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓╬╬▀▓▓▓▓▓
+             ╟▓╫▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀▀█▓█▀       ▐▓▓▓▓▓▓▓▓ └▀▓▀▓▓▓▀▓▄╠╠∩▓▌▓▓▓
+              ▓▌▀▓╬▌▀▌▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄▄,        ░▓▓▓▓▓▓▌▓""░╠▀▓▓▓▓▓▌─╬╠▐▓▐▓▓
+              "▓▓▄▀▀▒▓▓▓▓▓▓▀▐▓▓▓▓¬╟     `▀▀▀▀▀█▓▓▓▄▄▄▄╠▓▓▓▓▓▓▒µ ╔░░░╠▓▓▀╬╬╬,╫▌╫▓▓
+                ▀▓▓▓▓▓▓▓▓▀` ▓¬  ^▓▓▓                      ▓▓▓▓▓╬   "╙░╩╬╜  ╫▀▄▓▓▌
+          ""╙╙╩▀▀▀▀▀▀▓▓▓▓▓▓▓▓╠φ░░,▓▓                       ▀▓▓▓▓▓╦╓     ▓@╬▄▓▓▓▀
+                         ""▀▀╙╨╙╨╩▀▀▀░╬╬╠╠φφ╦╦╦╦╔╓,,,       '▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`
+                                           '""╙╙╙╙╚╩╩╠╬╬╬╬╬▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▄╦╦╔╔╓,,
+                                                        '^"╙╙╙▀▀▀▀▀▀▀▀▀▀▀▀▀▀╨╨╙╙""'
+     
+    
  ```
 
-Instructions
+To run in IRB
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Clone/download this repo
+* Navigate to it in your terminal, and load the following file;
+* ``` load './lib/takeaway.rb' ```
+* To get started, create a new instance of the Takeaway class. 
+* It accepts the following methods
+  * view_menu
+  * order(item_number, qty) - qty is an optional parameter
+  * confirm_order
+  * view_summary
+  * pay(amount)
 
-Task
+* An example purchase is as follows;
+
+```
+2.6.0 :001 > load './lib/takeaway.rb'
+ => true 
+2.6.0 :002 > eds = Takeaway.new
+ => #<Takeaway:0x00007fda20c6f5c8 @menu=#<Menu:0x00007fda20c6f5a0 @dishes=[#<Dish:0x00007fda20c6f550 @name="Guacamole Deep", @price=269>, #<Dish:0x00007fda20c6f500 @name="Not Yo Cheese", @price=399>, #<Dish:0x00007fda20c6f4b0 @name="Jalapeno Business", @price=449>, #<Dish:0x00007fda20c6f460 @name="Taco Shellebration", @price=699>, #<Dish:0x00007fda20c6f410 @name="In Queso Emergency", @price=599>, #<Dish:0x00007fda20c6f3c0 @name="Tequila Mockingbird", @price=750>], @selection=[]>, @order=#<Order:0x00007fda20c6f348 @messenger=#<Messenger:0x00007fda20c6f2d0>, @basket=#<Basket:0x00007fda20c6f320 @contents=[], @total=0>>> 
+2.6.0 :003 > eds.view_menu
+1. Guacamole Deep - £2.69
+2. Not Yo Cheese - £3.99
+3. Jalapeno Business - £4.49
+4. Taco Shellebration - £6.99
+5. In Queso Emergency - £5.99
+6. Tequila Mockingbird - £7.50
+ => [#<Dish:0x00007fda20c6f550 @name="Guacamole Deep", @price=269>, #<Dish:0x00007fda20c6f500 @name="Not Yo Cheese", @price=399>, #<Dish:0x00007fda20c6f4b0 @name="Jalapeno Business", @price=449>, #<Dish:0x00007fda20c6f460 @name="Taco Shellebration", @price=699>, #<Dish:0x00007fda20c6f410 @name="In Queso Emergency", @price=599>, #<Dish:0x00007fda20c6f3c0 @name="Tequila Mockingbird", @price=750>] 
+2.6.0 :004 > eds.order(4)
+ => 1 
+2.6.0 :005 > eds.order(6,5)
+ => 5 
+2.6.0 :006 > eds.confirm_order
+ => [#<Dish:0x00007fda20c6f460 @name="Taco Shellebration", @price=699>, #<Dish:0x00007fda20c6f3c0 @name="Tequila Mockingbird", @price=750>, #<Dish:0x00007fda20c6f3c0 @name="Tequila Mockingbird", @price=750>, #<Dish:0x00007fda20c6f3c0 @name="Tequila Mockingbird", @price=750>, #<Dish:0x00007fda20c6f3c0 @name="Tequila Mockingbird", @price=750>, #<Dish:0x00007fda20c6f3c0 @name="Tequila Mockingbird", @price=750>] 
+2.6.0 :007 > eds.view_summary
+ORDER SUMMARY
+-------------
+1 x Taco Shellebration @ £6.99 each
+5 x Tequila Mockingbird @ £7.50 each
+-------------
+TOTAL: £44.49
+ => nil 
+2.6.0 :008 > eds.pay(44.49)
+```
+
+Approach
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The following user stories were considered, tested and coded;
 
 ```
 As a customer
@@ -48,35 +116,3 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
