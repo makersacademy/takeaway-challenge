@@ -21,7 +21,7 @@ class Order
   end
 
   def pay(amount)
-    tendered = amount.to_s.tr('.','').to_i
+    tendered = amount.to_s.tr('.', '').to_i
     raise PAY_ERROR if tendered != @basket.total
     send_confirmation
   end

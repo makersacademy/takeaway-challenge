@@ -4,12 +4,12 @@ describe Menu do
   let(:dish) { double('Dish') }
 
   it 'should return a list of dishes and their prices' do
-    expect { subject.view }.to output(  "1. Guacamole Deep - £2.69
+    expect { subject.view }.to output("1. Guacamole Deep - £2.69
 2. Not Yo Cheese - £3.99
-3. Jalapeno Business - £4.50
+3. Jalapeno Business - £4.49
 4. Taco Shellebration - £6.99
 5. In Queso Emergency - £5.99
-6. Tequila Mockingbird - £7.50\n").to_stdout
+6. Tequila Mockingbird - £7.49\n").to_stdout
   end
 
   it 'should allow me to add new items' do

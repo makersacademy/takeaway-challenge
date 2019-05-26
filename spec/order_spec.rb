@@ -5,7 +5,7 @@ describe Order do
   let(:dish2)       { double('Dish', name: 'Not Yo Cheese', price: 399) }
   let(:dishes)      { [dish1, dish2] }
   let(:selection)   { dishes }
-  let(:menu)    { double('Menu', dishes: dishes, selection: selection) }
+  let(:menu)        { double('Menu', dishes: dishes, selection: selection) }
 
   it { should respond_to(:add_to_basket).with(1).argument }
      

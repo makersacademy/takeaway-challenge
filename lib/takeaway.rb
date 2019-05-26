@@ -9,7 +9,7 @@ class Takeaway
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
-  end; "why not .view the menu"
+  end
 
   def view_menu
     @menu.view 

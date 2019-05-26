@@ -10,7 +10,7 @@ class Menu
                Dish.new('Jalapeno Business', 449),
                Dish.new('Taco Shellebration', 699),
                Dish.new('In Queso Emergency', 599),
-               Dish.new('Tequila Mockingbird',749)
+               Dish.new('Tequila Mockingbird', 749)
               ]
     @selection = []
   end
