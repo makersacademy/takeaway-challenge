@@ -13,6 +13,16 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Left to finish
+-------
+* Serious refactoring of takeaway tests
+  * Tests not yet using mocks and stubs correctly
+  * tests need to be completed for error handling implementation
+* Implementation of Twilio
+* General refactoring to make sure code is clean and to standard
+* Integration tests once takeaway tests are fully isolated.
+* Check how to test private methods, working if remove private, but need to test this whilst keeping methods private.
+
 
 Instructions
 -------

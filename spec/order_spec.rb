@@ -1,89 +1,53 @@
 require 'order'
 
 describe Order do
-  let(:order) { Order.new }
+  let(:order)       { Order.new }
+  let(:food_item_1) { double(:food_item_1, :name => "Pizza", :price => 15.00) }
+  let(:food_item_2) { double(:food_item_2, :name => "Chips", :price => 5.00) }
 
-  describe 'set up' do
-    it 'creates a new instance of Order' do
-
-    end
-
-    it 'has a gettable order array' do
-
-    end
+  it 'can add different quantities of different items' do
+    order.add(food_item_1, 1)
+    order.add(food_item_2, 2)
+    expect(order.order).to eq([food_item_1, food_item_2, food_item_2])
   end
 
-  describe 'add items' do
-    context 'item is available in the menu' do
-      it 'can add to order from menu' do
-
-      end
-
-      it ' can add multiple items to my order' do
-
-      end
-
-      it 'can add different quantities of an item' do
-
-      end
-
-      it 'can add different quantities of different items' do
-
-      end
-    end
-
-    context 'item isn\'t available in the menu' do
-      it ' errors when you try to add an item not available in the menu' do
-
-      end
-    end
-  end
-
-  describe 'remove items' do
-    context 'has items to remove' do
-      it 'can remove a food item from my order' do
-
-      end
-
-      it ' can remove multiple items from my order' do
-
-      end
-
-      it 'can remove multiple quantities of an item' do
-
-      end
-
-      it 'can remove multiple quantities of multiple items' do
-
-      end
-    end
-
-    context 'doesn\'t have enough items to remove' do
-      it 'errors when you try remove an item from an empty order' do
-
-      end
-
-      it 'errors when you try to remove more items than you have quantity' do
-
-      end
-    end
+  it 'can remove multiple quantities of multiple items' do
+    order.add(food_item_1, 3)
+    order.add(food_item_2, 3)
+    order.remove(food_item_1, 2)
+    order.remove(food_item_2, 2)
+    expect(order.order).to eq([food_item_1, food_item_2])
   end
 
   describe 'checking my order' do
-    it 'can display the names and prices of my order items' do
+    it 'can check order for a food item (false)' do
+      order.add(food_item_1, 3)
+      expect(order.check_order_for(food_item_1)).to eq(false)
+    end
 
+    it 'can check order for a food item (true)' do
+      order.add(food_item_2, 3)
+      expect(order.check_order_for(food_item_1)).to eq(true)
+    end
+
+    it 'can check order quantity (false)' do
+      order.add(food_item_1, 3)
+      expect(order.check_order_quantity(food_item_1, 2)).to eq(false)
+    end
+
+    it 'can check order quantity (false)' do
+      order.add(food_item_1, 3)
+      expect(order.check_order_quantity(food_item_1, 5)).to eq(true)
     end
 
     it 'can display the total price of each item based on quantity' do
 
     end
 
-    it 'can display the total price of all items' do
-
-    end
-
-    it 'total price of order matches sum of item prices'  do
-
+    it 'total price of order matches sum of item prices' do
+      order.add(food_item_1, 3)
+      order.add(food_item_2, 3)
+      expect { order.display_order }.to output("Pizza x 3 @ : £15.00\nChips x 3 @ : £5.00\nTotal due: £60.00\n").to_stdout
     end
   end
 end
