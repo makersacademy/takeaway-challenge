@@ -18,6 +18,18 @@ Challenge
 -------
 * Link to original challenge instructions: https://github.com/makersacademy/takeaway-challenge/blob/master/README.md
 
+Approach to challenge
+-------
+* Designed the responsibilities of each class:
+  * 'Menu' class defines the takeaway items available and displays menu items with prices
+  * 'Order' class allows items from the menu class to be added to a basket summary and calculates a total order price
+  * 'Takeaway' class enables the order to be checked out and a confirmation text message to be sent
+  * Please note: There is an additional 'Message' class to manage the Twilio API text messaging service. This has been kept in a .gitignore folder for privacy reasons, though for further development the use of environment variables is planned.
+
+* Test Driven Development approach adopting a Red - Green - Refactor unit testing (RSpec) process by feature 
+
+* Features for further development: ENV variables
+
 User stories
 -------
 * This is a Takeaway program with the following user story requirements:
@@ -39,14 +51,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-Approach to challenge
--------
-* Designed the responsibilities of each class:
-  * 'Menu' class defines the takeaway items available and displays menu items with prices
-  * 'Order' class allows items from the menu class to be added to a basket summary and calculates a total order price
-  * 'Takeaway' class enables the order to be checked out and a confirmation text message to be sent
-  * NB: There is an additional 'Message' class to manage the Twilio API text messaging service. This has been kept in a .gitignore folder for privacy reasons, though for further development the use of environment variables is planned.
-
-* Test Driven Development approach adopting a Red - Green - Refactor unit testing (RSpec) process by feature 
-
-* Features for further development: ENV variables
