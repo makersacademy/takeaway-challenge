@@ -2,9 +2,14 @@ require 'menu'
 
 describe Menu do
 
-    # it 'should display a menu with 4 dishes' do
-    #   menu = Menu.new
-    #   expect(menu.show_menu).to eq({TomYum: "9.95", PadThai: "10.00", CaliforniaRoll: "£12.00", RedCurry: "£6.00"})
-    # end
-    #
+  subject(:menu) { Menu.new }
+
+  # it 'can show an empty basked' do
+  #   expect(order.basket).to eq({})
+  # end
+
+  it 'is able to show the menu to the customer in the order' do
+    expect(menu.show).to eq({ "Tom Yum" => 9.90, "Pad Thai" => 10.00, "Green Curry" => 6.00, "Red Curry" => 6.00, "Aloe Drink" => 2.00, "Chocolate Ice Cream" => 4.00, "California Roll" => 12.00 })
+  end
+
 end
