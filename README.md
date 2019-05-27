@@ -1,15 +1,11 @@
 Takeaway Challenge
 ==================
 Makers Academy
-
 Week: 4 - Object Orientated Design
 
 Project: Takeaway challenge
-
 Purpose: Friday challenge
-
-Date: 24/05/2019
-
+Date: 24/05/19
 Author: Lin Trieu
 
 Self-assessment: AMBER
@@ -42,9 +38,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Approach to challenge
 -------
 * Designed the responsibilities of each class:
-
-** Menu class defines the takeaway items available and displays menu items with prices
-** Order class allows items from the menu class to be added to a basket summary and calculates a total order price
-** Takeaway class enables the order to be checked out and a confirmation text message to be sent
+  * Menu class defines the takeaway items available and displays menu items with prices
+  * Order class allows items from the menu class to be added to a basket summary and calculates a total order price
+  * Takeaway class enables the order to be checked out and a confirmation text message to be sent
 
 * Test Driven Development approach adopting a Red - Green - Refactor unit testing (RSpec) process by feature 
