@@ -18,7 +18,7 @@ Self-assessment: AMBER
 
 Challenge
 -------
-* Link to challenge instructions: https://github.com/makersacademy/takeaway-challenge/blob/master/README.md
+* Link to original challenge instructions: https://github.com/makersacademy/takeaway-challenge/blob/master/README.md
 
 * This is a Takeaway program with the following user stories:
 
