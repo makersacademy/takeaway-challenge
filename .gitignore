@@ -1,2 +1,5 @@
 /**/.DS_Store
 /coverage
+
+#ignore file names 'send_sms.env'
+send_sms.rb

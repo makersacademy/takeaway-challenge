@@ -11,8 +11,19 @@ require 'takeaway'
     it 'completes checkout and displays order total' do
       allow(order).to receive(:add).with("pizza").and_return({"pizza"=>1})
       allow(order).to receive(:display_total).and_return("Your order total is £5.99")
-      expect(Takeaway.new(order).checkout).to eq("Your order total is £5.99")
+      output = Takeaway.new(order).checkout 
+      expect(output).to eq("Your order total is £5.99")
     end
 
-    # it 'sends text on order completion' do 
+    # it 'sends text message on order checkout' do 
+    #   allow(order).to receive(:add).with("pizza").and_return({"pizza"=>1})
+    #   allow(order).to receive(:display_total).and_return("Your order total is £5.99")
+    #   output = Takeaway.new(order).checkout 
+    #   expect(output).to eq("Thank you! Your order was placed and will be delivered before 18:52")
+    # end
+
+    it 'sends text message on order checkout' do   
+      expect(Takeaway.new(order).send_text).to eq("Thank you! Your order was placed and will be delivered before 18:52")
+    end
+
   end
