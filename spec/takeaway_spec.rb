@@ -19,4 +19,11 @@ describe Takeaway do
     takeaway.select_item("Neapolitan", 2)
     expect{takeaway.view_basket}.to output("Neapolitan x2, £25.98\n").to_stdout
   end
+
+  it 'can display basket total' do 
+    takeaway.view_menu
+    takeaway.select_item("Neapolitan", 2)
+    expect(takeaway.view_total).to eq 25.98
+
+  end
 end
