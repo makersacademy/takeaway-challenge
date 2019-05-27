@@ -31,4 +31,11 @@ describe Customer do
       customer.add_to_order("Jasmine Rice", 1)
     end
   end
+
+  context '#place' do
+    it 'tells order to place the order' do
+      expect(order).to receive(:place)
+      customer.place_order(5.00)
+    end
+  end
 end

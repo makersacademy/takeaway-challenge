@@ -13,6 +13,5 @@ describe Message do
       allow(message).to receive(:send).and_return("Successful!")
       expect(message.send).to eq("Successful!")
     end
-
   end
 end

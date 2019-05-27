@@ -16,4 +16,8 @@ class Customer
   def add_to_order(dish_name, quantity)
     @order.add(dish_name, quantity)
   end
+
+  def place_order(payment)
+    @order.place(payment)
+  end
 end
