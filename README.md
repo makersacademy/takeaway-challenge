@@ -24,7 +24,7 @@ Approach to challenge
   * 'Menu' class defines the takeaway items available and displays menu items with prices
   * 'Order' class allows items from the menu class to be added to a basket summary and calculates a total order price
   * 'Takeaway' class enables the order to be checked out and a confirmation text message to be sent
-  * Please note: There is an additional 'Message' class to manage the Twilio API text messaging service. This has been kept in a .gitignore folder for privacy reasons, though for further development the use of environment variables is planned.
+  * NOTE: there is an additional 'Message' class to manage the Twilio API text messaging service. This has been kept in a .gitignore folder for privacy reasons, though for further development the use of environment variables is planned.
 
 * Test Driven Development approach adopting a Red - Green - Refactor unit testing (RSpec) process by feature 
 
