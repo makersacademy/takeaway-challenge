@@ -14,6 +14,12 @@ attr_reader :items
      puts "#{item[:pizza]}, £#{item[:price]}"
     end
   end
+
+  def select_pizza(pizza) 
+    @items.each do |item| 
+      return item if item[:pizza] == pizza
+    end
+  end
   
 end
 
