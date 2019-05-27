@@ -1,4 +1,4 @@
-# Allows user to create an order, add to their basket, display their basket and display a total price" 
+# Allows takeaway to create an order, add to basket, display basket and display total price" 
 require_relative 'menu'
 
 class Order
@@ -27,9 +27,9 @@ class Order
   def display_total
     order = Order.new
     order.price_calc
-    "Your order total is currently £#{@total}"
+    @basket_summary
+    "Your order total is £#{@total}"
   end
-
 end
 
 # o = Order.new

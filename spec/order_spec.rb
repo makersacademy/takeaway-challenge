@@ -29,13 +29,14 @@ require 'order'
       subject.add("pizza",10)
       subject.add("bread",3)
       subject.add("pasta",4)
-      expect{subject.price_calc}.to change{subject.total}.by(82.83000000000001)
+      expect{subject.price_calc}.to change{subject.total}.by(82.83000000000001) 
     end
+    #Outstanding: find out how to format floats to 2 decimal points throughout code base.
 
-    it 'can display total' do
+    it 'can display total cost of order' do
       subject.add("pizza")
       subject.price_calc
-      expect(subject.display_total).to eq("Your order total is currently £5.99")
+      expect(subject.display_total).to eq("Your order total is £5.99")
     end
 
   end
