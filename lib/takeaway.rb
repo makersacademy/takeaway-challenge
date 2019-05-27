@@ -3,14 +3,12 @@ require_relative 'send_sms' #twilio-ruby code hidden in .gitignore
 
 class Takeaway
 
-  def initialize(order = Order.new)
-    @order = order
+  def initialize
     @message = Message.new
   end
   
   def checkout
     text
-    @order.display_total
   end
 
   def text
