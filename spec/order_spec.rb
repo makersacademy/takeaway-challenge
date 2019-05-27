@@ -17,12 +17,6 @@ describe Order do
     it 'Check total for order' do
       expect(order.total).to eq(6)
     end
-    # it 'Confirm order is complete' do
-    #   expect(order.place_order).to eq("Thank you! Your order was placed and will be delivered before 18:52")
-    # end
   end
-
-  # it 'Order is incomplete' do
-  #   expect{order.place_order}.to raise_error("Order incomplete")
-  # end
+  
 end

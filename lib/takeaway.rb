@@ -29,8 +29,8 @@ class Takeaway
   #    @order_class.price
   # end
 
-  def is_correct_price?(expected_price)
-    cost_of_order == expected_price
-  end
+  # def is_correct_price?(expected_price)
+  #   cost_of_order == expected_price
+  # end
 
 end

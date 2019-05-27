@@ -14,6 +14,7 @@ class Order
 
   def select_dishes(item_chosen, quantity)
     @ordered_items.push(item_chosen, quantity)
+    puts "#{quantity}x #{item_chosen} add to your basket"
     @total += (@menu_dishes[item_chosen] * quantity)
   end
 

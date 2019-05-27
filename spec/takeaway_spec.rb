@@ -27,8 +27,8 @@ describe Takeaway do
   # end
 
   # it "Checkout total" do
-  #   expect(order).to receive(:price)
-  #   takeaway.is_correct_price?(expected_price)
+  #   allow(order).to receive(:price)
+  #   expect(takeaway.is_correct_price?(expected_price)).to eq(true)
   # end
 
   it 'Sends a text message confirming order' do
