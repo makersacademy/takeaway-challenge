@@ -1,13 +1,14 @@
 require 'menu'
+require 'basket'
 
 class Takeaway
   attr_reader :menu
   attr_reader :basket
   
-  def initialize(menu_class = Menu)
+  def initialize(menu_class = Menu, basket = Basket.new)
     @menu_class = menu_class
     @menu = nil
-    @basket = []
+    @basket = basket
   end
 
   def view_menu
@@ -16,7 +17,11 @@ class Takeaway
   end
 
   def select_item(item, quantity)
-    items = @menu.select_pizza(item)
-    @basket << items
+    pizza = @menu.select_pizza(item)
+    @basket.add(pizza, quantity) 
+  end
+
+  def view_basket
+    @basket.view
   end
 end
