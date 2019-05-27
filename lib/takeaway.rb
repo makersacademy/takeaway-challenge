@@ -24,4 +24,15 @@ class Takeaway
   def view_basket
     @basket.view
   end
+
+  def view_total
+    @basket.total
+  end
 end
+
+t = Takeaway.new
+t.view_menu
+t.select_item("Neapolitan", 2)
+t.select_item("Margherita", 1)
+
+puts t.basket.contents

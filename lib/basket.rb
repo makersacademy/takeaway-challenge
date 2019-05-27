@@ -1,5 +1,9 @@
+require 'time'
+
 class Basket
-  attr_reader :contents
+  attr_reader :contents, :total_price
+  ERROR_MESSAGE = "Please ensure the payment meets the order total"
+
   def initialize
     @contents = []
   end
@@ -25,9 +29,23 @@ class Basket
     @contents.each do |item|  
       sum += item[:price]
     end
-    return (sum)
+    @total_price = sum
+    return sum 
+  end
+
+  def place_order(payment)
+    raise ERROR_MESSAGE if payment < @total_price
+    Message.new.send(success_message)
+    puts "Thank you for your order!"
+  end
+
+  def success_message
+    "Thank you! Your order was placed and will be delivered before #{(Time.now + 3600).strftime("%k:%M")}"
   end
 end
+
+
+puts Basket.new.success_message
 
 # b = Basket.new
 # b.add({:pizza => "n", :price => 12}, 3)
