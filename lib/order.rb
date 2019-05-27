@@ -1,4 +1,5 @@
 require './lib/dish.rb'
+require './lib/message.rb'
 
 class Order
   attr_reader :menu, :basket, :dish
