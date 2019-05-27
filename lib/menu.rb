@@ -5,6 +5,6 @@ class Menu
   end
 
   def list_menu
-    return @menu_dishes
+    @menu_dishes
   end
 end

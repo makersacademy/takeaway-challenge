@@ -8,8 +8,12 @@ class Order
     @total = 0
   end
 
+  def display_menu
+    @menu_dishes
+  end
+
   def select_dishes(item_chosen, quantity)
-    @ordered_items.push(item_chosen)
+    @ordered_items.push(item_chosen, quantity)
     @total += (@menu_dishes[item_chosen] * quantity)
   end
 
@@ -17,9 +21,4 @@ class Order
     @total
   end
 
-  def place_order
-    raise "Order incomplete" if total == 0 || @ordered_items.empty?
-    !@ordered_items.empty? && @total > 0
-    return "Thank you! Your order was placed and will be delivered before 18:52"
-  end
 end
