@@ -1,11 +1,15 @@
 Takeaway Challenge
 ==================
 Makers Academy
+
 Week: 4 - Object Orientated Design
 
 Project: Takeaway challenge
+
 Purpose: Friday challenge
+
 Date: 24/05/19
+
 Author: Lin Trieu
 
 Self-assessment: AMBER
