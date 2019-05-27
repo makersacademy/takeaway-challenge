@@ -21,5 +21,5 @@ class Order
   def price
     @total
   end
-
+  
 end

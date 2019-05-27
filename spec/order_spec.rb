@@ -18,5 +18,4 @@ describe Order do
       expect(order.total).to eq(6)
     end
   end
-  
 end
