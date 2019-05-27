@@ -12,7 +12,7 @@ class Order
     @menu.dishes.each { |k, v| new_value = v * number
       if k == dish
         @basket.store(k, new_value)
-      end
+      endor
     }
   end
 
