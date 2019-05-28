@@ -13,7 +13,7 @@ class Messenger
       from: ENV['TWILIO_PHONE_NUMBER'],
       to: ENV['MY_PHONE_NUMBER'],
       body: message
-    ) unless ENV['TWILIO_ENABLED'] == '0'
+    ) unless ENV['TWILIO_ENABLED'] != '1'
   end
 
 end

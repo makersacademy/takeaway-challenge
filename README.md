@@ -19,6 +19,8 @@ For original challenge instructions, see https://github.com/makersacademy/takeaw
 
 Requires a Twilio account. Get a Twilio account here: https://www.twilio.com/
 
+Note: 100% test coverage if Twilio is enabled. Disabling Twilio, or having no environment variables setup, will skip some unit and feature tests and lead to a reduced test coverage.
+
 Required environment variables: 
 
 ```
