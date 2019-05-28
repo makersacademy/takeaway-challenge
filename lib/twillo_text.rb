@@ -16,7 +16,7 @@ class SendMessage
     message_content = @client.messages.create(
       from: @twilio_number,
       to: @recipient_phone,
-      body: "Thank you! Your order was placed and will be delivered before 18:52"
+      body: "Thank you! Your order was placed and will be delivered before #{Time.now.strftime("%d/%m/%Y %H:%M")}"
     )
     puts message_content.sid
     # unique id
