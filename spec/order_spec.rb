@@ -35,7 +35,7 @@ require 'order'
 
     it 'can display total cost of order' do
       subject.add("pizza")
-      subject.price_calc
+      # subject.price_calc
       expect(subject.display_total).to eq("Your order total is £5.99")
     end
 

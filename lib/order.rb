@@ -13,6 +13,12 @@ class Order
     @basket_summary[dish] += quantity
   end
 
+  def display_total
+    price_calc
+    "Your order total is £#{@total}"
+  end
+
+  # private
   def price_calc
     menu = Menu.new
     @basket_summary.each do |food,quantity|
@@ -20,15 +26,7 @@ class Order
       price = menu.price(food)
       cost = price * qty
       @total += cost
-      @total
     end
-  end
-
-  def display_total
-    order = Order.new
-    order.price_calc
-    @basket_summary
-    "Your order total is £#{@total}"
   end
 end
 

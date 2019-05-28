@@ -9,7 +9,8 @@ class Menu
   end
   
   def items
-    { "pasta" => 4.99, "bread" => 0.99, "pizza" => 5.99 }
+    { "pasta" => 4.99, "bread" => 0.99, "pizza" => 5.99 } # => muttable
+    # { pasta: 4.99, bread: 0.99, pizza: 5.99 } # => immuttable (needs to add .to_s for user input)
   end
   
   def price(dish)
