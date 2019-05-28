@@ -12,12 +12,14 @@ class Order
     @menu.dishes.each { |k, v| new_value = v * number
       if k == dish
         @basket.store(k, new_value)
-      endor
+      end
     }
   end
 
   def remove_from_basket(dish)
-    @basket.each { |k, v| k == dish ? @basket.delete(k) : "No such dish in basket" }
+    @basket.each { |k, v|
+      k == dish ? @basket.delete(k) : "No such dish in basket"
+    }
   end
 
   def total
