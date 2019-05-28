@@ -16,7 +16,7 @@ class Order
 
   def total
     @order_items.reduce(BigDecimal(0, 4)) do |memo, item|
-      memo += item.price
+      memo + item.price
     end
   end
 

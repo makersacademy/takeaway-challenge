@@ -45,7 +45,7 @@ class OrderHandler
   end
 
   def order_success
-     "#{success_message} You will also receive a text message with these details"
+    "#{success_message} You will also receive a text message with these details"
   end
 
   def success_message
@@ -53,13 +53,8 @@ class OrderHandler
   end
 
   def invalid_total?(customer_total)
-    puts '****TOTAL****'
-
     decimal_customer_total = BigDecimal(customer_total, 4) 
-    puts decimal_customer_total
-    puts @current_order.total
     @current_order.total != customer_total
   end
-
 
 end

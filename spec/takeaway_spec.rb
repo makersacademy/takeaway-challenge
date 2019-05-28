@@ -11,14 +11,12 @@ describe 'takeaway' do
     }
   end
   let(:menu) { double(:menu) }
-  let(:menu_class) { double(:menu, new: menu)}
+  let(:menu_class) { double(:menu, new: menu) }
   let(:order_class) { double(:order, new: order) }
   let(:order) { double(:order, delivery_time: "18:01").as_null_object }
   let(:order_handler) { double(:order_handler) }
   let(:order_handler_class) { double(:order_handler, new: order_handler) }
-  let(:takeaway) { Takeaway.new(dishes, order_class, menu_class, order_handler_class)}
-
-
+  let(:takeaway) { Takeaway.new(dishes, order_class, menu_class, order_handler_class) }
 
   describe '#dishes' do
     it 'calls list on menu' do

@@ -23,7 +23,7 @@ describe 'order' do
     end
 
     it 'returns the correct total when a large number of items have been added' do
-      9.times{ order.add(sushi) }
+      9.times { order.add(sushi) }
       order.add(pizza)
       expect(order.add(sushi)).to eq(BigDecimal(161.51, 5))
     end
@@ -31,7 +31,7 @@ describe 'order' do
 
   context '#total' do
     it 'returns the correct total when a large number of items have been added' do
-      10.times{ order.add(sushi) }
+      10.times { order.add(sushi) }
       order.add(pizza)
       expect(order.total).to eq(BigDecimal(161.51, 5))
     end

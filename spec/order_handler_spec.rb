@@ -15,7 +15,7 @@ describe 'order_handler' do
     allow(messenger).to receive(:send_message)
   end
   let(:time) { Time.now }
-  let(:messenger) { double(:messenger)}
+  let(:messenger) { double(:messenger) }
 
   context '#handle_order' do
     context 'when ordering one item' do
@@ -49,14 +49,14 @@ describe 'order_handler' do
       context 'when total is incorrect' do
         it 'raises an error' do
           allow(order).to receive(:total).and_return(BigDecimal(1.50, 4))
-          expect{ order_handler.handle_order("Pizza *1", 1) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("Pizza *1", 1) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
       end
 
       context 'with an invalid item' do
         it 'raises an error' do
           allow(order).to receive(:total).and_return(BigDecimal(1.50, 4))
-          expect{ order_handler.handle_order("Pie *1", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("Pie *1", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
       end
     end
@@ -91,27 +91,27 @@ describe 'order_handler' do
       context 'with invalid inputs' do
         it 'raises an error when total is incorrect' do
           allow(order).to receive(:total).and_return(BigDecimal(1.50, 4))
-          expect{ order_handler.handle_order("Pizza *1, Sushi *2", 1) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("Pizza *1, Sushi *2", 1) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
         it 'raises an error with an invalid item' do
           allow(order).to receive(:total).and_return(BigDecimal(1.50, 4))
-          expect{ order_handler.handle_order("Pizza *1, Pie *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("Pizza *1, Pie *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
         it 'raises an error when spaces are missing' do
           allow(order).to receive(:total).and_return(BigDecimal(33.50, 4))
-          expect{ order_handler.handle_order("Pizza*1, Sushi *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("Pizza*1, Sushi *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
         it 'raises an error when values are missing' do
           allow(order).to receive(:total).and_return(BigDecimal(33.50, 4))
-          expect{ order_handler.handle_order("Pizza *, Sushi *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("Pizza *, Sushi *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
         it 'raises an error with a strange string' do
           allow(order).to receive(:total).and_return(BigDecimal(33.50, 4))
-          expect{ order_handler.handle_order("PizzaSushi", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("PizzaSushi", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
         it 'raises an error with middle space missing' do
           allow(order).to receive(:total).and_return(BigDecimal(33.50, 4))
-          expect{ order_handler.handle_order("Pizza *1,Sushi *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
+          expect { order_handler.handle_order("Pizza *1,Sushi *2", 1.50) }.to raise_error(OrderHandler::ERROR_MESSAGE)
         end
       end
     end

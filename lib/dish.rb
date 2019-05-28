@@ -15,6 +15,6 @@ class Dish
   private
 
   def format(amount)
-   (amount.truncate(2).to_s('F') + '00')[ /.*\..{2}/ ]
+    (amount.truncate(2).to_s('F') + '00')[/.*\..{2}/]
   end
 end

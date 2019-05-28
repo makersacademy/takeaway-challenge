@@ -47,7 +47,5 @@ takeaway.dishes
 takeaway.order("Pizza *1, Sushi *2", 33.51)
 # => Thank you! Your order was placed and will be delivered before 18:52". You will also receive a text message with these details.
 
-
 takeaway.order("Pizza *1, Sushi *2", 32.51)
 # => raise error "The order total was incorrect"
-

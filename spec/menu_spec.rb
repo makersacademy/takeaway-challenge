@@ -9,7 +9,7 @@ describe 'menu' do
       "Sushi" => sushi
     }
   end
-  let(:menu) { Menu.new(dishes)} 
+  let(:menu) { Menu.new(dishes) } 
 
   context '#available?' do
     it 'responds true for a dish which exists' do

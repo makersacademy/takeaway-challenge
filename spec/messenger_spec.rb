@@ -16,6 +16,7 @@ describe 'messenger' do
     end
 
     it 'calls the create method with a body containing the passed in message' do
+      skip if ENV['TWILIO_ENABLED'] == '0'
       expect(twilio).to receive_message_chain(:api, :account, :messages, :create)
         .with(from: ENV['TWILIO_PHONE_NUMBER'],
           to: ENV['MY_PHONE_NUMBER'],

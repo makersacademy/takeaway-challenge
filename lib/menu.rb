@@ -13,7 +13,7 @@ class Menu
 
   def list
     @dishes.values.reduce('') do |memo, dish|
-      "#{memo}#{dish.to_s}\n"
+      "#{memo}#{dish}\n"
     end
   end
 end
