@@ -18,11 +18,7 @@ class Basket
   end
 
   def total_cost
-    total = 0
-    @basket.each do |item|
-      total += item.price
-    end
-    total
+    @basket.inject(0) { |sum, item| sum + item.price }
   end
 
 end

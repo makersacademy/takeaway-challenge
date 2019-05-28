@@ -18,6 +18,7 @@ class Takeaway
 
   def checkout(expected_price)
     raise "Price given is not equal to actual price" unless correct_price?(expected_price)
+    
     @text_sender.send_message
   end
 
