@@ -8,8 +8,4 @@ class Menu
     ]
   end
 
-  # def order(item,price, checkout = Checkout.new)
-  #  @checkout.basket << {food:item, cost:price}
-  # end
-
 end

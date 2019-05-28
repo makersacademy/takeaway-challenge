@@ -5,7 +5,7 @@ describe Checkout do
 
   it 'can add order to basket' do
     checkout.add("chicken",3)
-    expect(checkout.basket).to include({:cost=>3, :food=>"chicken"})
+    expect(checkout.basket).to include({:price=>3, :food=>"chicken"})
   end
 
   it 'can total my order' do

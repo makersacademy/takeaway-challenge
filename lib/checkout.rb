@@ -7,12 +7,12 @@ class Checkout
     @total = 0
   end
 
-  def add(item, price)
-    @basket << {food:item, cost:price}
+  def add(item, cost)
+    @basket << {food:item, price:cost}
   end
 
   def total
-    total = @basket.map { |item| item[:cost] }.sum
+    total = @basket.map { |item| item[:price] }.sum
   end
 
 end
