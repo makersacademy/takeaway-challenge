@@ -13,6 +13,7 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+ ```
 App story:
 2.6.0 :001 > require './lib/order.rb'
  => true
@@ -41,6 +42,7 @@ banoffee_pie - £15
   2.6.0 :009 > o.place_order
   "Your order has been placed and will be with you by 11:21"
    => "Your order has been placed and will be with you by 11:21"
+```
 
 Instructions
 -------
