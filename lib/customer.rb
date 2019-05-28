@@ -4,7 +4,7 @@ class Customer
   def initialize(menu = Menu, order = Order, message = Message)
     @menu = menu.new
     @order = order.new
-    @message = message
+    @message = message.new
   end
 
   def look
@@ -20,6 +20,6 @@ class Customer
     raise message if @order.cost != my_idea_of_the_cost
     puts "You will pay £#{@order.cost}"
     Pub.new(@order)
-    @message.new
+    @message.send
   end
 end

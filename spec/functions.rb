@@ -10,7 +10,7 @@ cust = Customer.new
 cust.look
 cust.choice("Burger", 2)
 cust.choice("Soup", 3)
- cust.choice("Burger")
+cust.choice("Burger")
 
 cust.checkout(43.95)
 
