@@ -1,11 +1,13 @@
 require 'time'
+require 'message'
 
 class Basket
   attr_reader :contents, :total_price
   ERROR_MESSAGE = "Please ensure the payment meets the order total"
 
-  def initialize
+  def initialize(message = Message.new)
     @contents = []
+    @message = message
   end
 
   def add(item, quantity)
@@ -35,8 +37,8 @@ class Basket
 
   def place_order(payment)
     raise ERROR_MESSAGE if payment < @total_price
-    Message.new.send(success_message)
-    puts "Thank you for your order!"
+    @message.send(success_message)
+    "Order complete!"
   end
 
   def success_message

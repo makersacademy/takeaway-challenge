@@ -1,11 +1,10 @@
 require 'twilio-ruby'
+require 'dotenv/load'
 
 class Message
 
 def initialize
-  @account_sid = ENV['SID']
-  @auth_token = ENV['TOKEN']
-  @client = Twilio::REST::Client.new(account_sid, auth_token)
+  @client = Twilio::REST::Client.new(ENV['SID'], ENV['TOKEN'])
 end
 
 def send(message) 

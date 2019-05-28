@@ -27,7 +27,9 @@ describe Takeaway do
   end
 
   it 'can place an order' do 
-  
-    expect(takeaway.basket.place_order).to eq "Order complete!"
+    takeaway.view_menu
+    takeaway.select_item("Neapolitan", 2)
+    takeaway.view_total
+    expect(takeaway.basket.place_order(30)).to eq "Order complete!"
   end
 end

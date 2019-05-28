@@ -1,6 +1,9 @@
 describe 'Basket' do
 
   let(:basket) {Basket.new}
+  let(:message_dbl) {double(:message, :send => "Success")}
+  let(:basket_dbl) {Basket.new(message_dbl)}
+
 
   it 'can add items to the basket' do
     basket.add("Neapolitan", 2)
@@ -19,9 +22,16 @@ describe 'Basket' do
   end
 
   it 'can raise error if payment is less than total' do
-    basket.add({:pizza => "Margherita", :price => 9.99}, 1)
-    basket.add({:pizza => "Neapolitan", :price => 12.99}, 3)
-    basket.total
-    expect{basket.place_order(20)}.to raise_error "Please ensure the payment meets the order total"
+    basket_dbl.add({:pizza => "Margherita", :price => 9.99}, 1)
+    basket_dbl.add({:pizza => "Neapolitan", :price => 12.99}, 3)
+    basket_dbl.total
+    expect{basket_dbl.place_order(20)}.to raise_error "Please ensure the payment meets the order total"
+  end
+
+  it 'can place an order' do 
+    basket_dbl.add({:pizza => "Margherita", :price => 9.99}, 1)
+    basket_dbl.add({:pizza => "Neapolitan", :price => 12.99}, 3)
+    basket_dbl.total
+    expect(basket_dbl.place_order(50)).to eq "Order complete!"
   end
 end
