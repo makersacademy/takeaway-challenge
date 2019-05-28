@@ -1,4 +1,4 @@
-Takeaway Challenge
+# Takeaway Challenge
 ==================
 ```
                             _________
@@ -13,70 +13,93 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+The takeaway challenge is a 'Friday Challenge' set to try and test your knowledge of OOD, unit testing, feature testing, classes, methods, encapsulation, delegation and testing in isolation.
 
-Instructions
--------
+## Description
+The program should allow a customer to see a list of dishes with prices, select some number of several available dishes, check that the total price displayed matches the sum of the dishes in the order and send an sms message (e.g. "Thank you! Your order was placed and will be delivered before 18:52") after the order is placed.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### NOTE:
+"Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error" - I have interpreted this as in passing in the money the customer wants to pay with. If they pass in more than the total, the extra will be seen as a tip, if less is passed in, then an error is raised.
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+## Installation
+You will need to install bundle.
+You will also need to set the following environment variables in a twilio.env file:
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+export TWILIO_ACCOUNT_SID='<Please request the account SID or use your own from your own Twilio account>'
+export TWILIO_AUTH_TOKEN='<Please request the auth token or use your own from your own Twilio account>'
+export TWILIO_FROM_NUM='<Please request the Twilio number or use your own from your own Twilio account>'
+export TWILIO_TO_NUM='<Your mobile number>'
+```
+This file will be added to the .gitignore if named correctly. This is important if you are wanting to request to commit changes to this repository.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+Finally, (through your terminal) in the root folder of the project source the twilio.env file:
+```
+source ./twilio.env
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Usage
+Below is an example of how to run the program in irb:
+```
+require './lib/customer.rb'
+require 'twilio-ruby'
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+customer = Customer.new
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+customer.view_menu
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+customer.add_to_order("Jasmine Rice", 1)
+customer.add_to_order("Egg Noodles", 2)
+customer.add_to_order("Chicken Red Thai Curry", 1)
+customer.add_to_order("Chicken Red Thai Curry", 1)
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+customer.place_order(21.50)
+```
 
+Below shows the actual program in irb when the above code is run:
+```
+2.5.0 :001 > require './lib/customer.rb'
+ => true
+2.5.0 :002 > require 'twilio-ruby'
+ => false
 
-In code review we'll be hoping to see:
+2.5.0 :004 > customer = Customer.new
+ => #<Customer:0x00007ff46c0c0b58 @order=#<Order:0x00007ff46c0c0b30 @menu=[{:dish=>"Jasmine Rice", :price=>2.5}, {:dish=>"Coconut Rice", :price=>3.5}, {:dish=>"Egg Noodles", :price=>4.75}, {:dish=>"Egg Fried Rice", :price=>3.5}, {:dish=>"Chicken Red Thai Curry", :price=>4.75}, {:dish=>"Pork Green Thai Curry", :price=>5.75}, {:dish=>"Stir-fry Duck with Ginger", :price=>5.75}, {:dish=>"Stir-fry Beef with Mushroom", :price=>5.75}, {:dish=>"Stir-fry Squid with Veg", price=>5.75}, {:dish=>"Mixed Seafood", :price=>4.75}, {:dish=>"Spring Rolls (6)", :price=>3.5}], @basket=[], @total=0, @message=#Message:0x00007ff46c0c0a68 @client=<Twilio::REST::Client @account_sid=AC72b2b15384cf40c738940bb37f058133>>>>
+ 
+2.5.0 :006 > customer.view_menu
+1. Jasmine Rice: £2.50
+2. Coconut Rice: £3.50
+3. Egg Noodles: £4.75
+4. Egg Fried Rice: £3.50
+5. Chicken Red Thai Curry: £4.75
+6. Pork Green Thai Curry: £5.75
+7. Stir-fry Duck with Ginger: £5.75
+8. Stir-fry Beef with Mushroom: £5.75
+9. Stir-fry Squid with Veg: £5.75
+10. Mixed Seafood: £4.75
+11. Spring Rolls (6): £3.50
+ => [{:dish=>"Jasmine Rice", :price=>2.5}, {:dish=>"Coconut Rice", :price=>3.5}, {:dish=>"Egg Noodles", :price=>4.75}, {:dish=>"Egg Fried Rice", :price=>3.5}, {:dish=>"Chicken Red Thai Curry", :price=>4.75}, {:dish=>"Pork Green Thai Curry", :price=>5.75}, {:dish=>"Stir-fry Duck with Ginger", :price=>5.75}, {:dish=>"Stir-fry Beef with Mushroom", :price=>5.75}, {:dish=>"Stir-fry Squid with Veg", :price=>5.75}, {:dish=>"Mixed Seafood", :price=>4.75}, {:dish=>"Spring Rolls (6)",:price=>3.5}]
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+2.5.0 :008 > customer.add_to_order("Jasmine Rice", 1)
+ => [{:dish=>"Jasmine Rice", :price=>2.5, :quantity=>1}]
+2.5.0 :009 > customer.add_to_order("Egg Noodles", 2)
+ => [{:dish=>"Jasmine Rice", :price=>2.5, :quantity=>1}, {:dish=>"Egg Noodles", :price=>4.75, :quantity=>2}]
+2.5.0 :010 > customer.add_to_order("Chicken Red Thai Curry", 1)
+ => [{:dish=>"Jasmine Rice", :price=>2.5, :quantity=>1}, {:dish=>"Egg Noodles", :price=>4.75, :quantity=>2}, {:dish=>"Chicken Red Thai Curry", :price=>4.75, :quantity=>1}]
+2.5.0 :011 > customer.add_to_order("Chicken Red Thai Curry", 1)
+ => 2
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+2.5.0 :013 > customer.place_order(21.50)
+ => 21.5
+```
 
-Notes on Test Coverage
-------------------
+## Roadmap
+A future release may include the functionality of being able to place an order via sms message.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+## Authors and acknowledgment
+Thanks to Makers Academy for setting this challenge.
+
+## License
+Please ask permission from the owner of this repo.
+
+## Project status
+This project is complete in terms of the required functionality. However, I have not been able to hit 100% test coverage due to including the environment variables. I am looking to continue researching this area and implementing what I find into this project in the near future.
