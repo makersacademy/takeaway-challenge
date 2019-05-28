@@ -15,10 +15,4 @@ describe Takeaway do
     puts takeaway.show_menu
   end
 
-  # it 'can order items from the menu' do
-  #   takeaway.order("chips")
-  #   puts "@@@@@@@"
-  #   puts checkout.basket
-  #   expect(checkout.basket).to include("chips")
-  # end
 end

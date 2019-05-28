@@ -4,18 +4,15 @@ class Checkout
 
   def initialize
     @basket = []
+    @total = 0
   end
 
   def add(item, price)
     @basket << {food:item, cost:price}
   end
 
-  @total = 0
-
   def total
-    @basket.each{|item|
-    puts "@@@@@"
-    puts item[:cost] += total }
+    total = @basket.map { |item| item[:cost] }.sum
   end
 
 end

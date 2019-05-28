@@ -1,10 +1,18 @@
 require 'checkout.rb'
 
 describe Checkout do
-  checkout = Checkout.new
+  let(:checkout) {Checkout.new}
+
+  it 'can add order to basket' do
+    checkout.add("chicken",3)
+    expect(checkout.basket).to include({:cost=>3, :food=>"chicken"})
+  end
+
   it 'can total my order' do
-    checkout.add("chips", 1)
+    checkout.add("chips", 3)
     checkout.add("salad", 2)
-    expect(checkout.total).to eql(3)
+    puts checkout.basket
+    puts checkout.total
+    expect(checkout.total).to eql(5)
   end
 end
