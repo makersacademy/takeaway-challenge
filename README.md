@@ -17,9 +17,7 @@ App story:
 2.6.0 :001 > require './lib/order.rb'
  => true
 2.6.0 :002 > o = Order.new
- => #<Order:0x00007fe6cb8729b8 @dish_list=#<DishList:0x00007fe6cb872940 @dish_list_pr
-ices={:spaghetti_bolognese=>30, :chicken_pesto=>44, :fettuccine_beef=>42, :chilli_chi
-cken=>45, :sabor_salad=>32, :tiramisu=>15, :banoffee_pie=>15}>, @price_tracker=[]>
+ => #<Order:0x00007fe6cb8729b8 @dish_list=#<DishList:0x00007fe6cb872940 @dish_list_prices={:spaghetti_bolognese=>30, :chicken_pesto=>44, :fettuccine_beef=>42, :chilli_chicken=>45, :sabor_salad=>32, :tiramisu=>15, :banoffee_pie=>15}>, @price_tracker=[]>
 2.6.0 :003 > o.view_dishes
 spaghetti_bolognese - £30
 chicken_pesto - £44
@@ -27,15 +25,12 @@ fettuccine_beef - £42
 chilli_chicken - £45
 sabor_salad - £32
 sabor_salad - £32
-
 tiramisu - £15
 banoffee_pie - £15
- => {:spaghetti_bolognese=>30, :chicken_pesto=>44, :fettuccine_beef=>42, :chilli_chic
-ken=>45, :sabor_salad=>32, :tiramisu=>15, :banoffee_pie=>15}
+ => {:spaghetti_bolognese=>30, :chicken_pesto=>44, :fettuccine_beef=>42, :chilli_chicken=>45, :sabor_salad=>32, :tiramisu=>15, :banoffee_pie=>15}
 2.6.0 :004 > o.food_selection(:fettuccine_beef, 2)
  => 2
  2.6.0 :006 > o.food_selection(:tiramisu)
-
   => 1
  2.6.0 :007 > o.check_total
  99
@@ -43,7 +38,9 @@ ken=>45, :sabor_salad=>32, :tiramisu=>15, :banoffee_pie=>15}
  2.6.0 :008 > o.check_total(99)
  99
   => true
-
+  2.6.0 :009 > o.place_order
+  "Your order has been placed and will be with you by 11:21"
+   => "Your order has been placed and will be with you by 11:21"
 
 Instructions
 -------
