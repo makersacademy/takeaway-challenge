@@ -1,5 +1,5 @@
 class Takeaway
-  attr_reader :menu_class, :order_class, :current_order
+  attr_reader :menu_class, :order_class
   def initialize(order_class = Order, menu_class = Menu, send_message_class = SendMessage)
     @menu_class = menu_class.new
     @order_class = order_class.new
@@ -24,6 +24,7 @@ class Takeaway
     puts "Order complete, see you soon!"
   end
 
+  private
   def cost_of_order
     @order_class.price
   end

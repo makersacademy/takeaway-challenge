@@ -20,15 +20,15 @@ describe Takeaway do
     takeaway.ordered_items(:pizza, 1)
   end
 
-  it "Checkout total" do
-    allow(order).to receive(:price).and_return(4)
-    expect(takeaway.cost_of_order).to eq(4)
-  end
+  # it "Checkout total" do
+  #   allow(order).to receive(:price).and_return(4)
+  #   expect(takeaway.cost_of_order).to eq(4)
+  # end
 
-  it "Checkout total" do
-    allow(order).to receive(:price).and_return(4)
-    expect(takeaway.is_correct_price?(4)).to eq(true)
-  end
+  # it "Checkout total" do
+  #   allow(order).to receive(:price).and_return(4)
+  #   expect(takeaway.is_correct_price?(4)).to eq(true)
+  # end
 
   it 'Sends a text message confirming order' do
     expect(send_message).to receive(:send_customer_message)
