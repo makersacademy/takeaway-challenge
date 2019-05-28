@@ -1,4 +1,5 @@
 require 'sms_sender'
+require 'dotenv/load'
 
 describe SmsSender do
   it 'can respond to confirm order' do
