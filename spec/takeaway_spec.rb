@@ -17,9 +17,14 @@ describe Takeaway do
     expect(order).to receive(:select_dishes)
     takeaway.ordered_items(:pizza, 1)
   end
-  it 'Sends a text message confirming order' do
+  it 'Check text message is received' do
     expect(send_message).to receive(:send_customer_message)
     takeaway.send_text_message
+  end
+  it 'Sends a text message confirming order' do
+    allow(order).to receive(:price).and_return(4)
+    allow(send_message).to receive(:send_customer_message)
+    expect(takeaway.place_order(4))
   end
   it 'Order incomplete error' do
     allow(order).to receive(:price).and_return(4)

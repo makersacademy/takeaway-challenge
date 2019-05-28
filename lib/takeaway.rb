@@ -22,7 +22,6 @@ class Takeaway
   def place_order(expected_price)
     raise "Order incomplete" if correct_price?(expected_price) == false
     send_text_message
-    puts "Order complete, see you soon!"
   end
 
   private
