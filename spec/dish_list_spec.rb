@@ -2,7 +2,7 @@ require './lib/dish_list.rb'
 
 describe DishList do
 
-let(:dishes) { DishList.new }
+  let(:dishes) { DishList.new }
 
   it 'can show all dishes with prices' do
     expect(dishes.dish_list_prices).to eq(
