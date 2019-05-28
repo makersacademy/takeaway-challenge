@@ -1,6 +1,7 @@
 class Takeaway
   attr_reader :menu_class, :order_class
-  def initialize(order_class = Order, menu_class = Menu, send_message_class = SendMessage)
+  def initialize(order_class = Order, menu_class = Menu,
+      send_message_class = SendMessage)
     @menu_class = menu_class.new
     @order_class = order_class.new
     @send_message_class = send_message_class.new
@@ -19,7 +20,7 @@ class Takeaway
   end
 
   def place_order(expected_price)
-    raise "Order incomplete" if is_correct_price?(expected_price) == false
+    raise "Order incomplete" if correct_price?(expected_price) == false
     send_text_message
     puts "Order complete, see you soon!"
   end
@@ -29,7 +30,7 @@ class Takeaway
     @order_class.price
   end
 
-  def is_correct_price?(expected_price)
+  def correct_price?(expected_price)
     cost_of_order == expected_price
   end
 

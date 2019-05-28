@@ -1,6 +1,5 @@
 require 'twilio-ruby'
 require 'dotenv/load'
-# Download the helper library from https://www.twilio.com/docs/ruby/install
 require 'rubygems'
 
 class SendMessage
@@ -16,7 +15,8 @@ class SendMessage
     message_content = @client.messages.create(
       from: @twilio_number,
       to: @recipient_phone,
-      body: "Thank you! Your order was placed and will be delivered before #{Time.now.strftime("%d/%m/%Y %H:%M")}"
+      body: "Thank you! Your order was placed and will be delivered before
+        #{Time.now.strftime("%d/%m/%Y %H:%M")}"
     )
     puts message_content.sid
     # unique id
