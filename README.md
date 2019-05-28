@@ -50,3 +50,27 @@ MY_PHONE_NUMBER=
 > MY_PHONE_NUMBER=
 
 * The phone number to send the SMS notifications to (for Twilio trial accounts this must be set up and confirmed in Twilio account)
+
+
+Usage:
+
+With default menu:
+```Ruby
+require 'takeaway'
+takeaway = Takeaway.new
+takeaway.dishes # returns a list of dishes
+takeaway.order("Pizza *1, Sushi *2", 33.50) # places order & sends confirmation message
+```
+
+With a custom menu:
+```Ruby
+fried_rice = Dish.new("Fried_rice", 6.50)
+okonomiyaki = Dish.new("Okonomiyaki", 11.00)
+asian_fusion_dishes = {
+      "Fried_rice" => fried_rice,
+      "Okonomiyaki" => okonomiyaki
+} # create a hash of dishes
+asian_fusion_takeaway = Takeaway.new(asian_fusion_dishes)
+asian_fusion_takeaway.dishes # returns a list of dishes
+asian_fusion_takeaway.order("Fried_rice *1, Okonomiyaki *2", 28.50) # places order & sends confirmation message
+```
