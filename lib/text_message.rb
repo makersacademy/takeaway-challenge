@@ -10,9 +10,9 @@ class TextMessage
   end
 
   def send_sms
-      @client.messages.create(
-      body: "Your order has been placed and will be with you by #{(Time.now + 3600).strftime("%H:%M")}",
-      to: ENV['mobile'],    # Replace with your phone number
-      from: ENV['tmobile'])  # Replace with your Twilio number
+    @client.messages.create(
+    body: "Your order has been placed and will be with you by #{(Time.now + 3600).strftime("%H:%M")}",
+    to: ENV['mobile'], # Replace with your phone number
+    from: ENV['tmobile']) # Replace with your Twilio number
     end
 end
