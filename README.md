@@ -26,9 +26,9 @@ To start
 Usage
 -----
 * In the same directory you've cloned in, load up irb in your terminal
-* Make sure you're requiring this file `require = './lib/order'`
-* Peruse what is on offer `menu.print_menu`
+* Make sure you're requiring this file `require = './lib/order'``
 * Make a new order `order = Order.new`
+* Peruse what is on offer `menu = Menu` and then `menu.print_menu
 * Choose some food from `order.user_request`
 * Follow the directions to order something (at the minute user input only works for one item/quantity pairing at a time)
 * To add more items `order.add(item, quantity)`
