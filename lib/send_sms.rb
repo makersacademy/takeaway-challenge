@@ -13,9 +13,9 @@ class Message
   @client = Twilio::REST::Client.new(account_sid, auth_token)
 
   message = @client.messages.create(
-    from: "447723471355",
+    from: ENV['MY_TWILIO'],
     body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 1 * 60 * 60).strftime("%H:%M")}",
-    to: "+447789598995",
+    to: ENV['MY_NUMBER']
   )
   puts message.sid
 end
