@@ -1,4 +1,3 @@
-require 'menu'
 class Order
   attr_reader :ordered_items, :total, :menu_dishes
   def initialize 

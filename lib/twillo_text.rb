@@ -1,4 +1,7 @@
 require 'twilio-ruby'
+require 'dotenv/load'
+# Download the helper library from https://www.twilio.com/docs/ruby/install
+require 'rubygems'
 
 class SendMessage
   def initialize
@@ -16,5 +19,6 @@ class SendMessage
       body: "Thank you! Your order was placed and will be delivered before 18:52"
     )
     puts message_content.sid
+    # unique id
   end
 end

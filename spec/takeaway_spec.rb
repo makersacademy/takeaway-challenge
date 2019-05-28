@@ -1,5 +1,4 @@
 require 'takeaway'
-# require 'twillo-ruby'
 
 describe Takeaway do
 
@@ -16,29 +15,29 @@ describe Takeaway do
     takeaway.display_menu
   end
 
-  # it "Selected menu items" do
-  #   expect(order).to receive(:select_dishes)
-  #   takeaway.ordered_items(:pizza, 1)
-  # end
+  it "Selected menu items" do
+    expect(order).to receive(:select_dishes)
+    takeaway.ordered_items(:pizza, 1)
+  end
 
-  # it "Checkout total" do
-  #   expect(order).to receive(:price)
-  #   takeaway.cost_of_order
-  # end
+  it "Checkout total" do
+    allow(order).to receive(:price).and_return(4)
+    expect(takeaway.cost_of_order).to eq(4)
+  end
 
-  # it "Checkout total" do
-  #   allow(order).to receive(:price)
-  #   expect(takeaway.is_correct_price?(expected_price)).to eq(true)
-  # end
+  it "Checkout total" do
+    allow(order).to receive(:price).and_return(4)
+    expect(takeaway.is_correct_price?(4)).to eq(true)
+  end
 
   it 'Sends a text message confirming order' do
     expect(send_message).to receive(:send_customer_message)
     takeaway.send_text_message
   end
 
-  # it 'Order incomplete error' do
-  #   allow(order).to receive(:price).and_return(false)
-  #   expect{takeaway.place_order}.to raise_error("Order incomplete")
-  # end
+  it 'Order incomplete error' do
+    allow(order).to receive(:price).and_return(4)
+    expect{takeaway.place_order(3)}.to raise_error("Order incomplete")
+  end
 
 end
