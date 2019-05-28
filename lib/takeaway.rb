@@ -30,9 +30,9 @@ class Takeaway
   end
 end
 
-t = Takeaway.new
-t.view_menu
-t.select_item("Neapolitan", 2)
-t.select_item("Margherita", 1)
+# t = Takeaway.new
+# t.view_menu
+# t.select_item("Neapolitan", 2)
+# t.select_item("Margherita", 1)
 
-puts t.basket.contents
+# puts t.basket.contents
