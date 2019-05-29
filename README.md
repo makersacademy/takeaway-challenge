@@ -1,34 +1,52 @@
 Takeaway Challenge
 ==================
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
+                 _....._
+              _.:`.--|--.`:._
+            .: .'\o  | o /'. '.
+          // '.  \ o|  /  o '.\
+          //'._o'. \ |o/ o_.-'o\\
+          || o '-.'.\|/.-' o   ||
+          ||--o--o-->| 
+          ---== MeRo Resto ==----
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+MeRo Resto 
 -----
 
-* Fork this repo
+It's Friday. It's challenging. You need some food, but you're busy coding some ruby. 
+Fire up MeRo Resto and follow the instruction below, you'll have imaginary food confirmed by text in no time!
+
+To start
+-----
+
+* Clone this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+
+Usage
+-----
+* In the same directory you've cloned in, load up irb in your terminal
+* Make sure you're requiring this file `require = './lib/order'``
+* Make a new order `order = Order.new`
+* Peruse what is on offer `menu = Menu` and then `menu.print_menu
+* Choose some food from `order.user_request`
+* Follow the directions to order something (at the minute user input only works for one item/quantity pairing at a time)
+* To add more items `order.add(item, quantity)`
+* To get a total cost `order.total`
+* Want to double check what's in the order? `order.order_list`
+* When you're happy to place the order `order.complete`
+
+
+Confirmation text
+-----
+
+This is a sample of the confirmation text
+
+<img src="https://user-images.githubusercontent.com/16557524/58369129-29cb0d00-7eee-11e9-830d-d087672ecd08.jpg" width="320">
+
+
+User stories covered
+-----
 
 ```
 As a customer
@@ -48,35 +66,49 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Technologies used
+-----
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+- Ruby! 
+- Rspec
+- Twilio gem
+- dotenv gem
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+The last two of these I've never used for Ruby and it took a lot of messing around to get it working. You'll see my env file is listed in
+`.gitignore` but I can see one or two security based things I'd like to fix. 
 
 
-In code review we'll be hoping to see:
+Thoughts
+-----
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Once I had everything working I wanted to add user input, to make it a little more like a user would actually be using the application. 
+This meant my 96% test coverage went down to 90%, I'm going to try and sort that out now. I also decided I'd like some ascii art on my menu,
+this probably added redudant code that wasn't needed, but it looks kinda cool. I'd also really like to do the order by text option, let's
+see if I can get it working on a branch first. This was a more fun app to build, it's made me want to go back and try the Airport Challenge again.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
-Notes on Test Coverage
-------------------
+Branch out
+-----
+I got a rather clunky solution to ordering via text implemented in a branch 
+https://github.com/melanierogan/takeaway-challenge/tree/orderviatext
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+1. Text your order
+<img src="https://user-images.githubusercontent.com/16557524/58373196-36695880-7f22-11e9-8423-ee5dd43dc2b4.PNG" width="320">
+
+2. Run the ruby app
+```
+irb
+require './lib/order'
+o = Order.new
+o.text_request
+o.total
+o.complete
+```
+
+
+3. Get your text confirmation
+<img src="https://user-images.githubusercontent.com/16557524/58373202-53059080-7f22-11e9-8f9f-a838ab04f480.PNG" width="320">
+
