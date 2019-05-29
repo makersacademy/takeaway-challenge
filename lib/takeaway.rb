@@ -10,7 +10,7 @@ class Takeaway
     menu.see_menu
   end
 
-  def order(food,price)
+  def order(item,cost)
     @checkout.add(food,price)
   end
 
