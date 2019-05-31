@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:takeaway) { Takeaway.new(order_class, menu_class, send_message_class) }
+  let(:takeaway) { Takeaway.new(order_class, send_message_class) }
   let(:order_class) { double(:order_class, :new => order) }
   let(:order) { double(:order) }
   let(:menu_class) { double(:menu_class, :new => menu) }
@@ -10,16 +10,12 @@ describe Takeaway do
   let(:send_message) { double(:send_message) }
   
   it 'List the menu for customer' do
-    expect(menu).to receive(:list_menu)
+    expect(order).to receive(:display_menu)
     takeaway.display_menu
   end
   it "Selected menu items" do
     expect(order).to receive(:select_dishes)
     takeaway.ordered_items(:pizza, 1)
-  end
-  it 'Check text message is received' do
-    expect(send_message).to receive(:send_customer_message)
-    takeaway.send_text_message
   end
   it 'Sends a text message confirming order' do
     allow(order).to receive(:price).and_return(4)

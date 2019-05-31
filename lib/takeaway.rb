@@ -1,22 +1,16 @@
 class Takeaway
-  attr_reader :menu_class, :order_class
-  def initialize(order_class = Order, menu_class = Menu,
-      send_message_class = SendMessage)
-    @menu_class = menu_class.new
+  attr_reader :order_class, :send_message_class
+  def initialize(order_class = Order, send_message_class = SendMessage)
     @order_class = order_class.new
     @send_message_class = send_message_class.new
   end
 
   def display_menu
-    menu_class.list_menu
+    order_class.display_menu
   end
 
   def ordered_items(item_chosen, quantity)
-    @order_class.select_dishes(item_chosen, quantity)
-  end
-
-  def send_text_message
-    @send_message_class.send_customer_message
+    order_class.select_dishes(item_chosen, quantity)
   end
 
   def place_order(expected_price)
@@ -25,8 +19,12 @@ class Takeaway
   end
 
   private
+  def send_text_message
+    send_message_class.send_customer_message
+  end
+  
   def cost_of_order
-    @order_class.price
+    order_class.price
   end
 
   def correct_price?(expected_price)

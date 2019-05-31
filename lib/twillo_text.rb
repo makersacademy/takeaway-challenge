@@ -8,10 +8,10 @@ class SendMessage
     @auth_token = ENV['TWILIO_AUTH_TOKEN']
     @recipient_phone = ENV['Recipient_phone']
     @twilio_number = ENV['Twilio_number']
+    @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
 
   def send_customer_message
-    @client = Twilio::REST::Client.new @account_sid, @auth_token
     message_content = @client.messages.create(
       from: @twilio_number,
       to: @recipient_phone,

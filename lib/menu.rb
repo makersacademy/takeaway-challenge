@@ -6,6 +6,6 @@ class Menu
   end
 
   def list_menu
-    @menu_dishes
+    menu_dishes
   end
 end
