@@ -1,5 +1,7 @@
 Makers - Takeaway Challenge<br>
  <br>
+Note: Used Array for storing Food, Price - Should have used a Hash as this is more reliable when locating this information
+<br>
 User story 1<br>
 As a customer<br>
 So that I can check if I want to order something<br>
@@ -9,8 +11,7 @@ Create Menu class<br>
 Create initialize method, include a menu_dishes hash  with key as food item and value as price<br>
 Make @menu_dishes an attr_reader<br>
 Create list_menu method to return the list of dishes, with prices<br>
-<br><br>
-
+<br>
 User story 2<br>
 As a customer<br>
 So that I can order the meal I want<br>
@@ -19,7 +20,7 @@ I would like to be able to select some number of several available dishes<br>
 Create Order class<br>
 Create selected_dishes method, with the parameter (item_chosen)<br>
 Create ordered_items array and push all (item_chosen)<br>
-<br><br>
+<br>
 User story 3<br>
 As a customer<br>
 So that I can verify that my order is correct<br>
@@ -28,12 +29,12 @@ I would like to check that the total I have been given matches the sum of the va
 Create @total variable in the initialize method, and assign it a value of 0<br>
 Within the selected_dishes method, add each item_chosen => value to the total accumulator, using +=<br>
 Within the price method, return @total <br>
-<br><br>
+<br>
 User story 4<br>
 As a customer<br>
 So that I am reassured that my order will be delivered on time<br>
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered<br>
- <br><br>
+ <br>
 Sign up to Twillo, and rub gem install twilio-ruby<br>
 Instead of replacing the values for account_sid and auth_token with your unique values, I set up environment variables to keep credentials secret before deploying to production. I also added ENV variables for both mobile numbers<br>
 Navigate to .bashrc file in the home directory, and add you env variables, (using the export command): ‘echo key=>value‘<br>
