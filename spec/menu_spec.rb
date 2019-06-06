@@ -10,6 +10,13 @@ RSpec.describe "Menu" do
       expect(menu.menu_contents).to eq(@menu)
     end
 
+  describe '#view' do
+
+    it 'displays a menu' do
+      menu = Menu.new(@menu)
+      expect(menu.view).to include(@menu)
+    end
+
   end
 
 
