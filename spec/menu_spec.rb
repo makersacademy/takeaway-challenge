@@ -1,4 +1,16 @@
-RSpec.describe "Menu" do
+require 'menu'
 
-  
+RSpec.describe "Menu" do
+@menu = {"Fish" => 3, "Chips" => 2, "Veggie Burger" => 2, "Mushy Peas" => 0.5, "Curry Sauce" => 0.5, "Ketchup" => 0.2}
+
+  describe '#initialize' do
+
+    it 'stores the menu it is passed on initialization' do
+      menu = Menu.new(@menu)
+      expect(menu.menu_contents).to eq(@menu)
+    end
+
+  end
+
+
 end
