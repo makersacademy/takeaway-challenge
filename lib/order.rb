@@ -1,9 +1,10 @@
 class Order
 
-  attr_reader :quantity, :dish, :current_order
+  attr_reader :quantity, :dish, :current_order, :menu, :cost_calculator
 
-  def initialize(menu=Menu.new)
+  def initialize(menu=Menu.new, cost_calculator=Cost_calculator.new)
     @menu = menu
+    @cost_calculator = cost_calculator
     @current_order = []
   end
 

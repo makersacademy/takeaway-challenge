@@ -3,6 +3,24 @@ require "order"
 
 RSpec.describe "Order" do
 
+  describe "#initialize" do
+    it "creates an instance of the menu class" do
+      order = Order.new
+      expect(order.menu).to be_an_instance_of(Menu)
+    end
+
+    it "creates an instance of the Cost_calculator class" do
+      order = Order.new
+      expect(order.cost_calculator).to be_an_instance_of(Cost_calculator)
+    end
+
+    it "has an empty current_order array" do
+      order = Order.new
+      expect(order.current_order).to eq([])
+    end
+    
+  end
+
   describe "#place_order" do
     it "allows me to select a quantity and a dish and tells me what I have ordered" do
       order = Order.new
@@ -33,7 +51,7 @@ RSpec.describe "Order" do
       order.place_order("Chips", 1)
       expect(order.current_order).to eq([{"dish" => "Fish", "quantity" => 3},{ "dish" => "Chips", "quantity" => 1}])
     end
-    
+
   end
 
 
