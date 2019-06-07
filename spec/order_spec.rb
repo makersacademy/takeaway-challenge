@@ -24,6 +24,19 @@ RSpec.describe "Order" do
     end
   end
 
+  describe "current_order" do
+
+    it 'displays your order so far' do
+      menu_double = double("menu_class", menu_contents: {"Fish" => 3, "Chips" => 2})
+      order = Order.new(menu_double)
+      order.place_order("Fish", 3)
+      order.place_order("Chips", 1)
+      expect(order.current_order).to eq([{"dish" => "Fish", "quantity" => 3},{ "dish" => "Chips", "quantity" => 1}])
+    end
+    
+  end
+
+
 
 
 
