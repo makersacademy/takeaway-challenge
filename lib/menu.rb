@@ -1,3 +1,5 @@
+require_relative './menu_printer.rb'
+
 class Menu
 
   def initialize(dish = Dish)
@@ -13,12 +15,9 @@ class Menu
     @items << dish
   end
 
-  def print
-    all.map { |dish| "#{dish.name} #{dish.price}"}.join"\n"
+  def print(menu_printer = MenuPrinter)
+    menu_printer.print(all)
   end
-
-
-
 
 
 
