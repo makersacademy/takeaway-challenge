@@ -1,5 +1,3 @@
-*AJ TAKEAWAY CHALLENGE*
-
 Takeaway Challenge
 ==================
 ```
