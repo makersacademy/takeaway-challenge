@@ -9,6 +9,10 @@ class Menu
     all[index]
   end
 
+  def add(dish)
+    @items << dish
+  end
+
 
 
 

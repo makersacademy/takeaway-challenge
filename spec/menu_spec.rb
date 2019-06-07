@@ -9,10 +9,17 @@ describe Menu do
   end
   
   describe '#initialised' do
-    
+
     it 'is initialised with an empty array' do
       expect(@menu.get(0)).to be_nil
     end
-
   end
+
+  describe '#add' do
+    it 'adds a dish to the menu' do
+      @menu.add(@dish_double)
+      expect(@menu.get(0)).to eq(@dish_double)
+    end
+  end
+
 end

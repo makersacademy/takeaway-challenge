@@ -18,13 +18,18 @@ require 'menu'
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 describe '#feature tests'do
-  describe 'scenario 1' do
-    
-    
-
-  end
-
-
-
+  
+xit 'returns a list of dishes with prices' do
+  menu = Menu.new
+  pizza = Dish.new('pizza',9.99)
+  fish_chips = Dish.new('fish & chips', 12.00)
+  curry = Dish.new('curry', 12.99)
+  sushi = Dish.new('sushi', 16.00)
+  menu.add(pizza)
+  menu.add(fish_chips)
+  menu.add(curry)
+  menu.add(sushi)
+  expect(menu.print).to eq("pizza 9.99`nfish & chips 12.00\ncurry 12.99\nsushi 16.00")
+end
 
 end
