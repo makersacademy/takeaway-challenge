@@ -13,6 +13,11 @@ class Menu
     @items << dish
   end
 
+  def print
+    all.map { |dish| "#{dish.name} #{dish.price}"}.join"\n"
+  end
+
+
 
 
 

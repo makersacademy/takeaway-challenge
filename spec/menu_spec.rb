@@ -22,4 +22,12 @@ describe Menu do
     end
   end
 
+  describe '#print' do
+    it 'displays the menu contents' do
+      @menu.add(@dish_double)
+      expect(@menu.print).to eq("Yummy 9.99")
+    end
+  
+  end
+
 end

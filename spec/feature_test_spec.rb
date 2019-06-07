@@ -19,7 +19,7 @@ require 'menu'
 
 describe '#feature tests'do
   
-xit 'returns a list of dishes with prices' do
+it 'returns a list of dishes with prices' do
   menu = Menu.new
   pizza = Dish.new('pizza',9.99)
   fish_chips = Dish.new('fish & chips', 12.00)
@@ -29,7 +29,7 @@ xit 'returns a list of dishes with prices' do
   menu.add(fish_chips)
   menu.add(curry)
   menu.add(sushi)
-  expect(menu.print).to eq("pizza 9.99`nfish & chips 12.00\ncurry 12.99\nsushi 16.00")
+  expect(menu.print).to eq("pizza 9.99\nfish & chips 12.0\ncurry 12.99\nsushi 16.0")
 end
 
 end
