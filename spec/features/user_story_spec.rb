@@ -31,7 +31,8 @@ describe 'user stories' do
     dish1 = Dish.new("Chicken", 2.99)
     dish2 = Dish.new("Beef", 3.50)
     order = Order.new
-    expect { order.add_dishes(dish1, 3) }.not_to raise_error
+    expect { order.add_dishes(dish1, 3) }.to change{ order.dishes }
+    expect { order.add_dishes(dish2, 1) }.to change{ order.dishes }
   end
 
 end
