@@ -20,4 +20,10 @@ class Order
     "#{quantity} x #{dish} have been added to your order"
   end
 
+  def running_total
+    @cost_calculator.price_quantity(@current_order, @menu)
+    running_total =  @cost_calculator.total_price
+    "Your total so far: #{running_total}"
+  end
+
 end

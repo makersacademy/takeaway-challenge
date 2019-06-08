@@ -1,20 +1,24 @@
 class Menu
 
-  attr_reader :menu_contents
 
-  def initialize
-    @menu_contents = {"Fish" => 3, "Chips" => 2, "Veggie Burger" => 2, "Mushy Peas" => 0.5, "Curry Sauce" => 0.5, "Ketchup" => 0.2}
+  attr_reader :menu_contents, :header, :formatted_menu
+
+  def initialize(menu)
+    @menu_contents = menu
+    @header = "--Menu--"
+    @formatted_menu = []
   end
 
-  def view
-    puts print_header
-    menu_contents.each do |key, value|
-      puts "#{key}: £#{value.to_f}"
+
+  def format_menu_contents
+    @menu_contents.each do |key, value|
+      @formatted_menu << "#{key}: £#{value.to_f}"
     end
   end
 
-  def print_header
-    "Menu"
+  def view
+    puts @header
+    puts @formatted_menu
   end
 
 end
