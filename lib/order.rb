@@ -1,10 +1,13 @@
 
 class Order
 
-  attr_reader :order
+  attr_reader :items
 
   def initialize
-    @order = []
+    @items = []
   end
 
+  def order(item)
+    @items << item
+  end
 end
