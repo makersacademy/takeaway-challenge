@@ -50,7 +50,7 @@ describe Order do
     it 'raises an error if the user does not confirm the total price' do
       @order.add(@dish_double)
       @order.add(@dish_double, 2)
-      expect{@order.place_order(1.97)}.to raise_error(RuntimeError)
+      expect { @order.place_order(1.97) }.to raise_error(RuntimeError)
     end
 
   end
