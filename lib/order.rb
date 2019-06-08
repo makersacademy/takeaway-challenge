@@ -3,12 +3,13 @@ require_relative './restaurant.rb'
 
 class Order
 
-  def initialize
-    @choices = []
+  def initialize(menu)
+    @menu = menu
+    @choices = {}
   end
 
-  def add(dish, quantity = 1)
-    @choices << {dish => quantity}
+  def add(dish_name, quantity = 1)
+    @choices[get_dish(dish_name)] = quantity
   end
 
   def get(index)
@@ -35,12 +36,16 @@ class Order
     @choices
   end
 
-  def single_dish_price(order_line)
-    order_line.keys[0].price.to_f * order_line.values[0]
+  def get_dish(dish_name)
+    @menu.get_dish_by_name(dish_name)
+  end
+
+  def single_dish_price(dish, quantity)
+    dish.price.to_f * quantity
   end
 
   def individual_dish_totals
-    all.map { |order_line| single_dish_price(order_line) }
+    all.map { |dish, quantity| single_dish_price(dish, quantity) }
   end
 
   def correct_price(user_price)

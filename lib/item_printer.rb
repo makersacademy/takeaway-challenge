@@ -1,12 +1,12 @@
 module ItemPrinter
 
-  def self.print(item)
-       "#{item.keys[0].name} x #{item.values[0]} = £#{single_dish_price(item)}"
+  def self.print(dish, quantity)
+       "#{dish.name} x #{quantity} = £#{single_dish_price(dish, quantity)}"
   end
 
   private
 
-  def self.single_dish_price(item)
-    item.keys[0].price.to_f * item.values[0]
+  def self.single_dish_price(dish, quantity)
+    dish.price.to_f * quantity
   end
 end
