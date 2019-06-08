@@ -29,14 +29,19 @@ describe Order do
   end
 
   describe '#summary' do
-
     it 'prints the order summary' do
       @order.add(@dish_double)
       @order.add(@dish_double, 2)
       expect(@order.summary).to eq("yummy £0.99 x 1\nyummy £0.99 x 2")
     end
+  end
+
+  describe '#total_price' do
   
-  
-  
+    it 'calculates and returns the total price of the order' do
+      @order.add(@dish_double)
+      @order.add(@dish_double, 2)
+      expect(@order.total_price).to eq(2.97)    
+    end
   end
 end
