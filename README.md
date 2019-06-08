@@ -14,11 +14,11 @@ I would like to see a list of dishes with prices
   | menu     | add_dish   |
   | menu	   | add_price  |
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| OBJECT        | METHOD        |
+| ------------- |:-------------:|
+| menu          | add_dish      |
+| menu          | add_price     |
+|               |               |
 
 2. As a customer
 So that I can order the meal I want
