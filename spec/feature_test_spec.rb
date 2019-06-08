@@ -25,34 +25,40 @@ describe '#feature tests'do
     menu.add('fish & chips', 12.00)
     menu.add('curry', 12.99)
     menu.add('sushi', 16.00)
-    p menu.get(1)
     expect(menu.print).to eq("pizza 9.99\nfish & chips 12.0\ncurry 12.99\nsushi 16.0")
   end
   
-  xit 'allows a customer to select dishes and their quantity' do
+  it 'allows a customer to select dishes and their quantity' do
     menu = Menu.new
-    #pizza = Dish.new('pizza',9.99)
-    #fish_chips = Dish.new('fish & chips', 12.00)
     menu.add('pizza',9.99)
     menu.add('fish & chips', 12.00)
-    order = Order.new
-    order.add(pizza, 1)
-    order.add(fish_chips,3) 
+    order = Order.new(menu)
+    order.add('pizza', 1)
+    order.add('fish & chips',3) 
   end
   
-  xit 'returns the price of the total order so a customer can check it ' do
+  it 'returns the price of the total order so a customer can check it ' do
     menu = Menu.new
-    pizza = Dish.new('pizza',9.99)
-    sushi = Dish.new('sushi', 16.00)
-    fish_chips = Dish.new('fish & chips', 12.00)
-    menu.add(pizza)
-    menu.add(fish_chips)
-    menu.add(sushi)
-    order = Order.new
-    order.add(pizza, 1)
-    order.add(fish_chips,3)
-    order.add(sushi,2)
+    menu.add('pizza',9.99)
+    menu.add('fish & chips', 12.00)
+    menu.add('sushi', 16.00)
+    order = Order.new(menu)
+    order.add('pizza', 1)
+    order.add('fish & chips',3)
+    order.add('sushi',2)
     expect(order.total_price).to eq(77.99)
   end
 
+  it 'sends a text message once customer confirms order amount' do
+    restaurant_double = double(:restaurant, confirm_order: 'Thank you! Your order was placed')
+    menu = Menu.new
+    menu.add('pizza',9.99)
+    menu.add('fish & chips', 12.00)
+    menu.add('sushi', 16.00)
+    order = Order.new(menu)
+    order.add('pizza', 1)
+    order.add('fish & chips',3)
+    order.add('sushi',2)
+    expect(order.place_order(77.99, restaurant_double)).to eq('Thank you! Your order was placed')
+  end
 end
