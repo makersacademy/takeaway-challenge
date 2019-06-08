@@ -1,5 +1,9 @@
 class Takeaway
 
+  def initialize
+    @selection = []
+  end
+
   def menu
     [
       { dish: "DAIFUKU", price: 2 },
@@ -7,4 +11,7 @@ class Takeaway
     ]
   end
 
+  def select(item, qty)
+    @selection << { dish: item, qty: qty }
+  end
 end
