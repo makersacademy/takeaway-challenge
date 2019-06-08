@@ -1,4 +1,4 @@
-
+require_relative 'item_printer'
 
 module ItemsArrayPrinter
   def self.to_string(items, item_printer = ItemPrinter)
