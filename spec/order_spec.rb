@@ -18,4 +18,14 @@ describe Order do
     end
   end
 
+  describe '#total' do
+    it 'returns total as a string' do
+      item1 = double('item', name: 'Cake', price: 6)
+      item2 = double('item', name: 'Toastie', price: 8)
+      subject.add_item(item1, 6)
+      subject.add_item(item2, 3)
+      expect(subject.total).to eq("Your total is £60")
+    end
+  end
+
 end

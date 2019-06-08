@@ -15,4 +15,10 @@ class Order
     }.join("\n")
   end
 
+  def total
+    total = @order.map{|each|
+    each[:item].price * each[:qty]}.inject(:+)
+    "Your total is £#{total}"
+  end
+
 end
