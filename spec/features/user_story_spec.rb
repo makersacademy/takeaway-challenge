@@ -30,7 +30,9 @@ describe 'user stories' do
   it 'so that a meal can be planned orders can contain some number of several dishes' do
     dish1 = Dish.new("Chicken", 2.99)
     dish2 = Dish.new("Beef", 3.50)
-    order = Order.new
+    sms = double("sms")
+    allow(sms).to receive(:send_sms) { true }
+    order = Order.new(sms)
     expect { order.add_dishes(dish1, 3) }.to change { order.dishes }
     expect { order.add_dishes(dish2, 1) }.to change { order.dishes }
   end
@@ -38,7 +40,9 @@ describe 'user stories' do
   it 'so that the price given can be checked orders can calculate the total for all items and raise an error if not the same' do
     dish1 = Dish.new("Chicken", 2.99)
     dish2 = Dish.new("Beef", 3.50)
-    order = Order.new
+    sms = double("sms")
+    allow(sms).to receive(:send_sms) { true }
+    order = Order.new(sms)
     order.add_dishes(dish1, 3)
     order.add_dishes(dish2, 1)
     expect { order.check_total(12.47) }.not_to raise_error
@@ -50,12 +54,14 @@ describe 'user stories' do
     dish1 = Dish.new("Chicken", 2.99)
     dish2 = Dish.new("Beef", 3.50)
     time = double("time")
-    order = Order.new(time)
+    sms = double("sms")
+    allow(sms).to receive(:send_sms) { true }
+    order = Order.new(time, sms)
     allow(time).to receive(:hour) { 15 }
     allow(time).to receive(:min) { 59 }
     order.add_dishes(dish1, 3)
     order.add_dishes(dish2, 1)  
-    expect(order.place_order).to eql("Thank you! Your order was placed and will be delivered before 16:59")
+    expect(order.place_order).to eql(true)
   end
 
 end
