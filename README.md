@@ -17,7 +17,8 @@ josephs-MBP:takeaway-challenge josephtownshend$ irb
  => [{:item=>"Big Mac", :price=>5.99}, {:item=>"Cheese Burger", :price=>3.99}, {:item=>"Chicken Legend", :price=>4.99}, {:item=>"Nuggets", :price=>2.99}, {:item=>"Fries", :price=>0.99}, {:item=>"Coke", :price=>0.99}, {:item=>"Milk Shake", :price=>1.99}]
 2.5.0 :004 > menu.choose_items("Nuggets", 2)
  => {:item=>"Nuggets", :price=>2.99, :quantity=>2}
-2.5.0 :005 >
+2.5.0 :005 > menu.selection
+ => {:item=>"Nuggets", :price=>2.99, :quantity=>2}
 ```
 
 
