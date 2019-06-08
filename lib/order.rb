@@ -1,4 +1,5 @@
 require_relative './order_printer.rb'
+require_relative './restaurant.rb'
 
 class Order
 
@@ -22,9 +23,10 @@ class Order
     individual_dish_totals.inject { |sum,num| sum + num}.round(2)
   end
 
-  def place_order(user_price)
+  def place_order(user_price, restaurant = Restaurant)
    raise 'You have not confirmed the correct price' unless correct_price(user_price)
 
+   restaurant.confirm_order(all)
   end
 
   private
