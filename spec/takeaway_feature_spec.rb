@@ -1,5 +1,6 @@
 require 'pierogi'
 require 'order'
+require 'menu'
 
 RSpec.describe 'Pierogi Bar' do
 # As a customer
@@ -12,10 +13,22 @@ it 'displays menu with prices' do
   expect(pierogi.show_food).to eq items
 end
 
+pending 'can be added days menus'
+
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several 
 # available dishes
+it 'creates new order that can be added multiple items' do
+  order = Order.new
+  starter = "small pierogi"
+  main = "large pierogi"
+  dessert = "honey pierogi"
+  order.add_to_order(starter)
+  order.add_to_order(main)
+  order.add_to_order(dessert)
+  expect(order.show_basket).to eq "small pierogi, large pierogi, honey pierogi"
+end
 
 # As a customer
 # So that I can verify that my order is correct
