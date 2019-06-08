@@ -1,23 +1,23 @@
 
 irb test for #show and #choose
 ```
-josephs-MBP:takeaway-challenge josephtownshend$ irb\
-**2.5.0 :001 > require './lib/menu'**\
-**=> true**\
-**2.5.0 :002 > menu = Menu.new**\
- => #<Menu:0x00007f80f809b8b8 @food=[{:item=>"Big Mac", :price=>5.99}, {:item=>"Cheese Burger", :price=>3.99}, \{:item=>"Chicken Legend", :price=>4.99}, {:item=>"Nuggets", :price=>2.99}, {:item=>"Fries", :price=>0.99}, {:item=>"Coke",\ :price=>0.99}, {:item=>"Milk Shake", :price=>1.99}]>\
-**2.5.0 :003 > menu.show**\
-* Big Mac - £5.99\
-* Cheese Burger - £3.99\
-* Chicken Legend - £4.99\
-* Nuggets - £2.99\
-* Fries - £0.99\
-* Coke - £0.99\
-* Milk Shake - £1.99\
- => [{:item=>"Big Mac", :price=>5.99}, {:item=>"Cheese Burger", :price=>3.99}, {:item=>"Chicken Legend", :price=>4.99},\ {:item=>"Nuggets", :price=>2.99}, {:item=>"Fries", :price=>0.99}, {:item=>"Coke", :price=>0.99}, {:item=>"Milk Shake",\ :price=>1.99}]\
-**2.5.0 :004 > menu.choose_items("Nuggets", 2)**\
- => {:item=>"Nuggets", :price=>2.99, :quantity=>2}\
-2.5.0 :005 >\
+josephs-MBP:takeaway-challenge josephtownshend$ irb
+**2.5.0 :001 > require './lib/menu'**
+**=> true**
+**2.5.0 :002 > menu = Menu.new**
+ => #<Menu:0x00007f80f809b8b8 @food=[{:item=>"Big Mac", :price=>5.99}, {:item=>"Cheese Burger", :price=>3.99}, {:item=>"Chicken Legend", :price=>4.99}, {:item=>"Nuggets", :price=>2.99}, {:item=>"Fries", :price=>0.99}, {:item=>"Coke", :price=>0.99}, {:item=>"Milk Shake", :price=>1.99}]>
+**2.5.0 :003 > menu.show**
+* Big Mac - £5.99
+* Cheese Burger - £3.99
+* Chicken Legend - £4.99
+* Nuggets - £2.99
+* Fries - £0.99
+* Coke - £0.99
+* Milk Shake - £1.99
+ => [{:item=>"Big Mac", :price=>5.99}, {:item=>"Cheese Burger", :price=>3.99}, {:item=>"Chicken Legend", :price=>4.99}, {:item=>"Nuggets", :price=>2.99}, {:item=>"Fries", :price=>0.99}, {:item=>"Coke", :price=>0.99}, {:item=>"Milk Shake", :price=>1.99}]
+**2.5.0 :004 > menu.choose_items("Nuggets", 2)**
+ => {:item=>"Nuggets", :price=>2.99, :quantity=>2}
+2.5.0 :005 >
 ```
 
 
