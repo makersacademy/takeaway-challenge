@@ -1,4 +1,4 @@
-class Cost_calculator
+class CostCalculator
 
   attr_reader :total_price
 
@@ -6,12 +6,22 @@ class Cost_calculator
     @total_price = 0
   end
 
-  def calculate(order, menu)
-    order.each do |index|
-      @price_for_1_dish = menu[index["dish"]]
-      @price_for_quantity = @price_for_1_dish * index["quantity"]
-      @total_price += @price_for_quantity
+  def calculate(current_order, menu_contents)
+    current_order.each do |index|
+      @total_price += price_for_quantity(index, menu_contents)
     end
+  end
+
+  def price_for_dish(order_hash, menu_contents)
+    menu_contents[order_hash["dish"]]
+  end
+
+  def quantity_of_dish(order_hash)
+    order_hash["quantity"]
+  end
+
+  def price_for_quantity(order_hash, menu)
+    price_for_dish(order_hash, menu) * quantity_of_dish(order_hash)
   end
 
 end

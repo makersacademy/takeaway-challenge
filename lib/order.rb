@@ -25,6 +25,7 @@ class Order
   end
 
   def running_total
+    @cost_calculator.calculate(@current_order, @menu.menu_contents)
     "Your total so far: #{@cost_calculator.total_price}"
   end
 

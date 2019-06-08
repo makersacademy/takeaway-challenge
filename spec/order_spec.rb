@@ -54,7 +54,8 @@ RSpec.describe "Order" do
 
   describe "#running_total" do
     it "returns the cost of your order" do
-      allow(@cost_calculator).to receive(:total_price) { 8 }
+      allow(@cost_calculator).to receive(:calculate)
+      allow(@cost_calculator).to receive(:total_price) {8}
       expect(@order.running_total).to eq("Your total so far: 8")
     end
   end
