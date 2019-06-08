@@ -2,9 +2,10 @@
 
 class Menu
 
-  attr_reader :food
+  attr_reader :food, :selection
 
   def initialize
+    @selection = {}
     @food = [
       { item: "Big Mac", price: 5.99 },
       { item: "Cheese Burger", price: 3.99 },
@@ -22,13 +23,12 @@ class Menu
   end
 
   def choose_items(select, quantity)
-    selection = {}
     @food.each do |item|
       if select == item[:item]
-        selection = { item: item[:item],
+        @selection = { item: item[:item],
           price: item[:price], quantity: quantity }
       end
     end
-    selection
+    @selection
   end
 end
