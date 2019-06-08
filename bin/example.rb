@@ -1,6 +1,6 @@
 
-require_relative './menu.rb'
-require_relative './order.rb'
+require_relative '../lib/menu.rb'
+require_relative '../lib/order.rb'
 
 menu = Menu.new
 order = Order.new(menu)

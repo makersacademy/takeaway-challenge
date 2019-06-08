@@ -1,5 +1,3 @@
-*AJ TAKEAWAY CHALLENGE*
-
 Takeaway Challenge
 ==================
 ```
@@ -16,21 +14,14 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Introduction
 -------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is the second weekend assignment from Makers academy.
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* The task is to write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -50,35 +41,61 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Instructions
+------------
+- Fork this repo
+- Run the command 'bundle' in the project directory to ensure you have all the gems
+- Create a trial [Twilio](https://www.twilio.com) user account and set up SMS functionality.
+- Due to user credentials being needed in this program these have not been uploaded. To add yours you must add this file: `./lib/secrets.rb` . It should take the following format:
+```
+module Secrets
+  
+  ACCOUNT_SID = 'Twilio Account SID'
+  AUTH_TOKEN = 'Twilio Auth Token'
+  FROM = '#Twilio  phone number'
+  TO = '#Twilio registerd phone number'
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+end
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+```
+- Once set up the program can be run like this example (found in `./bin/example.rb`):
+```
+require_relative '../lib/menu.rb'
+require_relative '../lib/order.rb'
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+menu = Menu.new
+order = Order.new(menu)
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+menu.add('pizza',9.99)
+menu.add('fish & chips', 12.00)
+menu.add('curry', 12.99)
+menu.add('sushi', 16.00)
 
+puts "---- The Menu ----"
+puts menu.print
 
-In code review we'll be hoping to see:
+order.add('pizza', 1)
+order.add('fish & chips',3)
+order.add('sushi',2)
+order.add('curry', 5)
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+puts "----Order Summary ----"
+puts order.summary
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+puts "----Total Price ----"
+puts order.total_price
 
-Notes on Test Coverage
-------------------
+order.place_order(142.94)
+```
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Challenges
+----------
+- Overcomplicating the challenge. It would have been much simpler to have the assumption of one restaurant, one menu and fixed dishes. Instead I wanted to challenge myself by trying to make it as extensible as possible and forming classes of these items.
+- Did not have 100% test coverage. Currently it is >98% but the `restaurant` module has no tests. I was unsure how to test this module and the API call.
+- It would have been good to have the same `printers` to be used by `menu` and `order`
+but their data structures are different.
+- Would be good to take to completion and refactor `restaurant` to a class. 
+
+Summary
+-------
+On the whole I am very happy with my work on this challenge. I think it shows great improvements on structure and design compared with week 1. There is good unit and feature test coverage and have used and external service. Logic is broken down well and a method doesn't have more than 2 lines.

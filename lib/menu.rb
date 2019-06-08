@@ -1,4 +1,5 @@
 require_relative './menu_printer.rb'
+require_relative './dish.rb'
 
 class Menu
 
