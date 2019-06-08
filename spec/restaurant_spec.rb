@@ -23,7 +23,11 @@ describe Restaurant do
     end
 
     describe '#view menu' do
-      it 'prints out the menu' do
+      it 'calls on menu to print' do
+        expect(@mock_menu).to receive(:print_menu)
+        @restaurant.view_menu
+      end
+      it 'returns a string of menu items' do
         message = "Slice of Cake - £6.00"
         allow(@mock_menu).to receive(:add_item)
         allow(@mock_menu).to receive(:print_menu).and_return message
