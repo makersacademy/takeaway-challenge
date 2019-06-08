@@ -6,12 +6,22 @@ class Takeaway
 
   def menu
     [
-      { dish: "DAIFUKU", price: 2 },
-      { dish: "ICHIGO", price: 3 }
+      { "DAIFUKU" => 2 },
+      { "ICHIGO"  => 3 }
     ]
   end
 
   def select(item, qty)
     @selection << { dish: item, qty: qty }
   end
+
+  def order_summary
+    i, summary = 0, 0
+    until i == @selection.count do
+      summary += @selection[i][:qty] * menu[i][@selection[i][:dish]]
+      i += 1
+    end
+    summary
+  end
+
 end
