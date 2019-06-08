@@ -1,3 +1,55 @@
+#USER STORIES: DOMAIN MODEL
+
+1. As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+	* CHECK: Create menu: list of dishes with prices > hash?
+	*  Ensure you have a list of dishes with prices
+
+	CLASS: Menu
+
+	OBJECT		METHOD
+	menu	  	add_dish
+	menu	  	add_price
+
+2. As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+	* ORDER: Select multiple dishes from menu > index list?
+	* Place the order by giving the list of dishes, their quantities and a number that should be the exact total.
+
+	CLASS: Order, Menu
+
+	OBJECT		METHOD
+	meal	  	select_dishes
+
+3. As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+	* VERIFY: Sum prices of selected dishes, match back to total given to the customer??
+	* If the sum is not correct the method should raise an error.
+
+	CLASS:	Order, Menu
+
+	OBJECT   METHOD
+	meal		 total_dishes
+	meal		 itemised_total (receipt)
+
+4. As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as “Thank you! Your order was placed and will be delivered before 18:52” after I have ordered
+
+	* DELIVERY: Confirm order via text containing delivery time.		
+	* If sum is correct, send text.
+
+	Class Order
+
+	OBJECT   METHOD
+	meal     order_confirmation (text)
+
 Takeaway Challenge
 ==================
 ```
