@@ -2,8 +2,10 @@
 
 class Menu
 
+  attr_reader :food
+
   def initialize
-    @menu = [
+    @food = [
       {:item => "Big Mac", :price => "5.99"},
       {:item => "Cheese Burger", :price => "3.99"},
       {:item => "Chicken Legend", :price => "4.99"},
@@ -13,8 +15,5 @@ class Menu
       {:item => "Milk Shake", :price => "1.99"},
     ]
   end
-
-  def show()
-
 
 end
