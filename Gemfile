@@ -9,8 +9,8 @@ gem 'rubocop', '0.56.0'
 # gem 'simplecov-console', require: false, group: :test
 
 group :test do
+  gem 'pry' 
   gem 'rspec'
   gem 'simplecov', require: false
-  gem 'simplecov-console', require: false
-  gem 'pry'  
+  gem 'simplecov-console', require: false   
 end
