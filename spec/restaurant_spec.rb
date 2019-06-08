@@ -65,5 +65,15 @@ describe Restaurant do
         @restaurant.view_order
       end
     end
+
+    describe '#verify_total' do
+      it 'calls on order to return total' do
+        order_mock = double 'order'
+        allow(@order).to receive(:new).and_return order_mock
+        @restaurant.create_new_order
+        expect(order_mock).to receive(:total)
+        @restaurant.verify_total
+      end
+    end
   end
 end

@@ -30,6 +30,10 @@ class Restaurant
     @order.print_order
   end
 
+  def verify_total
+    @order.total
+  end
+
   private
 
   def get(item)
