@@ -32,7 +32,7 @@ describe Order do
     it 'prints the order summary' do
       @order.add(@dish_double)
       @order.add(@dish_double, 2)
-      expect(@order.summary).to eq("yummy £0.99 x 1\nyummy £0.99 x 2")
+      expect(@order.summary).to eq("yummy x 1 = £0.99\nyummy x 2 = £1.98")
     end
   end
 
