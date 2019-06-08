@@ -1,6 +1,10 @@
 
 class Order
-  def choose_items
+
+  attr_reader :order
+
+  def initialize
+    @order = []
   end
 
 end
