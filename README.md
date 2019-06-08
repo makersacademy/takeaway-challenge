@@ -20,6 +20,11 @@ This is a takeaway program where you can view a menu & take an order.  It's a cu
 
 Original spec from [Makers Academy](https://github.com/makersacademy)
 
+### What Next?
+
+0. Split out into classes & follow single responsibility 
+0. Send order notifications via Twilio
+0. Update the README!
 
 
 ## User Stories
@@ -44,19 +49,22 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Running the program
 
-####Coded in Ruby 2.5.0
+#### Coded in Ruby 2.5.0
 
-Read about [Ruby 2.5.0](https://www.ruby-lang.org/en/news/2017/12/25/ruby-2-5-0-released/).
-
-Run `bundle` to check you've got all the files.  See `Gemfile` for all gems used.
+ - Read about [Ruby 2.5.0](https://www.ruby-lang.org/en/news/2017/12/25/ruby-2-5-0-released/).
+ - Run `bundle` to check you've got all the files.  
+ - See [Gemfile](https://github.com/ruthmoog/takeaway-challenge/blob/master/Gemfile) for all gems used.
 
 #### Tested with RSpec
 
-Built with TDD. Run `rspec` in the project directory to run the tests.
+ - Built with TDD \o/
+ - Run `rspec` in the project directory to run the tests.
+ - Read about [RSpec](https://rspec.info/documentation/).
 
-#### Linted with Rubocop
+#### Linted with RuboCop
 
-Adheres to the Rubocop style conventions. Run `rubocop` in the project directory.
+ - Meets [RuboCop](https://github.com/rubocop-hq/rubocop)'s Ruby style conventions. 
+ - Run `rubocop` in the project directory.
 
 ## Inspo
 
