@@ -4,6 +4,9 @@ class Order
     @choices = []
   end
 
+  def add(dish, quantity = 1)
+    @choices << {dish => quantity}
+  end
 
   def get(index)
     all[index]

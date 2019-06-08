@@ -32,7 +32,7 @@ it 'returns a list of dishes with prices' do
   expect(menu.print).to eq("pizza 9.99\nfish & chips 12.0\ncurry 12.99\nsushi 16.0")
 end
 
-xit 'allows a customer to select dishes and their quantity' do
+it 'allows a customer to select dishes and their quantity' do
   menu = Menu.new
   pizza = Dish.new('pizza',9.99)
   fish_chips = Dish.new('fish & chips', 12.00)
