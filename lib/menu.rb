@@ -1,6 +1,5 @@
 class Menu
 
-
   attr_reader :menu_contents, :header, :formatted_menu
 
   def initialize(menu)
@@ -8,7 +7,6 @@ class Menu
     @header = "--Menu--"
     @formatted_menu = []
   end
-
 
   def format_menu_contents
     @menu_contents.each do |key, value|
