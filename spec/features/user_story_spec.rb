@@ -15,8 +15,10 @@
 # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 require 'dish'
 require 'menu'
+require 'order'
 
 describe 'user stories' do
+
   it 'so that orders can be placed display a list of dishes' do
     dish1 = Dish.new("Chicken", 2.99)
     dish2 = Dish.new("Beef", 3.50)
@@ -24,4 +26,12 @@ describe 'user stories' do
     menu = Menu.new(list)
     expect(menu.list).to eql("Chicken, Beef")
   end
+
+  it 'so that a meal can be planned orders can contain some number of several dishes' do
+    dish1 = Dish.new("Chicken", 2.99)
+    dish2 = Dish.new("Beef", 3.50)
+    order = Order.new
+    expect { order.add_dishes(dish1, 3) }.not_to raise_error
+  end
+
 end
