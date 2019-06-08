@@ -24,8 +24,11 @@ I would like to be able to select some number of several available dishes
 
 	CLASS: Order, Menu
 
-	OBJECT		METHOD
-	meal	  	select_dishes
+  | OBJECT        | METHOD        |
+  | ------------- |:-------------:|
+  | menu          | select_dishes |
+  |               |               |
+  |               |               |
 
 3. As a customer
 So that I can verify that my order is correct
@@ -34,11 +37,13 @@ I would like to check that the total I have been given matches the sum of the va
 	* VERIFY: Sum prices of selected dishes, match back to total given to the customer??
 	* If the sum is not correct the method should raise an error.
 
-	CLASS:	Order, Menu
+	CLASS: Order, Menu
 
-	OBJECT   METHOD
-	meal		 total_dishes
-	meal		 itemised_total (receipt)
+  | OBJECT        | METHOD                    |
+  | ------------- |:-------------------------:|
+  | menu          | total_dishes              |
+  |               | itemised_total (receipt)  |
+  |               |                           |
 
 4. As a customer
 So that I am reassured that my order will be delivered on time
@@ -47,10 +52,13 @@ I would like to receive a text such as “Thank you! Your order was placed and w
 	* DELIVERY: Confirm order via text containing delivery time.		
 	* If sum is correct, send text.
 
-	Class Order
+	Class: Order
 
-	OBJECT   METHOD
-	meal     order_confirmation (text)
+  | OBJECT        | METHOD                    |
+  | ------------- |:-------------------------:|
+  | menu          | order_confirmation (text) |
+  |               |                           |
+  |               |                           |
 
 Takeaway Challenge
 ==================
