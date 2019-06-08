@@ -20,7 +20,7 @@ RSpec.describe "Menu" do
         expect(@menu.header).to eq(@header)
       end
       it 'contains empty array formatted menu' do
-        expect(@menu.formatted_menu).to eq([])
+        expect(@menu.formatted_menu).to eq(@formatted_menu)
       end
     end
   end
@@ -28,7 +28,6 @@ RSpec.describe "Menu" do
   describe '#view' do
     context 'when a menu has been created and formatted' do
       it 'displays a menu' do
-        @menu.format_menu_contents
         expect { @menu.view }.to output(@displayed_menu).to_stdout
       end
     end
@@ -37,7 +36,6 @@ RSpec.describe "Menu" do
   describe '#format_menu_contents' do
     context 'when a menu has been created and formatted' do
       it 'creates an array of strings' do
-        @menu.format_menu_contents
         expect(@menu.formatted_menu).to eq(@formatted_menu)
       end
     end

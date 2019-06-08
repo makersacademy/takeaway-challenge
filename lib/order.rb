@@ -16,7 +16,7 @@ class Order
     raise "Item is not on the menu" unless @menu.menu_contents.include?(dish)
     @quantity = quantity
     @dish = dish
-    add_order_to_current_order
+    puts add_order_to_current_order
   end
 
   def add_order_to_current_order
@@ -24,9 +24,9 @@ class Order
     "#{quantity} x #{dish} have been added to your order"
   end
 
-  def running_total
+  def total
     @cost_calculator.calculate(@current_order, @menu.menu_contents)
-    "Your total so far: #{@cost_calculator.total_price}"
+    "Your total is: £#{@cost_calculator.total_price}"
   end
 
   def checkout(payment)

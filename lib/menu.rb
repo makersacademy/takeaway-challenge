@@ -6,6 +6,7 @@ class Menu
     @menu_contents = menu
     @header = "--Menu--"
     @formatted_menu = []
+    format_menu_contents
   end
 
   def format_menu_contents
