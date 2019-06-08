@@ -3,7 +3,6 @@
 class Menu
 
   def initialize(item = Item)
-    @menu
     @item = item
     @items = []
   end
@@ -16,14 +15,22 @@ class Menu
     items_array_printer.to_string(all_objects)
   end
 
+  def get(item)
+    @items.each do |hash|
+      hash.each do |key, value|
+        return value if key == item
+      end
+    end
+  end
+
   private
 
   def all_objects
-    @items.map{|each|each[:name]}
+    @items.map{ |item| item.values }.flatten
   end
 
   def create_new_item(name, price)
-    { name: @item.new(name, price) }
+    { name => @item.new(name, price) }
   end
 
 end

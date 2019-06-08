@@ -21,6 +21,6 @@ describe 'User Stories' do
     cafe.create_new_order
     cafe.add_to_order('Ham Toastie', 2)
     cafe.add_to_order('Slice of Cake', 3)
-    expect(cafe.view_order).to eq "2 - Ham Toastie\n3 - Slice of Cake"
+    expect(cafe.view_order).to eq "2 - Ham Toastie(s)\n3 - Slice of Cake(s)"
   end
 end

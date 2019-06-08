@@ -43,5 +43,27 @@ describe Restaurant do
         @restaurant.create_new_order
       end
     end
+
+    describe '#add_to_order' do
+      it 'returns confirmation of item added' do
+        order_mock = double 'order'
+        item_mock = double 'item'
+        allow(@mock_menu).to receive(:get).and_return(item_mock)
+        allow(@order).to receive(:new).and_return order_mock
+        allow(order_mock).to receive(:add_item).and_return('added 2 cake(s)')
+        @restaurant.create_new_order
+        expect(@restaurant.add_to_order('cake', 2)).to eq('added 2 cake(s)')
+      end
+    end
+
+    describe '#view_order' do
+      it 'calls for printed order' do
+        order_mock = double 'order'
+        allow(@order).to receive(:new).and_return order_mock
+        @restaurant.create_new_order
+        expect(order_mock).to receive(:print_order)
+        @restaurant.view_order
+      end
+    end
   end
 end
