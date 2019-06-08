@@ -12,4 +12,8 @@ class Restaurant
     @menu.add_item(name, price)
   end
 
+  def view_menu
+    @menu.print_menu
+  end
+
 end
