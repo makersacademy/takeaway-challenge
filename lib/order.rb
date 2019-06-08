@@ -1,3 +1,5 @@
+require_relative './order_printer.rb'
+
 class Order
 
   def initialize
@@ -12,11 +14,8 @@ class Order
     all[index]
   end
 
-  def summary
-
-    all.map { |item| "#{item.keys[0].name} #{item.keys[0].price} x #{item.values[0]}"}.join"\n" 
-  
-  
+  def summary(order_printer = OrderPrinter)
+    order_printer.print(all)
   end
 
   private
