@@ -32,6 +32,7 @@ class Order
   def checkout(payment)
     raise "Payment incorrect" if payment != @cost_calculator.total_price
     "Order confirmed"
+
   end
 
 end
