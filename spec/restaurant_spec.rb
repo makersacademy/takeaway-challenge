@@ -4,17 +4,14 @@ describe Restaurant do
 
   describe 'named cafe' do
 
-
     before(:each) do
-      @mock_menu = double ('menu')
+      @mock_menu = double 'menu'
       @restaurant = Restaurant.new('cafe', @mock_menu)
     end
-
 
     it 'initializes with a name' do
       expect(@restaurant.name).to eq 'cafe'
     end
-
 
     describe '#add_menu_item' do
       it 'can add a menu item' do

@@ -4,7 +4,7 @@ describe 'User Stories' do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  xit 'Prints list of dishes with prices' do
+  it 'Prints list of dishes with prices' do
     restaurant = Restaurant.new('cafe')
     restaurant.add_menu_item('Slice of Cake', 6)
     restaurant.add_menu_item('Ham Toastie', 8)
