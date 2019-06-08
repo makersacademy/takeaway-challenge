@@ -3,7 +3,9 @@ require_relative 'menu'
 class Restaurant
   attr_reader :name
 
-  def initialize(name, menu = Menu.new)
+  def initialize(name, menu = Menu.new, order_class = Order)
+    @order_class = order_class
+    @order = []
     @name = name
     @menu = menu
   end
@@ -14,6 +16,10 @@ class Restaurant
 
   def view_menu
     @menu.print_menu
+  end
+
+  def create_new_order
+    @order = @order_class.new
   end
 
 end

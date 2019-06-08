@@ -6,7 +6,8 @@ describe Restaurant do
 
     before(:each) do
       @mock_menu = double 'menu'
-      @restaurant = Restaurant.new('cafe', @mock_menu)
+      @order = double 'Order'
+      @restaurant = Restaurant.new('cafe', @mock_menu, @order)
     end
 
     it 'initializes with a name' do
@@ -33,6 +34,13 @@ describe Restaurant do
         allow(@mock_menu).to receive(:print_menu).and_return message
         @restaurant.add_menu_item('cake', 6)
         expect(@restaurant.view_menu).to eq("Slice of Cake - £6.00")
+      end
+    end
+
+    describe '#create_new_order' do
+      it 'creates a new instance of Order' do
+        expect(@order).to receive(:new).and_return self
+        @restaurant.create_new_order
       end
     end
   end
