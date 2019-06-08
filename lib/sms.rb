@@ -7,7 +7,7 @@ class Sms
     @auth_token = ENV["SMS_AUTH_TOKEN"]
   end
   
-  def send_sms
+  def send_sms(message)
     client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
     from = ENV["SMS_FROM_NUM"] # Your Twilio number
@@ -16,7 +16,7 @@ class Sms
     client.messages.create(
     from: from,
     to: to,
-    body: "Hey friend! Here's your takeaway!"
+    body: message
     )
   end
 end
