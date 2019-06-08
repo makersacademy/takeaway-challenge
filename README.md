@@ -20,6 +20,9 @@ Description
 * This is my solution to the Makers "takeaway challenge"
 * By completing this challenge I've gained experience of writing feature tests, using environment variables, and external APIs.
 * I've also tried to create a domain model, with classes which conform to the SRP, and are losely coupled.
+* Given more time I would have liked to have tested more edge cases and refactored the code to make the methods shorter.
+* I would have also like to have put everything under one place_order method, to more closely match the spec.
+* I have some outstandig questions about how to use private methods, whilst maintaining test coverage. How do you ensure any logic in a private method is tested?
 
 How to Run
 ----------
