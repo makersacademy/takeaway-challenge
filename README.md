@@ -10,7 +10,7 @@ I would like to see a list of dishes with prices
 	CLASS: Menu
 
 	| OBJECT   | METHOD     |
-  | -------- | ---------- |
+  | -------- |:----------:|
   | menu     | add_dish   |
   | menu	   | add_price  |
 
