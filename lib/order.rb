@@ -19,9 +19,11 @@ class Order
   end
 
   def total_price
-
-#    dish_total = all.map { |item| item.keys[0].price.to_f * item.values[0] }
     individual_dish_totals.inject { |sum,num| sum + num}.round(2)
+  end
+
+  def place_order(user_price)
+   raise 'You have not confirmed the correct price' unless correct_price(user_price)
 
   end
 
@@ -37,6 +39,10 @@ class Order
 
   def individual_dish_totals
     all.map { |order_line| single_dish_price(order_line) }
+  end
+
+  def correct_price(user_price)
+    user_price == total_price
   end
 
 end
