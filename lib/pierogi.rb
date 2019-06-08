@@ -9,12 +9,13 @@ class Pierogi
     @food = []
   end
 
-  def todays_menu(menu = Menu)
+  def todays_menu(menu)
     @food << menu
+    nil
   end
 
   def show_food
-    @food.join('')
+    @food[0]
   end
 
 end
