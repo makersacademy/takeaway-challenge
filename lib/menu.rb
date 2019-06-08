@@ -16,4 +16,9 @@ class Menu
     ]
   end
 
+  def show
+    @food.each {|item| puts "* #{item[:item]} - £#{item[:price]}"
+  }
+  end
+
 end
