@@ -9,16 +9,11 @@ I would like to see a list of dishes with prices
 
 	CLASS: Menu
 
-	| OBJECT   | METHOD     |
-  | -------- |:----------:|
-  | menu     | add_dish   |
-  | menu	   | add_price  |
-
-| OBJECT        | METHOD        |
-| ------------- |:-------------:|
-| menu          | add_dish      |
-| menu          | add_price     |
-|               |               |
+  | OBJECT        | METHOD        |
+  | ------------- |:-------------:|
+  | menu          | add_dish      |
+  | menu          | add_price     |
+  |               |               |
 
 2. As a customer
 So that I can order the meal I want
