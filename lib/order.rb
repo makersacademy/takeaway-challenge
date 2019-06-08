@@ -13,20 +13,21 @@ class Order
   end
 
   def check_total(price)
-    total = @dishes.inject(0) { |result, item| result + (item[:qty] * item[:dish].price) }
-    if total != price
-      raise "Total given is incorrect. It should be £#{total}"
-    else
-      true
+    total = @dishes.inject(0) do |result, item|
+      result + (item[:qty] * item[:dish].price)
     end
+    error = "Total given is incorrect. It should be £#{total}"
+    return raise error if (total != price)
+    true
   end
 
   def place_order
     delivery_hour = "%02d" % [@time.hour + 1]
     delivery_minute = "%02d" % [@time.min]
-    delivery_time = delivery_hour + ":" + delivery_minute
-    text_message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
-    @sms.send_sms(text_message)
+    time = delivery_hour + ":" + delivery_minute
+    sms_text = "Thank you! Your order was placed and will be delivered before"
+    message = "#{sms_text} #{time}"
+    @sms.send_sms(message)
   end
 
 end

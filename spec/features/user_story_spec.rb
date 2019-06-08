@@ -33,8 +33,8 @@ describe 'user stories' do
     sms = double("sms")
     allow(sms).to receive(:send_sms) { true }
     order = Order.new(sms)
-    expect { order.add_dishes(dish1, 3) }.to change { order.dishes }
-    expect { order.add_dishes(dish2, 1) }.to change { order.dishes }
+    expect { order.add_dishes(dish1, 3) }.to change(order, :dishes)
+    expect { order.add_dishes(dish2, 1) }.to change(order, :dishes)
   end
 
   it 'so that the price given can be checked orders can calculate the total for all items and raise an error if not the same' do
