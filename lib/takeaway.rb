@@ -5,8 +5,8 @@ class Takeaway
   end
 
   def print_menu
-    #the double in the test allows us to define display without creating it yet
-    @menu.display
+    # the double in the test allows us to define print without creating it yet
+    @menu.print
   end
 
   private
