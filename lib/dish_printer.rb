@@ -4,5 +4,4 @@ module DishPrinter
     "#{dish.name} #{dish.price}"
   end
 
-
 end

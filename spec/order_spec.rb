@@ -4,7 +4,7 @@ describe Order do
 
   before(:each) do
     @dish_double = double('dish', name: 'yummy', price: '0.99')
-    @dish_double2 = double('dish2',name: 'scrummy', price: '4.99')
+    @dish_double2 = double('dish2', name: 'scrummy', price: '4.99')
     @menu_double = double('menu')
     allow(@menu_double).to receive(:get_dish_by_name).with('yummy').and_return(@dish_double)
     allow(@menu_double).to receive(:get_dish_by_name).with('scrummy').and_return(@dish_double2)
@@ -19,7 +19,7 @@ describe Order do
   end
 
   describe '#add_to_order' do
-    before(:each)do
+    before(:each) do
       @order.add('yummy')
     end
   

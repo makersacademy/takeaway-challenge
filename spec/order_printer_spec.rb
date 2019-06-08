@@ -1,10 +1,8 @@
-#todo: struggled to get these tests to work
-
+# todo: struggled to get these tests to work
 
 # require 'order_printer'
 
 # describe OrderPrinter do
-
 
 #   describe '#print' do
 

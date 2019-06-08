@@ -1,7 +1,7 @@
 module ItemPrinter
 
   def self.print(dish, quantity)
-       "#{dish.name} x #{quantity} = £#{single_dish_price(dish, quantity)}"
+    "#{dish.name} x #{quantity} = £#{single_dish_price(dish, quantity)}"
   end
 
   private

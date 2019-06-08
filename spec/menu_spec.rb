@@ -3,8 +3,8 @@ require 'menu'
 describe Menu do
   
   before(:each) do
-    @dish_double = double('dish', name:'Yummy', price: 9.99)
-    @dish_double2 = double('dish2', name:'Scrummy', price: 5.99)
+    @dish_double = double('dish', name: 'Yummy', price: 9.99)
+    @dish_double2 = double('dish2', name: 'Scrummy', price: 5.99)
     @dish_class_double = double('dish_class')
     @dish_class_double2 = double('dish_class2')
     allow(@dish_class_double).to receive(:new).with('Yummy', 9.99).and_return(@dish_double)
