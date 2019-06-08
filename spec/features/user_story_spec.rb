@@ -31,8 +31,31 @@ describe 'user stories' do
     dish1 = Dish.new("Chicken", 2.99)
     dish2 = Dish.new("Beef", 3.50)
     order = Order.new
-    expect { order.add_dishes(dish1, 3) }.to change{ order.dishes }
-    expect { order.add_dishes(dish2, 1) }.to change{ order.dishes }
+    expect { order.add_dishes(dish1, 3) }.to change { order.dishes }
+    expect { order.add_dishes(dish2, 1) }.to change { order.dishes }
+  end
+
+  it 'so that the price given can be checked orders can calculate the total for all items and raise an error if not the same' do
+    dish1 = Dish.new("Chicken", 2.99)
+    dish2 = Dish.new("Beef", 3.50)
+    order = Order.new
+    order.add_dishes(dish1, 3)
+    order.add_dishes(dish2, 1)
+    expect { order.check_total(12.47) }.not_to raise_error
+    expect(order.check_total(12.47)).to be true
+    expect { order.check_total(20.00) }.to raise_error("Total given is incorrect. It should be £12.47")
+  end
+
+  it 'so that the order deliver can be confirmed send a text when order is placed' do
+    dish1 = Dish.new("Chicken", 2.99)
+    dish2 = Dish.new("Beef", 3.50)
+    time = double("time")
+    order = Order.new(time)
+    allow(time).to receive(:hour) { 15 }
+    allow(time).to receive(:min) { 59 }
+    order.add_dishes(dish1, 3)
+    order.add_dishes(dish2, 1)  
+    expect(order.place_order).to eql("Thank you! Your order was placed and will be delivered before 16:59")
   end
 
 end
