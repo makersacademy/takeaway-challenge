@@ -7,10 +7,10 @@ class Cost_calculator
   end
 
 
-  def price_quantity(order, menu)
+  def calculate(order, menu)
     order.each do |index|
         @price_for_1_dish = menu[index["dish"]]
-        @price_for_quantity = @price_for_1_dish * index["quantity"]
+       @price_for_quantity = @price_for_1_dish * index["quantity"]
         @total_price += @price_for_quantity
     end
   end
