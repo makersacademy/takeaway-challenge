@@ -1,15 +1,16 @@
 require_relative 'menu'
 require_relative 'order'
-require_relative 'messager'
+require_relative 'messenger'
+require_relative 'item'
 
 class Restaurant
   attr_reader :name
 
-  def initialize(name, menu = Menu.new, order_class = Order, messager = Messager.new)
+  def initialize(name,messenger = Messenger.new, menu = Menu.new, order_class = Order)
     @order_class = order_class
     @name = name
     @menu = menu
-    @messager = messager
+    @messenger = messenger
   end
 
   def add_menu_item(name, price)
@@ -37,7 +38,7 @@ class Restaurant
   end
 
   def send_order
-    @messager.send
+    @messenger.send_confirmation
     'Order sent'
   end
 

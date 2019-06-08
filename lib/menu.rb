@@ -1,4 +1,5 @@
-# require_relative 'item'
+ require_relative 'item'
+ require_relative 'items_array_printer'
 
 class Menu
 

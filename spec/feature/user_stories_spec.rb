@@ -41,12 +41,14 @@ describe 'User Stories' do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   it 'Sends a text message when order gets placed' do
-    cafe = Restaurant.new('cafe')
+    messenger = double('Messenger')
+    cafe = Restaurant.new('cafe',messenger = messenger)
     cafe.add_menu_item('Slice of Cake', 6)
     cafe.add_menu_item('Ham Toastie', 8)
     cafe.create_new_order
     cafe.add_to_order('Ham Toastie', 2)
     cafe.add_to_order('Slice of Cake', 3)
+    expect(messenger).to receive(:send_confirmation).and_return "Thank you! Your order was placed and will be delivered at 15:30!"
     cafe.send_order
   end
 

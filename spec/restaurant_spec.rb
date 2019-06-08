@@ -7,8 +7,8 @@ describe Restaurant do
     before(:each) do
       @mock_menu = double 'menu'
       @order = double 'Order'
-      @messager = double 'Messager'
-      @restaurant = Restaurant.new('cafe', @mock_menu, @order, @messager)
+      @messenger = double 'Messenger'
+      @restaurant = Restaurant.new('cafe', @messenger, @mock_menu, @order)
     end
 
     it 'initializes with a name' do
@@ -79,7 +79,8 @@ describe Restaurant do
 
     describe '#send_order' do
       it 'calls on messager to send order' do
-        expect(@messager).to receive(:send).and_return('order sent')
+        expect(@messenger).to receive(:send_confirmation).and_return("Thank you! Your order was
+        placed and will be delivered at 15:30!")
         @restaurant.send_order
       end
     end
