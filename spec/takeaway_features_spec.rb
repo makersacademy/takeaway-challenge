@@ -15,10 +15,17 @@ require 'order'
 #     ])
 # end
 
-# describe 'Takeaway challenge' do
-#   it 'selects a number of several items from the menu' do
-#     menu = Menu.new
-#     order = Order.new
-#     order.add_item('jollof_rice')
-#   end
-# end
+describe 'Takeaway challenge' do
+  it 'selects a number of several items from the menu' do    
+    order = Order.new
+    order.add_item('jollof rice', 2)
+    order.add_item('jerk chicken', 3)
+    order.add_item('ice cream', 1)
+
+    expect order.current_order to eq [
+      { "jollof rice": { price: 6, quantity: 2 } },
+      { "jerk chicken": { price: 8, quantity: 3 } },
+      { "ice cream": { price: 4, quantity: 1 } }
+    ]
+  end
+end
