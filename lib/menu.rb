@@ -1,4 +1,4 @@
-require_relative './menu_entry.rb'
+require_relative 'menu_entry'
 
 class Menu
 

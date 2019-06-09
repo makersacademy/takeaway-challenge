@@ -1,7 +1,7 @@
 require 'menu_entry'
 
 describe MenuEntry do
-
+  
   subject(:menu_entry) { described_class.new }
 
   let(:dish) { double :dish }
