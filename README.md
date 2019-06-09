@@ -8,8 +8,7 @@ A command line takeaway app.
 * Implemented a method to view the menu. 
 * Added a Order class, to allow the user to store the selected dishes in a hash.
 * Added a method to check the total order
-* Created a class to send a confirmation messages using Twilio API, worked perfectly when I hardcoded the phone numbers, after implementing the dotenv gem, can't receive text messages. Due to time constrains couldn't fix it. 
-
+* Created a class to send a confirmation messages using Twilio API
 
 ## Challenges
 
@@ -66,3 +65,11 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+## Yet to complete
+* option to add quantites  
+* option to add multiple items to the order
+* add custom menu
+* raising error when the sum of the order doesn't match the total order
+* refactor
+* Fix the issues with Twilio API, it worked perfectly when I hardcoded the phone numbers, after implementing the dotenv gem, can't receive text messages.
