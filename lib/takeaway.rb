@@ -1,20 +1,11 @@
+require_relative 'menu'
 
 class Takeaway
-  attr_reader :menu
-
-  def initialize
-    @menu = [{ dish: nil, price: nil }]
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
-  def see_menu
-    [
-    { dish: "Burger", price: 12 },
-    { dish: "Salad", price: 14 },
-    { dish: "Pie", price: 16 },
-    { dish: "Sausage", price: 12 },
-    { dish: "Pasta", price: 11 },
-    { dish: "Tacos", price: 14 },
-    { dish: "Soup", price: 13 },
-]
+  def menu
+    @menu.show_menu
   end
 end
