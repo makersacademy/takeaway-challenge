@@ -26,7 +26,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-I grouped these user stories into 3 'versions' based on their core functions. Each version would advance what the app could do but allowed me to break down creating the app into smaller, easier to build chunks. I've laid out the versions below, along with the domain model for each (i.e. the classes alond with their instance variables and methods)
+I grouped these user stories into 3 'versions' based on their core functions. Each version would advance what the app could do but allowed me to break down the app into smaller, easier to build chunks. I've laid out the versions below, along with the domain model for each (i.e. the classes along with their instance variables and methods)
 
 ### Version 1 - Version 1 - see menu
 
@@ -37,13 +37,13 @@ I would like to see a list of dishes with prices
 ```
 
 * Objects
-	* TakeawayOrder
-	* Menu(.csv? or hash?)
+	* Order
+	* Menu(.csv)
 		* dish, price
 * Methods
-	* view_menu
-		* loads Menu.csv (into a hash?)- adding index number for each item?
-		* prints hash with header
+	* show_menu
+		* loads Menu.csv
+		* prints menu with header
 
 ### Version 2 - create order
 
@@ -60,7 +60,7 @@ I would like to check that the total I have been given matches the sum of the va
 ```
 
 * Objects
-	* TakeawayOrder
+	* Order
 		* @order = []
 		* @total(?)
 	* Menu(.csv? or hash?)
@@ -80,7 +80,7 @@ I would like to receive a text such as “Thank you! Your order was placed and w
 ```
 
 * Objects
-	* TakeawayOrder
+	* Order
 		* @order = []
 		* @total(?)
 	* Menu(.csv? or hash?)
@@ -93,4 +93,3 @@ I would like to receive a text such as “Thank you! Your order was placed and w
 	* check_total
 	* place_order
 		* send_text
-    
