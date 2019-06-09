@@ -2,24 +2,22 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :current_order, :total
+  attr_reader :current_order
 
-  def initialize
-    @current_order = Array.new(0)
+  def initialize(menu)
+    @menu = menu
+    @current_order = Hash.new(0)
     @total = 0
   end
 
   def add(dish, quantity)
-    quantity.times do
-      @current_order << dish
-    end
+    raise 'Item is not available' if @menu.dishes[dish] == nil
+    @current_order[dish] = quantity
   end
 
-  def add_to_total(quantity, price)
-    @total += (quantity * price)
-  end
-
-  def print_order
-    "#{@current_order.join("\n")}\nYour current order is £#{@total}"
+  def total_order(dish, quantity)
+    @total += (@menu.dishes[dish] * quantity)
+    "You ordered #{dish} x#{quantity}"
+    "Your total order is £%.2f" % [@total]
   end
 end

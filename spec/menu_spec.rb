@@ -20,7 +20,7 @@ RSpec.describe Menu do
   describe '#print_menu' do
     it 'prints formatted menu' do
       printed_menu = 'Spring Rolls: £5, Wonton: £10, Congee: £10, Chow Mein: £15, Hotpot: £20'
-      expect(menu.print_menu).to eq(printed_menu)
+      p expect(menu.print_menu).to eq(printed_menu)
     end
   end
 end
