@@ -1,23 +1,23 @@
 class Menu
 
-  attr_reader :menu_contents, :header, :formatted_menu
+  attr_reader :menu_contents, :header
 
   def initialize(menu)
     @menu_contents = menu
     @header = "--Menu--"
-    @formatted_menu = []
-    format_menu_contents
   end
 
   def format_menu_contents
+    formatted_menu = []
     @menu_contents.each do |key, value|
-      @formatted_menu << "#{key}: £#{value.to_f}"
+      formatted_menu << "#{key}: £#{value.to_f}"
     end
+    formatted_menu
   end
 
   def view
     puts @header
-    puts @formatted_menu
+    puts format_menu_contents
   end
 
 end
