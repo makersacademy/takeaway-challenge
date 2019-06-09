@@ -9,7 +9,7 @@ Rubocop
 All tests pass.
 Achieved 100% coverage.
 
-[NB.
+####[NB.
 	* Limited time available to spend on this challenge due to personal commitments. Therefore, I've written in detail my plan for each user story even though I was unable to start working on User Stories 3 & 4
 	* Feature test files built to save time instead of using irb]
 
@@ -40,7 +40,7 @@ I would like to see a list of dishes with prices
   | menu_entry    | add_price     	|
   | menu          | add_menu_entry  |
 
-ISSUES:
+#####ISSUES:
 	* Menu is not printed for it to be seen.
 	* Should have created only one class - create menu_entry hash as part of the Menu class as done in User Story 2.
 
@@ -71,11 +71,11 @@ I would like to be able to select some number of several available dishes
   | order         | total_cost								        |
 	|	order					|	not_included_in_menu?							|
 
-ISSUES:
+#####ISSUES:
 	* You can select dishes that aren't on the menu as couldn't get the private method not_included_in_menu? to work (this is hashed out) and therefore, could not complete the raise_error test or message.
 	* Ran out of time to complete the tota_cost method.
 
-PLAN FOR total_cost METHOD:
+#####PLAN FOR total_cost METHOD:
 	* Take keys (dish) from the order_selection array,
 	* Look them up in the menu array,
 	* Return the equivalent value (price) from the menu array,
