@@ -4,7 +4,6 @@ describe 'User stories' do
   # I would like to see a list of dishes with prices
   it 'shows menu' do
     order = Order.new
-    expect { order.show_menu }.not_to raise_error
     expect { order.show_menu }.to output(/Menu/).to_stdout
   end
 end
