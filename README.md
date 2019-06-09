@@ -64,7 +64,7 @@ I would like to check that the total I have been given matches the sum of the va
 	* Order
 		* @basket = []
 		* @total
-	* Menu(.csv? or hash?)
+	* Menu(.csv)
 * Methods
   * select(dish)
 	  * add_to_order
@@ -85,7 +85,7 @@ I would like to receive a text such as “Thank you! Your order was placed and w
 	* Order
 		* @basket = []
 		* @total(?)
-	* Menu(.csv? or hash?)
+	* Menu(.csv)
 * Methods
 	* add_to_order
 		* increase_total
