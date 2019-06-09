@@ -12,7 +12,7 @@ class Menu
     }
   end
 
-  def list_menu
+  def print_menu
     @dishes.map do |name, price|
       "#{name.to_s.split("_").map(&:capitalize).join(" ")}: £#{price}"
     end.join(", ")
@@ -20,4 +20,4 @@ class Menu
 end
 
 # menu = Menu.new
-# menu.list_menu
+# menu.print_menu

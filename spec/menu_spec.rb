@@ -20,7 +20,7 @@ RSpec.describe Menu do
   describe '#list' do
     it 'prints formatted menu' do
       formatted_menu = 'Spring Rolls: £5, Wonton: £10, Congee: £10, Chow Mein: £15, Hotpot: £20'
-      expect(subject.list_menu).to eq(formatted_menu)
+      expect(subject.print_menu).to eq(formatted_menu)
     end
   end
 end
