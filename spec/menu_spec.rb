@@ -6,7 +6,7 @@ RSpec.describe Menu do
   let(:mochi_list) { ["DAIFUKU, £2", "ICHIGO, £3",] }
 
   it 'has a list of priced dishes' do
-    expect(menu.get_menu).not_to be_empty
+    expect(menu.dishes).not_to be_empty
   end
 
   it 'lists dishes with their price' do
