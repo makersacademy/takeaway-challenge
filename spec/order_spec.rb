@@ -3,8 +3,13 @@ require 'order'
 describe Order do
   describe '#add_item' do
     it 'adds item and quantity to order array' do
-      expect { subject.add_item("rice", 6) }.
+      item_mock = double('item', name: 'tea')
+      expect { subject.add_item(item_mock, 6) }.
       to change { subject.order.count }.by(1)
+    end
+    it 'returns a string confirmation of added items' do
+      item_mock = double('item', name: 'tea')
+      expect(subject.add_item(item_mock, 3)).to eq 'added 3 tea(s)'
     end
   end
 

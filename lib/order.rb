@@ -6,7 +6,7 @@ class Order
 
   def add_item(item, qty)
     @order << { item: item, qty: qty }
-    "added #{qty} #{item}(s)"
+    "added #{qty} #{item.name}(s)"
   end
 
   def print_order
