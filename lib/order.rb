@@ -6,12 +6,14 @@ class Order
     @basket = []
   end
 
-  def add_to_order(item)
-    @basket << item
+  def add_to_order(dish)
+ #   item = [dish, price]
+ #   @basket << item
+    @basket << dish
     nil
   end
 
   def show_basket
-    @basket.join(', ')
+    @basket #.join(', ')
   end
 end
