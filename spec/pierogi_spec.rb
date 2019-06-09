@@ -3,8 +3,8 @@ require 'pierogi'
 describe Pierogi do
   it 'is initialized with a full pierogi menu' do
     pierogi = Pierogi.new
-    expect(pierogi).to have_attributes(:menu => {"small pierogi" => 1, "large pierogi" => 3, "supersize pierogi" => 4,
-      "meat pierogi" => 4, "chocolate pierogi" => 2, "honey pierogi" => 2} )
+    expect(pierogi).to have_attributes(:menu => { "small pierogi" => 1, "large pierogi" => 3, "supersize pierogi" => 4,
+      "meat pierogi" => 4, "chocolate pierogi" => 2, "honey pierogi" => 2 })
   end
 
   it 'can have items added to menu' do
@@ -14,7 +14,7 @@ describe Pierogi do
 
   it 'raises error if menu item has no price' do
     pierogi = Pierogi.new
-    expect{ pierogi.add_to_menu("small pierogi", "large pierogi") }.to raise_error(RuntimeError, "Price must be a number")
+    expect { pierogi.add_to_menu("small pierogi", "large pierogi") }.to raise_error(RuntimeError, "Price must be a number")
   end
   
   it 'displays days menus' do

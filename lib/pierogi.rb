@@ -50,5 +50,4 @@ class Pierogi
       body: "Your order is confirmed!\novo"
       )    
   end
-
 end

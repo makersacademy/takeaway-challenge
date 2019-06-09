@@ -15,7 +15,7 @@ class Order
   end
 
   def show_basket
-    @basket.map{|i| i.join(' - ')}.join(', ') 
+    @basket.map { |i| i.join(' - ') }.join(', ') 
   end
 
   def total
