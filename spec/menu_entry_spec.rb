@@ -1,13 +1,13 @@
 require 'menu_entry'
 
 describe MenuEntry do
-  
+
   subject(:menu_entry) { described_class.new }
 
   let(:dish) { double :dish }
   let(:price) { double :price }
 
-  context 'when menu entry hash is created' do
+  context 'when menu_entry hash is created' do
 
     it 'empty on intialization' do
       expect(menu_entry.dish).to eq nil

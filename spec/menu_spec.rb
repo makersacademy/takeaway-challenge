@@ -15,9 +15,9 @@ describe Menu do
     end
   end
 
-  context 'when a new menu_entry is created' do
+  context 'when a new menu_entry hash is created' do
 
-    it 'adds menu_entry to menu' do
+    it 'add to menu array' do
       menu_entry = MenuEntry.new
       menu_entry.add_dish(dish)
       menu_entry.add_price(price)
