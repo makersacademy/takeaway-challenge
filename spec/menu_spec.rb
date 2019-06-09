@@ -1,8 +1,8 @@
 require 'menu'
 
 RSpec.describe Menu do
-  let(:dishes) { double :dishes }
-  let(:dishes) do {
+  let(:menu) { described_class.new(dishes_on_menu) }
+  let(:dishes_on_menu) do {
       spring_rolls: 5,
       wonton: 10,
       congee: 10,
@@ -13,14 +13,14 @@ RSpec.describe Menu do
   
   context 'initialize' do
     it 'has a list of dishes and prices' do
-      expect(subject.dishes).to eq(dishes)
+      expect(menu.dishes).to eq(dishes_on_menu)
     end
   end
 
-  describe '#list' do
+  describe '#print_menu' do
     it 'prints formatted menu' do
-      formatted_menu = 'Spring Rolls: £5, Wonton: £10, Congee: £10, Chow Mein: £15, Hotpot: £20'
-      expect(subject.print_menu).to eq(formatted_menu)
+      printed_menu = 'Spring Rolls: £5, Wonton: £10, Congee: £10, Chow Mein: £15, Hotpot: £20'
+      expect(menu.print_menu).to eq(printed_menu)
     end
   end
 end
