@@ -6,12 +6,6 @@ RSpec.describe "CostCalculator" do
     @calc = CostCalculator.new
   end
 
-  describe "#initialize" do
-    it "intiates the variable total_price with a value of zero" do
-      expect(@calc.total_price).to eq(0)
-    end
-  end
-
   describe "#price_for_dish" do
     it "gets the price for an ordered dish from the menu" do
       @menu = double("menu", menu_contents: {"Fish" => 2})
@@ -36,11 +30,10 @@ RSpec.describe "CostCalculator" do
   end
 
   describe "#calculate" do
-    it "adds the total of each type of item ordered to the total price" do
+    it "adds the total of each type of item ordered to cost of order and returns cost of order" do
       order = [{"dish" => "Fish", "quantity" => 3}, {"dish" => "Chips", "quantity" => 1}]
       menu = double("menu", menu_contents: {"Fish" => 3, "Chips" => 2})
-      @calc.calculate(order, menu.menu_contents)
-      expect(@calc.total_price).to eq(11)
+      expect(@calc.calculate(order, menu.menu_contents)).to eq(11)
     end
   end
 
