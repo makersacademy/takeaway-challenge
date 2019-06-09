@@ -18,35 +18,44 @@ RSpec.describe Takeaway do
     end 
   end 
 
-  # describe '#loop_usr_input' do
+  describe '#bills' do
 
-  #   it 'returns an array with the selected dish' do
-  #     allow($stdin).to receive(:gets).and_return("olives")
-  #     name = $stdin.gets
-  #     allow(name).to receive(:to_sym) { :olives }
-  #     name_to_sym = name.to_sym
-  #     user_selection = []
-  #     allow(user_selection).to receive(:push) { [name_to_sym] }
-  #     expect(user_selection.push(name_to_sym)).to eq([:olives])
-  #   end
+    it 'returns the bills' do
+      quantity = 5
+      dish = :olives
+      expect(subject.bills(dish, quantity)).to eq(20.0)
+    end
+  end
 
-  #   it 'should return a message if the dish is not in the menu' do
-  #     allow($stdin).to receive(:gets).and_return("car")
-  #     name = $stdin.gets
-  #     user_selection = []
-  #     allow(subject).to receive(:loop_user_input).with(user_selection) { 'The dish is not in the menu' }
-  #     expect(subject.loop_user_input(user_selection)).to eq('The dish is not in the menu')
-  #   end
-  # end
+  describe '#total' do
 
-  # describe '#store' do
+    it 'returns the total' do
+      quantity = 5
+      dish = :olives
+      subject.bills(dish, quantity)
+      expect(subject.total).to eq(20.0)
+    end
+  end
 
-  #   it 'returns an hash with the customer order' do
-  #     takeaway = double(Takeaway.new)
-  #     user_selection = [:olives, :pizza, :olives]
-  #     allow(takeaway).to receive(:store).with(user_selection) { {:olives => 2, :pizza => 1 } }
-  #     expect(takeaway.store(user_selection)).to eq({ :olives => 2, :pizza => 1 })
-  #   end
-  # end
+  describe '#check_total' do
+
+    it 'return true if user input match the total' do
+      quantity = 5
+      dish = :olives
+      subject.bills(dish, quantity)
+      allow($stdin).to receive(:gets).and_return(20.0)
+      total = $stdin.gets
+      expect(subject.check_total(total)).to eq(true)
+    end
+
+    it 'raise an error if the user input the wrong total' do
+      quantity = 5
+      dish = :olives
+      subject.bills(dish, quantity)
+      allow($stdin).to receive(:gets).and_return(10.0)
+      total = $stdin.gets
+      expect { subject.check_total(total) }.to raise_error
+    end
+  end
 
 end

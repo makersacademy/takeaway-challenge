@@ -23,4 +23,18 @@ RSpec.describe 'user stories' do
     expect { takeaway.select }.not_to raise_error
   end
 
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  it 'return the total for the customer to check if is corret' do
+    takeaway = Takeaway.new
+    quantity = 5
+    dish = :olives
+    takeaway.bills(dish, quantity)
+    allow($stdin).to receive(:gets).and_return(20.0)
+    total = $stdin.gets
+    expect(takeaway.check_total(total)).to eq(true)
+    end
+
 end
