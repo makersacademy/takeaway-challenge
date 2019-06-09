@@ -15,4 +15,8 @@ class Order
      @basket.map { |item, quantity| puts "#{item} x ".capitalize + "#{quantity}"}
     end
 
+  def cost
+    costs = Menu::MENU
+    costs.map {|item, price| }
+  end
 end

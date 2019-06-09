@@ -23,4 +23,8 @@ class Takeaway
     order.current_basket
   end
 
+def total_cost
+  order.cost
+end
+
 end
