@@ -5,6 +5,10 @@
 As part of Makers Academy week 2 Weekend challenge the software for a takeaway shop will be created. ......................
 
 ## Current Status
+Wanted to concentrate on Domain Modelling, Encapsulation and how to send messages and change state between classes. Struggled with this so made all_classes.rb and put all the classes within this file to practice the ruby implementation.
+
+Can't work out how to total_cost (within the Order class??).
+Trying to use the dish key from the @order.selection to access the price from @menu.list and then multiply by quantity (from @order.selection)
 
 
 ## How to use
