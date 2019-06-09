@@ -16,10 +16,19 @@ describe Order do
 
   it 'displays basket' do
     pierogi = double('pierogi')
-    item = {dish: "small pierogi", price: 2}
+    item = ["small pierogi", 1]
     order = Order.new
     allow(pierogi).to receive(:pick) { item }
     order.add_to_order("small pierogi")
-    expect(order.show_basket).to eq "small pierogi, 2"
+    expect(order.show_basket).to eq "small pierogi - 1"
+  end
+
+  it 'totals up the basket' do
+    order = Order.new
+    item = ["small pierogi", 1]
+    pierogi = double('pierogi')
+    allow(pierogi).to receive(:pick) { item }
+    order.add_to_order("small pierogi")
+    expect(order.total).to eq 1
   end
 end

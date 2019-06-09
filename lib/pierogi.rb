@@ -1,13 +1,15 @@
-require 'order'
+require_relative 'order'
+require 'twilio-ruby'
 
 class Pierogi
 
   attr_reader :menu
-  attr_reader :order
+  attr_reader :orders
 
   def initialize
     @menu = { "small pierogi" => 1, "large pierogi" => 3, "supersize pierogi" => 4,
               "meat pierogi" => 4, "chocolate pierogi" => 2, "honey pierogi" => 2 }
+    @orders = []
   end
 
   def add_to_menu(dish, price)
@@ -25,12 +27,28 @@ class Pierogi
   end
 
   def accept_order(order = Order.new)
-    @order = order
+    @orders << order
   end
 
-  def order_pick(selection)
-    price = @menu[selection]
-    order_item = [selection, price]
-    @order.add_to_order(order_item)
+  def pick(item)
+    order_item = []
+    order_item << item
+    order_item << @menu[item]
   end
+
+  def confirm_order
+    account_sid = ENV['TWILIO_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = '+441234911631'
+    to = ENV['NUMBER']
+
+    client.messages.create(
+      from: from,
+      to: to,
+      body: "Your order is confirmed!\novo"
+      )    
+  end
+
 end

@@ -22,25 +22,24 @@ it 'creates new order that can be added multiple items' do
   order.add_to_order(starter)
   order.add_to_order(main)
   order.add_to_order(dessert)
-  expect(order.show_basket).to eq ["small pierogi", "large pierogi", "honey pierogi"]
+  expect(order.show_basket).to eq("small pierogi - 1, large pierogi - 3, honey pierogi - 2")
 end
 
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given 
 # matches the sum of the various dishes in my order
-it 'displays full order with prices' do
+
+it 'shows order total' do
   pierogi = Pierogi.new
   order = Order.new
   pierogi.accept_order(order)
   choice1 = "large pierogi"
   choice2 = "supersize pierogi"
-  pierogi.order_pick(choice1)
-  pierogi.order_pick(choice2)
-  expect(order.show_basket).to eq([["large pierogi", 3], ['supersize pierogi', 4]])
+  order.add_to_order(choice1)
+  order.add_to_order(choice2)
+  expect(order.total).to eq 7
 end
-
-pending 'shows order total'
 
 # As a customer
 # So that I am reassured that my order will be delivered on time
