@@ -9,7 +9,9 @@ Rubocop
 All tests pass.
 Achieved 100% coverage.
 
-[NB. Limited time available to spend on this challenge due to personal commitments. Therefore, I've written in detail my plan for each user story even though I was unable to start working on User Stories 3 & 4]
+[NB.
+	* Limited time available to spend on this challenge due to personal commitments. Therefore, I've written in detail my plan for each user story even though I was unable to start working on User Stories 3 & 4
+	* Feature test files built to save time instead of using irb]
 
 ### KEY LEARNINGS:
 * Doubles
