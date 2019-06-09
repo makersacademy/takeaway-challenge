@@ -25,7 +25,7 @@ class Menu
   end
 
   def add_to_items(item, price)
-    @items << { item: item, price: price }
+    @items << { item: item, price: price.to_f }
   end
 
   def print_header

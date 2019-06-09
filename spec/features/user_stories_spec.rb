@@ -23,21 +23,21 @@ RSpec.describe 'User stories' do
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
   context "when creating a new order" do
     let(:order) { Order.new }
-    let(:margarita) { double "margarita" }
-    let(:pepperoni) { double "pepperoni" }
+    let(:margarita) { "margarita" }
+    let(:pepperoni) { "pepperoni" }
 
     it 'allows you to select some number of available dishes' do
       order.select(margarita)
-      expect(order.basket).to eq([{dish: margarita, quantity: 1}])
+      expect(order.basket).to eq([{ dish: margarita, quantity: 1 }])
       expect(order.total).to eq(9)
 
       order.select(margarita)
-      expect(order.basket).to eq([{dish: margarita, quantity: 2}])
+      expect(order.basket).to eq([{ dish: margarita, quantity: 2 }])
       expect(order.total).to eq(18)
 
-      order.select(pepperoni)
-      expect(order.basket).to include({dish: pepperoni, quantity: 1})
-      expect(order.total).to eq(28)
+      order.select(pepperoni, 2)
+      expect(order.basket).to include({ dish: pepperoni, quantity: 2 })
+      expect(order.total).to eq(38)
     end
   end
 

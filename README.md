@@ -95,3 +95,17 @@ I would like to receive a text such as “Thank you! Your order was placed and w
 	* check_total
 	* place_order
 		* send_text
+
+## Technologies
+
+**Ruby 2.5.0**
+
+**RSpec 3.7** testing framework
+
+**Rubocop** code liniting
+
+**SimpleCov** test coverage gem
+
+## Progress
+
+I am halfway through Version 2. I've not yet implemented the total checker, which would print your basket and show you the dish, quantity and total for each item within it.
