@@ -24,4 +24,10 @@ RSpec.describe Order do
     end
   end  
 
+  describe '#print_order' do
+    it 'print the order' do
+      expect(order.print_order).to be_a(String)
+    end
+  end
+
 end
