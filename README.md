@@ -1,15 +1,36 @@
 # :ramen: Takeaway Challenge :ramen:
 
-## Goals :memo:
+A command line takeaway app.
+
+## Approach 
+
+* Created a Menu class, which is responsible containing the dishes with prices in a hash. 
+* Implemented a method to view the menu. 
+* Added a Order class, to allow the user to store the selected dishes in a hash.
+* Added a method to check the total order
+* Created a class to send a confirmation messages using Twilio API, worked perfectly when I hardcoded the phone numbers, after implementing the dotenv gem, can't receive text messages. Due to time constrains couldn't fix it. 
+
 
 ## Challenges
 
+* Encapsulation
+* RSpec doubles
+* Abstraction
+* Dependency Injection
+* Sending messages using Twilio API, didn't have to fix the issues with environment variables. 
+* Dotenv gem is not working yet, have to figure out how to read them from .env
 * All tests passing
-* High Test Coverage (>95%)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
 * Keep my private information secret with environment variables.
 
-## Learning Objectives
+## Run the program
+
+* Clone this repo to your local machine
+* Run the command gem install bundle (if you don't have bundle already)
+* When the installation completes, run bundle to install all the required gems
+* Run ``irb`` in terminal 
+* ``require './lib/takeaway ``
+* Create a new menu object ``menu = Menu.new() ``
+* Create a new takeaway object ``takeaway = TakeAway.new(menu)`` 
 
 
 ## Functionality to implement
