@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+First attempt at Takeaway Challenge
+====================================
 ```
                             _________
               r==           |       |
@@ -13,23 +13,12 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
+Write a Takeaway program 
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+User Stories
+-------------
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,35 +37,150 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Instructions
+---------
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+* Challenge time: rest of the day and weekend, until Monday 9am
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday morning
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+Steps
+-------
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+1. Fork this repo, and clone to your local machine
+2. Run the command `gem install bundle` (if you don't have bundle already)
+3. When the installation completes, run `bundle`to install the dependencies
+4. Complete the following task:
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
+## Approach
+A test driven approach was required for the task, utilising object oriented principles to create the appropriate classes and methods for a solution.
+
+#### User story -> Modelling -> Feature test -> Unit Test -> Red-Green-Refactor
+
+I chose to start with three main classes:
+
+**Restaurant** responsible for managing a customer's order
+
+**Order** responsible for creating new items in the order
+
+**Menu** responsible for managing the menu
+
+## Technologies
+
+**Ruby 2.5.0**
+
+**RSpec 3.7** testing framework
+
+**Rubocop** code liniting
+
+**SimpleCov** test coverage gem
+
+**Pry** debugging tool
+
+## Progress
+
+I have satisfied the first two user stories, need more work to cover the rest.
+
+#### Things to improve
+
+* Add tests for Order class
+
+* Use BigDecimal instead of floating points for prices - more accurate 
+
+* Feature tests - add to a Spec file
+
+* Practice building mental model of the problem
+
+* Start small - try to relax
+
+* Practice using doubles more
+
+* Focus
+
+## Resources
+
+* https://ruby-doc.org/stdlib-2.5.1/libdoc/bigdecimal/rdoc/BigDecimal.html
+
+
+
+
+
+
+Instructions
+---------
+
+* Challenge time: rest of the day and weekend, until Monday 9am
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday morning
+
+Steps
+-------
+
+1. Fork this repo, and clone to your local machine
+2. Run the command `gem install bundle` (if you don't have bundle already)
+3. When the installation completes, run `bundle`to install the dependencies
+4. Complete the following task:
+
+Task
+-----
+
+We have a request from a client to write the software to control the flow of planes at an airport. The planes can land and take off provided that the weather is sunny. Occasionally it may be stormy, in which case no planes can land or take off.  Here are the user stories that we worked out in collaboration with the client:
+
+```
+As an air traffic controller 
+So I can get passengers to a destination 
+I want to instruct a plane to land at an airport
+
+As an air traffic controller 
+So I can get passengers on the way to their destination 
+I want to instruct a plane to take off from an airport and confirm that it is no longer in the airport
+
+As an air traffic controller 
+To ensure safety 
+I want to prevent takeoff when weather is stormy 
+
+As an air traffic controller 
+To ensure safety 
+I want to prevent landing when weather is stormy 
+
+As an air traffic controller 
+To ensure safety 
+I want to prevent landing when the airport is full 
+
+As the system designer
+So that the software can be used for many different airports
+I would like a default airport capacity that can be overridden as appropriate
+```
+
+Your task is to test drive the creation of a set of classes/modules to satisfy all the above user stories. You will need to use a random number generator to set the weather (it is normally sunny but on rare occasions it may be stormy). In your tests, you'll need to use a stub to override random weather to ensure consistent test behaviour.
+
+Your code should defend against [edge cases](http://programmers.stackexchange.com/questions/125587/what-are-the-difference-between-an-edge-case-a-corner-case-a-base-case-and-a-b) such as inconsistent states of the system ensuring that planes can only take off from airports they are in; planes that are already flying cannot take off and/or be in an airport; planes that are landed cannot land again and must be in an airport, etc.
+
+For overriding random weather behaviour, please read the documentation to learn how to use test doubles: https://www.relishapp.com/rspec/rspec-mocks/docs . There’s an example of using a test double to test a die that’s relevant to testing random weather in the test.
+
+Please create separate files for every class, module and test suite.
 
 In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* The code is elegant: every class has a clear responsibility, methods are short etc. 
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
-Notes on Test Coverage
-------------------
+**BONUS**
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+* Write an RSpec **feature** test that lands and takes off a number of planes
+
+Note that is a practice 'tech test' of the kinds that employers use to screen developer applicants.  More detailed submission requirements/guidelines are in [CONTRIBUTING.md](CONTRIBUTING.md)
+
+Finally, don’t overcomplicate things. This task isn’t as hard as it may seem at first.
+
+* **Submit a pull request early.**  There are various checks that happen automatically when you send a pull request.  **Fix these issues if you can**.  Green is good.
+
+* Finally, please submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am.
