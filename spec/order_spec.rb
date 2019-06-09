@@ -3,8 +3,8 @@ require 'order'
 describe Order do
   describe '#add_item' do
     it 'adds item and quantity to order array' do
-      expect{subject.add_item("rice", 6)}.
-      to change{subject.order.count}.by(1)
+      expect { subject.add_item("rice", 6) }.
+      to change { subject.order.count }.by(1)
     end
   end
 

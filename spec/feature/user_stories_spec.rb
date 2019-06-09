@@ -42,7 +42,7 @@ describe 'User Stories' do
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   it 'Sends a text message when order gets placed' do
     messenger = double('Messenger')
-    cafe = Restaurant.new('cafe',messenger = messenger)
+    cafe = Restaurant.new('cafe', messenger = messenger)
     cafe.add_menu_item('Slice of Cake', 6)
     cafe.add_menu_item('Ham Toastie', 8)
     cafe.create_new_order
@@ -51,6 +51,5 @@ describe 'User Stories' do
     expect(messenger).to receive(:send_confirmation).and_return "Thank you! Your order was placed and will be delivered at 15:30!"
     cafe.send_order
   end
-
 
 end

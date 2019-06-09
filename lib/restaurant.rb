@@ -6,7 +6,8 @@ require_relative 'item'
 class Restaurant
   attr_reader :name
 
-  def initialize(name,messenger = Messenger.new, menu = Menu.new, order_class = Order)
+  def initialize(name, messenger = Messenger.new, menu = Menu.new,
+     order_class = Order)
     @order_class = order_class
     @name = name
     @menu = menu
