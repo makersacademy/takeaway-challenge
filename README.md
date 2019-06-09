@@ -41,8 +41,8 @@ I would like to check that the total I have been given matches the sum of the va
 
   | OBJECT        | METHOD                    |
   | ------------- |:-------------------------:|
-  | menu          | total_dishes              |
-  |               | itemised_total (receipt)  |
+  | order         | total_dishes              |
+  | order         | itemised_total (receipt)  |
   |               |                           |
 
 4. As a customer
@@ -56,7 +56,7 @@ I would like to receive a text such as “Thank you! Your order was placed and w
 
   | OBJECT        | METHOD                    |
   | ------------- |:-------------------------:|
-  | menu          | order_confirmation (text) |
+  | order         | order_confirmation (text) |
   |               |                           |
   |               |                           |
 
