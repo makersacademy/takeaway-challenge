@@ -1,3 +1,6 @@
+require 'menu'
+require 'order'
+
 RSpec.describe 'User stories' do
 
 # Version 1
@@ -18,24 +21,24 @@ RSpec.describe 'User stories' do
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  # context "when creating a new order for a margarita pizza" do
-  #   let(:order) { Order.new("margarita") }
-  #
-  #   it 'should have 1 margarita pizza in the basket' do
-  #     expect(order.basket).to eq([{dish: margarita, quantity: 1}])
-  #   end
-  #
-  #   it 'should have a total of £9' do
-  #     expect(order.total).to eq(9)
-  #   end
-  #
-  #   it 'should keep a list of the items ordered and their quantity' do
-  #     order.add("margarita")
-  #     expect(order.basket).to include("margarita")
-  #   end
-  #
-  #
-  #
-  # end
+  context "when creating a new order" do
+    let(:order) { Order.new }
+    let(:margarita) { double "margarita" }
+    let(:pepperoni) { double "pepperoni" }
+
+    it 'allows you to select some number of available dishes' do
+      order.select(margarita)
+      expect(order.basket).to eq([{dish: margarita, quantity: 1}])
+      expect(order.total).to eq(9)
+
+      order.select(margarita)
+      expect(order.basket).to eq([{dish: margarita, quantity: 2}])
+      expect(order.total).to eq(18)
+
+      order.select(pepperoni)
+      expect(order.basket).to include({dish: pepperoni, quantity: 1})
+      expect(order.total).to eq(28)
+    end
+  end
 
 end

@@ -37,12 +37,11 @@ I would like to see a list of dishes with prices
 ```
 
 * Objects
-	* Order
 	* Menu(.csv)
-		* dish, price
+		* item, price
 * Methods
-	* show_menu
-		* loads Menu.csv
+  * loads Menu.csv on initialization
+	* display
 		* prints menu with header
 
 I decided that my main class would be Order. I decided to keep the menu as a CSV file because I did not need to add or change elements.
@@ -64,14 +63,15 @@ I would like to check that the total I have been given matches the sum of the va
 * Objects
 	* Order
 		* @basket = []
-		* @total(?)
+		* @total
 	* Menu(.csv? or hash?)
 * Methods
-	* add_to_order
-		* increase_total
+  * select(dish)
+	  * add_to_order
+	  * increase_total
 	* view_menu
 	* view order
-		* include qty
+		* (include qty)
 	* check_total
 
 ### Version 3 - place order and send confirmation text
