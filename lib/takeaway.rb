@@ -16,7 +16,7 @@ class Takeaway
 
   def choose(dishes)
     dishes.each do |name, quantity|
-    @order.add(name, quantity)
+      @order.add(name, quantity)
     end
   end
 end

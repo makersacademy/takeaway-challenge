@@ -12,12 +12,11 @@ class Order
 
   def add(dish, quantity)
     raise 'Item is not available' if @menu.dishes[dish] == nil
-     @current_order[dish] = quantity 
+    @current_order[dish] = quantity 
   end
 
   def total_order(dish, quantity)
     @total += (@menu.dishes[dish] * quantity)
-    "You ordered #{dish} x#{quantity}"
     "Your total order is £%.2f" % [@total]
   end
 end

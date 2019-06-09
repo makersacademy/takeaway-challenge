@@ -30,7 +30,6 @@ RSpec.describe Order do
       expect { order.add(:pizza, 1) }.to raise_error "Item is not available"
     end
 
-
     it 'adds item to current order' do
       expect { order.add(:congee, 1) }.to change { order.current_order.count }.by(1)
     end
