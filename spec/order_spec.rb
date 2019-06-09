@@ -45,7 +45,7 @@ RSpec.describe "Order" do
     end
     it 'tells me what I have ordered and the running_total' do
       expected_message = "2 x Fish have been added to your order. Total: £8\n"
-      expect{@order.place_order("Fish", 2)}.to output(expected_message).to_stdout
+      expect { @order.place_order("Fish", 2) }.to output(expected_message).to_stdout
     end
     it "does not allow me to select a dish not on the menu" do
       expect { @order.place_order("Chocolate", 3) }.to raise_error("Item is not on the menu")
