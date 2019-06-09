@@ -22,8 +22,8 @@
 1. create a new instance of the Order class and pass it a menu in the form of a hash
 2. view the menu by calling `order.view_menu`
 3. place your order `order.place_order(dish, quantity)`
-4. your order will be repeated back to you
-5. Find out your final total `order.total`
+4. your order will be repeated back to you, along with the running total
+5. Find out your final total `order.return_total`
 5. checkout with the imagined amount owed `checkout(payment)`
 
 ## Feature test, including all possible errors:
@@ -31,7 +31,5 @@
 <img src= "Screenshot.png" >
 
 ## Reflections:
-- I am aware that if the user checks the total repeatedly it keeps adding the overall cost to itself (doubling) this is because the method total works out the total afresh each time and then adds it to the total variable
-  - ideally I would reset it at checkout and potentially not even store the total as an instance variable in the first place - I would just keep whatever was returned by the calculate method
 - If I had more time I would like to add a test which checks that when the user adds in their own menu they can only add it in the format { String => Positive Integer }
 - My commits are also a bit disorganised - this is because during the middle of my work I forgot to commit therefore there are commits which cover quite broad strokes of my process
