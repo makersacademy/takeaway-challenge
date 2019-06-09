@@ -21,18 +21,20 @@ class Order
 
   def add_order_to_current_order
     @current_order << { "dish" => @dish, "quantity" => @quantity }
-    "#{quantity} x #{dish} have been added to your order"
+    "#{quantity} x #{dish} have been added to your order. #{return_total}"
   end
 
   def total
     @cost_calculator.calculate(@current_order, @menu.menu_contents)
-    "Your total is: £#{@cost_calculator.total_price}"
+  end
+
+  def return_total
+    "Total: £#{total}"
   end
 
   def checkout(payment)
-    raise "Payment incorrect" if payment != @cost_calculator.total_price
+    raise "Payment incorrect" if payment != total
     "Order confirmed"
-
   end
 
 end

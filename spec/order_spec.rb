@@ -5,7 +5,7 @@ RSpec.describe "Order" do
   before(:each) do
     @menu = double("menu", menu_contents: { "Fish" => 3, "Chips" => 2 }, view: "expected_menu")
     @menu_contents = { "Fish" => 3, "Chips" => 2 }
-    @cost_calculator = double("cost_calculator", total_price: 8, calculate: "n/a")
+    @cost_calculator = double("cost_calculator", calculate: 8)
     @order = Order.new(@menu, @cost_calculator)
     @displayed_menu = "expected_menu"
   end
@@ -44,7 +44,7 @@ RSpec.describe "Order" do
       expect(@order.current_order).to eq([{ "dish" => "Fish", "quantity" => 2 }, { "dish" => "Chips", "quantity" => 1 }])
     end
     it 'tells me what I have ordered and the running_total' do
-      expected_message = "2 x Fish have been added to your order\n"
+      expected_message = "2 x Fish have been added to your order. Total: £8\n"
       expect{@order.place_order("Fish", 2)}.to output(expected_message).to_stdout
     end
     it "does not allow me to select a dish not on the menu" do
@@ -54,9 +54,13 @@ RSpec.describe "Order" do
 
   describe "#total" do
     it "returns the cost of your order" do
-      allow(@cost_calculator).to receive(:calculate)
-      allow(@cost_calculator).to receive(:total_price) {8}
-      expect(@order.total).to eq("Your total is: £8")
+      expect(@order.total).to eq(8)
+    end
+  end
+
+  describe "#return_total" do
+    it "gives you a message telling you the total of your order so far" do
+      expect(@order.return_total).to eq("Total: £8")
     end
   end
 
