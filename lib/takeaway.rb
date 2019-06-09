@@ -1,12 +1,12 @@
 class Takeaway
 
-  def initialize
+  def initialize(menu:)
     @selection = []
+    @menu = menu
   end
 
-  def menu
-    { "DAIFUKU" => 2,
-      "ICHIGO"  => 3 }
+  def show_menu
+    @menu
   end
 
   def select(item, qty)
@@ -14,6 +14,14 @@ class Takeaway
   end
 
   def order_summary
+    calculate_bill
+  end
+
+  private
+
+  attr_reader :menu
+
+  def calculate_bill
     i, summary = 0, 0
     until i == @selection.count do
       summary += @selection[i][:qty] * menu[@selection[i][:dish]]
