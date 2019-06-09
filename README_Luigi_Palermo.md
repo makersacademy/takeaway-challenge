@@ -8,6 +8,7 @@ If the total is confirmed then the custormer receives a message with the deliver
 * This is the domain model extracted from the user stories
 
 Takeaway   <---  show_menu  --->  Menu
+Takeaway  <---  select  --->  Selected_dishes
 
 ## Getting started
 

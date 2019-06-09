@@ -11,4 +11,16 @@ RSpec.describe 'user stories' do
     expect { takeaway.show_menu }.not_to raise_error
     expect(takeaway.show_menu).to eq Takeaway::MENU
   end
+
+  # As a customer
+  # So that I can order the meal I want 
+  # I would like to be able to select some number of several available dishes
+
+  it 'return a list of selected dishes and their number' do
+    takeaway = double(Takeaway.new)
+    allow(takeaway).to receive(:select).and_return({ :olives => 2, :pizza => 1 })
+    expect(takeaway.select).to eq({ :olives => 2, :pizza => 1 })
+    expect { takeaway.select }.not_to raise_error
+  end
+
 end
