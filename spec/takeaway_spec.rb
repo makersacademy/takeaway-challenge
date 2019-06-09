@@ -1,10 +1,29 @@
 require 'takeaway'
 
 RSpec.describe Takeaway do
-  subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { double :menu, print_menu: 'formatted_menu', items: 'hotpot 20' }
-  
-  it 'has a menu' do
-    expect(takeaway.view_menu).to eq menu.print_menu
+  let(:printed_menu) { 'wonton £10, congee £10' }
+  let(:menu) {double :menu, :print_menu => printed_menu, :dishes => dishes_on_menu }
+  let(:takeaway) { described_class.new(menu) }
+  let(:order) { double :order, add }
+
+  let(:dishes_on_menu) do {
+    spring_rolls: 5,
+    wonton: 10,
+    congee: 10,
+    chow_mein: 15,
+    hotpot: 20
+    }
+  end
+
+  describe '#view_menu' do
+    it 'shows the menu' do
+      expect(takeaway.view_menu).to eq(printed_menu)
+    end
+  end
+
+  describe '#choose' do
+    it 'allows user to select dishes' do
+        expect(takeaway.choose(dishes_on_menu)).to eq(dishes_on_menu)
+    end
   end
 end

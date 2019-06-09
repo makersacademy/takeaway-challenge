@@ -5,12 +5,18 @@ class Takeaway
 
   attr_reader :order
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu, order = nil)
     @menu = menu
-    @order = order
+    @order = order || Order.new(menu)
   end
 
   def view_menu
     @menu.print_menu
+  end
+
+  def choose(dishes)
+    dishes.each do |name, quantity|
+    @order.add(name, quantity)
+    end
   end
 end

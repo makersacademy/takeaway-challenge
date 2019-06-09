@@ -2,7 +2,7 @@ require 'order'
 
 RSpec.describe Order do
   let(:order) { described_class.new(menu) }
-  let(:menu) { double :Menu, :dishes => dishes_on_menu }
+  let(:menu) { double :menu, :dishes => dishes_on_menu }
   let(:dishes_on_menu) do {
       spring_rolls: 5,
       wonton: 10,
@@ -27,7 +27,7 @@ RSpec.describe Order do
 
   describe '#add' do
     it 'raises error if item is not available' do
-      expect { order.add(:pizza, 10) }.to raise_error "Item is not available"
+      expect { order.add(:pizza, 1) }.to raise_error "Item is not available"
     end
 
 
