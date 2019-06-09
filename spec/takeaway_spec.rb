@@ -5,6 +5,7 @@ RSpec.describe Takeaway do
   let(:menu) { double :menu, :print_menu => printed_menu, :dishes => dishes_on_menu }
   let(:takeaway) { described_class.new(menu) }
   let(:order) { double :order, add }
+	let (:send_sms) { double(:send_sms) }
 
   let(:dishes_on_menu) do {
     spring_rolls: 5,
@@ -25,5 +26,15 @@ RSpec.describe Takeaway do
     it 'allows user to select dishes' do
       expect(takeaway.choose(dishes_on_menu)).to eq(dishes_on_menu)
     end 
+  end
+
+  describe '#place_order' do
+    before(:each) do
+      allow(takeaway).to receive(:send_sms).and_return(true)
+    end
+    
+    it 'sends an SMS' do
+      expect(takeaway.send_sms).to eq true
+    end
   end
 end
