@@ -57,7 +57,7 @@ describe Restaurant do
       end
 
       it 'rasies and error if order has not been created yet' do
-        expect{ @restaurant.add_to_order('cake', 6) }.to raise_error('Please create order first')
+        expect { @restaurant.add_to_order('cake', 6) }.to raise_error('Please create order first')
       end
     end
 
