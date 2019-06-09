@@ -1,13 +1,27 @@
+require 'order'
+
 class Restaurant
-  def initialize(menu:)
+  attr_reader :current_order  
+
+  def initialize(order = Order, menu:)
     @menu = menu
+    @current_order = []
+    @order = order
   end
 
   def print_menu
     menu.print_menu
   end
 
-  private
+  def add_to_order(dish, quantity = 1)
+    raise "Cannot add to order: Item is not on menu" if not_on_menu?(dish) 
+    current_order << @order.new(dish, quantity)
+  end
 
-  attr_reader :menu
+  private
+  attr_reader :menu, :order
+  
+  def not_on_menu?(dish)
+    !menu.dishes.include?(dish.downcase.to_sym)
+  end  
 end

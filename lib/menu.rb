@@ -1,4 +1,14 @@
 class Menu  
+  def print_menu
+    format_menu
+  end
+
+  def dishes
+    DISHES
+  end
+
+  private
+
   DISHES = {
           "jollof rice": 6,
           "fried plantain": 3,
@@ -7,14 +17,8 @@ class Menu
           "ice cream": 4
         }
 
-  def print_menu
-    format_menu
-  end
-
-  private
-
   def format_menu
-    DISHES.map do |item, price|
+    dishes.map do |item, price|
       "#{item.to_s.capitalize}: £#{'%.2f' % price}"      
     end.join(", ")
   end

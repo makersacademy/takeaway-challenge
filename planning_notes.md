@@ -48,6 +48,7 @@ I would like to be able to select some number of several available dishes
 user starts a new order
 choose item from menu
 add item & quantity to order
+  if current_order is empty - start new order
   calculate cost: item price * quantity
   add item to current order
   add cost of item to total
