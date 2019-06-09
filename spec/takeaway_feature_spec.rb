@@ -1,6 +1,5 @@
 require 'pierogi'
 require 'order'
-require 'menu'
 
 RSpec.describe 'Pierogi Bar' do
 # As a customer
@@ -8,12 +7,11 @@ RSpec.describe 'Pierogi Bar' do
 # I would like to see a list of dishes with prices
 it 'displays menu with prices' do
   pierogi = Pierogi.new
-  items = "pierogi - 3"
-  pierogi.todays_menu(items)
-  expect(pierogi.show_food).to eq items
+  pierogi.add_menu("pierogi", 3)
+  expect(pierogi.show_food).to eq({"pierogi" => 3})
 end
 
-pending 'can be added days menus'
+pending 'can be added multiple items to days menu'
 
 # As a customer
 # So that I can order the meal I want
