@@ -69,7 +69,7 @@ I would like to be able to select some number of several available dishes
   | order         |	selection(dish, quantity)					|
   | order         | initialize (order_selection array)|
   | order         | total_cost								        |
-	| order         | not_included_in_menu?							|
+	| order         | not_included_in_menu							|
 
 ##### ISSUES:
 	* You can select dishes that aren't on the menu as couldn't get the private method not_included_in_menu? to work (this is hashed out) and therefore, could not complete the raise_error test or message.
