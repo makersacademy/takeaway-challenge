@@ -14,5 +14,8 @@ class Order
       @current_order << dish
     end
   end
-  
+
+  def add_to_total(quantity, price)
+    @total += (quantity * price)
+  end
 end

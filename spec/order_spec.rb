@@ -16,8 +16,12 @@ RSpec.describe Order do
 
   describe '#add' do
     it 'adds item to current order' do
-      expect { order.add(dish, 1)}.to change {order.current_order.count}.by(1)
+      expect { order.add(dish, 1) }.to change { order.current_order.count }.by(1)
     end
-  end    
+
+    it 'adds the price of the item to total' do
+      expect { order.add_to_total(5, 2) }.to change { order.total }.by(10)
+    end
+  end  
 
 end
