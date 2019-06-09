@@ -9,13 +9,10 @@ class Takeaway
   end
 
   def order_summary(order)
-
-    i, summary = 0, 0
-    until i == order.count do
-      summary += order[i][:qty] * @menu.dishes[order[i][:dish]]
-      i += 1
+    order.reduce(0) do |total, line_item|
+      price = @menu.dishes[line_item[:dish]]
+      total + line_item[:qty] * price
     end
-    summary
   end
 
   private
