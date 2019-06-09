@@ -1,4 +1,6 @@
 require 'order'
+require 'menu'
+require 'takeaway'
 
 describe Order do
   subject(:order) { described_class.new(menu) }

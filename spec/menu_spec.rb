@@ -1,4 +1,6 @@
 require 'menu'
+require 'takeaway'
+require 'order'
 
 describe Menu do
   # here we are injecting a hash(dishes) into the menu class

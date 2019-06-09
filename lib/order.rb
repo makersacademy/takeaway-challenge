@@ -1,3 +1,5 @@
+require 'menu'
+
 class Order
 
   attr_reader :dishes
@@ -9,7 +11,7 @@ class Order
 
   def add(dish, quantity)
     fail NoItemError, "#{dish.capitalize} is not on the menu!" unless menu.has_dish?(dish)
-    dishes[dish] = quantity
+    @dishes[dish] = quantity
   end
 
   def total
