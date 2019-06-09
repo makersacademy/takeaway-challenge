@@ -45,6 +45,8 @@ I would like to see a list of dishes with prices
 		* loads Menu.csv
 		* prints menu with header
 
+I decided that my main class would be Order. I decided to keep the menu as a CSV file because I did not need to add or change elements.
+
 ### Version 2 - create order
 
 ```
@@ -61,7 +63,7 @@ I would like to check that the total I have been given matches the sum of the va
 
 * Objects
 	* Order
-		* @order = []
+		* @basket = []
 		* @total(?)
 	* Menu(.csv? or hash?)
 * Methods
@@ -81,7 +83,7 @@ I would like to receive a text such as “Thank you! Your order was placed and w
 
 * Objects
 	* Order
-		* @order = []
+		* @basket = []
 		* @total(?)
 	* Menu(.csv? or hash?)
 * Methods
