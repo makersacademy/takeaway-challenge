@@ -27,6 +27,8 @@ class Restaurant
   end
 
   def add_to_order(item, qty)
+    raise 'Please create order first' if !@order
+
     @order.add_item(get(item), qty)
   end
 
