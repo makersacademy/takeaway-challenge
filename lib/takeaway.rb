@@ -1,29 +1,31 @@
-require_relative 'menu'
-require_relative 'order'
-require_relative 'sms'
+require 'order'
+require 'sms'
 
 class Takeaway
 
-  attr_reader :order
-
-  def initialize(menu, order = nil, sms = Sms.new)
+  def initialize(menu:, config:, order: nil, sms: nil)
     @menu = menu
     @order = order || Order.new(menu)
-    @sms = sms
+    @sms = sms || SMS.new(config)
   end
 
-  def view_menu
-    @menu.print_menu
+  def print_menu
+    menu.print
   end
 
-  def choose(dishes)
-    dishes.each do |name, quantity|
-      @order.add(name, quantity)
+  def place_order(dishes)
+    add_dishes(dishes)
+    sms.deliver
+    order.total
+  end
+
+  private
+
+  attr_reader :menu, :order, :sms
+  
+  def add_dishes(dishes)
+    dishes.each do |dish, quantity|
+      order.add(dish, quantity)
     end
-  end
-
-  def place_order
-    @sms.send_sms
-    "Thanks for your order! You will be charged £#{@order.total}. You will receive a confirmation message shortly."
   end
 end

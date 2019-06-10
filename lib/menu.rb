@@ -20,4 +20,3 @@ class Menu
     dishes[dish]
   end
 end
-

@@ -28,7 +28,7 @@ RSpec.describe Order do
     expect { order.add(:pizza, 2) }.to raise_error NoItemError, "Pizza is not on the menu!"
   end
 
-  it 'calculates the order for the order' do
+  it 'calculates the total for the order' do
     create_order
     total = 20
     expect(order.total).to eq(total)
