@@ -1,2 +1,6 @@
+spec/feature/userstories_spec.rb
+constants.env
+
 /**/.DS_Store
 /coverage
+
