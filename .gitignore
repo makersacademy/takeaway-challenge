@@ -2,4 +2,4 @@
 /coverage
 /vendor
 menu.csv
-*.env
+.env
