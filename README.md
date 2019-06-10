@@ -1,82 +1,56 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge
 
- ```
+The program allows to order food from your favorite take-away. It displays a list of dishes with prices, where you can chose several number of dishes from. Once the order has been placed it displayes the list of choosen dishes with the total for the user to confirm it with Yes or No.
+If the total is confirmed then the custormer receives a message with the delivery time, that is usually one hour later.
 
-Instructions
--------
+## Domain model
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* This is the domain model extracted from the user stories
 
-Task
------
+Takeaway   --->  menu  --->  LIST
+Takeaway  --->  select  --->  Order
+Order   --->  return  --->  selected dishes
+Takeaway   --->  check   --->  total
+total(not correct)  ---> raise_error
+Takeaway   --->  place_order  --->  Message 
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## Getting started
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+* Please clone the repository typing on your terminal: `git clone git@github.com:l-palermo/takeaway-challenge.git`
+* Then run `bundle` to install dependecies
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+## How to use the software
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+* From the folder `TAKEAWAY-CHALLENGHE` run `IRB` then `require './lib/takeaway.rb'` 
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+### Example of usage
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+MAKERSs-MBP-5:takeaway-challenge student$ irb -r './lib/takeaway.rb'
+2.5.0 :001 > takeaway = Takeaway.new
+ => #<Takeaway:0x00007f7eddac4f50 @message=Message, @order=Order> 
+2.5.0 :002 > takeaway.menu
+ => {:olives=>4.0, :cheese_board=>10.0, :pizza=>8.0, :carbonara=>10.0, :chicken=>12.0, :salad=>8.0, :burrata=>6.0, :steak=>15.0, :brownie=>5.0} 
+2.5.0 :003 > takeaway.select
+Type the dish name, close to end
+olives
+Quantity ?
+5
+Next dish
+pizza
+Quantity ?
+6
+Next dish
+burrata
+Quantity ?
+8
+Next dish
+close
+ => {:olives=>5, :pizza=>6, :burrata=>8} 
+2.5.0 :004 > takeaway.order.total
+ => 116.0 
+2.5.0 :005 > takeaway.check_total
+Enter the total
+116
+ => "The total match the sum of 116£" 
+2.5.0 :006 > takeaway.place_order
+ => <Twilio.Api.V2010.MessageInstance account_sid:

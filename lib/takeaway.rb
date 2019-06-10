@@ -1,6 +1,9 @@
-class Takeaway 
-  attr_reader :selected_dishes, :total
-  MENU = {
+require './lib/message.rb'
+require './lib/order.rb'
+
+class Takeaway
+  attr_reader :order
+  LIST = {
     :olives => 4.00,
     :cheese_board => 10.00,
     :pizza => 8.00,
@@ -12,42 +15,30 @@ class Takeaway
     :brownie => 5.00
   }
 
-  def initialize
-    @selected_dishes = {}
-    @total = 0
+  def initialize(message_class = Message, order_class = Order)
+    @message = message_class
+    @order = order_class
   end
 
-  def show_menu
-    MENU
+  def menu
+    LIST
   end
 
   def select
-    puts 'Type the dish name, close to end'
-    loop do
-      dish = gets.chomp.to_sym
-      if MENU.include?(dish)
-        puts 'Quantity ?'
-        quantity = gets.chomp.to_i
-        @selected_dishes[dish] = quantity
-        bills(dish, quantity)
-      elsif dish == :close
-        break
-      else
-        puts 'The dish is not in the menu'
-      end
-      puts 'Next dish'
-    end
-    @selected_dishes
+    @order = @order.new
+    @order.start_order
   end
 
-  def bills(dish, quantity)
-    @total += (MENU[dish] * quantity)
+  def check_total
+    puts "Enter the total"
+    user = gets.chomp.to_i
+    raise 'The total is not correct' if user != @order.total
+
+    "The total match the sum of #{user}£"
   end
 
-  def check_total(user = gets.chomp)
-    user = user.to_i
-    raise 'The total is not correct' if user != @total
-    true
+  def place_order
+    @message.new.send
   end
 
 end
