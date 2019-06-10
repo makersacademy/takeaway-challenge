@@ -92,7 +92,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Passing Test Suites
 
-<img width="389" src="https://user-images.githubusercontent.com/23095774/59213853-bbed3980-8bad-11e9-92ca-548c68397061.png" >
+<img width="523" src="https://user-images.githubusercontent.com/23095774/59214569-39fe1000-8baf-11e9-8494-150da42738fc.png">
 
 ## Yet to complete
 * Raising error when the sum of the order doesn't match the total order
