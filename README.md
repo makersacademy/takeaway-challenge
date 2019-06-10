@@ -23,7 +23,7 @@ Original spec from [Makers Academy](https://github.com/makersacademy)
 ### What Next?
 
 0. Split out into classes & follow single responsibility 
-0. Send order notifications via Twilio
+0. Send order notifications via Twilio using env variables
 0. Update the README! Include assumptions & examples of how the code will run in irb / via app.rb
 
 
