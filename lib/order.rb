@@ -1,22 +1,31 @@
-require_relative 'menu'
-
 class Order
 
-  attr_reader :current_order
+  attr_reader :dishes
 
   def initialize(menu)
+    @dishes = {}
     @menu = menu
-    @current_order = Hash.new(0)
-    @total = 0
   end
 
   def add(dish, quantity)
-    raise 'Item is not available' if @menu.dishes[dish] == nil
-    @current_order[dish] = quantity 
+    fail NoItemError, "#{dish.capitalize} is not on the menu!" unless menu.has_dish?(dish)
+    dishes[dish] = quantity
   end
 
-  def total_order(dish, quantity)
-    @total += (@menu.dishes[dish] * quantity)
-    "Your total order is £%.2f" % [@total]
+  def total
+    item_totals.inject(:+)
   end
+
+  private
+
+  attr_reader :menu
+
+  def item_totals
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end
+  end
+end
+  
+class NoItemError < StandardError
 end

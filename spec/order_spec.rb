@@ -1,47 +1,41 @@
 require 'order'
+require 'menu'
 
 RSpec.describe Order do
-  let(:order) { described_class.new(menu) }
-  let(:menu) { double :menu, :dishes => dishes_on_menu }
-  let(:dishes_on_menu) do {
-      spring_rolls: 5,
-      wonton: 10,
-      congee: 10,
-      chow_mein: 15,
-      hotpot: 20
+  subject(:order) { described_class.new(menu) }
+  let(:menu) { instance_double("Menu") }
+  let(:dishes) do
+    { congee: 2,
+      wonton: 1
     }
   end
 
-  context 'new order' do
-    it 'order starts empty' do
-      expect(order.current_order).to be_empty
-    end
+  before do
+    allow(menu).to receive(:has_dish?).with(:congee).and_return(true)
+    allow(menu).to receive(:has_dish?).with(:wonton).and_return(true)
+    
+    allow(menu).to receive(:price).with(:congee).and_return(5)
+    allow(menu).to receive(:price).with(:wonton).and_return(10)
   end
 
-  describe '#current_order' do
-    it 'adds a dish to the order' do
-      order.add(:wonton, 2)
-      order.add(:congee, 3)
-    end
+  it 'selects several dishes from the menu' do
+    create_order
+    expect(order.dishes).to eq(dishes)
   end
 
-  describe '#add' do
-    it 'raises error if item is not available' do
-      expect { order.add(:pizza, 1) }.to raise_error "Item is not available"
-    end
-
-    it 'adds item to current order' do
-      expect { order.add(:congee, 1) }.to change { order.current_order.count }.by(1)
-    end
+  it "doesn't allow items to be added that are not on the menu" do
+    allow(menu).to receive(:has_dish?).with(:pizza).and_return(false)
+    expect { order.add(:pizza, 2) }.to raise_error NoItemError, "Pizza is not on the menu!"
   end
 
-  describe '#total_order' do
-    it 'shows the total order' do
-      dish = :wonton
-      quantity = 2
-      total = 20
-      message = "Your total order is £%.2f" % [total]
-      expect(order.total_order(dish, quantity)).to eq(message)
-    end
+  it 'calculates the order for the order' do
+    create_order
+    total = 20
+    expect(order.total).to eq(total)
+  end
+
+  def create_order
+    order.add(:congee, 2)
+    order.add(:wonton, 1)
   end
 end
