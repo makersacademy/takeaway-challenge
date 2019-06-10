@@ -1,25 +1,24 @@
 class Menu
 
-  attr_reader :dishes
-  
-  DEFAULT_MENU = {
-      spring_rolls: 5,
-      wonton: 10,
-      congee: 10,
-      chow_mein: 15,
-      hotpot: 20
-    }
+ attr_reader :dishes
 
-  def initialize(dishes = DEFAULT_MENU)
+  def initialize(dishes)
     @dishes = dishes
   end
 
-  def print_menu
-    @dishes.map do |name, price|
-      "#{name.to_s.split("_").map(&:capitalize).join(" ")}: £#{price}"
-    end.join(", ")
-  end 
+  def print
+    printed_menu = []
+      dishes.map do |name, price|
+        "%s £%.2f" % [name.to_s.capitalize, price]
+      end.join(", ")
+  end
+
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
+
+  def price(dish)
+    dishes[dish]
+  end
 end
 
-# menu = Menu.new
-# menu.print_menu

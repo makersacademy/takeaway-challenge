@@ -1,26 +1,33 @@
 require 'menu'
 
 RSpec.describe Menu do
-  let(:menu) { described_class.new(dishes_on_menu) }
-  let(:dishes_on_menu) do {
-      spring_rolls: 5,
-      wonton: 10,
-      congee: 10,
-      chow_mein: 15,
-      hotpot: 20
+  subject(:menu) { described_class.new(dishes) }
+
+  let(:dishes) do 
+    {
+      congee: 5.00,
+      wonton: 10.00
     }
   end
-  
-  context 'initialize' do
-    it 'has a list of dishes and prices' do
-      expect(menu.dishes).to eq(dishes_on_menu)
-    end
+
+  it 'has a list of dishes with prices' do
+    expect(menu.dishes).to eq(dishes)
   end
 
-  describe '#print_menu' do
-    it 'prints formatted menu' do
-      printed_menu = 'Spring Rolls: £5, Wonton: £10, Congee: £10, Chow Mein: £15, Hotpot: £20'
-      p expect(menu.print_menu).to eq(printed_menu)
-    end
+  it 'prints the list of dishes with prices' do
+    printed_menu = "Congee £5.00, Wonton £10.00"
+    expect(menu.print).to eq(printed_menu)
+  end
+
+  it 'tells if a dish is on the menu' do
+    expect(menu.has_dish?(:congee)).to be true
+  end
+
+  it 'tells if a dish is NOT on the menu' do
+    expect(menu.has_dish?(:pizza)).to be false
+  end
+
+  it 'calculates the price of a dish' do
+    expect(menu.price(:congee)).to eq(dishes[:congee])
   end
 end
