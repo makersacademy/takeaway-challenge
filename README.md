@@ -1,13 +1,20 @@
 # :ramen: Takeaway Challenge :ramen:
 
+[![Build Status](https://travis-ci.com/petraartep/takeaway-challenge.svg?branch=master)](https://travis-ci.com/petraartep/takeaway-challenge)
+
+
 A command line takeaway app.
+
+## Build Status
+
 
 ## Approach 
 
-* Created a Menu class, which is responsible containing the dishes with prices in a hash. 
-* Implemented a method to view the menu. 
+* Created a Menu class, which is responsible containing the dishes with prices. 
+* Implemented a method to print the menu with prices. 
 * Added a Order class, to allow the user to store the selected dishes in a hash.
-* Added a method to check the total order
+* Added a method to check the total order.
+* Added a Takeaway class to allow the user to view the menu, select several dishes and to place an order 
 * Created a class to send a confirmation messages using Twilio API
 
 ## Challenges
@@ -16,10 +23,14 @@ A command line takeaway app.
 * RSpec doubles
 * Abstraction
 * Dependency Injection
-* Sending messages using Twilio API, didn't have to fix the issues with environment variables. 
-* Dotenv gem is not working yet, have to figure out how to read them from .env
-* All tests passing
+* Sending messages using Twilio API, having issues with environment variables. 
+* Dotenv gem is not working properly
 * Keep my private information secret with environment variables.
+* Feature test in irb
+* Nokogiri gem installation issues(solved)
+* All tests passing
+* 100% test coverage
+
 
 ## Run the program
 
@@ -28,7 +39,7 @@ A command line takeaway app.
 * When the installation completes, run bundle to install all the required gems
 * Run ``irb`` in terminal 
 * ``require './lib/takeaway ``
-* Create a new menu object ``menu = Menu.new() ``
+* Create a new menu object ``menu = Menu.new``
 * Create a new takeaway object ``takeaway = TakeAway.new(menu)`` 
 
 
@@ -66,10 +77,24 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+## Technologies Used
+
+- Ruby 2.5.0
+- RSpec 3.8
+  - Rspec-core 3.8.0
+  - Rspec-expectations 3.8.0
+  - Rspec-mocks 3.8.0
+  - Rspec-support 3.8.0
+- Rubocop 0.60.0
+- Simplecov 0.5.0
+- Twilio 5.23.1
+- Dotenv 2.7
+
+## Passing Test Suites
+
+<img width="389" src="https://user-images.githubusercontent.com/23095774/59213853-bbed3980-8bad-11e9-92ca-548c68397061.png" >
+
 ## Yet to complete
-* option to add quantites  
-* option to add multiple items to the order
-* add custom menu
-* raising error when the sum of the order doesn't match the total order
-* refactor
+* Raising error when the sum of the order doesn't match the total order
 * Fix the issues with Twilio API, it worked perfectly when I hardcoded the phone numbers, after implementing the dotenv gem, can't receive text messages.
+* Refactor

@@ -1,5 +1,5 @@
-require 'order'
-require 'sms'
+# require 'order'
+# require 'sms'
 
 class Takeaway
 

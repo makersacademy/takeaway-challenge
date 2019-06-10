@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'dotenv'
 
 RSpec.describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms, config: {}) }
