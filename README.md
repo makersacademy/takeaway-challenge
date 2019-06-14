@@ -20,7 +20,7 @@ I would like to check that the total I have been given matches the sum of the va
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
----> I managed to finish the third user story. Detailed evidence of each step taken during the creation of the solution is in the files "Takeaway Challenge step-by-step 1" and "Takeaway Challenge step-by-step 2".
+---> I managed to finish the third user story. Detailed evidence of each step taken during the creation of the solution is in the files "Takeaway Challenge step-by-step 1", "Takeaway Challenge step-by-step 2" and "Takeaway Challenge step-by-step 3".
 
 For the fourth user story I have created an account at Twilo and installed the Twilo gem.
 
