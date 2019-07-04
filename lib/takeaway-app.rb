@@ -1,0 +1,2 @@
+class TakeawayApp
+end
