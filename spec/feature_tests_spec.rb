@@ -2,11 +2,12 @@
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 require 'takeaway'
+require 'order'
 
 describe "TakeAway features" do
   it "can see a list of dishes with prices" do
     takeaway = TakeAway.new
-    expect(takeaway.view_dishes).to be
+    expect(takeaway.view_dishes).should be_a(String)
   end
 end
 
@@ -14,6 +15,14 @@ end
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
+
+describe "Takeaway features" do
+  it "a customer can create an order of several available dishes" do
+    takeaway = TakeAway.new
+    takeaway.order
+    expect().to output
+  end
+end
 
 # As a customer
 # So that I can verify that my order is correct
