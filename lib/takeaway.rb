@@ -1,6 +1,8 @@
-# This class is basically pointless
-# but I created it to practice dependency injection some more
-
+# aka the master file
+# you only need to require this file in order to test
+# any of the functionality
+# the twilio stuff won't work because it requires my
+# private credentials and these are hidden
 require_relative 'menu'
 require_relative 'order'
 
@@ -20,15 +22,3 @@ class Takeaway
   end
 
 end
-
-### feature tests
-
-# takeaway = Takeaway.new
-#
-# takeaway.show_menu
-
-#
-# order1 = takeaway.make  _order
-# order1.add("starter",5)
-# order1.add("main",5)
-# puts order1.complete

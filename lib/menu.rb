@@ -19,8 +19,3 @@ class Menu
   end
 
 end
-
-#
-# menu = Menu.new
-#
-# puts menu.show

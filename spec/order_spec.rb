@@ -29,18 +29,18 @@ describe Order do
 
     it "returns a nice string telling you your order" do
       test_order.each { |key, value|
-        expect(subject.complete).to match key
-        expect(subject.complete).to match value.to_s }
+        expect(subject.message).to match key
+        expect(subject.message).to match value.to_s }
     end
 
     it "also tells you the time your order will be delivered" do
       time = (Time.now + Order::PROCESSING_TIME).strftime("%H:%M")
-      expect(subject.complete).to match(time)
+      expect(subject.message).to match(time)
     end
 
     it "also calculates the total of your order" do
       total = test_order.map { |key, value| value * menu.items[key] }.inject(:+)
-      expect(subject.complete).to match(total.to_s)
+      expect(subject.message).to match(total.to_s)
     end
 
   end
