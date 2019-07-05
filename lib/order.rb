@@ -15,6 +15,13 @@ class Order
     @contents[item] = quantity
   end
 
+  def complete
+    "You ordered #{contents_formatted}. Your total comes to £#{calculate_total}.
+    Your order will be delivered at #{calculate_time}"
+  end
+
+  private
+
   def calculate_total
     @contents.map { |item, quantity| @menu.items[item] * quantity}.inject(:+)
   end
@@ -27,11 +34,6 @@ class Order
     require 'date'
     time = Time.now + PROCESSING_TIME
     time.strftime("%H:%M")
-  end
-
-  def complete
-    "You ordered #{contents_formatted}. Your total comes to £#{calculate_total}.
-    Your order will be delivered at #{calculate_time}"
   end
 
 end
