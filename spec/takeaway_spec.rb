@@ -7,7 +7,7 @@ describe TakeAway do
   let(:menu) {double :menu}
   describe '#view_dishes' do
     it 'lets customer see a list of dishes with prices' do
-      expect(subject.view_dishes(menu)).to eq menu
+      expect(subject.view_dishes).to be_truthy
     end
   end
 end

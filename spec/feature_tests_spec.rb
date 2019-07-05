@@ -6,7 +6,7 @@ require 'takeaway'
 describe "TakeAway features" do
   it "can see a list of dishes with prices" do
     takeaway = TakeAway.new
-    expect(takeaway.view_dishes)
+    expect(takeaway.view_dishes).to be
   end
 end
 

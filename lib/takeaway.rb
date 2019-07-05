@@ -8,8 +8,8 @@ MENU = { hamburger: 4,
          fried_chicken: 3
        }
 
-  def view_dishes(menu = MENU)
-    menu.map do |x, y|
+  def view_dishes
+    MENU.map do |x, y|
       "#{x.to_s.split('_').join(' ').capitalize} £#{y}"
     end
   end
