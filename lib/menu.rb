@@ -1,13 +1,10 @@
 class Menu
-  def initialize
-  end
-
   def display_menu
-    temp = []
+    menu_array = []
     menu_hash.each do |key, value| 
-      temp << "#{key}: £#{value}"
+      menu_array << "#{key}: £#{value}"
     end
-    temp.join("\n")
+    menu_array.join("\n")
   end
 
   private
