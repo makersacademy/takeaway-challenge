@@ -3,33 +3,34 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :order_list
+  # more commonly known as half an hour
+  PROCESSING_TIME = 1800
 
   def initialize(menu_instance)
-    @order_list = {}
+    @contents = {}
     @menu = menu_instance
   end
 
   def add(item, quantity)
-    @order_list[item] = quantity
+    @contents[item] = quantity
   end
 
   def calculate_total
-    @order_list.map { |item, quantity| @menu.items[item] * quantity}.inject(:+)
+    @contents.map { |item, quantity| @menu.items[item] * quantity}.inject(:+)
   end
 
-  def order_list_formatted
-    @order_list.map { |item, quantity| "#{quantity} #{item}s"}.join(", ")
+  def contents_formatted
+    @contents.map { |item, quantity| "#{quantity} #{item}s"}.join(", ")
   end
 
   def calculate_time
     require 'date'
-    Time.now
-    #add 30 minutes to the time
+    time = Time.now + PROCESSING_TIME
+    time.strftime("%H:%M")
   end
 
   def complete
-    "You ordered #{order_list_formatted}. Your total comes to £#{calculate_total}.
+    "You ordered #{contents_formatted}. Your total comes to £#{calculate_total}.
     Your order will be delivered at #{calculate_time}"
   end
 
@@ -37,7 +38,7 @@ end
 
 # order = Order.new(Menu.new)
 # order.calculate_time
-# # order.add("starter",3)
-# # order.add("main",5)
-# #
-# # puts order.complete_order
+# order.add("starter",3)
+# order.add("main",5)
+#
+# puts order.complete
