@@ -7,4 +7,9 @@
        expect(menu.display_menu).to eq "Fish: £7\nChips: £3"
      end
    end
- end
+   describe '#order' do
+    it 'selects items for an order' do
+      expect(menu).to respond_to(:order).with(2).argument
+    end
+  end
+end
