@@ -20,7 +20,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 MENU CLASS
 Instance Variables:
-```@list_of_meals_with_prices```
+```@dishes``
 Methods:
 ```select_dish/add_to_order```
 
@@ -29,3 +29,5 @@ Instance Variables:
 ```@dishes_ordered, @total_price, @customer_mobile (can fix this to own number)```
 Methods:
 ```check_total, place_order, send_text```
+
+MENU---add_to_order--->ORDER
