@@ -2,6 +2,7 @@ require 'Takeaway'
 
 describe Takeaway do
   let(:takeaway) {described_class.new}
+  let(:sms) {double(:sms)}
 
   it "prints a list with prices" do
     expect(takeaway.list).to include("1 Kappa Maki => £8")
