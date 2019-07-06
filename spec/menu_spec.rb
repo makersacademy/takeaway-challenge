@@ -7,5 +7,7 @@ describe Menu do
   it "a menu should be an instance of Menu class" do
     expect(menu).to be_instance_of(Menu)
   end
-  it { is_expected.to respond_to(:price).with(1).argument }
+  it "gets the price of a dish" do
+    expect(menu).to respond_to(:price).with(1).argument
+  end
 end
