@@ -10,6 +10,5 @@ describe Menu do
       allow(menu).to receive(:list_dishes).and_return([{ dish => price }])
       expect(menu.list_dishes).to eq([{ dish => price }])
     end
-
   end
 end

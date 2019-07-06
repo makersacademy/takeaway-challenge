@@ -22,12 +22,13 @@ MENU CLASS
 Instance Variables:
 ```@dishes``
 Methods:
-```select_dish/add_to_order```
+```list_dishes```
 
 ORDER CLASS
 Instance Variables:
 ```@dishes_ordered, @total_price, @customer_mobile (can fix this to own number)```
 Methods:
-```check_total, place_order, send_text```
+```select_dish, check_total, place_order, send_text```
 
-MENU---add_to_order--->ORDER
+ORDER---select_dish--->MENU
+ORDER<---return dish---MENU
