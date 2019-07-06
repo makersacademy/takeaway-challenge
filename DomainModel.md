@@ -26,7 +26,7 @@ Methods:
 
 ORDER CLASS
 Instance Variables:
-```@dishes_ordered, @total_price, @customer_mobile (can fix this to own number)```
+```@dishes_ordered, @order_total, @customer_mobile (can fix this to own number)```
 Methods:
 ```select_dish, check_total, place_order, send_text```
 

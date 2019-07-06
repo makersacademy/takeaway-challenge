@@ -1,14 +1,19 @@
-require 'pry'
-
 class Menu
 
   def initialize
-    @dishes = [{ 'fish' => 5, 'chips' => 3, 'gravy' => 1, 'savoly' => 2 }]
+    dishes = { 'fish' => 5, 'chips' => 3, 'gravy' => 1, 'savoly' => 2 }
   end
 
   def list_dishes
-    @dishes
+    dishes
   end
-end
 
-# binding.pry
+  def dish_price(dish)
+    dishes[dish]
+  end
+
+  private
+
+  attr_reader :dishes
+
+end
