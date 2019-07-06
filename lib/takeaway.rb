@@ -49,15 +49,15 @@ class Takeaway
   end
 
   def sms_message
-    account_sid = 'AC96f984fa56c510ec436528e21b0fd1ab'
-    auth_token = 'fbb9e24473aa1ac06469ca9e854b279f'
+    account_sid = ENV["TWILIO_SID"]
+    auth_token = ENV["TWILIO_TOKEN"]
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     message = @client.messages
      .create(
-        body: "Thank you! Your order was placed and will be delivered before #{time}\nyour total is £#{total}",
+        body: "Thank you! Your order was placed and will be delivered before #{time}\nYour total is £#{total}",
         from: '+441582380213',
-        to: '+447932457477'
+        to: ENV["PHONE_NUMBER"]
       )
 
     puts message.sid
