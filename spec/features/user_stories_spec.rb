@@ -13,7 +13,7 @@ describe "User Stories" do
   it "so  that I can order a meal, I want to select several dishes" do
     menu = Menu.new
     dish = Dish.new
-    order = Order.new
+    order = Order.new(menu)
     expect { order.choose(dish) }.not_to raise_error
   end
   #   As a customer
@@ -22,9 +22,10 @@ describe "User Stories" do
   it "checks that the total matches the sum of the dishes in the customer order" do
     menu = Menu.new
     dish = Dish.new
-    order = Order.new
+    order = Order.new(menu)
     dishes = order.list_dishes
     sum_of_dishes = (dishes.each { |dish| menu.price(dish) * order.quantity(dish) }).sum
-    expect(order.total).to eq sum_of_dishes
+    expect(order.total(menu)).to eq sum_of_dishes
   end
+
 end
