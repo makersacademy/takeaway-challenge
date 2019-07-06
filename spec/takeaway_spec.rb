@@ -10,4 +10,10 @@ describe Takeaway do
   it "puts dishes ordered into an array" do
     expect(takeaway.order(1)).to eq [{"Kappa Maki" => 8}]
   end
+
+  it "gives total" do
+    takeaway.order(2)
+    takeaway.order(4)
+    expect(takeaway.total).to eq 11
+  end
 end

@@ -22,4 +22,17 @@ class Takeaway
 
     orders << dishes[dish_number - 1]
   end
+
+  def total
+    calculate_total
+  end
+
+  private
+
+  def calculate_total
+    sum = orders.map do |orders|
+      orders.values
+    end
+    sum.flatten.sum
+  end
 end

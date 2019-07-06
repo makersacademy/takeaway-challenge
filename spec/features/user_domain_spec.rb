@@ -22,4 +22,10 @@ feature 'User Stories' do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  it "I can check the total matches the sum of dishes in my order" do
+    takeaway.order(1)
+    takeaway.order(1)
+    takeaway.order(5)
+    expect(takeaway.total).to eq 24
+  end
 end
