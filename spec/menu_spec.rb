@@ -10,4 +10,7 @@ describe Menu do
   it "gets the price of a dish" do
     expect(menu).to respond_to(:price).with(1).argument
   end
+  it "should display the menu" do
+    expect(menu).to respond_to(:view)
+  end
 end
