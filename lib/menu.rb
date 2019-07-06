@@ -5,8 +5,7 @@ class Menu
   end
 
   def price(dish)
+    1
   end
 
-  def choose(dish)
-  end
 end

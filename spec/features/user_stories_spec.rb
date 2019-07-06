@@ -19,9 +19,12 @@ describe "User Stories" do
   #   As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  # it "checks that the total matches the sum of the dishes in the customer order" do
-  #     menu = Menu.new
-  #     dish = Dish.new
-  #     order = Order.new
-  # end
+  it "checks that the total matches the sum of the dishes in the customer order" do
+    menu = Menu.new
+    dish = Dish.new
+    order = Order.new
+    dishes = order.list_dishes
+    sum_of_dishes = (dishes.each { |dish| menu.price(dish) * order.quantity(dish) }).sum
+    expect(order.total).to eq sum_of_dishes
+  end
 end
