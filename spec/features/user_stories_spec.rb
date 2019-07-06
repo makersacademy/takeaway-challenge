@@ -12,8 +12,8 @@ describe 'User Stories' do
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
   it 'The customer can ask menu to list its dishes' do
-    allow(menu).to receive(:list_dishes).and_return([{ dish => price }])
-    expect(menu.list_dishes).to eq([{ dish => price }])
+    allow(menu).to receive(:dishes).and_return([{ dish => price }])
+    expect(menu.dishes).to eq([{ dish => price }])
   end
 
   # As a customer

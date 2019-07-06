@@ -20,9 +20,15 @@ describe Order do
   describe '#order_total' do
     it 'Returns the total price of the order' do
       menu = double :menu
-      allow(menu).to receive(:list_dishes).and_return({ dish => price })
+      order_new = Order.new(menu)
+      order_new.select_dish(dish, quantity)
+      allow(menu).to receive(:dishes).and_return({ dish => price })
       allow(menu).to receive(:dish_price).and_return(price)
-      expect(order.order_total).to eq(price * quantity)
+      p "PRICE: "
+      p price
+      p "QUANTITY"
+      p quantity
+      expect(order_new.order_total).to eq(price * quantity)
     end
   end
 

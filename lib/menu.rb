@@ -1,19 +1,12 @@
 class Menu
 
-  def initialize
-    dishes = { 'fish' => 5, 'chips' => 3, 'gravy' => 1, 'savoly' => 2 }
-  end
+  attr_reader :dishes
 
-  def list_dishes
-    dishes
+  def initialize
+    @dishes = { 'fish' => 5, 'chips' => 3, 'gravy' => 1, 'savoly' => 2 }
   end
 
   def dish_price(dish)
-    dishes[dish]
+    @dishes[dish]
   end
-
-  private
-
-  attr_reader :dishes
-
 end

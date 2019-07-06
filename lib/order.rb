@@ -17,11 +17,8 @@ class Order
 
   def order_total
     total = 0
-    dishes = @menu.list_dishes
     @current_order.each do |item|
-      if dishes.include?(item)
-        total += @menu.list_dishes[item.key] * @menu.dish_price(item.key)
-      end
+      total += item.values.join.to_i * @menu.dish_price(item.keys.join)
     end
     total
   end
