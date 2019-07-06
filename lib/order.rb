@@ -24,7 +24,7 @@ class Order
     total
   end
 
-  def check_total(user_total, order_total)
+  def check_total(user_total)
     raise 'Total given does not match' unless user_total == order_total
     user_total == order_total
   end
@@ -45,4 +45,4 @@ class Order
 
 end
 
-# binding.pry
+binding.pry

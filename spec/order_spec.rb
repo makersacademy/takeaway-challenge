@@ -28,12 +28,12 @@ describe Order do
   describe '#check_total' do
     it 'returns true if the user\'s total matches the actual total' do
       user_total = order.order_total
-      expect(order.check_total(user_total, order.order_total)).to eq true
+      expect(order.check_total(user_total)).to eq true
     end
     it 'returns error message if total given by user doesn\'t match '\
         'the actual order total ' do
       user_total = 1 + order.order_total
-      expect { order.check_total(user_total, order.order_total) }.to raise_error 'Total'\
+      expect { order.check_total(user_total) }.to raise_error 'Total'\
       ' given does not match'
     end
   end

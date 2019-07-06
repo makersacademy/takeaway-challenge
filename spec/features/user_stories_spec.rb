@@ -29,6 +29,11 @@ describe 'User Stories' do
 
   it 'a customer can check the total of the order is correct' do
     user_total = order.order_total
-    expect(order.check_total(user_total, order.order_total)).to eq true
+    expect(order.check_total(user_total)).to eq true
   end
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
 end
