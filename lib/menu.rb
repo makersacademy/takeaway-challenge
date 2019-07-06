@@ -1,5 +1,6 @@
 
 class Menu
+  
   attr_reader :food
 
   def initialize
