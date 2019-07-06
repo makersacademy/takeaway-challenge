@@ -6,4 +6,7 @@ class Menu
 
   def price(dish)
   end
+
+  def choose(dish)
+  end
 end
