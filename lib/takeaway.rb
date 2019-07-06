@@ -1,11 +1,11 @@
-require 'rubygems'
-require 'twilio-ruby'
+require_relative 'sms_send'
 
 class Takeaway
-  attr_reader :orders
+  attr_reader :orders, :sms
 
-  def initialize
+  def initialize(sms = Sms.new)
     @orders = []
+    @sms = sms
   end
 
   def list
@@ -31,7 +31,7 @@ class Takeaway
   end
 
   def send_sms
-    sms_message
+    sms.send(total)
   end
 
   private
@@ -41,25 +41,5 @@ class Takeaway
       orders.values
     end
     sum.flatten.sum
-  end
-
-  def time
-    t = Time.now
-    t + (60 * 60)
-  end
-
-  def sms_message
-    account_sid = ENV["TWILIO_SID"]
-    auth_token = ENV["TWILIO_TOKEN"]
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    message = @client.messages
-     .create(
-        body: "Thank you! Your order was placed and will be delivered before #{time}\nYour total is £#{total}",
-        from: '+441582380213',
-        to: ENV["PHONE_NUMBER"]
-      )
-
-    puts message.sid
   end
 end
