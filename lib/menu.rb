@@ -5,7 +5,7 @@ class Menu
   end
 
   def price(dish)
-    1
+    "£#{'%.2f' % dish.price}"
   end
 
   def view
