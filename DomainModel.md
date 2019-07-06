@@ -21,8 +21,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 MENU CLASS
 Instance Variables:
 ```@dishes``
-Methods:
-```list_dishes```
 
 ORDER CLASS
 Instance Variables:
@@ -32,3 +30,5 @@ Methods:
 
 ORDER---select_dish--->MENU
 ORDER<---return dish---MENU
+ORDER---check_total--->MENU
+ORDER<---return_total--MENU

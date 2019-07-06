@@ -11,7 +11,7 @@ describe 'User Stories' do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  it 'The customer can ask menu to list its dishes' do
+  it 'the customer can see a list of dishes from the menu' do
     allow(menu).to receive(:dishes).and_return([{ dish => price }])
     expect(menu.dishes).to eq([{ dish => price }])
   end
@@ -19,7 +19,7 @@ describe 'User Stories' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  it 'A customer can select some number of several dishes' do
+  it 'a customer can select some number of several available dishes' do
     expect(order.select_dish(dish, quantity)).to eq({ dish => quantity })
   end
 
@@ -27,7 +27,7 @@ describe 'User Stories' do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-  it 'A customer can check the total of the order is correct' do
+  it 'a customer can check the total of the order is correct' do
     user_total = order.order_total
     expect(order.check_total(user_total, order.order_total)).to eq true
   end

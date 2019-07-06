@@ -1,5 +1,9 @@
 ### Takeaway Challenge
 
+## Note to reviewer
+I think the ```Order``` class may be breaking the single responsibility principal since it deals with selecting dishes to add to the order and also calculating the total of the order and checking this against the user's given total. This would be interesting discussion point. 
+
+## Approach
 I took a methodical approach to this challenge using TDD.
 
 The steps I would take for each user story:
