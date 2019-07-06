@@ -22,17 +22,17 @@ class Order
   end
 
   def complete(messaging_client = TwilioSender)
-    messaging_client.new.send(self.message)
+    messaging_client.new.send(message)
   end
 
   private
 
   def calculate_total
-    @contents.map { |item, quantity| @menu.items[item] * quantity}.inject(:+)
+    @contents.map { |item, quantity| @menu.items[item] * quantity }.inject(:+)
   end
 
   def contents_formatted
-    @contents.map { |item, quantity| "#{quantity} #{item}s"}.join(", ")
+    @contents.map { |item, quantity| "#{quantity} #{item}s" }.join(", ")
   end
 
   def calculate_time
@@ -42,7 +42,3 @@ class Order
   end
 
 end
-
-order = Order.new
-order.add("starter",3)
-order.complete

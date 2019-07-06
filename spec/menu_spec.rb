@@ -14,7 +14,8 @@ describe Menu do
   it "shows the menu in a pretty string" do
     Menu::DEFAULT_MENU.each { |key, value|
       expect(subject.show).to match key.capitalize
-      expect(subject.show).to match value.to_s }
+      expect(subject.show).to match value.to_s
+    }
   end
 
 end

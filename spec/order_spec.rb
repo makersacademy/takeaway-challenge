@@ -5,12 +5,12 @@ require 'order'
 describe Order do
 
   # example menu showing dish => price
-  let(:menu) {double :menu, items: {
+  let(:menu) { double :menu, items: {
     "starter" => 1,
     "main" => 2,
     "dessert" => 3
   } }
-  let(:subject) {described_class.new(menu)}
+  let(:subject) { described_class.new(menu) }
 
   # change the test order as you wish, rspec should still run
   # remember the value here is the QUANTITY of the order not the PRICE
@@ -20,17 +20,18 @@ describe Order do
     "dessert" => 7
   }
 
-
   context "when items have been added to the order" do
     before do
       test_order.each { |key, value|
-        subject.add(key, value)}
+        subject.add(key, value)
+      }
     end
 
     it "returns a nice string telling you your order" do
       test_order.each { |key, value|
         expect(subject.message).to match key
-        expect(subject.message).to match value.to_s }
+        expect(subject.message).to match value.to_s
+      }
     end
 
     it "also tells you the time your order will be delivered" do

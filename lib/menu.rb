@@ -13,9 +13,9 @@ class Menu
   end
 
   def show
-    @items.map {|item, price|
-     "#{item.capitalize}: £#{price}"
-   }.join("\n")
+    @items.map { |item, price|
+      "#{item.capitalize}: £#{price}"
+    }.join("\n")
   end
 
 end
