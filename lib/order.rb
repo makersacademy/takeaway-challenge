@@ -24,6 +24,8 @@ class Order
   end
 
   def check_total(user_total, order_total)
+    raise 'Total given does not match' unless user_total == order_total
+    user_total == order_total
   end
 
 end

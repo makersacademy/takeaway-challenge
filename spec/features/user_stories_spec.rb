@@ -27,8 +27,8 @@ describe 'User Stories' do
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-  xit 'A customer can check the total of the order is correct' do
-    allow(order).to receive(:user_total).and_return(order.order_total)
+  it 'A customer can check the total of the order is correct' do
+    user_total = order.order_total
     expect(order.check_total(user_total, order.order_total)).to eq true
   end
 end
