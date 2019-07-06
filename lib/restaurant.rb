@@ -1,7 +1,9 @@
 class Restaurant
 
   def menu
-    "Margarita: 12, Hawaiin: 14"
+    [{ food: 'Margarita', price: 10 },
+      { food: 'Peperoni', price: 12 },
+      { food: 'Hawaiin', price: 12 },
+      { food: 'Vegetarian', price: 11 }]
   end
-
 end

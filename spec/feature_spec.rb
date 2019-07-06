@@ -1,16 +1,26 @@
 require './lib/restaurant.rb'
 require './lib/takeaway-app.rb'
 
-
 describe "Takeaway_application features" do
 
-  # As a customer
-  # So that I can check if I want to order something
-  # I would like to see a list of dishes with prices
+  let(:restaurant) { Restaurant.new }
+  let(:food_app) { TakeawayApp.new(restaurant) }
 
-  it "shows a list of meals with their prices" do
-    restaurant = Restaurant.new
-    food_app = TakeawayApp.new
-    allow(restaurant).to receive(:menu)
+  scenario "a customer wants to see some food" do
+    food_app = TakeawayApp.new(restaurant)
+    expect(food_app.restaurant_menu).to eq(restaurant.menu)
   end
+
+  scenario "a customer wants to order some food" do
+    selection, qty, total = 'Margarita', 1, 10
+    food_app.menu(selection, qty, total)
+    selection, qty, total = 'Pepperoni', 2, 24
+    food_app.menu(selection, qty, total)
+    selection, qty, total = 'Vegetarian', 3, 33
+    food_app.menu(selection, qty, total)
+    expect(food_app.menu_selection).to eq [['Margarita', 1, 10], ['Pepperoni', 2, 24], ['Vegetarian', 3, 33]]
+  end
+
+  
+
 end

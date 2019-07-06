@@ -5,7 +5,11 @@ describe Restaurant do
 
   describe "#menu" do
     it "provides a list of dishes & prices" do
-      expect(restaurant.menu).to eq("Margarita: 12, Hawaiin: 14")
+      expect(restaurant.menu).to eq(
+        [{ food: 'Margarita', price: 10 },
+        { food: 'Peperoni', price: 12 },
+        { food: 'Hawaiin', price: 12 },
+        { food: 'Vegetarian', price: 11 }])
     end
   end
 end
