@@ -7,8 +7,8 @@ describe "User Stories" do
     expect(menu.view).to eq "Tuna Tartare - £9.50\nCourgette Salad - £3.75\nChips - £2.50\n"
   end
   it "so user can see dishes and prices, instruct menu to provide price for a dish" do
-    dish = Dish.new("Tuna Tartare", 9.50)
-    menu = Menu.new({(dish.name) => (dish.price)})
+    menu = Menu.new({ "Tuna Tartare": 9.50 })
+    dish = "Tuna Tartare"
     expect(menu.price(dish)).to eq "£9.50"
   end
   #   As a customer
@@ -16,23 +16,24 @@ describe "User Stories" do
   # I would like to be able to select some number of several available dishes
   let(:name) { double :name }
   let(:price) { double :price }
-  it "so  that I can order a meal, I want to select several dishes" do
+  let(:dish_name) { double :dish_name, to_sym: :dish_name }
+  it "so that I can order a meal, I want to add dishes to my order" do
     menu = Menu.new
-    dish = Dish.new(name,price)
     order = Order.new(menu)
-    expect { order.choose(dish) }.not_to raise_error
+    number = 1
+    expect(order.add(dish_name, number)).to eq [{ dish_name: number }]
   end
   #   As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  let(:dish) { double :dish }
   it "checks that the total matches the sum of the dishes in the customer order" do
     menu = Menu.new
-    dish = Dish.new(name,price)
     order = Order.new(menu)
     dishes = order.list_dishes
     sum_of_dishes = (dishes.each { |dish| menu.price(dish) * order.quantity(dish) }).sum
-    expect(order.total(menu)).to eq sum_of_dishes
+    expect(order.total).to eq sum_of_dishes
   end
-  # it "if total is incorrect, an error should be raised" do
+  # it "if total is incorrect, an error sh[ould be raised" do
 
 end
