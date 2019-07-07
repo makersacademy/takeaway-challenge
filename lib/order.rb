@@ -1,7 +1,6 @@
 class Order
-  def initialize(dish)
+  def initialize
     @current_order = []
-    @current_order << dish
     @order_total = 0
   end
 
@@ -21,6 +20,7 @@ class Order
   end
 
   def total
+    @order_total = 0
     @current_order.each do |item|
       @order_total += item.price
     end

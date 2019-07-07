@@ -1,9 +1,11 @@
 class Menu
+  attr_reader :dishes
+
   def initialize
     @dishes = []
   end
 
-  def add_dish(dish)
+  def add_to_menu(dish)
     @dishes << dish
   end
 
@@ -12,11 +14,6 @@ class Menu
     @dishes.each do |dish|
       puts "#{@dishes.index(dish) + 1}. #{dish.name} - £#{dish.price}"
     end
-  end
-
-  def order(selection)
-    raise 'Error: Not a valid option' if @dishes[selection - 1].nil?
-    @dishes[selection - 1]
   end
 
 private
