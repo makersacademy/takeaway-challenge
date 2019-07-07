@@ -38,7 +38,6 @@ class Order
 
   def send_text(text = Text.new)
     text.send
-    text.message_sent?
   end
 
   private
@@ -60,5 +59,5 @@ class Order
   end
 
 end
-
+# 
 # binding.pry

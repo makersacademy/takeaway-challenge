@@ -46,10 +46,11 @@ describe Order do
   end
 
   describe '#send_text' do
-    it 'sends a text to the user' do
+    it 'orders text to be sent' do
       text = double :text
-      allow(text).to receive(:message_sent?).and_return(true)
-      expect(order.send_text).to eq(text.message_sent?)
+      message_double = double :message
+      allow(text).to receive(:send).and_return(message_double)
+      expect(order.send_text(text)).to eq(text.send)
     end
   end
 end
