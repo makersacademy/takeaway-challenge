@@ -38,4 +38,13 @@ describe 'User Stories' do
 # So that I am reassured that my order will be delivered on time
 # I would like to receive a text such as "Thank you! Your order was placed
 # and will be delivered before 18:52" after I have ordered
+    it 'should send a text message when order is complete' do
+      takeaway.add_to_menu(dish)
+      takeaway.add_to_menu(other_dish)
+      takeaway.order_dish(2)
+      takeaway.order_dish(1)
+      expect { takeaway.complete_order }.not_to raise_error
+    end
+
+
 end
