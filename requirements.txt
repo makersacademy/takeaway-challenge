@@ -1,0 +1,69 @@
+
+------------------------------------------------
+User Stories & Gherkin
+------------------------------------------------
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+Scenario: a customer wants to see some food
+GIVEN: a customer wants to see food
+WHEN: they browse the food menu
+THEN: it displays the dishes and the prices
+
+------------------------------------------------
+
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+Scenario: a customer wants to order some food
+GIVEN: a customer browses the food menu
+WHEN: they decide to buy some dishes
+THEN: they can select the dishes they'd like to buy
+
+------------------------------------------------
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+Scenario: a customer has ordered some food
+GIVEN: a customer browses the food menu
+WHEN: they have sent their order
+THEN: the order total is checked against the restaurant's total
+
+------------------------------------------------
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Scenario: a customer has ordered some food
+GIVEN: a customer browses the food menu
+WHEN: when the totals check passes
+THEN: a message is created and sent to the customer
+
+
+------------------------------------------------
+Domain Modelling
+------------------------------------------------
+
+object / messages
+
+Takeaway app .menu_selection
+Restaurant   .menu 
+
+
+Restaurant.menu > Takeaway app
+
+
+require './lib/takeaway-app.rb'
+require './lib/restaurant.rb'
+require './lib/message-service.rb'
+resto = Restaurant.new
+ms = MessageService.new
+app = TakeawayApp.new(resto, ms)
+app.menu('Margarita', 2, 20)
