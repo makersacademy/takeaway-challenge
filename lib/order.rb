@@ -1,8 +1,8 @@
 
 class Order
-  attr_reader :current_order
+  attr_reader :current_order, :menu
   def initialize
-    @current_order = ""
+    @current_order = {}
     @menu
   end
 
@@ -11,5 +11,15 @@ class Order
     p "Menu passed to orders"
   end
 
+  def make_order(number)
+    @menu.each { |key, value|
+      if key == number
+        @current_order[key] = value
+        p "Meal selected"
+      else
+        p "Error with meal choice"
+      end
+    }
+  end
 
 end
