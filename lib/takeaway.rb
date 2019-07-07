@@ -2,7 +2,7 @@ class Takeaway
 
   def initialize
     @menu = [
-      { item: "Pizza", price: 6},
+      {item: "Pizza", price: 6},
       {item: "Fried chicken", price: 4},
       {item: "Cheeseburger", price: 5},
       {item: "Chips", price: 3}
