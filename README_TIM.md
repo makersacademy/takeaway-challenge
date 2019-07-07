@@ -54,8 +54,16 @@ gem 'twilio-ruby'
 ```
 ## Usage
 
-- To use please just run the lib/takeaway.rb in IRB.  And create a new Takeaway class
+- To use please just run the lib/takeaway.rb in IRB, and create a new Takeaway class:
 ```
 takeaway = TakeAway.new
 ```
 - Available methods are:
+```
+takeaway.view_dishes #displays the menu
+takeaway.create_new_order #starts a new order
+takeaway.add(item, amount) #adds a quantity of items to your order
+takeaway.basket_summary #returns a nice summary of all items and total cost so far
+takeaway.total #returns total cost so far
+takeaway.checkout #displays summary, sends confirmation text and finishes order
+```
