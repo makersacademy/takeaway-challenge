@@ -52,3 +52,7 @@ gem 'simplecov'
 gem 'simplecov-console'
 gem 'twilio-ruby'
 ```
+## Usage
+
+- To use please just run the lib/takeaway.rb in IRB.
+- Available methods are:
