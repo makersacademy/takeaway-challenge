@@ -1,14 +1,16 @@
 require 'pry'
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
-  attr_reader :current_order
+  attr_reader :current_order, :complete
   attr_accessor :user_total
 
   def initialize(menu = Menu.new)
     @current_order = []
     @menu = menu
+    @complete = false
   end
 
   def select_dish(dish, quantity)
@@ -29,6 +31,16 @@ class Order
     user_total == order_total
   end
 
+  def confirm_order
+    @complete = true
+    send_text
+  end
+
+  def send_text(text = Text.new)
+    text.send
+    text.message_sent?
+  end
+
   private
 
   def add_dish(dish, quantity)
@@ -43,6 +55,10 @@ class Order
     item.values.join.to_i
   end
 
+  def complete?
+    @complete
+  end
+
 end
 
-binding.pry
+# binding.pry

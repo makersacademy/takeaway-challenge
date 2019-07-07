@@ -7,7 +7,6 @@ describe Order do
   let(:quantity) { 1 }
 
   describe '#select_dish' do
-
     it 'adds the selected dish and quantity to the current order' do
       order.select_dish(dish, quantity)
       expect(order.current_order).to eq([{ dish => 1 }])
@@ -30,11 +29,27 @@ describe Order do
       user_total = order.order_total
       expect(order.check_total(user_total)).to eq true
     end
+
     it 'returns error message if total given by user doesn\'t match '\
         'the actual order total ' do
       user_total = 1 + order.order_total
       expect { order.check_total(user_total) }.to raise_error 'Total'\
       ' given does not match'
+    end
+  end
+
+  describe '#confirm_order' do
+    it 'completes the order' do
+      order.confirm_order
+      expect(order.complete).to eq(true)
+    end
+  end
+
+  describe '#send_text' do
+    it 'sends a text to the user' do
+      text = double :text
+      allow(text).to receive(:message_sent?).and_return(true)
+      expect(order.send_text).to eq(text.message_sent?)
     end
   end
 end

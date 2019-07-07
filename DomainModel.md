@@ -32,3 +32,5 @@ ORDER---select_dish--->MENU
 ORDER<---return dish---MENU
 ORDER---check_total--->MENU
 ORDER<---return_total--MENU
+ORDER---send_text--->TEXT
+ORDER<---message_sent---TEXT

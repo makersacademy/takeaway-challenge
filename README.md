@@ -1,12 +1,13 @@
-### Takeaway Challenge
+# Takeaway Challenge
+This is my attempt at the Makers Academy, Week 2, [Takeaway Challenge](https://github.com/makersacademy/takeaway-challenge)
 
 ## Note to reviewer
-I think the ```Order``` class may be breaking the single responsibility principal since it deals with selecting dishes to add to the order and also calculating the total of the order and checking this against the user's given total. This would be interesting discussion point. 
+I think the ```Order``` class may be breaking the single responsibility principal since it deals with selecting dishes to add to the order and also calculating the total of the order and checking this against the user's given total. This would be interesting discussion point.
 
 ## Approach
 I took a methodical approach to this challenge using TDD.
 
-The steps I would take for each user story:
+The steps took for each user story:
 
 1. RED - Write a feature test in  ```spec/features/user_stories_spec.rb``` based on the user story given. See it fail, and then write a unit test for the relevant class to fail with the same error message.
 
