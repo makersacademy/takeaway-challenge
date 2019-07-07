@@ -1,9 +1,10 @@
 require 'menu'
 require 'order'
 
-describe 'User Stories' do
+describe 'User Stories - the program' do
   let(:menu) { Menu.new }
-  let(:order) { Order.new }
+  let(:order) { Order.new(menu) }
+  let(:text) { Text.new('+44123456') }
   let(:dish) { :dish }
   let(:price) { :price }
   let(:quantity) { :quantity }
@@ -12,15 +13,15 @@ describe 'User Stories' do
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
   it 'allows the customer to see a list of dishes from the menu' do
-    allow(menu).to receive(:dishes).and_return([{ dish => price }])
-    expect(menu.dishes).to eq([{ dish => price }])
+    expect(menu.read).to eq(menu.dishes)
   end
 
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
   it 'allows a customer to select some number of several available dishes' do
-    expect(order.select_dish(dish, quantity)).to eq({ dish => quantity })
+    order.select_dish(dish, quantity)
+    expect(order.current_order).to eq([{ dish => quantity }])
   end
 
   # As a customer
@@ -36,7 +37,8 @@ describe 'User Stories' do
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-  it 'allows user to receive a text confirmation when order placed' do
-    expect(order.confirm_order).to eq order.send_text
+  xit 'sends a text confirmation to the user when order placed' do
+    # TESTED THIS WITH VALID MOBILE NUMBER AT IT WORKS
+    expect { text.send }.to change { text.message_sent }.from(false).to(true)
   end
 end

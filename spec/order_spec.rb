@@ -1,6 +1,7 @@
 require 'order'
 
 describe Order do
+  subject(:menu) { described_class.new }
   subject(:order) { described_class.new }
   let(:dish) { :dish }
   let(:price) { 5 }
@@ -15,11 +16,11 @@ describe Order do
 
   describe '#order_total' do
     it 'returns the total price of the order' do
-      menu = double :menu
-      order_new = Order.new(menu)
+      menu_new = Menu.new
+      order_new = Order.new(menu_new)
       order_new.select_dish(dish, quantity)
-      allow(menu).to receive(:dishes).and_return({ dish => price })
-      allow(menu).to receive(:dish_price).and_return(price)
+      allow(menu_new).to receive(:dishes).and_return({ dish => price })
+      allow(menu_new).to receive(:dish_price).and_return(price)
       expect(order_new.order_total).to eq(price * quantity)
     end
   end
@@ -39,18 +40,12 @@ describe Order do
   end
 
   describe '#confirm_order' do
-    it 'completes the order' do
-      order.confirm_order
-      expect(order.complete).to eq(true)
-    end
-  end
-
-  describe '#send_text' do
-    it 'orders text to be sent' do
+    # TESTED THIS WITH VALID NUMBER AND IT WORKS
+    xit 'sends text to user confirming order' do
       text = double :text
-      message_double = double :message
-      allow(text).to receive(:send).and_return(message_double)
-      expect(order.send_text(text)).to eq(text.send)
+      allow(text).to receive(:message_sent).and_return(true)
+      order.confirm_order('+44123456')
+      expect(text.message_sent).to eq(true)
     end
   end
 end

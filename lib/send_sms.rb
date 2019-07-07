@@ -13,5 +13,6 @@ module SMS
     to: mobile,
     body: message
     )
+    "Text sent"
   end
 end

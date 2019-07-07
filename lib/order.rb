@@ -4,13 +4,12 @@ require_relative 'text'
 
 class Order
 
-  attr_reader :current_order, :complete
+  attr_reader :current_order
   attr_accessor :user_total
 
   def initialize(menu = Menu.new)
     @current_order = []
     @menu = menu
-    @complete = false
   end
 
   def select_dish(dish, quantity)
@@ -31,9 +30,8 @@ class Order
     user_total == order_total
   end
 
-  def confirm_order(mobile = '+4412345678')
+  def confirm_order(mobile)
     Text.new(mobile).send
-    @complete = true
     @current_order = []
   end
 
@@ -50,11 +48,6 @@ class Order
   def item_quantity(item)
     item.values.join.to_i
   end
-
-  def complete?
-    @complete
-  end
-
 end
 
-binding.pry
+# binding.pry
