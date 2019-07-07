@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 
 gem 'capybara'
+gem 'dotenv', '~> 2.1', '>= 2.1.1'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '0.56.0'

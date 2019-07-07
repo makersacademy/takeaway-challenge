@@ -1,7 +1,7 @@
 require 'text_service'
 
 class Order
-   attr_reader :basket
+  attr_reader :basket
 
   def initialize(text_service = TextService.new)
     @text_service = text_service
@@ -27,6 +27,7 @@ class Order
 
   def submit_order(expected_total)
     raise "Total does not match" if basket_total != expected_total
+    
     @text_service.send_text(order_confirmation_message)
     "Confirmation text sent"
   end
