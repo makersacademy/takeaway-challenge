@@ -71,8 +71,12 @@ describe Order do
       end
 
       it 'sends a text message confirming the order and delivery time' do
+        fixed_time = Time.new(1983, 11, 12, 18, 23)
+        allow(Time).to receive(:now).and_return(fixed_time)
         subject.submit_order(9)
-        expect(text_service_double).to have_received(:send_text).with("Thank you...")
+        expect(text_service_double).to have_received(:send_text).with(
+          "Thank you! Your order was placed and will be delivered before 19:23"
+        )
       end
     end
   end

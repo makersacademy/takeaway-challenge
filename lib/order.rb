@@ -27,7 +27,15 @@ class Order
 
   def submit_order(expected_total)
     raise "Total does not match" if basket_total != expected_total
-    @text_service.send_text("Thank you...")
+    @text_service.send_text(order_confirmation_message)
     "Confirmation text sent"
+  end
+
+  private
+
+  def order_confirmation_message
+    one_hours_time = Time.now + (60 * 60)
+    "Thank you! Your order was placed and will be delivered before " +
+      "#{one_hours_time.strftime("%H:%M")}"
   end
 end
