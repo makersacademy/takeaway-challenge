@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 
+gem 'twilio-ruby'
 gem 'capybara'
+gem 'pry'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '0.56.0'
