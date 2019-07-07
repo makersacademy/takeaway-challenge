@@ -1,4 +1,5 @@
 require_relative 'receipt'
+require_relative 'text'
 require 'twilio-ruby'
 require 'pry'
 
@@ -34,11 +35,15 @@ class Restaurant
     return "Select your meal"
   end
 
-  private
+  def send_sms(text = Text.new)
+    text.send_sms
+  end
+  
+  # private
 
-  # def send_sms
-  #   @text.send_sms
-  # end
+  # # def send_sms
+  # #   @text.send_sms
+  # # end
 
 end
 
