@@ -56,7 +56,6 @@ gem 'twilio-ruby'
 
 - To use please just run the lib/takeaway.rb in IRB.  And create a new Takeaway class
 ```
-_example_
 takeaway = TakeAway.new
 ```
 - Available methods are:
