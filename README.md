@@ -52,7 +52,7 @@ along with a number to send the text to.
 
 BELOW IS A CODED EXAMPLE:-
 
-[1] pry(main)> new = Order.new
+```[1] pry(main)> new = Order.new
 => #<Order:0x00007fb82a9573f8
  @calc=
   #<PriceCalculation:0x00007fb82a957330
@@ -63,6 +63,7 @@ BELOW IS A CODED EXAMPLE:-
  @current_order=[],
  @menu=#<Menu:0x00007fb82a957358>,
  @quantity=1>
+
 [2] pry(main)> new.read_menu
 => [{"Beef Burger"=>6.99},
  {"Veggie Burger"=>4.99},
@@ -70,21 +71,27 @@ BELOW IS A CODED EXAMPLE:-
  {"Thin Cut Fries"=>2.5},
  {"Thick Cut Fries"=>2.5},
  {"Onion Rings"=>1.99}]
+
 [3] pry(main)> new.select('Beef Burger', 3)
 3 X Beef Burger(s) added to order
 => [{"Beef Burger"=>3}]
+
 [4] pry(main)> new.select('Veggie Burger')
 1 X Veggie Burger(s) added to order
 => [{"Beef Burger"=>3}, {"Veggie Burger"=>1}]
+
 [5] pry(main)> new.select('Onion Rings', 3)
 3 X Onion Rings(s) added to order
 => [{"Beef Burger"=>3}, {"Veggie Burger"=>1}, {"Onion Rings"=>3}]
+
 [6] pry(main)> new.order_summary
 => "Beef Burger X 3 = £20.97, Veggie Burger X 1 = £4.99, Onion Rings X 3 = £5.97"
+
 [7] pry(main)> new.total_cost
 => "Total: £31.93"
+
 [8] pry(main)> new.checkout
-=> "Order Placed"
+=> "Order Placed"```
 
 Below is the spec for this project
 -----
