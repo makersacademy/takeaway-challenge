@@ -14,6 +14,11 @@ class Menu
     end
   end
 
+  def order(selection)
+    raise 'Error: Not a valid option' if @dishes[selection - 1].nil?
+    @dishes[selection - 1]
+  end
+
 private
 
   def empty?
