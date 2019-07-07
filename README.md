@@ -1,5 +1,11 @@
 Takeaway Challenge
 ==================
+
+NOTE: Still to complete:
+
+- fix the get_prices_for_order and calculate_total_price methods
+- wire up the send text functionality to the confirm order method
+
 ```
                             _________
               r==           |       |

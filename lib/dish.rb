@@ -1,6 +1,7 @@
 class Dish
 
   attr_reader :dish, :price
+  attr_reader :dish_for_menu
 
   def initialize(dish, price)
     @dish = dish
@@ -11,6 +12,5 @@ class Dish
   def dish_for_menu
     @dish_for_menu = { dish: dish, price: price }
   end
-
 
 end
