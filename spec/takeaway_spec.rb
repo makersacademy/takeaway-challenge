@@ -5,28 +5,22 @@ describe Takeaway do
   takeaway = Takeaway.new
 
   let(:incorrect_item) { double 'salad' }
-  str_double_item = 'chips'
+  str_double_item = 'chips'     #let(:item) {double 'item', :food => 'chips'}
   double_cost = 3
   incorrect_cost = 4
   expect_amount = 3
-  #let(:item) {double 'item', :food => 'chips'}
   let(:fake_basket) { double item => min_quantity }
+  let(:menu) {double 'menu'}
 
   min_quantity = Takeaway::MIN_QUANTITY
 
-
-
-  describe '#see_menu' do
-    it 'should return the menu for customer' do
-      expect(subject.see_menu).not_to be_empty
-    end
-  end
 
   describe '#select' do
     it 'responds to a select method' do
       expect(subject).to respond_to(:select).with(2).arguments
     end
     it 'raises error if item not in menu' do
+      allow(menu).to receive(:has?) {false}
       expect {subject.select(incorrect_item, min_quantity)}.to raise_error "item not in menu"
     end
     it 'should not raise error if correct item entered' do
@@ -49,8 +43,8 @@ describe Takeaway do
         expect(subject.place_order).to eq 'order placed'
 
     end
-
   end
+
 
   describe '#total' do
     it 'should return the order total cost' do

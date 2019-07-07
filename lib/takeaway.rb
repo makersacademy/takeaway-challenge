@@ -1,28 +1,18 @@
+require 'menu'
+
 class Takeaway
-  attr_reader :options, :my_basket, :total_cost
+  attr_reader :my_basket, :total_cost
   MIN_QUANTITY = 1
 
-  def initialize
-    @options = {
-      'rice' => 3,
-      'chips' => 3,
-      'bread' => 2,
-      'burger' => 10,
-      'chicken pie' =>10,
-      'steak' => 12,
-      'fish and chips' => 10 }
+  def initialize(menu = Menu.new)
 
       @my_basket = {}
       @total_cost = 0
+      @menu = menu
     end
 
-  def see_menu
-    @options.each {|k, v|
-      "#{k}, #{v}"}
-  end
-
   def select(item, quantity)
-    raise "item not in menu" unless on_menu?(item)
+    raise "item not in menu" unless @menu.has?(item)
     total(item)
     @my_basket[item] = quantity
 
@@ -45,7 +35,7 @@ class Takeaway
 
   def total(item)
 
-    @total_cost += @options[item]
+    @total_cost += @menu.options[item]
 
   end
 
@@ -54,8 +44,5 @@ class Takeaway
 
   end
 
-  def on_menu?(item)
-    @options.include?(item)
 
-  end
 end
