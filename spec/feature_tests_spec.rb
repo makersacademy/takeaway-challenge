@@ -50,6 +50,6 @@ describe "Takeaway features" do
     takeaway.add("Pizza", 2)
     takeaway.add("Hotdog", 3)
     takeaway.checkout
-    expect(takeaway.total).to eq(19)
+    expect(takeaway.total).to eq(19) #just using to check own phone!
   end
 end

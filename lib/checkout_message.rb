@@ -2,16 +2,12 @@ require 'twilio-ruby'
 require 'time'
 
 
-class Checkout
+class CheckOutMessage
 
   def initialize(client = (Twilio::REST::Client))
     @account_sid = ENV["TWILIO_KEY"] # Your Account SID from www.twilio.com/console
     @auth_token = ENV["TWILIO_TOKEN"]   # Your Auth Token from www.twilio.com/console
     @client = client.new @account_sid, @auth_token
-  end
-
-  def show_final_order(order)
-    order.summary
   end
 
   def send_text

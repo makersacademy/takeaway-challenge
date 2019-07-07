@@ -12,8 +12,7 @@ describe Order do
   describe '#add' do
     it 'adds item to order' do
       subject = Order.new
-      subject.add('chicken', 1)
-      expect(subject.items).to eq [{ :amount => 1, :item => "chicken" }]
+      expect(subject.add('fried chicken', 1)).to eq "1x fried chicken(s) has been added to your basket."
     end
   end
   describe '#summary' do
