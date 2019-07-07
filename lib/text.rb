@@ -16,5 +16,4 @@ class Text
     body: "Thank you! Your order was placed and will be delivered in a week! (we're a bit slower than our competitors)"
     )
   end
-
 end

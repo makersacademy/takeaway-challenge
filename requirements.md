@@ -29,3 +29,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - select_meal
 - verify_order
 - send_text
+
+# final bits in car
+
+- need to mock the behaviour in the tests. request receipt and send_sms
+- rub rubocop for best practice

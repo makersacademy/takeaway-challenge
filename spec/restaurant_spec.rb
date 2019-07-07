@@ -5,7 +5,7 @@ describe Restaurant do
   
   describe '#add_to_menu' do
     it 'adds to the items on the restaurant menu' do 
-        expect(restaurant.add_to_menu("banana", 1)).to eq [{"banana" => 1}]
+      expect(restaurant.add_to_menu("banana", 1)).to eq [{ "banana" => 1 }]
     end
   end
 
@@ -13,7 +13,7 @@ describe Restaurant do
     it 'lists the contents of the menu' do
       restaurant.add_to_menu("burger", 9)
       restaurant.add_to_menu("chips", 3)
-      expect(restaurant.list_menu).to eq [{"burger"=>9}, {"chips"=>3}]
+      expect(restaurant.list_menu).to eq [{ "burger" => 9 }, { "chips" => 3 }]
     end
   end
 
@@ -21,7 +21,7 @@ describe Restaurant do
     it 'allows a customer to order from the menu' do
       restaurant.add_to_menu("burger", 9)
       restaurant.add_to_menu("chips", 3)
-      expect(restaurant.select_meal(2)).to eq [{"chips"=>3}]
+      expect(restaurant.select_meal(2)).to eq [{ "chips" => 3 }]
     end
   end
 
@@ -48,6 +48,13 @@ describe Restaurant do
       expect(restaurant.start_order).to eq "Select your meal"
     end
   end
+
+  # describe '#send_sms' do
+  #   it 'sends an sms message after you have ordered your food' do
+  #     expect(restaurant.send_sms).to eq 0
+  #   end
+  # end
+
 end
 
 

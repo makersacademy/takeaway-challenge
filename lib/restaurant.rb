@@ -11,7 +11,7 @@ class Restaurant
   end
 
   def add_to_menu(item, price)
-    @menu << {item => price}
+    @menu << { item => price }
   end
 
   def list_menu
@@ -38,7 +38,7 @@ class Restaurant
   def send_sms(text = Text.new)
     text.send_sms
   end
-  
+
   # private
 
   # # def send_sms
@@ -47,4 +47,4 @@ class Restaurant
 
 end
 
-binding.pry
+# binding.pry
