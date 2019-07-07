@@ -31,14 +31,10 @@ class Order
     user_total == order_total
   end
 
-  def confirm_order
-    send_text
+  def confirm_order(mobile = '+4412345678')
+    Text.new(mobile).send
     @complete = true
     @current_order = []
-  end
-
-  def send_text(text = Text.new('+44123456'))
-    text.send
   end
 
   private
@@ -60,5 +56,5 @@ class Order
   end
 
 end
-# 
-# binding.pry
+
+binding.pry
