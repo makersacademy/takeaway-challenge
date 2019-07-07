@@ -36,7 +36,8 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* I eventually decided 3 new object classes would be necessary: The takeaway, the order, and the checkout message
+* I eventually decided 3 new object classes would be necessary: The takeaway, the order, and the checkout message.
+* Takeaway class is the main "mothership" class from which all are called.
 
 ## Gems
 
