@@ -13,6 +13,30 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+RIMAC UPDATE
+---------------
+A program which allows you to view a menu from a takeaway, select items to order
+from the menu and then receive a sms message with a delivery time once the
+order is confirmed.
+
+To run in irb:
+* require order, takeaway and text_service
+* create new order 'order = Order.new'
+* create new takeaway 'takeaway = Takeaway.new'
+* see the takeaway menu 'takeaway.print_menu'
+* add an order to basket 'order.add_to_basket(takeaway, 2, 3)'
+* print your basket 'order.print_basket'
+* show basket total 'order.basket_total'
+* submit order with the value of your order specified 'order.submit_order(15)'
+
+Menu is currently hardcoded
+In order to run the file, an .env file is require with these details from a
+twilio account:
+ACCOUNT_SID
+AUTH_TOKEN
+SENDER
+RECIPIENT
+
 
 Instructions
 -------
