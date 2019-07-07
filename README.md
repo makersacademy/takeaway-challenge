@@ -52,7 +52,8 @@ along with a number to send the text to.
 
 BELOW IS A CODED EXAMPLE:-
 
-```[1] pry(main)> new = Order.new
+```
+[1] pry(main)> new = Order.new
 => #<Order:0x00007fb82a9573f8
  @calc=
   #<PriceCalculation:0x00007fb82a957330
@@ -91,7 +92,8 @@ BELOW IS A CODED EXAMPLE:-
 => "Total: £31.93"
 
 [8] pry(main)> new.checkout
-=> "Order Placed"```
+=> "Order Placed"
+```
 
 Below is the spec for this project
 -----
