@@ -32,11 +32,12 @@ class Order
   end
 
   def confirm_order
-    @complete = true
     send_text
+    @complete = true
+    @current_order = []
   end
 
-  def send_text(text = Text.new)
+  def send_text(text = Text.new('+44123456'))
     text.send
   end
 
@@ -59,5 +60,5 @@ class Order
   end
 
 end
-
-binding.pry
+# 
+# binding.pry
