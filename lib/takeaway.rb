@@ -43,9 +43,3 @@ class TakeAway
   end
 
 end
-
-# takeaway = TakeAway.new
-# p takeaway.view_dishes
-# takeaway.order('pizza', 2)
-# p takeaway.total
-# p takeaway.basket_summary
