@@ -7,9 +7,7 @@ class TakeAway
   end
 
   def submit_order
-    for i in 0..@order.length-1
-      @total = @total + @menu[@order[i]]
-    end
+
     require 'twilio-ruby'
 
     account_sid = 'AC7c12d4befcc01c780756144381883869'
@@ -30,6 +28,7 @@ class TakeAway
       if @menu.member?(menu_item)
         quantity.times do
           @order << menu_item
+          @total = @total + @menu[menu_item]
         end
       else
         puts "item not present on menu, please view menu and order an item from the menu"
@@ -44,7 +43,6 @@ class TakeAway
 
     for i in 0..@order.length-1
       puts "#{@order[i]}...#{@menu[@order[i]]}"
-      @total = @total + @menu[@order[i]]
     end
     puts "Total : £#{@total}"
 
