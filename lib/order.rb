@@ -5,16 +5,12 @@ require_relative 'send_sms'
 
 class Order
 
-  attr_reader :menu
   attr_reader :summary
-  attr_reader :quantity
   attr_reader :current_order
 
   include SendMessage
-  def initialize(menu = Menu.new, quantity = 1,
-                  calc = PriceCalculation.new(self))
+  def initialize(menu = Menu.new, calc = PriceCalculation.new(self))
     @menu = menu
-    @quantity = quantity
     @current_order = []
     @calc = calc
   end

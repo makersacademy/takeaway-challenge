@@ -12,7 +12,6 @@ describe Order do
   end
 
   it 'should allow you to select menu items and add them to order' do
-    # new_order = Order.new
     dish = 'Beef Burger'
     quantity = 5
     expect { subject.select(dish, quantity) }.to output("#{quantity} X #{dish}(s) added to order\n").to_stdout
