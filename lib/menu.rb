@@ -1,10 +1,10 @@
 
 class Menu
-  
+
   attr_reader :food
 
   def initialize
-    @food = {"Chips" => 1, "Burger" => 2}
+    @food = { "Chips" => 1, "Burger" => 2, "Ratatouille" => 4, "Quiche" => 2, "Salad Nicoise" => 3  }
   end
 
   def check_menu
