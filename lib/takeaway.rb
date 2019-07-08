@@ -13,6 +13,7 @@ class Takeaway
     food.each do |dish, num|
       order.add(dish, num)
     end
+    return order.total
   end
 
 private

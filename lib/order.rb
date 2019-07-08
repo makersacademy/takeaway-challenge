@@ -3,7 +3,7 @@ class Order
   attr_reader :food
 
   def initialize
-    @food = { }
+    @food = {}
   end
 
   def add(dish, num)

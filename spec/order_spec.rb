@@ -18,8 +18,7 @@ describe Order do
     order.add(:fanta, 3)
     order.add(:fries, 3)
     order.add(:sundae, 4)
-    expect(order.food).to eq(food)
-    
+    expect(order.food).to eq(food)  
   end
     
 end
