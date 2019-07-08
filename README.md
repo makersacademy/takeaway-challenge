@@ -25,26 +25,30 @@ all other gems in the Gemfile, if unsure, checkout the gem file.
 To install Twilio please checkout https://www.twilio.com/
 
 ```
+
+This code has been created to be fully changeable, changing the Menu completely will not affect any part of the code along with changing the send sms Twilio API. (If there is another preferred gem or API).
+
+
 User Guide
 ----------
-1. (your_variable) = Order.new
+**1. (your_variable) = Order.new**
 
-2. (your_variable).read_menu
+**2. (your_variable).read_menu**
 Menu is as follows:
 'Beef Burger' => 6.99, 'Veggie Burger' => 4.99, 'Chicken Burger' => 5.99,
 'Thin Cut Fries' => 2.50, 'Thick Cut Fries' => 2.50, 'Onion Rings' => 1.99.
 
-3. (your_variable).select('your menu choice', (your quantity))
+**3. (your_variable).select('your menu choice', (your quantity))**
 Please Note - you must enter the correct name and if you leave quantity
 blank it will default to 1.
 
-4. (your_variable).order_summary
+**4. (your_variable).order_summary**
 This will summaries your order with the cost of each item selected.
 
-5. (your_variable).total_cost
+**5. (your_variable).total_cost**
 This will show the total cost of your order.
 
-6. (your_variable).checkout
+**6. (your_variable).checkout**
 This will send a text with a confirmation of the order!
 
 Please note - you will need to set up a .env file with correct Twilio details
