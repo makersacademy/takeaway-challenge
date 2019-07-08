@@ -7,7 +7,10 @@ describe Menu do
   let(:food) do
     {
         cheesburger: 0.99,
-        hamburger: 0.89
+        hamburger: 0.89,
+        fanta: 0.89,
+        fries: 0.89,
+        sundae: 0.99
     }
   end
 
@@ -16,7 +19,7 @@ describe Menu do
   end
 
   it 'prints a list of dishes and prices' do
-    printed_menu = "Cheesburger: £0.99, Hamburger: £0.89"
+    printed_menu = "Cheesburger: £0.99, Hamburger: £0.89, Fanta: £0.89, Fries: £0.89, Sundae: £0.99"
     expect(menu.print_list).to eq(printed_menu)
   end
 
