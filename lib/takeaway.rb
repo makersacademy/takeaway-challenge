@@ -1,4 +1,5 @@
 require 'menu'
+require 'order'
 
 class Takeaway
   attr_reader :my_basket, :total_cost
@@ -19,18 +20,12 @@ class Takeaway
   end
 
   def view_basket
-  "your current order is:"
+
   @my_basket.each {|k,v|
    "#{k}, #{v}"}
+   "Total: #{@total_cost}"
   end
 
-  def place_order
-    @my_basket.each {|k,v|
-     "#{k}, #{v}"}
-     "cost: #{@total_cost}"
-     "order placed"
-
-  end
 
 
   def total(item)
@@ -40,9 +35,19 @@ class Takeaway
   end
 
   def verify(amount)
-    amount == @total_cost
-
+    @expected_amount = amount
   end
 
+  def place_order
+    raise "your order does not equal your expected amount" unless equal?
+    "Your order: #{view_basket}"
+    text = " Thank you! Your order was placed and will be delivered before 18:52"
+    #send text
+    return text
+  end
+
+  def equal?
+    @expected_amount == @total_cost
+  end
 
 end

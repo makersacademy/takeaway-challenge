@@ -32,16 +32,7 @@ describe Takeaway do
   describe '#view_basket' do
     it 'should allow user to see their basket' do
       subject.select(str_double_item, min_quantity)
-      expect(subject.view_basket).to eq({str_double_item => min_quantity})
-    end
-  end
-
-  describe '#place_order' do
-
-    it 'should confirm order by returning the order details' do
-        subject.select(str_double_item, min_quantity)
-        expect(subject.place_order).to eq 'order placed'
-
+      expect(subject.view_basket).to eq("Total: #{double_cost}")
     end
   end
 
@@ -56,10 +47,38 @@ end
 
   describe '#verify' do
 
-    it 'shoudld verify expected amount equals from the order cost' do
-      subject.select(str_double_item, min_quantity)
-      expect(subject.verify(expect_amount)).to eq true
+    it 'shoudld enable customer to enter expected amount' do
+      expect(subject.verify(expect_amount)).to eq expect_amount
   end
 
 end
+
+describe '#equal?' do
+  it 'should check whether the total cost matches the customers expected bill' do
+    subject.select(str_double_item, min_quantity)
+    subject.verify(expect_amount)
+    expect(subject.equal?).to eq true
+  end
 end
+
+  describe '#place_order' do
+
+    it 'should raise error if expected amount does not equal order total' do
+      subject.select(str_double_item, min_quantity)
+      subject.verify(incorrect_cost)
+      expect { subject.place_order }.to raise_error "your order does not equal your expected amount"
+    end
+
+
+  end
+end
+
+
+
+
+
+# it 'should confirm order by returning the order details' do
+#     subject.select(str_double_item, min_quantity)
+#     expect(subject.place_order).to eq 'order placed'
+#
+# end
