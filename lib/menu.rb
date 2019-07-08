@@ -1,4 +1,4 @@
-
+require_relative 'order'
 
 class Menu
   attr_reader :menu
@@ -18,6 +18,10 @@ class Menu
     else
       puts "Error loading menu!"
     end
+  end
+
+  def menu_choice(number)
+    @orders.make_order(number)
   end
 
   def show_menu

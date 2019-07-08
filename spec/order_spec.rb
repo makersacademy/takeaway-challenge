@@ -17,7 +17,8 @@ describe Order do
   describe '#make_order' do
     it 'Should let user pick from the menu' do
       subject.load_menu(the_menu)
-      expect(subject.make_order(choice)).to_not eq nil
+      subject.make_order(choice)
+      expect(subject.current_order).to_not eq nil
       # my_choice = subject.make_order(choice)
       # expect(subject.menu).to include(my_choice)
     end

@@ -3,6 +3,7 @@ class Order
   attr_reader :current_order, :menu
   def initialize
     @current_order = {}
+    @shopping_cart
     @menu
   end
 
@@ -12,14 +13,15 @@ class Order
   end
 
   def make_order(number)
-    @menu.each { |key, value|
-      if key == number
-        @current_order[key] = value
+    @menu.each { |key|
+      if key.flatten[0] == number
+        @current_order[:dish] = key.flatten[1].flatten[0]
+        @current_order[:price] = key.flatten[1].flatten[1]
         p "Meal selected"
-      else
-        p "Error with meal choice"
+        p @current_order
       end
     }
+    @current_order
   end
 
 end
