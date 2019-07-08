@@ -6,7 +6,7 @@ class Receipt
 
   def initialize
 
-    account_sid = "ACa282c67aa4d858eb6512f34072b389a0"
+    account_sid = Numbers::ACCOUNT_SID
     auth_token = Numbers::AUTH_TOKEN
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
