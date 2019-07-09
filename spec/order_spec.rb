@@ -3,14 +3,13 @@ require 'order'
 describe Order do
   subject(:menu) { described_class.new }
   subject(:order) { described_class.new }
-  let(:dish) { :dish }
+  let(:dish) { "fish" }
   let(:price) { 5 }
   let(:quantity) { 1 }
 
   describe '#select_dish' do
-    it 'adds the selected dish and quantity to the current order' do
-      order.select_dish(dish, quantity)
-      expect(order.current_order).to eq([{ dish => 1 }])
+    it 'raises an error when dish is not on the menu' do
+      expect { order.select_dish("fosh", 1)}.to raise_error "Dish not on menu."
     end
   end
 
@@ -21,7 +20,7 @@ describe Order do
       order_new.select_dish(dish, quantity)
       allow(menu_new).to receive(:dishes).and_return({ dish => price })
       allow(menu_new).to receive(:dish_price).and_return(price)
-      expect(order_new.order_total).to eq(price * quantity)
+      expect(order_new.order_total).to eq(5)
     end
   end
 

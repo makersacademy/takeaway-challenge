@@ -8,19 +8,19 @@ class Order
   attr_accessor :user_total
 
   def initialize(menu = Menu.new)
-    @current_order = []
+    @current_order = {}
     @menu = menu
   end
 
   def select_dish(dish, quantity)
+    raise "Dish not on menu." unless @menu.dishes.include?(dish)
     add_dish(dish, quantity)
-    { dish => quantity }
   end
 
   def order_total
     total = 0
-    current_order.each do |item|
-      total += item_quantity(item) * item_price(item)
+    current_order.each do |dish, quantity|
+      total += quantity * item_price(dish)
     end
     total
   end
@@ -38,11 +38,15 @@ class Order
   private
 
   def add_dish(dish, quantity)
-    current_order << { dish => quantity }
+    if @current_order.include?(dish)
+      @current_order[dish] = @current_order[dish] + quantity
+    else
+      @current_order[dish] = quantity
+    end
   end
 
-  def item_price(item)
-    @menu.dish_price(item.keys.join)
+  def item_price(dish)
+    @menu.dish_price(dish)
   end
 
   def item_quantity(item)

@@ -5,9 +5,9 @@ describe 'User Stories - the program' do
   let(:menu) { Menu.new }
   let(:order) { Order.new(menu) }
   let(:text) { Text.new('+44123456') }
-  let(:dish) { :dish }
-  let(:price) { :price }
-  let(:quantity) { :quantity }
+  let(:dish) { "fish" }
+  let(:price) { 5 }
+  let(:quantity) { 1 }
 
   # As a customer
   # So that I can check if I want to order something
@@ -21,7 +21,8 @@ describe 'User Stories - the program' do
   # I would like to be able to select some number of several available dishes
   it 'allows a customer to select some number of several available dishes' do
     order.select_dish(dish, quantity)
-    expect(order.current_order).to eq([{ dish => quantity }])
+    order.select_dish(dish, quantity)
+    expect(order.current_order).to eq({ "fish" => 2 })
   end
 
   # As a customer

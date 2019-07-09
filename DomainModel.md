@@ -20,7 +20,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 MENU CLASS
 Instance Variables:
-```@dishes``
+```@dishes```
 
 ORDER CLASS
 Instance Variables:
