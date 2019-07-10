@@ -1,10 +1,11 @@
 # Download the twilio-ruby library from twilio.com/docs/libraries/ruby
 require 'twilio-ruby'
+require ''
 
 class Send_sms
   def initialize
-    account_sid = 'AC109ba1fda5f9f709d7a80f14c62cb903'
-    auth_token = '2d6aed4a89267db9c6048a30fe270923'
+    account_sid =
+    auth_token =
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from =  '+447723451767'# Your Twilio number
