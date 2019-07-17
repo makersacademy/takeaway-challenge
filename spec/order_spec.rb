@@ -8,7 +8,7 @@ describe Order do
     expect(order).to respond_to(:total)
   end
   it "records the quantity of each dish ordered" do
-    expect(order).to respond_to(:quantity)
+    expect(order).to respond_to(:total_quantity)
   end
   it "returns a list of dishes in the order" do
     expect(order).to respond_to(:list_dishes)

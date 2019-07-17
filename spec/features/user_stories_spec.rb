@@ -29,12 +29,22 @@ describe "User Stories" do
     dish2 = Dish.new("Courgette Salad", 4.25)
     dish3 = Dish.new("Chips", 1.65)
     order = Order.new
-    order.add(dish,1)
+    order.add(dish, 1)
     order.add(dish2, 2)
     order.add(dish3, 3)
     sum_of_dishes = (1 * 9.00) + (4.25 * 2) + (1.65 * 3)
     expect(order.total).to eq sum_of_dishes
   end
-  # it "if total is incorrect, an error sh[ould be raised" do
+
+  it "#total_quantity should return the total number of items in the order" do
+    order = Order.new
+    quantity1 = rand(999)
+    quantity2 = rand(999)
+    order.add(dish1, quantity1)
+    order.add(dish2, quantity2)
+    expect(order.total_quantity).to eq(quantity1 + quantity2)
+  end
+  #it "if total is incorrect, an error should be raised" do
+
 
 end

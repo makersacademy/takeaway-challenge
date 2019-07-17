@@ -22,10 +22,10 @@ class Order
     @dishes
   end
 
-  def quantity
-    for dish in order do
-      puts "#{dish[0]} - #{dish[1]} "
-    end
+  def total_quantity
+    total = 0
+    @dishes.each { |_item, quantity| total += quantity }
+    total
   end
 
 end
