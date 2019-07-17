@@ -8,18 +8,18 @@ describe Order do
     expect(order).to respond_to(:total)
   end
   it "records the quantity of each dish ordered" do
-    expect(order).to respond_to(:quantity).with(1).argument
+    expect(order).to respond_to(:quantity)
   end
   it "returns a list of dishes in the order" do
     expect(order).to respond_to(:list_dishes)
   end
 
   describe "#total" do
-    let(:dish) { double :dish, quantity: 2, to_sym: :dish}
-    let(:menu) { double :menu, cost: 5}
+    let(:dish) { double :dish, price: 5}
+    let(:menu) { double :menu }
     it "returns an order total of 10 for two 5 pound dishes ordered" do
-      dishes = [{dish => 2}]
-      test_order = Order.new(dishes, menu)
+      test_order = Order.new
+      test_order.add(dish, 2)
       expect(test_order.total).to eq 10
     end
   end

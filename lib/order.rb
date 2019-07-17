@@ -1,27 +1,31 @@
 require 'menu'
 require 'order'
 require 'pry'
+require 'dish'
 
 class Order
-  def initialize(dishes = [], menu)
+  def initialize(dishes = [])
     @dishes = dishes
-    @menu = menu
   end
 
   def total
-    (@dishes.map { |dish, quantity| @menu.cost(dish) * quantity }).sum
+    sum = 0
+    @dishes.each { |dish, quantity| sum += (dish.price * quantity) }
+    sum
   end
 
-  def quantity(dish)
-    1
-  end
-
-  def add(dish_name, number = 1)
-    @dishes.push({ dish_name.to_sym => number })
+  def add(dish, number = 1)
+    @dishes.push([dish, number])
   end
 
   def list_dishes
     @dishes
+  end
+
+  def quantity
+    for dish in order do
+      puts "#{dish[0]} - #{dish[1]} "
+    end
   end
 
 end

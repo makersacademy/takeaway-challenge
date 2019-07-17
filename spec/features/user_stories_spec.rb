@@ -1,37 +1,38 @@
+require 'menu'
+require 'dish'
 describe "User Stories" do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
+  let(:dish1) { double :dish, name: "Dish1", price: 3.00 }
+  let(:dish2) { double :dish2, name: "Dish2", price: 4.95 }
   it "should provide a list of dishes with prices" do
-    menu = Menu.new({"Tuna Tartare": 9.50, "Courgette Salad": 3.75, "Chips": 2.50})
-    expect(menu.view).to eq "Tuna Tartare - £9.50\nCourgette Salad - £3.75\nChips - £2.50\n"
-  end
-  it "so user can see dishes and prices, instruct menu to provide price for a dish" do
-    menu = Menu.new({ "Tuna Tartare": 9.50 })
-    dish = "Tuna Tartare"
-    expect(menu.price(dish)).to eq "£9.50"
+    menu = Menu.new([dish1, dish2])
+    expect(menu.view).to eq "Dish1 - £3.00\nDish2 - £4.95\n"
   end
   #   As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  let(:name) { double :name }
-  let(:price) { double :price }
-  let(:dish_name) { double :dish_name, to_sym: :dish_name }
-  it "so that I can order a meal, I want to add dishes to my order" do
-    menu = Menu.new
-    order = Order.new(menu)
-    number = 1
-    expect(order.add(dish_name, number)).to eq [{ dish_name: number }]
+  it "so that I can order a meal, I want to select several dishes" do
+    #dish = Dish.new("Tuna Tartare", 9.00)
+    order = Order.new
+    order.add(dish1, 5)
+    order.add(dish2, 2)
+    expect(order.list_dishes).to eq [[dish1, 5],[dish2,2]]
   end
   #   As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
   let(:dish) { double :dish }
   it "checks that the total matches the sum of the dishes in the customer order" do
-    menu = Menu.new
-    order = Order.new(menu)
-    dishes = order.list_dishes
-    sum_of_dishes = (dishes.each { |dish| menu.price(dish) * order.quantity(dish) }).sum
+    dish = Dish.new("Tuna Tartare", 9.00)
+    dish2 = Dish.new("Courgette Salad", 4.25)
+    dish3 = Dish.new("Chips", 1.65)
+    order = Order.new
+    order.add(dish,1)
+    order.add(dish2, 2)
+    order.add(dish3, 3)
+    sum_of_dishes = (1 * 9.00) + (4.25 * 2) + (1.65 * 3)
     expect(order.total).to eq sum_of_dishes
   end
   # it "if total is incorrect, an error sh[ould be raised" do
