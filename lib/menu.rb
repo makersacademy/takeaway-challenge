@@ -8,7 +8,9 @@ attr_reader :dishes
 
 
   def print
+    dishes.map do |item, price|
+       "#{item} £#{price}".capitalize
+    end.join(", ")
 
   end
-
 end
