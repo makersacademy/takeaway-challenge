@@ -1,12 +1,20 @@
+require 'menu'
+
 class Takeaway
 
-  @menu = [
-    {:dish => "aaa", :price => 1},
-    {:dish => "bbb", :price => 2},
-    {:dish => "ccc", :price => 3},
-  ]
+  def initialize(menu:)
 
-  def menu
-    @menu
+    @menu = menu
+
   end
+
+  def print_menu
+    menu.print 
+
+  end
+
+  private
+
+  attr_reader :menu
+
 end
