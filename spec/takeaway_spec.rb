@@ -25,5 +25,22 @@ describe Takeaway do
       expect(takeaway.print_current_order).to eq "bread: 1"
     end
   end
+
+  describe '#complete_order' do
+    context 'entering the correct price' do
+      it 'confirms the order' do
+        takeaway.select("bread")
+        expect(takeaway.complete_order(5)).to eq 'Thank you, your order was placed'
+      end
+    end
+
+    context 'entering the incorrect price' do
+      it 'raises an error' do
+        takeaway.select("bread")
+        expect{takeaway.complete_order(1)}
+        .to raise_error "Cannot complete order: Incorrect Value"
+      end
+    end
+  end
     
 end

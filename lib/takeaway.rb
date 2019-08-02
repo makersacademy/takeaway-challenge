@@ -12,6 +12,14 @@ class Takeaway
     @current_order[item.to_sym] += 1
   end
 
+  def complete_order(value)
+    if value == order_price
+      "Thank you, your order was placed"
+    else
+      raise "Cannot complete order: Incorrect Value"
+    end
+  end
+
   def print_current_order
     order = ''
     @current_order.each{|item, quantity| order = order + "#{item}: #{quantity} " if quantity > 0}
@@ -23,6 +31,16 @@ class Takeaway
 
   def new_order
     Hash[@menu.map{|item , quantity| [item, 0]}]
+  end
+
+  def order_price
+    total = 0
+    @current_order.each do |item, quantity| 
+      quantity.times do
+        total += @menu[item]
+      end
+    end
+    total
   end
 
 
