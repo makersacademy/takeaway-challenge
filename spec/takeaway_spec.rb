@@ -1,7 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:takeaway) { described_class.new }
+  let(:order_time_double) { double(:order_time, delivery_time: "18:52")}
+  let(:order_time_class_double) { double(:order_time_class, new: order_time_double)}
+  let(:takeaway) { described_class.new(order_time_class_double) }
   describe '#menu' do
     it 'exists' do
       expect(takeaway.menu).to be_a(Hash)
@@ -30,7 +32,7 @@ describe Takeaway do
     context 'entering the correct price' do
       it 'confirms the order' do
         takeaway.select("bread")
-        expect(takeaway.complete_order(5)).to eq 'Thank you, your order was placed'
+        expect(takeaway.complete_order(5)).to eq 'Thank you, your order was placed and will be delivered before 18:52'
       end
     end
 

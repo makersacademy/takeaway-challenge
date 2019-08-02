@@ -2,6 +2,7 @@ require 'takeaway'
 
 describe 'user stories' do
   let(:takeaway) { Takeaway.new }
+  let(:delivery_time) { (Time.new + 3600).strftime("%H:%M") }
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -29,6 +30,10 @@ describe 'user stories' do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   describe 'while completing orders' do
     context 'entering the correct price' do
       it 'returns delivery time' do
@@ -36,7 +41,7 @@ describe 'user stories' do
         takeaway.select("apples")
         takeaway.select("apples")
         expect(takeaway.complete_order(9))
-        .to eq "Thank you, your order was placed"
+        .to eq "Thank you, your order was placed and will be delivered before #{delivery_time}"
       end
     end
 

@@ -3,9 +3,10 @@ class Takeaway
   attr_reader :menu
   attr_reader :current_order
 
-  def initialize
+  def initialize(ordertime_class = OrderTime)
     @menu = {bread: 5, apples: 2}
     @current_order = new_order
+    @ordertime_class = ordertime_class
   end
 
   def select(item)
@@ -14,7 +15,7 @@ class Takeaway
 
   def complete_order(value)
     if value == order_price
-      "Thank you, your order was placed"
+      "Thank you, your order was placed and will be delivered before #{confirm_time}"
     else
       raise "Cannot complete order: Incorrect Value"
     end
@@ -43,6 +44,8 @@ class Takeaway
     total
   end
 
-
-
+  def confirm_time
+    confirm_time = @ordertime_class.new
+    confirm_time.delivery_time
+  end
 end
