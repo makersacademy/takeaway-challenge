@@ -1,32 +1,33 @@
+require 'order'
+
 class Menu
 
 
-attr_reader :food, :order, :selection
+attr_reader :food, :order
 
 @food = {
   "yum1" => 1,
   "yum2" => 2
 }
 
-  def initialize(food = @food)
+  def initialize(order_class = Order)
+    @order_class = order_class
     @food = food
-    @order = []
-    @selection = {}
   end
-
-  def
 
   def print_food
     food.map do |item, price|
       "#{item} : £#{price}"
     end
-  end
 
-  def add(item)
-    @item = item
-    @price = food[@item]
-    @selection[@item] = @price
-    @order << @selection
-    @selection = {}
-  end
+    def add(item)
+      order = @order_class.new
+      order.add(item)
+    end
+
+
+
+end
+
+
 end

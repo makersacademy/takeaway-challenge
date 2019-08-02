@@ -1,14 +1,16 @@
 require 'takeaway'
 describe Takeaway do
 
-  subject(:takeaway) { described_class.new(menu: menu) }
+  describe "#print_menu" do
+    it "shows the menu with dishes and prices" do
+      menu_double = double :menu
+      menu_class_double = double :menu_class, new: menu_double
 
-  let(:menu) { double(:menu, print: printed_menu) }
-  let(:printed_menu) { "yum: £3" }
-  it "shows the menu with dishes and prices" do
-    expect(takeaway.print_menu).to eq("yum: £3")
+      takeaway = Takeaway.new(menu_class_double)
 
+    expect(menu_double).to receive(:print)
+    takeaway.print_menu
+
+    end
   end
-
-
 end
