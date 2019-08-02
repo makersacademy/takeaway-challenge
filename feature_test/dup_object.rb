@@ -2,9 +2,7 @@ class Dish
   # this won't be in the actual code as i want to protect changing the dishes details
   attr_accessor :name, :amount
 
-
-
-  def initialize(name,amount)
+  def initialize(name, amount)
     @name = name
     @amount = amount
   end
@@ -15,13 +13,16 @@ class Dishes
   def initialize
     @dishes = []
   end
+
   def dishes
     @dishes.dup
     # @dishes.clone
   end
+
   def add(dish)
     @dishes << dish
   end
+
   def remove(dish)
     @dishes.delete(dish)
   end
@@ -32,12 +33,11 @@ class Dishes
 
 end
 
+tasty1 = Dish.new("sausages", 2.0)
+tasty2 = Dish.new("mash", 0.5)
+tasty3 = Dish.new("gravy", 0.1)
 
-tasty1 = Dish.new("sausages",2.0)
-tasty2 = Dish.new("mash",0.5)
-tasty3 = Dish.new("gravy",0.1)
-
-gross1 = Dish.new("Mushrooms",2)
+gross1 = Dish.new("Mushrooms", 2)
 
 dinner = Dishes.new
 dinner.add(tasty1)
@@ -55,7 +55,6 @@ dinner.dishes[0].amount = 100
 puts "First dish changed?: #{dinner.dishes[0]}, #{dinner.dishes[0].name}, #{dinner.dishes[0].amount}"
 puts ""
 
-
 puts " Can i add a dish to dup??"
 puts "current dishes: #{dinner.dishes}"
 puts "adding mushrooms"
@@ -69,7 +68,6 @@ puts ""
 # dinner.dishes_raw << gross1
 # puts "current dishes updated?: #{dinner.dishes}"
 # puts ""
-
 
 # can i delete using the dup ?? ?? ?? ??
 
@@ -87,14 +85,9 @@ dinner.remove(get_rid_of_it)
 puts "number of dishes #{dinner.dishes.count}"
 puts ""
 
-
 # can i change an element
 
 puts "current dishes: #{dinner.dishes_raw}"
 dinner.dishes[0] = nil
 
 puts "current dishes: #{dinner.dishes_raw}"
-
-
-
-
