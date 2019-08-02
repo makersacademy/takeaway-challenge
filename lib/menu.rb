@@ -1,26 +1,9 @@
-
+require_relative "item_list.rb"
+require_relative "dish.rb"
 # The menu should hold the 'truth' for the dishes.
 class Menu
 
-  ERR_DUPLICATE_ITEM = "Menu Item already exists"
-  ERR_MISSING_ITEM = "Menu Item does not exist"
-  def initialize(item_class = Dish)
-    @items = []
-  end
-
-  def items
-    @items.dup
-  end
-
-  def add_item(dish)
-    raise ERR_DUPLICATE_ITEM if item_index(dish)
-    @items << dish
-  end
-
-  def remove_item(dish)
-    raise ERR_MISSING_ITEM unless item_index(dish)
-    @items.delete_at(item_index(dish))
-  end
+  include ItemList
 
   # As the object may be referenced elsewhere we want to update it in place.
   # I can't actually change a dishes name  after initialization.
