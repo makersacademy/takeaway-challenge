@@ -1,26 +1,32 @@
 class Menu
 
-#  @printed_menu =
-  def print
-  "this will be the printed menu"
 
+attr_reader :food
+
+@food = {
+  yum1: 1,
+  yum2: 2
+}
+
+  def initialize(food = @food)
+    @food = food
+  end
+
+  def
+
+  def print_food
+    food.map do |item, price|
+      "#{item} : £#{price}"
+    end
   end
 end
 
-
 # class Menu
 #
-# attr_reader :dishes
 #
-#   def initialize(dishes =)
-#     @dishes = dishes
-#   end
-#
+# def
 #
 #   def print
-#     dishes.map do |item, price|
-#        "#{item} £#{price}".capitalize
-#     end.join(", ")
+#     PRINTED_MENU
 #   end
-#
 # end
