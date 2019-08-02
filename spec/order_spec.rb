@@ -1,5 +1,10 @@
 # require 'order'
 #
+# describe Order do
+#   it
+# end
+
+#
 # describe "#item" do
 #
 # # subject(:order) { described_class.new(menu: menu) } put in below a double for menu to respond to add

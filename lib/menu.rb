@@ -3,22 +3,33 @@ require 'order'
 class Menu
 
 
-attr_reader :food, :order
+attr_reader :food, :order, :menu, :printed_menu
 
-@food = {
-  "yum1" => 1,
-  "yum2" => 2
-}
 
-  def initialize(order_class = Order)
+
+  def initialize(order_class = Order, printed_menu = Printed_menu.new)
     @order_class = order_class
-    @food = food
+    @printed_menu = printed_menu
+
   end
 
   def print_food
-    food.map do |item, price|
-      "#{item} : £#{price}"
+    printed_menu.print_printed_menu
     end
+
+
+#do all the dependency injection for the order class for add food (to basket)
+
+
+
+
+
+
+
+
+
+
+
 
     def add(item)
       order = @order_class.new
@@ -30,4 +41,6 @@ attr_reader :food, :order
 end
 
 
-end
+
+# @food.map do |item, price|
+#   "#{item} : £#{price}"

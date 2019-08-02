@@ -1,4 +1,3 @@
-require 'menu'
 
 class Order
 
@@ -15,8 +14,6 @@ end
   def show_order
     @order
   end
-
-
 
   def add(item)
     @item = item
