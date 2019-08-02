@@ -9,4 +9,6 @@ describe Takeaway do
     expect(takeaway.print_menu).to eq("yum: £3")
 
   end
+
+
 end

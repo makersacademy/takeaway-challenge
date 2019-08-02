@@ -1,15 +1,17 @@
 class Menu
 
 
-attr_reader :food
+attr_reader :food, :order, :selection
 
 @food = {
-  yum1: 1,
-  yum2: 2
+  "yum1" => 1,
+  "yum2" => 2
 }
 
   def initialize(food = @food)
     @food = food
+    @order = []
+    @selection = {}
   end
 
   def
@@ -19,14 +21,12 @@ attr_reader :food
       "#{item} : £#{price}"
     end
   end
-end
 
-# class Menu
-#
-#
-# def
-#
-#   def print
-#     PRINTED_MENU
-#   end
-# end
+  def add(item)
+    @item = item
+    @price = food[@item]
+    @selection[@item] = @price
+    @order << @selection
+    @selection = {}
+  end
+end
