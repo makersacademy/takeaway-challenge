@@ -18,4 +18,12 @@ describe Takeaway do
       expect(takeaway.current_order).to eq({bread: 1, apples: 0})
     end
   end
+
+  describe '#print_current_order' do
+    it 'prints a list of items from current order' do
+      takeaway.select("bread")
+      expect(takeaway.print_current_order).to eq "bread: 1"
+    end
+  end
+    
 end

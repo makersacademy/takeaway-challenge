@@ -18,4 +18,17 @@ describe 'user stories' do
     takeaway.select("apples")
     expect(takeaway.current_order).to eq({bread: 1, apples: 1})
   end
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  it 'customers can see a list of their orders' do
+    takeaway = Takeaway.new
+    takeaway.select("bread")
+    takeaway.select("apples")
+    takeaway.select("apples")
+    expect(takeaway.print_current_order)
+    .to eq("bread: 1 apples: 2")
+  end
+
 end
