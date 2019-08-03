@@ -51,10 +51,19 @@ describe Order do
       expect(subject.items).to eq({ "burger" => 1 })
     end
 
-    it "removes the entry if number of items = 0" do
+    it "removes the entry if number of items <= 0" do
       subject.add(burger, 3)
       subject.remove(burger, 3)
       expect(subject.items).to eq({})
+    end
+
+    it "raises an error if entry not in items" do
+      expect{ subject.remove(burger, 1) }.to raise_error "No burger currently in order"
+    end
+
+    it 'raises an error if the order is closed' do
+      subject.close
+      expect{ subject.remove(burger, 2) }.to raise_error "This order is closed"
     end
   end
 

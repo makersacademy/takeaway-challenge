@@ -15,6 +15,8 @@ class Order
 
   def remove(item, quantity)
     item = item.name
+    raise "This order is closed" if closed?
+    raise "No #{item} currently in order" if items[item].nil?
     items[item] -= quantity
     items.delete(item) if items[item] <= 0
   end
@@ -35,8 +37,8 @@ class Order
   end
 
   def add_checks(item, quantity)
-    raise "This dish is not available" unless item_on_menu?(item)
     raise "This order is closed" if closed?
+    raise "This dish is not available" unless item_on_menu?(item)
   end
 
   def item_on_menu?(item)
