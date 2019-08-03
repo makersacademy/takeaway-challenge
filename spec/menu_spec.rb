@@ -2,9 +2,9 @@ require_relative '../lib/menu.rb'
 describe Menu do
 
   let(:dishes) do {
-    Tofu: 2.50,
-    Falafel: 3.50,
-    Spaghetti: 2.99,
+    tofu: 2.50,
+    falafel: 3.50,
+    spaghetti: 2.99,
   }
   end
 
@@ -12,6 +12,10 @@ describe Menu do
 
   it 'has a list of avaible dishes' do
     expect(menu.dishes).to eq(dishes)
+  end
+
+  it 'calculates a price' do
+    expect(menu.price(:tofu)).to eq(dishes[:tofu])
   end
 
   describe "#show" do
@@ -24,11 +28,13 @@ describe Menu do
   describe "#include_dish?" do
 
     it 'checks if the dish is in menu' do
-      expect(menu.include_dish?(:Tofu)).to be true
+      expect(menu.include_dish?(:tofu)).to be true
     end
 
     it 'checks if the dish is not in menu' do
       expect(menu.include_dish?(:Kimchi)).to be false
     end
   end
+
+
 end

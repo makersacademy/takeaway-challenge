@@ -14,4 +14,8 @@ def include_dish?(dish)
   !!dishes[dish]
 end
 
+def price(dish)
+  dishes[dish]
+end
+
 end
