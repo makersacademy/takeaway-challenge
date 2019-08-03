@@ -31,6 +31,11 @@ describe Order do
     it "raises an error if dish not on the restaurant's menu" do
       expect{ subject.add(sushi, 2) }.to raise_error "This dish is not available"
     end
+
+    it "raises an error if the order is closed" do
+      subject.close
+      expect{ subject.add(burger, 1) }.to raise_error "This order is closed"
+    end
   end
 
   describe '#remove' do
@@ -42,7 +47,10 @@ describe Order do
   end
 
   describe '#close' do
-    
+    it "closes the order" do
+      subject.close
+      expect(subject).to be_closed
+    end
   end
 
   describe '#total_price' do

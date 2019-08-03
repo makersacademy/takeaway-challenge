@@ -5,6 +5,7 @@ class Order
   def initialize(restaurant)
     @restaurant = restaurant
     @items = Hash.new
+    @locked = false
   end
 
   def add(item, n)
@@ -15,6 +16,14 @@ class Order
     else
       items[item] += n
     end
+  end
+
+  def close
+    @locked = true
+  end
+
+  def closed?
+    @locked
   end
 
 end

@@ -1,7 +1,7 @@
 |       Objects           |       Methods         |            Behaviour               |
 |-------------------------|-----------------------|------------------------------------|
-|**Menu**                 |dishes_list            |-> list of Dishes                   |x
-|                         |show                   |-> formatted string of dishes       |x
+|**Menu**                 |dishes_list            |-> list of **Dishes**               |x
+|                         |show                   |-> formatted str - dishes & prices  |x
 |-------------------------|-----------------------|------------------------------------|
 |**Dish**                 |price                  |-> returns price                    |x
 |                         |name                   |-> returns name                     |x
@@ -9,8 +9,8 @@
 |**Order**                |total_price            |-> total price                      |
 |                         |close                  |-> locks Order, records time closed |
 |                         |items                  |-> Hash of **dishes**: quantity     |
-|                         |add(item, n)           |-> pushes  n items to @items        |
-|                         |                       |-> raises error if item not on menu |
+|                         |add(item, n)           |-> pushes  n items to @items        |x
+|                         |                       |-> raises error if item not on menu |x
 |                         |remove(item, n)        |-> deletes item from @items         |
 |                         |                       |-> raises error if item not in items|
 |                         |time                   |-> returns time at which            |
