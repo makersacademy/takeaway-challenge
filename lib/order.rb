@@ -9,9 +9,7 @@ class Order
   end
 
   def add(item, n)
-    raise "This dish is not available" unless @restaurant.menu.dishes_list.include?(item)
-    raise "This order is closed" if closed?
-    item = item.name
+    add_checks(item, n)
     push_item(item, n)
   end
 
@@ -24,11 +22,15 @@ class Order
   end
 
   private
+  
   def push_item(item, n)
-    if !@items[item]
-      items[item] = n
-    else
-      items[item] += n
-    end
+    item = item.name
+    !items[item] ? @items[item] = n : items[item] += n
   end
+
+  def add_checks(item, n)
+    raise "This dish is not available" unless @restaurant.menu.dishes_list.include?(item)
+    raise "This order is closed" if closed?
+  end
+
 end
