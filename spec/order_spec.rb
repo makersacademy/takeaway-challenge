@@ -58,12 +58,12 @@ describe Order do
     end
 
     it "raises an error if entry not in items" do
-      expect{ subject.remove(burger, 1) }.to raise_error "No burger currently in order"
+      expect { subject.remove(burger, 1) }.to raise_error "No burger currently in order"
     end
 
     it 'raises an error if the order is closed' do
       subject.close
-      expect{ subject.remove(burger, 2) }.to raise_error "This order is closed"
+      expect { subject.remove(burger, 2) }.to raise_error "This order is closed"
     end
   end
 
