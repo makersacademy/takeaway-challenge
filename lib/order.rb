@@ -42,9 +42,8 @@ end
     end
 
 
-
-  # def place_order
-  #   @total
-  # #  "Here is your order #{@order}, the total is #{@total}"
-  # end
+    def total_check
+      array_of_prices = @order.map{|h| (h[ "price"] * h[ "quantity"])}
+     @check_total = array_of_prices.sum
+    end
 end
