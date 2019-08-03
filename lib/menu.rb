@@ -10,4 +10,8 @@ def show
   end.join(", ")
 end
 
+def include_dish?(dish)
+  !!dishes[dish]
+end
+
 end

@@ -19,4 +19,8 @@ describe Menu do
     expect(menu.show).to eq(dishes_list)
   end
 
+  it 'checks if the dish is in menu' do
+    expect(menu.include_dish?(:Tofu)).to be true
+  end
+
 end
