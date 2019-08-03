@@ -11,16 +11,15 @@ my_menu = Menu.new
 my_menu.show_menu
 puts "------TEST OVER-------"
 
-puts "--- TEST - Add a pizza to the order, then 2 kebabs, puts the order ---"
+puts "--- TEST - Add a pizza to the order, puts the order ---"
 my_order = Order.new
 my_order.add_item(:pizza)
-my_order.add_item(:kebab, 2)
 p my_order.total_order
 puts "------TEST OVER-------"
 
-puts "--- TEST - Order per above example, check total cost of order ---"
+puts "--- TEST - Order 1 pizza and 3 kebabs, check total cost of order ---"
 my_order = Order.new
 my_order.add_item(:pizza)
-my_order.add_item(:kebab, 2)
+my_order.add_item(:kebab, 3)
 p my_order.total_cost
 puts "------TEST OVER-------"
