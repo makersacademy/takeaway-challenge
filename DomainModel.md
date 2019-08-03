@@ -1,6 +1,6 @@
 |       Objects           |       Methods         |            Behaviour               |
 |-------------------------|-----------------------|------------------------------------|
-|**Menu**                 |dishes_list            |-> list of **Dishes**               |x
+|**Menu**                 |dishes                 |-> list of **Dishes**               |x
 |                         |show                   |-> formatted str - dishes & prices  |x
 |-------------------------|-----------------------|------------------------------------|
 |**Dish**                 |price                  |-> returns price                    |x

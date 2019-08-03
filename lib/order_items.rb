@@ -54,7 +54,7 @@ class OrderItems
   end
 
   def item_on_menu?(item)
-    @menu.dishes_list.include?(item)
+    @menu.dishes.include?(item)
   end
 
 end

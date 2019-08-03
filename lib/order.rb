@@ -30,7 +30,7 @@ class Order
 
   private
   def item_price(item)
-    @restaurant.menu.dishes_list.select { |dish| dish.name == item }.first.price 
+    @restaurant.menu.dishes.select { |dish| dish.name == item }.first.price 
   end
 
   def empty_basket?

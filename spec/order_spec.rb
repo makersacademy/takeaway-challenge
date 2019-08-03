@@ -5,7 +5,7 @@ describe Order do
   let(:burger) { double("burger", name: "burger", price: 15) }
   let(:pasta) { double("pasta", name: "pasta", price: 10) }
   let(:sushi) { double("sushi", name: "sushi", price: 22) }
-  let(:menu) { double("menu", :dishes_list => [burger, pasta]) }
+  let(:menu) { double("menu", :dishes => [burger, pasta]) }
   let(:items) { double("order_items", :list => { "burger" => 2, "pasta" =>1 }) }
   let(:empty_items) { double("empty order list", :list => {}) }
   let(:restaurant) { double("restaurant", menu: menu) }
