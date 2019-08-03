@@ -50,4 +50,7 @@ describe Order do
     expect(subject.total_check).to eq 11
 
     end
+    it "sends an error message if the item doesn't exist" do
+      expect{ order.add("Sweets", 1) }.to raise_error "That item doesn't exist"
   end
+end

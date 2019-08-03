@@ -18,6 +18,8 @@ end
 
 
   def add(item, quantity)
+
+    fail "That item doesn't exist" if Printed_menu::PRINTED_MENU.has_key?(item) == false
     @item = item
     @quantity = quantity
     @price = Printed_menu::PRINTED_MENU[@item]
@@ -37,7 +39,6 @@ end
    send_sms = @send_sms_class.new
    send_sms.send_message
    "Here is your order #{@order}, the total is #{@total}"
-
 
     end
 
