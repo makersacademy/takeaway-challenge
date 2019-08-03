@@ -1,5 +1,16 @@
-Takeaway Challenge
-==================
+## README
+
+A takeaway program that allows users to select dishes from a menu, place an order and receive a confirmation text messages, showing what time their food will arrive.
+
+### Getting started
+
+Fork this repo, and clone to your local machine
+Run the command gem install bundle
+When the installation completes, run bundle
+
+### Usage
+
+In IRB, run require
 ```
                             _________
               r==           |       |

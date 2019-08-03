@@ -1,10 +1,6 @@
-require 'order'
-
-
 class Takeaway
 
   def initialize(menu_class = Menu)
-    #dont forget to initialize the other classes here
     @menu_class = menu_class
   end
 
@@ -15,5 +11,5 @@ class Takeaway
 
 private
 
-attr_reader :menu, :order
+  attr_reader :menu, :order
 end

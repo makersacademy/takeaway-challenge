@@ -1,18 +1,12 @@
 require 'menu'
 
-  describe Menu do
+describe Menu do
 
-    describe "#print" do
-
-
-        it "has a list of names and prices" do
-
-           printed_menu_double = double :printed_menu, print_printed_menu: "test"
-
-
-           menu = Menu.new(printed_menu_double)
-          expect(menu.print).to eq("Water" => 3, "Tea" => 4, "Coffee" => 2)
-
-        end
+  describe "#print" do
+    it "has a list of names and prices" do
+      printed_menu_double = double :printed_menu, print_printed_menu: "test"
+      menu = Menu.new(printed_menu_double)
+      expect(menu.print).to eq("Water" => 3, "Tea" => 4, "Coffee" => 2)
     end
+  end
 end
