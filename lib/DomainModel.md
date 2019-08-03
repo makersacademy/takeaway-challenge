@@ -7,8 +7,8 @@
 |                         |name                   |-> returns name                     |x
 |-------------------------|-----------------------|------------------------------------|
 |**Order**                |total_price            |-> total price                      |
-|                         |close                  |-> locks items, records time closed |
-|                         |closed?                |-> true if order is locked          |
+|                         |checkout               |-> locks items, records time closed|
+|                         |checked_out?           |-> true if checked out              |
 |                         |items                  |-> OrderItems instance              |
 |                         |time                   |-> returns time at which            |
 |                         |                       |   order was placed                 |
