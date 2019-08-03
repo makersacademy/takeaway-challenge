@@ -7,7 +7,7 @@ require 'menu'
 
         it "has a list of names and prices" do
 
-          printed_menu_double = double :printed_menu
+           printed_menu_double = double :printed_menu, print_printed_menu: "test"
 
 
            menu = Menu.new(printed_menu_double)

@@ -1,27 +1,24 @@
 require 'order'
+require 'menu'
 
 describe Order do
+  subject(:order) { described_class.new(menu)}
+  let(:menu) { instance_double("Menu") }
 
-  # let(:food) { "Food test" }
-  #
-  # let(:item1) { ":yum1=>1" }
-  # let(:item2) { ":yum2=>2" }
-  #
-
-
- it "can add one dishes to the order" do
-
-  subject.add("Water", 1)
-  expect(subject.show_order).to eq([{"item"=>"Water", "price"=>3, "quantity"=>1}])
-
+  let(:printed_menu) do
+    { "Water" => 3, "Tea" => 4, "Coffee" => 2 }
+  end
+  let(:dishes) do
+    [{"item"=>"Water", "price"=>3, "quantity"=>1}, {"item"=>"Tea", "price"=>4, "quantity"=>2}]
   end
 
-  it "can add several dishes to the order" do
 
-    subject.add("Water", 1)
-    subject.add("Tea", 2)
-    expect(subject.show_order).to eq([{"item"=>"Water", "price"=>3, "quantity"=>1},
-       {"item"=>"Tea", "price"=>4, "quantity"=>2}])
+ it "can add several dishes to the order" do
+
+  order.add("Water", 1)
+  order.add("Tea", 2)
+  expect(order.show_order).to eq(dishes)
+
   end
 
 
@@ -37,19 +34,19 @@ describe Order do
      end
 
     it "can place the order by giving the list of dishes, their quantities and total cost" do
-      send_sms_double = double :send_sms, send_message: "test"
+      send_sms_double = double :send_sms, send_message: "test, we already know it sends a text"
       send_sms_class_double = double :send_sms_class, new: send_sms_double
       order = Order.new(send_sms_class_double)
       order.add("Water", 1)
       order.add("Tea", 2)
-      expect(order.place_order).to eq "Here is your order [{\"item\"=>\"Water\", \"price\"=>3, \"quantity\"=>1}, {\"item\"=>\"Tea\", \"price\"=>4, \"quantity\"=>2}], the total is 11"
+      expect(order.place_order).to eq "Here is your order #{dishes}, the total is 11"
     end
 
 
 
   it "can check the total of the order" do
-    subject.add("Water", 1)
-    subject.add("Tea", 2)
+    order.add("Water", 1)
+    order.add("Tea", 2)
     expect(subject.total_check).to eq 11
 
     end
