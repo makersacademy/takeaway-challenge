@@ -15,5 +15,12 @@ puts "--- TEST - Add a pizza to the order, then 2 kebabs, puts the order ---"
 my_order = Order.new
 my_order.add_item(:pizza)
 my_order.add_item(:kebab, 2)
-p my_order
+p my_order.total_order
+puts "------TEST OVER-------"
+
+puts "--- TEST - Order per above example, check total cost of order ---"
+my_order = Order.new
+my_order.add_item(:pizza)
+my_order.add_item(:kebab, 2)
+p my_order.total_cost
 puts "------TEST OVER-------"
