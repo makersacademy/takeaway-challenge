@@ -24,22 +24,28 @@ describe Order do
        {"item"=>"Tea", "price"=>4, "quantity"=>2}])
   end
 
-  describe "#place_order and text message" do
-    #NEED TO ADD TOTAL
 
-    it "can place the order by giving the list of dishes, their quantities and total cost" do
+    it "sends a text message when order is placed" do
       send_sms_double = double :send_sms
       send_sms_class_double = double :send_sms_class, new: send_sms_double
       order = Order.new(send_sms_class_double)
       order.add("Water", 1)
       order.add("Tea", 2)
-
       expect(send_sms_double).to receive(:send_message)
       order.place_order
-      # expect(subject.place_order).to eq "Here is your order [{\"item\"=>\"Water\", \"price\"=>3, \"quantity\"=>1}, {\"item\"=>\"Tea\", \"price\"=>4, \"quantity\"=>2}], the total is 11"
 
      end
-   end
+
+    it "can place the order by giving the list of dishes, their quantities and total cost" do
+      send_sms_double = double :send_sms, send_message: "test"
+      send_sms_class_double = double :send_sms_class, new: send_sms_double
+      order = Order.new(send_sms_class_double)
+      order.add("Water", 1)
+      order.add("Tea", 2)
+      expect(order.place_order).to eq "Here is your order [{\"item\"=>\"Water\", \"price\"=>3, \"quantity\"=>1}, {\"item\"=>\"Tea\", \"price\"=>4, \"quantity\"=>2}], the total is 11"
+    end
+
+
 
   it "can check the total of the order" do
     subject.add("Water", 1)
