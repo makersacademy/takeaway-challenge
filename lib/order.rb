@@ -14,7 +14,9 @@ class Order
   end
 
   def remove(item, quantity)
-    
+    item = item.name
+    items[item] -= quantity
+    items.delete(item) if items[item] <= 0
   end
 
   def close

@@ -50,6 +50,12 @@ describe Order do
       subject.remove(burger, 2)
       expect(subject.items).to eq({ "burger" => 1 })
     end
+
+    it "removes the entry if number of items = 0" do
+      subject.add(burger, 3)
+      subject.remove(burger, 3)
+      expect(subject.items).to eq({})
+    end
   end
 
   describe '#items' do
