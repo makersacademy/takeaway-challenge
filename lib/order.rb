@@ -18,9 +18,7 @@ class Order
     cost = 0
     @total_order.each do |order_hash|
       order_hash.each do |item, quantity|
-        per_item_cost = my_menu.menu[item]
-        cost_of_items = per_item_cost * quantity
-        cost += cost_of_items
+        cost += (my_menu.menu[item] * quantity)
       end
     end
     cost
