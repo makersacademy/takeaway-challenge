@@ -10,6 +10,7 @@ class Order
 
   def add(item, n)
     raise "This dish is not available" unless @restaurant.menu.dishes_list.include?(item)
+    raise "This order is closed" if closed?
     item = item.name
     if !@items[item]
       items[item] = n

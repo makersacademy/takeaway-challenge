@@ -8,6 +8,7 @@
 |-------------------------|-----------------------|------------------------------------|
 |**Order**                |total_price            |-> total price                      |
 |                         |close                  |-> locks Order, records time closed |
+|                         |closed?                |-> true if order is locked          |
 |                         |items                  |-> Hash of **dishes**: quantity     |
 |                         |add(item, n)           |-> pushes  n items to @items        |x
 |                         |                       |-> raises error if item not on menu |x
