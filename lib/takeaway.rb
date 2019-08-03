@@ -1,32 +1,33 @@
+require './lib/menu.rb'
+require './lib/order.rb'
+
 class Takeaway
 
-  attr_reader :order, :order_price, :menu
+  attr_reader :order, :menu
 
   def initialize
-    @order = []
-    @order_price = 0
-    @menu = { :pepperoni => 10,
-             :hawaiian => 12,
-             :meat_feast => 15
-            }
+    @order = Order.new
+    @menu = Menu.new
   end
 
   def menu_select(order, amount = 1)
-    amount.times { @order << @menu.slice(order) }
+    amount.times { @order.basket << @menu.menu_list.slice(order) }
   end
 
-  def order_total
-    @order.each do |order|
-      order.each do |key, value|
-        @order_price += value
-      end
-    end
+  def view_basket
+    @order.basket
+  end
+
+  def view_menu
+    @menu.menu_list
+  end
+
+  def view_total_price
+    @order.total_price
   end
 
 end
 
-# test = Takeaway.new
-# test.menu_select(:pepperoni,2)
-# test.menu_select(:hawaiian, 2)
-# test.order_total
-# p test.order_price
+test = Takeaway.new
+test.menu_select(:pepperoni, 2)
+puts test.view_menu
