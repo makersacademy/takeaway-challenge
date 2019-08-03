@@ -1,17 +1,14 @@
-
+require 'send_sms'
 class Order
 
 
 attr_reader :order, :menu, :total
 
 
-def initialize
+def initialize(send_sms_class = Send_sms)
   @selection = {}
   @order = []
-
-
-
-
+  @send_sms_class = send_sms_class
 end
 
   def show_order
@@ -37,8 +34,11 @@ end
 
     array_of_prices = @order.map{|h| (h[ "price"] * h[ "quantity"])}
    @total = array_of_prices.sum
-
+   send_sms = @send_sms_class.new
+   send_sms.send_message
    "Here is your order #{@order}, the total is #{@total}"
+
+
     end
 
 

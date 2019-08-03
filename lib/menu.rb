@@ -11,7 +11,7 @@ attr_reader :food, :order, :menu, :printed_menu
 
   end
 
-  def print_food
+  def print
     printed_menu.print_printed_menu
     end
 
