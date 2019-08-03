@@ -11,6 +11,7 @@ class Order
   end
 
   def checkout
+    raise "Empty basket!" if empty_basket?
     items.lock
     @closed = true
   end
@@ -30,6 +31,10 @@ class Order
   private
   def item_price(item)
     @restaurant.menu.dishes_list.select { |dish| dish.name == item }.first.price 
+  end
+
+  def empty_basket?
+    items.list.empty?
   end
 
 end

@@ -7,6 +7,7 @@ describe Order do
   let(:sushi) { double("sushi", name: "sushi", price: 22) }
   let(:menu) { double("menu", :dishes_list => [burger, pasta]) }
   let(:items) { double("order_items", :list => { "burger" => 2, "pasta" =>1 }) }
+  let(:empty_items) { double("empty order list", :list => {}) }
   let(:restaurant) { double("restaurant", menu: menu) }
 
   subject { Order.new(restaurant, items) }
@@ -16,6 +17,12 @@ describe Order do
       allow(items).to receive(:lock)
       subject.checkout
       expect(items).to have_received(:lock)
+    end
+
+    it "raises an error if the order is empty" do
+      subject = Order.new(restaurant, empty_items)
+      allow(empty_items).to receive(:lock)
+      expect{ subject.checkout }.to raise_error "Empty basket!"
     end
   end
 
