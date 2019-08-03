@@ -17,7 +17,7 @@ end
 
   def add(item)
     @item = item
-    @price = food[@item]
+    @price = Printed_menu::PRINTED_MENU[@item]
     @selection[@item] = @price
     @order << @selection
     @selection = {}

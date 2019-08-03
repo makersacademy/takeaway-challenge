@@ -1,5 +1,3 @@
-require 'order'
-
 class Menu
 
 
@@ -18,23 +16,12 @@ attr_reader :food, :order, :menu, :printed_menu
     end
 
 
-#do all the dependency injection for the order class for add food (to basket)
-
-
-
-
-
-
-
-
-
-
-
-
-    def add(item)
-      order = @order_class.new
-      order.add(item)
-    end
+    # #do all the dependency injection for the order class for add food (to basket)
+    #
+    #     def add(item)
+    #       order = @order_class.new
+    #       order.add(item)
+    #     end
 
 
 

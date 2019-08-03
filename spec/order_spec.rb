@@ -1,10 +1,16 @@
-# require 'order'
-#
-# describe Order do
-#   it
-# end
+require 'order'
 
-#
+describe Order do
+
+  let(:item1) { "Water" }
+
+ it "can add one dishes to the order" do
+  subject.add(item1)
+  expect(subject.show_order).to eq [{"Water"=>3}]
+
+  end
+end
+# maybe the user just has to enter it as a item price hash anyway, so printed menu doesnt actually have to do anything
 # describe "#item" do
 #
 # # subject(:order) { described_class.new(menu: menu) } put in below a double for menu to respond to add
