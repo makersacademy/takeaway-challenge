@@ -6,6 +6,7 @@ class Order
     @selection = {}
     @order = []
     @send_sms_class = send_sms_class
+    @test = {}
   end
 
   def show_order
@@ -17,7 +18,6 @@ class Order
     @item = item
     @quantity = quantity
     @price = PrintedMenu::PRINTED_MENU[@item]
-
     @selection.store("Item", @item)
     @selection.store("Price", @price)
     @selection.store("Quantity", @quantity)
