@@ -1,3 +1,5 @@
+require 'order'
+
 class Takeaway
 
   def initialize(menu_class = Menu)

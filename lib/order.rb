@@ -2,12 +2,12 @@
 class Order
 
 
-attr_reader :order, :selection, :menu
+attr_reader :order, :menu
 
 
 def initialize
-  @order = []
   @selection = {}
+  @order = []
 
 end
 
@@ -15,13 +15,22 @@ end
     @order
   end
 
-  def add(item)
+  def add(item, quantity)
     @item = item
+    @quantity = quantity
     @price = Printed_menu::PRINTED_MENU[@item]
-    @selection[@item] = @price
+
+    @selection.store("item", @item)
+    @selection.store("price", @price)
+    @selection.store("quantity", @quantity)
     @order << @selection
     @selection = {}
   end
+
+  # def place_order
+  #
+  #
+  # end
 
 
 
