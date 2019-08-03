@@ -1,10 +1,10 @@
-require 'order_items'
+require_relative 'order_items'
 
 class Order
 
   attr_reader :items
 
-  def initialize(restaurant, items = OrderItems.new(restaurant))
+  def initialize(restaurant, items = OrderItems.new(restaurant.menu))
     @restaurant = restaurant
     @items = items
     @closed = false
