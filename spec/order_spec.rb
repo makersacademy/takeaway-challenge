@@ -12,12 +12,8 @@ describe Order do
   end
 
   before do
-    allow(menu).to receive(:include_dish?).with(:duck).and_return(true)
-    allow(menu).to receive(:include_dish?).with(:beer).and_return(true)
-    allow(menu).to receive(:include_dish?).with(:fries).and_return(true)
-    allow(menu).to receive(:price).with(:duck).and_return(2.00)
-    allow(menu).to receive(:price).with(:beer).and_return(2.50)
-    allow(menu).to receive(:price).with(:fries).and_return(1.50)
+    dish_receiver
+    price_receiver
   end
 
   describe "#add" do
@@ -44,6 +40,18 @@ describe Order do
     order.add(:duck,1)
     order.add(:beer,3)
     order.add(:fries,3)
+  end
+
+  def dish_receiver
+    allow(menu).to receive(:include_dish?).with(:duck).and_return(true)
+    allow(menu).to receive(:include_dish?).with(:beer).and_return(true)
+    allow(menu).to receive(:include_dish?).with(:fries).and_return(true)
+  end
+
+  def price_receiver
+    allow(menu).to receive(:price).with(:duck).and_return(2.00)
+    allow(menu).to receive(:price).with(:beer).and_return(2.50)
+    allow(menu).to receive(:price).with(:fries).and_return(1.50)
   end
 
 end
