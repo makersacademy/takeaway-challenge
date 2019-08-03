@@ -27,5 +27,14 @@ describe Restaurant do
       expect(subject.new_order(order)).to eq order
     end    
   end
+
+  describe '#place_order' do
+    it 'calls checkout on order' do
+      subject.new_order(order)
+      allow(order).to receive(:checkout)
+      expect(order).to receive :checkout
+      subject.place_order
+    end
+  end
   
 end

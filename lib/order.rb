@@ -19,4 +19,17 @@ class Order
     @closed
   end
 
+  def total_price
+    total = 0
+    items.list.each { |item, quantity|
+      total += item_price(item) * quantity
+    }
+    total
+  end
+
+  private
+  def item_price(item)
+    @restaurant.menu.dishes_list.select { |dish| dish.name == item }.first.price 
+  end
+
 end

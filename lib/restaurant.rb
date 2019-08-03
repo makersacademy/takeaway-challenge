@@ -12,4 +12,8 @@ class Restaurant
     @order = order
   end
 
+  def place_order
+    @order.checkout
+  end
+
 end

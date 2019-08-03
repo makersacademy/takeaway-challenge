@@ -30,4 +30,10 @@ describe Order do
       expect(subject).to be_checked_out
     end
   end 
+
+  describe "#total_price" do
+    it "returns the total" do
+      expect(subject.total_price).to eq 40
+    end
+  end
 end
