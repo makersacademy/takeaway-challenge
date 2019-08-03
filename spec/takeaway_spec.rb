@@ -5,7 +5,7 @@ describe Takeaway do
   let(:dishes) {{kimchi: 3, bibimbap: 2, soju: 1}}
   let(:menu_list) {'Spaghetti: £4.50'}
   let(:menu) {double(:menu, show: menu_list)}
-  subject(:takeaway) {described_class.new(menu: menu, order: order, sms: sms)}
+  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms, config: {}) }
   let(:sms) {double :sms, deliver: nil}
 
   before do

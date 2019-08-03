@@ -7,10 +7,10 @@ class Takeaway
 
   attr_reader :menu, :order, :sms
 
-  def initialize(menu: ,order: nil, sms: nil)
+  def initialize(menu:, config:, order: nil, sms: nil)
     @menu = menu
     @order = order || Order.new(menu)
-    @sms = sms || SMS.new
+    @sms = sms || SMS.new(config)
   end
 
   def show_menu
