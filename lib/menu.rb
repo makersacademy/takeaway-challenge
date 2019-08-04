@@ -5,11 +5,12 @@ class Menu
   attr_reader :menu_list
 
   def initialize
-    @menu_list = { :pepperoni => 10,
-                   :hawaiian => 12,
-                   :meat_feast => 15,
-                   :vegetarian => 9,
-                   :spicy_sauasage => 11
+    @menu_list = { 'pepperoni' => 10,
+                   'hawaiian' => 12,
+                   'meat_feast' => 15,
+                   'vegetarian' => 9,
+                   'spicy_sauasage' => 11,
+                   'awesome_sauce' => 0.59
                   }
   end
 
