@@ -71,4 +71,7 @@ puts "Checked out? : #{restaurant.order.checked_out?}"
 
 For a detailed breakdown of the classes and their methods, please refer to the [Domain Model](https://github.com/Clepsyd/takeaway-challenge/blob/master/DomainModel.md).
 
-<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+-------------------------
+
+*<div>Scooter Icon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>*
+*(Cropped)[Photo](https://unsplash.com/photos/4_jhDO54BYg) by Dan Gold taken from unsplash.com - [His website](https://www.danielcgold.com/)*
