@@ -28,6 +28,14 @@ class Order
     }
     total
   end
+  
+  def confirm_payment
+    @paid = true
+  end
+
+  def paid?
+    @paid
+  end
 
   private
   def item_price(item)

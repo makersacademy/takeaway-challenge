@@ -6,7 +6,7 @@ describe Order do
   let(:pasta) { double("pasta", name: "pasta", price: 10) }
   let(:sushi) { double("sushi", name: "sushi", price: 22) }
   let(:menu) { double("menu", :dishes => [burger, pasta]) }
-  let(:items) { double("order_items", :list => { "burger" => 2, "pasta" =>1 }) }
+  let(:items) { double("order_items", :list => { "burger" => 2, "pasta" => 1 }) }
   let(:empty_items) { double("empty order list", :list => {}) }
   let(:restaurant) { double("restaurant", menu: menu) }
 
@@ -22,7 +22,7 @@ describe Order do
     it "raises an error if the order is empty" do
       subject = Order.new(restaurant, empty_items)
       allow(empty_items).to receive(:lock)
-      expect{ subject.checkout }.to raise_error "Empty basket!"
+      expect { subject.checkout }.to raise_error "Empty basket!"
     end
   end
 
@@ -44,10 +44,10 @@ describe Order do
     end
   end
 
-  describe "confirm_payment" do
+  describe "#confirm_payment" do
     it "registers an order has been paid for" do
       subject.confirm_payment
-      expect(subject).to be paid
+      expect(subject).to be_paid
     end
   end
 end
