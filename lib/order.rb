@@ -3,7 +3,7 @@ require './lib/dishes.rb'
 class Order
 
   def initialize
-  @customer_order = []
+    @customer_order = []
 
   end
 
@@ -17,8 +17,8 @@ class Order
   end
 
   def select_dish(dish_number)
-    if Dishes.list[dish_number -1].available
-      @customer_order << Dishes.list[dish_number -1]
+    if Dishes.list[dish_number - 1].available
+      @customer_order << Dishes.list[dish_number - 1]
     else 
       puts "Sorry this dish is not available."  
     end  
@@ -34,4 +34,3 @@ class Order
 
   # end 
 end
-
