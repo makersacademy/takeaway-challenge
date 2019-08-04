@@ -5,6 +5,11 @@ class Order
 
   def initialize
     @total_order = []
+    @my_menu = Menu.new
+  end
+
+  def read_menu
+    @my_menu.show_menu
   end
 
   def add_item(item, amount = 1)
@@ -14,11 +19,10 @@ class Order
   end
 
   def total_cost
-    my_menu = Menu.new
     cost = 0
     @total_order.each do |order_hash|
       order_hash.each do |item, quantity|
-        cost += (my_menu.menu[item] * quantity)
+        cost += (@my_menu.menu[item] * quantity)
       end
     end
     cost

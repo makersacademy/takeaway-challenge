@@ -17,9 +17,14 @@ my_order.add_item(:pizza)
 p my_order.total_order
 puts "------TEST OVER-------"
 
-puts "--- TEST - Order 1 pizza and 3 kebabs, check total cost of order ---"
+puts "--- TEST - Order 1 pizza and 3 kebabs, puts total cost of order (£31) ---"
 my_order = Order.new
 my_order.add_item(:pizza)
 my_order.add_item(:kebab, 3)
 p my_order.total_cost
+puts "------TEST OVER-------"
+
+puts "--- TEST - See menu from Order class ---"
+my_order = Order.new
+my_order.read_menu
 puts "------TEST OVER-------"
