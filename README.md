@@ -1,82 +1,69 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
+#### *This program is a ruby representation of a basic takeaway application*
 
-Instructions
--------
+___••Installation instructions••___
+- Run `bundle install`
+- To enable the text functionality of the program you will need to register a free account on twilio and create a phone number
+- Set up environment variables
+    - Edit your bash_profile file as below.
+    - Make sure to make a copy before making any changes to your bash_profile file.
+    ```bash
+    $ export TWILIO_SID="Your Account SID here"
+    $ export TWILIO_AUTH_TOKEN="Your Auth token here"
+    $ export TWILIO_PHONE="Your twilio phone number here"
+    $ export PHONE_NUMBER="Your phone number here"
+    ```
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## User-spec fulfilment
+```ruby
+takeaway = Takeaway.new
+# As a customer
+# So that I can check if I want to order something
+# I would like to see a list of dishes with prices
+puts takeaway.view_menu
 
-Task
------
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+# As a customer
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
+takeaway.menu_select('pepperoni', 3)
+takeaway.menu_select('hawaiian', 1)
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+puts takeaway.view_basket
+puts takeaway.view_total_price
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+takeaway.make_payment(42)
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## How to use
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+__**IRB**__
+```ruby
+2.5.0 :001 > require './lib/takeaway.rb'
+ => true
+2.5.0 :002 > t = Takeaway.new
+ => #<Takeaway:0x00007ffe058d4d38 @order=#<Order:0x00007ffe058d4d10 @basket=[], @total_price=0>, @menu=#<Menu:0x00007ffe058d4cc0 @menu_list={"pepperoni"=>10, "hawaiian"=>12, "meat feast"=>15, "vegetarian"=>9, "spicy sausage"=>11, "awesome sauce"=>0.59}>, @text_message=#<ConfirmationText:0x00007ffe058d4c48>>
+2.5.0 :003 > t.view_menu
+ => {"pepperoni"=>10, "hawaiian"=>12, "meat feast"=>15, "vegetarian"=>9, "spicy sausage"=>11, "awesome sauce"=>0.59}
+2.5.0 :004 > t.menu_select 'pepperoni'
+ => "1x pepperoni added to your basket"
+2.5.0 :005 > t.menu_select 'spicy sausage', 2
+ => "2x spicy sausage added to your basket"
+2.5.0 :006 > t.view_basket
+ => ["pepperoni = £10", "spicy sausage = £11", "spicy sausage = £11"]
+2.5.0 :007 > t.view_total_price
+ => "Total  = £32"
+2.5.0 :008 > t.make_payment(32)
+ => "Thank you for your order, you should receive a confirmation text message soon"
+2.5.0 :009 >
+A text message will be sent, confirming the time of arrival as one hour from the order time.
+```
