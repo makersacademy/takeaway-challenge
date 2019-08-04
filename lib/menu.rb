@@ -1,6 +1,6 @@
 class Menu
 
-  
+  # Menu hash
   def menu_items
     { "Spaghetti Bolognese": 6.5, 
       "Veggie Burger": 7.5,
@@ -23,7 +23,7 @@ class Menu
     end
     @menu
   end
-
+  # Prints menu on the screen
   def view_menu
     puts menu
   end
