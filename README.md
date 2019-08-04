@@ -68,4 +68,4 @@ puts "Checked out? : #{restaurant.order.checked_out?}"
 
 ```
 
-For a detailed breakdown of the classes and their methods, please refer to the Domain Model file.
+For a detailed breakdown of the classes and their methods, please refer to the [Domain Model](https://github.com/Clepsyd/takeaway-challenge/blob/master/DomainModel.md).
