@@ -1,82 +1,77 @@
-Takeaway Challenge
+![alt text](./assets/scooter.png "Scooter")  Takeaway Challenge  ![alt text](./assets/scooter.png "Scooter")
 ==================
+![alt text](./assets/food.png "Colorful dishes")
+
+#### *This program is a toolkit of classes and methods in Ruby that could potentially be used to create a takeaway app. It can handle a restaurant having a menu, taking orders and notifying the customer via text, using the Twilio API.*
+## How to install
+- Run `bundle install`
+- Register a free account on twilio: https://www.twilio.com/ and create a phone number
+- Set up environment variables:
+  Find your *Phone number*, *Accound SID* and *Auth token* on your [twilio dashboard](https://www.twilio.com/console). Then create new environment variables in your terminal to store them like so: 
+    - On UNIX-based systems (Don't type in the "$"!):
+    ```bash
+    $ export TWILIO_SID="Your Account SID here" # (Quote marks required !)
+    $ export TWILIO_AUTH_TOKEN="Your Auth token here" # (Quote marks required !)
+    $ export TWILIO_PHONE="Your twilio phone number here" # (Quote marks required !)
+    ```
+    *You can add those lines to your desired config file (~/.profile, ~/.bashrc, ~/.zshrc and friends...) to avoid having to type it every time.*
+
+
+
+    - On Windows systems open PowerShell and type (without the ">"):
+    ```powershell
+    > setx TWILIO_SID="Your Account SID here" # (Quote marks required !)
+    > setx TWILIO_AUTH_TOKEN="Your Auth token here" # (Quote marks required !)
+    > setx TWILIO_PHONE="Your twilio phone number here" # (Quote marks required !)  
+    ```
+## How to use
+
+Here is a basic feature test example of how the program can be used:
+```ruby
+require_relative '../lib/takeaway.rb'
+
+salad = Dish.new("Salad", 10)
+chicken = Dish.new("Chicken", 13)
+fries = Dish.new("Fries", 4)
+fish = Dish.new("Fish", 17)
+
+menu = Menu.new([salad, chicken, fries, fish])
+
+restaurant = Restaurant.new(menu)
+phone_number = ENV["MY_PHONE"]
+
+# Have a look at the menu:
+restaurant.menu.show
+
+# Start a new order with my phone number:
+restaurant.new_order(phone_number)
+
+# Add an item to my order:
+restaurant.order.items.add(salad, 1)
+
+# Check my order:
+puts restaurant.order_summary
+
+# Add 3 items of the same kind to my order:
+restaurant.order.items.add(fries, 3)
+
+# Remove one of the previous items:
+restaurant.order.items.remove(fries, 1)
+
+# Check my order again:
+puts restaurant.order_summary
+
+# Checking out with the correct price:
+restaurant.place_order(18) # A text was sent to the number provided earlier.
+
+# The order is now closed:
+puts "Checked out? : #{restaurant.order.checked_out?}"
+
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
+For a detailed breakdown of the classes and their methods, please refer to the [Domain Model](https://github.com/Clepsyd/takeaway-challenge/blob/master/DomainModel.md).
 
-Instructions
--------
+-------------------------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+*<div>Scooter Icon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>*
+*(Cropped)[Photo](https://unsplash.com/photos/4_jhDO54BYg) by Dan Gold taken from unsplash.com - [His website](https://www.danielcgold.com/)*

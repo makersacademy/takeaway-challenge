@@ -1,0 +1,5 @@
+require_relative '../lib/dish.rb'
+require_relative '../lib/menu.rb'
+require_relative '../lib/order_items.rb'
+require_relative '../lib/order.rb'
+require_relative '../lib/restaurant.rb'
