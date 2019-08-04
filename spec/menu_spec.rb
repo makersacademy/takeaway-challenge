@@ -2,12 +2,12 @@ require 'menu'
 
 describe Menu do
   
-  let(:menu_item) { "7. Vanilla Ice Cream £3.00" }
+  let(:menu_item) { "7. vanilla ice cream £3.00" }
 
   describe "#dishes" do
     # Test to check whether dishes have prices
     it "has a price" do
-      expect(subject.dishes.values).to all( be_a(Float) )
+      expect(subject.dishes.values).to all(be_a(Float))
     end
   end
 
