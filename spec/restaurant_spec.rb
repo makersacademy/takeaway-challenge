@@ -19,6 +19,8 @@ describe Restaurant do
 
   before do
     allow(order).to receive(:checkout)
+    allow(order).to receive(:paid?)
+    allow(order).to receive(:confirm_payment)
     allow(subject).to receive(:notify).and_return("Text sent!")
   end
    
@@ -55,6 +57,12 @@ describe Restaurant do
     it "returns a summary of the order" do
       subject.new_order(order)
       expect(subject.place_order(40)).to eq(summary)
+    end
+
+    it "raises an error if the order has already been paid" do
+      subject.new_order(order)
+      allow(order).to receive(:paid?).and_return(true)
+      expect{ subject.place_order(40) }.to raise_error "This order has already been paid for."
     end
   end
   

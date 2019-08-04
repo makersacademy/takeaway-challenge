@@ -2,10 +2,11 @@ require_relative 'order_items'
 
 class Order
 
-  attr_reader :items
+  attr_reader :items, :customer_number
 
-  def initialize(restaurant, items = OrderItems.new(restaurant.menu))
+  def initialize(restaurant, customer_number, items = OrderItems.new(restaurant.menu))
     @restaurant = restaurant
+    @customer_number = customer_number
     @items = items
     @paid = false
     @closed = false

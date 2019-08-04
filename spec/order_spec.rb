@@ -9,8 +9,9 @@ describe Order do
   let(:items) { double("order_items", :list => { "burger" => 2, "pasta" => 1 }) }
   let(:empty_items) { double("empty order list", :list => {}) }
   let(:restaurant) { double("restaurant", menu: menu) }
+  let(:number) { "07777777777" }
 
-  subject { Order.new(restaurant, items) }
+  subject { Order.new(restaurant, number, items) }
 
   describe "#checkout" do
     it "calls lock on the items" do
