@@ -9,18 +9,23 @@ describe Order do
   let(:order){ described_class.new({ 'A' => 1550, "B" => 1050 })}
   it 'takes method place order' do
     expect(order).to respond_to(:placeorder)
+    end
   end
-end
 
-context 'test time method produces time formatted to string length 5' do
-  let(:order){ described_class.new({ 'A' => 1550, "B" => 1050 })}
-  it 'converts time to readable 4 character format' do
-    order.time = Time.now
-    expect(order.delivery_time_reformat.length).to eq(5)
+
+  context 'view_menu accepts array as argument' do
+    let(:order){ described_class.new({ "A" => 1050 , "B" => 1130})}
+    it 'iterates through an array to show menu' do
+      # expect(order.view_menu).to eq("A:15.50/nB:10.50")
+      STDOUT.should_receive(:puts).with('A:10.50')
+      STDOUT.should_receive(:puts).with('B:11.30')
+      order.view_menu
+    end
   end
- end
-end
 
+
+
+end
 
 
 #  allow(takeout).to receieve(:order).and_return

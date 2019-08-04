@@ -17,18 +17,18 @@ class Takeout
   end
 
   def confirmorder(number, message, change)
-    text(message, change)
+    text(message, change, number)
   end
 
   private
 
-  def text(x, y)
+  def text(x, y, number)
     account_sid = "AC2e1ac993aca31d47424ddfde7fcf6003"
     auth_token = "99b34c4e6c084558d8d4971002ec2415"
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = '+441288255120' # Your Twilio number
-    to = '+447484xx6594' # Your mobile phone number
+    to = number # Your mobile phone number
     @client.messages.create(
     from: from,
     to: to,
