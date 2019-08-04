@@ -31,6 +31,10 @@ class Restaurant
     summary << "TOTAL: £#{order.total_price}"
   end
 
+  def update_menu(new_menu)
+    @menu = new_menu
+  end
+
   private
 
   def notify(number)

@@ -10,4 +10,8 @@ class Menu
     @dishes.map { |dish| "#{dish.name} - £#{dish.price}\n" }.join("")
   end
 
+  def update(new_dishes)
+    @dishes = new_dishes
+  end
+
 end

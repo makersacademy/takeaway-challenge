@@ -8,9 +8,10 @@ describe Restaurant do
   let(:menu) { double(
     "menu",
     :dishes => [burger, pasta],
-    :show => "burger - £15\npasta - £10"
+    :show => "burger - £15\npasta - £10\n"
     )
   }
+  
   let(:phone_number) { "07777777777" }
   let(:time) { Time.new(2019, 8, 15, 18, 0, 0) }
   let(:items) { double("order_items", :list => { "burger" => 2, "pasta" => 1 }) }
@@ -76,5 +77,4 @@ describe Restaurant do
       expect { subject.place_order(40) }.to raise_error "This order has already been paid for."
     end
   end
-  
 end
