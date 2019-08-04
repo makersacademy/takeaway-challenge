@@ -13,6 +13,7 @@ describe Restaurant do
   }
   let(:items) { double("order_items", :list => { "burger" => 2, "pasta" => 1 }) }
   let(:order) { double("order", :items => items, :total_price => 40, :customer_number => "07777777777") }
+  let(:summary) { "burger(£15/each) - x2 - total: £30\npasta(£10/each) - x1 - total: £10\nTOTAL: £40" }
 
   subject { described_class.new(menu) }
 
@@ -49,6 +50,11 @@ describe Restaurant do
       subject.new_order(order)
       expect(subject).to receive(:notify).and_return("Text sent!")
       subject.place_order(40)
+    end
+
+    it "returns a summary of the order" do
+      subject.new_order(order)
+      expect(subject.place_order(40)).to eq(summary)
     end
   end
   
