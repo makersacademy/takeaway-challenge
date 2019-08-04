@@ -1,17 +1,17 @@
 class Takeout
-  attr_reader :list
-  attr_accessor :order
+  attr_accessor :order, :menu
 
-  def initialize(list = {'A' => 15, "B" => 10})
-    @list = list
+  def initialize(menu)
+    @menu = menu
     @order = {}
   end
 
-  def select(item, number)
-    order[item] = number
+  def add_items(items)
+    items.each{ |k, v| menu[k] = v}
   end
 
   def price
-    order.reduce(0){|sum, (item, value)| sum + (value * list[item]) }
+    order.reduce(0) { |sum, (item, value)| sum + (value * menu[item]) }
   end
+
 end
