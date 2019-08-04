@@ -8,16 +8,20 @@ dish_class = Dish
 pizza_menu = Menu.new(dish_class)
 
 # pizza_menu.load_menu(file_path)
-tasty_dish = Dish.new("asd", 5)
+tasty_dish = Dish.new("a", 5)
+tasty_dish_gourmet = Dish.new("a", 6)
 
-pizza_menu.add_item(tasty_dish)
-
-pizza_menu.items # show array of dishes
-
+pizza_menu.add_menu_item(tasty_dish)
+puts pizza_menu.items # show array of dishes
 pizza_menu.display
 
-pizza_menu.remove_item(tasty_dish)
+pizza_menu.remove_menu_item(tasty_dish)
+puts pizza_menu.items
+pizza_menu.display
 
-pizza_menu.alter_item(dish)
+pizza_menu.add_menu_item(tasty_dish)
+pizza_menu.alter_menu_item(tasty_dish_gourmet)
+puts pizza_menu.items
+pizza_menu.display
 
 # in take away

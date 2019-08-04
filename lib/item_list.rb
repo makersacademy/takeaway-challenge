@@ -13,6 +13,7 @@ module ItemList
   end
 
   private
+
   def add_item(dish)
     # raise ERR_DUPLICATE_ITEM if item_index(dish)
     @items << dish
