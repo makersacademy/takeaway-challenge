@@ -7,7 +7,7 @@ describe Restaurant do
   let(:sushi) { double("sushi", name: "sushi", price: 22) }
   let(:menu) { double(
     "menu",
-    :dishes_list => [burger, pasta],
+    :dishes => [burger, pasta],
     :show => "burger - £15\npasta - £10"
     )
   }

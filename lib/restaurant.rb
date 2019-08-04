@@ -1,8 +1,8 @@
-require 'order'
+require_relative './order'
 
 class Restaurant
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize(menu)
     @menu = menu
@@ -17,12 +17,25 @@ class Restaurant
     payment(amount)
     @order.confirm_payment
     notify(@order.customer_number)
+    summary()
   end
 
   private
 
   def notify(number)
     # Sends a text
+  end
+
+  def summary
+    summary = ""
+    @order.items.list.each { |item, quantity|
+      summary << "#{item}(£#{item_price(item)}/each) - x#{quantity} - total: £#{item_price(item) * quantity}\n"
+    }
+    summary << "TOTAL: £#{order.total_price}"
+  end
+
+  def item_price(item)
+    menu.dishes.select { |dish| dish.name == item }.first.price 
   end
 
   def payment(amount)
