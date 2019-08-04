@@ -43,4 +43,11 @@ describe Order do
       expect(subject.total_price).to eq 40
     end
   end
+
+  describe "confirm_payment" do
+    it "registers an order has been paid for" do
+      subject.confirm_payment
+      expect(subject).to be paid
+    end
+  end
 end
