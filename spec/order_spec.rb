@@ -21,8 +21,8 @@ describe Order do
   end
 
   it 'outputs the display to std out' do
-    small_dish = double(:small_dish,name: "A",cost:5)
-    subject.add_order_items(small_dish,1)
+    small_dish = double(:small_dish, name: "A", cost: 5)
+    subject.add_order_items(small_dish, 1)
     test_output =  "- Current Order -------------------------------------\n"
     test_output << " Dish Name            |    Price | Amount |    Total \n"
     test_output << "-----------------------------------------------------\n"

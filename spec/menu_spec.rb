@@ -14,7 +14,6 @@ describe Menu do
     test_output << "---------------------------------\n"
     test_output << "---------------------------------\n"
 
-
     expect(subject.display).to eq(nil)
     expect { subject.display }.to output(test_output).to_stdout
   end
@@ -27,14 +26,14 @@ describe Menu do
     before(:each) { subject.add_menu_item(dish) }
 
     it 'displays the dish' do
-        test_output =  "- Menu --------------------------\n"
-        test_output << " Dish Name            |    Price \n"
-        test_output << "---------------------------------\n"
-        test_output << " Swordfish            |    £5.00 \n"
-        test_output << "---------------------------------\n"
+      test_output =  "- Menu --------------------------\n"
+      test_output << " Dish Name            |    Price \n"
+      test_output << "---------------------------------\n"
+      test_output << " Swordfish            |    £5.00 \n"
+      test_output << "---------------------------------\n"
 
-        expect(subject.display).to eq(nil)
-        expect { subject.display }.to output(test_output).to_stdout
+      expect(subject.display).to eq(nil)
+      expect { subject.display }.to output(test_output).to_stdout
     end
 
     it 'cannot add the same dish twice' do
@@ -42,7 +41,7 @@ describe Menu do
     end
 
     it 'can remove the dish' do
-      expect{subject.remove_menu_item(dish)}.to change{subject.items.count}.by (-1)
+      expect { subject.remove_menu_item(dish) }.to change { subject.items.count }.by -1
     end
 
     it 'can alter a dish based on name' do

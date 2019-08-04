@@ -41,9 +41,11 @@ class Menu
     puts " Dish Name            |    Price "
     puts "---------------------------------"
   end
+
   def display_row(name, price)
     puts " %-20s | %8s " % [name, "£" + "%.2f" % price]
   end
+
   def display_footer
     puts "---------------------------------"
   end
