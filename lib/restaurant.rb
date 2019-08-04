@@ -13,16 +13,15 @@ class Restaurant
   end
 
   def place_order(amount)
-    @order.checkout
+    order.checkout
     payment(amount)
-    @order.confirm_payment
+    order.confirm_payment
     notify(@order.customer_number)
-    order_summary()
   end
 
   def order_summary
     summary = ""
-    @order.items.list.each { |item, quantity|
+    order.items.list.each { |item, quantity|
       summary << "#{item}(£#{item_price(item)}/each) - x#{quantity} - total: £#{item_price(item) * quantity}\n"
     }
     summary << "TOTAL: £#{order.total_price}"
@@ -31,7 +30,8 @@ class Restaurant
   private
 
   def notify(number)
-    # Sends a text
+    delivery_time = (order.time + 3600).strftime("%k:%M")
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   end
 
 

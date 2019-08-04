@@ -2,7 +2,7 @@ require_relative 'order_items'
 
 class Order
 
-  attr_reader :items, :customer_number
+  attr_reader :items, :customer_number, :time
 
   def initialize(restaurant, customer_number, items = OrderItems.new(restaurant.menu))
     @restaurant = restaurant
@@ -16,6 +16,7 @@ class Order
     raise "Empty basket!" if empty_basket?
     items.lock
     @closed = true
+    @time = Time.now
   end
 
   def checked_out?

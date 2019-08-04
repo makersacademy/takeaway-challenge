@@ -12,8 +12,14 @@ describe Restaurant do
     )
   }
   let(:phone_number) { "07777777777" }
+  let(:time) { Time.new(2019, 8, 15, 18, 0, 0) }
   let(:items) { double("order_items", :list => { "burger" => 2, "pasta" => 1 }) }
-  let(:order) { double("order", :items => items, :total_price => 40, :customer_number => phone_number) }
+  let(:order) { double(
+    "order",
+    :items => items,
+    :total_price => 40,
+    :customer_number => phone_number,
+    :time => time) }
   let(:summary) { "burger(£15/each) - x2 - total: £30\npasta(£10/each) - x1 - total: £10\nTOTAL: £40" }
 
   subject { described_class.new(menu) }
@@ -22,7 +28,7 @@ describe Restaurant do
     allow(order).to receive(:checkout)
     allow(order).to receive(:paid?)
     allow(order).to receive(:confirm_payment)
-    allow(subject).to receive(:notify).and_return("Text sent!")
+    # allow(subject).to receive(:notify).and_return("Text sent!")
   end
    
   describe '#menu' do
@@ -57,14 +63,9 @@ describe Restaurant do
     end
 
     it "sends a confirmation text" do
+      allow(Time).to receive(:now).and_return(time)
       subject.new_order(phone_number, order)
-      expect(subject).to receive(:notify).and_return("Text sent!")
-      subject.place_order(40)
-    end
-
-    it "returns a summary of the order" do
-      subject.new_order(phone_number, order)
-      expect(subject.place_order(40)).to eq(summary)
+      expect(subject.place_order(40)).to eq "Thank you! Your order was placed and will be delivered before 19:00"
     end
 
     it "raises an error if the order has already been paid" do
