@@ -25,8 +25,7 @@ describe Order do
   describe '#order_summary' do
     it 'Should convert the basket array into a readable string' do
       order = Order.new(menu_items)
-      expect(order.basket_summary).to eq ["pizza = £10", "burger = £15"]
+      expect(order.basket_summary).to eq ['pizza = £10', 'burger = £15']
     end
   end
-
 end

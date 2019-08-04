@@ -1,12 +1,12 @@
+
 require './lib/menu.rb'
 require './lib/order.rb'
 require './lib/confirmation_text.rb'
 
 class Takeaway
-
   attr_reader :order, :menu
 
-  def initialize(order = Order.new, menu = Menu.new, text_message=ConfirmationText.new)
+  def initialize(order = Order.new, menu = Menu.new, text_message = ConfirmationText.new)
     @order = order
     @menu = menu
     @text_message = text_message
@@ -20,8 +20,9 @@ class Takeaway
 
   def make_payment(payment)
     price = @order.total_price
-    raise "Incorrect payment: The order total is £%.2f" % price unless payment == price
-    "Thank you for your order, you should recieve a confimation text message soon"
+    raise 'Incorrect payment: The order total is £%.2f' % price unless payment == price
+
+    'Thank you for your order, you should recieve a confimation text message soon'
     # @text_message.send_text
   end
 
@@ -37,7 +38,6 @@ class Takeaway
   def view_basket
     @order.basket_summary
   end
-
 end
 
 # test = Takeaway.new

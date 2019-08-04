@@ -1,6 +1,5 @@
 
 class Order
-
   attr_reader :basket, :total_price
 
   def initialize(basket = [], total_price = 0)
@@ -21,5 +20,4 @@ class Order
     end
     basket_text
   end
-
 end

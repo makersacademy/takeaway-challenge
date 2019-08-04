@@ -25,22 +25,22 @@ describe Takeaway do
 
     it 'Should allow order amount selection' do
       takeaway.menu_select(pizza2, 2)
-      expect(takeaway.view_basket).to eq ["hawaiian = £12", "hawaiian = £12"]
+      expect(takeaway.view_basket).to eq ['hawaiian = £12', 'hawaiian = £12']
     end
 
     it 'Should give an order total' do
       takeaway.menu_select(pizza1, amount)
       takeaway.menu_select(pizza2, amount)
-      expect(takeaway.view_total_price).to eq "Total  = £44"
+      expect(takeaway.view_total_price).to eq 'Total  = £44'
     end
 
     it 'Should allow menu selection to be stored in the order array' do
       takeaway.menu_select(pizza1)
-      expect(takeaway.view_basket).to eq ["pepperoni = £10"]
+      expect(takeaway.view_basket).to eq ['pepperoni = £10']
     end
 
     it 'Should raise an error if an item is ordered that is not on the menu' do
-      expect{ takeaway.menu_select('burger', 2) }.to raise_exception 'Item is not on menu'
+      expect { takeaway.menu_select('burger', 2) }.to raise_exception 'Item is not on menu'
     end
   end
 
@@ -49,22 +49,18 @@ describe Takeaway do
       takeaway.menu_select(pizza1, 2)
       takeaway.menu_select(pizza2, 1)
       takeaway.view_total_price
-      expect { takeaway.make_payment(24) }.to raise_exception "Incorrect payment: The order total is £32.00"
+      expect { takeaway.make_payment(24) }.to raise_exception 'Incorrect payment: The order total is £32.00'
     end
   end
 
   context 'view_menu' do
-
     it 'Should allow user to view their order' do
       expect(takeaway).to respond_to(:view_basket)
     end
-
   end
   context 'User story 4' do
     # As a customer
     # So that I am reassured that my order will be delivered on time
     # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-
   end
-
 end
