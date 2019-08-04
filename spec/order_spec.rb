@@ -12,14 +12,14 @@ describe Order do
   end
 end
 
-context 'test delivery time calculator'
+context 'test time method produces time formatted to string length 5' do
   let(:order){ described_class.new({ 'A' => 1550, "B" => 1050 })}
-  it 'converts time to readable format adding an hour for delivery estimate' do
+  it 'converts time to readable 4 character format' do
     order.time = Time.now
-    expect(order.time).to include(":")
+    expect(order.delivery_time_reformat.length).to eq(5)
   end
+ end
 end
-
 
 
 
