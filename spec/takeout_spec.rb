@@ -7,22 +7,31 @@ require 'takeout'
 
   context 'menu' do
     let(:takeout){ described_class.new({ 'A' => 1550, "B" => 1050 })}
-    it 'Shows list of dishes with prices' do
+    it 'contains menu hash accessible by menu method' do
       expect(takeout.menu).to eq({ 'A' => 1550, "B" => 1050 })
     end
   end
 
-# As a customer
-# So that I can verify that my order is correct
-# I would like to check that the total I have been
-# given matches the sum of the various dishes in my order
-
-
   context 'add to menu' do
-    let(:takeout){ described_class.new({ 'A' => 1550, "B" => 1050 })}
+    let(:takeout){ described_class.new({ 'A' => 1550, "B" => 1050 }) }
     it 'adds items and number to array' do
-      takeout.add_items({ "C"=> 5 })
-      expect(takeout.menu).to eq({ 'A' => 1550, "B" => 1050, "C"=> 5 })
+      takeout.add_to_menu({ "C" => 5 })
+      expect(takeout.menu).to eq({ 'A' => 1550, "B" => 1050, "C" => 5 })
+      end
+    end
+
+    context 'prices order' do
+      let(:takeout){ described_class.new({ 'A' => 1550, "B" => 1050 }) }
+      it 'totals order' do
+        allow(takeout).to receive(:order).and_return({'A' => 1, 'B' => 1})
+        expect(takeout.price).to eq(2600)
+        end
+      end
+
+    context 'confirm order method is functional' do
+    let(:takeout){ described_class.new({ 'A' => 1550, 'B' => 1050 }) }
+    it 'takes method confirm order' do
+      expect(takeout).to respond_to(:confirm_order)
+      end
     end
   end
-end

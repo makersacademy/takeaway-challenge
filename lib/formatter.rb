@@ -19,16 +19,15 @@ class Formatter
 
   def format_change(pence)
     str = pence.to_s
-     if str.length == 1
+    if str.length == 1
       str.insert(0, "00.0")
-     elsif str.length == 2
+    elsif str.length == 2
       str.insert(0, "00.")
-     elsif str.length >= 3
+    elsif str.length >= 3
       str.insert(-3, ".")
     else
       ""
-     end
+    end
   end
-
 
 end
