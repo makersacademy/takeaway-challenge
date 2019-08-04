@@ -7,6 +7,7 @@ class Order
   def initialize(restaurant, items = OrderItems.new(restaurant.menu))
     @restaurant = restaurant
     @items = items
+    @paid = false
     @closed = false
   end
 

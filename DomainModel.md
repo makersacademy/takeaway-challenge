@@ -23,5 +23,6 @@
 |**Restaurant**           |menu                   |-> **Menu**                         |x
 |                         |new_order              |-> creates new **Order** object     |x
 |                         |place_order            |-> @order.close                     |x
+|                         |pay -private           |-> pay                              |
 |                         |notify -private        |-> sends text                       |
 |-------------------------|-----------------------|------------------------------------|

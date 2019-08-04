@@ -52,7 +52,7 @@ class OrderItems
   def item_in_order?(item)
     !list[item.name].nil?
   end
-
+  
   def item_on_menu?(item)
     @menu.dishes.include?(item)
   end

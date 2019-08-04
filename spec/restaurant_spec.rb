@@ -12,9 +12,14 @@ describe Restaurant do
     )
   }
   let(:items) { double("order_items", :list => { "burger" => 2, "pasta" =>1 }) }
-  let(:order) { double("order") }
+  let(:order) { double("order", :items => items, :total_price => 40, :customer_number => "07777777777") }
 
   subject { described_class.new(menu) }
+
+  before do
+    allow(order).to receive(:checkout)
+    allow(subject).to receive(:notify).and_return("Text sent!")
+  end
    
   describe '#menu' do
     it "has a menu" do
@@ -31,9 +36,19 @@ describe Restaurant do
   describe '#place_order' do
     it 'calls checkout on order' do
       subject.new_order(order)
-      allow(order).to receive(:checkout)
       expect(order).to receive :checkout
-      subject.place_order
+      subject.place_order(40)
+    end
+
+    it "raises an error if payment different from total sum" do
+      subject.new_order(order)
+      expect { subject.place_order(15) }.to raise_error "The payment doesn't match the total!"
+    end
+
+    it "sends a confirmation text" do
+      subject.new_order(order)
+      expect(subject.place_order(40)).to eq "Text sent!"
+      puts subject.place_order(40)
     end
   end
   
