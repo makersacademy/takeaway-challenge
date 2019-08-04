@@ -7,10 +7,10 @@ class Menu
   def initialize
     @menu_list = { 'pepperoni' => 10,
                    'hawaiian' => 12,
-                   'meat_feast' => 15,
+                   'meat feast' => 15,
                    'vegetarian' => 9,
-                   'spicy_sauasage' => 11,
-                   'awesome_sauce' => 0.59
+                   'spicy sauasage' => 11,
+                   'awesome sauce' => 0.59
                   }
   end
 
