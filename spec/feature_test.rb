@@ -10,12 +10,13 @@ fish = Dish.new("Fish", 17)
 menu = Menu.new([salad, chicken, fries, fish])
 
 restaurant = Restaurant.new(menu)
+phone_number = ENV["MY_PHONE"]
 
 # Have a look at the menu:
 restaurant.menu.show
 
 # Start a new order with my phone number:
-restaurant.new_order("123 4567 8900")
+restaurant.new_order(phone_number)
 
 # Add an item to my order:
 restaurant.order.items.add(salad, 1)

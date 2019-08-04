@@ -1,6 +1,9 @@
 require_relative './order'
+require_relative './sms_module'
 
 class Restaurant
+
+  include SMS
 
   attr_reader :menu, :order
 
@@ -30,7 +33,7 @@ class Restaurant
   private
 
   def notify(number)
-    notification_message
+    send_text(notification_message, to: number)
   end
 
   def notification_message
