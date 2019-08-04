@@ -18,6 +18,16 @@ class Order
     @total_order << item_ordered
   end
 
+  def basket_summary
+    basket_summary = []
+    @total_order.each do |order_hash|
+      order_hash.each do |item, quantity|
+        basket_summary << "#{item} x#{quantity} = £#{@my_menu.menu[item] * quantity}"
+      end
+    end
+    basket_summary.join(", ")
+  end
+
   def total_cost
     cost = 0
     @total_order.each do |order_hash|

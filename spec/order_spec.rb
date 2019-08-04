@@ -18,6 +18,10 @@ describe Order do
       subject.add_item(:pizza)
       subject.add_item(:kebab, 3)
     end
+
+    it 'shows the basket summary' do
+      expect(subject.basket_summary).to eq "pizza x1 = £7.0, kebab x3 = £24.0"
+    end
     it 'returns the total cost of the order' do
       expect(subject.total_cost).to eq 31
     end
