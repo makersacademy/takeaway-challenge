@@ -4,7 +4,10 @@ class Order
 
   attr_reader :items, :customer_number, :time
 
-  def initialize(restaurant, customer_number, items = OrderItems.new(restaurant.menu))
+  def initialize(restaurant,
+                 customer_number,
+                 items = OrderItems.new(restaurant.menu)
+                )
     @restaurant = restaurant
     @customer_number = customer_number
     @items = items

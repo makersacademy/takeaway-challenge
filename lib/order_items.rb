@@ -9,12 +9,12 @@ class OrderItems
   end
 
   def add(item, quantity)
-    add_checks(item, quantity)
+    add_checks(item)
     push_item(item, quantity)
   end
 
   def remove(item, quantity)
-    remove_checks(item, quantity)
+    remove_checks(item)
     remove_item(item, quantity)
   end
 
@@ -39,12 +39,12 @@ class OrderItems
     list.delete(item) if list[item] <= 0
   end
 
-  def add_checks(item, quantity)
+  def add_checks(item)
     raise "This order is closed" if locked?
     raise "This dish is not available" unless item_on_menu?(item)
   end
 
-  def remove_checks(item, quantity)
+  def remove_checks(item)
     raise "This order is closed" if locked?
     raise "No #{item.name} currently in order" unless item_in_order?(item)
   end

@@ -19,7 +19,8 @@ describe Restaurant do
     :items => items,
     :total_price => 40,
     :customer_number => phone_number,
-    :time => time) }
+    :time => time) 
+  }
   let(:summary) { "burger(£15/each) - x2 - total: £30\npasta(£10/each) - x1 - total: £10\nTOTAL: £40" }
 
   subject { described_class.new(menu) }
@@ -72,7 +73,7 @@ describe Restaurant do
     it "raises an error if the order has already been paid" do
       subject.new_order(phone_number, order)
       allow(order).to receive(:paid?).and_return(true)
-      expect{ subject.place_order(40) }.to raise_error "This order has already been paid for."
+      expect { subject.place_order(40) }.to raise_error "This order has already been paid for."
     end
   end
   

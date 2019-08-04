@@ -25,7 +25,8 @@ class Restaurant
   def order_summary
     summary = ""
     order.items.list.each { |item, quantity|
-      summary << "#{item}(£#{item_price(item)}/each) - x#{quantity} - total: £#{item_price(item) * quantity}\n"
+      summary << "#{item}(£#{item_price(item)}/each) "\
+      "- x#{quantity} - total: £#{item_price(item) * quantity}\n"
     }
     summary << "TOTAL: £#{order.total_price}"
   end
@@ -38,7 +39,8 @@ class Restaurant
 
   def notification_message
     delivery_time = (order.time + 3600).strftime("%k:%M")
-    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    "Thank you! Your order was placed and "\
+    "will be delivered before #{delivery_time}"
   end
 
   def item_price(item)
