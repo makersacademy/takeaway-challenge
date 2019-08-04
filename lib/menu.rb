@@ -28,3 +28,5 @@ class Menu
     puts list
   end
 end
+
+# menu.rb is responsible for storing menu 
