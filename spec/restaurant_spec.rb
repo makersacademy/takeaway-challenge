@@ -28,7 +28,7 @@ describe Restaurant do
     allow(order).to receive(:checkout)
     allow(order).to receive(:paid?)
     allow(order).to receive(:confirm_payment)
-    # allow(subject).to receive(:notify).and_return("Text sent!")
+    allow(subject).to receive(:notify).and_return("Text sent!")
   end
    
   describe '#menu' do
@@ -65,7 +65,8 @@ describe Restaurant do
     it "sends a confirmation text" do
       allow(Time).to receive(:now).and_return(time)
       subject.new_order(phone_number, order)
-      expect(subject.place_order(40)).to eq "Thank you! Your order was placed and will be delivered before 19:00"
+      expect(subject).to receive(:notify)
+      subject.place_order(40)
     end
 
     it "raises an error if the order has already been paid" do

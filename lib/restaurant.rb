@@ -30,10 +30,13 @@ class Restaurant
   private
 
   def notify(number)
+    notification_message
+  end
+
+  def notification_message
     delivery_time = (order.time + 3600).strftime("%k:%M")
     "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   end
-
 
   def item_price(item)
     menu.dishes.select { |dish| dish.name == item }.first.price 
