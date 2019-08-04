@@ -9,17 +9,17 @@ describe Order do
   it 'lists dish name(s)' do
     expect(Order.new.list_dishes).to eq(
       [
-        "Chicken Korma", 
-        "Beef Lasagna", 
-        "Spaghetti Bolognese", 
-        "Mac n Cheese", 
-        "Fish & Chips", 
-        "Truffle Gnocchi"
+        "1: Chicken Korma", 
+        "2: Beef Lasagna", 
+        "3: Spaghetti Bolognese", 
+        "4: Mac n Cheese", 
+        "5: Fish & Chips", 
+        "6: Truffle Gnocchi"
       ]
     )
   end
 
   it 'selects dishes chosen by a customer' do 
-    
+
   end
 end
