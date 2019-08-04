@@ -1,16 +1,15 @@
 Takeaway Challenge
 ==================
 
-Progress to Date - Notes from Hanna (Sat 3 Aug 2019):
+Progress to Date - 4 Aug 2019:
 -------
 
 Implemented 3 user stories so far:
 * see list of dishes with prices
 * select some number of several available dishes
 * check that the total I have been given matches the sum of the various dishes in my order
-NB. The last one is partially implemented - there's a method for checking the total, but no step to check this matches customer expectations.
 
-User stories waiting to be implemented:
+User stories yet to be implemented:
 * receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 Original Instructions from Makers:
