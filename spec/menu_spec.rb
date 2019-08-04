@@ -2,19 +2,19 @@ require 'menu'
 
 describe Menu do
   
-  let(:menu_item) { "1. Spaghetti Bolognese £6.50" }
+  let(:menu_item) { "7. Vanilla Ice Cream £3.00" }
 
-  describe "#menu_items" do
+  describe "#dishes" do
     # Test to check whether dishes have prices
     it "has a price" do
-      expect(subject.menu_items.values).to all( be_a(Float) )
+      expect(subject.dishes.values).to all( be_a(Float) )
     end
   end
 
-  describe '#menu_list' do
-    # Test to check if sample menu prints on the screen
-    it 'shows a menu' do
-      expect(subject.menu_list).to include  menu_item
+  describe "#list" do
+    # Test to check if sample menu returns list of dishes
+    it "shows a list of dishes" do
+      expect(subject.list).to include  menu_item
     end
   end
 

@@ -1,7 +1,7 @@
 class Menu
 
   # Menu hash
-  def menu_items
+  def dishes
     { "Spaghetti Bolognese": 6.5, 
       "Veggie Burger": 7.5,
       "Stir Fried Rice": 5.0,
@@ -15,16 +15,16 @@ class Menu
       "Apple Juice": 2.0 } 
   end
   # Converts menu items into a list that is numbered and priced
-  def menu_list
+  def list
     @menu = []
     num = 0
-    menu_items.each do |k,v| 
+    dishes.each do |k,v| 
       @menu << "#{num+=1}. #{k} £#{v}0"
     end
     @menu
   end
   # Prints menu on the screen
-  def view_menu
-    puts menu
+  def view
+    puts list
   end
 end
