@@ -21,7 +21,7 @@ require 'takeout'
   context 'add to menu' do
     let(:takeout){ described_class.new({ 'A' => 1550, "B" => 1050 })}
     it 'adds items and number to array' do
-      takeout.add_items({"C"=> 5})
+      takeout.add_items({ "C"=> 5 })
       expect(takeout.menu).to eq({ 'A' => 1550, "B" => 1050, "C"=> 5 })
     end
   end

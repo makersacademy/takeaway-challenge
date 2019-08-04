@@ -9,11 +9,10 @@ class Order
     @takeout = Takeout.new(menu)
     @change = 0
     @time = nil
-
   end
 
   def view_menu
-    @takeout.menu.each {|k, v| puts "#{k}:#{v.to_s.insert(2,".")}"}
+    @takeout.menu.each {|item, price| puts "#{item}:#{price.to_s.insert(2,".")}"}
   end
 
   def select(item, number)
@@ -25,7 +24,7 @@ class Order
       @change += (cash - @takeout.price)
       puts "order placed"
       @time = Time.now
-      text(time)
+      text(time, mobile_number)
     else
       raise 'not enough cash!'
     end
@@ -41,24 +40,24 @@ class Order
     if @delivery_min.length == 1
       @delivery_min.insert(0, "0")
     end
-    @d = @delivery_hour.to_s
-    if @d.length == 1
-      @d.insert(0, "0")
+    @delivery_hr_str = @delivery_hour.to_s
+    if @delivery_hr_str.length == 1
+      @delivery_hr_str.insert(0, "0")
     end
-    return "#{@d}:#{@delivery_min}"
+    return "#{@delivery_hr_str}:#{@delivery_min}"
   end
 
 #Look up environment variables -- ENV[....number....]
 
   private
 
-  def text(x)
+  def text(x, y)
     account_sid = "AC2e1ac993aca31d47424ddfde7fcf6003"
     auth_token = "99b34c4e6c084558d8d4971002ec2415"
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = '+441288255120' # Your Twilio number
-    to = '+447484356594' # Your mobile phone number
+    to = 'y' # Your mobile phone number
     @client.messages.create(
     from: from,
     to: to,
