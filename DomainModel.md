@@ -6,7 +6,7 @@
 |**Dish**                 |price                  |-> returns price                    |x
 |                         |name                   |-> returns name                     |x
 |-------------------------|-----------------------|------------------------------------|
-|**Order**                |total_price            |-> total price                      |
+|**Order**                |total_price            |-> total price                      |x
 |                         |time                   |-> returns time at which            |
 |                         |                       |   order was placed                 |
 |                         |checkout               |-> locks items, records time closed |x
@@ -18,11 +18,12 @@
 |                         |remove(item, n)        |-> deletes item from @items         |x
 |                         |                       |-> raises error if item not in list |x
 |                         |lock                   |-> doesn't allow adding or removing |x
-|                         |list                   |-> hash of dishes(name => quantity) |
+|                         |list                   |-> hash of dishes(name => quantity) |x
 |-------------------------|-----------------------|------------------------------------|
 |**Restaurant**           |menu                   |-> **Menu**                         |x
 |                         |new_order              |-> creates new **Order** object     |x
 |                         |place_order            |-> @order.close                     |x
-|                         |pay -private           |-> pay                              |
+|                         |order_summary          |-> string summary of order          |x
+|                         |payment(amount)-private|-> pay                              |x
 |                         |notify -private        |-> sends text                       |
 |-------------------------|-----------------------|------------------------------------|

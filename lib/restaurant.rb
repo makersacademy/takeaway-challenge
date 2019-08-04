@@ -8,7 +8,7 @@ class Restaurant
     @menu = menu
   end
 
-  def new_order(order = Order.new(self, customer_number))
+  def new_order(customer_number, order = Order.new(self, customer_number))
     @order = order
   end
 
@@ -17,7 +17,15 @@ class Restaurant
     payment(amount)
     @order.confirm_payment
     notify(@order.customer_number)
-    summary()
+    order_summary()
+  end
+
+  def order_summary
+    summary = ""
+    @order.items.list.each { |item, quantity|
+      summary << "#{item}(£#{item_price(item)}/each) - x#{quantity} - total: £#{item_price(item) * quantity}\n"
+    }
+    summary << "TOTAL: £#{order.total_price}"
   end
 
   private
@@ -26,13 +34,6 @@ class Restaurant
     # Sends a text
   end
 
-  def summary
-    summary = ""
-    @order.items.list.each { |item, quantity|
-      summary << "#{item}(£#{item_price(item)}/each) - x#{quantity} - total: £#{item_price(item) * quantity}\n"
-    }
-    summary << "TOTAL: £#{order.total_price}"
-  end
 
   def item_price(item)
     menu.dishes.select { |dish| dish.name == item }.first.price 
