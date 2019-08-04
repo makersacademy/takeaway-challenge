@@ -6,20 +6,20 @@ describe 'user stories' do
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  it 'customers can see a list of dishes with prices' do
+  xit 'customers can see a list of dishes with prices' do
     expect(takeaway.menu).to be_a(Hash)
   end
 
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  it 'customers can select several dishes' do
+  xit 'customers can select several dishes' do
     takeaway.select("bread")
     takeaway.select("apples")
     expect(takeaway.current_order).to eq({bread: 1, apples: 1})
   end
 
-  it 'customers can see a list of their orders' do
+  xit 'customers can see a list of their orders' do
     takeaway.select("bread")
     takeaway.select("apples")
     takeaway.select("apples")
@@ -36,7 +36,7 @@ describe 'user stories' do
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   describe 'while completing orders' do
     context 'entering the correct price' do
-      it 'returns delivery time' do
+      xit 'returns delivery time' do
         takeaway.select("bread")
         takeaway.select("apples")
         takeaway.select("apples")
@@ -46,7 +46,7 @@ describe 'user stories' do
     end
 
     context 'entering the incorrect price' do
-      it 'raises an error' do
+      xit 'raises an error' do
         takeaway.select("bread")
         takeaway.select("apples")
         takeaway.select("apples")

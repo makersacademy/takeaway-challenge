@@ -4,25 +4,32 @@ describe Takeaway do
   let(:order_time_double) { double(:order_time, delivery_time: "18:52")}
   let(:order_time_class_double) { double(:order_time_class, new: order_time_double)}
   let(:takeaway) { described_class.new(order_time_class_double) }
+  let(:menu_double) { 
+    double(:menu, 
+    start: true
+
+    ) }
+
+
   describe '#menu' do
-    it 'exists' do
+    xit 'exists' do
       expect(takeaway.menu).to be_a(Hash)
     end
   end
 
   describe '#select' do
-    it 'is a method for takeaway' do
+    xit 'is a method for takeaway' do
       expect(takeaway).to respond_to(:select)
     end
 
-    it 'stores items in current_order' do
+    xit 'stores items in current_order' do
       takeaway.select("bread")
       expect(takeaway.current_order).to eq({bread: 1, apples: 0})
     end
   end
 
   describe '#print_current_order' do
-    it 'prints a list of items from current order' do
+    xit 'prints a list of items from current order' do
       takeaway.select("bread")
       expect(takeaway.print_current_order).to eq "bread: 1"
     end
@@ -30,9 +37,10 @@ describe Takeaway do
 
   describe '#complete_order' do
     context 'entering the correct price' do
-      it 'confirms the order' do
+      xit 'confirms the order' do
         takeaway.select("bread")
-        expect(takeaway.complete_order(5)).to eq 'Thank you, your order was placed and will be delivered before 18:52'
+        expect(takeaway.complete_order(5))
+        .to eq 'Thank you, your order was placed and will be delivered before 18:52'
       end
     end
 
