@@ -37,6 +37,14 @@ class Order
     puts "Total: £#{@cost}"
   end
 
+  def check_out(expected_cost)
+    @cost = calculate_cost
+    raise ERROR_IN_COST if @cost != expected_cost
+    print THANK_YOU
+  end
+
+  private
+
   def calculate_cost
     @total_order.each do |order_hash|
       order_hash.each do |item, quantity|
@@ -44,12 +52,6 @@ class Order
       end
     end
     @cost
-  end
-
-  def check_out(expected_cost)
-    @cost = calculate_cost
-    raise ERROR_IN_COST if @cost != expected_cost
-    print THANK_YOU
   end
 
 end
