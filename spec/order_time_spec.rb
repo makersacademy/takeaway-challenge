@@ -4,7 +4,7 @@ require 'time'
 describe OrderTime do
   let(:time_double_one) { Time.strptime("08:15", "%R")  }
   let(:time_double_two) { Time.strptime("12:07", "%R")  }
-  let(:time_double_three) { Time.strptime("23:30", "%R")  }
+  let(:time_double_three) { Time.strptime("23:30", "%R") }
 
   describe '#delivery_time' do
 

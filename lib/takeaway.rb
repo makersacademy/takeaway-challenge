@@ -1,15 +1,13 @@
-require_relative 'twilio_api'
+# Uncomment to use twilio api
+# require_relative 'twilio_api'
 require_relative 'order_time'
 require_relative 'menu'
 
-
 class Takeaway
-  attr_reader :current_order
-
-  def initialize(ordertime_class = OrderTime, menu = Menu.new)
+  def initialize(ordertime_class = OrderTime, menu = Menu.new, twilio_api = TwilioAPI.new)
     @ordertime_class = ordertime_class
     @menu = menu
-    @twilio_api = TwilioAPI.new
+    @twilio_api = twilio_api
   end
 
   def begin_order
@@ -21,12 +19,10 @@ class Takeaway
   end
 
   def complete_order(value)
-    if value == @menu.order_price
-      @twilio_api.send("Thank you, your order was placed and will be delivered before #{confirm_time}")
-      # "Thank you, your order was placed and will be delivered before #{confirm_time}"
-    else
-      raise "Cannot complete order: Incorrect Value"
-    end
+    raise "Cannot complete order: Incorrect Value" unless correct?(value)
+
+    @twilio_api.send("Thank you, your order was placed and will be delivered before #{confirm_time}")
+    # "Thank you, your order was placed and will be delivered before #{delivery_time}"
   end
 
   def print_menu
@@ -42,5 +38,9 @@ class Takeaway
   def confirm_time
     confirm_time = @ordertime_class.new
     confirm_time.delivery_time
+  end
+
+  def correct?(value)
+    value == @menu.order_price
   end
 end

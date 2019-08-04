@@ -1,30 +1,30 @@
 require 'takeaway'
 
 describe 'user stories' do
-  let(:takeaway) { Takeaway.new }
+  let(:twilio_api_double) { 
+    double(:twilio_api, 
+    send: "Thank you, your order was placed and will be delivered before #{delivery_time}") 
+  }
+  let(:takeaway) { Takeaway.new(OrderTime, Menu.new, twilio_api_double) }
   let(:delivery_time) { (Time.new + 3600).strftime("%H:%M") }
+  before(:each) do
+    takeaway.begin_order
+  end
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
-  xit 'customers can see a list of dishes with prices' do
-    expect(takeaway.menu).to be_a(Hash)
+  it 'customers can see a list of dishes with prices' do
+    expect(takeaway.print_menu).to be_a(String)
   end
 
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  xit 'customers can select several dishes' do
+  it 'customers can select several dishes' do
     takeaway.select("bread")
-    takeaway.select("apples")
-    expect(takeaway.current_order).to eq({bread: 1, apples: 1})
-  end
-
-  xit 'customers can see a list of their orders' do
-    takeaway.select("bread")
-    takeaway.select("apples")
-    takeaway.select("apples")
+    takeaway.select("soup", 2)
     expect(takeaway.print_current_order)
-    .to eq("bread: 1 apples: 2")
+    .to eq("bread: 1, soup: 2.")
   end
 
   # As a customer
@@ -36,21 +36,19 @@ describe 'user stories' do
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
   describe 'while completing orders' do
     context 'entering the correct price' do
-      xit 'returns delivery time' do
+      it 'returns delivery time' do
         takeaway.select("bread")
-        takeaway.select("apples")
-        takeaway.select("apples")
-        expect(takeaway.complete_order(9))
+        takeaway.select("soup", 2)
+        expect(takeaway.complete_order(8))
         .to eq "Thank you, your order was placed and will be delivered before #{delivery_time}"
       end
     end
 
     context 'entering the incorrect price' do
-      xit 'raises an error' do
+      it 'raises an error' do
         takeaway.select("bread")
-        takeaway.select("apples")
-        takeaway.select("apples")
-        expect{takeaway.complete_order(10)}
+        takeaway.select("soup", 2)
+        expect { takeaway.complete_order(10) }
         .to raise_error "Cannot complete order: Incorrect Value"
       end
     end
