@@ -36,7 +36,7 @@ class Order
         cost += (@my_menu.menu[item] * quantity)
       end
     end
-    cost
+    puts "Total: £#{cost}"
   end
 
 end

@@ -27,8 +27,10 @@ describe Order do
         subject.basket_summary
       end.to output("pizza x1 = £7.0, kebab x3 = £24.0\n").to_stdout
     end
-    it 'returns the total cost of the order' do
-      expect(subject.total_cost).to eq 31
+    it 'shows the total cost of the order' do
+      expect do
+        subject.total_cost
+      end.to output("Total: £31.0\n").to_stdout
     end
   end
 

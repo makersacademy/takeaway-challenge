@@ -16,16 +16,10 @@ my_order = Order.new
 my_order.add_item(:pizza)
 puts "------TEST OVER-------"
 
-puts "--- TEST - Order 1 pizza and 3 kebabs, puts total cost of order (£31) ---"
-my_order = Order.new
-my_order.add_item(:pizza)
-my_order.add_item(:kebab, 3)
-p my_order.total_cost
-puts "------TEST OVER-------"
-
-puts "--- TEST - Order 1 pizza and 3 kebabs, see basket summary ---"
+puts "--- TEST - Order 1 pizza and 3 kebabs, see basket summary and total cost of order (£31) ---"
 my_order = Order.new
 my_order.add_item(:pizza)
 my_order.add_item(:kebab, 3)
 my_order.basket_summary
+my_order.total_cost
 puts "------TEST OVER-------"
