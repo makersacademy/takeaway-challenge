@@ -28,7 +28,7 @@ class Takeout
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = '+441288255120' # Your Twilio number
-    to = '+447484356594' # Your mobile phone number
+    to = '+447484xx6594' # Your mobile phone number
     @client.messages.create(
     from: from,
     to: to,
