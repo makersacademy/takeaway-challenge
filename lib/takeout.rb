@@ -23,8 +23,8 @@ class Takeout
   private
 
   def text(time, change, number)
-    account_sid = "AC2e1ac993aca31d47424ddfde7fcf6003"
-    auth_token = "99b34c4e6c084558d8d4971002ec2415"
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = '+441288255120' # Your Twilio number

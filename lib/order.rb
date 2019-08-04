@@ -12,7 +12,7 @@ class Order
   end
 
   def view_menu
-    @takeout.menu.each { |item, price| puts "#{item}:#{price.to_s.insert(2, ".")  }" }
+    @takeout.menu.each { |item, price| puts "#{item}: £#{price.to_s.insert(2, ".")  }" }
   end
 
   def view_order
