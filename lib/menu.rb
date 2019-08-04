@@ -10,32 +10,41 @@ class Menu
   # only menu can do that?
   # If something changes on the menu is should change elsewhere
 
-  def alter_item(dish)
-    raise ERR_MISSING_ITEM unless(item_index(dish))
-    items[item_index(dish)].alter(dish)
+  def add_menu_item(dish)
+    raise ERR_DUPLICATE_ITEM if item_index(dish)
+    add_item(dish)
+  end
+
+  def remove_menu_item(dish)
+    raise ERR_MISSING_ITEM unless item_index(dish)
+    remove_item(dish)
+  end
+
+  def alter_menu_item(dish)
+    raise ERR_MISSING_ITEM unless item_index(dish)
+    alter_item(dish)
   end
 
   def display
-    if items.empty?
-      print "\n"
-      return "\n"
-    end
-
-    output = ""
-
+    display_header()
     items.each do |dish|
-      output << "#{dish.name} £#{dish.cost}\n"
+      display_row(dish.name, dish.cost)
     end
-
-    print output
-    output
+    display_footer()
+    return
   end
 
   private
 
-  def item_index(dish)
-    items.index{|item| dish.name == item.name}
+  def display_header
+    puts "- Menu --------------------------"
+    puts " Dish Name            |    Price "
+    puts "---------------------------------"
   end
-
-
+  def display_row(name, price)
+    puts " %-20s | %8s " % [name, "£" + "%.2f" % price]
+  end
+  def display_footer
+    puts "---------------------------------"
+  end
 end

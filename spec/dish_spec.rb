@@ -12,8 +12,8 @@ describe Dish do
   end
 
   it 'requires the name to be the same to alter' do
-    dish_diff = described_class.new("Not Sushi",5)
-    expect{subject.alter(dish_diff)}.to raise_error(Dish::ERR_NO_MATCH)
+    dish_diff = described_class.new("Not Sushi", 5)
+    expect { subject.alter(dish_diff) }.to raise_error(Dish::ERR_NO_MATCH)
   end
 
 end
