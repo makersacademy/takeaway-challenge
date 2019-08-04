@@ -16,6 +16,7 @@ class Order
     item_ordered = {}
     item_ordered[item] = amount
     @total_order << item_ordered
+    puts "#{amount}x #{item}(s) added to your basket"
   end
 
   def basket_summary
@@ -25,7 +26,7 @@ class Order
         basket_summary << "#{item} x#{quantity} = £#{@my_menu.menu[item] * quantity}"
       end
     end
-    basket_summary.join(", ")
+    puts basket_summary.join(", ")
   end
 
   def total_cost

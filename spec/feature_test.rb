@@ -11,10 +11,9 @@ my_order = Order.new
 my_order.read_menu
 puts "------TEST OVER-------"
 
-puts "--- TEST - Add a pizza to the order, puts the order ---"
+puts "--- TEST - Add a pizza to the order, return message confirming item added ---"
 my_order = Order.new
 my_order.add_item(:pizza)
-p my_order.total_order
 puts "------TEST OVER-------"
 
 puts "--- TEST - Order 1 pizza and 3 kebabs, puts total cost of order (£31) ---"
@@ -28,5 +27,5 @@ puts "--- TEST - Order 1 pizza and 3 kebabs, see basket summary ---"
 my_order = Order.new
 my_order.add_item(:pizza)
 my_order.add_item(:kebab, 3)
-p my_order.basket_summary
+my_order.basket_summary
 puts "------TEST OVER-------"
