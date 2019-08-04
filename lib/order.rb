@@ -2,10 +2,13 @@ require_relative 'menu'
 
 class Order
   attr_reader :total_order
+  ERROR_IN_COST = "Sorry, the cost is wrong"
+  THANK_YOU = "Thanks for your order!"
 
   def initialize
     @total_order = []
     @my_menu = Menu.new
+    @cost = 0
   end
 
   def read_menu
@@ -29,14 +32,24 @@ class Order
     puts basket_summary.join(", ")
   end
 
-  def total_cost
-    cost = 0
+  def show_cost
+    @cost = calculate_cost
+    puts "Total: £#{@cost}"
+  end
+
+  def calculate_cost
     @total_order.each do |order_hash|
       order_hash.each do |item, quantity|
-        cost += (@my_menu.menu[item] * quantity)
+        @cost += (@my_menu.menu[item] * quantity)
       end
     end
-    puts "Total: £#{cost}"
+    @cost
+  end
+
+  def check_out(expected_cost)
+    @cost = calculate_cost
+    raise ERROR_IN_COST if @cost != expected_cost
+    print THANK_YOU
   end
 
 end

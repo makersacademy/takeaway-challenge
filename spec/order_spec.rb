@@ -27,10 +27,21 @@ describe Order do
         subject.basket_summary
       end.to output("pizza x1 = £7.0, kebab x3 = £24.0\n").to_stdout
     end
+    it 'calculates the cost' do
+      expect(subject.calculate_cost).to eq 31
+    end
     it 'shows the total cost of the order' do
       expect do
-        subject.total_cost
+        subject.show_cost
       end.to output("Total: £31.0\n").to_stdout
+    end
+    it 'checks out the order with an expected total price that is wrong' do
+      expect{subject.check_out(100)}.to raise_error(Order::ERROR_IN_COST)
+    end
+    it 'checks out the order with an expected total price that is right' do
+      expect do
+        subject.check_out(31)
+      end.to output(Order::THANK_YOU).to_stdout
     end
   end
 
