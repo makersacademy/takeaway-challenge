@@ -7,8 +7,8 @@
 |                         |name                   |-> returns name                     |x
 |-------------------------|-----------------------|------------------------------------|
 |**Order**                |total_price            |-> total price                      |x
-|                         |time                   |-> returns time at which            |
-|                         |                       |   order was placed                 |
+|                         |time                   |-> returns time at which            |x
+|                         |                       |   order was placed                 |x
 |                         |checkout               |-> locks items, records time closed |x
 |                         |checked_out?           |-> true if checked out              |x
 |                         |items                  |-> OrderItems instance              |x
@@ -25,5 +25,5 @@
 |                         |place_order            |-> @order.close                     |x
 |                         |order_summary          |-> string summary of order          |x
 |                         |payment(amount)-private|-> pay                              |x
-|                         |notify -private        |-> sends text                       |
+|                         |notify -private        |-> sends text                       |x
 |-------------------------|-----------------------|------------------------------------|

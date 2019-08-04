@@ -1,6 +1,4 @@
-require_relative '../lib/dish.rb'
-require_relative '../lib/menu.rb'
-require_relative '../lib/restaurant.rb'
+require_relative '../lib/takeaway.rb'
 
 salad = Dish.new("Salad", 10)
 chicken = Dish.new("Chicken", 13)
