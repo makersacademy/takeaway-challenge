@@ -6,7 +6,6 @@ class Takeout
   def initialize(menu)
     @menu = menu
     @order = {}
-
   end
 
   def add_to_menu(items_hash)
