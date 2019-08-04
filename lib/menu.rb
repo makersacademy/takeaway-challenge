@@ -9,7 +9,7 @@ class Menu
                    'hawaiian' => 12,
                    'meat feast' => 15,
                    'vegetarian' => 9,
-                   'spicy sauasage' => 11,
+                   'spicy sausage' => 11,
                    'awesome sauce' => 0.59
                   }
   end

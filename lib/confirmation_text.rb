@@ -1,6 +1,8 @@
-require 'twilio-ruby'
+# require 'twilio-ruby'
 
 class ConfirmationText
+
+  attr_reader :time,
 
   def initialize
     @time = Time.now + 3600
