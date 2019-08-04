@@ -1,8 +1,9 @@
 Takeaway Challenge
 ==================
 
-#### *This program is a back end representation of a basic takeaway application*
-##Installation instructions
+#### *This program is a ruby representation of a basic takeaway application*
+
+___••Installation instructions••___
 - Run `bundle install`
 - To enable the text functionality of the program you will need to register a free account on twilio and create a phone number
 - Set up environment variables
@@ -45,7 +46,7 @@ takeaway.make_payment(42)
 
 ## How to use
 
-#IRB
+__**IRB**__
 ```ruby
 2.5.0 :001 > require './lib/takeaway.rb'
  => true
