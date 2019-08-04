@@ -44,11 +44,11 @@ describe Restaurant do
       subject.new_order(order)
       expect { subject.place_order(15) }.to raise_error "The payment doesn't match the total!"
     end
-    puts subject.place_order(40)
 
     it "sends a confirmation text" do
       subject.new_order(order)
-      expect(subject.place_order(40)).to eq "Text sent!"
+      expect(subject).to receive(:notify).and_return("Text sent!")
+      subject.place_order(40)
     end
   end
   
