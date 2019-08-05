@@ -7,7 +7,6 @@ describe Customer do
   end
 
   it 'Checks that a customer can submit an order' do
-    expect(subject).to respond_to(:order).with(1).argument
+    expect(subject).to respond_to(:order)
   end
-
 end

@@ -2,46 +2,40 @@ require_relative '../lib/menu'
 
 class Customer
 
-  BASKET = []
+  BASKET = Array.new
+  MENU = Menu.new
 
-  attr_reader :basket
+  attr_reader :basket, :menu
 
   def initialize
     @basket = BASKET
+    @menu = MENU
   end
 
-
-
   def list_menu
-    menu = Menu.new
-    return menu.view
-
+    return @menu.view
   end
 
   def order
     inital_order = true
     item = nil
-    until item == "complete"
+    until item == :complete
       if inital_order == true
         puts "What would you like to order ?"
-        item = gets.chomp
+        item = gets.chomp.to_sym
         @basket << item
         inital_order = false
       else
         puts "Would you like to add anything else to your order ? "
-        item = gets.chomp
+        item = gets.chomp.to_sym
         @basket << item
       end
     end
   end
 
   def show_basket
-    @basket.delete("complete")
-    @basket.each { |x| puts x}
+    @basket.delete(:complete)
+    @basket.each { |item| puts "#{item} will be #{@menu.OPTIONS[item.to_sym]}" }
   end
 
 end
-
-jamal = Customer.new
-jamal.order
-jamal.show_basket
