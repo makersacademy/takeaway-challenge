@@ -7,7 +7,7 @@ class SendSms
 
   def send_message
 
-    account_sid = "AC54efcb3b1fd0d5a8e152c99d561cc156"
+    account_sid = TWILIO_ACCOUNT_SID
     auth_token = "7a236fd0c60a0c061b76656866cf52be"
 
     @client = Twilio::REST::Client.new account_sid, auth_token
