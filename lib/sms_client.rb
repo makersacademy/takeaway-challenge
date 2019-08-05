@@ -27,7 +27,7 @@ class SMSClient
     @client.messages.create(
       from: @from_number,
       to: @to_number,
-      body: message
+      body: "message"
       )
   end
 end

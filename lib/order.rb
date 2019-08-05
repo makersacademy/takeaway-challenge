@@ -1,5 +1,6 @@
 require_relative "./item_list.rb"
 class Order
+
   include ItemList
 
   def initialize
@@ -7,13 +8,13 @@ class Order
   end
   def add_order_items(dish, amount)
     amount.times do
-      add_item(dish)
+      add_item(dish) if dish
     end
   end
 
   def remove_order_items(dish, amount)
     amount.times do
-      remove_item(dish)
+      remove_item(dish) if dish
     end
   end
 
@@ -54,7 +55,7 @@ class Order
 
   def order_hash
     order_hash_new = Hash.new
-    items.each do |item|
+    @items.each do |item|
       order_hash_new[item] ||= { amount: 0, total_cost: 0 } # unless order_hash[item]
       order_hash_new[item][:amount] += 1
       order_hash_new[item][:total_cost] += item.cost

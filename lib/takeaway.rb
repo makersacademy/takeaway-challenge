@@ -25,7 +25,7 @@ class Takeaway
   end
 
 
-  def confirm_order(payment) do
+  def confirm_order(payment)
     raise ERR_INCORRECT_PAYMENT if payment != order.total.round(2)
     sms_client.send_message("Thank you! Your order was placed and will be delivered before 18:52")
 

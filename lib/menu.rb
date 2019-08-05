@@ -62,7 +62,7 @@ class Menu
   def load_menu(menu_file_path)
     menu = CSV.open(menu_file_path)
     menu.each do |row|
-      add_menu_item(@dish_class.new(row[0],row[1]))
+      add_menu_item(@dish_class.new(row[0],row[1].to_f)) unless row == ""
     end
   end
 end

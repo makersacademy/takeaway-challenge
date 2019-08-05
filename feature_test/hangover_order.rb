@@ -22,6 +22,10 @@ else
 end
 puts "#{hangover_order.items}"
 
+hangover_order.display
+
+
+
 begin
   hangover_order.remove_order_items(tasty_dish, 2)
 rescue StandardError
@@ -30,3 +34,7 @@ else
   puts "!! set a negative amount of dish"
 end
 puts "#{hangover_order.items}"
+
+
+
+hangover_order.display
