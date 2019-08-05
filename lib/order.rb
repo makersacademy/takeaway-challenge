@@ -1,16 +1,12 @@
 class Order
   
-  attr_reader :menu, :basket, :order
+  attr_reader :basket, :order
 
-  def initialize(menu_class = Menu)
-    @menu_class = menu_class
+  def initialize
     @basket = []
     @order = ""
   end
-  def show_menu
-    @menu = @menu_class.new
-    menu.view
-  end
+
   def add(dish, quantity)
     fail 'Item not on menu' unless Menu.new.dishes.include? :"#{dish}"
     quantity.times { @basket << dish }

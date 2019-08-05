@@ -16,10 +16,10 @@ class Menu
   end
   # Converts menu items into a list that is numbered and priced
   def list
-    @menu = []
+    @menu = ''
     num = 0
     dishes.each do |k,v| 
-      @menu << "#{num += 1}. #{k} £#{v}0"
+      @menu << "#{num += 1}. #{k} £#{v}0\n"
     end
     @menu
   end
