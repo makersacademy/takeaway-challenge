@@ -2,6 +2,9 @@ require_relative "./item_list.rb"
 class Order
   include ItemList
 
+  def initialize
+    @items =[]
+  end
   def add_order_items(dish, amount)
     amount.times do
       add_item(dish)

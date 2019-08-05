@@ -1,9 +1,16 @@
 require_relative "item_list.rb"
 require_relative "dish.rb"
+require 'CSV'
 # The menu should hold the 'truth' for the dishes.
 class Menu
 
   include ItemList
+
+  def initialize(menu_file_path = nil, dish_class = Dish)
+    @items = []
+    @dish_class = dish_class
+    load_menu(menu_file_path) if menu_file_path
+  end
 
   # As the object may be referenced elsewhere we want to update it in place.
   # I can't actually change a dishes name  after initialization.
@@ -34,6 +41,8 @@ class Menu
     return
   end
 
+
+
   private
 
   def display_header
@@ -48,5 +57,12 @@ class Menu
 
   def display_footer
     puts "---------------------------------"
+  end
+
+  def load_menu(menu_file_path)
+    menu = CSV.open(menu_file_path)
+    menu.each do |row|
+      add_menu_item(@dish_class.new(row[0],row[1]))
+    end
   end
 end

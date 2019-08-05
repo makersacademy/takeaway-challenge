@@ -4,9 +4,6 @@ module ItemList
 
   ERR_DUPLICATE_ITEM = "Menu Item already exists on list"
   ERR_MISSING_ITEM = "Menu Item does not exist on list"
-  def initialize(_item_class = Dish)
-    @items = []
-  end
 
   def items
     @items.dup
