@@ -12,11 +12,7 @@ describe PlaceOrder do
     subject.create_order({a:1, b:2})
   end
 
-  describe '#total_price' do
-    it 'return the total cost' do
-      expect(subject.total_price).to eq(50)
-    end
-  end
+
 
 
 

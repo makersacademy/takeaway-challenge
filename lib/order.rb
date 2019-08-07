@@ -20,13 +20,16 @@ class Order
     @send_text_api.send_txt(create_msg)
   end
 
-  private
   def delivery_time
     @order_time + @process_time
   end
 
   def create_msg
     "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+  end
+
+  def total_price(menu)
+    @order_items.map{ |dish, quantity| menu.menu[dish]*quantity}.sum
   end
 
 

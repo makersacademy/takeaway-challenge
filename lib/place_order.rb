@@ -22,7 +22,7 @@ class PlaceOrder
     @current_order = create_order(order_items)
     puts 'OK. Enter the total price of your order.'
     user_input = gets.chomp.to_f
-    raise 'Total price does not match' if total_price != user_input
+    raise 'Total price does not match' if @current_order.total_price(@menu) != user_input
     @current_order.send_txt_confirm
   end
 
@@ -42,11 +42,6 @@ class PlaceOrder
   def create_order(order_items)
     @current_order = @order_class.new(Time.now, order_items)
   end
-
-  def total_price
-    @current_order.order_items.map{ |dish, quantity| @menu.menu[dish]*quantity}.sum
-  end
-
 
 
 end

@@ -4,6 +4,9 @@ describe Order do
   # send_text instance double
   let(:send_txt_double) {double("send_text_api")}
 
+  # menu instance
+  let(:menu_double) {double("menu_double", :menu => {a: 10, b: 20, c: 30})}
+
   # What has been ordered: key=dish name, value=quantity
   let(:order_list) {{a: 5, b: 2}}
 
@@ -22,5 +25,9 @@ describe Order do
     end
   end
 
-
+  describe '#total_price' do
+    it 'return the total cost' do
+      expect(subject.total_price(menu_double)).to eq(90)
+    end
+  end
 end
