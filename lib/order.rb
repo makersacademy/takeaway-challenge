@@ -8,10 +8,11 @@ class Order
     
   end
 
-  def take_order(food)
-   
+  def take_order(food, amount)
+  
     if @menu.has_key?(food.to_sym) 
-       @basket << {food.to_sym => @menu[food.to_sym] }
+      @basket << {name: food, price: @menu[food.to_sym], amount: amount}
+      puts "#{amount}x #{food} was added to your basket"
     end
 
   end 
