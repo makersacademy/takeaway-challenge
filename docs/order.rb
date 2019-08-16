@@ -10,6 +10,6 @@ class Order
 
   def select(dish)
     @dishes_class = @dishes.new
-    # @total += @dishes_class.price(dish)
+    @total += @dishes_class.price(dish)
   end
 end
