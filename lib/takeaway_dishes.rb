@@ -1,6 +1,6 @@
 class Dishes
 
-  attr_reader :dishes
+  attr_reader :dishes, :checkout, :price, :food_order
 
   def initialize
     @dishes = [
@@ -12,6 +12,7 @@ class Dishes
               { item: "chips", price: 1.00 },
               { item: "sushi", price: 16.50 }
        ]
+    @food_order = []
   end
 
   def select_dishes(item)
@@ -29,4 +30,28 @@ class Dishes
       end
     }
   end
+
+  def check_out(item)
+    # @checkout << select_dishes(item)
+    # return checkout
+    dishes.each { |element|
+      if element[:item] == item
+        @food_order << element[:item]
+      end
+    }
+    # total = 0
+    # dishes.each { |element|
+    #   if element[:item] == item
+    #     return element[:price]
+    #   end
+    # }
+    # total += element ["price"]
+        # @food_order = element
+        # @checkout << @food_order
+        # return @checkout
+        # element[:item] == item
+        # return element[price]
+        # @price << element[:price]
+  end
+
 end
