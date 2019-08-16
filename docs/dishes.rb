@@ -1,4 +1,5 @@
 class Dishes
+
   def initialize
     @dishes = {
       "chicken burger" => 10,
@@ -13,8 +14,11 @@ class Dishes
     arr = @dishes.map {
       |dish, price|
       "#{dish}, £#{price}"
-
     }
     arr.join("\n")
+  end
+
+  def price(dish)
+    @dishes.fetch(dish)
   end
 end
