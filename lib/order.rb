@@ -9,7 +9,7 @@ end
 def select(dish,quantity)
   @dishes.select do |hash|
   if  hash[:dish] == dish
-    hash2 = hash.merge({quantilty:quantity})
+    hash2 = hash.merge({quantity:quantity})
     @selected << hash2
     @prices.push(hash[:price]*quantity)
   return @selected
@@ -18,10 +18,13 @@ end
 end
 
 def total
-  @prices.inject(:+)
+  @total = @prices.inject(:+)
 end
 
-def done 
+def done
+  amount = @selected.map {|hash| hash[:price]*hash[:quantity]}.inject(:+)
+  fail if @total != amount
   puts "Thank you! Your order was placed and will be delivered before 18:52"
+  return @selected << [{total: total}]
 end
 end
