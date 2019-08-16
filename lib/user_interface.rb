@@ -1,28 +1,36 @@
 require_relative './menu'
 require_relative './dish'
 require_relative './order'
+require_relative './basket'
+require_relative './sms'
 
 #check menu, add dish to basket, place order
-class UserInterface(basket_case = Basket)
+class UserInterface
 
-  def initialize
-    @basket = []
+  def initialize(basket_class = Basket, platform_class = Sms, confirmation_class = Confirmation, order_class = Order)
+    @basket = basket_class.new
+    @platform_class = platform_class
+    @confirmation_class = confirmation_class
+    @order_class = order_class
   end
 
   def show_menu(menu)
     menu.list
   end
 
-  def add_to_basket(menu, dish_name, quantity, order_class = Order)
-    order = order_class.new(menu, dish_name, quantity)
-    raise "Dish isn't on menu" if order.nil?
+  def add_to_basket(menu, dish_name, quantity)
+    new_order = @order_class.new(menu, dish_name, quantity)
+    raise "Dish isn't on menu" if new_order.order.nil?
 
-    order.order.each { |dish| @basket << dish }
+    new_order.order.each { |dish| @basket.add(dish) }
   end
 
-  def place_order(total)
-    raise "Order cancelled" if basket.empty?
+  def checkout(total)
+    raise 'Basket empty' if @basket.dishes.empty?
 
-    send_text
+    raise 'Incorrect amount' if total != @basket.total
+
+    @platform_class.new.send(@confirmation_class.new.message)
+    @basket.empty
   end
 end
