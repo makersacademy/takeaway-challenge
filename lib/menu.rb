@@ -1,4 +1,4 @@
-#contains Dishes, check whether a dish exists, returns it
+# contains Dishes, check whether a dish exists, returns it
 class Menu
   attr_reader :dishes
 
@@ -7,7 +7,7 @@ class Menu
   end
 
   def list
-    dishes.each{ |dish| puts "#{dish.name}: #{dish.price}"}
+    dishes.each { |dish| puts "#{dish.name}: #{dish.price}" }
   end
 
   def contains?(dish_name)

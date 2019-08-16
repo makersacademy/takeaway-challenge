@@ -1,0 +1,2 @@
+class BasketError < StandardError
+end

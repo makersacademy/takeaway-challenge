@@ -8,6 +8,10 @@ class Basket
     @dishes << dish
   end
 
+  def list
+    dishes.each { |dish| puts "#{dish.name}: #{dish.price}" }
+  end
+  
   def empty
     @dishes = []
   end

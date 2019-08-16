@@ -3,8 +3,11 @@ require_relative './dish'
 require_relative './order'
 require_relative './basket'
 require_relative './sms'
+require_relative './confirmation'
+require_relative './checkout_error'
+require_relative './basket_error'
 
-#check menu, add dish to basket, place order
+# check menu, add dish to basket, place order
 class UserInterface
 
   def initialize(basket_class = Basket, platform_class = Sms, confirmation_class = Confirmation, order_class = Order)
@@ -20,15 +23,19 @@ class UserInterface
 
   def add_to_basket(menu, dish_name, quantity)
     new_order = @order_class.new(menu, dish_name, quantity)
-    raise "Dish isn't on menu" if new_order.order.nil?
+    raise BasketError, "Dish isn't on menu" if new_order.order.nil?
 
     new_order.order.each { |dish| @basket.add(dish) }
   end
 
-  def checkout(total)
-    raise 'Basket empty' if @basket.dishes.empty?
+  def show_basket
+    @basket.list
+  end
 
-    raise 'Incorrect amount' if total != @basket.total
+  def checkout(total)
+    raise CheckoutError, 'Basket empty' if @basket.dishes.empty?
+
+    raise CheckoutError, 'Incorrect amount' if total != @basket.total
 
     @platform_class.new.send(@confirmation_class.new.message)
     @basket.empty

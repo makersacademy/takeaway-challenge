@@ -1,4 +1,4 @@
-#checks if order is valid, returns order * quantity
+# checks if order is valid, returns order * quantity
 class Order
   def initialize(menu, dish_name, quantity)
     @menu = menu
@@ -13,7 +13,7 @@ class Order
     order
   end
 
-  private
+  # private
 
   # def valid?
 end

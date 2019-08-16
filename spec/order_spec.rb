@@ -10,6 +10,6 @@ describe Order do
   it 'returns nothing if order is not valid' do
     invalid_order = Order.new(menu, 'Foobar jambalaya', 1)
     allow(menu).to receive(:dish_from_name).and_return(nil)
-    expect(subject.order).to be_empty
+    expect(invalid_order.order).to be_empty
   end
 end
