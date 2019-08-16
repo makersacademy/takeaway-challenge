@@ -13,6 +13,18 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+-------
+## Feature test:
+```
+delivawoo = Checkout.new
+scotish_fusion = Menu.new([
+                            Dish.new('Foo soup', 2),
+                            Dish.new('Bar stew', 6)
+                          ])
+delivawoo.show_menu(scotish_fusion)
+ # => Foo soup: 2
+      Bar stew: 6
+```
 
 Instructions
 -------
