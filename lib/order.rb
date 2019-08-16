@@ -21,10 +21,14 @@ def total
   @total = @prices.inject(:+)
 end
 
-def done
+def done(order)
   amount = @selected.map {|hash| hash[:price]*hash[:quantity]}.inject(:+)
-  fail if @total != amount
+  if @total != amount
+    raise "Total is not correct!"
+  else
   puts "Thank you! Your order was placed and will be delivered before 18:52"
   return @selected << [{total: total}]
+  end
 end
+
 end
