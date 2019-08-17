@@ -6,6 +6,7 @@ require_relative './sms'
 require_relative './confirmation'
 require_relative './checkout_error'
 require_relative './basket_error'
+require_relative './twilio_client'
 
 # check menu, add dish to basket, place order
 class UserInterface

@@ -11,4 +11,4 @@ app.add_to_basket(menu, 'Foo soup', 3)
 
 app.show_basket
 
-app.checkout(15)
+app.checkout(16)
