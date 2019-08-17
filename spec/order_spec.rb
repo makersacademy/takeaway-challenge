@@ -23,7 +23,7 @@ describe Order do
   order = Order.new
   order.select("Teriyaki",1)
   order.select("Pho",1)
-  order.total 
+  order.total
   mock_order = double(:mock_order)
   allow(mock_order).to receive(:check_amount).and_return(10)
   expect{ order.done(mock_order) }.to raise_error("Total is not correct!")
@@ -35,8 +35,9 @@ end
     order.select("Pho",1)
     order.total
     mock_order = double(:mock_order)
-    allow(mock_order).to receive(:check_amount).and_return(15.00)
-    expect{ order.done(mock_order) }.to output("Thank you! Your order was placed and will be delivered before 18:52.").to_stdout
+    allow(mock_order).to receive(:check_amount).and_return(15.0)
+    allow(mock_order).to receive(:done)
+    expect{ subject.done(mock_order) }.to output("Thank you! Your order was placed and will be delivered before 18:52.\n").to_stdout
 end
 
 end
