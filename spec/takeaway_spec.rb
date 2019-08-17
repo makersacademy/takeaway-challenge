@@ -23,8 +23,25 @@ describe Takeaway do
     end
 
     it 'raises error if a dish is not in the menu' do
-      message = "burger is not available, please choose dishes from menu"
+      message = "burger is not available, please order from the menu"
       expect { subject.add('burger', 1) }.to raise_error(message)
+    end
+  end
+
+  describe '#view_basket' do
+    it 'shows dishes added to the basket' do
+      subject.add('prawn cracker', 4)
+      subject.add('spring roll', 2)
+      message = "prawn cracker x4 = £8, spring roll x2 = £6\n"
+      expect { subject.view_basket }.to output(message).to_stdout
+    end
+  end
+
+  describe '#total' do
+    it 'shows the total price for all the dishes ordered' do
+      subject.add('crispy pork belly', 1)
+      subject.add('boiled rice', 1)
+      expect { subject.total }.to output("Total = £#{10.5}\n").to_stdout
     end
   end
 end
