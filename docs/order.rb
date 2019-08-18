@@ -1,8 +1,6 @@
 require './docs/dishes.rb'
 class Order
 
-  attr_reader :total #:order_summary
-
   def initialize(dishes = Dishes)
     @dishes = dishes
     @total = 0
