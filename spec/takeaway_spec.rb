@@ -41,7 +41,18 @@ describe Takeaway do
     it 'shows the total price for all the dishes ordered' do
       subject.add('crispy pork belly', 1)
       subject.add('boiled rice', 1)
-      expect { subject.total }.to output("Total = £#{10.5}\n").to_stdout
+      expect { subject.total }.to output("Total = £10.5\n").to_stdout
+    end
+  end
+
+  describe '#checkout' do
+    it 'sends a order confirmation text message with estimated delivery time' do
+      msg = "Thank you for your order!"
+      client = double(:client)
+      twilio_inputs = { from: ENV['TWILIO_PHONE_FROM'], to: ENV['TWILIO_PHONE_TO'], body: msg }
+      allow(client).to receive_message_chain(:messages, :create).with(twilio_inputs)
+      expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
+      subject.send_sms(msg)
     end
   end
 end

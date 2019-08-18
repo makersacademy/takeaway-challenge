@@ -1,9 +1,15 @@
+require 'dotenv/load'
+require './lib/menu'
+require './lib/send_sms'
+include Sms
+
 class Takeaway
   attr_reader :menu, :basket
 
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = {}
+    @total = 0
   end
 
   def view_menu
@@ -28,11 +34,16 @@ class Takeaway
   end
 
   def total
-    total = 0
     @basket.each do |dish, quantity|
       price = @menu.menu[dish]
-      total += price * quantity
+      @total += price * quantity
     end
-    puts "Total = £#{total}"
+    puts "Total = £#{@total}"
+  end
+
+  def checkout
+    d_time = (Time.now + 60 * 60).strftime("%H:%M")
+    msg = "Thank you! Your order was placed and will be delivered by #{d_time}"
+    send_sms(msg)
   end
 end

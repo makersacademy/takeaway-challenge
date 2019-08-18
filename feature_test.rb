@@ -19,4 +19,4 @@ takeaway.view_basket
 takeaway.total # "Total = £14"
 
 takeaway.checkout
-# "Thank you! Your order was placed and will be delivered before 18:52"
+# "Thank you! Your order was placed and will be delivered by 18:52"
