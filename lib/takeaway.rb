@@ -1,9 +1,9 @@
 require 'dotenv/load'
 require './lib/menu'
 require './lib/send_sms'
-include Sms
 
 class Takeaway
+  include Sms
   attr_reader :menu, :basket
 
   def initialize(menu = Menu.new)
