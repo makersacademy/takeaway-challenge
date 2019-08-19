@@ -39,7 +39,7 @@ class Takeaway
 
   def subtotal
     raise CheckoutError, 'Basket empty' if @basket.empty?
-    
+
     @basket.print_total
   end
 
