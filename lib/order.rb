@@ -6,7 +6,7 @@ class Order
   def initialize(menu, dish_name, quantity)
     @menu = menu
     @name = dish_name
-    @price = @menu.dish_from_name(dish_name).price
+    @price = @menu.dish_from_name(dish_name).price if valid?
     @quantity = quantity
   end
 
