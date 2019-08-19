@@ -8,7 +8,7 @@ class Menu
   end
 
   def list
-    puts dishes.each { |dish| puts "#{dish.name}: #{dish.print_price}" }
+    dishes.each { |dish| puts "#{dish.name}: #{dish.print_price}" }
   end
 
   def contains?(dish_name)

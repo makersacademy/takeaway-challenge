@@ -8,4 +8,8 @@ describe Dish do
   it 'has a price' do
     expect(subject.price).to eq(2)
   end
+
+  it 'can format its price' do
+    expect(subject.print_price).to eq('£2.00')
+  end
 end
