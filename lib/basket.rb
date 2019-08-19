@@ -1,22 +1,39 @@
+require 'formatter'
+
 class Basket
-  attr_reader :dishes
+  include Formatter
+
   def initialize
-    @dishes = []
+    @basket = Hash.new
   end
 
-  def add(dish)
-    @dishes << dish
+  def add(order, quantity)
+    if @basket.key?(order.name)
+      @basket[order.name].quantity += quantity
+    else
+      @basket[order.name] = order
+    end
   end
 
   def list
-    dishes.each { |dish| puts "#{dish.name}: #{dish.price}" }
-  end
-  
-  def empty
-    @dishes = []
+    @basket.each { |k, v|
+      puts "#{k} x#{v.quantity}: #{format_price(v.price * v.quantity)}"
+    }
   end
 
+  def empty
+    @basket = Hash.new
+  end
+
+  def empty?
+    @basket.empty?
+  end
+
+  def print_total
+    puts "Total: #{format_price(total)}"
+   end
+
   def total
-    @dishes.map(&:price).sum
+    @basket.values.map{ |order| order.price * order.quantity }.sum
   end
 end

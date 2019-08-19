@@ -1,19 +1,16 @@
 # checks if order is valid, returns order * quantity
 class Order
+  attr_reader :name, :price
+  attr_accessor :quantity
+
   def initialize(menu, dish_name, quantity)
     @menu = menu
-    @dish_name = dish_name
+    @name = dish_name
+    @price = @menu.dish_from_name(dish_name).price
     @quantity = quantity
   end
 
-  def order
-    dish = @menu.dish_from_name(@dish_name)
-    order = []
-    @quantity.times { order << dish unless dish.nil? }
-    order
+  def valid?
+    @menu.dish_from_name(@name) != nil
   end
-
-  # private
-
-  # def valid?
 end

@@ -1,14 +1,16 @@
-require_relative '../../lib/user_interface.rb'
+require_relative '../../lib/takeaway.rb'
 
-app = UserInterface.new
+foo_menu = Menu.new([Dish.new('Foo soup', 2), Dish.new('Bar broth', 5)])
 
-menu = Menu.new([Dish.new('Foo soup', 2), Dish.new('Bar broth', 5)])
+app = Takeaway.new(foo_menu)
 
-app.show_menu(menu)
+app.show_menu
 
-app.add_to_basket(menu, 'Bar broth', 2)
-app.add_to_basket(menu, 'Foo soup', 3)
+app.add_to_basket('Bar broth', 2)
+app.add_to_basket('Foo soup', 3)
 
-app.show_basket
+app.view_basket
+
+app.subtotal
 
 app.checkout(16)

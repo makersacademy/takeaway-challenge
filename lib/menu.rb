@@ -1,5 +1,6 @@
 # contains Dishes, check whether a dish exists, returns it
 class Menu
+
   attr_reader :dishes
 
   def initialize(dishes = [])
@@ -7,7 +8,7 @@ class Menu
   end
 
   def list
-    dishes.each { |dish| puts "#{dish.name}: #{dish.price}" }
+    puts dishes.each { |dish| puts "#{dish.name}: #{dish.print_price}" }
   end
 
   def contains?(dish_name)

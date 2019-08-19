@@ -1,5 +1,4 @@
 require 'twilio-ruby'
-require 'dotenv/load'
 
 class TwilioClient
   attr_reader :client
