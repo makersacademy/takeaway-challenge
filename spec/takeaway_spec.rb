@@ -49,7 +49,15 @@ describe Takeaway do
       expect(basket).to receive(:print_total)
       subject.subtotal
     end
-    xit 'can send a confirmation text' do
+    it 'can send a confirmation text' do
+      dish = double(:dish)
+      allow(basket).to receive(:empty?).and_return(false)
+      allow(basket).to receive(:total).and_return(2)
+      allow(basket).to receive(:empty)
+      allow(platform).to receive(:send)
+      allow(confirmation).to receive(:message)
+      expect(platform).to receive(:send)
+      subject.checkout(2)
     end
     it 'empties the basket after checkout' do
       dish = double(:dish)

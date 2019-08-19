@@ -1,4 +1,4 @@
-require 'formatter'
+# require 'formatter'
 
 class Basket
   include Formatter

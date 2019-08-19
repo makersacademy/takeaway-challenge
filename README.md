@@ -16,14 +16,42 @@ Takeaway Challenge
 -------
 ## Feature test:
 ```
-delivawoo = Checkout.new
-scotish_fusion = Menu.new([
-                            Dish.new('Foo soup', 2),
-                            Dish.new('Bar stew', 6)
-                          ])
-delivawoo.show_menu(scotish_fusion)
- # => Foo soup: 2
-      Bar stew: 6
+Makerss-MacBook-Pro-2:takeaway-challenge student$ irb
+2.6.3 :001 > require './lib/takeaway.rb'
+ => true
+2.6.3 :002 > foo_menu = Menu.new([Dish.new('Foo soup', 2), Dish.new('Bar broth', 5)])
+ => #<Menu:0x00007fe9e8b9eef0 @dishes=[#<Dish:0x00007fe9e8b9efe0 @name="Foo soup", @price=2>, #<Dish:0x00007fe9e8b9ef68 @name="Bar broth", @price=5>]>
+2.6.3 :003 > app = Takeaway.new(foo_menu)
+ => #<Takeaway:0x00007fe9e8bbede0 @menu=#<Menu:0x00007fe9e8b9eef0 @dishes=[#<Dish:0x00007fe9e8b9efe0 @name="Foo soup", @price=2>, #<Dish:0x00007fe9e8b9ef68 @name="Bar broth", @price=5>]>, @basket=#<Basket:0x00007fe9e8bbed40 @basket={}>, @platform=Sms, @confirmation=Confirmation, @order=Order>
+2.6.3 :004 > app.show_menu
+Foo soup: £2.00
+Bar broth: £5.00
+ => [#<Dish:0x00007fe9e8b9efe0 @name="Foo soup", @price=2>, #<Dish:0x00007fe9e8b9ef68 @name="Bar broth", @price=5>]
+2.6.3 :005 > app.add_to_basket('Bar broth', 2)
+ => "Bar broth x2 added to basket"
+2.6.3 :006 > app.add_to_basket('Foo soup', 3)
+ => "Foo soup x3 added to basket"
+2.6.3 :007 > app.add_to_basket('Bar broth', 1)
+ => "Bar broth x1 added to basket"
+2.6.3 :008 > app.view_basket
+Bar broth x3: £15.00
+Foo soup x3: £6.00
+ => {"Bar broth"=>#<Order:0x00007fe9e8bef5a8 @menu=#<Menu:0x00007fe9e8b9eef0 @dishes=[#<Dish:0x00007fe9e8b9efe0 @name="Foo soup", @price=2>, #<Dish:0x00007fe9e8b9ef68 @name="Bar broth", @price=5>]>, @name="Bar broth", @price=5, @quantity=3>, "Foo soup"=>#<Order:0x00007fe9e8c04570 @menu=#<Menu:0x00007fe9e8b9eef0 @dishes=[#<Dish:0x00007fe9e8b9efe0 @name="Foo soup", @price=2>, #<Dish:0x00007fe9e8b9ef68 @name="Bar broth", @price=5>]>, @name="Foo soup", @price=2, @quantity=3>}
+2.6.3 :009 > app.subtotal
+Total: £21.00
+ => nil
+2.6.3 :010 > app.checkout(16)
+Traceback (most recent call last):
+        5: from /Users/student/.rvm/rubies/ruby-2.6.3/bin/irb:23:in `<main>'
+        4: from /Users/student/.rvm/rubies/ruby-2.6.3/bin/irb:23:in `load'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        2: from (irb):10
+        1: from /Users/student/projects/takeaway-challenge/lib/takeaway.rb:49:in `checkout'
+CheckoutError (Incorrect amount)
+2.6.3 :011 > app.checkout(21)
+Order received!
+ => {}
+2.6.3 :012 > 
 ```
 
 Instructions
