@@ -13,8 +13,6 @@ describe SMSSender do
     allow(client).to receive(:messages).and_return(messages)
   end
 
-  it { is_expected.to respond_to 'send' }
-
   describe '#initialize' do
     it 'initializes sms api with sid and token' do
       SMSSender.new(client_class, 'sid', 'token')
