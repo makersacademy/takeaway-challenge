@@ -1,13 +1,15 @@
 require './lib/sms_sender'
+require 'twilio-ruby'
 
 describe SMSSender do
-  let(:messages) { double('Twilio::REST::Client:Messages') }
-  let(:client) { double('Twilio::REST::Client') }
-  subject { SMSSender.new(client, 'sid', 'token') }
+  let(:client_class) { class_double('Twilio::REST::Client') }
+  let(:client) { instance_double('Twilio::REST::Client')}
+  let(:messages) { instance_double('Twilio::REST::Client::Messages') }
+  subject { SMSSender.new(client_class, 'sid', 'token') }
 
   before :each do
     allow(messages).to receive(:create)
-    allow(client).to receive(:new).and_return(client)
+    allow(client_class).to receive(:new).and_return(client)
     allow(client).to receive(:messages).and_return(messages)
   end
 
@@ -15,8 +17,8 @@ describe SMSSender do
 
   describe '#initialize' do
     it 'initializes sms api with sid and token' do
-      SMSSender.new(client, 'sid', 'token')
-      expect(client).to have_received(:new).with('sid', 'token')
+      SMSSender.new(client_class, 'sid', 'token')
+      expect(client_class).to have_received(:new).with('sid', 'token')
     end
   end
 
