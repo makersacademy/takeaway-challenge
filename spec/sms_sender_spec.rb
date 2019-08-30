@@ -12,9 +12,9 @@ describe SMSSender do
   subject { SMSSender.new(client_class) }
 
   before :each do
-    allow(messages).to receive(:create)
     allow(client_class).to receive(:new).and_return(client)
     allow(client).to receive(:messages).and_return(messages)
+    allow(messages).to receive(:create)
   end
 
   describe '#initialize' do
