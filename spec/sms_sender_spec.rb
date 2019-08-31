@@ -24,11 +24,11 @@ describe SMSSender do
     end
   end
 
-  describe '#send' do
+  describe '#send_sms' do
     it 'calls injected api with from, to and body' do
-      subject.send('from', 'to', 'body')
+      subject.send_sms('to', 'body')
       expect(client).to have_received(:messages)
-      expect(messages).to have_received(:create).with(from: 'from', to: 'to', body: 'body')
+      expect(messages).to have_received(:create).with(from: ENV['TWILIO_NUMBER'], to: 'to', body: 'body')
     end
   end
 end
