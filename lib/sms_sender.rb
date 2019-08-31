@@ -8,8 +8,8 @@ class SMSSender
   def send_sms(to, body)
     begin
       create_message(to, body)
-    rescue StandardError => e
-      puts e
+    rescue Twilio::REST::TwilioError => e
+      e.message
     end
   end
 

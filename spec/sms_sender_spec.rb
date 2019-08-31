@@ -9,6 +9,10 @@ describe SMSSender do
   let(:client)       { instance_double(TWILIO_CLIENT) }
   let(:messages)     { instance_double(TWILIO_MESSAGES) }
 
+  let(:number)       { ENV['TWILIO_NUMBER'] }
+  let(:sid)          { ENV['TWILIO_SID'] }
+  let(:token)        { ENV['TWILIO_TOKEN'] }
+
   subject { SMSSender.new(client_class) }
 
   before :each do
@@ -17,10 +21,19 @@ describe SMSSender do
     allow(messages).to receive(:create)
   end
 
+  describe 'test assumptions' do
+    it 'assumes that relevant environment variables are non-empty and unique' do
+      expect(number).not_to be_empty
+      expect(sid).not_to be_empty
+      expect(token).not_to be_empty
+      expect([number, sid, token].uniq.size).to eq 3
+    end
+  end
+
   describe '#initialize' do
     it 'initializes sms api with environment sid and token' do
       SMSSender.new(client_class)
-      expect(client_class).to have_received(:new).with(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
+      expect(client_class).to have_received(:new).with(sid, token)
     end
 
     it "has a default client of #{TWILIO_CLIENT}" do
@@ -36,9 +49,9 @@ describe SMSSender do
       expect(messages).to have_received(:create).with(from: ENV['TWILIO_NUMBER'], to: 'to', body: 'body')
     end
 
-    it 'handles exceptions silently' do
-      allow(messages).to receive(:create).and_raise(RuntimeError)
-      expect { subject.send_sms('to', 'body') }.not_to raise_error
+    it 'returns exception messages' do
+      allow(messages).to receive(:create).and_raise(Twilio::REST::TwilioError)
+      expect(subject.send_sms('to', 'body')).to eq 'Twilio::REST::TwilioError'
     end
   end
 end
