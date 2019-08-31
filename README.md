@@ -102,3 +102,7 @@ Create customer_spec and customer file.
 Create test in customer spec file to test a customer can call on a method view_dishes.
 
 Test working.
+
+First commit + push complete.
+
+Add hash with dishes to customer spec menu.
