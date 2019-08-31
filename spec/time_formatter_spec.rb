@@ -2,7 +2,7 @@ require './lib/time_formatter'
 require 'timecop'
 
 describe TimeFormatter do
-  subject { TimeFormatter.new }
+  subject { described_class.new }
   let(:time) { Time.new(1750, 7, 28, 10, 10, 10) }
 
   before :each do
@@ -18,7 +18,7 @@ describe TimeFormatter do
   end
 
   it 'has a configurable format' do
-    formatter = TimeFormatter.new("%H:%M:%S")
+    formatter = described_class.new("%H:%M:%S")
     expect(formatter.format(time)).to eq '10:10:10'
   end
 end

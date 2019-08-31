@@ -14,11 +14,11 @@ describe Takeaway do
   let(:cappuccino) { MenuItem.new('Cappuccino', '3.85') }
 
   def init_subject
-    Takeaway.new(sms_class, menu_class, menu_hash)
+    described_class.new(sms_class, menu_class, menu_hash)
   end
 
   it 'initializes with default Menu class' do
-    expect(Takeaway.new.menu).to be_instance_of Menu
+    expect(described_class.new.menu).to be_instance_of Menu
   end
 
   it 'initializes with default SMSSender class' do

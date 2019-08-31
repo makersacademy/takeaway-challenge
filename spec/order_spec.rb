@@ -36,7 +36,7 @@ describe Order do
   end
 
   it 'has a configurable delivery window' do
-    order = Order.new([], 2 * (60 * 60), formatter)
+    order = described_class.new([], 2 * (60 * 60), formatter)
     expect(order.delivery_time).to eq time_placed + 2 * (60 * 60)
   end
 end

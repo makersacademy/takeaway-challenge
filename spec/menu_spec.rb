@@ -13,12 +13,7 @@ describe Menu do
   end
 
   it 'retrieves items at indicies' do
-    first = MenuItem.new('1', '2')
-    second = MenuItem.new('3', '4')
-    third = MenuItem.new('5', '6')
-    menu = Menu.new([first, second, third])
-
-    expect(menu.items_at([0, 2])).to eq [first, third]
+    expect(Menu.new(%w(1 2 3)).items_at([0, 2])).to eq %w(1 3)
   end
 
   it 'fails silently when retrieving non-existing items' do

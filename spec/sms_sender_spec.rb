@@ -13,7 +13,7 @@ describe SMSSender do
   let(:sid)          { ENV['TWILIO_SID'] }
   let(:token)        { ENV['TWILIO_TOKEN'] }
 
-  subject { SMSSender.new(client_class) }
+  subject { described_class.new(client_class) }
 
   before :each do
     allow(client_class).to receive(:new).and_return(client)
@@ -32,7 +32,7 @@ describe SMSSender do
 
   describe '#initialize' do
     it 'initializes sms api with environment sid and token' do
-      SMSSender.new(client_class)
+      described_class.new(client_class)
       expect(client_class).to have_received(:new).with(sid, token)
     end
 
