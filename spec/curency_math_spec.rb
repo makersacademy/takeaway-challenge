@@ -1,39 +1,21 @@
 require './lib/currency_math'
 
 describe 'Currency Math' do
-  class Test
-    include CurrencyMath
-  end
+  class MathTest; include CurrencyMath; end
+  subject { MathTest.new }
 
-  subject { Test.new }
-
-  describe '#multiply' do
-    it 'should multiply two numbers' do
-      expect(subject.multiply(3.55, 2)).to eq '7.10'
-    end
-
-    it 'should handle strings as arguments' do
-      expect(subject.multiply('3.55', '2')).to eq '7.10'
+  def self.this(should:, two_numbers:, making:)
+    it "should #{should} #{two_numbers} and return #{making}" do
+      expect(subject.send(should, two_numbers[0], two_numbers[-1])).to eq making
     end
   end
 
-  describe '#add' do
-    it 'should add two numbers' do
-      expect(subject.add(3.29, 1.20)).to eq '4.49'
-    end
+  this should: 'multiply', two_numbers: [3.55, 2],     making: '7.10'
+  this should: 'multiply', two_numbers: %w(3.55 2),    making: '7.10'
 
-    it 'should handle strings as arguments' do
-      expect(subject.add('3.29', '1.20')).to eq '4.49'
-    end
-  end
+  this should: 'add',      two_numbers: [3.29, 1.20],  making: '4.49'
+  this should: 'add',      two_numbers: %w(3.29 1.20), making: '4.49'
 
-  describe '#subtract' do
-    it 'should subtract two numbers' do
-      expect(subject.subtract(3.29, 1.20)).to eq '2.09'
-    end
-
-    it 'should handle strings as arguments' do
-      expect(subject.subtract('3.29', '1.20')).to eq '2.09'
-    end
-  end
+  this should: 'subtract', two_numbers: [3.29, 1.20],  making: '2.09'
+  this should: 'subtract', two_numbers: %w(3.29 1.20), making: '2.09'
 end
