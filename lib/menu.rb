@@ -1,3 +1,4 @@
+require_relative './takeaway'
 class Menu
   attr_reader :dishes
   def initialize
@@ -5,6 +6,7 @@ class Menu
   end
 
   def display_menu
-    @dishes
+    puts @dishes
+    puts "Order your pizza now!"
   end
 end
