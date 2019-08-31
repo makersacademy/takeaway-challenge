@@ -30,5 +30,10 @@ describe SMSSender do
       expect(client).to have_received(:messages)
       expect(messages).to have_received(:create).with(from: ENV['TWILIO_NUMBER'], to: 'to', body: 'body')
     end
+
+    it 'handles exceptions silently' do
+      allow(messages).to receive(:create).and_raise(RuntimeError)
+      expect { subject.send_sms('to', 'body') }.not_to raise_error
+    end
   end
 end
