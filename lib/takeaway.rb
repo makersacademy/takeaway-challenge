@@ -21,9 +21,9 @@ class Takeaway
       'Muffin Of The Day'     => '4.55'
   }
 
-  def initialize(sms_sender = SMSSender.new, menu_hash = DEFAULT_MENU)
-    @sms_sender = sms_sender
-    @menu = Menu.new(menu_hash.map { |k, v| MenuItem.new(k, v) })
+  def initialize(sms_class = SMSSender, menu_hash = DEFAULT_MENU, menu_class = Menu)
+    @sms_sender = sms_class.new
+    @menu = menu_class.new(menu_hash.map { |k, v| MenuItem.new(k, v) })
   end
 
   def menu
@@ -31,16 +31,10 @@ class Takeaway
   end
 
   def order(item_indicies)
-    Order.new(retrieve_menu_items(item_indicies))
+    Order.new(@menu.items_at(item_indicies))
   end
 
   def send_sms_confirmation(to:, body:)
-    @sms_sender.send(to, body)
-  end
-
-  private
-
-  def retrieve_menu_items(item_indices)
-    item_indices.reduce([]) { |items, i| items << @menu.items[i] }
+    @sms_sender.send_sms(to, body)
   end
 end

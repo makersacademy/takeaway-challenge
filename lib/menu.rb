@@ -3,11 +3,15 @@ require './lib/line_item_list_printer'
 class Menu
   include LineItemListPrinter
 
-  def initialize(line_items)
-    @line_items = line_items
+  def initialize(menu_items)
+    @menu_items = menu_items
   end
 
   def items
-    @line_items.dup
+    @menu_items.dup
+  end
+
+  def items_at(item_indices)
+    item_indices.reduce([]) { |items, i| items << @menu_items[i] }
   end
 end

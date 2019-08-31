@@ -10,4 +10,13 @@ describe Menu do
     new_items << ''
     expect(subject.items).to eq original_items
   end
+
+  it 'retrieves items at indicies' do
+    first = MenuItem.new('1', '2')
+    second = MenuItem.new('3', '4')
+    third = MenuItem.new('5', '6')
+    menu = Menu.new([first, second, third])
+
+    expect(menu.items_at([0, 2])).to eq [first, third]
+  end
 end
