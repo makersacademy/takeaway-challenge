@@ -106,3 +106,13 @@ Test working.
 First commit + push complete.
 
 Add hash with dishes to customer spec menu.
+
+Realise I've been leading with a customer class because thats what I viewed as being most prominent when I first read the user stories.
+
+Review user stories and draft possible structure on paper.
+
+Decide there are 2 classes Customer and Shop.  The shop will have a menu which the customer will use to select dishes and place / check an order.
+
+Delete all current code and start again with blank versions of customer and customer spec. Keep user_stories and README as they are.
+
+Create shop lib + spec files 
