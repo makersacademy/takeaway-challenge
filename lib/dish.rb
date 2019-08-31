@@ -12,4 +12,8 @@ class Dish
     raise "Not enough to fullfil order" if @available_quantity < quantity
     @available_quantity -= quantity
   end
+
+  def available?
+    @available_quantity > 0
+  end
 end

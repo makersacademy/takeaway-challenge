@@ -24,4 +24,17 @@ describe Dish do
       end
     end
   end
+  context "When no food available" do
+    subject = described_class.new("dish1", "Roast Chicken", 0, 12.50)
+    it "food available = false" do
+      expect(subject).not_to be_available
+    end
+  end
+
+  context "When food available" do
+    subject = described_class.new("dish1", "Roast Chicken", 1, 12.50)
+    it "food available = true" do
+      expect(subject).to be_available
+    end
+  end
 end
