@@ -12,7 +12,7 @@ describe 'Currency Math' do
       expect(subject.multiply(3.55, 2)).to eq '7.10'
     end
 
-    it 'should accept a string as arguments' do
+    it 'should accept strings as arguments' do
       expect(subject.multiply('3.55', '2')).to eq '7.10'
     end
   end
@@ -22,7 +22,7 @@ describe 'Currency Math' do
       expect(subject.add(3.29, 1.20)).to eq '4.49'
     end
 
-    it 'should take a string as arguments' do
+    it 'should take strings as arguments' do
       expect(subject.add('3.29', '1.20')).to eq '4.49'
     end
   end
@@ -32,7 +32,7 @@ describe 'Currency Math' do
       expect(subject.subtract(3.29, 1.20)).to eq '2.09'
     end
 
-    it 'should take a string as arguments' do
+    it 'should take strings as arguments' do
       expect(subject.subtract('3.29', '1.20')).to eq '2.09'
     end
   end

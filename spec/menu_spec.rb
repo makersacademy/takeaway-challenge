@@ -18,4 +18,8 @@ describe Menu do
 
     expect(menu.items_at([0, 2])).to eq [first, third]
   end
+
+  it 'fails silently when retrieving non-existing items' do
+    expect { subject.items_at([300]) }.not_to raise_error
+  end
 end

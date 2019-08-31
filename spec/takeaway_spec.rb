@@ -33,7 +33,8 @@ describe Takeaway do
 
   it 'returns a copy of the menu object' do
     allow(menu).to receive(:dup)
-    expect(subject.menu).not_to eq menu
+
+    expect(subject.menu).not_to be menu
     expect(menu).to have_received(:dup)
   end
 
