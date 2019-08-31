@@ -1,8 +1,3 @@
-require './lib/currency_math'
-require './lib/order'
-require './lib/menu_item'
-require './lib/sms_sender'
-
 class Takeaway
   DEFAULT_MENU = {
       'Cafe Latte'            => '4.75',
@@ -21,6 +16,7 @@ class Takeaway
       'Chocolate Chip Muffin' => '4.05',
       'Muffin Of The Day'     => '4.55'
   }
+  DEFAULT_DELIVERY_WINDOW = 60 * 60
 
   def initialize(sms_class = SMSSender, menu_class = Menu, menu_hash = DEFAULT_MENU)
     @sms_sender = sms_class.new
@@ -32,7 +28,7 @@ class Takeaway
   end
 
   def order(item_indices)
-    Order.new(@menu.items_at(item_indices))
+    Order.new(@menu.items_at(item_indices), DEFAULT_DELIVERY_WINDOW)
   end
 
   def send_sms_confirmation(to:, body:)

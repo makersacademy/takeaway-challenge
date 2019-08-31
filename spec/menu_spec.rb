@@ -4,6 +4,8 @@ describe Menu do
   include_examples('LineItemListPrinter',
                    "Cafe Latte - 4.30\nCafe Latte - 4.30", 'line_items_string')
 
+  subject { described_class.new([menu_item, menu_item]) }
+
   it 'returns immutable items' do
     original_items = subject.items.dup
     subject.items << ''

@@ -1,16 +1,12 @@
-require './lib/currency_math'
-require './lib/menu'
-
 class Order
   include CurrencyMath
   include LineItemListPrinter
 
-  DEFAULT_DELIVERY_WINDOW = 60 * 60
-
-  def initialize(menu_items, delivery_window = DEFAULT_DELIVERY_WINDOW)
-    @menu_items = menu_items
+  def initialize(menu_items, delivery_window, time_formatter = TimeFormatter.new)
+    @menu_items      = menu_items
     @delivery_window = delivery_window
-    @time = Time.new
+    @time_formatter  = time_formatter
+    @time_placed     = Time.new
   end
 
   def total
@@ -18,20 +14,24 @@ class Order
   end
 
   def time
-    @time.dup
+    @time_placed.dup
   end
 
   def delivery_time
-    @time + @delivery_window
+    @time_placed + @delivery_window
   end
 
-  def to_string(conjoiner = "\n")
-    line_items_string(conjoiner) + "#{conjoiner}Total: #{total}#{conjoiner}Delivers by: #{formatted_time(delivery_time)}"
+  def to_string(conj = "\n")
+    [line_items_string(conj), total_string, delivers_by_string].join(conj)
   end
 
   private
 
-  def formatted_time(time = @time)
-    time.strftime "%H:%M"
+  def total_string
+    "Total: #{total}"
+  end
+
+  def delivers_by_string
+    "Delivers by: #{@time_formatter.format(delivery_time)}"
   end
 end

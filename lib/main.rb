@@ -1,5 +1,3 @@
-require './lib/takeaway'
-
 class Main
   def initialize
     @takeaway = Takeaway.new
