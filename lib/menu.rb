@@ -30,6 +30,3 @@ class Menu
 		end
 	end
 end
-
-menu = Menu.new
-menu.view

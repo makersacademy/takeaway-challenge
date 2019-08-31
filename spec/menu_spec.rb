@@ -1,4 +1,5 @@
 require './lib/menu'
+require './lib/cart'
 
 describe Menu do
 	let(:menu) { Menu.new } 
