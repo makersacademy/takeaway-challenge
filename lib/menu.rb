@@ -1,20 +1,32 @@
+require 'dish'
+
 class Menu
+  ERROR_INVALID_PRICE = "Invalide Price!"
+  ERROR_IS_NOT_A_DISH = "Error! you need to add a real dish!"
 
-  MENU = {
-  "Lasagne" => 6.50,
-  "fried chicken" => 5.50,
-  "Ceasar salada" => 3.0,
-  "Mac and cheese" => 4.0
-  }
+  DEFAULT_DISHES =  [
+    Dish.new("Fried chicken", 4),
+    Dish.new("Tacos", 3),
+    Dish.new("Sushi", 1),
+    Dish.new("Salad", 2),
+  ]
 
-  attr_reader :menu
+  attr_reader :dishes
 
-  def initialize(menu = MENU)
-  @menu = menu
+  def initialize(dishes = DEFAULT_DISHES)
+    @dishes = dishes
   end
 
   def view_menu
-    @menu
+    @dishes
   end
+
+  def add_dish(dish)
+    fail ERROR_IS_NOT_A_DISH unless dish.is_a?(Dish)
+    fail ERROR_INVALID_PRICE unless dish.price > 0
+
+    @dishes << dish
+  end
+
 
 end
