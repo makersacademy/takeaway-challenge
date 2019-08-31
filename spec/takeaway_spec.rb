@@ -6,10 +6,9 @@ describe Takeaway do
   let(:sms_sender) { instance_double('SMSSender') }
 
   let(:cafe_latte) { MenuItem.new('Cafe Latte', '4.75') }
-  let(:cappuccino) { MenuItem.new('Cappuccino', '3.85')}
+  let(:cappuccino) { MenuItem.new('Cappuccino', '3.85') }
 
-  let(:order)      { Order.new([cafe_latte, cappuccino])
-  }
+  let(:order)      { Order.new([cafe_latte, cappuccino]) }
 
   it 'has a menu' do
     expect(subject.menu.items).to include cafe_latte, cappuccino
