@@ -3,10 +3,10 @@ require 'timecop'
 
 describe TimeFormatter do
   subject { TimeFormatter.new }
-  let(:time_placed) { Time.new(2000, 10, 10, 10, 10, 10) }
+  let(:time) { Time.new(1750, 7, 28, 10, 10, 10) }
 
   before :each do
-    Timecop.freeze(time_placed)
+    Timecop.freeze(time)
   end
 
   after :each do
@@ -14,11 +14,11 @@ describe TimeFormatter do
   end
 
   it 'has a default format of hours and minutes' do
-    expect(subject.format(time_placed)).to eq '10:10'
+    expect(subject.format(time)).to eq '10:10'
   end
 
   it 'has a configurable format' do
     formatter = TimeFormatter.new("%H:%M:%S")
-    expect(formatter.format(time_placed)).to eq '10:10:10'
+    expect(formatter.format(time)).to eq '10:10:10'
   end
 end

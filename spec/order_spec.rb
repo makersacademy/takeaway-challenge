@@ -5,7 +5,7 @@ describe Order do
   include_examples('LineItemListPrinter',
                    "Cafe Latte - 4.30\nCafe Latte - 4.30\nTotal: 8.60\nDelivers by: 11:10", 'to_string')
 
-  let(:time_placed) { Time.new(2000, 10, 10, 10, 10, 10) }
+  let(:time_placed) { Time.new(1750, 7, 28, 10, 10, 10) }
   let(:formatter)   { instance_double('TimeFormatter') }
   subject           { described_class.new([menu_item, menu_item], 60 * 60, formatter) }
 
@@ -37,6 +37,6 @@ describe Order do
 
   it 'has a configurable delivery window' do
     order = Order.new([], 2 * (60 * 60), formatter)
-    expect(order.delivery_time).to eq Time.new(2000, 10, 10, 12, 10, 10)
+    expect(order.delivery_time).to eq time_placed + 2 * (60 * 60)
   end
 end
