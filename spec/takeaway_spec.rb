@@ -41,7 +41,7 @@ describe Takeaway do
   it 'can retrieve ordered items by index' do
     allow(menu).to receive(:items_at).and_return([cappuccino])
 
-    expect(subject.order([1])).to eq Order.new([cappuccino])
+    expect(subject.order([1])).to be_instance_of Order
     expect(menu).to have_received(:items_at).with([1])
   end
 
