@@ -10,6 +10,6 @@ Order = Struct.new(:menu_items) do
   end
 
   def to_string(conjoiner = "\n")
-    print_line_items(conjoiner) + "#{conjoiner}Total: #{total}"
+    line_items_string(conjoiner) + "#{conjoiner}Total: #{total}"
   end
 end

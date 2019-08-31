@@ -2,7 +2,7 @@ require './lib/menu'
 
 describe Menu do
   include_examples('LineItemListPrinter',
-                   "Cafe Latte - 4.30\nCafe Latte - 4.30", 'print_line_items')
+                   "Cafe Latte - 4.30\nCafe Latte - 4.30", 'line_items_string')
 
   it 'returns immutable items' do
     original_items = subject.items.dup

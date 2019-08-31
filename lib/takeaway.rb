@@ -1,6 +1,7 @@
 require './lib/currency_math'
 require './lib/order'
 require './lib/menu_item'
+require './lib/sms_sender'
 
 class Takeaway
   DEFAULT_MENU = {
@@ -30,8 +31,8 @@ class Takeaway
     @menu.dup
   end
 
-  def order(item_indicies)
-    Order.new(@menu.items_at(item_indicies))
+  def order(item_indices)
+    Order.new(@menu.items_at(item_indices))
   end
 
   def send_sms_confirmation(to:, body:)

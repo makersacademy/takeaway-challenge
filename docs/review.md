@@ -309,7 +309,7 @@ def initialize
 end
 
 def add_dish(dish, quantity = 1)
-  @items[dish] = 0 unless items[dish]
+  @items[dish] = 0 unless line_items[dish]
   @items[dish] += quantity
 end
 ```
