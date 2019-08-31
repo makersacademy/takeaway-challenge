@@ -1,7 +1,7 @@
 class Dish
   attr_reader :identifier, :description, :available_quantity, :cost
 
-  def initialize(identifier, description, quantity, cost )
+  def initialize(identifier, description, quantity, cost)
     @identifier = identifier
     @description = description
     @available_quantity = quantity
