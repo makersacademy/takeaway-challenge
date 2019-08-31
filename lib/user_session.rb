@@ -3,10 +3,9 @@ require_relative 'basket'
 
 class UserSession
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu = Menu.new)
+    @menu = menu
     @basket = Basket.new
-    @total = []
   end
 
   def interface
@@ -30,7 +29,7 @@ class UserSession
     when "4"
       payment_confirmation
     when "5"
-      yield
+      exit
     else
       "Not a valid selection, try again"
       interface
@@ -38,10 +37,11 @@ class UserSession
   end
 
   def menu_selector
-    puts "type in a name of the dish to add it to basket"
+    puts "Enter the name of the dish to add it to basket"
     input = gets.chomp
     if @menu.menu_hash[input] != nil
       @basket.basket << input.capitalize
+      @basket.total << @menu.menu_hash[input]
       "#{input.capitalize} added to basket"
       interface
     else 

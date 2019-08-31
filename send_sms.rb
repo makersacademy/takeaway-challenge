@@ -1,8 +1,11 @@
 require 'twilio-ruby'
+require_relative './lib/user_session'
+require_relative 'twilio_account_sid'
+require_relative 'twilio_auth_tokens'
 
-account_sid = 'AC4e2b5a76e4a0b41721f5734e68d3649b'
-auth_token = '09c65b7092ebce3118061c297073aa46'
-client = Twilio::REST::Client.new(account_sid, auth_token)
+ACCOUNT_SID = 'AC4e2b5a76e4a0b41721f5734e68d3649b'
+AUTH_TOKEN = '09c65b7092ebce3118061c297073aa46'
+client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
 
 from = '+441375352703' # Your Twilio number
 to = '+447505480464' # Your mobile phone number
