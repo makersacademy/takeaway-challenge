@@ -2,7 +2,7 @@ require './lib/time_formatter'
 require 'timecop'
 
 describe TimeFormatter do
-  subject { TimeFormatter.new("%H:%M") }
+  subject { TimeFormatter.new }
   let(:time_placed) { Time.new(2000, 10, 10, 10, 10, 10) }
 
   before :each do
