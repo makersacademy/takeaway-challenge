@@ -6,8 +6,7 @@ describe Menu do
 
   it 'returns immutable items' do
     original_items = subject.items.dup
-    new_items = subject.items
-    new_items << ''
+    subject.items << ''
     expect(subject.items).to eq original_items
   end
 

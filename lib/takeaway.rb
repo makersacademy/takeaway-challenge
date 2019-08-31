@@ -22,7 +22,7 @@ class Takeaway
       'Muffin Of The Day'     => '4.55'
   }
 
-  def initialize(sms_class = SMSSender, menu_hash = DEFAULT_MENU, menu_class = Menu)
+  def initialize(sms_class = SMSSender, menu_class = Menu, menu_hash = DEFAULT_MENU)
     @sms_sender = sms_class.new
     @menu = menu_class.new(menu_hash.map { |k, v| MenuItem.new(k, v) })
   end
