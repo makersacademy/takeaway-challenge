@@ -80,3 +80,25 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+Challenge Process Log
+
+Forked repo and downloaded to projects folder.
+
+Changed to Ruby version 2.5.0 after being prompted when accessing the directory.
+
+Ran 'bundle' to ensure all required gems are installed.
+
+Read through challenge.
+
+Transfer user stories to spec/user_stories.rb
+
+Review user story 1 and use IRB to establish possible required functionality.
+
+My interpretation of this user story is that the "customer" needs to view a list of "dishes" with corresponding "prices"
+
+Create customer_spec and customer file.
+
+Create test in customer spec file to test a customer can call on a method view_dishes.
+
+Test working.
