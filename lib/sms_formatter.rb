@@ -1,7 +1,7 @@
 class SmsFormatter
 
   def parse_sms(sms)
-    return [:menu, nil] if sms == "Menu" || sms == "menu"
+    return [:menu, nil] if ["Menu", "menu"].include? sms
     [:order, parse_order(sms)]
   end
 

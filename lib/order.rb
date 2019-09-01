@@ -28,7 +28,7 @@ class Order
     menu_dishes.each { |dish| menu_dish_names.add(dish.name) }
 
     @order.each do |dish|
-      return true if !menu_dish_names.include?(dish[:name])
+      return true unless menu_dish_names.include?(dish[:name])
     end
     false
   end

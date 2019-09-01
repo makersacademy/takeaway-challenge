@@ -26,8 +26,8 @@ describe Order do
     it 'should fail an order when some dishes not available' do
       subject = Order.new(
         [
-          { name: "dish_1", quantity: 2},
-          { name: "dish_3", quantity: 3},
+          { name: "dish_1", quantity: 2 },
+          { name: "dish_3", quantity: 3 },
         ],
         54
       )
