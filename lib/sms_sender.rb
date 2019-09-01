@@ -7,13 +7,16 @@ class SMSSender
   TOKEN = ENV['TWILIO_TOKEN']
   NUMBER = ENV['TWILIO_NUMBER']
 
-  def initialize(client = Twilio::REST::Client)
+  TWILIO_CLIENT = Twilio::REST::Client
+  TWILIO_ERROR  = Twilio::REST::TwilioError
+
+  def initialize(client = TWILIO_CLIENT)
     @client = client.new(SID, TOKEN)
   end
 
   def send_sms(to, body)
     create_message(to, body)
-  rescue Twilio::REST::TwilioError => e
+  rescue TWILIO_ERROR => e
     e.message
   end
 
