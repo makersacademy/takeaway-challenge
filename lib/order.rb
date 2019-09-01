@@ -18,6 +18,10 @@ class Order
     @price_total.map{|cost| cost.inject(:*)}.sum
   end
 
+  def compare_price(user_estimate)
+    raise "Recalculate the total of your order" if total_price != user_estimate
+  end
+
 private
 
   def available?(item)

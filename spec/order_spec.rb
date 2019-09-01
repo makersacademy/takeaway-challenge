@@ -32,4 +32,11 @@ describe Order do
     end
   end
 
+  describe '#compare_price' do
+    it "compares actual price with user price" do
+      subject.select_dish("margherita", 2)
+      expect { subject.compare_price(8)}.to raise_error "Recalculate the total of your order"
+    end
+  end
+
 end
