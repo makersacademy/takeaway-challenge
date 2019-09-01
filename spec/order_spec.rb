@@ -35,12 +35,12 @@ describe Order do
   describe '#compare_price' do
     it "raises an error if user price estimate isn't the same as" do
       subject.select_dish("margherita", 2)
-      expect { subject.compare_price(8)}.to raise_error "Recalculate the total of your order"
+      expect { subject.compare_price(8) }.to raise_error "Recalculate the total of your order"
     end
 
     it "outputs a message with the right amount" do
       subject.select_dish("margherita", 1)
-      expect{ subject.compare_price(7.00) } .to output(/You calculated right, the price is £7.0/).to_stdout
+      expect { subject.compare_price(7.00) } .to output(/You calculated right, the price is £7.0/).to_stdout
     end
 
   end

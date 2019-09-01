@@ -17,7 +17,7 @@ class Order
   end
 
   def total_price
-    @price_total.map{|cost| cost.inject(:*)}.sum
+    @price_total.map { |cost| cost.inject(:*) }.sum
   end
 
   def compare_price(user_estimate)
