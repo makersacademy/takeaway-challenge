@@ -20,5 +20,4 @@ describe 'LineItemListPrinter' do
   it 'can accept a custom conjoiner' do
     expect(subject.line_items_string('*')).to eq "Cafe Latte - 4.30*Cafe Latte - 4.30"
   end
-
 end
