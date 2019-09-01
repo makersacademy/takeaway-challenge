@@ -9,7 +9,6 @@ class UserSession
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = Basket.new
-    choice_text
   end
 
   def decision
@@ -34,14 +33,15 @@ class UserSession
   end
 
   def menu_selector
-    puts "Enter the dish you'd like to add"
+    puts "Enter the name of the dish to add it to basket"
+    @input = gets.chomp
     if @menu.menu_hash[@input] != nil
       @basket.basket << @input.capitalize
       @basket.total << @menu.menu_hash[@input]
       puts "#{@input.capitalize} added to basket"
       choice_text
     else 
-      "Selection not available on menu"
+      puts "Selection not available on menu"
       choice_text
     end
   end
@@ -61,11 +61,6 @@ class UserSession
     puts "5. Quit"
     @input = gets.chomp
     decision
-  end
-
-  def menu_item_text
-    puts "Enter the name of the dish to add it to basket"
-    @input = gets.chomp
   end
 
 end

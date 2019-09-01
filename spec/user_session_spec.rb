@@ -1,5 +1,6 @@
 require 'user_session'
 require 'menu'
+require 'simplecov'
 
 describe UserSession do
   let (:payment_confirmation) {double :payment_confirmation}
@@ -42,6 +43,11 @@ describe UserSession do
       expect(subject.decision).to receive(exit)
     end
 
+    it 'returns invalid selection message when user input invalid' do
+      allow(subject).to receive(:input).and_return("antarctic penguin")
+      expect{subject.decision}.to output("Selection not available on menu").to_stdout
+    end
+
   end
 
   describe '#menu_selector' do
@@ -62,12 +68,17 @@ describe UserSession do
     it 'adds input value to total array' do
       expect(subject.basket.total).to include(subject.menu.menu_hash[subject.input])
     end
+
+    it 'calls the choice_text method with invalid input' do
+      allow(subject).to receive(:input).and_return("antarctic penguin")
+      expect{subject.menu_selector}.to output("Selection not available on menu").to_stdout
+    end
   end
 
-  # describe '#payment_confirmation' do
-  #   it "runs send_sms.rb" do
-  #     expect{subject.payment_confirmation}.to output(system("ruby send_sms.rb")).to_stdout
-  #   end
-  # end
+  describe '#choice_text' do
+    it 'receives decision method' do
+      expect(subject.choice_text).to receive(:decision)
+    end
+  end
 
 end      
