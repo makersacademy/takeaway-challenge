@@ -23,4 +23,10 @@ describe Takeaway do
      expect(subject.add_to_basket('item', 2)).to eq(order.add_items('item',2))
      end
    end
+
+   describe '#order_summary' do
+     it 'displays customer order summary' do
+     expect(subject.order_summary).to eq(order.basket_contents)
+     end
+   end
 end

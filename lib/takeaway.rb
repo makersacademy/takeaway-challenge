@@ -18,4 +18,8 @@ def add_to_basket(item, quantity)
   @order.add_items(item, quantity)
 end
 
+def order_summary
+@order.basket_contents
+end
+
 end
