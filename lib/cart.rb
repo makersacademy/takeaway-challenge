@@ -23,4 +23,11 @@ class Cart
 	def show_cart
 		puts "Your order: #{@selection.join(', ')}. Total: £#{@order_total}"
 	end
+	
+	def remove(*items)
+		items.each do |item|
+			@selection.delete_at(@selection.index(@menu.dish_list[item - 1][:name]))
+			@order_total -= @menu.dish_list[item - 1][:price]
+		end
+	end
 end
