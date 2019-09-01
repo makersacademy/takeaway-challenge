@@ -37,6 +37,11 @@ describe Order do
     expect(order.delivery_time).to eq time + two_hours
   end
 
+  it 'should be able to record a telephone number' do
+    subject.contact_number = ENV['MY_NUMBER']
+    expect(subject.contact_number).to eq ENV['MY_NUMBER']
+  end
+
   context 'when returning a string representation' do
     it 'should format itself correctly' do
       expected = "Cafe Latte - 4.30\n"\

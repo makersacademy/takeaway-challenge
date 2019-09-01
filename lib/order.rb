@@ -7,6 +7,8 @@ class Order
   include CurrencyMath
   include MenuItemListPrinter
 
+  attr_accessor :contact_number
+
   def initialize(menu_items, delivery_window, time_formatter = TimeFormatter.new)
     @menu_items      = menu_items
     @delivery_window = delivery_window

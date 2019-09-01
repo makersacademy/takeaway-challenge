@@ -34,8 +34,8 @@ class Main
     print_menu
     order = take_user_order
     return if request_confirmation == 'n'
-
-    send_sms(request_sms_number, order.to_string)
+    request_sms_number(order)
+    send_sms(order)
   end
 
   private
@@ -67,15 +67,14 @@ class Main
     gets.chomp.downcase
   end
 
-  def request_sms_number
+  def request_sms_number(order)
     puts 'Please enter a valid mobile number to receive an SMS confirmation'
-    number = gets.chomp
+    order.contact_number = gets.chomp
     print_line_break
-    number
   end
 
-  def send_sms(recipient, body)
-    @takeaway.send_sms_confirmation(to: recipient, body: body)
+  def send_sms(order)
+    @takeaway.send_confirmation(order: order)
     print_sms_confirmation(recipient)
   end
 
@@ -87,6 +86,4 @@ class Main
     puts ''
   end
 end
-
-Main.new.run
 

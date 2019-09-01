@@ -19,7 +19,7 @@ class Takeaway
     @order_class.new(@menu.items_at(item_indices), DEFAULT_DELIVERY_WINDOW)
   end
 
-  def send_sms_confirmation(to:, body:)
-    @sms_sender.send_sms(to, body)
+  def send_confirmation(order:)
+    @sms_sender.send_sms(order.contact_number, order.to_string)
   end
 end
