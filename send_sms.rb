@@ -1,7 +1,5 @@
 require 'twilio-ruby'
 require_relative './lib/user_session'
-require_relative 'twilio_account_sid'
-require_relative 'twilio_auth_tokens'
 
 ACCOUNT_SID = 'AC4e2b5a76e4a0b41721f5734e68d3649b'
 AUTH_TOKEN = '09c65b7092ebce3118061c297073aa46'
