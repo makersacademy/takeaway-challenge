@@ -13,6 +13,22 @@ class Order
     @cart << @menu.give_list[index - 1]
   end
 
+  def total
+    @cart.map(&:price).inject(0, :+)
+    # prices = @cart.map do |dish|
+    #   dish.price
+    # end
+    # prices.inject(0, :+)
+  end
+
+  def print_receipt
+    puts "Thank you for your order!"
+    @cart.each do |dish|
+      puts "#{dish.name} #{dish.price}£"
+    end
+    puts "To be charged: #{total}£"
+  end
+
   private
 
   def valid_index?(index)
