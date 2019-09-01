@@ -1,16 +1,17 @@
 require 'menu'
+require 'sms'
 
 class Order
 
   ERROR_DISH = "Dish is not available, please order from the menu"
 
-  attr_reader :my_basket, :time, :total, :menu
+  attr_reader :my_basket, :time, :total, :menu, :sms
 
-  def initialize(menu: Menu.new, time: Time.new)
+  def initialize(menu: Menu.new, time: Time.new, sms: Sms.new)
     @menu = menu
     @my_basket = {}
     @my_basket.default = 0 #usefull to avoid nill class in first call of basket
-    @time = time
+    @sms = sms
   end
 
   def add_item(dish, quantity)
@@ -38,7 +39,9 @@ class Order
     return order_total
   end
 
-  def checkout
-    puts "checkout"
+  def checkout(phone)
+    view_basket
+    total
+    @sms.send(phone, "Your delivery estimate is #{Time.new + 3600}")
   end
 end

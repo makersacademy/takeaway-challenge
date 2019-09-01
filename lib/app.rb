@@ -31,10 +31,7 @@ class App
       when "3"
         @order.view_basket
       when "4"
-        @order.checkout
-
-        puts "New empty order created"
-        @order = Order.new(menu: @menu )
+        checkout
       else
         puts "Option not found"
       end
@@ -51,6 +48,15 @@ class App
     quantity = gets.chomp.to_i
     dish = @menu.get_dish_by_id(id)
     @order.add_item(dish, quantity)
+  end
+
+  def checkout
+    puts "Type your phone number"
+    phone = gets.chomp
+    @order.checkout(phone)
+
+    puts "New empty order created"
+    @order = Order.new(menu: @menu )
   end
 
 end
