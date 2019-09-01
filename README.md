@@ -119,9 +119,9 @@ Create shop lib + spec files
 
 Have been unable to pass tests with use of doubles.   Will stat again from scratch with a more complete plan  before implementation.
 
-New Plan:
+NEW PLAN:
 
-As new plan also incorporates user stories I've deleted the user_stories spec file and all other files and will start with a completely new codebase.
+As this new plan also incorporates user stories I've deleted the user_stories spec file and all other files and will start with a completely new codebase.
 
 USER STORY 1
 As a customer
