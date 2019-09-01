@@ -20,7 +20,7 @@ describe Menu do
   end
 
   context 'when retrieving menu items at specific indicies' do
-    it 'should retrieves only the requested items' do
+    it 'should retrieve only the requested items' do
       expect(Menu.new(%w[1 2 3]).items_at([0, 2])).to eq %w[1 3]
     end
 
