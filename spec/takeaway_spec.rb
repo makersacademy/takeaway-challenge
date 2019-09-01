@@ -28,9 +28,10 @@ describe Takeaway do
      it 'displays customer order summary' do
      expect(subject.order_summary).to eq(order.basket_contents)
      end
-   describe '#order_total'
+   describe '#order_total' do
      it 'displays #basket_total' do
        expect(subject.order_total).to eq(order.basket_total)
      end
    end
+ end
 end

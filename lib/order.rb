@@ -21,7 +21,7 @@ end
   def basket_total
   total =   @basket.map { |dish,quantity|
        Menu.new.menu[dish] * quantity}.inject(:+)
-       puts "Total: £#{total}"
+      puts  "Total: £#{total}"
   end
 
 

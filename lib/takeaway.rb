@@ -14,7 +14,7 @@ def print_menu
   @menu.menu
 end
 
-def add_to_basket(item, quantity)
+def add_to_basket(item, quantity = 1)
   @order.add_items(item, quantity)
 end
 

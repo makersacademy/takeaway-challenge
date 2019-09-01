@@ -76,6 +76,7 @@ DEPENDENCIES
   rubocop (= 0.56.0)
   simplecov
   simplecov-console
+  twilio-ruby
 
 RUBY VERSION
    ruby 2.5.0p0
