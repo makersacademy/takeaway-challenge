@@ -9,6 +9,7 @@ class UserSession
   def initialize(menu = Menu.new)
     @menu = menu
     @basket = Basket.new
+    choice_text
   end
 
   def decision
@@ -32,6 +33,23 @@ class UserSession
     end
   end
 
+  private
+
+  def choice_text
+    puts "Please choose your option: number 1-5"
+    puts "1. View menu"
+    puts "2. Add a menu item to the basket"
+    puts "3. View your order and basket total"
+    puts "4. Confirm & pay for your order"
+    puts "5. Quit"
+    @input = gets.chomp
+    decision
+  end
+
+  def payment_confirmation
+    system("ruby send_sms.rb") 
+  end
+
   def menu_selector
     puts "Enter the name of the dish to add it to basket"
     @input = gets.chomp
@@ -44,23 +62,6 @@ class UserSession
       puts "Selection not available on menu"
       choice_text
     end
-  end
-
-  def payment_confirmation
-    system("ruby send_sms.rb") 
-  end
-
-  private
-
-  def choice_text
-    puts "Please choose your option: number 1-5"
-    puts "1. View menu"
-    puts "2. Add a menu item to the basket"
-    puts "3. View your order and basket total"
-    puts "4. Confirm & pay for your order"
-    puts "5. Quit"
-    @input = gets.chomp
-    decision
   end
 
 end
