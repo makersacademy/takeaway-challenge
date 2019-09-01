@@ -15,4 +15,12 @@ describe Takeaway do
       expect { takeaway.add_to_order("hawaiian", 2) }.to change { takeaway.order.cart.length }.by(1)
     end
   end
+
+  describe '#order_total' do
+    it 'displays dish totals for the current order' do
+      takeaway.add_to_order('hawaiian', 2)
+      takeaway.add_to_order('pepperoni', 3)
+      expect(takeaway.order_total).to eq("hawaiian x2 = $11.00, pepperoni x3 = $13.50")
+    end
+  end
 end

@@ -7,10 +7,14 @@ class Takeaway
   end
 
   def show_menu
-    menu.open
+    @menu.open
   end
 
   def add_to_order(item, qty = 1)
-    order.add_cart(item, qty)
+    @order.add_cart(item, qty)
+  end
+
+  def order_total
+    @order.cart_total(menu)
   end
 end
