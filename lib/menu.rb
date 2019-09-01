@@ -27,7 +27,6 @@ class Menu
   end
 
   def get_dish_by_id(id)
-    puts id
     @dishes[id - 1]
   end
 
