@@ -17,7 +17,12 @@ end
       puts "#{dish} x #{quantity} total: £#{Menu.new.menu[dish] * quantity}"
      end
   end
-  #@basket.each do |item, quantity|
-      #puts "#{quantity}x #{item}: £#{Menu.new.menu[item] * quantity}"
+
+  def basket_total
+  total =   @basket.map { |dish,quantity|
+       Menu.new.menu[dish] * quantity}.inject(:+)
+       puts "Total: £#{total}"
+  end
+
 
 end

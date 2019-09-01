@@ -22,4 +22,8 @@ def order_summary
 @order.basket_contents
 end
 
+def order_total
+@order.basket_total
+end
+
 end
