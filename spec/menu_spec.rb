@@ -16,12 +16,11 @@ describe Menu do
     end
   end
 
-  describe "#print_total" do
+  describe "#view_total" do
     it "prints the total of the order" do
     order = Order.new
     order.select_dish("marinara", 2)
-    menu = Menu.new
-    expect{ menu.view_total(order) }. to output(/£12.0/).to_stdout
+    expect{ subject.view_total(order) }. to output(/Your total is £12.0/).to_stdout
     end
   end
 

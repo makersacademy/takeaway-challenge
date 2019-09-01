@@ -1,32 +1,18 @@
 require_relative './menu'
+require_relative './order'
 class Takeaway
-  attr_reader :menu
-  def initialize(menu = Menu)
-    @menu =menu.new
+  attr_reader :menu, :order
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
+
+  def view_menu
+    @menu.display_menu
+  end
+
+  def order_food(dish, quantity = 1, order = Order.new)
+    @order = order
+    @order.select_dish(dish, quantity)
+  end
+
 end
-
-
-# def compare_total(estimate)
-#     correct = calculate_total == estimate
-#     recalculate_total unless correct
-#     correct
-#   end
-#
-#   def compare_total(estimate)
-#    correct = calculate_total == estimate
-#    recalculate_total unless correct
-#    correct
-#  end
-#
-#  def calculate_total
-#    prices = []
-#    contents.each {|menu_item| prices << menu_item[:price]}
-#    total = prices.inject{|memo, num| memo + num}
-#  end
-#
-#  def recalculate_total
-#    raise "Please recalculate the total of your order"
-#  end
-#
-# end
