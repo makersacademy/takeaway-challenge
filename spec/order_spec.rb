@@ -18,7 +18,7 @@ describe Order do
     expect(subject.total).to eq 0
   end
 
-  describe '#Add_item' do
+  describe '#add_item' do
 
     it 'adds dishes to basket' do
       subject.add_item(dish1, 1)
@@ -36,8 +36,16 @@ describe Order do
       subject.add_item(dish1, 1)
       expect(subject.my_basket[dish1]).to eq 3
     end
-
   end
 
+  describe '#total' do
+
+    it "calculate de total price of order" do
+      subject.add_item(dish1, 2)
+      subject.add_item(dish2, 1)
+      expect(subject.total).to eq 11
+    end
+
+  end
 
 end

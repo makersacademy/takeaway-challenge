@@ -11,7 +11,6 @@ class Order
     @my_basket = {}
     @my_basket.default = 0 #usefull to avoid nill class in first call of basket
     @time = time
-    @total = 0
   end
 
   def add_item(dish, quantity)
@@ -19,6 +18,15 @@ class Order
 
     @my_basket[dish] += quantity
     puts "#{quantity}x #{dish.name}(s) added to your basket"
+  end
+
+  def total
+    order_total = 0
+    @my_basket.each do |dish, quantity|
+      order_total += dish.price * quantity
+    end
+    puts "Total = £#{order_total}"
+    return order_total
   end
 
 end
