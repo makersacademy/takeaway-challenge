@@ -115,4 +115,53 @@ Decide there are 2 classes Customer and Shop.  The shop will have a menu which t
 
 Delete all current code and start again with blank versions of customer and customer spec. Keep user_stories and README as they are.
 
-Create shop lib + spec files 
+Create shop lib + spec files
+
+Have been unable to pass tests with use of doubles.   Will stat again from scratch with a more complete plan  before implementation.
+
+New Plan:
+
+As new plan also incorporates user stories I've deleted the user_stories spec file and all other files and will start with a completely new codebase.
+
+USER STORY 1
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+PLAN
+Create Customer class + Takeaway class.
+Create a method called view_menu in takeaway class.
+In view_menu create a hash called 'menu' with dishes and prices as key value pairs.
+When a customer calls the 'view_menu' method the 'menu' hash has will be returned.
+
+
+USER STORY  2
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+PLAN
+Create a method called 'menu_selection' in the customer class that will take the customers dish
+selections from 'menu' and store the key/value pair in a new hash called 'customer_order'.
+use loop to keep asking customer for selections until customer says submit order
+
+USER STORY 3
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given
+matches the sum of the various dishes in my order
+
+PLAN
+Create method called 'view_order' in customer class that will display the
+'customer_order' hash and a message displaying the total value of the
+hash values using string interpolation.
+
+USER STORY 4
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you!
+Your order was placed and will be delivered before 18:52" after I have ordered
+
+PLAN
+Create a method called 'place_order' in the customer class
+When customer runs method run twillo integration to return text mesage
