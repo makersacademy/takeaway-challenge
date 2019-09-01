@@ -12,7 +12,6 @@ class Menu
   end
 
   def view_total(order)
-    puts " Your total is £#{order.total_price}"
+    puts "Your total is £#{order.total_price}"
   end
-
 end
