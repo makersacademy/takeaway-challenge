@@ -43,12 +43,20 @@ describe Order do
   end
 
   context 'when returning a string representation' do
-    it 'should format itself correctly' do
+    it 'should format itself using default conjoiner' do
       expected = "Cafe Latte - 4.30\n"\
                  "Cafe Latte - 4.30\n"\
                  "Total: 8.60\n"\
                  "Delivers by: 11:10"
       expect(subject.to_string).to eq expected
+    end
+
+    it 'should accept a custom conjoiner' do
+      expected = 'Cafe Latte - 4.30*'\
+                 'Cafe Latte - 4.30*'\
+                 'Total: 8.60*'\
+                 'Delivers by: 11:10'
+      expect(subject.to_string('*')).to eq expected
     end
 
     it 'should delegate time formatting to its time formatter object' do
