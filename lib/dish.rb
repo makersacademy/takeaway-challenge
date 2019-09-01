@@ -20,5 +20,4 @@ class Dish
   def describe
     "#{@identifier}: #{@description} - £#{'%.2f' % @cost}"
   end
-
 end

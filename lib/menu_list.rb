@@ -8,26 +8,34 @@ class MenuList
     @dishes = []
   end
 
-  def add_item(identifier, dish)
-    @dishes << { id: identifier, dish: dish }
+  def add_item(dish)
+    @dishes << dish
   end
 
   def available_dishes
     available_dishes = []
-    @dishes.each do |dish_hash|
-      if dish_hash[:dish].available?
-        available_dishes << dish_hash
+    @dishes.each do |dish|
+      if dish.available?
+        available_dishes << dish
       end
     end
     available_dishes
   end
 
   def display_menu
-    display_menu = ""
-    available_dishes.each do |dish_hash|
-      display_menu += dish_hash[:dish].describe + "\n"
+    return_menu = ""
+    available_dishes.each do |dish|
+      return_menu += dish.describe + "\n"
     end
-    display_menu
+    return_menu
+  end
+
+  def return_dish(number)
+    return_dish = nil
+    available_dishes.each do |dish|
+      return_dish = dish if dish.identifier == number
+    end
+    return_dish
   end
 
   def load_menu(filename = "menu_file.csv")
@@ -37,8 +45,7 @@ class MenuList
     menu_file.each do |line|
       description, qty, cost = line
 
-      add_item(identifier_count,
-        Dish.new(identifier_count,
+      add_item(Dish.new(identifier_count,
         description,
         qty.to_i,
         cost))
