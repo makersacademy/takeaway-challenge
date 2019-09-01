@@ -43,10 +43,8 @@ describe Takeaway do
 
   describe '#submit_order' do
     it 'sends your a confirmation text message' do
-      subject.order_food('marinara')
-      expect { subject.submit_order }.
-      to output("Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.strftime('%M')}").to_stdout
+      text_message_double = double :text_message, send_text: "Thank you!", sms_send: true
+      expect(subject.submit_order(text_message_double)).to eq true
     end
   end
-
 end

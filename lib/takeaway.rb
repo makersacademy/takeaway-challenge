@@ -22,6 +22,7 @@ class Takeaway
 
   def submit_order(sms = TextMessage.new)
     sms.send_text
+    sms.sms_send
   end
 
 end
