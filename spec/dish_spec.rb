@@ -2,9 +2,9 @@ require "dish"
 
 describe Dish do
   context "When initialized" do
-    dish = Dish.new("dish1", "Roast Chicken", 10, 12.50)
+    dish = Dish.new(1, "Roast Chicken", 10, 12.50)
     it "dish identifier is set" do
-      expect(dish.identifier).to eq("dish1")
+      expect(dish.identifier).to eq(1)
     end
     it "dish description is set" do
       expect(dish.description).to eq("Roast Chicken")
@@ -14,6 +14,9 @@ describe Dish do
     end
     it "dish cost is set" do
       expect(dish.cost).to eq(12.50)
+    end
+    it "outputs details for menu" do
+      expect(dish.describe).to eq("1: Roast Chicken - £12.50")
     end
     describe "updating quantity" do
       it "reduces qty by 1 when one is ordered" do

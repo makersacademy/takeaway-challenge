@@ -16,4 +16,9 @@ class Dish
   def available?
     @available_quantity > 0
   end
+
+  def describe
+    "#{@identifier.to_s}: #{@description} - £#{'%.2f' % @cost}" 
+  end
+
 end
