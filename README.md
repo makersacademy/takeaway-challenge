@@ -169,4 +169,4 @@ Your order was placed and will be delivered before 18:52" after I have ordered
 
 PLAN
 Create a method called 'place_order' in the customer class
-When customer runs method run twillo integration to return text mesage
+When customer runs method run twillo integration to return text message
