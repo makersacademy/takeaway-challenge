@@ -14,11 +14,11 @@ class Dish
   end
 
   def available?
-    @available_quantity > 0
+    @available_quantity.positive?
   end
 
   def describe
-    "#{@identifier.to_s}: #{@description} - £#{'%.2f' % @cost}" 
+    "#{@identifier}: #{@description} - £#{'%.2f' % @cost}"
   end
 
 end

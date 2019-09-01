@@ -31,18 +31,19 @@ class MenuList
   end
 
   def load_menu(filename = "menu_file.csv")
-    #open the file
-    if File.exists?(filename)
-      menu_file = CSV.read(filename)
-      identifier_count = 1
-      menu_file.each do |line|
-        description, qty, cost = line
-        add_item(identifier_count,
-          Dish.new(identifier_count, description, qty.to_i, cost))
-        identifier_count += 1
-      end
-    else
-      raise "#{filename} doesn't exist."
+    raise "#{filename} doesn't exist." unless File.exist?(filename)
+    menu_file = CSV.read(filename)
+    identifier_count = 1
+    menu_file.each do |line|
+      description, qty, cost = line
+
+      add_item(identifier_count,
+        Dish.new(identifier_count,
+        description,
+        qty.to_i,
+        cost))
+
+      identifier_count += 1
     end
   end
 end
