@@ -13,12 +13,15 @@ class Takeaway
   def order(dish, quantity, total)
     @current_order.add(dish, quantity)
     @current_total = total
+    raise "You have entered the wrong total" if @menu[dish] * quantity != total
 
-    if @menu[dish] * quantity == total
-      send_sms
-    else
-      raise "You have entered the wrong total"
-    end
+    send_sms
+
+    # if @menu[dish] * quantity == total
+    #   send_sms
+    # else
+    #   raise "You have entered the wrong total"
+    # end
 
   end
 
@@ -35,6 +38,8 @@ class Takeaway
     to: to,
     body: "Thank you! Your order was placed and will be delivered within the next 15 minutes"
     )
+
+    "sms sent"
   end
 
 end
