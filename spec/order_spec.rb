@@ -2,9 +2,6 @@ require 'menu'
 require 'order'
 describe Order do
   describe "#select_dish" do
-    # it 'lets you pick a dish' do
-    #   expect(subject.select_dish("margherita")).to eq (:margherita)
-    # end
     context "The dish is available on the menu" do
       it "adds the selected dish and quantity to ordered_dishes" do
         subject.select_dish("margherita", 1)
