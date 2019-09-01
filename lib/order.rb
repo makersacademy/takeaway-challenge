@@ -21,7 +21,7 @@ class Order
   def calc_tot
     order_total = 0
     @current_order.each do |item|
-      order_total += @menu.menu[item][:price]
+      order_total += @menu.get_item_price(item)
     end
     order_total
   end
