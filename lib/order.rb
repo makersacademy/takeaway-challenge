@@ -27,7 +27,10 @@ class Order
     menu_dish_names = Set[]
     menu_dishes.each { |dish| menu_dish_names.add(dish.name) }
 
-    @order.each { |dish| return !menu_dish_names.include?(dish[:name]) }
+    @order.each do |dish|
+      return true if !menu_dish_names.include?(dish[:name])
+    end
+    false
   end
 
   def price_mismatch?(menu_dishes)
