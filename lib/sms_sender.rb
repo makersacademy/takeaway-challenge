@@ -6,11 +6,9 @@ class SMSSender
   end
 
   def send_sms(to, body)
-    begin
-      create_message(to, body)
-    rescue Twilio::REST::TwilioError => e
-      e.message
-    end
+    create_message(to, body)
+  rescue Twilio::REST::TwilioError => e
+    e.message
   end
 
   private

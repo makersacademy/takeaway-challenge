@@ -19,7 +19,7 @@ describe TimeFormatter do
   end
 
   it 'has a configurable format' do
-    formatter = described_class.new("%H:%M:%S")
+    formatter = described_class.new('%H:%M:%S')
     expect(formatter.format(time)).to eq '10:10:10'
   end
 end

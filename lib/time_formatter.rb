@@ -1,5 +1,5 @@
 class TimeFormatter
-  def initialize(format = "%H:%M")
+  def initialize(format = '%H:%M')
     @format = format
   end
 

@@ -28,22 +28,22 @@ class Main
   end
 
   def take_user_order
-    user_selection = gets.chomp.tr(" ", "").split(',')
+    user_selection = gets.chomp.tr(' ', '').split(',')
     order = @takeaway.order(user_selection.map(&:to_i))
 
     print_line_break
-    puts "You ordered:", order.to_string
+    puts 'You ordered:', order.to_string
     print_line_break
     order
   end
 
   def request_confirmation
-    puts "Enter Y to place order, or N to exit"
+    puts 'Enter Y to place order, or N to exit'
     gets.chomp.downcase
   end
 
   def request_sms_number
-    puts "Please enter a valid mobile number to receive an SMS confirmation"
+    puts 'Please enter a valid mobile number to receive an SMS confirmation'
     number = gets.chomp
     print_line_break
     number

@@ -16,7 +16,7 @@ describe Menu do
   end
 
   it 'retrieves items at indicies' do
-    expect(Menu.new(%w(1 2 3)).items_at([0, 2])).to eq %w(1 3)
+    expect(Menu.new(%w[1 2 3]).items_at([0, 2])).to eq %w[1 3]
   end
 
   it 'fails silently when retrieving non-existing items' do
