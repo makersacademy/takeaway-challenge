@@ -6,10 +6,16 @@ require './lib/order'
 
 class Takeaway
 
-  def initialize
-    @menu = Menu.new
-    @sms_formatter = SmsFormatter.new
-    @sms = SendSms.new
+  def initialize(
+    menu = Menu.new,
+    sms_formatter = SmsFormatter.new,
+    sms = SendSms.new,
+    order_class = Order
+  )
+    @menu = menu
+    @sms_formatter = sms_formatter
+    @sms = sms
+    @order_class = order_class
   end
 
   def load_default_dishes
@@ -37,9 +43,9 @@ class Takeaway
   end
 
   def handle_sms_order(order_dishes, total_price)
-    @order = Order.new(order_dishes, total_price)
+    order = @order_class.new(order_dishes, total_price)
     menu_dishes = @menu.list_dishes
-    @order.valid(menu_dishes)
+    order.valid(menu_dishes)
     confirmation = 'Thank you! Your order was placed '\
       'and will be delivered in one hour.'
     @sms.send_sms(confirmation)
