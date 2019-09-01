@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/takeaway'
 require './lib/sms_sender'
 require './lib/menu'
@@ -37,5 +39,4 @@ describe 'Acceptance Tests' do
     order.contact_number = ENV['MY_NUMBER']
     subject.send_confirmation(order: order)
   end
-
 end

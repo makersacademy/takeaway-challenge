@@ -75,7 +75,7 @@ class Main
 
   def send_sms(order)
     @takeaway.send_confirmation(order: order)
-    print_sms_confirmation(recipient)
+    print_sms_confirmation(order.contact_number)
   end
 
   def print_sms_confirmation(number)
@@ -86,4 +86,6 @@ class Main
     puts ''
   end
 end
+
+Main.new.run
 
