@@ -25,4 +25,9 @@ describe Menu do
     subject.load_menu
     expect(subject.order(6)).to eq([])
   end
+  it "check order total" do
+    subject.load_menu
+    subject.order(1, 5, 7, 9)
+    expect(subject.check_total()).to eq(27.48)
+  end
 end

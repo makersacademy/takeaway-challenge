@@ -38,6 +38,14 @@ class MenuList
     return_dish
   end
 
+  def calculate_total(dishes)
+    running_total = 0
+    dishes.each do |dish|
+      running_total += dish.cost.to_f
+    end
+    running_total
+  end
+
   def load_menu(filename = "menu_file.csv")
     raise "#{filename} doesn't exist." unless File.exist?(filename)
     menu_file = CSV.read(filename)
