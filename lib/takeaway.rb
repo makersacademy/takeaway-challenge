@@ -1,4 +1,5 @@
 class Takeaway
+  attr_reader :placed_order
   MENU = [
     { item: "Fish", price: 7 },
     { item: "Shish kebab", price: 7 },
@@ -18,7 +19,11 @@ class Takeaway
 
   def show_menu
     @menu.each do |menu_line|
-      puts "#{menu_line[:item]}: #{menu_line[:price]}"
+      puts "#{menu_line[:item]}: £#{menu_line[:price]}"
     end
+  end
+
+  def place_order(order, order_total)
+    @placed_order = { order: order, order_total: order_total }
   end
 end
