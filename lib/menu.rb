@@ -4,7 +4,7 @@ class Menu
     @dishes_list = dishes_list
   end
 
-  def get_list
+  def give_list
     @dishes_list
   end
 

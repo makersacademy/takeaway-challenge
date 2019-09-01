@@ -1,9 +1,9 @@
 require 'dish'
 
 describe Dish do
-  let(:name) {'name'}
+  let(:name) { 'name' }
   let(:price) { 1 }
-  subject(:dish) { Dish.new(name, price)}
+  subject(:dish) { Dish.new(name, price) }
 
   it { is_expected.to respond_to :name }
   it { is_expected.to respond_to :price }
@@ -15,6 +15,5 @@ describe Dish do
   it 'returns price' do
     expect(subject.price).to eq price
   end
-
 
 end
