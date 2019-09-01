@@ -22,11 +22,11 @@ describe 'Acceptance Tests' do
   end
 
   it 'should allow selection of some number of several available dishes' do
-    Timecop.freeze(time)
-    expect(subject.order([1]).to_string).to eq "Cappuccino - 3.85\n"\
-                                               "Total: 3.85\n"\
-                                               "Delivers by: 11:10"
-    Timecop.return
+    Timecop.freeze(time) do
+      expect(subject.order([1]).to_string).to eq "Cappuccino - 3.85\n"\
+                                                 "Total: 3.85\n"\
+                                                 "Delivers by: 11:10"
+    end
   end
 
   it 'should calculate the correct order total' do
