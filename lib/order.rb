@@ -38,4 +38,7 @@ class Order
     return order_total
   end
 
+  def checkout
+    puts "checkout"
+  end
 end

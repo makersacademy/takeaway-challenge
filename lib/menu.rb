@@ -19,7 +19,16 @@ class Menu
   end
 
   def view_menu
-    @dishes
+    puts " --- MENU ---"
+    @dishes.each.with_index { |item, index|
+      puts "[#{index + 1}] #{item.name}: £#{item.price}"
+    }
+    puts " ------------"
+  end
+
+  def get_dish_by_id(id)
+    puts id
+    @dishes[id - 1]
   end
 
   def add_dish(dish)
