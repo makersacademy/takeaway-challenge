@@ -2,8 +2,9 @@ require './lib/time_formatter'
 require 'timecop'
 
 describe TimeFormatter do
+  include_examples 'Test Helpers'
+
   subject { described_class.new }
-  let(:time) { Time.new(1750, 7, 28, 10, 10, 10) }
 
   before :each do
     Timecop.freeze(time)

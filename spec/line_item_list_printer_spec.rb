@@ -1,7 +1,24 @@
-shared_examples 'LineItemListPrinter' do |expected_output, print_method_name|
-  let(:menu_item) { instance_double('Takeaway::MenuItem', price: '4.30', to_string: 'Cafe Latte - 4.30') }
+require './lib/line_item_list_printer'
+
+describe 'LineItemListPrinter' do
+  include_examples 'Test Helpers'
+
+  class TestPrinter
+    include LineItemListPrinter
+
+    def initialize(menu_items)
+      @menu_items = menu_items
+    end
+  end
+
+  subject { TestPrinter.new([menu_item, menu_item]) }
 
   it 'has a default conjoiner of new line' do
-    expect(subject.send(print_method_name)).to eq expected_output
+    expect(subject.line_items_string).to eq "Cafe Latte - 4.30\nCafe Latte - 4.30"
   end
+
+  it 'can accept a custom conjoiner' do
+    expect(subject.line_items_string('*')).to eq "Cafe Latte - 4.30*Cafe Latte - 4.30"
+  end
+
 end

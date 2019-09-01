@@ -1,10 +1,13 @@
 require './lib/menu'
 
 describe Menu do
-  include_examples('LineItemListPrinter',
-                   "Cafe Latte - 4.30\nCafe Latte - 4.30", 'line_items_string')
+  include_examples 'Test Helpers'
 
   subject { described_class.new([menu_item, menu_item]) }
+
+  it 'can output to a string' do
+    expect(subject.line_items_string).to eq "Cafe Latte - 4.30\nCafe Latte - 4.30"
+  end
 
   it 'returns immutable items' do
     original_items = subject.items.dup
