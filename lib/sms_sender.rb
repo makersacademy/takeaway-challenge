@@ -3,8 +3,12 @@
 require 'twilio-ruby'
 
 class SMSSender
+  SID = ENV['TWILIO_SID']
+  TOKEN = ENV['TWILIO_TOKEN']
+  NUMBER = ENV['TWILIO_NUMBER']
+
   def initialize(client = Twilio::REST::Client)
-    @client = client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
+    @client = client.new(SID, TOKEN)
   end
 
   def send_sms(to, body)
@@ -16,6 +20,6 @@ class SMSSender
   private
 
   def create_message(to, body)
-    @client.messages.create(from: ENV['TWILIO_NUMBER'], to: to, body: body)
+    @client.messages.create(from: NUMBER, to: to, body: body)
   end
 end
