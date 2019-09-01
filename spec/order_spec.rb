@@ -36,6 +36,18 @@ describe Order do
       subject.add_item(dish1, 1)
       expect(subject.my_basket[dish1]).to eq 3
     end
+
+  end
+
+  describe '#view_basket' do
+
+    it 'shows dishes added to the basket' do
+      subject.add_item(dish1, 4)
+      subject.add_item(dish2, 2)
+      message = "Fried chicken x4 = £16, Rice Bowl x2 = £6\n"
+      expect { subject.view_basket }.to output(message).to_stdout
+    end
+
   end
 
   describe '#total' do

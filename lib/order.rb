@@ -20,11 +20,20 @@ class Order
     puts "#{quantity}x #{dish.name}(s) added to your basket"
   end
 
+  def view_basket
+    orders = []
+    @my_basket.each { |dish, quantity|
+      orders << "#{dish.name} x#{quantity} = £#{dish.price * quantity}"
+    }
+    puts orders.join(", ")
+  end
+
+
   def total
     order_total = 0
-    @my_basket.each do |dish, quantity|
+    @my_basket.each { |dish, quantity|
       order_total += dish.price * quantity
-    end
+    }
     puts "Total = £#{order_total}"
     return order_total
   end
