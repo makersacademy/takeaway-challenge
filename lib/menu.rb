@@ -1,7 +1,8 @@
 require 'dish'
 
 class Menu
-  ERROR_INVALID_PRICE = "Invalide Price!"
+
+  ERROR_INVALID_PRICE = "Invalid Price!"
   ERROR_IS_NOT_A_DISH = "Error! you need to add a real dish!"
 
   DEFAULT_DISHES =  [
