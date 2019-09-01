@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TimeFormatter
   def initialize(format = '%H:%M')
     @format = format

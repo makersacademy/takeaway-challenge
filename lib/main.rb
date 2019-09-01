@@ -23,7 +23,7 @@ class Main
 
   def print_menu
     puts "Menu:\n"
-    puts @takeaway.menu.line_items_string
+    puts @takeaway.menu.menu_items_string
     print_line_break
   end
 

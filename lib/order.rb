@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order
   include CurrencyMath
   include LineItemListPrinter
@@ -22,7 +24,7 @@ class Order
   end
 
   def to_string(conj = "\n")
-    [line_items_string(conj), total_string, delivers_by_string].join(conj)
+    [menu_items_string(conj), total_string, delivers_by_string].join(conj)
   end
 
   private

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/line_item_list_printer'
 
 class Menu
@@ -7,7 +9,7 @@ class Menu
     @menu_items = menu_items
   end
 
-  def items
+  def menu_items
     @menu_items.dup
   end
 

@@ -14,11 +14,11 @@ describe TimeFormatter do
     Timecop.return
   end
 
-  it 'has a default format of hours and minutes' do
+  it 'should have a default format of hours and minutes' do
     expect(subject.format(time)).to eq '10:10'
   end
 
-  it 'has a configurable format' do
+  it 'should be able to accept any format' do
     formatter = described_class.new('%H:%M:%S')
     expect(formatter.format(time)).to eq '10:10:10'
   end

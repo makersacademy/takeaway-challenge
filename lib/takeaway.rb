@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Takeaway
   DEFAULT_MENU = {
     'Cafe Latte'            => '4.75',
