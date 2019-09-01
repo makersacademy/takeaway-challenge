@@ -1,13 +1,15 @@
 class Order
 
-  attr_reader :current_order
+  attr_reader :current_order, :total
 
   def initialize
     @current_order = []
+    @total = 0
   end
 
   def add(dish, quantity, cost)
     @current_order << { dish: dish, quantity: quantity, cost: cost }
+    @total += cost
   end
 
   def show

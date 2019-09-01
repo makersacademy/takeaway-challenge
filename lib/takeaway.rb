@@ -15,23 +15,28 @@ class Takeaway
     @to = '+447826028826' # My mobile phone number
     @body = "Thank you! Your order was placed and will be delivered
     within 1 hour"
-    @current_total = 0
   end
 
   def order(dish, quantity = 1)
     dish_price = @menu[dish]
-    @current_order.add(dish, quantity, dish_price)
-    @current_total += dish_price * quantity
+    @current_order.add(dish, quantity, dish_price * quantity)
+  end
+
+  def order_summary
+    @current_order.show
+  end
+
+  def order_total
+    "Total = £#{@current_order.total}"
+  end
+
+  def complete_order
     send_sms
   end
 
-  def see_order
-    @current_order.see
-  end
-
+  private
   def send_sms
     @client.messages.create(from: @from, to: @to, body: @body)
-    "sms sent"
   end
 
 end
