@@ -3,8 +3,8 @@
 require 'twilio-ruby'
 
 class SMSSender
-  SID = ENV['TWILIO_SID']
-  TOKEN = ENV['TWILIO_TOKEN']
+  SID    = ENV['TWILIO_SID']
+  TOKEN  = ENV['TWILIO_TOKEN']
   NUMBER = ENV['TWILIO_NUMBER']
 
   TWILIO_CLIENT = Twilio::REST::Client
