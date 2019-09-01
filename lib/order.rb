@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require './lib/currency_math'
+require './lib/time_formatter'
+
 class Order
   include CurrencyMath
-  include LineItemListPrinter
+  include MenuItemListPrinter
 
   def initialize(menu_items, delivery_window, time_formatter = TimeFormatter.new)
     @menu_items      = menu_items

@@ -2,33 +2,30 @@
 
 require './lib/takeaway'
 
-describe Takeaway, :aggregate_failures do
-  subject             { init_subject }
+describe Takeaway do
+  subject              { init_subject }
 
-  let(:sms_class)     { class_double('SMSSender', new: sms_instance) }
-  let(:sms_instance)  { instance_double('SMSSender') }
+  let(:sms_class)      { class_double('SMSSender', new: sms_instance) }
+  let(:sms_instance)   { instance_double('SMSSender') }
 
-  let(:menu_class)    { class_double('Menu', new: menu_instance) }
-  let(:menu_instance) { instance_double('Menu') }
+  let(:menu_class)     { class_double('Menu', new: menu_instance) }
+  let(:menu_instance)  { instance_double('Menu') }
 
-  let(:menu_hash)     { { 'Cafe Latte' => '4.75', 'Cappuccino' => '3.85' } }
-  let(:cafe_latte)    { MenuItem.new('Cafe Latte', '4.75') }
-  let(:cappuccino)    { MenuItem.new('Cappuccino', '3.85') }
+  let(:order_class)    { class_double('Order', new: order_instance) }
+  let(:order_instance) { instance_double('Order') }
 
-  def init_subject
-    described_class.new(sms_class, menu_class, menu_hash)
+  let(:menu_hash)      { { 'Cafe Latte' => '4.75', 'Cappuccino' => '3.85' } }
+  let(:cafe_latte)     { MenuItem.new('Cafe Latte', '4.75') }
+  let(:cappuccino)     { MenuItem.new('Cappuccino', '3.85') }
+
+  def init_subject(class_name = described_class)
+    class_name.new(menu_hash: menu_hash,
+                   sms_class: sms_class,
+                   menu_class: menu_class,
+                   order_class: order_class)
   end
 
   context 'when initializing' do
-    it 'should use the Menu class by default' do
-      expect(described_class.new.menu).to be_instance_of Menu
-    end
-
-    it 'should use the SMSSender class by default' do
-      class TestableTakeaway < Takeaway; attr_reader :sms_sender; end
-      expect(TestableTakeaway.new.sms_sender).to be_instance_of SMSSender
-    end
-
     it 'should create a new menu object with menu items' do
       init_subject
       expect(menu_class).to have_received(:new).with([cafe_latte, cappuccino])
@@ -52,12 +49,21 @@ describe Takeaway, :aggregate_failures do
     end
 
     context 'when ordering items by their index' do
+      DEFAULT_DELIVERY_WINDOW = Takeaway::DEFAULT_DELIVERY_WINDOW
+
       before :each do
         allow(menu_instance).to receive(:items_at).and_return([cappuccino])
       end
 
       it 'should return an instance of the Order class' do
-        expect(subject.order([1])).to be_instance_of Order
+        expect(subject.order([1])).to be order_instance
+      end
+
+      it "should instantiate the order with a #{DEFAULT_DELIVERY_WINDOW / 3600} hour window" do
+        allow(menu_instance).to receive(:items_at).and_return(nil)
+        subject.order([1])
+
+        expect(order_class).to have_received(:new).with(nil, DEFAULT_DELIVERY_WINDOW)
       end
 
       it 'should delegate the request to the menu object' do

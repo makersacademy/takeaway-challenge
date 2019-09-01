@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require './lib/line_item_list_printer'
+require './lib/menu_item_list_printer'
 
 class Menu
-  include LineItemListPrinter
+  include MenuItemListPrinter
 
   def initialize(menu_items)
     @menu_items = menu_items
