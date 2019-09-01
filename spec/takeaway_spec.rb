@@ -42,13 +42,16 @@ describe Takeaway do
     end
 
     it 'should be able to send an sms' do
-      allow(order_instance).to receive(:contact_number).and_return('+44123456789')
-      allow(order_instance).to receive(:to_string).and_return('Test Order')
+      to_number = '+44123456789'
+      body = 'Test Order'
+
+      allow(order_instance).to receive(:contact_number).and_return(to_number)
+      allow(order_instance).to receive(:to_string).and_return(body)
       allow(sms_instance).to receive(:send_sms)
 
       subject.send_confirmation(order: order_instance)
       expect(sms_instance).to(have_received(:send_sms)
-                          .with('+44123456789', 'Test Order'))
+                          .with(to_number, body))
     end
 
     context 'when ordering items by their index' do
