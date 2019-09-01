@@ -10,17 +10,18 @@ class Order
   end
 
   def print_menu
-    @menu.print_menu(@menu.day_menu)
+    @menu.print_menu(@menu.menu)
   end
 
   def select(item)
-    fail "dish does not exist" unless @menu.day_menu.any? {|menu| menu[:item] == item}
+    raise 'dish does not exist' unless @menu.item_available?(item)
+
     @current_order << item
   end
 
   def calc_tot
     @current_order.each do |item|
-      @order_total += @menu.day_menu[item - 1][:price]
+      @order_total += @menu.menu[item - 1][:price]
     end
     @order_total
   end
