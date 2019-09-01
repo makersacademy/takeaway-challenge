@@ -1,8 +1,8 @@
 class Menu
-  attr_reader :day_menu
+  attr_reader :menu
 
   def initialize
-    @day_menu = [
+    @menu = [
       { item: 1, name: 'Homemade tomato sauce with freshly chopped basil and buffalo mozzarella (rigatoni)', price: 10},
       { item: 2, name: 'Homemade creamy walnut sauce with chestnut mushrooms (casarecce)', price: 10.5},
       { item: 3, name: 'Smoked salmon (or pancetta) carbonara with pecorino and beaten eggs (bucatini)', price: 13},
@@ -20,7 +20,14 @@ class Menu
     end
     menu_out
   end
+
+  def item_available?(item)
+    menu.any? { |menu| menu[:item] == item }
+  end
 end
+
+
+
 
 
 
