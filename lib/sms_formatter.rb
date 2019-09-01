@@ -1,12 +1,19 @@
 class SmsFormatter
 
+  def parse_sms(sms)
+    return [:menu, nil] if sms == "Menu" || sms == "menu"
+    [:order, parse_order(sms)]
+  end
+
   def format_menu(dishes)
     string = "Menu:\n"
     dishes.each do |dish|
-      string += dish.name + ", " + dish.price.to_s + "\n"
+      string += dish.name + ": " + dish.price.to_s + "\n"
     end
     string
   end
+
+  private
 
   def parse_order(sms)
     dishes = []
@@ -18,6 +25,6 @@ class SmsFormatter
     end
 
     _, total_price = lines[-1].split(": ")
-    [dishes, total_price.to_i]
+    [dishes, total_price.to_f]
   end
 end
