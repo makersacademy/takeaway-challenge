@@ -1,5 +1,6 @@
 require './lib/takeaway'
-#require './lib/menu'
+require './lib/order'
+require './lib/menu'
 
 describe Takeaway do
   let(:menu) {double(:menu, menu_items: menu_items)  }
@@ -8,13 +9,18 @@ describe Takeaway do
   'chicken' => 3,
   'drink' => 1
     } }
+  let(:order) { Order.new }
 
 
-describe '#print_menu'do
-  it 'prints menu items' do
-    #expect(subject).to respond_to(:print_menu)
-    expect(subject.print_menu).to eq (menu_items)
+    describe '#print_menu'do
+    it 'prints menu items' do
+      expect(subject.print_menu).to eq (menu_items)
+    end
   end
 
-end
+   describe '#add_to_basket' do
+     it 'allows customer to select items from menu and add to basket/order' do
+     expect(subject.add_to_basket('item', 2)).to eq(order.add_items('item',2))
+     end
+   end
 end

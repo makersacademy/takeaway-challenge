@@ -1,5 +1,6 @@
 require './lib/menu'
 require './lib/takeaway'
+
 describe Menu do
 
   describe '#menu' do
