@@ -1,14 +1,14 @@
 class Menu
 
   def initialize
-    @menu = {}
+    @dishes = []
   end
 
   def add_dish(dish)
-    @menu[dish.name] = dish
+    @dishes << dish
   end
 
-  def list_menu
-    @menu.values
+  def list_dishes
+    @dishes.dup
   end
 end
