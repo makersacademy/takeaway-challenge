@@ -6,7 +6,6 @@ class Order
   def initialize(menu = Menu.new)
     @menu = Menu.new
     @current_order = []
-    @order_total = 0
   end
 
   def print_menu
@@ -20,10 +19,11 @@ class Order
   end
 
   def calc_tot
+    order_total = 0
     @current_order.each do |item|
-      @order_total += @menu.menu[item - 1][:price]
+      order_total += @menu.menu[item][:price]
     end
-    @order_total
+    order_total
   end
 
   def send_notification
