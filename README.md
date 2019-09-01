@@ -129,11 +129,16 @@ So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
 PLAN
-Create Customer class + Takeaway class.
-Create a method called view_menu in takeaway class.
-In view_menu create a hash called 'menu' with dishes and prices as key value pairs.
-When a customer calls the 'view_menu' method the 'menu' hash has will be returned.
+1.Create Customer class + Takeaway class.
 
+2.Create a method called view_menu in takeaway class.
+NB changed view_menu to customer class.  
+When running test in IRB realised it will be the customer that will be calling the menu.
+Test worked as expected in IRB but not Rspec.
+
+3.In view_menu create a hash called 'menu' with dishes and prices as key value pairs.
+When a customer calls the 'view_menu' method the 'menu' hash has will be returned.
+NB Test worked as expected in IRB but not Rspec.
 
 USER STORY  2
 As a customer
