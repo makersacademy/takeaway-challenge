@@ -1,7 +1,8 @@
 require 'text_message'
 require 'sms'
 describe TextMessage do
-  let(:text) { TextMessage.new }
+  subject(:text) { described_class.new }
+
   describe '#send_text' do
     it "sends a text message to user" do
       expect { text.send_text }.

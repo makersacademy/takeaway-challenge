@@ -35,5 +35,4 @@ private
     @price_total << [quantity, @menu.dishes[item]]
 
   end
-
 end

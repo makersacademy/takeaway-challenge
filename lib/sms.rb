@@ -1,5 +1,3 @@
-# require 'bundler'
-# Bundler.require()
 require 'twilio-ruby'
 
 class SMS

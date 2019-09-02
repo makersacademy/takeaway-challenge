@@ -1,4 +1,60 @@
-Takeaway Challenge
+## Takeaway Challenge - Week 2
+
+This is the second weekend challenge at Makers Academy, where we've been tasked to write software for a takeaway which addresses some user stories. The aim of the task is to consolidate the week's key goals and learnt concepts.
+
+Instructions
+-------
+* Fork this repo
+* Run the command 'bundle' in the project directory to ensure you have all the gems
+
+How to use in IRB
+-------
+```
+2.5.0 :001 > require './lib/takeaway'
+ => true
+2.5.0 :002 > a = Takeaway.new
+ => #<Takeaway:0x00007f9175985a40 @menu=#<Menu:0x00007f9175985a18 @dishes={:margherita=>7.0, :marinara=>6.0, :meatfeast=>10.5, :vegetarian=>9.5}>>
+2.5.0 :003 > a.view_menu
+{:margherita=>7.0, :marinara=>6.0, :meatfeast=>10.5, :vegetarian=>9.5}
+Order your pizza now!
+ => nil
+2.5.0 :004 > a.order_food('margherita', 2)
+ => [[2, 7.0]]
+2.5.0 :005 > a.check_order
+Your total is £14.0
+ => nil
+2.5.0 :006 > a.order.ordered_dishes
+ => ["2 x margherita"]
+2.5.0 :007 > a.submit_order
+Thank you! Your order was placed and will be delivered before 7:31
+```
+Learning objectives
+-------
+- Implementation of TDD (use Rspec)
+- Principle of SRP
+- Dependency injection
+- Encapsulation
+- Method Delegation
+
+## My Approach
+
+My approach was to first breakdown each user story, map out which class/methods were needed and then write a test Red, Green, Refactor. I then moved on to the next user story. At the end I refactored the whole test.
+
+```
+I would like to see a list of dishes with prices
+
+I would like to be able to select some number of several available dishes
+
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+
+
+## ORIGINAL INSTRUCTIONS BELOW
+
+Takeaway Challenge - Week 2
 ==================
 ```
                             _________
