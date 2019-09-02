@@ -42,8 +42,3 @@ class Takeaway
     puts "total: £#{@current_order.calculate_total}"
   end
 end 
-
-t = Takeaway.new
-t.add_to_order('vegan fishcake', 2)
-t.add_to_order('sole', 3)
-t.complete_order
