@@ -13,9 +13,34 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+ +441344231800
+My feature tests
+Neils-MacBook-Pro:takeaway-challenge Neil$ irb
+2.5.0 :001 > require './lib/order.rb'
+ => true
+2.5.0 :002 > order = Order.new
+ => #<Order:0x00007fa4d5051b40 @shopping_cart=[], @menu=#<Menu:0x00007fa4d5051b18 @menu_items={:burger=>3, :fries=>4, :milkshake=>5, :doughnut=>6, :cake=>7}>, @total_price=[], @selection={}, @prices=[], @finalprice=[], @price=[]>
+2.5.0 :003 > order.read_menu
+burger  : £3
+fries  : £4
+milkshake  : £5
+doughnut  : £6
+cake  : £7
+ => nil
+2.5.0 :004 > order.select_food("burger", 4)
+ => "4 burger added to the shopping cart"
+2.5.0 :005 > order.select_food("fries",2)
+ => "2 fries added to the shopping cart"
+2.5.0 :006 > order.get_price
+The total price of the burger is 3 x 4 = 12
+12
+The total price of the fries is 4 x 2 = 8
+8
+ => [{:burger=>4}, {:fries=>2}]
+2.5.0 :007 > order.calculate_total
+The total price for the meal is £20.00
 
-Instructions
--------
+
 
 * Challenge time: rest of the day and weekend, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
