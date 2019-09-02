@@ -40,6 +40,6 @@ class Order
   def place(estimated_total)
     raise 'Wrong totals - restart' if total != estimated_total.to_i
 
-    puts 'Your order was placed and will be delivered within one hour'
+    Message.new.send(estimated_total.to_i)
   end
 end
