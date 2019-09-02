@@ -18,9 +18,12 @@ describe Takeaway do
     let(:placed_order) { { order: order, order_total: order_total } }
 
     it 'selects some number of several available dishes' do
-      takeaway = Takeaway.new
-      takeaway.place_order(order, order_total)
-      expect(takeaway.placed_order).to eq(placed_order)
+      subject.place_order(order, order_total)
+      expect(subject.placed_order).to eq(placed_order)
+    end
+    it 'checks that the total given matches the sum of the dishes in the order' do
+      subject.place_order(order, order_total)
+      expect(subject.order_total).to eq(subject.sum_of_dishes)
     end
   end
 end
