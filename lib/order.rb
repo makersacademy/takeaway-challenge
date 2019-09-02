@@ -26,10 +26,6 @@ class Order
     order_total
   end
 
-  def basket
-
-  end
-
   def send_notification
     eta = (Time.now + 3600).strftime("%H:%M")
     "Thank you, you order has been received and will be delivered before #{eta}"
