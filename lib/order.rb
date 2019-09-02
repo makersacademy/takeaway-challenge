@@ -1,5 +1,5 @@
 require 'twilio-ruby'
-require 'send_message'
+require_relative 'twilio'
 
 DEFAULT_MENU = {
   pizza: 9,
@@ -12,30 +12,21 @@ DEFAULT_MENU = {
 }
 class Order
   attr_reader :selection
+  attr_reader :menu
   include Twilio
-# needs to be able to select meals
-# needs to be able to check total is consistent with actual total
-# needs to be able to confirm selection
   def initialize(menu = DEFAULT_MENU)
     @menu = menu
     @selection = []
     # @total = []
   end
 
-  def menu
-    @menu
+  def checkout
+    body = "your order will arrive at #{(Time.now + 3600).strftime("%X")}"
+    send_text(body)
   end
 
-  # def checkout
-  #   CLIENT.messages.create(
-  #   from: FROM,
-  #   to: TO,
-  #   body: "your order will arrive at #{(Time.now + 3600).strftime("%X")}"
-  #   )
-  # end
-
   def select(item, quant)
-    @selection << {meal: item, quantity: quant, total: (@menu[item.to_sym] * quant)}
+    @selection << { meal: item, quantity: quant, total: (@menu[item.to_sym] * quant) }
     "your order will cost £#{total()}"
   end
 
