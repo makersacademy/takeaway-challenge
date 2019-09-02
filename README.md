@@ -32,9 +32,9 @@ Greek pie: 12.0
 ```
 
 Order can be placed by passing arugument to handle_sms in the format of:
-Dish 1, quantity\s\s
-Dish 2, quantity\s\s
-Price: price
+Dish 1, quantity  
+Dish 2, quantity  
+Price: price  
 
 It raises error if any dish is not in menu:
 ```
