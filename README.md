@@ -9,10 +9,10 @@ and sends confirmation if order is placed successfully.
 
 Instructions
 -------
-The text handling function has been implemented using Twilio API. To use this function the account sid, auth token, Twilio number and mobile number must be updated.
+The text handling function has been implemented using Twilio API. To use this function the account sid, auth token, Twilio number and mobile number need to be updated.
 
 To use the application, load 'takeaway.rb' in irb, initialize it with default
-arguments, and load default menu by calling load_default_menu:
+arguments, and load default menu by calling load_default_dishes:
 ```
 2.5.0 :001 > require './lib/takeaway'
  => true
@@ -22,22 +22,21 @@ arguments, and load default menu by calling load_default_menu:
  => [#<Dish:0x00007fae4295e4b0 @name="Spring roll", @price=4.8>, #<Dish:0x00007fae4295e460 @name="Dumplings", @price=5.6>, #<Dish:0x00007fae4295e410 @name="Greek pie", @price=12.0>]
 ```
 
-By passing 'menu' to handle_sms method, which stimulates receiving text instruction, a text message with a list of dishes will be sent out.
-containing the list of dishes and prices will be sent out.
+By passing 'menu' to handle_sms method, which stimulates receiving text instruction, a text message containing a list of dishes and prices will be sent out.
 ```
 2.5.0 :004 > takeaway.handle_sms('menu')
- => <Twilio.Api.V2010.MessageInstance account_sid: AC3c5a98adb336ccef1d21ba057a9603f3 api_version: 2010-04-01 body: Sent from your Twilio trial account - Menu:
+ => <Twilio.Api.V2010.MessageInstance account_sid: *** api_version: 2010-04-01 body: Sent from your Twilio trial account - Menu:
 Spring roll: 4.8
 Dumplings: 5.6
 Greek pie: 12.0
 ```
 
 Order can be placed by passing arugument to handle_sms in the format of:
-Dish 1, quantity
-Dish 2, quantity
+Dish 1, quantity\s\s
+Dish 2, quantity\s\s
 Price: price
 
-It raises error if dish is not in menu:
+It raises error if any dish is not in menu:
 ```
 2.5.0 :008 > takeaway.handle_sms("Spring rolls, 2\nPizza, 3\nPrice: 10")
 Traceback (most recent call last):
@@ -49,7 +48,7 @@ Traceback (most recent call last):
 RuntimeError (Dish not in menu)
 ```
 
-It raises error if price in order does not match sum for dishes:
+It raises error if price in order does not match sum for dishes ordered:
 ```
 2.5.0 :010 > takeaway.handle_sms("Dumplings, 2\nGreek pie, 1\nPrice: 20")
 Traceback (most recent call last):
@@ -64,5 +63,5 @@ RuntimeError (Price does not match)
 It sends confirmation for an valid order:
 ```
 2.5.0 :011 > takeaway.handle_sms("Dumplings, 2\nGreek pie, 1\nPrice: 23.2")
- => <Twilio.Api.V2010.MessageInstance account_sid: AC3c5a98adb336ccef1d21ba057a9603f3 api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered in one hour.
+ => <Twilio.Api.V2010.MessageInstance account_sid: *** api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered in one hour.
 ```
