@@ -18,6 +18,5 @@ dab: £4.0
 sole: £4.5
 vegan fishcake: £2.5
 vegan picked egg: £1.5
- => {"small chips"=>2.0, "large chips"=>3.0, "dab"=>4.0, "sole"=>4.5, "vegan fishcake"=>2.5, "vegan picked egg"=>1.5} 
  ...
 ```
