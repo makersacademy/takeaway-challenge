@@ -11,8 +11,4 @@ class Menu
   def show_menu
     list.each { |k, v| puts "#{k}: £#{v}" } 
   end
-
-  def get_price(item)
-    p list[item]
-  end
 end
