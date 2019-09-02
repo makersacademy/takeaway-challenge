@@ -18,12 +18,16 @@ class Order
     @current_order << item
   end
 
-  def calc_tot
+  def calc_order
     order_total = 0
     @current_order.each do |item|
       order_total += @menu.get_item_price(item)
     end
     order_total
+  end
+
+  def basket
+
   end
 
   def send_notification
