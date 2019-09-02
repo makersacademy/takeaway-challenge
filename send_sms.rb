@@ -3,7 +3,7 @@ require_relative './lib/user_session'
 require 'twilio-config'
 
 ACCOUNT_SID = ENV[ACCOUNT_SID]
-AUTH_TOKEN = ENV[AUTH_TOKEN
+AUTH_TOKEN = ENV[AUTH_TOKEN]
 NUMBER = ENV[NUMBER]
 client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
 
