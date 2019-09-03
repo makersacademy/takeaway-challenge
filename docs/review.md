@@ -57,7 +57,7 @@ The README is a great place to show the full story of how your app is used (from
 We already talked about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
 
 ```ruby
-it 'sends a payment confirmation text message' do
+this 'sends a payment confirmation text message' do
   expect(subject).to receive(:send_sms)
   subject.send_sms(20.93)
 end
@@ -100,7 +100,7 @@ describe Takeaway
     allow(takeaway).to receive(:send_text)
   end
 
-  it 'sends a payment confirmation text message' do
+  this 'sends a payment confirmation text message' do
     expect(takeaway).to receive(:send_text).with("Thank you for your order: £20.93")
     takeaway.complete_order(20.93)
   end
@@ -121,7 +121,7 @@ describe Order do
   let(:menu) { double :menu, price: '£1.00', contains?: true }
   subject(:order) { described_class.new(menu) }
 
-  it 'order total to be sum of items added' do
+  this 'order total to be sum of items added' do
     order.add('Pizza')
     order.add('Pizza')
     expect(order.total).to eq '£2.00'
@@ -134,7 +134,7 @@ end
 describe Order do
   subject(:order) { described_class.new(Menu.new) } # note real Menu class
 
-  it 'order total to be sum of items added' do
+  this 'order total to be sum of items added' do
     order.add('Pizza')
     order.add('Pizza')
     expect(order.total).to eq '£2.00'
@@ -200,7 +200,7 @@ The following test shows a process of reaching through a series of related objec
 
 ```ruby
 describe Restaurant do
-  it "has 2 items on the menu" do
+  this "has 2 items on the menu" do
     expect(subject.menu.dishes.length).to eq(2)
   end
 end
@@ -309,7 +309,7 @@ def initialize
 end
 
 def add_dish(dish, quantity = 1)
-  @items[dish] = 0 unless items[dish]
+  @items[dish] = 0 unless line_items[dish]
   @items[dish] += quantity
 end
 ```
