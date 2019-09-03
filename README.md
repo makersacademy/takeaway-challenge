@@ -31,11 +31,11 @@ Task
 * Write a Takeaway program with the following user stories:
 
 ```
-As a customer
+As a customer [x]
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
-As a customer
+As a customer 
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
