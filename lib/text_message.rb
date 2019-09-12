@@ -2,8 +2,8 @@ require 'twilio-ruby'
 class TextMessage
 
   def initialize
-    @account_sid = 'AC99fc241dd551f1c018368d1d3e15b0f5'
-    @auth_token = 'ab701f34dadd210e6ae0255d3adb7eaf'
+    @account_sid = ENV['TWILIOSID']
+    @auth_token = ENV['TWILIOAUTH']
   end
 
   def send_text(message = "dummy text")

@@ -2,7 +2,8 @@ require "menu_list"
 
 describe MenuList do
   let(:dish) { double }
-  let(:dish2) { double }
+  #let(:dish2) { double }
+  let(:dish2) { double :dish, :available? => true }
 
   context "when starting empty" do
     it "empty dishes array" do

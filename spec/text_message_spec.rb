@@ -9,7 +9,7 @@ describe TextMessage do
     end
   end
 
-  xcontext "actual call to text method" do
+  context "actual call to text method" do
     it "send a text message" do
       in_one_hour = Time.now + 3600
       time = in_one_hour.strftime("%H:%M")
