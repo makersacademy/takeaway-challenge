@@ -1,3 +1,18 @@
+NOTES
+=====
+
+The only thing you need to do to get this working is to set up your sid and token for Twilio
+
+On Macs, update you .profile file to include the two environment variables.. ie
+
+export TWILIOSID='insert sid here'
+export TWILIOAUTH='insert auth token here'
+
+you need to get these two things from your Twilio account, so just log in and figure it out.
+
+
+
+
 Takeaway Challenge
 ==================
 ```
