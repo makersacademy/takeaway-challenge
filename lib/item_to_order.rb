@@ -3,6 +3,7 @@ class ItemToOrder
 attr_reader :order_details
 attr_reader :dish_to_order
 attr_reader :item_to_order
+attr_reader :quantity
 
   def initialize(dish, quantity)
     @dish_to_order = dish
