@@ -15,10 +15,19 @@ describe Restaurant do
 
   describe "#add_dish" do
     it "creates a new Dish instance and returns an updated menu list" do
-      pizza = double("Dish.new")
-      pasta = double("Dish.new")
+      pizza, pasta = double("Dish.new")
       cafe_melvino.add_dish(pizza)
       expect(cafe_melvino.add_dish(pasta)).to eq [pizza, pasta]
+    end
+  end
+
+  describe "#menu" do
+    it "displays the menu" do
+      pizza, pasta = double("Dish.new")
+      cafe_melvino.add_dish(pizza)
+      cafe_melvino.add_dish(pasta)
+      menu = [pizza, pasta]
+      expect(cafe_melvino.menu).to eq menu
     end
   end
 end
