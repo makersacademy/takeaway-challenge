@@ -1,9 +1,8 @@
-# require "dish"
-#
-# let(:dish) { described_class.new }
-#
-# describe Dish do
-#   it "initializes a new dish" do
-#     expect(described_class.new).to
-#   end
-# end
+require "dish"
+
+describe Dish do
+  let(:dish) { described_class.new("Pizza", 8.50) }
+  it "#price returns dish price" do
+    expect(dish.price).to eq 8.50
+  end
+end
