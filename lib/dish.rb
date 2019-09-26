@@ -1,3 +1,4 @@
+# dish.rb
 class Dish
   def initialize(name, price)
     @name = name

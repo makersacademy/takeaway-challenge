@@ -1,10 +1,15 @@
 # restaurant.rb
 class Restaurant
-  attr_reader :menu
-  def initialize
+
+  def initialize()
     @menu =[]
   end
   def add_dish(dish)
-    menu << dish
+    @menu << dish
+  end
+  def menu
+    @menu.collect { |dish|
+      "#{dish.name}: #{dish.price}"
+    }
   end
 end

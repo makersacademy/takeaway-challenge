@@ -3,6 +3,8 @@ require "restaurant"
 
 describe Restaurant do
   let(:cafe_melvino) { described_class.new }
+  let(:pizza) { double "Dish.new", name: "Pizza", price: 8.5 }
+  let(:pasta) { double "Dish.new", name: "Pasta", price: 7.5 }
 
   # As a customer
   # So that I can check if I want to order something
@@ -13,20 +15,20 @@ describe Restaurant do
   # So that my customers can know what I sell
   # I would like to add dishes to a menu list, and view the menu
 
+  before(:each) do
+    cafe_melvino.add_dish(pizza)
+  end
+
   describe "#add_dish" do
     it "creates a new Dish instance and returns an updated menu list" do
-      pizza, pasta = double("Dish.new")
-      cafe_melvino.add_dish(pizza)
       expect(cafe_melvino.add_dish(pasta)).to eq [pizza, pasta]
     end
   end
 
   describe "#menu" do
     it "displays the menu" do
-      pizza, pasta = double("Dish.new")
-      cafe_melvino.add_dish(pizza)
       cafe_melvino.add_dish(pasta)
-      menu = [pizza, pasta]
+      menu = [ "#{pizza.name}: #{pizza.price}" , "#{pasta.name}: #{pasta.price}" ]
       expect(cafe_melvino.menu).to eq menu
     end
   end
