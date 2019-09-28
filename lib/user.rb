@@ -3,9 +3,12 @@ require_relative 'order_list'
 
 class User
 
+  attr_reader :order_confirmed
+
   def initialize(menu = Menu.new, order_list = OrderList.new)
     @menu = menu
     @order_list = order_list
+    @order_confirmed = false
   end
 
   def view_menu
@@ -21,22 +24,10 @@ class User
     @order_list.order_list
   end
 
+  def confirm
+    @order_confirmed = true
+  end
 end
-# def intitialize
-#   order_list = []
-#   @menu = Menu.new
-#   @order_list = Order.new
-#   order_confirmed? = false
-# end
-
-#
-# def my_order
-#   @order_list
-# end
-#
-# def confirm_order
-#   order_confirmed = true
-# end
 #
 # def text
 #   sendtext() if order_confirmed

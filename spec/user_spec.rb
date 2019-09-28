@@ -26,7 +26,7 @@ describe User do
 
   describe "#my_order" do
 
-    let(:order_list) { [{item => quantity}] }
+    let(:order_list) { {item => quantity} }
 
     it "shows users current order_list" do
       allow(order_list_dub).to receive(:order_list) { order_list }
@@ -34,6 +34,10 @@ describe User do
     end
   end
 
-  # describe "#confirm_order" do
-  #   it ""
+  describe "#confirm_order" do
+    it "lets user confirm order having viewed order list" do
+      user.confirm
+      expect(user.order_confirmed).to be true
+    end
+  end
 end
