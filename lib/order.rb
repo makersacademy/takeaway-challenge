@@ -8,7 +8,8 @@ class Order
   end
 
   def add(item, quantity)
-    fail NoItemError, "#{item.capitalize} is not a valid menu item" unless menu.is_available?(item)
+    fail NoItemError,
+    "#{item.capitalize} is not a valid menu item" unless menu.available?(item)
     items[item] = quantity
   end
 

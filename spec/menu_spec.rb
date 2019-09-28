@@ -18,11 +18,11 @@ describe Menu do
   end
 
   it "checks if an item selection is on the menu" do
-    expect(menu.is_available?(:hamburger)).to eq true
+    expect(menu.available?(:hamburger)).to eq true
   end
 
   it "checks if an item selection is NOT on the menu" do
-    expect(menu.is_available?(:noodles)).to eq false
+    expect(menu.available?(:noodles)).to eq false
   end
 
   it "retrieves an items price" do
