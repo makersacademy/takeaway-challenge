@@ -14,5 +14,7 @@ describe OrderList do
       subject.add_to_order(item, quantity)
       expect(subject.order_list).to include({ item => quantity })
     end
+
+
   end
 end

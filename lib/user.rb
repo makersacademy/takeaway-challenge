@@ -17,6 +17,10 @@ class User
     "#{quantity} x #{item} added to order"
   end
 
+  def view_order
+    @order_list.order_list
+  end
+
 end
 # def intitialize
 #   order_list = []
@@ -24,15 +28,7 @@ end
 #   @order_list = Order.new
 #   order_confirmed? = false
 # end
-#
-# def view_menu
-#   @menu
-# end
-#
-# def select(item, quantity)
-#   @order_list << { item => quantity }
-    # (make pushing to order list a responsibility of orer_list class)
-# end
+
 #
 # def my_order
 #   @order_list
