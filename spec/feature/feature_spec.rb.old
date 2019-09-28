@@ -32,3 +32,17 @@ Class.new.extend(DishListPrinter).print_list(dishes)
 order = Order.new(ENV['CUSTOMER_MOBILE_NUMBER'])
 order.add(dish)
 order.print_order
+
+
+dishes = []
+
+[["Copius Fried Wild Greens", 3],
+["Spicy Sauteed Peppers", 3],
+["Copius Mushroom Skewers", 5],
+["Vegetable Omlette", 6],
+["Fried Egg and Rice", 5],
+["Monster Curry", 6],
+["Mushroom Risotto", 5],
+["Creamy Heart Soup", 8]].each { |item| dishes.append(Dish.new(name: item[0], cost: item[1])) }
+
+takeaway = Takeaway.new(dishes)
