@@ -2,17 +2,17 @@ class Menu
   attr_reader :list
 
   def initialize
-    @list = [
-      { name: "pizza", price: 5 },
-      { name: "curry", price: 7 },
-      { name: "kebab", price: 4 },
-      { name: "ramen", price: 9 },
-      { name: "pad thai", price: 5 }
-    ]
-  
+    @list = {
+        pizza: 5,
+        curry: 7,
+        kebab: 4,
+        ramen: 9,
+      burger: 5
+    }
+
   end
 
   def print_menu
-    list  
+    list
   end
 end

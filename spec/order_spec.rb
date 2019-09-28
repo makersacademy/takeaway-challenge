@@ -10,13 +10,19 @@ describe Order do
 
     it 'stores items in current order' do
       order.choose("pizza", 1)
-      expect(order.current_order).to eq [{ :pizza => 1 }]
+      expect(order.current_order).to include(:pizza => 1)
+    end
+
+    it 'stores multiple items ordered' do
+      order.choose("pizza", 1)
+      order.choose("curry", 2)
+      expect(order.current_order).to include(:pizza => 1, :curry => 2)
     end
   end
 
   describe '#show_menu' do
-    it 'returns an Array' do
-      expect(order.show_menu.class).to eq Array
+    it 'returns a Hash' do
+      expect(order.show_menu.class).to eq Hash
     end
   end
 end

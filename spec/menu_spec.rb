@@ -5,11 +5,11 @@ describe Menu do
 
   describe '#list' do
 
-    it 'confirms list is an array' do
-      expect(menu.list.class).to be Array
+    it 'confirms list is a hash' do
+      expect(menu.list.class).to be Hash
     end
   end
-  
+
   describe '#print_menu' do
 
     it 'displays a list of dishes' do
