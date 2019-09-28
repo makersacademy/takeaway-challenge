@@ -16,4 +16,12 @@ describe Menu do
     printed_menu = "Hamburger £5.00, Cheeseburger £6.00, Fries £2.00"
     expect(menu.print).to eq printed_menu
   end
+
+  it "checks if an item selection is on the menu" do
+    expect(menu.is_available?(:hamburger)).to eq true
+  end
+
+  it "checks if an item selection is NOT on the menu" do
+    expect(menu.is_available?(:noodles)).to eq false
+  end
 end

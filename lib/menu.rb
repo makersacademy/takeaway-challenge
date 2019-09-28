@@ -7,9 +7,13 @@ class Menu
   end
 
   def print
-    items.map do |name, price|
+    items.map do | name, price |
       "%s £%.2f" % [name.to_s.capitalize, price]
     end.join(", ")
+  end
+
+  def is_available?(item)
+    items.include?(item)
   end
 
 end
