@@ -8,6 +8,6 @@ describe "User story 1" do
   it "displays a list of dishes with prices" do
     menu = Menu.new
     menu.add("Ribeye", 2000)
-    expect(menu.list).to eq "Ribeye (£20)\n"
+    expect { menu.list }.to output("Ribeye (£20)\n").to_stdout
   end
 end

@@ -1,21 +1,27 @@
 
-class Menu 
+class Menu
 
   def initialize
     @dishes = []
   end
-
-  def list
-    output = ""
-    @dishes.each do |dish|
-      dish_name = dish[:name]
-      dish_price = (dish[:price] / 100) # convert from pennies
-      output += "#{dish_name} (£#{dish_price})\n"
-    end
-    return output
+  
+  def add(dish, price)
+    @dishes << { name: dish, price: price }
   end
 
-  def add(dish, price)
-    @dishes << {name: dish, price: price}
+  def list
+    puts update_menu
+  end
+
+  private
+
+  def update_menu
+    output = []
+    @dishes.each { |dish| output << format_dish(dish[:name], dish[:price]) }
+    return output
+  end
+  
+  def format_dish(name, price)
+    return "#{name} (£#{price / 100})"
   end
 end
