@@ -23,13 +23,8 @@ Instructions
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
+User Story
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
 ```
 As a customer
 So that I can check if I want to order something
