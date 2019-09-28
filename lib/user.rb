@@ -1,12 +1,20 @@
 require_relative 'menu'
+require_relative 'order_list'
+
 class User
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order_list = OrderList.new)
     @menu = menu
+    @order_list = order_list
   end
 
   def view_menu
     @menu.menu
+  end
+
+  def select(item, quantity)
+    @order_list.add_to_order(item, quantity)
+    "#{quantity} x #{item} added to order"
   end
 
 end
