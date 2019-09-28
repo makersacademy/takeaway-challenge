@@ -13,4 +13,8 @@ class Dishes
       orange: 1, cocktail: 7, wine: 10 }
   end
 
+  # def include(item)
+  #   (@indian || @italian || @chines || @drinks).include?(item.to_sym)
+  # end
+
 end
