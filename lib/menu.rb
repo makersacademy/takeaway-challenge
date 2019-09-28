@@ -13,10 +13,7 @@ class Menu
     end
   end
   #
-  def choose(*dish_selection)
-    dish_selection.each do |dish|
-        @order << dish
-    end
+  def choose(dish_selection, quantity)
+    @order << { dish_selection: dish_selection, quantity: quantity }
   end
-
-end
+  end

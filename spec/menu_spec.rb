@@ -11,7 +11,9 @@ describe Menu do
 
   describe 'choose' do
     it 'selects some number of several available dishes' do
-      expect(menu.choose("Chicken", "Fish")).to eq ["Chicken", "Fish"]
+      menu.choose("Chicken", 2)
+      menu.choose("Fish", 3)
+      expect(menu.order).to eq [{dish_selection: "Chicken", quantity: 2}, {dish_selection: "Fish", quantity: 3}]
     end
   end
 
