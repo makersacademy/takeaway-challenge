@@ -1,12 +1,13 @@
 require_relative 'order'
 require_relative 'sms'
+require_relative 'menu'
 
 class Restaurant
 
   def initialize(menu:, config:, order: nil, sms: nil)
     @menu = menu
     @order = order || Order.new(menu)
-    @sms = sms || SMS.new
+    @sms = sms || SMS.new(config)
   end
 
   def print_menu
