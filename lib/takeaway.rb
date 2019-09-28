@@ -1,4 +1,6 @@
 require_relative 'order'
+require 'date'
+
 
 class TakeAway
   attr_reader :basket, :basket_checkout, :total
@@ -40,13 +42,19 @@ class TakeAway
   end
 
   def deliver_order(total)
-    send_text("Thank you for your order: £#{total}. Your order was placed and will be delivered before 19.00")
+    now = get_time
+    send_text("Thank you for your order: £#{total}. Your order was placed and will be delivered before #{now}")
   end
 
   private
 
-  def send_text
-    puts
+  def get_time
+    time = Time.new
+    (time.hour + 1).to_s + ":#{time.min}"
+  end
+
+  def send_text(txt)
+    delivered = Notifier.new.send_message(txt)
   end
 
   def dish_exists?(dish)
