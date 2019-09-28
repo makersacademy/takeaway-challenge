@@ -9,7 +9,7 @@ class Restaurant
   end
   def menu
     @menu.collect { |dish|
-      "#{dish.name}: #{dish.price}"
+      "#{dish.name}: #{"%.2f" % dish.price}"
     }
   end
 end

@@ -6,10 +6,6 @@ describe Restaurant do
   let(:pizza) { double "Dish.new", name: "Pizza", price: 8.5 }
   let(:pasta) { double "Dish.new", name: "Pasta", price: 7.5 }
 
-  # As a customer
-  # So that I can check if I want to order something
-  # I would like to see a list of dishes with prices
-
   # INFERRED USER STORY
   # As a restaurant owner
   # So that my customers can know what I sell
@@ -25,10 +21,14 @@ describe Restaurant do
     end
   end
 
+  # As a customer
+  # So that I can check if I want to order something
+  # I would like to see a list of dishes with prices
+
   describe "#menu" do
     it "displays the menu" do
       cafe_melvino.add_dish(pasta)
-      menu = [ "#{pizza.name}: #{pizza.price}" , "#{pasta.name}: #{pasta.price}" ]
+      menu = [ "#{pizza.name}: #{"%.2f" % pizza.price}" , "#{pasta.name}: #{"%.2f" % pasta.price}" ]
       expect(cafe_melvino.menu).to eq menu
     end
   end
