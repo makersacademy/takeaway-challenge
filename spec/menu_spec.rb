@@ -18,6 +18,9 @@ describe Menu do
       expect { menu.list }.to output("Ribeye (£20)\nLobster (£30)\nPizza (£10)\n").to_stdout
     end
   end
-
-
+  describe "#order" do
+    it "takes the name of a dish and the quantity to be ordered" do
+      expect { menu.order("Lobster", 2) }.not_to raise_error
+    end
+  end
 end

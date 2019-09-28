@@ -13,6 +13,10 @@ class Menu
     puts update_menu
   end
 
+  def order(dish_name, quantity)
+
+  end
+
   private
 
   def update_menu
