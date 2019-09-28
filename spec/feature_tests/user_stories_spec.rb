@@ -5,5 +5,10 @@ require "menu"
 # I would like to see a list of dishes with prices
 
 describe "User story 1" do
-  expect(menu.list).not_to raise_error
+  it "displays a list of dishes with prices" do
+    menu = Menu.new
+    menu.add("Ribeye", 2000)
+    output = menu.list
+    expect(output).to eq "Ribeye (£20.00)"
+  end
 end
