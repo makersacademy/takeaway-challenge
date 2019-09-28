@@ -7,10 +7,14 @@ describe Takeaway do
   let(:order) { double(:order) }
 
   describe '#initialize'do
+    # it 'initializes with a new menu' do
+    #   expect(takeaway.menu).to eq menu
+    # end
+  end
 
-    it 'initializes with ' do
-      expect(takeaway).to eq 
-    end
+  describe '#show_menu' do
+
+    
 
   end
 

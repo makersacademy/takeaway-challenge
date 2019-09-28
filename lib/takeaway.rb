@@ -1,9 +1,9 @@
-require 'menu'
-require 'order'
-require 'messenger'
+require_relative 'menu'
+require_relative 'order'
+require_relative 'messenger'
 
 class Takeaway
-  attr_accessor :menu, :order
+  attr_reader :menu, :order
 
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
