@@ -6,7 +6,7 @@ describe Restaurant do
   let(:menu) { double(:menu, print: printed_menu) }
   let(:printed_menu) { "Hamburger £5" }
 
-  let(:order) { double(:order) }
+  let(:order) { double(:order, order_total: 24) }
   let(:items) { { cheeseburger: 3, hamburger: 1, fries: 3 } }
 
   it "shows the menu items" do
@@ -16,6 +16,12 @@ describe Restaurant do
   it "can add menu selections when placing an order" do
     expect(order).to receive(:add).thrice
     restaurant.place_order(items)
+  end
+
+  it " shows the order total" do
+    allow(order).to receive(:add)
+    order_total = restaurant.place_order(items)
+    expect(order_total).to eq 24.00
   end
 
 end

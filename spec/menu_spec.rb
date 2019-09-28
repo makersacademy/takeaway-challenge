@@ -24,4 +24,8 @@ describe Menu do
   it "checks if an item selection is NOT on the menu" do
     expect(menu.is_available?(:noodles)).to eq false
   end
+
+  it "retrieves an items price" do
+    expect(menu.price(:hamburger)).to eq items[:hamburger]
+  end
 end

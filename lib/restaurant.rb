@@ -1,4 +1,4 @@
-require 'order'
+require_relative 'order'
 
 class Restaurant
 
@@ -15,6 +15,7 @@ class Restaurant
     items.each do |item, quantity|
       order.add(item, quantity)
     end
+    order.order_total
   end
 
   private

@@ -16,4 +16,8 @@ class Menu
     items.include?(item)
   end
 
+  def price(item)
+    items[item]
+  end
+
 end
