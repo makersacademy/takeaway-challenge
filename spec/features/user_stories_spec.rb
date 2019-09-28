@@ -5,26 +5,30 @@ describe 'user stories' do
 # I would like to see a list of dishes with prices
 
   describe 'display menu' do
-    it 'Should be possible to display a menu'do
-      pizza = LazyPizza.new
-      expect(pizza.show_menu).to include :pizza
+
+    it 'Should be possible to display a menu' do
+      selection = Takeaway.new
+      expect(selection.show_menu).to eql 11
     end
   end
 end
-# Ensure you have a list of dishes with prices
 
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
 
-# preview order?
+describe 'preview order' do
+  it 'Should create a preview order' do
+    selection = Takeaway.new
+    expect(selection.preview_order('pizza', 'pasta')).to eq "Your order\npizza\npasta\nTotal: £7"
+  end
+end
 
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
 # Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-
 
 # As a customer
 # So that I am reassured that my order will be delivered on time
@@ -40,4 +44,3 @@ end
 # Advanced! (have a go if you're feeling adventurous):
 
 # Implement the ability to place orders via text message.
-

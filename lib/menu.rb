@@ -1,16 +1,19 @@
 class Menu
 
-  attr_reader :items
+attr_reader :menu
 
-  @@menu_hash = {pizza: 3, pasta: 4}
 
-def format_menu
-  @@menu_hash.each do |x,y|
-
- puts "#{x} -- £#{y}"
-
+  def initialize
+    @menu = [{ item: 'Pizza', price: 11},{ item: 'Pasta', price: 4 }]
   end
-end
 
+
+  def format_menu
+    @menu.each_with_index do |item, index|
+  
+      puts "#{index + 1}. #{item[:item]} ~ £#{item[:price]}"
+  
+    end
+  end
 
 end
