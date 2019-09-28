@@ -1,4 +1,4 @@
-#dish_spec.rb
+# dish_spec.rb
 require "dish"
 
 describe Dish do

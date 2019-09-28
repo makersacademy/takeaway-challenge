@@ -28,7 +28,7 @@ describe Restaurant do
   describe "#menu" do
     it "displays the menu" do
       cafe_melvino.add_dish(pasta)
-      menu = [ "#{pizza.name}: #{"%.2f" % pizza.price}" , "#{pasta.name}: #{"%.2f" % pasta.price}" ]
+      menu = ["#{pizza.name}: #{"%.2f" % pizza.price}", "#{pasta.name}: #{"%.2f" % pasta.price}"]
       expect(cafe_melvino.menu).to eq menu
     end
   end
