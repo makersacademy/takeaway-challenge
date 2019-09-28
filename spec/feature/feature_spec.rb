@@ -19,10 +19,16 @@
 
 Dir["./lib/*.rb"].each { |file| require file }
 
-dish1 = Dish.new(cost: 5, name: 'Copius Mushroom Skewers')
+dish = Dish.new(cost: 5, name: 'Copius Mushroom Skewers')
 dish2 = Dish.new(cost: 4, name: 'Vegetable Omlette')
 dish3 = Dish.new(cost: 5, name: 'Fried Egg and Rice')
 
-dishes = [dish1, dish2, dish3]
+dishes = [dish, dish2, dish3]
 dishes.extend(DishPrinter)
 dishes.each { |dish| puts dishes.niceprint(dish) }
+
+Class.new.extend(DishListPrinter).print_list(dishes)
+
+order = Order.new(ENV['CUSTOMER_MOBILE_NUMBER'])
+order.add(dish)
+order.print_order
