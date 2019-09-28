@@ -9,6 +9,7 @@ class Order
     @dishes = []
     @total = 0
     @mobile_number = mobile_number
+    @submitted = false
   end
 
   def add(dish)
