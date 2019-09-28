@@ -1,7 +1,7 @@
 require_relative 'order'
 
 class TakeAway
-  attr_reader :basket, :basket_checkout, :printed_menu, :total
+  attr_reader :basket, :basket_checkout, :total
   attr_writer :menu
 
   def initialize(order_class: Order)
@@ -19,8 +19,7 @@ class TakeAway
   end
 
   def read_menu
-    @printed_menu = @menu.map { |i| "#{i[:name]} £#{i[:price]}" }
-    puts @printed_menu
+    puts(@menu.map { |i| "#{i[:name]} £#{i[:price]}" })
   end
 
   def order_dish(dish, quantity = 1)
@@ -40,7 +39,15 @@ class TakeAway
     puts "Total: £#{@total}"
   end
 
+  def deliver_order(total)
+    send_text("Thank you for your order: £#{total}. Your order was placed and will be delivered before 19.00")
+  end
+
   private
+
+  def send_text
+    puts
+  end
 
   def dish_exists?(dish)
     @menu.map { |i|
@@ -72,8 +79,3 @@ class TakeAway
     @basket << "#{dish} x#{quantity} = £#{order_price}"
   end
 end
-
-# take = TakeAway.new
-# take.read_menu
-# puts
-# take.print_out([{ name: 'Prawn Dumpling', price: 5.45, quantity: 5 }])
