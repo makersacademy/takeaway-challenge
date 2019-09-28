@@ -1,4 +1,5 @@
 require_relative 'order'
+require_relative 'notifier'
 require 'date'
 
 
@@ -41,9 +42,9 @@ class TakeAway
     puts "Total: £#{@total}"
   end
 
-  def deliver_order(total)
+  def deliver_order
     now = get_time
-    send_text("Thank you for your order: £#{total}. Your order was placed and will be delivered before #{now}")
+    send_text("Thank you for your order: £#{@total}. Your order was placed and will be delivered before #{now}")
   end
 
   private
@@ -54,7 +55,8 @@ class TakeAway
   end
 
   def send_text(txt)
-    delivered = Notifier.new.send_message(txt)
+    notifier = Notifier.new
+    notifier.send_message(txt)
   end
 
   def dish_exists?(dish)

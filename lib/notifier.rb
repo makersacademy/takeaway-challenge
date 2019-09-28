@@ -1,4 +1,4 @@
-require require 'twilio-ruby'
+require 'twilio-ruby'
 
 class Notifier
 

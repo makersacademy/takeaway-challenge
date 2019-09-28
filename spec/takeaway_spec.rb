@@ -75,12 +75,15 @@ describe TakeAway do
     it 'accept the deliver request and send a text confirmation to the costumer' do
       total = 33.96
       now = "21:54"
+      allow(order).to receive(:order_price).and_return(15.98)
+      subject.order_dish(dish, quantity)
       allow(subject).to receive(:get_time).and_return(now)
-      allow(order).to receive(:order_price).and_return(total)
+      allow(order).to receive(:order_price).and_return(17.98)
+      subject.order_dish(dish2, quantity)
       allow(subject).to receive(:send_text)
       result = "Thank you for your order: £33.96. Your order was placed and will be delivered before " + now
       expect(subject).to receive(:send_text).with(result)
-      subject.deliver_order(total)
+      subject.deliver_order
     end
   end
 
