@@ -7,12 +7,10 @@ describe DishPrinter do
 
   context 'given a dish object' do
     it 'prints the name, description and price nicely' do
-      # expect(STDOUT).to receive(:puts).and_return("Copius Mushroom Skewers        💎 5")
-      expect(subject.niceprint(dish)).to eq "Copius Mushroom Skewers        💎 5"
+      expect(subject.niceprint(dish)).to eq "Copius Mushroom Skewers        💎  5"
     end
     it 'prints the name, description and price nicely' do
-      # expect(STDOUT).to receive(:puts).and_return("Vegetable Omlette              💎 4")
-      expect(subject.niceprint(dish2)).to eq "Vegetable Omlette              💎 4"
+      expect(subject.niceprint(dish2)).to eq "Vegetable Omlette              💎  4"
     end
   end
 end
