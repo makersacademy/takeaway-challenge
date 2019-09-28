@@ -8,7 +8,6 @@ describe "User story 1" do
   it "displays a list of dishes with prices" do
     menu = Menu.new
     menu.add("Ribeye", 2000)
-    output = menu.list
-    expect(output).to eq "Ribeye (£20.00)"
+    expect(menu.list).to eq "Ribeye (£20)\n"
   end
 end
