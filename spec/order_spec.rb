@@ -19,34 +19,58 @@ describe Order do
     expect(order).to respond_to(:print_list)
   end
 
+  it 'knows the total cost' do
+    expect(order.total).to eq 0
+  end
+
   describe '#add' do
-    it 'adds a dish to the order list' do
-      expect(order.add(dish)).to eq [dish]
+    context 'order is empty' do
+      it 'adds a dish to the order list' do
+        expect(order.add(dish)).to eq [dish]
+      end
+      it 'updates the total' do
+        order.add(dish)
+        expect(order.total).to eq dish.cost
+      end
     end
-    it 'appends a second dish' do
-      order.add(dish)
-      expect(order.add(dish2)).to eq [dish, dish2]
+    context 'when order has one dish' do
+      it 'appends a second dish' do
+        order.add(dish)
+        expect(order.add(dish2)).to eq [dish, dish2]
+      end
     end
   end
 
-  describe '#remove' do
-    context 'when order is empty' do
-      it 'raises an error' do
-        expect{ order.remove(dish) }.to raise_error("Error: can't remove, dish not in order")
+  describe '#check_total' do
+    context 'when no dishes added' do
+      it 'prints a message' do
+        expect(STDOUT).to receive(:puts).with("Nothing in the order!")
+        expect(order.check_total)
       end
     end
-    context 'when order contains dish' do
+    context 'when total is correct' do
       before do
         order.add(dish)
+        order.add(dish)
+        order.add(dish2)
+        order.add(dish3)
       end
-      it 'removes the dish' do
-        expect(order.remove(dish)).to eq []
+      it 'prints a message' do
+        expect(STDOUT).to receive(:puts).with("Order total confirmed correct")
+        expect(order.check_total)
       end
-      context 'given dish isnt in the list' do
-        it 'raises an error' do
-          expect{ order.remove(dish2) }.to raise_error("Error: can't remove, dish not in order")
-          expect(order.dishes).to eq [dish]
-        end
+    end
+    context 'when total is incorrect' do
+      before do
+        order.add(dish)
+        order.add(dish)
+        order.add(dish2)
+        order.add(dish3)
+      end
+      it 'prints a message' do
+        allow(order).to receive(:total).and_return(0)
+        expect(STDOUT).to receive(:puts).with("Order total incorrect! Please close the app and start again.")
+        expect(order.check_total)
       end
     end
   end
@@ -58,6 +82,7 @@ describe Order do
       end
       it 'prints the quantity, dish and price' do
         expect(STDOUT).to receive(:puts).with("1  x  Copius Mushroom Skewers        💎  5")
+        expect(STDOUT).to receive(:puts).with('Total:                               💎  5')
         expect(order.print_order)
       end
     end
@@ -72,7 +97,8 @@ describe Order do
         messages = [
           '3  x  Copius Mushroom Skewers        💎  5',
           '2  x  Vegetable Omlette              💎  4',
-          '1  x  Fried Egg and Rice             💎  5'
+          '1  x  Fried Egg and Rice             💎  5',
+          'Total:                               💎 28'
         ]
         messages.each { |message| expect(STDOUT).to receive(:puts).with(message) }
         expect(order.print_order)
