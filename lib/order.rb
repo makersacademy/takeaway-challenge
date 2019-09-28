@@ -14,8 +14,9 @@ class Order
 
   def show_menu
     add_price
+
   end
-  
+
 private
 
   def add_price
