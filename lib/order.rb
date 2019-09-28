@@ -1,14 +1,14 @@
 require 'dish'
 
 class Order
-  attr_accessor :ordered_dishes
+  attr_reader :ordered_dishes
 
   def initialize
     @ordered_dishes = []
   end
 
-  # add to order(dish_name, quantity = 1)
-  # show_order
+  # add(dish_name, quantity = 1)
+  # print
   # remove(dish)
 
 end
