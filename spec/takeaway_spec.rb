@@ -18,12 +18,12 @@ describe Takeaway do
   # it 'can calculate the total' do
   #
   # end
-
-  it 'calculates the total price for the order' do
-    subject.place_order("Fish", 2)
-    subject.place_order("Chicken", 5)
-    expect(subject.sum).to eq 24
-  end
+  #
+  # it 'calculates the total price for the order' do
+  #   subject.place_order("Fish", 2)
+  #   subject.place_order("Chicken", 5)
+  #   expect(subject.sum).to eq 24
+  # end
 
   # it 'can select a number of dishes' do
   #   takeaway.order("Chicken", 2)

@@ -28,18 +28,18 @@ class Takeaway
     @order.place(dish_selection, quantity)
   end
 
-  def sum
-    @total += menu_list[dish_selection] * quantity
-  end
+  # def sum
+  #   @sum += menu_list[dish_selection] * quantity
+  # end
 
   # def sum
   #   @sum += menu_list[dish_selection] * quantity
   # end
 
-private
-
-  def menu_list
-    @menu.list
-  end
+# private
+#
+#   def menu_list
+#     @menu.list
+#   end
 
 end
