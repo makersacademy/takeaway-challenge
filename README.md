@@ -6,6 +6,8 @@ To do:
 
 Seperate checkout functionality from order class into a seperate class.
 
+Rubocop.
+
 Add the ability to edit/remove dishes from the basket.
 
 Add user feedback to confirm/deny that a dish has successfully been added/removed from the basket.
