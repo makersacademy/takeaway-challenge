@@ -4,7 +4,7 @@ require 'date'
 
 
 class TakeAway
-  attr_reader :basket, :basket_checkout, :total
+  attr_reader :basket, :total
   attr_writer :menu
 
   def initialize(order_class: Order, notifier_class: Notifier)
@@ -28,13 +28,14 @@ class TakeAway
 
   def order_dish(dish, quantity = 1)
     fail "This dish doesn't exist" unless dish_exists?(dish)
-    new_order = @order_class.new(dish, quantity, get_dish_price(dish))
-    add_order(dish, quantity, new_order.order_price)
+    order = @order_class.new(dish, quantity, get_dish_price(dish))
+    add_order(order)
   end
 
   def print_basket
-    @basket_checkout = @basket.join(", ")
-    puts @basket_checkout
+    @basket.map { |order|
+      puts "#{order.dish} x#{order.quantity} = £#{order.order_price}"
+    }
   end
 
   def check_total
@@ -69,9 +70,9 @@ class TakeAway
     return false
   end
 
-  def add_order(dish, quantity, order_price)
-    update_total(order_price)
-    update_basket(dish, quantity, order_price)
+  def add_order(order)
+    update_total(order.order_price)
+    update_basket(order)
   end
 
   def get_dish_price(dish)
@@ -86,8 +87,8 @@ class TakeAway
     @total += order_price
   end
 
-  def update_basket(dish, quantity, order_price)
-    puts "#{@quantity} #{@dish} added to your basket"
-    @basket << "#{dish} x#{quantity} = £#{order_price}"
+  def update_basket(order)
+    @basket << order
+    puts "#{order.quantity} #{order.dish} added to your basket" # to check
   end
 end
