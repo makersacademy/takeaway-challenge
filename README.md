@@ -17,6 +17,19 @@ Takeaway Challenge
 Setup Instructions
 -------
 
+### Environment
+.env should contain:
+
+A customer mobile number to recieve SMSs:
+`TWILIO_TO`
+
+A verified sending number from Twilio:
+`TWILIO_FROM`
+
+Twilio authentication token and SID:
+`TWILIO_SID`
+`TWILIO_TOKEN`
+
 run messager.rb in your favourite ruby shell. Create a list of dishes for your restaurant and create a Takeaway instance using them, then #run the instance:
 
 
