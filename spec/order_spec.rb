@@ -9,4 +9,11 @@ describe Order do
     end
   end
 
+  describe '#add_dish' do
+    it "adds a choosen item to the customer's order" do
+      expect(order.add_dish("cod")).to eq "cod"
+    end
+  end
+
+
 end
