@@ -1,4 +1,5 @@
 class Menu
+  
   def initialize
     @menu = {
     haddock: 7,
