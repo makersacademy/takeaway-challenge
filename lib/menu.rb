@@ -15,4 +15,17 @@ class Menu
     end
   end
 
+  def dish_included?(dish)
+    dishes.each do |d|
+      if d.key?(dish.to_sym)
+        return true
+      end
+    end
+    return false
+  end
+
+  def price(dish)
+    dishes[dish].to_i
+  end
+
 end
