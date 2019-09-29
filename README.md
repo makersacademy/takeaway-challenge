@@ -14,17 +14,24 @@ Takeaway Challenge
 
  ```
 
-I started identifing class Object: TakeAway, Order and Notifier. (I would like to extract one more class for Basket managment).
+I started identifing class Object: TakeAway, Order, Basket and Notifier. 
 
 |OBJECTS    | MESSAGES                 |
 |-----------|--------------------------|
-|TakeAway   |Read_menu, order, print_basket, check total, deliver_order|
-|Order      |total_price            |
-|Notifier   |send_message     |
-|Basket     |to be done       |
+|TakeAway   |Read_menu, print_basket, check total, deliver_order|
+|Order      |total_price|
+|Notifier   |send_message|
+|Basket     |add order, print_basket, check total|
 
 I proceeded writing starting from the Rspec and implementing the code to let the tests pass. I added some private method meaningful just for the class itself and not for the user.
-I implemented Twilio as notifier for text message when an order is complete and can be delivered. I used environment variable to ensure the program was working only in the IRB without sending messages when testing the spec. It's required to set these environmemnt variable to let a feature test working corretly with Twilio sending an actual message.
+I implemented Twilio as notifier for text message when an order is complete and can be delivered. I used environment variable to ensure the program was working only in the IRB without sending messages when testing the spec. It's required to set these environmemnt variable to let a feature test working corretly with Twilio sending an actual message. 
+
+Environment variables names are: 
+- ACCOUNT_SID
+- AUTH_TOKEN 
+- FROM
+- TO
+
 I didn't use the mocks for Order class from the start. I implemented them after to be sure to apply the London Style testing. I checked the edge cases if a dish is not in the menu and to handle multiple orders at different time. 
 
 
