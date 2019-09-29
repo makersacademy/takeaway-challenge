@@ -35,4 +35,30 @@ describe Order do
       end
     end
   end
+
+  describe '#order_print' do
+    context 'if a dish has been added' do
+      before do
+        order.add(dish)
+      end
+      it 'prints dish, price and quantity' do
+        expect(STDOUT).to receive(:puts).with("1 x shwarma, £9")
+        expect(order.order_print)
+      end
+    end
+
+    context 'more than one dish has been added' do
+      before do
+        order.add(dish)
+        order.add(dish)
+        order.add(dish2)
+      end
+      it 'prints multiple dishes' do
+        message = ['2 x shwarma, £9',
+        '1 x pizza, £5']
+        message.each { |x| expect(STDOUT).to receive(:puts).with(x) }
+        expect(order.order_print)
+      end
+    end
+  end
 end

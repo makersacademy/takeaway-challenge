@@ -1,11 +1,8 @@
-
-# has a list of dishes x
-# add dishes x
-#remove dishes
-#display the dishes
+require_relative 'list_printer'
 #pay for them
 
 class Order
+  include ListPrinter
 
   attr_reader :dishes
 
@@ -14,7 +11,7 @@ class Order
   end
 
   def add(dish)
-    dishes << dish
+    @dishes << dish
   end
 
   def remove(dish)
@@ -24,4 +21,10 @@ class Order
     self.dishes
   end
 
+  def order_print
+    @dishes.uniq.each do |dish|
+      amount = dishes.count(dish)
+      puts "#{amount} x " + printer(dish)
+    end
+  end
 end
