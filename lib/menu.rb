@@ -11,7 +11,6 @@ class Menu
 
   def initialize(dishes = DEFAULT_DISHES)
     @dishes = dishes
-    @orders = []
     update_menu
   end
   
@@ -22,10 +21,6 @@ class Menu
 
   def list
     puts @menu
-  end
-
-  def order(dish_name, quantity)
-    @orders << { dish: dish_name, quantity: quantity }
   end
 
   private

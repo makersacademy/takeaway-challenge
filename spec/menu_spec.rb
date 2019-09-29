@@ -13,9 +13,4 @@ describe Menu do
   #     expect { menu.add("Pizza", 1000) }.not_to raise_error
   #   end
   # end
-  describe "#order" do
-    it "takes the name of a dish and the quantity to be ordered" do
-      expect { menu.order("Lobster", 2) }.not_to raise_error
-    end
-  end
 end
