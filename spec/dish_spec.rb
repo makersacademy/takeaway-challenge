@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-  subject(:dish) { described_class.new( name: 'shwarma', cost: 9) }
+  subject(:dish) { described_class.new(name: 'shwarma', cost: 9) }
   it 'can return correct price' do
     expect(dish.cost).to eq 9
   end

@@ -1,5 +1,5 @@
 class Dish
-attr_reader :name, :cost
+  attr_reader :name, :cost
 
   def initialize(name:, cost:)
     @cost = cost

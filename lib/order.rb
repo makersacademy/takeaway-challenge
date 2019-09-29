@@ -18,5 +18,4 @@ class Order
 
 private
 
-
 end

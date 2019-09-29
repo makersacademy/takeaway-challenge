@@ -1,6 +1,6 @@
 module DishPrint
 
-  def print(dish)
+  def printer(dish)
     "#{dish.name}, £#{dish.cost}"
   end
 end

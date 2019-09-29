@@ -5,6 +5,6 @@ describe DishPrint do
   let(:dish) { double("Dish",name: 'shwarma', cost: 9) }
 
   it 'prints the name and price of the dish' do
-    expect(subject.print(dish)).to eq 'shwarma, £9'
+    expect(subject.printer(dish)).to eq 'shwarma, £9'
   end
 end
