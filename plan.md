@@ -14,7 +14,7 @@ Add a 'how to use' section to show how my app is used from a user's perspective 
 
 ## N.B.
 Private methods don't require tests.
-I may want to make a method private if it's only going to be used internally by Restaurant 
+I may want to make a method private if it's only going to be used internally by Restaurant
 e.g. 'is_correct_amount?(price)' method.
 
 Each object should only have limited knowledge about other units and only those units closely related.
@@ -27,6 +27,9 @@ Do something where every time an order is created, it creates an order ID?
 Order Class <-- Menu Class
 Restaurant Class <-- Order Class
 Restaurant Class <-- Messager Class
+
+*TO CHECK:*
+*Need to check if I can check that as a customer, I don't have to put :pizza, can just put pizza for add_item and to check if I can show £27.00, not £27.0*
 
 ## User Stories
 ### User story 1

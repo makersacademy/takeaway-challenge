@@ -31,13 +31,12 @@ class Order
     puts total_basket
   end
 
-  def total_basket
-    "Your total cost for this order is £#{calculate_cost}"
-  end
-
   def check_out(expected_cost)
-    fail "Difference between expected cost and calculated cost" if expected_cost != calculate_cost
-    "Press 'Place Order' to submit your order through to the restaurant"
+    error_message = "Difference between expected cost and calculated cost"
+    fail error_message if expected_cost != calculate_cost
+    puts "Type Confirm to place your your order"
+    @confirmation = gets.chomp
+    place_order
   end
 
   private
@@ -50,6 +49,15 @@ class Order
       end
     end
     cost
+  end
+
+  def total_basket
+    "Your total cost for this order is £#{calculate_cost}"
+  end
+
+  def place_order
+    message = "Thanks for placing your order"
+    return message if @confirmation == "Confirm"
   end
 
 end

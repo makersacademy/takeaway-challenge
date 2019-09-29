@@ -48,10 +48,6 @@ describe Order do
     end
   end
 
-  describe '#total_basket' do
-    it { is_expected.to respond_to :total_basket }
-  end
-
   describe '#check_out' do
 
     it { is_expected.to respond_to :check_out }
@@ -64,10 +60,11 @@ describe Order do
     end
 
     it 'directs customer to place order if order is correct' do
+      message = "Thanks for placing your order"
+      allow(subject).to receive(:gets).and_return("Confirm")
       subject.add_item(:pizza)
       subject.order_summary
-      message = "Press 'Place Order' to submit your order through to the restaurant"
-      expect(subject.check_out(8.0)).to eq message
+      expect(subject.check_out(8)).to eq message
     end
   end
 
