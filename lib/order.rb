@@ -37,6 +37,8 @@ class Order
     end
   end
 
+  private
+
   def send_message
     puts "You will be tipping £#{@money - @total}. Do you wish to confirm?(Y/N)"
     answer = gets.chomp

@@ -33,4 +33,29 @@ describe Order do
 
   end
 
+  describe '#basket_summary & #checkout'do
+
+    it 'should return a basket message' do
+      expect(subject.basket_summary).to eq("Your total for this order is £0. Please proceed to checkout.")
+    end
+
+    it 'should return an error message if checkout money is not enough' do
+      subject.add("fosters", 5)
+      expect(subject.checkout(3)).to eq("Please checkout with the correct amount")
+    end
+
+    it 'should confirm with checkout message' do
+      subject.add("fosters", 5)
+      allow(subject).to receive(:gets).and_return("Y")
+      expect(subject.checkout(15)).to eq("Thank you for ordering, you will receive a text shortly")
+    end
+
+    it 'should confirm with checkout message' do
+      subject.add("fosters", 5)
+      allow(subject).to receive(:gets).and_return("N")
+      expect(subject.checkout(15)).to eq("Please checkout again")
+    end
+
+  end
+
 end
