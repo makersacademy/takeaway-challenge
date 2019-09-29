@@ -5,7 +5,7 @@ describe Menu do
 
   describe '#initialize' do
     it 'contains a hash of food items and their prices' do
-      expect(menu.items).to be_a Array
+      expect(menu.items).to be_a Hash
     end
   end
 
