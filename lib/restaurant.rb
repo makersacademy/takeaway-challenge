@@ -10,6 +10,7 @@ class Restaurant
   end
 
   def menu
+    return "Unavailable" if @menu.empty?
     @menu.collect do |dish|
       "#{dish.name}: #{"%.2f" % dish.price}"
     end

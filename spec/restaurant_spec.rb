@@ -3,6 +3,7 @@ require "restaurant"
 
 describe Restaurant do
   let(:cafe_melvino) { described_class.new }
+  let(:nada_con_nada) { described_class.new }
   let(:pizza) { double "Dish.new", name: "Pizza", price: 8.5 }
   let(:pasta) { double "Dish.new", name: "Pasta", price: 7.5 }
 
@@ -30,6 +31,11 @@ describe Restaurant do
       cafe_melvino.add_dish(pasta)
       menu = ["#{pizza.name}: #{"%.2f" % pizza.price}", "#{pasta.name}: #{"%.2f" % pasta.price}"]
       expect(cafe_melvino.menu).to eq menu
+    end
+
+    # Edge case: menu is empty
+    it "displays appropriate message if there are no items in the menu" do
+      expect(nada_con_nada.menu).to eq "Unavailable"
     end
   end
 end

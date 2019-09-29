@@ -14,10 +14,11 @@ describe Order do
   let(:t) { Time.now }
   let(:eta) { "#{t.hour + 1}:#{t.min}" }
   let(:message) { "Thank you! You order was placed and will be delivered before #{eta}" }
-  let(:error) { "Authorized amount is incorrect, please try again" }
+  let(:error_incorrect_total) { "Authorized amount is incorrect, please try again" }
+  let(:error_order_empty) { "Order is empty" }
 
-  it "initializes with an empty array" do
-    expect(order.review).to eq []
+  it "initializes with an empty order" do
+    expect(order.review).to eq "Order is empty"
   end
 
   context "when the customer adds one or more dishes to the order" do
@@ -65,9 +66,19 @@ describe Order do
       end
 
       it "returns an error if order was placed given the incorrect total" do
-        expect(order.place(expected_total.to_f - 1)).to eq error
+        expect(order.place(expected_total.to_f - 1)).to eq error_incorrect_total
       end
 
+    end
+
+  end
+
+  # Edge case
+  context "when the customer proceeds with an empty order" do
+    describe "#place" do
+      it "returns error message if order is empty" do
+        expect(order.place(10.00)).to eq error_order_empty
+      end
     end
 
   end
