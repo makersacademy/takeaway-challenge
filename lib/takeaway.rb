@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :customer_order 
+  attr_reader :customer_order, :payment
 
   def initialize
     @order = Order.new

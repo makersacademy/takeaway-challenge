@@ -32,12 +32,12 @@ describe Takeaway do
     end
   end
 
-  it { is_expected.to respond_to(:checkout) }
+  it { is_expected.to respond_to(:checkout).with(1).arguments }
 
   describe '#checkout' do
     it 'throws an error if there is no order' do
       message = "No orders"
-      expect { subject.checkout }.to raise_error message
+      expect { subject.checkout(:payment) }.to raise_error message
     end
   end
 end
