@@ -7,17 +7,17 @@ class Order
     @basket = []
   end
 
-  def add(item)
+  def add(item, quantity)
     item = item.to_sym
     @menu.all_dishes.each do |dish|
+      @dish = dish
       dish.each do |name, price|
         if name == item
-          @basket << dish
-        else
-          "Sorry, #{item.downcase} is not on the menu"
+          quantity.times {@basket << @dish}
         end
       end
     end
+    @basket
   end
 
   def remove

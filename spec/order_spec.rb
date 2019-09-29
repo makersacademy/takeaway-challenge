@@ -9,12 +9,17 @@ describe Order do
   describe '#add' do
 
     it 'responds to add' do
-      expect(subject).to respond_to(:add).with(1).argument
+      expect(subject).to respond_to(:add).with(2).argument
     end
 
     it 'should add an item to the basket' do
-      subject.add("fosters")
-      expect(subject.basket).to eq([fosters: 2])
+      subject.add("fosters", 1)
+      expect(subject.basket).to eq([{fosters: 2}])
+    end
+
+    it 'should add multiple items to the basket' do
+      subject.add("chicken_korma", 3)
+      expect(subject.basket).to eq([{chicken_korma: 12}, {chicken_korma: 12}, {chicken_korma: 12}])
     end
 
   end
