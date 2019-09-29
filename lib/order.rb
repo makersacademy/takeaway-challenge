@@ -10,8 +10,14 @@ class Order
     @menu.view_menu
   end
 
+  def view_order
+    @customer_order
+  end
+
   def add_dish(dish, quantity = 1)
-    dish
+    if dish == "cod"
+      @customer_order.push(dish)
+    end
   end
 
 end

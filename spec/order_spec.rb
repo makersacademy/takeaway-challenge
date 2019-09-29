@@ -9,9 +9,16 @@ describe Order do
     end
   end
 
+  describe '#view_order' do
+    it "prints out the customer's order" do
+      expect(order.view_order).to be_empty
+    end
+  end
+
   describe '#add_dish' do
     it "adds a choosen item to the customer's order" do
-      expect(order.add_dish("cod")).to eq "cod"
+      order.add_dish("cod")
+      expect(order.view_order).to eq ["cod"]
     end
   end
 
