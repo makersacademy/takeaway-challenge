@@ -7,6 +7,7 @@ describe TakeawayOrderer do
     items: { pizza: 6, burger: 5, fries: 3, milkshake: 3, soda: 1 }
   }
 
+
   subject(:takeaway) { described_class.new(menu) }
 
   describe '#initialize' do
@@ -22,7 +23,7 @@ describe TakeawayOrderer do
       { quantity: 1, item: "burger", cost: 5 }]
     }
     let(:order2) { [{ quantity: 4, item: "milkshake", cost: 12 },
-      { quantity: 4, item: "fries", cost: 12 }] 
+      { quantity: 4, item: "fries", cost: 12 }]
     }
 
     it 'saves items, quantities and totals per item as a hash in order array' do
