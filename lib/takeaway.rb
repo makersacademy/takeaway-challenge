@@ -2,9 +2,10 @@ class Takeaway
 
   attr_reader :dish_selection, :quantity
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, text = Text.new)
     @menu = menu
     @order = order
+    @text = text
   end
 
   def menu
@@ -22,12 +23,15 @@ class Takeaway
   end
 
   def place
-    if check_bill?
-      @order.list
-      @order.total
-    else
-      raise "Error"
-    end
+    @text.message
   end
+  # def place
+  #   if check_bill?
+  #     @order.list
+  #     @order.total
+  #   else
+  #     raise "Error"
+  #   end
+  # end
 
 end
