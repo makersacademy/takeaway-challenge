@@ -31,7 +31,7 @@ describe Order do
     context 'if no dish has been added' do
       it 'raises an error message' do
         message = "Woah there, you haven't ordered this yet"
-        expect{ order.remove(dish2) }.to raise_error message
+        expect { order.remove(dish2) }.to raise_error message
       end
     end
   end
@@ -58,6 +58,26 @@ describe Order do
         '1 x pizza, £5']
         message.each { |x| expect(STDOUT).to receive(:puts).with(x) }
         expect(order.order_print)
+      end
+    end
+  end
+
+  describe '#review_total' do
+    context 'if no dishes have been added' do
+      it 'prints out message' do
+        expect(STDOUT).to receive(:puts).with("Order something first!")
+        expect(order.review_total)
+      end
+    end
+
+    context 'if at least one dish has been added' do
+      before do
+        order.add(dish)
+        order.add(dish3)
+      end
+      it 'prints out confirmation message' do
+        expect(STDOUT).to receive(:puts).with("Order total is correct!")
+        expect(order.review_total)
       end
     end
   end
