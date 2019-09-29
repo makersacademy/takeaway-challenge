@@ -33,3 +33,16 @@ describe "User story 3" do
     expect(price).to eq(10_000)
   end
 end
+
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+describe "User story 4" do
+  it "after confirming order, send an sms confirming delivery time " do
+    my_order = Order.new
+    my_order.add("Porterhouse", 2)
+    my_order.add("Ribeye", 3)
+    my_order.total_price
+    expect { my_order.confirm }.to_not raise_error
+  end
+end

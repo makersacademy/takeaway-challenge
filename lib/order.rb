@@ -16,6 +16,10 @@ class Order
     @total
   end
 
+  def confirm
+
+  end
+
   private
 
   def update_prices
