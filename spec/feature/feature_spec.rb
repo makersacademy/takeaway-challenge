@@ -37,6 +37,7 @@ describe 'New takeaway instance' do
 
   context 'when #run' do
     it 'submits an order' do
+      allow(STDOUT).to receive(:puts).with(any_args)
       expect(takeaway).to receive(:gets).and_return("1")
       expect(takeaway).to receive(:gets).and_return("1")
       expect(takeaway).to receive(:gets).and_return("3")
