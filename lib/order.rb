@@ -3,7 +3,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :itemnum, :quantity
+  attr_accessor :itemnum, :quantity
 
   def place_order(itemnum, quantity)
     @itemnum = itemnum

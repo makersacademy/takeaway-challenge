@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :customer_order, :order, :itemnum
+  attr_reader :customer_order 
 
   def initialize
     @order = Order.new
@@ -19,24 +19,23 @@ class Takeaway
   def make_order(itemnum, quantity)
     @order.place_order(itemnum, quantity)
     create_order
-    # next_order
+    next_order
   end
 
   private
 
   def create_order
     food = {
-      :itemnum => @order.itemnum,
+      :itemnum => @order.itemnum ,
       :quantity => @order.quantity
     }
     @customer_order.push(food)
     puts @customer_order
   end
 
-# needs more work
-#   def next_order
-#     itemnum = nil
-#     quantity = nil
-#   end
+  def next_order
+    @order.itemnum = nil
+    @order.quantity = nil
+  end
 end
   
