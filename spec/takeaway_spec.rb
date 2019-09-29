@@ -6,7 +6,8 @@ describe Takeaway do
 
   describe '#show_menu'
   it 'displays the menu' do
-    expect(selection.show_menu).to eq 2
+    allow(selection).to receive(:show_menu){'1. Pizza - £4'}
+    expect(selection.show_menu).to eq '1. Pizza - £4'
   end
 
   describe '#preview_order' do

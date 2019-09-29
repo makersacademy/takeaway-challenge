@@ -1,5 +1,5 @@
 describe 'user stories' do
-
+ selection = (:takeaway)
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
@@ -8,7 +8,9 @@ describe 'user stories' do
 
     it 'Should be possible to display a menu' do
       selection = Takeaway.new
-      expect(selection.show_menu).to eql 11
+      allow(selection).to receive(:show_menu){'Pizza: £3'}
+
+      expect(selection.show_menu).to eql "Pizza: £3"
     end
   end
 end

@@ -2,12 +2,9 @@ require 'menu'
 
 describe Menu do
 
-  let(:menu) { described_class.new }
   
   describe '#format menu' do
-    it 'formats the menu' do
-      expect(menu.format_menu).to include :pizza
-    
-    end
+      menu = Menu.new([{item: 'pizza', price: 3}])
+      specify { expect { menu.format_menu }.to output("1. pizza ~ £3\n").to_stdout }
   end
 end
