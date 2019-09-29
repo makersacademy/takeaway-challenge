@@ -5,9 +5,9 @@ require "menu"
 # I would like to see a list of dishes with prices
 describe "User story 1" do
   it "displays a list of dishes with prices" do
-    menu = Menu.new
-    menu.add("Ribeye", 2000)
-    expect { menu.list }.to output("Ribeye (£20)\n").to_stdout
+    dishes = [{ name: "Pizza", price: 1000 }]
+    menu = Menu.new(dishes)
+    expect { menu.list }.to output("Pizza (£10)\n").to_stdout
   end
 end
 
@@ -17,9 +17,6 @@ end
 describe "User story 2" do
   it "may order a certain number of each dish" do
     menu = Menu.new
-    menu.add("Ribeye", 2000)
-    menu.add("Lobster", 3000)
-    menu.list
     expect { menu.order("Ribeye", 2) }.not_to raise_error
   end
 end
