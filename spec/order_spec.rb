@@ -2,12 +2,15 @@ require "order"
 
 describe Order do
 
-  let(:order) { described_class.new }
+  let(:sms) { double "Sms.new", send: message }
+  let(:order) { described_class.new(sms) }
+
   let(:pizza) { double "Dish.new", name: "Pizza", price: 8.5 }
   let(:pasta) { double "Dish.new", name: "Pasta", price: 7.5 }
   let(:pizza_qtty) { 2 }
   let(:pasta_qtty) { 1 }
   let(:expected_total) { (pizza_qtty * pizza.price) + (pasta_qtty * pasta.price) }
+
   let(:t) { Time.now }
   let(:eta) { "#{t.hour + 1}:#{t.min}" }
   let(:message) { "Thank you! You order was placed and will be delivered before #{eta}" }
