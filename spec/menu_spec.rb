@@ -10,7 +10,7 @@ describe Menu do
   end
 
   describe '#view_items' do
-    let (:expected_output) {
+    let(:expected_output) {
       ["MENU:",
        "Pizza -- £6",
        "Burger -- £5",
@@ -19,7 +19,7 @@ describe Menu do
        "Soda -- £1"].join("\n")
     }
     it 'viewing the items should display the full menu and prices' do
-      expect{ menu.view_items }.to output(expected_output).to_stdout
+      expect { menu.view_items }.to output(expected_output).to_stdout
     end
   end
 

@@ -8,7 +8,9 @@ class Menu
   end
 
   def view_items
-    print "MENU:\n" + @items.map { |item| "#{item[:dish]} -- £#{item[:cost]}"}.join("\n")
+    print "MENU:\n" + @items.map {
+      |item| "#{item[:dish]} -- £#{item[:cost]}"
+    }.join("\n")
   end
 
 end
