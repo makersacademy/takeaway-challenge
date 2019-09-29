@@ -1,13 +1,15 @@
 class Order
 
-  def initialize(dishes = Dishes.new)
-    @dishes = dishes
+  attr_reader :basket
+
+  def initialize(menu = Menu.new)
+    @menu = menu
     @basket = []
   end
 
-  def add(item, quantity)
-    return "Sorry, that item was not found" unless (@dishes.indian || @dishes.chinese || @dishes.italian || @dishes.drinks).include?(item.to_sym)
-    @basket << "#{item} " * quantity
+  def add(item)
+    item = item.to_sym
+    return "Sorry, #{item.downcase} is not on the menu" unless @menu.all_dishes.include?(item)
   end
 
   def remove
