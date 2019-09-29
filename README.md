@@ -1,3 +1,152 @@
+# Takeaway Challenge
+
+This app lets customers:
+- See a list of dishes with prices for a given restaurant
+- Select some number of several available dishes
+- Review their order including the total price
+- Place an order and receive an SMS confirmation message
+
+## How to install
+
+Clone this repository
+```shell
+$ git clone git@github.com:melvinlau/takeaway-challenge.git
+```
+
+Install Bundler
+```shell
+$ gem install bundler
+```
+
+This command will install all this app's dependencies
+```shell
+$ bundle install
+```
+
+## How to use: An example
+
+### Starting the app
+
+```shell
+$ irb
+2.5.0 :001 > require "./takeaway.rb"
+ => true
+```
+
+### For Restaurants
+
+Create a restaurant and dishes, then add dishes to a menu.
+
+```shell
+2.5.0 :002 > melvinos = Restaurant.new
+ => #<Restaurant:0x00007f9e804a0300 @menu=[]>
+
+2.5.0 :003 >
+2.5.0 :004 > roast_beef = Dish.new("Roast Beef", 7.80)
+=> #<Dish:0x00007f9e8109ec10 @name="Roast Beef", @price=7.8>
+
+2.5.0 :005 > fish_and_chips = Dish.new("Fish and Chips", 8.20)
+=> #<Dish:0x00007f9e7fa8d9f8 @name="Fish and Chips", @price=8.2>
+
+2.5.0 :006 > steak = Dish.new("Steak", 16.00)
+=> #<Dish:0x00007f9e7fa963a0 @name="Steak", @price=16.0>
+
+2.5.0 :007 > melvinos.add_dish(roast_beef)
+ => [#<Dish:0x00007f9e8109ec10 @name="Roast Beef", @price=7.8>]
+
+2.5.0 :008 > melvinos.add_dish(fish_and_chips)
+ => [#<Dish:0x00007f9e8109ec10 @name="Roast Beef", @price=7.8>, #<Dish:0x00007f9e7fa8d9f8 @name="Fish and Chips", @price=8.2>]
+
+2.5.0 :009 > melvinos.add_dish(steak)
+ => [#<Dish:0x00007f9e8109ec10 @name="Roast Beef", @price=7.8>, #<Dish:0x00007f9e7fa8d9f8 @name="Fish and Chips", @price=8.2>, #<Dish:0x00007f9e7fa963a0 @name="Steak", @price=16.0>]
+
+```
+
+### For Customers
+
+#### View a restaurant's menu
+
+```shell
+2.5.0 :010 > puts melvinos.menu
+Roast Beef: 7.80
+Fish and Chips: 8.20
+Steak: 16.00
+ => nil
+```
+Note: I've used `puts` for the feature test here as it displays each menu item on a separate line. Otherwise `melvinos.menu` will return an array containing the same menu items.
+
+#### Create a new order
+
+```shell
+2.5.0 :011 > order = Order.new
+```
+The output of this is not shown as it contains confidential information including the customer's mobile number and authorisation tokens.
+
+#### Add dishes to the order
+
+Use the `add` method, passing the selected dish and quantity as arguments.
+
+```shell
+2.5.0 :012 > order.add(roast_beef, 2)
+ => 2
+2.5.0 :013 > order.add(steak, 1)
+ => 1
+2.5.0 :014 > order.add(fish_and_chips, 3)
+ => 3
+```
+
+#### Review the order and the total price
+
+```shell
+2.5.0 :015 > puts order.review
+Roast Beef 7.80
+Roast Beef 7.80
+Steak 16.00
+Fish and Chips 8.20
+Fish and Chips 8.20
+Fish and Chips 8.20
+ => nil
+```
+Again, `puts` was used to print each item on an individual line, but otherwise the command `order.review` would return an array.
+
+```shell
+2.5.0 :016 > order.print_total
+ => "56.20"
+```
+
+#### Place the order
+
+Place the order using the `order.place` method, and give the authorised payment amount as the argument.
+
+```shell
+2.5.0 :017 > order.place(56.2)
+```
+
+If the authorised payment matches the order total, the order will be confirmed and you will receive a confirmation message via SMS, like so:
+
+<img src="images/SMS.PNG" width="400">
+
+---
+# Progress Report
+
+- Completed the weekend challenge (excluding the optional advanced challenge)
+- This program was test-driven using feature tests and unit tests
+- The unit tests have been isolated using mocks and stubs
+- The SMS feature works
+
+&nbsp;
+
+Possible room for improvement:
+- **More user-friendly dish references.**   
+  Currently, dishes are being referenced by variable names, e.g. `roast_beef`. Users might prefer to pass in a string like `"Roast Beef"` instead. However, this would involve more edge cases (e.g. how to deal with a typo) so the ideal scenario would be to design an intuitive web or mobile interface that requires no typing.   
+  &nbsp;
+- **Make `Dish` objects specific to each restaurant.**  
+  Currently, instances of `Dish` are universal and can be accessed by any `Restaurant`.
+
+
+---
+
+
 Takeaway Challenge
 ==================
 ```
