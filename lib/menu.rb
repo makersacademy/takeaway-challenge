@@ -5,8 +5,7 @@ class Menu
     haddock: 7,
     cod: 6,
     scampi: 5,
-    large_chips: 3,
-    small_chips: 2
+    chips: 3
     }
   end
 

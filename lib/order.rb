@@ -2,8 +2,7 @@ require_relative 'menu'
 #haddock: 7,
 #cod: 6,
 #scampi: 5,
-#large_chips: 3,
-#small_chips: 2
+#chips: 3
 
 class Order
   def initialize(menu = Menu.new)
@@ -29,6 +28,10 @@ class Order
     else
       "Sorry, that's not a dish on the menu"
     end
+  end
+
+  def calculate_total
+
   end
 
   private

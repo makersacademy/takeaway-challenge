@@ -24,5 +24,14 @@ describe Order do
       expect(order.add_dish("goat")).to include "Sorry"
     end
   end
-  
+
+  describe '#calculate_total' do
+    it "adds the price of each order to get total cost" do
+      order.add_dish("cod", 2)
+      order.add_dish("haddock")
+      order.add_dish("chips", 3)
+      expect(order.calculate_total).to eq 28
+    end
+  end
+
 end
