@@ -4,10 +4,10 @@ class Messager
   
   attr_accessor :client
   
-  def initialize(sid:, token:, client_class:)
+  def initialize(sid, token, client_class=Twilio::REST::Client)
     @sid = sid
     @token = token
-    @client_class = client_class || Twilio::REST::Client
+    @client_class = client_class
     @client = client_class.new(sid, token)
     @from = ENV['TWILIO_FROM']
   end

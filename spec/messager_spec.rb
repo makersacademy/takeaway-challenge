@@ -7,12 +7,12 @@ describe Messager do
   let(:twilio_client) { double("TwilioClient", messages: twilio_messages) }
   let(:twilio_client_class) { double("TwilioClientClass", new: twilio_client) }
   
-  subject(:messager) { described_class.new(sid: twilio_account_sid, token: twilio_token, client_class: twilio_client_class)}
+  subject(:messager) { described_class.new(twilio_account_sid, twilio_token, twilio_client_class) }
 
   context 'on creation' do
     it 'creates a Twilio client' do
       expect(twilio_client_class).to receive(:new).with(twilio_account_sid, twilio_token)
-      described_class.new(sid: twilio_account_sid, token: twilio_token, client_class: twilio_client_class)
+      described_class.new(twilio_account_sid, twilio_token, twilio_client_class)
     end
     it 'has an API client' do
       expect(messager.client).to eq twilio_client

@@ -1,7 +1,7 @@
 require 'takeaway'
 
-messages = [
-  "Welcome to Link's Wild Delivery!",
+welcome_message = "Welcome to Link's Wild Delivery!"
+first_menu = [
   "Here's the menu, please enter which items you'd like:",
   "1.  Copius Fried Wild Greens       💎  3",
   "2.  Spicy Sauteed Peppers          💎  3",
@@ -25,6 +25,11 @@ confirm_messages = [
   "Added to order.",
   "Anything else? Enter to finish adding items."
 ]
+quit_message = "Sorry to see you go! Come back soon!"
+twilio_account_sid = ENV['TWILIO_SID']
+twilio_token = ENV['TWILIO_TOKEN']
+twilio_to = ENV['TWILIO_TO']
+twilio_from = ENV['TWILIO_FROM']
 
 describe Takeaway do
   let(:dish1) { double("Dish1", name: "Copius Fried Wild Greens", cost: 3) }
@@ -36,48 +41,63 @@ describe Takeaway do
   let(:dish7) { double("Dish7", name: "Mushroom Risotto", cost: 5) }
   let(:dish8) { double("Dish8", name: "Creamy Heart Soup", cost: 8) }  
 
-  let(:order) { double("Order", add: nil, print_order: nil) }
+  let(:order) { double("Order", add: nil, print_order: nil, mobile_number: twilio_to) }
   let(:order_class) { double("OrderClass", new: order) }
+
+  let(:messager) { double("Messager", send_message: nil) }
+  let(:messager_class) { double("MessagerClass", new: messager) }
   
   subject(:takeaway) { 
     dishes = [dish1, dish2, dish3, dish4, dish5, dish6, dish7, dish8]
-    Takeaway.new(dishes, order_class) 
+    Takeaway.new(dishes, order_class, messager_class) 
   }
   
   it 'accepts a list of dishes when instantiated' do
-    expect(described_class.new(dishes: [dish1, dish2], order_class: order_class))
+    expect(described_class.new([dish1, dish2], order_class, messager_class))
   end
   
   it 'creates an order when instantiated' do
-    # expect(order_class).to receive(:new).with(any_args)
-    Takeaway.new(dishes: [dish1], order_class: order_class)
+    expect(order_class).to receive(:new).with(twilio_to)
+    expect(Takeaway.new([dish1], order_class, messager_class))
+  end
+  
+  it 'creates a messager when instantiated' do
+    expect(messager_class).to receive(:new).with(twilio_account_sid, twilio_token)
+    expect(Takeaway.new([dish1], order_class, messager_class))
   end
   
   describe '#run' do
     context 'in the first menu' do
       it 'prints the welcome screen and menu' do
-        messages.each { |message| expect(STDOUT).to receive(:puts).with(message) }
-        allow(STDOUT).to receive(:puts).with(any_args)
-        allow(takeaway).to receive(:gets).and_return("\n")
+        expect(STDOUT).to receive(:puts).with(welcome_message)
+        first_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
+        7.times { expect(STDOUT).to receive(:puts).with(any_args) }
+        expect(takeaway).to receive(:gets).and_return("\n")
+        expect(takeaway).to receive(:gets).and_return("4")
         takeaway.run
       end
       
       it 'accepts user input' do
+        expect(STDOUT).to receive(:puts).with(welcome_message)
+        first_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
+        7.times { expect(STDOUT).to receive(:puts).with(any_args) }
         expect(takeaway).to receive(:gets).and_return("\n")
-        allow(takeaway).to receive(:gets).and_return("\n")
+        allow(takeaway).to receive(:gets).and_return("4")
         takeaway.run
       end
       
       context 'when given a valid selection' do
         it 'prints a message' do
-          messages.each { |message| expect(STDOUT).to receive(:puts).with(message) }
+          expect(STDOUT).to receive(:puts).with(welcome_message)
+          expect(STDOUT).to receive(:puts).with(quit_message)
+          first_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
           second_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
           confirm_messages.each { |message| expect(STDOUT).to receive(:puts).with(message) }
           expect(takeaway).to receive(:gets).and_return("1")
           allow(takeaway).to receive(:gets).and_return("\n")
           takeaway.run
         end
-
+        
         it 'forwards selection to order to be added' do
           expect(takeaway).to receive(:gets).and_return("1")
           allow(takeaway).to receive(:gets).and_return("\n")
@@ -89,7 +109,8 @@ describe Takeaway do
       
       context 'when given an invalid selection' do
         it 'displays a warning' do
-          messages.each { |message| allow(STDOUT).to receive(:puts).with(message) }
+          expect(STDOUT).to receive(:puts).with(welcome_message)
+          first_menu.each { |message| allow(STDOUT).to receive(:puts).with(message) }
           second_menu.each { |message| allow(STDOUT).to receive(:puts).with(message) }
           confirm_messages.each { |message| allow(STDOUT).to receive(:puts).with(message) }
           expect(STDOUT).to receive(:puts).with("Invalid selection, try again or Enter to finish.")
@@ -100,8 +121,9 @@ describe Takeaway do
         
         it 'displays a warning' do
           confirm_messages.each { |message| allow(STDOUT).to receive(:puts).with(message) }
+          expect(STDOUT).to receive(:puts).with(welcome_message)
           second_menu.each { |message| allow(STDOUT).to receive(:puts).with(message) }
-          messages.each { |message| allow(STDOUT).to receive(:puts).with(message) }
+          first_menu.each { |message| allow(STDOUT).to receive(:puts).with(message) }
           expect(STDOUT).to receive(:puts).with("Invalid selection, try again or Enter to finish.")
           expect(takeaway).to receive(:gets).and_return("0")
           allow(takeaway).to receive(:gets).and_return("\n")
@@ -110,7 +132,8 @@ describe Takeaway do
         
         it 'displays a warning' do
           confirm_messages.each { |message| allow(STDOUT).to receive(:puts).with(message) }
-          messages.each { |message| allow(STDOUT).to receive(:puts).with(message) }
+          expect(STDOUT).to receive(:puts).with(welcome_message)
+          first_menu.each { |message| allow(STDOUT).to receive(:puts).with(message) }
           second_menu.each { |message| allow(STDOUT).to receive(:puts).with(message) }
           expect(takeaway).to receive(:gets).and_return("a")
           expect(STDOUT).to receive(:puts).with("Invalid selection, try again or Enter to finish.")
@@ -129,7 +152,8 @@ describe Takeaway do
 
       context 'when given a blank return' do
         it 'ends the adding process and displays the second menu' do
-          messages.each { |message| allow(STDOUT).to receive(:puts).with(message) }
+          expect(STDOUT).to receive(:puts).with(welcome_message)
+          first_menu.each { |message| allow(STDOUT).to receive(:puts).with(message) }
           second_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
           expect(takeaway).to receive(:gets).and_return("\n")
           expect(takeaway).to receive(:gets).and_return("\n")
@@ -139,18 +163,68 @@ describe Takeaway do
     end
     context 'in the second menu' do
       it 'accepts a user input' do
+        15.times { expect(STDOUT).to receive(:puts).with(any_args) }
         expect(takeaway).to receive(:gets).and_return("\n")
         expect(takeaway).to receive(:gets).and_return("\n")
         takeaway.run
       end
+      it 'quits on blank return' do
+        15.times { expect(STDOUT).to receive(:puts).with(any_args) }
+        expect(STDOUT).to receive(:puts).with(quit_message)
+        expect(takeaway).to receive(:gets).and_return("\n")
+        expect(takeaway).to receive(:gets).and_return("\n")
+        takeaway.run
+      end
+
       context 'given option 1' do
-        it 'prints the order' do
+        it 'forwards print request to order' do
           expect(takeaway).to receive(:gets).and_return("\n")
           expect(takeaway).to receive(:gets).and_return("1")
           allow(takeaway).to receive(:gets).and_return("\n")
-          messages.each { |message| expect(STDOUT).to receive(:puts).with(message) }
-          second_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
+          expect(STDOUT).to receive(:puts).with(welcome_message)
+          first_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
+          second_menu.each { |message| expect(STDOUT).to receive(:puts).with(message).twice }
           expect(order).to receive(:print_order)
+          takeaway.run
+        end
+      end
+
+      context 'given option 2' do
+        it 'returns to first menu' do
+          expect(takeaway).to receive(:gets).and_return("\n")
+          expect(takeaway).to receive(:gets).and_return("2")
+          allow(takeaway).to receive(:gets).and_return("\n")
+          allow(STDOUT).to receive(:puts).with(welcome_message)
+          first_menu.each { |message| allow(STDOUT).to receive(:puts).with(message).twice }
+          second_menu.each { |message| allow(STDOUT).to receive(:puts).with(message).twice }
+          takeaway.run
+        end
+      end
+      
+      context 'given option 3' do
+        it 'forwards the total check to Order' do
+          expect(takeaway).to receive(:gets).and_return("\n")
+          expect(takeaway).to receive(:gets).and_return("3")
+          allow(takeaway).to receive(:gets).and_return("\n")
+          expect(order).to receive(:check_total)
+          expect(STDOUT).to receive(:puts).with(welcome_message)
+          first_menu.each { |message| expect(STDOUT).to receive(:puts).with(message) }
+          second_menu.each { |message| expect(STDOUT).to receive(:puts).with(message).twice }
+          takeaway.run
+        end
+      end
+      
+      context 'given option 4' do
+        it 'sends a message request to the messager' do
+          expected_time = ((Time.now + (60 * 60)).to_s.split(" "))[1][0..4]
+          body = "Thanks! Link should be able to glide your order over before " + expected_time
+          expect(takeaway).to receive(:gets).and_return("\n")
+          expect(takeaway).to receive(:gets).and_return("4")
+          allow(takeaway).to receive(:gets).and_return("\n")
+          15.times { expect(STDOUT).to receive(:puts).with(any_args) }
+          expect(STDOUT).to receive(:puts).with("Thanks, your order has been submitted!")
+          expect(STDOUT).to receive(:puts).with("You should receive an SMS with delivery information shortly")
+          expect(messager).to receive(:send_message).with(twilio_to, body)
           takeaway.run
         end
       end

@@ -69,8 +69,7 @@ describe Order do
       end
       it 'prints a message' do
         allow(order).to receive(:total).and_return(0)
-        expect(STDOUT).to receive(:puts).with("Order total incorrect! Please close the app and start again.")
-        expect(order.check_total)
+        expect{ order.check_total }.to raise_error("Order total incorrect! Something went wrong, please start again.")
       end
     end
   end

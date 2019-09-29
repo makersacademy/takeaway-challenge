@@ -24,7 +24,7 @@ class Order
     dishes.each { |dish| checked_total += dish.cost }
     return puts "Order total confirmed correct" if total == checked_total
 
-    puts "Order total incorrect! Please close the app and start again."
+    raise "Order total incorrect! Something went wrong, please start again."
   end
 
   def print_order
