@@ -1,42 +1,47 @@
 require_relative 'menu'
 require_relative 'digital_till'
 require_relative 'messenger'
+require_relative 'orders'
 
 class Takeaway
-  attr_reader :menu, :order
+  attr_reader :menu, :orders
 
-  def initialize(menu: menu_object, dgt_class: DigitalTill, messenger_class: Messenger)
+  def initialize(menu: menu_object, orders_class: Orders,
+                 messenger_class: Messenger)
     @menu = menu
-    @order = []
-    @digital_till_class = dgt_class
+    @orders = orders_class.new(menu: menu)
     @messenger_class = messenger_class
   end
 
-  def make_order(items, total)
-    save_order(items)
-    fail "Total does not match items" unless correct_total?(total)
-    @messenger_class.new.sms_confirmation
+  def add_items(items)
+    @orders.make_order(items)
+  end
+
+  def complete_order(total)
+    @orders.submit_order(total)
+    message_customer
   end
 
   def view_menu
     @menu.view_items
   end
 
-  def print_receipt
-    print @digital_till_class.new(@order).itemised_receipt
+  def current_order
+    @orders.current_order
+  end
+
+  def print_last_receipt
+    puts @orders.history[-1]
+  end
+
+  def view_all_orders
+    puts @orders.history
   end
 
   private
 
-  def save_order(items)
-    items.split(',').each { |item| food, quantity = item.split
-      @order << { quantity: quantity.to_i, item: food,
-                cost: @menu.items[food.to_sym] * quantity.to_i }
-    }
-  end
-
-  def correct_total?(total)
-    @digital_till_class.new(@order).verify_total(total)
+  def message_customer
+    @messenger_class.new.sms_confirmation
   end
 
 end

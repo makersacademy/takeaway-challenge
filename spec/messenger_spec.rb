@@ -2,7 +2,7 @@ require 'messenger'
 
 describe Messenger do
 
-  let(:client2) { double :client2, create: nil}
+  let(:client2) { double :client2, create: nil }
   let(:client) { double :client, messages: client2 }
   subject(:messenger) { described_class.new(client) }
 

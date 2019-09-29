@@ -20,7 +20,7 @@ describe DigitalTill do
   describe '#itemised_receipt' do
     let(:expected_output) {
       ["RECEIPT:", "2 x Pizza - £12",
-       "1 x Burger - £5", "TOTAL - £17"].join("\n")
+       "1 x Burger - £5", "TOTAL - £17\n"].join("\n")
     }
     it 'viewing the receipt displays the items, quantities, prices and total' do
       expect(digital_till.itemised_receipt).to eq expected_output
