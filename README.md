@@ -3,8 +3,8 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
+           _  //            |   /\  |   ))))
+          |_)//(''''':      |  /\/\ |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
        .:'//.   \ \=|   \ /  .:'':./    )))))
@@ -14,69 +14,69 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Setup Instructions
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+run messager.rb in your favourite ruby shell. Create a list of dishes for your restaurant and create a Takeaway instance using them, then #run the instance:
 
-Task
------
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+```Ruby
+dishes = []
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+[["Copius Fried Wild Greens", 3],
+["Spicy Sauteed Peppers", 3],
+["Copius Mushroom Skewers", 5],
+["Vegetable Omlette", 6],
+["Fried Egg and Rice", 5],
+["Monster Curry", 6],
+["Mushroom Risotto", 5],
+["Creamy Heart Soup", 8]].each { |item| dishes.append(Dish.new(name: item[0], cost: item[1])) }
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+links_wild_delivery = Takeaway.new(dishes)
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+links_wild_delivery.run
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Using the App
+-------
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+The first screen is the restaurant menu:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+```Ruby
+Welcome to Link's Wild Delivery!
+Here's the menu, please enter which items you'd like:
+1.  Copius Fried Wild Greens       💎  3
+2.  Spicy Sauteed Peppers          💎  3
+3.  Copius Mushroom Skewers        💎  5
+4.  Vegetable Omlette              💎  6
+5.  Fried Egg and Rice             💎  5
+6.  Monster Curry                  💎  6
+7.  Mushroom Risotto               💎  5
+8.  Creamy Heart Soup              💎  8
+```
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+The user can select any number of dishes to add to their order, then can enter nothing to finish selecting.
+The second menu allows them to review their order, return to add dishes to their orider, check the total or submit the order.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+```Ruby
+1.  Review Order
+2.  Add Items to Order
+3.  Check Total
+4.  Submit Order
+Please make a selection:
+```
 
+Reviewing the order shows the quantity of each selected item and the total cost in roupees:
 
-In code review we'll be hoping to see:
+```Ruby
+2  x  Copius Fried Wild Greens       💎  3
+1  x  Copius Mushroom Skewers        💎  5
+Total:                               💎 11
+```
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+When submitted, there is a confirmation message and an SMS is sent to the `ENV['TWILIO_TO']` environment variable phone number via the Twilio REST API:
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```Ruby
+Thanks, your order has been submitted!
+You should receive an SMS with delivery information shortly
+```
