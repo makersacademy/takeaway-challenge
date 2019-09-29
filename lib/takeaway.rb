@@ -16,7 +16,7 @@ class Takeaway
       "Check Total", "Submit Order"]
     @menu.is_a?(Array) ? nil : menu_setup
   end
-
+    
   def run
     @printer.print_welcome
     @printer.print_menu(@menu)
@@ -27,7 +27,6 @@ class Takeaway
   private 
   
   def add_dishes
-    @printer.print_menu(@menu)
     choice = get_user_input(@menu.length)
     return if choice == ""
     
@@ -63,12 +62,12 @@ class Takeaway
     when 1
       print_order 
     when 2
+      @printer.print_menu(@menu)
       add_dishes
     when 3
       check_total
     when 4
       send_sms
-      
     else
       @printer.print_exit
     end

@@ -222,7 +222,7 @@ describe Takeaway do
           expect(takeaway).to receive(:gets).and_return("\n")
           expect(takeaway).to receive(:gets).and_return("2")
           allow(takeaway).to receive(:gets).and_return("\n")
-          3.times { expect(printer).to receive(:print_menu) }
+          expect(printer).to receive(:print_menu).twice
           takeaway.run
         end
       end
