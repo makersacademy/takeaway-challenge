@@ -6,11 +6,8 @@ class Menu
   end
 
   def view_items
-    print "MENU:\n" + @items.map { | food, price |
+    print "MENU:\n" + @items.map { |food, price|
       "#{food.capitalize} -- £#{price}"
     }.join("\n")
   end
-
-
-
 end

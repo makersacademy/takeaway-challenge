@@ -3,10 +3,9 @@ require_relative 'menu'
 class TakeawayOrderer
   attr_reader :menu, :order
 
-  def initialize(menu: menu)
+  def initialize(menu)
     @menu = menu
     @order = []
-
   end
 
   def view_menu
@@ -18,13 +17,12 @@ class TakeawayOrderer
   end
 
   private
-  #
-  # def send_confirmation
-  # end
 
   def save_order(items)
     items.split(',').each { |item| food, quantity = item.split
-      @order << { quantity: quantity.to_i, item: food, cost: (@menu.items[food.to_sym] * quantity.to_i) }
+      @order << { quantity: quantity.to_i, item: food,
+        cost: @menu.items[food.to_sym] * quantity.to_i
+      }
     }
   end
 
