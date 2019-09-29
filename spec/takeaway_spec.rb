@@ -12,9 +12,17 @@ describe Takeaway do
 
   it 'can forward an order' do
     allow(order).to receive(:place) {[{dish_selection: "Chicken", quantity: 2}]}
-    takeaway.place_order("Chicken", 2)
+    takeaway.select_order("Chicken", 2)
   end
   #
+  it 'can check the total' do
+    expect(takeaway.check_bill?).to eq true
+  end
+
+  # it 'can place an order' do
+  #   expect(takeaway.place).to eq 24
+  # end
+  # #
   # it 'can calculate the total' do
   #
   # end
