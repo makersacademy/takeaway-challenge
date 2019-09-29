@@ -12,7 +12,7 @@ class Takeaway
 
   def list_dishes
     MENU_ITEMS.each_with_index do |(name, price), index|
-      puts "#{index + 1}. #{name} - #{price}"
+      puts "#{index + 1}. #{name} - £#{price}"
     end
   end
 
@@ -24,9 +24,14 @@ class Takeaway
     next_order
   end
 
-  def checkout
+  def checkout(payment)
     fail 'No orders' if @customer_order.empty?
-    puts "Total cost of your order today is #{@order.in_basket.sum}"
+    fail 'Please enter the correct amount' if payment != @order.in_basket.sum
+  end
+
+  def summary
+    puts @customer_order
+    puts "Current total is £#{'%.2f' % (@order.in_basket.sum)}"
   end
 
   private
@@ -37,7 +42,6 @@ class Takeaway
       :quantity => @order.quantity
     }
     @customer_order.push(food)
-    puts @customer_order
   end
 
   def find_cost

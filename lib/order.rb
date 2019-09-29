@@ -7,6 +7,7 @@ class Order
 
   def initialize
     @in_basket = []
+    sum = []
   end
 
   def place_order(item, quantity)
