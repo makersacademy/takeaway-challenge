@@ -24,4 +24,13 @@ describe Order do
 
   end
 
+  describe '#total' do
+
+    it 'should calculate the total when dishes are added to the basket' do
+      subject.add("chicken_korma", 3)
+      expect(subject.total).to eq 36
+    end
+
+  end
+
 end
