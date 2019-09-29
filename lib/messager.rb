@@ -1,10 +1,9 @@
 require 'twilio-ruby'
 
 class Messager
-  
   attr_accessor :client
   
-  def initialize(client_class=Twilio::REST::Client)
+  def initialize(client_class = Twilio::REST::Client)
     @sid = ENV['TWILIO_SID']
     @token = ENV['TWILIO_TOKEN']
     @client_class = client_class

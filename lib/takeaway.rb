@@ -1,23 +1,25 @@
-require_relative 'dish_list_printer'
-require_relative 'order'
+require 'dotenv/load'
 require_relative 'dish'
 require_relative 'messager'
-require 'dotenv/load'
+require_relative 'order'
+require_relative 'printer'
 
 class Takeaway
-  include DishListPrinter
-
-  def initialize(dishes, order_class=Order, messager_class=Messager)
-    @dishes = dishes
-    @order_class = order_class
-    @order = @order_class.new(ENV['TWILIO_TO'])
-    @messager_class = messager_class
+  def initialize(menu: nil, order_class: Order, messager_class: Messager, \
+    printer_class: Printer, dish_class: Dish)
+    @menu = menu || ENV['DISHES']
+    @order = order_class.new(ENV['TWILIO_TO'])
     @messager = messager_class.new
+    @printer = printer_class.new
+    @dish_class = dish_class
+    @menu_options = ["Review Order", "Add Items to Order", \
+      "Check Total", "Submit Order"]
+    @menu.is_a?(Array) ? nil : menu_setup
   end
 
   def run
-    puts "Welcome to Link's Wild Delivery!"
-    print_menu
+    @printer.print_welcome
+    @printer.print_menu(@menu)
     add_dishes
     manage_order
   end
@@ -25,88 +27,77 @@ class Takeaway
   private 
   
   def add_dishes
-    choice = get_user_input(@dishes.length)
+    @printer.print_menu(@menu)
+    choice = get_user_input(@menu.length)
     return if choice == ""
     
     add_to_order(choice)
-    add_dishes
   end
   
   def add_to_order(selection)
-    @order.add(@dishes[selection - 1])
-    print_confirmation
+    @order.add(@menu[selection - 1])
+    @printer.print_confirmation
+    add_dishes
   end
 
   def check_total
-    @order.check_total
+    response = @order.check_total
+    @printer.print_checked_total(response)
   end
 
   def get_user_input(options)
     choice = gets.chomp
-    return choice if choice.length == 0
+    return choice if choice.length.zero?
     
     choice = choice.to_i
-    return choice if (1..options).include?(choice)
+    return choice if (1..options).cover?(choice)
     
-    invalid_selection
+    @printer.print_invalid_selection
     get_user_input(options)
   end
   
-  def invalid_selection
-    puts 'Invalid selection, try again or Enter to finish.'
-  end
-  
   def manage_order
-    print_main_menu
-    choice = get_user_input(@main_menu.length)
+    @printer.print_main_menu(@menu_options)
+    choice = get_user_input(@menu_options.length)
     case choice
     when 1
       print_order 
-      manage_order   
     when 2
-      print_menu
       add_dishes
-      manage_order
     when 3
       check_total
-      manage_order
     when 4
       send_sms
-      puts "Thanks, your order has been submitted!"
-      puts "You should receive an SMS with delivery information shortly"
+      
     else
-      puts "Sorry to see you go! Come back soon!"
+      @printer.print_exit
     end
+    manage_order unless [4, ""].include?(choice) 
+  end
+  
+  def menu_setup
+    old_menu = @menu.delete("\n")
+    old_menu = old_menu.split(",").map! { |item| item.split(":") }
+    old_menu.each { |item| item[1] = item[1].to_i }
+    new_menu = []
+    old_menu.each do |item| 
+      new_menu.append(@dish_class.new(name: item[0], cost: item[1]))
+    end
+    @menu = new_menu
   end
 
-  def print_main_menu
-    @main_menu = [
-      "1.  Review Order",
-      "2.  Add Items to Order",
-      "3.  Check Total",
-      "4.  Submit Order",
-      "Please make a selection:"
-    ]
-    @main_menu.each { |item| puts item }
-  end
-  
-  def print_menu
-    puts "Here's the menu, please enter which items you'd like:"
-    print_list(@dishes)
-  end
-  
   def print_order
-    @order.print_order
-  end
-  
-  def print_confirmation
-    puts "Added to order."
-    puts "Anything else? Enter to finish adding items."
+    order = @order.order
+    total = @order.total
+    @printer.print_order(order, total)
   end
 
   def send_sms
-    expected_time = ((Time.now + (60 * 60)).to_s.split(" "))[1][0..4]
-    body = "Thanks! Link should be able to glide your order over before " + expected_time
+    expected_time = (Time.now + (60 * 60)).to_s.split(" ")[1][0..4]
+    body = 
+    "Thanks! Link should be able to glide your order over before " \
+    + expected_time
     @messager.send_message(@order.mobile_number, body)
+    @printer.print_order_submission
   end  
 end

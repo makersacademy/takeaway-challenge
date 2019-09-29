@@ -1,12 +1,8 @@
-require_relative 'dish_list_printer'
-
 class Order
-  include DishListPrinter
-
-  attr_reader :dishes, :mobile_number, :total
+  attr_reader :mobile_number, :total, :order
 
   def initialize(mobile_number)
-    @dishes = []
+    @order = []
     @total = 0
     @mobile_number = mobile_number
     @submitted = false
@@ -14,25 +10,17 @@ class Order
 
   def add(dish)
     update_total(dish)
-    @dishes << dish
+    @order << dish
   end
 
   def check_total
-    return puts "Nothing in the order!" unless dishes.length > 0
+    return :empty unless order.length.positive?
 
     checked_total = 0
-    dishes.each { |dish| checked_total += dish.cost }
-    return puts "Order total confirmed correct" if total == checked_total
+    order.each { |dish| checked_total += dish.cost }
+    return :correct if total == checked_total
 
-    raise "Order total incorrect! Something went wrong, please start again."
-  end
-
-  def print_order
-    dishes.uniq.each do |dish|
-      quantity = dishes.count(dish)
-      puts "#{quantity}  x  " + niceprint(dish)
-    end
-    puts "Total:" + "💎".rjust(32) + total.to_s.rjust(3)
+    :incorrect
   end
 
   private 
