@@ -13,14 +13,6 @@ describe Order do
     end
   end
 
-  describe '#print_order' do
-    result = '3 Chicken Poke added to your basket'
-    it 'prints the new order' do
-      subject.print_order
-      expect(subject.order).to eq result
-    end
-  end
-
   describe '#order_price' do
     it 'calculate the total price of a single order' do
       result = 23.97

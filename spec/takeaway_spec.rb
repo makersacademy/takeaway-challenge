@@ -1,20 +1,21 @@
 require 'takeaway'
 
 describe TakeAway do
-  #RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
-  let(:order_mock) { 'Order' }
+  RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
+  let(:order_mock) { Order }
   let(:order) { order_mock.new }
   let(:notifier_mock) { Notifier }
   let(:notifier) { notifier_mock.new }
   let(:dish) { 'Chicken Poke' }
   let(:quantity) { 2 }
+  let(:price) { 7.99 }
   let(:dish2) { 'Salmon Poke' }
+
   before do
+    allow(subject).to receive(:new).with(order_mock, notifier_mock)
     allow(order_mock).to receive(:new)
-    allow(order).to receive(:print_order)
     allow(notifier_mock).to receive(:new)
     allow(notifier).to receive(:send_message)
-    allow(subject).to receive(:new).with(order_mock)
   end
 
   describe '#initialize' do

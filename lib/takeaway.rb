@@ -28,9 +28,7 @@ class TakeAway
 
   def order_dish(dish, quantity = 1)
     fail "This dish doesn't exist" unless dish_exists?(dish)
-
     new_order = @order_class.new(dish, quantity, get_dish_price(dish))
-    new_order.print_order
     add_order(dish, quantity, new_order.order_price)
   end
 
@@ -89,6 +87,7 @@ class TakeAway
   end
 
   def update_basket(dish, quantity, order_price)
+    puts "#{@quantity} #{@dish} added to your basket"
     @basket << "#{dish} x#{quantity} = £#{order_price}"
   end
 end
