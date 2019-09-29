@@ -1,27 +1,27 @@
 class Order
 
-  attr_reader :order_list, :menu, :total
+  attr_reader :order, :menu, :total
 
   def initialize(menu = Menu)
-    @order_list = {}
+    @order = {}
     @menu = menu.new
     @total = 0
   end
 
   def add(item, quantity)
-    if @order_list.include?(item)
-      current_quantity = @order_list[item]
+    if @order.include?(item)
+      current_quantity = @order[item]
       current_quantity += quantity
-      @order_list[item] = current_quantity
+      @order[item] = current_quantity
     else
-      @order_list[item] = quantity
+      @order[item] = quantity
     end
   end
 
-  def total
+  def calc_total
     price = 0
-    @order_list.each do |item, quantity|
-      @total += @menu.dishes[item.to_sym] * quantity
+    @order.each do |item, quantity|
+      @total += @menu.dishes[item] * quantity
     end
     "The order comes to £#{@total}"
   end

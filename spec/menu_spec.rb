@@ -1,19 +1,12 @@
-require "menu"
+require 'menu'
 
 describe Menu do
 
   let(:dishes) do
     { "pork bao": 4,
       "chicken bao": 4 }
-      # "mushroom bao": 4,
-      # "tofu bao": 4,
-      # "spinach": 2,
-      # "kimchi": 2,
-      # "dumplings": 3,
-      # "beer": 4,
-      # "sake": 5,
-      # "taiwanese tea": 3 }
-  end
+    end
+
   subject { described_class.new(dishes) }
 
   it 'returns a list of dishes' do
