@@ -30,7 +30,7 @@ describe User do
     let(:order_list) { { item => quantity } }
 
     it "shows users current order_list" do
-      allow(order_dub).to receive(:order_list) { order_list }
+      allow(order_dub).to receive(:order_summary) { order_list }
       expect(user.view_order).to eq order_list
     end
   end
@@ -42,10 +42,9 @@ describe User do
     end
   end
 
-  describe "#confirm_order" do
-    it "lets user confirm order having viewed order list" do
-      user.confirm
-      expect(user.order_confirmed).to be true
+  describe "#confirm" do
+    it "confirms order" do
+      expect(user.confirm).to eq "Order sent to restaurant, confirmation text to follow"
     end
   end
 end

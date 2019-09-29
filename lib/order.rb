@@ -1,6 +1,6 @@
 require_relative 'menu'
 
-class OrderList
+class Order
 
   attr_reader :basket
 

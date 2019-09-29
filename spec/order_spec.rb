@@ -1,6 +1,6 @@
 require 'order'
 
-describe OrderList do
+describe Order do
 
   let(:item) { double :item }
 
@@ -34,7 +34,3 @@ describe OrderList do
     end
   end
 end
-
-  # describe "#order_list_summary"
-  #   it "return string of order list" do
-  #

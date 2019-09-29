@@ -8,7 +8,6 @@ class User
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
-    @order_confirmed = false
   end
 
   def view_menu
@@ -21,7 +20,7 @@ class User
   end
 
   def view_order
-    @order.order_list
+    @order.order_summary
   end
 
   def total
@@ -29,7 +28,8 @@ class User
   end
 
   def confirm
-    @order_confirmed = true
+  # #  @messenger.send_text
+  "Order sent to restaurant, confirmation text to follow"
   end
 end
 #
