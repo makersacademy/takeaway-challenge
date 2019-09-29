@@ -26,6 +26,7 @@ class Takeaway
 
   def checkout
     fail 'No orders' if @customer_order.empty?
+    puts "Total cost of your order today is #{@order.in_basket.sum}"
   end
 
   private

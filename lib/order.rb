@@ -17,9 +17,9 @@ class Order
   def find_cost
     MENU_ITEMS.each do |name, price|
     if name == @item
-      @in_basket << (price * @quantity).to_f
-      puts "#{@quantity} orders of #{name} = £#{(price * @quantity).to_f}"
-      puts "Current total = £#{@in_basket.sum}"
+      @in_basket << ('%.2f' % (price * @quantity)).to_f
+      puts "#{@quantity} order/s of #{name} = £#{('%.2f' % (price * @quantity).to_f)}"
+      puts "Current total = £#{'%.2f' % (@in_basket.sum)}"
     end
     end
   end
