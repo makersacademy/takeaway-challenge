@@ -21,11 +21,11 @@ class OrderList
     @order_summary.join(", ")
   end
 
-  def total
+  def order_total
     total = 0
     @basket.each do |key, value|
       total += value * @menu.price(key)
     end
-    "£#{total}"
+    total
   end
 end

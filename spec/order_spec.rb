@@ -1,4 +1,4 @@
-require 'order_list'
+require 'order'
 
 describe OrderList do
 
@@ -30,7 +30,7 @@ describe OrderList do
     it "returns total price of order" do
       subject.add_to_basket('calzone', 3)
       subject.add_to_basket('diavola', 2)
-      expect(subject.total).to eq "£#{58.50}"
+      expect(subject.order_total).to eq 58.50
     end
   end
 end

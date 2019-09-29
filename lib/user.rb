@@ -1,13 +1,13 @@
 require_relative 'menu'
-require_relative 'order_list'
+require_relative 'order'
 
 class User
 
   attr_reader :order_confirmed
 
-  def initialize(menu = Menu.new, order_list = OrderList.new)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
-    @order_list = order_list
+    @order = order
     @order_confirmed = false
   end
 
@@ -16,12 +16,16 @@ class User
   end
 
   def select(item, quantity)
-    @order_list.add_to_basket(item, quantity)
+    @order.add_to_basket(item, quantity)
     "#{quantity} x #{item} added to order"
   end
 
   def view_order
-    @order_list.order_list
+    @order.order_list
+  end
+
+  def total
+    "£#{@order.order_total}"
   end
 
   def confirm
