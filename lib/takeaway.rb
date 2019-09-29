@@ -2,6 +2,7 @@ require_relative 'dish_list_printer'
 require_relative 'order'
 require_relative 'dish'
 require_relative 'messager'
+require 'dotenv/load'
 
 class Takeaway
   include DishListPrinter
@@ -11,7 +12,7 @@ class Takeaway
     @order_class = order_class
     @order = @order_class.new(ENV['TWILIO_TO'])
     @messager_class = messager_class
-    @messager = messager_class.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
+    @messager = messager_class.new
   end
 
   def run
@@ -75,7 +76,6 @@ class Takeaway
       puts "You should receive an SMS with delivery information shortly"
     else
       puts "Sorry to see you go! Come back soon!"
-      exit
     end
   end
 
