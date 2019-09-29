@@ -2,7 +2,7 @@ require 'user'
 
 describe User do
   let(:menu_dub) { double :a_menu }
-  let(:order_list_dub) { double :an_order_list}
+  let(:order_list_dub) { double :an_order_list }
   subject(:user) { described_class.new(menu_dub, order_list_dub) }
   let(:item) { double :item }
   let(:quantity) { double :quantity }
@@ -20,13 +20,13 @@ describe User do
 
   # describe "#select" do
   #   it "it adds user selection and quanity to order_list" do
-  #     user.add(item, quantity)
+  #     user.order(item, quantity)
   #   end
   # end
 
   describe "#my_order" do
 
-    let(:order_list) { {item => quantity} }
+    let(:order_list) { { item => quantity } }
 
     it "shows users current order_list" do
       allow(order_list_dub).to receive(:order_list) { order_list }

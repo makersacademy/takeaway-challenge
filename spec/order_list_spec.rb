@@ -6,32 +6,31 @@ describe OrderList do
 
   describe "#initialize" do
     it "initializes with an empty list to store user order" do
-      expect(subject.order_list).to be_empty
+      expect(subject.basket).to be_empty
     end
   end
 
-  describe "#add_to_order" do
+  describe "#add_to_basket" do
     it "adds selected item and quantity to order_list" do
-      subject.add_to_hash(item, 4)
-      expect(subject.order_list).to include({ item => 4 })
+      subject.add_to_basket(item, 4)
+      expect(subject.basket).to include({ item => 4 })
     end
   end
 
-  # describe "#order_summary" do
-  #
-  #   let(:summary) { ("2 x calzone = 25.0""\n""2 x diavola = 21.0")}
-  #   it "returns a string of 'quantity x dish = total item price'" do
-  #     subject.add_to_hash('calzone', 2)
-  #     subject.add_to_hash('diavola', 2)
-  #     expect(subject.order_summary).to eq summary
-  #   end
-  # end
+  describe "#order_summary" do
+    let(:summary) { "2 x calzone = £25.0, 2 x diavola = £21.0" }
+    it "returns a string of items 'quantity x dish = total item price'" do
+      subject.add_to_basket('calzone', 2)
+      subject.add_to_basket('diavola', 2)
+      expect(subject.order_summary).to eq summary
+    end
+  end
 
   describe "#order_total" do
     it "returns total price of order" do
-      subject.add_to_hash('calzone', 3)
-      subject.add_to_hash('diavola', 2)
-      expect(subject.total).to eq 58.50
+      subject.add_to_basket('calzone', 3)
+      subject.add_to_basket('diavola', 2)
+      expect(subject.total).to eq "£#{58.50}"
     end
   end
 end

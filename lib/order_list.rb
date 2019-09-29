@@ -2,35 +2,30 @@ require_relative 'menu'
 
 class OrderList
 
-  attr_reader :order_list
+  attr_reader :basket
 
   def initialize
-    @order_list = Hash.new(0)
+    @basket = Hash.new(0)
     @order_summary = []
     @menu = Menu.new
   end
 
-  def add_to_hash(item, quantity)
-    @order_list[item] += quantity
+  def add_to_basket(item, quantity)
+    @basket[item] += quantity
   end
 
-  # def order_summary
-  #   @order_list.each do |key, value|
-  #     "#{value} x #{key} = #{value * @menu.price(key)}"
-  #   end
-  # end
+  def order_summary
+    @basket.each do |key, value|
+      @order_summary << "#{value} x #{key} = £#{value * @menu.price(key)}"
+    end
+    @order_summary.join(", ")
+  end
 
   def total
     total = 0
-    @order_list.each do |key, value|
+    @basket.each do |key, value|
       total += value * @menu.price(key)
     end
-    total
+    "£#{total}"
   end
 end
-#
-# order = OrderList.new
-# order.add_to_hash('calzone', 2)
-# order.add_to_hash('calzone', 1)
-# p order.order_summary
-# p order.total

@@ -16,7 +16,7 @@ class User
   end
 
   def select(item, quantity)
-    @order_list.add_to_order(item, quantity)
+    @order_list.add_to_basket(item, quantity)
     "#{quantity} x #{item} added to order"
   end
 
