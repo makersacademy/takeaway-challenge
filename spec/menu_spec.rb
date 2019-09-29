@@ -9,7 +9,7 @@ describe Menu do
 
   describe "#intialize" do
     it "initializes with a hash containing all menu items and prices" do
-      expect(subject.items).to eq menu
+      expect(subject.menu).to eq menu
     end
   end
 

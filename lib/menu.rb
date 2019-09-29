@@ -7,6 +7,6 @@ class Menu
   end
 
   def price(item)
-    @items[item.to_sym]
+    @menu[item.to_sym]
   end
 end

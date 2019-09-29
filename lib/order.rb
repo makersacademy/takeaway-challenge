@@ -15,9 +15,10 @@ class Order
   end
 
   def order_summary
-    @basket.map do |key, value|
-      "#{value} x #{key} = £#{value * @menu.price(key)}"
-    end.join(", ")
+    @basket.each do |key, value|
+     @order_summary << "#{value} x #{key} = £#{value * @menu.price(key)}"
+    end
+    @order_summary.join(", ")
   end
 
   def order_total
