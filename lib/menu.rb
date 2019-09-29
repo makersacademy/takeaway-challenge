@@ -1,5 +1,5 @@
 class Menu
-
+  attr_reader :items
   def initialize
     @items = { pizza: 6, burger: 5, fries: 3, milkshake: 3, soda: 1 }
   end
