@@ -44,13 +44,7 @@ describe Order do
       expect(subject.checkout(3)).to eq("Please checkout with the correct amount")
     end
 
-    it 'should confirm with checkout message' do
-      subject.add("fosters", 5)
-      allow(subject).to receive(:gets).and_return("Y")
-      expect(subject.checkout(15)).to eq("Thank you for ordering, you will receive a text shortly")
-    end
-
-    it 'should confirm with checkout message' do
+    it 'should cancel checkout with message' do
       subject.add("fosters", 5)
       allow(subject).to receive(:gets).and_return("N")
       expect(subject.checkout(15)).to eq("Please checkout again")

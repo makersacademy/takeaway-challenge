@@ -43,9 +43,14 @@ class Order
     puts "You will be tipping £#{@money - @total}. Do you wish to confirm?(Y/N)"
     answer = gets.chomp
     if answer.upcase == "Y"
+      puts "What number would you like the confirmation text to be sent to? (+44 format)"
+      number = gets.chomp
+      Message.new.send(number)
       "Thank you for ordering, you will receive a text shortly"
-    else
+    elsif answer.upcase == "N"
       "Please checkout again"
+    else
+      "Invalid input. Please checkout again"
     end
   end
 
