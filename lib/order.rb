@@ -1,5 +1,6 @@
 class Order
-  attr_reader :order
+  attr_reader :dish
+  attr_accessor :quantity, :price
 
   def initialize(dish, quantity, price)
     @dish = dish
@@ -7,7 +8,7 @@ class Order
     @price = price
   end
 
-  def order_price
+  def total_price
     @price * @quantity
   end
 end

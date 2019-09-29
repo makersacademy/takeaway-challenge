@@ -28,23 +28,24 @@ class TakeAway
 
   def order_dish(dish, quantity = 1)
     fail "This dish doesn't exist" unless dish_exists?(dish)
+    
     order = @order_class.new(dish, quantity, get_dish_price(dish))
     add_order(order)
   end
 
   def print_basket
     @basket.map { |order|
-      puts "#{order.dish} x#{order.quantity} = £#{order.order_price}"
+      puts "#{order.dish} x#{order.quantity} = £#{order.total_price}"
     }
   end
 
   def check_total
-    puts "Total: £#{@total}"
+    puts "Total: £#{@total.round(2)}"
   end
 
   def deliver_order
     now = now_time
-    txt = "Thank you for your order: £#{@total}. Your order was placed and will be delivered before #{now}"
+    txt = "Thank you for your order: £#{@total.round(2)}. Your order was placed and will be delivered before #{now}"
     send_text(txt)
     puts txt
   end
@@ -53,7 +54,7 @@ class TakeAway
 
   def now_time
     time = Time.new
-    (time.hour + 1).to_s + ":#{time.min}"
+    "%d:%02d" % [(time.hour + 1), time.min]
   end
 
   def send_text(txt)
@@ -71,7 +72,7 @@ class TakeAway
   end
 
   def add_order(order)
-    update_total(order.order_price)
+    update_total(order.total_price)
     update_basket(order)
   end
 
@@ -88,7 +89,22 @@ class TakeAway
   end
 
   def update_basket(order)
-    @basket << order
-    puts "#{order.quantity} #{order.dish} added to your basket" # to check
+    index = check_if_already_order(order.dish)
+    if index.nil?
+      @basket << order
+    else
+      @basket[index].quantity += order.quantity
+      @basket[index].price += order.price
+    end
+    puts "#{order.quantity} #{order.dish} added to your basket"
+  end
+
+  def check_if_already_order(dish)
+    @basket.each_with_index { |order, index|
+      if order.dish == dish
+        return index
+      end
+    }
+    nil
   end
 end

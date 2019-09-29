@@ -13,10 +13,10 @@ describe Order do
     end
   end
 
-  describe '#order_price' do
+  describe '#total_price' do
     it 'calculate the total price of a single order' do
       result = 23.97
-      expect(subject.order_price).to eq result
+      expect(subject.total_price).to eq result
     end
   end
 end

@@ -17,7 +17,7 @@ describe TakeAway do
   let(:quantity2) { 1 }
   let(:price2) { 8.99 }
 
-  let(:subject) { described_class.new(order_class: order_mock, notifier_class: notifier_mock)}
+  let(:subject) { described_class.new(order_class: order_mock, notifier_class: notifier_mock) }
 
   before do
     allow(order_mock).to receive(:new).with(dish, quantity, price).and_return(order)
@@ -29,12 +29,12 @@ describe TakeAway do
     allow(order).to receive(:dish).and_return(dish)
     allow(order).to receive(:quantity).and_return(quantity)
     allow(order).to receive(:price).and_return(price)
-    allow(order).to receive(:order_price).and_return(quantity * price)
+    allow(order).to receive(:total_price).and_return(quantity * price)
 
     allow(order2).to receive(:dish).and_return(dish2)
     allow(order2).to receive(:quantity).and_return(quantity2)
     allow(order2).to receive(:price).and_return(price2)
-    allow(order2).to receive(:order_price).and_return(quantity2 * price2)
+    allow(order2).to receive(:total_price).and_return(quantity2 * price2)
   end
 
   describe '#initialize' do
@@ -59,7 +59,7 @@ describe TakeAway do
 
     it 'adds the order to the total' do
       result = 15.98
-      allow(order).to receive(:order_price).and_return(result)
+      allow(order).to receive(:total_price).and_return(result)
       subject.order_dish(dish, quantity)
       expect(subject.total).to eq result
     end
