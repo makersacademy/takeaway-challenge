@@ -37,7 +37,7 @@ describe User do
 
   describe "#total" do
     it "returns total price in string format" do
-      allow(order_dub).to receive(:order_total) {7.5}
+      allow(order_dub).to receive(:order_total) { 7.5 }
       expect(user.total).to eq "£7.5"
     end
   end

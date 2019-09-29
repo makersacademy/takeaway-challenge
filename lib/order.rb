@@ -4,10 +4,10 @@ class Order
 
   attr_reader :basket
 
-  def initialize
+  def initialize(menu = Menu.new)
     @basket = Hash.new(0)
     @order_summary = []
-    @menu = Menu.new
+    @menu = menu
   end
 
   def add_to_basket(item, quantity)

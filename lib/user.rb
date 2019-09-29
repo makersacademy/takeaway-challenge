@@ -28,11 +28,7 @@ class User
   end
 
   def confirm
-  # #  @messenger.send_text
-  "Order sent to restaurant, confirmation text to follow"
+    "Order sent to restaurant, confirmation text to follow"
+    #  implement so that send_text method called on messenger class
   end
 end
-#
-# def text
-#   sendtext() if order_confirmed
-# end

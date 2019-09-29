@@ -19,10 +19,3 @@ describe Menu do
     end
   end
 end
-
-# To do - code in an #add method to enable menu to be built from scratch
-  # describe "#add" do
-  #   it "adds a menu item and corresponding price to the #menu" do
-  #     expect(subject.add)
-  #   end
-  # end

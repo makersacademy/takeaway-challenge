@@ -3,6 +3,7 @@ require 'order'
 describe Order do
 
   let(:item) { double :item }
+  let(:menu_dub) { double :a_menu }
 
   describe "#initialize" do
     it "initializes with an empty list to store user order" do
