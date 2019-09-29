@@ -13,7 +13,6 @@ class Menu
   end
 
   def view_menu
-    # puts "MENU"
     index = 1
     str = ""
     dishes.each do |item, price|

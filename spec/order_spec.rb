@@ -4,8 +4,13 @@ describe Order do
 
   let(:item) { :bao }
   let(:menu) { double :menu }
+  let(:customer) { double :customer }
   let(:menu_class) { double 'Menu class', new: menu }
-  subject { described_class.new(menu_class) }
+  subject { described_class.new(customer, menu_class) }
+
+  it 'order has a name' do
+    expect(subject.customer).to eq(customer)
+  end
 
   it 'starts with an empty order' do
     expect(subject.order).to be_empty
@@ -24,9 +29,7 @@ describe Order do
 
   xit 'gives a total for the order' do
     allow(menu).to receive(:dishes).and_return(4)
-    # allow(menu).to receive(:[]).and_return({ item: 4 })
     puts menu.dishes[item]
-    # allow(menu).to receive(:[]).and_return(4)
     subject.add(item,2)
     subject.calc_total
     expect(subject.total).to eq(8)

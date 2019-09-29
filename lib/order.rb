@@ -1,11 +1,13 @@
 class Order
 
-  attr_reader :order, :menu, :total
+  attr_reader :customer, :order, :total, :number
 
-  def initialize(menu = Menu)
+  def initialize(customer, number)
+    @customer = customer
+    @number = number
     @order = {}
-    @menu = menu.new
     @total = 0
+    @status = false
   end
 
   def add(item, quantity)
@@ -18,12 +20,21 @@ class Order
     end
   end
 
-  def calc_total
+  def calc_total(menu)
     price = 0
     @order.each do |item, quantity|
-      @total += @menu.dishes[item] * quantity
+      if quantity.class != Integer
+         @total = 0
+         @order = {}
+         return "Error quantity not number"
+       end
+      @total += menu[item.to_sym] * quantity
     end
     "The order comes to £#{@total}"
+  end
+
+  def complete?
+    @status = true if @total > 0
   end
 
 end
