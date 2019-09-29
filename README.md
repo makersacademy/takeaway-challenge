@@ -28,6 +28,28 @@ Yet to be implemented:
 - create Restaurant class to extract some of the functionality currently happening in the Order class
 - create Messager class to handle Twilio
 
+How to Use:
+```
+2.5.0 :001 > require './lib/order.rb'
+ => true
+2.5.0 :002 > order = Order.new
+ => #<Order:0x00007fd21d150918 @menu=#<Menu:0x00007fd21d1508f0 @menu={:pizza=>8.0, :burger=>5.0, :chips=>2.0, :fish=>6.0, :falafel_wrap=>4.5}>, @total_order=[]>
+2.5.0 :003 > order.add_item(:burger)
+burger x1 added to your basket
+ => nil
+2.5.0 :004 > order.add_item(:pizza, 2)
+pizza x2 added to your basket
+ => nil
+2.5.0 :005 > order.order_summary
+burger x1 = £5.0, pizza x2 = £16.0
+Your total cost for this order is £21.0
+ => nil
+2.5.0 :006 > order.check_out(21)
+Type Confirm to place your your order
+Confirm
+ => "Thank you! Your order was placed and will be delivered before 20:04"
+```
+
 Instructions
 -------
 
