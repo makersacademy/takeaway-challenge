@@ -4,29 +4,16 @@ describe Order do
 
   describe '#initialize' do
     it 'takes an empty basket array of key-value pairs' do
-      expect(subject.initialize).to be_nil
+      expect(subject.basket.size).to eq 0
     end
 
   end
   describe '#add_items' do
     it 'adds food requests to basket array' do
-      expect(subject.add_items).to_not be_nil
+      subject.add_items 1, 1
+      expect(subject.basket.size).to_not eq 0
     end
   end
 end
 
-#
-# describe Station do
-#   subject { described_class.new('Bank') }
-#
-#   describe '#initialize' do
-#     it 'has a station name' do
-#       expect(subject.name).to eq 'Bank'
-#     end
-#
-#     it 'has a zone' do
-#       expect(subject.zone).to eq '1'
-#     end
-#   end
-# end
 # # write mock to call pretend number via Twilio
