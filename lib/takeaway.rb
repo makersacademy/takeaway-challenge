@@ -7,8 +7,9 @@ class TakeAway
   attr_reader :basket, :basket_checkout, :total
   attr_writer :menu
 
-  def initialize(order_class: Order)
+  def initialize(order_class: Order, notifier_class: Notifier)
     @order_class = order_class
+    @notifier_class = notifier_class
     @basket = []
     @total = 0
     @menu = [
@@ -43,19 +44,21 @@ class TakeAway
   end
 
   def deliver_order
-    now = get_time
-    send_text("Thank you for your order: £#{@total}. Your order was placed and will be delivered before #{now}")
+    now = now_time
+    txt = "Thank you for your order: £#{@total}. Your order was placed and will be delivered before #{now}"
+    send_text(txt)
+    puts txt
   end
 
   private
 
-  def get_time
+  def now_time
     time = Time.new
     (time.hour + 1).to_s + ":#{time.min}"
   end
 
   def send_text(txt)
-    notifier = Notifier.new
+    notifier = @notifier_class.new
     notifier.send_message(txt)
   end
 

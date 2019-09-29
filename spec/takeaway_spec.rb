@@ -4,12 +4,16 @@ describe TakeAway do
   #RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
   let(:order_mock) { 'Order' }
   let(:order) { order_mock.new }
+  let(:notifier_mock) { Notifier }
+  let(:notifier) { notifier_mock.new }
   let(:dish) { 'Chicken Poke' }
   let(:quantity) { 2 }
   let(:dish2) { 'Salmon Poke' }
   before do
     allow(order_mock).to receive(:new)
     allow(order).to receive(:print_order)
+    allow(notifier_mock).to receive(:new)
+    allow(notifier).to receive(:send_message)
     allow(subject).to receive(:new).with(order_mock)
   end
 
@@ -73,17 +77,14 @@ describe TakeAway do
 
   describe '#deliver_order' do
     it 'accept the deliver request and send a text confirmation to the costumer' do
-      total = 33.96
       now = "21:54"
+      txt = "Thank you for your order: £33.96. Your order was placed and will be delivered before " + now + "\n"
       allow(order).to receive(:order_price).and_return(15.98)
       subject.order_dish(dish, quantity)
-      allow(subject).to receive(:get_time).and_return(now)
+      allow(subject).to receive(:now_time).and_return(now)
       allow(order).to receive(:order_price).and_return(17.98)
       subject.order_dish(dish2, quantity)
-      allow(subject).to receive(:send_text)
-      result = "Thank you for your order: £33.96. Your order was placed and will be delivered before " + now
-      expect(subject).to receive(:send_text).with(result)
-      subject.deliver_order
+      expect { subject.deliver_order }.to output(txt).to_stdout
     end
   end
 
