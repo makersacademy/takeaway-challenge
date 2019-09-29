@@ -39,5 +39,27 @@ describe Takeaway do
       message = "No orders"
       expect { subject.checkout(:payment) }.to raise_error message
     end
+
+    it 'throws an error for incorrect payment' do
+
+      message = 'Please enter the correct amount'
+      subject.make_order("Prairie Oysters", 5)
+      expect { subject.checkout(5) }.to raise_error message
+    end
+  end
+
+  it { is_expected.to respond_to(:delete_last_order) }
+
+  describe '#delete_last_order' do
+    it 'throws an error if there is no order' do
+      message = "No orders"
+      expect { subject.delete_last_order }.to raise_error message
+    end
+
+    it 'removes last order' do
+      subject.make_order('Prairie Oysters', 5)
+      subject.delete_last_order
+      expect(subject.customer_order).to be_empty
+    end
   end
 end

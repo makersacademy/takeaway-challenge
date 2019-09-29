@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'text'
 
 class Takeaway
 
@@ -24,14 +25,21 @@ class Takeaway
     next_order
   end
 
-  def checkout(payment)
+  def checkout(payment, text = Text.new)
     fail 'No orders' if @customer_order.empty?
     fail 'Please enter the correct amount' if payment != @order.in_basket.sum
+    text.confirmation
   end
 
   def summary
     puts @customer_order
     puts "Current total is £#{'%.2f' % (@order.in_basket.sum)}"
+  end
+
+  def delete_last_order
+    fail 'No orders' if @customer_order.empty?
+    @customer_order.pop
+    puts @customer_order
   end
 
   private
