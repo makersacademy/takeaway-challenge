@@ -38,7 +38,12 @@ class Order
   end
 
   def add_dish_to_order(dish, quantity)
-    @customer_order.push([dish, quantity])
+    price = cost_of_dish_in_quantity(dish, quantity)
+    @customer_order.push([dish, quantity, price])
+  end
+
+  def cost_of_dish_in_quantity(dish, quantity)
+    menu_list[dish.to_sym] * quantity
   end
 
 end
