@@ -1,21 +1,27 @@
-require_relative 'menu'
+
+# has a list of dishes x
+# add dishes x
+#remove dishes
+#display the dishes
+#pay for them
 
 class Order
-  attr_reader :current_order, :menu, :priced_order
+
+  attr_reader :dishes
 
   def initialize
-    @current_order = {}
-    @menu = Menu.new
+  @dishes = []
   end
 
-  def choose(item, amount)
-    @current_order.store(item.to_sym, amount.to_i)
+  def add(dish)
+    dishes << dish
   end
 
-  def show_menu
-    add_price
-  end
+  def remove(dish)
+    raise "Woah there, you haven't ordered this yet" unless dishes.include?(dish)
 
-private
+    dishes.delete(dish)
+    self.dishes
+  end
 
 end
