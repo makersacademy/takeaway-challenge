@@ -16,7 +16,7 @@ class Order
 
   def add_dish(dish, quantity = 1)
     if dish == "cod"
-      @customer_order.push(dish)
+      @customer_order.push([dish, quantity])
     end
   end
 
