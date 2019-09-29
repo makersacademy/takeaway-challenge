@@ -30,6 +30,20 @@ Twilio authentication token and SID:
 `TWILIO_SID`
 `TWILIO_TOKEN`
 
+It can also hold a list of Dishes to automatically add to the menu of the Takeaway object, formatted with name and price thusly:
+```Ruby
+DISHES = "
+Copius Fried Wild Greens:3,
+Spicy Sauteed Peppers:3,
+Copius Mushroom Skewers:5,
+Vegetable Omlette:6,
+Fried Egg and Rice:5,
+Monster Curry:6,
+Mushroom Risotto:5,
+Creamy Heart Soup:8
+"
+```
+
 `require './lib/messager.rb'` in your favourite ruby shell. Create a list of dishes for your restaurant and create a Takeaway instance using them, then #run the instance:
 
 
@@ -49,6 +63,8 @@ links_wild_delivery = Takeaway.new(dishes)
 
 links_wild_delivery.run
 ```
+
+Or if using the `DISHES` environment variable, just run `Takeaway.new.run` and get ordering!
 
 Using the App
 -------
