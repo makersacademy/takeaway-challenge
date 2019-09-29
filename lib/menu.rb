@@ -1,5 +1,5 @@
 class Menu
-  
+
   def initialize
     @menu = {
     haddock: 7,
@@ -15,6 +15,10 @@ class Menu
      spacer
      list_dishes
      spacer
+   end
+
+   def menu_list
+     @menu
    end
 
    private

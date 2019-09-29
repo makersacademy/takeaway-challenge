@@ -20,6 +20,9 @@ describe Order do
       order.add_dish("cod", 2)
       expect(order.view_order).to eq [["cod", 2]]
     end
+    it "advises if an ordered was not successful" do
+      expect(order.add_dish("goat")).to include "Sorry"
+    end
   end
 
 
