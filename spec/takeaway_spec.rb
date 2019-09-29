@@ -37,12 +37,6 @@ describe TakeAway do
     allow(order2).to receive(:total_price).and_return(quantity2 * price2)
   end
 
-  describe '#initialize' do
-    it 'has an empty basket by dfault' do
-      expect(subject.basket).to be_empty
-    end
-  end
-
   describe '#read_menu' do
     it 'reads the menu of dishes' do
       subject.menu = [{ name: 'Chicken Poke', price: 7.99 }, { name: 'Salmon Poke', price: 8.99 }]
@@ -57,30 +51,9 @@ describe TakeAway do
       expect { subject.order_dish(dish3) }.to raise_error "This dish doesn't exist"
     end
 
-    it 'adds the order to the total' do
-      result = 15.98
-      allow(order).to receive(:total_price).and_return(result)
-      subject.order_dish(dish, quantity)
-      expect(subject.total).to eq result
-    end
-
     it 'prints the order added to the basket' do
       result = "2 Chicken Poke added to your basket\n"
       expect { subject.order_dish(dish, quantity) }.to output(result).to_stdout
-    end
-
-    it 'adds the order to the basket' do
-      subject.order_dish(dish, quantity)
-      expect(subject.basket).to include order
-    end
-  end
-
-  describe '#print_basket' do
-    it 'prints the basket' do
-      subject.order_dish(dish, quantity)
-      subject.order_dish(dish2)
-      result = "Chicken Poke x2 = £15.98\nSalmon Poke x1 = £8.99\n"
-      expect { subject.print_basket }.to output(result).to_stdout
     end
   end
 

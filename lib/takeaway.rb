@@ -1,5 +1,6 @@
 require_relative 'order'
 require_relative 'notifier'
+require_relative 'basket'
 require 'date'
 
 
@@ -7,10 +8,14 @@ class TakeAway
   attr_reader :basket, :total
   attr_writer :menu
 
-  def initialize(order_class: Order, notifier_class: Notifier)
+  def initialize(
+    order_class: Order,
+    notifier_class: Notifier,
+    basket_class: Basket
+  )
     @order_class = order_class
     @notifier_class = notifier_class
-    @basket = []
+    @basket = basket_class.new
     @total = 0
     @menu = [
       { name: 'Chicken Poke', price: 7.99 },
@@ -28,26 +33,24 @@ class TakeAway
 
   def order_dish(dish, quantity = 1)
     fail "This dish doesn't exist" unless dish_exists?(dish)
-    
+
     order = @order_class.new(dish, quantity, get_dish_price(dish))
-    add_order(order)
-  end
-
-  def print_basket
-    @basket.map { |order|
-      puts "#{order.dish} x#{order.quantity} = £#{order.total_price}"
-    }
-  end
-
-  def check_total
-    puts "Total: £#{@total.round(2)}"
+    @basket.add_item(order)
   end
 
   def deliver_order
     now = now_time
-    txt = "Thank you for your order: £#{@total.round(2)}. Your order was placed and will be delivered before #{now}"
+    txt = "Thank you for your order: £#{@basket.total.round(2)}. Your order was placed and will be delivered before #{now}"
     send_text(txt)
     puts txt
+  end
+
+  def print_basket
+    @basket.print_basket
+  end
+
+  def check_total
+    @basket.check_total
   end
 
   private
@@ -71,40 +74,11 @@ class TakeAway
     return false
   end
 
-  def add_order(order)
-    update_total(order.total_price)
-    update_basket(order)
-  end
-
   def get_dish_price(dish)
     @menu.map { |i|
       if i[:name] == dish
         return i[:price]
       end
     }
-  end
-
-  def update_total(order_price)
-    @total += order_price
-  end
-
-  def update_basket(order)
-    index = check_if_already_order(order.dish)
-    if index.nil?
-      @basket << order
-    else
-      @basket[index].quantity += order.quantity
-      @basket[index].price += order.price
-    end
-    puts "#{order.quantity} #{order.dish} added to your basket"
-  end
-
-  def check_if_already_order(dish)
-    @basket.each_with_index { |order, index|
-      if order.dish == dish
-        return index
-      end
-    }
-    nil
   end
 end
