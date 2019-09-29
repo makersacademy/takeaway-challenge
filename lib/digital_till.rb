@@ -14,8 +14,6 @@ class DigitalTill
     }.join("\n") + "\nTOTAL - £#{items_total}"
   end
 
-  private
-
   def items_total
     @order.map { |item| item[:cost] }.sum
   end

@@ -11,7 +11,10 @@ describe Takeaway do
   let(:digital_till) { double :digital_till, verify_total: true, itemised_receipt: test_receipt }
   let(:digital_till_class) { double :digital_till_class, new: digital_till }
 
-  subject(:takeaway) { described_class.new(menu: menu, dgt_class: digital_till_class) }
+  let(:messenger) { double :messenger, sms_confirmation: "sms confirmation sent"}
+  let(:messenger_class) { double :messenger_class, new: messenger}
+
+  subject(:takeaway) { described_class.new(menu: menu, dgt_class: digital_till_class, messenger_class: messenger_class) }
 
   describe '#initialize' do
     it { expect(takeaway.menu).to eq menu }
@@ -41,7 +44,7 @@ describe Takeaway do
 
     it 'raises an error if the totals do not match' do
       allow(digital_till).to receive(:verify_total).and_return(false)
-      expect(takeaway.make_order("pizza 2, burger 1", 10)).to eq false
+      expect { takeaway.make_order("pizza 2, burger 1", 10) }.to raise_error("Total does not match items")
     end
   end
 
