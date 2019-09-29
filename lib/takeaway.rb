@@ -16,25 +16,35 @@ class Takeaway
     end
   end
 
-  def make_order(itemnum, quantity)
-    @order.place_order(itemnum, quantity)
+  def make_order(item, quantity)
+    fail "Sorry, that's not on the menu" unless MENU_ITEMS.has_key?(item)
+    @order.place_order(item, quantity)
     create_order
+    find_cost
     next_order
+  end
+
+  def checkout
+    fail 'No orders' if @customer_order.empty?
   end
 
   private
 
   def create_order
     food = {
-      :itemnum => @order.itemnum ,
+      :item => @order.item,
       :quantity => @order.quantity
     }
     @customer_order.push(food)
     puts @customer_order
   end
 
+  def find_cost
+    @order.find_cost
+  end
+
   def next_order
-    @order.itemnum = nil
+    @order.item = nil
     @order.quantity = nil
   end
 end
