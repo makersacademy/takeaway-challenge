@@ -30,7 +30,7 @@ Twilio authentication token and SID:
 `TWILIO_SID`
 `TWILIO_TOKEN`
 
-run messager.rb in your favourite ruby shell. Create a list of dishes for your restaurant and create a Takeaway instance using them, then #run the instance:
+`require './lib/messager.rb'` in your favourite ruby shell. Create a list of dishes for your restaurant and create a Takeaway instance using them, then #run the instance:
 
 
 ```Ruby
@@ -79,7 +79,7 @@ The second menu allows them to review their order, return to add dishes to their
 Please make a selection:
 ```
 
-Reviewing the order shows the quantity of each selected item and the total cost in roupees:
+Reviewing the order shows the quantity of each selected item and the total cost in rupees:
 
 ```Ruby
 2  x  Copius Fried Wild Greens       💎  3
@@ -87,7 +87,7 @@ Reviewing the order shows the quantity of each selected item and the total cost 
 Total:                               💎 11
 ```
 
-When submitted, there is a confirmation message and an SMS is sent to the `ENV['TWILIO_TO']` environment variable phone number via the Twilio REST API:
+When submitted, there is a confirmation message and an SMS is sent to the `ENV['TWILIO_TO']` phone number via the Twilio REST API:
 
 ```Ruby
 Thanks, your order has been submitted!
