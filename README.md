@@ -1,3 +1,21 @@
+
+My approach to solving the challenge:
+
+'top' class = Order, which initialises an empty 'basket' array.
+
+    The Order class requires...
+
+'second tier' class = Menu
+
+    it requires...
+
+tbc
+
+
+
+
+
+
 Takeaway Challenge
 ==================
 ```
