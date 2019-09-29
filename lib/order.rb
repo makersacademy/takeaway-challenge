@@ -29,7 +29,17 @@ class Order
   end
 
   def checkout(money)
-
+    if money < @total
+      "Please checkout with the correct amount"
+    else
+      puts "You will be tipping £#{money - @total}. Do you wish to confirm?(Y/N)"
+      answer = gets.chomp
+      if answer.upcase == "Y"
+        "Thank you for ordering, you will receive a text shortly"
+      else
+        "Please checkout again"
+      end
+    end
   end
 
 
