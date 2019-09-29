@@ -12,14 +12,9 @@ describe Order do
       expect(subject).to respond_to(:add).with(1).argument
     end
 
-    it 'should return a message if you try to add an item not on the menu' do
-      name = 'wrong_item'
-      expect(subject.add(name)).to eq("Sorry, #{name} is not on the menu")
-    end
-
     it 'should add an item to the basket' do
       subject.add("fosters")
-      expect(subject.basket).to eq([{fosters: 2}])
+      expect(subject.basket).to eq([fosters: 2])
     end
 
   end

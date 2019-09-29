@@ -9,7 +9,15 @@ class Order
 
   def add(item)
     item = item.to_sym
-    return "Sorry, #{item.downcase} is not on the menu" unless @menu.all_dishes.include?(item)
+    @menu.all_dishes.each do |dish|
+      dish.each do |name, price|
+        if name == item
+          @basket << dish
+        else
+          "Sorry, #{item.downcase} is not on the menu"
+        end
+      end
+    end
   end
 
   def remove
