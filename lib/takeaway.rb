@@ -1,10 +1,10 @@
 require_relative 'menu'
 require_relative 'digital_till'
 
-class TakeawayOrderer
+class Takeaway
   attr_reader :menu, :order
 
-  def initialize(menu: menu, dgt_class: DigitalTill)
+  def initialize(menu: menu_object, dgt_class: DigitalTill)
     @menu = menu
     @order = []
     @digital_till_class = dgt_class
@@ -12,10 +12,15 @@ class TakeawayOrderer
 
   def make_order(items, total)
     save_order(items)
+    @digital_till_class.new(@order).verify_total(total)
   end
 
   def view_menu
     @menu.view_items
+  end
+
+  def print_receipt
+    print @digital_till_class.new(@order).itemised_receipt
   end
 
   private

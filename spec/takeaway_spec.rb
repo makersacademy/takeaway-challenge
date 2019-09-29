@@ -1,14 +1,17 @@
 require 'takeaway'
 
-describe TakeawayOrderer do
+describe Takeaway do
 
   let(:test_menu_list) { "MENU:\nItem 1 -- Price\nItem 2 -- Price" }
   let(:menu) { double :menu, view_items: test_menu_list,
     items: { pizza: 6, burger: 5, fries: 3, milkshake: 3, soda: 1 }
   }
 
+  let(:test_receipt) { "1 x Burger - £5\nTOTAL - £5" }
+  let(:digital_till) { double :digital_till, verify_total: true, itemised_receipt: test_receipt }
+  let(:digital_till_class) { double :digital_till_class, new: digital_till }
 
-  subject(:takeaway) { described_class.new(menu) }
+  subject(:takeaway) { described_class.new(menu: menu, dgt_class: digital_till_class) }
 
   describe '#initialize' do
     it { expect(takeaway.menu).to eq menu }
@@ -34,6 +37,17 @@ describe TakeawayOrderer do
     it 'saves items, quantities and totals per item as a hash in order array' do
       takeaway.make_order("milkshake 4, fries 4", 24)
       expect(takeaway.order).to eq order2
+    end
+
+    it 'raises an error if the totals do not match' do
+      allow(digital_till).to receive(:verify_total).and_return(false)
+      expect(takeaway.make_order("pizza 2, burger 1", 10)).to eq false
+    end
+  end
+
+  describe '#print_receipt' do
+    it 'prints the receipt of the last order' do
+      expect { takeaway.print_receipt }.to output(test_receipt).to_stdout
     end
   end
 end
