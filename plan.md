@@ -77,7 +77,6 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-Create Restaurant class
 - create receive_order method which reads and receives the place_order method from the Order class, based on whether place_order == true. Could this be a module?
 - create complete_order method which thanks customer for order, confirming it was received and when it will be delivered.
 - Create module with encrypt method to encrypt my phone number? See this http://ruby-for-beginners.rubymonstas.org/advanced/modules.html
@@ -91,26 +90,10 @@ use the gemfile to manage my gems.
 
 N.B. Use mocks and/or stubs to make sure I don't send texts when my tests are running! I want to stub
 out behaviour as I'm using a 3rd party API.
-E.g.
-describe Takeaway
-  subject(:takeaway) {described_class.new }
-before do
-  allow(takeaway).to receive(:send_sms)
-end
-it 'sends a payment confirmation text message' do
-  expect(takeaway).to receive(:send_sms).with("<input message>")
-  takeaway.complete_order(20.93)
-end
+
 I stub out the send_sms method. Expect --> RSpec chescks that the subject received the message send_sms.
 
 I will need something like a Messager class to handle the Twilio messaging, which the Restaurant class will be dependent on. So I'll need to inject the Messager class into the Restaurant class.
-E.g.
-class Restaurant
-def initialize(messager = Messager.new)
-@messager = messager
-end
-end
-restaurant = Restaurant.new(dummy_messager) --> dummy = test double.
 https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md
 
 The text should be automatically sent if Takeaway is loaded into IRB and the order is placed.

@@ -14,6 +14,20 @@ Takeaway Challenge
 
  ```
 
+Progress to Date - 29 Sept 2019:
+Implemented 4 user stories so far:
+
+- see list of dishes with prices
+- select some number of several available dishes
+- check that the total I have been given matches the sum of the various dishes in my order
+- send a confirmation message to the customer when they order
+
+Yet to be implemented:
+
+- ability for customer to receive a text message with order confirmation
+- create Restaurant class to extract some of the functionality currently happening in the Order class
+- create Messager class to handle Twilio
+
 Instructions
 -------
 

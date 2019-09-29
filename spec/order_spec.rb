@@ -3,6 +3,7 @@ require 'order'
 describe Order do
 
   let(:menu) { double("Menu") }
+  let(:time) { double :time }
 
   describe '#initialize' do
     it 'total_order list exists and is empty' do
@@ -60,11 +61,11 @@ describe Order do
     end
 
     it 'directs customer to place order if order is correct' do
-      message = "Thanks for placing your order"
-      allow(subject).to receive(:gets).and_return("Confirm")
       subject.add_item(:pizza)
-      subject.order_summary
-      expect(subject.check_out(8)).to eq message
+      allow(subject).to receive(:gets).and_return("Confirm")
+      expect do
+        subject.check_out(8)
+      end.to output("Type Confirm to place your your order\n").to_stdout
     end
   end
 

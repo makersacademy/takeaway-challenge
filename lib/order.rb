@@ -36,7 +36,7 @@ class Order
     fail error_message if expected_cost != calculate_cost
     puts "Type Confirm to place your your order"
     @confirmation = gets.chomp
-    place_order
+    confirm_order
   end
 
   private
@@ -55,8 +55,13 @@ class Order
     "Your total cost for this order is £#{calculate_cost}"
   end
 
-  def place_order
-    message = "Thanks for placing your order"
+  def calculate_time
+    time = Time.now
+    "#{(time + 3600).strftime("%H:%M")}"
+  end
+
+  def confirm_order(time = calculate_time)
+    message = "Thank you! Your order was placed and will be delivered before #{time}"
     return message if @confirmation == "Confirm"
   end
 
