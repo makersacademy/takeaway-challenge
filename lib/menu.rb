@@ -1,16 +1,25 @@
-require_relative 'dish'
+require_relative 'dish_printer'
 
 class Menu
-  attr_reader :available_dishes
+
+  include DishPrinter
+
+  attr_reader :available_dishes, :file
 
   def initialize
-    @available_dishes = []
+    @available_dishes = [
+      { name: "Pizza", price: 9 },
+      { name: "Cheeseburger", price: 7 },
+      { name: "Steak", price: 12 },
+      { name: "Beer", price: 5 }
+    ]
   end
 
-  # add(dish_name, quantity = 1)
-  def add_item(dish)
-    available_dishes << dish
+  def add_item(dish_name, dish_price)
+    available_dishes << { name: dish_name, price: dish_price }
   end
-  # print
-  # remove(dish)
+  
+  def show
+    print_menu(available_dishes)
+  end
 end

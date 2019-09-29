@@ -1,18 +1,28 @@
 require 'twilio-ruby'
 
 class Messenger
-  # def initialize
-  #   @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-  # end
+  def initialize
+    @account_sid = "#{ENV["ACSID"]}"
+    @auth_token = "#{ENV["AUTHTOK"]}"
+    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+    @from = "#{ENV["TWIFROM"]}"
+    @to = "#{ENV["PHONE"]}"
+    @message = "Thanks for your order! Delivery time is #{delivery_time}"
+  end
+  
+  def send_message
+    @client.messages.create(
+      from: @from,
+      to: @to,
+      body: @message % delivery_time
+    )
+  end
 
-  # account_sid = 'AC6bb6cec88701e8c95afc020b7a6640b3'
-  # auth_token = 'your_auth_token'
+  private
 
-  # message = @client.messages
-  # .create(
-  #    body: 'Phantom Menace was clearly the best of the prequel trilogy.',
-  #    messaging_service_sid: 'MG9752274e9e519418a7406176694466fa',
-  #    to: '+441632960675'
-  # )
+  def delivery_time
+    time = Time.new.getlocal + (60 * 60)
+    time.strftime('%H:%M')
+  end
 end

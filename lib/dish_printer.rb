@@ -1,20 +1,18 @@
 module DishPrinter
-  
-  def order_header
-    something
-  end
-  
-  def menu_header
-    something
+
+  def print_dish(name, price)
+    "#{name} (£#{price})"
   end
 
-  def print_dish(name:, price:)
-      "#{name} (£#{price})"
+  def print_menu(items)
+    items.map { |item|
+      "#{print_dish(item[:name], item[:price])}"
+    }.join('\n')
   end
 
   def print_order(items)
     items.map { |item|
-      dish = print_dish(name: item[:dish], price: item[:price])
+      dish = print_dish(item[:name], item[:price])
       quantity = item[:quantity]
       "#{dish} - #{quantity}"
     }.join('\n')
@@ -23,6 +21,4 @@ module DishPrinter
   def print_total(total)
     "Order Total: £#{total}"
   end
-
-
 end

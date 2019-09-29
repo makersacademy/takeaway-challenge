@@ -5,44 +5,45 @@ class Order
 
   include DishPrinter
 
-  attr_reader :ordered_items, :menu, :total
+  attr_reader :ordered_items, :menu
 
-  def initialize(menu)
+  def initialize(menu = Menu.new)
     @ordered_items = []
     @menu = menu
-    @total = 0
   end
 
-  # add(dish_name, quantity = 1)
-
-  def add_item(dish, quantity = 1)
-    raise 'Item is not on a menu' if not_available?(dish.name)
-
-    ordered_items << {dish: dish.name, price: dish.price, quantity: quantity}
+  def add_item(dish_name, quantity = 1)
+    raise 'Item is not on a menu' if not_available?(dish_name)
+    price = find_price(dish_name)
+    ordered_items << { name: dish_name, price: price, quantity: quantity }
   end
 
   def show
     print_order(ordered_items)
+  end
+
+  def show_total
     print_total(calc_total)
   end
 
   def calc_total
+    total = 0
     ordered_items.each do |item|
-      @total += item[:price] * item[:quantity]
+      total += item[:price] * item[:quantity]
     end
-    @total
+    total
   end
-  # if dish already ordered, ordering again would update the quantity
-  # print
-  # remove(dish)
-
-
 
   def not_available?(dish_name)
     menu.available_dishes.each do |dish| 
-      return false if dish.name == dish_name
+      return false if dish[:name] == dish_name
     end
     true
   end
 
+  def find_price(dish_name)
+    menu.available_dishes.each do |dish| 
+      return dish[:price] if dish[:name] == dish_name
+    end
+  end
 end
