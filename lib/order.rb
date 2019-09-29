@@ -14,16 +14,9 @@ class Order
 
   def show_menu
     add_price
-
   end
 
 private
 
-  def add_price
-    @priced_order = current_order.clone
-    priced_order.each do |item, amount|
-      priced_order[item] = amount * menu.list[item]
-    end
-    return priced_order
-  end
+
 end

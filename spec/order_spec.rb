@@ -19,10 +19,4 @@ describe Order do
       expect(order.current_order).to include(:pizza => 1, :curry => 2)
     end
   end
-
-  describe '#show_menu' do
-    it 'returns a Hash' do
-      expect(order.show_menu.class).to eq Hash
-    end
-  end
 end
