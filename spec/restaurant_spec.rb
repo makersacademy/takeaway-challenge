@@ -7,7 +7,7 @@ describe Restaurant do
   let(:printed_menu) { "Hamburger £5" }
 
   let(:order) { double(:order, order_total: 24) }
-  let(:items) { { cheeseburger: 3, hamburger: 1, fries: 3 } }
+  let(:choices) { { cheeseburger: 3, hamburger: 1, fries: 3 } }
 
   let(:sms) { double(:sms, deliver: nil) }
 
@@ -17,19 +17,19 @@ describe Restaurant do
 
   it "can add menu selections when placing an order" do
     expect(order).to receive(:add).thrice
-    restaurant.place_order(items)
+    restaurant.place_order(choices)
   end
 
   it " shows the order total" do
     allow(order).to receive(:add)
-    order_total = restaurant.place_order(items)
+    order_total = restaurant.place_order(choices)
     expect(order_total).to eq 24.00
   end
 
   it "sends a confirmation text that the order has been placed" do
     allow(order).to receive(:add)
     expect(sms).to receive(:deliver)
-    expect(restaurant.place_order(items))
+    expect(restaurant.place_order(choices))
   end
 
 end

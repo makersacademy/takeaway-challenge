@@ -14,8 +14,8 @@ class Restaurant
     menu.print
   end
 
-  def place_order(items)
-    add_items(items)
+  def place_order(choices)
+    add_items(choices)
     sms.deliver
     order.order_total
   end
@@ -24,8 +24,8 @@ class Restaurant
 
   attr_reader :menu, :order, :sms
 
-  def add_items(items)
-    items.each do |item, quantity|
+  def add_items(choices)
+    choices.each do |item, quantity|
       order.add(item, quantity)
     end
   end
