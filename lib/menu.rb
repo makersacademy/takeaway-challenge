@@ -1,8 +1,8 @@
 class Menu
-  attr_reader :items
+   attr_reader :menu
 
   def initialize
-    @items = { :margherita => 7.50, :pepperoni => 10.50,
+    @menu = { :margherita => 7.50, :pepperoni => 10.50,
               :calzone => 12.50, :diavola => 10.50 }
   end
 
