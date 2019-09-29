@@ -5,6 +5,7 @@ require_relative 'menu'
 #chips: 3
 
 class Order
+  attr_reader :customer_order
   def initialize(menu = Menu.new)
     @customer_order = []
     @menu = menu
@@ -31,7 +32,7 @@ class Order
   end
 
   def calculate_total
-
+    add_each_order
   end
 
   private
@@ -47,6 +48,15 @@ class Order
 
   def cost_of_dish_in_quantity(dish, quantity)
     menu_list[dish.to_sym] * quantity
+  end
+
+  def add_each_order
+    total = 0
+    order = view_order
+    order.each do |dish|
+      total += dish[2]
+    end
+    total
   end
 
 end
