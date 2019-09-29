@@ -30,12 +30,12 @@ class Takeaway
     @orders.current_order
   end
 
-  def print_last_receipt
+  def view_last_receipt
     puts @orders.history[-1]
   end
 
-  def view_all_orders
-    puts @orders.history
+  def view_all_receipts
+    puts @orders.history.reverse
   end
 
   private

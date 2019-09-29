@@ -13,8 +13,7 @@ class Messenger
     @client.messages.create(
       from: ENV['TWIL_NO'],
       to: ENV['MOBILE_NO'],
-      body: "Thank you! Your order was placed and will
-            be delivered before #{time_in_hour}"
+      body: "Thank you! Your order was placed and will be delivered before #{time_in_hour}"
     )
     "sms confirmation sent"
   end

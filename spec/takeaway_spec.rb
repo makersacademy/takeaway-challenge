@@ -13,7 +13,7 @@ describe Takeaway do
   let(:order) { [{ quantity: 2, item: "pizza", cost: 12 },
     { quantity: 1, item: "burger", cost: 5 }]
   }
-  let(:test_receipt) { "RECEIPT:\n1 x Burger - £5\nTOTAL - £5\n" }
+  let(:test_receipt) { "\nRECEIPT:\n1 x Burger - £5\nTOTAL - £5\n" }
   let(:orders) { double :orders, make_order: true, history: test_receipt, current_order: order, submit_order: true }
   let(:orders_class) { double :orders_class, new: orders }
 
@@ -40,15 +40,15 @@ describe Takeaway do
     end
   end
 
-  describe '#print_last_receipt' do
+  describe '#view_last_receipt' do
     it 'prints the receipt of the last order' do
-      expect { takeaway.print_last_receipt }.to output(test_receipt[-1]).to_stdout
+      expect { takeaway.view_last_receipt }.to output(test_receipt[-1]).to_stdout
     end
   end
 
-  describe '#view_all_orders' do
+  describe '#view_all_receipts' do
     it 'prints receipts from all orders' do
-      expect { takeaway.view_all_orders }.to output(test_receipt).to_stdout
+      expect { takeaway.view_all_receipts }.to output(test_receipt.reverse).to_stdout
     end
   end
 end

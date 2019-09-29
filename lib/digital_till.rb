@@ -9,7 +9,7 @@ class DigitalTill
   end
 
   def itemised_receipt
-    "RECEIPT:\n" + @order.map { |food|
+    "\nRECEIPT:\n" + @order.map { |food|
       "#{food[:quantity]} x #{food[:item].capitalize} - £#{food[:cost]}"
     }.join("\n") + "\nTOTAL - £#{items_total}\n"
   end
