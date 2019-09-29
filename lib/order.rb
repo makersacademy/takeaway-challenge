@@ -7,7 +7,6 @@ class Order
 
   def initialize
     @in_basket = []
-    sum = []
   end
 
   def place_order(item, quantity)
@@ -17,11 +16,11 @@ class Order
 
   def find_cost
     MENU_ITEMS.each do |name, price|
-    if name == @item
-      @in_basket << ('%.2f' % (price * @quantity)).to_f
-      puts "#{@quantity} order/s of #{name} = £#{('%.2f' % (price * @quantity).to_f)}"
-      puts "Current total = £#{'%.2f' % (@in_basket.sum)}"
-    end
+      if name == @item
+        @in_basket << ('%.2f' % (price * @quantity)).to_f
+        puts "#{@quantity} order/s of #{name} = £#{('%.2f' % (price * @quantity).to_f)}"
+        puts "Current total = £#{'%.2f' % @in_basket.sum}"
+      end
     end
   end
 end

@@ -33,7 +33,7 @@ class Takeaway
 
   def summary
     puts @customer_order
-    puts "Current total is £#{'%.2f' % (@order.in_basket.sum)}"
+    puts "Current total is £#{'%.2f' % @order.in_basket.sum}"
   end
 
   def delete_last_order
