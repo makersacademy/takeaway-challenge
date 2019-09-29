@@ -43,6 +43,7 @@ describe "User story 4" do
     my_order.add("Porterhouse", 2)
     my_order.add("Ribeye", 3)
     my_order.total_price
-    expect { my_order.confirm }.to_not raise_error
+    allow(my_order).to receive(:confirm) {"Sent"}
+    expect{ my_order.confirm }.not_to raise_error
   end
 end

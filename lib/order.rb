@@ -1,4 +1,5 @@
 require "./lib/menu"
+require "./lib/message"
 
 class Order
 
@@ -16,8 +17,9 @@ class Order
     @total
   end
 
-  def confirm
-
+  def confirm(phone_number = ENV["MY_NUM"])
+    confirmation = Message.new(phone_number)
+    confirmation.send
   end
 
   private

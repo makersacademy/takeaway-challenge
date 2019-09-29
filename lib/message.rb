@@ -6,18 +6,13 @@ class Message
   ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
   AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
   TWILIO_NUM = ENV['TWILIO_NUM']
-  MY_NUM = ENV['MY_NUM']
   DEFAULT_MESSAGE = "Thanks for your order. It will be with you within one hour"
 
-  def initialize
+  def initialize(to_num)
+    @to = to_num
+    @from = TWILIO_NUM
+    @body = DEFAULT_MESSAGE
     @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
-  end
-
-  def draft(string = DEFAULT_MESSAGE, to = MY_NUM, from = TWILIO_NUM)
-    @from = from
-    @to = to
-    @body = string 
-    "Draft Created"
   end
 
   def send
