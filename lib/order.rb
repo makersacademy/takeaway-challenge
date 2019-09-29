@@ -2,9 +2,9 @@ require "./lib/menu"
 
 class Order
 
-  def initialize
+  def initialize(menu = Menu.new)
+    @pricelist = menu.dishes
     @dishes = []
-    @total_price = 0
   end
 
   def add(dish_name, quantity = 1)
@@ -12,7 +12,26 @@ class Order
   end
 
   def total_price
-    10000
+    update_prices
+    @total
+  end
+
+  private
+
+  def update_prices
+    @total = 0
+    @dishes.each do |hash| 
+      dish_name = hash[:dish]
+      quantity = hash[:quantity]
+      @total += (price(dish_name) * quantity)
+    end
+    @total
+  end
+
+  def price(dish)
+    @pricelist.each do |hash|
+      return hash[:price] if hash[:name] == dish
+    end
   end
 
 end

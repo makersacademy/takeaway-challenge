@@ -1,5 +1,6 @@
 
 class Menu
+  attr_reader :dishes
 
   DEFAULT_DISHES = [
     { name: "Ribeye", price: 3000 },

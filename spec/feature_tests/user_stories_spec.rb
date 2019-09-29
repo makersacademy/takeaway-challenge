@@ -30,6 +30,6 @@ describe "User story 3" do
     my_order.add("Porterhouse")
     my_order.add("Ribeye", 2)
     price = my_order.total_price
-    expect(price).to eq(10000)
+    expect(price).to eq(10_000)
   end
 end
