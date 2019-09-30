@@ -1,24 +1,18 @@
 class Menu
 
-attr_reader :menu
+  attr_reader :menu
 
-    MENU = [{"dosa" => 5},
-    {"pizza" => 5},
-    {"biryani" => 10},
-    {"fried rice" => 4},
-    {"dim sum" => 8},
-    {"pad thai" => 10}]
+  MENU = { :dosa => 5 ,
+  :pizza => 4.50 }
 
   def initialize
     @menu = MENU
   end
 
   def price_list
-    @menu.each do |dish, price|
-      puts "#{dish} => #{price}"
-    end
+    @menu.map do |key, price|
+      "%s £%.2f" % [key.to_s, price]
+    end.join(", ")
   end
-
-
 
 end
