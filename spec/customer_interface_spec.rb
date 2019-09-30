@@ -28,19 +28,12 @@ describe Interface do
       expect(interface.request_input(option_four)).to eq 28
     end
 
+    it "customer picks 5 - prints out the customer's order so far" do
+      expect(interface.request_input(option_five)).to include "Thank you!"
+    end
+
     it "advises if an input was not successful" do
       expect(interface.request_input("goat")).to include "Sorry"
     end
   end
-
-  describe '#add_dish' do
-    it "adds a choosen item to the customer's order" do
-      interface.add_dish("cod", 2)
-      expect(interface.view_order).to eq [["cod", 2, 12]]
-    end
-    it "advises if an order was not successful" do
-      expect(interface.add_dish("goat")).to include "Sorry"
-    end
-  end
-
 end

@@ -61,13 +61,16 @@ class Interface
       when "4"
         calculate_total
       when "5"
-
+        time = Time.new
+        hour = time.hour + 1
+        minutes = time.min
+        "Thank you! Your order was placed and will be delivered before #{hour}:#{time}"
       when "9"
         exit
       else
         puts "Sorry, invalid input, try agian"
         "Sorry, invalid input, try agian"
-
     end
   end
+  
 end
