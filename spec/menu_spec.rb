@@ -17,3 +17,8 @@ describe Menu do
     end
   end
 end
+
+# can make stdout a double instead
+# gets should be a double
+# let(:stdout) { double :STDOUT}
+# expect(stdout).to receive(:gets).and_return("value")

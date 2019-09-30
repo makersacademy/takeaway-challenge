@@ -1,12 +1,9 @@
 class Messenger
   require 'twilio-ruby'
   HOUR = 60 * 60
-  ACCOUNT_SID = ENV['TWIL_ACC_SID']
-  AUTH_TOKEN = ENV['TWIL_AUTH_TOKEN']
 
-  def initialize(client = nil)
-    @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
-    @client = client if client != nil
+  def initialize(client = Twilio::REST::Client.new(ENV['TWIL_ACC_SID'], ENV['TWIL_AUTH_TOKEN']))
+    @client = client
   end
 
   def sms_confirmation
