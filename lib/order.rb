@@ -4,9 +4,10 @@ require_relative 'list_printer'
 class Order
   include ListPrinter
 
-  attr_reader :dishes, :total
+  attr_reader :dishes, :total, :mob_num
 
-  def initialize
+  def initialize(mob_num)
+    @mob_num = mob_num
     @dishes = []
     @total = 0
   end

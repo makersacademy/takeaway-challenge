@@ -4,7 +4,7 @@ describe Order do
   let(:dish) { double("Dish", name: 'shwarma', cost: 9) }
   let(:dish2) { double("Dish", name: 'pizza', cost: 5) }
   let(:dish3) { double("Dish", name: 'burger', cost: 7) }
-  subject(:order) { described_class.new }
+  subject(:order) { described_class.new(ENV['CUST_MOB_NUM']) }
 
   describe '#dishes' do
     it 'contains a list of dishes' do
