@@ -27,10 +27,10 @@ def initialize
   end
 
   def total
-    sum = 0
     calculator = []
     @selection.each do |item|
       calculator << item[:price]
+      end
+      calculator.sum
     end
   end
- end

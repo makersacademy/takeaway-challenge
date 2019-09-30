@@ -29,6 +29,6 @@ describe Menu do
     subject.order(2)
     subject.order(5)
     subject.order(2)
-    expect(subject.total).to eq 21
+    expect(subject.total).to eq 24
   end
 end
