@@ -24,6 +24,10 @@ class Interface
     @order.add_dish(dish, quantity)
   end
 
+  def calculate_total
+    @order.calculate_total
+  end
+
   private
 
   def display_menu
@@ -55,13 +59,13 @@ class Interface
       when "3"
         view_order
       when "4"
-
+        calculate_total
       when "5"
 
       when "9"
         exit
       else
-      #  puts "Sorry, invalid input, try agian"
+        puts "Sorry, invalid input, try agian"
         "Sorry, invalid input, try agian"
 
     end

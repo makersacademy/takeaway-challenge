@@ -20,16 +20,18 @@ describe Interface do
     it "customer picks 3 - prints out the customer's order so far" do
       expect(interface.request_input(option_three)).to be_empty
     end
+
+    it "customer picks 4 - prints out the customer's total so far" do
+      interface.add_dish("cod", 2)
+      interface.add_dish("haddock")
+      interface.add_dish("chips", 3)
+      expect(interface.request_input(option_four)).to eq 28
+    end
+
     it "advises if an input was not successful" do
       expect(interface.request_input("goat")).to include "Sorry"
     end
   end
-
-#  describe '#view_menu' do
-#    it "prints out the menu" do
-#      expect(interface.view_menu).not_to be_empty
-#   end
-#  end
 
   describe '#add_dish' do
     it "adds a choosen item to the customer's order" do
@@ -40,7 +42,5 @@ describe Interface do
       expect(interface.add_dish("goat")).to include "Sorry"
     end
   end
-
-
 
 end
