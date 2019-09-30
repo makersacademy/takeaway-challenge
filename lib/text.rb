@@ -4,8 +4,6 @@ class Text
 
   def message
     account_sid = ENV['TWILIO_ACCOUNT_SID']
-
-    # 'AC74911b17cfdc28752900b334b9bd91f8'
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
@@ -15,7 +13,7 @@ class Text
     client.messages.create(
     from: from,
     to: to,
-    body: "Hey friend!"
+    body: "Your order is on the way and will be with you by #{Time.now.hour + 1}.#{Time.now.min}"
     )
   end
 

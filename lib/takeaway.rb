@@ -25,6 +25,7 @@ class Takeaway
   def place
     @text.message
   end
+  
   # def place
   #   if check_bill?
   #     @order.list

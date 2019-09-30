@@ -21,8 +21,4 @@ private
     @menu.list
   end
 
-  # def calculate
-  #   @total += @list[dish_selection] * quantity
-  # end
-
 end
