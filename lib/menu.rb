@@ -14,6 +14,7 @@ class Menu
      spacer
      list_dishes
      spacer
+     "menu printed."
    end
 
    def menu_list
@@ -27,12 +28,12 @@ class Menu
    private
 
    def spacer
-     "---------------------"
+     puts "---------------------"
    end
 
    def list_dishes
      @menu.each do |dish, price|
-       "#{dish} - £#{price}"
+       puts "#{dish} - £#{price}"
      end
    end
 

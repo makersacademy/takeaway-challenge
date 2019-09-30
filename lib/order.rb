@@ -16,26 +16,18 @@ class Order
   end
 
   def add_dish(dish, quantity = 1)
-    if @menu.dish_on_menu?(dish) 
+    if @menu.dish_on_menu?(dish)
       add_dish_to_order(dish, quantity)
     else
       "Sorry, that's not a dish on the menu"
     end
   end
 
-  #def dish_on_menu?(dish)
-  #  @menu.dish_on_menu?(dish)
-  #end
-
   def calculate_total
     add_each_order
   end
 
   private
-
-  #def dish_on_menu?(dish)
-  #  menu_list.any? { |dish_key, price|  dish_key == dish.to_sym }
-  #end
 
   def add_dish_to_order(dish, quantity)
     price = cost_of_dish_in_quantity(dish, quantity)

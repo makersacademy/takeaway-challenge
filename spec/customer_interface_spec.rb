@@ -2,22 +2,45 @@ require 'customer_interface'
 
 describe Interface do
   subject(:interface){described_class.new}
-  let(:customer_input) { "1" }
+  let(:option_one) { "1" }
+  let(:option_two) { "2" }
+  let(:option_three) { "3" }
+  let(:option_four) { "4" }
+  let(:option_five) { "5" }
 
   describe '#request_input' do
-    it "should request command from customer and execute" do
-      option1 = interface.request_input(customer_input)
-      expect(option1).to eq "---------------------"
+    it "customer picks 1 - should display food menu customer" do
+      expect(interface.request_input(option_one)).to eq "menu printed."
+    end
+
+    it "customer picks 2 - should be able to add a dish to their order" do
+      expect(interface.request_input(option_two)).to eq "added to order!"
+    end
+
+    it "customer picks 3 - prints out the customer's order so far" do
+      expect(interface.request_input(option_three)).to be_empty
     end
     it "advises if an input was not successful" do
       expect(interface.request_input("goat")).to include "Sorry"
     end
   end
 
-  describe '#view_menu' do
-    it "prints out the menu" do
-      expect(interface.view_menu).not_to be_empty
+#  describe '#view_menu' do
+#    it "prints out the menu" do
+#      expect(interface.view_menu).not_to be_empty
+#   end
+#  end
+
+  describe '#add_dish' do
+    it "adds a choosen item to the customer's order" do
+      interface.add_dish("cod", 2)
+      expect(interface.view_order).to eq [["cod", 2, 12]]
+    end
+    it "advises if an order was not successful" do
+      expect(interface.add_dish("goat")).to include "Sorry"
     end
   end
+
+
 
 end
