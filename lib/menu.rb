@@ -20,6 +20,10 @@ class Menu
      @menu
    end
 
+   def dish_on_menu?(dish)
+     check_menu(dish)
+   end
+
    private
 
    def spacer
@@ -30,6 +34,10 @@ class Menu
      @menu.each do |dish, price|
        "#{dish} - £#{price}"
      end
+   end
+
+   def check_menu(dish)
+     @menu.any? { |dish_key, price| dish_key == dish.to_sym }
    end
 
 end

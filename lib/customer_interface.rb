@@ -2,9 +2,10 @@ require_relative 'order'
 require_relative 'menu'
 class Interface
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new)
     #@customer_order = []
     @menu = menu
+    @order = order
   end
 
   def request_input(customer_input = gets.chomp)
@@ -14,6 +15,10 @@ class Interface
 
   def view_menu
     @menu.view_menu
+  end
+
+  def add_dish(dish, quantity = 1)
+    @order.add_dish(dish, quantity)
   end
 
   private
