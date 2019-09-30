@@ -1,8 +1,19 @@
+require_relative 'order'
+require_relative 'menu'
 class Interface
+
+  def initialize(menu = Menu.new)
+    #@customer_order = []
+    @menu = menu
+  end
 
   def request_input(customer_input = gets.chomp)
     display_menu
     options(customer_input)
+  end
+
+  def view_menu
+    @menu.view_menu
   end
 
   private
@@ -24,7 +35,7 @@ class Interface
   def options(customer_input)
     case customer_input
       when "1"
-        'shows dish menu'
+        view_menu
       when "2"
 
       when "3"
@@ -36,6 +47,7 @@ class Interface
       when "9"
         exit
       else
+        puts "Sorry, invalid input, try agian"
         "Sorry, invalid input, try agian"
     end
   end

@@ -5,14 +5,10 @@ require_relative 'menu'
 #chips: 3
 
 class Order
-  attr_reader :customer_order
+
   def initialize(menu = Menu.new)
     @customer_order = []
     @menu = menu
-  end
-
-  def view_menu
-    @menu.view_menu
   end
 
   def menu_list
