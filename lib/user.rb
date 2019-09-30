@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'send_sms'
 
 class User
 
@@ -28,7 +29,7 @@ class User
   end
 
   def confirm
+    Message.new.send_sms
     "Order sent to restaurant, confirmation text to follow"
-    #  implement so that send_text method called on messenger class
   end
 end

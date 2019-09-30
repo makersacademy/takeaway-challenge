@@ -6,11 +6,12 @@ describe User do
   subject(:user) { described_class.new(menu_dub, order_dub) }
   let(:item) { double :item }
   let(:quantity) { double :quantity }
+  let(:sms) { double :sms }
 
   describe "#view_menu" do
 
     let(:menu_items) { { :margherita => 7.50, :pepperoni => 10.50,
-                   :calzone => 12.50, :diavola => 10.50 } }
+                         :calzone => 12.50, :diavola => 10.50 } }
 
     it "shows the menu" do
       allow(menu_dub).to receive(:menu) { menu_items }
@@ -44,6 +45,7 @@ describe User do
 
   describe "#confirm" do
     it "confirms order" do
+      allow(sms).to receive(:sned_sms)
       expect(user.confirm).to eq "Order sent to restaurant, confirmation text to follow"
     end
   end
