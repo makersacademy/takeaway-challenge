@@ -36,4 +36,5 @@ describe Interface do
       expect(interface.request_input("goat")).to include "Sorry"
     end
   end
+  
 end
