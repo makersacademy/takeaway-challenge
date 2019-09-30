@@ -1,5 +1,5 @@
 class Menu
-attr_accessor :selection , :list , :calculator
+attr_accessor :basket , :list , :calculator
 
 def initialize
   @list = [
@@ -12,7 +12,7 @@ def initialize
    {:name => "Full stack burger", :number => 7, :price => 10}
    ]
 
-@selection = []
+@basket = []
  end
 
  def print_menu
@@ -23,14 +23,21 @@ def initialize
 
   def order(num)
     raise 'Item not recognised' if 1 > num || num > 7
-    @selection << @list[num - 1]
+    @basket << @list[num - 1]
   end
 
   def total
     calculator = []
-    @selection.each do |item|
+    @basket.each do |item|
       calculator << item[:price]
       end
       calculator.sum
+    end
+
+    def print_basket
+      @basket.each do |item|
+        "#{item[:name]} ----- £#{item[:price]}"
+      end
+       "Total: £#{total}"
     end
   end
