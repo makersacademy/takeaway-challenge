@@ -1,30 +1,12 @@
-
-
 class Interface
 
-  display_menu
-
-  customer_input = gets.chomp
-
-  case customer_input
-    when "1"
-      puts 'order'
-    when "2"
-
-    when "3"
-
-    when "4"
-
-    when "5"
-
-    when "9"
-      exit
-    else
-      puts "invalid input, try agian"
+  def request_input(customer_input = gets.chomp)
+    display_menu
+    options(customer_input)
   end
 
   private
-  
+
   def display_menu
     puts "Welcome to Fish & Chip Shop"
     puts "---------------------------"
@@ -37,5 +19,24 @@ class Interface
     puts "- press 9 to exit."
     puts "---------------------------"
     print "What would you like to do?: "
+  end
+
+  def options(customer_input)
+    case customer_input
+      when "1"
+        'shows dish menu'
+      when "2"
+
+      when "3"
+
+      when "4"
+
+      when "5"
+
+      when "9"
+        exit
+      else
+        "Sorry, invalid input, try agian"
+    end
   end
 end
