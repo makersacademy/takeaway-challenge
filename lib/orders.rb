@@ -9,7 +9,7 @@ class Orders
     @digital_till_class = dgt_class
   end
 
-  def make_order(items)
+  def add_food(items)
     save_order(items)
   end
 
@@ -22,8 +22,11 @@ class Orders
 
   def save_order(items)
     items.split(',').each { |item| food, quantity = item.split
-      @current_order << { quantity: quantity.to_i, item: food,
-        cost: @menu.items[food.to_sym] * quantity.to_i }
+      if already_exists?(food)
+        update_item(food, quantity)
+      else
+        @current_order << new_item(food, quantity)
+      end
     }
   end
 
@@ -40,4 +43,20 @@ class Orders
     @digital_till_class.new(@current_order).itemised_receipt
   end
 
+  def already_exists?(food)
+    @current_order.any? { |ci| ci[:item] == food }
+  end
+
+  def update_item(food, quantity)
+    @current_order.each { |ci|
+      if ci[:item] == food
+        ci[:quantity] += quantity.to_i
+        ci[:cost] += @menu.items[food.to_sym] * quantity.to_i
+      end
+    }
+  end
+
+  def new_item(food, quantity)
+    { quantity: quantity.to_i, item: food, cost: @menu.items[food.to_sym] * quantity.to_i }
+  end
 end

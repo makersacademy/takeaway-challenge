@@ -14,7 +14,7 @@ class Takeaway
   end
 
   def add_items(items)
-    @orders.make_order(items)
+    @orders.add_food(items)
   end
 
   def complete_order(total)

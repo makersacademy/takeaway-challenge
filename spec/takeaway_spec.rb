@@ -14,7 +14,7 @@ describe Takeaway do
     { quantity: 1, item: "burger", cost: 5 }]
   }
   let(:test_receipt) { "\nRECEIPT:\n1 x Burger - £5\nTOTAL - £5\n" }
-  let(:orders) { double :orders, make_order: true, history: test_receipt, current_order: order, submit_order: true }
+  let(:orders) { double :orders, add_food: true, history: test_receipt, current_order: order, submit_order: true }
   let(:orders_class) { double :orders_class, new: orders }
 
   subject(:takeaway) { described_class.new(menu: menu, orders_class: orders_class, messenger_class: messenger_class) }

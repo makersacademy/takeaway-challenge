@@ -80,3 +80,9 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+Features To Add
+-------
+* Rejects dishes that don't exist
+* Add context to rspec
+* Remove dishes
