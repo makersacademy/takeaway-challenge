@@ -1,35 +1,34 @@
 require_relative 'menu'
-class Takeaway
-  attr_reader :list, :subtotal, :orders, :total
+require_relative 'order'
 
-  def initialize
-    @orders = {}
-    @menu = Menu.new
-    @total = 0
-    @subtotal = 0
+class Takeaway
+  attr_reader :orders, :total, :menu
+
+  def initialize(menu)
+    @menu = menu.new
+    @total_order = []
+    @orders = []
   end
 
   def show_menu(menu)
-    @menu = menu
-    @menu.list.each do |name, price|
+    menu.list.each do |name, price|
       puts "Menu: #{name} £#{price}"
     end
   end
 
-  def add_order(dish, quantity)
-    if @menu.list.has_key?(dish)
-      @orders[dish] = quantity
-      @menu.list.slice(dish).each do |food, price|
-        @subtotal = price * quantity
-        puts "#{quantity} x of #{food} for £#{price} each is £#{subtotal}"
-        puts "your total is #{subtotal}"
-        @total += @subtotal
-        puts "Total: #{total}"
-      end
+  def create_order(dish, quantity = 1)
+    if menu.list.has_key?(dish)
+      order = Order.new(dish, quantity)
+      @orders << order
     else
       puts "not available, choose another dish"
     end
   end
+
+  def calculate_total(orders)
+    
+  end
+
 end
 
 
