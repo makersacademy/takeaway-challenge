@@ -8,8 +8,8 @@ class Sms
     @account_sid = 'ACeaf08799fdf07e04a450f4cbf303137f'
     @auth_token = '1e6b983cfda00aa789175faa8466309b'
     @client = Twilio::REST::Client.new(account_sid, auth_token)
-    @from = '+13346506074' # Your Twilio number
-    @to = '+447452973941' # Your mobile phone number
+     @from = 'NUMBER OMITTED FOR PRIVACY' # Your Twilio number
+    @to = 'NUMBER OMITTED FOR PRIVACY' # Your mobile phone number
 
   end
   def time
