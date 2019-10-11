@@ -4,24 +4,27 @@ require 'dishes'
 describe Customer do
   it { is_expected.to respond_to :check }
 
-  it 'can select a dish from the menu' do
-    #Arrange
-    customer = Customer.new
-    dish = Dishes.new
-    #Act
-    customer.select(dish.dishes[1])
-    #Assert
-    expect(customer.customer_dishes).to include("Noodles = £3")
+  before do
+    @customer = Customer.new
+    @dish = Dishes.new
   end
 
-  it 'will chack the total of dishes' do
-    #Arrange
-    customer = Customer.new
-    dish = Dishes.new
-    #Act
-    customer.select(dish.dishes[1])
-    customer.select(dish.dishes[2])
-    #Assert
-    expect(customer.amount_of_dishes).to eq(2)
+  it 'can select a dish from the menu' do
+    @customer.select(@dish.dishes[1])
+    expect(@customer.customer_dishes).to include("Noodles = £3")
   end
+
+  it 'will check the total of dishes' do
+    @customer.select(@dish.dishes[1])
+    @customer.select(@dish.dishes[2])
+    expect(@customer.amount_of_dishes).to eq(2)
+  end
+
+#----- I HAVE OUTPUT THE TEXT MESSAGE TO THE TERMINAL -----
+  it 'will place an order' do
+    @customer.place_order
+    expect(@customer.place_order).to eq(@customer.order_msg)
+  end
+
+
 end
