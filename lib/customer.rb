@@ -15,4 +15,8 @@ attr_reader :customer_dishes
     @customer_dishes << dish
   end
 
+  def amount_of_dishes
+    @customer_dishes.count
+  end
+
 end
