@@ -9,7 +9,7 @@ class DeliveryTime
     # logs in
     @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
-  
+
   def send
     message = @client.messages.create(to: @number,# phone number
       body: "Thank you! Your order was placed and will be delivered before #{@new_time}",
