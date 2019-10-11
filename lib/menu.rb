@@ -1,5 +1,7 @@
 class Menu
 
+  attr_reader :menu_items
+  
   def initialize
     @menu_items = {
       rice: 2,
