@@ -21,22 +21,34 @@ class Customer
     current_order = []
     puts "Enter item:"
     item = gets.chomp
-    if restaurant.menu.include?(item)
-      current_order << item
-      puts "How many #{item} do you want?"
-      num = gets.chomp.to_i
-      if num.positive? && num.integer?
-        current_order << num
-        @order << current_order
-        puts "You requested to make an order of #{num} #{item}"
-        return @order
-      else
-        puts "Incorrect amount"
-      end
+    puts "Enter amount:"
+    num = gets.chomp.to_i
+    current_order << item
+    current_order << num
+    check_order(current_order, restaurant)
+    puts "Total cost of order is £#{total_price(restaurant)}"
+  end
+
+  def check_order(current_order, restaurant)
+    if restaurant.menu.include?(current_order[0]) && current_order[1].positive? && current_order[1].integer?
+      cost = total_price(restaurant)
+      current_order << cost
+      @order << current_order
     else
-      puts "Item doesn't exist on the menu"
+      raise 'Order Invalid'
     end
-    raise 'Order was invalid'
+  end
+
+  def total_price(restaurant)
+    cost = 0
+    @order.each do |order|
+      restaurant.menu.each do |item, price|
+        if order[0] == item
+          cost += price*order[1]
+        end
+      end
+    end
+    cost
   end
 
   # def order_status

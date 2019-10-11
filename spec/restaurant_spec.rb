@@ -1,4 +1,5 @@
 require 'Restaurant'
+require 'customer'
 
 describe Restaurant do
 
@@ -12,6 +13,15 @@ describe Restaurant do
       }
 
       expect(subject.menu).to include(menu)
+    end
+  end
+
+  describe '#send_text' do
+    it 'can send a confirmation text of order' do
+      customer = double('customer')
+      allow(customer).to receive(:get_order).and_return(['chicken_burgers', 2, 5.0])
+      text = subject.send_text(customer.get_order)
+      expect(text).to eq(true)
     end
   end
 end
