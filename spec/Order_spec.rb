@@ -1,6 +1,7 @@
 require 'Order'
 describe Order do
 
+  # Code is dirty here, I wanted to use Doubles but I ran out of time. Definitely not the DRYest code.
   it 'gets menu from Menu' do
    expect(subject.menu)
   end
