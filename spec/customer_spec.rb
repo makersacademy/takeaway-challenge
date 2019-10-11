@@ -22,6 +22,8 @@ describe Customer do
 
 #----- I HAVE OUTPUT THE TEXT MESSAGE TO THE TERMINAL -----
   it 'will place an order' do
+    @customer.select(@dish.dishes[1])
+    @customer.select(@dish.dishes[2])
     @customer.place_order
     expect(@customer.place_order).to eq(@customer.order_msg)
   end
