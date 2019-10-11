@@ -13,7 +13,12 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+ ```
+complete stories:
 
+
+
+ ```
 Instructions
 -------
 
