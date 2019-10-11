@@ -13,7 +13,14 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-##Stories Completed
+ *Time started:* 09:30
+ *Time finished:*
+
+Stories Completed
+-------
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
 
 Instructions
 -------
