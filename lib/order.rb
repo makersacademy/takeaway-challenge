@@ -6,22 +6,21 @@ class Order
     @customer = customer
     @number = number
     @order = {}
-    @total = 0
-    @status = false
+    # @status = false
   end
 
   def add(item, quantity)
     if @order.include?(item)
       current_quantity = @order[item]
-      current_quantity += quantity
-      @order[item] = current_quantity
+      quantity += current_quantity
+      @order[item] = quantity
     else
       @order[item] = quantity
+
     end
   end
 
   def calc_total(menu)
-    price = 0
     @order.each do |item, quantity|
       if quantity.class != Integer
          @total = 0
@@ -33,8 +32,8 @@ class Order
     "The order comes to £#{@total}"
   end
 
-  def complete?
-    @status = true if @total > 0
-  end
+  # def complete?
+  #   @status = true if @total > 0
+  # end
 
 end
