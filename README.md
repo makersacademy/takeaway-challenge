@@ -15,7 +15,7 @@ Takeaway Challenge
  ```
 
 Stories Completed:
-
+  First story completed
 
 -------
 
