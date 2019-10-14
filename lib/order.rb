@@ -30,7 +30,8 @@ class Order
   end
 
   def confirm_order(time = calculate_time)
-    message = "Thank you! Your order was placed and will be delivered before #{time}"
+    message = "Thank you! Your order was placed and will
+    be delivered before #{time}"
     return message if @confirmation == "Confirm"
   end
 end
