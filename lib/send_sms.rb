@@ -10,7 +10,7 @@ class SendSMS
   #
   # client.messages.create(
   # from: '+44 1133201183',
-  # to: '+44 7808275626',
+  # to: '+44 7808275625',
   # body: "Hey friend!")
   TIME_FORMAT = "%H:%M"
 

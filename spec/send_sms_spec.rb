@@ -11,7 +11,7 @@ describe SendSMS do
       account_sid: "",
       auth_token: "",
       from: "+44 1133201183",
-      to: "+44 7808275626",
+      to: "+44 7808275625",
       body: "Thank you! Your order will be delivered before %s"
     }
   end
