@@ -1,8 +1,8 @@
 require 'twilio-ruby'
 require 'sinatra'
 class SendSMS
-  # account_sid = 'AC4599064055b8d324b89925cd5942e372'
-  # auth_token = '86293f309beb51dc8b09da7e7d51d720'
+  # account_sid = ''
+  # auth_token = ''
   # client = Twilio::REST::Client.new(account_sid, auth_token)
   #
   # from = '+15551234567' # Your Twilio number

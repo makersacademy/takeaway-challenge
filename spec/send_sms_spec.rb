@@ -8,8 +8,8 @@ describe SendSMS do
   let(:messages) { spy(:messages) }
   let(:config) do
     {
-      account_sid: "AC4599064055b8d324b89925cd5942e372",
-      auth_token: "86293f309beb51dc8b09da7e7d51d720",
+      account_sid: "",
+      auth_token: "",
       from: "+44 1133201183",
       to: "+44 7808275626",
       body: "Thank you! Your order will be delivered before %s"
