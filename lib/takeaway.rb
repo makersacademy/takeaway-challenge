@@ -1,8 +1,7 @@
 require 'twilio-ruby'
 
 # put your own credentials here
-account_sid = 'AC71ede767f3f69bf43718d8094b244800'
-auth_token = '88ac7f43909c00b5b8e9a32d5b554c35'
+
 
 # set up a client to talk to the Twilio REST API
 @client = Twilio::REST::Client.new account_sid, auth_token
@@ -34,8 +33,7 @@ end
 
 def send_a_text
   @client.messages.create(
-    from: '+13605295607',
-    to: '+447808274842',
+  
     body: 'Test'
   )
   puts ("tried to send a text")
