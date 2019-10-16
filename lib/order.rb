@@ -3,25 +3,25 @@ require 'menu'
 class Order
     attr_reader :order
 
-    def initialize
-        @menu = Menu.new
+    def initialize(menu = Menu.new)
+        @menu = menu
 
         @order = [] 
+        @total = 0
     end
 
     def add_item(name, amount)
         @menu.menu_items.each do |dish, price|
             if name == dish
-                #add the dish
+                #add the dish to array
                 @order.push ([name, amount])
-                total = amount * price
-            raise 'This item is not on the menu' if name != dish
+                @total = amount * price
+            end
         end
+        raise "This item is not on the menu" if @total == 0
     end
 
-    def total 
-        "The total for your order is #{@order}."
-        #should create message for twilio here
-    end
-  end
+    def total
+        @total
+    end   
 end
