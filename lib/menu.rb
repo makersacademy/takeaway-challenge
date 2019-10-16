@@ -1,5 +1,5 @@
 class Menu
   def view
-    print "Pizza"
+    print "Pizza - £10"
   end
 end
