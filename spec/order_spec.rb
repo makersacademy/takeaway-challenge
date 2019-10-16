@@ -24,17 +24,17 @@ describe Order do
     expect(subject.final_order).to eq([])
   end
 
-  it 'has a list of the chosen dishes with their quantities' do
-    subject.select_dish("pizza")
-    subject.select_dish("coffee")
-    subject.select_dish("coffee")
-    expect(subject.final_order_compile).to eq({"pizza" => 1,"coffee" => 2})
-  end
+  # it 'has a list of the chosen dishes with their quantities' do
+  #   subject.select_dish("pizza")
+  #   subject.select_dish("coffee")
+  #   subject.select_dish("coffee")
+  #   expect(subject.final_order_compile).to eq({"pizza" => 1,"coffee" => 2})
+  # end
 
-  it 'has a list of the chosen dishes with their quantities and total cost' do
-    subject.select_dish("pizza")
-    subject.select_dish("coffee")
-    subject.select_dish("coffee")
-    expect(subject.final_order_compile).to eq({"pizza" => 1,"coffee" => 2, "total cost" => 14})
-  end
+  # it 'has a list of the chosen dishes with their quantities and total cost' do
+  #   subject.select_dish("pizza")
+  #   subject.select_dish("coffee")
+  #   subject.select_dish("coffee")
+  #   expect(subject.final_order_compile).to eq({"pizza" => 1,"coffee" => 2, "total cost" => 14})
+  # end
 end
