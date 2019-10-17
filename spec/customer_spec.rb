@@ -1,18 +1,15 @@
-require './docs/customer'
+require 'customer'
 
 describe Customer do
 
-  it 'orders meals' do
-    # Arrange
-    restaurant = Restaurant.new
-    # Act
-    restaurant.menu
-    subject.customer_order
-    subject.customer_order
-    # Assert
-    expect(subject.customer_order_array).to include(
-      {:amount_ordered=>"3", :customer_meal=>"pesto pasta"},
-       {:amount_ordered=>"4", :customer_meal=>"pigeon"})
+  it 'tests user can order meals' do
+    meal = double(:meal)
+    amount = double(:amount)
+    subject.customer_order(:meal, :amount)
+    expect(subject.order).to eq([{
+       :order_amount=>:amount,
+       :order_meal=>:meal
+    }])
   end
 
 end
