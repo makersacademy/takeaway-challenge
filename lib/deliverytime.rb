@@ -5,7 +5,7 @@ class DeliveryTime
     @number, @time = number, Time.new
     @new_time = (@time.hour + 1).to_s + ":" + @time.min.to_s
     # sets values for login
-    @account_sid, @auth_token = 'AC94392cc1d5ae8e5f01f162d5c6bc0a29', '0e563372bfd9ec7e38f315e0b77ae2f4'
+    @account_sid, @auth_token = 'account_sid', 'auth_token'
     # logs in
     @client = Twilio::REST::Client.new @account_sid, @auth_token
   end

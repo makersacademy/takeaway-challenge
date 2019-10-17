@@ -5,22 +5,19 @@ class Order
 
   attr_reader :items
 
-  def initialize(items = nil)
-    @items = items
+  def initialize(items = nil, menu = nil, total = nil, send = nil)
+    @items, @menu, @customer_total, @customer_send = items, menu, total, send
   end
 
   def set_menu
-    @menu = MainMenu.new
     @dishes = @menu.dishes
   end
 
   def confirm_total
-    customer_total = Total.new(@items, @dishes)
-    @total = customer_total.calculate
+    @total = @customer_total.calculate(@items, @dishes)
   end
 
-  def send(number)
-    customer_send = DeliveryTime.new(number)
-    customer_send.send
+  def send
+    @customer_send.send
   end
 end
