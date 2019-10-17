@@ -1,7 +1,8 @@
 class Order
 
   def initialize
-    @dish_list_with_prices = {'Egg Fried Rice' => '3', 'Prawn Crackers' => '2', 'Sweet and Sour Chicken' => '5'}
+    @dish_list_with_prices = Menu.new.dish_list_with_prices
+    @selected_dishes = []
   end
 
   #PLEASE READ
@@ -20,30 +21,37 @@ class Order
   # end
 
 
-  def select_item(dishes_I_choose)
-    dishes_I_choose_arr = dishes_I_choose.split(", ")
-    p dishes_I_choose_arr
-    dishes_I_choose_arr.each do
-      @selected_dishes = @dish_list_with_prices.select { |k| k == dishes_I_choose}
-      p @selected_dishes
-    # return @selected_dishes
-    end
+  # def select_item(dishes_I_choose)
+  #   dishes_I_choose_arr = dishes_I_choose.split(", ")
+  #   @selected_dishes = []
+  #   dishes_I_choose_arr.each do |dish|
+  #     @selected_dishes << @dish_list_with_prices.select { |k| if k == dish then k end}
+  #     # @temp << @selected_dishes
+  #     # @dish
+  #   # return @selected_dishes
+  #   end
+  # end
+
+  def select_item(dish)
+    @selected_dishes << dish
   end
 
+  # def list_selected_dishes
+  # end
+  # def select_item(dish_I_choose)
+  #   @selected_dishes << @dish_list_with_prices.select { |k| k == dish_I_choose }
+  # end
+
   def print_selected_dishes
-    @temp = []
-    @selected_dishes.each do |k, v|
-      @food_name = "#{k}"
-      @temp << @food_name
-    end
-    x = @temp.join(", ")
-    return "You have chosen to order: #{x}"
+    dishes_string = @selected_dishes.join(", ")
+    return "You have chosen to order: #{dishes_string}"
   end
 
   def calculate_total_of_selected_dishes
     @total_cost = 0
-    @selected_dishes.each do |k, v|
-      @total_cost += v.to_i
+    @selected_dishes.each do |dish|
+      price = @dish_list_with_prices[dish]
+      @total_cost += price.to_i
     end
     return "Your order will cost: £#{@total_cost}"
   end
