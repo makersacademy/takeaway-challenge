@@ -1,6 +1,8 @@
 require 'twilio-ruby'
 class DeliveryTime
 
+  attr_reader :new_time
+
   def initialize(number)
     @number, @time = number, Time.new
     @new_time = (@time.hour + 1).to_s + ":" + @time.min.to_s
