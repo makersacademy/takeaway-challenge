@@ -29,12 +29,4 @@ describe Order do
       expect(subject.calculate_total_of_selected_dishes).to eq('Your order will cost: £10')
     end
   end
-
-  # describe '#calculate_total_of_selected_dishes' do
-  #   it 'adds values of selected dishes to calculate total cost' do
-  #     subject.select_item(arg)
-  #     expect(subject.calculate_total_of_selected_dishes).to eq('Your order will cost: £5')
-  #   end
-  # end
-
 end
