@@ -5,22 +5,18 @@ describe Customer do
   it { is_expected.to respond_to :check }
 
   before do
-    @dish = double(:dishes)
-    allow(@dish).to receive(:dishes).and_return(["Chicken = £5",
-               "Noodles = £3",
-               "Steak = £6"])
-
+    @dish = Dishes.new
   end
 
   it 'can select a dish from the menu' do
-    subject.select(@dish.dishes[1])
-    expect(subject.customer_dishes).to include("Noodles = £3")
+    subject.select(@dish.dishes["Steak"])
+    expect(subject.customer_dishes).to include(6)
   end
 
-  it 'will check the total of dishes' do
-    subject.select(@dish.dishes[1])
-    subject.select(@dish.dishes[2])
-    expect(subject.amount_of_dishes).to eq(2)
+  it 'will check the total prices on dishes they ordered' do
+    subject.select(@dish.dishes["Steak"])
+    subject.select(@dish.dishes["Noodles"])
+    expect(subject.total_of_dishes).to eq(subject.total)
   end
 
 #----- I HAVE OUTPUT THE TEXT MESSAGE TO THE TERMINAL -----

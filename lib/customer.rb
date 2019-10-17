@@ -3,7 +3,7 @@ require_relative "dishes"
 class Customer
 require 'twilio-ruby'
 
-attr_reader :customer_dishes, :order_msg
+attr_reader :customer_dishes, :order_msg, :total
 
   def initialize
     @customer_dishes = []
@@ -11,18 +11,24 @@ attr_reader :customer_dishes, :order_msg
   end
 
   def check
-    @dishes
+    dish = Dishes.new
+    return dish.list_dishes
   end
 
   def select(dish)
     @customer_dishes << dish
   end
 
-  def amount_of_dishes
-    @customer_dishes.count
+  def total_of_dishes
+    i = 0
+    while i > @customer_dishes.length do
+      total = total.to_i + @customer_dishes[i].to_i
+      i = i + 1
+    end
+
+    return total
   end
 
-#----- I HAVE OUTPUT THE TEXT MESSAGE TO THE TERMINAL -----
   def place_order
     # account_sid = ''
     # auth_token = ''
