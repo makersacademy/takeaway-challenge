@@ -14,6 +14,6 @@ class Order
   end
 
   def view_selected_dishes
-    print selected_dishes.join
+    puts selected_dishes
   end
 end
