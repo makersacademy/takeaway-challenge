@@ -1,10 +1,11 @@
 class Order
-  attr_reader :menu, :selected_dishes
+  attr_reader :menu, :selected_dishes, :item_prices
 
   def initialize(menu)
     @menu = menu
     @food_items = menu.food_items
     @selected_dishes = []
+    @item_prices = []
   end
 
   def select_dish(item)
@@ -15,5 +16,15 @@ class Order
 
   def view_selected_dishes
     puts selected_dishes
+  end
+
+  def log_dishes_cost
+    @selected_dishes.each do |item|
+      @item_prices <<  @food_items[item]
+    end
+  end
+
+  def total_order_cost
+    print "£#{@item_prices.sum}"
   end
 end
