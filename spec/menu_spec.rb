@@ -13,4 +13,7 @@ describe Menu do
   it 'returns the list of dishes' do
     expect(subject.dishes).to eq subject.dishes
   end
+  it 'has a method for selecting a menu item' do
+    expect(subject.select_item(1)).to eq subject.dishes[0]
+  end
 end

@@ -15,4 +15,8 @@ class Menu
   def add_dish(dish = Dish.new)
     @dishes << dish
   end
+
+  def select_item(item_number)
+    @dishes[item_number - 1]
+  end
 end
