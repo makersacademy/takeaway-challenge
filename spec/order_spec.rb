@@ -31,10 +31,10 @@ describe Order do
     menu = Menu.new
     order = Order.new(menu)
     order.select_dish('Pizza')
+    order.select_dish('Pizza')
     order.select_dish('Chips')
-    order.select_dish('Coke')
-    expect { order.place_order }.to output("Pizza x 1\nChips x 1\nCoke x 1\n").to_stdout
+    order.select_dish('Chips')
+    expect { order.place_order }.to output("Pizza x 2\nChips x 2\n").to_stdout
   end
-
 
 end

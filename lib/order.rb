@@ -1,11 +1,12 @@
 class Order
-  attr_reader :menu, :selected_dishes, :item_prices
+  attr_accessor :menu, :selected_dishes, :item_prices, :unique_selected_dishes
 
   def initialize(menu)
     @menu = menu
     @food_items = menu.food_items
     @selected_dishes = []
     @item_prices = []
+    @unique_selected_dishes = []
   end
 
   def select_dish(item)
@@ -30,7 +31,10 @@ class Order
 
   def place_order
     @selected_dishes.each do |item|
-      puts "#{item} x 1"
+      @unique_selected_dishes << item if @unique_selected_dishes.include?(item) == false
+    end
+    @unique_selected_dishes.each do |item|
+      puts "#{item} x #{@selected_dishes.count(item)}"
     end
   end
 end
