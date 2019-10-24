@@ -8,7 +8,7 @@ class Menu
     @dishes = []
   end
 
-  def add_dish(dish = Dish.new("Swedish Meatballs", 2.50))
+  def add_dish(dish = Dish.new)
     @dishes << dish
   end
 end
