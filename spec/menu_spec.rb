@@ -7,7 +7,10 @@ describe Menu do
   it 'has an empty list of dishes' do
     expect(subject.dishes).to eq []
   end
-  it 'has a method for adding a dish to the list of dishes' do
+  it 'can add a dish to the list of dishes' do
     expect(subject.add_dish(dish)).to eq [dish]
+  end
+  it 'returns the list of dishes' do
+    expect(subject.get_dishes).to eq (subject.dishes)
   end
 end

@@ -11,4 +11,8 @@ class Menu
   def add_dish(dish = Dish.new)
     @dishes << dish
   end
+
+  def get_dishes
+    @dishes
+  end
 end
