@@ -27,4 +27,10 @@ class Order
   def total_order_cost
     print "£#{@item_prices.sum}"
   end
+
+  def place_order
+    @selected_dishes.each do |item|
+      puts "#{item} x 1"
+    end
+  end
 end

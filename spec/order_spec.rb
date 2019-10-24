@@ -26,4 +26,15 @@ describe Order do
     order.log_dishes_cost
     expect { order.total_order_cost }.to output("£14").to_stdout
   end
+
+  it 'shows the selected dishes and their quantities when placing an order' do
+    menu = Menu.new
+    order = Order.new(menu)
+    order.select_dish('Pizza')
+    order.select_dish('Chips')
+    order.select_dish('Coke')
+    expect { order.place_order }.to output("Pizza x 1\nChips x 1\nCoke x 1\n").to_stdout
+  end
+
+
 end
