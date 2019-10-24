@@ -1,10 +1,13 @@
 require 'takeaway'
+require 'dish'
 
 describe Takeaway do
   subject { described_class.new }
   menu = Menu.new
 
-  it 'displays a menu to the customer' do
-    expect(subject.show_menu).to eq menu.dishes
+  it 'checks that menu is a list of dishes' do
+    expect(subject.show_menu(menu)).to all(be_an(Dish))
   end
+  # it '' do
+  # end
 end

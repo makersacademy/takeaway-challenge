@@ -5,7 +5,11 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = []
+    @dishes = [
+      Dish.new("Swedish Meatballs", 2.50),
+      Dish.new("Pizza", 3),
+      Dish.new("Jerk Chicken", 2.99)
+      ]
   end
 
   def add_dish(dish = Dish.new)
