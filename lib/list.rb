@@ -15,4 +15,8 @@ class List
   def print
     p @dish_list
   end
+
+  def select
+    
+  end
 end
