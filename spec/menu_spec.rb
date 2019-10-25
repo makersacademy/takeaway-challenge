@@ -10,7 +10,8 @@ describe Menu do
   end
 
   it 'prints out the menu items' do
-    expect{subject.view_menu}.to output("Kung po chicken £6.80, 
-Chicken chow mein £6.50").to_stdout
+    expect{subject.view_menu}.to output("Kung po chicken £6.80
+Chicken chow mein £6.50
+").to_stdout
   end
 end

@@ -3,12 +3,13 @@ class Menu
   
   def initialize 
     @menu_items = [
-      {item: "kung po chicken", price: 6.80},
-      {item: "chicken chow mein", price: 6.50}
+      {item: "Kung po chicken", price: 6.80},
+      {item: "Chicken chow mein", price: 6.50}
     ]
   end
 
   def view_menu
+    @menu_items.each do |menu_item| puts "#{menu_item[:item]} £#{'%.2f' % menu_item[:price]}"
+    end
   end
-  
 end
