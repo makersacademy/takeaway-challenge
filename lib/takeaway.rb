@@ -3,11 +3,13 @@ require 'order'
 
 
 class Takeaway
-    attr_reader :menu, :order
+    attr_reader :menu, :order, :orders, :order_complete
 
     def initialize(order = Order)
         @menu = JSON.parse(File.read('./menu.json'))["menu"] 
         @order = order.new
+        @orders = []
+        @order_complete = false
     end
 
     def show_menu
@@ -34,6 +36,11 @@ class Takeaway
         @order.calculate_total_price
     end
 
+    def complete_order
+        @order_complete = true
+        process_order
+    end 
+
     private 
 
     def format_order(order)
@@ -41,4 +48,11 @@ class Takeaway
         order.each { |order_name| counts[order_name.name] += 1 }
         return "Order:" + counts.map { |k, v| " #{v} #{k}"}.join(", ")
     end
+
+    def process_order(order = Order)
+        @orders << @order
+        @order = order.new
+    end
+
+
 end
