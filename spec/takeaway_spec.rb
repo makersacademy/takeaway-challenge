@@ -38,7 +38,7 @@ describe Takeaway do
     allow(takeaway).to receive(:send_text)
     takeaway.order(name, 2)
     time_in_1hr = (Time.now + (60 * 60)).strftime("%H:%M")
-    expect(takeaway).to receive(:send_text).with(/‽#{price * 2}\n.+#{time_in_1hr}/)
+    expect(takeaway).to receive(:send_text).once.with(/‽#{price * 2}\n.+#{time_in_1hr}/)
     takeaway.checkout(price * 2)
   end
 end
