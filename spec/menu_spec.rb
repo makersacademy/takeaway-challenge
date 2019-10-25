@@ -12,6 +12,7 @@ describe Menu do
   it 'prints out the menu items' do
     expect{subject.view_menu}.to output("Kung po chicken £6.80
 Chicken chow mein £6.50
+Egg fried rice £4.50
 ").to_stdout
   end
 end

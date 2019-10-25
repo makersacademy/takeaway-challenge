@@ -4,7 +4,8 @@ class Menu
   def initialize 
     @menu_items = [
       {item: "Kung po chicken", price: 6.80},
-      {item: "Chicken chow mein", price: 6.50}
+      {item: "Chicken chow mein", price: 6.50},
+      {item: "Egg fried rice", price: 4.50}
     ]
   end
 
