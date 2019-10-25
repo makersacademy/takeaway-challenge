@@ -2,11 +2,11 @@ class Dishes
     attr_reader :dishes_arr
     
     def initialize
-        @dishes_arr = {
-            "Chips" => 1.00,
-            "Burger" => 1.50,
-            "Chicken" => 1.50,
-            "Kebab" => 3.00
-        }
+        @dishes_arr = [
+            { item: 'Chips', price: 1.00 },
+            { item: 'Burger', price: 1.50 },
+            { item: 'Chicken', price: 1.50 },
+            { item: 'Kebab', price: 3.00 }
+        ]
     end
 end

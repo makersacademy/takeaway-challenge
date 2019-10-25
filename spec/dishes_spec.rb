@@ -5,12 +5,7 @@ describe Dishes do
         expect(subject).to be_an_instance_of(Dishes)
     end
 
-    it 'has an array of dishes' do
-        expect(subject.dishes_arr).to include({"Chips" => 1})
+    it 'has an array of dishes and their prices' do
+        expect(subject.dishes_arr).to include({:item=>"Chips", :price=>1.0})
     end
-
-    it 'has prices included in the array' do
-        expect(subject.dishes_arr).to include("Chips" => 1)
-    end
-
 end

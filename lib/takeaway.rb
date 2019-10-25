@@ -13,13 +13,13 @@ class Takeaway
     end
 
     def order_item(dish, amount = 1)
-        item = @dishes.dishes_arr.select { |item| item == dish }
+        item = @dishes.dishes_arr.select { |list| list[:item] == dish }.first
         amount.times {
             @order << item
         }
     end
 
-    # def order_sum
-    #     @dishes.dishes_arr.each { |k,v|  }
-    # end
+    def order_sum
+        @order.each { |k,v| @price << k }
+    end
 end
