@@ -26,7 +26,7 @@ Burger - £2.00
 Hot Dog - £1.50"
     end
   end
-  context 'Can select items' do
+  context 'The basket' do
     subject { Menu.new }
     
     it 'Allows customer to add items to basket' do
@@ -37,6 +37,11 @@ Hot Dog - £1.50"
     it 'Allows user to add multiple items to basket' do
       subject.order("Burger", 2)
       expect(subject.basket.length).to eq 2
+    end
+
+    it 'Can return the total of the basket' do
+      subject.order("Burger", 4)
+      expect(subject.total).to eq "£16.00"
     end
   end
 end
