@@ -11,8 +11,14 @@ describe Order do
     end
 
     it 'should add item to the order_list' do 
-        subject.add_item_to_order(order_item, 1)
+        subject.add_item_to_order(order_item)
 
         expect(subject.order_list.first).to eq(order_item)
+    end
+
+    it 'should add several items to the order_list' do 
+        subject.add_item_to_order(order_item, 5)
+
+        expect(subject.order_list.length).to eq 5
     end
 end
