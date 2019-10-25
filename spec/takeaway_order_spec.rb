@@ -1,8 +1,8 @@
 require 'takeaway_order'
 
 describe TakeawayOrder do
-  let(:takeaway_order)  { TakeawayOrder.new }
-  let(:takeaway_menu) { TakeawayMenu.new(:szechuan_chilli_beef, :szechuan_chilli_chicken, :kung_po_chicken, :vegetable_spring_rolls) }
+  let(:takeaway_order)  { TakeawayOrder.new(takeaway_menu) }
+  let(:takeaway_menu) { double :TakeawayMenu }
   let(:szechuan_chilli_beef) { double :TakeawayDish }
   let(:szechuan_chilli_chicken) { double :TakeawayDish }
   let(:kung_po_chicken) { double :TakeawayDish }
@@ -22,7 +22,7 @@ describe TakeawayOrder do
     end
 
     it "sets the cost of the order to zero" do
-      expect(takeaway_order.expected_order_total).to be_zero?
+      expect(takeaway_order.current_order_cost).to be_zero
     end
   end
 end
