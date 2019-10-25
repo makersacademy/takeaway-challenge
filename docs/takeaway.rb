@@ -7,6 +7,7 @@ class TakeAway
              "Rice" => 1.59,
              "Katsu chicken" => 2.99 }
     @total_order = ""
+    @sum_total = 0
   end
 
   def order(quantity, item)

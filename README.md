@@ -14,14 +14,6 @@ Takeaway Challenge
 
  ```
 
-Progress updates:
-
--Updated gemfile with twilio gem
-
--Created tests for first user story 
-
-
-
 Instructions
 -------
 

@@ -20,7 +20,11 @@ describe TakeAway do
         @takeaway.order(2, "Rice")
     end
 
-  it "allows the user to order from the dishes available" do
-    expect(@takeaway.total_order).to eq("2 x Salmon sushi: £5.98\n3 x Katsu chicken: £8.97\n2 x Rice: £3.18\n")
-  end
+    it "allows the user to order from the dishes available" do
+      expect(@takeaway.total_order).to eq("2 x Salmon sushi: £5.98\n3 x Katsu chicken: £8.97\n2 x Rice: £3.18\n")
+    end
+
+    it "checks that the sum total is correct" do
+      expect(@takeaway.sum_total).to eq("£18.13")
+    end
 end
