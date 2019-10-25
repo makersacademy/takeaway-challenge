@@ -7,7 +7,9 @@ class Takeaway
         return @dishes.dishes_arr.each { |dish| print dish }
     end
 
-    def order(dish)
-        @dishes.dishes_arr.select { |item| item == dish }
+    def order(dish, amount = 1)
+        amount.times {
+            order << @dishes.dishes_arr.select { |item| item == dish } 
+        }
     end
 end
