@@ -31,7 +31,7 @@ Egg fried rice £4.50
       subject.select(0)
       subject.select(1)
       subject.select(2)
-      expect(subject.total).should eq 17.00
+      expect(subject.total).to eq 17.80
     end
   end  
 end

@@ -18,4 +18,8 @@ class Menu
   def select(item_num)
     @basket << menu_items[item_num]
   end
+
+  def total
+    @basket.map { |item| item[:price] }.sum
+  end
 end
