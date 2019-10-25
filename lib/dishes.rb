@@ -1,0 +1,2 @@
+class Dishes
+end
