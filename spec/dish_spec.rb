@@ -9,11 +9,11 @@ describe Dish do
     expect(subject).to be_an_instance_of Dish
   end
 
-	it 'has a name as a String' do
-	  expect(subject.name).to be_an_instance_of String
+	it 'has a name' do
+	  expect(subject).to respond_to :name
   end
 
-  it 'has a price as a Float' do
-    expect(subject.price).to be_an_instance_of Float
+  it 'has a price' do
+    expect(subject).to respond_to :price
   end
 end
