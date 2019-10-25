@@ -1,0 +1,10 @@
+{
+    "menu" : [
+        { "item": "Cod", "price": 5.0, "quantity": 20},
+        { "item": "Haddock", "price": 6.0, "quantity": 20},
+        { "item": "Chips", "price": 2.5, "quantity": 20},
+        { "item": "Jumbo Sausage", "price": 3.0, "quantity": 20},
+        { "item": "Curry Sauce", "price": 1.0, "quantity": 20},
+        { "item": "Mushy Peas", "price": 1.0, "quantity": 20}
+    ]
+}
