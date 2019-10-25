@@ -18,8 +18,8 @@ describe Menu do
 
     it 'Can view the menu' do
       expect(subject.view_menu).to eq "---Menu---
-      Burger - £2.00
-      Hot Dog - £1.50"
+Burger - £2.00
+Hot Dog - £1.50"
     end
   end
 end
