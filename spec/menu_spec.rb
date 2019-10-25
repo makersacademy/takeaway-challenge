@@ -27,5 +27,11 @@ Hot Dog - £1.50"
     end
   end
   context 'Can select items' do
+    subject { Menu.new }
+    
+    it 'Allows customer to add items to basket' do
+      subject.order("Burger", 1)
+      expect(subject.basket).not_to be_empty
+    end
   end
 end
