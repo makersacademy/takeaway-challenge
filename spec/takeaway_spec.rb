@@ -13,4 +13,8 @@ describe Takeaway do
             "Kebab" => 3.00
         )
     end
+
+    it 'returns an item from the menu and its price, depending on what the user enters' do
+        expect(subject.order("Chips").to eq("Chips" => 1))
+    end
 end
