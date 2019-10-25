@@ -20,5 +20,7 @@ describe Dishes do
             "Chicken" => 1.50,
             "Kebab" => 3.00
         )
-    end    
+    end
+
+    
 end

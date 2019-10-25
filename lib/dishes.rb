@@ -9,4 +9,8 @@ class Dishes
             "Kebab" => 3.00
         }
     end
+
+    def show_menu
+        @dishes_arr.each { |dish| print dish }
+    end
 end
