@@ -10,7 +10,7 @@ class Dishes
         }
     end
 
-    def show_menu
-        @dishes_arr.each { |dish| print dish }
-    end
+    # def show_menu
+    #     @dishes_arr.each { |dish| print dish }
+    # end
 end
