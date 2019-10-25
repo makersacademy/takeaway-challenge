@@ -13,4 +13,12 @@ class Menu
     end
     return @returned_items.join
   end
+
+  def order (item_name,amount)
+    @items.each do |item|
+      if item[:name] == item_name
+        @basket.append(item) * amount
+      end
+    end
+  end
 end
