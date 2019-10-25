@@ -1,5 +1,4 @@
 class Dish
-attr_reader: dishes_list
  
 MENU = [
   {name: 'Pizza Margarita', price: '£11.99'},
@@ -10,9 +9,9 @@ MENU = [
     {name: 'Coke', price: '£2.99'},
     {name: 'Pepsi', price: '£2.99'}
 ]
-def initialize(dishes = MENU)
-@dishes_list = dishes
-end
+  def initialize(dishes = MENU)
+    @dishes_list = dishes
+  end
 
 end
 

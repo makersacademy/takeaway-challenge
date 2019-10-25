@@ -11,4 +11,8 @@ describe Dish do
     MENU = { name: 'Pizza Margarita', price: '£11.99' }
     expect(MENU.is_a?(Hash)).to be_truthy
   end
+
+  it 'print the menu list' do
+    expect(dish).to respond_to(:print_dishes)
+  end
 end
