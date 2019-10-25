@@ -1,7 +1,8 @@
 class Dish
-    attr_reader :menu
+    attr_reader :menu, :selection, :order
     def initialize
         @menu
+        @order =[]
     end
 
     def menu
@@ -10,6 +11,9 @@ class Dish
         
     end
 
-
+    def selection(dish, price)
+        @order = order
+        @order << selection
+    end
 end
 
