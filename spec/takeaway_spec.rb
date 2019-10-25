@@ -21,6 +21,6 @@ describe TakeAway do
     end
 
   it "allows the user to order from the dishes available" do
-    expect(@takeaway.order).to eq("2 x Salmon sushi £5.98\n3 x Katsu chicken £8.97\n2 * Rice £3.18\nTotal: £18.13")
+    expect(@takeaway.total_order).to eq("2 x Salmon sushi: £5.98\n3 x Katsu chicken: £8.97\n2 x Rice: £3.18\n")
   end
 end
