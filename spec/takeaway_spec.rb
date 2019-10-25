@@ -41,4 +41,10 @@ describe Takeaway do
             {"Burger" => 1.50}
         ])
     end
+
+    it 'can get the sum of items in the order array' do
+        subject.order_item("Chips")
+        subject.order_item("Burger")
+        expect(subject.order_sum).to eq(2.50)
+    end
 end
