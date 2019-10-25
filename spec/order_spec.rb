@@ -17,24 +17,13 @@ describe Order do
     expect { order.view_selected_dishes }.to output("Pizza\nChips\nCoke\n").to_stdout
   end
 
-  it 'can can verify the total order cost is correct' do
-    menu = Menu.new
-    order = Order.new(menu)
-    order.select_dish('Pizza')
-    order.select_dish('Chips')
-    order.select_dish('Coke')
-    order.log_dishes_cost
-    expect { order.total_order_cost }.to output("£14").to_stdout
-  end
-
-  it 'shows the selected dishes and their quantities when placing an order' do
+  it 'shows the selected dishes, their quantities and total cost when placing an order' do
     menu = Menu.new
     order = Order.new(menu)
     order.select_dish('Pizza')
     order.select_dish('Pizza')
     order.select_dish('Chips')
     order.select_dish('Chips')
-    expect { order.place_order }.to output("Pizza x 2\nChips x 2\n").to_stdout
+    expect { order.place_order }.to output("Pizza x 2\nChips x 2\nTotal Cost - £24").to_stdout
   end
-
 end

@@ -25,16 +25,27 @@ class Order
     end
   end
 
-  def total_order_cost
-    print "£#{@item_prices.sum}"
+  def display_total_order_cost
+    print "Total Cost - £#{@item_prices.sum}"
   end
 
-  def place_order
+  def identify_unique_dishes
     @selected_dishes.each do |item|
       @unique_selected_dishes << item if @unique_selected_dishes.include?(item) == false
     end
+  end
+
+  def display_selected_dishes_with_quantities
     @unique_selected_dishes.each do |item|
       puts "#{item} x #{@selected_dishes.count(item)}"
     end
+  end
+
+  def place_order
+    identify_unique_dishes
+    display_selected_dishes_with_quantities
+
+    log_dishes_cost
+    display_total_order_cost
   end
 end
