@@ -14,12 +14,8 @@ class Order
   end
 
   def select_dishes(selections, quantity)
-    @selection = []
-    @selection += [selections, quantity]
-  end
-
-  def order_total
-
+    @orders << { meal: selections.to_s, quant: quantity, total: (@menu[selections.to_sym] * quantity) }
+    return "Thank you for your order. The total cost is #{}"
   end
 
 end
