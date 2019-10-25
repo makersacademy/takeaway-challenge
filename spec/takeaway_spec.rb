@@ -37,7 +37,8 @@ describe Takeaway do
     # Prevent from actually sending a text, using stub
     allow(takeaway).to receive(:send_text)
     takeaway.order(name, 2)
-    expect(takeaway).to receive(:send_text).with(/Total: ‽#{price * 2}/)
+    time_in_1hr = (Time.now + (60 * 60)).strftime("%H:%M")
+    expect(takeaway).to receive(:send_text).with(/‽#{price * 2}\n.+#{time_in_1hr}/)
     takeaway.checkout(price * 2)
   end
 end
