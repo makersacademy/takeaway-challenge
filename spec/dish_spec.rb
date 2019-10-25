@@ -10,5 +10,7 @@ describe Dish do
     it "should be able to see a list of dishes" do
         dish = Dish.new
         expect(dish.menu).to include("Pizza")
-    end    
+    end 
+    
+
 end
