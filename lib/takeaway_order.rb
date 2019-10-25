@@ -16,4 +16,8 @@ class TakeawayOrder
   def add_takeaway_dish(dish_menu_number, amount_of_each_dish_ordered)
     list_of_dishes[select_takeaway_dish(dish_menu_number)] = amount_of_each_dish_ordered
   end
+
+  def basket_total(total)
+    @current_order_cost = total
+  end
 end
