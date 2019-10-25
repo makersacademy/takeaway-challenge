@@ -28,6 +28,6 @@ describe DishManager do
   it 'can generate pretty string of dishes' do
     dish_manager = DishManager.new('spec/test-dishes.txt')
 
-    expect(dish_manager.pretty_string).to eq "Crabs: £20\n"
+    expect(dish_manager.pretty_string).to eq "Crabs: £20.00"
   end
 end
