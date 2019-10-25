@@ -1,0 +1,4 @@
+Chicken, 5
+Chocolate, 20
+Crabs, 3.20
+Fish, 4.55
