@@ -14,8 +14,8 @@ describe Dish do
     
     it "should be able to select a number of dishes from the menu" do
         dish = Dish.new
-        selection = ("Curry"), (5)
-        selection = ("Pie"), (4)
-       expect(dish.order).to eq(selection + selection)
+        selection = ("Curry"),(5)
+        selection = ("Pie"),(4)
+       expect(dish.selection()).to include(selection + selection)
     end
 end
