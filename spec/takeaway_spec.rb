@@ -17,4 +17,8 @@ describe Takeaway do
     it 'returns an item from the menu and its price, depending on what the user enters' do
         expect(subject.order("Chips")).to eq("Chips" => 1.0)
     end
+
+    it 'allows the user to enter how many portions of the item they want' do
+        expect(subject.order("Chips", 2)).to eq("Chips" => 1.0, "Chips" => 1.0)
+    end
 end
