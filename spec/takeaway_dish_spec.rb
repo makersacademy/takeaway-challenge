@@ -7,7 +7,7 @@ describe TakeawayDish do
   let(:takeaway_dish) { TakeawayDish.new(args) }
 
   context 'initialize' do
-    it 'successfully instantiates the Takeaway_dish class' do
+    it 'successfully instantiates the TakeawayDish class' do
       expect(takeaway_dish).to be_instance_of(TakeawayDish)
     end
 
