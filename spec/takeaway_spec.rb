@@ -48,8 +48,7 @@ describe Takeaway do
 
     it 'adds prices from order to price array' do
         subject.order_item("Chips")
-        subject.order_sum
-        expect(subject.price).to eq(1.0)
+        expect(subject.order_sum).to eq(1.0)
     end
 
     it 'can get the sum of items in the order array' do

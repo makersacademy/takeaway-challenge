@@ -20,6 +20,6 @@ class Takeaway
     end
 
     def order_sum
-        @order.each { |k,v| @price << k }
+        @order.map { |item| item[:price] }.reduce(:+)
     end
 end
