@@ -9,6 +9,8 @@ class Menu
     end
 
     def AddToBasket(itemName)
-        @menu 
+        @menu.each do |item|
+            @basket << item if item.name == itemName
+        end
     end
 end

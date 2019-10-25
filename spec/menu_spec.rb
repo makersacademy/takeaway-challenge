@@ -17,4 +17,5 @@ describe Menu do
     it "should allow the user to add various items to the basket" do
         subject.AddToBasket("Pizza")
         expect(subject.basket[0].name).to eq("Pizza")
+    end
 end 
