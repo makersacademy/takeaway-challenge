@@ -12,7 +12,7 @@ class Takeaway
 
     def order_item(dish, amount = 1)
         amount.times {
-            return @dishes.dishes_arr.select { |item| item == dish } 
+            @order << @dishes.dishes_arr.select { |item| item == dish } 
         }
     end
 end
