@@ -14,15 +14,15 @@ describe Order do
   end
 
   it 'can add items' do
-    subject.add(item.dish.name, quantity)
+    subject.add(item.dish, quantity)
 
-    dish_has_been_added = subject.items.select { |item| item.dish == dish } == true
+    found_dish = subject.items.select { |item| item.dish == dish }.length == 1
 
-    expect(dish_has_been_added).to eq true
+    expect(found_dish).to eq true
   end
 
   it 'can calculate total' do
-    subject.add(item.dish.name, quantity)
+    subject.add(item.dish, quantity)
 
     expect(subject.total).to eq(dish.price * quantity)
   end
