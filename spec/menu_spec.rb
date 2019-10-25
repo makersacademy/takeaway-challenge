@@ -22,7 +22,7 @@ Egg fried rice £4.50
   describe '#select' do
     it 'it allows a customer to store an item in basket' do
       subject.select(0)
-      expect{subject.basket}.to eq ({"Kung po chicken" => 6.80})
+      expect(subject.basket).to eq([:item=>"Kung po chicken", :price=>6.8])
     end
   end
 end

@@ -14,4 +14,8 @@ class Menu
     @menu_items.each do |menu_item| puts "#{menu_item[:item]} £#{'%.2f' % menu_item[:price]}"
     end
   end
+
+  def select(item_num)
+    @basket << menu_items[item_num]
+  end
 end
