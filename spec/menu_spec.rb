@@ -6,6 +6,6 @@ describe Menu do
   end
 
   it 'creats a hash with menu items and their prices' do
-    expect(subject.menu_items).to have_attributes(:key).and (1.00)
+    expect(subject.menu_items).not_to be_empty
   end
 end
