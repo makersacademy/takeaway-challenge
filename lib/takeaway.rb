@@ -1,6 +1,6 @@
 require "json"
-require 'order'
-
+require_relative 'order'
+require 'twilio-ruby'
 
 class Takeaway
     attr_reader :menu, :order, :orders, :order_complete
@@ -46,13 +46,17 @@ class Takeaway
     def format_order(order)
         counts = Hash.new(0)
         order.each { |order_name| counts[order_name.name] += 1 }
-        return "Order:" + counts.map { |k, v| " #{v} #{k}"}.join(", ")
+        return "Order:" + counts.map { |k, v| " #{v} #{k}"}.join(",")
     end
 
     def process_order(order = Order)
         @orders << @order
+        send_text
         @order = order.new
+        
     end
 
-
+    def send_text
+        # To Do - pull in code to send the text to the user via twilio
+    end
 end
