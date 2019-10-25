@@ -26,7 +26,7 @@ describe TakeawayOrder do
     end
   end
 
-  describe "#add_dish" do
+  describe "#add_takeaway_dish" do
     before(:each) do
       allow(takeaway_menu).to receive(:takeaway_dishes) { [szechuan_chilli_beef, szechuan_chilli_chicken, kung_po_chicken, vegetable_spring_rolls] }
       takeaway_order.add_takeaway_dish(1, 3)
@@ -47,6 +47,15 @@ describe TakeawayOrder do
       expect(takeaway_order.list_of_dishes[szechuan_chilli_chicken]).to eq 1
       expect(takeaway_order.list_of_dishes[kung_po_chicken]).to eq 2
       expect(takeaway_order.list_of_dishes[vegetable_spring_rolls]).to eq 4
+    end
+  end
+
+  describe "#basket_total" do
+    it { is_expected.to respond_to(:basket_total).with(1).argument }
+
+    it "saves the current basket total to @basket_total" do
+      takeaway_order.basket_total(5)
+      expect(takeaway_order.basket_total).to eq 5
     end
   end
 end

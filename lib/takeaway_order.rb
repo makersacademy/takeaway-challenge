@@ -10,6 +10,7 @@ class TakeawayOrder
 
   def select_takeaway_dish(dish_menu_number)
     takeaway_dish = stored_menu.takeaway_dishes[(dish_menu_number - 1)]
+    return takeaway_dish
   end
 
   def add_takeaway_dish(dish_menu_number, amount_of_each_dish_ordered)
