@@ -1,2 +1,4 @@
 class Dish
+
+
 end

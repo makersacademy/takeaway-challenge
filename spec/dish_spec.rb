@@ -6,5 +6,9 @@ describe Dish do
         dish = Dish.new
     expect(dish).to be_kind_of(Dish)
     end
-end
 
+    it "should be able to see a list of dishes" do
+        dish = Dish.new
+        expect(dish.menu).to include("pizza")
+end    
+end
