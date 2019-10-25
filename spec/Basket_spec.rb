@@ -26,7 +26,6 @@ describe Basket do
         total = subject.total_basket
         expect(total).to be_instance_of(Hash)
 
-
     end
 
 
