@@ -1,4 +1,5 @@
 require 'menu'
+require 'text'
 
 class Restaurant
 attr_reader :new_menu
@@ -29,7 +30,8 @@ attr_reader :new_menu
   rescue StandardError
     puts "Total price not match"
   else
-    puts "Right amount"
+    puts "That's right"
+    puts "#{send_text}"
   end
 
   private
@@ -37,7 +39,8 @@ attr_reader :new_menu
     raise StandardError if (@new_menu.total_price != input_from_place_order_above)
   end
 
-  def send_text
+  def send_text(text = Text.new)
+    text.confirmation
       #send_text
       #("Thank you!
       #Your order was placed and will be delivered before 18:52"}")
