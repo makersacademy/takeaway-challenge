@@ -10,7 +10,7 @@ class DishManager
   end
 
   def find_dish_by_name(name)
-    @available_dishes.select { |dish| dish.name == name }.first
+    @available_dishes.select { |dish| dish.name.downcase == name.downcase }.first
   end
 
   def pretty_string
