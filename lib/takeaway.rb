@@ -7,7 +7,9 @@ class Takeaway
     @food =
       { "pizza": 5,
         "coke": 2 }
+    #need to figure out how to get the one from other class
     @order = []
+    p Dish.food
   end
 
   def display_dishes

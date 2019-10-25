@@ -15,8 +15,9 @@ Takeaway Challenge
  ```
 
  ___________________________________
- completed stories : 
- Sort of allows user to choose a dish. Not split class yet. 
+ completed/ partial  stories : 
+ displays dishes and prices  ( not seperate class yet ) 
+ Allows users to select a dish 
 
 Instructions
 -------
