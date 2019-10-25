@@ -16,4 +16,5 @@ describe Process_order do
   it "determins whether the customer wants to order" do
     expect(process_order.are_you_ordering(true)).to eq true
   end
+  it "Can display a list of dishes with prices"
 end
