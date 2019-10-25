@@ -11,8 +11,9 @@ class Takeaway
     end
 
     def order_item(dish, amount = 1)
+        item = @dishes.dishes_arr.select { |item| item == dish }
         amount.times {
-            @order << @dishes.dishes_arr.select { |item| item == dish } 
+            @order << item
         }
     end
 end
