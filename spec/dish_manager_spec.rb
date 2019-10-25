@@ -24,4 +24,10 @@ describe DishManager do
 
     expect(dish_manager.available_dishes.length).to eq 1
   end
+
+  it 'can generate pretty string of dishes' do
+    dish_manager = DishManager.new('spec/test-dishes.txt')
+
+    expect(dish_manager.pretty_string).to eq "Crabs: £20\n"
+  end
 end
