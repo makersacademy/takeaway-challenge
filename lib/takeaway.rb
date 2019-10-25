@@ -30,6 +30,10 @@ class Takeaway
         format_order(@order.order_list)
     end
 
+    def get_order_price
+        @order.calculate_total_price
+    end
+
     private 
 
     def format_order(order)

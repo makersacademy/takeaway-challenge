@@ -26,4 +26,9 @@ describe Takeaway do
         subject.add_item(order_item, 1)
         expect(subject.get_order_details).to eq "Order: 1 Cod"
     end 
+
+    it 'should get the total order price' do 
+        subject.add_item(order_item, 5)
+        expect(subject.get_order_price).to eq 25
+    end 
 end
