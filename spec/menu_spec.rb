@@ -22,4 +22,9 @@ describe Menu do
         subject.AddToBasket("Pizza", 2)
         expect(subject.basket[1].name).to eq("Pizza")
     end
+
+    it "should return the total of the order to the customer" do
+        subject.AddToBasket("Pizza", 1)
+        expect(subject.GetTotal).to eq(3.99)
+    end
 end 

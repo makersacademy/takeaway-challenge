@@ -17,4 +17,12 @@ class Menu
             end
         end
     end
+
+    def GetTotal
+        total = 0
+        @basket.each do |item|
+            total += item.price
+        end
+        return total
+    end
 end
