@@ -1,4 +1,4 @@
-# Module to print menu
+# The PrintMenu module
 module PrintMenu
   def self.print_menu(array)
     print stringify_menu(array)

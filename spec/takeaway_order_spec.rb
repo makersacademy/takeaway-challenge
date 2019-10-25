@@ -60,16 +60,4 @@ describe TakeawayOrder do
       expect(takeaway_order).to respond_to(:basket_total).with(1).argument
     end
   end
-
-  describe "#check_basket_total" do
-    it "returns true if expected_order_total is correct" do
-      allow(szechuan_chilli_beef).to receive(:price) { 6.50 }
-      allow(szechuan_chilli_chicken).to receive(:price) { 6.50 }
-      allow(kung_po_chicken).to receive(:price) { 5.50 }
-      allow(vegetable_spring_rolls).to receive(:price) { 3 }
-      allow(takeaway_order).to receive(:list_of_dishes) { { szechuan_chilli_beef => 3, szechuan_chilli_chicken => 1, kung_po_chicken => 2, vegetable_spring_rolls => 1 } }
-      takeaway_order.basket_total(40)
-      expect(takeaway_order.check_basket_total(takeaway_order)).to eq(true)
-    end
-  end
 end
