@@ -1,4 +1,4 @@
-require 'Dishes'
+require 'dishes'
 
 describe Dishes do
     it 'creates an instance of the dishes class' do
