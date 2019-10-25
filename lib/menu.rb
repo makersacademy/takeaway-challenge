@@ -1,7 +1,7 @@
 class Menu
 
   def view
-    "menu"
+    "meatfeast, £5.00"
   end
 
 end
