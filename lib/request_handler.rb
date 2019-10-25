@@ -1,4 +1,5 @@
 require_relative 'dish_manager'
+require_relative 'order'
 
 class RequestHandler
   attr_reader :body, :from
@@ -24,22 +25,22 @@ class RequestHandler
 
   private
 
-  def make_order(order)
-    total = 0
-    order.lines.each do |line|
+  def make_order(order_body)
+    order = Order.new
+    order_body.lines.each do |line|
       if !line.include? '£'
         data = line.chomp.split(' x ')
         quantity = data.first.chomp.to_i
         dish = @@dish_manager.find_dish_by_name(data.last.chomp)
-        total += dish.price * quantity
+
+        order.add(dish, quantity)
       end
     end
 
-    if total.to_f == order.lines.last.split('£').last.chomp.to_f
-      time_in_an_hour = Time.now + 3600
-      return "Thank you! Your order was placed and will be delivered before #{time_in_an_hour.strftime('%H:%M')}"
+    if order.total == order_body.lines.last.split('£').last.chomp.to_f
+      "Thank you! Your order was placed and will be delivered before #{order.delivery_by}"
     else
-      return "Your total does not match, it should be £#{'%.2f' % total}"
+      "Your total does not match, it should be £#{'%.2f' % order.total}"
     end
   end
 end

@@ -20,4 +20,8 @@ class Order
 
     total
   end
+
+  def delivery_by
+    (Time.now + 3600).strftime('%H:%M')
+  end
 end
