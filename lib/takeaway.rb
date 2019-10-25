@@ -1,24 +1,29 @@
 require "json"
-require 'order_history'
 require 'order'
 
 
 class Takeaway
-    attr_reader :menu, :customers, :order_history
+    attr_reader :menu, :order
 
-    def initialize(orderHistory = OrderHistory)
+    def initialize(order = Order)
         @menu = JSON.parse(File.read('./menu.json'))["menu"] 
-        @order_history = orderHistory.new
-        @customers = []
+        @order = order.new
     end
 
     def show_menu
         @menu.map { |item| "#{item["item"]}: £#{item["price"]}"}.join(", ")
     end
 
-    def new_order(customer)
-        @customers << customer
-        @order_history.create_new_order(customer)
+    def add_customer_details(customer)
+        @order.new_customer(customer)
+    end
+
+    def get_customer_details
+        @order.customer
+    end
+
+    def add_item(item, quantity = 1)
+        
     end
 
 
