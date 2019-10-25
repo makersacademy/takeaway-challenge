@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :order_list
+  # attr_reader
   def initialize
     @menu = {
       Burger:8,
@@ -22,10 +22,24 @@ class Menu
     }.join(" ")
   end
 
+  def item_available?(item)
+    menu.any? { |menu| menu[:item] == item }
+  end
+
+
   def add_dish(name,quantity)
     #can make a new array to hold hashes of individual dish order
     #or simply adding the key-value pair to exisiting hash
     @order_list[name]= quantity
+  end
+
+  def total_price
+    total = 0
+    @order_list.each{|name,quantity|
+      total += (quantity * @menu[name])
+      #quantity.times{total += @menu[name]}
+    }
+    return total
   end
 
 end

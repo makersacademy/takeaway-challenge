@@ -24,5 +24,27 @@ attr_reader :new_menu
     end
   end
 
+  def place_order(price)
+    price_not_matches?(price)
+  rescue StandardError
+    puts "Total price not match"
+  else
+    puts "Right amount"
+  end
+
+  private
+  def price_not_matches?(input_from_place_order_above)
+    raise StandardError if (@new_menu.total_price != input_from_place_order_above)
+  end
+
+  def send_text
+      #send_text
+      #("Thank you!
+      #Your order was placed and will be delivered before 18:52"}")
+  #     time = Time.new
+  #       hr = time.hour + 1
+  #       min = time.min
+  #       "Thank you! Your order was placed and will be delivered before #{hr}:#{min}"
+  end
 
 end
