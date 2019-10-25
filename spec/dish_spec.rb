@@ -12,5 +12,8 @@ describe Dish do
         expect(dish.menu).to include("Pizza")
     end 
     
-
+    it "should be able to select a number of dishes from the menu" do
+        dish = Dish.new
+       expect(dish.selection).to eq(menu1.price + menu2.price)
+    end
 end
