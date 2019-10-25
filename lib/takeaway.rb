@@ -16,4 +16,8 @@ class Takeaway
             @order << item
         }
     end
+
+    # def order_sum
+    #     @dishes.dishes_arr.each { |k,v|  }
+    # end
 end

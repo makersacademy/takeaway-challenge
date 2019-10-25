@@ -42,6 +42,10 @@ describe Takeaway do
         ])
     end
 
+    it 'start with an empty array of price' do
+        expect(subject.price).to be_empty
+    end
+
     it 'can get the sum of items in the order array' do
         subject.order_item("Chips")
         subject.order_item("Burger")
