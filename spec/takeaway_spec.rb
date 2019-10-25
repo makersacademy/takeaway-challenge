@@ -18,10 +18,6 @@ describe Takeaway do
         expect(subject.order).to be_empty
     end
 
-    it 'returns an item from the menu and its price, depending on what the user enters' do
-        expect(subject.order_item("Chips")).to eq("Chips" => 1.0)
-    end
-
     it 'adds item to array of order' do
         subject.order_item("Chips")
         expect(subject.order).to include("Chips" => 1.0)
