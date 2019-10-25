@@ -12,6 +12,7 @@ describe Takeaway do
   #end
 
   it "allows users to select a dish" do
-    expect(takeaway.select_dishes("pizza")).to eq 5
+    takeaway.select_dishes("pizza")
+    expect(takeaway.order).not_to be_empty
   end
 end

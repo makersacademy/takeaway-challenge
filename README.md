@@ -16,7 +16,7 @@ Takeaway Challenge
 
  ___________________________________
  completed stories : 
- none 
+ Sort of allows user to choose a dish. Not split class yet. 
 
 Instructions
 -------
