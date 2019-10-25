@@ -44,4 +44,9 @@ Hot Dog - £1.50"
       expect(subject.total).to eq "£8.00"
     end
   end
+  context 'Allows user to have message sent to them' do
+    it 'Message can be sent' do
+      expect(subject.submit_order).to eq true
+    end
+  end
 end

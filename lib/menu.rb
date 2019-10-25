@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Menu
   attr_reader :items, :basket
   def initialize
@@ -30,4 +32,17 @@ class Menu
     return_price = "%.2f" % total
     return "£#{return_price}"
   end 
+
+  def submit_order
+=begin
+      client = Twilio::REST::Client.new(account_sid, auth_token)
+      from = ''
+      to = ENV['NUM']
+      client.messages.create(
+      from: from,
+      to: to,
+      body: "Hey friend!")
+=end
+    return true
+  end
 end
