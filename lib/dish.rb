@@ -1,12 +1,9 @@
 class Dish
-  attr_reader :dishes
+  attr_reader :food
 
-  def initialize(dishes = 5)
-    @dishes = dishes
-    p dishes
-    #@dishes = {
-    # "chocolate": 5,
-    #"wine": 6,
-    #}
+  def initialize
+    @food =
+      { "pizza": 5,
+        "coke": 2 }
   end
 end
