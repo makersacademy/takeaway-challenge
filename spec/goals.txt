@@ -4,9 +4,11 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 Plan:
-list of dishes (aka menu)(this will be a hash)
-hash { :item => korma,  :price => 1 }
-view menu
+have a Menu
+view the Menu
+
+hash { korma => 1, vindaloo => 2 } etc
+view menu ???
 
 2 -----
 As a customer
