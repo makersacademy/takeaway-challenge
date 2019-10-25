@@ -7,4 +7,7 @@ class Takeaway
       { item: "Drink", price: 0.80 },
     ]
   end
+
+  def order
+  end
 end
