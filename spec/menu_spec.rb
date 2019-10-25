@@ -13,4 +13,8 @@ describe Menu do
     it "should display a list of items in the menu" do
         expect(subject.menu).to include(a_kind_of(Item))
     end
+
+    it "should allow the user to add various items to the basket" do
+        subject.AddToBasket("Pizza")
+        expect(subject.basket[0].name).to eq("Pizza")
 end 

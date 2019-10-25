@@ -7,4 +7,8 @@ class Menu
         @basket = []
         @menu = [Item.new("Pizza", 3.99), Item.new("Burger", 4.99), Item.new("Fries", 2.99)]
     end
+
+    def AddToBasket(itemName)
+        @menu 
+    end
 end
