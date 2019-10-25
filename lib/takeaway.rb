@@ -6,4 +6,8 @@ class Takeaway
     def show_menu
         return @dishes.dishes_arr.each { |dish| print dish }
     end
+
+    def order(dish)
+        @dishes.dishes_arr.select { |item| item == dish }
+    end
 end
