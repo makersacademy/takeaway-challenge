@@ -41,7 +41,7 @@ Hot Dog - £1.50"
 
     it 'Can return the total of the basket' do
       subject.order("Burger", 4)
-      expect(subject.total).to eq "£16.00"
+      expect(subject.total).to eq "£8.00"
     end
   end
 end

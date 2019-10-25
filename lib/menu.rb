@@ -21,4 +21,13 @@ class Menu
       end
     end
   end
+
+  def total
+    total = 0
+    @basket.each do |item|
+      total += item[:price]
+    end
+    return_price = "%.2f" % total
+    return "£#{return_price}"
+  end 
 end
