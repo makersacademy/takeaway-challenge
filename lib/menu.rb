@@ -17,7 +17,7 @@ class Menu
   def order (item_name,amount)
     @items.each do |item|
       if item[:name] == item_name
-        @basket.append(item) * amount
+        amount.times { @basket.append(item) }
       end
     end
   end

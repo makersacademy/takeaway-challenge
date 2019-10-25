@@ -33,5 +33,10 @@ Hot Dog - £1.50"
       subject.order("Burger", 1)
       expect(subject.basket).not_to be_empty
     end
+
+    it 'Allows user to add multiple items to basket' do
+      subject.order("Burger", 2)
+      expect(subject.basket.length).to eq 2
+    end
   end
 end
