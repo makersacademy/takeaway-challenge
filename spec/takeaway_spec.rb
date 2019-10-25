@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do 
     let(:new_customer) { double :customer, name: "Rob", number: "07713836331" }
-
+    let(:order_item) { double :item, name: "Cod", price: 5.0}
 
     it 'should be a type of takeaway' do 
         expect(subject).to be_an_instance_of(Takeaway)
@@ -21,4 +21,9 @@ describe Takeaway do
 
         expect(subject.get_customer_details).to eq new_customer
     end
+
+    it 'should get the current order details' do 
+        subject.add_item(order_item, 1)
+        expect(subject.get_order_details).to eq "Order: 1 Cod"
+    end 
 end

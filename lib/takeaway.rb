@@ -23,8 +23,18 @@ class Takeaway
     end
 
     def add_item(item, quantity = 1)
-        
+        @order.add_item_to_order(item, quantity)
     end
 
+    def get_order_details
+        format_order(@order.order_list)
+    end
 
+    private 
+
+    def format_order(order)
+        counts = Hash.new(0)
+        order.each { |order_name| counts[order_name.name] += 1 }
+        return "Order:" + counts.map { |k, v| " #{v} #{k}"}.join(", ")
+    end
 end

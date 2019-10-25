@@ -8,7 +8,7 @@ class Order
         @customer = customer
     end
 
-    def add_item_to_order(item, quantity = 1)
+    def add_item_to_order(item, quantity)
         quantity.times { @order_list << item }
     end
 end
