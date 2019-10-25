@@ -1,6 +1,7 @@
 require "./docs/takeaway"
 
 describe TakeAway do
+
   before(:each) do
     @takeaway = TakeAway.new
   end
@@ -10,5 +11,16 @@ describe TakeAway do
                                   "Vegetable sushi" => 1.99,
                                   "Rice" => 1.59,
                                   "Katsu chicken" => 2.99 })
+  end
+  
+  context "user has ordered several items"
+    before(:each) do
+        @takeaway.order(2, "Salmon sushi")
+        @takeaway.order(3, "Katsu chicken")
+        @takeaway.order(2, "Rice")
+    end
+
+  it "allows the user to order from the dishes available" do
+    expect(@takeaway.order).to eq("2 x Salmon sushi £5.98\n3 x Katsu chicken £8.97\n2 * Rice £3.18\nTotal: £18.13")
   end
 end
