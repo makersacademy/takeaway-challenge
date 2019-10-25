@@ -8,4 +8,8 @@ describe Dishes do
     it 'has an array of dishes' do
         expect(subject.dishes_arr).to include("Chips")
     end
+
+    it 'has prices included in the array' do
+        expect(subject.dishes_arr).to include("Chips" => 1)
+    end
 end
