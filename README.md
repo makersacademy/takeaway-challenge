@@ -14,21 +14,8 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## Client Request
+The client has requested an application for ordering a takeaway. The app should be able to receive orders as well as displaying a menu. Once the order has been completed the app should contact it's customer via a text message.
 
 ```
 As a customer
@@ -46,37 +33,63 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## How to Use
+Open ./lib/takeaway.rb into irb
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+2.5.0 :001 > takeaway = Takeaway.new
+2.5.0 :002 > takeaway.begin_order
+Begins a new order
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+2.5.0 :003 > takeaway.print_menu
+ => "Menu: bread: £2.00, soup: £3.00, cheese: £1.00, spaghetti: £5.00, pizza: £4.00, lasagne: £6.00." 
+ Prints the available menu
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+ 2.5.0 :004 > takeaway.select("soup")
+ selects one order of soup
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+ 2.5.0 :005 > takeaway.select("bread", 2)
+ selects two orders of bread
+
+ 2.5.0 :006 > takeaway.print_current_order
+ => "bread: 2, soup: 1." 
+Shows the current selected items
+
+2.5.0 :007 > takeaway.complete_order(10)
+RuntimeError (Cannot complete order: Incorrect Value)
+If incorrect value is given the order will not be placed
+
+2.5.0 :008 > takeaway.complete_order(7)
+ => "Thank you, your order was placed and will be delivered before 12:08" 
+ If the correct value is entered then the order is placed and a delivery time is given
+
+In order to activate twilio api simply uncomment lines 1 and 2 in takeaway.rb
+
+To run without twilio api uncomment line 25 in takeaway.rb
 
 
-In code review we'll be hoping to see:
+## Methodology
+Takeaway class can answer user stories in a basic way.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+OrderTime class added for delivery times.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Twilio messaging service added.
 
-Notes on Test Coverage
-------------------
+Takeaway menu and items split into seperate classes.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+## Changes to Implement
+Add loading of menu's from csv files
+
+
+## Review
+Feature tests based on the user stories led to unit tests which allowed me to build the basic functionality of the product. Initially any mention of texts was left to the side as I filled out the takeaway class with functionality. Item names, quantities and prices were initially stored as key hash pairs within a menu array.
+
+Delivery time caused some issues in regards to testing as time is constantly changing it would need to be stubbed most of the time. I found a solution to this in the form of the .strptime method.
+
+The twilio api ran easily in my test project but I had some issues with installation into this project. After some modifications to the gemfile I managed to get things running.
+
+It was soon clear that takeaway was taking on a lot of responsibilities so I moved to a multi class approach. This made my system much more robust and extra functionality could be included at a later date.
+
+All in all I was happy with what I was able to achieve in the timeframe although I would like to learn the correct way to test when api's are present.
