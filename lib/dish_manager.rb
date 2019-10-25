@@ -1,4 +1,4 @@
-require 'dish'
+require_relative 'dish'
 
 class DishManager
   attr_accessor :available_dishes
@@ -11,6 +11,15 @@ class DishManager
 
   def find_dish_by_name(name)
     @available_dishes.select { |dish| dish.name == name }.first
+  end
+
+  def pretty_string
+    string = ''
+    @available_dishes.each do |dish|
+      string += "#{dish.name}: £#{'%.2f' % dish.price}\n"
+    end
+
+    string.chomp
   end
 
   private
