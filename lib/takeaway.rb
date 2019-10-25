@@ -11,6 +11,14 @@ class Takeaway
     @takeaway_order_class = args[:takeaway_order_class] || TakeawayOrder
   end
 
+  def place_order
+    print "Your order has been accepted, you will receive a text message confirmaton shortly!"
+  end
+
+  def new_order
+    takeaway_order_class.new(takeaway_menu)
+  end
+
   def start_new_order
     takeaway_order_class.new(takeaway_menu)
   end

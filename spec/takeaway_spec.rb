@@ -6,6 +6,10 @@ describe Takeaway do
   let(:args) { { :takeaway_menu => takeaway_menu, :takeaway_order_class => takeaway_order_class } }
   let(:takeaway_order) { double :TakeawayOrder }
   let(:takeaway_menu) { double :TakeawayMenu }
+  let(:szechuan_chilli_beef) { double :TakeawayDish }
+  let(:szechuan_chilli_chicken) { double :TakeawayDish }
+  let(:kung_po_chicken) { double :TakeawayDish }
+  let(:vegetable_spring_rolls) { double :TakeawayDish }
   
   before(:each) do
     allow(takeaway_order_class).to receive(:new) { takeaway_order }
