@@ -14,6 +14,10 @@ Takeaway Challenge
 
  ```
 
+ ___________________________________
+ completed stories : 
+ none 
+
 Instructions
 -------
 

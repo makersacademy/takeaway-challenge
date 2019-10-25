@@ -1,3 +1,5 @@
+require "dish"
+
 class Process_order
   attr_reader :want_to_order
 
