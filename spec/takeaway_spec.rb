@@ -25,6 +25,6 @@ describe TakeAway do
     end
 
     it "checks that the sum total is correct" do
-      expect(@takeaway.sum_total).to eq("£18.13")
+      expect(@takeaway.total).to eq("£18.13")
     end
 end

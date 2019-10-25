@@ -1,5 +1,5 @@
 class TakeAway
-  attr_reader :menu, :total_order
+  attr_reader :menu, :total_order, :sum_total
 
   def initialize
     @menu = { "Salmon sushi" => 2.99,
@@ -12,5 +12,10 @@ class TakeAway
 
   def order(quantity, item)
     @total_order << "#{quantity} x #{item}: £#{quantity * @menu[item]}\n"
+    @sum_total += quantity * @menu[item]
+  end
+
+  def total
+    "£#{@sum_total.round(2)}"
   end
 end
