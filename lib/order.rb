@@ -11,4 +11,8 @@ class Order
     def add_item_to_order(item, quantity)
         quantity.times { @order_list << item }
     end
+
+    def calculate_total_price
+        @order_list.map { |item| item.price}.reduce(:+)
+    end
 end
