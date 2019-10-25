@@ -30,4 +30,15 @@ describe Takeaway do
             {"Chips" => 1.0}
         ])
     end
+
+    it 'can add multiple items to the order array' do
+        subject.order_item("Chips", 2)
+        subject.order_item("Burger", 2)
+        expect(subject.order).to eq([
+            {"Chips" => 1.0},
+            {"Chips" => 1.0},
+            {"Burger" => 1.50},
+            {"Burger" => 1.50}
+        ])
+    end
 end
