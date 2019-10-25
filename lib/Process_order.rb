@@ -1,5 +1,7 @@
 class Process_order
-  def get_customer_request
-    true
+  attr_reader :want_to_order
+
+  def initialize
+    @want_to_order = false
   end
 end
