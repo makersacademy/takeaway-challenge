@@ -18,4 +18,10 @@ describe DishManager do
   it 'gets an available dish given a name' do
     expect(subject.find_dish_by_name(dish.name)).to eq dish
   end
+
+  it 'can load dishes from a text file' do
+    dish_manager = DishManager.new('spec/test-dishes.txt')
+
+    expect(dish_manager.available_dishes.length).to eq 1
+  end
 end
