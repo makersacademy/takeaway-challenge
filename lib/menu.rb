@@ -1,7 +1,8 @@
 class Menu
-  attr_reader :items
+  attr_reader :items, :basket
   def initialize
     @items = [{name: "Burger", price: 2.00}, {name: "Hot Dog", price: 1.50}]
+    @basket = []
   end  
 
   def view_menu
