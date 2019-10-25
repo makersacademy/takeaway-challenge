@@ -1,4 +1,5 @@
 require_relative 'item'
+#require 'twilio-ruby'
 
 class Menu
     attr_reader :basket, :menu
@@ -24,5 +25,22 @@ class Menu
             total += item.price
         end
         return total
+    end
+
+    def PurchaseOrder
+=begin
+        @client = Twilio::REST::Client.new(
+            ENV['ACCOUNT_SID'],
+            ENV['AUTH']
+          )
+
+        @client.messages.create(
+            from: "",
+            to: "",
+            body: "Your food will be delivered within an hour!"
+          ) 
+=end
+
+          return true 
     end
 end

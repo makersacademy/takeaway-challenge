@@ -27,4 +27,8 @@ describe Menu do
         subject.AddToBasket("Pizza", 1)
         expect(subject.GetTotal).to eq(3.99)
     end
+
+    it "should send a text to the user when they purchase the food" do
+        expect(subject.PurchaseOrder()).to eq(true)
+    end
 end 
