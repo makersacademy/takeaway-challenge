@@ -25,4 +25,19 @@ describe TakeawayOrder do
       expect(takeaway_order.current_order_cost).to be_zero
     end
   end
+
+  describe "#add_dish" do
+    before(:each) do
+      allow(takeaway_menu).to receive(:takeaway_dishes) { [szechuan_chilli_beef. szechuan_chilli_chicken, kung_po_chicken, vegetable_spring_rolls] }
+      takeaway_order.add_takeaway_dish(4, 3)
+    end
+
+    it "adds a dish to the list of ordered dishes as a key" do
+      expect(takeaway_order.list_of_dishes).to have_key(vegetable_spring_rolls)
+    end
+
+    it "adds the quantity for each dish ordered to the dish key" do
+      expect(takeaway_order.list_of_dishes[vegetable_spring_rolls]).to eq 3
+    end
+  end
 end
