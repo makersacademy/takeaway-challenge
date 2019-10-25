@@ -3,10 +3,10 @@ require 'dish'
 class DishManager
   attr_accessor :available_dishes
 
-  def initialize(dishes_store_file_name)
+  def initialize(dishes_store_file_name = '')
     @available_dishes = []
 
-    load_dishes(dishes_store_file_name)
+    load_dishes(dishes_store_file_name) if dishes_store_file_name != ''
   end
 
   def find_dish_by_name(name)
