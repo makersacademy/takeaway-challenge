@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
   let(:takeaway) { Takeaway.new(args) }
   let(:takeaway_order_class) { class_double "takeawayOrder" }
-  let(:args) { { :takeaway_menu => takeaway_menu, :takeaway_order_class => takeaway_order_class, :print_module => menu_printer, :total_checker => total_checker } }
+  let(:args) { { :takeaway_menu => takeaway_menu, :takeaway_order_class => takeaway_order_class, :print_module => menu_printer, :total_checker => total_checker, :sms_messager => test_sms_sender_class } }
   let(:takeaway_order) { double :TakeawayOrder }
   let(:takeaway_menu) { double :TakeawayMenu }
   let(:szechuan_chilli_beef) { double :TakeawayDish }
@@ -13,10 +13,15 @@ describe Takeaway do
   let(:takeaway_dishes) { [szechuan_chilli_beef, szechuan_chilli_chicken, kung_po_chicken, vegetable_spring_rolls] }
   let(:menu_printer) { PrintMenu }
   let(:total_checker) { TotalChecker }
+  let(:test_sms_sender_class) { double :test_sms_sender_class }
+  let(:test_sms_messager) { double("SMSSenderTest") }
+  let(:twilio_client) { double("TwilioClient") }
+  let(:twilio_client_messages) { double("Messages") }
   
   before(:each) do
     allow(takeaway_order_class).to receive(:new) { takeaway_order }
     allow(menu_printer).to receive(:print_menu) { print "string" }
+    allow(test_sms_sender_class).to receive(:new) { test_sms_messager }
   end
 
   describe '#initialize' do
@@ -55,6 +60,10 @@ describe Takeaway do
       allow(kung_po_chicken).to receive(:price) { 5.50 }
       allow(vegetable_spring_rolls).to receive(:price) { 3 }
       allow(takeaway_order).to receive(:list_of_dishes) { { szechuan_chilli_beef => 3, szechuan_chilli_chicken => 2, kung_po_chicken => 1, vegetable_spring_rolls => 4 } }
+      allow(test_sms_messager).to receive(:message) { true }
+      allow(test_sms_messager).to receive(:client) { twilio_client }
+      allow(twilio_client).to receive(:messages) { twilio_client_messages }
+      allow(twilio_client_messages).to receive(:create) { true }
     end
 
     it "gives an error message if the basket total is wrong" do
