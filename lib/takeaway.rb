@@ -1,9 +1,11 @@
 class Takeaway
     attr_reader :order
+    attr_reader :price
 
     def initialize(dishes = Dishes.new)
         @dishes = dishes
         @order = []
+        @price = []
     end
 
     def show_menu
