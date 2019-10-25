@@ -80,3 +80,93 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+Challenge Process Log
+
+Forked repo and downloaded to projects folder.
+
+Changed to Ruby version 2.5.0 after being prompted when accessing the directory.
+
+Ran 'bundle' to ensure all required gems are installed.
+
+Read through challenge.
+
+Transfer user stories to spec/user_stories.rb
+
+Review user story 1 and use IRB to establish possible required functionality.
+
+My interpretation of this user story is that the "customer" needs to view a list of "dishes" with corresponding "prices"
+
+Create customer_spec and customer file.
+
+Create test in customer spec file to test a customer can call on a method view_dishes.
+
+Test working.
+
+First commit + push complete.
+
+Add hash with dishes to customer spec menu.
+
+Realise I've been leading with a customer class because thats what I viewed as being most prominent when I first read the user stories.
+
+Review user stories and draft possible structure on paper.
+
+Decide there are 2 classes Customer and Shop.  The shop will have a menu which the customer will use to select dishes and place / check an order.
+
+Delete all current code and start again with blank versions of customer and customer spec. Keep user_stories and README as they are.
+
+Create shop lib + spec files
+
+Have been unable to pass tests with use of doubles.   Will stat again from scratch with a more complete plan  before implementation.
+
+NEW PLAN:
+
+As this new plan also incorporates user stories I've deleted the user_stories spec file and all other files and will start with a completely new codebase.
+
+USER STORY 1
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+PLAN
+1.Create Customer class + Takeaway class.
+
+2.Create a method called view_menu in takeaway class.
+NB changed view_menu to customer class.  
+When running test in IRB realised it will be the customer that will be calling the menu.
+Test worked as expected in IRB but not Rspec.
+
+3.In view_menu create a hash called 'menu' with dishes and prices as key value pairs.
+When a customer calls the 'view_menu' method the 'menu' hash has will be returned.
+NB Test worked as expected in IRB but not Rspec.
+
+USER STORY  2
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+PLAN
+Create a method called 'menu_selection' in the customer class that will take the customers dish
+selections from 'menu' and store the key/value pair in a new hash called 'customer_order'.
+use loop to keep asking customer for selections until customer says submit order
+
+USER STORY 3
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given
+matches the sum of the various dishes in my order
+
+PLAN
+Create method called 'view_order' in customer class that will display the
+'customer_order' hash and a message displaying the total value of the
+hash values using string interpolation.
+
+USER STORY 4
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you!
+Your order was placed and will be delivered before 18:52" after I have ordered
+
+PLAN
+Create a method called 'place_order' in the customer class
+When customer runs method run twillo integration to return text message
