@@ -14,6 +14,14 @@ Takeaway Challenge
 
  ```
 
+stories completed 
+-seeing a list of the dishes 
+-select several dishes and seeing the order
+
+to do 
+-check the overall price and check it equals what is expected
+-connect to twilio API
+
 Instructions
 -------
 

@@ -21,5 +21,11 @@ describe Order do
 
             expect(subject.order_list.length).to eq 5
         end
+
+        it 'should calculate the total price of the order' do 
+            subject.add_item_to_order(order_item, 5)
+            
+            expect(subject.calculate_total_price).to eq 25.0
+        end
     end
 end
