@@ -22,4 +22,12 @@ describe Takeaway do
         subject.order_item("Chips")
         expect(subject.order).to include("Chips" => 1.0)
     end
+
+    it 'adds item to array of order certain num of times' do
+        subject.order_item("Chips", 2)
+        expect(subject.order).to eq([
+            {"Chips" => 1.0},
+            {"Chips" => 1.0}
+        ])
+    end
 end
