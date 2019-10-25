@@ -18,4 +18,11 @@ Chicken chow mein £6.50
 Egg fried rice £4.50
 ").to_stdout
   end
+
+  describe '#select' do
+    it 'it allows a customer to store an item in basket' do
+      subject.select(0)
+      expect{subject.basket}.to eq ({"Kung po chicken" => 6.80})
+    end
+  end
 end
