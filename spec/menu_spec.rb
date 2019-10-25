@@ -15,7 +15,11 @@ describe Menu do
     end
 
     it "should allow the user to add various items to the basket" do
-        subject.AddToBasket("Pizza")
+        subject.AddToBasket("Pizza", 1)
         expect(subject.basket[0].name).to eq("Pizza")
+    end
+    it "should allow the user to add numerous amounts of the same item to the basket" do
+        subject.AddToBasket("Pizza", 2)
+        expect(subject.basket[1].name).to eq("Pizza")
     end
 end 

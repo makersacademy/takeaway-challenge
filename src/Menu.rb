@@ -8,9 +8,13 @@ class Menu
         @menu = [Item.new("Pizza", 3.99), Item.new("Burger", 4.99), Item.new("Fries", 2.99)]
     end
 
-    def AddToBasket(itemName)
+    def AddToBasket(itemName, quantity)
         @menu.each do |item|
-            @basket << item if item.name == itemName
+            if item.name == itemName
+                quantity.times do
+                    @basket << item
+                end
+            end
         end
     end
 end
