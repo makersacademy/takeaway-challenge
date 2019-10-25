@@ -5,12 +5,17 @@ describe Takeaway do
     @takeaway = Takeaway.new
   end
 
-  it "allows the user to see a menu including items and prices" do
-    @takeaway.menu { is_expected_to include(:item, :price) }
+  it "has a menu of items on creating instance" do
+    expect(@takeaway.dishes).not_to be_empty
+  end
+
+  it "allows user to view the items on the menu" do
+    expect { @takeaway.view_menu }.to output.to_stdout
   end
 
   it "allows a user to select dishes to order from the menu" do
     @takeaway.order("Kebab")
-    expect(@takeaway.cust_order).to include(item: "Kebab", price: 3.00)
+    p @takeaway.cust_order
+    expect(@takeaway.cust_order.length).to be 1
   end
 end
