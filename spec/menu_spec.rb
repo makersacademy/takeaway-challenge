@@ -1,8 +1,8 @@
 require 'rspec'
-require './src/basket'
+require './src/menu'
 
-describe Basket do
-    subject {Basket.new}
+describe Menu do
+    subject {Menu.new}
 
     it "should init with an empty basket" do
         expect(subject.basket).to eq(Array.new)

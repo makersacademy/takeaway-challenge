@@ -1,5 +1,4 @@
-class Basket
-
+class Menu
     attr_accessor :basket
 
     def initialize
