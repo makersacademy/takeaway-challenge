@@ -41,7 +41,7 @@ class Menu
       client.messages.create(
       from: from,
       to: to,
-      body: "Hey friend!")
+      body: "Your order will be there soon!")
 =end
     return true
   end
