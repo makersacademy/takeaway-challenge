@@ -9,7 +9,7 @@ class Process_order
     @want_to_order = true
   end
 
-  def get_customer_input(reply)
+  def are_you_ordering(reply)
     customer_ordering if reply == true
   end
 end

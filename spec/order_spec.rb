@@ -14,7 +14,6 @@ describe Process_order do
     expect(process_order.customer_ordering).to eq true
   end
   it "determins whether the customer wants to order" do
-    process_order.get_customer_input(true)
-    expect(process_order.want_to_order).to eq true
+    expect(process_order.are_you_ordering(true)).to eq true
   end
 end
