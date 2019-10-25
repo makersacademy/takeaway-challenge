@@ -12,6 +12,10 @@ describe Takeaway do
         expect(subject.menu.first).to eq({ "item" => "Cod", "price" => 5.00, "quantity" => 20}) 
     end
 
+    it 'should be able to see menu' do 
+        expect(subject.show_menu).to eq("Cod: £5.0, Haddock: £6.0, Chips: £2.5, Jumbo Sausage: £3.0, Curry Sauce: £1.0, Mushy Peas: £1.0")
+    end
+
     it 'should create a new order' do 
         subject.new_order(new_customer)
 

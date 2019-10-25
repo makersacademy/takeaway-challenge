@@ -1,6 +1,8 @@
+require 'order'
+
 class OrderHistory
-    def initialize
-        
+    def initialize(order = Order)
+        @new_order = order.new
     end
 
     def create_new_order(customer)
