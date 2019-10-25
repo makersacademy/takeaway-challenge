@@ -16,7 +16,7 @@ class List
     p @dish_list
   end
 
-  def select
-    
+  def select(dish)
+    @dish_list.select { |k, _v| k == dish }
   end
 end
