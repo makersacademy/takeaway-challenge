@@ -4,4 +4,12 @@ class Process_order
   def initialize
     @want_to_order = false
   end
+
+  def customer_ordering
+    @want_to_order = true
+  end
+
+  def get_customer_input(reply)
+    customer_ordering if reply == true
+  end
 end
