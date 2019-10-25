@@ -6,6 +6,11 @@ describe Takeaway do
     end
 
     it 'returns the list of items on the menu' do
-        expect(subject.show_menu).to include("Chips" => 1.00)
+        expect(subject.show_menu).to include(
+            "Chips" => 1.00,
+            "Burger" => 1.50,
+            "Chicken" => 1.50,
+            "Kebab" => 3.00
+        )
     end
 end

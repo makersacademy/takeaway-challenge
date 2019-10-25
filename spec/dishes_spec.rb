@@ -13,14 +13,4 @@ describe Dishes do
         expect(subject.dishes_arr).to include("Chips" => 1)
     end
 
-    it 'returns the list of items on the menu' do
-        expect(subject.show_menu).to eq(
-            "Chips" => 1.00,
-            "Burger" => 1.50,
-            "Chicken" => 1.50,
-            "Kebab" => 3.00
-        )
-    end
-
-    
 end
