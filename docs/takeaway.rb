@@ -1,5 +1,7 @@
+# require "text"
+
 class TakeAway
-  attr_reader :menu, :total_order, :sum_total
+  attr_reader :menu, :total_order
 
   def initialize
     @menu = { "Salmon sushi" => 2.99,
