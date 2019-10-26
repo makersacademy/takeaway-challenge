@@ -14,6 +14,11 @@ Takeaway Challenge
 
  ```
 
+Setup
+-----
+
+Run `bundle` to install gems
+
 Instructions
 -------
 
