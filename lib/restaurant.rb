@@ -1,5 +1,5 @@
-require 'menu'
-require 'text'
+require './lib/menu'
+require './lib/text'
 
 class Restaurant
 attr_reader :new_menu
