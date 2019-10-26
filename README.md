@@ -138,3 +138,17 @@ Please enter the dish (to finish your order, hit return twice).
  ```
 
  *Third commit.*
+
+ I then worked on the method to calculate the total (i.e. iterating over the basket hash and menu hash).
+
+```sh
+=> {"pizza"=>3, "pasta"=>2}
+2.5.0 :004 > myTakeAway.total
+=> "Total = £35.5"
+ ```
+
+ At this point I researched how to remove the need for inserting my input in the test each time, to try to stub out the standard input stream.
+
+ *Fourth commit.*
+
+ 4. Fourth user story:

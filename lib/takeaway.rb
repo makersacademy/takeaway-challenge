@@ -15,10 +15,10 @@ class TakeAway
 
   def order
     puts "Please enter the dish (to finish your order, hit return twice)."
-    @item = STDIN.gets.chomp
+    @item = gets.chomp
     while !@item.empty? do
       puts "Please enter the quantity."
-      @quantity = STDIN.gets.chomp.to_i
+      @quantity = gets.chomp.to_i
       puts "#{@quantity} x #{@item} added"
       @summary << "#{@quantity} x #{@item} = £#{subtotal}"
       @basket[@item] = @quantity
@@ -39,5 +39,16 @@ class TakeAway
 
   def view_summary
     @summary.join("; ")
+  end
+
+  def total
+    total = 0
+    @basket.each { |item, quantity|
+      @todays_dishes.each { |dish, price|
+        if item == dish
+          total += (quantity * price)
+        end
+      }}
+    "Total = £#{total}"
   end
 end
