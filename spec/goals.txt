@@ -4,11 +4,11 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 Plan:
-have a Menu
-view the Menu
+easiest test passed - have a menu, with text, that can be called on
 
-hash { korma => 1, vindaloo => 2 } etc
-view menu ???
+next step:
+change this to a list of items - look at Oystercard entry/exit station?
+how can we adapt that code to this?
 
 2 -----
 As a customer

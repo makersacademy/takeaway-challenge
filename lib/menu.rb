@@ -1,7 +1,8 @@
 class Menu
+  attr_reader :dishes
 
-  def view
-    "meatfeast, £5.00"
+  def initialize(dishes)
+    @dishes = dishes
   end
 
 end
