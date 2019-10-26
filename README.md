@@ -126,3 +126,13 @@ Please enter the dish (to finish your order, hit return twice).
 
  => {"pizza"=>3, "pasta"=>2}
 ```
+
+*Second commit.*
+
+3. Third user story: the user would like to check that the total matches the subtotal for each item (this is my interpretation as instructions are not 100% clear to me - ideally I would have clarified with the client). I first created a test for the subtotal for each item. I then created a subtotal method and called that in the order method.
+
+(same irb output as above plus below:)
+```sh
+2.5.0 :004 > myTakeAway.view_summary
+ => "3 x pizza = £22.5; 2 x pasta = £13.0"
+ ```
