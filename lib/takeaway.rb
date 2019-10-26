@@ -6,7 +6,7 @@ class Takeaway
     @menu = menu
   end
 
-  def get_menu(menu = @menu)
-    menu.show_menu
+  def show_menu
+    @menu.show_menu
   end
 end
