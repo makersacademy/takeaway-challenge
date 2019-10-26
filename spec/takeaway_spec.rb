@@ -1,13 +1,18 @@
 require 'takeaway'
 
 describe TakeAway do
-  let(:menu) { { "rice" => 1.50, "fries" => 2.50, "noodles" => 3.50, "pasta" => 6.50, "pizza" => 7.50 } }
+  let(:menu) { double :menu}
+  subject(:subject) { described_class.new(menu: menu) }
   let(:item1) { "pizza" }
   let(:quantity1) { 3 }
 
+  before(:each) do
+    allow(menu).to receive(:view_list).and_return( { "rice" => 1.50, "fries" => 2.50, "noodles" => 3.50, "pasta" => 6.50, "pizza" => 7.50 } )
+  end
+
   describe "#view_menu" do
     it 'shows the menu' do
-      expect(subject.view_menu).to eq menu
+      expect(subject.view_menu).to eq( { "rice" => 1.50, "fries" => 2.50, "noodles" => 3.50, "pasta" => 6.50, "pizza" => 7.50 } )
     end
   end
 

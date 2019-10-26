@@ -136,3 +136,5 @@ Please enter the dish (to finish your order, hit return twice).
 2.5.0 :004 > myTakeAway.view_summary
  => "3 x pizza = £22.5; 2 x pasta = £13.0"
  ```
+
+ *Third commit.*
