@@ -1,13 +1,14 @@
 class Menu
-attr_reader :items
+  
+  attr_reader :item, :price
 
-  def initialize(items)
-    @items = items
-  end
-
-  def list
-    items.map do |items, price|
-    "%s £%.2f" % [items.to_s.capitalize, price]
-  end.join(", ")
+  def menu
+    {
+    "Chicken_Katsu_Curry" => 13,
+    "Veggie_Katsu_Curry" => 12,
+    "Ramen" => 10,
+    "Edamame" => 3,
+    "Gyoza" => 5
+    }
   end
 end

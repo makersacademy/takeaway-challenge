@@ -1,12 +1,20 @@
 require 'takeaway'
 
+
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu) }
 
-  let(:menu) { double(:menu, list: list_menu) }
-  let(:list_menu) {"Katsu curry: £10"}
+  let(:menu) { double(:menu, print: printed_menu) }
+  let(:printed_menu) { {
+    "Chicken_Katsu_Curry" => 13,
+    "Veggie_Katsu_Curry" => 12,
+    "Ramen" => 10,
+    "Edamame" => 3,
+    "Gyoza" => 5
+     } }
 
-  it 'lists items in menu and their prices' do
-  expect(takeaway.list_menu).to eq("Katsu curry: £10")
+  describe '#print_menu' do
+    it 'prints a menu when called' do
+    expect(subject.print_menu).to eq(printed_menu)
+    end
   end
 end
