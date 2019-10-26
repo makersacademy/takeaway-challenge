@@ -4,12 +4,9 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 Plan:
-easiest test passed - have a menu, with text, that can be called on
-
-next step:
-change this to a list of items - look at Oystercard entry/exit station?
-how can we adapt that code to this?
-
+WORK OUT MYSELF
+ - try and turn this into a list
+ - how to put a hash in rspec - very little information
 2 -----
 As a customer
 So that I can order the meal I want

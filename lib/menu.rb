@@ -5,4 +5,10 @@ class Menu
     @dishes = dishes
   end
 
+  def print
+    dishes.map do |item, price|
+      "%s £%.2f" % [item.to_s.capitalize, price]
+    end.join(", ")
+  end
+
 end

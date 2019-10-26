@@ -1,0 +1,6 @@
+questions:
+how to google for information like "how do set up a hash
+in rspec so it's usable in the Class?"
+
+very basic questions in rspec are hard to get answers to
+lots of documentation, very little guidance found
