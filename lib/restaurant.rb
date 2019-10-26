@@ -1,4 +1,4 @@
-
+require_relative 'dish'
 
 class Restaurant
   attr_reader :dishes
