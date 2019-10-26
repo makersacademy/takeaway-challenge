@@ -1,3 +1,19 @@
+
+Takeaway Challenge
+==================
+
+My approach to solving the challenge (I haven't got far!):
+
+'top' class = Order, which initialises an empty 'basket' array, and adds items to it.
+
+    The Order class requires:
+
+'second tier' class = Menu
+
+
+
+
+
 Takeaway Challenge
 ==================
 ```
