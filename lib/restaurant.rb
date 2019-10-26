@@ -11,12 +11,18 @@ class Restaurant
     @menu = menu
   end
 
-  def choose(dish)
-    chosen = @menu.dishes.select do |key, value|
-      key == dish
+  def choose(dish, quantity)
+    quantity.times do
+      @menu.dishes.select {|k, v| @order.push([k, v]) if k == dish }
     end
-    @order << chosen
+    puts "You ordered #{quantity} #{dish}"
+    @order
   end
+
+  # def choose(dish, quantity)
+  #   @order << { food: dish, quantity: quantity }
+  #   "You ordered #{quantity} #{dish}"
+  # end
 
   def total
     cost = 1.0

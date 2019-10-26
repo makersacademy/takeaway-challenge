@@ -24,11 +24,12 @@ describe Restaurant do
       expect(restaurant.order).to be_empty
     end
     # check can get a menu item from hash pushed to order array
-    it "can choose an item from menu to order" do
+    it "can choose an item and quantity from menu to order" do
       restaurant.load_menu(menu)
       dish = "char sui buns"
-      ordered_dishes = [{"char sui buns" => 1.00}]
-      expect(restaurant.choose(dish)).to eq ordered_dishes
+      quantity = 2
+      ordered_dishes = [["char sui buns", 1.0], ["char sui buns", 1.0]]
+      expect(restaurant.choose(dish, quantity)).to eq ordered_dishes
     end
     # can retrieve total cost of order
     it "calculates the total cost of order" do
