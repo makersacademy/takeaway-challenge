@@ -8,4 +8,11 @@ describe Order do
       expect(subject.basket).to eq({ "item" => 3})
       end
    end
-end
+
+  describe '#basket_total' do
+  it "calculates current order total" do
+      subject.add("Ramen", 10)
+      expect(subject.basket_total).to eq 100
+      end
+    end
+  end

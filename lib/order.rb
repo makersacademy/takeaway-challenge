@@ -8,11 +8,24 @@ class Order
 
   def initialize
     @basket = {}
+    @order_total = 0
     @menu = Menu.new
   end
 
 
   def add(item, quantity)
     @basket[item] = quantity
+  end
+
+  def order_summary
+  @basket.each do |dish, quantity|
+  puts "#{quantity}x #{dish}: £#{Menu.new.menu[dish] * quantity}"
+   end
+end
+
+    def basket_total
+    @basket.inject(0) do |total, (dish, quantity)|
+    @dish_total = total + @menu.menu[dish] * quantity
+    end
   end
 end
