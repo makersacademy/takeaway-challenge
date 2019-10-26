@@ -1,11 +1,12 @@
 
 class Order
-  def initialize
+  def initialize(dish_class:)
     @order_list = []
+    @dish_class = dish_class
   end
 
   def add_order_line(dish, quantity)
-    raise 'not a dish' unless dish.is_a? Dish
+    # raise 'not a dish' unless dish.is_a? @dish_class
     raise 'quantity less than 1 not allowed' unless quantity.positive?
 
     order_line = {
@@ -19,6 +20,11 @@ class Order
   end
 
   def calculate_total
+    if @order_list.empty?
+      0
+    else
+      @order_list.map { |line| line[:line_total] }.reduce(:+)
+    end
   end
 
   def submit_order

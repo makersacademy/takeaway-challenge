@@ -31,5 +31,5 @@ private
   def format_last
     # no final comma for last printed item
     @contents.length.to_s + ' ' + @contents.last.pretty_format
-    end
+  end
 end
