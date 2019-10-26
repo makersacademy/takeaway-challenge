@@ -14,5 +14,5 @@ describe Order do
       subject.add("Ramen", 10)
       expect(subject.basket_total).to eq 100
       end
-    end
   end
+end
