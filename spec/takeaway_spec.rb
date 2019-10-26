@@ -2,8 +2,14 @@ require 'takeaway'
 
 describe Takeaway do
 
-  it 'gets a menu' do 
-    expect(subject.show_menu).to eq 'string'
+  context 'getting a menu' do
+    let(:menu_double) { double :menu }
+
+    it 'gets a menu' do 
+      allow(menu_double).to receive(:show_menu) { 'string' }
+      expect(subject.get_menu(menu_double)).to eq 'string'
+    end
+
   end
 
 end
