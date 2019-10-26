@@ -80,3 +80,26 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+==================
+Sara Rancati - 26 October 2019
+
+Step-by-step program development process:
+-----
+1. First user story: the requirements is for the user to be able to see a list of dishes with prices. I created a simple diagram with Menu (class), list (variable), view_list (method) and wrote the first test. The instance variable @list is not accessible outside of the class, but the list can be viewed by calling the view_list method:
+
+```sh
+2.5.0 :002 > mymenu = Menu.new
+ => #<Menu:0x00007f884d04d1c0 @list={"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}>
+2.5.0 :003 > mymenu.view_list
+ => {"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}
+```
+
+2. Second user story: the user can select some number of several available dishes. This indicates that I'd need a method that requests the user's input several times for both the item and the quantity. I need to be able to store the user's selection in a basket that the user can view. For this, I created a second class (TakeAway). When initialized, the TakeAway object should have a property that generates a new Menu object. The menu's list will be assigned to an instance variable (@todays_dishes) through the view_list method being called on menu.
+
+```sh
+2.5.0 :002 > myTakeAway = TakeAway.new
+ => #<TakeAway:0x00007fb16f09e8e0 @todays_dishes={"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}>
+```
+
+*First commit.
