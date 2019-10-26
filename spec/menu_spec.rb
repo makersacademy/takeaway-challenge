@@ -4,12 +4,12 @@ describe Menu do
   subject(:menu) { described_class.new }
 
   context 'by default' do
-    it 'has an array' do
+    it 'is an array' do
       expect(menu.dishes).to be_a(Array)
     end
 
-    it 'has a dish and price' do
-      expect(menu.dishes).to include(:dish => "Egg fried rice", :price => 3)
+    it 'has dishes and their prices' do
+      expect(menu.dishes).to include({:dish => "Egg fried rice", :price => 3}, {dish: "Sweet & sour fish", price: 6}, { dish: "Morning glory", price: 4 })
     end
   end
 
