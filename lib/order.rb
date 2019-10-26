@@ -4,15 +4,15 @@ require_relative 'takeaway'
 
 class Order
 
-  attr_reader :receipt, :menu
+  attr_reader :basket, :menu
 
   def initialize
-    @receipt = {}
+    @basket = {}
     @menu = Menu.new
   end
 
 
   def add(item, quantity)
-    @receipt[item] = quantity
+    @basket[item] = quantity
   end
 end

@@ -1,3 +1,6 @@
+require_relative 'order'
+require_relative 'takeaway'
+
 class Menu
 
   attr_reader :item, :price
