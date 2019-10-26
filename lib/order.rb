@@ -21,4 +21,8 @@ class Order
     end
     sum
   end
+
+  def place_order(amount)
+    raise "Amount not correct" if amount != check_total
+  end
 end

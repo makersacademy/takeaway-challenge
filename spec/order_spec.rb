@@ -28,4 +28,11 @@ describe Order do
       expect(order.check_total).to eq 12
     end
   end
+
+  describe '#place_order' do
+    it 'raises error if passed incorrect amount' do
+      order.select_dish(1, 2)
+      expect { order.place_order(11) }.to raise_error "Amount not correct"
+    end
+  end
 end
