@@ -11,4 +11,11 @@ class Restaurant
     @dishes << dish.new(name, price)
   end
 
+  def availabilty_checker
+    @dishes.delete_if do |dish|
+      dish.remaining_portions == 0
+    end
+
+    end
+
 end

@@ -9,17 +9,18 @@ describe Display do
   let(:dish2) {double :dish}
   let(:dish3) {double :dish}
 
-before :each do
+  before :each do
 
-  allow(dish1).to receive(:name) {"burger"}
-  allow(dish1).to receive(:price) {10}
-  allow(dish2).to receive(:name) {"pizza"}
-  allow(dish2).to receive(:price) {7}
-  allow(dish3).to receive(:name) {"fish"}
-  allow(dish3).to receive(:price) {12}
-  allow(restaurant_double).to receive(:dishes) {[dish1, dish2, dish3]}
+    allow(dish1).to receive(:name) {"burger"}
+    allow(dish1).to receive(:price) {10}
+    allow(dish2).to receive(:name) {"pizza"}
+    allow(dish2).to receive(:price) {7}
+    allow(dish3).to receive(:name) {"fish"}
+    allow(dish3).to receive(:price) {12}
+    allow(restaurant_double).to receive(:dishes) {[dish1, dish2, dish3]}
 
-end
+  end
+  
   context "#menu" do
 
     it "it returns a string" do
