@@ -9,7 +9,7 @@ describe Menu do
     end
 
     it 'has dishes and their prices' do
-      expect(menu.dishes).to include({:dish => "Egg fried rice", :price => 3}, {dish: "Sweet & sour fish", price: 6}, { dish: "Morning glory", price: 4 })
+      expect(menu.dishes).to include({ :dish => "Egg fried rice", :price => 3 }, { dish: "Sweet & sour fish", price: 6 }, { dish: "Morning glory", price: 4 })
     end
   end
 

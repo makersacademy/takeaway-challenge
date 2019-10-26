@@ -1,7 +1,8 @@
 require 'order'
 
 describe Order do
-  subject(:order) { described_class.new }
+  subject(:order) { described_class.new(menu) }
+  let(:menu) { Menu.new }
 
   context 'by default' do
     it 'has an empty array' do
@@ -16,7 +17,15 @@ describe Order do
 
     it 'stores dish and total in basket' do
       order.select_dish(1, 2)
-      expect(order.basket).to include({ :dish => "Egg fried rice", :total => 6})
+      expect(order.basket).to include({ :dish => "Egg fried rice", :total => 6 })
+    end
+  end
+
+  describe '#check_total' do
+    it 'sums totals in basket' do
+      order.select_dish(1, 2)
+      order.select_dish(1, 2)
+      expect(order.check_total).to eq 12
     end
   end
 end

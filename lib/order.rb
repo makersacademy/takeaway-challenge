@@ -4,13 +4,21 @@ class Order
 
   attr_reader :basket
 
-  def initialize
+  def initialize(menu)
     @basket = []
+    @menu = menu
   end
 
   def select_dish(dish_num, quantity)
-    menu = Menu.new
-    @basket << { dish: menu.dishes[dish_num-1][:dish], total: menu.dishes[dish_num-1][:price]*quantity }
+    @basket << { dish: @menu.dishes[dish_num - 1][:dish],
+      total: @menu.dishes[dish_num - 1][:price] * quantity }
   end
 
+  def check_total
+    sum = 0
+    @basket.each do |hash|
+      sum += hash[:total]
+    end
+    sum
+  end
 end
