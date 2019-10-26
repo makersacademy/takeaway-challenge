@@ -9,6 +9,7 @@ class Text
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     from = ENV['TWILIO_NUM']
     to = ENV['MOBILE_NUM']
+    notice = "Your order has been placed and is expected to arrive before #{delivery_time}"
 
     client = Twilio::REST::Client.new(account_sid, auth_token)
     client.messages.create(
@@ -20,7 +21,7 @@ class Text
   private
 
   def notice
-    "Your order has been placed and is expected to arrive before #{delivery_time}"
+
   end
 
   def delivery_time

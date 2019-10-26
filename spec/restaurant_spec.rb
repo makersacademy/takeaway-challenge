@@ -41,11 +41,13 @@ describe Restaurant do
     it "and the price is correct, not to raise error to output" do
       allow(new_menu).to receive(:total_price).and_return(@right_price)
       expect{new_order.place_order(@right_price)}.to_not output("Total price not match\n").to_stdout
-
     end
 
     it "and the price is correct, confirm the order and delivery time" do
-
+      allow(new_menu).to receive(:total_price).and_return(@right_price)
+      allow(new_order).to receive(:send_text).and_return("Yo got your back bro")
+      expect(new_order).to receive(:send_text).and_return("Yo got your back bro")
+      new_order.place_order(@right_price)
     end
   end
 end
