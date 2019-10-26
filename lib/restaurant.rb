@@ -1,11 +1,13 @@
 require './lib/menu'
 require './lib/text'
+#WHY CAN'T YOU PUT
+#require 'text'
+#require 'menu'
 
 class Restaurant
-attr_reader :new_menu
 
-  def initialize
-    @new_menu = Menu.new
+  def initialize(new_menu = Menu.new)
+    @new_menu = new_menu
   end
 
   def view
@@ -14,21 +16,20 @@ attr_reader :new_menu
 
   def start_order
     puts "Begin order, type 'Done' when you finish."
-    puts "What do you want?"
-    @dish_name = gets.chomp.to_s
-    until @dish_name == "Done"
-      puts "How many do you want?"
-      @dish_quantity = gets.chomp.to_i
-      @new_menu.add_dish(@dish_name.to_sym,@dish_quantity)
-      puts "What do you want?"
-      @dish_name = gets.chomp.to_s
+    dishname = get_dish_name
+    until dishname.to_s == "Done"
+      dishquantity = get_dish_quantity
+      @new_menu.add_dish(dishname,dishquantity)
+      dishname = get_dish_name
     end
   end
 
   def place_order(price)
     price_not_matches?(price)
-  rescue StandardError
-    puts "Total price not match"
+  # rescue StandardError
+  rescue => e
+    puts "#{e.message}"
+    # puts "Total price not match"
   else
     puts "That's right"
     puts "#{send_text}"
@@ -36,18 +37,24 @@ attr_reader :new_menu
 
   private
   def price_not_matches?(input_from_place_order_above)
-    raise StandardError if (@new_menu.total_price != input_from_place_order_above)
+    # raise StandardError if (@new_menu.total_price != input_from_place_order_above)
+    raise "Total price not match" if (@new_menu.total_price != input_from_place_order_above)
+  end
+
+  def get_dish_name
+    puts "What do you want?"
+    dish_name = gets.chomp
+    dish_name
+  end
+
+  def get_dish_quantity
+    puts "How many do you want?"
+    dish_quantity = gets.chomp
+    dish_quantity
   end
 
   def send_text(text = Text.new)
     text.confirmation
-      #send_text
-      #("Thank you!
-      #Your order was placed and will be delivered before 18:52"}")
-  #     time = Time.new
-  #       hr = time.hour + 1
-  #       min = time.min
-  #       "Thank you! Your order was placed and will be delivered before #{hr}:#{min}"
   end
 
 end
