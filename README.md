@@ -102,4 +102,27 @@ Step-by-step program development process:
  => #<TakeAway:0x00007fb16f09e8e0 @todays_dishes={"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}>
 ```
 
-*First commit.
+*First commit.*
+
+There should also be a method in the TakeAway class that return the list of available dished (view_menu). I then worked on the test for the order method, which should return the user's input for each dish/quantity selected.
+
+```sh
+2.5.0 :002 > myTakeAway = TakeAway.new
+ => #<TakeAway:0x00007fc73a190268 @todays_dishes={"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}>
+2.5.0 :003 > myTakeAway.view_menu
+ => {"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}
+2.5.0 :004 > myTakeAway.order
+Please enter the dish (to finish your order, hit return twice).
+pizza
+Please enter the quantity.
+3
+3 x pizza added
+Please enter the dish (to finish your order, hit return twice).
+pasta
+Please enter the quantity.
+2
+2 x pasta added
+Please enter the dish (to finish your order, hit return twice).
+
+ => {"pizza"=>3, "pasta"=>2}
+```
