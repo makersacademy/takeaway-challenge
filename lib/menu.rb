@@ -5,8 +5,9 @@ attr_reader :dishes
 
   def initialize
     @dishes = {
-      "char siu buns" => 1.00,
-      "taiwanese rice" => 5.00
+      "char sui buns" => 1.00,
+      "taiwanese rice" => 5.00,
+      "bibimbap" => 4.00
       }
   end
 
