@@ -35,6 +35,9 @@ Task
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
+User Stories
+----
+
 ```
 As a customer
 So that I can check if I want to order something
