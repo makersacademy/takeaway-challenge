@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  R.B. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -13,6 +13,69 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+
+## About
+
+This is a takeaway program where you can view a menu & take an order.  It's a current work in progress! :)
+
+Original spec from [Makers Academy](https://github.com/makersacademy)
+
+### What Next?
+
+0. Split out into classes & follow single responsibility 
+0. Send order notifications via Twilio using env variables
+0. Update the README! Include assumptions & examples of how the code will run in irb / via app.rb
+
+
+## User Stories
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+## Running the program
+
+#### Coded in Ruby 2.5.0
+
+ - Read about [Ruby 2.5.0](https://www.ruby-lang.org/en/news/2017/12/25/ruby-2-5-0-released/).
+ - Run `bundle` to check you've got all the files.  
+ - See [Gemfile](https://github.com/ruthmoog/takeaway-challenge/blob/master/Gemfile) for all gems used.
+
+#### Tested with RSpec
+
+ - Built with TDD \o/
+ - Run `rspec` in the project directory to run the tests.
+ - Read about [RSpec](https://rspec.info/documentation/).
+
+#### Linted with RuboCop
+
+ - Meets [RuboCop](https://github.com/rubocop-hq/rubocop)'s Ruby style conventions. 
+ - Run `rubocop` in the project directory.
+
+## Inspo
+
+ - https://github.com/ayelishaamoah/takeaway-challenge
+ - https://github.com/kimdiep/takeaway-challenge
+
+
+ ----- 
+
+ ORIGINAL INSTRUCTIONS
+ ======
 
 Instructions
 -------
@@ -31,21 +94,7 @@ Task
 * Write a Takeaway program with the following user stories:
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+see above 
 ```
 
 * Hints on functionality to implement:
