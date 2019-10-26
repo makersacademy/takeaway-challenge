@@ -23,6 +23,11 @@ describe Menu do
       expect(menu.print_contents).to eq ''
     end
 
+    it 'one dish' do
+      menu.add_dish(dish)
+      expect(menu.print_contents).to eq '1 chicken tikka £10.00'
+    end
+
     it 'multiple available dishes' do
       pretty_menu = '1 chicken tikka £10.00, 2 chicken korma £14.00, 3 chicken bhuna £9.00'
       menu.add_dish(dish)

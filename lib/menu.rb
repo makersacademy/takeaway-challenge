@@ -18,6 +18,7 @@ class Menu
 private
 
   def format_first
+    # print the menu in the output format
     formatted_items = ''
     x = 0
     while x < @contents.length - 1
@@ -28,6 +29,7 @@ private
   end
 
   def format_last
+    # no final comma for last printed item
     @contents.length.to_s + ' ' + @contents.last.pretty_format
-  end
+    end
 end
