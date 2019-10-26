@@ -1,8 +1,12 @@
 class Dish
-  attr_reader :name, :price, :course
-  def initialize(name, price, course)
+  attr_reader :name, :price, :available
+  def initialize(name, price, available)
     @name = name
     @price = price
-    @course = course
+    @available = available
+  end
+
+  def pretty_format
+    "#{@name} £#{@price}"
   end
 end
