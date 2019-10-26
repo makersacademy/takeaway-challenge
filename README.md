@@ -17,36 +17,86 @@ Takeaway Challenge
 Instructions
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+# Project Approach
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## User story 1
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+```
+Object | Message
+-|-
+Menu | View
 
+IRB test input:
+```
+menu = Menu.new({ burrito: '£6.80' })
+menu.view
+```
+
+output:
+```
+2.5.0 :002 > menu = Menu.new({ burrito: '£6.80' })
+ => #<Menu:0x00007ff48d0b2e10 @dishes={:burrito=>"£6.80"}>
+2.5.0 :003 > menu.view
+ => {:burrito=>"£6.80"}
+ ```
+---
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
 
+Object | Message
+-|-
+Order | add
+Dishes | select
+
+IRB test input:
+```
+menu = Menu.new({ burrito: '£6.80' })
+menu.view
+order = Order.new
+order.add("burrito")
+order.add("burger")
+```
+
+The user story is complete, however there is not currently an effective test which isolates the Order class from the Menu class.
+
+---
+Object | Message
+-|-
+Order | total
+Menu | exchange Key for Value
+
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
 
+I would write a test which returned the total amount of the meal.
+
+This would be done by delegating the fetch method from Order to Menu, fetching the price for each item into the choices array, then return the sum of that array.
+---
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+Object | Message
+-|-
+Order | place
+
+Output should take account the current time with the Time.now module
+
+No need for delegation to menu
+---
+
+## Items for future reference from the original Makers repo
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
