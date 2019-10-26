@@ -19,16 +19,14 @@ let(:the_menu) { Menu.new }
   end
 
   context "can display dishes list" do
-    # Test data - output of the expect operation is expected to match this test data
-    let(:test_dishes){ {  "char siu buns" => 1.00, "taiwanese rice" => 5.00 } }
     # Expect menu instance to respond to method "display_menu"
     it "respond to display menu" do
       expect(the_menu).to respond_to(:display_menu)
     end
-    # Expect calling "display_menu" on menu instance to return dishes hash
+    # Expect calling "display_menu" on menu instance to return dishes hash printed
     it "displays dishes" do
-      the_menu.display_menu
-      expect(the_menu.display_menu).to eq test_dishes
+      printed_dishes = "Char siu buns, Price 1.0", "Taiwanese rice, Price 5.0"
+      expect(the_menu.display_menu).to eq printed_dishes
     end
 
   end

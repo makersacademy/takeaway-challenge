@@ -11,7 +11,7 @@ attr_reader :dishes
   end
 
   def display_menu
-    @dishes
+    @dishes.map { |key, value| "#{key.capitalize}, Price #{value}" }
   end
 
 end
