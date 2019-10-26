@@ -1,4 +1,4 @@
-require 'menu'
+require_relative 'menu'
 
 class Takeaway
 
@@ -7,6 +7,6 @@ class Takeaway
   end
 
   def show_menu
-    @menu.show_menu
+    @menu.display_menu
   end
 end

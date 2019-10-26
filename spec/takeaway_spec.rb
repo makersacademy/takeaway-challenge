@@ -8,7 +8,7 @@ describe Takeaway do
 
     it 'gets a menu' do 
 
-      allow(menu_double).to receive(:show_menu) { 'string' }
+      allow(menu_double).to receive(:display_menu) { 'string' }
       expect(subject.show_menu).to eq 'string'
     end
 
