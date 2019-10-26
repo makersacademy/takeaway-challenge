@@ -1,5 +1,5 @@
 class Menu
-  
+
   attr_reader :item, :price
 
   def menu
