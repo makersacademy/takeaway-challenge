@@ -5,9 +5,9 @@ describe Menu do
 
   let(:dishes) do
     {
-      "fried chicken": "6.99",
-      "coke": "1.00",
-      "toast": "2.00"
+      "chicken": 6.99,
+      "coke": 1,
+      "toast": 2.5
     }
   end
 
@@ -16,7 +16,7 @@ describe Menu do
   end
 
   it 'prints a list of items and prices' do
-    printed_menu = "Fried chicken £6.99, Coke £1.00, Toast £2.00"
+    printed_menu = "Chicken £6.99, Coke £1.00, Toast £2.50"
     expect(menu.print).to eq printed_menu
   end
 

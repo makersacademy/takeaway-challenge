@@ -4,3 +4,8 @@ in rspec so it's usable in the Class?"
 
 very basic questions in rspec are hard to get answers to
 lots of documentation, very little guidance found
+
+eventually found a suggestion mentioning springf
+found this on https://idiosyncratic-ruby.com/49-what-the-format.html
+don't fully understand it
+but decided this was enough to use info from exemplar answers
