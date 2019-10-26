@@ -19,14 +19,9 @@ class Restaurant
     @order
   end
 
-  # def choose(dish, quantity)
-  #   @order << { food: dish, quantity: quantity }
-  #   "You ordered #{quantity} #{dish}"
-  # end
-
   def total
-    cost = 1.0
-    return "Your order will cost #{cost}"
+    grand_total = @order.map {|arr| arr[1]}.sum
+    return "Your total order will cost #{grand_total}"
   end
 
 end

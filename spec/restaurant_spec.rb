@@ -34,8 +34,11 @@ describe Restaurant do
     # can retrieve total cost of order
     it "calculates the total cost of order" do
       restaurant.load_menu(menu)
-      confirmation = "Your order will cost 1.0"
-      expect(restaurant.total).to eq confirmation
+      dish = "char sui buns"
+      quantity = 2
+      restaurant.choose(dish, quantity)
+      total_cost = 2.0
+      expect(restaurant.total).to eq "Your total order will cost 2.0"
     end
 
   end
