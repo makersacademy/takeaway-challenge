@@ -14,21 +14,8 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -48,7 +35,6 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-The text handling function has been implemented using Twilio API. To use this function the account sid, auth token, Twilio number and mobile number need to be updated.
 
 To use the application, load 'takeaway.rb' in irb, initialize it with default arguments, and load default menu by calling .view.
 This will open the menu option below
@@ -99,4 +85,36 @@ Thats right
 <Twilio.Api.V2010.MessageInstance account_sid: AC1c6b21bd9cd4420c06a25451472174f5 sid: SM594ebcf7390c4b46b65
 3bd67689edb23>
  => nil
+ ```
+ The text handling function has been implemented using Twilio API. To use this function the account sid, auth token, Twilio number and mobile number need to be updated.
+ ```ruby
+ require 'twilio-ruby'
+ require 'dotenv'
+ Dotenv.load("twilio.env")
+
+ class Text
+
+   def confirmation
+     account_sid = ENV['TWILIO_ACC_SID']
+     auth_token = ENV['TWILIO_AUTH_TOKEN']
+     from = ENV['TWILIO_NUM']
+     to = ENV['MOBILE_NUM']
+
+     client = Twilio::REST::Client.new(account_sid, auth_token)
+     client.messages.create(
+       from: from,
+       to: to,
+       body: notice)
+   end
+
+   private
+
+   def notice
+     "Your order has been placed and is expected to arrive before #{delivery_time}"
+   end
+
+   def delivery_time
+     (Time.now + 3600).strftime("%H:%M")
+   end
+ end
  ```
