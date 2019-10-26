@@ -1,7 +1,7 @@
 require_relative "menu"
 class Restaurant
 
-  attr_reader :menu, :dishes, :order
+  attr_reader :menu, :order
 
   def initialize
     @order = []
@@ -12,15 +12,15 @@ class Restaurant
   end
 
   def choose(dish)
-    @menu.dishes.select do |key, value|
-      if dish == key
-        @order << key
-        @order << value
-      end
+    chosen = @menu.dishes.select do |key, value|
+      key == dish
     end
+    @order << chosen
   end
 
-
-
+  def total
+    cost = 1.0
+    return "Your order will cost #{cost}"
+  end
 
 end

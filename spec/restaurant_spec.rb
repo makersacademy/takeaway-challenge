@@ -27,8 +27,14 @@ describe Restaurant do
     it "can choose an item from menu to order" do
       restaurant.load_menu(menu)
       dish = "char sui buns"
-      ordered_dishes = {"char sui buns" => 1.00}
+      ordered_dishes = [{"char sui buns" => 1.00}]
       expect(restaurant.choose(dish)).to eq ordered_dishes
+    end
+    # can retrieve total cost of order
+    it "calculates the total cost of order" do
+      restaurant.load_menu(menu)
+      confirmation = "Your order will cost 1.0"
+      expect(restaurant.total).to eq confirmation
     end
 
   end
