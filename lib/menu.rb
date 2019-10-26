@@ -8,8 +8,10 @@ class Menu
   end
 
   def view
+    n = 1
     @dishes.each do |item|
-      puts "#{item[:dish]}: £#{item[:price]}"
+      puts "#{n}. #{item[:dish]}: £#{item[:price]}"
+      n += 1
     end
   end
 end
