@@ -3,6 +3,7 @@ require 'order'
 describe Order do
   subject(:order) { described_class.new(menu) }
   let(:menu) { Menu.new }
+  let(:textprovider) { double :textprovider }
 
   context 'by default' do
     it 'has an empty array' do
@@ -21,18 +22,34 @@ describe Order do
     end
   end
 
-  describe '#check_total' do
+  describe '#basket_summary' do
+    it 'displays basket' do
+      order.select_dish(1, 2)
+      expect { order.basket_summary }.to output("Egg fried rice, £6\n").to_stdout
+    end
+  end
+
+  describe '#order_total' do
     it 'sums totals in basket' do
       order.select_dish(1, 2)
       order.select_dish(1, 2)
-      expect(order.check_total).to eq 12
+      expect(order.order_total).to eq 12
     end
   end
 
   describe '#place_order' do
-    it 'raises error if passed incorrect amount' do
+    before do
+      allow(order).to receive(:send_text)
       order.select_dish(1, 2)
-      expect { order.place_order(11) }.to raise_error "Amount not correct"
+    end
+
+    it 'raises error if passed incorrect amount' do
+      expect { order.place_order(11, textprovider) }.to raise_error "Amount not correct"
+    end
+
+    it 'can send a text confirming order placed' do
+      expect(textprovider).to receive(:send_text)
+      order.place_order(6, textprovider)
     end
   end
 end
