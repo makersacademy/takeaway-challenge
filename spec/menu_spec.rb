@@ -15,7 +15,7 @@ subject(:menu) { described_class.new }
 
   describe '#view' do
     it 'displays dish and price' do
-      expect(menu.view).to 
+      expect { menu.view }.to output.to_stdout
     end
   end
 end
