@@ -1,0 +1,8 @@
+class Restaurant
+
+
+
+
+
+
+end
