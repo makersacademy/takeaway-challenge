@@ -81,7 +81,7 @@ This will start a command line script that will ask you to select options in ord
    ```
      beef = Dish.new("beef", 4)
      chicken = Dish.new("chicken", 3)
- ```
+   ```
  #### Menu
  
    The Menu Class contains a Hash of the dish names and prices as the key and value respectively.
@@ -102,50 +102,40 @@ This will start a command line script that will ask you to select options in ord
 
    Lastly you can print the items available on a given menu:
 
-     ```
-      menu.show_dishes
-      ```
+    `menu.show_dishes`
  
  #### Order
  
    The Order class contains all the logic required to create an order.
    You must pass in a menu object to initialize an order object:
 
-     ```
-      order = Order.new(menu)
-      ```
+    `order = Order.new(menu)`
 
    You can also add and remove dishes from the basket, as well as show the
    items currently in the basket and show the total price for these items:
 
-   ```
+     ```
      order.add('chicken')
      order.add('beef')
      order.remove('chicken')
      order.show_basket # => Chicken: £3
      order.show_total # => Your order total is £3
- ```
+      ```
  
  #### SMS
  
   The SMS class allows you to use twillio to send an sms when the order is complete.
   Twilio credentials are required to make this work, credentials are loaded as a hash.
 
-      ```
-      credentials = { "sid": "Your SID", "auth_token": "Your Auth Token", "number": "Your 'FROM' number}
-      ```
+    `credentials = { "sid": "Your SID", "auth_token": "Your Auth Token", "number": "Your 'FROM' number}`
 
   These credentials must be passed in when making a new instance:
 
-      ```
-      sms = SMS.new(credentials)
-      ```
+    `sms = SMS.new(credentials)`
 
   To send a text you will need a recipient number. The message will be passed in as a 'body' paramenter
 
-      ```
-      sms.send(body, recipient_number)
-      ```
+    `sms.send(body, recipient_number)`
 
  #### Combining it all together!
  
