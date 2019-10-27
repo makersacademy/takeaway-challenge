@@ -24,8 +24,5 @@ class Menu
     return output
   end
 
-  def menu_array
-    return @menu
-  end
 
 end
