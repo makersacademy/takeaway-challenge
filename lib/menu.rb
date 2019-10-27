@@ -1,16 +1,12 @@
 class Menu
-  DEFAULT_MENU = {fish: 1.49, chips: 0.49, falafel: 1.99, egg: 0.49}
+  DEFAULT_MENU = {Fish: 1.49, Jelly: 0.49, Falafel: 1.99, Egg: 0.49}
 
-  def initialize(items = DEFAULT_MENU)
-    @items = items
+  def initialize(menu = DEFAULT_MENU)
+    @menu = DEFAULT_MENU
   end
 
-  def list
-    
-    @items.map do |food, price|
-      return "#{food.capitalize} - £#{price}"
-    end
-
+  def display_menu
+    DEFAULT_MENU
   end
 
 end
