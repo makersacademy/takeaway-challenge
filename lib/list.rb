@@ -2,10 +2,11 @@ require_relative 'dish'
 
 class List
 
-  attr_reader :dish_list
+  attr_reader :dish_list, :checkout
 
   def initialize
     @dish_list = Hash.new
+    @checkout = []
   end
 
   def add_dish(dish)
@@ -17,6 +18,10 @@ class List
   end
 
   def select(dish)
-    @dish_list.select { |k, _v| k == dish }
+    @checkout << @dish_list.select { |k, _v| k == dish }
+  end
+
+  def checkout
+    p @checkout
   end
 end

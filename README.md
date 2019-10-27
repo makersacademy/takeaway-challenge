@@ -13,6 +13,17 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Commands
+-------
+
+List.new creates a new list/menu
+Dish.new(name, price) creates a new dish with its name and price
+List.add_dish(dish) adds a new dish to the menu
+List.select(dish) selects a dish off the menu and adds it to the order
+List.checkout checks out the order
+
+
+
 
 Instructions
 -------
