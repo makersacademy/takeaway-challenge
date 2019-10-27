@@ -80,3 +80,86 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+==================
+
+Sara Rancati - 26 October 2019
+
+Step-by-step program development process:
+-----
+1. First user story: the requirements is for the user to be able to see a list of dishes with prices. I created a simple diagram with Menu (class), list (variable), view_list (method) and wrote the first test. The instance variable @list is not accessible outside of the class, but the list can be viewed by calling the view_list method:
+
+```sh
+2.5.0 :002 > mymenu = Menu.new
+ => #<Menu:0x00007f884d04d1c0 @list={"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}>
+2.5.0 :003 > mymenu.view_list
+ => {"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}
+```
+
+2. Second user story: the user can select some number of several available dishes. This indicates that I'd need a method that requests the user's input several times for both the item and the quantity. I need to be able to store the user's selection in a basket that the user can view. For this, I created a second class (TakeAway). When initialized, the TakeAway object should have a property that generates a new Menu object. The menu's list will be assigned to an instance variable (@todays_dishes) through the view_list method being called on menu.
+
+```sh
+2.5.0 :002 > myTakeAway = TakeAway.new
+ => #<TakeAway:0x00007fb16f09e8e0 @todays_dishes={"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}>
+```
+
+*First commit.*
+
+There should also be a method in the TakeAway class that returns the list of available dishes (view_menu). I then worked on the tests for the order method, which should return the user's input for each dish/quantity selected.
+
+```sh
+2.5.0 :002 > myTakeAway = TakeAway.new
+ => #<TakeAway:0x00007fc73a190268 @todays_dishes={"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}>
+2.5.0 :003 > myTakeAway.view_menu
+ => {"rice"=>1.5, "fries"=>2.5, "noodles"=>3.5, "pasta"=>6.5, "pizza"=>7.5}
+2.5.0 :004 > myTakeAway.order
+Please enter the dish (to finish your order, hit return twice).
+pizza
+Please enter the quantity.
+3
+3 x pizza added
+Please enter the dish (to finish your order, hit return twice).
+pasta
+Please enter the quantity.
+2
+2 x pasta added
+Please enter the dish (to finish your order, hit return twice).
+
+ => {"pizza"=>3, "pasta"=>2}
+```
+
+*Second commit.*
+
+3. Third user story: the user would like to check that the total matches the subtotal for each item (this is my interpretation as instructions are not 100% clear to me - ideally I would have clarified with the client). I first created a test for the subtotal for each item. I then created a subtotal method and called that in the order method.
+
+(same irb output as above plus below:)
+```sh
+2.5.0 :004 > myTakeAway.view_summary
+ => "3 x pizza = £22.5; 2 x pasta = £13.0"
+ ```
+
+ *Third commit.*
+
+ I then worked on the method to calculate the total (i.e. iterating over the basket hash and menu hash).
+
+```sh
+=> {"pizza"=>3, "pasta"=>2}
+2.5.0 :004 > myTakeAway.total
+=> "Total = £35.5"
+ ```
+
+ At this point I researched how to remove the need for inserting my input in the test each time, to try to stub out the standard input stream.
+
+ *Fourth commit.*
+
+ 4. Fourth user story: this requires the implementation of a functionality to send an SMS once the order is confirmed, or an error should be raised if the total is not correct. Since instructions are not detailed, I am interpreting this as: the user will be asked to confirm whether the total is correct, and if they confirm, the SMS will be sent. I first wrote a test for the exception, within the "submit_order" method.
+
+  *Fifth commit.*
+
+  I worked on the string/text that should be returned if the user confirms the order (including the delivery time). I then set up the Twilio account and set environmental variables. The API call is being made within the "notify" method, which will be called in the "submit_order" method. 
+
+  *Sixth commit.*
+
+  I have tested in irb that the SMS is being sent and that the time is correct.
+
+  *Seventh (last) commit.*
