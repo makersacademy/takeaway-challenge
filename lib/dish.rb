@@ -14,4 +14,9 @@ class Dish
   def remove_portion
     @remaining_portions -= 1
   end
+
+  def add_portion
+    @remaining_portions += 1
+  end
+  
 end

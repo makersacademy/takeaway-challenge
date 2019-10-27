@@ -22,12 +22,20 @@ class Restaurant
     @dishes.each do |dish|
 
       if dish.name == dish_name
-        raise "No Longer Available" if dish.remaining_portions == 0
+        raise "No Longer Available" if sold_out?(dish)
         dish.remove_portion
         return {dish.name.to_sym => dish.price}
       end
     end
   end
+
+  def undo_portion_deductions(dish_name)
+    @dishes.each do |dish|
+      dish.add_portion if dish.name == dish_name
+    end
+
+  end
+
 
 private
 
@@ -38,6 +46,14 @@ private
     end
     @name_checker.include?(dish_name)
   end
+
+  def sold_out?(dish)
+    dish.remaining_portions == 0
+  end
+
+  
+
+
 
 
 

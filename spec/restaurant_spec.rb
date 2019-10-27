@@ -105,6 +105,16 @@ describe Restaurant do
       expect { restaurant.hold_portion_of_requested_dish("pizza")}.to_not raise_error
     end
 
+  context "#undo_portion_deductions" do
+    it "adds potions back to dish if order is cancled" do
+      restaurant.undo_portion_deductions("burger")
+      restaurant.create_dish("burger", 10)
+      restaurant.create_dish("pizza", 7.5)
+
+      expect { restaurant.undo_portion_deductions("burger") }.to change{ restaurant.dishes[0].remaining_portions }.by 1
+    end
+  end
+
 
   end
 

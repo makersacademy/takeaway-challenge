@@ -12,14 +12,19 @@ class Sms
     @client= Twilio::REST::Client.new($account_sid, $auth_token)
   end
 
-  def send_message
+  def order_placed_message
     @client.messages.create(
       to: ENV['MOBILE_NUM'],
       from: "+12028757975",
-      body: "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
+      body: "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}."
     )
-  end
-end
+    end
 
-sms_test = Sms.new
-puts sms_test.send_message
+    def order_not_placed
+      @client.messages.create(
+        to: ENV['MOBILE_NUM'],
+        from: "+12028757975",
+        body: "Your order could not be placed. Please check payment amount is correct and try again."
+      )
+      end
+end
