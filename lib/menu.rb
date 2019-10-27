@@ -1,5 +1,5 @@
 
-# menu - it lists a menu of items available
+
 class Menu
   attr_reader :menu
   def initialize
@@ -23,6 +23,5 @@ class Menu
     end
     return output
   end
-
 
 end
