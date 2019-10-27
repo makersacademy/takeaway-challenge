@@ -2,13 +2,21 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { Menu.new }
-  dish = Dish.new('chicken tikka', '10.00', true)
-  dish_2 = Dish.new('chicken korma', '14.00', true)
-  dish_3 = Dish.new('chicken bhuna', '9.00', true)
+  let(:dish) { double :dish,
+              name: 'chicken tikka',
+              price: '10.00',
+              pretty_format: 'chicken tikka £10.00' }
+  let(:dish_2) { double :dish,
+                name: 'chicken korma',
+                price: '14.00',
+                pretty_format: 'chicken korma £14.00'}
+  let(:dish_3) { double :dish,
+                name: 'chicken bhuna',
+                price: '9.00',
+                pretty_format: 'chicken bhuna £9.00'}
 
   describe '#add_dish' do
-    # TODO - replace dish with double
-    it '1 dish to empty menu' do
+      it '1 dish to empty menu' do
       expect(menu.add_dish(dish)).to eq [dish]
     end
 
