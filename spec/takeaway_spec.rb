@@ -54,11 +54,14 @@ describe TakeAway do
         expect { subject.submit_order }.to raise_error "The total is not correct. Please re-submit the order."
       end
 
+      before do
+        allow(subject).to receive(:notify)
+      end
+
       it 'sends an SMS if the user confirms that the total is correct' do
         allow(subject).to receive(:gets).and_return("yes")
-        allow(subject).to receive(:notify).with(new_sms)
-        allow(new_sms).to receive(:send_sms)
-        expect(subject.submit_order).to eq text1
+        expect(subject).to receive(:notify).with(text1)
+        subject.submit_order
       end
     end
   end

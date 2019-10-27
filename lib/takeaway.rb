@@ -1,5 +1,6 @@
 require_relative 'menu'
-require_relative 'sms'
+require 'twilio-ruby'
+require 'dotenv/load'
 
 class TakeAway
   attr_reader :sms
@@ -29,6 +30,10 @@ class TakeAway
     @basket
   end
 
+  def view_summary
+    @summary.join("; ")
+  end
+
   def subtotal
     @todays_dishes.each { |dish, price|
       if @item == dish
@@ -36,10 +41,6 @@ class TakeAway
       end
     }
     @subtotal
-  end
-
-  def view_summary
-    @summary.join("; ")
   end
 
   def total
@@ -59,15 +60,24 @@ class TakeAway
     t = (Time.now.utc + 3600).strftime("%H:%M")
     @sms = "Thank you! Your order was placed and will be delivered before #{t}"
     if input == "yes"
-      # send_sms(msg)
-      return @sms
+      notify(@sms)
     else
       raise "The total is not correct. Please re-submit the order."
     end
+  end
 
-    def notify(type = Sms.new)
-      # type.send_sms
-    end
+  private
 
+  def notify(text)
+    client = Twilio::REST::Client.new(
+      ENV['TWILIO_ACCOUNT_SID'],
+      ENV['TWILIO_AUTH_TOKEN']
+      )
+
+    client.messages.create(
+      from: ENV['TWILIO_NUMBER'],
+      to: ENV['MOBILE'],
+      body: text
+      )
   end
 end

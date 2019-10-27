@@ -156,6 +156,10 @@ Please enter the dish (to finish your order, hit return twice).
 
   *Fifth commit.*
 
-  I worked on the string/text that should be returned if the user confirms the order (including the delivery time). I then set up the Twilio account and set environmental variables.
+  I worked on the string/text that should be returned if the user confirms the order (including the delivery time). I then set up the Twilio account and set environmental variables. The API call is being made within the "notify" method, which will be called in the "submit_order" method. 
 
   *Sixth commit.*
+
+  I have tested in irb that the SMS is being sent and that the time is correct.
+
+  *Seventh (last) commit.*
