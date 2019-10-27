@@ -1,3 +1,5 @@
+require_relative 'text_sender'
+require_relative 'dish'
 
 class Order
   def initialize(dish_class = Dish)
