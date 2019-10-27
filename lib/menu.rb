@@ -12,10 +12,6 @@ class Menu
     end.join(", ")
   end
 
-  def dish?(dish)
-    !dishes[dish].nil?
-  end
-
   def price(dish)
     dishes[dish]
   end

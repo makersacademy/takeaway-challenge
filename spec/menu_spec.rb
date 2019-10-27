@@ -19,14 +19,6 @@ describe Menu do
     expect(menu.print).to eq(printed_menu)
   end
 
-  it "true if a dish is on the menu" do
-    expect(menu.dish?(:coffee)).to be true
-  end
-
-  it 'false if dish is not on the menu' do
-    expect(menu.dish?(:chicken)).to be false
-  end
-
   it 'knows the price of a dish' do
     expect(menu.price(:burger)).to eq(dishes[:burger])
   end
