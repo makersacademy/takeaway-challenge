@@ -1,4 +1,4 @@
-# require 'menu'
+require_relative '../lib/menu'
 
 class Order
   def initialize(menu)

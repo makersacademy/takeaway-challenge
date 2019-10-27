@@ -3,7 +3,6 @@ require 'order'
 
 describe Order do
   context 'ordering module' do
-
     it 'selects an item' do
       vn = Menu.new
       order = Order.new(vn)
