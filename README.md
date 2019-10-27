@@ -47,36 +47,97 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+## Usage
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Firstly Clone this repo! Make sure that you run `bundle install` in the repo directory.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+In order to use this program, you will need a twilio account.
+You must add your twilio credentials to your bash_profile environment variables as follows:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+```
+export TWILIO_SID=<Your SID>
+export TWILIO_TOKEN=<Your Twilio Authorization token>
+export TWILIO_NUM=<The number provided in your twilio account>
+export MY_NUMBER=<Your personal phone number>
+```
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+Lastly, use `ruby takeaway.rb` from the program's directory to start the program.
+This will start a command line script that will ask you to select options in order to make an order.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## My Approach
 
+  I made 4 classes to complete this challenge:
 
-In code review we'll be hoping to see:
+   * Dish
+   * Menu
+   * Order
+   * SMS
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+ 
+ #### Dish
+ 
+   The Dish class simply contains attributes for the Name and Price for a given dish, All prices are in GBP:
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+   ```
+   beef = Dish.new("beef", 4)
+   chicken = Dish.new("chicken", 3)
+ ```
+ #### Menu
+ 
+   The Menu Class contains a Hash of the dish names and prices as the key and value respectively.
+   Dishes can be added and removed from the menu as you please.
 
-Notes on Test Coverage
-------------------
+   ```
+   menu = Menu.new
+   menu.add(beef)
+   menu.remove(chicken)
+   ```
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+   You can also check if a dish exists on the menu by passing in a string:
+
+   ```
+   menu.available?('beef') #=> true
+   menu.available?('chicken')  #=> false
+   ```
+
+   Lastly you can print the items available on a given menu:
+
+   `menu.show_dishes`
+ 
+ #### Order
+ 
+   The Order class contains all the logic required to create an order.
+   You must pass in a menu object to initialize an order object:
+
+   `order = Order.new(menu)`
+
+   You can also add and remove dishes from the basket, as well as show the
+   items currently in the basket and show the total price for these items:
+
+   ```
+   order.add('chicken')
+   order.add('beef')
+   order.remove('chicken')
+   order.show_basket # => Chicken: £3
+   order.show_total # => Your order total is £3
+ ```
+ 
+ #### SMS
+ 
+  The SMS class allows you to use twillio to send an sms when the order is complete.
+  Twilio credentials are required to make this work, credentials are loaded as a hash.
+
+  `credentials = { "sid": "Your SID", "auth_token": "Your Auth Token", "number": "Your 'FROM' number}`
+
+  These credentials must be passed in when making a new instance:
+
+  `sms = SMS.new(credentials)`
+
+  To send a text you will need a recipient number. The message will be passed in as a 'body' paramenter
+
+  `sms.send(body, recipient_number)`
+ 
+ #### Combining it all together!
+ 
+   The last step was to make a script to tie all these classes together.
+   The script asks the user to make a choice in the command line and directs the user to add items and confirm an order.
