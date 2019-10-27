@@ -24,4 +24,10 @@ describe Takeaway do
       expect { subject.add_to_basket(:fanta, 1) }.to raise_error 'Item not on menu'
     end
   end
+
+  context 'placing order' do
+    it 'accepts a quantity into place_order' do
+      expect { subject.place_order(1) }.not_to raise_error
+    end
+  end
 end

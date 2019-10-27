@@ -18,6 +18,6 @@ class Takeaway
     @basket[item] = quantity
   end
 
-  def place_order
+  def place_order(total)
   end
 end
