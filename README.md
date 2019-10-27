@@ -23,7 +23,7 @@ $irb
 2. Sweet & sour fish: £6
 3. Morning glory: £4
 
-2.5.0 :004 > order = Order.new(menu)
+2.5.0 :004 > order = Order.new
  => #<Order:0x00007fc2f85288d0 @basket=[]>
 
 2.5.0 :005 > order.select_dish(1, 3)

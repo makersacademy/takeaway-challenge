@@ -5,7 +5,7 @@ class Order
 
   attr_reader :basket
 
-  def initialize(menu)
+  def initialize(menu = Menu.new)
     @basket = []
     @menu = menu
   end
