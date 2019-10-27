@@ -9,7 +9,7 @@ describe Takeaway do
 
   it 'tells the customer the total of their order' do
     subject.choose("Fish")
-    expect(subject.total).to eq "Your bill comes to £3. Thank you!"
+    expect(subject.running_total).to eq "Your bill so far comes to £3. Thank you!"
   end
 
   describe '#display_menu' do
@@ -18,5 +18,11 @@ describe Takeaway do
       expect(subject.display_menu).to eq "Fish - £3\nJelly - £1\nLiver - £2\nEgg - £1"
     end
 
+  end
+
+  describe '#checkout' do
+    it 'confirms the time the order has been placed and gives delivery estimate.' do
+      expect(subject.checkout).to eq "Your order was placed at #{Time.now}. Your food should be with you by #{Time.now+3600}."
+    end
   end
 end
