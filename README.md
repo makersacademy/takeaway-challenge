@@ -19,7 +19,7 @@ The user can then run a series of commands:
 * `.basket` (to view the basket so far)
 * `.confirm_total(amount)` (to confirm the total of their final order)
 
-INSERT SCREEN SHOT OF CODE HERE
+[Screen shot of app in use](https://github.com/eliseaston/takeaway-challenge/blob/master/takeaway_screenshot.png)
 
 ### Installation
 
