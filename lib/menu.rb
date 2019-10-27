@@ -1,4 +1,3 @@
-require_relative "restaurant"
 class Menu
 
 attr_reader :dishes

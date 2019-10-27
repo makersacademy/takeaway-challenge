@@ -4,9 +4,10 @@ describe Restaurant do
 
  let(:restaurant) { Restaurant.new }
  let(:menu) { Menu.new }
+ let(:payment) { Payment.new }
 
   context "on opening the program" do
-    # Calling "load_menu" on restaurant instance creates a menu instance
+    # calling "load_menu" on restaurant instance creates a menu instance
     it "can load a menu" do
       restaurant.load_menu(menu)
       expect(restaurant.menu).to eq(menu)
@@ -39,6 +40,18 @@ describe Restaurant do
       restaurant.choose(dish, quantity)
       total_cost = 2.0
       expect(restaurant.total).to eq "Your total order will cost 2.0"
+    end
+
+  end
+
+  context "paying" do
+    # create instance of payment class to proceed with payment
+    it "proceed to payment" do
+      restaurant.load_menu(menu)
+      dish = "char sui buns"
+      quantity = 2
+      restaurant.choose(dish, quantity)
+      expect(restaurant.pay(payment)).to eq(payment)
     end
 
   end

@@ -1,7 +1,8 @@
 require_relative "menu"
+require_relative "payment"
 class Restaurant
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :grand_total
 
   def initialize
     @order = []
@@ -21,7 +22,11 @@ class Restaurant
 
   def total
     grand_total = @order.map {|arr| arr[1]}.sum
-    return "Your total order will cost #{grand_total}"
+    "Your total order will cost #{grand_total}"
+  end
+
+  def pay(payment = Payment.new)
+    @payment = payment
   end
 
 end
