@@ -10,8 +10,8 @@ class Order
   def select_dish(dish_num, quantity)
     @basket << { dish: @menu.dishes[dish_num - 1][:dish],
      total: @menu.dishes[dish_num - 1][:price] * quantity }
-    puts "#{quantity}x #{@menu.dishes[dish_num - 1][:dish]}
-     added to your basket"
+    puts "#{quantity}x #{@menu.dishes[dish_num - 1][:dish]} added to your basket"
+    @basket
   end
 
   def basket_summary
@@ -25,19 +25,19 @@ class Order
     @basket.each do |hash|
       sum += hash[:total]
     end
-    puts "£#{sum}"
+    puts "Your total bill is £#{sum}"
     sum
   end
 
   def checkout(amount, textprovider = TextProvider.new)
-    raise "Amount not correct" if incorrect_amount?(amount)
+    raise "Amount not correct" unless correct_amount?(amount)
     textprovider.send_text
   end
 
   private
 
-  def incorrect_amount?(amount)
-    amount != total
+  def correct_amount?(amount)
+    amount == total
   end
 
 end
