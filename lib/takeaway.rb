@@ -1,7 +1,8 @@
 require_relative 'menu'
+require_relative 'sms'
 
 class TakeAway
-  attr_reader :summary
+  attr_reader :sms
 
   def initialize(menu: Menu.new)
     @todays_dishes = menu.view_list
@@ -55,7 +56,18 @@ class TakeAway
   def submit_order
     puts total + " If this is correct, enter 'yes' to submit your order"
     input = gets.chomp
-    return "Confirmation SMS sent" if input == "yes"
-    raise "The total is not correct. Please re-submit the order."
+    t = (Time.now.utc + 3600).strftime("%H:%M")
+    @sms = "Thank you! Your order was placed and will be delivered before #{t}"
+    if input == "yes"
+      # send_sms(msg)
+      return @sms
+    else
+      raise "The total is not correct. Please re-submit the order."
+    end
+
+    def notify(type = Sms.new)
+      # type.send_sms
+    end
+
   end
 end

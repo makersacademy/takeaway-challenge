@@ -82,6 +82,7 @@ Notes on Test Coverage
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
 
 ==================
+
 Sara Rancati - 26 October 2019
 
 Step-by-step program development process:
@@ -104,7 +105,7 @@ Step-by-step program development process:
 
 *First commit.*
 
-There should also be a method in the TakeAway class that return the list of available dished (view_menu). I then worked on the test for the order method, which should return the user's input for each dish/quantity selected.
+There should also be a method in the TakeAway class that returns the list of available dishes (view_menu). I then worked on the tests for the order method, which should return the user's input for each dish/quantity selected.
 
 ```sh
 2.5.0 :002 > myTakeAway = TakeAway.new
@@ -154,3 +155,7 @@ Please enter the dish (to finish your order, hit return twice).
  4. Fourth user story: this requires the implementation of a functionality to send an SMS once the order is confirmed, or an error should be raised if the total is not correct. Since instructions are not detailed, I am interpreting this as: the user will be asked to confirm whether the total is correct, and if they confirm, the SMS will be sent. I first wrote a test for the exception, within the "submit_order" method.
 
   *Fifth commit.*
+
+  I worked on the string/text that should be returned if the user confirms the order (including the delivery time). I then set up the Twilio account and set environmental variables.
+
+  *Sixth commit.*

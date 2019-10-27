@@ -1,11 +1,14 @@
 require 'takeaway'
 
 describe TakeAway do
-  let(:menu) { double :menu }
   subject(:subject) { described_class.new(menu: menu) }
+  let(:menu) { double :menu }
   let(:item1) { "pizza" }
   let(:quantity1) { 3 }
   let(:price1) { 7.50 }
+  let(:time) { (Time.now.utc + 3600).strftime("%H:%M") }
+  let(:text1) { "Thank you! Your order was placed and will be delivered before #{time}" }
+  let(:new_sms) { double :new_sms }
 
   before do
     allow(menu).to receive(:view_list).and_return({ "rice" => 1.50, "fries" => 2.50, "noodles" => 3.50, "pasta" => 6.50, "pizza" => 7.50 })
@@ -53,7 +56,9 @@ describe TakeAway do
 
       it 'sends an SMS if the user confirms that the total is correct' do
         allow(subject).to receive(:gets).and_return("yes")
-        expect(subject.submit_order).to eq "Confirmation SMS sent"
+        allow(subject).to receive(:notify).with(new_sms)
+        allow(new_sms).to receive(:send_sms)
+        expect(subject.submit_order).to eq text1
       end
     end
   end
