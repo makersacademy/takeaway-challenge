@@ -21,6 +21,9 @@ describe Restaurant do
     allow(dish_double_3).to receive(:name) {"chicken"}
     allow(dish_double_3).to receive(:price) {8}
     allow(dish_double_3).to receive(:remove_portion)
+    allow(dish_double_1).to receive(:remaining_portions)
+    allow(dish_double_2).to receive(:remaining_portions)
+    allow(dish_double_3).to receive(:remaining_portions)
 
   end
 
@@ -57,16 +60,23 @@ describe Restaurant do
   end
 
   context "#hold_portion_of_requested_dish_order" do
+
+
     it "returns an hash" do
       restaurant.create_dish("burger", 10, dish_double_1)
       expect(restaurant.hold_portion_of_requested_dish("burger")).to be_a(Hash)
+    end
+
+    it "raise error if dish doesnt exist" do
+      restaurant.create_dish("burger", 10, dish_double_1)
+      expect { restaurant.hold_portion_of_requested_dish("pizza") }.to raise_error "Dish Unavailable"
     end
 
     it "returns and hash with dish name as key and price as value" do
       restaurant.create_dish("burger", 10, dish_double_1)
       restaurant.create_dish("pizza", 7.5, dish_double_2)
       restaurant.create_dish("chicken", 8, dish_double_3)
-    
+
       expect(restaurant.hold_portion_of_requested_dish("burger")).to eq({burger: 10})
     end
 
@@ -79,7 +89,24 @@ describe Restaurant do
 
       restaurant.hold_portion_of_requested_dish("burger")
       expect(restaurant.dishes[0].remaining_portions).to eq 4
-
     end
+
+    it "raise error is there are no remaining portions" do
+      restaurant.create_dish("pizza", 7.5, dish_double_2)
+      restaurant.create_dish("chicken", 8, dish_double_3)
+      allow(dish_double_2).to receive(:remaining_portions) {0}
+      expect { restaurant.hold_portion_of_requested_dish("pizza")}.to raise_error "No Longer Available"
+    end
+
+    it "do not raise error if there are potions remaining" do
+      restaurant.create_dish("pizza", 7.5, dish_double_2)
+      restaurant.create_dish("chicken", 8, dish_double_3)
+      allow(dish_double_2).to receive(:remaining_portions) {1}
+      expect { restaurant.hold_portion_of_requested_dish("pizza")}.to_not raise_error
+    end
+
+
   end
+
+
 end

@@ -12,8 +12,22 @@ class Order
     @display.menu(@restaurant)
   end
 
+  def view_basket
+    @display.basket(self)
+  end
+
   def request_item(name)
     @basket << @restaurant.hold_portion_of_requested_dish(name)
+  end
+
+  def basket_total_price
+    @sum = 0
+    @basket.each do |dish|
+      dish.each do |name, price|
+        @sum += price
+      end
+    end
+    @sum
   end
 
 end
