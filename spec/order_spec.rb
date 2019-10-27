@@ -25,5 +25,12 @@ describe Order do
     expect(order.dishes).to eq(dishes)
   end
 
+  it 'should calculate the total of all the items' do
+    order.add(:coffee, 1)
+    order.add(:pizza, 2)
+    total = 18.60
+    expect(order.total).to eq(total)
+  end
+
 
 end
