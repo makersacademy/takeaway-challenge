@@ -1,37 +1,33 @@
 require 'display'
 
 describe Display do
-  let(:display) {Display.new}
+  let(:display) { Display.new }
 
-  let(:restaurant_double) {double :restaurant}
+  let(:restaurant_double) { double :restaurant }
 
-  let(:dish1) {double :dish}
-  let(:dish2) {double :dish}
-  let(:dish3) {double :dish}
-  let(:order) {double :order}
+  let(:dish1) { double :dish }
+  let(:dish2) { double :dish }
+  let(:dish3) { double :dish }
+  let(:order) { double :order }
 
   before :each do
 
-    allow(dish1).to receive(:name) {"burger"}
-    allow(dish1).to receive(:price) {10}
-    allow(dish1).to receive(:remaining_portions) {4}
-    allow(dish2).to receive(:name) {"pizza"}
-    allow(dish2).to receive(:price) {7}
-    allow(dish2).to receive(:remaining_portions) {2}
-    allow(dish3).to receive(:name) {"fish"}
-    allow(dish3).to receive(:price) {12}
-    allow(dish3).to receive(:remaining_portions) {5}
-    allow(restaurant_double).to receive(:dishes) {[dish1, dish2, dish3]}
-    allow(order).to receive(:basket) {[{:burger => 10}, {:pizza => 8}, {:fish => 10.59}]}
-    allow(order).to receive(:basket_total_price) {28.59}
+    allow(dish1).to receive(:name) { "burger" }
+    allow(dish1).to receive(:price) { 10 }
+    allow(dish1).to receive(:remaining_portions) { 4 }
+    allow(dish2).to receive(:name) { "pizza" }
+    allow(dish2).to receive(:price) { 7 }
+    allow(dish2).to receive(:remaining_portions) { 2 }
+    allow(dish3).to receive(:name) { "fish" }
+    allow(dish3).to receive(:price) { 12 }
+    allow(dish3).to receive(:remaining_portions) { 5 }
+    allow(restaurant_double).to receive(:dishes) { [dish1, dish2, dish3] }
+    allow(order).to receive(:basket) { [{ :burger => 10 }, { :pizza => 8 }, { :fish => 10.59 }] }
+    allow(order).to receive(:basket_total_price) { 28.59 }
 
   end
 
   context "#menu" do
-
-    # it "it returns a string" do
-    #   expect(display.menu(restaurant_double)).to be_a(String)
-    # end
 
     it "iterates through given array and prints dish names, prices
     and number of remaining portions" do

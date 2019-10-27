@@ -7,24 +7,24 @@ class Restaurant
     @dishes = []
   end
 
-  def create_dish(name,price,dish = Dish)
+  def create_dish(name, price, dish = Dish)
     @dishes << dish.new(name, price)
   end
 
   def availabilty_checker
     @dishes.delete_if do |dish|
-      dish.remaining_portions == 0
+      sold_out?(dish)
     end
   end
 
   def hold_portion_of_requested_dish(dish_name)
     raise "Dish Unavailable" unless valid_dish_choice?(dish_name)
-    @dishes.each do |dish|
 
+    @dishes.each do |dish|
       if dish.name == dish_name
         raise "No Longer Available" if sold_out?(dish)
         dish.remove_portion
-        return {dish.name.to_sym => dish.price}
+        return { dish.name.to_sym => dish.price }
       end
     end
   end
@@ -36,8 +36,7 @@ class Restaurant
 
   end
 
-
-private
+  private
 
   def valid_dish_choice?(dish_name)
     @name_checker = []
@@ -50,14 +49,5 @@ private
   def sold_out?(dish)
     dish.remaining_portions == 0
   end
-
-  
-
-
-
-
-
-
-
 
 end

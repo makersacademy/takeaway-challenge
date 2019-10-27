@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-  let(:dish) {Dish.new("burger", 10)}
+  let(:dish) { Dish.new("burger", 10) }
 
   context "#initialize" do
 
@@ -28,4 +28,11 @@ describe Dish do
       expect { dish.remove_portion }.to change { dish.remaining_portions }.by -1
     end
   end
+
+  context "#add_portion" do
+    it "add 1 portion to dish" do
+      expect { dish.add_portion }.to change { dish.remaining_portions }.by 1
+    end
+  end
+
 end
