@@ -151,4 +151,6 @@ Please enter the dish (to finish your order, hit return twice).
 
  *Fourth commit.*
 
- 4. Fourth user story:
+ 4. Fourth user story: this requires the implementation of a functionality to send an SMS once the order is confirmed, or an error should be raised if the total is not correct. Since instructions are not detailed, I am interpreting this as: the user will be asked to confirm whether the total is correct, and if they confirm, the SMS will be sent. I first wrote a test for the exception, within the "submit_order" method.
+
+  *Fifth commit.*

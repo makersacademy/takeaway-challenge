@@ -16,7 +16,7 @@ class TakeAway
   def order
     puts "Please enter the dish (to finish your order, hit return twice)."
     @item = gets.chomp
-    while !@item.empty? do
+    while @item.empty? == false do
       puts "Please enter the quantity."
       @quantity = gets.chomp.to_i
       puts "#{@quantity} x #{@item} added"
@@ -49,6 +49,13 @@ class TakeAway
           total += (quantity * price)
         end
       }}
-    "Total = £#{total}"
+    "Total = £#{total}."
+  end
+
+  def submit_order
+    puts total + " If this is correct, enter 'yes' to submit your order"
+    input = gets.chomp
+    return "Confirmation SMS sent" if input == "yes"
+    raise "The total is not correct. Please re-submit the order."
   end
 end

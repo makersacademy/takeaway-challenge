@@ -41,9 +41,20 @@ describe TakeAway do
         subject.order
         allow(subject).to receive(:gets).and_return("fries\n", "2\n")
         subject.order
-        expect(subject.total).to eq "Total = £8.0"
+        expect(subject.total).to eq "Total = £#{(2 * 1.50) + (2 * 2.50)}."
+      end
+    end
+
+    describe "#submit_order" do
+      it 'raises an error when the total is not correct' do
+        allow(subject).to receive(:gets).and_return("no")
+        expect { subject.submit_order }.to raise_error "The total is not correct. Please re-submit the order."
       end
 
+      it 'sends an SMS if the user confirms that the total is correct' do
+        allow(subject).to receive(:gets).and_return("yes")
+        expect(subject.submit_order).to eq "Confirmation SMS sent"
+      end
     end
   end
 end
