@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :order
+  attr_reader :order, :basket
 
   def initialize(cuisine = Pizza)
     @cuisine = cuisine.new
