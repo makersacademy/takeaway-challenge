@@ -8,4 +8,8 @@ class Menu
       puts "#{k.capitalize}: #{v}"
     end
   end
+
+  def on_menu?(item)
+    @list.include?(item)
+  end
 end

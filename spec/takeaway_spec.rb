@@ -10,15 +10,18 @@ describe Takeaway do
     end
   end
 
-  context 'creating an order' do
-    it 'creates a hash via "create_order"' do
-      expect(subject.create_order).to be_a Hash
+  context 'adding to basket' do
+    it 'basket starts empty' do
+      expect(subject.basket).to eq({})
     end
-  end
 
-  context 'placing order' do
-    it 'accepts an order via "place_order"' do
-      expect { subject.place_order({ pizza: 1, fries: 1, total: 7 }) }.not_to raise_error
+    it 'adds item and quantity to basket when add_to_basket is called' do
+      subject.add_to_basket(:pizza, 1)
+      expect(subject.basket).to include({pizza: 1})
+    end
+
+    it 'raises an error when an off-menu item is added' do
+      expect { subject.add_to_basket(:fanta, 1) }.to raise_error 'Item not on menu'
     end
   end
 end
