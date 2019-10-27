@@ -42,4 +42,22 @@ describe Takeaway do
     expect { takeaway.add("Chicken", 3) }.to raise_error "Chicken is not on the menu!"
   end
 
+  it 'calculates a price' do
+    expect(takeaway.price("Pepperoni")).to eq(8)
+  end
+
+  it 'calculates a price' do
+    expect(takeaway.price("Mighty_Meaty")).to eq(9)
+  end
+
+  it 'raises an error if trying to find the order price and no dishes' do
+    expect { takeaway.order_total }.to raise_error "no dishes to check price on!"
+  end
+
+  it 'knows the selected dishes total' do
+    takeaway.add("Pepperoni", 2)
+    takeaway.add("Hawaiian", 1)
+    expect(takeaway.order_total).to eq(23)
+  end
+
 end
