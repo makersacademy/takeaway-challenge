@@ -11,6 +11,7 @@ class Basket
     else
       @basket[item] = quantity
     end
+    "#{quantity}x #{item} added to basket."
   end
 
 end

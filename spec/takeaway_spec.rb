@@ -32,6 +32,13 @@ describe Takeaway do
       expect(subject.add_to_order("curry", 1)).to eq true
     end
 
+    it 'calls calculate_basket on Baskter' do
+      allow(basket_double).to receive(:calculate_basket) { true }
+      expect(subject.show_order).to eq true
+    end
+
   end
+
+
 
 end

@@ -18,4 +18,11 @@ describe Basket do
     expect(basket.basket).to eq({ test_dish: 11 })
   end
 
+  it 'adds second item to basket' do
+    basket.set_basket(:test_dish, 10)
+    basket.set_basket(:test_dish, 1)
+    basket.set_basket(:second_dish, 1)
+    expect(basket.basket).to eq({ test_dish: 11, second_dish: 1 })
+  end
+ 
 end
