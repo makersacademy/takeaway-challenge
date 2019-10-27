@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'basket'
+require_relative 'notification'
 
 class Takeaway
 
@@ -29,6 +30,20 @@ class Takeaway
       @total += (unit_price * qty)
     }
     puts "Total: £#{@total}"
+  end
+
+  def confirm(price, notification = Notification.new)
+    @notification = notification
+    @basket.basket.each { |dish, qty|
+      unit_price = @menu.menu[dish]
+      @total += (unit_price * qty)
+    }
+
+    if price == @total
+      @notification.send_sms
+    else
+      puts "Wrong total. Please try again."
+    end
   end
 
   private 

@@ -36,11 +36,20 @@ describe Takeaway do
 
   context 'showing basket and total' do
     let(:subject) { Takeaway.new }
+    let(:sms) { double :notification }
 
     it 'shows basket with total' do
       subject.add_to_order('curry', 2)
       expect { subject.show_order }.to output("Order Basket:\n2x curry = £19.98\nTotal: £19.98\n").to_stdout
     end
+
+    it 'sends sms' do
+      allow(sms).to receive(:send_sms).and_return(true)
+      subject.add_to_order('curry', 2)
+      expect(subject.confirm(19.98, sms)).to eq true
+
+    end
+
   end
 
 end
