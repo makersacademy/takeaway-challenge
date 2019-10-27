@@ -19,12 +19,29 @@ class Order
   end
 
   def calculate_total
+    current_total = 0
     @basket.each {|item|
       item.each { |key, value|
-        @total += value
+        current_total += value
       }
-    }    
+    }   
+    @total = current_total.round(2) 
     return @total
+  end
+
+  def show_basket
+    print_string = ""
+    @basket.each {|item|
+      item.each {|key, value|
+        print_string += "#{key}: #{value}\n"
+      }
+    }
+    print print_string.strip
+  end
+
+  def show_total
+    calculate_total
+    print "Your order total is £#{@total}"
   end
 
 end

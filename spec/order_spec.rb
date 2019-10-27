@@ -10,16 +10,16 @@ describe Order do
   beef_rice = Dish.new("Beef Rice", 4)
   egg_rice = Dish.new("Egg Rice", 2)
 
-  before do
-    allow(menu).to receive(:available?).and_return(true)
-    menu_instance.add(beef_rice)
-    menu_instance.add(egg_rice)
-  end
-
   context "items" do
   end
 
   context "order basket" do
+    before do
+      allow(menu).to receive(:available?).and_return(true)
+      menu_instance.add(beef_rice)
+      menu_instance.add(egg_rice)
+    end
+
     it "has an order basket" do
       expect(subject.basket).to eq([])
     end
@@ -42,10 +42,31 @@ describe Order do
   end
 
   context "total" do
-    it "adds up the total for all the selected items" do
+    before do
       subject.add("Beef Rice")
       subject.add("Egg Rice")
+    end
+
+    it "adds up the total for all the selected items" do
       expect(subject.calculate_total).to eq(6)
     end
+  end
+
+  context "printing" do
+    before do
+      subject.add("Beef Rice")
+      subject.add("Egg Rice")
+    end
+
+    it "shows the contents of the basket" do
+      expect{subject.show_basket}.to output(
+        "Beef Rice: 4\nEgg Rice: 2"
+      ).to_stdout
+    end
+
+    it "prints the total to the screen" do
+      expect{subject.show_total}.to output("Your order total is £6").to_stdout
+    end
+
   end
 end

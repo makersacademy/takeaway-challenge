@@ -1,4 +1,5 @@
 require_relative 'dish'
+
 class Menu
   attr_reader :dishes
 
@@ -16,11 +17,14 @@ class Menu
     return dish
   end
 
-  def show_dishes
-  end
-
   def available?(dish)
     return @dishes.include?(dish)
+  end
+
+  def show_dishes
+    @dishes.each {|name, price|
+      print "#{name} : #{price}\n"
+    }
   end
 
   def menu
