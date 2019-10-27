@@ -1,11 +1,13 @@
 require_relative 'menu'
+require_relative 'confirminator'
 
 class Takeaway
   attr_reader :basket
 
-  def initialize(menu_items = {})
+  def initialize(menu_items = {}, confirminator = Confirminator.new)
     @menu = Menu.new(menu_items)
     @basket = {}
+    @confirminator = confirminator
   end
 
   def view_menu
@@ -20,6 +22,8 @@ class Takeaway
 
   def place_order(customer_total)
     raise 'Incorrect total' unless customer_total == calculate_total
+
+    @confirminator.confirm(0)
   end
 
   private

@@ -2,7 +2,8 @@ require 'takeaway'
 
 describe Takeaway do
   items = { pizza: 6, fries: 1 }
-  let(:subject) { Takeaway.new(items) }
+  let(:confirminator) { double Confirminator }
+  let(:subject) { Takeaway.new(items, confirminator) }
 
   context 'menu' do
     it 'accepts "view_menu" method' do
@@ -26,14 +27,22 @@ describe Takeaway do
   end
 
   context 'placing order' do
-    it 'raises an error if the customer total does not equal actual total' do
+    before do
       subject.add_to_basket(:fries, 1)
+      allow(confirminator).to receive(:confirm)
+    end
+
+    it 'raises an error if the customer total does not equal actual total' do
       expect { subject.place_order(4) }.to raise_error 'Incorrect total'
     end
 
     it 'does not raise error if customer total is equal to actual total' do
-      subject.add_to_basket(:fries, 1)
       expect { subject.place_order(1) }.not_to raise_error
+    end
+
+    it 'calls confirminator with a delivery time if order is successful' do
+      expect(confirminator).to receive(:confirm)
+      subject.place_order(1)
     end
   end
 end
