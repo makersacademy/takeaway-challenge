@@ -1,7 +1,7 @@
 class Takeaway
 
   DEFAULT_MENU = {Fish: 3, Jelly: 1, Liver: 2, Egg: 1}
-  attr_reader :menu, :meal, :bill
+  attr_reader :meal
 
   def initialize(menu = DEFAULT_MENU)
     @menu = DEFAULT_MENU
