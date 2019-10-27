@@ -1,4 +1,4 @@
-class PriceList
+class Menu
   def initialize(menu = {})
     @list = menu
   end
