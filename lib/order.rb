@@ -2,9 +2,6 @@ require './lib/menu.rb'
 require './lib/textprovider.rb'
 
 class Order
-
-  attr_reader :basket
-
   def initialize(menu = Menu.new)
     @basket = []
     @menu = menu

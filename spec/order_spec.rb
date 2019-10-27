@@ -2,27 +2,25 @@ require 'order'
 
 describe Order do
   subject(:order) { described_class.new(menu) }
-  let(:menu) { Menu.new }
+  let(:menu) { double :menu }
 
   context 'by default' do
-    it 'has an empty array' do
-      expect(order.basket).to be_empty
+    it 'nothing is in the basket' do
+      expect(order.total).to eq(0)
     end
   end
 
   describe '#select_dish' do
-    it 'takes a dish number and quantity as arguments' do
-      expect(order).to respond_to(:select_dish).with(2).arguments
-    end
-
     it 'stores dish and total in basket' do
+      allow(menu).to receive(:dishes).and_return([{ dish: "Egg fried rice", price: 3 }])
       order.select_dish(1, 2)
-      expect(order.basket).to include({ :dish => "Egg fried rice", :total => 6 })
+      expect(order.basket_summary).to include({ :dish => "Egg fried rice", :total => 6 })
     end
   end
 
   describe '#basket_summary' do
     it 'displays basket' do
+      allow(menu).to receive(:dishes).and_return([{ dish: "Egg fried rice", price: 3 }])
       order.select_dish(1, 2)
       expect { order.basket_summary }.to output("Egg fried rice, £6\n").to_stdout
     end
@@ -30,9 +28,9 @@ describe Order do
 
   describe '#total' do
     it 'sums totals in basket' do
+      allow(menu).to receive(:dishes).and_return([{ dish: "Egg fried rice", price: 3 }])
       order.select_dish(1, 2)
-      order.select_dish(2, 1)
-      expect(order.total).to eq 12
+      expect(order.total).to eq 6
     end
   end
 
@@ -41,6 +39,7 @@ describe Order do
     let(:client) { double :client }
 
     before do
+      allow(menu).to receive(:dishes).and_return([{ dish: "Egg fried rice", price: 3 }])
       order.select_dish(1, 2)
     end
 
