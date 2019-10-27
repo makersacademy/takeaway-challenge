@@ -9,6 +9,16 @@ class Takeaway
     @menu.print
   end
 
-  def place_order(items)
+  def create_order
+    @order = {}
+    puts 'Item:'
+    item = gets.chomp
+    puts 'Quantity:'
+    quantity = gets.chomp
+    @order[item] = quantity
+    @order
+  end
+
+  def place_order(order)
   end
 end

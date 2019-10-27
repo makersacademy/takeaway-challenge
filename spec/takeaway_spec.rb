@@ -14,5 +14,9 @@ describe Takeaway do
     it 'accepts an order via "place_order"' do
       expect { subject.place_order({ pizza: 1, fries: 1, total: 7 }) }.not_to raise_error
     end
+
+    it 'creates a hash via "create_order"' do
+      expect(subject.create_order).to be_a Hash
+    end
   end
 end
