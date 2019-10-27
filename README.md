@@ -1,3 +1,95 @@
+## Install instructions
+* clone the repo
+* run `bundle` to install the gems
+* you must manually create a `.env` file in the project directory to enable SMS messaging via Twilio. Setup an account with the instructions below. Then set the following `ENV` parameters in `.env` :
+```
+TWILIO_ACC_SID = 'YOUR DETAILS HERE'
+TWILIO_AUTH_TOKEN = 'YOUR DETAILS HERE'
+TWILIO_FROM_NUMBER = 'YOUR DETAILS HERE'
+TWILIO_TO_NUMBER = 'YOUR DETAILS HERE'
+```
+
+## Steps to Run
+
+* setup objects in IRB
+* start IRB in project root directory
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+2.5.0 :003 > require './lib/dish.rb'
+ => true
+2.5.0 :004 > dish_1 = Dish.new('Chicken Chow mien', '10.00', true)
+ => #<Dish:0x00007fe39e829478 @name="Chicken Chow mien", @price="10.00", @available=true>
+2.5.0 :005 > dish_2 = Dish.new('Chicken Bhuna', '11.00', true)
+ => #<Dish:0x00007fe39e831290 @name="Chicken Bhuna", @price="11.00", @available=true>
+2.5.0 :006 > dish_3 = Dish.new('prawn special', '20.00', true)
+ => #<Dish:0x00007fe39f130aa8 @name="prawn special", @price="20.00", @available=true>
+2.5.0 :010'> require "./lib/menu.rb"
+2.5.0 :011'> menu = menu.new
+ => #<Menu:0x00007fe39e171298 @contents=[]>
+2.5.0 :017 > menu.add_dish(dish_1)
+ => [#<Dish:0x00007fe39e829478 @name="Chicken Chow mien", @price="10.00", @available=true>]
+2.5.0 :018 > menu.add_dish(dish_2)
+ => [#<Dish:0x00007fe39e829478 @name="Chicken Chow mien", @price="10.00", @available=true>, #<Dish:0x00007fe39e831290 @name="Chicken Bhuna", @price="11.00", @available=true>]
+2.5.0 :019 > menu.add_dish(dish_3)
+ => [#<Dish:0x00007fe39e829478 @name="Chicken Chow mien", @price="10.00", @available=true>, #<Dish:0x00007fe39e831290 @name="Chicken Bhuna", @price="11.00", @available=true>, #<Dish:0x00007fe39f130aa8 @name="prawn special", @price="20.00", @available=true>]
+2.5.0 :020 > menu.print_contents
+ => "1 Chicken Chow mien £10.00, 2 Chicken Bhuna £11.00, 3 prawn special £20.00"
+```
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+2.5.0 :021 > require './lib/order.rb'
+ => true
+2.5.0 :022 > order = Order.new
+ => #<Order:0x00007fe39f878748 @order_list=[], @dish_class=Dish>
+2.5.0 :023 > order.add_order_line(dish_1, 5)
+ => [{:dish=>"Chicken Chow mien", :price=>"10.00", :quantity=>5, :line_total=>50.0}]
+```
+
+```
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+2.5.0 :023 > order.add_order_line(dish_1, 5)
+ => [{:dish=>"Chicken Chow mien", :price=>"10.00", :quantity=>5, :line_total=>50.0}]
+2.5.0 :024 > order.add_order_line(dish_3, 20)
+ => [{:dish=>"Chicken Chow mien", :price=>"10.00", :quantity=>5, :line_total=>50.0}, {:dish=>"prawn special", :price=>"20.00", :quantity=>20, :line_total=>400.0}]
+2.5.0 :025 > order.calculate_total
+ => 450.0
+ ```
+ 
+ ```
+ As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+2.5.0 :001 > require './lib/order.rb'
+ => true
+2.5.0 :002 > order = Order.new
+ => #<Order:0x00007fcbb035ac90 @order_list=[], @dish_class=Dish>
+2.5.0 :003 > dish_1 = Dish.new('Chicken Chow mien', '10.00', true)
+ => #<Dish:0x00007fcbb03628a0 @name="Chicken Chow mien", @price="10.00", @available=true>
+2.5.0 :004 > dish_2 = Dish.new('Chicken Bhuna', '11.00', true)
+ => #<Dish:0x00007fcbaf856268 @name="Chicken Bhuna", @price="11.00", @available=true>
+2.5.0 :005 > dish_3 = Dish.new('prawn special', '20.00', true)
+ => #<Dish:0x00007fcbb0860de8 @name="prawn special", @price="20.00", @available=true>
+2.5.0 :006 > order.add_order_line(dish_1, 5)
+ => [{:dish=>"Chicken Chow mien", :price=>"10.00", :quantity=>5, :line_total=>50.0}]
+2.5.0 :007 > order.add_order_line(dish_2, 50)
+ => [{:dish=>"Chicken Chow mien", :price=>"10.00", :quantity=>5, :line_total=>50.0}, {:dish=>"Chicken Bhuna", :price=>"11.00", :quantity=>50, :line_total=>550.0}]
+2.5.0 :008 > order.submit_order
+ => "Order Confirmed"
+```
+
+
 Takeaway Challenge
 ==================
 ```
