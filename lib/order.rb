@@ -17,6 +17,12 @@ class Order
     @basket[item] = quantity
   end
 
+  def order_summary
+    @basket.each do |item, quantity|
+      puts "#{quantity}x #{item}: £#{Menu.new.menu[item] * quantity}"
+    end
+  end
+
     def basket_total
     @basket.inject(0) do |total, (dish, quantity)|
     @dish_total = total + @menu.menu[dish] * quantity

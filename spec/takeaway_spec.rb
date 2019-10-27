@@ -19,6 +19,7 @@ describe Takeaway do
     expect(subject.print_menu).to eq(printed_menu)
     end
   end
+
   describe '#add_item' do
     it 'add an item to an order' do
     expect(subject.add_item("item", 1)).to eq(order.add("item", 1))
