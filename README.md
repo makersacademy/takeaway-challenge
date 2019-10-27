@@ -26,8 +26,8 @@ Details for twilio are stored as environment variables
 Instructions
 -------
 * Use a new Takeaway object to `view_menu`, `add_to_basket` and `place_order`
-* You can pass in menu items as a hash when initializing a new takeaway, e.g. `{ pizza: 6, fries: 1 }`
-* At the moment you can use `takeaway.basket` directly but I'd like to change that if I had time
+* You can pass in menu items with prices as a hash when initializing a new takeaway, e.g. `{ pizza: 6, fries: 1 }`
+* At the moment you can use `takeaway.basket` directly but I'd change that if I had time
 
 User Stories
 ----
