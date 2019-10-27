@@ -3,8 +3,9 @@ require_relative 'basket'
 
 class Takeaway
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, basket = Basket.new)
     @menu = menu
+    @basket = basket
   end
 
   def show_menu
@@ -12,8 +13,10 @@ class Takeaway
   end
 
   def add_to_order(item, quantity)
-    raise "Item not on menu!" if on_menu?(item) == false
-    
+    item = item.downcase
+    raise "Item not on menu!" if on_menu?(item.to_sym) == false
+
+    @basket.set_basket(item.to_sym, quantity)
   end
 
   private 
