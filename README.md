@@ -22,6 +22,8 @@ $ gem install bundler
 ```
 Once installed run ```bundle``` from inside the project directory.
 
+Program uses the ```gem 'twilio-ruby'``` which will be installed when running ```bundle```.
+
 ## User stories
 
 ```

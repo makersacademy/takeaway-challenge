@@ -23,9 +23,9 @@ class Takeaway
   end
 
   def show_order
+    puts "Order Basket:"
     @basket.basket.each { |dish, qty|
       unit_price = @menu.menu[dish]
-      puts "Order Basket:"
       puts "#{qty}x #{dish} = £#{unit_price * qty}"
       @total += (unit_price * qty)
     }
