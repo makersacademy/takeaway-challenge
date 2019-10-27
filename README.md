@@ -3,8 +3,8 @@ About
 
 Organised into 3 classes:
 * **Menu** contains dishes and prices and the functionality to view these in a list format.
-* **Order** allows user to select the desired quantity of dishes by their number on the menu and add these to a basket. User can view what is in their basket, see the total price and checkout their basket.
-* **TextProvider** holds functionality to send a text to the customer when their order is successfully placed using the Twilio API.
+* **Order** allows user to select the desired quantity of dishes by their number on the menu and add these to a basket. User can view what is in their basket, see the total price and checkout their basket. If total given is correct, text is sent to user confirming that order has been successfully placed. 
+* **TextProvider** implements functionality to send a text to user using the Twilio API. Credentials and phone numbers stored in environment variables.
 
 How to use
 ----------
