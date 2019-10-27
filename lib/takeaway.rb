@@ -1,20 +1,27 @@
+require_relative 'menus'
+require_relative 'order'
+
 class Takeaway
 
-  def initialize
-    @menu = [
-      { :dish => "margarita", :price => 7.5 },
-      { :dish => "hawaian", :price => 8.5 },
-      { :dish => "garlic bread", :price => 5 }
-    ]
+  attr_reader :order
+
+  def initialize(cuisine = Pizza)
+    @cuisine = cuisine.new
+    @order = Order.new
+    @basket = @order.basket
   end
 
   def view_menu
-    @menu
+    @cuisine.menu
   end
 
-  def select_dish(dish, quantity)
-    "#{quantity} x #{dish} added to your basket. That will be £15.
-Anything else?"
+  def select(dish, quantity)
+    price = @cuisine.menu[dish]
+    @order.add_to_basket(dish, price, quantity)
+  end
+
+  def confirm_total(amount)
+    @order.confirm_total(amount)
   end
 
 end
