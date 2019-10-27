@@ -6,7 +6,7 @@ class SMS
     @client = Twilio::REST::Client.new(@credentials["sid"], @credentials["auth_token"])
   end
 
-  def set_credentials(credentials)
+  def credentials(credentials)
     @credientials = credentials
   end
 

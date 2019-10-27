@@ -22,7 +22,7 @@ class Menu
   end
 
   def show_dishes
-    @dishes.each {|name, price|
+    @dishes.each { |name, price|
       print "#{name} : #{price}\n"
     }
   end

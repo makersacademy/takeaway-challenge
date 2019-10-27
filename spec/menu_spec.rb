@@ -43,7 +43,7 @@ describe Menu do
   context "printing" do
     it "shows a list of available dishes" do
       add_ramen
-      expect{subject.show_dishes}.to output("Ramen Noodles : 4.99\n").to_stdout
+      expect { subject.show_dishes }.to output("Ramen Noodles : 4.99\n").to_stdout
     end
   end
 end

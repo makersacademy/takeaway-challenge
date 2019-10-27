@@ -20,8 +20,8 @@ class Order
 
   def calculate_total
     current_total = 0
-    @basket.each {|item|
-      item.each { |key, value|
+    @basket.each { |item|
+      item.each { |_key, value|
         current_total += value
       }
     }   
@@ -31,8 +31,8 @@ class Order
 
   def show_basket
     print_string = ""
-    @basket.each {|item|
-      item.each {|key, value|
+    @basket.each { |item|
+      item.each { |key, value|
         print_string += "#{key}: #{value}\n"
       }
     }
