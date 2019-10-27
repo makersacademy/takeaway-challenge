@@ -1,5 +1,5 @@
 class Menu
-  def initialize(menu = {})
+  def initialize(menu)
     @list = menu
   end
 
