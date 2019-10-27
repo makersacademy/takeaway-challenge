@@ -60,7 +60,7 @@ describe Order do
 
     it "shows the contents of the basket" do
       expect { subject.show_basket }.to output(
-        "Beef Rice: 4\nEgg Rice: 2"
+        "Beef Rice: £4\nEgg Rice: £2"
       ).to_stdout
     end
 

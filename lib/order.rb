@@ -33,7 +33,7 @@ class Order
     print_string = ""
     @basket.each { |item|
       item.each { |key, value|
-        print_string += "#{key}: #{value}\n"
+        print_string += "#{key}: £#{value}\n"
       }
     }
     print print_string.strip
