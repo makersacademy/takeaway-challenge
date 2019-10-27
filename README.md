@@ -20,6 +20,7 @@ Setup
 Run `bundle` to install gems
 
 Uses twilio to send text messages: https://github.com/twilio/twilio-ruby
+
 Details for twilio are stored as environment variables
 
 Instructions
