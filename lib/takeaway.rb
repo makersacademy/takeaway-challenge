@@ -1,9 +1,9 @@
 class Takeaway
 
-  attr_accessor :dishes
+  attr_accessor :selected_dishes
 
   def initialize
-    @selected_dishes = {}
+    @selected_dishes = []
   end
 
   MENU_LIST = {
@@ -17,13 +17,15 @@ class Takeaway
 
   def print_menu
     MENU_LIST.map do |item, price|
-      p "#{item}: £#{price.to_s}"
+      "#{item}: £#{price.to_s}"
     end
   end
 
 
   def add(dish, quantity)
-    @selected_dishes[dish] = quantity
+    raise "#{dish.capitalize} is not on the menu!" unless MENU_LIST.include?(dish.to_sym)
+    @selected_dishes << {dish: dish, quantity: quantity}
+    @selected_dishes
   end
 
 end

@@ -32,10 +32,19 @@ describe Takeaway do
     expect(takeaway.print_menu).to include("Margherita: £6")
   end
 
+  before do
+    allow(takeaway).to receive(:has_dish?).with("Pepperoni").and_return(true)
+    allow(takeaway).to receive(:has_dish?).with("Hawaiian").and_return(true)
+  end
+
   it 'can select some number of several available dishes' do
     takeaway.add("Pepperoni", 2)
     takeaway.add("Hawaiian", 1)
     expect(selected_dishes).to eq(selected_dishes)
+  end
+
+  it 'doesnt allow items not on the menu to be added' do
+    expect { takeaway.add("Chicken", 3) }.to raise_error "Chicken is not on the menu!"
   end
 
 end
