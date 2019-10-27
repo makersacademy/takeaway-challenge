@@ -1,6 +1,6 @@
 
 class Order
-  def initialize(dish_class=Dish)
+  def initialize(dish_class = Dish)
     @order_list = []
     @dish_class = dish_class
   end
@@ -27,11 +27,12 @@ class Order
     end
   end
 
-  def submit_order(sender_class=TextSender)
+  def submit_order(sender_class = TextSender)
     raise "Can't submit an empty order" unless @order_list.any?
     sender = sender_class.new
     time = calculate_time
-    message ="Thank you! Your order was placed and will be delivered before #{time}"
+    message = "Thank you! Your order was placed and will be
+    delivered before #{time}"
     sender.send(message)
     "Order Confirmed"
   end
