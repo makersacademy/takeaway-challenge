@@ -2,12 +2,13 @@ require_relative 'display'
 
 class Order
 
-  def initialize(display = Display.new)
+  def initialize(restaurant, display = Display.new)
     @display = display
+    @restaurant = restaurant
   end
 
-  def request_menu(restaurant)
-    @display.menu(restaurant)
+  def request_menu
+    @display.menu(@restaurant)
   end
 
 end

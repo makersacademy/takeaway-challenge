@@ -39,7 +39,6 @@ describe Restaurant do
       restaurant.create_dish("Pizza", 7.4, dish_double_3)
       restaurant.availabilty_checker
       expect(restaurant.dishes).to_not include(dish_double_2)
-
     end
   end
 end
