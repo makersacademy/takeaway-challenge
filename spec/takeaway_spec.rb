@@ -14,7 +14,7 @@ describe Takeaway do
 
   end
 
-  context 'ordering' do
+  context 'adding items' do
     let(:menu_double) { double(:menu, menu: { curry: 9.99 }) }
     let(:basket_double) { double :basket }
     let(:subject) { Takeaway.new(menu_double, basket_double) }
@@ -32,13 +32,15 @@ describe Takeaway do
       expect(subject.add_to_order("curry", 1)).to eq true
     end
 
-    it 'calls calculate_basket on Baskter' do
-      allow(basket_double).to receive(:calculate_basket) { true }
-      expect(subject.show_order).to eq true
-    end
-
   end
 
+  context 'showing basket and total' do
+    let(:subject) { Takeaway.new }
 
+    it 'shows basket with total' do
+      subject.add_to_order('curry', 2)
+      expect { subject.show_order }.to output("Order Basket:\n2x curry = £19.98\nTotal: £19.98\n").to_stdout
+    end
+  end
 
 end

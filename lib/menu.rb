@@ -12,7 +12,9 @@ class Menu
 
   def display_menu
     puts "Menu Options:"
-    @menu.each { |dish, price| puts "#{dish.capitalize}: £#{price}" }
+    @menu.each { |dish, price| 
+      puts "#{dish.capitalize}: £#{price}" 
+    }
   end
   
 end

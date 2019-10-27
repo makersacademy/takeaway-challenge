@@ -6,6 +6,7 @@ class Takeaway
   def initialize(menu = Menu.new, basket = Basket.new)
     @menu = menu
     @basket = basket
+    @total = 0
   end
 
   def show_menu
@@ -21,7 +22,13 @@ class Takeaway
   end
 
   def show_order
-    @basket.calculate_basket
+    @basket.basket.each { |dish, qty|
+      unit_price = @menu.menu[dish]
+      puts "Order Basket:"
+      puts "#{qty}x #{dish} = £#{unit_price * qty}"
+      @total += (unit_price * qty)
+    }
+    puts "Total: £#{@total}"
   end
 
   private 
