@@ -1,5 +1,3 @@
-require_relative "menu"
-require_relative "restaurant"
 require 'twilio-ruby'
 require 'dotenv/load'
 class Payment
