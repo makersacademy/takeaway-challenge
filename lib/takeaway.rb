@@ -21,10 +21,9 @@ class Takeaway
     end
   end
 
-
   def add(dish, quantity)
     raise "#{dish.capitalize} is not on the menu!" unless MENU_LIST.include?(dish.to_sym)
-    @selected_dishes << {dish: dish, quantity: quantity}
+    @selected_dishes << "#{dish} pizza x#{quantity}"
     @selected_dishes
   end
 
