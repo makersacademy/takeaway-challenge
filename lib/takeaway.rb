@@ -23,7 +23,9 @@ class Takeaway
   def place_order(customer_total)
     raise 'Incorrect total' unless customer_total == calculate_total
 
-    @confirminator.confirm(0)
+    delivery_time = Time.now + (60 * 60)
+    delivery_string = delivery_time.strftime("%H:%M")
+    @confirminator.confirm(delivery_string)
   end
 
   private

@@ -40,8 +40,14 @@ describe Takeaway do
       expect { subject.place_order(1) }.not_to raise_error
     end
 
-    it 'calls confirminator with a delivery time if order is successful' do
+    it 'calls confirminator if order is successful' do
       expect(confirminator).to receive(:confirm)
+      subject.place_order(1)
+    end
+
+    it 'calls confirminator with a time 1 hour after' do
+      allow(Time).to receive(:now).and_return(Time.new(2002, 1, 1, 0, 0, 0))
+      expect(confirminator).to receive(:confirm).with("01:00")
       subject.place_order(1)
     end
   end
