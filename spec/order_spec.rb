@@ -3,7 +3,6 @@ require 'order'
 describe Order do
   subject(:order) { described_class.new(menu) }
   let(:menu) { Menu.new }
-  let(:textprovider) { double :textprovider }
 
   context 'by default' do
     it 'has an empty array' do
@@ -29,27 +28,34 @@ describe Order do
     end
   end
 
-  describe '#order_total' do
+  describe '#total' do
     it 'sums totals in basket' do
       order.select_dish(1, 2)
-      order.select_dish(1, 2)
-      expect(order.order_total).to eq 12
+      order.select_dish(2, 1)
+      expect(order.total).to eq 12
     end
   end
 
-  describe '#place_order' do
+  describe '#checkout' do
+    let(:textprovider) { TextProvider.new }
+    let(:client) { double :client }
+
     before do
-      allow(order).to receive(:send_text)
       order.select_dish(1, 2)
     end
 
     it 'raises error if passed incorrect amount' do
-      expect { order.place_order(11, textprovider) }.to raise_error "Amount not correct"
+      expect { order.checkout(5, textprovider) }.to raise_error "Amount not correct"
     end
 
     it 'can send a text confirming order placed' do
-      expect(textprovider).to receive(:send_text)
-      order.place_order(6, textprovider)
+      time_now = Time.parse('12:00')
+      Time.stub(:now).and_return(time_now)
+      message = 'Thank you! Your order was placed and will be delivered before 13:00'
+      twilio_message_body = { from: ENV['TWILIO_NUMBER'], to: ENV['NUMBER'], body: message }
+      allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
+      expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
+      order.checkout(6, textprovider)
     end
   end
 end

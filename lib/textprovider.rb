@@ -7,8 +7,7 @@ class TextProvider
     ENV['TWILIO_AUTH_TOKEN']).messages.create(
       from: ENV['TWILIO_NUMBER'],
       to: ENV['NUMBER'],
-      body: (Time.now + 3600).strftime("Thank you!
-      Your order was placed and will be delivered before %k:%M")
+      body: (Time.now + 3600).strftime("Thank you! Your order was placed and will be delivered before %k:%M")
     )
   end
 end
