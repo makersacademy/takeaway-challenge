@@ -45,4 +45,18 @@ describe Takeaway do
     end
   end
 
+  describe '#complete_order' do
+
+    before do
+      allow(subject).to receive(:send_text)
+    end
+
+    it 'sends a payment confirmation text message' do
+      subject.order("pizza", 2)
+      subject.order("chicken", 3)
+      expect(subject).to receive(:send_text).with("Thank you for your order: £46.70")
+      subject.complete_order
+    end
+  end
+
 end
