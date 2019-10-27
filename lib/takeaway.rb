@@ -18,6 +18,15 @@ class Takeaway
     @basket[item] = quantity
   end
 
-  def place_order(total)
+  def place_order(customer_total)
+    raise 'Incorrect total' unless customer_total == calculate_total
+  end
+
+  private
+
+  def calculate_total
+    @basket.inject(0) do |total, (item, quantity)|
+      total + (@menu.price(item) * quantity)
+    end
   end
 end

@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  items = { pizza: '£6', fries: '£1' }
+  items = { pizza: 6, fries: 1 }
   let(:subject) { Takeaway.new(items) }
 
   context 'menu' do
@@ -17,7 +17,7 @@ describe Takeaway do
 
     it 'adds item and quantity to basket when add_to_basket is called' do
       subject.add_to_basket(:pizza, 1)
-      expect(subject.basket).to include({pizza: 1})
+      expect(subject.basket).to include({ pizza: 1 })
     end
 
     it 'raises an error when an off-menu item is added' do
@@ -26,7 +26,13 @@ describe Takeaway do
   end
 
   context 'placing order' do
-    it 'accepts a quantity into place_order' do
+    it 'raises an error if the customer total does not equal actual total' do
+      subject.add_to_basket(:fries, 1)
+      expect { subject.place_order(4) }.to raise_error 'Incorrect total'
+    end
+
+    it 'does not raise error if customer total is equal to actual total' do
+      subject.add_to_basket(:fries, 1)
       expect { subject.place_order(1) }.not_to raise_error
     end
   end
