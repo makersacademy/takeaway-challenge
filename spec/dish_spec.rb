@@ -22,4 +22,10 @@ describe Dish do
       expect(dish_with_lotds_of_portions.remaining_portions).to eq 20
     end
   end
+
+  context "#remove_portion" do
+    it "remove one portion" do
+      expect { dish.remove_portion }.to change { dish.remaining_portions }.by -1
+    end
+  end
 end
