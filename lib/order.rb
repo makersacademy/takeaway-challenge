@@ -43,12 +43,12 @@ class Order
 
   def checkout
     unless correct_payment_amount?
-      # @sms.order_not_placed
+      @sms.order_not_placed
       raise "Incorrect Payment Amount"
     end
 
     @restaurant.availabilty_checker
-    # @sms.order_placed_message
+      @sms.order_placed_message
     clear_basket
   end
 
