@@ -1,7 +1,8 @@
 require 'order'
 
 describe Order do
-  subject(:order) { Order.new(dish_class: Dish) }
+  # passing Object here to allow dishes to be mocked
+  subject(:order) { Order.new(Object) }
   let(:dish) { double :dish }
   let(:dish_2) { double :dish }
   let(:not_a_dish) { double :object }
@@ -22,9 +23,10 @@ describe Order do
       expect(order.add_order_line(dish, 3)).to eq [{ dish: "chow mien", price: "10.00", quantity: 3, line_total: 30 }]
     end
 
-    # it ' error if called without a dish object' do
-    #   expect { order.add_order_line(not_a_dish, 1) }.to raise_error(RuntimeError, "not a dish")
-    # end
+    it ' error if called without a dish object' do
+       order_without_DI = Order.new
+       expect { order_without_DI.add_order_line(not_a_dish, 1) }.to raise_error(RuntimeError, "not a dish")
+     end
 
     it 'error if quantity passed less than 1' do
       expect { order.add_order_line(dish, 0) }.to raise_error(RuntimeError, "quantity less than 1 not allowed")
@@ -66,4 +68,25 @@ describe Order do
       expect(order.calculate_total).to eq 55.00
     end
   end
+
+  describe "#submit_order" do
+    before do
+      allow(dish).to receive(:name).and_return("chow mien")
+      allow(dish).to receive(:price).and_return("10.00")
+      allow(dish_2).to receive(:name).and_return("kung po")
+      allow(dish_2).to receive(:price).and_return("15.00")
+    end
+
+    it 'empty order returns an error' do
+      expect{ order.submit_order}.to  raise_error(RuntimeError, "Can't submit an empty order")
+    end
+
+    it 'order with lines submits confirmation text' do
+      order.add_order_line(dish, 1)
+      order.add_order_line(dish_2, 3)
+      expect(order.submit_order).to eq "Order Confirmed"
+    end
+  end
+
+    # order with lines submits confirmation text
 end
