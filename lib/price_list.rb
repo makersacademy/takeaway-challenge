@@ -1,6 +1,4 @@
 class PriceList
-  attr_reader :list
-
   def initialize(menu = {})
     @list = menu
   end
