@@ -5,11 +5,15 @@ class Menu
 
   def print
     @list.each do |k, v|
-      puts "#{k.capitalize}: #{v}"
+      puts "#{k.capitalize}: £#{v}"
     end
   end
 
   def on_menu?(item)
     @list.include?(item)
+  end
+
+  def price(item)
+    @list[item]
   end
 end
