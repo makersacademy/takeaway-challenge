@@ -20,9 +20,9 @@ class Order
   def checkout
     meals = []
     @order.each { |hash| meals << hash[:quantity]
-    meals << hash[:meal]
+                 meals << hash[:meal]
     }
-    body = "Thank you! Your order was placed at #{(Time.now).strftime("%k:%M")} and will be delivered before #{(Time.now + 1800).strftime("%k:%M")}"
+    body = "Thank you! Your order was placed at #{(Time.now).strftime("%k:%M")} and will be delivered before #{(Time.now + 2700).strftime("%k:%M")}"
     send_text(body)
   end
 
