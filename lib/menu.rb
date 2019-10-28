@@ -1,14 +1,15 @@
 require_relative 'send_message'
+
 class Dish
 
 attr_reader :total, :number_of_items
 
 MENU_LIST = {
-   katsu_Curry: 100,
-   chicken_curry: 80,
+   katsu_Curry: 30,
+   chicken_curry: 20,
    noodles: 10,
    rice: 9,
-   peas: 8
+   fries: 8
        }
 
     def initialize
@@ -18,40 +19,53 @@ MENU_LIST = {
         @checkout = []
     end 
 
-def display_menu
-    "1: katsu_Curry: 100,
-     2: chicken_curry: 80,
-     3: noodles: 10,
-     4: rice: 9,
-     5: peas: 8"
+def list_of_options
+puts "display_menu"
+puts "Selection"
+puts "total"
 end 
 
-def selection(i)
-    checkout = Array.new
-    checkout << MENU_LIST.map {|key, values| key , values}
-    @selection << checkout.sum {|x| x[i]}
-    @number_of_items += 1
+ def display_menu
+#     "1: katsu_Curry: 100,
+#      2: chicken_curry: 80,
+#      3: noodles: 10,
+#      4: rice: 9,
+#      5: peas: 8"
+
+
+   list =   MENU_LIST.map {|key, values| "#{key} - £#{values}" }
+list.join 
 end 
 
-# def order(i)
-# checkout = Array.new
-# checkout << MENU_LIST.map {|key, values| values}
-# # checkout.join(" , ")
-# @checkout << checkout.sum {|x| x[i]}
-
-
-
+# def selection(i)
+#     checkout = Array.new
+#     checkout << MENU_LIST.map {|key, values| "#{key} - £#{values}" }
+#     @selection << checkout.sum {|x| x[i]}
+#     @number_of_items += 1
 # end 
 
-private 
+def order(i)
+checkout = Array.new
+checkout << MENU_LIST.map {|key, values| values}
+# checkout.join(" , ")
+@checkout << checkout.sum {|x| x[i]}
+end 
+
+def no_selection 
+end
+
 def selected 
+fail "You have not selected any items" if @checkout.length > nil
+
 c = @checkout 
 total_sum = c.sum {|x| x}
 @total += total_sum
 end 
 
+def show_total
+    puts "Your total is £#{total}"
 
-
+end 
 end 
 
 

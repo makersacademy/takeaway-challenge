@@ -25,7 +25,7 @@ context "menu attributes " do
 
    it "Dish returns the selected dish prices" do
       dish = Dish.new 
-      expect(dish.order).to eq (value)
+      expect(dish.order).to eq (@total)
   end 
 end 
 
@@ -37,14 +37,27 @@ describe "Checkout" do
      dish = Dish.new
   expect(dish.checkout).to be()
   end
- 
+end 
+
+describe "selected" do
+  
   it "expects selected items add to total"
     dish = Dish.new 
     dish.order 
   expect(dish.selected).to eq()
-
+  end
+  
+  it "expects to raise error when attempting to select when items are equal to 0" do
+    dish = Dish.new 
+    expect { dish.selected }.to raise_error("You have not selected any items ")
   end 
-end
+
+  it "expects to display the total of the items"
+    dish = Dish.new 
+    expect(dish.total).to eq "Your total is £#{total}"
+  end
+
+
 
 
 
