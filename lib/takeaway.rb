@@ -35,13 +35,14 @@ class Takeaway
     "Your order was placed at #{order_placed}. Your food should be with you by #{delivery_due}."
   end
 
-=begin  def send_text
-    account_sid = 'AC4995904c0d2228dd292ab79c3f9d87b4'
-    auth_token = '00c1e996d823f81558e1b27afa7b2ec8'
-    client = Twilio::REST::Client.new(account_sid, auth_token)
+=begindef send_text
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    to = ENV['TWILIO_PHONE_NUMBER']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
     client.messages.create(
     from: '+12132386475',
-    to: '+447391405893',
+    to: to,
     body: "Your order was placed at #{order_placed}. Your food should be with you by #{delivery_due}."
     )
   end
