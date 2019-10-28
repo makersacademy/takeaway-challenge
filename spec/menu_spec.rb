@@ -16,7 +16,7 @@ describe Menu do
   end
 
   it 'prints a list of items and prices' do
-    printed_menu = "Chicken £6.99, Coke £1.00, Toast £2.50"
+    printed_menu = "Chicken - £6.99, Coke - £1.00, Toast - £2.50"
     expect(menu.print).to eq printed_menu
   end
 

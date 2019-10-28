@@ -9,3 +9,12 @@ eventually found a suggestion mentioning springf
 found this on https://idiosyncratic-ruby.com/49-what-the-format.html
 don't fully understand it
 but decided this was enough to use info from exemplar answers
+
+struggle - how to start, process help
+how to better understand details of user journeys
+how to break this down
+how to use TDD to iterate on tests when understanding is weak
+
+how to read error messages better
+how to use map - vaguely came up during pre-course but lack of
+feedback or ability to check understanding meant I never used it

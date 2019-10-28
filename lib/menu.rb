@@ -6,8 +6,8 @@ class Menu
   end
 
   def print
-    dishes.map do |item, price|
-      "%s £%.2f" % [item.to_s.capitalize, price]
+    @dishes.map do |item, price|
+      "#{item} - £#{price}"
     end.join(", ")
   end
 
