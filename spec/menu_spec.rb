@@ -72,22 +72,6 @@ end
 
 
 
- # it "" do 
-  #   dish = Dish.new
-  #   expect(dish.select) 
 
 
-
-    # expect(hashes.any? { |hash| hash['foo'] == '2' }).to be_true
-
-  
-
-    # it "expects dish name to be equal to prices" do
-      
-    # end 
-
-    # it " Expects dishes to be check selected out from the list"
-    # dish = Dish.new 
-    # expect(dish.checkout).to (array of list )
-    
 

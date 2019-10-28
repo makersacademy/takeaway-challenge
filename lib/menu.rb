@@ -5,11 +5,11 @@ class Dish
 attr_reader :total, :number_of_items
 
 MENU_LIST = {
-   katsu_Curry: 30,
-   chicken_curry: 20,
-   noodles: 10,
-   rice: 9,
-   fries: 8
+    katsu_Curry: 30,
+    chicken_curry: 20,
+    noodles: 10,
+    rice: 9,
+    fries: 8
        }
 
     def initialize
@@ -18,36 +18,39 @@ MENU_LIST = {
         @checkout = 0
     end 
 
-def list_of_options
-puts "display_menu"
-puts "order"
-puts "Selection"
-puts "show_total"
-puts "Checkout"
-end 
+    def list_of_options
+        puts "display_menu"
+        puts "order"
+        puts "Selection"
+        puts "show_total"
+        puts "Checkout"
+    end 
 
- def display_menu
-   list =   MENU_LIST.map {|key, values| "#{key} - £#{values}" }
-list.join 
-end 
+    def display_menu
+        list =   MENU_LIST.map {|key, values| "#{key} - £#{values}" }
+        list.join 
+    end 
 
-def order(i)
-checkout = Array.new
-checkout << MENU_LIST.map {|key, values| values}
-@checkout += checkout.sum {|x| x[i]}
-@number_of_items += 1
-end 
+    def order(i)
+        checkout = Array.new
+        checkout << MENU_LIST.map {|key, values| values}
+        @checkout += checkout.sum {|x| x[i]}
+        @number_of_items += 1
+    end 
 
-def selected 
-    @total += @checkout
-end 
+    def selected 
+        @total += @checkout
+    end 
 
-def show_total
-    puts "Your total is £#{total}"
-end 
-end 
+    def show_total
+        puts "Your total is £#{total}"
+    end 
 
-def send_message()
+
+    def send_message(phone_number, total)
+        new_sms = SMS.new
+        new_sms.send_sms(phone_number, total)
+    end 
 end 
 
 

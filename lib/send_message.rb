@@ -2,7 +2,7 @@ require 'twilio-ruby'
 
 module TwilioHandler
 
-# class SMS
+class SMS
 
 attr_reader :client
 
