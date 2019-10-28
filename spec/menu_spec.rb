@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let (:dish_1) { double :dish }
+  let(:dish_1) { double :dish }
 
   def add_ramen
     ramen = double("Dish", :name => "Ramen Noodles", :price => 4.99)
@@ -35,7 +35,6 @@ describe Menu do
 
     it 'checks if a dish is on the menu' do
       ramen = add_ramen
-      gyoza = double("Dish", :name => "Chicken Gyoza", :price => 4.99)
       expect(subject.available?("Ramen Noodles")).to eq(true)
     end
   end
