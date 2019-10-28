@@ -15,7 +15,7 @@ class Notification
       from: from,
       to: to,
       body: "Order Placed!
-      It will be at your door before #{Time.now + 1 * 60 * 60}!"
+      It will be at your door before #{(Time.now + 3600).strftime("%k:%M")}!"
     )
   end
 end

@@ -30,6 +30,7 @@ class Takeaway
       @total += (unit_price * qty)
     }
     puts "Total: £#{@total}"
+    @total = 0
   end
 
   def confirm(price, notification = Notification.new)
@@ -41,6 +42,7 @@ class Takeaway
 
     if price == @total
       @notification.send_sms
+      @total = 0
     else
       puts "Wrong total. Please try again."
     end
