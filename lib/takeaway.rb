@@ -27,10 +27,14 @@ class Takeaway
   end
 
   def order_total
+    sum = 0
     raise "no dishes to check price on!" if @selected_dishes.length <= 0
-    @selected_dishes.map do |dish, quantity|
-      price(dish) * quantity
+    @selected_dishes.each do |dish|
+      dish.each do |dish, quantity|
+        sum += price(dish) * quantity
+      end
     end
+    sum
   end
 
   def price(dish)
