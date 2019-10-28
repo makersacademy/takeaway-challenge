@@ -1,6 +1,12 @@
 
 class Menu
+  attr_reader :menu
+
+  def initialize(menu:)
+    @menu = menu
+  end
+
   def display_dishes
-    "special_fried_rice: £3.50"
+    menu.print
   end
 end
