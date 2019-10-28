@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
   subject(:menu) { described_class.new(dishes) }
   let(:dishes) do
-    {special_fried_rice: 3.50,
+    { special_fried_rice: 3.50,
      fried_chicked: 2.99
     }
   end
