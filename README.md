@@ -34,4 +34,14 @@
         I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 All of the above working and text messages being sent tested via Twilio :)
+
+IMPORTANT - Before running the tests you need to add a .env file in which you need to include the environment variables needed as follows else the sms test will fail:
+
+ACCOUNT_SID= {put your twilio account id here}
+
+AUTH_TOKEN= {put your twilio auth token here}
+
+TWILIO_FROM= {put your twilio mobile number here(UK)}
+
+TWILIO_TO= {put your mobile number here}
 ```
