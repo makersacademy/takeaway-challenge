@@ -1,23 +1,22 @@
-# require 'twilio-ruby'
+require 'twilio-ruby'
 
-# # module TwilioHandler
+module TwilioHandler
 
 # class SMS
 
-# attr_reader :client
+attr_reader :client
 
-# def send_sms(total)
-#     account_sid = ENV[ AC94fc86fa3465574900acbcdf827e2352 ]
-#     auth_token = ENV[ 0937909d1add71a5bf770b6807a19ad2 ]
-#     client = TWILIO::REST::Client.new(account_sid, auth_token)
-#     from = '+12564744369'
-#     to = "+#{447572433980}"
-#     message = 'Hi there - your order is on its way and your total is £#{total}'
-#     client.message.create(
-#         from: from,
-#         to: to,
-#         body: message
-#     )
-#   end 
+def send_sms(phone_number, total)
+    account_sid = ENV[ 'AC94fc86fa3465574900acbcdf827e2352 ']
+    auth_token = ENV['0937909d1add71a5bf770b6807a19ad2']
+    client = TWILIO::REST::Client.new(account_sid, auth_token)
+    from = '+12564744369'
+    to = "+#{447572433980}"
+    client.messages.create(
+        from: from,
+        to: to,
+        body: 'Hi there - your order is on its way and your total is £#{total}'
+    )
+  end 
 
-# end 
+end 

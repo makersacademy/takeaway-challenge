@@ -34,7 +34,6 @@ end
 def order(i)
 checkout = Array.new
 checkout << MENU_LIST.map {|key, values| values}
-
 @checkout += checkout.sum {|x| x[i]}
 @number_of_items += 1
 end 
@@ -48,6 +47,8 @@ def show_total
 end 
 end 
 
+def send_message()
+end 
 
 
 # def initialize
