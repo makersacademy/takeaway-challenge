@@ -1,12 +1,10 @@
 
 class Menu
-  attr_reader :menu
+  attr_reader :dishes
+  
+def initialize(dishes)
+  @dishes = dishes
+end
 
-  def initialize(menu:)
-    @menu = menu
-  end
 
-  def display_dishes
-    menu.print
-  end
 end

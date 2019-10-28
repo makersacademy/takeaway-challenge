@@ -1,17 +1,15 @@
 require 'menu'
 
 describe Menu do
-  subject {described_class.new(menu: menu)}
-  let(:menu) { double(:menu, print: displayed_dishes) }
-  let(:displayed_dishes) { "special_fried_rice: £3.50" }
-
-  it "displays a list of dishes with prices" do
-    expect(subject.display_dishes).to eq(displayed_dishes)
+  subject(:menu) { described_class.new(dishes) }
+  let(:dishes) do
+    {special_fried_rice: 3.50,
+     fried_chicked: 2.99
+    }
   end
 
-  # As a customer
-  # So that I can verify that my order is correct
-  # I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+  it "has a list of dishes with prices" do
+    expect(menu.dishes).to eq dishes
+  end
 
 end
