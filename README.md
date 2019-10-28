@@ -13,6 +13,17 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Follow-Up
+-----
+I got into a mess over this.
+
+* Menu created as an array of hashes of individual items
+* User places order by calling master.rb
+* This takes them through the process of ordering items off a menu.
+* Got into a confused state - provided a menu and ask for diner to select items using codes and then quantities.
+* Order is checked against list.
+* Once list is confirmed, text is sent confirming order will be delivered within an hour.
+
 
 Instructions
 -------
