@@ -52,13 +52,13 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Firstly Clone this repo! Make sure that you run `bundle install` in the repo directory.
 
 In order to use this program, you will need a twilio account.
-You must add your twilio credentials to your bash_profile environment variables as follows:
+You must add your twilio credentials to a .env file as follows:
 
 ```
-export TWILIO_SID=<Your SID>
-export TWILIO_TOKEN=<Your Twilio Authorization token>
-export TWILIO_NUM=<The number provided in your twilio account>
-export MY_NUMBER=<Your personal phone number>
+TWILIO_SID=<Your SID>
+TWILIO_TOKEN=<Your Twilio Authorization token>
+TWILIO_NUM=<The number provided in your twilio account>
+MY_NUMBER=<Your personal phone number>
 ```
 
 Lastly, use `ruby takeaway.rb` from the program's directory to start the program.
