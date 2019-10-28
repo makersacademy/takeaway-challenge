@@ -36,7 +36,7 @@ class Order
         print_string += "#{key}: £#{value}\n"
       }
     }
-    print print_string.strip
+    return print_string.strip
   end
 
   def show_total

@@ -90,7 +90,7 @@ while true
     if order.basket == []
       puts "You have no items in the basket!"
     else
-      order.show_basket
+      print order.show_basket
       puts "\n"
     end
 
@@ -100,13 +100,10 @@ while true
         "You have no items in the basket! 
         Add some dishes to checkout!"
     else
-      puts 
-        "Thank you for your order! 
-        The total price is £#{order.calculate_total}, 
-        a confirmation text is being sent to you"
+      puts "Thank you for your order! The total price is £#{order.calculate_total}, a confirmation text is being sent to you"
 
       delivery_time = (Time.now + 3600).strftime("%H:%M")
-      body = "Estimated delivery Time: #{delivery_time}"
+      body = "Estimated delivery Time: #{delivery_time}, your order of #{order.show_basket} will be with you shortly!"
       sms.send_sms(body, ENV["MY_NUMBER"])
       break
     end

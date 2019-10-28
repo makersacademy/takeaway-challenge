@@ -59,9 +59,9 @@ describe Order do
     end
 
     it "shows the contents of the basket" do
-      expect { subject.show_basket }.to output(
+      expect(subject.show_basket).to eq(
         "Beef Rice: £4\nEgg Rice: £2"
-      ).to_stdout
+      )
     end
 
     it "prints the total to the screen" do
