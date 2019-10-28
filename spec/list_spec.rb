@@ -25,7 +25,7 @@ describe List do
       dish2 = double("dish2", :price => 2)
       list.add_dish(dish)
       list.add_dish(dish2)
-      expect(list.checkout).to include(dish)
+      expect(list.select(dish)).to include(dish)
     end
   end
   context 'checkout testing' do
@@ -33,6 +33,8 @@ describe List do
     it 'checks out' do
       selected_dish = double("dish", :price => 1)
       selected_dish2 = double("dish", :price => 2)
+      list.add_dish(selected_dish)
+      list.add_dish(selected_dish2)
       list.select(selected_dish)
       list.select(selected_dish2)
       expect(list.checkout).to include(selected_dish) && include(selected_dish2)

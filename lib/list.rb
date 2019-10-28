@@ -18,10 +18,15 @@ class List
   end
 
   def select(dish)
-    @checkout << @dish_list.select { |k, _v| k == dish }
+    @dish_list.select do |k, v|
+      if k == dish
+        insert = {k => v}
+        @checkout << insert
+      end
+    end
   end
 
   def checkout
-    p @checkout
+    puts @checkout.join
   end
 end
