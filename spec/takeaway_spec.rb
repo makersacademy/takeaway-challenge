@@ -24,13 +24,5 @@ describe Takeaway do
       expect { takeaway.confirm_total(30) }.to raise_error("The correct total is: £5.00.")
     end
 
-    it 'sends an SMS confirmation if the total is correct' do
-      sms = double('sms')
-      allow(sms).to receive(:send_message)
-      takeaway.select("garlic bread", 1)
-      takeaway.confirm_total(5)
-      expect(sms).to receive(:send_message).with(5)
-    end
-
   end
 end
