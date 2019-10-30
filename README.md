@@ -27,6 +27,11 @@ This project requires:
 * `twilio-ruby` gem
 * RSpec for testing
 
+You will need a Twilio account with log-in details to run this program. You will need to sign up for a Twilio account at INSERT LINK and create the following environmental variables:
+* TWILIO_ACCOUNT_SID - your SID for your Twilio account
+* TWILIO_AUTH_TOKEN - your authorisation token for your Twilio account
+* PHONENUMBER - the phone number you want to send SMS confirmation messages to during testing.
+
 ### Process of writing the program
 
 I initially created a single Takeaway class with an instance attribute `@menu` as an array of hashes:
@@ -53,12 +58,22 @@ In order to be able to store and calculate the total of the order placed, I deci
 
 I also decided to refactor the menu. Instead of having it as an attribute in the main Takeaway class, there is now a separate menus file with multiple cuisine classes, each with a menu attribute. This is so the user can pass the cuisine of their choice into the initialize Takeaway so they can view and choose from multiple menus. However, they can only order from one cuisine per order.
 
+I saved my phone number, Twilio account SID and Twilio authorisation token as environmental variables so as not to upload sensitive and private information to the public.
+
 #### Challenges
 
 I struggled with mocking and doubling to test the SMS function without actually sending an SMS.
 
 I tried creating a double of the client and allowing it to receive the `:messages` and `:create` methods and return a stubbed output of the body of the text. However the test would not pass because it expected an output of the body of the text, but instead got true. It also still sends an SMS whenever I run this rspec test.
 
-I saved my phone number, Twilio account SID and Twilio authorisation token as environmental variables so as not to upload sensitive and private information to the public.
+I finally solved the issue (with the help of my fellow students and coach at Makers) by taking the following steps:
+* I refactored the SMS class so that the Twilio `@client.messages.create()` method is contained in an instance method `send_message`, which is now called as part of the `order.confirm_total()` method.
+* I could then create a double of the SMS within my order_spec tests to pass to the order object. This meant that the real SMS object with the real method of sending an SMS would not be called.
 
 I also should have done more TDD for this project, rather than directly implementing solutions and production code.
+
+#### Contributions
+
+I referred to the following resources during this project:
+* The Twilio walk through video to set up my `@client.messages.create()` method
+* My coach and fellow student at Makers helped me to correctly implement a double into my tests so as not to send a live SMS.
