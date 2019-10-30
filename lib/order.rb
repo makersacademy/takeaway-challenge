@@ -1,9 +1,12 @@
+require_relative 'send-sms'
+
 class Order
 
   attr_reader :basket
 
-  def initialize
+  def initialize(sms = SMS.new)
     @basket = []
+    @sms = sms
   end
 
   def add_to_basket(dish, price, quantity)
@@ -32,8 +35,7 @@ Anything else?"
   def confirm_total(amount)
     calculate_total
     raise "The correct total is: £#{@total}." if @total != ('%.2f' % amount)
-
-    require_relative 'send-sms'
+    @sms.send_message
   end
 
 end
