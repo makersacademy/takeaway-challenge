@@ -1,82 +1,79 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
+This is the second weekend project of the Makers Academy course. The program enables a user to view a variety of takeaway menus, select a quantity of several dishes and confirm the order total cost. If the total is correct, the program sends the user a confirmation SMS via Twilio.
 
-Instructions
--------
+### Tech/languages
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Built in Ruby, with the Twilio app.
 
-Task
------
+### Code example
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+The program is run in IRB by requiring the `./lib/takeaway` file.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+The user can create a new instance of the Takeaway class by passing in a cuisine of their choice (Pizza/Chinese/Indian) as an initialize argument. If no cuisine is chosen the default is Pizza.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+The user can then run a series of commands:
+* `.view_menu` (to view the menu for that cuisine)
+* `.select(dish, quantity)` (to add a quantity of a dish to their basket)
+* `.basket` (to view the basket so far)
+* `.confirm_total(amount)` (to confirm the total of their final order)
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+[Screen shot of app in use](https://github.com/eliseaston/takeaway-challenge/blob/master/takeaway_screenshot.png)
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+### Installation
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+This project requires:
+* `twilio-ruby` gem
+* RSpec for testing
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+You will need a Twilio account with log-in details to run this program. You will need to sign up for a Twilio account at INSERT LINK and create the following environmental variables:
+* TWILIO_ACCOUNT_SID - your SID for your Twilio account
+* TWILIO_AUTH_TOKEN - your authorisation token for your Twilio account
+* PHONENUMBER - the phone number you want to send SMS confirmation messages to during testing.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+### Process of writing the program
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+I initially created a single Takeaway class with an instance attribute `@menu` as an array of hashes:
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+`@menu = [
+  { "margarita" => 7.5 },
+  { "hawaian" => 8.5 },
+  { "garlic bread" => 5 }
+]`
 
+I then decided to refactor `@menu` into a hash like so:
 
-In code review we'll be hoping to see:
+`@menu = {
+  "margarita" => 7.5,
+  "hawaian" => 8.5,
+  "garlic bread" => 5
+}`
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+because this made it easier to access the price for the dish being ordered.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+When I implemented the user requirement "to be able to check that the total I have been given matches the sum of the various dishes in my order", I decided to implement a `confirm_total(amount)` method and a `calculate_total` method. If the amount entered by the user didn't match the total of the order placed, an error message would be raised.
 
-Notes on Test Coverage
-------------------
+In order to be able to store and calculate the total of the order placed, I decided a basket feature would be necessary. I decided to create a separate Order class, with basket as an attribute. This class is responsible for saving the user's order to the basket, and calculating the total of that order. If the total is correct, it sends the user a confirmation SMS.  
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+I also decided to refactor the menu. Instead of having it as an attribute in the main Takeaway class, there is now a separate menus file with multiple cuisine classes, each with a menu attribute. This is so the user can pass the cuisine of their choice into the initialize Takeaway so they can view and choose from multiple menus. However, they can only order from one cuisine per order.
+
+I saved my phone number, Twilio account SID and Twilio authorisation token as environmental variables so as not to upload sensitive and private information to the public.
+
+#### Challenges
+
+I struggled with mocking and doubling to test the SMS function without actually sending an SMS.
+
+I tried creating a double of the client and allowing it to receive the `:messages` and `:create` methods and return a stubbed output of the body of the text. However the test would not pass because it expected an output of the body of the text, but instead got true. It also still sends an SMS whenever I run this rspec test.
+
+I finally solved the issue (with the help of my fellow students and coach at Makers) by taking the following steps:
+* I refactored the SMS class so that the Twilio `@client.messages.create()` method is contained in an instance method `send_message`, which is now called as part of the `order.confirm_total()` method.
+* I could then create a double of the SMS within my order_spec tests to pass to the order object. This meant that the real SMS object with the real method of sending an SMS would not be called.
+
+I also should have done more TDD for this project, rather than directly implementing solutions and production code.
+
+#### Contributions
+
+I referred to the following resources during this project:
+* The Twilio walk through video to set up my `@client.messages.create()` method
+* My coach and fellow student at Makers helped me to correctly implement a double into my tests so as not to send a live SMS.
