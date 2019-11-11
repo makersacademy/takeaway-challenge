@@ -59,7 +59,14 @@ A Sample of the IRB
 ```
 2.5.0 :001 > require './lib/takeaway.rb'
 2.5.0 :002 > takeaway = Takeaway.new
+
 2.5.0 :003 > takeaway.list_of_options
+Please enter 'display_menu' to see the menu
+Please enter 'choose(meal, quantity)' in order to order a meal
+Please enter 'show_basket' to see your current basket
+Please enter 'show_total' to see your total
+Please enter 'checkout' to place your order
+
 2.5.0 :004 > takeaway.display_menu
 1. Daniels's Delicious Chicken £12
 2. Eduard's Enviable Eggs £19
@@ -69,17 +76,21 @@ A Sample of the IRB
 6. Rafaela's Round Halloumi £39
 7. Sayem's Saucy Fishcakes £22
 8. Valeria's Value Milkshake £16
+
 2.5.0 :005 > takeaway.choose(2,3)
  => [{"Eduard's Enviable Eggs"=>3}] 
+
 2.5.0 :006 > takeaway.choose(5,4)
  => [{"Eduard's Enviable Eggs"=>3}, {"Maria's Majestic Meatballs"=>4}] 
+
 2.5.0 :007 > takeaway.show_basket
 Eduard's Enviable Eggs, Quantity: 3
 Maria's Majestic Meatballs, Quantity: 4
+
 2.5.0 :008 > takeaway.show_total
 Your total is £153
-2.5.0 :009 > takeaway.checkout(+7725776655)
 
+2.5.0 :009 > takeaway.checkout(+7725776655)
 ```
 
 
