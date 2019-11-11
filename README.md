@@ -93,24 +93,20 @@ Your total is £153
 2.5.0 :009 > takeaway.checkout(+7725776655)
 ```
 
+Installation
+-----
 
-
-
-
-
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+* Git clone the project into your own local repository
+* Run bundle install in order to download the relevant gems
+* Run irb in your local repo in order to start the application
+* Add the following in the first line of IRB
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+2.5.0 :001 > require './lib/takeaway.rb'
+```
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
 
-As a customer
+
+
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 
