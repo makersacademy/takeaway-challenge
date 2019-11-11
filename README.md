@@ -1,21 +1,5 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
-
-The Task
--------
 
 During my time at Makers, for on of our weekend challenges we were set the task of creating a takeaway application. The user stories were as follows-
 
@@ -68,6 +52,38 @@ Technologies Used
   * I built my application with Ruby - using the command line to allow users to interact with the takeaway service
 * Rspec
   * My testing framework was rspec - my final test suite had 17/17 passing tests and 94% coverage - the great majority of missing coverage was due to an inability to test the Twilio Ruby Gem
+
+A Sample of the IRB
+-----
+
+```
+2.5.0 :001 > require './lib/takeaway.rb'
+2.5.0 :002 > takeaway = Takeaway.new
+2.5.0 :003 > takeaway.list_of_options
+2.5.0 :004 > takeaway.display_menu
+1. Daniels's Delicious Chicken £12
+2. Eduard's Enviable Eggs £19
+3. Mark's Marvellous Lasagne £8
+4. Gabriel's Godly Fries £25
+5. Maria's Majestic Meatballs £24
+6. Rafaela's Round Halloumi £39
+7. Sayem's Saucy Fishcakes £22
+8. Valeria's Value Milkshake £16
+2.5.0 :005 > takeaway.choose(2,3)
+ => [{"Eduard's Enviable Eggs"=>3}] 
+2.5.0 :006 > takeaway.choose(5,4)
+ => [{"Eduard's Enviable Eggs"=>3}, {"Maria's Majestic Meatballs"=>4}] 
+2.5.0 :007 > takeaway.show_basket
+Eduard's Enviable Eggs, Quantity: 3
+Maria's Majestic Meatballs, Quantity: 4
+2.5.0 :008 > takeaway.show_total
+Your total is £153
+2.5.0 :009 > takeaway.checkout(+7725776655)
+
+```
+
+
+
 
 
 
