@@ -26,7 +26,7 @@ Instructions
 
 ### Homepage
 
-![Test Screenshot](/images/test_screenshot.png?raw=true "Test")
+![Test Screenshot|300 x 300](/images/test_screenshot.png?raw=true "Test")
 
 Task
 -----
