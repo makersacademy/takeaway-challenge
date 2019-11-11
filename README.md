@@ -26,9 +26,7 @@ Instructions
 
 ### Homepage
 
-![Test Screenshot](/images/test_screenshot.png?raw=true "Test")
-
-<img src="images/test_screenshot.png?" width="400px" height="200px">
+<img src="images/test_screenshot.png?" width="400px">
 Task
 -----
 
