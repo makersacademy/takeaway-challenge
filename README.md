@@ -14,21 +14,42 @@ Takeaway Challenge
 
  ```
 
-Motivation
+The Task
 -------
 
-During my time at Makers, for on of our weekend challenges we were set the task
+During my time at Makers, for on of our weekend challenges we were set the task of creating a takeaway application. The user stories were as follows-
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
 
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
 
-### Homepage
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+I built the project over a weekend - using what I'd learnt over my first few weeks of Makers. The project shows a solid and continuous use of TDD as well as one of my first ventures into using the command line in order to build applications
+
+### Screenshots
 
 <img src="images/test_screenshot.png?" width="400px">
+
+An example of a screenshot
+
+<img src="images/test_screenshot.png?" width="400px">
+
+An example of a screenshot
+
+
 Task
 -----
 
