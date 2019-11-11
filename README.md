@@ -41,14 +41,25 @@ I built the project over a weekend - using what I'd learnt over my first few wee
 
 ### Screenshots
 
-<img src="images/test_screenshot.png?" width="400px">
+<img src="images/takeaway_code.png?" width="400px">
 
-An example of a screenshot
+How potential data would be handled
 
-<img src="images/test_screenshot.png?" width="400px">
+<img src="images/twilio_code.png?" width="400px">
 
-An example of a screenshot
+How the twilio Ruby Gem is used
 
+<img src="images/tests.png?" width="400px">
+
+Tests relating to user inputs
+
+<img src="images/tests_2.png?" width="400px">
+
+Tests relating to the Menu Class
+
+<img src="images/passing_tests.png?" width="400px">
+
+Passing Tests
 
 Task
 -----
