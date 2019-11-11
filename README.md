@@ -61,10 +61,16 @@ Tests relating to the Menu Class
 
 Passing Tests
 
-Task
+Technologies Used
 -----
 
-* Fork this repo
+* Ruby
+  * I built my application with Ruby - using the command line to allow users to interact with the takeaway service
+* Rspec
+  * My testing framework was rspec - my final test suite had 17/17 passing tests and 94% coverage - the great majority of missing coverage was due to an inability to test the Twilio Ruby Gem
+
+
+
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
