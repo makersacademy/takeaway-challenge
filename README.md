@@ -26,7 +26,7 @@ Instructions
 
 ### Homepage
 
-![Alt text](/Images/test_screenshot.png?raw=true "Test")
+![Test Screenshot](/images/test_screenshot.png?raw=true "Test")
 
 Task
 -----
