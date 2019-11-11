@@ -2,7 +2,7 @@ class Menu
 
   attr_reader :items
 
-  def initialize 
+  def initialize
     @items = { "Daniels's Delicious Chicken" => 12,
                "Eduard's Enviable Eggs" => 19,
                "Mark's Marvellous Lasagne" => 8,

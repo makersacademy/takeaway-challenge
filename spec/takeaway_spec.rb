@@ -27,7 +27,7 @@ describe Takeaway do
 
   context '#list_of_options' do
     it "expects the function to list the options" do
-      expect { takeaway.list_of_options }.to output("Please enter 'display_menu' to see the menu\nPlease enter 'choose(meal, quantity)' in order to order a meal\nPlease enter 'show_basket' to see your current basket\nPlease enter 'total' to see your total\nPlease enter 'checkout' to place your order\n").to_stdout 
+      expect { takeaway.list_of_options }.to output("Please enter 'display_menu' to see the menu\nPlease enter 'choose(meal, quantity)' in order to order a meal\nPlease enter 'show_basket' to see your current basket\nPlease enter 'show_total' to see your total\nPlease enter 'checkout' to place your order\n").to_stdout 
     end
   end
 

@@ -12,11 +12,12 @@ class Takeaway
     @total = 0
   end
 
+
   def list_of_options
     puts "Please enter 'display_menu' to see the menu"
     puts "Please enter 'choose(meal, quantity)' in order to order a meal"
     puts "Please enter 'show_basket' to see your current basket"
-    puts "Please enter 'total' to see your total"
+    puts "Please enter 'show_total' to see your total"
     puts "Please enter 'checkout' to place your order"
   end
 
