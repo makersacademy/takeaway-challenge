@@ -6,11 +6,11 @@ describe Menu do
   it { is_expected.to respond_to(:dishes) }
 
   describe '#add' do
-    let(:dish) {double :dish}
-    let(:price) {double :price}
     it 'should add item to the menu attribute dishes' do
+      dish = double(:dish)
+      price = double(:price)
       subject.add(dish, price)
-      expect(subject.dishes.key?(dish)).to eq(true)
+      expect(subject.dishes).to include(dish => price)
     end
   end
 
