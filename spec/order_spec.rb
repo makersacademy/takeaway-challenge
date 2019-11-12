@@ -22,7 +22,11 @@ describe Order do
   it { should respond_to(:total_cost) }
 
   it "should tally up the total cost" do
-    subject.add("Margherita")
-    expect(subject.total_cost).to eq 8.95
+    2.times { subject.add("Margherita") }
+    expect(subject.total_cost).to eq 17.90
   end
+
+  it { should respond_to(:confirm) }
+
+
 end
