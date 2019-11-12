@@ -25,13 +25,32 @@ Burrata : £6\nTricolore Salad : £10"}.to_stdout
 
   it 'should add items to the order' do
     order = Order.new
-    order.select_item("Burrata")
+    order.select_item("Burrata", 1)
     expect(order.ordered).to include("Burrata")
   end
 
   it 'should return the correct total price' do
     order = Order.new
-    order.select_item("Burrata")
-    expect(order.total).to eq(6)
+    order.select_item("Burrata", 2)
+    expect(order.total).to eq(12)
   end
+
+  it 'should raise an error if the customer enters a wrong order total' do
+    order = Order.new
+    order.select_item("Burrata", 3)
+    expect {order.place_order(12)}.to raise_error "The total is not correct. The correct total is £18"
+  end
+
+  it 'should place the order' do
+      order = Order.new
+      order.select_item("Burrata", 3)
+      order.select_item("Curry", 1)
+      order.select_item("Salad", 3)
+      order.select_item("Edemame", 2)
+      expect { order.place_order(64) }.to output{"Edemame : 2
+Salad : 3
+Curry : 1
+Burrata : 3
+Total = 64"}.to_stdout
+    end
 end
