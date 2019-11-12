@@ -10,7 +10,7 @@ class Takeaway
     puts "Welcome! Here is the menu - #{@menu}. To order, type takeaway.order."
   end
 
-  def order
-    
+  def order(order = Order.new)
+      @order = order
   end
 end
