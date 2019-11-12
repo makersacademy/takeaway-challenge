@@ -14,9 +14,18 @@ Takeaway Challenge
 
  ```
 Marianne October 2019 Cohort -
-User Stories Completed
 
+1 test failing - attempt to prevent text from sending each time rspec is run.
+Also currently am able to send texts to my own number but have no corresponding rspec tests to confirm this.
+Need to deal with case where user adds something which is not on the menu.
 
+To use:
+* Load takeaway.rb in IRB
+* takeaway = Takeaway.new
+* takeaway.start_order
+* takeaway.new_order.add("Margherita")
+* takeaway.total_cost
+* takeaway.confirm
 
 Instructions
 -------
