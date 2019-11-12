@@ -48,7 +48,7 @@ Instructions
 
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you    have all the gems
-* Create a trial [Twilio](https://www.twilio.com) account to set up sms functionality
+* Create a trial [Twilio](https://www.twilio.com) account to set up SMS functionality
 * For privacy, user credentials have not been uploaded. Add this file: '.lib/secrets.rb' to include your user credentials. The file should take this format:
 ```
 module Secrets
