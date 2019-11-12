@@ -6,4 +6,8 @@ class Order
     @my_order = {}
   end
 
+  def add(item)
+
+  end
+
 end
