@@ -1,3 +1,5 @@
+require './lib/item.rb'
+
 class Menu
 
 # add_item - takes instances of Item and adds to the menu
