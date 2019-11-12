@@ -1,5 +1,6 @@
 require './lib/menu.rb'
 
+class Order
 # add_item(item, quantity) - adds the menu item and
 # quantity to the order
 
@@ -8,3 +9,4 @@ require './lib/menu.rb'
 # place_order(total) - 'pays' for the order and places it.
 # returns the placed status and delivery time (1 hour from current)
 # Implements the text messaging API
+end
