@@ -5,7 +5,14 @@ class Item
    @item_price = price
  end
 
-# return name
+  # return name
+  def name
+    @item_name
+  end
 
-# return price
+  # return price
+  def price
+    @item_price
+  end
+
 end
