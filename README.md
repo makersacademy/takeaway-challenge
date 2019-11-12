@@ -1,82 +1,43 @@
 Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+====================
+This application can be used by a restaurant to create a menu, display it for customers, then allow them to create an order of specific items on it. When an order is created the customer inputs the total amount due, and the order is placed. An update can be issued to the customer by text message, letting them know their order is in process and an approximate delivery time, normally 1 hour after ordering
 
- ```
+### Build Status
+Currently classes have been created for items, menu and order. A message class has also been created for use with the text messaging API, but has currently not yet been implemented
 
-Instructions
--------
+### Tech/Framework Used
+Built with Ruby version 2.6.3. Testing framework is Rspec and Rubocop.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### API Reference
+Intended to make use of the Twilio sms API. Reference here: https://www.twilio.com/docs/sms/tutorials/how-to-send-sms-messages-in-ruby
 
-Task
------
+### Tests
+Tests have been created using Rspec. Currently tests use real instances of external classes (Chicago style) but the intention was to refactor these to make them independent (London style). Unfortunately I have now run out of time!
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+However, all tests are currently passing, and coverage is 100%.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+To run tests, run rspec from within the project folder.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+### How to Use?
+#### Item class
+This class is used for individual menu items.
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+When creating a new instance of an Item, the item's name and price are passed as arguments. The name and price can be called individually using the methods .name and .price respectively.
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+#### Menu class
+This class is used to create a menu consisting of individual Items.
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+New items are added using the .add_item method. Items must be of the Item class to be added to a menu, otherwise an error will be returned.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+The menu can be viewed using the .view_menu method, which returns a a list of all the menu items and their respective prices.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+#### Order class
+This class is used for making orders.
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+When creating a new order, the Menu class the order is being made from is passed as an argument.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Items are added to the order using the .add_item method. This first checks whether the item is on the menu, and if it is, adds the item name and quantity to the order list.
 
+The .order_total method returns a total for all the items in the order list.
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+The .place_order method takes the total as an argument, checks whether it is correct, and if it is, places the order and returns a confirmation of placement, with a delivery time which is 1 hour from the current time.
