@@ -1,6 +1,9 @@
 require 'order'
 
 describe Order do
+
+  let(:order_double) { double :order }
+
   it { is_expected.to be_instance_of Order }
 
   it "should initially be empty" do
@@ -26,5 +29,8 @@ describe Order do
     expect(subject.total_cost).to eq "Total cost is £17.90"
   end
 
-  it { should respond_to(:confirm).with(1).argument }
+  it "should respond to the confirm method and send a message" do
+    allow(:order_double).to receive(:confirm)
+    expect(:order_double.confirm)
+  end
 end
