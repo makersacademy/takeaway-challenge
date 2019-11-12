@@ -2,7 +2,7 @@
 class Item
   def initialize(name, price)
     @item_name = name
-    @item_price = price
+    @item_price = price.to_f
   end
 
   # return name

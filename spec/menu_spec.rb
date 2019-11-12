@@ -17,12 +17,11 @@ describe Menu do
   end
 
   it 'can return a list of items and prices' do
-    item1 = Item.new("item1", 5)
-    item2 = Item.new("item2", 3)
+    item1 = Item.new("item1", 5.25)
+    item2 = Item.new("item2", 3.22)
     subject.add_item(item1)
     subject.add_item(item2)
-    menulist = "item1     - £ 5.00\nitem2     - £ 3.00"
-    expect(subject.view_menu).to eq menulist 
-
+    menulist = "item1     - £ 5.25\nitem2     - £ 3.22\n"
+    expect(subject.view_menu).to eq menulist
   end
 end
