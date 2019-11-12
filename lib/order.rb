@@ -1,3 +1,4 @@
+require './lib/send_sms.rb'
 
 class Order
   attr_reader :ordered, :menus, :order_total

@@ -53,4 +53,8 @@ Curry : 1
 Burrata : 3
 Total = 64"}.to_stdout
     end
+
+    it 'should send a text when the order is completed' do
+      
+    end
 end
