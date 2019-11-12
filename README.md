@@ -14,9 +14,13 @@ Intended to make use of the Twilio sms API. Reference here: https://www.twilio.c
 ### Tests
 Tests have been created using Rspec. Currently tests use real instances of external classes (Chicago style) but the intention was to refactor these to make them independent (London style). Unfortunately I have now run out of time!
 
+However, all tests are currently passing, and coverage is 100%.
+
+To run tests, run rspec from within the project folder.
+
 ### How to Use?
 #### Item class
-This class is used for individual items.
+This class is used for individual menu items.
 
 When creating a new instance of an Item, the item's name and price are passed as arguments. The name and price can be called individually using the methods .name and .price respectively.
 
