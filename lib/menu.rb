@@ -4,7 +4,7 @@ class Menu
   attr_reader :item_list
 
   def initialize
-    @item_list = []
+    @item_list = [] #Array containing instances of Item class
   end
 
   # Takes instances of Item and adds to the menu

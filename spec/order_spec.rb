@@ -23,10 +23,14 @@ describe Order do
     expect { subject.add_item("test", 1) }.to raise_error(error)
   end
 
+  it 'can return the cost of an item from the menu' do
+    expect(subject.item_cost("item1")).to eq 3
+  end
+
   it 'returns the total price for items in the order' do
     subject.add_item("item1", 1)
     subject.add_item("item2", 2)
-    expect(subject.order_total).to eq(7)
+    expect(subject.order_total).to eq(7.0)
   end
 
 end

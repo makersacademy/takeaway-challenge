@@ -23,3 +23,5 @@ myorder = Order.new(menu)
 
 puts myorder.on_menu?("Beef Burger")
 puts myorder.on_menu?("Mash")
+
+puts myorder.item_cost("Beef Burger")
