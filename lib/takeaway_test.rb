@@ -1,3 +1,9 @@
+# This file was created in order to test the
+# functionality of the various classes in the Takeaway
+# project. This is not intended to be an official
+# part of the project, however this could be
+# developed into a UI for the software.
+
 require './lib/order.rb'
 
 foodlist = [
