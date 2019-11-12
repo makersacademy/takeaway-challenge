@@ -7,7 +7,10 @@ class Takeaway
   end
 
   def add(item, quantity = 1)
-    if @order.key?(item)
+    message = "Unable to add item to order as not on menu"
+    fail message if !menu.key?(item)
+
+    if order.key?(item)
       @order[item] += quantity
     else
       @order[item] = quantity
