@@ -13,6 +13,10 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Marianne October 2019 Cohort -
+User Stories Completed
+
+
 
 Instructions
 -------
