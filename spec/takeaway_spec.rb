@@ -3,13 +3,6 @@ require './lib/takeaway.rb'
 describe Takeaway do
   it { is_expected.to be_instance_of(described_class) }
 
-  describe '#menu' do
-    it 'should be hash type' do
-      expect(subject.menu).to be_instance_of(Hash)
-    end
-
-  end
-
   describe '#add' do
 
     context 'item is added to order' do
