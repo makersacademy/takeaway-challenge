@@ -24,6 +24,12 @@ describe Takeaway do
         expect(subject.order).to have_key(food_item)
       end
 
+      it 'should increment the order attribute count' do
+        subject.add(food_item)
+        subject.add(food_item)
+        expect(subject.order[food_item]).to eq(2)
+      end
+
     end
 
   end
