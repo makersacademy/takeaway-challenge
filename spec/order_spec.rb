@@ -28,4 +28,12 @@ describe Order do
       expect(subject.summary).to eq(expected_message)
     end
   end
+
+  describe '#total' do
+    it 'should return the total order cost' do
+      subject.add("Pizza", 3)
+      expected_message = "Total: £15"
+      expect(subject.total).to eq(expected_message)
+    end
+  end
 end
