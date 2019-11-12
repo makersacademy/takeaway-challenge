@@ -24,4 +24,19 @@ def select(name)
   return @order
 end
 
+def volume
+  ordered_number = @order.each_with_object(Hash.new(0)) { |name, hash| hash[name] += 1 }
+
+ordered_number.map { |item, quantity| quantity.to_int }
+
+  end
+
+# def total 
+  #values into integers from orginial dishes
+  #multiply value
+
+
 end
+
+
+  # @order.each{|item| @order.counts(item)}
