@@ -1,6 +1,7 @@
 require 'order'
 
 describe Order do
+
   menu = Menu.new
   subject { Order.new(menu) }
 
