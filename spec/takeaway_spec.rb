@@ -8,10 +8,10 @@ describe Takeaway do
 
   describe '#menu' do
 
-    it 'should not equal nil' do
-      expect(subject.menu).not_to be(nil)
+    it 'should be array type' do
+      expect(subject.menu).to be_instance_of(Array)
     end
-
+    
   end
 
 end
