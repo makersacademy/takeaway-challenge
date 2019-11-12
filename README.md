@@ -20,11 +20,12 @@ Takeaway Challenge
   * The class has the methods `add` which can be used to add an item to the order list, and `summary` which outputs a summary of the order with quantity and subtotals. There is also a `total` method, which returns the order total
 * The user is able to interact by instantiating an `order` object, viewing the menu list, and then adding menu items to their order. They can then view a summary of this order with items, quantities, and subtotals, and also the total cost of the order
 
-* Remaining work to be completed:
+* __Remaining work to be completed:__
   * There are some edge cases left to be tested for:
     * When a user adds an item to their order which is not on the menu - this will require the use of the Menu#has? method
   * Some tests require more thorough use of doubles
   * The final (4th) user story is yet to be implemented, this will require the use of the Twilio API
+
 
 
 Instructions
