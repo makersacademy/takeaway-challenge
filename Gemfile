@@ -1,10 +1,17 @@
 source 'https://rubygems.org'
 
-ruby '2.5.0'
+ruby '2.6.5'
 
-gem 'capybara'
-gem 'rake'
-gem 'rspec'
-gem 'rubocop', '0.56.0'
-gem 'simplecov', require: false, group: :test
-gem 'simplecov-console', require: false, group: :test
+group :development, :test do
+  gem 'byebug', require: false
+  gem 'capybara', require: false
+  gem 'rake', require: false
+  gem 'pry', require: false
+  gem 'guard-rspec', require: false
+  gem 'rspec', require: false
+  gem 'rubocop', require: false
+  gem 'ruby-debug-ide', require: false
+  gem 'solargraph', require: false
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
+end
