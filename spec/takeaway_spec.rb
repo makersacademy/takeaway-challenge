@@ -4,7 +4,6 @@ describe Takeaway do
   it { is_expected.to be_instance_of(described_class) }
 
   describe '#add' do
-
     context 'item is added to order' do
       let(:food_item) {double :food_item}
       let(:quantity) {double :quantity}
@@ -24,9 +23,6 @@ describe Takeaway do
         subject.add(food_item,quantity)
         expect(subject.order[food_item]).to eq(quantity)
       end
-
     end
-
   end
-
 end
