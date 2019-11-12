@@ -1,8 +1,10 @@
 class Takeaway
   attr_reader :dishes
+  attr_reader :order
 
   def initialize
 @dishes = []
+@order = []
 
 def dishes
 @dishes =
@@ -16,4 +18,10 @@ def dishes
 
 end
 end
-end 
+
+def select(name)
+  @order << name
+  return @order
+end
+
+end

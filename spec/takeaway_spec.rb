@@ -18,6 +18,10 @@ describe Takeaway do
       ]
       # expect(@dishes).to be_an_instance_of(Array)
 end
-end
 
-  
+it "makes a record of the dishes ordered" do
+  subject.select("Pizza")
+  order = []
+  expect(order << "Pizza")
+end
+end
