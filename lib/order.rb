@@ -1,7 +1,7 @@
 require_relative 'restaurant'
 
 class Order
-  attr_reader :order, :total_sum, :text
+  attr_reader :order, :total_sum, :text, :menu
 
   def initialize
     @order = nil
