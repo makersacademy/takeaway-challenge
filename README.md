@@ -13,6 +13,13 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+ The Solution (My Approach)
+ -------
+ * `Menu` class contains a list of menu items as an instance attribute. It has two methods: `#add` which can be used to add an item to the menu, and `#has?` which returns true or false to indicate whether the argument is included on the menu
+ * `Order` class contains a `menu` instance (which is initialized after the `Menu` class is injected in the initialize method), and an instance attribute `items` which is a hash
+  * The class has the methods `add` which can be used to add an item to the order list, and `summary` which outputs a summary of the order with quantity and subtotals. There is also a `total` method, which returns the order total
+
+
 
 Instructions
 -------
