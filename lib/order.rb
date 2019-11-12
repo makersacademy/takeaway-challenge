@@ -19,4 +19,12 @@ class Order
     end
     order_list.join(", ")
   end
+
+  def total
+    sum = 0
+    items.each do |key, value|
+      sum += value[:quantity]*value[:price]
+    end
+    "Total: £#{sum}"
+  end
 end
