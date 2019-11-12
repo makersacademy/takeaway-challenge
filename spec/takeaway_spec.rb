@@ -9,9 +9,9 @@ describe Takeaway do
   describe '#menu' do
 
     it 'should be array type' do
-      expect(subject.menu).to be_instance_of(Array)
+      expect(subject.menu).to be_instance_of(Hash)
     end
-    
+
   end
 
 end
