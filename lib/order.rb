@@ -11,4 +11,12 @@ class Order
   def add(item, quantity)
     @items[item] = {price: menu.dishes[item], quantity: quantity}
   end
+
+  def summary
+    order_list = []
+    items.each do |key, value|
+      order_list.push("#{key} x#{value[:quantity]} = £#{value[:quantity]*value[:price]}")
+    end
+    order_list.join(", ")
+  end
 end
