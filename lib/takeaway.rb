@@ -6,7 +6,7 @@ class Takeaway
     @order = {}
   end
 
-  def add(item,quantity)
+  def add(item, quantity = 1)
     if @order.key?(item)
       @order[item] += quantity
     else
