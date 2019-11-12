@@ -3,6 +3,10 @@ require 'order'
 describe Order do
 
   menu = Menu.new
+  item1 = Item.new("item1", 3)
+  item2 = Item.new("item2", 2)
+  menu.add_item(item1)
+  menu.add_item(item2)
   subject { Order.new(menu) }
 
   it 'can create a new instance of order' do
@@ -10,18 +14,19 @@ describe Order do
   end
 
   it 'can add an item to an order list' do
-    item = Item.new("test", 1)
-    menu.add_item(item)
-    subject.add_item("test", 1)
-    expect(subject.order_list).to eq [["test", 1]]
+    subject.add_item("item1", 1)
+    expect(subject.order_list).to eq [["item1", 1]]
   end
 
   it 'checks that an item added is actually on the menu' do
-    menu = Menu.new
-    item = Item.new("item1", 1)
-    menu.add_item(item)
     error = "Item not on menu"
     expect { subject.add_item("test", 1) }.to raise_error(error)
+  end
+
+  it 'returns the total price for items in the order' do
+    subject.add_item("item1", 1)
+    subject.add_item("item2", 2)
+    expect(subject.order_total).to eq(7)
   end
 
 end

@@ -1,16 +1,18 @@
-# initialize item takes a name and a price and stores
+
 class Item
+
+  # initializes a new item, takes a name and a price and stores
   def initialize(name, price)
     @item_name = name
     @item_price = price.to_f
   end
 
-  # return name
+  # Returns the item's name
   def name
     @item_name
   end
 
-  # return price
+  # Returns the item's price
   def price
     @item_price
   end
