@@ -1,3 +1,5 @@
+require './lib/menu.rb'
+
 class Takeaway
   attr_reader :menu, :order
 
