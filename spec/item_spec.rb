@@ -7,5 +7,12 @@ describe Item do
   expect(subject).to be_instance_of Item
   end
 
+  it 'can return its name' do
+    expect(subject.name).to eq("test")
+  end
+
+  it 'can return its price' do
+    expect(subject.price).to eq(5)
+  end
 
 end
