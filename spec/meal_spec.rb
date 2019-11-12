@@ -1,3 +1,5 @@
+require 'meal'
+
 describe Meal do
   it 'creates an instance of Meal' do
     meal = Meal.new
