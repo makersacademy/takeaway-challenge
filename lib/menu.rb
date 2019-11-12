@@ -7,9 +7,13 @@ class Menu
     @item_list = [] #Array containing instances of Item class
   end
 
-  # Takes instances of Item and adds to the menu
+  # Takes instances of Item class and adds them to the menu
   def add_item(item)
-    @item_list << item
+    if item.kind_of?(Item) == true
+      @item_list << item
+    else
+      raise "#{item} is not an Item class object"
+    end
   end
 
   # Returns the list of items in the menu and their

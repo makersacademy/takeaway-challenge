@@ -17,6 +17,8 @@ foodlist.each do |item|
   menu.add_item(item)
 end
 
+# menu.add_item("hello")
+
 puts menu.view_menu
 
 myorder = Order.new(menu)
@@ -25,3 +27,8 @@ puts myorder.on_menu?("Beef Burger")
 puts myorder.on_menu?("Mash")
 
 puts myorder.item_cost("Beef Burger")
+
+myorder.add_item("Beef Burger", 2)
+myorder.add_item("Vegan Burger", 1)
+myorder.add_item("Veggie Burger", 1)
+puts myorder.order_total #should be 13.62

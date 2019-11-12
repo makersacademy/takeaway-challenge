@@ -16,6 +16,11 @@ describe Menu do
     expect(subject.item_list).to eq [item1, item2]
   end
 
+  it 'returns an error if an item added to a menu is not of Item class' do
+    error = "test is not an Item class object"
+    expect{ subject.add_item("test") }.to raise_error(error)
+  end
+
   it 'can return a list of items and prices' do
     item1 = Item.new("item1", 5.25)
     item2 = Item.new("item2", 3.22)
