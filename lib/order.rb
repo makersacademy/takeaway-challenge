@@ -22,6 +22,8 @@ class Order
     self
   end
 
+  def total_cost
 
+  end
 
 end
