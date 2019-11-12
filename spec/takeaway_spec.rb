@@ -1,6 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
+
   it { is_expected.to be_instance_of Takeaway }
 
   it "should contain a list of dishes with prices" do
@@ -11,7 +12,7 @@ describe Takeaway do
     expect(subject.menu[:pizza]).to eq ({"Margherita" => 8.95, "Hawaiian" => 9.95, "Vegetarian" => 9.95, "Pepperoni" => 10.95, "BBQ Chicken" => 10.95})
   end
 
-  it "should allow the user to place an order" do
-    expect(subject).to respond_to(:order)
+  it "should allow the user to place an order and create a new order" do
+    expect(subject).to respond_to(:order).and_return(Order.new)
   end
 end
