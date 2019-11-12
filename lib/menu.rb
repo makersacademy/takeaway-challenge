@@ -9,7 +9,7 @@ class Menu
     @dishes[item] = price
   end
 
-  def on_menu?(item)
+  def has?(item)
     dishes.key?(item)
   end
 end

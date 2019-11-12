@@ -14,13 +14,13 @@ describe Menu do
     end
   end
 
-  describe '#on_menu?' do
+  describe '#has?' do
     it 'should return true when item is present' do
-      expect(subject.on_menu?("Pizza")).to eq(true)
+      expect(subject.has?("Pizza")).to eq(true)
     end
 
     it 'should return false when item is not present' do
-      expect(subject.on_menu?("Beans")).to eq(false)
+      expect(subject.has?("Beans")).to eq(false)
     end
   end
 end
