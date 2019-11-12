@@ -66,7 +66,5 @@ class Order
     "Order placed. Delivery time is #{delivery_time}"
   end
 
-
-  # returns the placed status and delivery time (1 hour from current)
   # Invokes the text messaging API
 end
