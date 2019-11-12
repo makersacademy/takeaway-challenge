@@ -62,8 +62,8 @@ class Order
   # if the total is correct.
   def place_order(total)
     raise "Incorrect total passed" if total != order_total
-
-
+    @status = "Placed"
+    "Order placed. Delivery time is #{delivery_time}"
   end
 
 
