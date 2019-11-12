@@ -1,13 +1,13 @@
 class Order
 
-  attr_reader :my_order
+  attr_reader :order
 
   def initialize
-    @my_order = {}
+    @order = {}
   end
 
   def add(item)
-
+    @order
   end
 
 end

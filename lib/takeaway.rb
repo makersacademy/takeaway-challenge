@@ -10,6 +10,6 @@ class Takeaway
   end
 
   def order(order = Order.new)
-      @order = order
+    @order = order
   end
 end
