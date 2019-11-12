@@ -1,20 +1,19 @@
 class Takeaway
-#attr_reader :dish :list_of_dishes
+
+attr_reader :dish, :order, :list_of_dishes
+
   def initialize()
-    @dish1 = nil
-    @dish2 = nil
-    # @menu = {:dish => "£price"}
-    @list_of_dishes = [{:dish1 => "£price1", :dish2 => "£price2", :dish3 => "£price3" }]
+    @dish1 = 7
+    @dish2 = 14
+    @dish2 = 15
+    @list_of_dishes = [{:dish1 => "£7", :dish2 => "£14", :dish3 => "£15" }]
     @dish_selection = []
     @order = [@dish_selection]
-end
-  def check_takeawaydishes()
-    puts "would you like to check the menu? (Y/N)"
-    if gets.chomp = "Y"
+  end
+  def view_menu
     puts @list_of_dishes
-  else puts "would you like to check the menu? (Y/N)"
     end
-  def select_takeawaydishes(dish)
+  def select_item(dish)
     puts "what would you like to order?"
     @dish_selection[:dish1] = @dish1
     @dish_selection[:dish3] = @dish3
@@ -24,5 +23,4 @@ end
     @order << @dish_selection.each
     puts @order
   end
-end
-end
+  end
