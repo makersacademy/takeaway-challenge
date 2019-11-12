@@ -16,7 +16,10 @@ describe Menu do
 
   describe '#has?' do
     it 'should return true when item is present' do
-      expect(subject.has?("Pizza")).to eq(true)
+      dish = double(:dish)
+      price = double(:price)
+      subject.add(dish, price)
+      expect(subject.has?(dish)).to eq(true)
     end
 
     it 'should return false when item is not present' do
