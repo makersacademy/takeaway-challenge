@@ -5,6 +5,10 @@ class Menu
     @dishes = {"Pizza" => 5, "Chips" => 2, "Curry" => 6.5}
   end
 
+  def add(item, price)
+    @dishes[item] = price
+  end
+
   def on_menu?(item)
     dishes.key?(item)
   end
