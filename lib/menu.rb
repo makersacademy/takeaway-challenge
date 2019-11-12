@@ -1,3 +1,3 @@
 class Menu
-  attr_reader :menu_items
+  attr_reader :dishes
 end
