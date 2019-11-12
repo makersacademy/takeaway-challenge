@@ -12,4 +12,9 @@ describe Order do
   end
 
   it { should respond_to(:add).with(1).argument }
+
+  it "should allow items to be added to the order and record the number of that item that has been added" do
+    subject.add("test")
+    expect(subject.order).to eq ({"test" => 1})
+  end
 end
