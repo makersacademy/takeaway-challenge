@@ -14,21 +14,17 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Introduction
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Week 5 Makers Apprenticeship Challenge to be run on terminal
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Write a Takeaway program that has a menu, whereby a user can see a list of dishes that can be selected for order and receive a text confirming placed order and delivery time.
+
+Consider the following user stories:
 
 ```
 As a customer
@@ -47,8 +43,26 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+Instructions
+------------
 
-* Hints on functionality to implement:
+* Fork this repo
+* Run the command 'bundle' in the project directory to ensure you    have all the gems
+* Create a trial [Twilio](https://www.twilio.com) account to set up SMS functionality
+* For privacy, user credentials have not been uploaded. Add this file: '.lib/secrets.rb' to include your user credentials. The file should take this format:
+```
+module Secrets
+
+  ACCOUNT_SID = 'Twilio Account SID'
+  AUTH _TOKEN = '#Twilio Auth Token'
+  FROM = '#Twilio phone number'
+  TO = '#Twilio registered phone number'
+
+end
+```
+File format taken from: https://github.com/makersacademy/takeaway-challenge/pull/1339/commits/330ba4620d687945b4f01bc66efc8d486115f437
+
+<!-- * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
@@ -79,4 +93,4 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 Notes on Test Coverage
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests. -->
