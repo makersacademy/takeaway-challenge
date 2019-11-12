@@ -9,7 +9,7 @@ describe Dishes do
   it 'should create a list of dishes' do
     dishes = Dishes.new
     #expect(dishes).to respond_to(:create_list)
-    expect(dishes.create_list).to contain_exactly{"fish, chicken, curry, pizza, vegetarian"}
+    expect(dishes.create_list).to contain_exactly{"fish £6, chicken £7, curry £5, pizza £4, vegetarian £3"}
   end
 
   #it 'should create a menu' do
