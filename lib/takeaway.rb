@@ -2,7 +2,9 @@ class Takeaway
   attr_reader :dishes
 
   def initialize
+@dishes = []
 
+def dishes
 @dishes =
 [
   { name: "Pizza" , price: "£15.50" },
@@ -10,7 +12,8 @@ class Takeaway
   { name: "Pasta" , price: "14.20" },
   { name: "Sushi" , price: "£14.60" },
   { name: "Noodles" , price: "£15.20" }
-] 
+]
 
 end
 end
+end 
