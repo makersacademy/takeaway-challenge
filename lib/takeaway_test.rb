@@ -1,6 +1,6 @@
 require './lib/order.rb'
 
-itemlist = [
+foodlist = [
   Item.new("Beef Burger", 3.25),
   Item.new("Cheese Burger", 4.25),
   Item.new("BBQ Burger", 5.76),
@@ -13,8 +13,13 @@ itemlist = [
 
 menu = Menu.new
 
-itemlist.each do |item|
+foodlist.each do |item|
   menu.add_item(item)
 end
 
 puts menu.view_menu
+
+myorder = Order.new(menu)
+
+puts myorder.on_menu?("Beef Burger")
+puts myorder.on_menu?("Mash")
