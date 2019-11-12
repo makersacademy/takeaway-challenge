@@ -1,3 +1,5 @@
+require './lib/menu.rb'
+
 # add_item(item, quantity) - adds the menu item and
 # quantity to the order
 

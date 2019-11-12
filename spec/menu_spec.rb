@@ -21,7 +21,7 @@ describe Menu do
     item2 = Item.new("item2", 3.22)
     subject.add_item(item1)
     subject.add_item(item2)
-    menulist = "item1     - £ 5.25\nitem2     - £ 3.22\n"
+    menulist = "item1  - £ 5.25\nitem2  - £ 3.22\n"
     expect(subject.view_menu).to eq menulist
   end
 end

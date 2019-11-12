@@ -19,7 +19,7 @@ class Menu
     @item_list.each do |item|
       name = item.name
       price = item.price
-      menu_display = menu_display + "#{name}     - £ #{price.round(2)}\n"
+      menu_display = menu_display + "#{name}  - £ #{price.round(2)}\n"
     end
     menu_display
   end
