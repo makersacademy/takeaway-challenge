@@ -13,7 +13,7 @@ describe Menu do
     item2 = Item.new("item2", 3)
     subject.add_item(item1)
     subject.add_item(item2)
-    expect(subject.item_list).to eq [["item1", 5], ["item2", 3]]
+    expect(subject.item_list).to eq [item1, item2]
   end
 
 end
