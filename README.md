@@ -22,7 +22,7 @@ Takeaway Challenge
 
 * Remaining work to be completed:
   * There are some edge cases left to be tested for:
-    * When a user adds an item to their order which is not on the menu
+    * When a user adds an item to their order which is not on the menu - this will require the use of the Menu#has? method
   * Some tests require more thorough use of doubles
   * The final (4th) user story is yet to be implemented, this will require the use of the Twilio API
 
