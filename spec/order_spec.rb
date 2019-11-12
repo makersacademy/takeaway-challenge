@@ -46,9 +46,12 @@ describe Order do
     expect(subject.delivery_time).to eq(timestring)
   end
 
-  # it 'can place an order if the correct total is passed' do
-  #   subject.add_item("item1", 1)
-  #   subject.add_item("item2", 2)
-  #
-  # end
+  it 'can place an order if the correct total is passed' do
+    subject.add_item("item1", 1)
+    subject.add_item("item2", 2)
+    timestring = '%02d' % (Time.now.hour + 1) +
+      ":" + '%02d' % Time.now.min
+    returnstring = "Order placed. Delivery time is #{timestring}"
+    expect(subject.place_order(7.0)).to eq returnstring
+  end
 end

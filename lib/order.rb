@@ -1,11 +1,12 @@
 require './lib/menu.rb'
 
 class Order
-  attr_reader :order_list
+  attr_reader :order_list, :status
 
   def initialize(menu) #Pass the correct Menu as argument
     @menu = menu
     @order_list = [] #Array containing sets of [item, quantity]
+    @status  = "not placed"
   end
 
   # Adds the menu item and quantity to the order
@@ -50,18 +51,21 @@ class Order
     grand_total.to_f.round(2)
   end
 
-  # place_order(total) - 'pays' for the order and places it,
-  # if the total is correct.
-  def place_order(total)
-    raise "Incorrect total passed" if total != order_total
-
-  end
-
+    # Return a delivery time 1 hour from now
   def delivery_time
     timestring = '%02d' % (Time.now.hour + 1) +
       ":" + '%02d' % Time.now.min
     timestring
   end
+
+  # place_order(total) - 'pays' for the order and places it,
+  # if the total is correct.
+  def place_order(total)
+    raise "Incorrect total passed" if total != order_total
+
+
+  end
+
 
   # returns the placed status and delivery time (1 hour from current)
   # Invokes the text messaging API
