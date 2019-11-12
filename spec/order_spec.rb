@@ -20,4 +20,12 @@ describe Order do
       end
     end
   end
+
+  describe '#summary' do
+    it 'should return the order summary' do
+      subject.add("Pizza", 3)
+      expected_message = "Pizza x3 = £15"
+      expect(subject.summary).to eq(expected_message)
+    end
+  end
 end
