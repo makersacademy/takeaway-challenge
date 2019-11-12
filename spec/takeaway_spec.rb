@@ -27,11 +27,6 @@ describe Takeaway do
 
     end
 
-    it 'item not on menu returns error' do
-      message = "Unable to add item to order as not on menu"
-      expect {subject.add("Beans")}. to raise_error message
-    end
-
   end
 
 end
