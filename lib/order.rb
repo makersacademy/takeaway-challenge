@@ -57,7 +57,11 @@ class Order
 
   end
 
-
+  def delivery_time
+    timestring = '%02d' % (Time.now.hour + 1) +
+      ":" + '%02d' % Time.now.min
+    timestring
+  end
 
   # returns the placed status and delivery time (1 hour from current)
   # Invokes the text messaging API

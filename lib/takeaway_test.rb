@@ -32,3 +32,7 @@ myorder.add_item("Beef Burger", 2)
 myorder.add_item("Vegan Burger", 1)
 myorder.add_item("Veggie Burger", 1)
 puts myorder.order_total #should be 13.62
+
+timestring = '%02d' % (Time.now.hour + 1) +
+  ":" + '%02d' % Time.now.min
+puts timestring
