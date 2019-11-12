@@ -1,4 +1,5 @@
 require './lib/takeaway'
+require 'twilio-ruby'
 
 class Order
 
@@ -27,8 +28,8 @@ class Order
     @cost_calculator
   end
 
-  def confirm
-
+  def confirm(message = Message.new)
+    @message = message
   end
 
 end

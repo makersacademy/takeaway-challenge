@@ -27,6 +27,4 @@ describe Order do
   end
 
   it { should respond_to(:confirm) }
-
-
 end
