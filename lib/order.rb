@@ -3,7 +3,7 @@ require './lib/menu.rb'
 class Order
   attr_reader :order_list
 
-  def initialize(menu) #Pass the Menu class instance as argument
+  def initialize(menu) #Pass the correct Menu as argument
     @menu = menu
     @order_list = [] #Array containing sets of [item, quantity]
   end
@@ -50,7 +50,15 @@ class Order
     grand_total.to_f.round(2)
   end
 
-  # place_order(total) - 'pays' for the order and places it.
+  # place_order(total) - 'pays' for the order and places it,
+  # if the total is correct.
+  def place_order(total)
+    raise "Incorrect total passed" if total != order_total
+
+  end
+
+
+
   # returns the placed status and delivery time (1 hour from current)
   # Invokes the text messaging API
 end

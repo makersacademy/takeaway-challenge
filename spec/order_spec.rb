@@ -33,4 +33,11 @@ describe Order do
     expect(subject.order_total).to eq(7.0)
   end
 
+  it 'returns an error if attempting to place order with wrong amount' do
+    subject.add_item("item1", 1)
+    subject.add_item("item2", 2)
+    error = "Incorrect total passed"
+    expect{ subject.place_order(7.10) }.to raise_error(error)
+  end
+
 end
