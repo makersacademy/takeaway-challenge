@@ -18,4 +18,6 @@ describe Order do
     3.times { subject.add("test") }
     expect(subject.order).to eq ({"test" => 3})
   end
+
+  it { should respond_to(:total_cost) }
 end

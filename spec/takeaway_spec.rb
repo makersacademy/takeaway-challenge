@@ -2,6 +2,8 @@ require 'takeaway'
 
 describe Takeaway do
 
+  let(:order) {double :order}
+
   it { is_expected.to be_instance_of Takeaway }
 
   it "should contain a list of dishes with prices" do
@@ -9,6 +11,6 @@ describe Takeaway do
   end
 
   it "should allow the user to place an order" do
-    expect(subject).to respond_to(:order)
+    expect(subject).to respond_to(:start_order)
   end
 end
