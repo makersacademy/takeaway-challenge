@@ -1,4 +1,5 @@
 require './lib/takeaway'
+require './lib/message'
 require 'twilio-ruby'
 
 class Order
@@ -16,7 +17,7 @@ class Order
       count = @order[item]
       @order[item] = count + 1
     end
-    self
+    @order
   end
 
   def total_cost
@@ -25,7 +26,7 @@ class Order
     cost_calculator_hash.each do |key, value|
       @cost_calculator += value
     end
-    @cost_calculator
+    "Total cost is £#{sprintf("%0.02f", @cost_calculator)}"
   end
 
   def confirm(message = Message.new)
