@@ -17,15 +17,15 @@ class Takeaway
   end
   def select_item(*)
 
-    @dish_selection[:dish1] = @dish1
-    @dish_selection[:dish3] = @dish3
+    @dish_selection[1] = @dish1
+    @dish_selection[3] = @dish3
   end
 
   def view_total
 
     @dish1 = 7
     @dish2 = 15
-    puts 7 + 15
+    puts [7,15].sum
   end
 
   def view_order
