@@ -8,9 +8,9 @@ describe Menu do
    it 'shows dishes and prices' do
      menu = Menu.new
    expect(menu.food_list).to eq(:chips => 1.5, :chicken => 5.25)
-
-  end
-
+   end
+end
+   #
   #expect(hashes.any? { |hash| hash['foo'] == '2' }).to be_true
   # expect(order.price_list).to
   # end
@@ -26,5 +26,3 @@ describe Menu do
   #     k2: 4,
   #   )
   # end
-
-end
