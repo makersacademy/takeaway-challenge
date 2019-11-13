@@ -1,6 +1,7 @@
 require 'menu'
 require 'Takeaway'
 describe Menu do
+  it { is_expected.to be_instance_of(described_class) }
   let(:list1) { {"rice"=>1.50, "pasta"=>6.50, "pizza"=>7.50} }
   # As a customer
   # So that I can check if I want to order something

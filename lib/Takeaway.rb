@@ -1,3 +1,2 @@
-# require_relative 'menu'
-# class Takeaway
-# end
+class Takeaway
+end
