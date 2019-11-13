@@ -7,6 +7,7 @@ describe Meals do
   it { is_expected.to respond_to(:order) }
   it { is_expected.to respond_to(:check_order) }
   it { is_expected.to respond_to(:compare_order) }
+  it { is_expected.to respond_to(:menu) }
 
   it 'should find the dishes' do
     expect(meals.dishes).to eq([
@@ -15,15 +16,18 @@ describe Meals do
       { meal: 'Curry', price: 3.25 }
     ])
   end
-end
+
 #   it 'should display the dishes and their prices' do
-#     expect { print(meals.menu) }.to output("Soup : 1.50\nFish and Chips : 3.00\nCurry : 3.25").to_stdout
-#   end
+#     expect { print(meals.menu) }.to output('{:meal=>"Soup", :price=>1.50}
+# {:meal=>"Fish and Chips", :price=>3.0}
+# {:meal=>"Curry", :price=>3.25}').to_stdout
+  # end
+end
 #
-#   it 'should find a dish and add to order' do
-#     meals.order('Soup')
-#     expect(meals.ordered).to eq(['Soup'])
-#   end
+  it 'should find a dish and add to order' do
+    meals.order('Soup')
+    expect(meals.ordered).to eq(['Soup'])
+  end
 #
 #   it 'should return the order for viewing' do
 #     meals.order('Soup')

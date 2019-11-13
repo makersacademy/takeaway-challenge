@@ -12,16 +12,16 @@ class Meals
 
   # prices = @ordered.map { |dish| dish[:price] }
 
-  # def menu(dishes)
-  #   @dishes.each do |key, value|
+  def menu
+  #  @dishes.each do |key, value|
   #  puts "#{key} #{value}"
   # end
-
+end
 # only pushing the meal name so far :( and not the price
-  def order(meal)
-    # @dishes.find { |item| item[:meal] == meal }
-    # @ordered << meal
-  end
+  # def order(meal)
+  #   @dishes.find { |item| item[:meal] == meal }
+  #   @ordered << meal
+  # end
 
   # def quantity
   #   amount = @ordered.each_with_object(Hash.new(0)) {|meal, hash| hash[meal]}
