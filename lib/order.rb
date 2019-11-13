@@ -17,7 +17,7 @@ class Order
     return 0 if @dishes.empty?
 
     subtotals = @dishes.map { |dish, quantity| @menu.price(dish) * quantity }
-    subtotals.inject(:+)
+    subtotals.sum
   end
 
   def place
