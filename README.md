@@ -14,6 +14,18 @@ Takeaway Challenge
 
  ```
 
+**My Explanation and Comments**
+
+1. Forked the directory to github account and then cloned it my machine.
+2. Changed the version in gemfile to my machine's current version.
+3. Ran bundle command.
+
+**User Story 1**
+
+Noun                                   Verb
+1. Customer                            1. see/read
+2. List of Dishes with prices /menu    2. order
+
 Instructions
 -------
 
