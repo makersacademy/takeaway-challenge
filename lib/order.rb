@@ -9,7 +9,7 @@ class Order
   end
 
   def add(item, quantity)
-    @items[item] = {price: menu.dishes[item], quantity: quantity}
+    @items[item] = {price: menu.price(item), quantity: quantity}
   end
 
   def summary
