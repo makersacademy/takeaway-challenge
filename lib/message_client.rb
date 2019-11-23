@@ -3,7 +3,7 @@ Bundler.require
 
 class MessageClient
 
-  TWLIO_REST_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+  TWILIO_REST_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 
   def initialize(twilio_rest_client = TWILIO_REST_CLIENT)
     @twilio_rest_client = twilio_rest_client

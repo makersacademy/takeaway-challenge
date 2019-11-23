@@ -20,15 +20,15 @@ class Takeaway
   end
 
   def add_to_order(choice)
-    item = @menu.dishes.select { |existing| choice == existing[:dish] }.first
-    raise OUT_OF_STOCK if item[:available].zero?
+    choice = @menu.dishes.select { |existing| choice == existing[:dish] }.first
+    raise OUT_OF_STOCK if choice[:available].zero?
 
-    @current_order.add_item(item)
-    item[:available] -= 1
+    @current_order.add_item(choice[:dish])
+    choice[:available] -= 1
   end
 
-  def view_order
-    @current_order.items_ordered.map { |order_item| order_item[:dish].name }
+  def view_current_order
+    @current_order.view
   end
 
   def place_order

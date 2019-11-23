@@ -15,14 +15,23 @@ RSpec.describe Order do
     test_order.add_item(item_1)
     test_order.add_item(item_2)
 
-    expect(test_order.items_ordered).to eq [item_1, item_2]
+    expect(test_order.view).to eq [:pepperoni_pizza, :margherita_pizza]
   end
 
-  it 'calculates the total price of the order' do
-    test_order.add_item(item_4)
-    test_order.add_item(item_2)
-    test_order.add_item(item_1)
+  context 'when calculating prices' do
+    it 'calculates the total price of items 1, 2 and 4 as £22.50' do
+      test_order.add_item(item_4)
+      test_order.add_item(item_2)
+      test_order.add_item(item_1)
 
-    expect(test_order.total).to be 22.5
+      expect(test_order.total).to be 22.5
+    end
+
+    it 'calculates the total price of items 2 and 3 as £12' do
+      test_order.add_item(item_2)
+      test_order.add_item(item_3)
+
+      expect(test_order.total).to be 12
+    end
   end
 end

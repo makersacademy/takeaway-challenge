@@ -20,14 +20,14 @@ RSpec.describe Takeaway do
     test_takeaway.add_to_order(item_1)
     test_takeaway.add_to_order(item_2)
 
-    expect(test_takeaway.view_order).to eq [:pepperoni_pizza, :margherita_pizza]
+    expect(test_takeaway.view_current_order).to eq [:pepperoni_pizza, :margherita_pizza]
   end
 
   it 'can take an order for a vegetarian pizza and a margherita pizza' do
     test_takeaway.add_to_order(item_3)
     test_takeaway.add_to_order(item_2)
 
-    expect(test_takeaway.view_order).to eq [:vegetarian_pizza, :margherita_pizza]
+    expect(test_takeaway.view_current_order).to eq [:vegetarian_pizza, :margherita_pizza]
   end
 
   it 'denies an order when a dish is out of stock' do
@@ -43,6 +43,6 @@ RSpec.describe Takeaway do
     test_takeaway.add_to_order(item_3)
     test_takeaway.add_to_order(item_4)
 
-    expect(test_takeaway.view_order).to eq [:vegetarian_pizza, :sausage_pizza]
+    expect(test_takeaway.view_current_order).to eq [:vegetarian_pizza, :sausage_pizza]
   end
 end

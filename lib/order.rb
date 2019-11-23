@@ -7,12 +7,18 @@ class Order
     @items << item
   end
 
-  def items_ordered
-    @items
+  def view
+    items_ordered.map { |order_item| order_item.name }
   end
 
   def total
     prices = items_ordered.map { |dish| dish.price }
     prices.reduce(&:+)
+  end
+
+  private
+
+  def items_ordered
+    @items
   end
 end
