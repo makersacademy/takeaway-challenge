@@ -14,6 +14,11 @@ Takeaway Challenge
 
  ```
 
+ ___________________________________
+ completed/ partial  stories : 
+ displays dishes and prices  ( not seperate class yet ) 
+ Allows users to select a dish 
+
 Instructions
 -------
 
