@@ -4,10 +4,10 @@ RSpec.describe Menu do
   let(:test_menu) { Menu.new }
   let(:item_1) { double(:pizza, name: :pepperoni_pizza, price: 8) }
   let(:item_2) { double(:pizza, name: :margherita_pizza, price: 6) }
-  let(:listing_1) { {dish: item_1, available: 2} }
-  let(:listing_2) { {dish: item_2, available: 1} }
+  let(:listing_1) { { dish: item_1, available: 2 } }
+  let(:listing_2) { { dish: item_2, available: 1 } }
 
-  describe 'menu listings' do
+  describe 'example menu' do
     before(:each) do
       test_menu.add_dishes(listing_1, listing_2)
     end

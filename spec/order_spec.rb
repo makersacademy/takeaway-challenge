@@ -6,10 +6,10 @@ RSpec.describe Order do
   let(:item_2) { double(:pizza, name: :margherita_pizza, price: 6) }
   let(:item_3) { double(:pizza, name: :vegetarian_pizza, price: 6) }
   let(:item_4) { double(:pizza, name: :sausage_pizza, price: 8.5) }
-  let(:listing_1) { {dish: item_1, available: 2} }
-  let(:listing_2) { {dish: item_2, available: 1} }
-  let(:listing_3) { {dish: item_3, available: 3} }
-  let(:listing_4) { {dish: item_4, available: 7} }
+  let(:listing_1) { { dish: item_1, available: 2 } }
+  let(:listing_2) { { dish: item_2, available: 1 } }
+  let(:listing_3) { { dish: item_3, available: 3 } }
+  let(:listing_4) { { dish: item_4, available: 7 } }
 
   it 'contains dishes ordered by the customer' do
     test_order.add_item(listing_1)
