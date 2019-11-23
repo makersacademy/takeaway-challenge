@@ -22,9 +22,10 @@ class Order
 
   def check_total
     total = 0
-    @order.each { | dish |
+    @order.each { |dish|
       puts "#{dish} - £#{Menu.new.get_price(dish)}" 
-      total += Menu.new.get_price(dish) }
+      total += Menu.new.get_price(dish)
+    }
     puts "-" * 15
     puts "Total - £#{total}"
 

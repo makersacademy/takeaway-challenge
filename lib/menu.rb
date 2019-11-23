@@ -16,10 +16,10 @@ class Menu
   def check_menu
     puts "Menu:"
     i = 1
-    @menu.each { | meal, price |
+    @menu.each { |meal, price|
       puts "#{i}. #{meal} - £#{price}"
       i += 1
-  } 
+    } 
   end
 
   def get_price(dish)
