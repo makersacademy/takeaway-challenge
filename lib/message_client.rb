@@ -10,19 +10,15 @@ class MessageClient
   end
 
   def confirm_order
-    message_sent? ? 'message sent' : 'message failed to send'
+    begin
+      send_message
+      'message sent'
+    rescue RuntimeError
+      'message failed to send'
+    end
   end
 
   private
-  
-  def message_sent?
-    begin
-      send_message
-      true
-    rescue RuntimeError
-      false
-    end
-  end
 
   def send_message
     @twilio_rest_client.messages.create(

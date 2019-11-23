@@ -16,7 +16,7 @@ RSpec.describe MenuListing do
 
   describe '#register_sale' do
     it 'reduces the number available by 1' do
-      expect { test_listing_1.register_sale }.to change { test_listing_1.servings_left }.by -1
+      expect { test_listing_1.register_sale }.to change { test_listing_1.servings_left }.by MenuListing::SINGLE_SERVING * -1
     end
   end
 end

@@ -5,7 +5,7 @@ RSpec.describe MessageClient do
   let(:test_message_client) { MessageClient.new(twilio) }
 
   before(:each) do
-    allow(twilio).to receive(:messages)
+    allow(twilio).to receive(:messages).and_return true
     allow(twilio.messages).to receive(:create)
   end
 

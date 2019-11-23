@@ -14,17 +14,16 @@ class Takeaway
 
   def view_menu
     menu = @menu.dishes.map.with_index { |listed, i|
-      "Item #{i + 1}: #{formatted(listed[:dish].name)} – £#{listed[:dish].price}"
+      "Item #{i + 1}: #{formatted(listed.dish.name)} – £#{listed.dish.price}"
     }
     menu.join("\n")
   end
 
   def add_to_order(choice)
-    choice = @menu.dishes.select { |existing| choice == existing[:dish] }.first
-    raise OUT_OF_STOCK if choice[:available].zero?
+    choice = @menu.dishes.select { |existing| choice == existing.dish }.first
+    raise OUT_OF_STOCK if choice.servings_left.zero?
 
-    @current_order.add_item(choice[:dish])
-    choice[:available] -= 1
+    @current_order.add_item(choice.dish)
   end
 
   def view_current_order

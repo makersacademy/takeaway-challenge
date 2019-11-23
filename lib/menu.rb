@@ -6,7 +6,7 @@ class Menu
   end
 
   def item(option)
-    @dishes[option - 1][:dish]
+    @dishes[option - 1].dish
   end
 
   def add_dishes(*dishes_to_add)

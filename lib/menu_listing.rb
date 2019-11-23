@@ -1,15 +1,14 @@
 class MenuListing
+  attr_reader :dish, :servings_left
 
-  def initialize(dish, available)
+  SINGLE_SERVING = 1
+
+  def initialize(dish, servings_left = 0)
     @dish = dish
-    @available = available
-  end
-
-  def servings_left
-    @available
+    @servings_left = servings_left
   end
 
   def register_sale
-    @available -= 1
+    @servings_left -= SINGLE_SERVING
   end
 end

@@ -4,7 +4,7 @@ class Order
   end
 
   def add_item(item)
-    @items << item
+    @items << item unless @items.include? item
   end
 
   def view
