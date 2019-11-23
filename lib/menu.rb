@@ -2,16 +2,28 @@ class Menu
   
   attr_reader :menu
 
+  MENU = {
+    "Chicken" => 10,
+    "Steak" => 15,
+    "Pasta" => 8,
+    "Pizza" => 9
+  }
+
   def initialize
-    @menu = [ ["Chicken", 10], ["Steak", 15], ["Pasta", 8], ["Pizza", 9] ]
+    @menu = MENU
   end
 
   def check_menu
     puts "Menu:"
-    @menu.each.with_index(1) { | meal, index |
-      puts "#{index}. #{meal[0]} - £#{meal[1]}"
-  }
-    
+    i = 1
+    @menu.each { | meal, price |
+      puts "#{i}. #{meal} - £#{price}"
+      i += 1
+  } 
+  end
+
+  def get_price(dish)
+    @menu[dish]
   end
 
 end
