@@ -487,3 +487,5 @@ WordArray:
   Enabled: false
 ZeroLengthPredicate:
   Enabled: false
+
+require: rubocop-rails
