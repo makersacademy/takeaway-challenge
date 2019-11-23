@@ -19,6 +19,6 @@ class Takeaway
   end
 
   def view_order
-    @current_order.items.map { |order_item| order_item[:dish].name }
+    @current_order.items_ordered.map { |order_item| order_item[:dish].name }
   end
 end

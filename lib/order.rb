@@ -1,15 +1,18 @@
 class Order
-  attr_reader :item_list
-
   def initialize
-    @item_list = []
+    @items = []
   end
 
   def add_item(item)
-    item_list << item
+    @items << item
   end
 
-  def items
-    @item_list
+  def items_ordered
+    @items
+  end
+
+  def total
+    prices = items_ordered.map { |listing| listing[:dish].price }
+    prices.reduce(&:+)
   end
 end
