@@ -10,6 +10,7 @@ describe Menu do
 
   describe "#get_price" do
     it "should return the price of a dish" do
+      p Time.new
       expect(subject.get_price("Chicken")).to eq(10)
     end
   end
