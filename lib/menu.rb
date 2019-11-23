@@ -16,4 +16,8 @@ class Menu
     @dishes.map { |dish| "Name: #{dish.name}, Price: #{dish.price}" }.join("\n")
   end
 
+  def include?(dish)
+    @dishes.include? dish
+  end
+
 end

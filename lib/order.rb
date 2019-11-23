@@ -9,6 +9,7 @@ class Order
   
   def select(dish, quantity)
     fail "This dish has already been ordered" if @order_list.any? { |order| order[:dish] == dish }
+    fail "This dish is not in the menu" unless @menu.include? dish
     
     @order_list.push({ dish: dish, quantity: quantity })
   end
