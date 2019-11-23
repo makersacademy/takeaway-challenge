@@ -15,11 +15,14 @@ describe Menu do
 
   end
 
-  # describe "order" do
-  #   it "should create an order" do
-  #
-  #   end
+  describe "available?" do
+    it "should return true for items on the menu" do
+      expect(menu.available?("Big Mac")).to eq true
+    end
 
-  # end
+    it "should return false for items not on the menu" do
+      expect(menu.available?("Blah")).to eq false
+    end
+  end
 
 end

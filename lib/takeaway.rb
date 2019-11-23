@@ -13,6 +13,8 @@ class Takeaway
   end
 
   def order(item, quantity = 1)
+    raise "That dish is not on the menu" unless @menu.available?(item)
+
     @basket[item] += quantity
   end
 

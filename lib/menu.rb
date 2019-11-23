@@ -1,5 +1,6 @@
 class Menu
-  
+  attr_reader :dishes
+
   def initialize
     @dishes = [{ name: "Big Mac", price: "3.19" },
               { name: "Quarter Pounder", price: "3.19" },
@@ -13,6 +14,10 @@ class Menu
     @dishes.each_with_index do |dish, i|
       puts "#{i}. #{dish[:name]}: £#{dish[:price]}"
     end
+  end
+
+  def available?(item)
+    @dishes.any? { |dish| dish[:name] == item }
   end
 
 end
