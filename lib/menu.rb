@@ -13,10 +13,7 @@ class Menu
   end
 
   def list
-    formatted_list = @dishes.each_with_index.map do
-      |dish, i| "Dish #{i + 1}: #{dish.name}, £#{dish.price}"
-    end
-    formatted_list.join("\n")
+    @dishes.map { |dish| "Name: #{dish.name}, Price: #{dish.price}" }.join("\n")
   end
 
 end

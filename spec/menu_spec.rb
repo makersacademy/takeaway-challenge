@@ -8,21 +8,21 @@ describe Menu do
 
   describe "#list" do
 
-    it "returns an empty string if there are no dishes in the menu" do
+    it "should return an empty string if there are no dishes in the menu" do
       expect(menu.list).to eq ""
     end
 
-    it "returns the list of dishes" do
+    it "should return the list of dishes" do
       menu.add(dish_1)
       menu.add(dish_2)
-      expect(menu.list).to eq "Dish 1: Carbonara, £10\nDish 2: Puttanesca, £12"
+      expect(menu.list).to eq "Name: Carbonara, Price: 10\nName: Puttanesca, Price: 12"
     end
 
   end
 
   describe "#add" do
 
-    it "raises an error if the dish is already in the menu" do
+    it "should raise an error if the dish is already in the menu" do
       menu.add(dish_1)
       expect { menu.add(dish_1) }.to raise_error "This dish is already in the menu"
     end
