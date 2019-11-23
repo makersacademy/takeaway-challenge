@@ -14,4 +14,14 @@ class Order
     @order_list.push({ dish: dish, quantity: quantity })
   end
 
+  def place(total)
+    fail "The total does not match the sum of the various dishes" if total != total_number_of_dishes
+  end
+
+  private
+
+  def total_number_of_dishes
+    @order_list.reduce(0) { |sum, item| sum + item[:quantity] }
+  end
+
 end
