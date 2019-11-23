@@ -1,14 +1,9 @@
 class Menu
 
-  attr_reader :dish, :price, :available
+  attr_reader :dishes
 
-  def initialize(dish, price, available)
-    @dish = dish
-    @price = price
-    @available
+  def initialize(dishes)
+    @dishes = dishes
   end
 
-  def available?
-    @available = true
-  end
 end
