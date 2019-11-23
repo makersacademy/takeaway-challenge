@@ -12,8 +12,8 @@ class Takeaway
     @menu.show
   end
 
-  def order(item)
-    @basket[item] += 1
+  def order(item, quantity = 1)
+    @basket[item] += quantity
   end
 
 end

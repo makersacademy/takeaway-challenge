@@ -20,6 +20,11 @@ describe Takeaway do
       expect(takeaway.basket).to include "McChicken"
     end
 
+    it "should add multiple items to the basket" do
+      takeaway.order("McChicken", 4)
+      expect(takeaway.basket["McChicken"]).to eq 4
+    end
+
   end
 
 end
