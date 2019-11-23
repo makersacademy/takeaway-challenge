@@ -1,6 +1,7 @@
 require "dish"
 
 describe Dish do
+  
   let(:dish) { Dish.new("Carbonara", 10) }
 
   describe "#name" do
