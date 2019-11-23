@@ -1,14 +1,15 @@
-require 'menu'
-require 'order'
+require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
   OUT_OF_STOCK = ''
 
-  def initialize(menu = Menu.new, order_class = Order)
+  def initialize(menu = Menu.new, message_client = MessageClient.new, order_class = Order)
     @menu = menu
     @order_class = order_class
     @current_order = @order_class.new
+    @message_client = message_client
   end
 
   def view_menu
@@ -28,6 +29,11 @@ class Takeaway
 
   def view_order
     @current_order.items_ordered.map { |order_item| order_item[:dish].name }
+  end
+
+  def place_order
+    @message_client.confirm_order
+    @current_order = @order_class.new
   end
 
   private

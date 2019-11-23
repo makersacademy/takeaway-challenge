@@ -12,7 +12,7 @@ class Order
   end
 
   def total
-    prices = items_ordered.map { |listed| listed[:dish].price }
+    prices = items_ordered.map { |dish| dish.price }
     prices.reduce(&:+)
   end
 end

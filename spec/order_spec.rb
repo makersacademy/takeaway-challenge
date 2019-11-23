@@ -12,16 +12,16 @@ RSpec.describe Order do
   let(:listing_4) { { dish: item_4, available: 7 } }
 
   it 'contains dishes ordered by the customer' do
-    test_order.add_item(listing_1)
-    test_order.add_item(listing_2)
+    test_order.add_item(item_1)
+    test_order.add_item(item_2)
 
-    expect(test_order.items_ordered).to eq [listing_1, listing_2]
+    expect(test_order.items_ordered).to eq [item_1, item_2]
   end
 
   it 'calculates the total price of the order' do
-    test_order.add_item(listing_4)
-    test_order.add_item(listing_2)
-    test_order.add_item(listing_1)
+    test_order.add_item(item_4)
+    test_order.add_item(item_2)
+    test_order.add_item(item_1)
 
     expect(test_order.total).to be 22.5
   end
