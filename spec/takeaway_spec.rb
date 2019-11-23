@@ -13,4 +13,13 @@ describe Takeaway do
     end
   end
 
+  describe "#order" do
+
+    it "should add an item to the basket" do
+      takeaway.order("McChicken")
+      expect(takeaway.basket).to include "McChicken"
+    end
+
+  end
+
 end
