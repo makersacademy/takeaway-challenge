@@ -2,14 +2,14 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = []
+    @dishes = []
   end
 
-  def menu_item(option)
-    @menu[option - 1]
+  def item(option)
+    @dishes[option - 1][:dish]
   end
 
-  def add_dishes(*dishes)
-    dishes.each { |dish| @menu.push dish }
+  def add_dishes(*dishes_to_add)
+    dishes_to_add.each { |dish| @dishes.push dish }
   end
 end
