@@ -28,6 +28,23 @@ class Order
     }
     puts "-" * 15
     puts "Total - £#{total}"
+  end
 
+  def place_order
+    require 'twilio-ruby'
+
+    account_sid ='AC5a0933cfcc02ee13790862a55c60c227'
+    auth_token = '91ed50115a18fc0f11833580dd81b468'
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+    
+    from = '+44 7481 339235' # Your Twilio number
+    to = '+44 7816 449949' # Your mobile phone number
+    
+    client.messages.create(
+    from: from,
+    to: to,
+    body: "Thank you! Your order was placed and will be delivered by 12:30"
+    )
+   
   end
 end
