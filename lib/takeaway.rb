@@ -40,9 +40,11 @@ class Takeaway
   end
 
   def place_order
-    set_order_aside
+    @current_order.settle_payment
     @message_client.confirm_order
+    set_order_aside
     @current_order = @order_class.new
+    nil
   end
 
   private

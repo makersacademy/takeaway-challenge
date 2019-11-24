@@ -15,7 +15,8 @@ RSpec.describe Takeaway do
 
   let(:test_menu) { double(:menu, dishes: [listing_1, listing_2, listing_3, listing_4]) }
   let(:test_message_client) { double(:message_client, send_message: true, confirm_order: 'message sent') }
-  let(:sam) { double(:customer, name: :sam, balance: 100) }
+  let(:sam) { double(:customer, name: :sam, balance: 100, charge: true) }
+  let(:jeff) { double(:customer, name: :jeff, balance: 11, charge: true) }
 
   before(:each) do
     test_takeaway.begin_order_for(sam)

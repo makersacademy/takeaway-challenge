@@ -4,6 +4,7 @@ class Order
   attr_reader :items, :customer
 
   NO_CUSTOMER_ASSIGNED = 'This order currently has no recipient'
+  PAYMENT_UNSUCCESSFUL = 'Payment unsuccesful'
 
   def initialize(order_listing_class = OrderListing)
     @items = []
@@ -33,6 +34,13 @@ class Order
   def total
     prices = ordered_items.map { |ordered| ordered.dish.price * ordered.quantity }
     prices.reduce(&:+)
+  end
+
+  def settle_payment
+    raise PAYMENT_UNSUCCESSFUL if customer.balance < total
+
+    customer.charge(total)
+    'payment succesful'
   end
 
   private

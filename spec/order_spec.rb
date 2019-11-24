@@ -2,7 +2,8 @@ require 'order'
 
 RSpec.describe Order do
   let(:test_order) { Order.new }
-  let(:sam) { double(:customer, balance: 100) }
+  let(:sam) { double(:customer, name: :sam, balance: 100, charge: true) }
+  let(:jeff) { double(:customer, name: :jeff, balance: 11, charge: true) }
 
   let(:item_1) { double(:pizza, name: :pepperoni_pizza, price: 8) }
   let(:item_2) { double(:pizza, name: :margherita_pizza, price: 6) }
@@ -66,6 +67,24 @@ RSpec.describe Order do
       test_order.remove_item(item_1)
 
       expect(test_order.view).to eq "Pepperoni Pizza – Quantity: 1\nMargherita Pizza – Quantity: 1"
+    end
+  end
+
+  context 'when settling payment' do
+    it 'permits service when customer can afford their order' do
+      test_order.assign_customer(sam)
+      test_order.add_item(item_1)
+      test_order.add_item(item_2)
+      
+      expect(test_order.settle_payment).to eq 'payment succesful'
+    end
+
+    it 'denies service when customer cannot afford their order' do
+      test_order.assign_customer(jeff)
+      test_order.add_item(item_1)
+      test_order.add_item(item_2)
+      
+      expect { test_order.settle_payment }.to raise_error Order::PAYMENT_UNSUCCESSFUL
     end
   end
 end
