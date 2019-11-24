@@ -3,8 +3,8 @@ require 'twilio-ruby'
 class Textsender 
 
   def send_text
-    account_sid = "ACbe1107b7c6daa8626266761a7d3a12b2"
-    auth_token = "36df7a8f4e6e46c4c7d143f19046cbf6"
+    account_sid = ENV['ACC_SID']
+    auth_token = ENV['AUT_TOK']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     
