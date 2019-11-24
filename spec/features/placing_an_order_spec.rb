@@ -1,6 +1,11 @@
 require 'takeaway'
 require 'menu'
 require 'menu_listing'
+require 'dish'
+require 'order'
+require 'order_listing'
+require 'customer'
+require 'message_client'
 
 RSpec.describe 'placing an order' do
   let(:luigis_pizzeria) { Takeaway.new(pizza_menu) }
@@ -15,6 +20,9 @@ RSpec.describe 'placing an order' do
   let(:pepperoni_listing) { MenuListing.new(pepperoni_pizza, 12) }
   let(:margherita_listing) { MenuListing.new(margherita_pizza, 2) }
   let(:vegetarian_listing) { MenuListing.new(vegetarian_pizza, 5) }
+
+  let(:sam) { Customer.new(:sam, ENV['MY_PHONE_NUMBER'], 100) }
+  let(:jeff) { Customer.new(:jeff, 20) }
 
   before(:all) do
     pizza_menu.add_dishes(sausage_listing, pepperoni_listing, margherita_listing, vegetarian_listing)

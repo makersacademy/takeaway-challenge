@@ -1,11 +1,15 @@
 require 'customer'
 
 RSpec.describe Customer do
-  let(:sam) { Customer.new(:sam, 100) }
+  let(:sam) { Customer.new(:sam, ENV['MY_PHONE_NUMBER'], 100) }
   let(:jeff) { Customer.new(:jeff) }
 
   it 'has a default balance of £0' do
     expect(jeff.balance).to be 0
+  end
+
+  it 'should have a phone number' do
+    expect(sam.number).to eq ENV['MY_PHONE_NUMBER']
   end
 
   describe 'test_customer_1' do

@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'message_client'
 
 class Takeaway
 
@@ -41,10 +42,9 @@ class Takeaway
 
   def place_order
     @current_order.settle_payment
-    @message_client.confirm_order
+    @message_client.confirm_order(@current_order.customer)
     set_order_aside
     @current_order = @order_class.new
-    nil
   end
 
   private
