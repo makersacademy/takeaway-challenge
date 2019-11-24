@@ -54,4 +54,22 @@ describe TakeAway do
       expect(takeaway.correct_amount?(20)).to eq false
     end
   end
+
+  describe "#empty?" do
+    it "should return 'true' if the basket is empty" do
+      expect(takeaway.empty?).to eq true
+    end
+
+    it "should return 'false' if the basket is not empty" do
+      takeaway.order(dish_1)
+      expect(takeaway.empty?).to eq false
+    end
+  end
+
+  describe "#complete" do
+    it "should return 'Thank you for your order'" do
+      takeaway.order(dish_1)
+      expect(takeaway.complete).to eq "Thank you for your order"
+    end
+  end
 end

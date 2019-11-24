@@ -9,10 +9,11 @@ class Restaurant
   end
 
   def checkout(price)
-    message = "The given amount does not match the total of the takeaway order"
-    fail message unless @takeaway.correct_amount?(price)
+    fail "The takeaway basket is empty" if @takeaway.empty?
+    fail "Payment amount not correct" unless @takeaway.correct_amount?(price)
 
     @text_provider.send_message(format_delivery_time)
+    @takeaway.complete
   end
 
   private

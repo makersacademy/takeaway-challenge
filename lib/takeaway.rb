@@ -31,6 +31,15 @@ class TakeAway
     price == calculate_total
   end
 
+  def empty?
+    @basket == {}
+  end
+
+  def complete
+    @basket = Hash.new(0)
+    "Thank you for your order"
+  end
+
   private
 
   def calculate_total
