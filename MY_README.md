@@ -38,6 +38,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Classes and Methods
 -------
+```
 Menu
   #display
     should display the menu
@@ -53,6 +54,7 @@ Takeaway
   #place_order
     should raise an error if the amount is incorrect
     should send a confirmation text
+```
 
 Feature Test
 -------
