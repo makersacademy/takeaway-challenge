@@ -3,6 +3,7 @@ require 'date'
 
 class Messenger
 
+  # Don't know how to make these accessible from environment variables
   def initialize
     @account_sid = ENV["account_sid"]
     @auth_token = ENV["auth_token"]
