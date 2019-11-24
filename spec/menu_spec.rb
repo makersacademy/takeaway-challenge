@@ -26,5 +26,10 @@ describe Menu do
     end
   end
 
+  describe "#checkout" do
+    it "confirms order" do
+      expect(subject.checkout). to eq(@order)
+    end
+  end 
 
 end

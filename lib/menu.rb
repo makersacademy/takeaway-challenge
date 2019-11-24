@@ -25,4 +25,8 @@ class Menu
     end
   end
 
+  def checkout
+    @order
+  end
+
 end
