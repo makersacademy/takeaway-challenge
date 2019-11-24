@@ -28,14 +28,20 @@ describe Order do
       expect(subject.add_dish("kimchi", 2))
     end
   
-
-    # describe "#remove dish" do
-    #   it "should remove a dish from the menu" do
-    #     subject.add_dish("fried rice", 1)
-    #     expect(subject.remove_dish("fried rice", 1))
-    #   end
-    # end
   end
+
+  # describe "#remove dish" do
+
+  #   it "should remove a dish from the menu" do
+  #     subject.add_dish("fried rice", 2)
+  #     expect(subject.remove_dish("fried rice", 1)).to eq 1
+  #   end
+  #   # it "should not remove from the basket dishes that were not added" do
+  #   #   subject.add_dish("kimchi", 1)
+  #   #   expect { subject.remove_dish("salmon", 1) }.to raise_error "Cannot remove item, not in basket"
+  #   # end
+
+  # end
 
   describe "#total" do
     it "should return total for one item" do
@@ -55,6 +61,19 @@ describe Order do
     it "should return a summary of the order" do
       subject.add_dish("kimchi", 1)
       expect(subject.summary).to eq "kimchi x 1 = £5\n" 
+    end
+  end
+
+  describe "#summary header" do
+    it "should have a summary header" do
+      expect(subject.summary_header).to eq "Your basket contains:\n"
+    end
+  end
+
+  describe "#summary footer" do
+    it "should have a summary footer" do
+      subject.add_dish("kimchi", 1)
+      expect(subject.summary_footer).to eq "Your total is: £5"
     end
   end
 end
