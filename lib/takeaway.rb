@@ -19,6 +19,10 @@ class Takeaway
     }.join("\n")
   end
 
+  def begin_order_for(customer)
+    @current_order.assign_customer(customer)
+  end
+
   def add_to_order(choice)
     choice = @menu.dishes.select { |existing| choice == existing.dish }.pop
     raise OUT_OF_STOCK if choice.servings_left.zero?
@@ -32,7 +36,7 @@ class Takeaway
   end
 
   def view_current_order
-    @current_order.view
+    "#{formatted(@current_order.customer.name)}'s order:\n#{@current_order.view}"
   end
 
   def place_order

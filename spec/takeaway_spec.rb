@@ -15,16 +15,25 @@ RSpec.describe Takeaway do
 
   let(:test_menu) { double(:menu, dishes: [listing_1, listing_2, listing_3, listing_4]) }
   let(:test_message_client) { double(:message_client, send_message: true, confirm_order: 'message sent') }
+  let(:sam) { double(:customer, name: :sam, balance: 100) }
+
+  before(:each) do
+    test_takeaway.begin_order_for(sam)
+  end
 
   it 'has a menu' do
     expect(test_takeaway.view_menu).to eq "Item 1: Pepperoni Pizza – £8\nItem 2: Margherita Pizza – £6\nItem 3: Vegetarian Pizza – £6\nItem 4: Sausage Pizza – £8.5"
+  end
+
+  it 'can take an order for a customer' do
+    expect(test_takeaway.view_current_order).to eq "Sam's order:\n"
   end
 
   it 'can take an order for a pepperoni pizza and a margherita pizza' do
     test_takeaway.add_to_order(item_1)
     test_takeaway.add_to_order(item_2)
 
-    expect(test_takeaway.view_current_order).to eq "Pepperoni Pizza – Quantity: 1\nMargherita Pizza – Quantity: 1"
+    expect(test_takeaway.view_current_order).to eq "Sam's order:\nPepperoni Pizza – Quantity: 1\nMargherita Pizza – Quantity: 1"
   end
 
   it 'can take an order for a vegetarian pizza and two margherita pizzas' do
@@ -32,7 +41,7 @@ RSpec.describe Takeaway do
     test_takeaway.add_to_order(item_2)
     test_takeaway.add_to_order(item_2)
 
-    expect(test_takeaway.view_current_order).to eq "Vegetarian Pizza – Quantity: 1\nMargherita Pizza – Quantity: 2"
+    expect(test_takeaway.view_current_order).to eq "Sam's order:\nVegetarian Pizza – Quantity: 1\nMargherita Pizza – Quantity: 2"
   end
 
   it 'denies an order when a dish is out of stock' do
@@ -51,7 +60,7 @@ RSpec.describe Takeaway do
       test_takeaway.add_to_order(item_2)
       test_takeaway.remove_from_order(item_1)
 
-      expect(test_takeaway.view_current_order).to eq "Margherita Pizza – Quantity: 1"
+      expect(test_takeaway.view_current_order).to eq "Sam's order:\nMargherita Pizza – Quantity: 1"
     end
   end
 
@@ -59,8 +68,9 @@ RSpec.describe Takeaway do
     test_takeaway.add_to_order(item_1)
     test_takeaway.add_to_order(item_2)
     test_takeaway.place_order
+    test_takeaway.begin_order_for(sam)
     test_takeaway.add_to_order(item_3)
 
-    expect(test_takeaway.view_current_order).to eq "Vegetarian Pizza – Quantity: 1"
+    expect(test_takeaway.view_current_order).to eq "Sam's order:\nVegetarian Pizza – Quantity: 1"
   end
 end

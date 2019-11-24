@@ -1,14 +1,22 @@
 require_relative 'order_listing'
 
 class Order
-  attr_reader :items
-  
+  attr_reader :items, :customer
+
+  NO_CUSTOMER_ASSIGNED = 'This order currently has no recipient'
+
   def initialize(order_listing_class = OrderListing)
     @items = []
     @order_listing_class = order_listing_class
   end
 
+  def assign_customer(customer)
+    @customer = customer
+  end
+
   def add_item(item)
+    raise NO_CUSTOMER_ASSIGNED unless customer
+
     existing_entry = selected(item)
     existing_entry ? existing_entry.add_serving : @items << @order_listing_class.new(item)
   end
