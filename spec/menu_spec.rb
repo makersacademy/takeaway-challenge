@@ -9,8 +9,7 @@ describe Menu do
   end
 
   describe "#get_price" do
-    it "should return the price of a dish" do
-      p Time.new
+    it "should return 10 as the price of a chicken dish" do
       expect(subject.get_price("Chicken")).to eq(10)
     end
   end

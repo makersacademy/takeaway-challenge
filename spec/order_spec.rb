@@ -30,6 +30,7 @@ describe Order do
 
   describe "#check_total" do
     it "should show a list of dishes on my order with prices and a total at the end" do
+      subject.see_menu
       subject.add("Steak")
       subject.add("Chicken")
       expect { subject.check_total }.to output("Steak - £15\nChicken - £10\n---------------\nTotal - £25\n").to_stdout
