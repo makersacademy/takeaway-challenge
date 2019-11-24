@@ -1,9 +1,16 @@
 require 'takeaway'
 
 describe Takeaway do
-
-  it "has a menu" do
-    expect(subject.show_menu).not_to be_empty
-  end
   
+  let(:menu_double) { double :menu }
+  subject(:takeaway) { described_class.new(menu_double) }
+
+  context "gets a menu" do
+
+    it "shows menu options" do
+      allow(menu_double).to receive(:display_menu) { { rice: 2.5 } }
+      expect(subject.show_menu).to eq({ rice: 2.5 })
+    end
+  end
+
 end
