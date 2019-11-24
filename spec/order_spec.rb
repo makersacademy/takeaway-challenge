@@ -2,9 +2,7 @@ require "order"
 
 describe Order do
 
-  let(:menu) { double :menu, check_menu: [["Chicken", 10], ["Steak", 15]] }
-  let(:menu_chicken) { double :menu, get_price: 10 }
-  let(:menu_steak) { double :menu, get_price: 15 }
+  let(:menu) { double :menu, check_menu: [["Chicken", 10], ["Steak", 15]], get_price: 10 }
   
   describe "#see_menu" do
     it "should return a list of dishes and prices" do
@@ -29,11 +27,12 @@ describe Order do
   end
 
   describe "#check_total" do
-    it "should show a list of dishes on my order with prices and a total at the end" do
-      subject.see_menu
-      subject.add("Steak")
-      subject.add("Chicken")
-      expect { subject.check_total }.to output("Steak - £15\nChicken - £10\n---------------\nTotal - £25\n").to_stdout
+    it "should show a total price after adding chicken as 10" do
+      menu_class_double = double :menu_class, new: menu
+      order = Order.new(menu_class_double)
+      order.see_menu
+      order.add("Chicken")
+      expect(order.check_total).to eq(10)
     end
   end
 

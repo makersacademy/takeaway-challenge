@@ -7,7 +7,6 @@ class Order
 
   def initialize(menu_class = Menu)
     @menu_class = menu_class
-    @menu = ""
     @order = []
   end
 
@@ -24,11 +23,12 @@ class Order
   def check_total
     total = 0
     @order.each { |dish|
-      puts "#{dish} - £#{@menu.get_price(dish)}" 
+      # puts "#{dish} - £#{@menu.get_price(dish)}" 
       total += @menu.get_price(dish)
     }
-    puts "-" * 15
-    puts "Total - £#{total}"
+    # puts "-" * 15
+    # puts "Total - £#{total}"
+    total
   end
 
   def place_order
