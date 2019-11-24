@@ -33,7 +33,7 @@ Class Diagrams
 | ---    | ----      | ---                   | ---             | ---             |
 | @name  | @dishes   | @basket               | @takeaway       | @client         |
 | @price |           | @menu                 | @text_provider  |                 |
-|--------------------------------------------------------------------------------|
+|---     | ---       | ---                   | ---             | ---             |
 |        | add(dish) | read_menu             | checkout(price) | send_text(time) |
 |        | list      | order(dish, quantity) |                 |                 |
 |        | contains? | basket_summary        |                 |                 |
@@ -41,3 +41,8 @@ Class Diagrams
 |        |           | correct_amount?       |                 |                 |
 |        |           | empty?                |                 |                 |
 |        |           | complete              |                 |                 |
+
+Feature Test
+-------
+
+
