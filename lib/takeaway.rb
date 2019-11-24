@@ -29,8 +29,8 @@ class Takeaway
   def view_basket
     @basket.each do |dish, quantity|
       p "#{dish}x#{quantity}"
-      p "Total:£#{@sum}"
     end
+    p "Total:£#{@sum}"
   end
 
   def place_order(amount)
