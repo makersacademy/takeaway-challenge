@@ -3,6 +3,7 @@ require 'order_listing'
 RSpec.describe OrderListing do
   let(:item_1) { double(:pizza, name: :pepperoni_pizza, price: 8) }
   let(:item_2) { double(:pizza, name: :margherita_pizza, price: 6) }
+  
   let(:test_order_listing) { OrderListing.new(item_1) }
   let(:test_order_listing_2) { OrderListing.new(item_2, 2) }
 

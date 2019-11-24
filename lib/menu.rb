@@ -9,7 +9,7 @@ class Menu
     @dishes[option - 1].dish
   end
 
-  def add_dishes(*dishes_to_add)
-    dishes_to_add.each { |dish| @dishes.push dish }
+  def add_dishes(*listings)
+    listings.each { |listing| @dishes.push listing }
   end
 end

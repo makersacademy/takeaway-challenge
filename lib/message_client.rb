@@ -22,10 +22,10 @@ class MessageClient
 
   def send_message
     @twilio_rest_client.messages.create(
-        to: ENV['MY_PHONE_NUMBER'],
-        from: ENV['TWILIO_PHONE_NUMBER'],
-        body: "Thank you! Your order was placed and will be delivered before " +
-              "#{(Time.now.utc - 3600).strftime("%k:%M")}"
+      to: ENV['MY_PHONE_NUMBER'],
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      body: "Thank you! Your order was placed and will be delivered before " +
+            "#{(Time.now.utc - 3600).strftime("%k:%M")}"
     )
   end
 end
