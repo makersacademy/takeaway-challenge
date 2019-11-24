@@ -6,16 +6,18 @@ RSpec.describe MenuListing do
   let(:test_listing_1) { MenuListing.new(item_1, 10) }
   let(:test_listing_2) { MenuListing.new(item_2, 11) }
 
-  it 'acknowledges there are 10 servings left of item 1' do
-    expect(test_listing_1.servings_left).to be 10
-  end
+  context 'example listings' do
+    it 'acknowledges there are 10 servings left of item 1' do
+      expect(test_listing_1.servings_left).to be 10
+    end
 
-  it 'acknowledges there are 11 servings left of item 2' do
-    expect(test_listing_2.servings_left).to be 11
+    it 'acknowledges there are 11 servings left of item 2' do
+      expect(test_listing_2.servings_left).to be 11
+    end
   end
 
   describe '#register_sale' do
-    it 'reduces the number available by 1' do
+    it 'reduces the number of servings available by 1' do
       expect { test_listing_1.register_sale }.to change { test_listing_1.servings_left }.by MenuListing::SINGLE_SERVING * -1
     end
   end
