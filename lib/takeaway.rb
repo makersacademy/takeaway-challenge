@@ -11,7 +11,7 @@ class TakeAway
   end
 
   def order(dish, quantity = 1)
-    fail "This dish is not in the menu" unless @menu.include?(dish)
+    fail "This dish is not in the menu" unless @menu.contains?(dish)
 
     @basket[dish] += quantity
     "#{quantity}x #{dish.name}(s) added to your basket"

@@ -4,7 +4,7 @@ describe TakeAway do
   let(:dish_1) { double :dish, name: "Carbonara", price: 10 }
   let(:dish_2) { double :dish, name: "Puttanesca", price: 12 }
   let(:dish_3) { double :dish, name: "Bolognese", price: 11 }
-  let(:menu) { double :menu, list: "Name: Carbonara, Price: 10\nName: Puttanesca, Price: 12", include?: true }
+  let(:menu) { double :menu, list: "Name: Carbonara, Price: 10\nName: Puttanesca, Price: 12", contains?: true }
   let(:takeaway) { TakeAway.new(menu) }
 
   describe "#read_menu" do
@@ -19,7 +19,7 @@ describe TakeAway do
     end
 
     it "should raise an error is the dish is not in the menu" do
-      allow(menu).to receive(:include?).and_return(false)
+      allow(menu).to receive(:contains?).and_return(false)
       message = "This dish is not in the menu"
       expect { takeaway.order(dish_3, 4) }.to raise_error message
     end
