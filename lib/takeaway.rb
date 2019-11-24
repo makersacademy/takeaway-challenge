@@ -2,7 +2,7 @@ class Takeaway
   attr_reader :menu, :basket, :text_provider
 
   def initialize(menu = Menu.new, text_provider = TextProvider.new)
-    @basket = {}
+    @basket = Hash.new(0)
     @menu = menu
     @text_provider = text_provider
   end
@@ -14,7 +14,7 @@ class Takeaway
   def order(dish, quantity = 1)
     fail "This dish is not in the menu" unless @menu.include?(dish)
 
-    @basket[dish] = quantity
+    @basket[dish] += quantity
     "#{quantity}x #{dish.name}(s) added to your basket"
   end
 

@@ -28,14 +28,14 @@ describe Menu do
     end
   end
 
-  describe "#include?" do
+  describe "#contains?" do
     it "should return true if the dish is in the menu" do
       menu.add(dish_1)
-      expect(menu.include?(dish_1)).to eq true
+      expect(menu.contains?(dish_1)).to eq true
     end
 
     it "should return false if the dish is not in the menu" do
-      expect(menu.include?(dish_1)).to eq false
+      expect(menu.contains?(dish_1)).to eq false
     end
   end
 end
