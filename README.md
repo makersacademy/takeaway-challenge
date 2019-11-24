@@ -32,7 +32,7 @@ Things to be added:
 - in takeaway.rb do dependecy injection for menu_class, order_class, customer_class and initialize alongside sms
 - use stubs in sms and takeaway spec files
 - write methods for: show menu, create order, add dish, remove dish(also to be added to order.rb), show order, place order
-- potentially remove 
+- potentially remove the customer class altogether
 
 
 User stories
