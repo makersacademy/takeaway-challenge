@@ -46,8 +46,7 @@ class Takeaway
     set_order_aside
     @current_order = @order_class.new
   end
-
-  # add 'remove item', also add 'add multiple'
+  
   private
 
   def formatted(symbol)
