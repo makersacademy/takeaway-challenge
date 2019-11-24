@@ -38,16 +38,16 @@ The README is a great place to show the full story of how your app is used (from
 2.2.3 :004 > t.order 'spring roll'
  => "1x spring roll(s) added to your basket."
 2.2.3 :005 > t.order 'spring roll', 4
- => "4x spring roll(s) added to your basket."
+ => "6x spring roll(s) added to your basket."
 2.2.3 :006 > t.basket_summary
- => "spring roll x4 = £3.96"
+ => "spring roll x6 = £5.94"
 2.2.3 :007 > t.add 'pork dumpling', 3
  => "3x pork dumpling(s) added to your basket."
 2.2.3 :008 > t.basket_summary
- => "spring roll x4 = £3.96, pork dumpling x3 = £8.97"
+ => "spring roll x6 = £5.94, pork dumpling x3 = £8.97"
 2.2.3 :009 > t.total
- => "Total: £12.93"
-2.2.3 :010 > c.checkout(12.93)
+ => "Total: £14.91"
+2.2.3 :010 > c.checkout(14.91)
 ```
 
 # Step 2: Tests and \*\_spec.rb files  
