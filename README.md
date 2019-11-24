@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  R.C. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -13,22 +13,32 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
+Description
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This project is a partial solution for the takeway challenge at Makers Academy, London. This is a work in progress.
+As I wanted to spend more time understanding how Twilio works in Ruby and what RSpec tests it needs, I put together a very simple data model.
 
-Task
------
+It lets you:
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+- create an order
+- add multiple portions of the same dish to your order
+- see the order with each price per dish
+- check the total against the prices of the dishes added to the order
+
+Things to be added:
+
+- create takeaway.rb plus spec file where I require_relatives of menu, order, sms, customer
+- in takeaway.rb do dependecy injection for menu_class, order_class, customer_class and initialize alongside sms
+- use stubs in sms and takeaway spec files
+- write methods for: show menu, create order, add dish, remove dish(also to be added to order.rb), show order, place order
+- potentially remove 
+
+
+User stories
+-------
+
+User stories covered:
 
 ```
 As a customer
@@ -42,42 +52,55 @@ I would like to be able to select some number of several available dishes
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+User stories not covered:
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+How to use
+-------
+* Fork this repo
+* Run the command 'bundle' in the project directory to ensure you have all the gems
+* Enter following commands in irb/pry:
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+To start:
+```
+require './lib/order.rb'
+require './lib/customer.rb'
+require './lib/menu.rb'
+```
+To create a new menu:
+```
+menu = Menu.new({ "kimchi" => 5, "fried rice" => 7, "salmon" => 10} )
+```
+To create a customer account:
+```
+customer = Customer.new("1234")
+```
+To create an order:
+```
+order = Order.new(menu, customer)
+```
+To add dishes to your order:
+```
+example:
+order.add_dish("kimchi", 1)
+```
+To see the summary of your order:
+```
+puts order.summary
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+example:
+kimchi x 2 = £10
+salmon x 2 = £20
+fried rice x 1 = £7
+```
+To cross check your summary with your total:
+```
+puts order.total
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
-takeaway_challenge
+example:
+37
+```
