@@ -14,14 +14,64 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Solution
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The program allows the user to:
+* see a list of dishes with prices
+* select their order from a number of several available dishes
+* checkout with a total
+* receive a text (using the Twilio API) upon order completion
+
+Environment variables have been used to hide private details in the Text class.
+
+# Feature Test
+
+```
+2.6.5 :001 > takeaway = Takeaway.new
+ => #<Takeaway:0x00007fb478e75a98 @menu=#<Menu:0x00007fb478e75a70 @basket_sum=0, @dishes=[{:name=>"Big Mac", :price=>"3.19"}, {:name=>"Quarter Pounder", :price=>"3.19"},
+ {:name=>"McChicken", :price=>"3.00"}, {:name=>"Cheeseburger", :price=>"0.99"}, {:name=>"Hamburger", :price=>"0.89"}, {:name=>"French Fries", :price=>"1.09"}]>, @text=#<
+Text:0x00007fb478e75750>, @basket={}>
+2.6.5 :002 > takeaway.show_menu
+1. Big Mac: £3.19
+2. Quarter Pounder: £3.19
+3. McChicken: £3.00
+
+4. Cheeseburger: £0.99
+5. Hamburger: £0.89
+6. French Fries: £1.09
+ => [{:name=>"Big Mac", :price=>"3.19"}, {:name=>"Quarter Pounder", :price=>"3.19"}, {:name=>"McChicken", :price=>"3.00"}, {:name=>"Cheeseburger", :price=>"0.99"}, {:nam
+e=>"Hamburger", :price=>"0.89"}, {:name=>"French Fries", :price=>"1.09"}]
+2.6.5 :003 > takeaway.see_order
+ => "Basket is empty"
+2.6.5 :004 > takeaway.order("Quarter Pounder")
+ => "1x Quarter Pounder added to the basket"
+2.6.5 :005 > takeaway.order("McChicken")
+ => "1x McChicken added to the basket"
+2.6.5 :006 > takeaway.order("French Fries", 2)
+ => "2x French Fries added to the basket"
+ 2.6.5 :007 > takeaway.see_order
+Order is as follows:
+Quarter Pounder x1
+McChicken x1
+French Fries x2
+ => nil
+2.6.5 :008 > takeaway.checkout(2)
+Traceback (most recent call last):
+        5: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `<main>'
+        4: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `load'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        2: from (irb):8
+        1: from /Users/student/Projects/takeaway-challenge/lib/takeaway.rb:33:in `checkout'
+RuntimeError (That is not the right price of the order, please try again)
+2.6.5 :009 > takeaway.checkout(8.37)
+ => "Order successful, a confirmation text should be in it's way"
+```
+
+# Possible improvements
+* Allow takeaway owners to add and remove items from the menu
+* Allow users to place orders via text
+* Use higher level stubbing to get better test coverage of text functionality
 
 Task
 -----
