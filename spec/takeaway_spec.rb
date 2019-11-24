@@ -7,13 +7,20 @@ describe Menu do
   it 'has a list of dishes and prices' do
     expect(menu.dishes_list).to eq dishes
   end
+  
   it 'prints a menu' do
-    menu_list = "Llomo_saltado £14.99, Ratatouille £9.00, Chicken_and_chips £5.50, Ceviche £10.00"
+    menu_list = "Llomo_saltado £14.90, Ratatouille £9.00, Chicken_and_chips £5.50, Ceviche £10.00"
     expect(menu.print_menu).to eq menu_list
   end
+
   it { is_expected.to respond_to(:includes?).with(1).argument }
+
   it 'verifies if a dish is on the menu' do
     expect(menu.includes?(:ceviche)).to be true 
+  end
+
+  it 'set price of the dish' do
+    expect(menu.price(:llomo_saltado)).to eq dishes[:llomo_saltado]
   end
 end
 
@@ -28,6 +35,10 @@ describe Order do
     ceviche: 1
    } 
   end
+  before do
+    allow(menu).to receive(:price).with(:llomo_saltado).and_return 14.90
+    allow(menu).to receive(:price).with(:ceviche).and_return 10
+  end
   it 'orders several dishes from the menu' do
     order.place_order(:llomo_saltado, 2)
     order.place_order(:ceviche, 1)
@@ -37,5 +48,12 @@ describe Order do
   it 'raises an error if ordering something not from the menu' do
     error = "#{dish} doesn't exist on the menu"
     expect { order.place_order(dish, quantity) }.to raise_error OrderError, error
+  end
+
+  it 'set total' do
+    order.place_order(:llomo_saltado, 2)
+    order.place_order(:ceviche, 1)
+    bill = 39.80
+    expect(order.total_bill).to eq bill
   end
 end
