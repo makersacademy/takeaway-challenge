@@ -26,7 +26,7 @@ class Menu
   end
 
   def checkout
-    @order
+    @order = true
   end
 
 end

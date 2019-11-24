@@ -2,7 +2,8 @@
 
  describe Phone do
 
-   message = "Thank you! Your order was placed and will be delivered before 18:52"
+   time = Time.now + 3600
+   message = "Thank you! Your order was placed and will be delivered before #{time}"
    let(:order) { double :menu  }
 
   describe "#send_message" do
