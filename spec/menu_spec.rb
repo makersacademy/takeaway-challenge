@@ -13,16 +13,16 @@ describe Menu do
 
   describe "#choose" do
     it 'adds a dish to the basket' do
-      expect(subject.choose("Hamster Soup")).to eq({"Hamster Soup"=>11.50})
+      expect(subject.choose("Hamster Soup", 2)).to eq({"Hamster Soup"=>11.50})
     end
   end
 
   describe "#total" do
     it 'shows the total price of all items selected' do
       menu1 = Menu.new
-      menu1.choose("Hamster Soup")
-      menu1.choose("Vegan Offal")
-      expect(menu1.total).to eq(12.6)
+      menu1.choose("Hamster Soup", 2)
+      menu1.choose("Vegan Offal", 2)
+      expect(menu1.total).to eq(25.20)
     end
   end
 
