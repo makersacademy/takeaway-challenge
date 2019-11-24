@@ -42,4 +42,25 @@ describe Takeaway do
 
   end
 
+  describe "#checkout" do
+    let(:time) { Time.now.strftime("%H:%M") }
+
+    before(:each) do
+      takeaway.order("Cheeseburger")
+      takeaway.order("Hamburger")
+      takeaway.order("French Fries", 2)
+      sum = 0.99 + 0.89 + 1.09 * 2 # 4.06
+      allow(menu).to receive(:sum).and_return(sum.round(2))
+    end
+
+    it "should raise an error if the user sum is not correct" do
+      expect { takeaway.checkout(3) }.to raise_error("That is not the right price of the order, please try again")
+    end
+
+    it "should complete the order" do
+      expect(takeaway.checkout(4.06)).to eq("Thank you! Your order was placed and will be delivered before #{time}")
+    end
+
+  end
+
 end

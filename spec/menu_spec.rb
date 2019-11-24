@@ -25,4 +25,15 @@ describe Menu do
     end
   end
 
+  describe "#sum" do
+    let(:basket) { { "Cheeseburger" => 1, "French Fries" => 2 } }
+    sum = 0.99 + 2 * 1.09
+
+    it "should calculate the sum of the items in the basket" do
+      menu.sum(basket)
+      
+      expect(menu.basket_sum).to eq sum.round(2)
+    end
+  end
+
 end

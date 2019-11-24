@@ -18,4 +18,17 @@ class Takeaway
     @basket[item] += quantity
   end
 
+  def checkout(total)
+    raise "That is not the right price of the order, please try again" if total != sum
+
+    time = Time.now.strftime("%H:%M")
+    "Thank you! Your order was placed and will be delivered before #{time}"
+  end
+
+  private
+
+  def sum
+    @menu.sum(@basket)
+  end
+
 end
