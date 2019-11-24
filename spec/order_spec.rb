@@ -30,19 +30,6 @@ describe Order do
   
   end
 
-  # describe "#remove dish" do
-
-  #   it "should remove a dish from the menu" do
-  #     subject.add_dish("fried rice", 2)
-  #     expect(subject.remove_dish("fried rice", 1)).to eq 1
-  #   end
-  #   # it "should not remove from the basket dishes that were not added" do
-  #   #   subject.add_dish("kimchi", 1)
-  #   #   expect { subject.remove_dish("salmon", 1) }.to raise_error "Cannot remove item, not in basket"
-  #   # end
-
-  # end
-
   describe "#total" do
     it "should return total for one item" do
       subject.add_dish("kimchi", 1)

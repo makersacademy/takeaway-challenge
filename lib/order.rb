@@ -16,12 +16,6 @@ class Order
     @basket[dish] += qty
   end
 
-  # def remove_dish(dish, qty)
-  #   # fail "Cannot remove item, not in basket" if !@basket[dish]
-  #   @basket.delete_at(basket.index(dish))
-  #   @basket[dish] -= qty
-  # end
-
   def summary
     summary_header
 
