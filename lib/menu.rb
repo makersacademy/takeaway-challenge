@@ -13,8 +13,12 @@ class Menu
     @dishes.each { |dish, price| puts "#{dish} : £#{price}" }
   end
 
-  def has_dish?(dish)
+  def dish?(dish)
     !dishes[dish].nil?
+  end
+
+  def price(dish)
+    dishes[dish]
   end
 
 end

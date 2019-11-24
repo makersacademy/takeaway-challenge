@@ -8,7 +8,11 @@ describe Menu do
   end
 
   it "checks that the dish is on the menu" do
-    expect(menu.has_dish?("beef")).to eq false
+    expect(menu.dish?(:beef)).to eq false
+  end
+
+  it "dishes have a price" do
+    expect(menu.price(:fish)).to eq 7
   end
 
   describe "#display_menu" do
