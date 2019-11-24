@@ -11,6 +11,7 @@ describe Menu do
     menu_list = "Llomo_saltado £14.99, Ratatouille £9.00, Chicken_and_chips £5.50, Ceviche £10.00"
     expect(menu.print_menu).to eq menu_list
   end
+  it { is_expected.to respond_to(:includes?).with(1).argument }
   it 'verifies if a dish is on the menu' do
     expect(menu.includes?(:ceviche)).to be true 
   end
