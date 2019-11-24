@@ -14,69 +14,43 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+* User Stories are complete. The program allows users to see a list of dishes with their prices, select dishes from the menu, and check the total price for selected dishes. In addition to using the menu to select dishes, when the user proceeds by checking out, an SMS message will be sent to their phone to confirm the order and state that the food will be delivered within an hour of ordering.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* In order to view the menu, a new instance of the menu class should be created and the open method should be used.
 
-Task
------
+* Similarly, the choose method can be used to select options from the menu. When using the method, users should input the dish they would like as the first argument, and the number of these dishes as the second.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Calling the basket method will show which dishes have been added to the 'basket', and the total price of these dishes can be checked by calling the 'total' method.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+* If the user is happy with their order, they can call checkout. This enables the user to receive a confirmatory message with the estimated time of delivery for their order.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+* Personal details of twilio account numbers and phone numbers have been removed. The user should input their mobile phone number in the phone.rb file, where instructed. The other details can be filled out to send the message successfully
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+## Suggested Feature Test
+>  require './menu'
+ => true
+>  require './phone.rb'
+ => true
+>   menu1 = Menu.new
+ => #<Menu:0x00007fe14fe30bb0 @dishes={"Hamster Soup"=>11.5, "Orechiette"=>4.4, "Vegan Offal"=>1.1}
+>  menu1.open
+ => {"Hamster Soup"=>11.5, "Orechiette"=>4.4, "Vegan Offal"=>1.1}
+2.6.5 :005 > menu1.choose("Vegan Offal", 1)
+> menu1.choose("Vegan Offal", 1)
+ => {"Vegan Offal"=>1.1}
+> menu1.choose("Hamster Soup", 2)
+ => {"Hamster Soup"=>11.5}
+> menu1.basket
+ => ["Vegan Offal, £1.1", "Hamster Soup, £11.5", "Hamster Soup, £11.5"]
+>  menu1.total
+ => 24.1
+>  phone1 = Phone.new
+ => #<Phone:0x00007fe15019eef0>
+>  phone1.send_message(true)
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+### Areas for improvement
+* Ability to deselect items from basket
+* Basket contains number of times same item is present, rather than repeating items
+* Smoother interface for user, possibly asking questions to guide them through using the program.
+* More options on the menu.
+* Clearer and more concise methods.  
