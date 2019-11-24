@@ -1,8 +1,11 @@
+require 'date'
+
 class TakeAway
   attr_reader :basket
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, messenger_class = Messenger)
     @menu = menu
+    @messenger_class = messenger_class
     @basket = []
     @total_price = 0
     @user_mobile = ""
@@ -33,9 +36,10 @@ class TakeAway
     @user_mobile = gets.chomp
   end
 
-  def complete_order(amount)
+  def complete_order(amount, time = Time.now)
     message = "Incorrect checkout price given. Please recheck your order total"
     raise message if incorrect_price?(amount)
+    send_text
   end
 
   private
@@ -48,6 +52,11 @@ class TakeAway
 
   def incorrect_price?(amount)
     @total_price != amount
+  end
+
+  def send_text
+    messenger = @messenger_class.new
+    messenger.send_text(@user_mobile, time = Time.now)
   end
 
 end

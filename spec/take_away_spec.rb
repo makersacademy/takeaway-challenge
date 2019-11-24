@@ -2,8 +2,10 @@ require 'take_away'
 
 describe TakeAway do
 
-  subject(:take_away) { described_class.new(menu) }
+  subject(:take_away) { described_class.new(menu, messenger_class) }
   let(:menu) { { "Tacos" => 4.95, "Scrambled Eggs" => 3.50 } }
+  let(:messenger_class) { double :messenger_class, new: messenger }
+  let(:messenger) { double :messenger }
 
   before do
     allow(menu).to receive(:display) { menu }
@@ -73,11 +75,24 @@ describe TakeAway do
   end
 
   describe "#complete_order(amount)" do
+
+    before do
+     allow(subject).to receive(:send_text)
+    end
+
     it "raises an error if the amount given does not match the total price" do
       subject.order("Tacos", 3)
       message = "Incorrect checkout price given. Please recheck your order total"
       expect{ subject.complete_order(6) }.to raise_error message
     end
+
+   it 'sends an order confirmation text message' do
+     time = Time.now
+     text = "Thank you for your order! It will be delivered within one hour from #{time.strftime('%H:%M')}"
+     expect(messenger).to receive(:send_text) { text }
+     subject.complete_order(0)
+     # Don't know what test to run here
+   end
   end
 
 end
