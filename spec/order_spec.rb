@@ -53,7 +53,8 @@ describe Order do
 
   describe "#order summary" do
     it "should return a summary of the order" do
-
+      subject.add_dish("kimchi", 1)
+      expect(subject.summary).to eq "kimchi x 1 = £5"
     end
   end
 end

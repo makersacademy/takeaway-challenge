@@ -19,9 +19,26 @@ class Order
   # def remove_dish(dish)
   #   fail "Cannot remove item, not in basket" if !@basket.dishes[dish]
   #   @basket.delete_at(basket.index(dish))
+  #   @basket[dish] -= qty
   # end
 
-  def summary 
+  def summary
+    # # ????  # dish name
+    # @menu.dishes[dish] # dish price
+    # @basket[dish] # qty
+
+    @basket.each { |dish, qty| 
+      return "#{dish} x #{qty} = £#{@menu.dishes[dish] * qty}"
+    }
+
   end
+
+  # def summary_header
+  #   print "Your basket contains:\n" 
+  # end
+
+  # def summary_footer
+  #   print "Your total is: £#{total}"
+  # end
 
 end
