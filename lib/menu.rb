@@ -1,16 +1,16 @@
 class Menu
-attr_reader :menu, :dish, :price
+attr_reader :menu
 
   def initialize
-    @menu = [{ :dish => "Sushi" , :price => 5 }, 
-    { :dish => "Curry" , :price => 6 }, 
-    { :dish => "Fried rice" , :price => 4 }, 
-    { :dish => "Soup" , :price => 1 }]
+    @menu = { "Sushi" => 5, 
+    "Curry" => 6, 
+    "Egg roll" => 2, 
+    "Soup" => 1 }
   end
 
   def display
-    @menu.each do |x|
-      p "#{x[:dish]}: £#{x[:price]}"
+    @menu.each do |dish, price|
+      p "#{dish}: £#{price}"
     end
   end
 

@@ -8,7 +8,7 @@ describe Menu do
     end
 
     it 'should display a list of dishes and prices' do
-      expect{ subject.display }.to output("Sushi: £5\nCurry: £6\nFried rice: £4\nSoup: £1").to_stdout
+      expect{ subject.display }.to output("Sushi: £5\nCurry: £6\nEgg roll: £2\nSoup: £1").to_stdout
     end 
   end
 end
