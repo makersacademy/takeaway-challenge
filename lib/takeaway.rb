@@ -27,7 +27,8 @@ class Takeaway
   end
 
   def place_order(amount)
-    fail ("Incorrect total") unless amount == @sum
+    fail "Incorrect total" if amount != @sum
+    send_text("Thank you for your order: £#{@sum}")
     Textsender.new.sent_text
   end
 

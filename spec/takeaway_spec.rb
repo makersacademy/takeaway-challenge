@@ -6,6 +6,7 @@ describe Takeaway do
   let(:menu) { double :menu, { "sausage" => 4 } }
   subject(:takeaway) { described_class.new(menu) }
   items = { sausage: 6, pie: 2 }
+  let(:textsender) { double :textsender }
 
   context 'order'
 
@@ -31,17 +32,18 @@ describe Takeaway do
   end
 
   describe "#place_order" do
-    it 'should raise an error if the amount is incorrect' do
+
+    before do
       subject.select_dish(:sausage, 6)
+      allow(textsender).to receive(:send_text)
+    end
+    
+    it 'should raise an error if the amount is incorrect' do
       expect{ subject.place_order(3) }.to raise_error("Incorrect total")
     end
 
     it 'should send a confirmation text' do
-      allow(takeaway).to receive(:send_text)
-      expect(takeaway).to receive(:send_text).with("Thank you for your order: £15")
-      takeaway.place_order(15)
+      expect(textsender).to receive(:send_text)
     end
   end 
-
-
 end

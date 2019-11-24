@@ -13,7 +13,7 @@ class Textsender
     
     message = @client.messages.create(
     body: "Thank you! Your order was placed and will be delivered before #{time}",
-    to: "+447857259816",
-    from: "+18153103777") 
+    to: ENV['NUMBER'],
+    from: ENV['SENDER']) 
   end
 end
