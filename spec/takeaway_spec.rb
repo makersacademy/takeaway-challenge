@@ -3,7 +3,7 @@ require 'menu'
 
 describe Takeaway do
   
-  let(:menu) { double :menu, { "sausage" => 4 } }
+  let(:menu) { double :menu, item: "sausage", price: 4 }
   subject(:takeaway) { described_class.new(menu) }
   items = { sausage: 6, pie: 2 }
   let(:textsender) { double :textsender }
@@ -30,6 +30,12 @@ describe Takeaway do
       expect(subject.total).to eq "Total is £24"
     end
   end
+
+  # describe '#view_basket' do
+  #   it 'should return the basket and total' do
+  #     subject.select_dish(:sausage, 6)
+  #     expect(subject.view_basket).to eq("sausagex6" "Total:£24")
+  # end
 
   describe "#place_order" do
 

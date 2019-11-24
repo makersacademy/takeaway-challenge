@@ -26,6 +26,13 @@ class Takeaway
     p "Total is £#{@sum}"
   end
 
+  def view_basket
+    @basket.each do |dish, quantity|
+      p "#{dish}x#{quantity}"
+      p "Total:£#{@sum}"
+    end
+  end
+
   def place_order(amount)
     fail "Incorrect total" if amount != @sum
     Textsender.new.send_text
