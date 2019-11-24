@@ -23,22 +23,18 @@ class Order
   # end
 
   def summary
-    # # ????  # dish name
-    # @menu.dishes[dish] # dish price
-    # @basket[dish] # qty
-
-    @basket.each { |dish, qty| 
-      return "#{dish} x #{qty} = £#{@menu.dishes[dish] * qty}"
-    }
+    @basket.map { |dish, qty| 
+      "#{dish} x #{qty} = £#{@menu.dishes[dish] * qty}\n"
+    }.join
 
   end
 
   # def summary_header
-  #   print "Your basket contains:\n" 
+  #   puts "Your basket contains:\n" 
   # end
 
   # def summary_footer
-  #   print "Your total is: £#{total}"
+  #   puts "Your total is: £#{total}"
   # end
 
 end
