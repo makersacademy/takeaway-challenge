@@ -7,4 +7,5 @@ describe Menu do
       expect(subject.display).to eq Menu::MENU
     end
   end
+
 end

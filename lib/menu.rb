@@ -5,7 +5,7 @@ class Menu
   end
 
   MENU = {
-    "Banana pancakes with maple syrup" => 7.95,
+    "Banana pancakes" => 7.95,
     "Brunch burger" => 7.50,
     "Veggie breakfast burrito" => 8.95,
     "Triple tacos" => 7.95,
