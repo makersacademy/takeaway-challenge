@@ -16,25 +16,20 @@ class Order
   end
 
   def check_order
-    "you ordered #{total_dishes} dishes totalling £#{total_price}"
+    "You ordered #{total_dishes} dishes totalling £#{total_price}"
   end
 
   private
 
-  def total_price
+  def total_dishes
     total = 0
-    order.each do |dish, quantity|
-      total += quantity
-    end
+    order.each{ |dish, quantity|  total += quantity }
     total
   end
 
-  def total_dishes
+  def total_price
     total = 0
-    order.each do |dish, quantity|
-      puts menu_class.price(dish)
-      # total += ( * menu_class.price(dish))
-    end
+    order.each{ |dish, quantity| total += (quantity * menu_class.price(dish)) }
     total
   end
 end
