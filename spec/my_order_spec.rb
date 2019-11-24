@@ -24,5 +24,14 @@ describe MyOrder do
     end
   end
 
+  describe '#check_total' do
+    it "should raise an error if the total of dishes in the order is not the same as the calculated total" do
+      subject.select_dish(3)
+      subject.select_dish(4)
+      allow(subject).to receive(:print_total) { 19.30 }
+      expect{subject.check_total}.to raise_error "Incorrect total"
+    end
+  end
+
 
 end
