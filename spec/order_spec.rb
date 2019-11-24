@@ -5,6 +5,7 @@ describe Order do
   let(:menu) { double :menu, check_menu: [["Chicken", 10], ["Steak", 15]] }
   let(:menu_chicken) { double :menu, get_price: 10 }
   let(:menu_steak) { double :menu, get_price: 15 }
+  
   describe "#see_menu" do
     it "should return a list of dishes and prices" do
       menu_class_double = double :menu_class, new: menu
