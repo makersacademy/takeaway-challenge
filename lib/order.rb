@@ -17,20 +17,11 @@ class Order
   end
 
   def summary
-    summary_header
 
     @basket.map { |dish, qty| 
       "#{dish} x #{qty} = £#{@menu.dishes[dish] * qty}\n"
     }.join
  
-  end
-
-  def summary_header
-    "Your basket contains:\n" 
-  end
-
-  def summary_footer
-    "Your total is: £#{total}"
   end
 
 end

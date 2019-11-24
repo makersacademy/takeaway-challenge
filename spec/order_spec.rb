@@ -51,16 +51,4 @@ describe Order do
     end
   end
 
-  describe "#summary header" do
-    it "should have a summary header" do
-      expect(subject.summary_header).to eq "Your basket contains:\n"
-    end
-  end
-
-  describe "#summary footer" do
-    it "should show the total" do
-      subject.add_dish("kimchi", 1)
-      expect(subject.summary_footer).to eq "Your total is: £5"
-    end
-  end
 end
