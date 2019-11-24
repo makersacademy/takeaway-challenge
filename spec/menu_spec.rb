@@ -15,11 +15,11 @@ RSpec.describe Menu do
     end
 
     it 'has pepperoni pizza as its first item' do
-      expect(test_menu.item(1)).to eq item_1
+      expect(test_menu.item 1).to eq item_1
     end
 
     it 'has margherita pizza as its second item' do
-      expect(test_menu.item(2)).to eq item_2
+      expect(test_menu.item 2).to eq item_2
     end
   end
 end

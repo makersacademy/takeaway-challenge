@@ -34,11 +34,11 @@ RSpec.describe 'placing an order' do
       luigis_pizzeria.begin_order_for(sam)
 
       # when they are finished making their choices
-      luigis_pizzeria.add_to_order(pizza_menu.item(2))
-      luigis_pizzeria.add_to_order(pizza_menu.item(3))
-      luigis_pizzeria.add_to_order(pizza_menu.item(4))
-      luigis_pizzeria.add_to_order(pizza_menu.item(4))
-      luigis_pizzeria.remove_from_order(pizza_menu.item(3))
+      luigis_pizzeria.add_to_order(pizza_menu.item 2)
+      luigis_pizzeria.add_to_order(pizza_menu.item 3)
+      luigis_pizzeria.add_to_order(pizza_menu.item 4)
+      luigis_pizzeria.add_to_order(pizza_menu.item 4)
+      luigis_pizzeria.remove_from_order(pizza_menu.item 3)
 
       # then they should be able to view their order before they confirm
       expect(luigis_pizzeria.view_current_order).to eq "Sam's order:\nPepperoni Pizza – Quantity: 1\nVegetarian Pizza – Quantity: 2"
@@ -47,11 +47,11 @@ RSpec.describe 'placing an order' do
     it 'allows a customer to pay for their items' do
       # given a customer is satisfied with their choices
       luigis_pizzeria.begin_order_for(sam)
-      luigis_pizzeria.add_to_order(pizza_menu.item(4))
-      luigis_pizzeria.add_to_order(pizza_menu.item(2))
-      luigis_pizzeria.add_to_order(pizza_menu.item(4))
-      luigis_pizzeria.add_to_order(pizza_menu.item(2))
-      luigis_pizzeria.add_to_order(pizza_menu.item(4))
+      luigis_pizzeria.add_to_order(pizza_menu.item 4)
+      luigis_pizzeria.add_to_order(pizza_menu.item 2)
+      luigis_pizzeria.add_to_order(pizza_menu.item 4)
+      luigis_pizzeria.add_to_order(pizza_menu.item 2)
+      luigis_pizzeria.add_to_order(pizza_menu.item 4)
 
       expect(luigis_pizzeria.view_current_order).to eq "Sam's order:\nVegetarian Pizza – Quantity: 3\nPepperoni Pizza – Quantity: 2"
 
@@ -64,7 +64,7 @@ RSpec.describe 'placing an order' do
       # and the order should be set aside for delivery
       luigis_pizzeria.begin_order_for(jeff)
 
-      expect { luigis_pizzeria.add_to_order(pizza_menu.item(2)) }.to raise_error Takeaway::OUT_OF_STOCK
+      expect { luigis_pizzeria.add_to_order(pizza_menu.item 2) }.to raise_error Takeaway::OUT_OF_STOCK
     end
   end
 end
