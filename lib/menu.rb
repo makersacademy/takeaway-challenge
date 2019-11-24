@@ -12,4 +12,9 @@ class Menu
   def display_menu
     @dishes.each { |dish, price| puts "#{dish} : £#{price}" }
   end
+
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
+
 end

@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  
+
   let(:menu_double) { double :menu }
   subject(:takeaway) { described_class.new(menu_double) }
 
@@ -9,7 +9,7 @@ describe Takeaway do
 
     it "shows menu options" do
       allow(menu_double).to receive(:display_menu) { { rice: 2.5 } }
-      expect(subject.show_menu).to eq({ rice: 2.5 })
+      expect(takeaway.show_menu).to eq({ rice: 2.5 })
     end
   end
 
