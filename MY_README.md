@@ -56,6 +56,7 @@ Takeaway
 
 Feature Test
 -------
+```
 $ irb -r './lib/takeaway.rb'
 2.6.5 :001 > takeaway = Takeaway.new
  => #<Takeaway:0x00007fae7398a9d0 @menu=#<Menu:0x00007fae7398a9a8 @menu={"Sushi"=>5, "Curry"=>6, "Egg roll"=>2, "Soup"=>1}>, @basket={}, @sum=0> 
@@ -81,3 +82,4 @@ $ irb -r './lib/takeaway.rb'
 "Total:£23"
  => "Total:£23" 
 2.6.5 :008 > takeaway.place_order
+```
