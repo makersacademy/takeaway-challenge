@@ -9,13 +9,11 @@ class Text
   CLIENT = Twilio::REST::Client.new(account_sid, auth_token)
 
   def send
-    from = ENV['TWILIO_NUMBER'] # Your Twilio number
-    to = ENV['MOBILE_NUMBER'] # Your mobile phone number
     time = (Time.now + 3600).strftime("%H:%M")
 
     CLIENT.messages.create(
-    from: from,
-    to: to,
+    from: ENV['TWILIO_NUMBER'],
+    to: ENV['MOBILE_NUMBER'],
     body: "Thank you! Your order was placed and will be delivered before #{time}"
     )
   end

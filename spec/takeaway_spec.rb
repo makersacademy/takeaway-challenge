@@ -4,7 +4,7 @@ describe Takeaway do
 
   let(:text) { double(:text, send: nil) }
 
-  let(:menu) { double(:menu, show: nil, available?: true,
+  let(:menu) { double(:menu, available?: true,
     dishes: [{ name: "Big Mac", price: "3.19" },
             { name: "Quarter Pounder", price: "3.19" },
             { name: "McChicken", price: "3.00" },
@@ -14,13 +14,6 @@ describe Takeaway do
   }
 
   subject(:takeaway) { Takeaway.new(menu, text) }
-
-  # I don't think this test does anything
-  describe "#show_menu" do
-    it "should show the menu" do
-      expect { menu.show }.to_not raise_error
-    end
-  end
 
   describe "#order" do
 

@@ -22,9 +22,10 @@ class Takeaway
 
   def see_order
     return "Basket is empty" if @basket == {}
+
     order_list = []
     @basket.each { |item, quantity| order_list << "#{item} x#{quantity}" }
-    message = ("Order is as follows:\n#{order_list.join("\n")}")
+    message = "Order is as follows:\n#{order_list.join("\n")}"
     puts message
   end
 
