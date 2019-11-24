@@ -17,11 +17,13 @@ Takeaway Challenge
 Solution
 -------
 
+I approached this challenge by implementing each user story going through the process of TDD. At first I wasn't sure how many classes I needed so I began with one class and extracted as necessary.
+
 The program allows the user to:
 * see a list of dishes with prices
 * select their order from a number of several available dishes
 * checkout with a total
-* receive a text (using the Twilio API) upon order completion
+* receive a confirmation text (using the Twilio API) upon order completion
 
 Environment variables have been used to hide private details in the Text class.
 
@@ -36,7 +38,6 @@ Text:0x00007fb478e75750>, @basket={}>
 1. Big Mac: £3.19
 2. Quarter Pounder: £3.19
 3. McChicken: £3.00
-
 4. Cheeseburger: £0.99
 5. Hamburger: £0.89
 6. French Fries: £1.09
