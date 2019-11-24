@@ -71,7 +71,7 @@ describe Order do
   end
 
   describe "#summary footer" do
-    it "should have a summary footer" do
+    it "should show the total" do
       subject.add_dish("kimchi", 1)
       expect(subject.summary_footer).to eq "Your total is: £5"
     end
