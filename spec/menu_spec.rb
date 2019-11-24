@@ -10,7 +10,7 @@ describe Menu do
       message = ["1. Big Mac: £3.19", "2. Quarter Pounder: £3.19", "3. McChicken: £3.00",
         "4. Cheeseburger: £0.99", "5. Hamburger: £0.89", "6. French Fries: £1.09"].join("\n")
 
-      expect { menu.show }.to output(puts message).to_stdout
+      expect { menu.show }.to output("#{message}\n").to_stdout
     end
 
   end
@@ -31,7 +31,7 @@ describe Menu do
 
     it "should calculate the sum of the items in the basket" do
       menu.sum(basket)
-      
+
       expect(menu.basket_sum).to eq sum.round(2)
     end
   end

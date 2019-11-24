@@ -1,10 +1,11 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Takeaway
-  attr_reader :basket
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, text = Text.new)
     @menu = menu
+    @text = text
     @basket = Hash.new(0)
   end
 
@@ -16,13 +17,23 @@ class Takeaway
     raise "That dish is not on the menu" unless @menu.available?(item)
 
     @basket[item] += quantity
+    "#{quantity}x #{item} added to the basket"
+  end
+
+  def see_order
+    return "Basket is empty" if @basket == {}
+    order_list = []
+    @basket.each { |item, quantity| order_list << "#{item} x#{quantity}" }
+    message = ("Order is as follows:\n#{order_list.join("\n")}")
+    puts message
   end
 
   def checkout(total)
     raise "That is not the right price of the order, please try again" if total != sum
 
-    time = Time.now.strftime("%H:%M")
-    "Thank you! Your order was placed and will be delivered before #{time}"
+    @text.send
+    @basket = Hash.new(0)
+    "Order successful, a confirmation text should be in it's way"
   end
 
   private
