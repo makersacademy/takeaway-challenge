@@ -9,7 +9,7 @@ describe Restaurant do
   
     it "should place the takeaway order if the given amount does match the total of the takeaway order" do
       allow(takeaway).to receive(:correct_amount?).and_return(true)
-      allow(text_provider).to receive(:send_message)
+      allow(text_provider).to receive(:send_text)
       expect(restaurant.checkout(20)).to eq "Thank you for your order"
     end
 

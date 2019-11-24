@@ -45,4 +45,66 @@ Class Diagrams
 Feature Test
 -------
 
-
+```
+$ irb
+2.6.5 :001 > require "./lib/dish.rb"
+ => true 
+2.6.5 :002 > require "./lib/menu.rb"
+ => true 
+2.6.5 :003 > require "./lib/takeaway.rb"
+ => true 
+2.6.5 :004 > require "./lib/restaurant.rb"
+ => true 
+2.6.5 :005 > require "./lib/text_provider.rb"
+^[[A => true 
+2.6.5 :006 > dish1 = Dish.new("Carbonara", 10)
+ => #<Dish:0x00007fd7186d4d80 @name="Carbonara", @price=10> 
+2.6.5 :007 > dish2 = Dish.new("Puttanesca", 12)
+ => #<Dish:0x00007fd7186e7020 @name="Puttanesca", @price=12> 
+2.6.5 :008 > dish3 = Dish.new("Bolognese", 14)
+ => #<Dish:0x00007fd7186eca70 @name="Bolognese", @price=14> 
+2.6.5 :009 > menu = Menu.new
+ => #<Menu:0x00007fd7186f5940 @dishes=[]> 
+2.6.5 :010 > menu.add(dish1)
+ => "Carbonara added to the menu" 
+2.6.5 :011 > menu.add(dish2)
+ => "Puttanesca added to the menu" 
+2.6.5 :012 > menu.add(dish3)
+ => "Bolognese added to the menu" 
+2.6.5 :013 > menu.list
+ => "Carbonara (£10), Puttanesca (£12), Bolognese (£14)" 
+2.6.5 :014 > menu.contains?(dish1)
+ => true 
+2.6.5 :015 > menu.contains?(Dish.new("Cacio e pepe", 13))
+ => false 
+2.6.5 :016 > takeaway = TakeAway.new(menu)
+ => #<TakeAway:0x00007fd71872e510 @basket={}, @menu=#<Menu:0x00007fd7186f5940 @dishes=[#<Dish:0x00007fd7186d4d80 @name="Carbonara", @price=10>, #<Dish:0x00007fd7186e7020 @name="Puttanesca", @price=12>, #<Dish:0x00007fd7186eca70 @name="Bolognese", @price=14>]>> 
+2.6.5 :017 > takeaway.basket
+ => {} 
+2.6.5 :018 > takeaway.empty?
+ => true 
+2.6.5 :019 > takeaway.order(dish1, 3)
+ => "3x Carbonara(s) added to your basket" 
+2.6.5 :020 > takeaway.order(dish2, 5)
+ => "5x Puttanesca(s) added to your basket" 
+2.6.5 :021 > takeaway.order(dish3, 2)
+ => "2x Bolognese(s) added to your basket" 
+2.6.5 :022 > takeaway.basket_summary
+ => "Carbonara x3 = £30, Puttanesca x5 = £60, Bolognese x2 = £28" 
+2.6.5 :023 > takeaway.total
+ => "Total: £118" 
+2.6.5 :024 > text_provider = TextProvider.new
+ => #<TextProvider:0x00007fd7181cd008 @client=#<Twilio::REST::Client:0x00007fd7181ccb80 @username="AC8fd145e7c5a21ebcd7c8026e2d5c8291", @password="2d6815fa1f6fbef1400bcf07f5d766c5", @region=nil, @account_sid="AC8fd145e7c5a21ebcd7c8026e2d5c8291", @auth_token="2d6815fa1f6fbef1400bcf07f5d766c5", @auth=["AC8fd145e7c5a21ebcd7c8026e2d5c8291", "2d6815fa1f6fbef1400bcf07f5d766c5"], @http_client=#<Twilio::HTTP::Client:0x00007fd7181d7cd8 @proxy_prot=nil, @proxy_addr=nil, @proxy_port=nil, @proxy_user=nil, @proxy_pass=nil, @ssl_ca_file=nil, @timeout=nil, @adapter=:net_http>, @accounts=nil, @api=nil, @authy=nil, @autopilot=nil, @chat=nil, @conversations=nil, @fax=nil, @flex_api=nil, @insights=nil, @ip_messaging=nil, @lookups=nil, @messaging=nil, @monitor=nil, @notify=nil, @preview=nil, @pricing=nil, @proxy=nil, @serverless=nil, @studio=nil, @sync=nil, @taskrouter=nil, @trunking=nil, @verify=nil, @video=nil, @voice=nil, @wireless=nil>> 
+2.6.5 :025 > restaurant = Restaurant.new(takeaway, text_provider)
+ => #<Restaurant:0x00007fd71828cb38 @takeaway=#<TakeAway:0x00007fd71872e510 @basket={#<Dish:0x00007fd7186d4d80 @name="Carbonara", @price=10>=>3, #<Dish:0x00007fd7186e7020 @name="Puttanesca", @price=12>=>5, #<Dish:0x00007fd7186eca70 @name="Bolognese", @price=14>=>2}, @menu=#<Menu:0x00007fd7186f5940 @dishes=[#<Dish:0x00007fd7186d4d80 @name="Carbonara", @price=10>, #<Dish:0x00007fd7186e7020 @name="Puttanesca", @price=12>, #<Dish:0x00007fd7186eca70 @name="Bolognese", @price=14>]>>, @text_provider=#<TextProvider:0x00007fd7181cd008 @client=#<Twilio::REST::Client:0x00007fd7181ccb80 @username="AC8fd145e7c5a21ebcd7c8026e2d5c8291", @password="2d6815fa1f6fbef1400bcf07f5d766c5", @region=nil, @account_sid="AC8fd145e7c5a21ebcd7c8026e2d5c8291", @auth_token="2d6815fa1f6fbef1400bcf07f5d766c5", @auth=["AC8fd145e7c5a21ebcd7c8026e2d5c8291", "2d6815fa1f6fbef1400bcf07f5d766c5"], @http_client=#<Twilio::HTTP::Client:0x00007fd7181d7cd8 @proxy_prot=nil, @proxy_addr=nil, @proxy_port=nil, @proxy_user=nil, @proxy_pass=nil, @ssl_ca_file=nil, @timeout=nil, @adapter=:net_http>, @accounts=nil, @api=nil, @authy=nil, @autopilot=nil, @chat=nil, @conversations=nil, @fax=nil, @flex_api=nil, @insights=nil, @ip_messaging=nil, @lookups=nil, @messaging=nil, @monitor=nil, @notify=nil, @preview=nil, @pricing=nil, @proxy=nil, @serverless=nil, @studio=nil, @sync=nil, @taskrouter=nil, @trunking=nil, @verify=nil, @video=nil, @voice=nil, @wireless=nil>>> 
+2.6.5 :026 > restaurant.checkout(100)
+Traceback (most recent call last):
+        5: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `<main>'
+        4: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `load'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        2: from (irb):26
+        1: from /Users/student/Code/makersacademy/takeaway-challenge/lib/restaurant.rb:13:in `checkout'
+RuntimeError (Payment amount not correct)
+2.6.5 :027 > restaurant.checkout(118)
+ => "Thank you for your order" 
+```
