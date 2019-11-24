@@ -14,4 +14,5 @@ class Menu
       puts dish
     end
   end
+
 end

@@ -5,8 +5,7 @@ class MyOrder
   attr_reader :my_order
 
   def initialize(menu = Menu.new)
-    @my_order = [
-    ]
+    @my_order = []
     @menu = menu
   end
 
@@ -23,4 +22,13 @@ class MyOrder
       end
     end
   end
+
+  def print_total
+    total = 0
+    @my_order.each do |dish|
+      total += dish[:price]
+    end
+    total
+  end
+
 end
