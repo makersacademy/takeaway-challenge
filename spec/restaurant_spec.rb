@@ -6,8 +6,7 @@ describe Restaurant do
   let(:restaurant) { Restaurant.new(takeaway, text_provider) }
 
   describe "#checkout" do
-  
-    it "should place the takeaway order if the given amount does match the total of the takeaway order" do
+    it "should place the takeaway order if the given amount matches the total of the takeaway order" do
       allow(takeaway).to receive(:correct_amount?).and_return(true)
       allow(text_provider).to receive(:send_text)
       expect(restaurant.checkout(20)).to eq "Thank you for your order"
@@ -20,8 +19,7 @@ describe Restaurant do
 
     it "should raise an error if the takeaway basket is empty" do
       allow(takeaway).to receive(:empty?).and_return(true)
-      message = "The takeaway basket is empty"
-      expect { restaurant.checkout(50) }.to raise_error message
+      expect { restaurant.checkout(50) }.to raise_error "The takeaway basket is empty"
     end
   end
 end

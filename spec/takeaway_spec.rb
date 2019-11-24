@@ -4,12 +4,12 @@ describe TakeAway do
   let(:dish_1) { double :dish, name: "Carbonara", price: 10 }
   let(:dish_2) { double :dish, name: "Puttanesca", price: 12 }
   let(:dish_3) { double :dish, name: "Bolognese", price: 11 }
-  let(:menu) { double :menu, list: "Name: Carbonara, Price: 10\nName: Puttanesca, Price: 12", contains?: true }
+  let(:menu) { double :menu, list: "Carbonara (£10), Puttanesca (£12)", contains?: true }
   let(:takeaway) { TakeAway.new(menu) }
 
   describe "#read_menu" do
     it "should list the menu" do
-      expect(takeaway.read_menu).to eq "Name: Carbonara, Price: 10\nName: Puttanesca, Price: 12"
+      expect(takeaway.read_menu).to eq "Carbonara (£10), Puttanesca (£12)"
     end
   end
 
@@ -20,8 +20,7 @@ describe TakeAway do
 
     it "should raise an error is the dish is not in the menu" do
       allow(menu).to receive(:contains?).and_return(false)
-      message = "This dish is not in the menu"
-      expect { takeaway.order(dish_3, 4) }.to raise_error message
+      expect { takeaway.order(dish_3, 4) }.to raise_error "This dish is not in the menu"
     end
   end
 
@@ -42,13 +41,13 @@ describe TakeAway do
   end
 
   describe "#correct_amount?" do
-    it "should return 'true' if the given price matches the total of the takeaway order" do
+    it "should return 'true' if the given price matches the total cost of the takeaway" do
       takeaway.order(dish_1, 5)
       takeaway.order(dish_2, 2)
       expect(takeaway.correct_amount?(74)).to eq true
     end
 
-    it "should return 'false' if the given price matches the total of the takeaway order" do
+    it "should return 'false' if the given price matches the total cost of the takeaway" do
       takeaway.order(dish_1, 5)
       takeaway.order(dish_2, 2)
       expect(takeaway.correct_amount?(20)).to eq false
