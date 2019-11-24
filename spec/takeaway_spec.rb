@@ -1,12 +1,11 @@
 require "takeaway"
 
-describe Takeaway do
+describe TakeAway do
   let(:dish_1) { double :dish, name: "Carbonara", price: 10 }
   let(:dish_2) { double :dish, name: "Puttanesca", price: 12 }
   let(:dish_3) { double :dish, name: "Bolognese", price: 11 }
   let(:menu) { double :menu, list: "Name: Carbonara, Price: 10\nName: Puttanesca, Price: 12", include?: true }
-  let(:text_provider) { double :text_provider, send_message: "Thank you! Your order was placed and will be delivered before 18:55" }
-  let(:takeaway) { Takeaway.new(menu, text_provider) }
+  let(:takeaway) { TakeAway.new(menu) }
 
   describe "#read_menu" do
     it "should list the menu" do

@@ -1,10 +1,9 @@
-class Takeaway
-  attr_reader :menu, :basket, :text_provider
+class TakeAway
+  attr_reader :menu, :basket
 
-  def initialize(menu = Menu.new, text_provider = TextProvider.new)
+  def initialize(menu = Menu.new)
     @basket = Hash.new(0)
     @menu = menu
-    @text_provider = text_provider
   end
 
   def read_menu

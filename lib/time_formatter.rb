@@ -1,18 +1,17 @@
 # class TimeFormatter
 #   attr_reader :time
 
-#   def initialize(time = Time.new)
-#     @time = time
+#   def initialize(time_class = Time)
+#     @time_class = time_class
 #   end
 
-#   def delivery_time
-#     calculate_delivery_time
-#     format
+#   def formatted_delivery_time
+#     time = @time_class.new.calculate_delivery.format
 #   end
 
 #   private
 
-#   def calculate_delivery_time
+#   def calculate_delivery
 #     @time += 60 * 60
 #   end
 

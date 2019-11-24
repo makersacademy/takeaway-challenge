@@ -1,13 +1,16 @@
 require "text_provider"
 
 describe TextProvider do
-  let(:time_formatter) { double :time_formatter, delivery_time: "18:55" }
-  let(:text_provider) { TextProvider.new(time_formatter) }
+  let(:text_provider) { TextProvider.new }
+  let(:client) { double :client }
 
-  describe "#send_message" do
-    it "should return a text saying that the order was placed successfully and it will be delivered 1 hour from now" do
+  describe "#send_text" do
+    it "should be able to send a text message" do
       message = "Thank you! Your order was placed and will be delivered before 18:55"
-      expect(text_provider.send_message).to eq message
+      twilio_message_body = { from: ENV['TWILIO_PHONE_NUMBER'], to: ENV['MY_PHONE_NUMBER'], body: message }
+      allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
+      expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
+      text_provider.send_text("18:55")
     end
   end
 end
