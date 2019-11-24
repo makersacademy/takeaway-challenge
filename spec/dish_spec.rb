@@ -1,7 +1,6 @@
 require "dish"
 
 describe Dish do
-
   let(:dish) { Dish.new("Carbonara", 10) }
 
   describe "#name" do
@@ -15,5 +14,4 @@ describe Dish do
       expect(dish.price).to eq 10
     end
   end
-
 end

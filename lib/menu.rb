@@ -1,5 +1,4 @@
 class Menu
-
   attr_reader :dishes
 
   def initialize
@@ -7,7 +6,7 @@ class Menu
   end
 
   def add(dish)
-    fail "This dish is already in the menu" if @dishes.include? dish
+    fail "This dish is already in the menu" if include? dish
 
     @dishes.push(dish)
   end
@@ -19,5 +18,4 @@ class Menu
   def include?(dish)
     @dishes.include? dish
   end
-
 end
