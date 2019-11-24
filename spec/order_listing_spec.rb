@@ -10,13 +10,13 @@ RSpec.describe OrderListing do
     it 'keeps track of the quantity of a dish a customer wishes to order' do
       test_order_listing.add_serving
 
-      expect(test_order_listing.view).to eq 'Pepperoni Pizza – Quantity: 2'
+      expect(test_order_listing.entry).to eq 'Pepperoni Pizza – Quantity: 2'
     end
 
     it 'decreases quantity when customer removes item from an order' do
       test_order_listing_2.remove_serving
 
-      expect(test_order_listing_2.view).to eq 'Margherita Pizza – Quantity: 1'
+      expect(test_order_listing_2.entry).to eq 'Margherita Pizza – Quantity: 1'
     end
   end
 end

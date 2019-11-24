@@ -16,7 +16,7 @@ class OrderListing
     @quantity -= 1
   end
 
-  def view
+  def entry
     "#{formatted(dish.name)} – Quantity: #{quantity}"
   end
 
