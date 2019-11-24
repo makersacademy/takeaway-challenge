@@ -35,6 +35,13 @@ describe Takeaway do
       subject.select_dish(:sausage, 6)
       expect{ subject.place_order(3) }.to raise_error("Incorrect total")
     end
+
+    it 'should send a confirmation text' do
+      allow(takeaway).to receive(:send_text)
+      expect(takeaway).to receive(:send_text).with("Thank you for your order: £15")
+      takeaway.place_order(15)
+    end
   end 
+
 
 end

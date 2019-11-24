@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'textsender'
 
 class Takeaway 
   attr_reader :menu, :basket
@@ -25,7 +26,10 @@ class Takeaway
     p "Total is £#{@sum}"
   end
 
-
+  def place_order(amount)
+    fail ("Incorrect total") unless amount == @sum
+    Textsender.new.sent_text
+  end
 
 end
 
