@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class MyOrder
 
-  attr_reader :my_order, :menu, :calculated_total, :actual_total
+  attr_reader :my_order, :menu
 
   def initialize(menu = Menu.new)
     @my_order = []

@@ -40,6 +40,4 @@ describe MyOrder do
       expect(subject.check_total).to eq "Total is correct"
     end
   end
-
-
 end
