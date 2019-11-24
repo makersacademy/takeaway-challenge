@@ -20,9 +20,9 @@ describe Menu do
     it "should return a formatted string of the dishes" do
       output = "Number | Dish".ljust(32) + "Price\n"
       [dish1, dish2, dish3].each_with_index do |dish, i|
-        output << "[#{i+1}]".ljust(9)
+        output << "[#{i + 1}]".ljust(9)
         output << dish.name.ljust(20, '.')
-        output << ("%.2f\n" % [dish.price]).rjust(9,'.')
+        output << ("%.2f\n" % [dish.price]).rjust(9, '.')
       end
       expect(menu.list_dishes).to eq output
     end
