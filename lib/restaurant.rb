@@ -12,13 +12,13 @@ class Restaurant
     fail "The takeaway basket is empty" if @takeaway.empty?
     fail "Payment amount not correct" unless @takeaway.correct_amount?(price)
 
-    @text_provider.send_message(format_delivery_time)
+    @text_provider.send_message(delivery_time)
     @takeaway.complete
   end
 
   private
 
-  def format_delivery_time
+  def delivery_time
     (Time.now + DELIVERY_TIME).strftime("%k:%M")
   end
 end
