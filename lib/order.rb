@@ -18,13 +18,13 @@ class Order
     @basket[dish] = quantity
   end
 
-  def total
+  def total_per_dish
     @basket.map do |dish, quantity|
       @menu.price(dish) * quantity
     end
   end
 
   def bill
-    total.inject(:+)
+    total_per_dish.inject(:+)
   end
 end

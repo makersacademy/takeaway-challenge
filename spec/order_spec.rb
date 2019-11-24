@@ -22,10 +22,15 @@ describe Order do
     expect { order.add_to_basket(:beef, 1) }.to raise_error "This item is not on the menu!"
   end
 
+  it "calculates the price per dish by quantity" do
+    order.add_to_basket(:chips, 2)
+    expect(order.total_per_dish).to eq [6]
+  end
+
   it "calculates the total price of the order" do
     order.add_to_basket(:chips, 2)
     order.add_to_basket(:rice, 2)
-    order.total
+    order.total_per_dish
     expect(order.bill).to eq 11
   end
 end
