@@ -29,8 +29,11 @@ Prerequisites
 Class Diagrams
 -------
 
-Dish      | Menu    | TakeAway | Restaurant | TextProvider
----       | ----    | -------- | ---------- | ------------
-@name     | @dishes |
-@price    |
----       | ---     | 
+Dish   | Menu      | TakeAway | Restaurant | TextProvider
+---    | ----      | -------- | ---------- | ------------
+@name  | @dishes   |
+@price |           |
+---    | ---       | 
+       | add(dish) |
+       | list      |
+       | contains? |
