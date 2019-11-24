@@ -1,6 +1,5 @@
 class Order
 
-
   def initialize(menu, customer)
     @menu = menu
     @customer = customer
@@ -8,15 +7,13 @@ class Order
   end
 
   def total
-    @basket.sum{ |dish, qty| @menu.dishes[dish] * qty }
+    @basket.sum { |dish, qty| @menu.dishes[dish] * qty }
   end
 
   def add_dish(dish, qty)
-    fail "Item not on the menu." if !@menu.dishes[dish]
+    fail "Item not on the menu." unless @menu.dishes[dish]
 
     @basket[dish] += qty
-
-   
   end
 
   # def remove_dish(dish)

@@ -5,7 +5,7 @@ require 'order'
 describe Order do
 
   let(:subject) {
-    menu = Menu.new({ "kimchi" => 5, "fried rice" => 7, "salmon" => 10} )
+    menu = Menu.new({ "kimchi" => 5, "fried rice" => 7, "salmon" => 10 })
     customer = Customer.new("1234")
     Order.new(menu, customer) 
   }
@@ -21,7 +21,7 @@ describe Order do
     end
 
     it "should not allow dishes that are not on the menu" do
-      expect{ subject.add_dish("chicken") }.to raise_error { "Item not on the menu."}
+      expect { subject.add_dish("chicken", 1) }.to raise_error "Item not on the menu."
     end
 
     it "should add multiples of the same dish to the basket" do
