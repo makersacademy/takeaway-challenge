@@ -13,7 +13,7 @@ class Order
     }
   end
   
-  def order(dish, quantity = 1)
+  def order(dish, quantity)
     @customer << "#{dish} x #{quantity}"
     @list_of_dishes.each { |key,value| key == dish ? @total += value * quantity : 0}
   end
