@@ -1,5 +1,5 @@
-require "twilio-ruby"
 require "dotenv/load"
+require "twilio-ruby"
 
 class TextProvider
   def initialize

@@ -3,7 +3,7 @@ class Restaurant
 
   attr_reader :takeaway, :text_provider
 
-  def initialize(takeaway = Takeaway.new, text_provider = TextProvider.new, time = Time.new)
+  def initialize(takeaway = Takeaway.new, text_provider = TextProvider.new)
     @takeaway = takeaway
     @text_provider = text_provider
   end
