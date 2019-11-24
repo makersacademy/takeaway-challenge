@@ -2,12 +2,13 @@ require_relative 'menu'
 
 class MyOrder
 
-  attr_reader :my_order, :menu
+  attr_reader :my_order, :menu, :calculated_total, :actual_total
 
   def initialize(menu = Menu.new)
     @my_order = []
     @menu = menu
     @calculated_total = 0
+    @actual_total = 0
   end
 
   def show_order
@@ -32,7 +33,6 @@ class MyOrder
   end
 
   def check_total
-    @actual_total = 0
     @my_order.each do |dish|
       p dish[:price]
       @actual_total += dish[:price]
@@ -40,6 +40,7 @@ class MyOrder
     p "Actual total: #{@actual_total}"
     p "Calculated total: #{@calculated_total}"
     raise "Incorrect total" if @actual_total != @calculated_total
+    "Total is correct"
   end
 
 end

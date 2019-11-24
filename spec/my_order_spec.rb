@@ -2,6 +2,10 @@ require 'my_order'
 
 describe MyOrder do
 
+  before(:each) do
+    allow(subject).to receive(:actual_total) { :calculated_total }
+  end
+
   describe '#show_order' do
     it "should print out my current order" do
       subject.select_dish(2)
@@ -30,6 +34,10 @@ describe MyOrder do
       subject.select_dish(4)
       allow(subject).to receive(:print_total) { 19.30 }
       expect{subject.check_total}.to raise_error "Incorrect total"
+    end
+
+    it "should raise an error if the total of dishes in the order is not the same as the calculated total" do
+      expect(subject.check_total).to eq "Total is correct"
     end
   end
 
