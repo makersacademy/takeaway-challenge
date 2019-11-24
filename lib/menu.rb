@@ -13,7 +13,7 @@ class Menu
   end
 
   def list
-    @dishes.map { |dish| "Name: #{dish.name}, Price: #{dish.price}" }.join("\n")
+    @dishes.map { |dish| "#{dish.name} (£#{dish.price})" }.join(", ")
   end
 
   def include?(dish)

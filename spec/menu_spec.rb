@@ -24,7 +24,7 @@ describe Menu do
     it "should return the list of dishes" do
       menu.add(dish_1)
       menu.add(dish_2)
-      expect(menu.list).to eq "Name: Carbonara, Price: 10\nName: Puttanesca, Price: 12"
+      expect(menu.list).to eq "Carbonara (£10), Puttanesca (£12)"
     end
   end
 
