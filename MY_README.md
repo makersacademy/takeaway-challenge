@@ -17,5 +17,17 @@ Takeaway Challenge
 Instructions
 -------
 
-For the challenge instructions, please refer to the main [README](https://github.com/AndreaDiotallevi/takeaway-challenge/blob/master/README.md).
+This is the weekend challenge at the end of my second week at Makers Academy, a 16-week software developer bootcamp. For all the instructions, please refer to the main [README](https://github.com/AndreaDiotallevi/takeaway-challenge/blob/master/README.md).
 
+Prerequisites
+-------
+
+* Fork this repository
+* Clone the new repository into your machine with ```git clone```
+* Run the command ```bundle``` in the project directory to ensure you have all the gems
+
+Class Diagrams
+-------
+
+Dish | Menu | TakeAway | Restaurant | TextProvider
+---- | ---- | -------- | ---------- | ------------
