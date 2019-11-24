@@ -29,18 +29,21 @@ Prerequisites
 Class Diagrams
 -------
 
-| Dish   | Menu      | TakeAway              | Restaurant      | TextProvider    |
-| ---    | ----      | ---                   | ---             | ---             |
-| @name  | @dishes   | @basket               | @takeaway       | @client         |
-| @price |           | @menu                 | @text_provider  |                 |
-|------- | --------- | --------------------- | --------------- | --------------- |
-|        | add(dish) | read_menu             | checkout(price) | send_text(time) |
-|        | list      | order(dish, quantity) |                 |                 |
-|        | contains? | basket_summary        |                 |                 |
-|        |           | total                 |                 |                 |
-|        |           | correct_amount?       |                 |                 |
-|        |           | empty?                |                 |                 |
-|        |           | complete              |                 |                 |
+| Dish   | Menu            | TakeAway               | Restaurant      | TextProvider    |
+| ---    | ----            | ---                    | ---             | ---             |
+| @name  | @dishes         | @basket                | @takeaway       | @client         |
+| @price |                 | @menu                  | @text_provider  |                 |
+|------- | --------------- | ---------------------- | --------------- | --------------- |
+|        | add(dish)       | read_menu              | checkout(price) | send_text(time) |
+|        | list            | order(dish, quantity)  |                 |                 |
+|        | contains?(dish) | basket_summary         |                 |                 |
+|        |                 | total                  |                 |                 |
+|        |                 | correct_amount?(price) |                 |                 |
+|        |                 | empty?                 |                 |                 |
+|        |                 | complete               |                 |                 |
+|------- | --------------- | ---------------------- | --------------- | --------------- |
+|        |                 | calculate_total        | delivery_time   |                 |
+
 
 Feature Test
 -------
