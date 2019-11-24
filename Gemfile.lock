@@ -13,16 +13,25 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    daemons (1.3.1)
     diff-lcs (1.3)
     docile (1.3.2)
     faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
+    ffi (1.11.2)
     jaro_winkler (1.5.4)
     json (2.2.0)
     jwt (2.2.1)
+    listen (3.2.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     multipart-post (2.1.1)
+    mustermann (1.0.3)
+    ngrok (1.6.1)
+      daemons
+      listen
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     parallel (1.18.0)
@@ -30,10 +39,15 @@ GEM
       ast (~> 2.4.0)
     public_suffix (4.0.1)
     rack (2.0.7)
+    rack-protection (2.0.7)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rainbow (3.0.0)
     rake (13.0.1)
+    rb-fsevent (0.10.3)
+    rb-inotify (0.10.0)
+      ffi (~> 1.0)
     regexp_parser (1.6.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -68,8 +82,14 @@ GEM
       simplecov
       terminal-table
     simplecov-html (0.10.2)
+    sinatra (2.0.7)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.7)
+      tilt (~> 2.0)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    tilt (2.0.10)
     twilio-ruby (5.29.1)
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
@@ -83,12 +103,14 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  ngrok
   rake
   rspec
   rubocop (= 0.71.0)
   rubocop-rails
   simplecov
   simplecov-console
+  sinatra
   twilio-ruby
 
 BUNDLED WITH
