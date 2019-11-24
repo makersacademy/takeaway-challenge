@@ -3,6 +3,7 @@ require 'menu_listing'
 RSpec.describe MenuListing do
   let(:item_1) { double(:pizza, name: :pepperoni_pizza, price: 8) }
   let(:item_2) { double(:pizza, name: :margherita_pizza, price: 6) }
+  
   let(:test_listing_1) { MenuListing.new(item_1, 10) }
   let(:test_listing_2) { MenuListing.new(item_2, 11) }
 

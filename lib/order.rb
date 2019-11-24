@@ -1,24 +1,55 @@
+require_relative 'order_listing'
+
 class Order
-  def initialize
+  attr_reader :items, :customer
+
+  NO_CUSTOMER_ASSIGNED = 'This order currently has no recipient'
+  PAYMENT_UNSUCCESSFUL = 'Payment unsuccesful'
+
+  def initialize(order_listing_class = OrderListing)
     @items = []
+    @order_listing_class = order_listing_class
+  end
+
+  def assign_customer(customer)
+    @customer = customer
   end
 
   def add_item(item)
-    @items << item unless @items.include? item
+    raise NO_CUSTOMER_ASSIGNED unless customer
+
+    existing_entry = selected(item)
+    existing_entry ? existing_entry.add_serving : @items << @order_listing_class.new(item)
+  end
+
+  def remove_item(item)
+    existing_entry = selected(item)
+    existing_entry.quantity > 1 ? existing_entry.remove_serving : @items.delete(existing_entry)
   end
 
   def view
-    items_ordered.map { |order_item| order_item.name }
+    ordered_items.map { |order| order.entry }.join("\n")
   end
 
   def total
-    prices = items_ordered.map { |dish| dish.price }
+    prices = ordered_items.map { |ordered| ordered.dish.price * ordered.quantity }
     prices.reduce(&:+)
+  end
+
+  def settle_payment
+    raise PAYMENT_UNSUCCESSFUL if customer.balance < total
+
+    customer.charge(total)
+    'payment succesful'
   end
 
   private
 
-  def items_ordered
+  def ordered_items
     @items
+  end
+
+  def selected(item)
+    @items.select { |ordered| ordered.dish == item }.pop
   end
 end

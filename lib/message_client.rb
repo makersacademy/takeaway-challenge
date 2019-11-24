@@ -9,9 +9,9 @@ class MessageClient
     @twilio_rest_client = twilio_rest_client
   end
 
-  def confirm_order
+  def confirm_order(customer)
     begin
-      send_message
+      send_message_to(customer)
       'message sent'
     rescue RuntimeError
       'message failed to send'
@@ -20,9 +20,9 @@ class MessageClient
 
   private
 
-  def send_message
+  def send_message_to(customer)
     @twilio_rest_client.messages.create(
-      to: ENV['MY_PHONE_NUMBER'],
+      to: customer.number,
       from: ENV['TWILIO_PHONE_NUMBER'],
       body: "Thank you! Your order was placed and will be delivered before " +
             "#{(Time.now.utc - 3600).strftime("%k:%M")}"
