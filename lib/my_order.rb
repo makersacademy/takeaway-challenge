@@ -13,7 +13,7 @@ class MyOrder
 
   def show_order
     @my_order.each do |dish|
-      puts dish
+      p "Number #{dish[:number]}".center(10) + "||".center(5) + "#{dish[:dish]}".center(15) + "£#{dish[:price]}".center(15)
     end
   end
 
@@ -41,6 +41,10 @@ class MyOrder
     p "Calculated total: #{@calculated_total}"
     raise "Incorrect total" if @actual_total != @calculated_total
     "Total is correct"
+  end
+
+  def place_order
+    Text.new.send
   end
 
 end

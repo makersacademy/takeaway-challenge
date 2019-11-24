@@ -11,7 +11,7 @@ class Menu
 
   def list_dishes
     @dishes.each do |dish|
-      puts dish
+      p "Number #{dish[:number]}".center(10) + "||".center(5) + "#{dish[:dish]}".center(15) + "£#{dish[:price]}".center(15)
     end
   end
 
