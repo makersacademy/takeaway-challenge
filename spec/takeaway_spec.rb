@@ -42,17 +42,17 @@ describe Takeaway do
     end
   end
 
-  describe "#is_correct_amount?" do
+  describe "#correct_amount?" do
     it "should return 'true' if the given price matches the total of the takeaway order" do
       takeaway.order(dish_1, 5)
       takeaway.order(dish_2, 2)
-      expect(takeaway.is_correct_amount?(74)).to eq true
+      expect(takeaway.correct_amount?(74)).to eq true
     end
 
     it "should return 'false' if the given price matches the total of the takeaway order" do
       takeaway.order(dish_1, 5)
       takeaway.order(dish_2, 2)
-      expect(takeaway.is_correct_amount?(20)).to eq false
+      expect(takeaway.correct_amount?(20)).to eq false
     end
   end
 end

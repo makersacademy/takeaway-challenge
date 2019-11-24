@@ -28,7 +28,7 @@ class Takeaway
     "Total: £#{calculate_total}"
   end
 
-  def is_correct_amount?(price)
+  def correct_amount?(price)
     price == calculate_total
   end
 

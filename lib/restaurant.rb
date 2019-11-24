@@ -8,7 +8,7 @@ class Restaurant
 
   def checkout(price)
     message = "The given amount does not match the total of the takeaway order"
-    fail message unless @takeaway.is_correct_amount?(price)
+    fail message unless @takeaway.correct_amount?(price)
 
     @text_provider.send_message
   end
