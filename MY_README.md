@@ -29,11 +29,14 @@ Prerequisites
 Class Diagrams
 -------
 
-Dish   | Menu      | TakeAway | Restaurant | TextProvider
----    | ----      | -------- | ---------- | ------------
-@name  | @dishes   |
-@price |           |
----    | ---       | 
-       | add(dish) |
-       | list      |
-       | contains? |
+Dish   | Menu      | TakeAway              | Restaurant | TextProvider
+---    | ----      | ---                   | ---------- | ------------
+@name  | @dishes   | @basket
+@price |           | @menu
+       | add(dish) | read_menu
+       | list      | order(dish, quantity) |
+       | contains? | basket_summary
+       |           | total
+       |           | correct_amount?
+       |           | empty?
+       |           | complete
