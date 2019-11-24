@@ -1,4 +1,4 @@
-#Takeaway Challenge
+# Takeaway Challenge
 
 For this weekend challenge, we were tasked with creating a simple application for a user to place a takeaway order from. 
 
@@ -12,31 +12,31 @@ I approached this challenge by taking on one user story at a time, with a test d
 
 4. To receive a text once the order has been placed that will reassure the user the order will be delivered on time - I was unsure how to test for this, but I created a text class and send_text method that can send a text to the user through the Twilio gem.
 
-##IRB Example
+## IRB Example
 
-2.6.5 :001 > order = Order.new
- => #<Order:0x00007ff59c0e1390 @menu_class=Menu, @menu="", @order=[]> 
-2.6.5 :002 > order.see_menu
+- 2.6.5 :001 > order = Order.new
+-  => #<Order:0x00007ff59c0e1390 @menu_class=Menu, @menu="", @order=[]> 
+- 2.6.5 :002 > order.see_menu
 Menu:
 1. Chicken - £10
 2. Steak - £15
 3. Pasta - £8
 4. Pizza - £9
- => {"Chicken"=>10, "Steak"=>15, "Pasta"=>8, "Pizza"=>9} 
-2.6.5 :003 > order.add("Chicken")
- => "You now have 1 of the Chicken meal in your order" 
-2.6.5 :004 > order.add("Chicken")
- => "You now have 2 of the Chicken meal in your order" 
-2.6.5 :005 > order.add("Pizza")
- => "You now have 1 of the Pizza meal in your order" 
-2.6.5 :006 > order.add("Chicken")
- => "You now have 3 of the Chicken meal in your order" 
-2.6.5 :007 > order.check_total
-Chicken - £10
-Chicken - £10
-Pizza - £9
-Chicken - £10
----------------
-Total - £39
- => nil 
-2.6.5 :008 > order.place_order
+- => {"Chicken"=>10, "Steak"=>15, "Pasta"=>8, "Pizza"=>9} 
+- 2.6.5 :003 > order.add("Chicken")
+- => "You now have 1 of the Chicken meal in your order" 
+- 2.6.5 :004 > order.add("Chicken")
+- => "You now have 2 of the Chicken meal in your order" 
+- 2.6.5 :005 > order.add("Pizza")
+- => "You now have 1 of the Pizza meal in your order" 
+- 2.6.5 :006 > order.add("Chicken")
+- => "You now have 3 of the Chicken meal in your order" 
+- 2.6.5 :007 > order.check_total
+- Chicken - £10
+- Chicken - £10
+- Pizza - £9
+- Chicken - £10
+- ---------------
+- Total - £39
+- => nil 
+- 2.6.5 :008 > order.place_order
