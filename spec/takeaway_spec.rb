@@ -10,7 +10,7 @@ describe Takeaway do
 
   describe "#show_menu" do
     it "return a hash of food items and their price" do
-      expect(subject.show_menu).to eq({"Chicken Chow Mein"=>6.5, "Egg Fried Rice"=>4.8}) # It's returning a hash I dont know why??
+      expect(subject.show_menu).to eq({ "Chicken Chow Mein" => 6.5, "Egg Fried Rice" => 4.8 }) # It's returning a hash I dont know why??
     end
   end
 

@@ -8,7 +8,7 @@ class Takeaway
 
   def show_menu
     puts "What would you like to eat? Please type your order"
-    @menu.each {|k,v|
+    @menu.each { |k, v|
       p "#{k} = £#{v}\n" 
     }
   end
@@ -18,6 +18,5 @@ class Takeaway
     @order_item = input
     @order_price = @menu[@order_item]
   end
-
 
 end
