@@ -14,29 +14,46 @@ describe Order do
     expect(subject.total).to eq 0
   end
 
-  it "should add a dish from the menu" do
-    subject.add_dish("kimchi")
+  describe "#add_dish" do
+
+    it "should add a dish from the menu" do
+      subject.add_dish("kimchi", 1)
+    end
+
+    it "should not allow dishes that are not on the menu" do
+      expect{ subject.add_dish("chicken") }.to raise_error { "Item not on the menu."}
+    end
+
+    it "should add multiples of the same dish to the basket" do
+      expect(subject.add_dish("kimchi", 2))
+    end
+  
+
+    # describe "#remove dish" do
+    #   it "should remove a dish from the menu" do
+    #     subject.add_dish("fried rice", 1)
+    #     expect(subject.remove_dish("fried rice", 1))
+    #   end
+    # end
   end
 
-  it "should not allow dishes that are not on the menu" do
-    expect{ subject.add_dish("chicken") }.to raise_error { "Item not on the menu."}
+  describe "#total" do
+    it "should return total for one item" do
+      subject.add_dish("kimchi", 1)
+      expect(subject.total).to eq 5
+    end
+
+    it "should return the total for multiple items" do
+      subject.add_dish("kimchi", 1)
+      subject.add_dish("fried rice", 2)
+      expect(subject.total).to eq 19
+    end
+
   end
 
-  it "should return total for one item" do
-    subject.add_dish("kimchi")
-    expect(subject.total).to eq 5
+  describe "#order summary" do
+    it "should return a summary of the order" do
+
+    end
   end
-
-  it "should return the total for multiple items" do
-    subject.add_dish("kimchi")
-    subject.add_dish("fried rice")
-    expect(subject.total).to eq 12
-  end
-
-  it "should return a summary of the order" do
-    
-  end
-
-
-
 end
