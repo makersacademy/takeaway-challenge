@@ -12,16 +12,24 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
+    fail "This dish is not in the menu" unless @menu.include?(dish)
+
     @basket[dish] = quantity
-    "#{quantity}x #{dish.name}(s) added to your basket."
+    "#{quantity}x #{dish.name}(s) added to your basket"
   end
 
   def basket_summary
-    @basket.map { |dish, quantity| "#{dish.name} x#{quantity} = £#{dish.price * quantity}" }.join(", ")
+    @basket.map do |dish, quantity|
+      "#{dish.name} x#{quantity} = £#{dish.price * quantity}"
+    end.join(", ")
   end
 
   def total
     "Total: £#{calculate_total}"
+  end
+
+  def is_correct_amount?(price)
+    price == calculate_total
   end
 
   private

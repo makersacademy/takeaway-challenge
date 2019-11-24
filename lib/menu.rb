@@ -9,6 +9,7 @@ class Menu
     fail "This dish is already in the menu" if include? dish
 
     @dishes.push(dish)
+    "#{dish.name} added to the menu"
   end
 
   def list
