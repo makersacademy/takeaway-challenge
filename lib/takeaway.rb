@@ -14,11 +14,11 @@ class Takeaway
   private
 
   def confirm_order order
-    while true
-      input = check_summary order
-      break if input == "y"
-      order.update_order
-    end
+    input = check_summary order
+    return if input == "y"
+
+    order.update_order
+    confirm_order order
   end
   
   def check_summary order
