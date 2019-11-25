@@ -8,5 +8,4 @@ o.show_menu
 o.add_to_basket(4)
 o.add_to_basket(4)
 o.add_to_basket(1)
-t.submit_order(o,17.97)
-
+t.submit_order(o, 17.97)

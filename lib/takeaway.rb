@@ -18,6 +18,7 @@ class Takeaway
 
   def submit_order(order, tendered, text_class = Text)
     raise "Incorrect amount tendered, order not successful" if order.total != tendered
+    
     @text = text_class.new
     @order_history << order
   end

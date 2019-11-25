@@ -20,10 +20,9 @@ class Menu
   private
 
   def load_dishes(file)
-    id = 1
-    CSV.foreach(file, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}).with_index(1) do |row, i|
+    CSV.foreach(file, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all }).with_index(1) do |row, i|
       @dishes << row.to_h
-      @dishes[i -1][:id] = i
+      @dishes[i - 1][:id] = i
     end
   end
 

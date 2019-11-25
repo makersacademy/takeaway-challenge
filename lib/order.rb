@@ -8,7 +8,7 @@ class Order
   end
 
   def show_menu
-   @menu.view
+    @menu.view
   end
 
   def add_to_basket(id, qty = 1)
@@ -24,6 +24,7 @@ class Order
 
   def summary
     return "No selections made" if @basket.empty?
+    
     print_header
     print_selections
     print_total

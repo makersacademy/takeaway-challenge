@@ -3,7 +3,7 @@ class Text
   def initialize
     msg = "
     Thank you for your order.
-    Your order was placed at: #{(Time.now).strftime("%H:%M")}
+    Your order was placed at: #{Time.now.strftime("%H:%M")}
 
     It will be with you at approximately: #{(Time.now + 30 * 60).strftime("%H:%M")}"
 
