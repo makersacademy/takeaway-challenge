@@ -14,6 +14,98 @@ Takeaway Challenge
 
  ```
 
+## My Solution
+
+### Installation
+
+To install the application, clone this repo and run:
+```
+$ bundle install
+```
+
+You will need a twilio account with an active phone number for
+the messages to be sent from. These are read from environment
+variables:
+```
+twilio_account_sid=<your_acount_sid>
+twilio_auth_token=<your_auth_token>
+twilio_phone_number=<your_twilio_phone_number>
+```
+
+### Usage
+
+Once the required gems have been installed and environment
+variables have been set up you can run the application in irb.
+require all the files in the lib folder and then you can create
+a menu of Dishes. This can then be passed to the initialisation
+of an instance of Takeaway. To make an order you call
+`Takeaway#run`.
+
+```
+2.6.5 :002 > menu = Menu.new([Dish.new("first", 3.45), Dish.new("second", 45)])
+ => #<Menu:0x0000561809ef1830 @dishes=[#<Dish:0x0000561809ef1948 @name="first", @price=3.45>, #<Dish:0x0000561809ef18d0 @name="second", @price=45>]>
+2.6.5 :003 > takeaway = Takeaway.new menu
+ => #<Takeaway:0x0000561809f1c508 ...>
+2.6.5 :004 > takeaway.run
+Number | Dish                   Price
+[1]      first...................3.45
+[2]      second.................45.00
+Please pick a dish (enter 0 to see the menu again): 1
+How many first would you like to add: 4
+Please pick a dish (enter 0 to see the menu again): 0
+Number | Dish                   Price
+[1]      first...................3.45
+[2]      second.................45.00
+Please pick a dish (enter 0 to see the menu again): 2
+How many second would you like to add: 1
+Please pick a dish (enter 0 to see the menu again):
+Summary:
+4 x first (13.80)
+1 x second (45.00)
+Total: 58.80
+Is this order correct? [y/n]: n
+Summary:
+4 x first (13.80)
+1 x second (45.00)
+Total: 58.80
+Number | Dish                   Price
+[1]      first...................3.45
+[2]      second.................45.00
+Please pick a dish (enter 0 to see the menu again): 1
+How many first would you like to add: -1
+Please pick a dish (enter 0 to see the menu again):
+Summary:
+3 x first (10.35)
+1 x second (45.00)
+Total: 55.35
+Is this order correct? [y/n]: y
+Please enter a number to send a confirmation to: +31...543
+ => <Twilio.Api...>
+```
+
+### Structure
+
+The application is split into the following class:
+ - Takeaway (to handle the general process of ordering from the takeaway)
+ - Order (to handle actual ordering and calculation of a total)
+ - Menu (a list of availble food items)
+ - Dish (an object that contains its name and price)
+ - Messenger (to handle the setting up of the twilio client and send messages)
+
+### Further work
+
+Unfortunately this project is not currently in the state that I would ideally
+like it to be in. Before considering further features I would like work more 
+on the input validation as I feel that is currently rather flakey at the moment.
+It would also be nice to package the whole application with in an executable that
+could load a menu from a file to save manually creating the menu everytime the
+program is run.
+
+The concept of making it receive orders via text is also intriguing and the
+documentation for the Twilio api makes it appear as if it wouldn't be too
+strenuous a task but with the time available this weekend, that hasn't been
+an option.
+
 Instructions
 -------
 
