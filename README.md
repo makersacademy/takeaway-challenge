@@ -1,3 +1,29 @@
+2.6.5 :001 > require './lib/takeaway'
+ => true 
+
+2.6.5 :002 > menu = Menu.new
+
+ => #<Menu:0x00007fb88cacb010 @dishes_list={:llomo_saltado=>14.9, 
+ :ratatouille=>9, :chicken_and_chips=>5.5, :ceviche=>10}> 
+
+2.6.5 :003 > order = Order.new(menu)
+
+ => #<Order:0x00007fb88cac2b18 @dishes_ordered={}, @menu=#<Menu:0x00007fb88cacb010 @dishes_list={:llomo_saltado=>14.9, :ratatouille=>9, :chicken_and_chips=>5.5, :ceviche=>10}>> 
+
+2.6.5 :004 > order.place_order(:ceviche, 1)
+
+ => 1 
+
+2.6.5 :005 > order.place_order(:ratatouille, 2)
+
+ => 2 
+
+2.6.5 :006 > order.total_bill
+
+ => 28 
+ 
+2.6.5 :007 > exit
+
 Takeaway Challenge
 ==================
 ```
