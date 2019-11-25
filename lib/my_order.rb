@@ -1,14 +1,13 @@
-require_relative 'menu'
-
 class MyOrder
 
   attr_reader :my_order, :menu
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, text = Text.new)
     @my_order = []
     @menu = menu
     @calculated_total = 0
     @actual_total = 0
+    @text = text
   end
 
   def show_order
@@ -44,7 +43,7 @@ class MyOrder
   end
 
   def place_order
-    Text.new.send
+    @text.send
   end
 
 end
