@@ -17,6 +17,7 @@ describe Order do
   describe "#add_dish" do
 
     it "should add a dish from the menu" do
+      # am i testing for state here?
       subject.add_dish("kimchi", 1)
     end
 
@@ -25,6 +26,7 @@ describe Order do
     end
 
     it "should add multiples of the same dish to the basket" do
+      # am i testing for state here?
       expect(subject.add_dish("kimchi", 2))
     end
   

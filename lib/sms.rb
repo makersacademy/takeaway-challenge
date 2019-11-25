@@ -22,3 +22,12 @@ class Sms
 
   puts message.sid
 end
+
+# the way to test this further is to wrap it in your own code. to have further control you can create your own methods
+
+# def messages
+#   @client.messages.create
+# end
+
+# def create
+# end
