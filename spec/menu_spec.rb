@@ -30,9 +30,7 @@ describe Menu do
     sum = 0.99 + 2 * 1.09
 
     it "should calculate the sum of the items in the basket" do
-      menu.sum(basket)
-
-      expect(menu.basket_sum).to eq sum.round(2)
+      expect(menu.sum(basket)).to eq sum.round(2)
     end
   end
 
