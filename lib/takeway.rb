@@ -1,11 +1,11 @@
-require './menu'
-require './order'
+require 'menu'
+require 'order'
 
 class Takeway
   
-  def initialize
-    @menu = Menu.new
-    @order = Order.new
+  def initialize(menu = Menu.new, order = Order.new)
+    @menu = menu
+    @order = order
   end
   
   def print_menu
@@ -26,9 +26,9 @@ class Takeway
   
 end
 
-# y = Takeway.new
-# y.print_menu
-# y.add_to_order("Fish", 5)
-# y.add_to_order("Chicken", 5)
-# y.print_summary
-# y.total_cost
+y = Takeway.new
+y.print_menu
+y.add_to_order("fish", 5)
+y.add_to_order("Chicken", 5)
+y.print_summary
+y.total_cost

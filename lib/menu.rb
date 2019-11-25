@@ -11,7 +11,8 @@ class Menu
   end
   
   def show_menu
-    puts @list_of_dishes.dup
+    puts "±±±± Menu : \n\n"
+    @list_of_dishes.each { |item, cost| puts "#{item} #{cost}" }
   end
   
 end

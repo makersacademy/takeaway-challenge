@@ -17,4 +17,11 @@ describe Order do
     end
     
   end
+  
+  context "User errors" do
+    
+    it "should raise and error when user tries to order something not in the menu" do
+    end
+    
+  end
 end
