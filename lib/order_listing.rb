@@ -9,11 +9,11 @@ class OrderListing
   end
 
   def add_serving
-    @quantity += 1
+    @quantity += SINGLE_SERVING
   end
 
   def remove_serving
-    @quantity -= 1
+    @quantity -= SINGLE_SERVING
   end
 
   def entry
