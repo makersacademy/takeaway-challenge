@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'capybara'
+gem 'dotenv'
 gem 'figaro'
 gem 'rake'
 gem 'rspec'

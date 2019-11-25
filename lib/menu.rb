@@ -1,7 +1,7 @@
 class Menu
   
   attr_reader :menu
-
+  
   MENU = {
     "Chicken" => 10,
     "Steak" => 15,
