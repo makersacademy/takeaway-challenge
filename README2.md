@@ -17,10 +17,18 @@ Takeaway Challenge
 Introduction
 -------
 
+* Challenge time: rest of the day and weekend, until Monday 9am
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday morning
+
+Task
+-----
+
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
-
-* Weekend challenge implementing the following user stories
+* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -43,115 +51,18 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Approach to the task
 ----
 
-The basis of the program is to have an Order class that is separate (not called on initialization) from the Takeaway class. From the order object, the user has the following methods available
+The basis of the program is to have an Order class that is separate (not called) from the Takeaway class. From the order class, the user can view the menu select items 
 
-- show_menu - shows all the dishes avaialble
-- add_to_basket(item, quantity) - allows to add dishes, and quantity
-- remove(item) - remove item from basket **not yet implemented**
-- summary - provides the user with a printed summary of the basket and current total.
+Once an order is complete the order can then be submitted to the Takeaway object, where it will be processed and confirmation sent to the customer
 
-Once an order is complete the order can then be submitted to the Takeaway objec with the following method. The exact amount on the order must be tendered for the order to be submitted.
+The idea behind this is that multiple incomplete Order objects can be open at a given time, and the Takeaway object only knows about an Order when it is submitted
 
-- submit_order(order, tendered)
-
-The idea behind keeping the order objects separate is that multiple incomplete Order objects can be open at a given time, and the Takeaway object only knows about an Order when it is submitted
-
-Menu items are loaded to the menu object from a csv file names 'dishes.rb'
-
-Notes to reviewers
+Pre-requisites
 ----
 
-Prerequisites
-----
-
-For the text confirmation functionality to work, a Twilio account must be set up and the following local environment variables must be set up
-
-````
-export TWILIO_ACCOUNT_SID=[your twilio account sid]
-export TWILIO_AUTH_TOKEN=[your twilio token]
-export TWILIO_TEL_NUMBER=[twilio number that the message is sent from]
-export TEL_NUM=[your mobile number]
-````
+In order for the text confirmation functionality to work the user must have a Twilio account and the API key, and active telephone numbers must be saved to environment variables of the following names
 
 
-Example usage
-----
-
-The project is loaded into irb as follows
-
-````
-$ irb -r './lib/takeaway.rb' 
-````
-
-Once loaded in, a Takeaway object and order object can be created
-
-````
-
-2.6.5 :002 > t = Takeaway.new
- => #<Takeaway:0x00007f9569c903a0 @menu=#<Menu:0x00007f9569c90378 @dishes=[]>, @order_history=[]> 
-2.6.5 :003 > 
-2.6.5 :004 > order1 = Order.new
- => #<Order:0x00007f9569c78390 @menu=#<Menu:0x00007f9569c78340 @dishes=[]>, @basket=[]> 
-2.6.5 :005 > 
-
-````
-
-For choices available, the menu can be viewed
-
-````
-
-2.6.5 :006 > order1.show_menu
-1.  Sweet & Sour Chicken Balls    5.99
-2.  Crispy Duck Spring Rolls (4)    4.99
-3.  Chicken Dim Sum    6.49
-4.  Szechuan Chicken in Garlic Chilli Sauce    5.99
-5.  Kung Po Prawn Balls    7.99
-6.  Stir Fried Mixed Vegetables in Black Bean Sauce    4.99
-7.  Special Fried Rice    6.99
-8.  Egg Fried Rice    3.99
-
-````
-
-Any number of the available items can be added to the basket
-
-````
-
-2.6.5 :009 > order1.add_to_basket(3)
- => [[{:dish=>"Chicken Dim Sum", :unit_price=>6.49, :id=>3}, 1]] 
-2.6.5 :010 > order1.add_to_basket(4,2)
- => [[{:dish=>"Chicken Dim Sum", :unit_price=>6.49, :id=>3}, 1], [{:dish=>"Szechuan Chicken in Garlic Chilli Sauce", :unit_price=>5.99, :id=>4}, 2]] 
-2.6.5 :011 > order1.add_to_basket(6)
- => [[{:dish=>"Chicken Dim Sum", :unit_price=>6.49, :id=>3}, 1], [{:dish=>"Szechuan Chicken in Garlic Chilli Sauce", :unit_price=>5.99, :id=>4}, 2], [{:dish=>"Stir Fried Mixed Vegetables in Black Bean Sauce", :unit_price=>4.99, :id=>6}, 1]] 
-2.6.5 :012 > 
-
-````
-
-To view a summary of the order:
-
-````
-2.6.5 :014 > order1.summary
----------------
-ORDER SUMMARY
----------------
-1 x Chicken Dim Sum (£6.49 each)
-2 x Szechuan Chicken in Garlic Chilli Sauce (£5.99 each)
-1 x Stir Fried Mixed Vegetables in Black Bean Sauce (£4.99 each)
----------------
-TOTAL = £23.46
----------------
- => nil 
- ````
-
- Finally, submit the order to the Takeaway as follows. Note that the amount tendered must equal the total amount of the order to submit. Provided the Twilio information is correctly entered, a text confrimation will be sent.
-
- ````
- 2.6.5 :019 > t.submit_order(order1, 23.46)
- ````
-
-
-
-Additional information
-----
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
