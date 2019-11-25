@@ -1,5 +1,4 @@
 2.6.5 :001 > require './lib/takeaway'
-
  => true 
 
 2.6.5 :002 > menu = Menu.new
@@ -22,7 +21,7 @@
 2.6.5 :006 > order.total_bill
 
  => 28 
-
+ 
 2.6.5 :007 > exit
 
 Takeaway Challenge
