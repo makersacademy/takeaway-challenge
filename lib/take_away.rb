@@ -16,12 +16,23 @@ class TakeAway
   end
 
   def order(dish, quantity = 1)
-    quantity.times{ @basket << @menu.display.slice(dish) }
+    quantity.times { @basket << @menu.display.slice(dish) }
     "#{quantity}x #{dish.downcase}(s) added to your basket"
   end
 
   def basket_summary
-    @basket
+    result = []
+    things = @basket.map { |item| item.keys.pop}
+    things.each { |thing|
+      dishes = result.map{ |x| x[:dish] }
+    dishes.include? thing ? result[dishes.index(thing)][:quantity] += 1 : result << {dish: thing, quantity: 1}
+    }
+    p result
+
+    # name_of_things = things.map { |key| things.count(key) }
+
+
+
     # Not passing the tests in the desired format...
     # ...skipped step due to time constraints
   end
@@ -36,9 +47,10 @@ class TakeAway
     @user_mobile = gets.chomp
   end
 
-  def complete_order(amount, time = Time.now)
+  def complete_order(amount, _time = Time.now)
     message = "Incorrect checkout price given. Please recheck your order total"
     raise message if incorrect_price?(amount)
+
     send_text
   end
 
@@ -46,7 +58,7 @@ class TakeAway
 
   def total_price
     @basket.each do |item|
-      item.each { |dish, price| @total_price += price }
+      item.each { |_dish, price| @total_price += price }
     end
   end
 
@@ -56,7 +68,7 @@ class TakeAway
 
   def send_text
     messenger = @messenger_class.new
-    messenger.send_text(@user_mobile, time = Time.now)
+    messenger.send_text(@user_mobile, Time.now)
   end
 
 end

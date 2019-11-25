@@ -19,11 +19,6 @@ describe TakeAway do
 
   describe "#order(dish, quantity)" do
     context "when quantity is not specified" do
-      it "adds one dish and price to the basket" do
-        subject.order("Tacos")
-        expect(subject.basket).to include({ "Tacos" => 4.95 })
-      end
-
       it "returns a message confirming what you added to the basket" do
         message = "1x tacos(s) added to your basket"
         expect(subject.order("Tacos")).to eq message
@@ -31,11 +26,6 @@ describe TakeAway do
     end
 
     context "when quanity is specified" do
-      it "adds multiple dishes and prices to the basket" do
-        subject.order("Tacos", 2)
-        expect(subject.basket).to include({ "Tacos" => 4.95 }, { "Tacos" => 4.95 })
-      end
-
       it "returns a message confirming what you added to the basket" do
         message = "2x scrambled eggs(s) added to your basket"
         expect(subject.order("Scrambled Eggs", 2)).to eq message
@@ -76,23 +66,18 @@ describe TakeAway do
 
   describe "#complete_order(amount)" do
 
-    before do
-     allow(subject).to receive(:send_text)
-    end
-
     it "raises an error if the amount given does not match the total price" do
       subject.order("Tacos", 3)
       message = "Incorrect checkout price given. Please recheck your order total"
-      expect{ subject.complete_order(6) }.to raise_error message
+      expect { subject.complete_order(6) }.to raise_error message
     end
 
-   it 'sends an order confirmation text message' do
-     time = Time.now
-     text = "Thank you for your order! It will be delivered within one hour from #{time.strftime('%H:%M')}"
-     expect(messenger).to receive(:send_text) { text }
-     subject.complete_order(0)
-     # Don't know what test to run here
-   end
+    it 'sends an order confirmation text message' do
+      time = Time.now.strftime('%H:%M')
+      text = "Thank you for your order! It will be delivered within one hour from #{time}"
+      expect(messenger).to receive(:send_text) { text }
+      subject.complete_order(0)
+    end
   end
 
 end
