@@ -16,4 +16,12 @@ class Order
   def print_order
     print @current_order
   end
+
+  def check_out
+    print "You have ordered #{@current_order.size} dishes at #{total_cost}"
+  end
+
+  def total_cost
+    @current_order.map { |dish| dish.values.split("£").join.to_i }.inject(&:+)
+  end
 end
