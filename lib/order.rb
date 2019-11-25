@@ -30,7 +30,7 @@ class Order
     @contents.each_with_index do |item, i|
       puts "#{i + 1}.#{item[:name]}, #{item[:price]}"
     end
-    puts price?
+    puts "\nTotal cost: £#{price?}"
   end
 
 #Calculate price
