@@ -15,6 +15,7 @@ describe Place_order do
       it "shows total value of the order" do
         place_order.add("sushi", 4)
         place_order.add("noodles", 4)
+        place_order.total
         expect(place_order.total).to eq("Your total bill is £68")
       end
     end
