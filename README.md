@@ -61,6 +61,15 @@ Menu items are loaded to the menu object from a csv file names 'dishes.rb'
 Notes to reviewers
 ----
 
+Due to limited time the following could not be complete
+
+- Method for users to remove items from basket (and tests)
+- Order class has probably got too big, perhaps a 'basket' class could be extracted?
+- Not sure how to properly TDD the STDOUT code
+- Need to test/have error handling for invalid selections when adding to the basket
+- In the menu class dishes which comprise the menu are imported from csv, need advice on how to TDD this
+- Text class needs testing, need to figure out how to do this (seen that there is some advice in the rubric - ran out of time to implement)
+
 Prerequisites
 ----
 
