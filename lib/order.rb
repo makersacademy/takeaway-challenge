@@ -24,7 +24,7 @@ class Order
 
   def summary
     return "No selections made" if @basket.empty?
-    
+
     print_header
     print_selections
     print_total
@@ -52,7 +52,8 @@ class Order
   end
 
   def print_selections
-    @basket.sort_by { |k| k[0][:id] }.each { |k| puts "#{k[-1]} x #{k[0][:dish]} (£#{k[0][:unit_price]} each)" }
+    @basket = @basket.sort_by { |k| k[0][:id] }
+    @basket.each { |k| puts "#{k[-1]} x #{k[0][:dish]} (£#{k[0][:unit_price]} each)" }
   end
 
   def print_total
