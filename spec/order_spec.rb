@@ -38,7 +38,8 @@ describe Order do
     end
 
     it "should print a prompt for the user to pick a quantity" do
-      expect { Order.new menu }.to output(/How many dish1: /).to_stdout
+      regex = /How many dish1 would you like to add/
+      expect { Order.new menu }.to output(regex).to_stdout
     end
   end
 
@@ -74,6 +75,41 @@ describe Order do
         .and_return("1\n", "3\n", "0\n", "3\n", "1\n", "\n")
       regex = /#{menu.list_dishes}\n.*#{menu.list_dishes}/
       expect { Order.new menu }.to output(regex).to_stdout
+    end
+
+    describe "#update_order" do
+      def next_input
+        allow($stdin).to receive(:gets)
+          .and_return("2\n", "1\n", "1\n", "-1\n", "\n")
+      end
+
+      before :each do
+        order
+        next_input
+      end
+
+      it "should print the menu and a summary of the order so far" do
+        string = order.summary + "\n"
+        string << menu.list_dishes 
+        regex = Regexp.quote(string)
+        expect { order.update_order }.to output(/#{regex}/).to_stdout
+      end
+
+      it "should take user input to change the order" do
+        expect($stdin).to receive(:gets)
+          .and_return("2\n", "1\n", "1\n", "-1\n", "\n")
+        order.update_order
+      end
+
+      it "should update the order correctly" do
+        order.update_order
+        summary = "Summary:\n"
+        summary << "1 x dish1 (4.50)\n"
+        summary << "3 x dish3 (7.50)\n"
+        summary << "2 x dish2 (6.00)\n"
+        summary << "Total: 18.00"
+        expect(order.summary).to eq summary
+      end
     end
   end
 end
