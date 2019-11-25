@@ -1,6 +1,6 @@
 require "order"
 
-describe Order do
+RSpec.describe Order do
   let(:option_1) { double :dish, name: "Chicken Katsu Curry", price: 6 }
   let(:option_2) { double :dish, name: "Sweet & Sour Chicken", price: 6 }
   let(:option_3) { double :dish, name: "Kung Pao Chicken", price: 6 }
@@ -39,14 +39,14 @@ describe Order do
   end
 
   describe "#empty?" do
-  it "should return 'true' if the basket is empty" do
-    expect(order.empty?).to eq true
-  end
+    it "should return 'true' if the basket is empty" do
+      expect(order.empty?).to eq true
+    end
 
-  it "should return 'false' if the basket is not empty" do
-    order.order(option_1)
-    expect(order.empty?).to eq false
-  end
+    it "should return 'false' if the basket is not empty" do
+      order.order(option_1)
+      expect(order.empty?).to eq false
+    end
 end
 
   describe "#total" do

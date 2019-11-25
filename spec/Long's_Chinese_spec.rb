@@ -1,6 +1,6 @@
 require "Long's_Chinese"
 
-describe Restaurant do
+RSpec.describe Restaurant do
   let(:order) { double :order, empty?: false, complete: "Thank you, come again!" }
   let(:restaurant) { Restaurant.new(order) }
 
