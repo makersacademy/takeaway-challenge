@@ -1,6 +1,8 @@
+require 'twilio-ruby'
+
 class Menu
 
-  DEFAULT_MENU = {
+  MENU = {
     llomo_saltado: 14.90,
     ratatouille: 9,
     chicken_and_chips: 5.50,
@@ -10,7 +12,7 @@ class Menu
   attr_reader :dishes_list
 
   def initialize
-    @dishes_list = DEFAULT_MENU
+    @dishes_list = MENU
   end
 
   def print_menu
@@ -26,11 +28,16 @@ class Menu
   def price(dish)
     dishes_list[dish]
   end
+
+  def name(dish)
+    dish
+  end
 end
 
 class Order < Menu
 
   attr_reader :menu, :dishes_ordered
+  @@dish_list = []
 
   def initialize(menu)
     @dishes_ordered = {}
@@ -39,12 +46,16 @@ class Order < Menu
 
   def place_order(dish, quantity)
     @dish = dish
-    raise order_error unless DEFAULT_MENU.include?(dish)
+    raise order_error unless MENU.include?(dish)
     dishes_ordered[dish] = quantity
   end
 
   def total_bill
     items_prices.reduce(:+)
+  end
+
+  def check_dishes
+    @@dish_list << @dish
   end
 
 private

@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Menu do
   subject(:menu) { described_class.new }
-  let(:dishes) { Menu::DEFAULT_MENU }
+  let(:dishes) { Menu::MENU }
 
   it 'has a list of dishes and prices' do
     expect(menu.dishes_list).to eq dishes
@@ -21,6 +21,10 @@ describe Menu do
 
   it 'set price of the dish' do
     expect(menu.price(:llomo_saltado)).to eq dishes[:llomo_saltado]
+  end
+
+  it 'shows the dishes name' do
+    expect(menu.name(:llomo_saltado)).to eq :llomo_saltado
   end
 end
 
@@ -56,4 +60,11 @@ describe Order do
     bill = 39.80
     expect(order.total_bill).to eq bill
   end
+
+  it 'shows all dishes added' do
+    order.place_order(:llomo_saltado, 2)
+    order.place_order(:ceviche, 1)
+    dishes = "Llomo Saltado, Ceviche"
+    expect(order.check_dishes).to eq dishes
+  end # incomplete
 end
