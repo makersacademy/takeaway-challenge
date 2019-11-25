@@ -29,7 +29,7 @@ variables:
 ```
 twilio_account_sid=<your_acount_sid>
 twilio_auth_token=<your_auth_token>
-twilio_phone_number=<your_phone_number>
+twilio_phone_number=<your_twilio_phone_number>
 ```
 
 ### Usage
@@ -79,7 +79,7 @@ Summary:
 1 x second (45.00)
 Total: 55.35
 Is this order correct? [y/n]: y
-Please enter a number to send a confirmation to: +34636402621
+Please enter a number to send a confirmation to: +31...543
  => <Twilio.Api...>
 ```
 
