@@ -14,6 +14,7 @@ class Place_order
 
 
   def total
+    @total_value = 0
     @current_order.each {|dish, quantity|
     @total_value += @menu.dish[dish] * quantity}
     "Your total bill is £#{@total_value}"
