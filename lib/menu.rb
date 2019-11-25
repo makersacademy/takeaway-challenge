@@ -22,6 +22,7 @@ class Menu
   end
 
   def sum(basket)
+    @basket_sum = 0
     basket.each { |item, quantity| @basket_sum += cost(item, quantity) }
     @basket_sum.round(2)
   end
