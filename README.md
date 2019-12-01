@@ -13,22 +13,39 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Summary
+-------
+Write a Takeaway program that allows a user to make an order. The program must have a list of dishes and their prices from which the client can order. More details about the requirements can be found [here](https://github.com/makersacademy/takeaway-challenge). 
 
-Progress to Date - 29 Sept 2019:
-Implemented 4 user stories so far:
+This project has 14 passing tests with 100% test coverage. The project is made up of two classes - the Menu class and the Order class. The Menu class contains the list of items and their prices and prints each item and its price. The Order class is where the user can place an order. 
 
-- see list of dishes with prices
-- select some number of several available dishes
-- check that the total I have been given matches the sum of the various dishes in my order
-- send a confirmation message to the customer when they order
+Plan
+-------
+User stories: 
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
 
-Yet to be implemented:
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
 
-- ability for customer to receive a text message with order confirmation
-- create Restaurant class to extract some of the functionality currently happening in the Order class
-- create Messager class to handle Twilio
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-How to Use:
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+You can see more details of my plan [here](https://github.com/jessmar94/takeaway-challenge/blob/master/plan.md). 
+
+How to Install and Run
+-----------------------
+1. Clone this repo to your local machine
+2. Run the command gem bundle install if you don't have bundle already.
+3. Run bundle install when the installation completes.
 ```
 2.5.0 :001 > require './lib/order.rb'
  => true
@@ -50,69 +67,13 @@ Confirm
  => "Thank you! Your order was placed and will be delivered before 20:04"
 ```
 
-Instructions
--------
+How to Run Tests 
+----------------
+1. Run the command rspec in the terminal.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Project Status 
+----------------
+As of 29th September 2019, 3 of the user stories have been fully implemented. The final user story has been implemented without the text messaging feature, so a user receives the confirmation message via the terminal (as can be seen in the example above). 
 
-Task
------
+Next, I would like to implement to set up the text message feature with a Twilio API, which I would create a Messager class for. I would also look into creating a Calculator class which manages the calculation of the costs and the time. 
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
