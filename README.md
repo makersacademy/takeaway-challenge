@@ -19,6 +19,10 @@ Write a Takeaway program that allows a user to make an order. The program must h
 
 This project has 14 passing tests with 100% test coverage. The project is made up of two classes - the Menu class and the Order class. The Menu class contains the list of items and their prices and prints each item and its price. The Order class is where the user can place an order. 
 
+This challenge helps me towards the following goals:
+- I have a methodical approach to solving problems
+- I can TDD anything 
+
 Plan
 -------
 User stories: 
