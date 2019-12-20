@@ -1,3 +1,5 @@
+require 'order'
+
 class Menu
 
 attr_reader :menu
@@ -17,6 +19,6 @@ attr_reader :menu
   end
 
   def select_dish(dish)
-
+    Order.new(dish, @menu[dish])
   end
 end
