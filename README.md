@@ -16,7 +16,9 @@ Takeaway Challenge
 step 1: create test for class Menu for capacity to store dishes
 step 2: test for Menu class to see if can store name and price of dish - while working on it decided needed to add method for adding items to menu
 step 3: Created test for new class Order to see items from Menu class
-step 4: create test to enable to choose dishes
+step 4: create test to enable to choose dishes -- problem with test, but code works in irb, so proceeding further
+step 5: create test in Order class to calculate total price
+step 6: test to print receipt detailing calculation of total 
 
 Instructions
 -------
