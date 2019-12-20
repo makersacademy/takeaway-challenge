@@ -4,7 +4,7 @@ class Menu
 
   def initialize
     @dishes = {
-      "pad thai" => 6.95,
+      'pad thai' => 6.95,
       "green curry" => 8.95,
       "red curry" => 8.95,
       "nasi goreng" => 4.95,
@@ -15,6 +15,11 @@ class Menu
 
   def show_dishes
     dishes
+  end
+
+  def select(input)
+    dishes = @dishes
+    dishes.assoc(input)
   end
 
 end

@@ -15,5 +15,11 @@ describe 'Menu' do
     expect(menu.show_dishes).to eq menu.dishes
   end
 
+  it "selects a dish on the menu" do
+    menu = Menu.new
+    expect(menu.select('pad thai')).to eq(['pad thai', 6.95])
+  end
+
+
 
 end
