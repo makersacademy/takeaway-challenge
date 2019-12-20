@@ -6,8 +6,14 @@ describe 'Menu' do
     expect(Menu.new).to be_instance_of Menu
   end
 
-  it 'returns the list of dishes available' do
-    expect(subject).to respond_to(:show_dishes)
+  it 'has a method that shows dishes' do
+    expect(Menu.new).to respond_to(:show_dishes)
   end
-  
+
+  it 'the show dishes method shows the list of dishes available' do
+    menu = Menu.new
+    expect(menu.show_dishes).to eq menu.dishes
+  end
+
+
 end
