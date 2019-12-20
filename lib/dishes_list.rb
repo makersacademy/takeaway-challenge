@@ -1,0 +1,3 @@
+class DishesList
+
+end
