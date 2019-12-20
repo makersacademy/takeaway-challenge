@@ -10,6 +10,9 @@ describe Menu do
   end
   let (:printed_menu) { "Special Fried Rice £6.50, Shrimp Fried Rice £6.00" }
   
+  it 'creates instance of class' do
+    expect(menu).to be_a(Menu)
+  end
   
   it 'has a list of dishes and prices' do
     expect(menu.dishlist).to eq(dishlist)

@@ -7,6 +7,10 @@ describe Takeaway do
   let(:printed_menu) { "Special Fried Rice: £6.50" }
   let(:dishes) { { rice: 2, curry: 1 } }
 
+  it 'creates instance of class' do
+    expect(takeaway).to be_a(Takeaway)
+  end
+  
   it 'allows user to see a list of dishes with prices' do
     expect(takeaway.print_menu).to eq(printed_menu)
   end
