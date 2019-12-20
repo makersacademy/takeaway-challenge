@@ -27,4 +27,7 @@ class Order
     @basket = []
   end
 
+  def select(item, quantity)
+  end
+
 end

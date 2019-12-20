@@ -27,7 +27,12 @@ describe Order do
   end
 
   it 'adds items into the basket' do
-      order = Order.new
-      expect(order).to respond_to(:select)
+    order = Order.new
+    expect(order).to respond_to(:select).with(2).arguments
+  end
+
+  it 'pushes selected items to basket' do
+    order = Order.new
+    expect(order.basket).to include(an_instance_of(Hash))
   end
 end
