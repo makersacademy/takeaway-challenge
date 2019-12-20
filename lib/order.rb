@@ -24,4 +24,11 @@ class Order
     end
     t
   end
+
+  def print_receipt
+    @choice.each do |i|
+      i.each {|k, v| puts "#{k} - £%0.2f" % v }
+    end
+    puts "Total to pay: £%0.2f" % self.total_price
+  end
 end

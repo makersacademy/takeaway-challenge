@@ -36,6 +36,7 @@ describe Order do
     allow(menu).to receive(:list).and_return("juice - £1.00")
     order = Order.new(menu_class)
     order.choose_item(:juice)
-    expect { order.print_receipt }.to output("juice - £1.00\nTotal to pay: £1.00").to_stdout
+    order.total_price
+    expect { order.print_receipt }.to output("juice - £1.00\nTotal to pay: £1.00\n").to_stdout
   end
 end
