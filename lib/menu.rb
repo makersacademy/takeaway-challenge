@@ -19,4 +19,8 @@ class Menu
       puts "#{n} - £%0.2f" % p
     end
   end
+
+  def get_price(name)
+    @options[name]
+  end
 end
