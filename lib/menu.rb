@@ -12,4 +12,7 @@ attr_reader :menu
     }
   end
 
+  def view_menu
+    return @menu
+  end
 end

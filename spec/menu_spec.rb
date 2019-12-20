@@ -13,11 +13,14 @@ describe Menu do
   end
 
   it "responds to a method called view_menu" do
-    expect(subject.menu).to respond_to(:view_menu)
+    expect(subject).to respond_to(:view_menu)
   end
 
   it "allows the customer to view the list of dishes with prices" do
-    expect(subject.menu.view_menu).to include("Fried rice" => 8)
+    expect(subject.view_menu).to include("Fried rice" => 8)
   end
 
+  it "responds to a method called select_dish" do
+    expect(subject).to respond_to(:select_dish)
+  end
 end
