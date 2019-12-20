@@ -16,7 +16,8 @@ attr_reader :dishes
     mydish.each do |key, value|
       if value.include?(mydish)
         "Item: #{value} costs £#{key}"
-      end  
+      end
+    end    
   end
     # An Example Of Possible Function to Implement
     # def score(hello)
