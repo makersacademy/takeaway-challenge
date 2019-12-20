@@ -20,12 +20,11 @@ describe Menu do
     expect(subject.view_menu).to include("Fried rice" => 8)
   end
 
-  it "responds to a method called select_dish" do
-    expect(subject).to respond_to(:select_dish)
+  it "responds to a method called create_order" do
+    expect(subject).to respond_to(:create_order)
   end
 
-  it "allows the customer to create an order by selecting a dish" do
-    dish_double = double(:dish)
-    expect(subject.select_dish(dish_double)).to be_a Order
+  it "allows the customer to create an order" do
+    expect(subject.create_order).to be_a Order
   end
 end

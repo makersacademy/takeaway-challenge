@@ -1,5 +1,8 @@
 class Order
 
-  def initialize(item, price)
-  end  
+attr_reader :ordered_dishes
+
+  def initialize
+    @ordered_dishes = {}
+  end
 end

@@ -18,7 +18,12 @@ attr_reader :menu
     return @menu
   end
 
-  def select_dish(dish)
-    Order.new(dish, @menu[dish])
+  def create_order
+    @order = Order.new
+  end
+
+  def select_dish(dish, quantity)
+    added_item = {dish => @menu[dish]}
+    quantity.times{@order.push(added_item)}
   end
 end
