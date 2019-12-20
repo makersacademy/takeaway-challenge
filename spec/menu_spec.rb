@@ -11,7 +11,8 @@ describe Menu do
   context "#print_menu" do
     it 'prints the menu' do
       menu = Menu.new
-      expect(menu).to respond_to :print_menu
+      show_menu = menu.dishes.each{ |dish, price| "#{dish}: £#{price}, " }
+      expect(menu.print).to eq show_menu
     end
   end
 end
