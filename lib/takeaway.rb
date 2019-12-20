@@ -21,13 +21,19 @@ end
 
 class Order
 
-  attr_reader :basket
+  attr_reader :basket, :main_order
 
   def initialize
     @basket = []
   end
 
   def select(item, quantity)
+    @main_order = { item => quantity }
+    @basket << main_order
   end
+
+  # def total
+  #
+  # end
 
 end

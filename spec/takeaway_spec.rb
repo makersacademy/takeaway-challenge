@@ -33,6 +33,17 @@ describe Order do
 
   it 'pushes selected items to basket' do
     order = Order.new
+    order.select("chicken", "1")
     expect(order.basket).to include(an_instance_of(Hash))
   end
+
+  it 'responds to order total method' do
+    order = Order.new
+    expect(order.total).to respond_to(:total)
+  end
+
+  # it 'totals up the order in basket' do
+  #   order = Order.new
+  #   order.select("pizza", "6.5")
+
 end
