@@ -30,8 +30,21 @@ order         | order something
 Takeaway             Dishes
 -------------       ---------
 order               @name
-                    @price
+Menu                @price
 
+
+I have completed my first story
+
+2nd User Story:
+
+nouns: customer, meal, dishes
+verbs: select, order
+
+Objects       |  Messages
+--------------|------------
+customer      |
+list of dishes| able to select from
+Meal          | order meal
 
 
 Instructions
