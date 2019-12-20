@@ -124,5 +124,19 @@ end
 When we run Rspec now, we should see a GREEN pass for the test.
 
 ```ruby
+No examples found.
+Finished in 0.00094 seconds (files took 0.74689 seconds to load)
+0 examples, 0 failures
 
+COVERAGE: 100.00% -- 3/3 lines in 2 files
 ```
+
+We get no examples found as we haven't actually written any tests yet. But now we 
+have the initial test failing, we can look at the the first user story that 
+the customer would like a list of items printed.
+
+The takeaway class will call a method called display_menu_items that will call a menu class
+to display these to the user.
+
+As we dont have a menu class yet, we will fake these with a double.
+
