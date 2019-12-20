@@ -18,7 +18,8 @@ step 2: test for Menu class to see if can store name and price of dish - while w
 step 3: Created test for new class Order to see items from Menu class
 step 4: create test to enable to choose dishes -- problem with test, but code works in irb, so proceeding further
 step 5: create test in Order class to calculate total price
-step 6: test to print receipt detailing calculation of total 
+step 6: test to print receipt detailing calculation of total
+step 7: refactoring code and tests and adding functionality to order multiples of same dish
 
 Instructions
 -------
