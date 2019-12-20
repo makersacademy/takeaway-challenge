@@ -377,4 +377,64 @@ I will provide updates and code snippets of my progress.
 Before creating any logic within the order class, we will start by writing our tests with
 what we expect the outcome to be.
 
+### A little issue
+I ran in to an interesting issue while trying to add the order method "add" to the order class
+by doing this, I started to have rspec fails on the takeaway class.
+
+The interesting part about this is that in takeaway, I defined an add mother to the order instance variable.
+
+```ruby
+  1) Takeaway#customer_order creates a new customer order responds to placing an order
+     Failure/Error: order.add(item, amount)
+
+     NoMethodError:
+       undefined method `add' for {:menu_items=>#<Double :menu_items>}:Hash
+```
+
+This test was previously passing, to fix this, I have added a require in to the takeaway class of the order class.
+This makes takeaway aware of the class, so hopefully when I run rspec again, it will find add in that class and call it.
+
+Sadly, this did not fix the issue, it appears that takeaway is not receiving the add method yet.
+Doing some research in to this, I have found that I need to inject the add method in to the test
+since we are trying to keep out test isolated and not dependant on other classes.
+
+The code we will use, is:  
+```rspec
+    expect(order).to receive(:add).at_most(3).times
+```
+
+I found that this allows the test to pass, but we need to keep in mind that we have not yet created an order class, so we will need to create this
+at some point we we work though the user stories and logic
+
+The code to create the fake order is:
+```ruby
+  let(:order) { instance_double("Order", basket: 125.92) }
+```
+We will also require the Order class in to takeaway so it is aware it exists.
+
+You will notice we have Order as "Order", this will throw an error
+to let us know we dont have have a method called basket in the Order class, I will use this to ensure that
+these methods actually exist and created as we go though the user stories
+
+------------------
+## Out of time
+
+Due to spending time researching stubs, mocks, doubles and perhaps spending too much time on the README, I have run out 
+of time and unable to complete the SMS integration for the final story. Also, due to time constrains and trying to rush though the stories I had forgot to 
+commit.
+
+I was initially running Rubocop after each commit, but I found myself spending too much time trying to please RuboCop when
+I could have been spending that time actually writing the code and testing.
+
+I found the TDD process both frustrating and fun, frustrating when you get an error you have not seen before and sets
+you back a while, but fun and interesting when you see it all turn green.
+
+This commit is my final commit for the project, but I will complete this as a personal goal with the ability to send SMS
+messages with an update on the delivery times. There appears to also be a further challenge to allow you to order via 
+SMS so if I find the time I will certainly look at that.
+
+Finally, I didnt get a change to look at the DOTENV gem, I have used this software with NodeJS, so will look to implement
+this in to the project when I add SMS functionality.
+
+Aaron - December 2019 / Makers
 

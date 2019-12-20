@@ -1,14 +1,17 @@
-include './order'
+require_relative './order'
 
 class Takeaway
-  attr_reader :order
-  def initialize(order)
+  attr_reader :order, :menu_items
+
+  def initialize(menu_items:, order:)
+
     @order = order
+    @menu_items = menu_items
 
   end
 
   def display_menu_items
-    "Pepperoni Pizza: 12.99"
+    menu_items.display
   end
 
   def customer_order(customer_order)
