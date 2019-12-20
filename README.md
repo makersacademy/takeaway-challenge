@@ -257,4 +257,74 @@ Finished in 0.0061 seconds (files took 0.95652 seconds to load)
 ```
 
 Clearly this isnt the desired end outcome, since we would like to print an actual list of items,
-as we dont have that class at the moment, this will do for now and covers the first user story
+as we dont have that class at the moment, this will do for now and covers the first user story, we will come back to
+this later when we need to implement the order class
+-----
+## Story two
+
+So this one ties in to the first user story in that they would like to select from a list
+of options, so we will need to add some functionality to to our takeaway class so the user can order
+multiple items, this also ties in to the third user story in that they would also like to 
+see a total cost of the order.
+
+We will need a way to pass in a menu, and have it calculate the costs and return the total back to the user
+
+We will start by creating our test for this. We will also require an order list to pass in to the test
+to check we get the desired results.
+
+The initial test I have written just checks that we get a positive response from a new method in takeaway
+I will call customer order which will take in an order (A fake order for now), this method will be responsible
+for creating a key, value list like a basket we can work with later 
+
+The fake order will be:
+
+```ruby
+  let(:customer_order) { { bbq_chicken: 3, vegan: 2, hawaiian: 3 } }
+```
+
+We have not yet created our order class, but I suspect with this user story it will be something that
+we cannot put off any longer. At this point, we will need to start thinking about the logic of the application
+and how the classes are going to interact with one another.
+
+```ruby
+  describe "#customer order" do
+    context "creates a new customer order" do
+      it "responds to placing an order" do
+        expect(takeaway.customer_order(customer_order)).to be_truthy
+      end
+    end
+  end
+```
+
+As expected, ruby is complaining that it cant find the customer_order method, so lets create it and see
+what rabbit hole this will lead us down!
+
+```ruby
+ Failure/Error:
+     def customer_order
+
+     end
+
+ ArgumentError:
+   wrong number of arguments (given 1, expected 0)
+```
+
+The test failed, but it looks like it was expecting us to pass something in to the method,
+if we take a look at the test above, we are passing in customer_order, which is a fake order
+we have created for test, so we will modify the method to take in an argument.
+
+```ruby
+ Failure/Error: expect(takeaway.customer_order(customer_order)).to be_truthy
+
+   expected: truthy value
+        got: nil
+ # ./spec/takeaway_spec.rb:32:in `block (4 levels) in <top (required)>'
+```
+
+Now we are getting an interesting error, as with the first user story, we were expecting something
+to be returned but received nil responce. Since we are only expected a truthy value, we could pass
+in any string we want to get this to pass, for example, if I pass in "Order Complete" as the methods
+return, we will pass the test, but this time it does not match the user story, they want to see the
+full list
+
+Now we are at green we will refactor and add in some logic before retesting.

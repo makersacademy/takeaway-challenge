@@ -14,10 +14,22 @@ describe Takeaway do
   # ......... to display the text output
   let(:displayed_menu) { "Pepperoni Pizza: 12.99" }
 
+  # A fake order we can use for testing, so it does not rely on a non exisitant class at the moment
+  let(:customer_order) { { bbq_chicken: 3, vegan: 2, hawaiian: 3 } }
+
+
   describe "#display_menu_items" do
     context "Displays the menu to the user" do
       it "returns a menu list" do
-        expect(subject.display_menu_items).to eq(displayed_menu)
+        expect(takeaway.display_menu_items).to eq(displayed_menu)
+      end
+    end
+  end
+
+  describe "#customer_order" do
+    context "creates a new customer order" do
+      it "responds to placing an order" do
+        expect(takeaway.customer_order(customer_order)).to be_truthy
       end
     end
   end
