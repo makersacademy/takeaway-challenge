@@ -1,5 +1,5 @@
 class Takeaway
-  attr_reader :list_of_dishes
+  attr_reader :dishes
 
   def initialize
     @dishes = []
