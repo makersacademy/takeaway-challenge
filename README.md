@@ -14,6 +14,16 @@ Takeaway Challenge
 
  ```
 
+Stories Completed
+-------
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
+* First I looked through all user stories and created a domain model to give me a better idea of how to structure the code.
+* 
+
 Instructions
 -------
 
