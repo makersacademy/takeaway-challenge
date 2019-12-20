@@ -14,9 +14,9 @@ class Menu
     @options[name.to_sym] = price
   end
 
-  # def list
-  #   @options.each do |n, p|
-  #     puts "#{n} - £%0.2f" % p
-  #   end
-  # end
+  def list
+    @options.each do |n, p|
+      puts "#{n} - £%0.2f" % p
+    end
+  end
 end
