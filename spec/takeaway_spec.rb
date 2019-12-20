@@ -29,10 +29,16 @@ describe Takeaway do
     expect(takeaway).to respond_to(:order).with(1).argument
   end
 
+  it 'should allow you to order an item x amount of times' do
+    takeaway = Takeaway.new
+    takeaway.order("pizza",2)
+    expect(takeaway.your_order.length).to eq 2
+  end
+
   it 'should add items to your order when you order' do
     takeaway = Takeaway.new
-    takeaway.order(item)
-    expect(takeaway.your_order).to include(item)
+    takeaway.order("pizza")
+    expect(takeaway.your_order).to include("pizza")
   end
 
   it 'should keep track of the total when things are added to your order' do
@@ -41,6 +47,7 @@ describe Takeaway do
     takeaway.order("chips")
     expect(takeaway.total).to eq 12
   end
+
 
 
 end
