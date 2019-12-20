@@ -13,23 +13,13 @@ attr_reader :dishes
   end
 #see a list of dishes with prices
   def dishes_selection(mydish)
-    mydish.each do |key, value|
+    p
+    @dishes.each do |key, value|
       if value.include?(mydish)
         "Item: #{value} costs £#{key}"
       end
-    end    
+    end
+    p
   end
-    # An Example Of Possible Function to Implement
-    # def score(hello)
-    #   sum = 0
-    #     hello.upcase.split("").each do |letter| #letter element is the varible inputted, to each of these letter as we know it is a string split in to its element
-    #       @my_scribble.each do |key, value|
-    #         if value.include?(letter)
-    #           sum = sum + key
-    #           "Item: #{item} costs £#{price}"
-    #         end
-    #       end
-    #   end
-
 
 end
