@@ -12,12 +12,16 @@ class Takeaway
     @items
   end
 
-  def order(item)
-    @your_order.push(item)
-    @total += @items[item]
+  def order(item, quantity = 1)
+    add_to_list = @items.assoc(item)
+    quantity.times { @your_order.push(add_to_list) }
+    quantity.times {@total += @items[item]}
   end
 
-
-
-
+  def finish_order
+    @your_order.each do |x|
+      puts x.each { |p| p }.join("          ")
+    end
+    puts "Your total is £#{@total}"
+  end
 end
