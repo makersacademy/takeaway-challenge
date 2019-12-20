@@ -14,13 +14,13 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Instructions given
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
+* Challenge time: until 4pm on the same day the challenge is given
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
+* If you have a partial solution, still check in a partial solution
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
@@ -47,36 +47,82 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+----
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+For this challenge, I will be able to use what I have learnt from the Boris Bikes and Airport challenge. 
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+The final user story seems to require an external provider to give the ability to send text messages.
+To complete this challenge, I will use TDD (Test Driven Development) and RGR (Reg Green Refactor) to guide
+me on what needs to be implemented to complete the challenge.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+Because we will be using several classes which will need to interact with each other, I wil be isolating the
+tests using mocks and doubles to fake the behaviour of other classes to ensure that the class I am testing does
+not fail because of a dependency in another class.
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+To create these, I will be referring to https://github.com/rspec/rspec-mocks which contains a list of syntax and code
+I will need to use.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+---------
+## User story one
 
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
 
-In code review we'll be hoping to see:
+For the first user story, I feel there should be two classes to handle this, the first class will be 
+the takeaway class, the second will handle displaying the menu to the user with prices. The takeaway class generally 
+should't care about the menu or the items, but will take in this information from another class.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+To start, I will create the takeaway class and spec first and follow RGR to extract the expected behaviour
+```shell script
+mkdir lib
+touch lib/takeaway.rb
+touch spec/takeaway_spec.rb
+```
+This creates the initial files we will be working on, in the spec file, we will describe the takeaway class
+and create any mocks we need to get the tests to pass once we start RGR.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+The initial spec file will contain the following code to get us started
+```ruby
+require './lib/takeaway'
 
-Notes on Test Coverage
-------------------
+describe Takeaway do
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+end
+```
+
+We require the file that will contain the class and describe the class we wish to test.
+
+This is where we will see our first RED in the RGR processes.
+
+```ruby
+An error occurred while loading ./spec/takeaway_spec.rb.
+Failure/Error:
+  describe Takeaway do
+
+  end
+
+NameError:
+  uninitialized constant Takeaway
+# ./spec/takeaway_spec.rb:1:in `<top (required)>'
+No examples found.
+```
+
+This error tells us we have not yet created a class called Takeaway, so we will now write our first ruby
+code to get passed this error.
+
+In the takeaway.rb file, we will add some code.
+
+```ruby
+class Takeaway
+  
+end
+```
+
+When we run Rspec now, we should see a GREEN pass for the test.
+
+```ruby
+
+```
