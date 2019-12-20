@@ -42,5 +42,11 @@ describe Takeaway do
     it 'has a receipt method' do
       expect(subject).to respond_to(:receipt)
     end
+
+    it 'prints out entire receipt' do
+      subject.order("burritos", 2)
+      subject.order("tacos", 3)
+      expect(subject.receipt).to include("burritos", "tacos")
+    end
   end
 end

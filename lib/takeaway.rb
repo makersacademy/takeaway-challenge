@@ -20,4 +20,7 @@ class Takeaway
     end
     "The total for the order is £#{item_totals.sum}."
   end
+
+  def receipt
+  end
 end
