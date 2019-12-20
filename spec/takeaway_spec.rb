@@ -18,7 +18,7 @@ describe Takeaway do
  end
 
  it'putes dishes' do
-   suject.dishes_selection(mydish)
+   subject.dishes_selection(mydish)
   expect(Takeaway.new.dishes_selection "Chicken Korma").to satisfy {"Item: #{value} costs £#{key}"}
  end
 
