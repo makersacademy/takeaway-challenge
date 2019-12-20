@@ -1,5 +1,4 @@
 class Takeaway
-attr_reader :order
   def initialize(menu:menu)
     @menu = menu
     @order = []
@@ -8,11 +7,16 @@ attr_reader :order
   def dishes_with_prices
     menu.print
   end
-
-  def select_dish
-    @menu.select{ |dish, price| }
+  def place_order(dishes)
+    dishes.each do
+      |dish,num|
+      order.add(dish,num)
+    end
   end
+  # def select_dish(qty = 2)
+  #   p qty.times {@order << @menu.print}
+  # end
 
-private
-attr_reader :menu
+  private
+  attr_reader :menu, :order
 end

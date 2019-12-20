@@ -12,7 +12,9 @@ verbs - see
  <!-- As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes -->
-
+nouns - meal, number of several available dishes
+verbs - order, select
+I started the order with an empty array that would be filled with the dishes selected. I later refactored this to create a double of 'order' as an order class would later be required for the total.
 
 
 
