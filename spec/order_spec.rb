@@ -18,7 +18,7 @@ describe Order do
     order.add(:rice, 1)
     order.add(:chips, 2)
     order.add(:fish, 1)
-    expect(order.dishes).to eq (dishes)
+    expect(order.dishes).to eq(dishes)
   end
 
 end

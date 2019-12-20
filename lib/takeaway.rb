@@ -12,10 +12,7 @@ class Takeaway
       order.add(dish,num)
     end
   end
-  # def select_dish(qty = 2)
-  #   p qty.times {@order << @menu.print}
-  # end
-
+  
   private
   attr_reader :menu, :order
 end

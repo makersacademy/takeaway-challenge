@@ -1,5 +1,5 @@
 class Order
-  def add
+  def add(dish, num)
 
   end
 end
