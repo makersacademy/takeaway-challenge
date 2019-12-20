@@ -9,6 +9,7 @@ class Order
   end
 
   def select(dish, quantity)
+    @order_list[quantity] = dish
   end
 
 end

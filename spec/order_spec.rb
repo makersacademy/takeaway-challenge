@@ -18,8 +18,14 @@ describe Order do
 
     it 'saves the dishes' do
       subject.select(dish,1)
-     expect(subject.order_list).not_to be_empty
+      expect(subject.order_list).not_to be_empty
    end
- end
+
+    let (:dish){ DishesList.new("Salad", 4) }
+
+    it 'calculates the total for selected dishes' do
+     expect { subject.select(dish,2) }.to change{subject.total}.by 8
+    end
+  end
 
 end
