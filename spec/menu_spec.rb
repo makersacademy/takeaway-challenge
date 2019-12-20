@@ -20,7 +20,9 @@ describe Menu do
     expect(subject.view_menu).to include("Fried rice" => 8)
   end
 
-  # it "allows the customer to create an order" do
-  #   expect(subject.create_order).to be_a Order
-  # end
+  it "creates an order" do
+    expect(subject.order).to be_a Order
+  end
+
+
 end

@@ -13,6 +13,12 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Process: 
+
+I got stuck on the second user story as I wasn't able to access the menu has in the 
+Menu class. I tried implementing it in a single class which worked but I was not able
+make it work with separating into two classes.  
+
 
 Instructions
 -------
