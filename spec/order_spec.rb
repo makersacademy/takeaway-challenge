@@ -1,7 +1,7 @@
 require 'order.rb'
 
 describe Order do
-  let(:order) {Order.new}
+  let(:order) { Order.new }
   let(:dishes) do
     {
       rice: 2,

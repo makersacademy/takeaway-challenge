@@ -5,9 +5,9 @@ class Menu
     @dishlist = dishlist
   end
   
-  
   def prints
     dishlist.map do |name, price| "%s £%.2f" % [name, price]
     end.join(", ")
   end
+
 end
