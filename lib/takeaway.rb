@@ -1,5 +1,5 @@
 class Takeaway
-  def initialize(menu:menu)
+  def initialize(menu:menu, order:nil)
     @menu = menu
     @order = order
   end
@@ -8,8 +8,7 @@ class Takeaway
     menu.print
   end
   def place_order(dishes)
-    dishes.each do
-      |dish,num|
+    dishes.each do |dish,num|
       order.add(dish,num)
     end
   end
