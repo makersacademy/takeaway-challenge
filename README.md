@@ -18,7 +18,8 @@ COMPLETION RECORD
 ----------------
 
 User_story 1 - completed
-User_story 2 - in progress
+User_story 2 - completed
+User_story 3 - in progress
 
 
 Instructions

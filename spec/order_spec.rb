@@ -28,4 +28,6 @@ describe Order do
     end
   end
 
+  it { is_expected.to respond_to(:place_order).with(1).argument }
+
 end

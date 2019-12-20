@@ -10,6 +10,7 @@ class Order
 
   def select(dish, quantity)
     @order_list[quantity] = dish
+    @total += (quantity * dish.price)
   end
 
 end
