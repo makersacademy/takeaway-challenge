@@ -9,6 +9,7 @@ describe Takeaway do
   it 'creates a list of dishes' do
     takeaway = Takeaway.new
     dish = Dish.new
-    expect(subject.list_of_dishes).to eq [list_of_dishes]
+    subject.list_of_dishes(dish)
+    expect(subject.list_of_dishes(dish)).to eq [dishes]
   end
 end
