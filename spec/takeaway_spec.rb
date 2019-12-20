@@ -1,5 +1,6 @@
 require 'takeaway.rb'
 require 'menu.rb'
+require 'order.rb'
 describe Takeaway do
 let (:menu) {double(:menu, dishes: {"Chicken Rice"=>4.5, "Fried Chicken"=>5.5, "Fried Rice"=>2.5, "Noodle Soup"=>3.5, "Side Salad"=>1.5})}
 it 'creates the instance of takeaway' do
