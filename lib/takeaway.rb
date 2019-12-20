@@ -1,6 +1,6 @@
 class Takeaway
 
-  def initialize(menu:)
+  def initialize(menu:menu)
     @menu = menu
   end
 
