@@ -6,9 +6,7 @@ describe Takeaway do
     expect(takeaway).to be_a Takeaway
   end
 
-  it 'creates a list of dishes' do
-    takeaway = Takeaway.new
-    dish = Dish.new
-    expect(subject.list_of_dishes(dish)).to eq [dish]
+  it 'creates a list of dishes with prices' do
+    expect(subject.dishes_with_prices). to eq("rice: £2.50")
   end
 end
