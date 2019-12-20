@@ -17,8 +17,8 @@ describe Takeaway do
     end
 
     it 'returns an array of hashes with item and quantity ordered' do
-      ordered = subject.order("tacos", 2)
-      expect(subject.order).to include("tacos" => 2)
+      subject.order("tacos", 2)
+      expect(subject.selected_items).to include("tacos" => 2)
     end
   end
 end

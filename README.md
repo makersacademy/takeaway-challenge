@@ -21,7 +21,7 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ```
-* First I looked through all user stories and created a domain model to give me a better idea of how to structure the code.
+* First I looked through all user stories and created a domain model diagram to give me a better idea of how to structure the code.
 * Ran a feature test to understand how I'd implement the first user story.
 * Decided I'd need a menu hash and stored within the takeaway class, so wrote tests for them.
 * After each test passed I wrote and refactored code, as needed.
@@ -30,7 +30,10 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
-* 
+* Using the domain model diagram, I knew I'd need a separate method with an empty array to push into.
+* So started by running various feature tests to see how best to implement this.
+* I then wrote two tests to check the method had two arguments, and these arguments were pushed as a hash into the selected_items array.
+* Then I wrote and refactored the code, and also had to refactor one of the tests to reflect the refactored code.
 
 Instructions
 -------
