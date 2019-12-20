@@ -13,19 +13,18 @@ attr_reader :dishes
         "Kinder Bueno Waffle" => 5.00,
         "Vanilla Ice Cream" => 5.00
       }
+    @quantities = 0
+    @items_ordered = []
+    @price_of_order = []
   end
 
   def menu(display_dishes)
     display_dishes = @dishes
   end
+
 #see a list of dishes with prices
   def dishes_selection(mydish)
-    dishes.each do |key, value|
-       if key == mydish
-        "Item: #{key} costs £#{value}"
-       end
-    end
-
+   "Item: #{mydish} costs £#{dishes[mydish]}"
   end
 
 end

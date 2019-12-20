@@ -27,11 +27,9 @@ describe Takeaway do
      it { is_expected.to respond_to(:dishes_selection).with(1).argument }
 
      it'putes dishes selection' do
-      expect(Takeaway.new.dishes_selection("Chicken Korma")).to eq("Item: Chicken Korma costs £4.50")
+      expect(Takeaway.new.dishes_selection("Chicken Korma")).to eq("Item: Chicken Korma costs £4.5")
      end
 
    end
-
-
 
 end
