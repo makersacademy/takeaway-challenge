@@ -14,6 +14,12 @@ Takeaway Challenge
 
  ```
 
+Completed User Stories
+-------
+
+
+
+
 Instructions
 -------
 
