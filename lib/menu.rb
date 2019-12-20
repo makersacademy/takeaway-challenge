@@ -15,4 +15,8 @@ attr_reader :menu
   def view_menu
     return @menu
   end
+
+  def select_dish
+
+  end
 end

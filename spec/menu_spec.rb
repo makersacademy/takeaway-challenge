@@ -23,4 +23,8 @@ describe Menu do
   it "responds to a method called select_dish" do
     expect(subject).to respond_to(:select_dish)
   end
+
+  it "allows the customer to create an order by selecting a dish" do
+    expect(subject.select_dish).to be_a Order
+  end
 end
