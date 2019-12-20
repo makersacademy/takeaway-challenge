@@ -16,9 +16,10 @@ describe Takeaway do
   end
 
     describe '#select_dishes' do
+
       it { is_expected.to respond_to(:select_dishes).with(2).arguments }
 
-  end
+    end
 
 
 
