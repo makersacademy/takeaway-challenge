@@ -15,5 +15,10 @@ describe Takeaway do
     it 'has an order method that accepts items and quantity methods' do
       expect(subject).to respond_to(:order).with(2).arguments
     end
+
+    it 'returns an array of hashes with item and quantity ordered' do
+      ordered = subject.order("tacos", 2)
+      expect(subject.order).to include("tacos" => 2)
+    end
   end
 end
