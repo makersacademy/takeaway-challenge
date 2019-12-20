@@ -10,4 +10,10 @@ describe Takeaway do
       expect(subject.menu).to include("tacos" => 5)
     end
   end
+
+  describe '#order' do
+    it 'has an order method that accepts items and quantity methods' do
+      expect(subject).to respond_to(:order).with(2).arguments
+    end
+  end
 end

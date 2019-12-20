@@ -25,6 +25,12 @@ I would like to see a list of dishes with prices
 * Ran a feature test to understand how I'd implement the first user story.
 * Decided I'd need a menu hash and stored within the takeaway class, so wrote tests for them.
 * After each test passed I wrote and refactored code, as needed.
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+* 
 
 Instructions
 -------
