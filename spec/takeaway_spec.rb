@@ -15,7 +15,7 @@ describe Takeaway do
   let(:displayed_menu) { "Pepperoni Pizza" }
 
   describe "#display_menu_items" do
-    context "Displayts the menu to the user" do
+    context "Displays the menu to the user" do
       it "returns a menu list" do
         expect(subject.display_menu_items).to eq(displayed_menu)
       end

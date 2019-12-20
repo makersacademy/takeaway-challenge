@@ -140,3 +140,77 @@ to display these to the user.
 
 As we dont have a menu class yet, we will fake these with a double.
 
+```ruby
+  subject(:takeaway) { described_class.new(menu_items: menu_items) }
+
+  let(:menu_items) { double(:menu_items, display: displayed_menu) }
+
+  let(:displayed_menu) { "Pepperoni Pizza" }
+
+  describe "#display_menu_items" do
+    context "Displays the menu to the user" do
+      it "returns a menu list" do
+        expect(subject.display_menu_items).to eq(displayed_menu)
+      end
+    end
+  end
+```
+
+This test will call the takeaway class and expects a method called display_menu_items to return
+a string of "Pepperoni Pizza".
+
+Lets see what happens when we run the test?
+
+```ruby
+  1) Takeaway#display_menu_items Displays the menu to the user returns a menu list
+     Failure/Error: subject(:takeaway) { described_class.new(menu_items: menu_items) }
+
+     ArgumentError:
+       wrong number of arguments (given 1, expected 0)
+     # ./spec/takeaway_spec.rb:8:in `initialize'
+     # ./spec/takeaway_spec.rb:8:in `new'
+     # ./spec/takeaway_spec.rb:8:in `block (2 levels) in <top (required)>'
+     # ./spec/takeaway_spec.rb:20:in `block (4 levels) in <top (required)>'
+
+Finished in 0.00405 seconds (files took 0.86231 seconds to load)
+1 example, 1 failure
+```
+
+Now that is interesting, we have gone from a Green test to a failed test, looking at the result of the test
+its clear that the takeaway class was expecting some arguments to be given in its initialize method.
+
+Lets write some code now to to see if we can fix this.
+
+In the takeaway class we will add the initialize method and pass in an argument.
+```ruby
+  def initialize(menu_items)
+  end
+```
+
+Lets see what rspec says now
+
+```ruby
+Failures:
+
+  1) Takeaway#display_menu_items Displays the menu to the user returns a menu list
+     Failure/Error: expect(subject.display_menu_items).to eq(displayed_menu)
+
+     NoMethodError:
+       undefined method `display_menu_items' for #<Takeaway:0x00007faf48a8ea68>
+     # ./spec/takeaway_spec.rb:20:in `block (4 levels) in <top (required)>'
+
+Finished in 0.00307 seconds (files took 0.6915 seconds to load)
+1 example, 1 failure
+```
+
+As expected we received another red error, this time it is complaining that it is unable to find the mothod
+\#display_menu_items
+
+```ruby
+     NoMethodError:
+       undefined method `display_menu_items' for #<Takeaway:0x00007faf48a8ea68>
+     # ./spec/takeaway_spec.rb:20:in `block (4 levels) in <top (required)>'
+```
+
+This is simple to fix, we will create a new method in takeaway with this name and repeat this process
+
