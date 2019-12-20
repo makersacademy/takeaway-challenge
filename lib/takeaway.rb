@@ -5,4 +5,7 @@ class Takeaway
   def initialize
     @order = []
   end
+
+  def menu
+  end
 end
