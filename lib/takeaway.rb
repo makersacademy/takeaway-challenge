@@ -9,4 +9,7 @@ class Takeaway
   def order(item, quantity)
     @selected_items << { item => quantity }
   end
+
+  def total
+  end
 end
