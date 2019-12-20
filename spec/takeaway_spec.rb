@@ -20,4 +20,9 @@ describe Order do
   it 'can initialize a constant of order' do
     order = Order.new
   end
+
+  it 'holds dishes I want to order' do
+    order = Order.new
+    expect(order.basket).to be_empty
+  end
 end

@@ -18,3 +18,7 @@ class Menu
     end
   end
 end
+
+class Order
+
+end
