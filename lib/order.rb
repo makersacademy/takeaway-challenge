@@ -13,4 +13,7 @@ class Order
     @total += (quantity * dish.price)
   end
 
+  def place_order(expected_total)
+  end
+
 end

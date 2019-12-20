@@ -30,4 +30,14 @@ describe Order do
 
   it { is_expected.to respond_to(:place_order).with(1).argument }
 
+  describe ".place_order" do
+
+    let (:dish){ DishesList.new("Salad", 4) }
+
+    it 'checks expected total' do
+      subject.select(dish,3)
+      expect { subject.place_order(10) }.to raise_error("Expected total is not correct")
+    end
+  end
+
 end
