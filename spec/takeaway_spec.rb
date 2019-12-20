@@ -8,20 +8,23 @@ describe Takeaway do
   end
 #see a list of dishes with prices - see = puts, list = an array
  it 'dishes hash exists to be seen' do
-    dishes = [
-      4.50 => ["Chicken Korma","Chicken Katsu Curry"],
-      3.00 => ["Veggie Burrito","Fries"],
-      7.00 => ["Beef Burger", "Steak"],
-      5.00 => ["Kinder Bueno Waffle", "Vanilla Ice Cream"]
-    ]
-    expect(Takeaway.new.dishes).to include(include(4.50 => ["Chicken Korma","Chicken Katsu Curry"]))
+    dishes = {
+      "Chicken Korma" => 4.50,
+      "Veggie Burrito" => 3.00,
+      "Fries" => 3.00,
+      "Beef Burger" => 7.00,
+      "Steak" => 7.00,
+      "Kinder Bueno Waffle" => 5.00,
+      "Vanilla Ice Cream" => 5.00
+    }
+    expect(Takeaway.new.dishes).to include(include("Chicken Korma" => 4.50))
  end
 
  describe '#dishes_selection' do
    it { is_expected.to respond_to(:dishes_selection).with(1).argument }
 
    it'putes dishes' do
-    expect(Takeaway.new.dishes_selection("Chicken Korma")).to satisfy {"Item: #{value} costs £#{key}"}
+    expect(Takeaway.new.dishes_selection("Chicken Korma")).to eq("Item: Chicken Korma costs £KEY")
    end
 
  end
