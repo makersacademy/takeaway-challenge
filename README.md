@@ -368,7 +368,13 @@ touch spec/order_spec.rb
 ```
 
 This creates the files we need, we will add some tests to the spec file and some methods to the class hopefully that 
-fix our initial issue and we can move on to creating more logic to fulfill the user stories
+fix our initial issue and we can move on to creating more logic to fulfill the user stories.
 
+So this README.md does not get too unreadable, I will not record each step I take to compelte
+this as I would only be repeating what we have already covered. Instead from this point forward
+I will provide updates and code snippets of my progress.
+
+Before creating any logic within the order class, we will start by writing our tests with
+what we expect the outcome to be.
 
 
