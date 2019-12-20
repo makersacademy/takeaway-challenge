@@ -14,7 +14,7 @@ Takeaway Challenge
 
  ```
 step 1: create test for class Menu for capacity to store dishes
-step 2: test for Menu class to see if can store name and price of dish
+step 2: test for Menu class to see if can store name and price of dish - while working on it decided needed to add method for adding items to menu
 
 
 Instructions

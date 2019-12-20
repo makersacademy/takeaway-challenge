@@ -5,12 +5,11 @@ describe Menu do
   end
   it 'can add items to menu' do
     subject.add("juice", 1.40)
-    expect(subject.options).to include("juice" => 1.40)
+    expect(subject.options).to include(:juice => 1.40)
   end
 
-
-  xit 'can show the menu' do
-
-    expect { subject.list }.to output(instance_of(Symbol) => instance_of(Float))
+  it 'can show the menu' do
+    subject.add("juice", 1.40)
+    expect { subject.list }.to output("juice - 1.40").to_stdout
   end
 end
