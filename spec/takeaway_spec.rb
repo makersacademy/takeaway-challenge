@@ -22,6 +22,11 @@ describe Takeaway do
     expect(takeaway.menu.length).to be > 5
   end
 
+  it 'should have a function to order an item' do
+    takeaway = Takeaway.new
+    expect(takeaway).to respond_to(:order)
+  end
+
 
 
 end
