@@ -10,4 +10,7 @@ class Takeaway
     @items
   end
 
+  def order
+  end
+
 end

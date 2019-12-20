@@ -2,6 +2,8 @@ require 'takeaway'
 
 describe Takeaway do
 
+  let (:item){ double :item }
+
   it 'should have a function to view the menu' do
     takeaway = Takeaway.new
     expect(takeaway).to respond_to(:menu)
@@ -27,6 +29,11 @@ describe Takeaway do
     expect(takeaway).to respond_to(:order)
   end
 
+  it 'should add items to your order when you order' do
+    takeaway = Takeaway.new
+    takeaway.order(item)
+    expect(takeaway.your_order).to include(item)
+  end
 
 
 end
