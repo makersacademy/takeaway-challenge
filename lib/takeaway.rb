@@ -32,8 +32,8 @@ class Order
     @basket << main_order
   end
 
-  # def total
-  #
-  # end
+  def total
+
+  end
 
 end

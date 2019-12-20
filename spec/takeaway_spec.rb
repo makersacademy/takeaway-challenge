@@ -39,11 +39,11 @@ describe Order do
 
   it 'responds to order total method' do
     order = Order.new
-    expect(order.total).to respond_to(:total)
+    expect(order).to respond_to(:total)
   end
 
-  # it 'totals up the order in basket' do
-  #   order = Order.new
-  #   order.select("pizza", "6.5")
-
+  xit 'totals up the order in basket' do
+    order = Order.new
+    order.select("pizza", "2")
+    expect(order.basket).to
 end
