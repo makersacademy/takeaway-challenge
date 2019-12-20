@@ -1,0 +1,2 @@
+describe Dish do
+end 
