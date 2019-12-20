@@ -4,5 +4,10 @@ class Menu
  def initialize(dishlist)
     @dishlist = dishlist
   end
-  # code to print a list of dishes
+  
+  
+  def prints
+    dishlist.map do |name, price|  "%s £%.2f" % [name, price]
+    end.join(", ")
+  end
 end

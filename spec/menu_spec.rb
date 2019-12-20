@@ -5,10 +5,10 @@ describe Menu do
   let (:dishlist) do
     { 
       "Special Fried Rice": 6.50,
-      "Shrimp Friend Rice": 6.00
+      "Shrimp Fried Rice": 6.00
     }
   end
-  let (:printed_menu) {"Special Friend Rice £6.50, Shrimp Friend Rice £6.00"}
+  let (:printed_menu) {"Special Fried Rice £6.50, Shrimp Fried Rice £6.00"}
   
   
   it 'has a list of dishes and prices' do
