@@ -12,4 +12,10 @@ class Menu
     }
   end
 
+  def display_menu
+    @items.collect do |k, v|
+      "#{k}, £#{v}0"
+    end
+  end
+
 end
