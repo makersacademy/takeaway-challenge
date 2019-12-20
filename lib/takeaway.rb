@@ -17,5 +17,4 @@ class Menu
       "#{k}, £#{v}0"
     end
   end
-
 end

@@ -15,3 +15,9 @@ describe Menu do
     expect(menu.display_menu).to include "nachos, £3.50"
   end
 end
+
+describe Order do
+  it 'can initialize a constant of order' do
+    order = Order.new
+  end
+end
