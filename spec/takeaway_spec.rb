@@ -20,13 +20,13 @@ describe Takeaway do
         "Kinder Bueno Waffle" => 5.00,
         "Vanilla Ice Cream" => 5.00
       }
-      expect(Takeaway.new.menu(dishes)).to include(include("Chicken Korma" => 4.50))
+      expect(Takeaway.new.menu(dishes)).to include("Chicken Korma" => 4.50)
    end
  end
    describe '#dishes_selection' do
      it { is_expected.to respond_to(:dishes_selection).with(1).argument }
 
-     it'putes dishes' do
+     it'putes dishes selection' do
       expect(Takeaway.new.dishes_selection("Chicken Korma")).to eq("Item: Chicken Korma costs £4.50")
      end
 
