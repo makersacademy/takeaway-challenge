@@ -22,7 +22,9 @@ So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ```
 * First I looked through all user stories and created a domain model to give me a better idea of how to structure the code.
-* 
+* Ran a feature test to understand how I'd implement the first user story.
+* Decided I'd need a menu hash and stored within the takeaway class, so wrote tests for them.
+* After each test passed I wrote and refactored code, as needed.
 
 Instructions
 -------
