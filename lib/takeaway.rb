@@ -22,5 +22,11 @@ class Takeaway
   end
 
   def receipt
+    @selected_items.map do |item|
+      items = item.keys
+      quantity = items.values
+    end
+    print items
+    print quantity
   end
 end
