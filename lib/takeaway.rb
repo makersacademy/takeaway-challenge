@@ -14,6 +14,10 @@ attr_reader :dishes
         "Vanilla Ice Cream" => 5.00
       ]
   end
+
+  def menu
+    @dishes
+  end
 #see a list of dishes with prices
   def dishes_selection(mydish)
     dishes.each do |key|
