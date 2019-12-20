@@ -18,6 +18,6 @@ class Takeaway
       quantity = item.values.join().to_i
       item_totals << (@menu[price] * quantity)
     end
-    item_totals.sum
+    "The total for the order is £#{item_totals.sum}."
   end
 end

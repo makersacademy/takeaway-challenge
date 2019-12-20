@@ -39,7 +39,9 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ```
-* 
+* I started by splitting the user story into two parts - one give the total sum of the order and another to print out the whole order.
+* I ran a feature test to work out how I was going to implement the total method, and wrote code to pass the unit tests.
+* I then worked to do the same for the receipt function.
 
 Instructions
 -------
