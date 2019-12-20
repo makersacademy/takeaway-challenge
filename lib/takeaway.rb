@@ -12,8 +12,12 @@ attr_reader :dishes
     ]
   end
 #see a list of dishes with prices
-
-
+  def dishes_selection(mydish)
+    mydish.each do |key, value|
+      if value.include?(mydish)
+        "Item: #{value} costs £#{key}"
+      end  
+  end
     # An Example Of Possible Function to Implement
     # def score(hello)
     #   sum = 0
