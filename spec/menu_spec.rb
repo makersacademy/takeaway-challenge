@@ -12,8 +12,7 @@ describe Menu do
     }
   end
 
-  it "creates and instance of Menu" do
-    menu = Menu.new
+  it "creates an instance of Menu" do
     expect(menu).to be_a Menu
   end
 
