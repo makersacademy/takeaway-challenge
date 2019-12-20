@@ -1,4 +1,5 @@
 require_relative 'dishes_list'
+require_relative 'menu'
 
 class Order
   attr_reader :order_list, :total

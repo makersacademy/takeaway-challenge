@@ -2,6 +2,7 @@ require 'order'
 
 describe Order do
 
+
   it 'initializes 0 total' do
     expect(subject.total).to eq(0)
   end
