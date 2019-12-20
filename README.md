@@ -203,7 +203,7 @@ Finished in 0.00307 seconds (files took 0.6915 seconds to load)
 1 example, 1 failure
 ```
 
-As expected we received another red error, this time it is complaining that it is unable to find the mothod
+As expected we received another red error, this time it is complaining that it is unable to find the method
 \#display_menu_items
 
 ```ruby
@@ -214,3 +214,47 @@ As expected we received another red error, this time it is complaining that it i
 
 This is simple to fix, we will create a new method in takeaway with this name and repeat this process
 
+```ruby
+  def display_menu_items
+    
+  end
+```
+
+Now we are finally getting an interesting error and getting close to the expected output.
+
+Rspec is telling use that we returned nil from the method we created
+```ruby
+  1) Takeaway#display_menu_items Displays the menu to the user returns a menu list
+     Failure/Error: expect(subject.display_menu_items).to eq(displayed_menu)
+
+       expected: "Pepperoni Pizza"
+            got: nil
+
+       (compared using ==)
+     # ./spec/takeaway_spec.rb:20:in `block (4 levels) in <top (required)>'
+```
+
+This is exactly what we wanted, we can now return the expected string from the class to pass the initial part of the test
+once we have all green for the pass, we can start to refactor the code and add in some logic as required.
+
+The output that is expected is "Pepperoni Pizza", lets add this in now.
+
+By adding the following code, we are able to get to green on our test
+
+```ruby
+➜  takeaway-challenge (master) ✗ rspec
+
+Takeaway
+  #display_menu_items
+    Displays the menu to the user
+      returns a menu list
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.0061 seconds (files took 0.95652 seconds to load)
+1 example, 0 failures
+```
+
+Clearly this isnt the desired end outcome, since we would like to print an actual list of items,
+as we dont have that class at the moment, this will do for now and covers the first user story

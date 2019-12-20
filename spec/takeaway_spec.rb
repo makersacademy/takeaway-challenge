@@ -12,7 +12,7 @@ describe Takeaway do
   let(:menu_items) { double(:menu_items, display: displayed_menu) }
 
   # ......... to display the text output
-  let(:displayed_menu) { "Pepperoni Pizza" }
+  let(:displayed_menu) { "Pepperoni Pizza: 12.99" }
 
   describe "#display_menu_items" do
     context "Displays the menu to the user" do
