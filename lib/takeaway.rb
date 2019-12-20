@@ -6,7 +6,7 @@ class Takeaway
   end
 
   def print_menu
-    menu.print
+    menu.print #? syntax
   end
 
 end
