@@ -13,4 +13,13 @@ describe Takeaway do
   it 'creates a list of dishes with prices' do
     expect(subject.dishes_with_prices).to eq(printed_dishes_with_prices)
   end
+
+  it "starts the order empty" do
+    expect(subject.order).to be_empty
+  end
+
+  # it "selects a number of dishes" do
+  #   subject.select_dish
+  #   expect(subject.basket.length).to eq(1)
+  #    end
 end

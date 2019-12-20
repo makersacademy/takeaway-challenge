@@ -8,6 +8,10 @@ class Takeaway
     menu.print
   end
 
+  def select_dish
+    @menu.select{ |dish, price| }
+  end
+
 private
 attr_reader :menu
 end

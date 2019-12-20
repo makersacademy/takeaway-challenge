@@ -1,3 +1,21 @@
+Stories Completed
+--------------------
+User story 1
+<!-- As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices -->
+nouns - list of dishes, prices
+verbs - see
+ My takeaway spec includes a menu double that would print the list of dishes with prices. Then I created a menu class which uses a hash containing dishes and their prices (which is then formatted into £). in my 'menu' test, I used a double of dishes that contains list of dishes and their prices.
+
+ User story 2
+ <!-- As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes -->
+
+
+
+
 Takeaway Challenge
 ==================
 ```
