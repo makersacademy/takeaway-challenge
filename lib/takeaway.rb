@@ -1,7 +1,7 @@
 class Takeaway
   def initialize(menu:menu)
     @menu = menu
-    @order = []
+    @order = order
   end
 
   def dishes_with_prices

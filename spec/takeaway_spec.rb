@@ -16,15 +16,9 @@ describe Takeaway do
     expect(subject.dishes_with_prices).to eq(printed_dishes_with_prices)
   end
   it "orders a number of several available dishes" do
+    expect(order).to receive(:add)
     subject.place_order(dishes)
   end
 
-  # it "starts the order empty" do
-  #   expect(subject.order).to be_empty
-  # end
-  #
-  # it "selects a number of dishes" do
-  #   subject.select_dish
-  #   expect(subject.order.length).to eq(1)
-  # end
+
 end
