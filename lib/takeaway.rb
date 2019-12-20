@@ -12,10 +12,12 @@ class Takeaway
   end
 
   def total
+    item_totals = []
     @selected_items.map do |item|
       price = item.keys.join()
       quantity = item.values.join().to_i
-      @menu[price] * quantity
+      item_totals << (@menu[price] * quantity)
     end
+    item_totals.sum
   end
 end

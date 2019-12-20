@@ -34,7 +34,7 @@ describe Takeaway do
     it 'returns the total of the order' do
       subject.order("burritos", 2)
       subject.order("tacos", 3)
-      expect(subject.total).to eq([29])
+      expect(subject.total).to eq(29)
     end
   end
 end
