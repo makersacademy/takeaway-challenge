@@ -34,6 +34,12 @@ I would like to be able to select some number of several available dishes
 * So started by running various feature tests to see how best to implement this.
 * I then wrote two tests to check the method had two arguments, and these arguments were pushed as a hash into the selected_items array.
 * Then I wrote and refactored the code, and also had to refactor one of the tests to reflect the refactored code.
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+* 
 
 Instructions
 -------

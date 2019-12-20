@@ -6,6 +6,10 @@ describe Takeaway do
   end
 
   describe '#menu' do
+    it 'has a menu method' do
+      expect(subject).to respond_to(:menu)
+    end
+    
     it 'prints out the menu itmes and their prices' do
       expect(subject.menu).to include("tacos" => 5)
     end
@@ -19,6 +23,12 @@ describe Takeaway do
     it 'returns an array of hashes with item and quantity ordered' do
       subject.order("tacos", 2)
       expect(subject.selected_items).to include("tacos" => 2)
+    end
+  end
+
+  describe '#total' do
+    it 'has a total method' do
+      expect(subject).to respond_to(:total)
     end
   end
 end
