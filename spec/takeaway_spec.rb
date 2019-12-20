@@ -26,13 +26,20 @@ describe Takeaway do
 
   it 'should have a function to order an item' do
     takeaway = Takeaway.new
-    expect(takeaway).to respond_to(:order)
+    expect(takeaway).to respond_to(:order).with(1).argument
   end
 
   it 'should add items to your order when you order' do
     takeaway = Takeaway.new
     takeaway.order(item)
     expect(takeaway.your_order).to include(item)
+  end
+
+  it 'should keep track of the total when things are added to your order' do
+    takeaway = Takeaway.new
+    takeaway.order("pizza")
+    takeaway.order("chips")
+    expect(takeaway.total).to eq 12
   end
 
 
