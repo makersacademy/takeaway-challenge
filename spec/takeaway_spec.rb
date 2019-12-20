@@ -39,7 +39,7 @@ describe Takeaway do
 
       it "places an order with X items and returns the total cost" do
         expect(order).to receive(:add).at_most(5).times
-        basket = takeaway.customer_order(customer_order)
+        takeaway.customer_order(customer_order)
         expect(order.basket).to eq(125.92)
         # takeaway.order(order)
         # allow(order).to receive(:add)
