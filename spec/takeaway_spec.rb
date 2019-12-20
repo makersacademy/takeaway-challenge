@@ -25,4 +25,9 @@ describe Order do
     order = Order.new
     expect(order.basket).to be_empty
   end
+
+  it 'adds items into the basket' do
+      order = Order.new
+      expect(order).to respond_to(:select)
+  end
 end
