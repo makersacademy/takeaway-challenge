@@ -16,7 +16,7 @@ attr_reader :menu
     return @menu
   end
 
-  def select_dish
+  def select_dish(dish)
 
   end
 end

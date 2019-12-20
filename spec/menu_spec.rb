@@ -25,6 +25,7 @@ describe Menu do
   end
 
   it "allows the customer to create an order by selecting a dish" do
-    expect(subject.select_dish).to be_a Order
+    dish_double = double(:dish)
+    expect(subject.select_dish(dish_double)).to be_a Order
   end
 end
