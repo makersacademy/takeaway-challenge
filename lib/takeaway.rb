@@ -3,7 +3,7 @@ class Takeaway
   attr_reader :items
 
   def initialize
-    @items = {}
+    @items = {"pizza" => 10}
   end
 
   def menu

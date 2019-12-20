@@ -17,6 +17,11 @@ describe Takeaway do
     expect(takeaway.menu).not_to be_empty
   end
 
+  it 'should show a number of items' do
+    takeaway = Takeaway.new
+    expect(takeaway.menu.length).to be > 5
+  end
+
 
 
 end
