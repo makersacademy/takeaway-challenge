@@ -9,7 +9,14 @@ describe Takeaway do
 
   it 'should show you the menu when you call the function' do
     takeaway = Takeaway.new
-    expect(takeaway.menu).to be_an_instance_of(Array)
+    expect(takeaway.menu).to be_an_instance_of(Hash)
   end
+
+  it 'should list a number of items and prices' do
+    takeaway = Takeaway.new
+    expect(takeaway.menu).not_to be_empty
+  end
+
+
 
 end
