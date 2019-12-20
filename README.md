@@ -17,7 +17,7 @@ Takeaway Challenge
 COMPLETION RECORD
 ----------------
 
-User_story 1 - in progress
+User_story 1 - completed
 
 
 Instructions
