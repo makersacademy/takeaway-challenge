@@ -1,14 +1,14 @@
 require "menu.rb"
 
 describe Menu do
-  let (:menu) {Menu.new(dishlist)}
-  let (:dishlist) do
+  let(:menu) { Menu.new(dishlist) }
+  let(:dishlist) do
     { 
       "Special Fried Rice": 6.50,
       "Shrimp Fried Rice": 6.00
     }
   end
-  let (:printed_menu) {"Special Fried Rice £6.50, Shrimp Fried Rice £6.00"}
+  let (:printed_menu) { "Special Fried Rice £6.50, Shrimp Fried Rice £6.00" }
   
   
   it 'has a list of dishes and prices' do
