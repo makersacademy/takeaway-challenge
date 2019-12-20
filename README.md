@@ -1,6 +1,6 @@
 Stories Completed
 --------------------
-User story 1
+**User story 1**
 <!-- As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices -->
@@ -8,13 +8,13 @@ nouns - list of dishes, prices
 verbs - see
  My takeaway spec includes a menu double that would print the list of dishes with prices. Then I created a menu class which uses a hash containing dishes and their prices (which is then formatted into £). in my 'menu' test, I used a double of dishes that contains list of dishes and their prices.
 
- User story 2
+ **User story 2**
  <!-- As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes -->
 nouns - meal, number of several available dishes
 verbs - order, select
-I started the order with an empty array that would be filled with the dishes selected. I later refactored this to create a double of 'order' as an order class would later be required for the total.
+I started the order with an empty array that would be filled with the dishes selected. I later refactored this to create a double of 'order' as an order class would later be required for the total. In the process of creating the order class.
 
 
 
