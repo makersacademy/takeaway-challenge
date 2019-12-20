@@ -24,7 +24,7 @@ context '#sum_of_basket'do
   it 'it confirm the sum of all the dishes on the basket' do
     order = Order.new
     order.add_to_basket(item, quantity)
-    confirmation  = "You have order #{item} & #{quantity} = £#{(menu.dishes[item]*quantity)}, " #This is a confirmation message to the customer confirming the order
+    confirmation  = "You have order #{item} & #{quantity} = £#{(menu.dishes[item]*quantity)}," #This is a confirmation message to the customer confirming the order
     expect{order.sum_of_basket(menu)}.to output(confirmation).to_stdout
 end
 end
