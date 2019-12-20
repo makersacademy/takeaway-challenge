@@ -7,7 +7,7 @@ class Order
   end
 
   def add(item, amount)
-    fail "Sorry #{item} is out of stock" unless items.has_item?(item)
+    fail "Sorry #{item} is out of stock" unless items.item?(item)
     order[item] = amount
   end
 

@@ -32,11 +32,11 @@ describe MenuItems do
   describe "#has_items?" do
     context "checks if item exists in the menu" do
       it "returns true if items is listed" do
-        expect(menu.has_item?(:regina)).to be true
+        expect(menu.item?(:regina)).to be true
       end
 
       it "returns false if items isnt listed" do
-        expect(menu.has_item?(:havana_sunset)).to be false
+        expect(menu.item?(:havana_sunset)).to be false
       end
     end
   end
