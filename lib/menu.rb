@@ -12,17 +12,14 @@ attr_reader :menu
       "Chicken curry" => 7.5,
       "Coconut rice" => 3
     }
+    @order = { }
   end
 
   def view_menu
     return @menu
   end
 
-  def create_order
-    @order = Order.new
-  end
-
-  def select_dish(dish, quantity)
+  def select_dish(dish, quantity = 1)
     added_item = {dish => @menu[dish]}
     quantity.times{@order.push(added_item)}
   end
