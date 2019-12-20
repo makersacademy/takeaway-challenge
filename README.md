@@ -324,7 +324,51 @@ we have created for test, so we will modify the method to take in an argument.
 Now we are getting an interesting error, as with the first user story, we were expecting something
 to be returned but received nil responce. Since we are only expected a truthy value, we could pass
 in any string we want to get this to pass, for example, if I pass in "Order Complete" as the methods
-return, we will pass the test, but this time it does not match the user story, they want to see the
-full list
+return, we will pass the test, but this time it does not match the user story, they want pass in an actual
+order with maybe multiple items.
 
-Now we are at green we will refactor and add in some logic before retesting.
+Now we are at green we will refactor and add in some logic before retesting, and refactor our
+tests to see if we can match the fake order and get it to return the desired result.
+
+#### Adding some logic to meet the user story.
+
+First we will create an empty hash to store a key value pair as the customers order / or basket
+customer order will then push the customer order to the order hash so we can use this later to calculate
+the total cost. We will also expose this has with the attr_reader method.
+
+With the added logic, our code now looks like this;
+
+```ruby
+class Takeaway
+  attr_reader :order
+  def initialize(order)
+    @order = order
+
+  end
+
+  def display_menu_items
+    "Pepperoni Pizza: 12.99"
+  end
+
+  def customer_order(customer_order)
+    customer_order.each do |item, amount|
+        order.add(item, amount)
+    end
+  end
+end
+```
+
+Now we have added this we get another error, we have an undefined method called "add"
+this is not unexpected. We dont need the Takeaway class to be responsible for all the functionality
+so we now finally need to create a second class, I will call this order and will also create a spec file for it
+
+```ruby
+touch lib/order.rb
+touch spec/order_spec.rb
+```
+
+This creates the files we need, we will add some tests to the spec file and some methods to the class hopefully that 
+fix our initial issue and we can move on to creating more logic to fulfill the user stories
+
+
+

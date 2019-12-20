@@ -1,5 +1,7 @@
 class Takeaway
-  def initialize(menu_items)
+  attr_reader :order
+  def initialize(order)
+    @order = order
 
   end
 
@@ -8,6 +10,8 @@ class Takeaway
   end
 
   def customer_order(customer_order)
-    "order complete"
+    customer_order.each do |item, amount|
+      order.add(item, amount)
+    end
   end
 end
