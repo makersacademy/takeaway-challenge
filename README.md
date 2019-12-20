@@ -17,9 +17,13 @@ Takeaway Challenge
 COMPLETION RECORD
 ----------------
 
-User_story 1 - completed
-User_story 2 - completed
-User_story 3 - in progress
+User_story 1 - created a DishesList class that instantiates dishes with name and price
+User_story 2 - created an Order class that:
+                  * saves the ordered dishes in an hash
+                  * calculates the order total
+
+At this point my understanding of the first user_story changed. I will add a third class called Menu.
+
 
 
 Instructions
