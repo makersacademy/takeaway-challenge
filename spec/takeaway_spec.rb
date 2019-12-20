@@ -17,9 +17,15 @@ describe Takeaway do
     expect(Takeaway.new.dishes).to include(include(4.50 => ["Chicken Korma","Chicken Katsu Curry"]))
  end
 
- it'putes dishes' do
-   subject.dishes_selection(mydish)
-  expect(Takeaway.new.dishes_selection("Chicken Korma").to satisfy {"Item: #{value} costs £#{key}"}
+ describe '#dishes_selection' do
+   it { is_expected.to respond_to(:dishes_selection).with(1).argument }
+
+   it'putes dishes' do
+    expect(Takeaway.new.dishes_selection("Chicken Korma")).to satisfy {"Item: #{value} costs £#{key}"}
+   end
+
  end
+
+
 
 end
