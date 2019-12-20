@@ -16,7 +16,7 @@ describe Takeaway do
     expect(subject.dishes_with_prices).to eq(printed_dishes_with_prices)
   end
   it "orders a number of several available dishes" do
-    expect(order).to receive(:add)
+    expect(order).to receive(:add).at_least(3).times
     subject.place_order(dishes)
   end
 
