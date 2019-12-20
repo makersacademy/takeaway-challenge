@@ -4,4 +4,10 @@ class Menu
   def initialize(dishes)
     @dishes = dishes
   end
+
+  def print
+    dishes.map do |dish, price|
+     "%s £%.2f" % [dish.to_s, price]
+   end.join (", ")
+  end
 end

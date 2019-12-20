@@ -20,8 +20,8 @@ describe Menu do
     expect(menu.dishes).to eq(dishes)
   end
   it "prints the list of dishes with prices" do
-    printed_dishes_with_prices = "rice: £2.50, fish: £5.00, chips: £3.00"
-    expect(menu.print).to eq(printed_dishes_with_prices)
+    printed_dishes_with_prices = "rice £2.50, fish £5.00, chips £3.00"
+    expect(menu.print).to eq (printed_dishes_with_prices)
 
   end
 end
