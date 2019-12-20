@@ -11,7 +11,7 @@ describe Menu do
   end
 
   it 'has a list of dishes and prices' do
-    expect (menu.dishlist).to eq(dishlist)
+    expect(menu.dishlist).to eq(dishlist)
   end
 
   it 'allows user to see list of dishes and prices' do
