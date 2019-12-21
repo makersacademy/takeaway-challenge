@@ -3,7 +3,7 @@ require_relative './menuitems'
 class Order
   attr_reader :order, :items
 
-  def initialize(items =  nil)
+  def initialize(items = nil)
     @order = {}
     @items = items || MenuItems.new
   end

@@ -4,7 +4,6 @@ require './lib/menuitems'
 describe Order do
   subject(:order) { described_class.new(items) }
 
-
   let(:customer_order) do
     { bbq_chicken: 3, vegan: 2, hawaiian: 3 }
   end
@@ -23,9 +22,6 @@ describe Order do
   end
 
   let(:items) { instance_double("MenuItems") }
-
-
-
 
   describe "items" do
     context "stores the customer order" do
