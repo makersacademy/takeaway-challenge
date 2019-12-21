@@ -4,6 +4,11 @@ require './lib/menuitems'
 describe Order do
   subject(:order) { described_class.new(items) }
 
+
+  let(:customer_order) do
+    { bbq_chicken: 3, vegan: 2, hawaiian: 3 }
+  end
+
   before do
     allow(items).to receive(:has_item?).with(:bbq_chicken).and_return(true)
     allow(items).to receive(:has_item?).with(:vegan).and_return(true)
@@ -13,12 +18,24 @@ describe Order do
     allow(items).to receive(:price).with(:bbq_chicken).and_return(12.99)
     allow(items).to receive(:price).with(:vegan).and_return(14.99)
     allow(items).to receive(:price).with(:hawaiian).and_return(18.99)
+
+    allow(items).to receive(:menuitems).and_return(customer_order)
   end
 
   let(:items) { instance_double("MenuItems") }
 
-  let(:customer_order) do
-    { bbq_chicken: 3, vegan: 2, hawaiian: 3 }
+
+
+
+  describe "items" do
+    context "stores the customer order" do
+      it "returns the current order" do
+        subject.add(:bbq_chicken, 3)
+        subject.add(:vegan, 2)
+        subject.add(:hawaiian, 3)
+        expect(subject.items.menuitems).to eq(customer_order)
+      end
+    end
   end
 
   describe "#add" do
@@ -32,7 +49,8 @@ describe Order do
       end
 
       it "rejects items not in stock" do
-        expect { subject.add(:meat_feast, 1) }.to raise_error "Sorry meat_feast is out of stock"
+        allow(items).to receive(:has_item?).with(:meat_feast).and_return(false)
+        expect { order.add(:meat_feast, 1) }.to raise_error "Sorry meat_feast is out of stock"
       end
     end
   end

@@ -13,6 +13,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/spec/order_spec.rb" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/lib/menuitems.rb" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/lib/takeaway.rb" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/spec/takeaway_spec.rb" root0="SKIP_INSPECTION" />
@@ -60,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576838094259</updated>
-      <workItem from="1576838096925" duration="24224000" />
+      <workItem from="1576838096925" duration="25222000" />
     </task>
     <servers />
   </component>
