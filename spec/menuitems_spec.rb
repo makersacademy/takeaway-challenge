@@ -2,15 +2,12 @@ require './lib/menuitems'
 
 describe MenuItems do
 
-  # Create a hash to store the menu items
   subject(:menu) { described_class.new(menuitems) }
 
-  # These are the menu items, with a price (in a has hash :))
   let(:menuitems) do
     { regina: 12.89, hawaiian: 18.99, bbq_chicken: 12.99, vegan: 14.99, vegetarian: 8.99 }
   end
 
-  # Compares it to the fake double
   describe ".menuitems" do
     context "accesses the initialized variable" do
       it "returns a hash menu to compare result" do
@@ -21,7 +18,6 @@ describe MenuItems do
 
   describe "#display" do
     context "it displays a menu" do
-      # compares to the method display's output with a text menu
       it "returns menu and cost per item" do
         text_menu = "Regina £12.89, Hawaiian £18.99, Bbq_chicken £12.99, Vegan £14.99, Vegetarian £8.99"
         expect(menu.display).to eq(text_menu)
@@ -31,11 +27,11 @@ describe MenuItems do
 
   describe "#has_items?" do
     context "checks if item exists in the menu" do
-      it "returns true if items is listed" do
+      it "returns true if item listed" do
         expect(menu.has_item?(:regina)).to be true
       end
 
-      it "returns false if items isnt listed" do
+      it "raises expection if false" do
         expect(menu.has_item?(:havana_sunset)).to be false
       end
     end

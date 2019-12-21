@@ -12,8 +12,9 @@ describe Order do
     allow(items).to receive(:has_item?).with(:bbq_chicken).and_return(true)
     allow(items).to receive(:has_item?).with(:vegan).and_return(true)
     allow(items).to receive(:has_item?).with(:hawaiian).and_return(true)
-    allow(items).to receive(:has_item?).with(:meat_feast).and_return(false)
 
+    allow(items).to receive(:has_item?).with(:meat_feast).and_return(false)
+    
     allow(items).to receive(:price).with(:bbq_chicken).and_return(12.99)
     allow(items).to receive(:price).with(:vegan).and_return(14.99)
     allow(items).to receive(:price).with(:hawaiian).and_return(18.99)
