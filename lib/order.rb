@@ -1,13 +1,16 @@
+require_relative './menuitems'
+
 class Order
   attr_reader :order, :items
 
-  def initialize(items)
-    @order = Hash.new(0)
-    @items = items
+  def initialize(items =  nil)
+    @order = {}
+    @items = items || MenuItems.new
   end
 
   def add(item, amount)
     fail "Sorry #{item} is out of stock" unless items.has_item?(item)
+
     order[item] = amount
   end
 
