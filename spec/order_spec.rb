@@ -25,10 +25,15 @@ describe Order do
     expect(order.total_price).to eq 1
   end
 
+  it 'allows to see order summary' do
+    order.choose_item(:juice, 1)
+    expect{ order.order_summary }.to output("juice x1 = £1.00\n").to_stdout
+  end
+
   it 'prints receipt of order' do
     order.choose_item(:juice)
     order.total_price
-    expect { order.print_receipt }.to output("juice - £1.00\nTotal to pay: £1.00\n").to_stdout
+    expect { order.print_receipt }.to output("juice x1 = £1.00\nTotal to pay: £1.00\n").to_stdout
   end
 
 end
