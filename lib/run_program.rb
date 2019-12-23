@@ -8,5 +8,5 @@ menu.add_item(Item, "chips", 3)
 
 order = Order.new(menu)
 order.selection
-order.print_selection
+
 

@@ -13,9 +13,10 @@ class Order
   def selection
     puts "What would you like to order?"
     until choice.nil?
-      puts "If you would like another item(s), please enter them now\nReturn twice to begin checkout"
+      puts "If you would like another item(s), please enter them now\nReturn once to begin checkout"
     end
     print_selection
+    raise_error
   end
 
   def choice 
@@ -24,11 +25,11 @@ class Order
   end
 
   def print_selection
-    total = 0
+    @total = 0
     @selections.each { |item|
-      total += @menu[item] 
+      @total += @menu[item] 
     puts "#{item.capitalize}: £#{@menu[item]}" }
-    puts "Total: £#{total}"
+    puts "Total: £#{@total}"
   end
 
 
@@ -36,7 +37,8 @@ class Order
 private
 
 def raise_error
-  raise "Totals do not match"  
+  raise "Totals do not match" if @selections.sum { |item| @menu[item] } != @total
+  puts "Total is correct"
 end
 
 end
