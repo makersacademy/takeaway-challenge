@@ -1,4 +1,8 @@
+require 'dotenv'
 require_relative 'menu'
+require_relative 'send_sms'
+require_relative 'fake_sms'
+Dotenv.load('sensitive.env')
 
 class Order
 
@@ -17,6 +21,7 @@ class Order
     end
     print_selection
     raise_error
+    send_sms(ENV["TEST_SID"], ENV["TEST_TOKEN"], ENV["TEST_OUTBOUND"], ENV["TEST_INBOUND"], FakeSMS)
   end
 
   def choice 
@@ -26,12 +31,19 @@ class Order
 
   def print_selection
     @total = 0
-    @selections.each { |item|
-      @total += @menu[item] 
+    @selections.each { |item| @total += @menu[item] 
     puts "#{item.capitalize}: £#{@menu[item]}" }
     puts "Total: £#{@total}"
   end
 
+  def send_sms(sid, token, outbound, inbound, sms = SMS_OUT)
+    sms = sms.new(sid, token, outbound, inbound)
+    sms.send(to_print)
+  end
+
+  def to_print
+    @selections.map { |item| item.to_s.capitalize }
+  end
 
 
 private

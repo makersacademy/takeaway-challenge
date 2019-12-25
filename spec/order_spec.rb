@@ -17,6 +17,8 @@ describe Order do
 
   before do
     allow(menu).to receive(:items) { ({ pizza: 8, burger: 10, chips: 3 }) }
+    allow(STDIN)
+      .to receive(:gets).and_return(*user_input)
   end
 
   let(:subject) { described_class.new(menu) }
@@ -36,20 +38,23 @@ describe Order do
 
   describe '#selection' do 
     it 'returns the list of items with a total price' do 
-      allow(STDIN)
-      .to receive(:gets).and_return(*user_input)
-
       expect { subject.selection }.to output(/#{expected_output2}/m).to_stdout
     end
   end
-
 
   describe '#selection' do
     xit 'returns selection' do 
       set_user_input_and_check_expected_output
     end
   end
-  
+
+  describe '#send_sms' do 
+    it 'sends an sms' do 
+      subject.selection
+      expect(subject.send_sms(ENV["TEST_SID"], ENV["TEST_TOKEN"], ENV["TEST_OUTBOUND"], ENV["TEST_INBOUND"], FakeSMS)
+        ).to include ENV["TEST_INBOUND"]
+    end
+  end
 
   def set_user_input_and_check_expected_output
     allow(STDIN)

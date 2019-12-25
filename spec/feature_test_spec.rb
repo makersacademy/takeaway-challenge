@@ -34,3 +34,16 @@
 #   end
 
 # end
+
+require 'twilio-ruby'
+
+account_sid = "AC6327e990bfbd4f31821c22b4bb2b94f8" # Your Test Account SID from www.twilio.com/console/settings
+auth_token = "9939de6cf1b0dbc78ead14c18c082df8"   # Your Test Auth Token from www.twilio.com/console/settings
+
+@client = Twilio::REST::Client.new account_sid, auth_token
+message = @client.messages.create(
+    body: "Hello from Ruby",
+    to: "+447817762676",    # Replace with your phone number
+    from: "+15005550006")  # Use this Magic Number for creating SMS
+
+puts message.sid
