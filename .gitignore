@@ -1,2 +1,7 @@
 /**/.DS_Store
 /coverage
+
+# Ignore application configuration
+/config/application.yml
+# Ignore .env file
+/.env
