@@ -1,6 +1,6 @@
 class FakeSMS
 
-  Message = Struct.new(from, to, body)
+  Message = Struct.new(:from, :to, :body)
 
   attr_accessor :messages
 
