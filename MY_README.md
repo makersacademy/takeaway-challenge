@@ -8,4 +8,6 @@ In this project, I aimed to create something similar to a restaurant all-in-one 
 
 The menu is printed automatically upon a new instance of Order being created, and the item selections are manually typed in (and successfully stored if they are in the menu) until the program recieves a blank input. 
 
-Setting up the functionality with Twilio's sms api was quite straightforward. One thing I am happy about is the creation of a fakeSMS class for testing purposes
+Setting up the functionality with Twilio's sms api was quite straightforward. One thing I am happy about is the creation of a fakeSMS class for testing purposes. 
+
+I also learned to use a great gem dotenv to keep my twilio and phone number details private.
