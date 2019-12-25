@@ -1,6 +1,6 @@
 class FakeSMS
 
-  Message = Struct.new(:from, :to, :body)
+  Message = Struct.new(from, to, body)
 
   attr_accessor :messages
 
@@ -13,8 +13,9 @@ class FakeSMS
   end
 
   def send(body)
-   p Message.new(@from, @to, 
+    p Message.new(
+      @from, 
+      @to, 
       "Your order is confirmed! It will arrive by #{Time.now + 3600}. Order: #{body}")
-     
   end
 end

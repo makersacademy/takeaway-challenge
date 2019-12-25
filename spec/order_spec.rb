@@ -42,25 +42,12 @@ describe Order do
     end
   end
 
-  describe '#selection' do
-    xit 'returns selection' do 
-      set_user_input_and_check_expected_output
-    end
-  end
-
   describe '#send_sms' do 
     it 'sends an sms' do 
       subject.selection
       expect(subject.send_sms(ENV["TEST_SID"], ENV["TEST_TOKEN"], ENV["TEST_OUTBOUND"], ENV["TEST_INBOUND"], FakeSMS)
         ).to include ENV["TEST_INBOUND"]
     end
-  end
-
-  def set_user_input_and_check_expected_output
-    allow(STDIN)
-    .to receive(:gets).and_return(*user_input)
-
-    expect(subject.selection).to eq(expected_output)
   end
 
 end

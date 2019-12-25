@@ -32,11 +32,12 @@ class Order
   def print_selection
     @total = 0
     @selections.each { |item| @total += @menu[item] 
-    puts "#{item.capitalize}: £#{@menu[item]}" }
+  puts "#{item.capitalize}: £#{@menu[item]}" 
+    }
     puts "Total: £#{@total}"
   end
 
-  def send_sms(sid, token, outbound, inbound, sms = SMS_OUT)
+  def send_sms(sid, token, outbound, inbound, sms = SendSMS)
     sms = sms.new(sid, token, outbound, inbound)
     sms.send(to_print)
   end
@@ -45,12 +46,12 @@ class Order
     @selections.map { |item| item.to_s.capitalize }
   end
 
-
 private
 
-def raise_error
-  raise "Totals do not match" if @selections.sum { |item| @menu[item] } != @total
-  puts "Total is correct"
-end
+  def raise_error
+    raise "Totals do not match" if @selections.sum { |item| @menu[item] } != @total
+
+    puts "Total is correct"
+  end
 
 end
