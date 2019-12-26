@@ -30,23 +30,84 @@ Task
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
+**User Story 1**
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+```
+- create new TakeAway class
+    - #initialize (menu = Menu.new)
+        - @menu = menu
+        - @basket = {}
 
+- create new Menu class with dishes
+    - #initialize
+      - @dishes
+    - #dishes
+      - @dishes = { "Spring Roll" => 4.99, "Pork Dumpling" => 6.99 }
+
+- TakeAway method #read_menu
+  - @menu
+
+
+**User Story 2**
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
+- #place_order
+    - while true do
+        - order
 
+- #order
+    - "Please enter the number of the dish you would like to add to your order."
+    - use get method for customer to select a number
+
+    - if dish == available?
+        - store_order
+        - "1x #{dish} added to your basket."
+    - else 
+        - raise error
+
+- #available?
+    - true if quantity != 0
+
+- #store_order
+    - @basket << selection
+
+
+**User Story 3**
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+- #calculate_total
+    - @total instance variable
+    - adding menu[index] to @total 
+    - every time an item is selected in #select_dish
 
+- #total
+    - "Total: #{@total}"
+
+- #basket_summary
+
+- #print_order
+  - returns full dish/price breakdown stored in #store_order
+
+**User Story 4**
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+- #complete
+    - #message
+    
+- #message
+    - returns "Thank you! Your order was placed and will be delivered before 18:52"
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
