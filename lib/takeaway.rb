@@ -1,6 +1,14 @@
+require_relative 'menu'
+
 class TakeAway
-    def read_menu
-        menu = {"Spring Roll" => 4.99, "Pork Dumpling" => 6.99}
-    end
+  attr_reader :menu
+
+  def initialize(menu = Menu.new)
+    @menu = menu.items
+  end
+
+  def read_menu
+    @menu
+  end
 
 end
