@@ -17,66 +17,103 @@ Takeaway Challenge
 Instructions
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is the weekend challenge at the end of my second week at Makers Academy, a 16-week software developer bootcamp. For the main instructions, please refer [here](https://github.com/AndreaDiotallevi/takeaway-challenge/blob/master/INSTRUCTIONS.md).
 
-Task
------
+Prerequisites
+-------
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Clone this repository into your machine with ```git clone```
+* Change into the new repository
+* Open ```irb``` in the terminal
+
+How to run tests
+-------
+
+* Run ```bundle``` to install all the dependencies
+* Run ```rspec``` in the terminal to run the tests
+
+Class Diagrams
+-------
+
+| Dish   | Menu            | TakeAway               | Restaurant      | TextProvider    |
+| ---    | ----            | ---                    | ---             | ---             |
+| @name  | @dishes         | @basket                | @takeaway       | @client         |
+| @price |                 | @menu                  | @text_provider  |                 |
+|------- | --------------- | ---------------------- | --------------- | --------------- |
+|        | add(dish)       | read_menu              | checkout(price) | send_text(time) |
+|        | list            | order(dish, quantity)  |                 |                 |
+|        | contains?(dish) | basket_summary         |                 |                 |
+|        |                 | total                  |                 |                 |
+|        |                 | correct_amount?(price) |                 |                 |
+|        |                 | empty?                 |                 |                 |
+|        |                 | complete               |                 |                 |
+|------- | --------------- | ---------------------- | --------------- | --------------- |
+|        |                 | calculate_total        | delivery_time   |                 |
+
+
+Feature Test
+-------
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+$ irb
+2.6.5 :001 > require "./lib/dish.rb"
+ => true 
+2.6.5 :002 > require "./lib/menu.rb"
+ => true 
+2.6.5 :003 > require "./lib/takeaway.rb"
+ => true 
+2.6.5 :004 > require "./lib/restaurant.rb"
+ => true 
+2.6.5 :005 > require "./lib/text_provider.rb"
+^[[A => true 
+2.6.5 :006 > dish1 = Dish.new("Carbonara", 10)
+ => #<Dish:0x00007fd7186d4d80 @name="Carbonara", @price=10> 
+2.6.5 :007 > dish2 = Dish.new("Puttanesca", 12)
+ => #<Dish:0x00007fd7186e7020 @name="Puttanesca", @price=12> 
+2.6.5 :008 > dish3 = Dish.new("Bolognese", 14)
+ => #<Dish:0x00007fd7186eca70 @name="Bolognese", @price=14> 
+2.6.5 :009 > menu = Menu.new
+ => #<Menu:0x00007fd7186f5940 @dishes=[]> 
+2.6.5 :010 > menu.add(dish1)
+ => "Carbonara added to the menu" 
+2.6.5 :011 > menu.add(dish2)
+ => "Puttanesca added to the menu" 
+2.6.5 :012 > menu.add(dish3)
+ => "Bolognese added to the menu" 
+2.6.5 :013 > menu.list
+ => "Carbonara (£10), Puttanesca (£12), Bolognese (£14)" 
+2.6.5 :014 > menu.contains?(dish1)
+ => true 
+2.6.5 :015 > menu.contains?(Dish.new("Cacio e pepe", 13))
+ => false 
+2.6.5 :016 > takeaway = TakeAway.new(menu)
+ => #<TakeAway:0x00007fd71872e510 @basket={}, @menu=#<Menu:0x00007fd7186f5940 @dishes=[#<Dish:0x00007fd7186d4d80 @name="Carbonara", @price=10>, #<Dish:0x00007fd7186e7020 @name="Puttanesca", @price=12>, #<Dish:0x00007fd7186eca70 @name="Bolognese", @price=14>]>> 
+2.6.5 :017 > takeaway.basket
+ => {} 
+2.6.5 :018 > takeaway.empty?
+ => true 
+2.6.5 :019 > takeaway.order(dish1, 3)
+ => "3x Carbonara(s) added to your basket" 
+2.6.5 :020 > takeaway.order(dish2, 5)
+ => "5x Puttanesca(s) added to your basket" 
+2.6.5 :021 > takeaway.order(dish3, 2)
+ => "2x Bolognese(s) added to your basket" 
+2.6.5 :022 > takeaway.basket_summary
+ => "Carbonara x3 = £30, Puttanesca x5 = £60, Bolognese x2 = £28" 
+2.6.5 :023 > takeaway.total
+ => "Total: £118" 
+2.6.5 :024 > text_provider = TextProvider.new
+ => #<TextProvider:0x00007fd7181cd008 [...]> 
+2.6.5 :025 > restaurant = Restaurant.new(takeaway, text_provider)
+ => #<Restaurant:0x00007fd71828cb38 [...]> 
+2.6.5 :026 > restaurant.checkout(100)
+Traceback (most recent call last):
+        5: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `<main>'
+        4: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `load'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        2: from (irb):26
+        1: from /Users/student/Code/makersacademy/takeaway-challenge/lib/restaurant.rb:13:in `checkout'
+RuntimeError (Payment amount not correct)
+2.6.5 :027 > restaurant.checkout(118)
+ => "Thank you for your order" 
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
