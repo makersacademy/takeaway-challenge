@@ -16,7 +16,7 @@ class SendSMS
     @client.messages.create(
     from: @from,
     to: @to,
-    body: "Your order is confirmed! It will arrive by #{Time.now + 3600}. Order: #{body}"
+    body: "Your order is confirmed! It will arrive by #{Time.now + 3600}. Total: £#{body}"
     )
   end
 end

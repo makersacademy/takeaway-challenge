@@ -16,6 +16,6 @@ class FakeSMS
     p Message.new(
       @from, 
       @to, 
-      "Your order is confirmed! It will arrive by #{Time.now + 3600}. Order: #{body}")
+      "Your order is confirmed! It will arrive by #{Time.now + 3600}. Total: £#{body}")
   end
 end
