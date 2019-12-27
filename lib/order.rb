@@ -17,9 +17,10 @@ class Order
   end
 
   def order(item, quantity)
+    raise "Item not in menu, please try again" if !@menu.include?(item.to_sym)
+
     @basket[item.downcase.to_sym] += quantity
   end
-
 
   def print_basket
     @total = 0
@@ -27,7 +28,7 @@ class Order
       puts "#{item.capitalize} x #{q}: £#{@menu[item] * q}" 
     }
     puts "Total: £#{@total}"
-    raise_error
+    price_error
   end
 
   def send_sms(sid, token, outbound, inbound, sms = SendSMS)
@@ -37,7 +38,7 @@ class Order
 
 private
 
-  def raise_error
+  def price_error
     raise "Totals do not match" if @basket.sum { |item, q| @menu[item] * q } != @total
 
     puts "Total is correct"

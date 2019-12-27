@@ -24,7 +24,6 @@ describe Order do
   let(:subject) { described_class.new(menu) }
 
   describe '#initialization' do 
-    
     it 'returns the menu to view' do 
       expect(subject.menu).to eq({ pizza: 8, burger: 10, chips: 3 })
     end
@@ -44,6 +43,9 @@ describe Order do
     it 'adds an item to the basket' do 
       subject.order("pizza", 5)
       expect(subject.basket).to include({ pizza: 5 })
+    end
+    it 'raises an error for non-existent item' do 
+      expect{ subject.order("tuna", 2) }.to raise_error("Item not in menu, please try again")
     end
   end
 
