@@ -6,4 +6,8 @@ class Menu
       "peking duck" => 7.99 }
   end
 
+  def price(dish)
+    dishes[dish]
+  end
+
 end
