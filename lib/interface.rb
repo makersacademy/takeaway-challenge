@@ -1,6 +1,7 @@
 require_relative 'printer'
 require_relative 'basket'
 require_relative 'list'
+require_relative 'order'
 
 class Interface
   def initialize(basket: Basket.new, printer: Printer.new, list: List.new)
