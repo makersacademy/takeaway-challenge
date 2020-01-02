@@ -1,10 +1,12 @@
+require "order"
+
 class PizzaPlace
 
   attr_reader :menu, :order
 
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order
+    @order = order || Order.new
   end
 
   def print_menu
