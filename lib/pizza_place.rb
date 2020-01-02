@@ -17,6 +17,7 @@ class PizzaPlace
     items.each do |item, quantity| 
       order.add(item, quantity)
     end
+    order.total
   end
 
 end

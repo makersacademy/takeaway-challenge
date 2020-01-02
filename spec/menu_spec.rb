@@ -22,4 +22,8 @@ describe Menu do
     expect(subject.include_item?(:Chicken)).to be(false)
   end
 
+  it "calculates a price" do
+    expect(subject.price(:Margerita)).to eq(items[:Margerita]) 
+  end
+  
 end

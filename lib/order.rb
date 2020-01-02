@@ -9,8 +9,18 @@ class Order
 
   def add(item, quantity)
     fail "#{item} not avaliable!" unless menu.include_item?(item)
-    
+
     items[item] += quantity
+  end
+
+  def total
+    item_totals.reduce(:+)
+  end
+
+  def item_totals
+    items.map do |item, quantity|
+      menu.price(item) * quantity
+    end
   end
  
 end
