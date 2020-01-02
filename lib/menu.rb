@@ -13,4 +13,8 @@ class Menu
     menu.join(", ")
   end
 
+  def include_item?(item)
+    !!items[item]
+  end
+
 end

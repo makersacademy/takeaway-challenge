@@ -14,4 +14,12 @@ describe Menu do
     expect(subject.prints).to eq("Margerita £9, Pepperoni £11, Vegetable £10")
   end
   
+  it "tells if an item is on the menu" do
+    expect(subject.include_item?(:Margerita)).to be(true)
+  end
+
+  it "tells if an item is not on the menu" do
+    expect(subject.include_item?(:Chicken)).to be(false)
+  end
+
 end
