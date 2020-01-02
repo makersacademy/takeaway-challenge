@@ -2,12 +2,14 @@ require_relative 'printer'
 require_relative 'basket'
 require_relative 'list'
 require_relative 'order'
+require 'dotenv/load'
 
 class Interface
-  def initialize(basket: Basket.new, printer: Printer.new, list: List.new)
+  def initialize(basket: Basket.new, printer: Printer.new, list: List.new, order: Order.new)
     @basket = basket
     @printer = printer
     @list = list
+    @order = order
   end
 
   def start
@@ -39,7 +41,11 @@ class Interface
     when "1"
       @printer.print(@list)
     when "2"
+      puts "Your basket is empty\n" if @basket.basket.empty?
+      return if @basket.basket.empty?
+
       @printer.view_basket(@basket)
+      puts "Your total is #{@order.total(@basket)}"
     when "3"
       puts "Which dish are you choosing?"
       dish_converter
