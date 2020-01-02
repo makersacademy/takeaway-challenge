@@ -2,10 +2,11 @@ require_relative 'menu'
 require_relative 'message'
 
 class TakeAway
-  attr_reader :orders
+  attr_reader :orders, :total_price
 
   def initialize(menu = Menu.new)
     @menu = menu
+    @total_price = 0
     @orders = Hash.new
   end
 
@@ -39,20 +40,16 @@ class TakeAway
   end
 
   def total
-    total = 0
     orders.each do |item, amount|
-      total_item = (amount * @menu.price(item)).round(2) 
-      total += total_item
+      total_item = (amount * @menu.price(item))
+      @total_price += total_item
     end
-    "Total: £#{total}"
+    "Total: £#{total_price.round(2)}"
   end
 
-  def complete_order(total_price)
-    send_text("Thank you for your oder: £#{total_price}")
-  end
-
-  def send_text(message)
-    # this method calls the Twilio API
+  def complete_order
+    message = Message.new
+    message.send_text("Thank you for your oder: £#{total_price.round(2)}")
   end
 
 end
