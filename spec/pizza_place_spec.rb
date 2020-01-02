@@ -8,7 +8,7 @@ describe PizzaPlace do
   let(:menu_print) { "Margarita: £9" }
   let(:order) { double(:order) }
 
-  let(:items) { { Margerita: 9, Pepperoni: 11, Vegetable: 10 } }
+  let(:items) { { Margerita: 1, Pepperoni: 2, Vegetable: 3 } }
 
   it "shows the items and prices" do
     expect(pizza.print_menu).to eq(menu_print)

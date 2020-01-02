@@ -7,8 +7,8 @@ class Menu
   end
 
   def prints
-    menu = items.map do |key, value|
-      "#{key} £#{value}"
+    menu = items.map do |item, price|
+      "#{item} £#{price}"
     end
     menu.join(", ")
   end
