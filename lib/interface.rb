@@ -36,9 +36,9 @@ class Interface
   def selector
     case @choice
     when "1"
-      @printer.print
+      @printer.print(@list)
     when "2"
-      p "basket"
+      @printer.view_basket(@basket)
     when "3"
       puts "Which dish are you choosing?"
       dish_converter
