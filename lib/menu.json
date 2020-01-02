@@ -1,0 +1,15 @@
+
+{
+  "menu": [
+    { "name": "Popadoms",
+      "price": 0.75},
+    { "name": "Chutneys",
+      "price": 1.00},
+    { "name": "Onion Bhajis",
+      "price": 3.00},
+    { "name": "Vegtable Pakora",
+      "price": 4.00},
+    { "name": "Aloo Gobi",
+      "price": 6.00}
+    ]
+}
