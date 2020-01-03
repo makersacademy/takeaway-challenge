@@ -10,4 +10,8 @@ class Basket
   def add(item)
     @basket << item
   end
+
+  def clear
+    @basket = []
+  end
 end

@@ -25,15 +25,15 @@ class Interface
     puts "1. View menu"
     puts "2. View basket"
     puts "3. Add dish to basket"
-    puts "4. Remove dish from Basket"
+    puts "4. Clear basket"
     puts "5. Place order"
-    puts "6. Exit"
+    puts "6. Exit\n\n"
     puts "Please choose your option"
   end
 
   def choice
     @choice = gets.chomp
-    puts "You choose #{@choice}\n"
+    puts "You choose #{@choice}\n\n"
   end
 
   def selector
@@ -41,11 +41,11 @@ class Interface
     when "1"
       @printer.print(@list)
     when "2"
-      puts "Your basket is empty\n" if @basket.basket.empty?
+      puts "Your basket is empty\n\n" if @basket.basket.empty?
       return if @basket.basket.empty?
 
       @printer.view_basket(@basket)
-      puts "Your total is #{@order.total(@basket)}"
+      puts "Your total is #{@order.total(@basket)}\n\n"
     when "3"
       puts "Which dish are you choosing?"
       dish_converter
@@ -53,15 +53,17 @@ class Interface
         puts "How many do you want?"
         quantity = gets.chomp.to_i
         quantity.times { @basket.add({@dish => @list.list[@category][@dish]}) }
+        puts "#{quantity} #{@dish.to_s.capitalize} added to your basket\n\n"
       end
     when "4"
-      p "remove dish"
+      @basket.clear
+      puts "Your basket is now empty\n\n"
     when "5"
-      p "order placed"
+      @order.checkout(@basket)
     when "6"
       puts "I'm closing down"
     else
-      p "Please select the correct option"
+      puts "Please select the correct option\n\n"
     end
   end
 
@@ -76,7 +78,7 @@ class Interface
     elsif [:water, :coke, :red, :white].include?(@dish)
       @category = :drink
     else
-      puts "We don't serve this dish\n"
+      puts "We don't serve this dish\n\n"
       @category = nil
     end
   end
