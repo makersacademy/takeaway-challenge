@@ -14,12 +14,9 @@ class Menu
   end
 
   def show_dishes
-    dishes
-  end
-
-  def select(input)
-    dishes = @dishes
-    dishes.assoc(input)
+    dishes.map do |title, price|
+      "%s £%.2f" % [title.to_s.capitalize, price]
+    end.join(", ")
   end
 
 end

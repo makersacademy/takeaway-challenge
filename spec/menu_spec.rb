@@ -12,12 +12,7 @@ describe 'Menu' do
 
   it 'the show dishes method shows the list of dishes available' do
     menu = Menu.new
-    expect(menu.show_dishes).to eq menu.dishes
-  end
-
-  it "selects a dish on the menu" do
-    menu = Menu.new
-    expect(menu.select('pad thai')).to eq(['pad thai', 6.95])
+    expect(menu.show_dishes).to eq ("Pad thai £6.95, Green curry £8.95, Red curry £8.95, Nasi goreng £4.95, Prawn crackers £1.00, Rice £2.00")
   end
 
 
