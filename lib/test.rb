@@ -1,16 +1,12 @@
-require_relative 'takeaway'
+require_relative 'order'
 
-t = Takeaway.new
+order = Order.new
 
-t.view_menu
-t.add("Hummus")
-t.add("Hummus")
-p t.order.details
-t.add("Pita")
-t.add("Gyro")
-p t.order.details
+order.add("Hummus", 5)
+order.add("Pita", 1)
 
 item_count = Hash.new(0)
-t.order.details.each { |item| item_count[item[:name]] += 1 }
-item_count.each { |k, v| puts "Item: #{k} | Qty: #{v}"}
-puts "Total: $ #{t.order.total}"
+order.orders.each { |item| item_count[item[:name]] += item[:qty] }
+
+
+item_count.each { |k, v| puts "Item: #{k} | Qty: #{v}| Tot: $ #{(order.menu.dishes[k] * v)}"}

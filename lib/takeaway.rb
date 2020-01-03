@@ -1,29 +1,35 @@
-require_relative 'menu'
 require_relative 'order'
 require_relative 'text'
 
 class Takeaway
   attr_reader :order
 
-  def initialize
-    @menu = Menu.new
-    @order = Order.new
+  def initialize(order = Order.new)
+    @order = order
   end
 
   def view_menu
-    @menu.all
+    @order.view_menu
   end
 
-  def add(dish, qty)
+  def add(dish, qty = 1)
     fail "Menu item does not exist" if not_available(dish)
-    @order.add(dish, @menu.dishes[dish], qty)
+
+    @order.add(dish, qty)
+  end
+
+  def view_order
+    @order.view
+  end
+
+  def view_total
+    "Total: $ #{@order.total}"
   end
 
   def submit_order(payment)
     fail "Payment does not match order total" if wrong_amt(payment)
-    @order.item_count
+
     send_text
-    "Total: $ #{@order.total}"
   end
 
   private
@@ -37,8 +43,7 @@ class Takeaway
   end
 
   def not_available(dish)
-    @menu.dishes[dish] == nil
+    @order.menu.dishes[dish].nil?
   end
-
 
 end
