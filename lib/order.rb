@@ -1,3 +1,5 @@
+require_relative 'text'
+
 class Order
   def initialize(text = Text.new)
     @text = text
@@ -12,8 +14,9 @@ class Order
   end
 
   def checkout(basket)
-    puts "You are proceeding with the checkout.\nYour total is £ #{total(basket)}"
-    puts "Do you want to pay? (Yes / No)"
+    return puts "Your basket is empty, can't proceed with checkout\n\n" if basket.empty?
+
+    puts "You are proceeding with the checkout.\nYour total is £ #{total(basket)}\nContinue?"
     pay = gets.chomp.downcase
     if pay == "yes"
       @text.send_text

@@ -2,7 +2,6 @@ require_relative 'printer'
 require_relative 'basket'
 require_relative 'list'
 require_relative 'order'
-require_relative 'text'
 
 class Interface
   def initialize(basket: Basket.new, printer: Printer.new, list: List.new, order: Order.new)
@@ -20,6 +19,8 @@ class Interface
       break if @choice == "6"
     end
   end
+
+  private
 
   def menu
     puts "1. View menu"
@@ -41,23 +42,13 @@ class Interface
     when "1"
       @printer.print(@list)
     when "2"
-      puts "Your basket is empty\n\n" if @basket.basket.empty?
-      return if @basket.basket.empty?
+      return puts "Your basket is empty\n\n" if @basket.empty?
 
-      @printer.view_basket(@basket)
-      puts "Your total is #{@order.total(@basket)}\n\n"
+      show_basket
     when "3"
-      puts "Which dish are you choosing?"
-      dish_converter
-      unless @category.nil?
-        puts "How many do you want?"
-        quantity = gets.chomp.to_i
-        quantity.times { @basket.add({@dish => @list.list[@category][@dish]}) }
-        puts "#{quantity} #{@dish.to_s.capitalize} added to your basket\n\n"
-      end
+      add_dishes_dialogue
     when "4"
-      @basket.clear
-      puts "Your basket is now empty\n\n"
+      clear_basket
     when "5"
       @order.checkout(@basket)
     when "6"
@@ -67,8 +58,33 @@ class Interface
     end
   end
 
-  def dish_converter
+  def show_basket
+    @printer.view_basket(@basket)
+    puts "Your total is £ #{@order.total(@basket)}\n\n"
+  end
+
+  def add_dishes_dialogue
+    puts "Which dish are you choosing?"
     @dish = gets.chomp.downcase.to_sym
+    category_selector
+    return puts "We don't serve this dish\n\n" unless @category
+  
+    puts "How many do you want?"
+    @quantity = gets.chomp.to_i
+    add_dishes
+  end
+
+  def add_dishes
+    @quantity.times { @basket.add({ @dish => @list.list[@category][@dish] }) }
+    puts "#{@quantity} #{@dish.to_s.capitalize} added to your basket\n\n"
+  end
+
+  def clear_basket
+    @basket.clear
+    puts "Your basket is now empty\n\n"
+  end
+
+  def category_selector
     if [:margherita, :marinara, :nduja, :bufala, :parma].include?(@dish)
       @category = :pizza
     elsif [:pomodoro, :bolognese, :gamberi, :lasagna].include?(@dish)
@@ -78,7 +94,6 @@ class Interface
     elsif [:water, :coke, :red, :white].include?(@dish)
       @category = :drink
     else
-      puts "We don't serve this dish\n\n"
       @category = nil
     end
   end

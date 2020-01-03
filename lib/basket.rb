@@ -14,4 +14,8 @@ class Basket
   def clear
     @basket = []
   end
+
+  def empty?
+    basket.empty?
+  end
 end
