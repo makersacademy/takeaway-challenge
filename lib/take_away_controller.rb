@@ -1,8 +1,11 @@
+require 'order'
+require 'dish_list'
+
 class Controller
 
   def initialize
   end
-
+\
   puts "Take-Away App"
   menu = DishList.new(Dish)
   menu.load
