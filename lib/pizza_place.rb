@@ -8,7 +8,7 @@ class PizzaPlace
   def initialize(menu:, order: nil, text: nil)
     @menu = menu
     @order = order || Order.new(menu)
-    @text = text  ||Text.new
+    @text = text  || Text.new
   end
 
   def print_menu
