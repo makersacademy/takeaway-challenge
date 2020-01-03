@@ -2,7 +2,7 @@ require_relative 'printer'
 require_relative 'basket'
 require_relative 'list'
 require_relative 'order'
-require 'dotenv/load'
+require_relative 'text'
 
 class Interface
   def initialize(basket: Basket.new, printer: Printer.new, list: List.new, order: Order.new)
