@@ -1,12 +1,12 @@
 class Menu
   attr_reader :dish_list
 
-  def initialize (dish_class)
+  def initialize(dish_class)
     @dish_class = dish_class
     @menu = []
   end
 
-  def load (filename = './lib/menu.json')
+  def load(filename = './lib/menu.json')
     @data = JSON.parse(File.read(filename))
     @data["menu"].each do |hash1|
       @menu << @dish_class.new(hash1["name"], hash1["price"])
