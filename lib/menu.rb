@@ -14,4 +14,8 @@ class Menu
     @menu = MENU
   end
 
+  def price(food)
+    MENU[food]
+  end
+
 end

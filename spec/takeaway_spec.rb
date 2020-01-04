@@ -7,8 +7,10 @@ describe Takeaway do
     expect(subject).to respond_to(:add_to_cart).with(2).arguments
   end
 
-  it 'allows user to select from the interactive menu' do
-    expect(subject.process(3)).to eq(subject.view_cart)
+  describe '#process' do
+    it 'allows user to select from the interactive menu' do
+      expect(subject.process(3)).to eq(subject.view_cart)
+    end
   end
 
   before do
