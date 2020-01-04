@@ -12,7 +12,8 @@ class Takeaway
 
   def print_header
     header = "Welcome to the Koala Cafe! All prices are in £."
-    puts header.chomp
+    print header.chomp
+    print
   end
   
   def print_options
@@ -62,10 +63,6 @@ class Takeaway
   def view_cart
     puts @your_order
     puts "Order total is £#{total_cost}."
-  end
-
-  def correct_total?
-    true
   end
 
 end

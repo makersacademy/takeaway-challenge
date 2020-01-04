@@ -7,6 +7,10 @@ describe Takeaway do
     expect(subject).to respond_to(:add_to_cart).with(2).arguments
   end
 
+  it 'allows user to select from the interactive menu' do
+    expect(subject.process(3)).to eq(subject.view_cart)
+  end
+
   before do
     subject.add_to_cart("Vegemite Toast", 2)
   end
@@ -41,13 +45,9 @@ describe Takeaway do
       end.to output("Welcome to the Koala Cafe! All prices are in £.").to_stdout
   end
 
-  it 'returns correct total cost' do
-    expect(subject.correct_total?).to be true
+  it 'puts 5 items when called' do        
+    STDOUT.should_receive(:puts).exactly(5).times
+    subject.print_options
   end
-
-  # it 'prints order' do
-  #   expect do
-  #     subject.view_cart
-  #   end.to output("2 x Vegemite Toast. ").to_stdout
-  # end
+  
 end
