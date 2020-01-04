@@ -12,10 +12,8 @@ class Order
 
   def create(selection, quantity)
     raise "Item not in menu" if @menu[selection - 1].nil?
-    
     dish = @menu[selection - 1]
     @order << @order_line.new(quantity, dish["name"], dish["price"])
-    puts @order 
   end
 
 end

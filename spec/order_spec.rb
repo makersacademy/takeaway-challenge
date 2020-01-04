@@ -11,11 +11,11 @@ describe 'Order' do
   describe '#create' do
     it 'creates an entry in order array' do
       subject = Order.new(OrderLine)
-      expect(subject.create(1, 1)).to eq(order[0])
+      expect(subject.create(1, 1)).to eq(subject.order)
     end
     it 'raises an error when no entry matches selection' do
-      subject.new(OrderLine)
-      expect(subject.create(20, 1)).to raise_error "Item not in menu"
+      subject = Order.new(OrderLine)
+      expect { subject.create(20, 1) }.to raise_error 'Item not in menu'
     end
   end
 end
