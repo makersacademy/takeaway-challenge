@@ -25,7 +25,7 @@ describe 'Menu' do
       subject = Menu.new(Dish)
       subject.load
       subject.see_menu
-      expect(STDOUT).to receive(:puts)
+      expect(subject).to respond_to(:see_menu)
     end
   end
 end
