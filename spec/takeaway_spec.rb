@@ -8,4 +8,10 @@ describe TakeAway do
     end
   end
 
+  # describe '#order' do
+  #   it 'gets item number from customer' do
+  #     expect(subject.order).to 
+  #   end
+  # end
+
 end

@@ -41,11 +41,9 @@ I would like to see a list of dishes with prices
         - @menu = menu
         - @basket = {}
 
-- create new Menu class with dishes
-    - #initialize
-      - @dishes
-    - #dishes
-      - @dishes = { "Spring Roll" => 4.99, "Pork Dumpling" => 6.99 }
+- create new Menu class with items
+    - #items
+      - items = { "Spring Roll" => 4.99, "Pork Dumpling" => 6.99 }
 
 - TakeAway method #read_menu
   - @menu
@@ -65,14 +63,9 @@ I would like to be able to select some number of several available dishes
     - "Please enter the number of the dish you would like to add to your order."
     - use get method for customer to select a number
 
-    - if dish == available?
-        - store_order
-        - "1x #{dish} added to your basket."
-    - else 
-        - raise error
+    - store_order
+    - "1x #{dish} added to your basket."
 
-- #available?
-    - true if quantity != 0
 
 - #store_order
     - @basket << selection
