@@ -3,7 +3,7 @@ require 'order'
 describe Order do
   subject(:order) { described_class.new(menu) }
   let(:menu) { double :menu }
-  let(:textprovider) { TextProvider.new }
+  let(:textprovider) { double :textprovider }
   let(:client) { double :client }
 
   context 'by default' do
@@ -42,12 +42,7 @@ describe Order do
       end
 
       it 'can send a text confirming order placed' do
-        time_now = Time.parse('12:00')
-        Time.stub(:now).and_return(time_now)
-        message = 'Thank you! Your order was placed and will be delivered before 13:00'
-        twilio_message_body = { from: ENV['TWILIO_NUMBER'], to: ENV['NUMBER'], body: message }
-        allow(client).to receive_message_chain(:messages, :create).with(twilio_message_body)
-        expect(Twilio::REST::Client).to receive(:new).with(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).and_return(client)
+        expect(textprovider).to receive(:send_text)
         order.checkout(6, textprovider)
       end
     end
