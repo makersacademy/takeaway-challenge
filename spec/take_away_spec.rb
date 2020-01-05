@@ -4,7 +4,10 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order) } 
 
   let(:menu) { double(:menu, print: printed_menu) }
-  let(:order) { instance_double("Order", total: 15.00) } #create order class for place_order hold attributes
+
+  let(:order) { instance_double("Order", total: 15.00) }
+  let(:sms) { instance_double("SMS", deliver: nil) }
+   #create order class for place_order hold attribute 
   let(:printed_menu) { 'Pizza: £5.00' }
 
   let(:dishes) { {pizza: 1, falafel: 2} } #set dishes to be stubed in test
@@ -23,6 +26,11 @@ describe Takeaway do
     allow(order).to receive(:add)
     total = takeaway.place_order(dishes)
     expect(total).to eq(15.00)
+  end
+
+  it 'send message when order complete' do
+    expect(sms).to receive(:deliver)
+    take_away.place_order(dishes)
   end
 
 end
