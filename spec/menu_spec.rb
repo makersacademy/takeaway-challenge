@@ -4,8 +4,8 @@ describe Menu do
   subject(:menu) { described_class.new(dishes) }
   let(:dishes) do
     {
-      Pizza: 5.00,
-      Felafel: 5.00
+      pizza: 5.00,
+      felafel: 5.00
     }
   end
   it 'has list of dishes with prices' do
