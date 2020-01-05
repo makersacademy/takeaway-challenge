@@ -23,9 +23,17 @@ describe Takeaway do
       order = String.new
       expect{subject.place_order(order)}.to raise_error('Order not in correct format')
     end
+    it 'raises error if order contains items not on the list' do
+      order = 'pepperoni_pizza, 2, wedgez, 4, fanta, 2, 23, +447234213433'
+      expect{subject.place_order(order)}.to raise_error('Item not on menu')
+    end
     it 'accepts orders of the correct format' do
-      order = 'pizza, 2, sides, 4, drink, 2, 54, +447234213433'
+      order = 'pepperoni_pizza, 2, wedges, 4, fanta, 2, 51.92, +447234213433'
       expect(subject.place_order(order)).to eq('Order recieved, you should recieve a text confirmation shortly!')
+    end
+    it 'raises error if order total is incorrect' do
+      order = 'pepperoni_pizza, 2, wedges, 4, fanta, 2, 23, +447234213433'
+      expect{subject.place_order(order)}.to raise_error('Order total incorrect')
     end
   end
 end

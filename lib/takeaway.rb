@@ -2,6 +2,7 @@ class Takeaway
   RESTURANT_NAME = "TAKEAWAY à la CHRIS\n"
 
   def initialize(menu_printer)
+    @orders = []
     @menu_printer = menu_printer
     @menu_labels = {name: "Description", category: "Category", price: 'Price'}
     @menu_items = [{name: 'pepperoni_pizza', category: 'Pizza', price: 12.99},
@@ -26,8 +27,27 @@ class Takeaway
 
   def place_order(order)
     raise 'Order not in correct format' if order.class != String
-    raise 'Order not in correct format' unless order.match?(/(\A(\s*\w+, \d+,)+)(?= \d+, \+44\d{10})/)
+    raise 'Order not in correct format' unless order.match?(/(\A(\s*\w+, \d+,)+)(?= \d+\.*\d{2}*, \+44\d{10})/)
+    interpret_order(order)
+    check_total(@orders[-1])
     'Order recieved, you should recieve a text confirmation shortly!'
+  end
+
+  private
+
+  def interpret_order(order)
+    order = order.scan(/[\w\.[^,]]+,[\w\.[^,]]+/).map{|item| item.split(',').map{|item| item.strip}}
+    details = order.pop
+    order.map!{|item| item = [item[0], item[1].to_f]}
+    raise 'Item not on menu' unless order.all?{|item| @menu_items.any?{|o| o[:name] == item[0]}}
+    details[0] = details[0].to_f
+    @orders << {details: details, orders: [order]}
+  end
+
+  def check_total(order)
+    order_total = order[:orders][-1].inject(0.to_f){|sum, item| sum + (@menu_items.find{|o| o[:name] == item[0]}[:price] * item[1])}
+    customer_total = order[:details][0]
+    raise 'Order total incorrect' if customer_total != order_total
   end
 end
 
