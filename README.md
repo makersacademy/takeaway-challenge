@@ -1,5 +1,9 @@
 Contained here is my work on the Takeaway weekend challenge for week 2 of Makers Academy. I have built a functioning takeaway which is based on two different classes "Takeaway" and "Order". The Order class is injected into Takeaway and calls on many of its methods.
 
+The created classes can take orders, compile totals and also return lists of things in the basket. However because of an issue with the Twilio API the text messaging part of the task is not done. 
+
+Instead I have shown how the text would be formatted.
+
 Takeaway Challenge
 ==================
 ```
