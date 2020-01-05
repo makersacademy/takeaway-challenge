@@ -28,5 +28,16 @@ describe Takeaway do
   it 'views cart with total cost and ordered food' do
     expect(subject.total_cost).to eq 8
   end
+
+  subject(:takeaway) { described_class.new }
+  
+  before do
+    allow(takeaway).to receive(:complete_order)
+  end
+
+  it 'allows user to place order' do
+    expect(takeaway).to receive(:complete_order)
+    takeaway.complete_order
+  end
   
 end
