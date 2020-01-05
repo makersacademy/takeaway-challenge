@@ -52,7 +52,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 #### Extract Scope
 - Method to provide list of dishes and corresponding prices
-- Method to send order directly, hints outline order is placed by sending list of dishes, quantities, and order total, since there is no mention of input data type, this will be implemented as a hash for flexibility. Also no mention of of when to input phone number, this will be included in the order
+- Method to send order directly, hints outline order is placed by sending list of dishes, quantities, and order total, since there is no mention of input data type, this will be implemented as a string for compatibility with text input. Since instructions for ordering will be put on menu, it is assumed that the customer will not deviate from these. Also no mention of of when to input phone number, this will be included in the order
 - Method to send order via text message, order will have to be placed as SMS string, to be implemented via twilo webhook. Menu to be updated to include order by text format and number
 - Behaviour to check order total is correct and error if not
 - Behaviour to send text confirmation to client phone number
@@ -71,6 +71,7 @@ Relatviely simple program so should only require one object
 #### Create RSpec for basic object functions and implement TDD:
 - Takeaway.show_menu
 - MenuPrinter.print_menu
+- Takeaway.place_order(order)
 
 
 --------

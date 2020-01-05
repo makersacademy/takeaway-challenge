@@ -1,5 +1,6 @@
+class Takeaway
+  RESTURANT_NAME = "TAKEAWAY à la CHRIS\n"
 
-class Takaway
   def initialize(menu_printer)
     @menu_printer = menu_printer
     @menu_labels = {name: "Description", category: "Category", price: 'Price'}
@@ -18,12 +19,14 @@ class Takaway
   end
 
   def show_menu
-    @menu_printer.print_menu({headers: @menu_labels, items: @menu_items})
+    menu = @menu_printer.print_menu({headers: @menu_labels, items: @menu_items})
+    how_to_order = "Please use the following comma seperated order format whether ordering directly or via text: '<item1>, <quantity>, <item2>, <quantity>, etc..., <total_price>, <long_format_phone_number>' "
+    RESTURANT_NAME + menu + how_to_order
   end
 end
 
-# require './lib/takaway.rb'
+# require './lib/takeaway.rb'
 # require './lib/menu_printer.rb'
 #
-# a = Takaway.new(MenuPrinter.new)
+# a = Takeaway.new(MenuPrinter.new)
 # a.show_menu
