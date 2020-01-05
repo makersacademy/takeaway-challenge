@@ -1,0 +1,18 @@
+current directory: /Users/student/Documents/week6/weekend_challenge/takeaway-challenge/vendor/bundle/ruby/2.6.0/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+/Users/student/.rvm/rubies/ruby-2.6.5/bin/ruby -I /Users/student/.rvm/rubies/ruby-2.6.5/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200105-45020-1xu9cl1.rb extconf.rb
+creating Makefile
+
+current directory: /Users/student/Documents/week6/weekend_challenge/takeaway-challenge/vendor/bundle/ruby/2.6.0/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+make "DESTDIR=" clean
+
+current directory: /Users/student/Documents/week6/weekend_challenge/takeaway-challenge/vendor/bundle/ruby/2.6.0/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+make "DESTDIR="
+compiling adj_matrix.c
+compiling codepoints.c
+compiling jaro.c
+compiling jaro_winkler.c
+linking shared-object jaro_winkler/jaro_winkler_ext.bundle
+
+current directory: /Users/student/Documents/week6/weekend_challenge/takeaway-challenge/vendor/bundle/ruby/2.6.0/gems/jaro_winkler-1.5.4/ext/jaro_winkler
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 jaro_winkler_ext.bundle ./.gem.20200105-45020-1w64gvt/jaro_winkler
