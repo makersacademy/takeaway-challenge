@@ -23,6 +23,12 @@ class Takeaway
     how_to_order = "Please use the following comma seperated order format whether ordering directly or via text: '<item1>, <quantity>, <item2>, <quantity>, etc..., <total_price>, <long_format_phone_number>' "
     RESTURANT_NAME + menu + how_to_order
   end
+
+  def place_order(order)
+    raise 'Order not in correct format' if order.class != String
+    raise 'Order not in correct format' unless order.match?(/(\A(\s*\w+, \d+,)+)(?= \d+, \+44\d{10})/)
+    'Order recieved, you should recieve a text confirmation shortly!'
+  end
 end
 
 # require './lib/takeaway.rb'
