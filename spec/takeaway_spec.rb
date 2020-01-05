@@ -3,15 +3,23 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) { double :menu }
 
-  it 'select a number of dishes to order' do
-    expect(subject).to respond_to(:add_to_cart).with(2).arguments
-  end
+  describe '#add_to_cart' do
+    it 'select a number of dishes to order' do
+      expect(subject).to respond_to(:add_to_cart).with(2).arguments
+    end
 
-  describe '#process' do
-    it 'allows user to select from the interactive menu' do
-      expect(subject.process(3)).to eq(subject.view_cart)
+    it 'raise error if item not on menu' do
+      expect { subject.add_to_cart("Cheese Toast", 3) }.to raise_error "Item not on menu"
     end
   end
+
+
+
+  # describe '#process' do
+  #   it 'allows user to select from the interactive menu' do
+  #     expect(subject.process(3)).to eq(subject.view_cart)
+  #   end
+  # end
 
   before do
     subject.add_to_cart("Vegemite Toast", 2)
@@ -21,35 +29,52 @@ describe Takeaway do
     expect(subject.see_menu).not_to be_empty
   end 
 
-  it 'allows user to add dishes to cart' do
-    expect(subject.your_order).to eq ["2 x Vegemite Toast"]
-  end
+  # it 'allows user to add dishes to cart' do
+  #   expect(subject.your_order).to eq ["2 x Vegemite Toast"]
+  # end
   
   it 'views cart with total cost and ordered food' do
     expect(subject.total_cost).to eq 8
   end
 
-  it 'prints an interactive menu' do
-    expect(subject).to respond_to(:interactive_menu)
-  end
+  # it 'prints an interactive menu' do
+  #   expect(subject).to respond_to(:interactive_menu)
+  # end
 
-  it 'prints an options' do
-    expect(subject).to respond_to(:print_options)
-  end
+  # it 'prints an options' do
+  #   expect(subject).to respond_to(:print_options)
+  # end
 
-  it 'prints a menu' do
-    expect(subject).to respond_to(:process).with(1).arguments
-  end
+  # it 'prints a menu' do
+  #   expect(subject).to respond_to(:process).with(1).arguments
+  # end
 
-  it 'prints a header' do
+  # it 'prints a header' do
+  #   expect do
+  #     subject.print_header
+  #     end.to output("Welcome to the Koala Cafe! All prices are in £.").to_stdout
+  # end
+
+  # it 'puts 5 items when called' do        
+  #   STDOUT.should_receive(:puts).exactly(5).times
+  #   subject.print_options
+  # end
+
+  it 'shows user what is in the cart' do
     expect do
-      subject.print_header
-      end.to output("Welcome to the Koala Cafe! All prices are in £.").to_stdout
+      subject.view_cart
+    end.to output ('["2 x Vegemite Toast"] Order total is £8.').to_stdout
   end
 
-  it 'puts 5 items when called' do        
-    STDOUT.should_receive(:puts).exactly(5).times
-    subject.print_options
+  subject(:takeaway) { described_class.new }
+
+  before do
+    allow(takeaway).to receive(:send_text)
+  end
+
+  it 'sends a payment confirmation text message' do
+    expect(takeaway).to receive(:send_text).with("Thank you for your order: £8")
+    takeaway.complete_order(8)
   end
   
 end
