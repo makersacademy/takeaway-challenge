@@ -32,7 +32,7 @@ Takeaway Challenge
  So that I am reassured that my order will be delivered on time
  I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
  ```
- 
+
 Getting started
 ---------------
 * Clone this git repository
@@ -82,5 +82,5 @@ Your total bill is £17
 My approach
 -----------
 * **Menu** class contains dishes and prices and the functionality to view these in a list format.
-* **Order** class allows user to select the desired quantity of dishes by their number on the menu and add these to a basket. User can view what is in their basket, see the total price and checkout their basket.
-* **TextProvider** class holds functionality to send a text to the customer when their order is successfully placed using the Twilio API.
+* **Order** class allows user to select the desired quantity of dishes by their number on the menu and add these to a basket. User can view what is in their basket, see the total price and checkout their basket. If total given is correct, text is sent to user confirming that order has been successfully placed.
+* **TextProvider** class implements functionality to send a text to user using the Twilio API. Credentials and phone numbers stored in environment variables.
