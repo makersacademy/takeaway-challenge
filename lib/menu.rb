@@ -1,4 +1,5 @@
 require_relative 'shopping_basket'
+require_relative 'text'
 
 class Menu 
 
@@ -15,44 +16,61 @@ class Menu
     @shopping_basket = shopping_basket
   end 
 
+
   def print_menu
     puts "Menu:"
-    puts "1) Pizza - £10"
-    puts "2) Salad  - £8"
-    puts "3) Pasta - £9"
-    puts "4) Curry = £11"
-    puts "5) Chili - £12"
-    puts "6) Finish"
-
+    counter = 1
+    menu.each do |hash|
+      hash.each do |key, value|
+        puts "#{counter}) #{key.capitalize} - £#{value}"
+      end
+      counter +=1
+    end
+    puts "6) Finalise Order"
   end
 
-  def process(selection)
+  def order_process(selection) #should add ability to select multiple items at once ?
     case selection 
       when "1"
-        @shopping_basket.add_item(@menu[0])
-        puts "Pizza added, total now "
+        #puts "Please enter quantity: "
+        #quantity = gets.chomp
+        @shopping_basket.add_item(@menu[0]) #* quantity
+        @shopping_basket.pizza_count += 1 #quantity
+        @shopping_basket.print_basket
       when "2"
         @shopping_basket.add_item(@menu[1])
-        puts "Salad added "
+        @shopping_basket.salad_count += 1
+        @shopping_basket.print_basket
       when "3"
         @shopping_basket.add_item(@menu[2])
-        puts "Pasta added, total now "
+        @shopping_basket.pasta_count += 1
+        @shopping_basket.print_basket
       when "4"
         @shopping_basket.add_item(@menu[3])
-        puts "Curry added, total now "
+        @shopping_basket.curry_count += 1
+        @shopping_basket.print_basket
       when "5"
         @shopping_basket.add_item(@menu[4])
-        puts "Pizza added, total now "
+        @shopping_basket.chili_count += 1
+        @shopping_basket.print_basket
       when "6"
-        puts "Thankyou, order complete"
-        exit #change! 
+        puts "Final order: "
+        @shopping_basket.print_basket
+        puts "Thankyou, order complete. You will receive a confirmation text shortly."
+        text = Text.new
+        text.send_text
+        #method that presents final order 
+        #method that shows total cost
+        #method that sends text
+        
+        exit #then exits program 
       end 
   end 
 
   def interactive_menu
     loop do 
-      print_menu
-      process(STDIN.gets.chomp)
+      print_menu 
+      order_process(STDIN.gets.chomp)
     end 
   end 
   

@@ -16,7 +16,8 @@ describe ShoppingBasket do
 
     it 'should add an item to basket array' do 
       item = double :item 
-      expect(subject.add_item(item)).to include(item)
+      subject.add_item(item)
+      expect(subject.basket).to include(item)
     end 
 
     it 'should change the length of the basket array' do 
@@ -27,4 +28,24 @@ describe ShoppingBasket do
     end 
 
   end   
+
+  describe '#print_basket' do 
+    it 'should return a string containing quantity, ind cost and total cost' do 
+      subject.add_item({:pizza=>10})
+      subject.pizza_count += 1
+      expect{(subject.print_basket)}.to output("1 x Pizza, Cost: £10\nTotal cost: £10\n").to_stdout
+    end 
+  end 
+
+  describe '#totalizer' do 
+    it 'returns total of 10 if 1 pizza in basket' do 
+      subject.add_item({:pizza=>10})
+      expect(subject.totalizer).to eq 10
+    end 
+
+    it 'returns total of 18 with pizza and salad in basket' do 
+      subject.add_item({:pizza=>10, :salad=>8})
+      expect(subject.totalizer).to eq 18
+    end 
+  end 
 end 
