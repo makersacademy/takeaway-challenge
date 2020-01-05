@@ -1,9 +1,11 @@
 class Takeaway
   RESTURANT_NAME = "TAKEAWAY à la CHRIS\n"
 
-  def initialize(menu_printer)
+  def initialize(menu_printer, sms)
     @orders = []
+    @sent_messages = []
     @menu_printer = menu_printer
+    @sms = sms
     @menu_labels = {name: "Description", category: "Category", price: 'Price'}
     @menu_items = [{name: 'pepperoni_pizza', category: 'Pizza', price: 12.99},
       {name: 'ham_and_mushroom_pizza', category: 'Pizza', price: 12.99},
@@ -22,7 +24,7 @@ class Takeaway
   def show_menu
     menu = @menu_printer.print_menu({headers: @menu_labels, items: @menu_items})
     how_to_order = "Please use the following comma seperated order format whether ordering directly or via text: '<item1>, <quantity>, <item2>, <quantity>, etc..., <total_price>, <long_format_phone_number>' "
-    RESTURANT_NAME + menu + how_to_order
+    puts RESTURANT_NAME + menu + how_to_order
   end
 
   def place_order(order)
@@ -30,7 +32,9 @@ class Takeaway
     raise 'Order not in correct format' unless order.match?(/(\A(\s*\w+, \d+,)+)(?= \d+\.*\d{2}*, \+44\d{10})/)
     interpret_order(order)
     check_total(@orders[-1])
-    'Order recieved, you should recieve a text confirmation shortly!'
+    message = "Thank you! Your order was placed and will be delivered before #{(Time.now + 2700).strftime("%H:%M")}"
+    @sent_messages << @sms.send(message, @orders[-1][:details][1])
+    puts 'Order recieved, you should recieve a text confirmation shortly!'
   end
 
   private
@@ -50,9 +54,3 @@ class Takeaway
     raise 'Order total incorrect' if customer_total != order_total
   end
 end
-
-# require './lib/takeaway.rb'
-# require './lib/menu_printer.rb'
-#
-# a = Takeaway.new(MenuPrinter.new)
-# a.show_menu
