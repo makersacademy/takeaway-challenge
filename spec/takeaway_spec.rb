@@ -8,10 +8,10 @@ describe TakeAway do
     end
   end
 
-  # describe '#order' do
-  #   it 'gets item number from customer' do
-  #     expect(subject.order).to 
-  #   end
-  # end
+  describe '#select' do
+    it 'gets item number from customer' do
+      expect{ subject.select(1) }.to change { subject.basket }
+    end
+  end
 
 end
