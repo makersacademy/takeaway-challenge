@@ -4,7 +4,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order) } 
 
   let(:menu) { double(:menu, print: printed_menu) }
-  let(:order) { double(:order, total: 15.00) } #create order class for place_order hold attributes
+  let(:order) { instance_double("Order", total: 15.00) } #create order class for place_order hold attributes
   let(:printed_menu) { 'Pizza: £5.00' }
 
   let(:dishes) { {pizza: 1, falafel: 2} } #set dishes to be stubed in test
