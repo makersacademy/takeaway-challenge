@@ -1,3 +1,5 @@
+Contained here is my work on the Takeaway weekend challenge for week 2 of Makers Academy. I have built a functioning takeaway which is based on two different classes "Takeaway" and "Order". The Order class is injected into Takeaway and calls on many of its methods.
+
 Takeaway Challenge
 ==================
 ```
