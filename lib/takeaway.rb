@@ -19,7 +19,7 @@ class Takeaway
   end
 
   def view_order
-    @order.view
+    @order.view_order
   end
 
   def view_total
@@ -43,7 +43,7 @@ class Takeaway
   end
 
   def not_available(dish)
-    @order.menu.dishes[dish].nil?
+    !@order.item_available?(dish)
   end
 
 end

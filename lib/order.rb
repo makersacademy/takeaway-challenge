@@ -1,4 +1,3 @@
-require_relative 'takeaway'
 require_relative 'menu'
 
 class Order
@@ -17,14 +16,18 @@ class Order
   end
 
   def add(name, qty)
-    @orders << { name: name, price: @menu.dishes[name], qty: qty }
-    @total += (@menu.dishes[name] * qty)
-    "Item: #{name} | Qty: #{qty} | $#{@menu.dishes[name]} - added to order"
+    @orders << { name: name, price: @menu.price(name), qty: qty }
+    @total += (@menu.price(name) * qty)
+    "Item: #{name} | Qty: #{qty} | $#{@menu.price(name)} - added to order"
   end
 
-  def view
+  def view_order
     @orders.each { |item| @item_count[item[:name]] += item[:qty] }
-    @item_count.each { |k, v| puts "Item: #{k} | Qty: #{v} | $#{(@menu.dishes[k] * v)}" }
+    @item_count.each { |k, v| puts "Item: #{k} | Qty: #{v} | $#{(@menu.price(k) * v)}" }
+  end
+
+  def item_available?(name)
+    @menu.available?(name)
   end
 
 end
