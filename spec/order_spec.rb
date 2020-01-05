@@ -17,6 +17,8 @@ describe Order do
   before do 
     allow(menu).to receive(:has_dish?).with(:pizza).and_return(true) #mock menu that has method #has_dish
     allow(menu).to receive(:has_dish?).with(:felafel).and_return(true)
+    allow(menu).to receive(:price).with(:pizza).and_return(5.00) #mock menu that has method #has_dish
+    allow(menu).to receive(:price).with(:felafel).and_return(5.00)
   end
 
 
@@ -31,4 +33,12 @@ describe Order do
 
     expect{ order.add(:beef, 2) }.to raise_error NoItemError, "Beef is not on the menu!" # Beef checked as #{dish.capitalize}
   end
+
+  it 'calculates the total of order' do 
+    order.add(:pizza,1)
+    order.add(:felafel,2)
+    total = 15.00
+    expect(order.total).to eq(total)
+  end
+
 end

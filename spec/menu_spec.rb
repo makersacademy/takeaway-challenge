@@ -24,6 +24,10 @@ describe Menu do
   it 'tells if a dish is on the menu' do 
     expect(menu.has_dish?(:beef)).to be false
   end
+
+  it 'calculates a price' do
+    expect(menu.price(:pizza)).to eq(dishes[:pizza])
+  end
 end
 
 

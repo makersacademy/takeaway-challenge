@@ -18,6 +18,10 @@ class Takeaway
     order.total
   end
 
+  def total
+    
+  end
+
 
   private
 

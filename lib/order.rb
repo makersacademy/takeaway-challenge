@@ -13,10 +13,19 @@ class  Order
     dishes[dish] = quanitiy # += quanitiy if initialized hash with default (0)
   end
 
+  def total
+    item_totals.inject(:+)
+  end
+
   private
 
   attr_reader :menu
 
+  def item_totals
+    dishes.map do |dish, quanitiy|
+      menu.price(dish) * quanitiy # price called on menu class as where prices held 
+    end
+  end
 end
 
 class NoItemError < StandardError; end
