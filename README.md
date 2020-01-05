@@ -1,4 +1,114 @@
-Takeaway Challenge
+
+# Takeaway Challenge
+
+Allow users to order items from a menu, place the order, and recieve a text with order confirmation.
+
+## Getting Started
+
+### 1. Run Bundle Install
+
+Before you run the program, make sure your gems are up to date by running:
+
+```
+$ bundle install
+```
+
+### 2. Rename .env.sample 
+
+Rename the *.env.sample* file to *.env*
+
+### 3. Add Twilio Details to .env
+
+Update your .env file with the correct Twilio information. *NOTE in order to access the Twilio API to send texts to the user, you must [sign up](https://www.twilio.com/) for a Twilio account (it's free) and populate the .env file with the correct information: 
+
+```
+// Your Account Sid and Auth Token from twilio.com/console
+
+TWILIO_ACCOUNT_SID="ACxxxxxxxxxxxxxxxxxxxxxxxx" 
+TWILIO_AUTH_TOKEN="yyyyyyyyyyyyyyyyyyyyyyyyy" 
+
+TWILIO_FROM_NUMBER='+12345678910' # Your Twilio number
+TWILIO_TO_NUMBER='+15555555555' # Your mobile number
+
+```
+
+## Running the program
+
+### Option 1 - IRB
+
+```sh
+2.6.5 :001 > require './lib/takeaway.rb'
+ => true 
+2.6.5 :002 > takeaway = Takeaway.new
+ => #<Takeaway:0x00007f8e850f0008 @order=#<Order:0x00007f8e850f0850 @menu=#<Menu:0x00007f8e850fbf98 @dishes={"Hummus"=>5, "Falafel Plate"=>10, "Gyro"=>12, "Soft Drink"=>2, "Pita"=>1}>, @orders=[], @total=0, @item_count={}>> 
+2.6.5 :003 > takeaway.view_menu
+ => {"Hummus"=>5, "Falafel Plate"=>10, "Gyro"=>12, "Soft Drink"=>2, "Pita"=>1} 
+2.6.5 :004 > takeaway.add("Hummus", 5)
+ => "Item: Hummus | Qty: 5 | $5 - added to order" 
+2.6.5 :005 > takeaway.add("Pita", 2)
+ => "Item: Pita | Qty: 2 | $1 - added to order" 
+2.6.5 :006 > takeaway.add("Soft Drink")
+ => "Item: Soft Drink | Qty: 1 | $2 - added to order" 
+2.6.5 :007 > takeaway.view_order
+Item: Hummus | Qty: 5 | $25
+Item: Pita | Qty: 2 | $2
+Item: Soft Drink | Qty: 1 | $2
+ => {"Hummus"=>5, "Pita"=>2, "Soft Drink"=>1} 
+2.6.5 :008 > takeaway.view_total
+ => "Total: $ 29" 
+2.6.5 :009 > takeaway.submit_order(29)
+```
+
+### Option 2 - Interactive File
+
+```
+$ ruby order_screen.rb
+```
+
+Follow the command line prompts to order from the menu.
+
+```
+Welcome to Turco2.0, what would you like to do?
+1. See Menu Items
+2. Add to Order
+3. View Order
+4. Finish & Pay
+```
+
+## Running the tests
+
+To run tests for this program, run:
+
+```
+$ rspec
+```
+
+
+## Built With
+
+* [Twilio](https://www.twilio.com/) - API to send texts with order details
+  * To use the app you will need to have a Twilio account (sign up [here](https://www.twilio.com/), it's free)
+
+## User Stories
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
 ==================
 ```
                             _________
