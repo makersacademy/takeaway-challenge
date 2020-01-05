@@ -88,8 +88,8 @@ $irb
 
 My approach
 -----------
-* **Menu** class contains dishes and prices and the functionality to view these in a list format.
-* **Order** class allows user to select the desired quantity of dishes by their number on the menu and add these to a basket. User can view what is in their basket, see the total price and checkout their basket. If total given is correct, text is sent to user confirming that order has been successfully placed.
-* **TextProvider** class implements functionality to send a text to user using the Twilio API. Credentials and phone numbers are stored in environment variables.
+* The **Menu** class contains dishes and their prices and the functionality to view these in a list format. 
+* The **Order** class allows the user to select a desired quantity of dishes by their number on the menu and add these to a basket. They can use a different menu on initialization if they so wish. The user can also view a summary of their order basket, see the total price and checkout their basket. If the amount provided is correct, a text is sent to the user confirming that their order has been successfully placed.
+* The **TextProvider** class implements functionality to send a text to the user using the Twilio API. Credentials and phone numbers are stored in environment variables for security.
 
 
