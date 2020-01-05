@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  I.G. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -80,3 +80,36 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+**My Approach**
+---------------
+*Task, Step 2*
+*Run the command 'bundle' in the project directory to ensure you have all the gems
+
+*Actual Message in Terminal*
+Makerss-MacBook-Air:takeaway-challenge student$ bundle install --deployment
+Fetching gem metadata from https://rubygems.org/.........
+...
+Bundle complete! 6 Gemfile dependencies, 33 gems now installed.
+Bundled gems are installed into `./vendor/bundle`
+Post-install message from rubocop:
+Rails cops will be removed from RuboCop 0.72. Use the `rubocop-rails` gem instead.
+
+Put this in your `Gemfile`.
+
+```rb
+gem 'rubocop-rails'
+```
+
+And then execute:
+
+```sh
+$ bundle install
+```
+
+Put this into your `.rubocop.yml`.
+
+```yaml
+require: rubocop-rails
+```
+
+More information: https://github.com/rubocop-hq/rubocop-rails
