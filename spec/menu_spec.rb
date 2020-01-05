@@ -13,8 +13,8 @@ describe Menu do
   end
 
   it 'prints list of dished with prices' do
-    printed_menu = "Pizza: 5.99, Felafel: 3.50"
-    expect(menu.printed_menu).to eq(printed_menu)
+    printed_menu = "Pizza: £5.99, Felafel: £3.50"
+    expect(menu.print_menu).to eq(printed_menu)
   end
 end
 

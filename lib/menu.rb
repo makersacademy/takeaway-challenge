@@ -7,4 +7,8 @@ class Menu
     @dishes     = dishes
   end
 
+  def print_menu
+    @dishes.map { |item,price| "%s: £%.2f" % [item.capitalize, price]  }.join(", ")
+  end
+
 end
