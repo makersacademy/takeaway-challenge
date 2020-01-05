@@ -1,8 +1,10 @@
+require "order"
+
 class Takeaway
 
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order  #if not exist defautl make new instance of class Order.new
+    @order = order || Order.new #if not exist defautl make new instance of class Order.new
   end
 
   def print_menu
