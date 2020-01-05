@@ -1,9 +1,9 @@
-Takeaway Challenge
+# Takeaway Challenge
 ==================
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  C.W. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -13,41 +13,64 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+### Outline
 
-Instructions
--------
+Makers Academy weekend challenge to create a simple app incorporating the Twilio Gem, which allows a customer to send a food order directly or via text, and recieve a confirmation text once the order is confirmed.
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### How to Install & Example
 
-Task
------
+The application is run directly from the command line, so to install simply clone or fork the repository, change directory to the root folder, open irb, and paste the following code:
+```
+require './lib/takeaway.rb'
+```
+Alternatively, run *rspec* to see the test documentation or the example script to see an overview of the program functionality.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+### Customer Requirements
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
-
+```
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
-
+```
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+--------
+### Approach
 
+#### Extract Scope
+- Method to provide list of dishes and corresponding prices
+- Method to send order directly, hints outline order is placed by sending list of dishes, quantities, and order total, since there is no mention of input data type, this will be implemented as a hash for flexibility. Also no mention of of when to input phone number, this will be included in the order
+- Method to send order via text message, order will have to be placed as SMS string, to be implemented via twilo webhook. Menu to be updated to include order by text format and number
+- Behaviour to check order total is correct and error if not
+- Behaviour to send text confirmation to client phone number
+
+#### Notes
+- Twilo account details will be implemeneted via environment variables
+
+#### Objects & Public Interface
+Relatviely simple program so should only require one object
+- Takeaway
+  - #show_menu - returns menu in pretty format
+  - #place_order(order) - places order accepting hash
+
+#### Create RSpec for basic object functions and implement TDD:
+- Takeaway.show_menu
+
+
+--------
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
