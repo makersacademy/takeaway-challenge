@@ -5,6 +5,38 @@ This programme allows users to order food from a restaurant.
 
 There are 3 classes, Menu, Takeaway and Text. An instance of the takeaway class is able to read the menu, add items off the menu to a car, view the cart and then place the order. When the order is place a text message is sent to the user with the order total and the delivery time.
 
+```
+2.6.5 :001 > require './lib/takeaway'
+ => true 
+2.6.5 :002 > takeaway = Takeaway.new;0
+ => 0 
+2.6.5 :003 > takeaway.see_menu
+Vegemite Toast, 4
+Fairy Bread, 3.5
+Sausage Sizzle, 5
+Lamington, 2
+Milo, 2.5
+Iced Coffee, 4
+Flat White, 3
+ => {"Vegemite Toast"=>4, "Fairy Bread"=>3.5, "Sausage Sizzle"=>5, "Lamington"=>2, "Milo"=>2.5, "Iced Coffee"=>4, "Flat White"=>3} 
+2.6.5 :004 > takeaway.add_to_cart("Sausage Sizzle", 2)
+ => 10 
+2.6.5 :005 > takeaway.view_cart
+2 x Sausage Sizzle = £10
+Order total is £10.
+ => nil 
+2.6.5 :006 > takeaway.complete_order
+2 x Sausage Sizzle = £10
+Order total is £10.
+ => <Twilio.Api.V2010.MessageInstance account_sid: AC6b063f16ec87ea56aac9114c6e4416d0 api_version: 2010-04-01 body: Sent from your Twilio trial account - 
+Thank you for your order of £10. Your food will be delivered in 1 hour. date_created: 2020-01-05 21:06:14 +0000 date_updated: 2020-01-05 21:06:14 +0000 da
+te_sent:  direction: outbound-api error_code:  error_message:  from: +14804675286 messaging_service_sid:  num_media: 0 num_segments: 1 price:  price_unit:
+ USD sid: SM49c8634d9d8f48478bc15e8408425d5b status: queued subresource_uris: {"media"=>"/2010-04-01/Accounts/AC6b063f16ec87ea56aac9114c6e4416d0/Messages/
+SM49c8634d9d8f48478bc15e8408425d5b/Media.json"} to: +447588774666 uri: /2010-04-01/Accounts/AC6b063f16ec87ea56aac9114c6e4416d0/Messages/SM49c8634d9d8f4847
+8bc15e8408425d5b.json> 
+```
+
+
 ![image](https://github.com/acmerlino1/takeaway-challenge/blob/master/img.png)
 
 ```
