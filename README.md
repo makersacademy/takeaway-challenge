@@ -36,13 +36,19 @@ Takeaway Challenge
 Getting started
 ---------------
 Clone this repository
-`$ git clone https://github.com/natyeo/takeaway-challenge.git`
+```
+$ git clone https://github.com/natyeo/takeaway-challenge.git
+```
 
 Install Bundler
-`$ gem install bundler`
+```
+$ gem install bundler
+```
 
 Install all this program's dependencies
-`$ bundle install`
+```
+$ bundle install
+```
 
 Usage
 ----------
@@ -78,9 +84,12 @@ $irb
  => <Twilio.Api.V2010.MessageInstance account_sid: ******* api_version: 2010-04-01 body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 11:39 date_created: 2019-10-27 10:40:00 +0000 date_updated: 2019-10-27 10:40:00 +0000
 
 ```
+![text](screenshot/text.jpg)
 
 My approach
 -----------
 * **Menu** class contains dishes and prices and the functionality to view these in a list format.
 * **Order** class allows user to select the desired quantity of dishes by their number on the menu and add these to a basket. User can view what is in their basket, see the total price and checkout their basket. If total given is correct, text is sent to user confirming that order has been successfully placed.
 * **TextProvider** class implements functionality to send a text to user using the Twilio API. Credentials and phone numbers are stored in environment variables.
+
+
