@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Takeaway
 

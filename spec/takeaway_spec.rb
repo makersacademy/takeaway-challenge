@@ -28,16 +28,5 @@ describe Takeaway do
   it 'views cart with total cost and ordered food' do
     expect(subject.total_cost).to eq 8
   end
-
-  subject(:takeaway) { described_class.new }
-
-  before do
-    allow(takeaway).to receive(:send_text)
-  end
-
-  # it 'sends a payment confirmation text message' do
-  #   expect(takeaway).to receive(:send_text).with("Thank you for your order: £8")
-  #   takeaway.complete_order
-  # end
   
 end
