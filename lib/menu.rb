@@ -11,4 +11,9 @@ class Menu
     @dishes.map { |item,price| "%s: £%.2f" % [item.capitalize, price]  }.join(", ")
   end
 
+  # def has_dish?
+    
+    
+  # end
+
 end
