@@ -1,20 +1,22 @@
 require 'twilio-ruby'
 require_relative 'takeaway'
+require 'dotenv/load'
 
 class Text
 
   def initialize
-    account_sid = "AC6b063f16ec87ea56aac9114c6e4416d0"
-    auth_token =
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
-  def send_text(message)
-    @client.message.create(
-      body: message,
-      from: '',
-      to: ''
-    )
+  def send_text(total_cost)
+    message = @client.messages
+      .create(
+        body: "Thank you for your order of £#{total_cost}. Your food will be delivered in 1 hour.",
+        from: "+14804675286",
+        to: ENV["MY_PHONE_NUMBER"]
+      )
   end
 
 end

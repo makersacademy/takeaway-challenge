@@ -4,10 +4,11 @@ class Takeaway
 
   attr_reader :menu, :your_order, :total_cost
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, text = Text.new)
     @menu = menu
     @your_order = []
     @total_cost = 0
+    @text = text
   end
 
   def see_menu
@@ -26,6 +27,8 @@ class Takeaway
   end
 
   def complete_order
+    view_cart
+    @text.send_text(total_cost)
   end
 
 end
