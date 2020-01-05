@@ -8,6 +8,7 @@ class Takeaway
     menu.print
   end
 
+
   private
 
   attr_reader :menu
