@@ -15,7 +15,7 @@ class Order
 
   def total
     # reduce the hash to get full price
-    "£%.2f" % [order_total.inject(:+)]
+    "£%.2f" % [order_total.reduce(:+)]
   end
 
   private

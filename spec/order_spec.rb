@@ -32,7 +32,6 @@ describe Order do
 
   describe '#total' do
 
-    #allow(subject).to receive(:has_dish).with(:broccoli).and_return(2.00)
 
     it 'gives the total price of the order' do
       order.dish_order = dish_order
