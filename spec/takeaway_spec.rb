@@ -32,4 +32,10 @@ describe TakeAway do
     end
   end
 
+  describe "#checkout" do
+    it 'places order' do
+      expect(subject.checkout).to be_a(String)
+    end
+  end
+
 end
