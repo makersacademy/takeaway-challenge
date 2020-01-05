@@ -12,14 +12,10 @@ class Menu
   end
 
   def list
-    @items.keys.each_with_index do |key, index|
-      value = @items[key]
-      puts "#{index + 1}. #{key} (#{value})\n"
+    @items.keys.each_with_index do |item, index|
+      price = @items[item]
+      puts "#{index + 1}. #{item} (#{price})\n"
     end
-  end
-
-  def select(choice)
-    @items.keys[choice - 1]
   end
 
 end

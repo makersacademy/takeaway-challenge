@@ -55,21 +55,9 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
-- #place_order
-    - while true do
-        - order
 
-- #order
-    - "Please enter the number of the dish you would like to add to your order."
-    - use get method for customer to select a number
-
-    - store_order
+- #select
     - "1x #{dish} added to your basket."
-
-
-- #store_order
-    - @basket << selection
-
 
 **User Story 3**
 ```

@@ -14,10 +14,4 @@ describe Menu do
     end
   end
 
-  describe "#select" do
-    it 'selects an item based on its index number' do
-      expect(subject.select(1)).to eq "Spring Roll"
-    end
-  end
-
 end
