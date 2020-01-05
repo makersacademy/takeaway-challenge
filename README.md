@@ -36,9 +36,6 @@ SM49c8634d9d8f48478bc15e8408425d5b/Media.json"} to: +447588774666 uri: /2010-04-
 8bc15e8408425d5b.json> 
 ```
 
-
-![image](https://github.com/acmerlino1/takeaway-challenge/blob/master/img.png)
-
 ```
                             _________
               r==           |       |
