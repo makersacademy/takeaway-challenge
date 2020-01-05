@@ -5,7 +5,7 @@ This programme allows users to order food from a restaurant.
 
 There are 3 classes, Menu, Takeaway and Text. An instance of the takeaway class is able to read the menu, add items off the menu to a car, view the cart and then place the order. When the order is place a text message is sent to the user with the order total and the delivery time.
 
-![image](https://github.com/acmerlino1/takeaway-challenge/img.png)
+![image](https://github.com/acmerlino1/takeaway-challenge/blob/master/img.png)
 
 ```
                             _________
