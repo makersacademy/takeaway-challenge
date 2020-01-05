@@ -34,7 +34,7 @@ class Menu
       when "1"
         #puts "Please enter quantity: "
         #quantity = gets.chomp
-        @shopping_basket.add_item(@menu[0]) #* quantity
+        @shopping_basket.add_item(@menu[0]) # quantity.times do
         @shopping_basket.pizza_count += 1 #quantity
         @shopping_basket.print_basket
       when "2"
@@ -57,13 +57,11 @@ class Menu
         puts "Final order: "
         @shopping_basket.print_basket
         puts "Thankyou, order complete. You will receive a confirmation text shortly."
-        text = Text.new
-        text.send_text
-        #method that presents final order 
-        #method that shows total cost
+        # text = Text.new
+        # text.send_text
         #method that sends text
         
-        exit #then exits program 
+        exit 
       end 
   end 
 
