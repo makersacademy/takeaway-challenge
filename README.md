@@ -80,10 +80,11 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
 **My Approach**
 ---------------
 *Task, Step 2*
-*Run the command 'bundle' in the project directory to ensure you have all the gems
+*Run the command 'bundle' in the project directory to ensure you have all the gems*
 
 *Actual Message in Terminal*
 Makerss-MacBook-Air:takeaway-challenge student$ bundle install --deployment
