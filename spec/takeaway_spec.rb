@@ -2,6 +2,12 @@ require 'takeaway'
 
 describe Takeaway do
   let(:menu) { double :menu }
+  let(:text) { double :text }
+  subject(:takeaway) { described_class.new(text) }
+
+  before do
+    subject.add_to_cart("Vegemite Toast", 2)
+  end
 
   describe '#add_to_cart' do
     it 'select a number of dishes to order' do
@@ -11,10 +17,6 @@ describe Takeaway do
     it 'raise error if item not on menu' do
       expect { subject.add_to_cart("Cheese Toast", 3) }.to raise_error "Item not on menu"
     end
-  end
-
-  before do
-    subject.add_to_cart("Vegemite Toast", 2)
   end
     
   it 'shows list of dishes and prices on menu' do
@@ -29,14 +31,8 @@ describe Takeaway do
     expect(subject.total_cost).to eq 8
   end
 
-  subject(:takeaway) { described_class.new }
-  
-  before do
-    allow(takeaway).to receive(:complete_order)
-  end
-
   it 'allows user to place order' do
-    expect(takeaway).to receive(:complete_order)
+    expect(text).to receive(:send_text)
     takeaway.complete_order
   end
   

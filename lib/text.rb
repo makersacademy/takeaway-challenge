@@ -4,14 +4,20 @@ require 'dotenv/load'
 
 class Text
 
-  def initialize
+  attr_reader :client
+
+  def initialize(client = Text.new_client)
+    @client = client
+  end
+
+  def self.new_client
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
     auth_token = ENV["TWILIO_AUTH_TOKEN"]
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    Twilio::REST::Client.new(account_sid, auth_token)
   end
 
   def send_text(total_cost)
-    message = @client.messages
+    @client.messages
       .create(
         body: "Thank you for your order of £#{total_cost}. Your food will be delivered in 1 hour.",
         from: "+14804675286",

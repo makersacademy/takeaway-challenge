@@ -5,7 +5,7 @@ class Takeaway
 
   attr_reader :menu, :your_order, :total_cost
 
-  def initialize(menu = Menu.new, text = Text.new)
+  def initialize(text = Text.new, menu = Menu.new)
     @menu = menu
     @your_order = []
     @total_cost = 0
@@ -17,7 +17,8 @@ class Takeaway
   end
 
   def add_to_cart(food, quantity = 1)
-    raise "Item not on menu" unless @menu.menu.include? food 
+    raise "Item not on menu" unless @menu.menu.include? food
+
     @your_order << "#{quantity} x #{food} = £#{@menu.menu[food] * quantity}"
     @total_cost += (@menu.menu[food] * quantity)
   end
@@ -31,5 +32,4 @@ class Takeaway
     view_cart
     @text.send_text(total_cost)
   end
-
 end

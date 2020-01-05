@@ -1,7 +1,8 @@
 require 'text'
 
 describe Text do
-  subject(:text) { described_class.new }
+  let(:client) { double :client }
+  subject(:text) { described_class.new(client) }
   
   before do
     allow(text).to receive(:send_text)
