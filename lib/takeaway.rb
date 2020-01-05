@@ -38,8 +38,18 @@ class TakeAway
     "Total: £#{@sum}"
   end
 
-  def checkout
-    "Thank you! Your order was placed and will be delivered before 18:52"
+  def checkout(cost)
+    cost == @sum ? success : "Your order was unsuccessful."
   end
 
+  def success
+    send_text("Thank you for your order: £#{@sum}")
+    time = Time.now + 1*60*60
+    "Thank you! Your order was placed and will be delivered before #{time.strftime("%k:%M")}."
+  end
+
+  def send_text(message)
+    # this method calls the Twilio API
+  end
+  
 end

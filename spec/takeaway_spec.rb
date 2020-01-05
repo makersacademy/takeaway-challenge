@@ -34,7 +34,15 @@ describe TakeAway do
 
   describe "#checkout" do
     it 'places order' do
-      expect(subject.checkout).to be_a(String)
+      subject.select(1, 1)
+      expect(subject.checkout(4.99)).to be_a(String)
+    end
+  end
+
+  describe "#send_text" do
+    it 'sends a payment confirmation text message' do
+      expect(subject).to receive(:send_text)
+      subject.send_text
     end
   end
 
