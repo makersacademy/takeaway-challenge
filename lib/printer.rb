@@ -10,16 +10,9 @@ class Printer
   end
 
   def view_basket(basket)
-    basket.basket.each do |dish|
-      dish.each do |item, price|
-        puts "#{item.capitalize}: £ #{price}"
-      end
+    basket.basket.uniq.each do |dish|
+      price = dish.values[0] * basket.basket.count(dish)
+      puts "No. #{basket.basket.count(dish)} x #{dish.keys[0].capitalize}: £ #{price}"
     end
   end
-
-  # def count
-  #   basket.basket.each do |dish|
-  #     basket.basket.count(dish)
-  #   end
-  # end
 end
