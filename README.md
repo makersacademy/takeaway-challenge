@@ -151,4 +151,4 @@ Traceback (most recent call last):
         1: from (irb):3
 NoMethodError (undefined method `see_dishes' for #<Dishes:0x00007ffe558b63b0>)
 
-I perform a feature test in IRB and I get an error message telling me that that the method called see_dishes is not defined. This makes sense and I will proceed to the unit test.
+I perform a feature test in IRB and I get an error message telling me that the method called 'see_dishes' is not defined. This makes sense and I will proceed to the unit test, where I am going to describe the method of interest.
