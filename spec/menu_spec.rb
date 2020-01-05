@@ -20,6 +20,10 @@ describe Menu do
   it 'tells if a dish is on the menu' do 
     expect(menu.has_dish?(:pizza)).to be true
   end
+
+  it 'tells if a dish is on the menu' do 
+    expect(menu.has_dish?(:beef)).to be false
+  end
 end
 
 
