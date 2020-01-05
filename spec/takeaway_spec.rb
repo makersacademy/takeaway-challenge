@@ -14,7 +14,7 @@ describe TakeAway do
     end
 
     it 'gets item number from customer' do
-      expect{ subject.select(1, 1) }.to change { subject.total }
+      expect{ subject.select(1, 1) }.to change { subject.sum }
     end
   end
 
@@ -28,7 +28,7 @@ describe TakeAway do
   describe "#total" do
     it 'calculates the total' do
       subject.select(1, 1)
-      expect(subject.total).not_to eq 0
+      expect(subject.total).to be_a(String)
     end
   end
 
