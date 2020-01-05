@@ -65,9 +65,12 @@ Relatviely simple program so should only require one object
 - Takeaway
   - #show_menu - returns menu in pretty format
   - #place_order(order) - places order accepting hash
+- MenuPrinter
+  - .print_menu(menu) - returns menu in fancy format
 
 #### Create RSpec for basic object functions and implement TDD:
 - Takeaway.show_menu
+- MenuPrinter.print_menu
 
 
 --------
