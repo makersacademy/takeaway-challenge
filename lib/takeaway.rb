@@ -13,6 +13,7 @@ class TakeAway
   end
 
   def select(choice)
+    choice = gets
     @basket << @menu.select(choice)
   end
 

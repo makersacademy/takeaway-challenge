@@ -10,6 +10,7 @@ describe TakeAway do
 
   describe '#select' do
     it 'gets item number from customer' do
+      subject.stub(:gets).and_return(1)
       expect{ subject.select(1) }.to change { subject.basket }
     end
   end
