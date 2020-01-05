@@ -15,6 +15,7 @@ class Takeaway
     dishes.each do |dish, quantity|
       order.add(dish, quantity) #use quanitly set value rarther than add same item x#times - ax4 / a,a,a,a
     end
+    order.total
   end
 
 

@@ -10,7 +10,7 @@ describe Order do
   let(:dishes) do
     {
       pizza: 1,
-      felafel: 1
+      felafel: 2
     }
   end
 
@@ -22,7 +22,7 @@ describe Order do
 
   it "selects dishes from menu" do
     order.add(:pizza, 1)
-    order.add(:felafel, 1) #commands 
+    order.add(:felafel, 2) #commands 
     expect(order.dishes).to eq(dishes) # queries / dishes set as stub
   end
 
