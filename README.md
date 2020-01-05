@@ -117,7 +117,7 @@ More information: https://github.com/rubocop-hq/rubocop-rails
 
 **User Story 1**
 ---------------
-Commit “define #initialize, pass unit test with coverage 100%.
+* [Commit “define #initialize, pass unit test with coverage 100%.]
 
 Makerss-MacBook-Air:takeaway-challenge student$ rspec
 
@@ -136,7 +136,7 @@ COVERAGE: 100.00% -- 9/9 lines in 2 files
 
 **User Story 2**
 ---------------
-Commit “define #see_dishes” 
+* [Commit “define #see_dishes”] 
 
 Makerss-MacBook-Air:takeaway-challenge student$ irb                                                                      
 2.6.5 :001 > require './lib/dishes.rb'                                                                                  
