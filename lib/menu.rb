@@ -1,12 +1,11 @@
 class Menu
+  DISHES = {
+      1 => { dish: "Egg fried rice", price: 3 },
+      2 => { dish: "Sweet & sour fish", price: 6 },
+      3 => { dish: "Morning glory", price: 4 }
+      }
 
   attr_reader :dishes
-
-  DISHES = {
-      1 => {dish: "Egg fried rice", price: 3},
-      2 => {dish: "Sweet & sour fish", price: 6},
-      3 => {dish: "Morning glory", price: 4}
-      }
 
   def initialize(dishes = DISHES)
     @dishes = dishes

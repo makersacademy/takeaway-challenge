@@ -14,19 +14,19 @@ describe Order do
 
   context 'ordering' do
     before do
-      allow(menu).to receive(:dishes).and_return(1 => {dish: "Egg fried rice", price: 3})
+      allow(menu).to receive(:dishes).and_return(1 => { dish: "Egg fried rice", price: 3 })
     end
 
     describe '#select_dish' do
       it 'stores dish and total in basket' do
-        expect(order.select_dish(1, 2)).to eq({quantity: 2, subtotal: 6})
+        expect(order.select_dish(1, 2)).to eq({ quantity: 2, subtotal: 6 })
       end
     end
 
     describe '#basket_summary' do
       it 'displays basket' do
         order.select_dish(1, 2)
-        expect(order.basket_summary).to eq({"Egg fried rice"=>{:quantity=>2, :subtotal=>6}})
+        expect(order.basket_summary).to eq({ "Egg fried rice" => { :quantity => 2, :subtotal => 6 } })
       end
     end
 
