@@ -1,21 +1,25 @@
 # Download the twilio-ruby library from twilio.com/docs/libraries/ruby
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load('./.env')
 
 class SendSMS
-
-  def initialize
-    account_sid = 'AC8f234f862eb9578dd8dae76f7e1fe812'
-    auth_token = 'fbba83efd122508852969f5dcf6adea2'
+  def initialize(account_sid = ENV['twilio_account_sid'], 
+    auth_token = ENV['twilio_auth_token'], 
+    from = ENV['twilio_from'], to = ENV['twilio_to'])
+    
+    @account_sid = account_sid
+    @auth_token = auth_token
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    @from = '+447400058924' # Your Twilio number
-    @to = '+447810026218' # Your mobile phone number
+    @from = from
+    @to = to
   end
 
   def send(total)
     @client.messages.create(
-    @from: from,
-    @to: to,
+    from: @from,
+    to: @to,
     body: "Your order will arrive by #{Time.now + 3600} costing £#{total}"
     )
   end

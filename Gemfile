@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '~>2.6.3'
 gem 'twilio-ruby', '~> 5.31.1'
+gem 'dotenv'
 gem 'capybara'
 gem 'rake'
 group :development, :test do
