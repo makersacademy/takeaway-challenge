@@ -20,6 +20,6 @@ describe Order do
   end
 
   it "dosnt allow item not in menu to be added" do #add menu to test
-    expect{ order.add(:beef,1) }.to raise_error "This is not on the menu!"
+    expect{ order.add(:beef,1) }.to raise_error "Beef is not on the menu!" # Beef checked as #{dish.capitalize}
   end
 end
