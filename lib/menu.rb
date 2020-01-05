@@ -3,19 +3,18 @@ class Menu
   attr_reader :dishes
 
   DISHES = {
-      "Egg fried rice" => 3,
-      "Sweet & sour fish" => 6,
-      "Morning glory" => 4 }
+      1 => {dish: "Egg fried rice", price: 3},
+      2 => {dish: "Sweet & sour fish", price: 6},
+      3 => {dish: "Morning glory", price: 4}
+      }
 
   def initialize(dishes = DISHES)
     @dishes = dishes
   end
 
   def view
-    n = 1
-    @dishes.each do |dish, price|
-      puts "#{n}. #{dish}: £#{price}"
-      n += 1
+    dishes.each do |num, item|
+      puts "#{num}. #{item[:dish]}: £#{item[:price]}"
     end
   end
 end

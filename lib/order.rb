@@ -3,30 +3,24 @@ require './lib/textprovider.rb'
 
 class Order
   def initialize(menu = Menu.new)
-    @basket = []
+    @basket = {}
     @menu = menu
   end
 
   def select_dish(dish_num, quantity)
-    @basket << { dish: @menu.dishes[dish_num - 1][:dish],
-     total: @menu.dishes[dish_num - 1][:price] * quantity }
-    puts "#{quantity}x #{@menu.dishes[dish_num - 1][:dish]} added to your basket"
-    @basket
+    @basket[dish_name(dish_num)] = {quantity: quantity, subtotal: subtotal(dish_num, quantity)}
   end
 
   def basket_summary
-    @basket.each do |hash|
-      puts "#{hash[:dish]}, £#{hash[:total]}"
+    @basket.each do |key, value|
+      puts "#{value[:quantity]} x #{key}, £#{value[:subtotal]}"
     end
   end
 
-  def total
+  def total_bill
     sum = 0
-    @basket.each do |hash|
-      sum += hash[:total]
-    end
-    puts "Your total bill is £#{sum}"
-    sum
+    @basket.each {|key, value| sum += value[:subtotal] }
+    return sum
   end
 
   def checkout(amount, textprovider = TextProvider.new)
@@ -36,8 +30,15 @@ class Order
 
   private
 
-  def correct_amount?(amount)
-    amount == total
+  def subtotal(dish_num, quantity)
+    quantity * @menu.dishes[dish_num][:price]
   end
 
+  def dish_name(dish_num)
+    @menu.dishes[dish_num][:dish]
+  end
+
+  def correct_amount?(amount)
+    amount == total_bill
+  end
 end
