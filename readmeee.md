@@ -1,4 +1,9 @@
-Requirements:
+I styarted over the xmas break and made two attempts at this chalenge. The first was with the
+'Menu1' and Shopping_Basket' files. 
+
+For the purpose of this pull request i have commented these out so that they will not interfere with any testing, and to show the change in code.
+
+ Requirements:
 
 - Allow user to view menu with items and prices (stored in a hash?)
 - Allow user to select multiple menu items
@@ -31,3 +36,6 @@ Totals (running + final)
 Implement the text
 
 
+Following on from this first attempt i then found a video online showing a walkthrough of this challenge. I decided to use this as a learning tool and then follow it to see the approach of rspec and learn from it. 
+
+https://www.youtube.com/watch?v=mgiJKdH9x8c
