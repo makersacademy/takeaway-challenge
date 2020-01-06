@@ -21,19 +21,8 @@ class TakeAway
     "#{amount}x #{item}(s) added to your basket."
   end
 
-  def add(item, amount = 1)
-    raise "Not in menu" unless @menu.dishes.include? item
-
-    @orders[item] = amount
-    "#{amount}x #{item}(s) added to your basket."
-  end
-
   def basket_summary
     orders.each do |item, amount|
-      # @menu.dishes.each do |food, price|
-      #   total_item = (amount * price).round(2)
-      #   puts "#{item} x#{amount} = £#{total_item}" if food == item
-      # end
       total_item = (amount * @menu.price(item)).round(2)
       puts "#{item} x#{amount} = £#{total_item}"
     end
