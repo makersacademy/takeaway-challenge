@@ -3,16 +3,23 @@
 # I would like to see a list of dishes with prices
 require 'take_away'
 describe TakeAway do
-  describe "#show_dishes" do 
-    it "shows a list of dishes with prices" do
-      expect(subject.show_dishes).to eq ( { :pizza => 6, :burger => 5, :chicken => 4, :chips => 3 } )
-    end
-  end
+    let(:items){ {chicken: 6, pizza: 10, chips: 4} }
+    let(:menu){ Menu.new(items) }
+    let(:order){ Order.new(menu)}
+    let(:subject){TakeAway.new(order, menu)}
+    let(:item) { {chicken: 2} }
 
-  describe "#order" do
-  let(:order) { { :chicken => 2, :chips => 1 } }
-    it "selects some number of several available dishes" do
-      expect(subject.order(order)).to eq [order]
+    describe "#show_dishes" do
+      it "prints the menu" do
+        
+      end
     end
-  end
+
+    describe "#order" do
+      it "allows placing an order" do
+        allow(order).to receive(:add)
+        order.add(:chicken, 2)
+        expect(subject.order).to eq item
+      end
+    end
 end
