@@ -11,7 +11,7 @@ auth_token = '7ae0ea7743817d43cfff14c011d226db'
 
 message = @client.messages
   .create(
-     body: "Thank you! Your order was placed and will be delivered before 18:52",
+     body: "Thank you! Your order was placed and will be delivered before #{time45.strftime("%I:%M %p").to_i + 2700}",
      from: '+12562875591',
      to: '+447532669369'
    )

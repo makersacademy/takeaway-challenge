@@ -1,6 +1,6 @@
 class Takeaway
   
-  attr_reader :menu
+  attr_reader :menu, :time45
   attr_accessor :items
 
   def initialize
@@ -12,6 +12,7 @@ class Takeaway
               { dish: "tuna", price: 6} ]
     @order = []
     @items = 0
+    @time45 = Time.new + 2700
   end
 
   def begin_order(total)
@@ -30,7 +31,7 @@ class Takeaway
   def place_order
     fail "incorrect number of dishes" if items != order.length
     send
-    "Thank you! Your order was placed and will be delivered before 18:52"
+    "Thank you! Your order was placed and will be delivered before #{@time45.strftime("%I:%M %p")}"
   end
 
   attr_accessor :order
