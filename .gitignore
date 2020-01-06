@@ -1,2 +1,5 @@
 /**/.DS_Store
 /coverage
+sensitive.env
+run_program.rb
+run_program.rb
