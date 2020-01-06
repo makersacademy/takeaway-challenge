@@ -3,7 +3,7 @@ Takeaway Challenge
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  I.G. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -80,3 +80,75 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+**My Approach**
+---------------
+*Task, Step 2*
+*Run the command 'bundle' in the project directory to ensure you have all the gems*
+
+*Actual Message in Terminal*
+Makerss-MacBook-Air:takeaway-challenge student$ bundle install --deployment
+Fetching gem metadata from https://rubygems.org/.........
+...
+Bundle complete! 6 Gemfile dependencies, 33 gems now installed.
+Bundled gems are installed into `./vendor/bundle`
+Post-install message from rubocop:
+Rails cops will be removed from RuboCop 0.72. Use the `rubocop-rails` gem instead.
+
+Put this in your `Gemfile`.
+
+```rb
+gem 'rubocop-rails'
+```
+
+And then execute:
+
+```sh
+$ bundle install
+```
+
+Put this into your `.rubocop.yml`.
+
+```yaml
+require: rubocop-rails
+```
+
+More information: https://github.com/rubocop-hq/rubocop-rails
+
+**User Story 1**
+---------------
+* [Commit “define #initialize, pass unit test with coverage 100%.]
+
+Makerss-MacBook-Air:takeaway-challenge student$ rspec
+
+Dishes
+  #initialize
+    sees a list of dishes
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.00173 seconds (files took 0.45005 seconds to load)
+1 example, 0 failures
+
+
+COVERAGE: 100.00% -- 9/9 lines in 2 files
+
+**User Story 2**
+---------------
+* [Commit “define #see_dishes”] 
+
+Makerss-MacBook-Air:takeaway-challenge student$ irb                                                                      
+2.6.5 :001 > require './lib/dishes.rb'                                                                                  
+ => true 
+2.6.5 :002 > d = Dishes.new                                                                                    
+ => #<Dishes:0x00007ffe558b63b0 @dishes={:pizza=>13, :noodles=>7, :meat=>9, :salad=>6}> 
+2.6.5 :003 > see_menu = d.see_dishes                                                                                    
+Traceback (most recent call last):
+        4: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `<main>'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `load'
+        2: from /Users/student/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        1: from (irb):3
+NoMethodError (undefined method `see_dishes' for #<Dishes:0x00007ffe558b63b0>)
+
+I perform a feature test in IRB and I get an error message telling me that the method called 'see_dishes' is not defined. This makes sense and I will proceed to the unit test, where I am going to describe the method of interest.
