@@ -16,7 +16,7 @@ class Order
     @menu.each { |food, price| puts "#{food.capitalize}: £#{price}" }
   end
 
-  def order(item, quantity)
+  def order(item, quantity = 1)
     raise "Item not in menu, please try again" if !@menu.include?(item.to_sym)
 
     @basket[item.downcase.to_sym] += quantity
