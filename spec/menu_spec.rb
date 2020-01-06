@@ -6,7 +6,7 @@ describe Menu do
     
   describe "#initialization" do
     it "stores a list of items" do
-      expect(subject.menu).to eq(items)
+      expect(subject.view_menu).to eq(items)
     end
   end
 

@@ -5,6 +5,7 @@ class Menu
         @menu = items
     end
 
+
     def print_menu
       menu = @menu.map do |item, price|
         "#{item} £#{price}"

@@ -17,8 +17,7 @@ describe TakeAway do
 
     describe "#order" do
       it "allows placing an order" do
-        allow(order).to receive(:add)
-        order.add(:chicken, 2)
+        allow(order).to receive(:add).with(:chicken, 2)
         expect(subject.order).to eq item
       end
     end

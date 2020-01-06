@@ -17,14 +17,16 @@
 
 require_relative 'order'
 require_relative 'menu'
+require_relative 'text'
 
 class TakeAway 
 
   attr_reader :items
 
-  def initialize(order, menu)
+  def initialize(order, menu, text)
     @order = order
     @menu = menu
+    @text = text
   end
 
   def show_dishes
@@ -33,6 +35,7 @@ class TakeAway
 
   def order
     @order.order
+    
   end
 end
 

@@ -28,8 +28,8 @@ describe Order do
   describe "#order" do
     it "stores the order" do
       subject.add(:chicken, 2)
-      subject.add(:chips, 1 )
-      expect(subject.order).to eq order
+      # subject.add(:chips, 1 )
+      expect(subject.add(:chips, 1)).to eq order
     end
   end
 
