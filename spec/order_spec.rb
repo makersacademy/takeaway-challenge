@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do 
-  let(:menu) { double :menu }
+  let(:menu) { double(:menu, items: ( { pizza: 8, burger: 10, chips: 3 } )) }
   let(:user_input) { ["pizza\n",
     "burger\n",
     "\n"] 
@@ -16,7 +16,6 @@ describe Order do
   }
 
   before do
-    allow(menu).to receive(:items) { ({ pizza: 8, burger: 10, chips: 3 }) }
     allow(STDIN)
       .to receive(:gets).and_return(*user_input)
   end
