@@ -32,7 +32,7 @@ describe Menu do
       expect(subject).to respond_to(:order_process).with(1).arguments
     end 
 
-    xit 'should run add_item on shopping_basket instance when selection is made' do 
+    it 'should run add_item on shopping_basket instance when selection is made' do 
       shopping_basket_instance = double :shopping_basket, add_item: {:pizza=>10}, pizza_count: 0#, print_basket: "1 x Pizza, Cost: 10"
       allow(shopping_basket_instance).to receive(:pizza_count).and_return (0)
       subject = Menu.new(shopping_basket_instance)
