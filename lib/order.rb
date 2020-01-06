@@ -17,14 +17,15 @@ class Order
   end
 
   def order(item, quantity = 1)
-    raise "Item not in menu, please try again" if !@menu.include?(item.to_sym)
+    raise "Item not in menu, please try again" unless @menu.include?(item.to_sym)
 
     @basket[item.downcase.to_sym] += quantity
   end
 
   def print_basket
     @total = 0
-    @basket.each { |item, q| @total += (@menu[item] * q) 
+    @basket.each { |item, q| 
+      @total += (@menu[item] * q) 
       puts "#{item.capitalize} x #{q}: £#{@menu[item] * q}" 
     }
     puts "Total: £#{@total}"

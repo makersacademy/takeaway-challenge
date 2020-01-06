@@ -7,7 +7,7 @@ class Menu
     @items = {}
   end
 
-  def add_item(item, name, price)
+  def add_item(name, price, item = Item)
     item = item.new(name, price)
     @items[item.name] = item.price
   end
