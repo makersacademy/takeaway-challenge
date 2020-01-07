@@ -46,4 +46,5 @@ describe Order do
     order = Order.new
     order.select("pizza", "2")
     expect(order.basket).to
+  end
 end
