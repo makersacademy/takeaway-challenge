@@ -18,7 +18,7 @@ class Takeaway
 
   def select(item,quantity=1)
     @result = @menu.find { |x| x[item] }
-    @basket.concat([@result]* quantity)
+    @basket.push([@result] * quantity)
     end
 
   def total
