@@ -1,6 +1,6 @@
 MY_README
 
-This program is my attempt at the Makers Academy Takeaway challenge. These were the user stories:
+This program is my version of the Makers Academy Takeaway challenge. These were the user stories:
 
 ```
 As a customer
@@ -20,7 +20,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-My program has three classes with different methods living on them:
+My program has three classes:
 
 * Restaurant class
 
