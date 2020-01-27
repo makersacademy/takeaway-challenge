@@ -2,5 +2,3 @@
 /coverage
 send_sms.rb
 twilio.env
-export TWILIO_ACCOUNT_SID='AC4995904c0d2228dd292ab79c3f9d87b4'
-export TWILIO_AUTH_TOKEN='8735e17ccb87e71fdfbd65346f26d04c'
