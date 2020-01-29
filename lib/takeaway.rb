@@ -13,7 +13,7 @@ class Takeaway
     puts "10. Mushroom burger - £10"
   end
 
-  def create(order)
-    @order = order
+  def create_order(item)
+    @order = item
   end
 end
