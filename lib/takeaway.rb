@@ -1,4 +1,5 @@
 class Takeaway
+  attr_reader :order
   def show_menu
     puts "1. Egg Paneer Kathi Roll - £4"
     puts "2. Margharita Pizza - £7"
@@ -12,4 +13,7 @@ class Takeaway
     puts "10. Mushroom burger - £10"
   end
 
+  def create(order)
+    @order = order
+  end
 end
