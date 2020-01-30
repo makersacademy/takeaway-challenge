@@ -63,7 +63,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 
-* **WARNING** think twice before you push your mobile number or any private details to a public space like Github. Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
+>
+> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
 
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
