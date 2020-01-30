@@ -1,8 +1,9 @@
 class Takeaway
-  attr_reader :order, :total_cost
+  attr_reader :orders, :total_cost
 
   def initialize
     @total_cost = 0
+    @orders = []
   end
 
   MENU = {
@@ -25,6 +26,6 @@ class Takeaway
 
   def order_item(num, quantity = 1)
     @total_cost += MENU[num][:cost] * quantity
-    @order = {dish: MENU[num][:dish], cost: MENU[num][:cost], quantity: quantity} 
+    @orders << {dish: MENU[num][:dish], cost: MENU[num][:cost], quantity: quantity} 
   end
 end
