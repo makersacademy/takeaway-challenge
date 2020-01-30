@@ -1,5 +1,9 @@
 class Takeaway
-  attr_reader :order
+  attr_reader :order, :total_cost
+
+  def initialize
+    @total_cost = 0
+  end
 
   MENU = {
     1 => {dish: "Egg Paneer Kathi Roll", cost: 4},
@@ -20,6 +24,7 @@ class Takeaway
   end
 
   def order_item(num)
+    @total_cost += MENU[num][:cost]
     @order = MENU[num]
   end
 end
