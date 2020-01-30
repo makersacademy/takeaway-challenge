@@ -19,4 +19,18 @@ describe Takeaway do
       expect(subject.total_cost).to eq 4
     end
   end
+
+  context 'when user orders a quantity of one dish' do 
+    before do
+      subject.order_item(1, 2)
+    end
+
+    it 'returns quantity of dishes' do
+      expect(subject.order).to include(:dish => "Egg Paneer Kathi Roll", :cost => 4, :quantity => 2)
+    end
+    
+    it 'includes quantity in total cost' do
+      expect(subject.total_cost).to eq 8
+    end
+  end
 end

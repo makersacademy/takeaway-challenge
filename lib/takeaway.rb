@@ -23,8 +23,8 @@ class Takeaway
     end
   end
 
-  def order_item(num)
-    @total_cost += MENU[num][:cost]
-    @order = MENU[num]
+  def order_item(num, quantity = 1)
+    @total_cost += MENU[num][:cost] * quantity
+    @order = {dish: MENU[num][:dish], cost: MENU[num][:cost], quantity: quantity} 
   end
 end
