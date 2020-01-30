@@ -13,7 +13,7 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-This programme allows a user to order a take-away from their local takeaway restaurant.
+This programme allows a user to order a take-away from their local restaurant.
 
 I created this programme for a weekend challenge at [Makers Academy](https://github.com/makersacademy). See [User Stories](#user-stories) for more information on the programme's requirements.
 
@@ -50,7 +50,7 @@ $ rspec
 
 ## How I built it ##
 
-I used a TDD approach to build this programme, using the provided user stories to create a domain model diagram, feature tests and unit tests which drove the code I wrote.
+I used a TDD approach to build this programme, using the provided user stories to create a domain model diagram, and feature tests and then eventually unit tests which drove the code I wrote.
 
 ### User Stories ###
 

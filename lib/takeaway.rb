@@ -1,19 +1,25 @@
 class Takeaway
   attr_reader :order
+
+  MENU = {
+    1 => {dish: "Egg Paneer Kathi Roll", cost: 4},
+    2 => {dish: "Margharita Pizza", cost: 7},
+    3 => {dish: "Prawn Laksa", cost: 8},
+    4 => {dish: "Pho", cost: 6},
+    5 => {dish: "Roast Lamb and veg", cost: 16},
+    6 => {dish: "Poached egg and spinach", cost: 6},
+    7 => {dish: "Khao Soi", cost: 9},
+    8 => {dish: "Tofu Amok", cost: 5},
+    9 => {dish: "Mushroom burger", cost: 10},
+    10 => {dish: "Pastel de Nata", cost: 2}
+  }
   def show_menu
-    puts "1. Egg Paneer Kathi Roll - £4"
-    puts "2. Margharita Pizza - £7"
-    puts "3. Prawn Laksa - £8"
-    puts "4. Pho - £6"
-    puts "5. Roast Lamb and veg - £15"
-    puts "6. Poached egg and spinach - £6"
-    puts "7. Pastel de Nata - £2"
-    puts "8. Khao Soi - £9"
-    puts "9. Tofu Amok - £5"
-    puts "10. Mushroom burger - £10"
+    MENU.each do |k,v|
+      puts "#{k}. #{v[:dish]} - £#{v[:cost]}"
+    end
   end
 
-  def create_order(item)
-    @order = item
+  def order_item(num)
+    @order = MENU[num]
   end
 end
