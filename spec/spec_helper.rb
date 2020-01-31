@@ -1,3 +1,4 @@
+require_relative './../lib/takeaway.rb'
 require 'simplecov'
 require 'simplecov-console'
 
