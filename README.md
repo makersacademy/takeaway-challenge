@@ -38,6 +38,7 @@ Getting started
 Clone this repository
 ```
 $ git clone https://github.com/natyeo/takeaway-challenge.git
+$ cd takeaway-challenge
 ```
 
 Install Bundler
@@ -48,6 +49,20 @@ $ gem install bundler
 Install all this program's dependencies
 ```
 $ bundle install
+```
+
+If you want to receive a text confirming your order [sign up for a free Twilio trial account](https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account) and set up environment variables
+```
+$ touch .env
+```
+
+Add your Twilio credentials and the number you want the text sent to the .env file 
+```
+TWILIO_ACCOUNT_SID=ACXXXXXXXXXXXX
+TWILIO_AUTH_TOKEN=your_auth_token
+
+TWILIO_NUMBER=your_twilio_number
+NUMBER=number_to_receive_text
 ```
 
 Usage
