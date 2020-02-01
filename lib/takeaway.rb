@@ -11,7 +11,8 @@ class TakeAway
   end
 
   def pay(amount)
-    raise("Incorrect £ given") if amount != @cart.total
+    raise("Incorrect £ given") if "Total: £#{amount}" != @cart.total
+    "Thanks!"
   end
 
 end
