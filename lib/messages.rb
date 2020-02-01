@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 class Messages
-  def message
+  def send(message)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new(account_sid, auth_token)
@@ -11,7 +11,8 @@ class Messages
     client.api.account.messages.create(
     from: from,
     to: to,
-    body: "Thanks for your order! It will be delivered before #{Time.now.+(3600).strftime('%H:%M').}"
+    body: message
     )
+    return message
   end
 end

@@ -15,10 +15,16 @@ describe TakeAway do
       expect { takeaway.pay(18) }.to raise_error("Incorrect £ given")
     end
 
-    it 'says thanks if correct anount was given' do
-      expect(takeaway.pay(19)).to eq("Thanks!")
+    it 'acknowledges if correct amount was given' do
+      expect(takeaway.pay(19)).to eq("Payment accepted")
     end
+  end
 
+  describe '#finish_order' do
+    let(:message) { double("message", send: "Thanks") }
+    it 'sends a message' do
+      expect(subject.finish_order(message)).to eq("Thanks")
+    end
   end
 
 end

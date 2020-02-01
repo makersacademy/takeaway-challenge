@@ -1,5 +1,5 @@
 require_relative 'cart'
-
+require_relative 'messages'
 class TakeAway
 
   def initialize(cart = Cart.new)
@@ -12,7 +12,13 @@ class TakeAway
 
   def pay(amount)
     raise("Incorrect £ given") if "Total: £#{amount}" != @cart.total
-    "Thanks!"
+    finish_order
+    return "Payment accepted"
+  end
+
+  def finish_order(mess = Messages.new)
+    @mess = mess
+    @mess.send("Thanks for your order! It will be delivered before #{Time.now.+(3600).strftime('%H:%M')}.")
   end
 
 end
