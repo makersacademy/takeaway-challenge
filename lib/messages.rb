@@ -11,7 +11,7 @@ class Messages
     client.api.account.messages.create(
     from: from,
     to: to,
-    body: "Hey friend!"
+    body: "Thanks for your order! It will be delivered before #{Time.now.+(3600).strftime('%H:%M').}"
     )
   end
 end
