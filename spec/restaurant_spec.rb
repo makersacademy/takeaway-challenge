@@ -11,4 +11,15 @@ describe Restaurant do
       expect(subject.current_order.length).to eq 1
     end
   end
+  describe "#review_order" do
+    before(:example) do
+      allow(dish).to receive(:name).and_return("Chicken Burger")
+      subject.add_to_order(dish.name)
+    end
+
+    it "should show an order back to the user" do
+      expect(subject.review_order).to eq "Chicken Burger"
+    end
+    
+  end
 end
