@@ -1,8 +1,7 @@
 describe Menu do
-  describe '#view' do
-    it 'returns the menu' do
-      allow(subject).to receive(:view).and_return(@menu = {"test item" => 1})
-      expect(subject.view).to eq(@menu)
+  describe '#initialize' do
+    it 'returns a menu list object' do
+      expect(subject.menu_list).to be_kind_of(Hash)
     end
   end
 end
