@@ -7,7 +7,7 @@ class TakeAway
   end
 
   def show_menu
-    {"burger" => 5, "fries" => 3, "shake" => 2}
+    { "burger" => 5, "fries" => 3, "shake" => 2 }
   end
 
   def add_to_cart(item)
