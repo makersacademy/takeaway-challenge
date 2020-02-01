@@ -16,9 +16,17 @@ class Cart
   def summarize
     result = []
     @cart.each do |item, quantity|
-      result << "#{item} x #{quantity} = #{(@menu[item]) * (quantity)}"
+      result << "#{item} x #{quantity} = #{@menu[item] * quantity}"
     end
     result.join(", ")
+  end
+
+  def total
+    total = []
+    @cart.each do |item, quantity|
+      total << (@menu[item] * quantity)
+    end
+    "Total: £#{total.sum}"
   end
 
 end

@@ -19,4 +19,12 @@ describe Cart do
     end
   end
 
+  describe '#total' do
+    it 'prints total cost of cart' do
+      subject.add_item("burger", 3)
+      subject.add_item("fries", 1)
+      expect(subject.total).to eq("Total: £18")
+    end
+  end
+
 end
