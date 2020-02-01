@@ -1,11 +1,27 @@
 
 class Menu
-  def view_menu
-    @menu = {
+  attr_reader :menu_list
+
+  def initialize
+    @menu_list = {
       :pizza => 10,
       :curry => 9,
       :falafel => 3.50,
       :padthai => 7 }
+  end 
 
+  def view_menu
+    @menu_list
+    
+    # .each do |k, v|
+    #   "the delicious #{k} costs £#{v}"
+    # end 
+  end 
+
+  def price(dish)
+    menu_list[dish]
   end 
 end 
+
+
+ 
