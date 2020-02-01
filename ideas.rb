@@ -1,14 +1,17 @@
 class Takeway
-  def initialize(menu = Menu.new)
-    @Menu = menu
+  def initialize(menu = Menu.new, basket = Basket.new, text_providor = TextProvidor.new)
+    @menu = menu
+    @basket = basket
+    @text_providor = text_providor
   end
 
   def show_menu
     puts @menu
   end
 
-  def create_order
-
+  def create_order(choice)
+    # take out order items from menu and add to new array/hash
+    # Also need to take into account quantity too
   end
 end
 
