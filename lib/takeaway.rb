@@ -4,7 +4,7 @@ class Takeaway
     @menu = menu
   end
 
-  def order(item)
+  def add(item)
     item
   end
 

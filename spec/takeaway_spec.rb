@@ -4,6 +4,7 @@ describe Takeaway do
 
   let(:menu){ double :menu, list: {"Pilau rice": 1.50, "Poppadom": 0.50, "Mango Chutney": 0.30}}
   subject {described_class.new(menu: menu)}
+  let(:item){"Pilau rice"}
 
 
   describe " #show_menu" do
@@ -18,14 +19,18 @@ describe Takeaway do
   end
   
   
-  describe " #order" do
+  describe " #add" do
     it "can order can accept one argument" do
-      expect(subject).to respond_to(:order).with(1).argument
+      expect(subject).to respond_to(:add).with(1).argument
     end
 
-    it "returns itme name from order" do
-      expect(subject.order("Tikka Masala")).to eq "Tikka Masala"
+    it "returns item name from order" do
+      expect(subject.add("Tikka Masala")).to eq "Tikka Masala"
     end
+    
+    # it "adds ordered item to array" do
+    #   subject.add(item)
+    #   expect(subject.order).to
 
   end
 
