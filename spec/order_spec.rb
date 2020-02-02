@@ -1,14 +1,7 @@
 require 'order'
 
 describe Order do 
-  it 'checks that a class exists' do
-    expect(subject).to be_a Order
-  end
-
-  it 'checks that it responds to a method' do
-    expect(subject).to respond_to :basket
-  end
-
+ 
   describe '#initialize' do
     it 'has no orders to begin with' do
       expect(subject.basket).to eq({})
@@ -16,10 +9,7 @@ describe Order do
   end
 
   describe '#add_item' do
-    it 'checks that it responds to a method' do
-      expect(subject).to respond_to :add_item
-    end
-
+   
     it 'checks that is responds to two arguments' do
       expect(subject).to respond_to(:add_item).with(2).arguments
     end
