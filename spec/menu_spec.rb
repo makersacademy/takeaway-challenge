@@ -16,4 +16,5 @@ describe Menu do
     printed_menu = "Sausage £4.50, Chips £2.99"
     expect(menu.print).to eq(printed_menu)
   end
+
 end
