@@ -2,9 +2,16 @@ require 'menu'
 
 describe Menu do
 
-  describe '#getdishes' do
-    it 'gets dishes from list of dishes' do
-      expect(subject.getdishes).to eq([])
+  let(:menu) { Menu.new }
+
+  describe "new dishes" do
+    it "equals an empty hash" do
+      expect(menu.dishes).to eq([])
     end
   end
+  # describe '#get_dishes' do
+  #   it 'gets dishes' do
+  #     expect(subject.getdishes).to eq("Salmon")
+  #   end
+  # end
 end
