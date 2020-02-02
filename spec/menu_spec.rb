@@ -11,11 +11,18 @@ describe Menu do
   end
 
   describe "#add_dish" do
-
-    it "adds new dishes to dishes array" do
+    it "adds a dish to dish_name" do
       new_dish = "Salmon"
       menu.add_dish(new_dish)
       expect(menu.add_dish(new_dish)).to eq(new_dish)
+    end
+  end
+
+  describe "#add_price" do
+    it "adds a price to dish_price" do
+      dish_price = 15
+      menu.add_price(dish_price)
+      expect(menu.add_price(dish_price)).to eq(dish_price)
     end
   end
 end
