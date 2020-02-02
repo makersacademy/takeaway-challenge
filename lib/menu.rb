@@ -10,7 +10,7 @@ class Menu
       :padthai => 7 }
   end 
 
-  def view_menu
+  def view
     @menu_list
     
     # .each do |k, v|
