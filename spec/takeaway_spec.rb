@@ -55,4 +55,12 @@ describe Takeaway do
     end
   end
 
+  describe " #total" do
+
+    it "should return the most up to date version of basket's total" do
+      allow(Calculator).to receive(:current_basket) {[{item_name: "Pilau rice", quantity: 1, subtotal: 1.50}, {item_name: "Poppadom", quantity: 4, subtotal: 2.00}]}
+      allow(Calculator).to receive(:total) {9.5}
+      expect(subject.total).to eq (9.5)
+    end
+  end
 end

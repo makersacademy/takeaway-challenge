@@ -32,10 +32,16 @@ class Takeaway
     output.join(", ")
   end
 
+  def total
+    Calculator.current_basket(@order, @menu.dishes)
+    Calculator.total
+  end
+
   private
 
   def iterate_through_order(item, quantity)
     @order.key?(item) ? iterate_and_update(item, quantity) : @order[item] = quantity
+    @order
   end
 
   def iterate_and_update(item, quantity)
