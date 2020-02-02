@@ -11,12 +11,12 @@ class Restaurant
   end
   
   def review_order
-    @current_order.join(", ")
+    @current_order.map(&:name).join(", ")
   end
   
   def pay_order(amount)
     raise "Sorry, this is not enough to cover the cost of the meal!" if amount != order_total
-    
+
     "Your order has been confirmed! A text message will be sent shortly."
   end
 
