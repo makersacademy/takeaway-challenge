@@ -30,15 +30,22 @@ describe PlaceOrder do
       expect(test_total).to eq(10)
     end
   # edge cases - no numbers, integers, no response
-    it { is_expected.to respond_to(:check_total) }
+    it { is_expected.to respond_to(:total_agreed?) }
     it 'checks a total against users total' do
       subject.total = 10
       subject.users_total = 10
-      expect(subject.check_total).to eq "Your order has been placed. Please provide your phone number below."
+      expect(subject).to be_total_agreed
+    end
+    it { is_expected.to respond_to(:confirm_order) }
+    it 'checks a total against users total' do
+      subject.total = 10
+      subject.users_total = 10
+      subject.total_agreed?
+      expect(subject.confirm_order).to eq "Your order has been placed. Please provide your phone number below."
     end
     it 'raises an error if totals do not match' do
       subject.total = 7
-      expect { subject.check_total }.to raise_error('Total incorrect. Order failed')
+      expect { subject.confirm_order }.to raise_error('Total incorrect. Order failed')
     end
   end
   

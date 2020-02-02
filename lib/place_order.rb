@@ -14,8 +14,7 @@ class PlaceOrder
   end
 
   def take_order
-    $stdin = gets.chomp
-    @order = $stdin
+    @order = gets.chomp
   end
 
   def ask_for_total
@@ -23,19 +22,21 @@ class PlaceOrder
   end
 
   def take_total
-    $stdin = gets.chomp
-    @users_total = $stdin
+    @users_total =  gets.chomp
   end
 
-  def check_total
-    fail "Total incorrect. Order failed" if @users_total != @total
+  def total_agreed?
+    @users_total == @total
+  end
+
+  def confirm_order
+    fail "Total incorrect. Order failed" if total_agreed? == false
 
     p "Your order has been placed. Please provide your phone number below."
   end
 
   def take_number
-    $stdin = gets.chomp
-    @phone_number = $stdin
+    @phone_number = gets.chomp
   end
 
 end
