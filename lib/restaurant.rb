@@ -1,3 +1,4 @@
+require 'menu'
 class Restaurant
 
   attr_reader :current_order
