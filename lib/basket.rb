@@ -5,7 +5,6 @@ class Basket
     def initialize(menu = Menu.new)
         @menu = menu
         @basket = {}
-        @total = nil
     end
 
     def add(item, quantity)
@@ -13,11 +12,15 @@ class Basket
     end
 
     def show_basket
-        @basket
+        basket = []
+        @basket.each { |item, quantity| basket << "#{item} x #{quantity}" }
+        basket.join(", ")
     end
 
-    def total
-        # work in progress
+    def checkout
+        checkout = []
+        @basket.each { |item, quantity| checkout << @menu.menu[item] * quantity }
+        "The total cost will be £#{checkout.sum}"
     end
 
 
