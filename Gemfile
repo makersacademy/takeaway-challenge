@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'twilio-ruby', '~> 5.31.3'
+
 group :test do
   gem 'rspec'
   gem 'rubocop', '0.72.0'
