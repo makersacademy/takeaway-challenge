@@ -1,11 +1,11 @@
 class Menu
-  Menu = {
-    :pad_tai => 8,
-    :red_curry => 9,
-    :green_curry => 10
+  The_menu = {
+    "Pad_thai" => 8,
+    "Red_curry" => 9,
+    "Green_curry" => 10
     }
 
   def show_menu
-    return Menu
+    The_menu
   end
 end
