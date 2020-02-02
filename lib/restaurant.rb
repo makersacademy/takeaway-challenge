@@ -7,8 +7,9 @@ class Restaurant
     @current_order = []
   end
 
-  def add_to_order(dish_name)
+  def add_to_order(dish_name, qty)
     @current_order << dish_name
+    dish_name.update_qty(qty)
   end
   
   def review_order

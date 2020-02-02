@@ -6,22 +6,26 @@ describe Restaurant do
     before(:example) do
       allow(dish).to receive(:name).and_return("Chicken Burger")
     end
-    it "should add an order to the current order list" do
-      subject.add_to_order(dish)
+    it "should add an order to the current order list with its qty" do
+      dish_double = object_double(Dish.new("Chicken Nuggets", "3"))
+      expect(dish_double).to receive(:update_qty).with(1)
+      subject.add_to_order(dish_double, 1)
       expect(subject.current_order.length).to eq 1
+      
     end
   end
   describe "#review_order" do
     before(:example) do
       allow(dish).to receive(:name).and_return("Chicken Burger", "Fries")
-      subject.add_to_order(dish)
+      allow(dish).to receive(:update_qty)
+      subject.add_to_order(dish, 1)
     end
 
     it "should show an order back to the user" do
       expect(subject.review_order).to eq "Chicken Burger"
     end
     it "should show multiple orders back to the user" do
-      subject.add_to_order(dish)
+      subject.add_to_order(dish, 1)
       expect(subject.review_order).to eq "Chicken Burger, Fries"
     end
   end
@@ -29,7 +33,8 @@ describe Restaurant do
     before(:example) do
       allow(dish).to receive(:price).and_return(5)
       allow(dish).to receive(:name).and_return("Chicken Burger", "Fries")
-      subject.add_to_order(dish)
+      allow(dish).to receive(:update_qty)
+      subject.add_to_order(dish, 1)
     end
     it "should confirm order payment if paid amount matches required" do
       expect(subject.pay_order(5)).to eq "Your order has been confirmed! A text message will be sent shortly."
