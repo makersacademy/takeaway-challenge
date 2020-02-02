@@ -1,4 +1,5 @@
 require_relative "menu.rb"
+require_relative "calculator.rb"
 
 class Takeaway
   
@@ -19,6 +20,11 @@ class Takeaway
 
   def order
     @order
+  end
+
+  def checkout(dishes = @menu.dishes)
+    array = Calculator.current_basket(@order, dishes)
+    puts "#{array[0].values[0]} x#{array[0].values[1]} = £#{array[0].values[2]}"
   end
 
   private

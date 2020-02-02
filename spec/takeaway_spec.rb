@@ -2,7 +2,7 @@ require "takeaway.rb"
 
 describe Takeaway do
 
-  let(:menu){ double :menu, dishes: {"Kolhapuri Murgi": 5.60, "Salmon Tikka Masala": 8.80, "Butter Chicken": 6.10, "Saag Paneer": 3.00, "Pilau rice": 1.50, "Coconut rice": 1.80, "Poppadom": 0.50, "Mango Chutney": 0.30}, item_exists?: true}
+  let(:menu){ double :menu, dishes: {"Pilau rice": 1.50, "Poppadom": 0.50 } }
   subject {described_class.new(menu: menu)}
 
 
@@ -30,37 +30,37 @@ describe Takeaway do
       expect(subject.order).to eq(key_value_pair)
     end
 
-    it "raises an error if iterm is not in menu array" do
+    it "raises an error if item is not in menu array" do
       item = "Not in menu"
       expect { subject.add(item) }.to raise_error("Item not in menu, please check spelling")
     end
 
     it "adds quanitity to already to item in hash if already ordered" do
       item = "Pilau rice"
-      subject.add(item)
-      subject.add(item)
+      2.times {subject.add(item)}
       key_value_pair = {"Pilau rice": 2}
       expect(subject.order).to eq(key_value_pair)
     end
   end
 
-# menu
-# dishes
 
-# basket
-
-# text_providor
-
-# read menu
-
-# order ("name")
-
-# basket_summary
-
-# add (item, quantity)
-
-# total
-
-# checkout
+  # this test is not good since it relies on calculator code, unsure how to remove dependency"
+  # let( :order ) { double "order" }
+  # let( :dishes ) { double "dishes" }
+  
+  describe " #checkout" do
+    # before(:example) do
+    #   subject.add("Poppadom")
+    # end
+    it "returns string with ordered items" do
+      allow(Calculator).to receive(:current_basket) {[{item_name: "Pilau rice", quantity: 1, subtotal: 1.50}]}
+      expect{subject.checkout}.to output("Pilau rice x1 = £1.5\n").to_stdout
+    end
+  end
 
 end
+
+
+  # allow(Calculator).to receive(:current_basket).with(order, dishes) {"put what you want to output here"}
+  # allow(Calculator).to receive(:current_basket) {[{item_name: "Pilau rice", quantity: 1, subtotal: 1.50}]}
+  # Calculator.stub(:current_basket) { [{item_name: "Pilau rice", quantity: 1, subtotal: 3.0}] }
