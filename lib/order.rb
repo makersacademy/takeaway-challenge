@@ -11,7 +11,17 @@ class Order
     dishes[dish] = quantity
   end
 
+  def total
+    item_totals.inject(:+)
+  end
+
   private
 
   attr_reader :menu
+
+  def item_totals
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end
+  end
 end

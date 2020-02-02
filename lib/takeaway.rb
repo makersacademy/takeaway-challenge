@@ -1,4 +1,4 @@
-require 'order'
+require "order"
 
 class Takeaway
   def initialize(menu:, order: nil)
@@ -14,6 +14,7 @@ class Takeaway
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
+    order.total
   end
 
   private
