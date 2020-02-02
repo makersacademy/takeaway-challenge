@@ -19,15 +19,15 @@ describe PlaceOrder do
 
   describe "#checks total" do
     it { is_expected.to respond_to(:ask_for_total) } 
-    it 'asks for an order' do
+    it 'asks for total' do
       expect(subject.ask_for_total).to eq 'Please write your expected order total below e.g 12.36'
     end
     it { is_expected.to respond_to(:take_total) } 
-    it 'asks for an order' do
+    it 'takes user total' do
       # TODO - find a way to check actual method here
-      allow($stdin).to receive(:gets).and_return('foo')
+      allow($stdin).to receive(:gets).and_return(10)
       test_total = $stdin.gets
-      expect(test_total).to eq('foo')
+      expect(test_total).to eq(10)
     end
   # edge cases - no numbers, integers, no response
     it { is_expected.to respond_to(:check_total) }
@@ -42,7 +42,13 @@ describe PlaceOrder do
     end
   end
   
-  describe "gets number" do 
+  describe "#gets number" do 
+    it { is_expected.to respond_to(:take_number) }
+    it "obtains user number" do
+      allow($stdin).to receive(:gets).and_return('01234567890')
+      test_number = $stdin.gets
+      expect(test_number).to eq('01234567890')
+    end
   end
 
 end

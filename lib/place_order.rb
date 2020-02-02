@@ -1,11 +1,12 @@
 class PlaceOrder
 
-  attr_accessor :order, :users_total, :total
+  attr_accessor :order, :users_total, :total, :phone_number
 
   def initialize
     @order
     @users_total
     @total
+    @phone_number
   end
 
   def ask_for_order
@@ -30,6 +31,11 @@ class PlaceOrder
     fail "Total incorrect. Order failed" if @users_total != @total
 
     p "Your order has been placed. Please provide your phone number below."
+  end
+
+  def take_number
+    $stdin = gets.chomp
+    @phone_number = $stdin
   end
 
 end
