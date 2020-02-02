@@ -71,23 +71,32 @@ I then built each in turn, starting with those which did not depend on any other
 | **Methods:** | print, search |
 
 
+| Object: | Basket |
+| ------- | ------- |
+| **Attributes:** | dishes, menu |
+| **Methods:** | add, remove, total, summary |
 
 
+| Object: | SMS |
+| ------- | ------- |
+| **Attributes:** | client, account and authorization credentials, sending phone number, receiving phone number |
+| **Methods:** | send |
 
 
+| Object: | Order |
+| ------- | ------- |
+| **Attributes:** | basket, menu, sms |
+| **Methods:** | add, remove, total, summary, pay |
 
+### Further objectives ###
 
+The following is a list of objectives I set out to achieve, in addition to the user requirements:
 
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+  * Follow the TDD process, and have all tests passing
+  * High test coverage (>99%)
+  * Elegant code: every class has a clear responsibility, methods are short etc. Running Rubocop detects no offenses.
+  * Make sure that the programme is thoroughly tested and mocks and/or stubs are used so as not to send texts when the tests are run
+  * However, loaded the programme and placing the order in IRB ensures the confirmation text is actually sent.
 
 ## Features to be added ##
 
