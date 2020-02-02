@@ -13,4 +13,8 @@ class Menu
       puts "Dish Name: #{dish.name} - Price: £#{dish.price}"
     end
   end
+
+  def on_menu?(dish)
+    @dishes.include?(dish)
+  end 
 end

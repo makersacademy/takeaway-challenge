@@ -16,4 +16,11 @@ describe Menu do
       expect { subject.show_menu }.to output("Dish Name: Chicken Burger - Price: £5\nDish Name: Fries - Price: £3\n").to_stdout
     end
   end
+  describe "#on_menu?" do
+    it "should return true if the dish requested is found" do
+      dish_double = object_double(Dish.new("Chicken Nuggets", "3"))
+      subject.add_to_menu(dish_double)
+      expect(subject.on_menu?(dish_double)).to eq true
+    end
+  end
 end
