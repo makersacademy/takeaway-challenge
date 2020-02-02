@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'notifier'
 
 class Order
 
