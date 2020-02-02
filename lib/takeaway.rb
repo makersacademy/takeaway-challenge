@@ -23,7 +23,7 @@ class Takeaway
   end
 
   # would be better if shortened, any suggestions?
-  def checkout(dishes = @menu.dishes)
+  def basket(dishes = @menu.dishes)
     input = Calculator.current_basket(@order, dishes)
     output = []
     input.each do |item|

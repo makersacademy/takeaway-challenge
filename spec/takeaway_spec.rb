@@ -43,15 +43,15 @@ describe Takeaway do
     end
   end
   
-  describe " #checkout" do
+  describe " #basket" do
     it "returns string with ordered items" do
       allow(Calculator).to receive(:current_basket) {[{item_name: "Pilau rice", quantity: 1, subtotal: 1.50}]}
-      expect(subject.checkout).to eq("Pilau rice x1 = £1.5")
+      expect(subject.basket).to eq("Pilau rice x1 = £1.5")
     end
 
     it "returns string with ordered items" do
       allow(Calculator).to receive(:current_basket) {[{item_name: "Pilau rice", quantity: 1, subtotal: 1.50}, {item_name: "Poppadom", quantity: 4, subtotal: 2.00}]}
-      expect(subject.checkout).to eq("Pilau rice x1 = £1.5, Poppadom x4 = £2.0")
+      expect(subject.basket).to eq("Pilau rice x1 = £1.5, Poppadom x4 = £2.0")
     end
   end
 

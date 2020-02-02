@@ -2,7 +2,7 @@ require "calculator.rb"
 
 describe Calculator do
   
-  describe " #checkout" do
+  describe " #current_basket" do
     it "should respond to two arguments" do
       expect(Calculator).to respond_to(:current_basket).with(2).argument
     end
