@@ -10,13 +10,7 @@ class Takeaway
   def add(item, quantity = 1)
     item = item.to_sym
     raise "Item not in menu, please check spelling" unless @menu.dishes.key?(item)
-    if @order.key?(item)
-      @order.each do |key, value|
-        @order[key] = value + quantity if key == item
-      end
-    else 
-      @order[item] = quantity
-    end
+    iterate_through_order(item, quantity)
   end
 
   def show_menu
@@ -26,5 +20,18 @@ class Takeaway
   def order
     @order
   end
+
+  private
+
+  def iterate_through_order(item, quantity)
+    @order.key?(item) ? iterate_and_update(item, quantity) : @order[item] = quantity
+  end
+
+  def iterate_and_update(item, quantity)
+    @order.each do |key, value|
+      @order[key] = value + quantity
+    end
+  end
+
 
 end
