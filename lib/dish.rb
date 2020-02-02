@@ -1,7 +1,8 @@
 class Dish
-  attr_reader :name
+  attr_reader :name, :price
 
-  def initialize
-    @name = String.new
+  def initialize(name, price)
+    @name = name
+    @price = price
   end
 end
