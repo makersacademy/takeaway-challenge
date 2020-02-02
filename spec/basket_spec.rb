@@ -9,7 +9,6 @@ describe Basket do
     subject.add(Dish_1, Dish_2)
   end
 
-
   it 'Basket.total should return basket total' do
     expect(subject.total).to eq(Dish_1.price + Dish_2.price)
   end
