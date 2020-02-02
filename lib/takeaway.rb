@@ -1,13 +1,15 @@
-require "order"
+require "./lib/order.rb"
 
 class Takeaway
-  def initialize(menu:, order: nil)
+  attr_reader :dishes
+
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
-    @order = order || Order.new
+    @order = order
   end
 
   def print_menu
-    menu.print
+    menu.send :print
   end
 
   def place_order(dishes)

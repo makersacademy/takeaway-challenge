@@ -5,13 +5,16 @@ describe Takeaway do
 
   let(:menu) { double(:menu, print: printed_menu) }
   let(:order) { double(:order, total: 15.50) }
-  let(:printed_menu) { "menu list" }
-
-  let(:dishes) { { chiken: 2, falafel: 1 } }
-
+  let(:printed_menu) { "Salad £3.50, Falafel £4.50" }
+  let(:dishes) { {
+    salad: 3.50,
+    falafel: 4.50,
+  } }
+  
   # I would like to see a list of dishes with prices
   it "shows the menu with the dishes and prices" do
-    expect(takeaway.print_menu).to eq(printed_menu)
+    
+    expect(takeaway.print_menu).to eq(dishes)
   end
 
   # select some number of several available dishes

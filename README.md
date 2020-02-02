@@ -33,17 +33,66 @@ _A user can:_ <br>
 Ruby
 
 ###### How to run
-_only in irb for now, example tba_
+_only in irb for now, example below_<br>
+`irb feature_test.rb`
+```
+myrtles-MBP:takeaway-challenge myrtle$ irb feature_test.rb 
+2.7.0 :001 > require "./lib/menu.rb"
+ => true 
+2.7.0 :002 > require "./lib/order.rb"
+ => true 
+2.7.0 :003 > require "./lib/takeaway.rb"
+ => true 
+2.7.0 :004 > dishes = { "salad" => 4.00, "falafel" => 3.00, "kombucha" => 2.50}
+2.7.0 :005 > menu = Menu.new(dishes)
+2.7.0 :006 > order = Order.new(menu)
+2.7.0 :007 > takeaway = Takeaway.new(menu, order)
+2.7.0 :008 > p "Welcome to takeaway! our dishes today:"
+"Welcome to takeaway! our dishes today:"
+ => "Welcome to takeaway! our dishes today:" 
+2.7.0 :009 > takeaway.print_menu
+ => "Salad £4.00, Falafel £3.00, Kombucha £2.50" 
+2.7.0 :010 > p "you may now add dishes to your order"
+"you may now add dishes to your order"
+ => "you may now add dishes to your order" 
+2.7.0 :011 > p "I'd like a salad.."
+"I'd like a salad.."
+ => "I'd like a salad.." 
+2.7.0 :012 > order.add("salad", 1)
+ => 1 
+2.7.0 :013 > p "..and 2 falafel.."
+"..and 2 falafel.."
+ => "..and 2 falafel.." 
+2.7.0 :014 > order.add("falafel", 2)
+ => 2 
+2.7.0 :015 > p "..and 2 kombuchas!"
+"..and 2 kombuchas!"
+ => "..and 2 kombuchas!" 
+2.7.0 :016 > order.add("kombucha", 2)
+ => 2 
+2.7.0 :017 > p "Yum! your order is:" 
+"Yum! your order is:"
+ => "Yum! your order is:" 
+2.7.0 :018 > order.show
+"salad : 1"
+"falafel : 2"
+"kombucha : 2"
+ => ["salad : 1", "falafel : 2", "kombucha : 2"] 
+2.7.0 :019 > p "..and your total is: £" + order.total.to_s
+"..and your total is: £15.0"
+ => "..and your total is: £15.0" 
+myrtles-MBP:takeaway-challenge myrtle$ 
+```
 
 ###### How to test
 
-`Rspec`
-_and/or_
-`irb feature_test.rb` _(tba)_
+`Rspec` <br>
+_and/or_ <br>
+`irb feature_test.rb` 
 
 ###### weekend 2 @ Makers Academy
-2nd weekend exercise <br>
-_I am working on this following Sam Morgan's video walkthrough_
+2nd weekend exercise; unfortunately unfinished <br>
+_I watched Sam Morgan's video walkthrough to help navigate the exercise._
 
 ###### Collaborators
 solo [Myrtle](https://github.com/Mrtly) 
