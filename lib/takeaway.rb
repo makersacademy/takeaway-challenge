@@ -38,6 +38,13 @@ class Takeaway
     "Total: £#{total}"
   end
 
+  def checkout(amount)
+    Calculator.current_basket(@order, @menu.dishes)
+    total = Calculator.total
+    raise "The amount you have entered does not equal the order total, please consider checking amount to be paid using .total" if amount < total
+    "Your payment of #{amount} has been made, thank you for your order"
+  end
+
   private
 
   def iterate_through_order(item, quantity)

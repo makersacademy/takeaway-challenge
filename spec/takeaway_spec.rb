@@ -64,4 +64,22 @@ describe Takeaway do
     end
   end
 
+  describe " #checkout" do
+    it "should take one argument" do
+      expect(subject).to respond_to(:checkout).with(1).argument
+    end
+
+    it "should return a string confirming a payment is made" do
+      amount = 10
+      expect(subject.checkout(amount)).to eq "Your payment of #{amount} has been made, thank you for your order"
+    end
+
+    it "should raise an error if amount does not equal claculator total" do
+      allow(Calculator).to receive(:current_basket) {[{item_name: "Pilau rice", quantity: 1, subtotal: 1.50}, {item_name: "Poppadom", quantity: 4, subtotal: 2.00}]}
+      allow(Calculator).to receive(:total) {9.5}
+      amount = 5
+      expect{subject.checkout(amount)}.to raise_error "The amount you have entered does not equal the order total, please consider checking amount to be paid using .total"
+    end
+  end
+
 end
