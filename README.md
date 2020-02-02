@@ -118,5 +118,6 @@ $> rspec
 ## <a name="Further_Improvements">Further Improvements</a>
 * Attempt the advanced section: [Implement the ability to place orders via text message
 * Ensure ENV variables are functioning
+* Refactor methods identified as too long by Rubocop
 * Refactor and add testing for all methods, including #order_summary, #confirm, #send_confirmation etc.
 * Update README
