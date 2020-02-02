@@ -4,11 +4,8 @@ describe Menu do
   it {is_expected.to respond_to(:list)}
   
   describe '#item' do
-    it 'should return a menu item' do
-      expect(subject.item(1)).to be_truthy
-    end
     it 'should return a Dish' do
-      expect(subject.item(1).name).to be_truthy
+      expect(subject.item(1)).to be_a(Dish)
     end
   end
 end
