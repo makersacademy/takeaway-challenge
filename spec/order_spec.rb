@@ -30,6 +30,14 @@ describe Order do
       expect(subject.total_order).to eq(13)
     end
   end 
+
+  describe '#basket_summary' do 
+    it 'gives a summary of what is in the basket' do
+      subject.add_item("margarita", 3)
+      subject.add_item("fries", 1)
+      expect(subject.basket_summary).to eq("margarita x 3 = 15, fries x 1 = 3")
+    end
+  end
 end
 
 # As a customer
