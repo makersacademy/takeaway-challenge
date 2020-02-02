@@ -94,9 +94,9 @@ The following is a list of objectives I achieved, in addition to the user requir
 
   * Follow the TDD process, and have all tests passing
   * High test coverage (>99%)
-  * Elegant code: every class has a clear responsibility, methods are short etc. Running Rubocop detects no offenses.
+  * Elegant code: every class has a clear responsibility, methods are short etc. Running Rubocop detects no offenses
   * Make sure that the programme is thoroughly tested and mocks and/or stubs are used so as not to send texts when the tests are run
-  * However, loaded the programme and placing the order in IRB ensures the confirmation text is actually sent.
+  * However, loading the programme and placing the order in IRB ensures the confirmation text is actually sent
 
 ## Features to be added ##
 
