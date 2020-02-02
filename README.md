@@ -88,9 +88,9 @@ I then built each in turn, starting with those which did not depend on any other
 | **Attributes:** | basket, menu, sms |
 | **Methods:** | add, remove, total, summary, pay |
 
-### Further objectives ###
+## Further objectives ##
 
-The following is a list of objectives I set out to achieve, in addition to the user requirements:
+The following is a list of objectives I achieved, in addition to the user requirements:
 
   * Follow the TDD process, and have all tests passing
   * High test coverage (>99%)
@@ -104,4 +104,9 @@ In the future, I would like to implement the following features:
 - More extensive use of doubles to further isolate separate class testing
 - Use of environment variables to facilitate keeping private information secret
 - More extensive testing of the code that relies on the Twilio gem
-- The ability to place orders via text message.
+- The ability to place orders via text message
+- Additional printed messages depending on the methods executed
+- Description and ingredients of each dish, with the option for the 
+user to amend the latter for preference/dietary requirements
+- Addition of VAT, delivery fee and promotion discounts, where applicable
+
