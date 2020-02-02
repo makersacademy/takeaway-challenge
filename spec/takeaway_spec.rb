@@ -1,6 +1,8 @@
 require 'takeaway'
 
 describe Takeaway do
+  let(:order) { double :order, num: 1, quantity: 2}
+  let (:order_class_double) { double :order_class, new: order }
 
   it 'shows a menu' do
     expect { subject.show_menu }.to output.to_stdout
@@ -12,7 +14,9 @@ describe Takeaway do
     end
 
     it 'returns the item and cost' do
-      expect(subject.orders).to include(:dish => "Egg Paneer Kathi Roll", :cost => 4, :quantity => 1)
+      takeaway = Takeaway.new(order_class_double)
+      takeaway.order_item(1)
+      expect(takeaway.orders).to include(order)
     end
 
     it 'shows the total cost of the order' do
@@ -26,7 +30,9 @@ describe Takeaway do
     end
 
     it 'returns quantity of dishes' do
-      expect(subject.orders).to include(:dish => "Egg Paneer Kathi Roll", :cost => 4, :quantity => 2)
+      takeaway = Takeaway.new(order_class_double)
+      takeaway.order_item(1, 2)
+      expect(takeaway.orders).to include(order)
     end
     
     it 'includes quantity in total cost' do

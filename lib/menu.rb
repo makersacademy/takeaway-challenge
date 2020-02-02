@@ -1,4 +1,5 @@
 module Menu
+
   MENU = {
     1 => {dish: "Egg Paneer Kathi Roll", cost: 4},
     2 => {dish: "Margharita Pizza", cost: 7},
@@ -11,4 +12,6 @@ module Menu
     9 => {dish: "Mushroom burger", cost: 10},
     10 => {dish: "Pastel de Nata", cost: 2}
   }
+  
 end
+
