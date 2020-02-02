@@ -1,10 +1,11 @@
 require_relative "takeaway"
 
 class Order
-  attr_reader :order_list, :menu
+  attr_reader :order_list, :menu, :order_total
 
   def initialize
     @order_list = []
+    @order_total = 0
     @menu = Takeaway.new.menu_list
   end
 
@@ -14,7 +15,8 @@ class Order
       puts "What would you like to order? "
       selection = gets.chomp
         if selection.empty?
-          puts "Here is your order: #{order_list}" 
+          puts "Here is your order summary: #{order_list}" 
+          puts "Here is your order total: £#{order_total}" 
           break
         else 
           add_item(selection)
@@ -23,11 +25,30 @@ class Order
   end
 
   def add_item(item)
-    @menu.each do |k, _|
+    @menu.each do |k, v|
       if item == k
         @order_list << k
-        puts "Here is your order: #{@order_list}" 
+        @order_total += v
+        puts "Here is your order: #{@order_list}"
+        puts "Here is your total: £#{@order_total}" 
       end
+    end
+  end
+
+  def verify
+    dish_sum = 0
+    @menu.each do |k, v|
+      @order_list.each do |dish|
+        if k == dish
+          dish_sum += v
+        end
+      end
+    end
+    
+    if dish_sum == @order_total
+      return "Your order total matches the sum of dishes"
+    else
+      return "Your order total does not match the sum of dishes"
     end
   end
 end
