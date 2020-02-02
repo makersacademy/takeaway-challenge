@@ -54,10 +54,21 @@ $ irb -r "./lib/order.rb"
 2.6.5 :006 > order.summary
 2.6.5 :007 > order.pay(14)
 ```
-Upon paying the correct amount, you will receive a confirmation text stating when you can expect your delivery.
+Upon paying the correct amount (as per the last line), you will receive a confirmation text stating when you can expect your delivery.
+Thank you for ordering with Jasiveroo!
 
-How to use the program
+Structure
 -----
+As part of the planning process, I identified the classes that I would need, along with the attributes and methods of each.
+
+
+I then built each in turn, starting with those which did not depend on any other classes, making my way up to those which had multiple dependencies.
+
+
+| Object: | Menu |
+| ------- | ------- |
+| **Attributes:** | dishes |
+| **Methods:** | print, search |
 
 
 
