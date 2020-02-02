@@ -23,7 +23,7 @@ class Menu
   def list
     count = 1
     @menu.each do |item|
-      puts "#{count}) #{item.name} - £#{item.price}0"
+      p "#{count}) #{item.name} - £#{item.price}0"
     count += 1
     end
   end
