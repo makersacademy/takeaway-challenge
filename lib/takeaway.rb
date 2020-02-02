@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def show_menu
-    @menu
+    @menu.list
   end
 
   def order
