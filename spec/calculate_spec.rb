@@ -18,4 +18,5 @@ describe Calculator do
       expect(Calculator.current_basket(order, dishes)).to eq ([{item_name: "Pilau rice", quantity: 1, subtotal: 3.0}, {item_name: "Tikka Masala", quantity: 3, subtotal: 15.0}])
     end
   end
+  
 end

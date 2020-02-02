@@ -22,9 +22,14 @@ class Takeaway
     @order
   end
 
+  # would be better if shortened, any suggestions?
   def checkout(dishes = @menu.dishes)
-    array = Calculator.current_basket(@order, dishes)
-    puts "#{array[0].values[0]} x#{array[0].values[1]} = £#{array[0].values[2]}"
+    input = Calculator.current_basket(@order, dishes)
+    output = []
+    input.each do |item|
+      output.push("#{item.values[0]} x#{item.values[1]} = £#{item.values[2]}")
+    end
+    output.join(", ")
   end
 
   private
