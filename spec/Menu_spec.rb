@@ -8,10 +8,6 @@ describe Menu do
     subject.dish_add(Dish)
   end
 
-  it 'Menu.menu should return an array' do
-    expect(subject.menu).to be_instance_of(Array)
-  end
-
   it 'Menu.menu should return dish list with prices' do
     expect { subject.menu }.to output(/Dish.*£#{Dish.price}/).to_stdout
   end
