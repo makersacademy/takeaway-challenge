@@ -10,7 +10,7 @@ describe Menu do
     end
 
     it "should return menu" do
-      expect(subject.list)
+      expect(subject.list).to eq({"Pilau rice": 1.50, "Poppadom": 0.50, "Mango Chutney": 0.30})
     end
     
   end

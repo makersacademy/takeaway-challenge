@@ -1,6 +1,11 @@
 class Menu
-  def list
 
+  def initialize(menu: Menu.new)
+    @menu = menu
+  end
+
+  def list
+    @menu
   end
 
 end
