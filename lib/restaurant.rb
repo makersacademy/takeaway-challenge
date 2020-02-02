@@ -1,4 +1,4 @@
-require 'menu'
+Dir["./lib/*.rb"].each {|file| require file }
 class Restaurant
 
   attr_reader :current_order
@@ -8,14 +8,19 @@ class Restaurant
   end
 
   def add_to_order(dish_name, qty)
-    @current_order << dish_name
-    dish_name.update_qty(qty)
+    if @current_order.include?(dish_name)
+      dish_name.update_qty(qty)
+    else
+      @current_order << dish_name
+      dish_name.update_qty(qty)
+    end
   end
   
   def review_order
     @current_order.each do |order|
       puts "#{order.name} - #{order.qty} - Price: £#{order.price}"
     end
+    puts "total £#{order_total}"
   end
   
   def pay_order(amount)
@@ -28,7 +33,7 @@ class Restaurant
   def order_total
     total = 0
     @current_order.each do |dish|
-      total += dish.price
+      total += (dish.price * dish.qty)
     end
     return total
   end
