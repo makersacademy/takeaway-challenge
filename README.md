@@ -50,7 +50,11 @@ $ rspec
 
 ## How I built it ##
 
-I used a TDD approach to build this programme, using the provided user stories to create a domain model diagram, and feature tests and then eventually unit tests which drove the code I wrote.
+I used a TDD approach to build this programme, using the provided user stories to create a domain model diagram, and feature tests. From here I was able to create unit tests which drove the code I wrote.
+
+### Still to complete ###
+
+- Twilio API integration to send a confirmation text upon complete
 
 ### User Stories ###
 
@@ -80,14 +84,15 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Object: |App| | | |
 |:------:|:------------:|:-:|:-:|:-:|
-|**Attributes:**|menu|order| | |
-|**Methods:**|show_menu|create_order|
+|**Attributes:**|menu|orders|total
+-cost | |
+|**Methods:**|show_menu|order_item|check_order|complete_order|
 
 2.
 
 | Object: |Order| | | |
 |:------:|:------------:|:-:|:-:|:-:|
-|**Attributes:**|Items|Total| | |
+|**Attributes:**|Dish|Quantity|Cost | |
 |**Methods:**|select_dishes|check_order|place_order|
 
 3. 
