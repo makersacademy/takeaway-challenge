@@ -21,6 +21,11 @@ class Menu
   end
   
   def list
+    count = 1
+    @menu.each do |item|
+      puts "#{count}) #{item.name} - £#{item.price}0"
+    count += 1
+    end
   end
   
   def item(number)
