@@ -8,11 +8,12 @@ class Takeaway
   end
 
   def add(item)
+    raise "Item not in menu, please check spelling" unless @menu.dishes.key?(item.to_sym)
     @order[item] = 1
   end
 
   def show_menu
-    @menu.list
+    @menu.dishes
   end
 
   def order
