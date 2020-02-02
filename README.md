@@ -13,21 +13,6 @@ Build a small takeaway program in Ruby!
 
 This challenge starts with going over the foundational skills from this week's Oystercard challenge and then introduces some additinal complexities with the use of the Twilio API.
 
-## <a name="Installation">Installation Instructions</a>
-
-1. Clone the repo to your local machine
-2. Run the command `gem install bundle` (if you don't have bundle already)
-3. When the installation completes, run `bundle`
-4. In order to maintain privacy of the Twilio key and your phone number, set up the following env. variables in your .bashrc or .zshrc file
-
-export TWILIO_NUMBER=the number you bought from Twilio which will send the texts
-export MY_NUMBER=your verified phone number which will recieve the texts
-export TWILIO_AUTH_TOKEN=your auth token from your Twilio account
-export TWILIO_ACCOUNT_SID=your account sid from your Twilio account
-
-5. Run the programme in IRB
-6. Tests can be run using Rspec
-
 ## <a name="Story">User Stories</a>
 
 ```
@@ -54,12 +39,29 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+## <a name="Installation">Installation Instructions</a>
+
+1. Clone the repo to your local machine
+2. Run the command `gem install bundle` (if you don't have bundle already)
+3. When the installation completes, run `bundle`
+4. In order to maintain privacy of the Twilio key and your phone number, set up the following env. variables in your .bashrc or .zshrc file
+
+```
+export TWILIO_NUMBER=the number you bought from Twilio which will send the texts
+export MY_NUMBER=your verified phone number which will recieve the texts
+export TWILIO_AUTH_TOKEN=your auth token from your Twilio account
+export TWILIO_ACCOUNT_SID=your account sid from your Twilio account
+```
+
+5. Run the programme in IRB
+6. Tests can be run using Rspec
+
 ## <a name="Example run">Example run</a>
 
 Here is a functional example of how the program would look if you ran through it in IRB. Note that the confirmation text is sent on line 8 when the correct payment is received.
 
 ```
-[...eek_2/takeaway-challenge]$ irb -r ./lib/takeaway.rb                                                                                               (master✱) 
+$ irb -r ./lib/takeaway.rb                                                                
 2.6.5 :001 > cart = Cart.new
  => #<Cart:0x00007fc72f061d98 @cart={}, @menu={"burger"=>5, "fries"=>3, "shake"=>2}> 
 2.6.5 :002 > takeaway = TakeAway.new(cart)
