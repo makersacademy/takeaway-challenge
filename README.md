@@ -11,7 +11,7 @@ Build a small takeaway program in Ruby!
 
 ## <a name="Task">The Task</a>
 
-This challenge starts with going over the foundational skills from this week's Oystercard challenge and then introduces some additinal complexities with the use of the Twilio API.
+This challenge starts with going over the foundational skills from this week's Oystercard challenge and then introduces some additional complexities with the use of the Twilio API.
 
 ## <a name="Story">User Stories</a>
 
