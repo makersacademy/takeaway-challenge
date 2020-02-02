@@ -1,5 +1,5 @@
 class Dishes
 
-  attr_reader :price
+  attr_reader :price 
 
 end
