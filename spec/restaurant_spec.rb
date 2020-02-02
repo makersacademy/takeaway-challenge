@@ -25,4 +25,14 @@ describe Restaurant do
       expect(subject.review_order).to eq "Chicken Burger, Fries"
     end
   end
+  describe "#pay_order" do
+    before(:example) do
+      allow(dish).to receive(:price).and_return(5)
+      allow(dish).to receive(:name).and_return("Chicken Burger", "Fries")
+      subject.add_to_order(dish.name)
+    end
+    it "should confirm order payment if paid amount matches required" do
+      expect(subject.pay_order(5)).to eq "Your order has been confirmed! A text message will be sent shortly."
+    end
+  end
 end

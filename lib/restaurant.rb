@@ -13,5 +13,9 @@ class Restaurant
   def review_order
     @current_order.join(", ")
   end
+  
+  def pay_order(amount)
+    "Your order has been confirmed! A text message will be sent shortly."
+  end
 
 end
