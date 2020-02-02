@@ -3,7 +3,8 @@ require "takeaway.rb"
 describe Takeaway do
 
   let(:menu){ double :menu, dishes: {"Pilau rice": 1.50, "Poppadom": 0.50 } }
-  subject {described_class.new(menu: menu)}
+  let(:sms_texter){ double :sms_texter, send_sms: "Thank you! Your order was placed and will be delivered before XX:XX XM"}
+  subject {described_class.new(menu: menu, sms_texter: sms_texter)}
 
 
   describe " #show_menu" do
@@ -65,6 +66,7 @@ describe Takeaway do
   end
 
   describe " #checkout" do
+
     it "should take one argument" do
       expect(subject).to respond_to(:checkout).with(1).argument
     end

@@ -1,11 +1,13 @@
 require_relative "menu.rb"
 require_relative "calculator.rb"
+require_relative "sms_texter.rb"
 
 class Takeaway
   
-  def initialize(menu: Menu.new)
+  def initialize(menu: Menu.new, sms_texter: SmsTexter.new)
     @menu = menu
     @order = {}
+    @sms_texter = sms_texter
   end
 
   def add(item, quantity = 1)
@@ -42,6 +44,7 @@ class Takeaway
     Calculator.current_basket(@order, @menu.dishes)
     total = Calculator.total
     raise "The amount you have entered does not equal the order total, please consider checking amount to be paid using .total" if amount < total
+    @sms_texter.send_sms
     "Your payment of #{amount} has been made, thank you for your order"
   end
 
