@@ -2,9 +2,9 @@
 
 # Takeaway Challenge 🥡
 
-![takeaway](takeaway.jpg)
-
 | [Task](#Task) | [Installation Instructions](#Installation) | [Feature Tests](#Feature_Tests) | [User Stories](#Story) | [Objects & Methods](#Methods) | [Testing](#Testing) | [Further improvements](#Further_Improvements)
+
+![takeaway](takeaway.jpg)
 
 ## <a name="Task">Task</a>
 
