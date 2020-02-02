@@ -39,4 +39,5 @@ class Order
   def add_basket_confirmation(item, quantity)
     "You have added #{quantity} #{item}#{quantity > 1 ? "s" : nil} into your basket"
   end
+
 end 

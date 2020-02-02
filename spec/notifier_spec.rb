@@ -5,6 +5,12 @@ describe Notifier do
   it 'checks if class exists' do
     expect(subject).to be_a Notifier
   end
+
+  describe '#send' do 
+    it 'checks the method exists' do 
+      expect(subject).to respond_to(:send_text)
+    end 
+  end
 end
 
 # As a customer
