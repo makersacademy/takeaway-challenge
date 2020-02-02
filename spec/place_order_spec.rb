@@ -17,12 +17,38 @@ describe PlaceOrder do
     # edge cases to be dealt with - no input, impossible input, non integers, too many numbers, etc
   end
 
+  describe "#calculates expected total" do
+    it { is_expected.to respond_to(:take_user_total) } 
+      #TODO - test with stub total calc
+    it 'calculates simple total' do
+      subject.order = ["1", "1"]
+      subject.calculate_total
+      expect(subject.total).to eq 0.5
+    end
+    it 'calculates simple total' do
+      subject.order = ["2", "1"]
+      subject.calculate_total
+      expect(subject.total).to eq 0.25
+    end
+    it 'calculates simple total with quantity' do
+      subject.order = ["2", "2"]
+      subject.calculate_total
+      expect(subject.total).to eq 0.5
+    end
+    # it 'calculates total with two items' do
+    #   subject.order = ["2", "2"],["1, 1"]
+    #   subject.calculate_total
+    #   expect(subject.total).to eq 1.0
+    # end
+  end
+
   describe "#checks total" do
+    it { is_expected.to respond_to(:calculate_total) } 
     it { is_expected.to respond_to(:ask_for_total) } 
     it 'asks for total' do
       expect(subject.ask_for_total).to eq 'Please write your expected order total below e.g 12.36'
     end
-    it { is_expected.to respond_to(:take_total) } 
+    
     it 'takes user total' do
       # TODO - find a way to check actual method here
       allow($stdin).to receive(:gets).and_return(10)
