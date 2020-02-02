@@ -66,11 +66,6 @@ describe Order do
     end
   end
 
-  describe '#confirm' do
-    it '' do
-    end
-  end
-
   describe '#send_confirmation' do
     it '' do
     end
