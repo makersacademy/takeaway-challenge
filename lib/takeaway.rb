@@ -46,7 +46,7 @@ class Takeaway
 
   def iterate_and_update(item, quantity)
     @order.each do |key, value|
-      @order[key] = value + quantity
+      @order[item] = value + quantity if item == key
     end
   end
 
