@@ -1,3 +1,8 @@
 class Menu
 
-end 
+  def menu
+
+  end
+
+
+end
