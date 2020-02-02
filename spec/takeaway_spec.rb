@@ -25,7 +25,7 @@ describe Takeaway do
 
     it "adds ordered item to array" do
       item = "Pilau rice"
-      key_value_pair = {"Pilau rice" => 1}
+      key_value_pair = {"Pilau rice": 1}
       subject.add(item)
       expect(subject.order).to eq(key_value_pair)
     end
@@ -33,6 +33,14 @@ describe Takeaway do
     it "raises an error if iterm is not in menu array" do
       item = "Not in menu"
       expect { subject.add(item) }.to raise_error("Item not in menu, please check spelling")
+    end
+
+    it "adds quanitity to already to item in hash if already ordered" do
+      item = "Pilau rice"
+      subject.add(item)
+      subject.add(item)
+      key_value_pair = {"Pilau rice": 2}
+      expect(subject.order).to eq(key_value_pair)
     end
   end
 

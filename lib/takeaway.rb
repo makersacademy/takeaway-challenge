@@ -7,9 +7,16 @@ class Takeaway
     @order = {}
   end
 
-  def add(item)
-    raise "Item not in menu, please check spelling" unless @menu.dishes.key?(item.to_sym)
-    @order[item] = 1
+  def add(item, quantity = 1)
+    item = item.to_sym
+    raise "Item not in menu, please check spelling" unless @menu.dishes.key?(item)
+    if @order.key?(item)
+      @order.each do |key, value|
+        @order[key] = value + quantity if key == item
+      end
+    else 
+      @order[item] = quantity
+    end
   end
 
   def show_menu
