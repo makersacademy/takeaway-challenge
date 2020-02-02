@@ -42,7 +42,8 @@ How to use the program
 
 ### Running ###
 
-This programme uses Ruby. Below is 
+This programme uses Ruby. Below is an example of how to run the programme to make an order.
+
 ```
 $ irb -r "./lib/order.rb"
 2.6.5 :001 > menu = Menu.new({ pizza: 4, burger: 3, hot_dog: 2 })
@@ -53,6 +54,11 @@ $ irb -r "./lib/order.rb"
 2.6.5 :006 > order.summary
 2.6.5 :007 > order.pay(14)
 ```
+Upon paying the correct amount, you will receive a confirmation text stating when you can expect your delivery.
+
+How to use the program
+-----
+
 
 
 
