@@ -7,11 +7,11 @@ class Basket
   end
 
   def add_to_basket(*dish)
-    dish.each { |dish| @basket << dish }
+    dish.each { |item| @basket << item }
   end
 
   def total
-    @basket.inject(0) { |total, dish| total += dish.price }
+    @basket.inject(0) { |total, dish| total + dish.price }
   end
 
 end
