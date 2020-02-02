@@ -18,8 +18,12 @@ class Takeaway
   end
 
   def order_item(num, quantity = 1)
-    @total_cost += MENU[num][:cost] * quantity
     @orders << @order_class.new(num, quantity)
+    add_cost
   end
   
+  private
+  def add_cost
+    @total_cost += @orders[-1].cost
+  end
 end
