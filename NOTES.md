@@ -16,5 +16,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-Users/student/Desktop/week_2/takeaway-challenge/20200202_180602.jpg
