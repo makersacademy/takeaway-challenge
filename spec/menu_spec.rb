@@ -1,5 +1,7 @@
 require 'menu'
+
 describe Menu do
+  
   # dependency injection --below
   subject(:menu) { described_class.new(dishes) }
   let(:dishes) do
@@ -21,5 +23,8 @@ describe Menu do
   end
   it 'tells if a dish is not on the menu' do
     expect(menu.has_dish?(:fish)).to be false
+  end
+  it "caculate a price" do
+    expect(menu.price(:sausage)).to eq(dishes[:sausage])
   end
 end

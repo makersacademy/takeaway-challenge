@@ -3,7 +3,7 @@ require "order"
 class TakeAway
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order || order.new
+    @order = order || Order.new
   end
 
   def print_menu
@@ -14,6 +14,7 @@ class TakeAway
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
+    order.total
   end
   
   private
