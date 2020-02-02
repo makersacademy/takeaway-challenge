@@ -8,6 +8,8 @@ class PlaceOrder
     $stdin = gets.chomp
   end
 
-  
+  def ask_for_total
+    p "Please write your expected order total below e.g 12.36"
+  end
 
 end

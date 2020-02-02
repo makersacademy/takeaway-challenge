@@ -16,6 +16,10 @@ describe PlaceOrder do
   end
 
   describe "#checks total" do
+    it { is_expected.to respond_to(:ask_for_total) } 
+    it 'asks for an order' do
+      expect(subject.ask_for_total).to eq ("Please write your expected order total below e.g 12.36")
+    end
   end
   
   describe "gets number" do
