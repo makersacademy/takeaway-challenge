@@ -19,13 +19,13 @@ class Order
     @basket.each do |item, quantity|
       total.push(@menu.items[item] * quantity) 
     end
-    total.sum
+    "£#{total.sum}"
   end
 
   def basket_summary
     summary = []
     @basket.each do |item, quantity|
-      summary.push("#{item} x #{quantity} = #{@menu.items[item] * quantity}")
+      summary.push("#{item} x £#{quantity} = £#{@menu.items[item] * quantity}")
     end
     summary.join(", ")
   end

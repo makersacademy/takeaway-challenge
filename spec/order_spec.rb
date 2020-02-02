@@ -27,7 +27,7 @@ describe Order do
     it 'gives total sum of order' do
       subject.add_item("margarita", 2)
       subject.add_item("fries", 1)
-      expect(subject.total_order).to eq(13)
+      expect(subject.total_order).to eq("£13")
     end
   end 
 
@@ -35,11 +35,7 @@ describe Order do
     it 'gives a summary of what is in the basket' do
       subject.add_item("margarita", 3)
       subject.add_item("fries", 1)
-      expect(subject.basket_summary).to eq("margarita x 3 = 15, fries x 1 = 3")
+      expect(subject.basket_summary).to eq("margarita x £3 = £15, fries x £1 = £3")
     end
   end
 end
-
-# As a customer
-# So that I can verify that my order is correct
-# I would like to check that the total I have been given matches the sum of the various dishes in my order
