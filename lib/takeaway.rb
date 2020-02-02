@@ -1,3 +1,5 @@
+require_relative "menu.rb"
+
 class Takeaway
   
   def initialize(menu: Menu.new)
