@@ -1,10 +1,10 @@
-class TakeAway
+class Menu
 
-  MENU = { "margarita" => 5,
-           "fries" => 3,
-            }  
+  attr_reader :items 
 
-  def display_menu
-    MENU
+  def initialize
+    @items = { "margarita" => 5,
+              "fries" => 3,
+             }
   end
 end
