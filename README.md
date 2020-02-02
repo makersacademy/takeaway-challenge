@@ -6,7 +6,7 @@ The task
 
 This task is based on the Makers Academy Weekend 2 challenge [(click here for original README.md)](ORIGINAL_README.md). 
 
-The overall objective is to create a takeaway programme in Ruby, which lets a user select the dishes they want from a menu, and sends them an SMS message to confirm their order has been placed.
+The overall objective is to create a takeaway programme in Ruby, which lets a user select the dishes they want from a menu. It then sends them an SMS message to confirm their order has been placed, using the Twilio API.
 
 The user stories are as follows:
 
@@ -42,9 +42,22 @@ How to use the program
 
 ### Running ###
 
-1. Run the programme using Ruby
-2. 
-5. Tests have been conducted using RSpec
+This programme uses Ruby. Below is 
+```
+$ irb -r "./lib/order.rb"
+2.6.5 :001 > menu = Menu.new({ pizza: 4, burger: 3, hot_dog: 2 })
+2.6.5 :002 > order = Order.new(menu, account_sid, auth_token, from_number, to_number) # input the relevant details for arguments 2 to 5.
+2.6.5 :003 > order.add("pizza", 2)
+2.6.5 :004 > order.add("burger", 3)
+2.6.5 :005 > order.remove("burger", 1)
+2.6.5 :006 > order.summary
+2.6.5 :007 > order.pay(14)
+```
+
+
+
+
+
 
 
 

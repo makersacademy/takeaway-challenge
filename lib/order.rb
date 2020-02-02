@@ -1,3 +1,7 @@
+require_relative 'basket'
+require_relative 'menu'
+require_relative 'sms'
+
 class Order
   attr_reader :basket, :menu, :sms
   
