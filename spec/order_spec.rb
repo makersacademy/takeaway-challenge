@@ -41,18 +41,6 @@ describe Order do
     end
   end
 
-  describe 'add_item' do
-    it 'does not add non-menu items to the order list' do
-      order.add_item("Apple")
-      expect(order.order_list).to eq([])
-    end
-
-    it 'adds menu items to the order list' do
-      order.add_item("Dumplings")
-      expect(order.order_list).to eq(["Dumplings"])
-    end
-  end
-
   describe 'verify' do
     it 'tells wether the order total matches the sum of dishes' do
       order.instance_variable_set(:@order_list, ["Cake"])
@@ -65,6 +53,26 @@ describe Order do
       order.instance_variable_set(:@order_total, 99)
       expect(order.verify).to eq("Your order total does not match the sum of dishes")
       #raise error message instead here?
+    end
+  end
+
+  describe '#order_summary' do
+    it '' do
+    end
+  end
+
+  describe '#confirm' do
+    it '' do
+    end
+  end
+
+  describe '#confirm' do
+    it '' do
+    end
+  end
+
+  describe '#send_confirmation' do
+    it '' do
     end
   end
 end

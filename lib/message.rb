@@ -4,16 +4,15 @@ class Message
   def send(message)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
-    client = Twilio::REST::Client.new(account_sid, auth_token)
+    from = ENV['TWILIO_NUMBER']
+    to = ENV['MY_NUMBER']
 
-    from = ENV['TWILIO_NUMBER'] 
-    to = ENV['MY_NUMBER'] 
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    client.messages.create(
+    @client.messages.create(
     from: from,
     to: to,
-    body: "Hey friend!"
+    body: message
     )
-    return message
-  end
+    end
 end

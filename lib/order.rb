@@ -1,11 +1,12 @@
 require_relative "takeaway"
+require_relative "message"
 
 class Order
-  attr_reader :order_list, :menu, :order_total
+  attr_reader :basket, :menu, :total
 
   def initialize
-    @order_list = []
-    @order_total = 0
+    @basket = Hash.new(0)
+    @total = 0
     @menu = Takeaway.new.menu_list
   end
 
@@ -16,39 +17,60 @@ class Order
       selection = gets.chomp
         if selection.empty?
           order_summary
+          confirm
+          break
+        elsif selection == "quit"
           break
         else 
-          add_item(selection)
+          puts "How many would you like to order? "
+          quantity = gets.chomp.to_i
+          add_item(selection, quantity)
         end  
     end
   end
 
-  def add_item(item)
+  def add_item(item, quantity)
     @menu.each do |k, v|
       if item == k
-        @order_list << k
-        @order_total += v
+        @basket[item] += quantity
+        @total += (v * quantity)
         order_summary
       end
     end
   end
 
   def order_summary
-    puts "Here is your order: #{@order_list}"
-    puts "Here is your total: £#{@order_total}" 
+    @basket.each do |dish, quantity|
+      puts "#{quantity} x #{dish}" 
+    end
+    puts "Coming to a total of: £#{@total}"
+  end
+
+  def confirm
+    puts "Would you like to confirm order?(Y/N) "
+    confirmation = gets.chomp
+    if confirmation == "Y"
+      send_confirmation
+    end
+  end
+
+  def send_confirmation
+    time = Time.new.+(1800).strftime("%I:%M %p")
+    message = Message.new
+    message.send("Thank you! Your order was placed and will be delivered before #{time}")
   end
 
   def verify
     dish_sum = 0
     @menu.each do |k, v|
-      @order_list.each do |dish|
+      @basket.each do |dish, quantity|
         if k == dish
-          dish_sum += v
+          dish_sum += (v * quantity)
         end
       end
     end
     
-    if dish_sum == @order_total
+    if dish_sum == @total
       return "Your order total matches the sum of dishes"
     else
       return "Your order total does not match the sum of dishes"
