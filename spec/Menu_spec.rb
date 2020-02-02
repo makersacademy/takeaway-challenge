@@ -1,4 +1,4 @@
-require 'Menu'
+require 'menu'
 
 describe Menu do
 
@@ -6,4 +6,8 @@ describe Menu do
     expect(subject).to respond_to(:menu)
   end
 
+  it 'Menu.menu should return an array' do
+    expect(subject.menu).to be_instance_of(Array)
+  end
+  
 end
