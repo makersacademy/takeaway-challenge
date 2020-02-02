@@ -15,8 +15,7 @@ class Order
       puts "What would you like to order? "
       selection = gets.chomp
         if selection.empty?
-          puts "Here is your order summary: #{order_list}" 
-          puts "Here is your order total: £#{order_total}" 
+          order_summary
           break
         else 
           add_item(selection)
@@ -29,10 +28,14 @@ class Order
       if item == k
         @order_list << k
         @order_total += v
-        puts "Here is your order: #{@order_list}"
-        puts "Here is your total: £#{@order_total}" 
+        order_summary
       end
     end
+  end
+
+  def order_summary
+    puts "Here is your order: #{@order_list}"
+    puts "Here is your total: £#{@order_total}" 
   end
 
   def verify
