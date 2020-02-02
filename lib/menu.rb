@@ -4,7 +4,7 @@ class Menu
 
   def initialize
     @items = { "margarita" => 5,
-              "fries" => 3,
+              "garlic bread" => 3,
              }
   end
 end
