@@ -34,7 +34,8 @@ class Takeaway
 
   def total
     Calculator.current_basket(@order, @menu.dishes)
-    Calculator.total
+    total = Calculator.total
+    "Total: £#{total}"
   end
 
   private
