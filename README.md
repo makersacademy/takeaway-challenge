@@ -29,15 +29,29 @@ I created this programme for a weekend challenge at [Makers Academy](https://git
 
 To install:
 
-```shell
-example code
-```
+1. Fork this repo, and clone to your local machine. Navigate into the folder. 
+2. Run the command `gem install bundle` (if you don't have bundle already) 
+3. When the installation completes, run `bundle`
 
 ## Useage ##
 
-- where to use
-- example code 
-- example output
+This programme can be run from your terminal in irb or pry. 
+
+```shell
+$ cd /takeaway-challenge
+$ irb
+> require './lib/takeaway.rb'
+```
+
+Example useage
+
+```shell
+takeaway = Takeaway.new
+takeaway.show_menu
+takeaway.order_item(item_no, quantity) # quantity optional
+takeway.check_order
+takeaway.complete_order
+```
 
 ## Running tests ##
 
@@ -54,7 +68,10 @@ I used a TDD approach to build this programme, using the provided user stories t
 
 ### Still to complete ###
 
-- Twilio API integration to send a confirmation text upon complete
+- Twilio API integration to send a confirmation text upon completing order
+- create an additional class for 'orders'
+- test that total cost matches sum of dishes in order
+- reset order status when order complete
 
 ### User Stories ###
 
@@ -111,18 +128,18 @@ Once I had designed a first draft of my domain model, I planned the tests I woul
 * confirmation returns a confirmation message
 * app allows user to order a dish with a quantity of more than one
 * app allows user to order more than one dish
-* confirmation message shows expected time (time now + 1hr)
+* confirmation message shows expected time (time now + 1hr) - to do
 
 **Possible edge cases:**
 
 * show order should fail when no order placed
-* user cannot select an item not on the menu
+* user cannot select an item not on the menu - to do
 * confirmation can't be placed when order empty
 
 
 
 ## Credits ##
 
-List any credits or inspiration here
+Inspired by some of my favourite dishes
 
 
