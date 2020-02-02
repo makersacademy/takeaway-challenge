@@ -18,15 +18,17 @@ describe Restaurant do
     before(:example) do
       allow(dish).to receive(:name).and_return("Chicken Burger", "Fries")
       allow(dish).to receive(:update_qty)
+      allow(dish).to receive(:price).and_return(5, 3)
+      allow(dish).to receive(:qty).and_return(1)
       subject.add_to_order(dish, 1)
     end
 
     it "should show an order back to the user" do
-      expect(subject.review_order).to eq "Chicken Burger"
+      expect { subject.review_order }.to output("Chicken Burger - 1 - Price: £5\n").to_stdout
     end
     it "should show multiple orders back to the user" do
       subject.add_to_order(dish, 1)
-      expect(subject.review_order).to eq "Chicken Burger, Fries"
+      expect { subject.review_order }.to output("Chicken Burger - 1 - Price: £5\nFries - 1 - Price: £3\n").to_stdout
     end
   end
   describe "#pay_order" do

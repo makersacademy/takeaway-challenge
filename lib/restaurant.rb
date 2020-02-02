@@ -13,7 +13,9 @@ class Restaurant
   end
   
   def review_order
-    @current_order.map(&:name).join(", ")
+    @current_order.each do |order|
+      puts "#{order.name} - #{order.qty} - Price: £#{order.price}"
+    end
   end
   
   def pay_order(amount)
