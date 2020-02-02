@@ -1,6 +1,6 @@
 class Menu
 
-  def dishes
+  def getdishes
     []
   end
 end
