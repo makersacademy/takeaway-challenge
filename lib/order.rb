@@ -1,9 +1,10 @@
 class Order
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :sms
   
-  def initialize(menu)
+  def initialize(menu, account_sid, auth_token, from_num, to_num)
     @basket = Basket.new(menu)
     @menu = menu
+    @sms = SMS.new(account_sid, auth_token, from_num, to_num)
   end
 
   def add(dish, quantity = 1)
@@ -25,6 +26,7 @@ class Order
   def pay(amount)
     raise "Payment amount incorrect" if amount != total
 
-    "Payment of £#{amount} successful."
+    puts "Payment of £#{amount} successful. You will receive a cofirmation SMS shortly."
+    @sms.send
   end
 end

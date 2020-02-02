@@ -6,27 +6,7 @@ describe Basket do
   # allow(:menu).to receive(:new).with({ pizza: 4, burger: 3, hot_dog: 2 })
   let(:menu) { Menu.new({ pizza: 4, burger: 3, hot_dog: 2 }) }
 
-  # before(:all) do
-  #   menu_double = double(:menu_double)
-  #   allow(menu_double).to receive(:new).with({ pizza: 4, burger: 3, hot_dog: 2 })
-  # end
-
   let(:subject) { Basket.new(menu) }
-#   context "create" do
-#     describe "#new" do
-#       it 'records the dishes ordered' do
-#         expect(subject.dishes).to eq "pizza"
-#       end
-
-#       it 'records the quantites ordered' do
-#         expect(subject.dishes).to eq "pizza"
-#       end
-
-#       it 'records the dishes ordered' do
-#         expect(subject.dishes).to eq "pizza"
-#       end
-#     end
-#   end  
 
   describe "#add" do
     before(:each) do
@@ -34,7 +14,7 @@ describe Basket do
     end
 
     it 'raises an error if dish not on menu, and does not add to basket' do
-      expect { subject.search("falafel") }.to raise_error { "Sorry, falafel is not on the menu." }
+      expect { subject.add("falafel") }.to raise_error("Sorry, falafel is not on the menu.")
       expect(subject.dishes).not_to include("falafel")
     end
 
@@ -66,19 +46,22 @@ describe Basket do
     end
   end
 
-  describe "#total" do
-    it 'shows the total cost' do
+  context "aggregating" do
+    before(:each) do
       subject.add(:burger, 2)
       subject.add(:pizza, 3)
-      expect(subject.total).to eq 18
     end
-  end
 
-  describe "#summary" do
-    it 'summarizes the basket contents' do
-      subject.add(:burger, 2)
-      subject.add(:pizza, 3)
-      expect(subject.summary).to eq "Burger x 2: £6\nPizza x 3: £12\nTotal: £18\n"
+    describe "#total" do
+      it 'shows the total cost' do
+        expect(subject.total).to eq 18
+      end
+    end
+
+    describe "#summary" do
+      it 'summarizes the basket contents' do
+        expect(subject.summary).to eq "Burger x 2: £6\nPizza x 3: £12\nTotal: £18\n"
+      end
     end
   end
 end

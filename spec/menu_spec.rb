@@ -17,7 +17,7 @@ describe Menu do
 
   describe "#search" do
     it 'tells if a dish is not on the menu' do
-      expect { subject.search("falafel") }.to raise_error { "Sorry, falafel is not on the menu." }
+      expect { subject.search("falafel") }.to raise_error("Sorry, falafel is not on the menu.")
     end
 
     it 'returns dish name and price if searched dish is on menu' do

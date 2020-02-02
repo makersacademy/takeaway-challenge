@@ -1,11 +1,10 @@
 class Basket
 
-  attr_reader :dishes # , :quantities, :estimated_total
+  attr_reader :dishes
   
   def initialize(menu)
     @dishes = []
     @menu = menu
-    # @quantities = []
   end
 
   def add(dish, quantity = 1)
@@ -29,7 +28,7 @@ class Basket
     summary = ""
     @dishes.uniq.each do |dish|
       summary += "#{dish.capitalize} x #{@dishes.count(dish)}: "\
-        "£#{@menu.dishes[dish] * @dishes.count(dish)}\n"
+        "£#{@menu.dishes[dish.to_sym] * @dishes.count(dish)}\n"
     end
     summary += "Total: £#{total}\n"
   end
