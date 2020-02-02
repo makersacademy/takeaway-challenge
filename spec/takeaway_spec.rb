@@ -69,7 +69,7 @@ describe Takeaway do
     
     it 'shows a confirmation message' do
       takeaway.order_item(1, 2)
-      confirmation_message = "Thank you! Your order was placed and will be delivered before #{Time.now + 60}\n"
+      confirmation_message = "Thank you! Your order was placed and will be delivered before #{Time.now + 60 * 60}\n"
       expect { takeaway.complete_order }.to output(confirmation_message).to_stdout
     end
   end

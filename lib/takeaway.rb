@@ -42,7 +42,7 @@ class Takeaway
 
   def complete_order
     fail "No orders placed" if @orders.count < 1
-    puts confirmation_message = "Thank you! Your order was placed and will be delivered before #{Time.now + 60}"
+    puts confirmation_message = "Thank you! Your order was placed and will be delivered before #{Time.now + 60 * 60}"
   end
 
   
