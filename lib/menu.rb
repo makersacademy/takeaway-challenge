@@ -6,6 +6,7 @@ class Menu
 # overriding the ruby print method..
   def print
     dishes.map do |title, price|
+      
       # for giving us 2 floats ex 4.50 we are using the methof below
       "%s £%.2f" % [title.to_s.capitalize, price]
     end.join(", ")
@@ -15,8 +16,8 @@ class Menu
     !dishes[dish].nil?
   end
 
-def price(dish)
-  dishes[dish]
-end
+  def price(dish)
+    dishes[dish]
+  end
 
 end

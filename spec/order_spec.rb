@@ -2,13 +2,12 @@ require 'order'
 require 'menu'
  
 describe Order do
-subject(:order) { described_class.new(menu) }
+  subject(:order) { described_class.new(menu) }
 # verifying doubles in rspec-- then change double to instance double below .using instand and the n strings that has to mach the class
-#let(:menu) { double(:menu)} will change to below
-let(:menu) { instance_double("Menu")}
+# let(:menu) { double(:menu)} will change to below
+let(:menu) { instance_double("Menu") }
 
-#let(:menu) { double(:menu)}
-
+# let(:menu) { double(:menu)}
 
 let(:dishes) do
   {
@@ -27,14 +26,14 @@ end
 
   it "select several dishes from the menu" do
    create_order
-    expect(order.dishes).to eq(dishes)
+   expect(order.dishes).to eq(dishes)
   end
   it "doesn't allow items to be added if not on the menu" do
     allow(menu).to receive(:has_dish?).with(:fish).and_return(false)
     expect { order.add(:fish, 1) }.to raise_error NoItemError, "Fish is not in the menu"
   end
   it 'calculates the total for the order ' do
-   create_order
+    create_order
     total = 8.50
     expect(order.total).to eq(total)
   end
