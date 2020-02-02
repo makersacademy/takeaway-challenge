@@ -82,3 +82,6 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+Not my code, followed the walkthough from youtube,to understand what had to be done
+As my code went to pot.
