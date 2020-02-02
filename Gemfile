@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-  gem 'twilio-ruby', require: false
+gem 'twilio-ruby', require: false
 
 group :test do
   gem 'rspec'
