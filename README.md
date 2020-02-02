@@ -64,7 +64,7 @@ $ rspec
 
 ## How I built it ##
 
-I used a TDD approach to build this programme, using the provided user stories to create a domain model diagram, and feature tests. From here I was able to create unit tests which drove the code I wrote.
+I used a TDD approach to build this programme, using the provided user stories below to create a domain model diagram and feature tests. From here I was able to create unit tests which drove the code I wrote.
 
 ### Still to complete ###
 
@@ -74,6 +74,8 @@ I used a TDD approach to build this programme, using the provided user stories t
 - reset order status when order complete
 
 ### User Stories ###
+
+You can see the full challenge instructions [here](https://github.com/lookupdaily/takeaway-challenge/blob/master/Challenge-instructions.md).
 
 ```
 As a customer
@@ -99,22 +101,21 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 1.
 
-| Object: |App| | | |
+| Object: |**App**| | | |
 |:------:|:------------:|:-:|:-:|:-:|
-|**Attributes:**|menu|orders|total
--cost | |
+|**Attributes:**|menu|orders|total | |
 |**Methods:**|show_menu|order_item|check_order|complete_order|
 
 2.
 
-| Object: |Order| | | |
-|:------:|:------------:|:-:|:-:|:-:|
-|**Attributes:**|Dish|Quantity|Cost | |
+| Object: |Order| | | 
+|:------:|:------------:|:-:|:-:|
+|**Attributes:**|Dish|Quantity|Cost | 
 |**Methods:**|select_dishes|check_order|place_order|
 
 3. 
 
-Object: Confirmation
+Object: Confirmation message
 
 #### Designing tests ####
 
@@ -128,12 +129,12 @@ Once I had designed a first draft of my domain model, I planned the tests I woul
 * confirmation returns a confirmation message
 * app allows user to order a dish with a quantity of more than one
 * app allows user to order more than one dish
-* confirmation message shows expected time (time now + 1hr) - to do
+* confirmation message shows expected time (time now + 1hr) - *to do*
 
 **Possible edge cases:**
 
 * show order should fail when no order placed
-* user cannot select an item not on the menu - to do
+* user cannot select an item not on the menu - *to do*
 * confirmation can't be placed when order empty
 
 
