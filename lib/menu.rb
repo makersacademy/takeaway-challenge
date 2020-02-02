@@ -4,18 +4,14 @@ class Menu
 
   def initialize
     @menu_list = {
-      :pizza => 10,
-      :curry => 9,
-      :falafel => 3.50,
-      :padthai => 7 }
+      "pizza" => 10,
+      "curry" => 9,
+      "falafel" => 3.50,
+      "padthai" => 7 }
   end 
 
   def view
     @menu_list
-    
-    # .each do |k, v|
-    #   "the delicious #{k} costs £#{v}"
-    # end 
   end 
 
   def price(dish)

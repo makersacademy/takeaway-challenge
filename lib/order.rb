@@ -1,11 +1,13 @@
 require './lib/menu.rb'
 class Order 
 
-    attr_reader :order_form, :menu
+    attr_reader :order_form, :menu, :balance
 
   def initialize 
-    @order_form = Hash.new(0)
-    @menu = Menu.new
+    @order_form = Hash.new
+    @menu = Menu.new.menu_list
+    @items = []
+    @total = 0
   end 
 
   def view_menu
@@ -13,7 +15,22 @@ class Order
   end 
 
   def add_item(dish, quantity)
-    order_form[dish.to_sym] = quantity
+    order_form[dish] = quantity
+    quantity.times do
+      @items << dish
+    end
     "#{quantity} x #{dish} added to your order"
+  end
+
+  def get_total 
+    @menu.each do |k, v|
+      @items.each do |i|
+        if i == k 
+          @total += v
+        end 
+      end 
+    end 
+    @total
   end 
+
 end 
