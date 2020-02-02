@@ -1,5 +1,9 @@
+class TakeAway
+  
+  MENU = { :margarita => 5,
+           :fries => 3 }  
 
-class Menu
   def display_menu
+    MENU
   end
 end
