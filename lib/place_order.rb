@@ -2,24 +2,29 @@ require './lib/menu.rb'
 
 class PlaceOrder
 
-  attr_accessor :order, :users_total, :total, :phone_number
+  attr_accessor :order, :users_total, :total, :phone_number, :order_start
 
   def initialize
     @order = []
     @users_total
     @total
     @phone_number
+    @order_start =[]
   end
 
   def ask_for_order
-    p "Please place your order in the form of order number, quantity. E.g. '23, 7'"
+    p "Please place your order in the form of order number, quantity, and start on a new line for each item E.g. 1, 7[return key]2, 4,[return key][return key]"
+  end
+
+  def multi_gets all_text=[]
+    while (text = gets) != "\n"
+      all_text << text.chomp
+    end
+    @order_start = all_text
   end
 
   def take_order
-    order_array = gets.chomp
-    p order_array
-    @order = order_array.split(%r{,\s*})
-    p @order
+      @order = @order_start
   end
 
   def ask_for_total
@@ -32,10 +37,19 @@ class PlaceOrder
 
   def calculate_total
     # take first item, assume quantity 1
+    p @order
     menu_item = Menu.new.nested_menu
-    first_index = @order[0].to_i - 1
-    second_index = @order[1].to_f
-    @total = (menu_item[first_index][1] * second_index)
+    if @order.length == 2
+      first_index = @order[0].to_i - 1
+      second_index = @order[1].to_f
+      @total = (menu_item[first_index][1] * second_index)
+    else
+      first_index = @order[0][0].to_i - 1
+      second_index = @order[0][1].to_f
+      third_index = @order[1][0].to_i - 1
+      fourth_index = @order[1][1].to_f
+      @total = (menu_item[first_index][1] * second_index) + (menu_item[third_index][1] * [fourth_index])
+    end
   end
 
   def total_agreed?

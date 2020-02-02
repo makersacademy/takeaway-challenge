@@ -5,7 +5,7 @@ describe PlaceOrder do
   describe "#takes_dishes" do
     it { is_expected.to respond_to(:ask_for_order) }
     it 'asks for an order' do
-      expect(subject.ask_for_order).to eq "Please place your order in the form of order number, quantity. E.g. '23, 7'"
+      expect(subject.ask_for_order).to eq "Please place your order in the form of order number, quantity, and start on a new line for each item E.g. 1, 7[return key]2, 4,[return key][return key]"
     end
     it { is_expected.to respond_to(:take_order) }
     it 'gets an order' do
@@ -35,11 +35,16 @@ describe PlaceOrder do
       subject.calculate_total
       expect(subject.total).to eq 0.5
     end
-    # it 'calculates total with two items' do
-    #   subject.order = ["2", "2"],["1, 1"]
-    #   subject.calculate_total
-    #   expect(subject.total).to eq 1.0
-    # end
+    it 'calculates total with two items' do
+      subject.order = ["1, 1","2, 2"]
+      subject.calculate_total
+      expect(subject.total).to eq 1.0
+    end
+    it 'calculates total with two items' do
+      subject.order = ["3, 1","2, 4"]
+      subject.calculate_total
+      expect(subject.total).to eq 7.44
+    end
   end
 
   describe "#checks total" do
