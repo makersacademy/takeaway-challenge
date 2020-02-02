@@ -23,7 +23,7 @@ A simple Takeaway app for a Restaurant; where a customer can view a menu,
 ###### User stories / app capabilities
 _A user can:_ <br>
 - [x] see a list of dishes with prices
-- [ ] select some number of several available dishes
+- [x] select some number of several available dishes
 - [ ] check that the total given matches the sum of the various dishes in the order
 - [ ] receive a text such as "Thank you! Your order was placed" after they ordered
 - [ ] the text will also state the order's ETA (1 hour from oder time)
