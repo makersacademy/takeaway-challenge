@@ -7,5 +7,8 @@ describe Menu do
     it 'should return a menu item' do
       expect(subject.item(1)).to be_truthy
     end
+    it 'should return a Dish' do
+      expect(subject.item(1).name).to be_truthy
+    end
   end
 end
