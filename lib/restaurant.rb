@@ -11,7 +11,7 @@ class Restaurant
   end
   
   def review_order
-    @current_order[0]
+    @current_order.join(", ")
   end
 
 end
