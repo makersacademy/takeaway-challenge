@@ -1,3 +1,6 @@
-class Place_order
+class PlaceOrder
+  
+  def ask_for_order
+  end
 
 end
