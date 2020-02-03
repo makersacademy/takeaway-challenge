@@ -21,10 +21,8 @@ class Menu
   end
   
   def list
-    count = 1
-    @menu.each do |item|
-      p "#{count}) #{item.name} - £#{item.price}0"
-    count += 1
+    @menu.each do |dish|
+      p "#{(@menu.index(dish) + 1)}) #{dish.name} - #{dish.price}0"
     end
   end
   
