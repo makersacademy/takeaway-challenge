@@ -37,5 +37,10 @@ describe Order do
       order.add_item("pizza", 4)
       expect(order.get_total).to eq(58)
     end 
+
+    it 'should raise an error if nothing has been ordered' do 
+      expect { order.get_total }.to raise_error 'Nothing ordered'
+    end 
+
   end 
 end 

@@ -29,6 +29,8 @@ class Order
   end
 
   def get_total 
+    raise 'Nothing ordered' if @items.empty?
+    
     @menu.each do |k, v|
       @items.each do |i|
         if i == k 
