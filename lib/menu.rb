@@ -1,4 +1,3 @@
-
 class Menu
   attr_reader :menu_list
 
@@ -18,6 +17,4 @@ class Menu
     menu_list[dish]
   end 
 end 
-
-
  

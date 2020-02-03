@@ -6,10 +6,10 @@ describe Menu do
     expect(subject.view).to include("pizza", "curry", "falafel", "padthai")
   end 
 
-  describe' #price' do 
+  describe'#price' do 
+
     it 'should return the price of the selected dish' do 
-      menu = Menu.new
-      expect(menu.price("pizza")).to eq 10 
+      expect(Menu.new.price("pizza")).to eq 10 
     end 
   end
 end 
