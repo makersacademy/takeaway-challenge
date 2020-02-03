@@ -3,16 +3,16 @@ Takeaway Challenge
 How To Use
 ```irb``` run IRB
 ```require './lib/test_menu.rb'```
-To use test menu ```KFCODE=Menu.new(KFCODE)```\n
-To view menu ```KFCODE.menu```\n
-To add dish/s to basket ```KFCODE.add(DishName)```\n
-To view basket and check total ```KFCODE.view```\n
-To order ```order```\n
+To use test menu ```KFCODE=Menu.new(KFCODE)```<br>
+To view menu ```KFCODE.menu```<br>
+To add dish/s to basket ```KFCODE.add(DishName)```<br>
+To view basket and check total ```KFCODE.view```<br>
+To order ```order```<br>
 
-To_Do\n
-2. Improve test coverage\n
-3. Improve implementation of order confirmation\n
-4. /most important/ implement error for invalid dish added to basket \n
+To_Do<br>
+2. Improve test coverage<br>
+3. Improve implementation of order confirmation<br>
+4. /most important/ implement error for invalid dish added to basket <br>
 ```
                             _________
               r==           |       |
