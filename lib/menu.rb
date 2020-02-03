@@ -1,5 +1,3 @@
-require_relative 'dish.rb'
-
 class Menu
   attr_reader :dishes
   def initialize
