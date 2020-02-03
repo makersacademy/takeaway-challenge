@@ -1,10 +1,10 @@
 class Menu
 
-  attr_reader :list_of_dishes
+  attr_reader :menu
 
   def initialize
 
-    @list_of_dishes = Array.new
+    @menu = Array.new
 
   end
 
@@ -17,10 +17,10 @@ class Menu
   end
 
   def add_to_list
-    @list_of_dishes << { dish: @dish_names, price: @dish_prices }
+    @menu << { dish: @dish_names, price: @dish_prices }
   end
 
   def display_menu
-    @list_of_dishes.each { |dish| pp dish }
+    @menu.each { |dish| pp dish }
   end
 end

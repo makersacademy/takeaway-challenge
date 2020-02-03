@@ -8,7 +8,7 @@ describe Menu do
 
   describe ".new dishes" do
     it "equals an empty hash" do
-      expect(menu.list_of_dishes).to eq([])
+      expect(menu.menu).to eq([])
     end
   end
 
@@ -27,14 +27,14 @@ describe Menu do
   end
 
   describe "#add_to_list" do
-    it "adds dish_name and dish_price into @list_of_dishes array" do
-      expect { menu.add_to_list }.to change { menu.list_of_dishes }.from([]).to([{ dish: @dish_names, price: @dish_prices }])
+    it "adds dish_name and dish_price into @menu array" do
+      expect { menu.add_to_list }.to change { menu.menu }.from([]).to([{ dish: @dish_names, price: @dish_prices }])
     end
   end
 
   describe "#display_menu" do
-    it "displays full '@list_of_dishes' " do
-      expect(menu.display_menu).to eq(menu.list_of_dishes.each { |dish| pp dish })
+    it "displays full '@menu' " do
+      expect(menu.display_menu).to eq(menu.menu.each { |dish| pp dish })
     end
   end
 end
