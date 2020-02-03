@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'twilio-ruby'
-gem 'envyable'
 
 group :development, :test do
   gem 'rspec'

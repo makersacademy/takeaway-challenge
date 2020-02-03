@@ -7,9 +7,9 @@ class Message
     from = ENV['TWILIO_NUMBER']
     to = ENV['MY_NUMBER']
 
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    @client.messages.create(
+    client.api.account.messages.create(
     from: from,
     to: to,
     body: message

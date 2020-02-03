@@ -1,11 +1,17 @@
 describe Order do
   subject(:order) { Order.new }
-  # add a double?
-  # let(:takeaway) { double :takeaway, menu_list: nil }
+ 
+  let(:takeaway) { double :takeaway, menu_list: {
+    "Banitsa" => 3,
+    "Cake" => 4,
+    "Milkshake" => 2,
+    "Cheeseburger" => 6,
+    "Dumplings" => 5
+  } }
   
   describe '#initialize' do
     it 'returns a menu list' do
-      expect(order.menu).to eq(Takeaway.new.menu_list)
+      expect(order.menu).to eq(takeaway.menu_list)
     end
 
     it 'returns an empty order list object' do
