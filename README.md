@@ -12,6 +12,7 @@ To order ```order```
 To_Do
 2. Improve test coverage
 3. Improve implementation of order confirmation
+4. /most important/ implement error for invalid dish added to basket 
 ```
                             _________
               r==           |       |
