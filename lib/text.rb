@@ -1,8 +1,8 @@
 require 'twilio-ruby'
 class Text
   def initialize
-    @account_sid = 'AC73cfaccaa30239daf42048747583f72e'
-    @auth_token = '14b5f371e89b1e63e1eba10d10097b70'
+    @account_sid = 'NEVERMIND that'
+    @auth_token = 'Never Mind this'
   end
 
   def text_setup(from, to, body)
