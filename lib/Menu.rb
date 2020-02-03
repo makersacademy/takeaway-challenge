@@ -1,3 +1,5 @@
+require './lib/order_confirmation.rb'
+
 class Menu
 
   attr_reader :basket
