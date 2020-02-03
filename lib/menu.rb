@@ -25,8 +25,8 @@ class Menu
     end
 
     def show
-        @foods.each do |food|
-            puts "#{food.name}" + ", £#{food.price}"
+        @foods.each do |item|
+            puts item.name + " + , £#{item.price}"
         end
     end
 
@@ -41,6 +41,3 @@ class Menu
         end
     end
 end
-menu = Menu.new
-menu.chinese_restaurant
-menu.show

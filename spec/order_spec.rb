@@ -14,6 +14,12 @@ describe Order do
             subject.add_to_basket(food_double)
             expect(subject.total).to eq("Your total is £15")
         end
+        it "should fail if the basket is empty" do
+            order = Order.new
+            expect{order.total}.to raise_error "Basket empty"
+        end
     end
+
+            
 
 end

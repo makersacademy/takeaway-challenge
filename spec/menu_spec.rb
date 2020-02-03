@@ -11,13 +11,6 @@ describe Menu do
         end
     end
 
-    describe "#chinese restaurant" do
-        it "adds default list of items" do
-            subject.chinese_restaurant
-            expect(subject.show).to eq("text")
-        end
-    end
-
     describe "#add_to_order" do
         it "should add food item to array in order object" do
             food_double = double :food, name: "test", price: 1
