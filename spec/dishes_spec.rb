@@ -11,5 +11,4 @@ describe Dishes do
   it "stores dish prices" do
     expect(dishes.dish_price).to eq(15)
   end
-
 end

@@ -1,18 +1,22 @@
 class Menu
 
-  attr_reader :dishes
+  attr_reader :list_of_dishes
 
   def initialize
 
-    @dishes = []
+    @list_of_dishes = Array.new
 
   end
 
-  def add_dish(new_dish)
-    new_dish
+  def add_dish(dish)
+    @dish_name = dish
   end
 
   def add_price(price)
-    price
+    @dish_price = price
+  end
+
+  def combine_list
+    @list_of_dishes << { dish: @dish_name, price: @dish_price }
   end
 end
