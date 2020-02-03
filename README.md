@@ -1,5 +1,9 @@
 Takeaway Challenge
 ==================
+To_Do
+1. Write README.md
+2. Improve test coverage
+3. Improve implementation of order confirmation
 ```
                             _________
               r==           |       |
