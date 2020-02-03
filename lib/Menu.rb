@@ -1,6 +1,7 @@
 require './lib/order_confirmation.rb'
 
 class Menu
+  include SMS
 
   attr_reader :basket
 

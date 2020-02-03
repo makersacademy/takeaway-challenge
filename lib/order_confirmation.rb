@@ -1,25 +1,29 @@
 require('bundler')
 Bundler.require()
 
-def success
-  'Thank you! Your order was placed and will be delivered before 18:52'
-end
+module SMS
 
-def order
-  twilio_send(success)
-end
+  def success
+    'Thank you! Your order was placed and will be delivered before 18:52'
+  end
 
-private
+  def order
+    twilio_send(success)
+  end
 
-ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
-AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
+  private
 
-@client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
+  ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
+  AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
 
-def twilio_send(message)
-  @client.messages.create(
-    to: ENV["M_P_N"],
-    from: ENV["T_P_N"],
-    body: message
-  )
+  @@client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
+
+  def twilio_send(message)
+    @@client.messages.create(
+      to: ENV["M_P_N"],
+      from: ENV["T_P_N"],
+      body: message
+    )
+  end
+
 end
