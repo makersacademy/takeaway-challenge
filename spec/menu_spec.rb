@@ -34,7 +34,7 @@ describe Menu do
 
   describe "#display_menu" do
     it "displays full '@list_of_dishes' " do
-      expect(menu.display_menu).to eq(menu.list_of_dishes.each { |dish| p dish })
+      expect(menu.display_menu).to eq(menu.list_of_dishes.each { |dish| pp dish })
     end
   end
 end

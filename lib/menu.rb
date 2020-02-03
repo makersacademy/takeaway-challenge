@@ -7,7 +7,7 @@ class Menu
     @list_of_dishes = Array.new
 
   end
-  
+
   def add_dish(dish)
     @dish_names = dish
   end
@@ -21,6 +21,6 @@ class Menu
   end
 
   def display_menu
-    []
+    @list_of_dishes.each { |dish| pp dish }
   end
 end
