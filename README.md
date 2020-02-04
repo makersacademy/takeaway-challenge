@@ -1,84 +1,123 @@
-Takeaway Challenge
-==================
+### [Makers Academy](http://www.makersacademy.com) - Week 2 Weekend Project 
+
+# Takeaway Challenge 🥡
+
+| [Task](#Task) | [Installation Instructions](#Installation) | [Feature Tests](#Feature_Tests) | [User Stories](#Story) | [Objects & Methods](#Methods) | [Testing](#Testing) | [Further improvements](#Further_Improvements)
+
+![takeaway](takeaway.jpg)
+
+## <a name="Task">Task</a>
+
+Write a Takeaway program that allows customers to see a list of dishes and prices, select quantitites, check order totals and receive a confirmation text.
+
+This challenge is the second weekend challenge at [Makers Academy](https://github.com/makersacademy).
+
+## <a name="Installation">Installation Instructions</a>
+
+1. Fork this repository, clone to your local machine then change into the directory:
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+$ git clone git@github.com:davmcgregor/takeaway-challenge.git
+$ cd takeaway-challenge
+```
+2. Load dependencies with bundle:
+```
+$ gem install bundle
+$ bundle
+```
+3. Run the app in the terminal:
 
- ```
+```Shell
+$ irb
+> require './lib/takeaway_challenge.rb'
+```
 
-Instructions
--------
+## <a name="Feature_Tests">Feature Tests (How it works)</a>
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+```
+ > Takeaway.new.menu_list
+ => {"Banitsa"=>3, "Cake"=>4, "Milkshake"=>2, "Cheeseburger"=>6, "Dumplings"=>5} 
+```
+To view the menu, use the Takeaway menu_list instance variable
+```
+> order = Order.new
+> order.make_order
+```
+To order an item use make_order on an instance of Order,and follow prompts to select items and quantitys. A confirmation text will be sent upon completion of an order.
+```
+>order.order_summary
+10 x Cake
+5 x Milkshake
+Coming to a total of: £50
+```
+Use order_summary to view the quanity of items ordered and the total price.
+```
+> order.verify
+ => "Your order total matches the sum of dishes"
+```
+Use order.verify to confirm the total price matches the sum of each dish ordered.
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+## <a name="Story">User Stories</a>
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
-
+```
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
-
+```
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+## <a name="Methods">Objects & Methods</a>
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+For the user stories I created a domain model for each object, including attributes and behaviour:
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+### Takeaway
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+| Methods | Description |
+| --- | --- |
+| Takeaway.new | Creates a new instance of Takeaway |
+| .menu_list | Instance variable that shows menu items and prices |
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+### Order
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+| Methods | Description |
+| --- | --- |
+| Order.new | Creates a new order, sets bastket, total and menu instance variables |
+| .make_order | Prompts the user through a loop to select menu items, quantities, and to confirm the order |
+| .add_item(item, quantity) | Send uder input to the basket hash, and increments to the total variable |
+| .order_summary | Prints a list of dishes, quantities and the final order total |
+| .confirm | Seeks uder input to confirm final order |
+| .send_confirmation | Sends a confirmation text to the user |
+| .verify | Tells the user whether the order total matches the sum of dish prices |
 
+### Message
 
-In code review we'll be hoping to see:
+| Methods | Description |
+| --- | --- |
+| .send(message) | Send a text confirmation via the Twilio API, with the message attribute comprising the body of the text|
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+## <a name="Testing">Testing</a>
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Tests were written with RSpec. To run the tests in terminal: 
 
-Notes on Test Coverage
-------------------
+```bash
+$> cd takeaway-challenge
+$> rspec
+```
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+## <a name="Further_Improvements">Further Improvements</a>
+* Attempt the advanced section: [Implement the ability to place orders via text message
+* Ensure ENV variables are functioning
+* Refactor methods identified as too long by Rubocop
+* Refactor and add testing for all methods, including #order_summary, #confirm, #send_confirmation etc.
+* Update README
