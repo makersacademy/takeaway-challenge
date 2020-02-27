@@ -35,6 +35,31 @@ describe Menu do
     expect(subject).to respond_to(:add_to_order)
   end
 
+  it 'will check that an order history exists' do
+    expect(subject.order).to eq []
+  end
+  it 'will add Pasta to my order' do
+    expect(subject.add_to_order("Pasta", 1)).to eq "You have added Pasta to your order"
+  end
+
+  it 'will add Pizza to my order' do
+    expect(subject.add_to_order("Pizza", 1)).to eq "You have added Pizza to your order"
+  end
+
+  it 'will throw an error if I try and add an item that is not on the menu' do
+    expect{subject.add_to_order("Sushi", 1)}.to raise_error "That is not on the menu!"
+  end
+
+  it 'will be able to handle ordering several dishes' do
+    subject.add_to_order("Pizza", 1)
+    subject.add_to_order("Pasta", 1)
+    expect(subject.order).to eq [{"Pizza" => 7}, {"Pasta" => 9}]
+  end
+
+  it 'will be able to handle several orders, at once' do
+    subject.add_to_order("Pizza", 2)
+    expect(subject.order).to eq [{"Pizza" => 7}, {"Pizza" => 7}]
+  end
 end
 
 describe Order do
