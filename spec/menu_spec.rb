@@ -31,6 +31,8 @@ describe Menu do
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
+  
+describe Order do
   it 'will respond to the method add_to_order' do
     expect(subject).to respond_to(:add_to_order)
   end
@@ -50,9 +52,9 @@ describe Menu do
     expect{subject.add_to_order("Sushi", 1)}.to raise_error "That is not on the menu!"
   end
 
-  it 'will be able to handle ordering several dishes' do
-    subject.add_to_order("Pizza", 1)
-    subject.add_to_order("Pasta", 1)
+  it 'will be able to handle ordering several dishes at default quantity' do
+    subject.add_to_order("Pizza")
+    subject.add_to_order("Pasta")
     expect(subject.order).to eq [{"Pizza" => 7}, {"Pasta" => 9}]
   end
 
@@ -60,8 +62,20 @@ describe Menu do
     subject.add_to_order("Pizza", 2)
     expect(subject.order).to eq [{"Pizza" => 7}, {"Pizza" => 7}]
   end
-end
 
-describe Order do
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  it 'will show me my order, in a pretty format' do
+    subject.add_to_order("Pizza")
+    expect { subject.show_order}.to output("Pizza: £7\n").to_stdout
+  end
+  it 'will show me the sum of various dishes in my order' do
+    subject.add_to_order("Pizza")
+    subject.add_to_order("Pizza")
+    expect {subject.total}.to output("Your total is £14").to_stdout
+  end
+end
 
 end
