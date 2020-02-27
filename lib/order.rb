@@ -15,9 +15,7 @@ class Order
   end
 
   def show_order
-    @order.each do |item|
-      item.each { |k,v| puts "#{k} - £#{v}" }
-    end
+    @order.each {|item| item.each { |k,v| puts "#{k} - £#{v}" }}
   end
 
   private
