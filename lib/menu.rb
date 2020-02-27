@@ -1,5 +1,5 @@
 class Menu
-  attr_reader
+  attr_reader :menu
   def initialize
     @menu = {
       "Pasta" => 6,
