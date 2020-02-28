@@ -18,6 +18,15 @@ class Order
     @order.each {|item| item.each { |k,v| puts "#{k} - £#{v}" }}
   end
 
+  def total
+    # fail "Basket is empty" if @order = nil
+    value = 0
+    @order.each do |item|
+      item.each {|k,v| value += v}
+    end
+    "Order total is #{value}"
+    end
+
   private
   def not_on_menu?(dish)
     !@menu.menu.include? dish
