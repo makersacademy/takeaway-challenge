@@ -1,16 +1,12 @@
-menu = Takeaway.new
+takeaway = Takeaway.new(menu)
 
-menu.create_menu("pizza", 5)
-menu.create_menu("spring roll", 3)
-menu.create_menu("something else", 10)
+takeaway.view_menu
 
-menu.view_menu
+takeaway.create_order
 
-menu.create_order(nameoforder)
+takeaway.add(dish, amount)
+takeaway.add(dish, amount)
+takeaway.add(dish, amount)
 
-nameoforder.add(dish)
-nameoforder.add(dish)
-
-order.check_total
-
-order.check_out
+takeaway.check_total
+takeaway.check_out

@@ -7,13 +7,17 @@ This program simulates your favourite local pizza delivery service.
 
 ## Instructions
 
-To check test test coverage
+Clone or download files. Then:
+
+To run unit tests
 ```
+rspec
 ```
-To check 
+To run feature tests
 
-
-
+```
+irb -r feature_test.rb
+```
 
 ## Requirements were:
 -------
@@ -37,38 +41,41 @@ To check
 | Text message                | send          |
 
 
-### Plan of attack
+### Plan of attack (pseudocode)
 
 Menu Object - displays a menu  with a list of items to choose from
 
+```
 initialize()
 menu_items = [{:item => "Mushroom Pizza", :price => 10} etc, etc]
 end
 
-shows the menu to the user:
+# shows the menu to the user:
 
 view_menu
 menu_items each do
 puts item, and item price
 end
+```
 ___________________
 
 Order Object - contains a list of items the user has selected and checks the price against the menu.
 
+```
 initialize(menu = menu.new)
 order_items = []
 order_total =
 menu = menu
 end
 
-adds a dish to the order items
+# adds a dish to the order items
 
 add(dish, amount)
  order_items << {:item => dish, :price => amount}
  puts you have '#{order_items.count} items in your order'
 end
 
-checks to see if the total of the order items matches to the price of the items on the menu
+#checks to see if the total of the order items matches to the price of the items on the menu
 
 check_total
    sum(order_items) == sum(menu.menu_items)
@@ -89,11 +96,13 @@ sum(items)
     adds up the keys
   end
 end
+```
 
 ________________
 
 Message object
 
+```
 initialize()
   message = "Thank you for your order"
 end
@@ -101,23 +110,25 @@ end
 send
   sends the message
 end
+```
 
 __________________
 
 Takeaway Object
 
+```
 initialize(menu = menu.new)
  menu = menu
  current_order
 end
 
-creates an order
+# creates an order
 
 create_order(curent_order = Order.new)
   current_order
 end
 
-lets the user select items and add them to an order
+# lets the user select items and add them to an order
 
 add(dish, amount)
   current_order.add(dish, amount)
@@ -127,6 +138,7 @@ checkout(current_order)
   current_order.checkout(message)
 end
 
+```
 ___________________
 
 ## User stories:
@@ -148,11 +160,6 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
 ## Aim
 

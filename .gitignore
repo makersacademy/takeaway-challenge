@@ -1,2 +1,4 @@
 /**/.DS_Store
 /coverage
+/values.env
+/send_sms.rb
