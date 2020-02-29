@@ -5,7 +5,7 @@ class Menu
   attr_reader :menu_list
 
   def initialize
-    $menu_list = {
+    @menu_list = {
       "Cheese Burger" => 5,
       "Bacon Cheese Burger" => 6,
       "Double Cheese Burger" => 7,
@@ -19,7 +19,7 @@ class Menu
 
   def print_menu
     puts "JARA'S TAKEAWAY MENU"
-    $menu_list.each do |dish, price|
+    @menu_list.each do |dish, price|
       puts "#{dish}: £#{price}"
     end
   end
