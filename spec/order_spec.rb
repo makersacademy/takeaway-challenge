@@ -35,6 +35,7 @@ describe Order do
   describe "#total_price" do
 
     it "#sum_price returns the @total_price" do
+      subject.send(:sum_price)
       subject.add_dish("Cheese Burger")
       subject.add_dish("Milkshake")
       subject.sum_price
@@ -45,8 +46,10 @@ describe Order do
   describe "#print_order" do
 
     it "print_order returns a list with @current_order and @total_price" do
-      
-
+      subject.add_dish("Cheese Burger")
+      subject.add_dish("Milkshake")
+      subject.sum_price
+      expect { subject.print_order }.to output { subject.print_order }.to_stdout
     end
   end
 end

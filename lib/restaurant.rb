@@ -11,6 +11,10 @@ class Restaurant
     @menu.print_menu
   end
 
+  def see_order
+    @order.finish_order
+  end
+
   # def place_order
   #   @order.add_dish
   #   @order.finish_order

@@ -17,6 +17,13 @@ class Order
     @prices_to_sum << Menu.new.menu_list[dish]
   end
 
+  def finish_order
+    sum_price
+    print_order
+  end
+
+# private
+
   def existent_dish?(dish)
     Menu.new.menu_list.has_key?(dish) ? true : false
   end
@@ -26,9 +33,12 @@ class Order
       @total_price += price
     end
   end
-  
 
-
+  def print_order
+    puts "THANKS FOR YOUR ORDER"
+    @current_order.each { |item| puts item }
+    puts "Total: £#{@total_price}"
+  end
 
   # LOOP TO CALL FROM RESTAURANT CLASS AND PLACE_ORDER
 
