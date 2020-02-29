@@ -3,14 +3,10 @@ require 'customer'
 describe Customer do
 
   let(:pizza) { double :pizza, price: 10.50 }
-  # let(:curry) { double :curry, price: 8.00 }
-  # let(:burger) { double :curry, price: 6.50 }
-
   let(:menu) { double :menu }
   let(:order) { double :order }
 
   subject(:customer) { described_class.new(menu, order) }
-  # dishes: [pizza, curry, burger]
 
   # I would like to see a list of dishes with prices
   describe '.show_menu' do
