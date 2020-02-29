@@ -15,6 +15,14 @@ class Order
     @customer_order[dish] = quantity
   end
 
+  def total_per_item
+    @customer_order.map do |dish, quantity|
+      @menu.price(dish) * quantity
+    end
+  end
 
+  def total
+    total_per_item.inject(:+)
+  end
 
 end
