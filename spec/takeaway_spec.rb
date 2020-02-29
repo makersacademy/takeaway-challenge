@@ -1,14 +1,21 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu_dbl) }
+  subject(:takeaway) { described_class.new(menu: menu_dbl, order: order_dbl) }
 
   let(:menu_dbl) { double(:menu, print: view_menu_dbl) }
   let(:view_menu_dbl) { "veggie pizza : 5.5" }
+  let(:order_dbl) { double(:order) }
 
+  let(:items) { {chicken_curry: 2, veggie_pizza: 1} }
 
   it "shows the menu with dishes and prices" do
     expect(takeaway.view_menu).to eq(view_menu_dbl)
+  end
+
+  it "can place an order of some number of several dishes" do
+    expect(order_dbl).to receive(:add_item).twice
+    takeaway.place_order(items)
   end
 
   context '#view_menu' do
