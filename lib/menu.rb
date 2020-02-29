@@ -17,7 +17,7 @@ class Menu
   def show_menu
     puts "Takeaway Menu" 
     @items.map do |dish, price|
-      puts "#{dish.to_s}: £#{price}"
+      puts "#{dish}: £#{price}"
     end
   end
 
@@ -26,7 +26,15 @@ class Menu
   end
 
   def has_dish?(dish)
-    @items.each_key { |item| item == dish ? true : false }
+    @items.key?(dish)
+    
+    # .each_key { |item| 
+    # if item == dish 
+    #   return true
+    # else
+    #   return false
+    # end
+    # }
   end
 
 end
