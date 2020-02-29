@@ -3,26 +3,34 @@ require_relative 'takeaway'
 
 class Order
 
-  attr_reader :customer_order  
+  attr_reader :order  
 
   def initialize(menu)
     @menu = menu
-    @customer_order = Hash.new(0)
+    @order = Hash.new(0)
   end
-
+  
   def adds_item(dish, quantity)
     fail "That dish is not on the menu" unless @menu.has_dish?(dish)
-    @customer_order[dish] = quantity
+    
+    @order[dish] = quantity
+    successful_add(dish, quantity)
   end
-
+  
   def total_per_item
-    @customer_order.map do |dish, quantity|
+    @order.map do |dish, quantity|
       @menu.price(dish) * quantity
     end
   end
-
+  
   def total
     total_per_item.inject(:+)
+  end
+  
+  private
+
+  def successful_add(dish, quantity)
+    "You have added #{quantity} #{dish} to your order"
   end
 
 end
