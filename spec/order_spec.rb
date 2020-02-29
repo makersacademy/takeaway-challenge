@@ -6,33 +6,43 @@ describe Order do
   subject(:order) { described_class.new }
 
   describe "#view_menu" do
-    it { is_expected.to respond_to(:view_menu) }
-
     it "displays the menu" do
       expect { order.view_menu }.to output { /burger 10.0/ }.to_stdout
     end
   end
 
   describe "#add" do
-    it { is_expected.to respond_to(:add).with(2).arguments }
+    context "raises errors" do
+      it "raises error if dish not available" do
+        expect { order.add("pizza", 1) }.to raise_error "Dish not available. Please try again."
+      end
 
-    it "raises error if dish not available" do
-      expect { order.add("pizza", 1) }.to raise_error "Dish not available. Please try again."
+      it "raises error if no quantity provided" do
+        expect { order.add("burger", "1") }.to raise_error "Quantity not provided. Please try again."
+      end
     end
 
-    it "raises error if no quantity provided" do
-      expect { order.add("burger", "1") }.to raise_error "Quantity not provided. Please try again."
+    context "order" do
+      it "adds the dish and quantities to the order" do
+        order.add("burger", 2)
+        expect(order.dishes).to eq [{ dish: "burger", quantity: 2 }]
+      end
+
+      it "subtotals the order" do
+        order.add("burger", 2)
+        order.add("fries", 3)
+        expect(order.subtotal).to eq 32
+      end
     end
 
-    it "adds the dish and quantities to the order" do
-      order.add("burger", 2)
-      expect(order.dishes).to eq [{ dish: "burger", quantity: 2 }]
-    end
+    context "confirms dish added" do
+      it "confirms 1 item was added to order" do
+        expect(order.add("burger", 1)).to eq "1 x burger added to order"
+      end
 
-    it "subtotals the value of the order" do
-      order.add("burger", 2)
-      order.add("fries", 3)
-      expect(order.subtotal).to eq 32
+      it "confirms mulitple items were added to order" do
+        expect(order.add("burger", 3)).to eq "3 x burgers added to order"
+      end
     end
   end
 
