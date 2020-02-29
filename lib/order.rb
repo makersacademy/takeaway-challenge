@@ -10,11 +10,13 @@ class Order
     @total_price = 0
   end
 
-  def add_dish(dish)
+  def add_dish(dish, amount)
     fail "Sorry, that dish is not available" if existent_dish?(dish) == false
-
-    @current_order << dish
-    @prices_to_sum << Menu.new.menu_list[dish]
+    
+    amount.times do
+      @current_order << dish
+      @prices_to_sum << Menu.new.menu_list[dish]
+    end
   end
 
   def finish_order
@@ -22,7 +24,7 @@ class Order
     print_order
   end
 
-# private
+# private (HOW TO CALL THEM FROM TESTS?)
 
   def existent_dish?(dish)
     Menu.new.menu_list.has_key?(dish) ? true : false
