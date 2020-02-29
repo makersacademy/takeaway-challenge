@@ -2,11 +2,12 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :current_order, :prices_to_sum
+  attr_reader :current_order, :prices_to_sum, :total_price
 
   def initialize
     @current_order = []
     @prices_to_sum = []
+    @total_price = 0
   end
 
   def add_dish(dish)
@@ -19,6 +20,17 @@ class Order
   def existent_dish?(dish)
     Menu.new.menu_list.has_key?(dish) ? true : false
   end
+
+  def sum_price
+    @prices_to_sum.each do |price|
+      @total_price += price
+    end
+  end
+  
+
+
+
+  # LOOP TO CALL FROM RESTAURANT CLASS AND PLACE_ORDER
 
   # def add_dish
   #   while true do
@@ -34,5 +46,8 @@ class Order
   #     end
   #   end
   # end
+
+  # allow(subject).to receive(:empty?) { false }
+  # allow(subject).to receive(:storm?) { true }
 
 end
