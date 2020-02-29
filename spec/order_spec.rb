@@ -38,4 +38,14 @@ describe Order do
       expect(order.existent_dish?("Cheese Burger")).to eq true
     end
   end
+
+  describe "#finish_order" do
+
+    it "calculates the total amount to pay" do
+    end
+
+    it "prints a list with all the dishes and amount to pay" do
+    end
+
+  end
 end
