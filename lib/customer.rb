@@ -13,4 +13,12 @@ class Customer
     @order.display
   end
 
+  def select_dish(dish, quantity)
+    @order.add(dish, quantity)
+  end
+
+  def place_order
+    @order.confirmed
+  end
+
 end
