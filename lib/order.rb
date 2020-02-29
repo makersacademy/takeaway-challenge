@@ -15,16 +15,17 @@ class Order
   end
 
   def show_order
-    @order.each {|item| item.each { |k,v| puts "#{k} - £#{v}" }}
+    @order.each { |item| item.each { |k, v| puts "#{k} - £#{v}" } }
   end
 
   def total
-    # fail "Basket is empty" if @order = nil
+    fail "Basket is empty" if @order == []
+    
     value = 0
     @order.each do |item|
-      item.each {|k,v| value += v}
+      item.each { |_k, v| value += v }
     end
-    "Order total is #{value}"
+    "Order total is £#{value}"
     end
 
   private

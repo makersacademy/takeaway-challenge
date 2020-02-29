@@ -27,8 +27,8 @@ describe Order do
 
   describe "#show_order" do
     it "returns the order" do 
-      subject.instance_variable_set :@order, ([{ "Pizza" => 9 }, { "Pasta" => 6 }])
-      expect{subject.show_order}.to output("Pizza - £9\nPasta - £6\n").to_stdout
+      subject.instance_variable_set :@order, [{ "Pizza" => 9 }, { "Pasta" => 6 }]
+      expect { subject.show_order }.to output("Pizza - £9\nPasta - £6\n").to_stdout
     end
   end
 
@@ -36,12 +36,11 @@ describe Order do
     it "returns a total of the order" do
       subject.add("Pizza")
       subject.add("Pasta")
-      expect(subject.total).to eq "Order total is 15"
+      expect(subject.total).to eq "Order total is £15"
     end
 
-    # it "raises an error when total is nil" do
-    #   subject.instance_variable_set(@order, [])
-    #   expect(subject.total).to eq "Basket is empty"
-    # end
+    it "raises an error when check total and order empty" do
+      expect{subject.total}.to raise_error "Basket is empty"
+    end
   end
 end
