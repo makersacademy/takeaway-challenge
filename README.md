@@ -1,34 +1,135 @@
 Takeaway Challenge
 ==================
+
+Pizza, pizza my kingdom for a pizza
+
+This program simulates your favourite local pizza delivery service.
+
+## Instructions
+
+To check test test coverage
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+```
+To check 
 
- ```
 
-Instructions
+
+
+## Requirements were:
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Create an interactive program that let's a user order food from a takeaway shop
+* The customer should be able to check the running total of their order against the sum of the dished they have added to their order
+* Use rspec to test the program using mocking and any other isolation testing mechanisms to unit test each class
+* Incorporate dependency injection, encapsulation, polymorphism and other relevant OOP concepts to implement the program
+* Use the twilio API to send messages to your customers when their order has been completed
 
-Task
------
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## Approach
+
+### Domain model
+
+| Objects                     | Methods       |
+| ----------------------------|:-------------:|
+| List of dishes with prices  | View | $1600  |
+| Dish                        | select/add    |
+| Order (sum of dishes)       | check_total   |
+| Text message                | send          |
+
+
+### Plan of attack
+
+Menu Object - displays a menu  with a list of items to choose from
+
+initialize()
+menu_items = [{:item => "Mushroom Pizza", :price => 10} etc, etc]
+end
+
+shows the menu to the user:
+
+view_menu
+menu_items each do
+puts item, and item price
+end
+___________________
+
+Order Object - contains a list of items the user has selected and checks the price against the menu.
+
+initialize(menu = menu.new)
+order_items = []
+order_total =
+menu = menu
+end
+
+adds a dish to the order items
+
+add(dish, amount)
+ order_items << {:item => dish, :price => amount}
+ puts you have '#{order_items.count} items in your order'
+end
+
+checks to see if the total of the order items matches to the price of the items on the menu
+
+check_total
+   sum(order_items) == sum(menu.menu_items)
+end
+
+checkout(message = Message.new)
+  if check_total = true
+    message.send
+  else
+    raise error
+  end
+end
+
+private
+
+sum(items)
+  for each item do
+    adds up the keys
+  end
+end
+
+________________
+
+Message object
+
+initialize()
+  message = "Thank you for your order"
+end
+
+send
+  sends the message
+end
+
+__________________
+
+Takeaway Object
+
+initialize(menu = menu.new)
+ menu = menu
+ current_order
+end
+
+creates an order
+
+create_order(curent_order = Order.new)
+  current_order
+end
+
+lets the user select items and add them to an order
+
+add(dish, amount)
+  current_order.add(dish, amount)
+end
+
+checkout(current_order)
+  current_order.checkout(message)
+end
+
+___________________
+
+## User stories:
 
 ```
 As a customer
@@ -47,38 +148,14 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
 > :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
 
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
-
-In code review we'll be hoping to see:
+## Aim
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
 * The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
