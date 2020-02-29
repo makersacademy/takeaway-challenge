@@ -4,7 +4,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu_dbl) }
 
   let(:menu_dbl) { double(:menu, print: view_menu_dbl) }
-  let(:view_menu_dbl) { "veggie pizza : 6.5" }
+  let(:view_menu_dbl) { "veggie pizza : 5.5" }
 
 
   it "shows the menu with dishes and prices" do

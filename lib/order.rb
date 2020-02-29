@@ -6,10 +6,8 @@ class Order
 
   def initialize
     @current_order = []
-    
+
   end
 
-  def select_dish
-  end
-
+  
 end
