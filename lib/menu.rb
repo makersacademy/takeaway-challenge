@@ -21,6 +21,10 @@ class Menu
     end
   end
 
+  def price(dish)
+    @items[dish]
+  end
+
   def has_dish?(dish)
     @items.each_key { |item| item == dish ? true : false }
   end
