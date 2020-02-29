@@ -6,9 +6,10 @@ class Order
 
   def initialize
     @current_order = []
-    @bellas = Takeaway.new
+    
   end
 
-
+  def select_dish
+  end
 
 end
