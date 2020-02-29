@@ -11,7 +11,7 @@ describe Menu do
 
   describe '#add_dish' do
 
-    it "adds an item and set a price" do
+    it "adds an item to the menu and set a price" do
       expect(subject.add_dish("chicken", 5.99)).to eq 5.99
     end
 
@@ -21,7 +21,7 @@ describe Menu do
   
     it "prints off the menu" do
     subject.add_dish("chicken", 5.99)
-    expect{subject.show_menu}.to output("Takeaway Menu\nchicken: 5.99\n").to_stdout
+    expect{subject.show_menu}.to output("Takeaway Menu\nchicken: £5.99\n").to_stdout
     end
 
   end
