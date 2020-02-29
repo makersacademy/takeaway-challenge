@@ -2,11 +2,12 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :dishes
+  attr_reader :dishes, :subtotal
 
   def initialize(menu = Menu.new)
     @menu = menu
     @dishes = []
+    @subtotal = 0
   end
 
   def view_menu
@@ -19,6 +20,7 @@ class Order
     fail "Dish not available. Please try again." unless Menu::ITEMS.has_key?(dish)
 
     @dishes << { dish: dish, quantity: quantity }
+    @subtotal += Menu::ITEMS[dish][:price] * quantity
   end
 
 end

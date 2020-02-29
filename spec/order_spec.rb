@@ -1,5 +1,5 @@
 require 'order'
-require 'menu'
+# require 'menu'
 
 describe Order do
 
@@ -28,5 +28,12 @@ describe Order do
       order.add("burger", 2)
       expect(order.dishes).to eq [{ dish: "burger", quantity: 2 }]
     end
+
+    it "subtotals the value of the order" do
+      order.add("burger", 2)
+      order.add("fries", 3)
+      expect(order.subtotal).to eq 32
+    end
   end
+
 end
