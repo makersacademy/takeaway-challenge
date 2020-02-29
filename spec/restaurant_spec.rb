@@ -6,9 +6,11 @@ describe Restaurant do
     expect { subject.see_menu }.to output { menu.print_menu }.to_stdout
   end
 
+  # COULDNT MANAGE TO MAKE THIS TEST PASS
+
   # it "can #place_order" do
   #   subject.place_order("Milkshake", 1)
-  #   expect(subject.current_order).to include("Cheese Burger")
+  #   expect(subject.current_order).to include("Milkshake")
   # end
 
   it "can #get_ticket" do

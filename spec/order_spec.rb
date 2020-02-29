@@ -16,8 +16,8 @@ describe Order do
     end
 
     it "can #add_dish to @current_order" do
-      subject.add_dish("Cheese Burger", 2)
-      expect(subject.current_order).to include("Cheese Burger")
+      subject.add_dish("Cheese Burger", 1)
+      expect(subject.current_order).to include("Cheese Burger ...... £5")
     end
 
     it "can add the price of the dish to @prices_to_sum" do

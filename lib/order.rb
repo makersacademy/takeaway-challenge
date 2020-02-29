@@ -12,9 +12,9 @@ class Order
 
   def add_dish(dish, amount)
     fail "Sorry, that dish is not available" if existent_dish?(dish) == false
-    
+
     amount.times do
-      @current_order << dish
+      @current_order << "#{dish} ...... £#{Menu.new.menu_list[dish]}"
       @prices_to_sum << Menu.new.menu_list[dish]
     end
   end
