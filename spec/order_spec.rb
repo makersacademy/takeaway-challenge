@@ -1,5 +1,4 @@
 require 'order'
-# require 'menu'
 
 describe Order do
 
@@ -46,4 +45,18 @@ describe Order do
     end
   end
 
+  describe "#place" do
+    before do
+      order.add("burger", 2)
+      order.add("fries", 3)
+    end
+
+    it "raises error if total doesn't match subtotal" do
+      expect { order.place(10) }.to raise_error "Incorrect order total. Please try again."
+    end
+
+    it "sends the user a confimation message" do
+      expect(order.place(32)).to eq "Thank you! Your order was placed and will be delivered before #{Time.now}"
+    end
+  end
 end

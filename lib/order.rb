@@ -24,6 +24,12 @@ class Order
     confirm_item_added(dish, quantity)
   end
 
+  def place(total)
+    fail "Incorrect order total. Please try again." unless @subtotal == total
+
+    "Thank you! Your order was placed and will be delivered before #{Time.now}"
+  end
+
   private
 
   def update_dishes(dish, quantity)
