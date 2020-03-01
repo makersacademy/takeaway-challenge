@@ -1,12 +1,14 @@
 require "takeaway"
+
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
 
   let(:menu) { double(:menu, print: printed_menu) }
-  let(:order) { double(:order) }
+  # instance_double aka verifying double
+  let(:order) { instance_double("Order", total: 15.50) }
   let(:printed_menu) { "Spaghetti Lobster £30.00" }
 
-  let(:dishes) { {lobster: 1, tartare: 2} }
+  let(:dishes) { {spaghetti_lobster: 2, salmon_tartare: 1} }
 # # As a customer
 # # So that I can check if I want to order something
 # # I would like to see a list of dishes with prices
@@ -26,9 +28,11 @@ describe Takeaway do
 # # So that I can verify that my order is correct
 # # I would like to check that the total I have been given matches
 # # the sum of the various dishes in my order
-#   it "will check that total matches sum of dishes" do
-#
-#   end
+  it "knows the order total" do
+    allow(order).to receive(:add)
+    total = takeaway.place_order(dishes)
+    expect(total).to be(15.50)
+  end
 # # As a customer
 # # So that I am reassured that my order will be delivered on time
 # # I would like to receive a text such as "Thank you! Your order
