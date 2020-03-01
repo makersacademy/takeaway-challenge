@@ -35,7 +35,7 @@ describe Basket do
     it "#print prints out contents of basket" do
       subject.add(dish_two_basket)
       subject.add(dish_three_basket)
-      expect{subject.print}.to output("Basket\n\nx5 chips      £2.5\nx10 ramen      £9.0\n").to_stdout
+      expect{subject.print}.to output("Basket\n\nx5 chips      £2.5\nx10 ramen      £9.0\ntotal:      £11.5\n").to_stdout
     end
     it "#add displays success message after add" do
       expect{subject.add(dish_two_basket)}.to output("x5 orders of chips are in your basket :)\n").to_stdout

@@ -4,9 +4,13 @@ class Basket
   end
 
   def print
+    sum = 0
     puts "Basket"
     puts ""
-    @contents.map{|item| puts "x#{item[:ordered]} #{item[:dish]}      £#{item[:price] * item[:ordered]}"  }
+    @contents.map{|item| puts "x#{item[:ordered]} #{item[:dish]}      £#{item[:price] * item[:ordered]}"
+    sum += (item[:price] * item[:ordered])
+  }
+  puts"total:      £#{sum}"
   end 
 
   def add(dish:, ordered:, price:)
