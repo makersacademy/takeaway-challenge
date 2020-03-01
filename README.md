@@ -3,43 +3,83 @@ Takeaway Challenge
 
 Task
 ----
+Create a Takeaway which allows a customer to view a menu with a list of dishes and prices. customers
+can select dishes to add to their order and view their order. Once the customer is happy they can
+place their order. This will send an sms confirming the delivery time of their order (1 hour from placing
+the order).
+
+Quickstart
+----
+This an irb application. To get started, clone this repository and run the following code in your terminal:
+```
+irb -r ./lib/customer.rb
+```
+Then set up a new customer. For example:
+```
+customer = Customer.new
+```
 
 User stories
 ----
 
+1.
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ```
-
+In IRB:
 ```
-order = Order.new
-order.display_menu
-```
-when built, display menu as shown in IRB
+2.6.5 :002 > customer.show_menu
 
+Welcome to Takeaway
+
+item      Dish        Price
+1.        pizza       £10.50
+2.        curry       £8.00
+3.        burger      £6.50
+
+Please .select_dish (item number) and quantity
+```
+
+
+2.
 ```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
-
+The customer can update their order by running the following command in IRB:
 ```
-dish_number = 1
-quantity = 2
-order.select_dish(dish_number, quantity)
+2.6.5 :003 > customer.select_dish(3,2)
 ```
-This will add this dish and quantity as a hash into an order array. Before adding, it will need to check whether This
-dish has already been included in the order array, if yes then increase quantity of that order rather than adding a new
-element to the order.
+The first argument in the above example (3) refers to the
+item number in the menu (e.g. burger).
 
+The second argument in the above example (2) refers to the quantity that the customer would like to order of that item.
+
+This adds this dish to the order object. A user can run this command as many times as they like.
+  - If they select a dish that has already been selected, the order object will update the quantity appropriately.
+  - If no quanity is provided, the quantity will default to 1
+
+3.
 ```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ```
-Still not 100% how to implement this
+The user can view their current order by using this command in IRB:
+```
+2.6.5 :004 > customer.show_order
+
+Dish       Quantity   Amount
+burger        2       £13.00
+
+Total order: £13.00
+```
+This allows the user to see the total order and how the total is broken down.
+
+4.
 
 ```
 As a customer
@@ -48,20 +88,64 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 ```
-order.confirmed
+customer.place_order
 ```
-when this is run, this will generate an SMS to send (how to I get the customers details..?) and send a message saying
-"Thank you! Your order was placed and will be delivered before <insert time 1 hour from when order was placed>"
+This will send an SMS to customer with the message:
+"Thank you! Your order was placed and will be delivered before <delivery_time>"
+
+The delivery time is 1 hour from the time that the order is placed.
 
 How programme is constructed:
 ---
 
-- order class:
+- Customer class
   - State
-    - @order
-    - @menu = Menu.new
-    - @total
+    - @menu (-> dependency on Menu class)
+    - @order (-> dependency on Order class)
+    - @phone_number
+  - Behaviour
+    - show_menu (-> calls Menu .display)
+    - select_dish (-> calls Order .add)
+    - remove_dish (not implemented yet)
+    - show_order (-> calls Order .display)
+    - place_order (-> calls Order .confirmed)
+
+
+- Menu class
+  - State
+    - @takeaway_name
+    - @menu
   - Behaviour
     - display
-- menu class
-- dish class
+
+
+- Order class
+  - State
+    - @order
+    - @total
+    - @menu = Menu.new
+  - Behaviour
+    - add
+    - display
+    - confirmed (-> calls SMS.new, which sends SMS)
+
+
+- SMS
+  - State
+    - @client
+  - Behaviour
+    - send_sms
+
+Known issues
+---
+- Users can currently enter an item number that isn't on the menu without it raising a useful error. This needs to be implemented
+
+- If a users puts in a negative quantity to the .select_dish method it will minus this from the order (even allowing the order quantity to be negative). It should instead raise an error. This needs to be implemented.
+
+Future improvements
+---
+- implement a .remove_dish function to allow the customer to remove dishes from their order. This introduces some complications. It would help if the order had item numbers to make it easier to select the order item they want. There would also need to be checks in place to ensure quantity doesn't go negative, and to remove item if quanity is 0.
+
+- It would be nice if the programme displayed a message to the user when they selected a dish. Something like: "2 burgers have been added to your order"
+
+- As this programme develops, it should have a dish object and a better way to load/update menus

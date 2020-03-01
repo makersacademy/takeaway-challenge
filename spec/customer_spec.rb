@@ -35,6 +35,14 @@ describe Customer do
     end
   end
 
+  describe '.remove_dish' do
+    it { is_expected.to respond_to(:remove_dish).with(2).arguments }
+    it 'calls remove method in order class' do
+      expect(order).to receive(:remove).with(1, 2)
+      customer.select_dish(1, 2)
+    end
+  end
+
   describe '.place_order' do
     it { is_expected.to respond_to(:place_order) }
     it 'calls confirmed method in order class' do
