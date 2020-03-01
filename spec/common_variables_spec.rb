@@ -1,8 +1,8 @@
 shared_context "common takeaway" do
   #dishes in menu
-  let(:dish_one) {{name: "soup", price: 1.99, available: 8, ordered: 2}}
-  let(:dish_two) {{name: "chips", price: 0.5, available: 20, ordered: 5}}
-  let(:dish_three) {{name: "ramen", price: 0.9, available: 30, ordered: 10}}
+  let(:dish_one) {{name: "soup", price: 1.99, available: 8}}
+  let(:dish_two) {{name: "chips", price: 0.5, available: 20}}
+  let(:dish_three) {{name: "ramen", price: 0.9, available: 30}}
   let(:list) {[dish_one, dish_two, dish_three]}
 
   #dummy basket
@@ -17,4 +17,12 @@ shared_context "common takeaway" do
 
   #initialize subject with doubles
   subject{described_class.new({name: "Dishoom", menu: menu_klass, basket: basket_klass, checkout: checkout_klass})}
+end
+
+shared_context "common menu" do
+  let(:dish_one) {{name: "soup", price: 1.99, available: 8}}
+  let(:dish_two) {{name: "chips", price: 0.5, available: 20}}
+  let(:dish_three) {{name: "ramen", price: 0.9, available: 30}}
+  let(:list) {[dish_one, dish_two, dish_three]}
+  subject{described_class.new()}
 end
