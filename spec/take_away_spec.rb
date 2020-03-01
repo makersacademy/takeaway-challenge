@@ -5,7 +5,7 @@ describe Takeaway do
 
   let(:menu) { double(:menu, print: printed_menu) }
   let(:printed_menu) { "Margarita: £5" }
-  let(:order) { double(:order) }
+  let(:order) { instance_double("Order", total: 16.00) }
 
   let(:dishes) { {margarita: 4, sandwich: 7} }
 
@@ -16,5 +16,11 @@ describe Takeaway do
   it "can order dishes" do
     expect(order).to receive(:add).twice
     takeaway.order_up(dishes)
+  end
+
+  it "knows the total order" do
+    allow(order).to receive(:add)
+    total = takeaway.order_up(dishes)
+    expect(total).to eq(16.00)
   end
 end
