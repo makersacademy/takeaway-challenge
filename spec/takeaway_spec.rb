@@ -1,9 +1,12 @@
 require "takeaway"
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order) }
 
   let(:menu) { double(:menu, print: printed_menu) }
-  let(:printed_menu) { "Spaghetti Lobster: £30.00" }
+  let(:order) { double(:order) }
+  let(:printed_menu) { "Spaghetti Lobster £30.00" }
+
+  let(:dishes) { {lobster: 1, tartare: 2} }
 # # As a customer
 # # So that I can check if I want to order something
 # # I would like to see a list of dishes with prices
@@ -14,9 +17,11 @@ describe Takeaway do
 # # So that I can order the meal I want
 # # I would like to be able to select some number of several
 # # available dishes
-#   it "will allow selection of several available dishes" do
-#
-#   end
+  it "can order several dishes" do
+    expect(order).to receive(:add).twice
+    takeaway.place_order(dishes)
+
+  end
 # # As a customer
 # # So that I can verify that my order is correct
 # # I would like to check that the total I have been given matches
