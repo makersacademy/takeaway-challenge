@@ -1,9 +1,12 @@
 require_relative './menu'
+# inherits the view menu and other menu methods from the menu class
+class Takeaway < Menu
 
-class Takeaway
   attr_reader :current_order, :menu
-  def initialize(menu = Menu.new)
-    @menu = menu
+
+# injects new menu object 
+  def initialize(menu_items = Menu.new)
+    @menu_items = menu_items.menu_items
     @current_order
   end
 
