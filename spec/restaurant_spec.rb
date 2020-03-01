@@ -9,12 +9,17 @@ describe Restaurant do
   # COULDNT MANAGE TO MAKE THIS TEST PASS
 
   # it "can #place_order" do
-  #   subject.place_order("Milkshake", 1)
-  #   expect(subject.current_order).to include("Milkshake")
+  #   subject.stub(:place_order).with("Milkshake", "1")
+  #   expect(:current_order).to include("Milkshake")
   # end
 
-  it "can #get_ticket" do
+  it "shows a ticket at #checkout" do
     order = double("order")
-    expect { subject.close_ticket }.to output { order.finish_order }.to_stdout
+    expect { subject.checkout }.to output { order.finish_order }.to_stdout
   end
+
+  # it "send a confirmation message at #checkout" do
+  #   message = double("message")
+  #   expect { subject.checkout }.to #send_text (LOOK FOR SYNTAX)
+  # end
 end

@@ -1,11 +1,13 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'message'
 
 class Restaurant
 
   def initialize
     @menu = Menu.new
     @order = Order.new
+    @message = Message.new
   end
 
   def see_menu
@@ -16,8 +18,9 @@ class Restaurant
     @order.add_dish(dish, amount)
   end
 
-  def close_ticket
+  def checkout
     @order.finish_order
+    # @message.send_message # (IT BREAKS THE TESTS AS TWILIO NOT WORKING)
   end
 
   # CALL FOR LOOP IN ORDER CLASS
