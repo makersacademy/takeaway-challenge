@@ -16,18 +16,20 @@ class Order
     @order[dish] = quantity
     successful_add(dish, quantity)
   end
-  
-  def total_per_item
-    @order.map do |dish, quantity|
-      @menu.price(dish) * quantity
-    end
-  end
-  
+
   def total
     total_per_item.inject(:+)
   end
   
   private
+
+  attr_reader :menu
+
+  def total_per_item
+    @order.map do |dish, quantity|
+      @menu.price(dish) * quantity
+    end
+  end
 
   def successful_add(dish, quantity)
     "You have added #{quantity} #{dish} to your order"
