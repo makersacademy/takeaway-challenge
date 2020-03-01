@@ -16,4 +16,3 @@ if everything is correct a message will be send to the client.
 All is tested in working properly and comply with the requirements of the user stories.
 
 I offer a partial solution as long as i have not implemented a method for sending the message.
-
