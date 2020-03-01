@@ -44,43 +44,35 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ### Example run-through
 ```
->> irb
-2.6.5 :001 > require './menu.rb'
+ >> irb
+2.6.5 :001 > require './takeaway.rb'
  => true 
-2.6.5 :002 > require './order.rb'
- => true 
-2.6.5 :003 > 
-2.6.5 :004 > menu = Menu.new
- => #<Menu:0x00007f8ed392f540 @items={}> 
-2.6.5 :005 > menu.add_dish("chicken", 5)
+2.6.5 :002 > 
+2.6.5 :003 > takeaway = Takeaway.new(menu: Menu.new)
+ => #<Takeaway:0x00007f9a838796f8 @menu=#<Menu:0x00007f9a838797c0 @items={}>, @order=#<Order:0x00007f9a83879608 @menu=#<Menu:0x00007f9a838797c0 @items={}>, @order={}>> 
+2.6.5 :004 > takeaway.menu.add_dish("chicken", 5)
  => 5 
-2.6.5 :006 > menu.add_dish("fish", 3)
+2.6.5 :005 > takeaway.menu.add_dish("fish", 3)
  => 3 
-2.6.5 :007 > menu.add_dish("cabbage", 5)
+2.6.5 :006 > takeaway.menu.add_dish("cabbage", 5)
  => 5 
-2.6.5 :008 > takeaway = Takeaway.new(menu)
- => #<Takeaway:0x00007f8ed395dc60 @menu=#<Menu:0x00007f8ed392f540 @items={"chicken"=>5, "fish"=>3, "cabbage"=>5}>, @order=#<Order:0x00007f8ed395dc38 @menu=#<Menu:0x00007f8ed392f540 @items={"chicken"=>5, "fish"=>3, "cabbage"=>5}>, @order={}>> 
-2.6.5 :009 > takeaway.print_menu
+2.6.5 :007 > takeaway.print_menu
 Takeaway Menu
 -------------
 1. Chicken: £5
 2. Fish: £3
 3. Cabbage: £5
  => [nil, nil, nil] 
-2.6.5 :010 > takeaway.place_order("chicken", 1)
-Order
-----
-chicken: 1
-Total: £5
- => nil 
-2.6.5 :011 > takeaway.place_order("cabbage", 1)
+2.6.5 :008 > takeaway.place_order("chicken", 1)
+ => "You have added 1 chicken to your order" 
+2.6.5 :009 > takeaway.place_order("cabbage", 1)
+ => "You have added 1 cabbage to your order" 
+2.6.5 :010 > takeaway.confirmation
 Order
 ----
 chicken: 1
 cabbage: 1
 Total: £10
- => nil 
-2.6.5 :012 > takeaway.complete_order(10)
  => "The order is correct" 
  ```
 
@@ -88,8 +80,8 @@ Total: £10
 * My menu class allows for population of the menu (which will need to be done before you start ordering). This was functionality I thought the takeaway could use to update their menu as and when needed. I need to set it as a private method.
 
 ### Problems faced
-* Issues with using doubles and mocks in testing the takeaway file. Something I need to do more practice on. Currently foregoing the text functionality in order to write more tests for the takeaway.rb file. It was easier writing the code than the tests first.
-* Seemingly calling the menu twice when initializing `takeaway = Takeaway.new(menu)` - is not too much of a problem but isn't very neat
+* Issues with using doubles and mocks in testing the takeaway file. Something I need to do more practice on. Currently foregoing the text functionality in order to write more tests for the takeaway.rb file. It was easier writing the code than the tests first. [update: I think have the doubles running at least partially on the takeaway spec file now]
+* Seemingly calling the menu twice when initializing `takeaway = Takeaway.new(menu)` - is not too much of a problem as when you add items to the menu it updates both lists, but isn't very neat.
 * When printing the order I have to call order twice in order for it to work:
 ```
 def print_order
