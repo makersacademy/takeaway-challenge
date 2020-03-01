@@ -85,7 +85,7 @@ Total: £10
  ```
 
 ### Additional functionality
-* My menu class allows for population of the menu (which will need to be done before you start ordering). This was functionality I thought the takeaway could use to update their menu as and when needed. As such it is a private method within the menu class.
+* My menu class allows for population of the menu (which will need to be done before you start ordering). This was functionality I thought the takeaway could use to update their menu as and when needed. I need to set it as a private method.
 
 ### Problems faced
 * Issues with using doubles and mocks in testing the takeaway file. Something I need to do more practice on. Currently foregoing the text functionality in order to write more tests for the takeaway.rb file. It was easier writing the code than the tests first.
