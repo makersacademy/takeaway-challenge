@@ -51,4 +51,10 @@ describe Takeaway do
       subject.checkout
     end
   end
+
+  context "handling error" do
+    it "#add_to_basket throws error if requested dish is not on menu" do
+      expect{subject.add_to_basket("disgusting food", 2)}.to raise_error("food is not on menu, bruh")
+    end
+  end
 end
