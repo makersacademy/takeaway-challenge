@@ -5,7 +5,11 @@ class Menu
   end
 
   def print
-    
+    puts "Menu"
+    puts ""
+    @list.map{|item|
+    puts "#{item[:name]}      £#{item[:price]}"
+    }
   end
 
   def dish_exists?(dish)

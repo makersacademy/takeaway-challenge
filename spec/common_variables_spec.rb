@@ -1,8 +1,8 @@
 shared_context "common takeaway" do
   #dishes in menu
   let(:dish_one) {{name: "soup", price: 1.99, available: 8}}
-  let(:dish_two) {{name: "chips", price: 0.5, available: 20}}
-  let(:dish_three) {{name: "ramen", price: 0.9, available: 30}}
+  let(:dish_two) {{name: "chips", price: 0.50, available: 20}}
+  let(:dish_three) {{name: "ramen", price: 0.90, available: 30}}
   let(:list) {[dish_one, dish_two, dish_three]}
 
   #dummy basket

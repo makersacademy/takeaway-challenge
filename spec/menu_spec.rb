@@ -22,6 +22,8 @@ describe Menu do
   end
 
   context "method functionality" do
-    
+    it "#print displays the menu" do
+      expect{subject.print}.to output("Menu\n\nsoup      £1.99\nchips      £0.5\nramen      £0.9\n").to_stdout
+    end
   end
 end
