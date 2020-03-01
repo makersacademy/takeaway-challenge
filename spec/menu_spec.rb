@@ -5,7 +5,7 @@ describe Menu do
 
   context "initialized instance variable" do
     it "list" do
-      expect(subject.instance_variable_get(:@list)).to eql(list)
+      expect(subject.instance_variable_get(:@list)).to eq(list)
     end
   end
 

@@ -7,17 +7,17 @@ class Menu
   def print
     puts "Menu"
     puts ""
-    @list.map{|item| puts "#{item[:name]}      £#{item[:price]}" }
+    @list.map{|item| puts "#{item[:dish]}      £#{item[:price]}" }
   end
 
   def dish_exists?(dish)
-    @list.map {|item| return true if item[:name] == dish}
+    @list.map {|item| return true if item[:dish] == dish}
     false
   end
 
   def dish_available?(dish:, quantity:)
     @list.map{ |item| 
-    if item[:name] == dish
+    if item[:dish] == dish
       return false if (item[:available] - quantity) < 0
       return true 
     end }
