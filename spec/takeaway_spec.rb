@@ -3,7 +3,7 @@ require 'menu'
 require 'order'
 
 describe Takeaway do
-  let (:menu) {double :menu, menu_items: {:item => "Garlic Bread", :price => 5}}
+  let (:menu) {double :menu, menu_items: [{:item => "Garlic Bread", :price => 5}]}
   let (:order) {double :order}
   let (:subject) {Takeaway.new(menu, order)}
 
@@ -20,15 +20,18 @@ describe Takeaway do
   end
 
   describe '#add' do
-    it 'adds items to the current_order' do
+    before(:each) do
       allow(order).to receive(:add).with("Garlic Bread", 2)
       allow(order).to receive(:order_items)
+    end
+    it 'adds items to the current_order' do
       expect(subject.current_order).to eq order
     end
-    it 'puts the items added and the amounts to standard output' do
-      @message = "You have added 2 Garlic Bread to your order\n"
-      allow(order).to receive(:add).with("Garlic Bread", 2)
-      expect{ subject.add("Garlic Bread", 2) }.to output(@message).to_stdout
+    it 'does not raise error when a correct item is added' do
+      expect{subject.add("Garlic Bread", 2)}.not_to raise_error
+    end
+    it 'raises error when incorrect item is added' do
+      expect{subject.add("Goat", 1)}.to raise_error("Dish is not available")
     end
   end
 

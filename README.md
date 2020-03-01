@@ -165,3 +165,45 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## Added inheritance
 
 To streamline my methods I have let the takeaway object inherit the #view_menu method from Menu and let the Order object inherit the #add method from takeaway. I've also used dependecy injection to create instances of menu and order in takeaway's #initialize method. Its #add method uses the decorator pattern to achieve polymorphism.
+
+## Checking dishes
+
+As part of the 3rd user story I've added a check dish method to the Takeaway object. This method checks to see if the name of th e dish that is being added to the order exists on the menu. If not it raises an error.
+
+Feature test:
+
+```
+takeaway = Takeaway.new()
+
+takeaway.view_menu
+
+takeaway.add("Garlic Bread", 2)
+takeaway.add("Diavola", 1)
+takeaway.add("Romana", 2)
+takeaway.add("Goat", 1)
+
+puts takeaway.check("Diavola")
+
+puts takeaway.current_order.inspect
+
+```
+
+Luckily with this method in place you are unable to add a Goat to the order.
+
+```
+Garlic Bread: £5
+Dips: £3
+Margherita: £7
+Frutti di Mare: £11
+Romana: £10
+Americana: £11
+Padana: £9
+Calzone: £12
+Diavola: £12
+You have added 2 Garlic Bread to your order
+You have added 1 Diavola to your order
+You have added 2 Romana to your order
+Traceback (most recent call last):
+	1: from feature_test.rb:12:in `<main>'
+/Users/student/Documents/projects/takeaway-challenge/lib/takeaway.rb:16:in `add': Dish is not available (RuntimeError)
+```
