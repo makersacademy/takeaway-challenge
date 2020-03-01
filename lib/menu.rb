@@ -7,9 +7,7 @@ class Menu
   def print
     puts "Menu"
     puts ""
-    @list.map{|item|
-    puts "#{item[:name]}      £#{item[:price]}"
-    }
+    @list.map{|item| puts "#{item[:name]}      £#{item[:price]}" }
   end
 
   def dish_exists?(dish)
@@ -19,4 +17,5 @@ class Menu
   def dish_available?(dish:, quantity:)
     
   end
+
 end
