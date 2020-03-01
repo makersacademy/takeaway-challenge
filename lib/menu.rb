@@ -11,8 +11,9 @@ class Menu
       # here we need to make sure the float for price is two
       # decimal places otherwise it will say 15.5 instead of 15.50...
       # the gsub!(/_/, ' ').split.each{|i| i.capitalize!}.join(' ')
-      # capitalizes the second letter of the word so spaghetti lobster is Spaghetti Lobster not Spaghetti lobster
-      "%s £%.2f" % [title.to_s.gsub!(/_/, ' ').split.each{|i| i.capitalize!}.join(' '), price]
+      # capitalizes the second letter of the word so spaghetti
+      # lobster is Spaghetti Lobster not Spaghetti lobster
+      "%s £%.2f" % [title.to_s.gsub!(/_/, ' ').split.each{ |i| i.capitalize! }.join(' '), price]
     end.join(", ")
   end
 

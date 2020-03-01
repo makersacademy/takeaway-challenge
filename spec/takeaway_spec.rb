@@ -1,14 +1,19 @@
 require "takeaway"
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu, order: order) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms, config: {}) }
 
   let(:menu) { double(:menu, print: printed_menu) }
   # instance_double aka verifying double
   let(:order) { instance_double("Order", total: 15.50) }
+  let(:sms) { instance_double("SMS", deliver: nil) }
   let(:printed_menu) { "Spaghetti Lobster £30.00" }
 
-  let(:dishes) { {spaghetti_lobster: 2, salmon_tartare: 1} }
+  let(:dishes) { { spaghetti_lobster: 2, salmon_tartare: 1 } }
+
+  before do
+    allow(order).to receive(:add)
+  end
 # # As a customer
 # # So that I can check if I want to order something
 # # I would like to see a list of dishes with prices
@@ -29,7 +34,6 @@ describe Takeaway do
 # # I would like to check that the total I have been given matches
 # # the sum of the various dishes in my order
   it "knows the order total" do
-    allow(order).to receive(:add)
     total = takeaway.place_order(dishes)
     expect(total).to be(15.50)
   end
@@ -37,7 +41,8 @@ describe Takeaway do
 # # So that I am reassured that my order will be delivered on time
 # # I would like to receive a text such as "Thank you! Your order
 # # was placed and will be delivered before 18:52" after I have ordered
-#   it "will receive a text when order is placed" do
-#
-#   end
+  it "will send an sms when order is placed" do
+    expect(sms).to receive(:deliver)
+    takeaway.place_order(dishes)
+  end
 end
