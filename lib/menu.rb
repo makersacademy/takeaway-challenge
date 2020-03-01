@@ -2,6 +2,9 @@ require_relative "order"
 
 class Menu
 
+
+  attr_reader :menu
+
   def initialize
     @menu = [
       { :name => "Pizza", :price => 15 },

@@ -7,7 +7,9 @@ describe Order do
 
   describe "#dish" do
     it "adds selected dishes and quantity to order" do
-
+      subject.dish("Pizza", 2)
+      expect(subject.order).to eq [{ :name => "Pizza", :price => 15 }]
+      expect(subject.total).to eq 30
 
     end
 
