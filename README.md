@@ -97,7 +97,7 @@ end
 
 ________________
 
-Message object
+Message Object
 
 ```
 initialize()
