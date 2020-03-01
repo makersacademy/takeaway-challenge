@@ -14,14 +14,14 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-03-01T15:52:04+00:00">2020-03-01T15:52:04+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-03-01T17:36:26+00:00">2020-03-01T17:36:26+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">95.68%</span></span>
+    (<span class="covered_percent"><span class="green">95.1%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>9</b> files in total.
-    <b>139</b> relevant lines. 
-    <span class="green"><b>133</b> lines covered</span> and
-    <span class="red"><b>6</b> lines missed </span>
+    <b>143</b> relevant lines. 
+    <span class="green"><b>136</b> lines covered</span> and
+    <span class="red"><b>7</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -53,7 +53,7 @@
       <tr>
         <td class="strong"><a href="#2d88561db12ad5fb1e4cc4c0dce45df338fb3679" class="src_link" title="lib/customer.rb">lib/customer.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>30</td>
+        <td>41</td>
         <td>15</td>
         <td>15</td>
         <td>0</td>
@@ -63,7 +63,7 @@
       <tr>
         <td class="strong"><a href="#310258baa697b2f7ce97fa38980774f17dfd7368" class="src_link" title="lib/fake_sms.rb">lib/fake_sms.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>13</td>
+        <td>6</td>
         <td>3</td>
         <td>3</td>
         <td>0</td>
@@ -73,37 +73,37 @@
       <tr>
         <td class="strong"><a href="#3d48ebc770ef25e4bad73c03e32663d8c0c68d14" class="src_link" title="lib/menu.rb">lib/menu.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>41</td>
-        <td>15</td>
-        <td>15</td>
+        <td>32</td>
+        <td>16</td>
+        <td>16</td>
         <td>0</td>
-        <td>3.3</td>
+        <td>3.4</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#12f33293d063215f65203118b7cdc161f4904170" class="src_link" title="lib/order.rb">lib/order.rb</a></td>
-        <td class="yellow strong">88.24 %</td>
-        <td>62</td>
-        <td>34</td>
-        <td>30</td>
+        <td class="yellow strong">88.89 %</td>
+        <td>66</td>
+        <td>36</td>
+        <td>32</td>
         <td>4</td>
-        <td>3.9</td>
+        <td>3.8</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#e587b75cac29ce7874863c65191526a66cc51cbf" class="src_link" title="lib/sms.rb">lib/sms.rb</a></td>
-        <td class="red strong">66.67 %</td>
+        <td class="red strong">57.14 %</td>
         <td>18</td>
-        <td>6</td>
+        <td>7</td>
         <td>4</td>
-        <td>2</td>
-        <td>0.7</td>
+        <td>3</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#f215acb616d367889f38430037e4f52e551cf3ce" class="src_link" title="spec/customer_spec.rb">spec/customer_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>45</td>
+        <td>53</td>
         <td>27</td>
         <td>27</td>
         <td>0</td>
@@ -113,7 +113,7 @@
       <tr>
         <td class="strong"><a href="#9e4ebcbb4e5b351796bc7025b4b4632d5d2d70fc" class="src_link" title="spec/menu_spec.rb">spec/menu_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>20</td>
+        <td>15</td>
         <td>8</td>
         <td>8</td>
         <td>0</td>
@@ -203,7 +203,7 @@
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">  # make it possible for customer to remove items from order (.remove_dish(dish, quantity_to_remove))</code>
+          <code class="ruby">  # customer to remove items from order (.remove_dish(dish, quantity))</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
@@ -302,34 +302,34 @@
           <code class="ruby">  def select_dish(dish_num, quantity = 1)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="23">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="23">
           
-          <code class="ruby">    @order.add(dish_num, quantity)</code>
+          
+          <code class="ruby">    # raise error if dish_num isn&#39;t an integer</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    # raise error if dish_number is on menu (i.e. too high or too low)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    # raise error if quanity is &lt; 1</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="26">
           
-          <code class="ruby">  def place_order</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="27">
           <span class="hits">1</span>
           
-          <code class="ruby">    @order.confirmed(@phone_number)</code>
+          <code class="ruby">    @order.add(dish_num, quantity)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
@@ -345,6 +345,72 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby">  # def remove_dish(dish, quantity)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">  #   # raise_error if dish isn&#39;t in order</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby">  #   # raise_error if quanity is &lt; 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">  #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">  #   @order.remove(dish, quantity)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="37">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def place_order</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="38">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @order.confirmed(@phone_number)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby">end</code>
@@ -378,70 +444,28 @@
         <li class="never" data-hits="" data-linenumber="2">
           
           
-          <code class="ruby">  # Message = Struct.new(:num, :msg, :app)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby">  # @messages = []</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby">  # def initialize(phone_number, message)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby">  #   @messages = message</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby">  #   #send_sms phone_number, message</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby">  # end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="10">
+        <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
           <code class="ruby">  def send_sms phone_number, message</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="11">
+        <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
           <code class="ruby">    &quot;#{message} was sent to #{phone_number}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="12">
+        <li class="never" data-hits="" data-linenumber="5">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="never" data-hits="" data-linenumber="6">
           
           
           <code class="ruby">end</code>
@@ -457,8 +481,8 @@
     <h3>lib/menu.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>15</b> relevant lines. 
-      <span class="green"><b>15</b> lines covered</span> and
+      <b>16</b> relevant lines. 
+      <span class="green"><b>16</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -493,157 +517,157 @@
         <li class="covered" data-hits="1" data-linenumber="5">
           <span class="hits">1</span>
           
-          <code class="ruby">  def initialize</code>
+          <code class="ruby">  def initialize(takeaway_name = &quot;Takeaway&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="covered" data-hits="6" data-linenumber="6">
+          <span class="hits">6</span>
           
-          
-          <code class="ruby">    # Dish.new(&#39;pizza&#39;, 10.50), Dish.new(&#39;curry&#39;, 8.00), Dish.new(&#39;burger&#39;, 6.50)</code>
+          <code class="ruby">    @takeaway_name = takeaway_name</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
           
           
-          <code class="ruby">    # @menu = create_menu</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
           <code class="ruby">    @menu = [</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="9">
+        <li class="covered" data-hits="6" data-linenumber="8">
           <span class="hits">6</span>
           
           <code class="ruby">      { dish: &#39;pizza&#39;, price: 10.50 },</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">      { dish: &#39;curry&#39;, price: 8.00 },</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="10">
           
           
           <code class="ruby">      { dish: &#39;burger&#39;, price: 6.50 }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="12">
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby">    ] # I think, in reality, the menu would be loaded from a server</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="never" data-hits="" data-linenumber="13">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="15">
+        <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
           <code class="ruby">  def display</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="16">
+        <li class="covered" data-hits="2" data-linenumber="15">
           <span class="hits">2</span>
           
-          <code class="ruby">    puts &quot;\nWelcome to Takeaway\n&quot;</code>
+          <code class="ruby">    puts &quot;\nWelcome to #{@takeaway_name}\n&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="17">
+        <li class="covered" data-hits="2" data-linenumber="16">
           <span class="hits">2</span>
           
           <code class="ruby">    puts &quot;\n&quot; + left(&quot;item&quot;) + left(&quot;Dish&quot;) + &quot;Price&quot;.center(10)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="18">
+        <li class="covered" data-hits="2" data-linenumber="17">
           <span class="hits">2</span>
           
           <code class="ruby">    @menu.each.with_index do |item, i|</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="19">
+        <li class="covered" data-hits="6" data-linenumber="18">
           <span class="hits">6</span>
           
           <code class="ruby">      puts left((i + 1).to_s + &quot;.&quot;) + left(item[:dish]) + currency(item[:price]).center(10)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="21">
+        <li class="covered" data-hits="2" data-linenumber="20">
           <span class="hits">2</span>
           
           <code class="ruby">    puts &quot;\nPlease .select_dish (item number) and quantity\n&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
-          <code class="ruby"># @display.push([i, item[:name], item[:price]]</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # def create_menu</code>
+          <code class="ruby">  private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
           
+          <code class="ruby">  def currency money</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="25">
+          <span class="hits">6</span>
           
-          <code class="ruby">  #   @menu = [</code>
+          <code class="ruby">    &#39;£%.2f&#39; % money</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">  #     Dish.new(&#39;pizza&#39;, 10.50),</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
-          <code class="ruby">  #     Dish.new(&#39;curry&#39;, 8.00),</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="28">
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  #     Dish.new(&#39;burger&#39;, 6.50)</code>
+          <code class="ruby">  def left string</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="covered" data-hits="16" data-linenumber="29">
+          <span class="hits">16</span>
           
-          
-          <code class="ruby">  #   ]</code>
+          <code class="ruby">    &#39;%-10s&#39; % string</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
@@ -652,61 +676,7 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  private</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="33">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def currency money</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="34">
-          <span class="hits">6</span>
-          
-          <code class="ruby">    &#39;£%.2f&#39; % money</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="35">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def left string</code>
-        </li>
-      
-        <li class="covered" data-hits="16" data-linenumber="38">
-          <span class="hits">16</span>
-          
-          <code class="ruby">    &#39;%-10s&#39; % string</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby">end</code>
@@ -720,10 +690,10 @@
         <div class="source_table" id="12f33293d063215f65203118b7cdc161f4904170">
   <div class="header">
     <h3>lib/order.rb</h3>
-    <h4><span class="yellow">88.24 %</span> covered</h4>
+    <h4><span class="yellow">88.89 %</span> covered</h4>
     <div>
-      <b>34</b> relevant lines. 
-      <span class="green"><b>30</b> lines covered</span> and
+      <b>36</b> relevant lines. 
+      <span class="green"><b>32</b> lines covered</span> and
       <span class="red"><b>4</b> lines missed.</span>
     </div>
   </div>
@@ -764,13 +734,13 @@
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">  # if you .add a negative quanity (e.g. .add(1,-2)) should raise an error suggesting you remove items</code>
+          <code class="ruby">  # .add: negative quanity should raise an error</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
           
           
-          <code class="ruby">  # if remove item is implemented then need to make sure the maximum number of items to remove is quantity in basket</code>
+          <code class="ruby">  # .remove: maximum number of items to remove is quantity in basket</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -929,175 +899,199 @@
           <code class="ruby">    @total += price * quantity</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="covered" data-hits="4" data-linenumber="34">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    update_order dish, price, quantity</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">    # work out if this dish is already part of the order</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="35">
-          <span class="hits">4</span>
+        <li class="never" data-hits="" data-linenumber="36">
           
-          <code class="ruby">    added = false</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="36">
-          <span class="hits">4</span>
+        <li class="never" data-hits="" data-linenumber="37">
           
-          <code class="ruby">    @order.map do |item|</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
           
-          <code class="ruby">      if item[:dish] == dish</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="38">
           <span class="hits">1</span>
           
-          <code class="ruby">        item[:quantity] += quantity</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="39">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        item[:amount] = price * item[:quantity]</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="40">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        added = true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="41">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="42">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="43">
-          <span class="hits">4</span>
-          
-          <code class="ruby">    @order.push({ dish: dish, quantity: quantity, amount: price * quantity }) unless added</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="44">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="45">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="46">
-          <span class="hits">1</span>
-          
           <code class="ruby">  def confirmed(phone_number)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="47">
+        <li class="missed" data-hits="0" data-linenumber="39">
           
           
           <code class="ruby">    delivery_time = (Time.new + (60 * 60)).strftime(&#39;%k:%M&#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="48">
+        <li class="missed" data-hits="0" data-linenumber="40">
           
           
           <code class="ruby">    message = &quot;Thankyou! Your order was placed and will be delivered before #{delivery_time}&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="49">
+        <li class="missed" data-hits="0" data-linenumber="41">
           
           
-          <code class="ruby">    SMS.new.send_sms phone_number, message</code>
+          <code class="ruby">    SMS.new phone_number, message</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
+        <li class="missed" data-hits="0" data-linenumber="42">
           
           
           <code class="ruby">    puts &quot;Message was sent&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="53">
+        <li class="covered" data-hits="1" data-linenumber="45">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="54">
+        <li class="covered" data-hits="1" data-linenumber="46">
           <span class="hits">1</span>
           
           <code class="ruby">  def currency money</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="55">
+        <li class="covered" data-hits="18" data-linenumber="47">
           <span class="hits">18</span>
           
           <code class="ruby">    &#39;£%.2f&#39; % money</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="58">
+        <li class="covered" data-hits="1" data-linenumber="50">
           <span class="hits">1</span>
           
           <code class="ruby">  def left string</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="59">
+        <li class="covered" data-hits="18" data-linenumber="51">
           <span class="hits">18</span>
           
           <code class="ruby">    &#39;%-10s&#39; % string</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="60">
+        <li class="never" data-hits="" data-linenumber="52">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def update_order dish, price, quantity</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="55">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    added = false</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="56">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    @order.map do |item|</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="57">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      if item[:dish] == dish</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="58">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        item[:quantity] += quantity</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="59">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        item[:amount] = price * item[:quantity]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        added = true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="63">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    @order.push({ dish: dish, quantity: quantity, amount: price * quantity }) unless added</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">end</code>
@@ -1111,11 +1105,11 @@
         <div class="source_table" id="e587b75cac29ce7874863c65191526a66cc51cbf">
   <div class="header">
     <h3>lib/sms.rb</h3>
-    <h4><span class="red">66.67 %</span> covered</h4>
+    <h4><span class="red">57.14 %</span> covered</h4>
     <div>
-      <b>6</b> relevant lines. 
+      <b>7</b> relevant lines. 
       <span class="green"><b>4</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -1158,10 +1152,10 @@
           <code class="ruby">    @client = Twilio::REST::Client.new(account_sid, auth_token)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="missed" data-hits="0" data-linenumber="7">
           
           
-          <code class="ruby">    #send_sms phone_number, message, from</code>
+          <code class="ruby">    send_sms phone_number, message</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -1471,49 +1465,97 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="38">
           
-          <code class="ruby">  describe &#39;.place_order&#39; do</code>
+          
+          <code class="ruby">  # describe &#39;.remove_dish&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="39">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="39">
           
-          <code class="ruby">    it { is_expected.to respond_to(:place_order) }</code>
+          
+          <code class="ruby">  #   it { is_expected.to respond_to(:remove_dish).with(2).arguments }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="40">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="40">
           
-          <code class="ruby">    it &#39;calls confirmed method in order class&#39; do</code>
+          
+          <code class="ruby">  #   it &#39;calls remove method in order class&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="41">
           
-          <code class="ruby">      expect(order).to receive(:confirmed)</code>
+          
+          <code class="ruby">  #     expect(order).to receive(:remove).with(1, 2)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="42">
           
-          <code class="ruby">      customer.place_order</code>
+          
+          <code class="ruby">  #     customer.select_dish(1, 2)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="46">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &#39;.place_order&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="47">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    it { is_expected.to respond_to(:place_order) }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="48">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;calls confirmed method in order class&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(order).to receive(:confirmed)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="50">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      customer.place_order</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby">end</code>
@@ -1562,97 +1604,67 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby">  # let(:pizza) { double :dish, name: &#39;pizza&#39;, price: 10.50 }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby">  # let(:curry) { double :dish, name: &#39;curry&#39;, price: 8.00 }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby">  # let(:burger) { double :dish, name: &#39;burger&#39;, price: 6.50 }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="9">
+        <li class="covered" data-hits="3" data-linenumber="5">
           <span class="hits">3</span>
           
           <code class="ruby">  subject(:menu) { described_class.new }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
-          
-          
-          <code class="ruby">  # before { allow(subject).to receive(:create_menu).and_return([pizza, curry, burger]) }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="11">
-          
-          
-          <code class="ruby">  # [pizza, curry, burger]</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  describe &#39;.display&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    it { is_expected.to respond_to :display }</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="14">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    it &#39;to return an array of item number, dish name and price&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="15">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      expect { menu.display }.to output(/pizza/).to_stdout</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="16">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      expect { menu.display }.to output(/10.50/).to_stdout</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="6">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &#39;.display&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="8">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    it { is_expected.to respond_to :display }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;to return an array of item number, dish name and price&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="10">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      expect { menu.display }.to output(/pizza/).to_stdout</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="11">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      expect { menu.display }.to output(/10.50/).to_stdout</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">end</code>

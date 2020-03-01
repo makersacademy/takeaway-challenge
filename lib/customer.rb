@@ -27,12 +27,12 @@ class Customer
     @order.add(dish_num, quantity)
   end
 
-  def remove_dish(dish, quantity)
-    # raise_error if dish isn't in order
-    # raise_error if quanity is < 1
-
-    @order.remove(dish, quantity)
-  end
+  # def remove_dish(dish, quantity)
+  #   # raise_error if dish isn't in order
+  #   # raise_error if quanity is < 1
+  #
+  #   @order.remove(dish, quantity)
+  # end
 
   def place_order
     @order.confirmed(@phone_number)

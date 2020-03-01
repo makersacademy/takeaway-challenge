@@ -98,49 +98,23 @@ The delivery time is 1 hour from the time that the order is placed.
 How programme is constructed:
 ---
 
-- Customer class
-  - State
-    - @menu (-> dependency on Menu class)
-    - @order (-> dependency on Order class)
-    - @phone_number
-  - Behaviour
-    - show_menu (-> calls Menu .display)
-    - select_dish (-> calls Order .add)
-    - remove_dish (not implemented yet)
-    - show_order (-> calls Order .display)
-    - place_order (-> calls Order .confirmed)
+|  class    | State     | Behaviour   |
+|-----------|-----------|-------------|
+| Customer  | @menu (-> dependency on Menu class)<br>@order (-> dependency on Order class)<br>@phone_number | show_menu() (-> calls Menu .display) <br> select_dish(dish_number, quantity) (-> calls Order .add) <br> remove_dish(dish_number, quantity) (not implemented yet) <br> show_order() (-> calls Order .display)<br>place_order() (-> calls Order .confirmed)|
+| Menu      | @takeaway_name <br> @menu | display() |
+| Order     | @order <br> @total <br> @menu (-> dependency on Menu class)| add() <br> display() <br> confirmed() (-> calls SMS.new, which sends SMS)|
+| SMS       | @client | send_sms(phone_number, message) |
 
-
-- Menu class
-  - State
-    - @takeaway_name
-    - @menu
-  - Behaviour
-    - display
-
-
-- Order class
-  - State
-    - @order
-    - @total
-    - @menu = Menu.new
-  - Behaviour
-    - add
-    - display
-    - confirmed (-> calls SMS.new, which sends SMS)
-
-
-- SMS
-  - State
-    - @client
-  - Behaviour
-    - send_sms
 
 Known issues
 ---
 - Users can currently enter an item number that isn't on the menu without it raising a useful error. This needs to be implemented
 
 - If a users puts in a negative quantity to the .select_dish method it will minus this from the order (even allowing the order quantity to be negative). It should instead raise an error. This needs to be implemented.
+
+- Not all the code follows the Single Responsibility Principle yet
+
+- Rubocop is currently giving 4 offenses. These need to be sorted out.
 
 Future improvements
 ---
