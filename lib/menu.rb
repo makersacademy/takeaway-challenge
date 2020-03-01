@@ -11,11 +11,16 @@ class Menu
   end
 
   def dish_exists?(dish)
-    
+    @list.map {|item| return true if item[:name] == dish}
+    false
   end
 
   def dish_available?(dish:, quantity:)
-    
+    @list.map{ |item| 
+    if item[:name] == dish
+      return false if (item[:available] - quantity) < 0
+      return true 
+    end }
   end
 
 end

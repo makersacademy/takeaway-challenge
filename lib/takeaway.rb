@@ -33,7 +33,7 @@ class Takeaway
   
   def dish_valid?(dish, quantity)
     raise "food is not on menu, bruh" if !@menu.dish_exists?(dish)
-    raise "not enough available to fulfill your order." if !@menu.dish_available?("soup", 10)
+    raise "not enough available to fulfill your order." if !@menu.dish_available?(dish, quantity)
   end
 
   # def order_on_menu?(dish)
