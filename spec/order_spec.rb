@@ -36,11 +36,6 @@ describe Order do
       allow(menu).to receive(:price).with(:waffles).and_return(8)
     end
   
-    it "adds the total of multiples of one dish" do
-      order.adds_item(:duck, 2)
-      expect(subject.total_per_item).to eq [20]
-    end
-  
     it "adds the total price of the dishes" do
       order.adds_item(:duck, 2)
       order.adds_item(:waffles, 1)
