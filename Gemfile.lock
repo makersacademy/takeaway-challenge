@@ -1,7 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ansi (1.5.0)
     diff-lcs (1.3)
+    docile (1.3.2)
+    dotenv (2.7.5)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     jwt (2.2.1)
@@ -22,16 +25,30 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
+    simplecov (0.18.5)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+    simplecov-console (0.6.0)
+      ansi
+      simplecov
+      terminal-table
+    simplecov-html (0.12.2)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     twilio-ruby (5.31.5)
       faraday (~> 1.0.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
+    unicode-display_width (1.6.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   rspec
+  simplecov
+  simplecov-console
   twilio-ruby
 
 RUBY VERSION

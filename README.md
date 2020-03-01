@@ -108,7 +108,7 @@ initialize()
 end
 
 send
-  sends the message
+  ../send_sms.rb
 end
 ```
 
