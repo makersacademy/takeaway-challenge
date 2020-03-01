@@ -1,22 +1,17 @@
 require_relative "order"
 
-class Dishes
-
-  # attr_reader :list
+class Menu
 
   def initialize
-    @list = []
-    
-  end
-
-  def list
-    @list = [
+    @menu = [
       { :name => "Pizza", :price => 15 },
       { :name => "Burger", :price => 12 },
       { :name => "Salad", :price => 10 }
     ]
+  end
 
-    @list.each do |dish|
+  def print_menu
+    @menu.each do |dish|
       puts "#{dish[:name]}: £#{dish[:price]}"
     end
   end
