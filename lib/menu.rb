@@ -47,6 +47,14 @@ class Menu
     puts formatted_menu
   end
 
+  def dish_available?(dish)
+    ITEMS.has_key?(dish)
+  end
+
+  def dish_price(dish)
+    ITEMS[dish][:price]
+  end
+
   private
 
   def formatted_menu

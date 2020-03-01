@@ -37,7 +37,7 @@ class Order
   end
 
   def dish_available?(dish)
-    Menu::ITEMS.has_key?(dish)
+    @menu.dish_available?(dish)
   end
 
   def totals_match?(total)

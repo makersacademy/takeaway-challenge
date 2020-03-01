@@ -4,9 +4,10 @@ class Basket
 
   attr_reader :subtotal
 
-  def initialize
+  def initialize(menu = Menu.new)
     @basket = []
     @subtotal = 0
+    @menu = menu
   end
 
   def update(dish, quantity)
@@ -25,7 +26,7 @@ class Basket
   private
 
   def dish_price(dish)
-    Menu::ITEMS[dish][:price]
+    @menu.dish_price(dish)
   end
 
   def price_times_quantity(dish, quantity)

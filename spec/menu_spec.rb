@@ -24,4 +24,20 @@ describe Menu do
     end
   end
 
+  describe "#dish_available?" do
+    it "returns false if dish is not in the menu" do
+      expect(menu.dish_available?("pizza")).to eq false
+    end
+
+    it "returns true if dish is in the menu" do
+      expect(menu.dish_available?("burger")).to eq true
+    end
+  end
+
+  describe "#dish_price" do
+    it "returns the dish price" do
+      expect(menu.dish_price("burger")).to eq 10.0
+    end
+  end
+
 end
