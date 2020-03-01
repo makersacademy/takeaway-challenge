@@ -118,8 +118,10 @@ Known issues
 
 Future improvements
 ---
-- implement a .remove_dish function to allow the customer to remove dishes from their order. This introduces some complications. It would help if the order had item numbers to make it easier to select the order item they want. There would also need to be checks in place to ensure quantity doesn't go negative, and to remove item if quanity is 0.
+- implement a .remove_dish function to allow the customer to remove dishes from their order. Some existing functions will need to be modified in order to introduce the feature. For example, it would help if the order had item numbers to make it easier to select the order item they want remove. There would also need to be checks in place to ensure the quantity doesn't go negative, and to remove items completely from the order if quantity is < 1.
 
-- It would be nice if the programme displayed a message to the user when they selected a dish. Something like: "2 burgers have been added to your order"
+- It would be nice if the programme displayed a message to the user when they've selected a dish to add to their order. Something like: "2 burgers have been added to your order"
 
-- As this programme develops, it should have a dish object and a better way to load/update menus
+- As this programme develops, it should have a dish object to store information about each dish (dish description, ingredients, vegetarian? vegan? gluten_free? etc)
+
+- it would be good to introduce functionality to load/update menus.
