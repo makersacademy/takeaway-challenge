@@ -1,8 +1,14 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-group :test do
+ruby '2.6.5'
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+group :test, :development do
+  gem "twilio-ruby"
   gem 'rspec'
-  gem 'rubocop', '0.72.0'
-  gem 'simplecov', require: false, group: :test
-  gem 'simplecov-console', require: false, group: :test
+  gem 'simplecov', require: false
+  gem 'simplecov-console'
+  gem 'dotenv'
+  gem 'rubocop', '~> 0.80.1', require: false
 end
