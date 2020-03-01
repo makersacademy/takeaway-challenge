@@ -1,4 +1,5 @@
 class Basket
+  attr_reader :contents
   def initialize
     @contents = []
   end
@@ -7,8 +8,9 @@ class Basket
     sum = 0
     puts "Basket"
     puts ""
-    @contents.map{|item| puts "x#{item[:ordered]} #{item[:dish]}      £#{item[:price] * item[:ordered]}"
-    sum += (item[:price] * item[:ordered])
+    @contents.map{|item| sum_item = item[:price].to_f * item[:ordered].to_f
+      puts "x#{item[:ordered]} #{item[:dish]}      £#{sum_item}"
+    sum += (item[:price].to_f * item[:ordered].to_f)
   }
   puts"total:      £#{sum}"
   end 

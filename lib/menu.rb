@@ -1,5 +1,6 @@
 require_relative "./default_menu_list.rb"
 class Menu
+  attr_reader :list
   def initialize(list = DEFAULT_MENU_LIST)
     @list = list
   end

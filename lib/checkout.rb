@@ -4,7 +4,7 @@ class Checkout
   end
   def order_confirmation(order_details)
     display_order(order_details)
-    @message.send
+    @message.sending
   end
 
   private
