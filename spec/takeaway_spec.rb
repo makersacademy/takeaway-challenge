@@ -53,6 +53,14 @@ describe Takeaway do
       expect(checkout_klass).to receive(:order_confirmation?).once
       subject.checkout
     end
+    it "#checkout delegates to #empty_basket" do
+      expect(subject).to receive(:empty_basket).once
+      subject.checkout
+    end
+    it "#empty_basket delegates to Basket.empty" do
+      expect(basket_klass).to receive(:empty).once
+      subject.empty_basket
+    end
   end
 
   context "handling error" do

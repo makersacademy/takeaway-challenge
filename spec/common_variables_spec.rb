@@ -12,8 +12,8 @@ shared_context "common takeaway" do
 
   #doubles for Takeaway class
   let(:menu_klass) {double("menu", list: list, print: "print menu", dish_exists?: true, dish_available?: true)}
-  let(:basket_klass) {double("basket", print: "print basket", add: "add desired dish", details: {name: "soup", price: 1.99, ordered: 2})}
-  let(:checkout_klass) {double("checkout", order_confirmation: false, send_confirmation_message: "")}
+  let(:basket_klass) {double("basket", print: "print basket", add: "add desired dish", details: [{name: "soup", price: 1.99, ordered: 2}], empty: "")}
+  let(:checkout_klass) {double("checkout", order_confirmation?: false, send_confirmation_message: "")}
 
   #initialize subject with doubles
   subject{described_class.new({name: "Dishoom", menu: menu_klass, basket: basket_klass, checkout: checkout_klass})}

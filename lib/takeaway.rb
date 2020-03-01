@@ -22,10 +22,11 @@ class Takeaway
   def checkout
     raise "nothing in your basket, bruh" if @basket.details.empty?
     @checkout.order_confirmation?(@basket.details)
+    empty_basket
   end
 
   def empty_basket
-    
+    @basket.empty
   end
 
   private
