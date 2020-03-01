@@ -17,7 +17,7 @@ class Customer
     @order.display
   end
 
-  def select_dish(dish, quantity)
+  def select_dish(dish, quantity = 1)
     @order.add(dish, quantity)
   end
 
