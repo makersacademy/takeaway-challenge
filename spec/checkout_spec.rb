@@ -1,12 +1,12 @@
 require "checkout"
 
 shared_context "common checkout" do
-  let(:messsage_klass) {double("message", sending: "send")}
+  let(:messsage_klass) { double("message", sending: "send") }
   subject {described_class.new(messsage_klass)}
   #dummy basket
-  let(:dish_two_basket) {{dish: "chips", price: 0.5, ordered: 5}}
-  let(:dish_three_basket) {{dish: "ramen", price: 0.9, ordered: 10}}
-  let(:basket) {[dish_two_basket, dish_three_basket]}
+  let(:dish_two_basket) {{ dish: "chips", price: 0.5, ordered: 5 }}
+  let(:dish_three_basket) {{ dish: "ramen", price: 0.9, ordered: 10 }}
+  let(:basket) { [dish_two_basket, dish_three_basket] }
 end
 
 describe Checkout do

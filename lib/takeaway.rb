@@ -16,7 +16,7 @@ class Takeaway
 
   def add_to_basket(dish:, quantity:)
     dish_valid?(dish, quantity)
-    price = price(dish)
+    price = @menu.dish_price(dish)
     @basket.add(dish: dish, ordered: quantity, price: price)
   end
 
@@ -31,11 +31,6 @@ class Takeaway
   end
 
   private
-
-  def price(dish)
-    puts "im here man"
-    @menu.list.map{|item| return item[:price] if dish == item[:dish]}
-  end
   
   def dish_valid?(dish, quantity)
     raise "food is not on menu, bruh" if !@menu.dish_exists?(dish)

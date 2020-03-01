@@ -66,15 +66,15 @@ describe Takeaway do
   context "handling error" do
     it "#add_to_basket throws error if requested dish is not on menu" do
       allow(menu_klass).to receive(:dish_exists?).and_return(false)
-      expect{subject.add_to_basket(dish: "disgusting food", quantity: 2)}.to raise_error("food is not on menu, bruh")
+      expect{ subject.add_to_basket(dish: "disgusting food", quantity: 2) }.to raise_error("food is not on menu, bruh")
     end
     it "#add_to_basket throws error if not enough of the requested dish is available" do
       allow(menu_klass).to receive(:dish_available?).and_return(false)
-      expect{subject.add_to_basket(dish: "soup", quantity: 10)}.to raise_error("not enough available to fulfill your order.")
+      expect{ subject.add_to_basket(dish: "soup", quantity: 10) }.to raise_error("not enough available to fulfill your order.")
     end
     it "#checkout throws error if basket is empty" do
       allow(basket_klass).to receive(:details).and_return([])
-      expect{subject.checkout}.to raise_error("nothing in your basket, bruh")
+      expect{ subject.checkout }.to raise_error("nothing in your basket, bruh")
     end
   end
 end

@@ -2,9 +2,9 @@ require "basket"
 shared_context "common basket" do
 
   #dummy basket
-  let(:dish_two_basket) {{dish: "chips", price: 0.5, ordered: 5}}
-  let(:dish_three_basket) {{dish: "ramen", price: 0.9, ordered: 10}}
-  let(:basket) {[dish_two_basket, dish_three_basket]}
+  let(:dish_two_basket) { {dish: "chips", price: 0.5, ordered: 5} }
+  let(:dish_three_basket) { {dish: "ramen", price: 0.9, ordered: 10} }
+  let(:basket) { [dish_two_basket, dish_three_basket] }
 end
 
 describe Basket do

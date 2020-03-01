@@ -19,6 +19,9 @@ describe Menu do
     it "#dish_available?" do
       expect(subject).to respond_to(:dish_available?).with_keywords(:dish, :quantity)
     end
+    it "#dish_price" do
+      expect(subject).to respond_to(:dish_price).with(1).arguments
+    end
   end
 
   context "method functionality" do
@@ -36,6 +39,9 @@ describe Menu do
     end
     it "#dish_available? returns true if quantity meets availability of dish" do
       expect(subject.dish_available?({dish: "chips", quantity: 20})).to eq(true)
+    end
+    it "#dish_price returns price of chips, £0.50" do
+      expect(subject.dish_price("chips")).to eq(0.5)
     end
   end
 end
