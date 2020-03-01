@@ -1,32 +1,27 @@
 require_relative 'menu'
+require_relative 'basket'
 
 class Order
 
-  attr_reader :basket, :subtotal
-
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, basket = Basket.new)
     @menu = menu
-    @basket = []
-    @subtotal = 0
+    @basket = basket
   end
 
   def view_menu
     @menu.view
   end
 
-  def add(dish_name, quantity)
+  def add(dish, quantity)
     fail "Quantity not provided. Please try again." unless integer?(quantity)
 
-    fail "Dish not available. Please try again." unless dish_available?(dish_name)
+    fail "Dish not available. Please try again." unless dish_available?(dish)
 
-    update_basket(dish_name, quantity)
-    update_subtotal(dish_name, quantity)
-    confirm_item_added(dish_name, quantity)
+    process(dish, quantity)
   end
 
   def view_basket
-    print_basket
-    @subtotal
+    @basket.print
   end
 
   def checkout(total)
@@ -37,22 +32,6 @@ class Order
 
   private
 
-  def update_basket(dish_name, quantity)
-    @basket << { name: dish_name, quantity: quantity }
-  end
-
-  def update_subtotal(dish, quantity)
-    @subtotal += price_times_quantity(dish, quantity)
-  end
-
-  def price_times_quantity(dish, quantity)
-    dish_price(dish) * quantity
-  end
-
-  def dish_price(dish)
-    Menu::ITEMS[dish][:price]
-  end
-
   def integer?(quantity)
     quantity.is_a?(Integer)
   end
@@ -62,7 +41,13 @@ class Order
   end
 
   def totals_match?(total)
-    @subtotal == total
+    @basket.subtotal == total
+  end
+
+  def process(dish, quantity)
+    @basket.update(dish, quantity)
+    @basket.update_subtotal(dish, quantity)
+    confirm_item_added(dish, quantity)
   end
 
   def confirm_item_added(dish, quantity)
@@ -72,17 +57,4 @@ class Order
       "#{quantity} #{dish}s added to basket"
     end
   end
-
-  def print_basket
-    basket = @basket.map do |dish|
-      quantity = dish[:quantity]
-      dish_name = dish[:name]
-      dish_price = dish_price(dish_name)
-      total = price_times_quantity(dish_name, dish[:quantity])
-
-      "#{quantity} x #{dish_name} @ #{dish_price}: #{total}\n"
-    end
-    puts basket.join(" ")
-  end
-
 end

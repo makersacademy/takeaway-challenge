@@ -21,19 +21,6 @@ describe Order do
       end
     end
 
-    context "adds items to basket and subtotal" do
-      it "adds the dishes and quantities to the basket" do
-        order.add("burger", 2)
-        expect(order.basket).to eq [{ name: "burger", quantity: 2 }]
-      end
-
-      it "subtotals the items in the basket" do
-        order.add("burger", 2)
-        order.add("fries", 3)
-        expect(order.subtotal).to eq 32
-      end
-    end
-
     context "confirms items added to basket" do
       it "doesn't add 's' to dish names ending in 's'" do
         expect(order.add("fries", 3)).to eq "3 fries added to basket"
@@ -59,7 +46,7 @@ describe Order do
       expect { order.checkout(10) }.to raise_error "Incorrect order total. Please try again."
     end
 
-    it "sends the user a confimation message" do
+    it "sends the user a confimation message if order placed succesfully" do
       expect(order.checkout(32)).to eq "Thank you! Your order was placed and will be delivered before #{Time.now}"
     end
   end
