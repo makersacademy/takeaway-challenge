@@ -12,4 +12,8 @@ class Menu
     end.join(", ")
   end
 
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
+
 end
