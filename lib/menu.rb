@@ -44,10 +44,16 @@ class Menu
   }
 
   def view
+    puts formatted_menu
+  end
+
+  private
+
+  def formatted_menu
     items = ITEMS.map do |_, item_details|
       "#{item_details[:name]} #{item_details[:price]}\n"
     end
-    puts items.join(" ")
+    items.join(" ")
   end
 
 end

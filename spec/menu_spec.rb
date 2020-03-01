@@ -5,8 +5,6 @@ describe Menu do
   subject(:menu) { described_class.new }
 
   describe "#view" do
-    it { is_expected.to respond_to(:view) }
-
     let(:stubbed_items) do
       {
         "burger" => {
