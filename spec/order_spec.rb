@@ -13,17 +13,28 @@ describe Order do
     end
   end
 
-  context ' 1 item added to order' do
-    describe '.add' do
-      it { is_expected.to respond_to(:add).with(2).arguments }
-      it 'updates order array with dish, quantity and pricexquantity' do
-        expect(order.add(1,2)).to match_array(['pizza', 2, 21.00])
+  context 'item added to order' do
+    describe '.display' do
+      it 'when pizza added to order once, displays pizza with quantity 1 and price £10.50' do
+        order.add(1, 1)
+        expect { order.display }.to output(/pizza/).to_stdout
+        expect { order.display }.to output(/ 1 /).to_stdout
+        expect { order.display }.to output(/£10.50/).to_stdout
+      end
+      it 'when pizza added to order twice at once, displays pizza with quantity 2 and price £21.00' do
+        order.add(1, 2)
+        expect { order.display }.to output(/pizza/).to_stdout
+        expect { order.display }.to output(/ 2 /).to_stdout
+        expect { order.display }.to output(/£21.00/).to_stdout
+      end
+      it 'when pizza added to order twice, displays pizza with quantity 2 and price £21.00' do
+        order.add(1, 1)
+        order.add(1, 1)
+        expect { order.display }.to output(/pizza/).to_stdout
+        expect { order.display }.to output(/ 2 /).to_stdout
+        expect { order.display }.to output(/£21.00/).to_stdout
       end
     end
-
-  end
-
-  context ' 3 items added to order' do
 
   end
 

@@ -2,11 +2,12 @@ require 'customer'
 
 describe Customer do
 
+  let(:phone_number) { ENV['CUSTOMER_NUMBER'] }
   let(:pizza) { double :pizza, price: 10.50 }
   let(:menu) { double :menu }
   let(:order) { double :order }
 
-  subject(:customer) { described_class.new(menu, order) }
+  subject(:customer) { described_class.new(phone_number, menu, order) }
 
   # I would like to see a list of dishes with prices
   describe '.show_menu' do

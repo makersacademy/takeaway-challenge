@@ -1,6 +1,14 @@
 require_relative 'menu'
+require_relative 'sms'
 
 class Order
+# Edge cases not dealt with yet:
+  # if you .add a negative quanity (e.g. .add(1,-2)) should raise an error suggesting you remove items
+  # if remove item is implemented then need to make sure the maximum number of items to remove is quantity in basket
+
+# Improvements:
+  # make it possible for items to be removed from order (.remove)
+  # make .add method more succinct
 
   def initialize(menu = Menu.new)
     @order = []
@@ -10,24 +18,39 @@ class Order
 
   def display
     raise "No items in basket. Please select dishes" if @order.length.zero?
-    puts left("Dish") + "Quantity".center(10) + "Amount".center(10)
+
+    puts "\n" + left("Dish") + "Quantity".center(10) + "Amount".center(10)
     @order.each do |item|
       puts left("#{item[:dish]}") + "#{item[:quantity]}".center(10) + "#{currency item[:amount]}".center(10)
     end
     puts "\nTotal order: #{currency @total}"
   end
 
-  def add(dish, quantity)
-    price = find_price dish
+  def add(dish_num, quantity)
+    price = @menu.menu[dish_num - 1][:price]
+    dish = @menu.menu[dish_num - 1][:dish]
+
     @total += price * quantity
-    @order.push({dish: dish, quantity: quantity, amount: price * quantity})
+    # work out if this dish is already part of the order
+    added = false
+    @order.map do |item|
+      if item[:dish] == dish
+        item[:quantity] += quantity
+        item[:amount] = price * item[:quantity]
+        added = true
+      end
+    end
+    @order.push({ dish: dish, quantity: quantity, amount: price * quantity }) unless added
+  end
+
+  def confirmed(phone_number)
+    delivery_time = (Time.new + (60 * 60)).strftime('%k:%M')
+    message = "Thankyou! Your order was placed and will be delivered before #{delivery_time}"
+    SMS.new.send_sms phone_number, message
+    puts "Message was sent"
   end
 
   private
-  def find_price dish
-    dish_details = @menu.menu.select { |item| item[:name] == dish }[0][:price]
-  end
-
   def currency money
     '£%.2f' % money
   end
@@ -35,4 +58,5 @@ class Order
   def left string
     '%-10s' % string
   end
+
 end
