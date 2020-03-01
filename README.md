@@ -1,13 +1,13 @@
 Takeaway Challenge
 ==================
 
-Pizza, pizza my kingdom for a pizza
+## Pizza, pizza my kingdom for a pizza
 
-This program simulates your favourite local pizza delivery service.
+This program simulates your favourite pizza delivery service.
 
 ## Instructions
 
-Clone or download files. Then:
+Clone or download files. Run bundle. Then:
 
 To run unit tests
 ```
@@ -29,27 +29,26 @@ feature_test.rb
 --------------------
 
 * Create an interactive program that let's a user order food from a takeaway shop
-* The customer should be able to check the running total of their order against the sum of the dished they have added to their order
-* Use rspec to test the program using mocking and any other isolation testing mechanisms to unit test each class
-* Incorporate dependency injection, encapsulation, polymorphism and other relevant OOP concepts to implement the program
+* The customer should be able to check the running total of their order against the sum of the dishes they have added to their order, add items to the order, view the menu and complete their order
+* Use rspec to test the program using mocking and other isolation testing mechanisms to unit test each class
+* Incorporate dependency injection, encapsulation, polymorphism and other relevant OOP concepts in the program design
 * Use the twilio API to send messages to your customers when their order has been completed
-
 
 ## Approach
 
 ### Domain model
 
-| Objects                     | Methods       |
+| Possible Objects            | Methods       |
 | ----------------------------|:-------------:|
-| List of dishes with prices  | View | $1600  |
+| List of dishes with prices  | View          |
 | Dish                        | select/add    |
 | Order (sum of dishes)       | check_total   |
 | Text message                | send          |
 
 
-### Plan of attack (pseudocode)
+### Plan of attack (written in pseudocode)
 
-Menu Object - displays a menu  with a list of items to choose from
+Menu Object - displays a menu with a list of items to choose from
 
 ```
 initialize()
@@ -91,7 +90,7 @@ private
 
 sum(items)
   for each item do
-    adds up the keys
+    adds up the price values
   end
 end
 ```
@@ -120,11 +119,16 @@ initialize(menu = menu.new)
  current_order
 end
 
-
 # lets the user select items and add them to an order
 
 add(dish, amount)
   current_order.add(dish, amount)
+end
+
+#lets the user check the total for their order, order object will implement it's own form of this method
+
+check_total
+ current_order.check_total
 end
 
 checkout(message = Message.new)
@@ -167,7 +171,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Added inheritance
 
-To streamline my methods I have let the takeaway object inherit the #view_menu method from Menu and let the Order object inherit the #add method from takeaway. I've also used dependecy injection to create instances of menu and order in takeaway's #initialize method. Its #add method uses the decorator pattern to achieve polymorphism.
+To streamline my methods I have let the takeaway object inherit the #view_menu method from Menu and let the Order object inherit the #add method from takeaway. I've also used dependency injection to create instances of menu and order in takeaway's #initialize method. Its #add method uses the decorator pattern to achieve polymorphism.
 
 ## Checking dishes
 
@@ -213,7 +217,7 @@ Traceback (most recent call last):
 
 ## Checkout and sending messages
 
-Implemented a message object and a send method in the Takeaway object. When running the feature test -
+Got a tad carried away and implemented a message object and a send method in the Takeaway object. When running the feature test -
 
 ```
 takeaway = Takeaway.new()
@@ -231,7 +235,7 @@ the message is sent to my phone. The authentification was handled by an .env fil
 
 ## To be continued...
 
-* Add unit tests for messaging
+* Add unit tests for messaging - currently no tests in place to make sure this works
+* Add check total functionality - we have one red test set up for this which currently cannot pass
+* Possibly change the structure of order_items and the menu_items into just hashes for ease of use
 * Add clear feature to the order object after the complete order function has been called
-* Add check total functionality
-* Possibly change the structure of order_items and the menu into just hashes for ease of use
