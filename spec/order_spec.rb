@@ -21,42 +21,61 @@ describe Order do
       end
     end
 
-    context "order" do
-      it "adds the dish and quantities to the order" do
+    context "adds items to basket and subtotal" do
+      it "adds the dishes and quantities to the basket" do
         order.add("burger", 2)
-        expect(order.dishes).to eq [{ dish: "burger", quantity: 2 }]
+        expect(order.basket).to eq [{ name: "burger", quantity: 2 }]
       end
 
-      it "subtotals the order" do
+      it "subtotals the items in the basket" do
         order.add("burger", 2)
         order.add("fries", 3)
         expect(order.subtotal).to eq 32
       end
     end
 
-    context "confirms dish added" do
-      it "confirms 1 item was added to order" do
-        expect(order.add("burger", 1)).to eq "1 x burger added to order"
+    context "confirms items added to basket" do
+      it "doesn't add 's' to dish names ending in 's'" do
+        expect(order.add("fries", 3)).to eq "3 fries added to basket"
       end
 
-      it "confirms mulitple items were added to order" do
-        expect(order.add("burger", 3)).to eq "3 x burgers added to order"
+      it "confirms single item was added to basket" do
+        expect(order.add("burger", 1)).to eq "1 burger added to basket"
+      end
+
+      it "confirms mulitple items were added to basket" do
+        expect(order.add("burger", 3)).to eq "3 burgers added to basket"
       end
     end
   end
 
-  describe "#place" do
+  describe "#checkout" do
     before do
       order.add("burger", 2)
       order.add("fries", 3)
     end
 
     it "raises error if total doesn't match subtotal" do
-      expect { order.place(10) }.to raise_error "Incorrect order total. Please try again."
+      expect { order.checkout(10) }.to raise_error "Incorrect order total. Please try again."
     end
 
     it "sends the user a confimation message" do
-      expect(order.place(32)).to eq "Thank you! Your order was placed and will be delivered before #{Time.now}"
+      expect(order.checkout(32)).to eq "Thank you! Your order was placed and will be delivered before #{Time.now}"
+    end
+  end
+
+  describe "#view_basket" do
+    before do
+      order.add("burger", 2)
+      order.add("fries", 3)
+    end
+
+    it "displays the current basket" do
+      expect { order.view_basket }.to output { "2 x burger @ 10.0: 20.0\n 3 x fries @ 4.0: 12.0" }.to_stdout
+    end
+
+    it "returns the basket subtotal" do
+      expect(order.view_basket).to eq(32)
     end
   end
 end

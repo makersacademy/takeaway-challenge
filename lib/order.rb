@@ -2,11 +2,11 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :dishes, :subtotal
+  attr_reader :basket, :subtotal
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @dishes = []
+    @basket = []
     @subtotal = 0
   end
 
@@ -14,30 +14,43 @@ class Order
     @menu.view
   end
 
-  def add(dish, quantity)
+  def add(dish_name, quantity)
     fail "Quantity not provided. Please try again." unless integer?(quantity)
 
-    fail "Dish not available. Please try again." unless dish_available?(dish)
+    fail "Dish not available. Please try again." unless dish_available?(dish_name)
 
-    update_dishes(dish, quantity)
-    update_subtotal(dish, quantity)
-    confirm_item_added(dish, quantity)
+    update_basket(dish_name, quantity)
+    update_subtotal(dish_name, quantity)
+    confirm_item_added(dish_name, quantity)
   end
 
-  def place(total)
-    fail "Incorrect order total. Please try again." unless @subtotal == total
+  def view_basket
+    print_basket
+    @subtotal
+  end
+
+  def checkout(total)
+    fail "Incorrect order total. Please try again." unless totals_match?(total)
 
     "Thank you! Your order was placed and will be delivered before #{Time.now}"
   end
 
   private
 
-  def update_dishes(dish, quantity)
-    @dishes << { dish: dish, quantity: quantity }
+  def update_basket(dish_name, quantity)
+    @basket << { name: dish_name, quantity: quantity }
   end
 
   def update_subtotal(dish, quantity)
-    @subtotal += Menu::ITEMS[dish][:price] * quantity
+    @subtotal += price_times_quantity(dish, quantity)
+  end
+
+  def price_times_quantity(dish, quantity)
+    dish_price(dish) * quantity
+  end
+
+  def dish_price(dish)
+    Menu::ITEMS[dish][:price]
   end
 
   def integer?(quantity)
@@ -48,12 +61,28 @@ class Order
     Menu::ITEMS.has_key?(dish)
   end
 
+  def totals_match?(total)
+    @subtotal == total
+  end
+
   def confirm_item_added(dish, quantity)
-    if quantity > 1
-      "#{quantity} x #{dish}s added to order"
+    if dish[-1] == "s" || quantity == 1
+      "#{quantity} #{dish} added to basket"
     else
-      "#{quantity} x #{dish} added to order"
+      "#{quantity} #{dish}s added to basket"
     end
+  end
+
+  def print_basket
+    basket = @basket.map do |dish|
+      quantity = dish[:quantity]
+      dish_name = dish[:name]
+      dish_price = dish_price(dish_name)
+      total = price_times_quantity(dish_name, dish[:quantity])
+
+      "#{quantity} x #{dish_name} @ #{dish_price}: #{total}\n"
+    end
+    puts basket.join(" ")
   end
 
 end
