@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 group :test do
   gem 'rspec'
   gem 'rubocop', '0.72.0'
+  gem 'twilio-ruby'
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
 end
