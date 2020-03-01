@@ -42,6 +42,50 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 4. When the installation completes, run `bundle` 
 5. This software runs in irb
 
+### Example run-through
+```
+>> irb
+2.6.5 :001 > require './menu.rb'
+ => true 
+2.6.5 :002 > require './order.rb'
+ => true 
+2.6.5 :003 > 
+2.6.5 :004 > menu = Menu.new
+ => #<Menu:0x00007f8ed392f540 @items={}> 
+2.6.5 :005 > menu.add_dish("chicken", 5)
+ => 5 
+2.6.5 :006 > menu.add_dish("fish", 3)
+ => 3 
+2.6.5 :007 > menu.add_dish("cabbage", 5)
+ => 5 
+2.6.5 :008 > takeaway = Takeaway.new(menu)
+ => #<Takeaway:0x00007f8ed395dc60 @menu=#<Menu:0x00007f8ed392f540 @items={"chicken"=>5, "fish"=>3, "cabbage"=>5}>, @order=#<Order:0x00007f8ed395dc38 @menu=#<Menu:0x00007f8ed392f540 @items={"chicken"=>5, "fish"=>3, "cabbage"=>5}>, @order={}>> 
+2.6.5 :009 > takeaway.print_menu
+Takeaway Menu
+-------------
+1. Chicken: £5
+2. Fish: £3
+3. Cabbage: £5
+ => [nil, nil, nil] 
+2.6.5 :010 > takeaway.place_order("chicken", 1)
+Order
+----
+chicken: 1
+Total: £5
+ => nil 
+2.6.5 :011 > takeaway.place_order("cabbage", 1)
+Order
+----
+chicken: 1
+cabbage: 1
+Total: £10
+ => nil 
+2.6.5 :012 > takeaway.complete_order(10)
+ => "The order is correct" 
+ ```
+
+### Additional functionality
+* My menu class allows for population of the menu (which will need to be done before you start ordering). This was functionality I thought the takeaway could use to update their menu as and when needed. As such it is a private method within the menu class.
 
 ### Problems faced
 * Issues with using doubles and mocks in testing the takeaway file. Something I need to do more practice on. Currently foregoing the text functionality in order to write more tests for the takeaway.rb file. It was easier writing the code than the tests first.
