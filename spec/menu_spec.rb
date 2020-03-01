@@ -28,7 +28,7 @@ describe Menu do
 
   it "is true if there if item is on the menu" do
     subject.add_dish("chicken", 5.99)
-    expect(subject.has_dish?("chicken")).to eq true
+    expect(subject.dish?("chicken")).to eq true
   end
 
   it "shows the price of an item on the menu" do

@@ -13,11 +13,11 @@ describe Order do
   describe '#adds_item' do
   
     before do 
-      allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
+      allow(menu).to receive(:dish?).with(:chicken).and_return(true)
     end
   
     it "raises an error if the food ordered is not on the menu" do
-      allow(menu).to receive(:has_dish?).with(:beef).and_return(false) 
+      allow(menu).to receive(:dish?).with(:beef).and_return(false) 
       expect { subject.adds_item(:beef, 1) }.to raise_error("That dish is not on the menu")
     end
 
@@ -30,9 +30,9 @@ describe Order do
   describe '#total' do
   
     before do 
-      allow(menu).to receive(:has_dish?).with(:duck).and_return(true)
+      allow(menu).to receive(:dish?).with(:duck).and_return(true)
       allow(menu).to receive(:price).with(:duck).and_return(10)
-      allow(menu).to receive(:has_dish?).with(:waffles).and_return(true)
+      allow(menu).to receive(:dish?).with(:waffles).and_return(true)
       allow(menu).to receive(:price).with(:waffles).and_return(8)
     end
   
