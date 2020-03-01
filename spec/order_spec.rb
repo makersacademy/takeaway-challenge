@@ -1,14 +1,18 @@
 require 'order'
 
 describe Order do
-  it "initializes with an empty @current_order" do
-    expect(subject.current_order).to eq []
-  end
 
-  it "initializes with an empty @prices_to_sum" do
-    expect(subject.prices_to_sum).to eq []
-  end
+  describe "#initialize" do
 
+    it "initializes with an empty @current_order" do
+      expect(subject.current_order).to eq []
+    end
+
+    it "initializes with an empty @prices_to_sum" do
+      expect(subject.prices_to_sum).to eq []
+    end
+  end
+  
   describe "#add_dish" do
 
     it "raises an error if #add_dish and it doesn't exist" do

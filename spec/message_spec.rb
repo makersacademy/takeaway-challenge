@@ -11,11 +11,11 @@ describe Message do
   #   allow(subject).to receive(:create_message).and_return("Thanks for your order at Jara's Takeway. Your food will be with you before 12:00")
   #   expect(subject.message).to eq("Thanks for your order at Jara's Takeway. Your food will be with you before 12:00")
   # end
-
+  #
   # it "can send a SMS via Twilio app" do
   #   # ?????
   # end
-
+  #
   # it "returns a #delivery_time that adds one hour to Time" do
   #   allow(subject).to receive(Time.now.to_s).and_return("11:00")
   #   expect(subject.delivery_time).to eq("12:00")

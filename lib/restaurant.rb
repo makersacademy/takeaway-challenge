@@ -20,7 +20,7 @@ class Restaurant
 
   def checkout
     @order.finish_order
-    # @message.send_message # (IT BREAKS THE TESTS AS TWILIO NOT WORKING)
+    # @message.send_message # (IT BREAKS THE TESTS AS TWILIO IS NOT WORKING)
   end
 
   # CALL FOR LOOP IN ORDER CLASS

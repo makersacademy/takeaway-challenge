@@ -1,4 +1,5 @@
 require 'dotenv' # Loads the .env file with credentials
+require 'twilio-ruby'
 
 class Message
 
