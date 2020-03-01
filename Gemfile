@@ -10,4 +10,5 @@ group :test, :development do
   gem 'simplecov', require: false
   gem 'simplecov-console'
   gem 'dotenv'
+  gem 'rubocop', '~> 0.80.1', require: false
 end

@@ -4,13 +4,18 @@ class Takeaway < Menu
 
   attr_reader :current_order, :menu
 
-# injects new menu object 
-  def initialize(menu_items = Menu.new)
+# injects new menu object and order object
+  def initialize(menu_items = Menu.new, current_order = Order.new)
+#assigns the menu instance's menu_items list to an instance variable of takeaway
     @menu_items = menu_items.menu_items
-    @current_order
+    @current_order = current_order
   end
 
-
+# method is inherited by Order and used to add dished to current_orders list of items
+  def add(dish, amount)
+    @current_order.add(dish, amount)
+    puts "You have added #{amount} #{dish} to your order"
+  end
 end
 
 #

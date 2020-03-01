@@ -122,14 +122,9 @@ initialize(menu = menu.new)
  current_order
 end
 
-# creates an order
-
-create_order(curent_order = Order.new)
-  current_order
-end
 
 # lets the user select items and add them to an order
-
+this method can sit up here and then object can inherit and use polymorphism?
 add(dish, amount)
   current_order.add(dish, amount)
 end
@@ -166,3 +161,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
 * The code is elegant: every class has a clear responsibility, methods are short etc.
+
+## Added inheritance
+
+To streamline my methods I have let the takeaway object inherit the #view_menu method from Menu and let the Order object inherit the #add method from takeaway. I've also used dependecy injection to create instances of menu and order in takeaway's #initialize method. Its #add method uses the decorator pattern to achieve polymorphism.
