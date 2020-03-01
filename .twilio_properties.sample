@@ -1,0 +1,4 @@
+TWILIO_ACCOUNT_SID="XXXXXXXXXXXXXXXXXXXXX" # Your Twilio account sid  
+TWILIO_AUTH_TOKEN="XXXXXXXXXXXXXXXXX" #your Twilio auth token
+TWILIO_FROM_NUMBER='+138XXXXXXX' # Your Twilio number
+TWILIO_TO_NUMBER='+4478XXXXXX' # Your mobile number

@@ -1,3 +1,12 @@
+
+Customer can order food online and get text message on order confirmation.
+
+1. Run bundle install : gems are upto date
+   $ bundle install
+2. Rename the .twilio_properties.sample file to .twilio_properties
+3. Update .twilio_properties with correct information.
+
+
 Takeaway Challenge
 ==================
 ```
