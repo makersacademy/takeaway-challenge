@@ -1,20 +1,18 @@
 require 'rubygems'
 # require 'twilio-ruby'
-
-
-
 class Order
   attr_reader :order
   def initialize
     @order = []
-    @client
   end
+
   def print_order
     puts "Your current order:"
     @order.each { |item|
       puts "#{item[:item]} X#{item[:quantity]}"
     }
   end
+
   def end_order
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
@@ -25,7 +23,6 @@ class Order
     #      from: ''
     #      to: ''
     #    )
-
     puts message.sid
   end
 end

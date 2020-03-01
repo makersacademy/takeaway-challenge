@@ -3,7 +3,7 @@ require_relative "menu"
 class Takeaway
   attr_reader :menu_var, :current_order
   def initialize(menu = Menu.new)
-    @current_order
+    @current_order = nil
     @menu_var = menu
   end
 
@@ -17,7 +17,7 @@ class Takeaway
   end
 
   def add_to_order(item, quantity)
-    @current_order.order << {item: item, quantity: quantity}
+    @current_order.order << { item: item, quantity: quantity }
   end
 
   def check_order
