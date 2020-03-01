@@ -14,6 +14,27 @@ Takeaway Challenge
 
  ```
 
+**Domain Model**
+
+| RESTAURANT     | MENU         | ORDER          | MESSAGE         |
+| :------------- |:-------------|:---------------|:----------------|
+| -------------- |--------------|----------------|-----------------|
+|                | @menu_list   | @current_order | @phone_number   |
+|                |              | @total_price   | @message        |
+| -------------- |--------------|----------------|-----------------|
+| #see_menu      | #print_menu  | #add_dish      | #get_number     |
+| #place_order   |              | #sum_total     | #create_message |
+| #checkout      |              | #print_order   | #twilio_text    |
+
+That is the domain model I made at the beggining but I ended up having more methods, specially to keep single responsability in all my code, but I preserved the functionality I had in this plan.
+
+**Notes on the Project:**
+My main goal for this past week was learning class delegation and at the begining this was my main focus for the project. But while I was doing it with TDD I realized that although I felt more or less confortable with distributing the functionality between classes I had a very big gap with testing.<br/>
+I created all my code on a test-first basis but they were constantly breaking because I was not using Rspec mocking. At this point I decided that I wouldn't worry too much about completely finishing the project or adding extra fancy features (I was planning to add some more raising errors, and some loop to being asked for more dishes without calling the method everytime, ecc).<br/> 
+Instead I just did a basic working structure to cover the user stories. It all works in IRB but the SMS is not being sent. With the SMS I decided to focus more in understanding what Twilio was and setting it up, and in learning about environment variables to keep credentials safe. All this is in my code but the credentials stored in my .env file are not being loaded into the message.rb file (I quit at this point and didn't really tried to fix it so may be a very simple error).<br/>
+I still had almost all Sunday to keep working so I set myself the goal to, at least, get a minimum understanding of doubles and mocking. I really struggled (as it had happened all the week) to find information in google, as most of the tutorials I found were using code that was too difficult for me at this level (if I couldn't understand the Ruby syntax they were using leave alone understand mocking itself). But I happened to talk to one of my colleagues (Nima) and he gave me a very clarifying explanation with examples applied to this project (THANK YOU!). So with this new understanding I started all over the tests for restaurant class (restaurant_spec.rb) to make them all be based in mocking and be tested independently of any of the other classes existing or not. (The tests for the other classes are still as I had them before the enlightment :D)
+
+
 Instructions
 -------
 
