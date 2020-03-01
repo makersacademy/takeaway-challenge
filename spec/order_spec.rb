@@ -22,11 +22,14 @@ describe Order do
     end
   end  
   describe '#view_order' do
+    
     it 'view list of dishes added which is to be ordered' do
       expect(subject.view_order).to eq subject.items
+    
     end
   end
   describe '#add_dish' do
+    let(:menu) { double('Menu') }
     context 'dish(with quantity) added to list or not' do
       it 'takes quantity default 1' do
         expect(subject.add_dish('egg roll')).to eq 1
@@ -37,6 +40,11 @@ describe Order do
       it 'increments quantity when added twice' do
         expect(subject.add_dish('egg roll', 2)).to eq 2
         expect(subject.add_dish('egg roll')).to eq 3
+      end
+      it 'does not allow item to be added which is not in the menu' do
+        allow(menu).to receive(:available?).with('fish').and_return false
+        order = Order.new(menu)
+        expect { order.add_dish('fish', 5) }.to raise_error "not on the menu"
       end
     end
   end

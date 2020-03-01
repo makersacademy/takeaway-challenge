@@ -1,4 +1,5 @@
 require 'menu'
+
 describe Menu do
   describe '#list' do
     it 'list of dishes' do

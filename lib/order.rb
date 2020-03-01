@@ -21,7 +21,11 @@ class Order
   end
 
   def add_dish(dish, quantity = 1)
+    fail "not on the menu" unless @menu.available?(dish)
+
     @items[dish] += quantity
+    puts "#{dish} quantity #{quantity} added to cart"
+    @items[dish]
   end
 
   def total_price
