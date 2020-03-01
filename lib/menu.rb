@@ -13,4 +13,8 @@ class Menu
       "%s £%.2f" % [title.to_s.gsub!(/_/, ' ').split.each{|i| i.capitalize!}.join(' '), price]
     end.join(", ")
   end
+
+  def has_dish?(dish)
+    !!dishes[dish]
+  end
 end
