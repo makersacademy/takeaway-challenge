@@ -24,10 +24,6 @@ describe Takeaway do
   #   allow(place_order).to receive(:quantity).with(:cabbage).and_return(1)
   # end
 
-  it "initializes with an empty customer order" do
-    expect(takeaway).to have_attributes( order: {})
-  end 
-
   it 'shows the menu with the dishes and prices' do 
     expect(takeaway.print_menu).to eq("Chicken: £3.50\nCabbage: £4.50\n")
   end
