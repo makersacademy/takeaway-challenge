@@ -1,5 +1,8 @@
 class Menu
+
 attr_reader :menu_items
+
+# creates the menu with all the options
   def initialize
     @menu_items = [
     {:item => "Garlic Bread", :price => 5},
@@ -13,9 +16,9 @@ attr_reader :menu_items
     {:item => "Diavola", :price => 12}
     ]
   end
+
 # method allows menu items to be printed to standard output
   def view_menu
     puts menu_items.collect { |i| "#{i[:item]}: £#{i[:price]}"}
   end
-
 end

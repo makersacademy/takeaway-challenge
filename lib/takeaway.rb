@@ -20,11 +20,20 @@ class Takeaway < Menu
     puts "You have added #{amount} #{dish} to your order"
   end
 
+# method creates a new message instance and sends that message to the user
   def complete_order
     sms = Message.new
     sms.send
   end
 
+=begin
+The complete_order method is currently untested
+It needs unit tests to be added and conditionals implemented so
+the message is only send if the total of the items added to the order
+matches the prices on the menu
+=end
+
+# this method checks to see if the dish exists on the menu and returns the dish
   def check(dish)
     menu_items.each do | item |
       if item.has_value?(dish)

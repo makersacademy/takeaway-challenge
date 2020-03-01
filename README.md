@@ -17,10 +17,16 @@ To run feature tests
 
 ```
 irb -r feature_test.rb
+
+```
+Or
+
+```
+feature_test.rb
 ```
 
 ## Requirements were:
--------
+--------------------
 
 * Create an interactive program that let's a user order food from a takeaway shop
 * The customer should be able to check the running total of their order against the sum of the dished they have added to their order
@@ -81,14 +87,6 @@ check_total
    sum(order_items) == sum(menu.menu_items)
 end
 
-checkout(message = Message.new)
-  if check_total = true
-    message.send
-  else
-    raise error
-  end
-end
-
 private
 
 sum(items)
@@ -129,8 +127,13 @@ add(dish, amount)
   current_order.add(dish, amount)
 end
 
-checkout(current_order)
-  current_order.checkout(message)
+checkout(message = Message.new)
+  if check_total = true
+    message.send
+  else
+    raise error
+  end
+end
 end
 
 ```
@@ -207,3 +210,28 @@ Traceback (most recent call last):
 	1: from feature_test.rb:12:in `<main>'
 /Users/student/Documents/projects/takeaway-challenge/lib/takeaway.rb:16:in `add': Dish is not available (RuntimeError)
 ```
+
+## Checkout and sending messages
+
+Implemented a message object and a send method in the Takeaway object. When running the feature test -
+
+```
+takeaway = Takeaway.new()
+
+takeaway.view_menu
+
+takeaway.add("Garlic Bread", 2)
+takeaway.add("Romana", 2)
+
+takeaway.complete_order
+
+```
+
+the message is sent to my phone. The authentification was handled by an .env file and dotenv.
+
+## To be continued...
+
+* Add unit tests for messaging
+* Add clear feature to the order object after the complete order function has been called
+* Add check total functionality
+* Possibly change the structure of order_items and the menu into just hashes for ease of use
