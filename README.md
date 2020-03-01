@@ -124,7 +124,7 @@ end
 
 
 # lets the user select items and add them to an order
-this method can sit up here and then object can inherit and use polymorphism?
+
 add(dish, amount)
   current_order.add(dish, amount)
 end

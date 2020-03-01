@@ -7,13 +7,9 @@ takeaway = Takeaway.new()
 takeaway.view_menu
 
 takeaway.add("Garlic Bread", 2)
-takeaway.add("Diavola", 1)
 takeaway.add("Romana", 2)
-takeaway.add("Goat", 1)
 
-puts takeaway.check("Diavola")
-
-puts takeaway.current_order.inspect
+puts takeaway.current_order.fetch_price
 
 
 # takeaway.check_total

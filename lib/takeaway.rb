@@ -19,10 +19,13 @@ class Takeaway < Menu
     puts "You have added #{amount} #{dish} to your order"
   end
 
+  def check_total?
+    @current_order.check_total?
+  end
+
   def check(dish)
     menu_items.each do | item |
       if item.has_value?(dish)
-        puts item
         return dish
       end
     end

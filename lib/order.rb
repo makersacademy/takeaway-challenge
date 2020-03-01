@@ -2,11 +2,11 @@ require_relative './takeaway'
 
 class Order < Takeaway
 
-  attr_reader :order_items
+  attr_reader :order_items, :current_total
 
-  def initialize()
+  def initialize(menu = Menu.new)
     @order_items = []
-    @menu_items = menu_items
+    @menu_items = menu.menu_items
     @current_total
   end
 
@@ -14,7 +14,8 @@ class Order < Takeaway
     @order_items << {:item => dish, :amount => amount}
   end
 
-  # def check_total
-  #   @current_total = @order_items
-  # end
+# incomplete method for calculating total of order items
+  def check_total?
+    order_items.sum
+  end
 end

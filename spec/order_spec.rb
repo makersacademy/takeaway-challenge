@@ -22,4 +22,12 @@ describe Order do
       expect(subject.order_items).to eq [{:item => "Garlic Bread", :amount => 2}, {:item => "Romana", :amount => 1}]
     end
   end
+
+  describe '#check_total' do
+    it 'should return and update the current total instance variable' do
+      subject.add("Garlic Bread", 2)
+      subject.add("Romana", 1)
+      expect(subject.current_total).to_eq 20
+    end
+  end
 end
