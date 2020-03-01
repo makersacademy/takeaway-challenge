@@ -21,7 +21,7 @@ class Menu
     @items[dish]
   end
 
-  def has_dish?(dish)
+  def dish?(dish)
     @items.key?(dish)
   end
 

@@ -3,7 +3,7 @@ require_relative 'takeaway'
 
 class Order
 
-  attr_reader :order  
+  attr_reader :order
 
   def initialize(menu)
     @menu = menu
@@ -11,7 +11,7 @@ class Order
   end
   
   def adds_item(dish, quantity)
-    fail "That dish is not on the menu" unless @menu.has_dish?(dish)
+    fail "That dish is not on the menu" unless @menu.dish?(dish)
     
     @order[dish] = quantity
     successful_add(dish, quantity)
