@@ -6,6 +6,7 @@ class Takeaway
   attr_reader :menu, :order
 
   def initialize(menu, order = Order.new(menu))
+    @menu = menu
     @order = order
   end
 
@@ -20,7 +21,7 @@ class Takeaway
   end
 
   def complete_order(price)
-    correct_amount?(price) 
+    correct_amount?(price) ? "The order is correct" : "The price is incorrect"
   end
 
   private
