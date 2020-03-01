@@ -1,35 +1,22 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway Challenge
+Makers weekend challenge (week 2)
 
- ```
+**Tech used**:
+Ruby,
+Rspec,
+Rubocop,
+Twilio
 
-Instructions
--------
+## Project aim
+To write software that allows a user to order food
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### Primary aims
+* List of dishes with prices
+* Ability to select a number of different available dishes
+* Check the order and total are correct
+* Receive a text confirming order and setting a time for delivery
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+**User Stories**
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,37 +35,25 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## Installation instructions
+1. Requires Ruby. Instructions to install are [here](https://www.ruby-lang.org/en/documentation/installation/).
+2. Fork this repo, and clone to your local machine
+3. Run the command `gem install bundle`
+4. When the installation completes, run `bundle` 
+5. This software runs in irb
 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+### Problems faced
+* Issues with using doubles and mocks in testing the takeaway file. Something I need to do more practice on. Currently foregoing the text functionality in order to write more tests for the takeaway.rb file. It was easier writing the code than the tests first.
+* Seemingly calling the menu twice when initializing `takeaway = Takeaway.new(menu)` - is not too much of a problem but isn't very neat
+* When printing the order I have to call order twice in order for it to work:
+```
+def print_order
+    puts "Order\n----" 
+    @order.order.each do |dish, quantity|
+      puts "#{dish}: #{quantity}"
+    end
+    puts "Total: £#{@order.total}"
+  end
+```
+* Have not managed to get through the last user story and get a text sent out. The twilio gem is loaded and I have a number however getting the environmental variables to work properly hasn't worked. They are currently sitting in my .bashrc profile and in the .env file but the terminal doesn't seem to recognize when I try to call them using `ENV['XXX']`. Unsure how to proceed for security reasons. 
