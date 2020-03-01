@@ -18,15 +18,7 @@ class Basket
   end
 
   def print
-    basket = @basket.map do |dish|
-      quantity = dish[:quantity]
-      dish_name = dish[:name]
-      dish_price = dish_price(dish_name)
-      total = price_times_quantity(dish_name, dish[:quantity])
-
-      "#{quantity} x #{dish_name} @ #{dish_price}: #{total}\n"
-    end
-    puts basket.join(" ")
+    puts formatted_basket
     @subtotal
   end
 
@@ -38,6 +30,18 @@ class Basket
 
   def price_times_quantity(dish, quantity)
     dish_price(dish) * quantity
+  end
+
+  def formatted_basket
+    basket = @basket.map do |dish|
+      quantity = dish[:quantity]
+      dish_name = dish[:name]
+      dish_price = dish_price(dish_name)
+      total = price_times_quantity(dish_name, dish[:quantity])
+
+      "#{quantity} x #{dish_name} @ #{dish_price}: #{total}\n"
+    end
+    basket.join(" ")
   end
 
 end

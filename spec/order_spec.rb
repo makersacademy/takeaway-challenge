@@ -52,17 +52,14 @@ describe Order do
   end
 
   describe "#view_basket" do
-    before do
+    it "displays the current basket" do
       order.add("burger", 2)
       order.add("fries", 3)
-    end
-
-    it "displays the current basket" do
       expect { order.view_basket }.to output { "2 x burger @ 10.0: 20.0\n 3 x fries @ 4.0: 12.0" }.to_stdout
     end
 
     it "returns the basket subtotal" do
-      expect(order.view_basket).to eq(32)
+      expect { order.add("burger", 2) }.to change { order.view_basket }.by(20)
     end
   end
 end
