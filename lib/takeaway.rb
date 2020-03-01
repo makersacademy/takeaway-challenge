@@ -13,7 +13,7 @@ class Takeaway
     @menu.show_menu
   end
 
-  def place_order(dish, quantity=1)
+  def place_order(dish, quantity = )
     @order.adds_item(dish, quantity)
   end
 
