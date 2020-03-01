@@ -1,12 +1,14 @@
 require "order"
+require "sms"
 
 class Takeaway
 
-  attr_accessor :menu, :order
+  attr_accessor :menu, :order, :sms
 
-  def initialize(menu:, order: nil)
+  def initialize(menu:, config:, order: nil, sms: nil)
     @menu = menu
-    @order = order || Order.new
+    @order = order || Order.new(menu)
+    @sms = sms || SMS.new(config)
   end
 
   def print_menu
@@ -14,9 +16,14 @@ class Takeaway
   end
   
   def order_up(dishes)
+    add_dishes(dishes)
+    sms.deliver
+    order.total
+  end
+
+  def add_dishes(dishes)
     dishes.each do |dish, amount|
       order.add(dish, amount)
     end
-    order.total
   end
 end

@@ -18,8 +18,7 @@ describe Order do
   end
 
   it "selects dishes from menu" do
-    order.add(:margarita, 4)
-    order.add(:sandwich, 7)
+    create_order
     expect(order.dishes).to eq(dishes)
   end
 
@@ -29,9 +28,13 @@ describe Order do
   end
 
   it "figures out the toalt for the order" do
-    order.add(:margarita, 4)
-    order.add(:sandwich, 7)
+    create_order
     total = 40.93
     expect(order.total).to eq(total)
+  end
+
+  def create_order
+    order.add(:margarita, 4)
+    order.add(:sandwich, 7)
   end
 end
