@@ -1,11 +1,13 @@
 require_relative 'menu'
 require_relative 'basket'
+require_relative 'orderconfirmation'
 
 class Order
 
-  def initialize(menu = Menu.new, basket = Basket.new)
+  def initialize(menu = Menu.new, basket = Basket.new, orderconfirmation = OrderConfirmation.new)
     @menu = menu
     @basket = basket
+    @orderconfirmation = orderconfirmation
   end
 
   def view_menu
@@ -27,7 +29,7 @@ class Order
   def checkout(total)
     fail "Incorrect order total. Please try again." unless totals_match?(total)
 
-    "Thank you! Your order was placed and will be delivered before #{Time.now}"
+    @orderconfirmation.send_message
   end
 
   private

@@ -2,9 +2,10 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new(menu, basket) }
+  subject(:order) { described_class.new(menu, basket, orderconfirmation) }
   let(:menu) { double :menu }
   let(:basket) { double :basket }
+  let(:orderconfirmation) { double :orderconfirmation }
 
   describe "#view_menu" do
     it "displays the menu" do
@@ -61,7 +62,8 @@ describe Order do
 
     it "sends the user a confimation message if order placed succesfully" do
       allow(basket).to receive(:subtotal).and_return(32)
-      expect(order.checkout(32)).to eq "Thank you! Your order was placed and will be delivered before #{Time.now}"
+      allow(orderconfirmation).to receive(:send_message)
+      order.checkout(32)
     end
   end
 
