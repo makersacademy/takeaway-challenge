@@ -13,3 +13,7 @@ if everything is correct a message will be send to the client.
 
 - At the state of the code in this moment i ve able to finish the Menu Class and the Order Class to the point of placing orders.
 
+All is tested in working properly and comply with the requirements of the user stories.
+
+I offer a partial solution as long as i have not implemented a method for sending the message.
+
