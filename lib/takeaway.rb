@@ -14,20 +14,30 @@ class Takeaway
     @basket.print
   end
 
-  def add_to_basket(dish, quantity)
-    raise "food is not on menu, bruh" if !order_on_menu?(dish)
+  def add_to_basket(dish:, quantity:)
+    dish_valid?(dish, quantity)
     @basket.add(dish, quantity)
   end
 
   def checkout
+    raise "nothing in your basket, bruh" if @basket.details.empty?
     @checkout.order_confirmation?(@basket.details)
   end
 
-  private 
-
-  def order_on_menu?(dish)
-    @menu.list.map { |item|
-      return true if item[:name] == dish }
-    false
+  def empty_basket
+    
   end
+
+  private
+  
+  def dish_valid?(dish, quantity)
+    raise "food is not on menu, bruh" if !@menu.dish_exists?(dish)
+    raise "not enough available to fulfill your order." if !@menu.dish_available?("soup", 10)
+  end
+
+  # def order_on_menu?(dish)
+  #   @menu.list.map { |item|
+  #     return true if item[:name] == dish }
+  #   false
+  # end
 end

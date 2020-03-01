@@ -26,10 +26,13 @@ describe Takeaway do
       expect(subject).to respond_to(:show_basket)
     end
     it "#add_to_basket" do
-      expect(subject).to respond_to(:add_to_basket).with(2).arguments
+      expect(subject).to respond_to(:add_to_basket).with_keywords(:dish, :quantity)
     end
     it "#checkout" do
       expect(subject).to respond_to(:checkout)
+    end
+    it "#empty_basket" do
+      expect(subject).to respond_to(:empty_basket)
     end
   end
 
@@ -44,7 +47,7 @@ describe Takeaway do
     end
     it "#add_to_basket delegates to Basket.add" do
       expect(basket_klass).to receive(:add).once
-      subject.add_to_basket("chips", 1)
+      subject.add_to_basket(dish: "chips", quantity: 1)
     end
     it "#checkout delegates to Checkout.order_confirmation? with Basket.details" do
       expect(checkout_klass).to receive(:order_confirmation?).once
@@ -54,7 +57,16 @@ describe Takeaway do
 
   context "handling error" do
     it "#add_to_basket throws error if requested dish is not on menu" do
-      expect{subject.add_to_basket("disgusting food", 2)}.to raise_error("food is not on menu, bruh")
+      allow(menu_klass).to receive(:dish_exists?).and_return(false)
+      expect{subject.add_to_basket(dish: "disgusting food", quantity: 2)}.to raise_error("food is not on menu, bruh")
+    end
+    it "#add_to_basket throws error if not enough of the requested dish is available" do
+      allow(menu_klass).to receive(:dish_available?).and_return(false)
+      expect{subject.add_to_basket(dish: "soup", quantity: 10)}.to raise_error("not enough available to fulfill your order.")
+    end
+    it "#checkout throws error if basket is empty" do
+      allow(basket_klass).to receive(:details).and_return([])
+      expect{subject.checkout}.to raise_error("nothing in your basket, bruh")
     end
   end
 end
