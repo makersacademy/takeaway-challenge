@@ -50,7 +50,7 @@ describe Takeaway do
       subject.add_to_basket(dish: "chips", quantity: 1)
     end
     it "#checkout delegates to Checkout.order_confirmation? with Basket.details" do
-      expect(checkout_klass).to receive(:order_confirmation?).once
+      expect(checkout_klass).to receive(:order_confirmation).once
       subject.checkout
     end
     it "#checkout delegates to #empty_basket" do
