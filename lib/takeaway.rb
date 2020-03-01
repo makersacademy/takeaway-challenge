@@ -2,6 +2,8 @@ require_relative 'order'
 
 class Takeaway
 
+  DEFAULT_NUM = 1
+
   attr_reader :menu, :order
 
   def initialize(menu:, order: nil)
@@ -13,7 +15,7 @@ class Takeaway
     @menu.show_menu
   end
 
-  def place_order(dish, quantity = )
+  def place_order(dish, quantity = DEFAULT_NUM)
     @order.adds_item(dish, quantity)
   end
 
