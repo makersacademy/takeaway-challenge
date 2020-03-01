@@ -1,4 +1,5 @@
 require_relative './menu'
+require_relative './message'
 # inherits the view menu and other menu methods from the menu class
 class Takeaway < Menu
 
@@ -19,8 +20,9 @@ class Takeaway < Menu
     puts "You have added #{amount} #{dish} to your order"
   end
 
-  def check_total?
-    @current_order.check_total?
+  def complete_order
+    sms = Message.new
+    sms.send
   end
 
   def check(dish)
