@@ -17,6 +17,7 @@ class Takeaway
     items.each do |item, qty|
       order.add_item(item, qty)
     end
+    order.order_total
   end
 
 
