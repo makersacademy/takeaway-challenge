@@ -2,6 +2,14 @@ require 'menu'
 
 describe Menu do
 
+    menu = Menu.new
+    item1 = Item.new(1, "Eggs and Turnips", 10)
+    item2 = Item.new(2, "Cheese, Carrot and Marzipan", 12)
+    item3 = Item.new(3, "Pear, Pork and Parmisan", 20)
+    item4 = Item.new(4, "Cabbage on Toast", 90)
+    menu.instance_variable_set(:@menu_items, [item1, item2, item3, item4])
+
+
     it 'initialises without error' do
         expect{subject}.not_to raise_error
     end
@@ -17,6 +25,11 @@ describe Menu do
         it 'displays list of menu items' do
             subject.build_menu
             expect(subject.view).not_to be_empty
+        end
+        it 'displays list of menu items2' do
+            menu.instance_variable_set(:@menu_items, [item1])
+            # subject.build_menu
+            expect(menu.view).to eq [item1]
         end
     end
 
@@ -41,7 +54,14 @@ describe Menu do
     describe 'view_basket' do
         it 'shows contents of basket' do
             subject.add_to_basket(1, 2)
-            expect(subject.view_basket).not_to be_empty
+            expect(subject.view_basket).to include {{item: instance_variable_get(:@menu_items)[0], quantity: 2}}
+        end
+    end
+
+    describe 'checkout' do
+        it 'sends confirmation message to user' do
+            allow(subject.checkout).to receive_messages(1234,1234) do 
+                expect (subject.checkout).to include "Thank you! Your order was placed"
         end
     end
 
