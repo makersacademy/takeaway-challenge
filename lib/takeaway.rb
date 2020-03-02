@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -6,7 +7,7 @@ class Takeaway
 
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order
+    @order = order || Order.new(menu: menu)
   end
 
   def view_menu

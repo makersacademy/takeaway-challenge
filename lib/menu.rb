@@ -23,8 +23,13 @@ class Menu
     end.join(", ")
   end
 
-  # def price
-  # end
+  def dish?(item)
+    !items[item].nil?
+  end
+
+  def price(item)
+    items[item]
+  end
 
 
 end

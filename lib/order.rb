@@ -10,7 +10,7 @@ class Order
   end
 
   def add_item(item, qty)
-    @menu.include?(item) ? @items[item] = qty : raise("Sorry, #{item} is not available today")
+    menu.dish?(item) ? @items[item] = qty : raise("Sorry, #{item} is not available today")
   end
 
   def order_total
@@ -25,5 +25,7 @@ class Order
       menu.price(item) * qty
     end.sum
   end
+
+
 
 end
