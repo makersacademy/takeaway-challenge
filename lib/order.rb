@@ -6,9 +6,9 @@ class Order < Takeaway
 
 # creates a list of menu items, a list of items on the current order, the current total for all items
   def initialize(menu = Menu.new)
-    @order_items = []
     @menu_items = menu.menu_items
-    @current_total
+    @order_items = []
+    @current_total = 0
   end
 
 # adds a dish to the order items array
@@ -21,21 +21,21 @@ class Order < Takeaway
     sum
   end
 
-# fetches the price of a dish from the menu
-  def fetch_price(dish)
-    menu_items.each do | item |
-      if item.has_value?(dish)
-        return item[:price]
+# fetches the price of the dish (used in order object to calculate the order total)
+    def fetch_price(dish)
+      @menu_items.each do | item |
+        if item.has_value?(dish)
+          return item[:price]
+        end
       end
     end
-  end
 
   def sum
     order_items.each do | item |
       @price = fetch_price(item[:item])
-      cost = dish[:amount] * @price
-      end
-      @current_total += cost
+      @cost = item[:amount] * @price
+      @current_total += @cost
     end
-    return @current_total
+  end
+
 end
