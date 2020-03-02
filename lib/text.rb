@@ -3,14 +3,13 @@
 # class Text
 
 #   def initialize(client: nil)
-#     @client = client || Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
-# #     @config = config
+#     @client = client || Twilio::REST::Client.new(ENV[:TWILIO_ACCOUNT_SID], ENV[:MYAUTH_KEY])
 #   end
 
 # # client.messages.create(
-# # from: config[:from]
-# # to: config[:to]
-# # body: config[:body]
+# # from: ENV[:FROM]
+# # to: ENV[:TO]
+# # body: ENV[:BODY]
 # # )
 
 # end
