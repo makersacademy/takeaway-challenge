@@ -1,84 +1,127 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
------
+----
+Create a Takeaway which allows a customer to view a menu with a list of dishes and prices. customers
+can select dishes to add to their order and view their order. Once the customer is happy they can
+place their order. This will send an sms confirming the delivery time of their order (1 hour from placing
+the order).
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Quickstart
+----
+This an irb application. To get started, clone this repository and run the following code in your terminal:
+```
+irb -r ./lib/customer.rb
+```
+Then set up a new customer. For example:
+```
+customer = Customer.new
+```
 
+User stories
+----
+
+1.
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+```
+In IRB:
+```
+2.6.5 :002 > customer.show_menu
 
+Welcome to Takeaway
+
+item      Dish        Price
+1.        pizza       £10.50
+2.        curry       £8.00
+3.        burger      £6.50
+
+Please .select_dish (item number) and quantity
+```
+
+
+2.
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
+The customer can update their order by running the following command in IRB:
+```
+2.6.5 :003 > customer.select_dish(3,2)
+```
+The first argument in the above example (3) refers to the
+item number in the menu (e.g. burger).
 
+The second argument in the above example (2) refers to the quantity that the customer would like to order of that item.
+
+This adds this dish to the order object. A user can run this command as many times as they like.
+  - If they select a dish that has already been selected, the order object will update the quantity appropriately.
+  - If no quanity is provided, the quantity will default to 1
+
+3.
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+The user can view their current order by using this command in IRB:
+```
+2.6.5 :004 > customer.show_order
 
+Dish       Quantity   Amount
+burger        2       £13.00
+
+Total order: £13.00
+```
+This allows the user to see the total order and how the total is broken down.
+
+4.
+
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+```
+customer.place_order
+```
+This will send an SMS to customer with the message:
+"Thank you! Your order was placed and will be delivered before <delivery_time>"
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+The delivery time is 1 hour from the time that the order is placed.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+How programme is constructed:
+---
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+|  class    | State     | Behaviour   |
+|-----------|-----------|-------------|
+| Customer  | @menu (-> dependency on Menu class)<br>@order (-> dependency on Order class)<br>@phone_number | show_menu() (-> calls Menu .display) <br> select_dish(dish_number, quantity) (-> calls Order .add) <br> remove_dish(dish_number, quantity) (not implemented yet) <br> show_order() (-> calls Order .display)<br>place_order() (-> calls Order .confirmed)|
+| Menu      | @takeaway_name <br> @menu | display() |
+| Order     | @order <br> @total <br> @menu (-> dependency on Menu class)| add() <br> display() <br> confirmed() (-> calls SMS.new, which sends SMS)|
+| SMS       | @client | send_sms(phone_number, message) |
 
 
-In code review we'll be hoping to see:
+Known issues
+---
+- Users can currently enter an item number that isn't on the menu without it raising a useful error. This needs to be implemented
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+- If a users puts in a negative quantity to the .select_dish method it will minus this from the order (even allowing the order quantity to be negative). It should instead raise an error. This needs to be implemented.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+- Not all the code follows the Single Responsibility Principle yet
 
-Notes on Test Coverage
-------------------
+- Rubocop is currently giving 4 offenses. These need to be sorted out.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Future improvements
+---
+- implement a .remove_dish function to allow the customer to remove dishes from their order. Some existing functions will need to be modified in order to introduce the feature. For example, it would help if the order had item numbers to make it easier to select the order item they want remove. There would also need to be checks in place to ensure the quantity doesn't go negative, and to remove items completely from the order if quantity is < 1.
+
+- It would be nice if the programme displayed a message to the user when they've selected a dish to add to their order. Something like: "2 burgers have been added to your order"
+
+- As this programme develops, it should have a dish object to store information about each dish (dish description, ingredients, vegetarian? vegan? gluten_free? etc)
+
+- it would be good to introduce functionality to load/update menus.
