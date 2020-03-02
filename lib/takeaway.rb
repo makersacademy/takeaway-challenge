@@ -1,14 +1,16 @@
 require_relative 'order'
+require_relative 'text'
 
 class Takeaway
 
   DEFAULT_NUM = 1
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :text
 
-  def initialize(menu:, order: nil)
+  def initialize(menu:, order: nil, text: nil)
     @menu = menu
     @order = order || Order.new(menu)
+    @text = text || Text.new
   end
 
   def print_menu
@@ -22,6 +24,10 @@ class Takeaway
   def confirmation
     print_order
     complete_order(@order.total)
+  end
+
+  def sent_message
+    @text.confirmation_message
   end
 
   def complete_order(price)
