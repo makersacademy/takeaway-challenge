@@ -18,6 +18,7 @@ class Takeaway
 
   def add_to_order(item, quantity)
     @current_order.order << { item: item, quantity: quantity }
+    p @current_order
   end
 
   def check_order
