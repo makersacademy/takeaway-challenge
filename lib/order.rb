@@ -1,5 +1,6 @@
 require_relative 'menu'
 require 'twilio-ruby'
+require 'dotenv/load'
 class Order
   attr_reader :order_list
   DEFAULT_NUMBER = 1
@@ -42,14 +43,14 @@ class Order
   end
   
   def send_message
-    account_sid = "xxxxxxx" 
-    auth_token = "xxxxxxx"
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
-        body: "Your order is on the way and will be delivered at #{Time.now + 3600}",
-        to: "xxxxxxx",
-        from: "xxxxxxx")
+        body: "Your order is on the way and will be delivered before #{(Time.now + 1*60*60).strftime("%k:%M")}",
+        to: ENV['MY_NUMBER'],
+        from: ENV['TWILIO_NUMBER'])
   end
 
   def place_order
