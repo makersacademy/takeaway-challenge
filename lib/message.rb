@@ -1,4 +1,4 @@
-require 'dotenv' # Loads the .env file with credentials
+require 'dotenv/load' # Loads the .env file with credentials
 require 'twilio-ruby'
 
 class Message
@@ -13,7 +13,7 @@ class Message
   def send_message
     ask_for_number
     create_message
-    # twilio_sms
+    twilio_sms
   end
 
   def ask_for_number
@@ -26,22 +26,17 @@ class Message
     Your food will be with you before #{delivery_time}"
   end
 
-  # IT IS NOT LOADING THE .ENV CREDENTIALS
+  def twilio_sms
+    account_sid = ENV["TWILIO_ACCOUNT_SID"] # Calls the value from .env
+    auth_token = ENV["AUTH_TOKEN"]
+    client = Twilio::REST::Client.new(account_sid, auth_token)
 
-  # def twilio_sms
-  #   account_sid = TWILIO_ACCOUNT_SID
-  #   auth_token = AUTH_TOKEN
-  #   client = Twilio::REST::Client.new(account_sid, auth_token)
-  #
-  #   from = '+44 1277 424717'
-  #   to = @phone_number
-  #
-  #   client.messages.create(
-  #   from: from,
-  #   to: to,
-  #   body: @message
-  #   )
-  # end
+    client.messages.create(
+    from: ENV["TWILIO_NUMBER"],
+    to: @phone_number,
+    body: @message
+    )
+  end
 
   # private
 
