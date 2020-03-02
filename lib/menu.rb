@@ -3,16 +3,13 @@ require 'twilio-ruby'
 
 class Menu
 
-
-    account_sid = ENV['ACCOUNT_SID']
-    auth_token = ENV['AUTH_TOKEN']
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
-    
-
     def initialize
         @menu_items = []
         build_menu
         @basket = []
+        account_sid = ENV['ACCOUNT_SID']
+        auth_token = ENV['AUTH_TOKEN']
+        @client = Twilio::REST::Client.new(account_sid, auth_token)
     end
 
     def build_menu
@@ -54,7 +51,7 @@ class Menu
         @client.messages.create(
             from: from,
             to: to,
-            body: "Thank you! Your order was placed and will be delivered before #{time.now + 1800}"
+            body: "Thank you! Your order was placed and will be delivered before #{Time.now + 1800}"
             )
     end
 end

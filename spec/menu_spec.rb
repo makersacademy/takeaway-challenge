@@ -28,7 +28,6 @@ describe Menu do
         end
         it 'displays list of menu items2' do
             menu.instance_variable_set(:@menu_items, [item1])
-            # subject.build_menu
             expect(menu.view).to eq [item1]
         end
     end
@@ -40,7 +39,6 @@ describe Menu do
         it 'can add item on menu to basket' do
             subject.add_to_basket(1, 2)
             expect(subject.instance_variable_get(:@basket)).to include {{item: instance_variable_get(:@menu_items)[0], quantity: 2}}
-            p subject.instance_variable_get(:@basket)
         end
     end
 
@@ -60,8 +58,7 @@ describe Menu do
 
     describe 'checkout' do
         it 'sends confirmation message to user' do
-            allow(subject.checkout).to receive_messages(1234,1234) do 
-                expect (subject.checkout).to include "Thank you! Your order was placed"
+            expect (subject.checkout(1234,1234)).to include "Thank you! Your order was placed"
         end
     end
 
