@@ -17,7 +17,25 @@ class Order < Takeaway
   end
 
 # incomplete method for calculating total of order items using private method sum (not written yet)
-  def check_total?
-    order_items.sum
+  def check_total
+    sum
   end
+
+# fetches the price of a dish from the menu
+  def fetch_price(dish)
+    menu_items.each do | item |
+      if item.has_value?(dish)
+        return item[:price]
+      end
+    end
+  end
+
+  def sum
+    order_items.each do | item |
+      @price = fetch_price(item[:item])
+      cost = dish[:amount] * @price
+      end
+      @current_total += cost
+    end
+    return @current_total
 end

@@ -9,6 +9,6 @@ takeaway.view_menu
 takeaway.add("Garlic Bread", 2)
 takeaway.add("Romana", 2)
 
-takeaway.complete_order
+puts takeaway.current_order.fetch_price("Americana")
 
-# takeaway.check_total
+takeaway.current_order.check_total

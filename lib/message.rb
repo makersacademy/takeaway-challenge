@@ -6,6 +6,8 @@ class Message
 # gives us the time format of hours and minutes
   TIME_FORMAT = "%H:%M"
 
+# could take these out?
+
   attr_reader :client, :account_sid, :auth_token, :from, :to
 
 # holds the authentification information, brought in using dotenv
