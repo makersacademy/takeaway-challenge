@@ -1,6 +1,4 @@
 require 'takeaway'
-require 'order'
-require 'menu'
 
 describe Takeaway do
 
