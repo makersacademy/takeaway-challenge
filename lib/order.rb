@@ -1,4 +1,8 @@
+require 'rubygems'
+require 'twilio-ruby'
+
 require_relative "menu"
+require_relative "checkout"
 class Order
   attr_reader :order
   DEFAULT_QUANTITY = 1
@@ -6,6 +10,7 @@ class Order
   def initialize
     @menu = Menu.new
     @order = []
+    @text = Text.new
   end
 
   def add(dish, quantity = DEFAULT_QUANTITY)
@@ -20,16 +25,23 @@ class Order
 
   def total
     fail "Basket is empty" if @order == []
-    
+
     value = 0
     @order.each do |item|
       item.each { |_k, v| value += v }
     end
     "Order total is £#{value}"
-    end
+  end
+
+  def checkout
+    fail "Basket is empty" if @order == []
+    @text.message
+    "Order placed"
+  end
 
   private
   def not_on_menu?(dish)
     !@menu.menu.include? dish
   end
 end
+

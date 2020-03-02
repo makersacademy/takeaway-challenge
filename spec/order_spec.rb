@@ -40,7 +40,20 @@ describe Order do
     end
 
     it "raises an error when check total and order empty" do
-      expect{subject.total}.to raise_error "Basket is empty"
+      expect { subject.total }.to raise_error "Basket is empty"
     end
+  end
+
+  describe "#checkout" do
+    it "returns 'order placed' when you checkout and order" do 
+      expect(subject).to receive(:checkout).and_return("Order placed")
+      subject.add("Pizza")
+      expect(subject.checkout).to eq "Order placed"
+    end
+
+    it "returns an error when you try to checkout an empty order" do
+      expect{subject.checkout}.to raise_error "Basket is empty"
+    end
+      
   end
 end
