@@ -4,3 +4,4 @@ require 'checkout'
 #   it {is_expected.to respond_to :confirmation}
 
 # end
+

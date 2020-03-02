@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'twilio-ruby'
+# require 'dotenv/load'
+
 
 require_relative "menu"
 require_relative "checkout"

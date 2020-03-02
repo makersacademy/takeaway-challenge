@@ -2,6 +2,7 @@ require "order"
 describe Order do
   it { is_expected.to respond_to(:add).with(2).argument }
   it { is_expected.to respond_to(:show_order) }
+  # it { is_expected.to respond_to(:checkout) }
   
   describe "#add" do
     it "adds an item to the order" do
