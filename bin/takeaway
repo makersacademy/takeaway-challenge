@@ -33,7 +33,7 @@ config =
     auth_token: ENV["AUTH_TOKEN"],
     from: ENV["PHONE"],
     to: phone,
-    body: "Thank you! Your order will be delivered before %s"
+    body: "Thank you for buying from BIG BOI BURGER BARN! Your order will be delivered before %s"
 }
 
 Takeaway.new(menu: menu, config: config).place_order(dishes)
