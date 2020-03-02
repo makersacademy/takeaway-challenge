@@ -81,7 +81,7 @@ Total: £10
 
 ### Problems faced
 * Issues with using doubles and mocks in testing the takeaway file. Something I need to do more practice on. Currently foregoing the text functionality in order to write more tests for the takeaway.rb file. It was easier writing the code than the tests first. [update: I think have the doubles running at least partially on the takeaway spec file now]
-* Seemingly calling the menu twice when initializing `takeaway = Takeaway.new(menu)` - is not too much of a problem as when you add items to the menu it updates both lists, but isn't very neat.
+* Seemingly calling the menu twice when initializing `takeaway = Takeaway.new(menu: = Menu.new)` - is not too much of a problem as when you add items to the menu it updates both lists, but isn't very neat.
 * The updating of the menu that the restaurant can do should be a private method.
 * When printing the order I have to call order twice in order for it to work:
 ```
@@ -93,4 +93,4 @@ def print_order
     puts "Total: £#{@order.total}"
   end
 ```
-* Have not managed to get through the last user story and get a text sent out. The twilio gem is loaded and I have a number however getting the environmental variables to work properly hasn't worked. They are currently sitting in my .bashrc profile and in the .env file but the terminal doesn't seem to recognize when I try to call them using `ENV['XXX']`. Unsure how to proceed for security reasons. 
+* Text functionality almost working - getting JSON error message from the confirmation message
