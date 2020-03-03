@@ -19,12 +19,11 @@ class Menu
 
   def print_menu
     @list.each do |item|
-      puts "#{item[:number]}: #{item[:name]} ----- £#{item[:price]}"
+      puts "#{item[:number]}: #{item[:name]} ----- £#{item[:price]}\n"
     end
   end
 
   def order(num)
-    raise 'Item not recognised' if num < 1 || num > 7
     @basket << @list[num - 1]
   end
 
@@ -42,9 +41,14 @@ class Menu
     end
 
   def print_basket
+    if @basket.empty?
+      print "Your basket is empty\n"
+    else
+      puts "Your basket:"
     @basket.each do |item|
       print "#{item[:name]} ----- £#{item[:price]}\n"
     end
-    print "Total: £#{total}"
+  end
+    print "Total: £#{total}\n"
   end
   end
