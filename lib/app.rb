@@ -13,8 +13,12 @@ while true do
   if input == 'basket'
     menu.print_basket
   elsif input == 'confirm'
-    puts "Thank you, your food will be with you soon"
-    break
+    if menu.basket.empty?
+      puts "Your basket is empty!"
+    else
+      puts "Thank you, your food will be with you by #{(Time.now + 3600).strftime("%k:%M")}"
+      break
+    end
   elsif input == 'quit'
     puts "Goodbye!"
     break
