@@ -15,7 +15,7 @@ describe Menu do
   end
 
   it 'raises an error if a nonexistant item is selected' do
-    expect{subject.order(100)}.to raise_error 'Item not recognised'
+    expect { subject.order(100) }.to raise_error 'Item not recognised'
   end
 
   it 'can store multiple items in a basket' do
