@@ -11,12 +11,12 @@ shared_context "common takeaway" do
   let(:basket) { [dish_two_basket, dish_three_basket] }
 
   #doubles for Takeaway class
-  let(:menu_klass) { double("menu", list: list, print: "print menu", dish_exists?: true, dish_available?: true, dish_price: 0.6) }
-  let(:basket_klass) { double("basket", print: "print basket", add: "add desired dish", details: [{dish: "soup", price: 1.99, ordered: 2}], empty: "") }
-  let(:checkout_klass) { double("checkout", order_confirmation: false, send_confirmation_message: "") }
+  let(:menu) { double("menu", list: list, print: "print menu", dish_exists?: true, dish_available?: true, dish_price: 0.6) }
+  let(:basket) { double("basket", print: "print basket", add: "add desired dish", details: [{dish: "soup", price: 1.99, ordered: 2}], empty: "") }
+  let(:checkout) { double("checkout", order_confirmation: false, send_confirmation_message: "") }
 
   #initialize subject with doubles
-  subject{described_class.new({ name: "Dishoom", menu: menu_klass, basket: basket_klass, checkout: checkout_klass })}
+  subject{described_class.new({ name: "Dishoom", menu: menu, basket: basket, checkout: checkout })}
 end
 
 shared_context "common menu" do

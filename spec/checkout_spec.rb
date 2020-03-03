@@ -1,8 +1,8 @@
 require "checkout"
 
 shared_context "common checkout" do
-  let(:messsage_klass) { double("message", sending: "send") }
-  subject {described_class.new(messsage_klass)}
+  let(:messsage) { double("message", sending: "send") }
+  subject {described_class.new(messsage)}
   #dummy basket
   let(:dish_two_basket) {{ dish: "chips", price: 0.5, ordered: 5 }}
   let(:dish_three_basket) {{ dish: "ramen", price: 0.9, ordered: 10 }}
@@ -14,7 +14,7 @@ describe Checkout do
 
   context "initialized instance variable" do
     it "message" do
-      expect(subject.instance_variable_get(:@message)).to eq(messsage_klass) 
+      expect(subject.instance_variable_get(:@message)).to eq(messsage) 
     end
   end
 
@@ -29,7 +29,7 @@ describe Checkout do
       expect{subject.order_confirmation(basket)}.to output("Here is your order: \n\nx5 chips      £2.5\nx10 ramen      £9.0\ntotal:      £11.5\n").to_stdout
     end
      it "#order_confirmation delegates to Message.send" do
-      expect(messsage_klass).to receive(:sending).once
+      expect(messsage).to receive(:sending).once
       subject.order_confirmation(basket)
     end
   end

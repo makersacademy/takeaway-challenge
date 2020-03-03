@@ -1,7 +1,7 @@
 require "message"
 
 describe Message do
-  let(:message_mock) {double("message", sending: "Thanks! :)")}
+  let(:message) {double("message", sending: "Thanks! :)")}
   context "responds to method" do
     it "#send" do
       expect(subject).to respond_to(:sending)
@@ -9,7 +9,7 @@ describe Message do
   end
   context "method functionality" do
     it "sends a message" do
-      expect(message_mock.sending).to eq("Thanks! :)")
+      expect(message.sending).to eq("Thanks! :)")
     end
   end
 end
