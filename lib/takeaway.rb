@@ -12,7 +12,7 @@ class Takeaway < Menu
     @current_order = current_order
   end
 
-# method is inherited by Order and used to add dished to current_orders list of items
+# method is inherited by Order and used to add dishes to current_orders list of items
   def add(dish, amount)
     raise "Dish is not available" unless check(dish) == dish
 
@@ -22,21 +22,20 @@ class Takeaway < Menu
 
 # checks the order has an item sends a message to the user
   def complete_order
-    if @current_order.empty?
-      puts "You don't have any items in your basket"
-    else
+      raise "You don't have any items in your basket" if @current_order.order_items.empty?
+
       send_message
-    end
   end
 
 # checks the total for the order
   def check_total
     @current_order.check_total
-    puts @current_order.current_total
+    puts "Your current order comes to £#{@current_order.current_total}"
   end
 
+private
+
 # this method checks if the dish is on the menu and returns the dish
-#could you also inject the price here?
   def check(dish)
     @menu_items.each do | item |
       if item.has_value?(dish)

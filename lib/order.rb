@@ -21,6 +21,8 @@ class Order < Takeaway
     sum
   end
 
+private
+
 # fetches the price of the dish (used in order object to calculate the order total)
     def fetch_price(dish)
       @menu_items.each do | item |
