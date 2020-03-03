@@ -4,18 +4,19 @@ class Order
 
   attr_reader :current_order, :prices_to_sum, :total_price
 
-  def initialize
+  def initialize(menu = Menu.new)
     @current_order = []
     @prices_to_sum = []
     @total_price = 0
+    @menu = menu
   end
 
   def add_dish(dish, amount)
-    fail "Sorry, that dish is not available" if existent_dish?(dish) == false
+    fail "Sorry, that dish is not available" if @menu.existent_dish?(dish) == false
 
     amount.times do
-      @current_order << "#{dish} ...... £#{Menu.new.menu_list[dish]}"
-      @prices_to_sum << Menu.new.menu_list[dish]
+      @current_order << "#{dish} ...... £#{@menu.menu_list[dish]}"
+      @prices_to_sum << @menu.menu_list[dish]
     end
   end
 
@@ -25,10 +26,6 @@ class Order
   end
 
 # private (HOW TO CALL THEM FROM TESTS?)
-
-  def existent_dish?(dish)
-    Menu.new.menu_list.has_key?(dish) ? true : false
-  end
 
   def sum_price
     @prices_to_sum.each do |price|
@@ -58,8 +55,4 @@ class Order
   #     end
   #   end
   # end
-
-  # allow(subject).to receive(:empty?) { false }
-  # allow(subject).to receive(:storm?) { true }
-
 end

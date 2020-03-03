@@ -23,4 +23,8 @@ class Menu
       puts "#{dish}: £#{price}"
     end
   end
+
+  def existent_dish?(dish)
+    @menu_list.key?(dish) ? true : false
+  end
 end
