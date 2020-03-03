@@ -29,8 +29,8 @@ class Menu
   end
 
   def remove(num)
-    raise 'Please enter the number of the item you wish to remove' if num<1 || num > @basket.count
-    @basket.delete_at(num-1)
+    raise 'Please enter the number of the item you wish to remove' if num < 1 || num > @basket.count
+    @basket.delete_at(num - 1)
   end
 
   def total
