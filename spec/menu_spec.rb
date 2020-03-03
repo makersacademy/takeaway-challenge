@@ -14,6 +14,12 @@ describe Menu do
     expect(subject.basket[0]).to eq subject.list[1]
   end
 
+  it "can remove objects from the basket" do
+    subject.order(1)
+    subject.remove(1)
+    expect(subject.basket).to be_empty
+  end
+
   it 'raises an error if a nonexistant item is selected' do
     expect { subject.order(100) }.to raise_error 'Item not recognised'
   end
@@ -34,6 +40,6 @@ describe Menu do
 
   it 'shows the user their full order' do
     subject.order(2)
-    expect(subject.print_basket).to eq "Total: £9"
+    expect{subject.print_basket}.to output("Cheese burger ----- £9\nTotal: £9").to_stdout
   end
 end

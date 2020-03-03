@@ -28,6 +28,11 @@ class Menu
     @basket << @list[num - 1]
   end
 
+  def remove(num)
+    raise 'Please enter the number of the item you wish to remove' if num<1 || num > @basket.count
+    @basket.delete_at(num-1)
+  end
+
   def total
     calculator = []
     @basket.each do |item|
