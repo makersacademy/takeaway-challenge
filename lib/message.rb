@@ -3,11 +3,12 @@ require 'twilio-ruby'
 
 class Message
 
-  attr_reader :phone_number, :message
+  attr_reader :phone_number, :message, :time
 
   def initialize
     @phone_number = nil
     @message = nil
+
   end
 
   def send_message
@@ -18,7 +19,7 @@ class Message
 
   def ask_for_number
     puts "Please insert your phone number:"
-    @phone_number = gets.chomp.to_s
+    @phone_number = input_number
   end
 
   def create_message
@@ -40,7 +41,13 @@ class Message
 
   # private
 
+  def input_number
+    gets.chomp.to_s
+  end
+
   def delivery_time
+    p Time.now
+    p (Time.now + 1 * 60 * 60).strftime("%k:%M")
     delivery_time = (Time.now + 1 * 60 * 60).strftime("%k:%M")
   end
 end
