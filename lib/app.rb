@@ -22,9 +22,9 @@ while true do
   elsif input == 'quit'
     puts "Goodbye!"
     break
-  elsif order_number > 0 && order_number <=menu.list.count
+  elsif order_number > 0 && order_number <= menu.list.count
     menu.order(order_number)
-    puts "1 x #{menu.list[order_number-1][:name]} added"
+    puts "1 x #{menu.list[order_number - 1][:name]} added"
   else
     puts "Unrecognised command or item"
   end

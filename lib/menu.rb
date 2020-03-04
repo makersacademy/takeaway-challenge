@@ -45,9 +45,9 @@ class Menu
       print "Your basket is empty\n"
     else
       puts "Your basket:"
-    @basket.each do |item|
-      print "#{item[:name]} ----- £#{item[:price]}\n"
-    end
+      @basket.each do |item|
+        print "#{item[:name]} ----- £#{item[:price]}\n"
+      end
   end
     print "Total: £#{total}\n"
   end

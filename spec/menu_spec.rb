@@ -20,10 +20,6 @@ describe Menu do
     expect(subject.basket).to be_empty
   end
 
-  it 'raises an error if a nonexistant item is selected for order' do
-    expect { subject.order(100) }.to raise_error 'Item not recognised'
-  end
-
   it 'raises an error if a nonexistant item is selected to remove from basket' do
     expect { subject.remove(100) }.to raise_error 'Please enter the number of the item you wish to remove'
   end
@@ -44,6 +40,6 @@ describe Menu do
 
   it 'shows the user their full order' do
     subject.order(2)
-    expect { subject.print_basket }.to output("Cheese burger ----- £9\nTotal: £9").to_stdout
+    expect { subject.print_basket }.to output("Your basket:\nCheese burger ----- £9\nTotal: £9\n").to_stdout
   end
 end
