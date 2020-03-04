@@ -13,7 +13,7 @@ describe Message do
     expect(subject.input_number).to eq("input")
   end
 
-  xit "can calculate #delivery_time" do
+  it "can calculate #delivery_time" do
     # How to mock Time?
     allow(Time.now).to receive(:strftime).and_return("12:00")
     expect(subject.delivery_time).to eq("13:00")

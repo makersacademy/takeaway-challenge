@@ -28,7 +28,7 @@ class Restaurant
 
   def checkout
     @order.finish_order
-    @message.send_message 
+    @message.send_message
   end
 
   # CALL FOR LOOP IN ORDER CLASS
