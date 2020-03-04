@@ -30,9 +30,15 @@ feature_test.rb
 
 * Create an interactive program that let's a user order food from a takeaway shop
 * The customer should be able to check the running total of their order against the sum of the dishes they have added to their order, add items to the order, view the menu and complete their order
-* Use rspec to test the program using mocking and other isolation testing mechanisms to unit test each class
+* Use Rspec to test the program using mocking and other isolation testing mechanisms to unit test each class
 * Incorporate dependency injection, encapsulation, polymorphism and other relevant OOP concepts in the program design
-* Use the twilio API to send messages to your customers when their order has been completed
+* Use the Twilio API to send messages to your customers when their order has been completed
+
+## Used
+
+* Dotenv to handle environment variables
+* Twilio's API to send confirmation messages
+* Ruby and Rspec for testing
 
 ## Approach
 
@@ -175,7 +181,7 @@ To streamline my methods I have let the takeaway object inherit the #view_menu m
 
 ## Checking dishes
 
-As part of the 3rd user story I've added a check dish method to the Takeaway object. This method checks to see if the name of th e dish that is being added to the order exists on the menu. If not it raises an error.
+As part of the 3rd user story I've added a check dish method to the Takeaway object. This method checks to see if the name of the dish that is being added to the order exists on the menu. If not it raises an error.
 
 Feature test:
 
@@ -215,27 +221,7 @@ Traceback (most recent call last):
 /Users/student/Documents/projects/takeaway-challenge/lib/takeaway.rb:16:in `add': Dish is not available (RuntimeError)
 ```
 
-## Checkout and sending messages
-
-Got a tad carried away and implemented a message object and a send method in the Takeaway object. When running the feature test -
-
-```
-takeaway = Takeaway.new()
-
-takeaway.view_menu
-
-takeaway.add("Garlic Bread", 2)
-takeaway.add("Romana", 2)
-
-takeaway.complete_order
-
-```
-
-the message is sent to my phone. The authentification was handled by an .env file and dotenv.
-
 ## To be continued...
 
 * Add unit tests for messaging - currently no tests in place to make sure this works
-* Add check total functionality - we have one red test set up for this which currently cannot pass
-* Possibly change the structure of order_items and the menu_items into just hashes for ease of use
 * Add clear feature to the order object after the complete order function has been called

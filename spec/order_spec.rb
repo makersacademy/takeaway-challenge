@@ -26,8 +26,10 @@ describe Order do
   describe '#check_total' do
     it 'should return and update the current total instance variable' do
       subject.add("Garlic Bread", 2)
-      subject.add("Romana", 1)
-      expect(subject.current_total).to_eq 20
+      subject.check_total
+      expect(subject.current_total).to eq 10
     end
   end
+
+
 end

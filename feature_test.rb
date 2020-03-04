@@ -6,6 +6,5 @@ takeaway = Takeaway.new()
 
 takeaway.view_menu
 
-takeaway.add("Padana", 1)
-
 takeaway.check_total
+takeaway.complete_order
