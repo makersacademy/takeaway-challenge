@@ -19,9 +19,21 @@ describe Menu do
 
   it " 2) Prints a list of dishes with prices" do
     printed_menu = "Pizza £8.99, Wedges £2.50, Soda £1.00"
-    expect(menu.menu_print).to eq (printed_menu)
+    expect(menu.print).to eq (printed_menu)
     #This is from the mapping method pushes them out of a hash into an array
   
+  end
+
+  it "3) Tells if a dish is on the menu" do 
+    expect(menu.has_dish?(:pizza)).to be true
+  end
+
+  it "4) tells if a dish is not on the menu" do
+    expect(menu.has_dish?(:beef)).to be false
+  end
+
+  it "5) calculates a price" do
+    expect(menu.price(:pizza)).to eq(dishes[:pizza])
   end
 
 end

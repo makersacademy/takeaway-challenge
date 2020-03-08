@@ -7,11 +7,19 @@ class Menu
   end
 
 
-  def menu_print
-      dishes.map do |item, cost|
-        "%s £%.2f" % [item.to_s.capitalize, cost]
+  def print
+      dishes.map do |title, price| 
+        "%s £%.2f" % [title.to_s.capitalize, price]
     end.join(", ")
   end
 
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
+
+  def price(dish)
+    dishes[dish]
+  end
 end
+
 
