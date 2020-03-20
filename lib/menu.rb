@@ -4,7 +4,7 @@ class Menu
 
   def initialize
     @items = Hash.new(0)
-  end
+  end 
 
   def add_dish(dish, price)
     @items[dish] += price
