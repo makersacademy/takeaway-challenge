@@ -16,7 +16,7 @@ Takeaway Challenge
 
 This programme allows a user to oder take-aways from their local resturant 
 
-## User Stories##
+## User Stories ##
 
 ```
 As a customer
