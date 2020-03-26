@@ -77,7 +77,7 @@ $ irb
 2.6.5 :006 > order.add_item("garlic bread", 3)
  => "You have added 3 garlic breads into your basket" 
 2.6.5 :007 > order.basket_summary
- => "margarita x £6 = £30, garlic bread x £3 = £9" 
+ => "margarita x 6 = £30, garlic bread x 3 = £9" 
 2.6.5 :008 > order.total_order
  => "£39" 
 2.6.5 :009 > order.order_confirmation
