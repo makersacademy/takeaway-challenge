@@ -14,21 +14,9 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+This programme allows a user to oder take-aways from their local resturant 
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## User Stories##
 
 ```
 As a customer
@@ -48,37 +36,60 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Tech Used ##
+- Ruby
+- RSpec
+- Twilio API
+- Rubocop
+- Simplecov
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## Testing ##
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+- Navigate to the top level of the directory
+- run `rspec` in your command line
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+## Getting Started ##
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+- Fork this repo, and clone to your local machine.
+- Change into the directory `cd takeaway-challenge`
+- Run the command  `gem install bundle` (if you don't have bundle already)
+- When the installation completes, run `bundle`
+
+## Usage ##
+
+- The text sending functionality is implemented using Twilio API.
+- If the Takeaway is loaded into IRB and the order is placed, the text will be sent
+- Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+- Twilio function not updated to Github due to privacy reasons 
 
 
-In code review we'll be hoping to see:
+- This program is run on ruby within a REPL such as irb or pry. 
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Example
+``` 
+$ irb
+2.6.5 :001 > require './lib/order.rb'
+=> true 
+2.6.5 :003 > order = Order.new
+ => #<Order:0x00007f97eeb64e90 @basket={}, @menu=#<Menu:0x00007f97eeb64e68 @items={"margarita"=>5, "garlic bread"=>3}>> 
+2.6.5 :005 > order.add_item("margarita", 6)
+ => "You have added 6 margaritas into your basket" 
+2.6.5 :006 > order.add_item("garlic bread", 3)
+ => "You have added 3 garlic breads into your basket" 
+2.6.5 :007 > order.basket_summary
+ => "margarita x £6 = £30, garlic bread x £3 = £9" 
+2.6.5 :008 > order.total_order
+ => "£39" 
+2.6.5 :009 > order.order_confirmation
+Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 03:29 PM 
+```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+## Progress Status ##
+  - Project is complete
+  - Could further develop by:\
+                         - implementing the ability to place orders via text-message\
+                         - inclduing a front-end interface
+                         - Ensure ENV variables are functioning therfore can upload twilio functionality
 
-Notes on Test Coverage
-------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
