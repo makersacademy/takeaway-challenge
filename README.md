@@ -88,7 +88,7 @@ Sent from your Twilio trial account - Thank you! Your order was placed and will 
   - Project is complete
   - Could further develop by:\
                          - implementing the ability to place orders via text-message\
-                         - inclduing a front-end interface
+                         - inclduing a front-end interface\
                          - Ensure ENV variables are functioning therfore can upload twilio functionality
 
 
