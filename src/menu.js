@@ -1,9 +1,5 @@
 'use strict';
 
 function Menu() {
-  this.dishes = {};
-};
-
-Menu.prototype.getDishes = function() {
-    return this.dishes;
+  this.items = {"Mozza": 5, "Burger": 7, "Fries": 3};
 };

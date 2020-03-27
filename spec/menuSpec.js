@@ -7,17 +7,10 @@ describe('Menu', function() {
     menu = new Menu();
   });
 
+  describe('display menu', function() {
 
-  describe('viewing the menu', function() {
-
-    it('shows a list of the dishes', function() {
-      expect(menu.getDishes()).toEqual({});
-    });
-
-    it('displays the price of the dishes', function() {
-      dishes = {mozzarella:5, burger:7, fries:3}
-      menu.displayDishes(dishes);
-      expect(menu.getDishes()).toEqual(dishes);
+    it('has 3 dishes', function() {
+      expect(menu.items).toEqual(jasmine.objectContaining({"Mozza": 5, "Burger": 7, "Fries": 3}))
     });
 
   });
