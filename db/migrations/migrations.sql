@@ -13,7 +13,7 @@ CREATE TABLE dishes (
 
 insert into dishes (dishname, dishdescr, dishprice) VALUES ('Pizza - Margherita', 'cheese and tomato pizza', '7.99');
 insert into dishes (dishname, dishdescr, dishprice) VALUES ('Pizza - Four Cheese', 'lots of cheese', '8.99');
-insert into dishes (dishname, dishdescr, dishprice) VALUES ('Pizza - Pepperoni', 'lots of cheese', '8.99');
+insert into dishes (dishname, dishdescr, dishprice) VALUES ('Pizza - Pepperoni', 'spicy!', '8.99');
 insert into dishes (dishname, dishdescr, dishprice) VALUES ('Pizza - Fiorentina', 'spinach and egg', '8.50');
 insert into dishes (dishname, dishdescr, dishprice) VALUES ('Garlic bread', 'mmm yummy garlic', '3.50');
 insert into dishes (dishname, dishdescr, dishprice) VALUES ('Cheesy garlic bread', 'gooey cheese', '3.50');
