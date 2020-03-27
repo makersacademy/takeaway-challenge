@@ -12,7 +12,7 @@
 
 'menu.css'
 
-var order = new Order()
+var order = new Order([])
 $('#add-to-order').on('click', function (){
 
 })

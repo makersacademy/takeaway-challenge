@@ -4,7 +4,7 @@ Jo's notes for README
 - spent a bit of time researching how best to store price, decided on NUMERIC (x,2)
 - spent a bit of time researching on how to connect to database using JS, internet has told me not to, found a couple of options that might work but decided instead to hard code the menu items and work on the interactive element of the display ("add to basket" etc)
 - am trying not to view this as time wasted, and may come back to it later if I whizz through the interface faster than I suspect
-
+- which I haven't
 
 Takeaway Challenge
 ==================
