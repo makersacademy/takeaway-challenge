@@ -17,4 +17,11 @@ describe('Feature test', function() {
     expect(order.totalPrice()).toEqual(13);
   });
 
+  it ('can show a receipt', function(){
+    order.select("Americano")
+    order.select("Chocolate Sprinkle Doughnut")
+    order.select("Chef's Special Seasonal Salad")
+    expect(order.showReceipt()).toEqual({"Americano": 2.50, "Chocolate Sprinkle Doughnut": 3.50,  "Chef's Special Seasonal Salad": 7.00,})
+  })
+
 });
