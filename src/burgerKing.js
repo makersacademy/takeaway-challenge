@@ -6,4 +6,8 @@ class Burgerking {
 getMenu () {
   return this.dishes
 }
+
+orderDish (dishname) {
+  return "You have ordered" + " " + "the" + " " + dishname +"." 
+}
 };
