@@ -1,0 +1,48 @@
+body {
+  text-align: center;
+  background: url("gaelle-marcel-YnbJwNXy0YQ-unsplash.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1 {
+  font-size: 24px;
+  padding: 8px;
+}
+
+h2 {
+  font-size: 24px;
+  padding: 10px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+
+li{
+  display:table;
+  margin:0px auto 0px auto;
+}
+
+.table {
+  background-color: whitesmoke;
+  color: charcoalgrey;
+  opacity: 80%;
+  width: 70%;
+  margin: 0 15% 0 15%;
+  font-size: 14px;
+  text-align: left;
+}
+
+.btn {
+  margin: 10px;
+  padding: 10px 30px 10px 30px;
+}
+
+#gif-wrap {
+  width: 100px;
+  height: 100px;
+}
