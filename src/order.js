@@ -32,4 +32,8 @@ class Order {
     }
     return this.receipt
   }
+
+  submit() {
+    return `Thank you for submitting your order, you'll receive: ${this.selection} for a total price of £${this.totalPrice().toFixed(2)}`
+  }
 }
