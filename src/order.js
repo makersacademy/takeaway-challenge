@@ -9,13 +9,27 @@ class Order {
     this.selection.push(dishName)
   }
 
+  unselect(dishName) {
+    for(var i = this.selection.length - 1; i >= 0; i--) {
+      if(this.selection[i] == dishName) {
+          this.selection.splice(i, 1);
+      }
+    }
+    delete this.receipt[dishName]
+    return this.selection
+  }
+
   getSelection() {
     return this.selection
   }
 
   calculateCost() {
-    var dishes = new Dishes()
-    this.selection.forEach(name => this.price += dishes.all()[name])
+    if(this.price === 0) {
+      var dishes = new Dishes()
+      this.selection.forEach(name => this.price += dishes.all()[name])
+    } else {
+      return;
+    }
   }
 
   totalPrice() {
