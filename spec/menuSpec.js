@@ -6,13 +6,15 @@ describe ('Order', function() {
     order = new Order([]);
   });
 
-  // it('adds to basket on click of Add to Basket', function(){
-  //   expect(order.addToBasket()).toDoSomething
-  // })
+  it('adds to basket on click of Add to Basket', function(){
+    expect(order.addToBasket()).toContain();
+  })
+
 
   // it('goes to View Basket page on click of View Basket button', function(){
   //   expect(order.viewBasket()).toDoSomething
   // })
 
-  // it('places order on click')
-})
+  // it('places order on click', function(){
+  // expect(order.placeOrder()).toDoSomething
+  })

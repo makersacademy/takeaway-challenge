@@ -2,18 +2,20 @@
 
 class Order{
 
-
-function addToBasket() {
+addToBasket() {}
   // creates a Basket on click of any button
-  // creates a view basket button (must happen in order)
-  // adds a line to basket for product
+  // creates a "view basket" button (must happen in this order)
+  // adds a line to Basket for product
     // order.push
 
 
-  // viewBasket() {}
+viewBasket() {}
+  //on click of View Basket button
   // displays all lines in Basket
   // totals prices
   // shows Place Order button
-}
-  // placeOrder() {}
+
+placeOrder() {}
+//on click of Place Order button
 //links to Twilio etc
+}
