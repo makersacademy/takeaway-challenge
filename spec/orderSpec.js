@@ -24,12 +24,13 @@ describe('taking order', function() {
     });
   });
 
-  // describe('gives the total of the order', function() {
-  //   it('shows the total amount', function() {
-  //     order.addItems("Burger", 7);
-  //     order.addItems("Mozza", 5);
-  //     order.amountOrder();
-  //     expect(order.orderTotal).toEqual(12);
-  //   });
-  // });
+  describe('gives the total of the order', function() {
+    it('shows the total amount', function() {
+      order.addItems("Burger", 7);
+      order.addItems("Mozza", 5);
+      order.amountOrder();
+      expect(order.orderTotal).toEqual(12);
+    });
+  });
+  
 });
