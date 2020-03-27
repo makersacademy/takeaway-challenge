@@ -2,13 +2,19 @@
 
 class Takeaway {
   constructor() {
-    this.menu = {
-      Burrito: 7,
-      Taco: 5,
-      Cerveza: 6
+    this.customerItems = []
+    this.menu =
+      {dish: 'Burrito', price: 7},
+      {dish: 'Taco', price: 5},
+      {dish: 'Cerveza', price: 6}
     }
-  }
-  priceList() {
+
+  takeawayMenu() {
     return this.menu;
   }
+  order() {
+    this.customerItems.push({dish: 'Burrito', price: 7})
+    return this.customerItems;
+  }
+
 };
