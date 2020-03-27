@@ -10,7 +10,7 @@ describe('Order', function() {
     order = new Order();
   });
 
-  it ('can select dishes', function(){
+  it ('can select a dish', function(){
     order.select("Americano")
     expect(order.getSelection()).toEqual(["Americano"]);
   });
