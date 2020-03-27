@@ -1,13 +1,16 @@
 class Burgerking {
   constructor(){
-    this.menu = new Object();
-    this.menu["Whopper"] = 4.49
-    this.menu["ChickenRoyale"] = 4.49
-    this.menu["PrawnBurger"] = 3.79
+    const menu = new Object();
+    menu["Whopper"] = 4.49
+    menu["ChickenRoyale"] = 4.49
+    menu["PrawnBurger"] = 3.79
   }
 
 getMenu () {
-  return this.menu
+  for(const x in menu) {
+      console.log(`${x}: ${menu[x]}`);
+    }
+  return x
 };
 
 orderDish (dishname) {
