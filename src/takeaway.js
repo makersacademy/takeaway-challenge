@@ -12,9 +12,9 @@ class Takeaway {
   takeawayMenu() {
     return this.menu;
   }
-  order() {
-    this.customerItems.push({dish: 'Burrito', price: 7})
+  order(dish) {
+    // this.menu.select()
+    this.customerItems.push(this.menu)
     return this.customerItems;
   }
-
 };

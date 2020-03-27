@@ -16,6 +16,12 @@ describe('Takeaway', function(){
     takeaway.order('Burrito')
     expect(takeaway.customerItems).toContain({ dish: 'Burrito', price: 7})
   });
+
+  it('can select multiple dishes', function() {
+    takeaway.order('Taco')
+    takeaway.order('Cerveza')
+    expect(takeaway.customerItems).toContain({ dish: 'Burrito', price: 7}, {dish: 'Taco', price: 5}, { dish: 'Cerveza', price: 6})
+  });
 });
 // As a customer
 // So that I can order the meal I want
