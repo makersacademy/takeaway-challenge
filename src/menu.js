@@ -1,8 +1,9 @@
 'use strict';
 
-class Menu{
+class Order{
 
   // addToBasket() {}
-  // totalBasket(){}
+  // viewBasket() {}
+  // placeOrder() {}
 
 }

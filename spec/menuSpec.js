@@ -1,9 +1,18 @@
 'use strict';
 
-describe ('Menu', function() {
-  var menu;
+describe ('Order', function() {
+  var order;
   beforeEach(function() {
-    menu = new Menu();
+    order = new Order();
   });
-  
+
+  // it('adds to basket on click of Add to Basket', function(){
+  //   expect(order.addToBasket()).toDoSomething
+  // })
+
+  // it('goes to View Basket page on click of View Basket button', function(){
+  //   expect(order.viewBasket()).toDoSomething
+  // })
+
+  // it('places order on click')
 })
