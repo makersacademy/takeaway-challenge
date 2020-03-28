@@ -3,7 +3,7 @@ require 'selection'
 describe Selection do
   let(:dish_name) { "Stew" }
   let(:quantity) { 4 }
-  let(:selection) { Selection.new("Stew", 4)}
+  let(:selection) { Selection.new("Stew", 4) }
 
   it 'set the dish name when you create it' do
     expect(selection.dish_name).to eq(dish_name.to_sym)

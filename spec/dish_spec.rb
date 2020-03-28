@@ -1,7 +1,7 @@
 require 'dish'
 
 describe Dish do
-  let(:name) { "Stew" }
+  let(:name) { :stew }
   let(:price) { 3.99 }
   let(:dish) { Dish.new(name, price) }
 
