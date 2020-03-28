@@ -22,7 +22,7 @@ class Order
 
   def place
     order_time = Time.now
-    delivery_time = order_time + 10 * 60
+    delivery_time = (order_time + 10 * 60).strftime("%R")
     @notification.send(delivery_time)
   end
 

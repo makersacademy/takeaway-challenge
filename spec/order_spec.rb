@@ -23,7 +23,7 @@ describe Order do
   let(:notification_inst) do
     notification_inst = double(:notification)
     allow(notification_inst)
-      .to receive(:send).with(instance_of(Time))
+      .to receive(:send).with(/\d{2}:\d{2}/)
       .and_return("Mock SMS notification has recieved #send")
     notification_inst
   end
