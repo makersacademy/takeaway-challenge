@@ -38,8 +38,10 @@ describe Order do
     it 'sends a text with the expected delivery time when an order has been verified' do
       allow(list_of_dishes).to receive(:get_dish).with(:stew).and_return(stew_dish)
       allow(list_of_dishes).to receive(:get_dish).with(:rice).and_return(rice_dish)
+      text_handler = double(:text_handler, send_confirmation_text: 'Text sent')
       order = Order.new(list_of_dishes, selections, correct_total)
-      expect(order.send_text).to eq('Text sent')
+
+      expect(order.send_text(text_handler)).to eq('Text sent')
     end
   end
 end
