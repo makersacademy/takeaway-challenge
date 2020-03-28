@@ -1,5 +1,11 @@
+require_relative 'menu'
+
 class Order
-  def buy(meal1, meal2, meal3)
-    "£10"
+
+  attr_reader :menu
+
+  def initialize
+    @menu = Menu.new.list
   end
+
 end
