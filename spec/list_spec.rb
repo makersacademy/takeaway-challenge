@@ -1,5 +1,4 @@
 require 'list'
-require 'meal'
 
 describe List do
   it { is_expected.to respond_to :see }
@@ -9,10 +8,14 @@ describe List do
     expect(subject.see).to eq(menu)
   end
 
-  it 'lets the user choose a number of a dish' do
-    menu = {
-      'apple' => 3
-    }
+  it 'lets the user choose a of a dish' do
+    menu = { 'apple' => 3 }
     expect(subject.apple).to eq(menu)
+  end
+
+  it 'lets the user add several units of a dish to their meal' do
+    menu = { "apple" => 3 }
+    meal = subject.apple(2)
+    expect(meal).to eq("2 * {\"apple\"=>3}")
   end
 end
