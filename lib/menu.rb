@@ -11,4 +11,10 @@ class Menu
   def add_new_item(name, price)
     @list[name] = MenuItem.new(name, price)
   end
+
+  def print_menu
+    @list.map { |_key, value| 
+      "#{value.name} - £#{value.price}" 
+    }
+  end
 end
