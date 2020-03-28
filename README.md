@@ -125,5 +125,5 @@ Order | menu
 
 ## Class Diagram
 
-![image](./images/classdiagram2.png)
+![image](./images/diagram1.png)
 
