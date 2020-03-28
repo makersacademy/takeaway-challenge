@@ -1,10 +1,10 @@
-class Order
+class CustomerOrder
 
-  def dish_choice
+  def see_order
     @choice = { 'apple' => 3 }
   end
 
-  def order_total
+  def total
     @choice = { 'apple' => 3 }.values.sum
   end
 end

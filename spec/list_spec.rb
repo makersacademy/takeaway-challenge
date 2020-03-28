@@ -1,11 +1,11 @@
 require 'list'
 
 describe List do
-  it { is_expected.to respond_to :see }
+  it { is_expected.to respond_to :see_menu }
     
   it 'shows dish price pairs' do
     menu = { 'apple' => 3 }
-    expect(subject.see).to eq(menu)
+    expect(subject.see_menu).to eq(menu)
   end
 
   it 'lets the user choose a of a dish' do
