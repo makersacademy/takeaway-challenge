@@ -13,6 +13,7 @@ describe Order do
     allow(menu_inst).to receive(:provide_dish).with(1).and_return(pie_inst)
     allow(menu_inst).to receive(:provide_dish).with(2).and_return(mash_inst)
     allow(menu_inst).to receive(:provide_dish).with(3).and_return(chips_inst)
+    menu_inst
   end
 
   # Order with mock menu instance
