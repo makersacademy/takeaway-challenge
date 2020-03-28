@@ -82,3 +82,14 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+Approach
+
+1st User Story
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
