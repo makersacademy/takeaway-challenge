@@ -10,7 +10,7 @@ class List
     if args.empty? && blk.nil? && @menu.has_key?(m.to_s)
       @menu
     elsif @menu.has_key?(m.to_s)
-      "#{args[0]} * #{@menu}" 
+      [args[0], @menu ]
     else
       'We do not have that on the menu'
     end

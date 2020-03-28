@@ -15,13 +15,13 @@ describe List do
 
   it 'lets the user add several units of a dish to their meal' do
     menu = { "apple" => 3 }
-    meal = subject.apple(2)
-    expect(meal).to eq("2 * {\"apple\"=>3}")
+    order = subject.apple(2)
+    expect(order).to eq([2, menu])
   end
 
   it 'lets the user add the same item several times to their meal' do
     menu = { "apple" => 3 }
-    meal = [{ "apple" => 3 }, { "apple" => 3 }]
-    expect(meal).to eq([{ "apple" => 3 }, { "apple" => 3 }])
+    order = [{ "apple" => 3 }, { "apple" => 3 }]
+    expect(order).to eq([{ "apple" => 3 }, { "apple" => 3 }])
   end
 end
