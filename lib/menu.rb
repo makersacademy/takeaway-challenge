@@ -19,7 +19,6 @@ class Menu
     get_dish(dish_number).new
   end
 
-
   private
 
   def check_in_menu(dish_number)
