@@ -12,16 +12,24 @@ describe Order do
   end
 
   it "responds to #add_pizza with a menu number" do
-    expect(subject).to respond_to(:select_pizza).with(1).argument
+    expect(subject).to respond_to(:select_pizza).with(2).arguments
   end
 
   #Again another instance where I am just asking if it's
   #an instance of a class rather than the contents
   it "#add_pizza returns the first item from #show_menu" do
-    expect(subject.add_pizza("1")).to be_instance_of Hash
+    expect(subject.select_pizza("1", 1)).to be_instance_of Hash
   end
+
+
 
   it "responds to #selection" do
     expect(subject).to respond_to :selection
   end
+
+  it '#selection is an array containing the order' do
+    expect(subject.selection).to be_instance_of Array
+  end
+
+
 end

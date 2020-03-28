@@ -9,7 +9,7 @@ class Order
     @selection = []
   end
 
-  def select_pizza(menu_num)
-    @show_menu[menu_num.to_i - 1]
+  def select_pizza(menu_num, quantity)
+    pizza = @show_menu[menu_num.to_i - 1]
   end
 end
