@@ -115,7 +115,7 @@ I would like to be able to select some number of several available dishes
 ```
 From the users perspectiv in IRB:
 ```
-order = Order.new("Fish", "Chips", "Salad)
+order = Order.new("Fish", "Chips", "Salad")
 > £10
 ```
 
