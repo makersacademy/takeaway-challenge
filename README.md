@@ -226,6 +226,12 @@ _Uh oh! in retrospect, looking at the technical requirements I think I have impl
 
 #### User Story 4
 
+> As a customer  
+> So that I am reassured that my order will be delivered on time  
+> I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+This user story requires that I send text messages with Twilio. I've added it to the Gemfile.
+
 
 
 <!-- Links -->
