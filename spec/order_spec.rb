@@ -6,7 +6,16 @@ describe Order do
   end
 
   # Need to think about the description here.
+  # Is this test a bit silly, should it be updated?
   it "#show_menu prints the menu" do
     expect(subject.show_menu).to be_instance_of Array
+  end
+
+  it "responds to #add_pizza with a menu number" do
+    expect(subject).to respond_to(:add_pizza).with(1).argument
+  end
+
+  it "#add_pizza returns the first item from #show_menu" do
+    expect(subject.add_pizza("1")).to be_instance_of Hash
   end
 end
