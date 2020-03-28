@@ -5,6 +5,6 @@ class Dish
   end
   attr_reader :name, :price
   def details
-    "#{@name} (#{@price})"
+    "#{@name} (£#{@price})"
   end
 end
