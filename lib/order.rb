@@ -8,4 +8,8 @@ class Order
     @menu = menu.list
   end
 
+  def add(order)
+    order = order.split(", ")
+  end
+
 end
