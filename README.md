@@ -99,11 +99,8 @@ I would like to see a list of dishes with prices
 From the users perspectiv in IRB:
 
 ```
-menu = Menu.new
-puts menu.list
-> Chips: £3
-> Fish: £5
-> Salad: £2
+order.menu
+> {:fish=>5, :chips=>3, :salad=>2} 
 ```
 
 ## User Story 2
@@ -123,9 +120,8 @@ order = Order.new("Fish", "Chips", "Salad")
 
 Objects | Messages
 --------|--------
-Menu | list <br/> @dishes
-Dish | @price
-Order | 
+Menu| @list
+Order | menu
 
 ## Class Diagram
 
