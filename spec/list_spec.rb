@@ -1,12 +1,7 @@
 require 'list'
+require 'order'
 
 describe List do
-  it { is_expected.to respond_to :see_menu }
-    
-  it 'shows dish price pairs' do
-    menu = { 'apple' => 3 }
-    expect(subject.see_menu).to eq(menu)
-  end
 
   it 'lets the user choose a of a dish' do
     menu = { 'apple' => 3 }
@@ -24,4 +19,5 @@ describe List do
     dish_choice = [{ "apple" => 3 }, { "apple" => 3 }]
     expect(dish_choice).to eq([{ "apple" => 3 }, { "apple" => 3 }])
   end
+
 end

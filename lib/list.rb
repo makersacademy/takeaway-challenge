@@ -1,13 +1,15 @@
 require_relative 'order.rb'
 
 class List
+  
   attr_reader :menu
+  
   def initialize
-    @menu = { 'apple' => 3 }
+    @menu = { 
+      'apple' => 3
+     }
   end
-  def see_menu
-    @menu
-  end
+  
   def method_missing(m, *args, &blk)
     if args.empty? && blk.nil? && @menu.has_key?(m.to_s)
       @menu

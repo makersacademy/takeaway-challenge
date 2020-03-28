@@ -1,4 +1,9 @@
 class CustomerOrder
+  attr_reader :order
+  
+  def initialize
+    @order = []
+  end
 
   def see_order
     @choice = { 'apple' => 3 }
