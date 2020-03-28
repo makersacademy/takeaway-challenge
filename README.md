@@ -260,7 +260,11 @@ Upon testing in IRB there needs to be some changes made. There needs to be a way
 
 Manual testing reveals that the SMS notification works, but the time is incorrectly formatted. I see that I was sidetracked by setting up the Notification#send and I neglected to format the passed delivery time, or refactor Order#place.
 
-- Corrected #place to use 
+- Corrected notification mock to expect a 24h time using regex, test red.
+
+- Updated #place to pass 24h time to #send, test green.
+
+- Refactored #place to use helper method #delivery_time
 
 
 

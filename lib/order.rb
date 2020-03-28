@@ -21,14 +21,17 @@ class Order
   end
 
   def place
-    order_time = Time.now
-    delivery_time = (order_time + 10 * 60).strftime("%R")
-    @notification.send(delivery_time)
+    @notification.send(delivery_time(Time.now))
   end
 
   private
 
   BASKET_HEADER = "Your order:\n"
+
+  def delivery_time(time)
+    hour_from_now = time + 10 * 60
+    hour_from_now.strftime("%R")
+  end
 
   def basket_list
     @basket.map { |dish| dish.details }.join("\n")
