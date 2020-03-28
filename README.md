@@ -125,4 +125,16 @@ _Next up, a feature test for adding a pie and some mash._
 
 _At this point I realised I had been passing in doubles of pies and mash to #add. That's not what a user would do! I refactored the tests to add took a number as a parameter, the number of the dish on the menu. The tests still work as they did before._
 
-- Wrote
+_To pass this feature test there needs to be several units tested and implemented._
+
+- Adding two dishes feature test. Test red.
+  - Wrote unit test for Menu #provide_dish to return a Pie object when passed 1. Test red.
+    - Pie is an uninitialized constant, so wrote tests in pie_spec.rb for Pie#name to be "Pie" and Pie#price to be 6. tests red. 
+    - Created pie.rb and added a Pie class, tests green.
+  - Wrote #provide_dish to return Pie.new. Test green.
+  - Wrote unit test for Menu #provide_dish to return a Mash object when passed 2. Test red.
+    - Mash is an uninitialized constant, wrote similar tests to Pie for Mash in mash_spec.rb, tests red.
+    - Created mash.rb and added a Mash class, tests green.
+  - Wrote an if else in #provide_dish to pass a Pie if 1 or Mash if 2. Test green.
+  - 
+
