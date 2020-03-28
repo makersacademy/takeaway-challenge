@@ -89,7 +89,7 @@ This class diagram was created in the planning phase, but due to developing with
   TO = '+111111111111' # Your mobile phone number
   ```
 
-- Don't worry, notification.rb is included in the gitignore file, so even if you push your local repo to an online repo your credentials will not be. Be careful that it remains in the lib directory though!
+- Don't worry, notification.rb is included in the gitignore file, so even if you push your local repo to an online repo your credentials will not be made public.
 
 ### Enter REPL
 
