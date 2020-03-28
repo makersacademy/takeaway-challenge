@@ -14,13 +14,14 @@ describe Order do
     allow(menu_inst).to receive(:provide_dish).with(1).and_return(pie_inst)
     allow(menu_inst).to receive(:provide_dish).with(2).and_return(mash_inst)
     allow(menu_inst).to receive(:provide_dish).with(3).and_return(chips_inst)
+    allow(menu_inst).to receive(:view).and_return("1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)")
     menu_inst
   end
 
   # Set up mock notification service
   # Times now and one hour from now in 24h format
   let(:now) { Time.now }
-  let(:hour_from_now_24h) { (Time.now + 10*60).strftime("%R") }
+  let(:hour_from_now_24h) { (now + 10*60).strftime("%R") }
 
   # Notification instance that can receive #send and return the string with 24h time an hour from now
   let(:notification_inst) do
@@ -39,7 +40,6 @@ describe Order do
       mocked_order.add(1)
       expect(mocked_order.basket).to eq "Your order:\nPie (£6)\nTotal: £6"
     end
-  
     it 'adding a two dishes to the order shows both dishes in the order basket' do
       mocked_order.add(1)
       mocked_order.add(2)
@@ -47,6 +47,11 @@ describe Order do
     end
   end
 
+  describe '#view_menu' do
+    it 'returns the list of dishes of the menu of the order' do
+      expect(mocked_order.view_menu).to eq "1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)"
+    end
+  end
 
   describe '#place' do
     it 'places an order and sends a text to the user that delivery will be complete within an hour' do

@@ -250,6 +250,13 @@ I also need to inject the notification type into the order so I can test without
 
 - Now the Notification class is complete. #place tests are green.
 
+#### Manual Feature testing and Refactoring
+
+Upon testing in IRB there needs to be some changes made. There needs to be a way to view the menu by interacting with an instance of Order.
+
+- Wrote a test in order_spec.rb for #view_menu to return the list of dishes from the menu. Test red.
+
+- Wrote #view_menu to call #view on the menu in the instance variable.
 
 <!-- Links -->
 

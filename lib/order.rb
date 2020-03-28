@@ -8,6 +8,10 @@ class Order
     @notification = notification
   end
 
+  def view_menu
+    @menu.view
+  end
+
   def add(dish_number)
     @basket << @menu.provide_dish(dish_number)
   end
