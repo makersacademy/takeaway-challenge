@@ -1,6 +1,9 @@
 class Order
-  def meal_order
+  def dish_choice
+    choice = { 'apple' => 3 }
+    
   end
   def order_total
+    
   end
 end
