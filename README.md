@@ -122,7 +122,7 @@ order.add("1 fish, 3 salad, 2 chips")
 Objects | Messages
 --------|--------
 Menu| @list
-Order | menu
+Order | menu <br/> add
 
 ## Class Diagram
 
