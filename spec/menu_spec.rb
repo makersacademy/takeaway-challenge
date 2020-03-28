@@ -24,6 +24,12 @@ describe Menu do
     it 'should display only 1 item if there is only 1 item on the menu' do
       expect(menu_1.view).to eq "1. Pie (£6)"
     end
+    it 'should display only 2 items if there is only 2 items on the menu' do
+      expect(menu_2.view).to eq "1. Pie (£6)\n2. Mash (£4)"
+    end
+    it 'should display 3 items if there is only 3 items on the menu' do
+      expect(menu_3.view).to eq "1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)"
+    end
   end
 
   describe '#provide_dish' do
