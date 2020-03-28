@@ -1,14 +1,20 @@
 require 'twilio-ruby'
 
-account_sid = 'xxxxxxxxxxxxxxxxxxxxxx'
-auth_token = 'xxxxxxxxxxxxxxxxxxxxxxx'
-client = Twilio::REST::Client.new(account_sid, auth_token)
+class Notification
+  def initialize(client = Twilio::REST::Client)
+    @client = client.new(ACCOUNT_SID, AUTH_TOKEN)
+  end
+  ACCOUNT_SID = 'xxxxxxxxxxxxxxxxxxx'
+  AUTH_TOKEN = 'xxxxxxxxxxxxxxxxxxx'
 
-from = '+111111111111' # Your Twilio number
-to = '+111111111111' # Your mobile phone number
+  FROM = '+111111111111' # Your Twilio number
+  TO = '+111111111111' # Your mobile phone number
 
-client.messages.create(
-from: from,
-to: to,
-body: "Hey friend!"
-)
+  def send(delivery_time)
+    @client.messages.create(
+    from: FROM,
+    to: TO,
+    body: "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    )
+  end
+end
