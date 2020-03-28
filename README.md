@@ -333,6 +333,8 @@ It looks like this one is actually already complete having already implemented #
 
 _Uh oh! in retrospect, looking at the technical requirements I think I have implemented a slightly different requirement that the one asked for. Oops! I'll continue with my implementation and later on if I have time I'll come back and do it to the letter of the technical requirements._
 
+_Turns out I did have time! Read on for the finished version of the slightly wrong implementation or [skip to the implementation of the actual requirements](#solving-the-correct-requirements)._
+
 ### User Story 4
 
 > As a customer  
@@ -382,6 +384,53 @@ Manual testing reveals it is possible to place an order with an empty basket. Th
 - Added guard clause to #place to raise error if basket size is 0. Test green.
 
 - Refactored to move guard clause to #check_basket
+
+### Solving the correct requirements
+
+So, previously I had implemented a slightly different solution, with separate methods to add items and place the order. This didn't match the requirements, which are to provide a single method that accepts a series of arguments: a list of dishes, their quantities and a number that should be the exact total.
+
+### User Story 2
+
+> As a customer  
+> So that I can order the meal I want  
+> I would like to be able to select some number of several available dishes
+
+This user story is partway implemented, the menu can return dishes when prompted. Now there needs to be a place method that accepts:
+
+- the series of dishes
+- their quantities
+- a number that should be the exact total
+
+And returns true or false based on if the number is the exact total of the sum of the price of the dishes ordered.
+
+- Wrote test for #place in order_spec.rb to return true if passed: "pie", 1, 6. Test red.
+
+- Wrote #place to accept three arguments and return true. Test green.
+
+- Wrote test for #place to return false if passed: "pie", 1, 4. Test red.
+
+  - In order to pass this test I did some slight refactoring of the dishes hash to use a string (i.e. "pie") as a key, rather than a number.
+
+- In #place I used menu#provide_dish to get the dish, and set a variable price with that dish's #price method. Then return a comparison between the passed total and the actual price. Test green.
+
+- Wrote test for #place to return true if passed: "pie", 1, "mash", 1, 10. Test red.
+
+- Updated #place to take a variable length argument dish_list. Added variables:
+  - dishes assigned by filtering the strings from dish_list
+  - quantities assigned by filtering the integers from dish_list
+  - actual_total assigned by mapping through dishes and getting the price of each item from menu
+
+- Finally, return comparison of actual_total and total passed in. Test green.
+
+- Refactoring, it appears that @menu.provide_dish(dish).price should just be something that we could ask the menu for, like @menu.provide_price(dish). Added that method to menu.
+
+- Also extracted some private helper methods from #place: #get_dishes, #get_quantities and #total_price. Tests still green.
+
+- Wrote test for #place to return true if passed: "pie", 2, "mash", 1, 16. Test red.
+
+- Updated #total_price to take both dishes and quantities as arguments. Variable prices maps through dishes and asks the menu to provide the price for that dish. Totals are calculated by zipping the prices with quantities to create a 2d array of the price of each item and how many there are. Then mapping through that array and multiplying each subarray's values together results in an array of subtotals. Finally, sum the subtotal array. Test green.
+
+- For my own sanity wrote a test for #place to return true if passed: "pie", 40, "mash", 12, "chips", 7, 323
 
 ### Reflections
 
