@@ -149,3 +149,17 @@ _This is a functional solution, but it is fragile, adding more dishes to the men
 - Created #get_dish which returns the dish class for the passed number in DISHES.
 - Refactored #provide_dish to first check with #check_in_menu, then return a new instance of the desired dish from the dish returned from #get_dish
 - Also added a constant MENU_LENGTH as the size of DISHES, and used that in the test for a number outside the menu so even if the menu expands the test will still pass.
+
+_Now that we have flexibility with the menu items we can add dishes easily, but the view method is still hardcoded. Testing this will require some dependency injection. I plan to inject a hash of doubled dish classes._
+
+- Wrote a new #view test expecting only 1 item when creating a menu with only one dish in the dish hash. Test red.
+- As now a dish hash is injected the dish hash, the Class constants are replaced with instance variables, so different dishes hashes can be injected in an instance to instance basis.
+- Added a parameter of dishes to the initialize method, defaulting to a hash of real dish classes.
+- Instance variables dishes and menu_length are set up based on the passed dish hash.
+- Altered #view to map through the dishes hash, and delegate to each dish classes to return its name and price with #details.
+  - Each of the dish classes needs a #details method. Given that I want all of the dishes to do this, rather than adding this to all of the 
+
+_Each of the dish classes needs a #details method. Given that I want all of the dishes to do this, rather than adding this to all of the individual dish classes, I'll create a superclass Dish they can all inherit from._
+
+- Created Dish in dish.rb and moved attr_readers from sub-classes to Dish, and added #details to return a nice string with the name and price in parentheses.
+- Updated Pie, Mash and Chips to inherit Dish. Now they will all be able to use #details.
