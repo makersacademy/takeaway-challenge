@@ -9,11 +9,19 @@ class Order
   end
 
   def basket
-    header = "Your order:\n"
-    list = @basket.map { |dish| dish.details }.join("\n")
-    total = @basket.map { |dish| dish.price }.sum
-    footer = "\nTotal: £#{total}"
-    header + list + footer
+    BASKET_HEADER + basket_list + total
   end
 
+  private
+
+  BASKET_HEADER = "Your order:\n"
+
+  def basket_list
+    @basket.map { |dish| dish.details }.join("\n")
+  end
+
+  def total
+    total = @basket.map { |dish| dish.price }.sum
+    "\nTotal: £#{total}"
+  end
 end
