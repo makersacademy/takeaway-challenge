@@ -191,8 +191,10 @@ _Now that we have flexibility with the menu items we can add dishes easily, but 
   - Updated the doubles used in the menu tests, as they need to be able to respond to #details.
 
 - #view expecting only 1 item now tests green.
-- Wrote a couple more tests for #view for injected dish hashes with 2 and 3 dishes for good measure, they pass. 
+- Wrote a couple more tests for #view for injected dish hashes with 2 and 3 dishes for good measure, they pass.
 
 _In retrospect I realise that updating the view method to work dynamically with any dish hash was not contributing to the completion of the user story feature. However it was good practice for dependency injection. On with the user story and the two dishes in the basket feature test._
+
+_#add needs to actually start doing something, and #basket needs to return the things that have been added. As the responsibility for returning the dishes an Order is told to add lies with a Menu, a Menu needs to be mocked._
 
 - 
