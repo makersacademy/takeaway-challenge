@@ -12,4 +12,14 @@ class Order
   def select_pizza(menu_num, quantity)
     quantity.times { @selection.push(@show_menu[menu_num.to_i - 1]) }
   end
+
+  def calculate_total
+    num = 0
+    total = 0
+    while num < @selection.length
+    total += @selection[num][:price]
+    num += 1
+    end
+    total
+  end
 end
