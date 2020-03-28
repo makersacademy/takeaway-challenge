@@ -19,16 +19,13 @@ describe Order do
   end
 
   # Set up mock notification service
-  # Times now and one hour from now in 24h format
-  let(:now) { Time.now }
-  let(:hour_from_now_24h) { (now + 10*60).strftime("%R") }
 
   # Notification instance that can receive #send and return the string with 24h time an hour from now
   let(:notification_inst) do
     notification_inst = double(:notification)
     allow(notification_inst)
       .to receive(:send).with(instance_of(Time))
-      .and_return("Thank you! Your order was placed and will be delivered before #{hour_from_now_24h}")
+      .and_return("Mock SMS notification has worked")
     notification_inst
   end
 
@@ -56,7 +53,7 @@ describe Order do
   describe '#place' do
     it 'places an order and sends a text to the user that delivery will be complete within an hour' do
       mocked_order.add(1)
-      expect(mocked_order.place).to eq "Thank you! Your order was placed and will be delivered before #{hour_from_now_24h}"
+      expect(mocked_order.place).to eq "Mock SMS notification has worked"
     end
   end
 end
