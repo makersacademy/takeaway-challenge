@@ -391,7 +391,7 @@ I feel I have done a good job of using OO principles of Encapsulation, SRP and D
 
 I did try my best to follow TDD practices but at times I got sidetracked with unrelated features, but eventually got back on track.
 
-I feel a little bit silly for not understanding the requirements quite correctly, however I think I have achieved the learning objectives of practicing TDD, OOP, and gem usage well in any case.
+I feel a little bit silly for not understanding the requirements quite correctly, however I think I have achieved the learning objectives of practising TDD, OOP, and gem usage well in any case.
 
 I may come back to implement a "technically correct" solution in the future.
 
