@@ -12,7 +12,7 @@ describe Menu do
   let(:mash_inst) { double(:mash, name: "Mash", price: 4, details: "Mash (£4)") }
   let(:chips_inst) { double(:chips, name: "Chips", price: 5, details: "Chips (£5)") }
   
-  # Menu items with mock dish hashes injected
+  # Menus with mock dish hashes injected
   let(:menu_1) { Menu.new({1 => pie_class}) }
   let(:menu_2) { Menu.new({1 => pie_class, 2 => mash_class}) }
   let(:menu_3) { Menu.new({1 => pie_class, 2 => mash_class, 3 => chips_class}) }
