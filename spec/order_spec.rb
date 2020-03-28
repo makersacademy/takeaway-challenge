@@ -13,6 +13,9 @@ describe Order do
   end
 
   it 'shows the total of the order' do
-
+    list = List.new
+    menu = { 'apple' => 3 }
+    choice = list.apple
+    expect(subject.order_total).to eq(choice.values.sum)
   end
 end
