@@ -5,10 +5,10 @@ class Menu
   attr_reader :list
 
   def initialize
-    @list = []
+    @list = Hash.new
   end
 
-  def add_item(item)
-    @list << item
+  def add_new_item(name, price)
+    @list[name] = MenuItem.new(name, price)
   end
 end

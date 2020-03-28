@@ -2,7 +2,7 @@ require 'menu_item'
 
 describe MenuItem do
 
-  subject { MenuItem.new(name: "American Hot", price: 8.99) }
+  subject { MenuItem.new("American Hot", 8.99) }
 
   context 'new item name and price' do
     
