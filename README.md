@@ -98,6 +98,7 @@ Objects | Messages
 Menu | list <br/> @dishes
 Dish | @price
 
+## Class Diagram
 
-
+![image](./images/classdiagram1.png)
 
