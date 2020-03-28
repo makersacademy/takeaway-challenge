@@ -1,4 +1,6 @@
 require_relative 'pie'
+require_relative 'mash'
+require_relative 'chips'
 
 class Menu
   def view
@@ -8,8 +10,10 @@ class Menu
   def provide_dish(dish_number)
     if dish_number == 1
       Pie.new
-    else
+    elsif dish_number == 2
       Mash.new
+    else
+      Chips.new
     end
   end
 
