@@ -96,3 +96,26 @@ _There should be a method to view a list of dishes with prices from the menu._
 - Nothing to refactor.
 - Write test to expect calling #view returns a list of dishes. Test fails.
 - Wrote a #view method to return a list of dishes, hardcoded. Test passes.
+
+_As this is hardcoded at the moment it isn't very flexible, but I suspect TDD will change that soon enough._
+
+### User Story 2
+
+> As a customer  
+> So that I can order the meal I want  
+> I would like to be able to select some number of several available dishes
+
+_Following the idea I had in the class diagram, this calls for an Order class, to which dishes can be added to a basket from the menu. Let's start with a basic feature test for just adding 1 pie._
+
+- Created order_spec.rb and added a describe block for the Order class, required order.rb. Test fails.
+- Created order.rb in lib dir, and added an empty Order class. Test passes.
+- Wrote feature test that adding a dish to the order with #add shows that dish in the order. Test fails
+
+_I could've tested for an array of dishes in the basket, but that would be testing state rather than behaviour!_
+
+- Wrote #add and #basket for Order. Test passes.
+
+_At the moment #add doesn't actually do anything, and basket just returns a hardcoded string. This will change after the next feature test though._
+
+_Next up, a feature test for adding a pie and some mash._
+
