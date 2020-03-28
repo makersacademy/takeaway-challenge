@@ -11,4 +11,8 @@ class ListOfDishes
   def see
     @dishes
   end
+
+  def get_dish(dish_name)
+    @dishes[dish_name]
+  end
 end
