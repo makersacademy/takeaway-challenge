@@ -1,5 +1,3 @@
-require_relative 'dish'
-
 class Menu
 
   def list
