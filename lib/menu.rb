@@ -1,9 +1,16 @@
+require_relative 'pie'
+
 class Menu
   def view
     "1. Pie - £6\n2. Mash - £4\n3. Chips - £5"
   end
 
   def provide_dish(dish_number)
-    Pie.new
+    if dish_number == 1
+      Pie.new
+    else
+      Mash.new
+    end
   end
+
 end
