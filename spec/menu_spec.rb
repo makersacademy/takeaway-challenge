@@ -17,8 +17,8 @@ describe Menu do
     it 'returns a Chips object when passed 3' do
       expect(subject.provide_dish(3)).to be_kind_of(Chips)
     end
-    it 'raises error when passed 4' do
-      expect { subject.provide_dish(4) }.to raise_error "That number isn't an item on the menu"
+    it 'raises error when passed a number outside of the menu' do
+      expect { subject.provide_dish(Menu::MENU_LENGTH + 1) }.to raise_error "That number isn't an item on the menu"
     end
   end
 end

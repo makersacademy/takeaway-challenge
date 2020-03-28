@@ -8,15 +8,21 @@ class Menu
   end
 
   def provide_dish(dish_number)
-    if dish_number == 1
-      Pie.new
-    elsif dish_number == 2
-      Mash.new
-    elsif dish_number == 3
-      Chips.new
-    else
-      raise "That number isn't an item on the menu"
-    end
+    check_in_menu(dish_number)
+    get_dish(dish_number).new
   end
 
+
+  private
+
+  DISHES = {1 => Pie, 2 => Mash, 3 => Chips}
+  MENU_LENGTH = DISHES.size
+
+  def check_in_menu(dish_number)
+    raise "That number isn't an item on the menu" unless DISHES.include?(dish_number)
+  end
+
+  def get_dish(dish_number)
+    DISHES[dish_number]
+  end
 end

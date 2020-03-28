@@ -125,20 +125,27 @@ _Next up, a feature test for adding a pie and some mash._
 
 _At this point I realised I had been passing in doubles of pies and mash to #add. That's not what a user would do! I refactored the tests to add took a number as a parameter, the number of the dish on the menu. The tests still work as they did before._
 
-_To pass this feature test there needs to be several units tested and implemented._
+_To pass this feature test there needs to be several units tested and implemented. The Menu has responsibility to pass back dishes the order requests._
 
-- Adding two dishes feature test. Test red.
-  - Wrote unit test for Menu #provide_dish to return a Pie object when passed 1. Test red.
-    - Pie is an uninitialized constant, so wrote tests in pie_spec.rb for Pie#name to be "Pie" and Pie#price to be 6. tests red. 
-    - Created pie.rb and added a Pie class, tests green.
-  - Wrote #provide_dish to return Pie.new. Test green.
-  - Wrote unit test for Menu #provide_dish to return a Mash object when passed 2. Test red.
-    - Mash is an uninitialized constant, wrote similar tests to Pie for Mash in mash_spec.rb, tests red.
-    - Created mash.rb and added a Mash class, tests green.
-  - Wrote an if else in #provide_dish to pass a Pie if 1 else Mash. Test green.
-  - Wrote unit test for Menu #provide_dish to return a Chips object when passed 3. Test red.
-    - Chips is an uninitialized constant, wrote similar tests to Pie and Mash for Chips in chips_spec.rb, tests red.
-    - Created chips.rb and added a Chips class, tests green.
-  - Extended the if else in #provide_dish to pass a Pie if 1 else Mash. Test green.
-  - Wrote a test for #provide_dish to raise error if passed a menu item number that doesn't exist. Tests red.
-  - Extended the if else to cover cases 1, 2, 3 and on else raise an error. Test green.
+- Wrote unit test for Menu #provide_dish to return a Pie object when passed 1. Test red.
+  - Pie is an uninitialized constant, so wrote tests in pie_spec.rb for Pie#name to be "Pie" and Pie#price to be 6. tests red. 
+  - Created pie.rb and added a Pie class, tests green.
+- Wrote #provide_dish to return Pie.new. Test green.
+- Wrote unit test for Menu #provide_dish to return a Mash object when passed 2. Test red.
+  - Mash is an uninitialized constant, wrote similar tests to Pie for Mash in mash_spec.rb, tests red.
+  - Created mash.rb and added a Mash class, tests green.
+- Wrote an if-else in #provide_dish to pass a Pie if 1 else Mash. Test green.
+- Wrote unit test for Menu #provide_dish to return a Chips object when passed 3. Test red.
+  - Chips is an uninitialized constant, wrote similar tests to Pie and Mash for Chips in chips_spec.rb, tests red.
+  - Created chips.rb and added a Chips class, tests green.
+- Extended the if-else in #provide_dish to pass a Chips if 1, Mash if 2, else Chips. Test green.
+- Wrote a test for #provide_dish to raise error if passed a menu item number that doesn't exist. Tests red.
+- Extended the if-else to cover cases 1, 2, 3 and on else raise an error. Test green.
+
+_This is a functional solution, but it is fragile, adding more dishes to the menu is hard, needing to add to an ever growing if-else for each dish. Time to refactor._
+
+- Created a constant DISHES, a frozen hash containing keys for the dish numbers and values for the dish objects.
+- Created #check_in_menu to raise the error if the number passed is not a key in DISHES.
+- Created #get_dish which returns the dish class for the passed number in DISHES.
+- Refactored #provide_dish to first check with #check_in_menu, then return a new instance of the desired dish from the dish returned from #get_dish
+- Also added a constant MENU_LENGTH as the size of DISHES, and used that in the test for a number outside the menu so even if the menu expands the test will still pass.
