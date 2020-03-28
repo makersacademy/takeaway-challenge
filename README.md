@@ -112,8 +112,9 @@ I would like to be able to select some number of several available dishes
 ```
 From the users perspectiv in IRB:
 ```
-order = Order.new("Fish", "Chips", "Salad")
-> £10
+order = Order.new
+order.add("1 fish, 3 salad, 2 chips")
+> ["1 fish", "3 salad", "2 chips"]
 ```
 
 ## Domain model
