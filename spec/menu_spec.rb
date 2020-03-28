@@ -39,8 +39,6 @@ describe Menu do
     it 'prints the name attribute in the value of the hash' do
       subject.add_new_item("pepperoni", 9)
       expect(subject.print_menu).to eq ["pepperoni - £9"]
-
-      
     end
   end
 end
