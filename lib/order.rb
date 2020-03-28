@@ -12,4 +12,10 @@ class Order
     @order << [item, quantity]
   end
 
+  def total
+    total_items = 0
+    @order.each { |item| total_items += item[1] }
+    "Total items: #{total_items}"
+  end
+
 end

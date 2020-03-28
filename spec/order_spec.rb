@@ -14,11 +14,22 @@ describe Order do
       expect(subject.show_order).to eq new_item
     end
 
-    it 'show add an item with a quantity' do
+    it 'adds an item with a quantity' do
       new_item = subject.add_item("margherita", 5)
       expect(subject.show_order).to eq new_item
     end
   end
  
+  describe '#total' do
+    it 'returns total number of items' do
+      subject.add_item("margherita", 5)
+      expect(subject.total).to eq "Total items: 5"
+    end
 
+    it 'returns total number of items of multiple pizzas' do
+      subject.add_item("margherita", 5)
+      subject.add_item("vegetarian", 3)
+      expect(subject.total).to eq "Total items: 8"
+    end
+  end
 end
