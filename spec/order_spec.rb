@@ -24,7 +24,7 @@ describe Order do
     notification_inst = double(:notification)
     allow(notification_inst)
       .to receive(:send).with(/\d{2}:\d{2}/)
-      .and_return("Mock SMS notification has recieved #send")
+      .and_return('Mock SMS notification has recieved #send')
     notification_inst
   end
 
@@ -52,7 +52,10 @@ describe Order do
   describe '#place' do
     it 'places an order and sends a text to the user that delivery will be complete within an hour' do
       mocked_order.add(1)
-      expect(mocked_order.place).to eq "Mock SMS notification has recieved #send"
+      expect(mocked_order.place).to eq 'Mock SMS notification has recieved #send'
+    end
+    it 'raises an error if no dishes have been added' do
+      expect { mocked_order.place }.to raise_error 'Cannot place order with an empty basket'
     end
   end
 end

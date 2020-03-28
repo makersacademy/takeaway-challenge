@@ -21,6 +21,7 @@ class Order
   end
   
   def place
+    check_basket
     delivery_time = calculate_delivery_time(Time.now)
     @notification.send(delivery_time)
   end
@@ -37,6 +38,10 @@ class Order
 
   def time_as_24(time)
     time.strftime("%R")
+  end
+
+  def check_basket
+    raise 'Cannot place order with an empty basket' if @basket.size == 0
   end
 
   def basket_list
