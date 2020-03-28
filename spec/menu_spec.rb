@@ -1,0 +1,2 @@
+describe Menu do
+end
