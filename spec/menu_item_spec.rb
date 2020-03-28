@@ -1,0 +1,3 @@
+describe MenuItem do
+  
+end
