@@ -11,9 +11,12 @@ describe Order do
   # Menu instance double that can provide dish doubles based on #provide_dish with different arguments
   let(:menu_inst) do 
     menu_inst = double(:menu)
-    allow(menu_inst).to receive(:provide_dish).with(1).and_return(pie_inst)
-    allow(menu_inst).to receive(:provide_dish).with(2).and_return(mash_inst)
-    allow(menu_inst).to receive(:provide_dish).with(3).and_return(chips_inst)
+    allow(menu_inst).to receive(:provide_dish).with("pie").and_return(pie_inst)
+    allow(menu_inst).to receive(:provide_dish).with("mash").and_return(mash_inst)
+    allow(menu_inst).to receive(:provide_dish).with("chips").and_return(chips_inst)
+    allow(menu_inst).to receive(:provide_price).with("pie").and_return(6)
+    allow(menu_inst).to receive(:provide_price).with("mash").and_return(4)
+    allow(menu_inst).to receive(:provide_price).with("chips").and_return(5)
     allow(menu_inst).to receive(:view).and_return("1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)")
     menu_inst
   end
@@ -46,6 +49,18 @@ describe Order do
   describe '#view_menu' do
     it 'returns the list of dishes of the menu of the order' do
       expect(mocked_order.view_menu).to eq "1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)"
+    end
+  end
+
+  describe '#place' do
+    it 'passing ("pie", 1, 6) returns true' do
+      expect(mocked_order.place("pie", 1, 6)). to eq true
+    end
+    it 'passing ("pie", 1, 4) returns false' do
+      expect(mocked_order.place("pie", 1, 4)). to eq false
+    end
+    it 'passing ("pie", 1, "mash", 1, 10) returns true' do
+      expect(mocked_order.place("pie", 1, "mash", 1, 10)). to eq true
     end
   end
 
