@@ -18,6 +18,6 @@ describe Dish do
   end
 
   it 'errors if created with a price <= 0' do
-    expect {  Dish.new(name, 0) }.to raise_error(ArgumentError, 'dish price must be greater than 0')
+    expect { Dish.new(name, 0) }.to raise_error(ArgumentError, 'dish price must be greater than 0')
   end
 end
