@@ -35,16 +35,16 @@ The project was created in order to practice Test Driven Development and Object 
 - Use the Gemfile to manage your gems
 - Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
 - However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-- Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-Advanced! (have a go if you're feeling adventurous):
+Advanced:
 
 - Implement the ability to place orders via text message.
-- A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 
-## Domain Model Table
+## Models
 
-This domain model table was created in the planning phase, but due to developing with TDD and allowing the program to emerge from that process, it is slightly from the final product.
+These diagrams were created in the planning phase, but due to developing with TDD and allowing the program to emerge from that process, They are slightly different from the final product.
+
+### Domain Model Table
 
 | Objects | Messages |
 |--|---|
@@ -53,9 +53,7 @@ This domain model table was created in the planning phase, but due to developing
 | Menu | list |
 | Order | total, place |
 
-## Class Diagram
-
-This class diagram was created in the planning phase, but due to developing with TDD and allowing the program to emerge from that process, it is slightly from the final product.
+### Class Diagram
 
 ![Class Diagram][Class Diagram]
 
