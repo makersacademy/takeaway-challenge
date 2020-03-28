@@ -122,9 +122,9 @@ order.add("1 fish, 3 salad, 2 chips")
 Objects | Messages
 --------|--------
 Menu| @list
-Order | menu <br/> add
+Order | menu <br/> add(order)
 
 ## Class Diagram
 
-![image](./images/diagram1.png)
+![image](./images/diagram2.png)
 
