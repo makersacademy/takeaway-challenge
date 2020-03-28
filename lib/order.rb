@@ -1,6 +1,6 @@
 class Order
 
-  def add(dish)
+  def add(dish_number)
 
   end
 

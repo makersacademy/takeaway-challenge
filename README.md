@@ -107,15 +107,22 @@ _As this is hardcoded at the moment it isn't very flexible, but I suspect TDD wi
 
 _Following the idea I had in the class diagram, this calls for an Order class, to which dishes can be added to a basket from the menu. Let's start with a basic feature test for just adding 1 pie._
 
-- Created order_spec.rb and added a describe block for the Order class, required order.rb. Test fails.
-- Created order.rb in lib dir, and added an empty Order class. Test passes.
-- Wrote feature test that adding a dish to the order with #add shows that dish in the order. Test fails
+- Created order_spec.rb and added a describe block for the Order class, required order.rb. Test red.
+- Created order.rb in lib dir, and added an empty Order class. Test green.
+- No refactor needed.
+- Wrote feature test that adding a dish to the order with #add shows that dish in the order. Test red.
 
 _I could've tested for an array of dishes in the basket, but that would be testing state rather than behaviour!_
 
-- Wrote #add and #basket for Order. Test passes.
+- Wrote #add and #basket for Order. Test green.
+- No refactor needed yet.
 
 _At the moment #add doesn't actually do anything, and basket just returns a hardcoded string. This will change after the next feature test though._
 
 _Next up, a feature test for adding a pie and some mash._
 
+- Wrote feature test that adding two dishes to the order shows both in the order basket. Test red.
+
+_At this point I realised I had been passing in doubles of pies and mash to #add. That's not what a user would do! I refactored the tests to add took a number as a parameter, the number of the dish on the menu. The tests still work as they did before._
+
+- Wrote
