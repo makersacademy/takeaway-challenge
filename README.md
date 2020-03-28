@@ -82,3 +82,12 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+## Domain Model
+
+| **Object** | **Message**|
+|---|---|
+| Dish/Item/Pizza | add new item and price |
+| Menu | See list inc. prices |
+| Order | |
