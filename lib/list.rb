@@ -7,7 +7,6 @@ class List
     @menu
   end
   def method_missing(m, *args, &blk)
-
     if args.empty? && blk.nil? && @menu.has_key?(m.to_s)
       @menu
     elsif @menu.has_key?(m.to_s)
