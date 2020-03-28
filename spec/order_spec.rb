@@ -68,6 +68,13 @@ describe Order do
     it 'passing ("pie", 40, "mash", 12, "chips", 7, 323) returns true' do
       expect(mocked_order.place("pie", 40, "mash", 12, "chips", 7, 323)). to eq true
     end
+    it 'edge case: passing ("pie", 1, "mash", 10) raises error' do
+      expect { mocked_order.place("pie", 1, "mash", 10) }. to raise_error 'Incorrect arguments: each dish is followed by quantity, finally total cost'
+    end
+    it 'edge case: passing ("pie", 2, 1, 10) raises error' do
+      expect { mocked_order.place("pie", 2, 1, 10) }. to raise_error 'Incorrect arguments: each dish is followed by quantity, finally total cost'
+    end
+
   end
 
   # describe '#place' do

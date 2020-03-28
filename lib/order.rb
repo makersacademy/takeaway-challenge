@@ -13,9 +13,8 @@ class Order
   end
 
   def place(*dish_quantity_list, total)
-    dishes = get_dishes(dish_quantity_list)
-    quantities = get_quantities(dish_quantity_list)
-    total_price(dishes, quantities) == total
+    check_order(dish_quantity_list)
+    total_price(dish_quantity_list) == total
   end
   
   # def add(dish_number)
@@ -34,6 +33,12 @@ class Order
   
   private
 
+  def check_order(dish_quantity_list)
+    dishes = get_dishes(dish_quantity_list)
+    quantities = get_quantities(dish_quantity_list)
+    raise 'Incorrect arguments: each dish is followed by quantity, finally total cost' unless dishes.size == quantities.size
+  end
+
   def get_dishes(dish_quantity_list)
     dish_quantity_list.filter { |i| i.is_a?(String) }
   end
@@ -42,7 +47,9 @@ class Order
     dish_quantity_list.filter { |i| i.is_a?(Integer) }
   end
 
-  def total_price(dishes, quantities)
+  def total_price(dish_quantity_list)
+    dishes = get_dishes(dish_quantity_list)
+    quantities = get_quantities(dish_quantity_list)
     prices = dishes.map { |i| @menu.provide_price(i) }
     prices.zip(quantities)
       .map { |price, quantity| price * quantity }

@@ -432,6 +432,12 @@ And returns true or false based on if the number is the exact total of the sum o
 
 - For my own sanity wrote a test for #place to return true if passed: "pie", 40, "mash", 12, "chips", 7, 323
 
+- Wrote test for edge case of passing arguments missing a quantity to #place. Test red.
+
+- Added guard clause to #place to raise error if the size of the dishes array is not equal to size of the quantities array. Test green.
+
+- Refactored the guard clause out to a helper method #check_order
+
 ### Reflections
 
 I feel I have implemented a good solution, with good test coverage, and fully isolated tests.
