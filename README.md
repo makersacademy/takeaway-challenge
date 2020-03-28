@@ -108,13 +108,17 @@ _As this is hardcoded at the moment it isn't very flexible, but I suspect TDD wi
 _Following the idea I had in the class diagram, this calls for an Order class, to which dishes can be added to a basket from the menu. Let's start with a basic feature test for just adding 1 pie._
 
 - Created order_spec.rb and added a describe block for the Order class, required order.rb. Test red.
+
 - Created order.rb in lib dir, and added an empty Order class. Test green.
+
 - No refactor needed.
+
 - Wrote feature test that adding a dish to the order with #add shows that dish in the order. Test red.
 
 _I could've tested for an array of dishes in the basket, but that would be testing state rather than behaviour!_
 
 - Wrote #add and #basket for Order. Test green.
+
 - No refactor needed yet.
 
 _At the moment #add doesn't actually do anything, and basket just returns a hardcoded string. This will change after the next feature test though._
@@ -128,38 +132,65 @@ _At this point I realised I had been passing in doubles of pies and mash to #add
 _To pass this feature test there needs to be several units tested and implemented. The Menu has responsibility to pass back dishes the order requests._
 
 - Wrote unit test for Menu #provide_dish to return a Pie object when passed 1. Test red.
+
   - Pie is an uninitialized constant, so wrote tests in pie_spec.rb for Pie#name to be "Pie" and Pie#price to be 6. tests red. 
+
   - Created pie.rb and added a Pie class, tests green.
+
 - Wrote #provide_dish to return Pie.new. Test green.
+
 - Wrote unit test for Menu #provide_dish to return a Mash object when passed 2. Test red.
+
   - Mash is an uninitialized constant, wrote similar tests to Pie for Mash in mash_spec.rb, tests red.
+
   - Created mash.rb and added a Mash class, tests green.
 - Wrote an if-else in #provide_dish to pass a Pie if 1 else Mash. Test green.
+
 - Wrote unit test for Menu #provide_dish to return a Chips object when passed 3. Test red.
+
   - Chips is an uninitialized constant, wrote similar tests to Pie and Mash for Chips in chips_spec.rb, tests red.
+
   - Created chips.rb and added a Chips class, tests green.
+
 - Extended the if-else in #provide_dish to pass a Chips if 1, Mash if 2, else Chips. Test green.
+
 - Wrote a test for #provide_dish to raise error if passed a menu item number that doesn't exist. Tests red.
+
 - Extended the if-else to cover cases 1, 2, 3 and on else raise an error. Test green.
 
 _This is a functional solution, but it is fragile, adding more dishes to the menu is hard, needing to add to an ever growing if-else for each dish. Time to refactor._
 
 - Created a constant DISHES, a frozen hash containing keys for the dish numbers and values for the dish objects.
+
 - Created #check_in_menu to raise the error if the number passed is not a key in DISHES.
+
 - Created #get_dish which returns the dish class for the passed number in DISHES.
-- Refactored #provide_dish to first check with #check_in_menu, then return a new instance of the desired dish from the dish returned from #get_dish
+
+- Refactored #provide_dish to first check with #check_in_menu, then return a new instance of the desired dish from the dish returned from #get_dish.
+
 - Also added a constant MENU_LENGTH as the size of DISHES, and used that in the test for a number outside the menu so even if the menu expands the test will still pass.
 
 _Now that we have flexibility with the menu items we can add dishes easily, but the view method is still hardcoded. Testing this will require some dependency injection. I plan to inject a hash of doubled dish classes._
 
 - Wrote a new #view test expecting only 1 item when creating a menu with only one dish in the dish hash. Test red.
+
 - As now a dish hash is injected the dish hash, the Class constants are replaced with instance variables, so different dishes hashes can be injected in an instance to instance basis.
+
 - Added a parameter of dishes to the initialize method, defaulting to a hash of real dish classes.
+
 - Instance variables dishes and menu_length are set up based on the passed dish hash.
+
 - Altered #view to map through the dishes hash, and delegate to each dish classes to return its name and price with #details.
-  - Each of the dish classes needs a #details method. Given that I want all of the dishes to do this, rather than adding this to all of the 
 
-_Each of the dish classes needs a #details method. Given that I want all of the dishes to do this, rather than adding this to all of the individual dish classes, I'll create a superclass Dish they can all inherit from._
+  _Each of the dish classes needs a #details method. Given that I want all of the dishes to do this, rather than adding this to all of the individual dish classes, I'll create a superclass Dish they can all inherit from._
 
-- Created Dish in dish.rb and moved attr_readers from sub-classes to Dish, and added #details to return a nice string with the name and price in parentheses.
-- Updated Pie, Mash and Chips to inherit Dish. Now they will all be able to use #details.
+  - Created Dish in dish.rb and moved attr_readers from sub-classes to Dish, and added #details to return a nice string with the name and price in parentheses.
+
+  - Updated Pie, Mash and Chips to inherit Dish. Now they will all be able to use #details. All dish tests still green.
+
+  - Updated the doubles used in the menu tests, as they need to be able to respond to #details.
+
+- #view test expecting only 1 item now tests green.
+
+_In retrospect I realise that updating the view method to work dynamically with any dish hash was not contributing to the completion of the user story feature. However it was good practice for dependency injection. On with the user story._
+
