@@ -15,21 +15,17 @@ describe Order do
     expect(subject).to respond_to(:select_pizza).with(2).arguments
   end
 
-  #Again another instance where I am just asking if it's
-  #an instance of a class rather than the contents
-  it "#add_pizza returns the first item from #show_menu" do
-    expect(subject.select_pizza("1", 1)).to be_instance_of Hash
-  end
-
-
-
   it "responds to #selection" do
     expect(subject).to respond_to :selection
   end
 
+  #bit of a pointless test?
   it '#selection is an array containing the order' do
     expect(subject.selection).to be_instance_of Array
   end
 
-
+  it '#selection contains the order' do
+    subject.select_pizza(1, 2)
+    expect(subject.selection).to eq [{"1": "Garlic Bread with cheese", price: 6}, {"1": "Garlic Bread with cheese", price: 6}]
+  end
 end
