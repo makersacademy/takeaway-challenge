@@ -91,14 +91,43 @@ Software Requirements
 
 ## User Story 1
 
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
+From the users perspectiv in IRB:
+
+```
+menu = Menu.new
+puts menu.list
+> Chips: £3
+> Fish: £5
+> Salad: £2
+```
+
+## User Story 2
+
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+From the users perspectiv in IRB:
+```
+order = Order.new("Fish", "Chips", "Salad)
+> £10
+```
+
 ## Domain model
 
 Objects | Messages
 --------|--------
 Menu | list <br/> @dishes
 Dish | @price
+Order | 
 
 ## Class Diagram
 
-![image](./images/classdiagram1.png)
+![image](./images/classdiagram2.png)
 
