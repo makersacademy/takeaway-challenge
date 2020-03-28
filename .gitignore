@@ -3,3 +3,6 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+# Env file containing twilio account information
+twilio_credentials.env
