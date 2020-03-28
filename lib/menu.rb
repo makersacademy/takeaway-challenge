@@ -12,8 +12,10 @@ class Menu
       Pie.new
     elsif dish_number == 2
       Mash.new
-    else
+    elsif dish_number == 3
       Chips.new
+    else
+      raise "That number isn't an item on the menu"
     end
   end
 

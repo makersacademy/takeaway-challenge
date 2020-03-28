@@ -135,6 +135,10 @@ _To pass this feature test there needs to be several units tested and implemente
   - Wrote unit test for Menu #provide_dish to return a Mash object when passed 2. Test red.
     - Mash is an uninitialized constant, wrote similar tests to Pie for Mash in mash_spec.rb, tests red.
     - Created mash.rb and added a Mash class, tests green.
-  - Wrote an if else in #provide_dish to pass a Pie if 1 or Mash if 2. Test green.
-  - 
-
+  - Wrote an if else in #provide_dish to pass a Pie if 1 else Mash. Test green.
+  - Wrote unit test for Menu #provide_dish to return a Chips object when passed 3. Test red.
+    - Chips is an uninitialized constant, wrote similar tests to Pie and Mash for Chips in chips_spec.rb, tests red.
+    - Created chips.rb and added a Chips class, tests green.
+  - Extended the if else in #provide_dish to pass a Pie if 1 else Mash. Test green.
+  - Wrote a test for #provide_dish to raise error if passed a menu item number that doesn't exist. Tests red.
+  - Extended the if else to cover cases 1, 2, 3 and on else raise an error. Test green.
