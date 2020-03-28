@@ -232,6 +232,23 @@ _Uh oh! in retrospect, looking at the technical requirements I think I have impl
 
 This user story requires that I send text messages with Twilio. I've added it to the Gemfile, so now all I need to do is run `bundle` from the terminal to get everything installed.
 
+I also need to inject the notification type into the order so I can test without Twilio constantly texting me.
+
+- Created a mock notification instance, allowing the mock to receive send and return the string with the time an hour from now, using a double for the current time now plus 1 hour converted to a 24h format (hh:mm)
+
+- Wrote a test to check that placing an order returns a string thanking you for that order with the correct time (hour from now), using the mock. Test red.
+
+- Added an additional parameter to #initialize to inject the notification instance double, defaulting to a new instance of the Notification class. This is stored in an instance variable.
+
+- Added #place, with a variable order_time assigned with the time now, and then calling place delegates to the notification instance to send. There isn't one yet so time to make one.
+
+  - Set up tests for Notification in notification_spec.rb, with a mock of the Twilio SMS client to stop these tests actually sending me texts.
+
+  - #send should send a message with the passed delivery time. Test red.
+
+  - Wrote #send to accept a time as argument and call the SMS client messages to create a message. Test green.
+
+- Now the Notification class is complete. #place tests are green.
 
 
 <!-- Links -->
