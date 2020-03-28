@@ -42,7 +42,9 @@ Advanced! (have a go if you're feeling adventurous):
 - Implement the ability to place orders via text message.
 - A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 
-## Domain Model Diagram
+## Domain Model Table
+
+This domain model table was created in the planning phase, but due to developing with TDD and allowing the program to emerge from that process, it is slightly from the final product.
 
 | Objects | Messages |
 |--|---|
@@ -53,9 +55,118 @@ Advanced! (have a go if you're feeling adventurous):
 
 ## Class Diagram
 
+This class diagram was created in the planning phase, but due to developing with TDD and allowing the program to emerge from that process, it is slightly from the final product.
+
 ![Class Diagram][Class Diagram]
 
 ## Instructions
+
+### Install dependencies
+
+- This program uses several gems to work properly. 
+  Install them from a terminal in the main directory with: 
+
+  ```bash
+  bundle
+  ```
+
+### Set up Notification file
+
+- You will need your own [Twilio account](https://www.twilio.com/) in order to set up this configuration.
+- Make a copy of notification_template.rb called notification.rb, from a terminal in the main directory with:
+
+  ```bash
+  cp ./lib/notification_template.rb ./lib/fart.rb
+  ```
+
+- In your new notification.rb file replace the following fields with your Twilio credentials and phone numbers:
+
+  ```ruby
+  ACCOUNT_SID = 'xxxxxxxxxxxxxxxxxxx'
+  AUTH_TOKEN = 'xxxxxxxxxxxxxxxxxxx'
+
+  FROM = '+111111111111' # Your Twilio number
+  TO = '+111111111111' # Your mobile phone number
+  ```
+
+- Don't worry, notification.rb is included in the gitignore file, so even if you push your local repo to an online repo your credentials will not be. Be careful that it remains in the lib directory though!
+
+### Enter REPL
+
+- Enter your REPL of choice, I use IRB.  
+  From terminal in the main directory: 
+
+  ```bash
+  irb
+  ```
+
+- Load in order.rb:
+
+  ```ruby
+  require './lib/order.rb'
+  ```
+
+### Instantiate an Order
+
+- Instantiate an order:
+
+  ```ruby
+  my_order = Order
+  ```
+
+### Viewing the menu
+
+- View the menu with the Order view_menu method:
+
+  ```ruby
+  my_order.view_menu
+  ```
+
+### Adding dishes to your order
+
+- Add dishes to your order with the Order add method, passing in the menu number of the dish you want:
+
+  ```ruby
+  my_order.add(1)
+  ```
+
+- Attempting to add a dish number that isn't on the menu will result in an error:
+
+  ```ruby
+  my_order.add(50)
+  ```
+
+  > RuntimeError (That number isn't an item on the menu)
+
+### View your basket
+
+- View the dishes in your basket and the total price with the Order basket method:
+
+  ```ruby
+  my_order.add(1)
+  my_order.basket
+  ```
+
+### Place your order
+
+- Place your order with the Order place method:
+
+  ```ruby
+  my_order.add(1)
+  my_order.place
+  ```
+
+  You will receive a text message to let you know your order is on its way
+
+  > Thank you! Your order was placed and will be delivered before 17:30
+
+- Attempting to place an order without adding anything to the basket will raise an error:
+
+  ```ruby
+  my_order.place
+  ```
+
+  > RuntimeError (Cannot place order with an empty basket)
 
 ## Development Journal
 
@@ -69,9 +180,9 @@ I approached this project using Test Driven Development strategies:
 
 I approached this project with object oriented programming in mind:
 
-Objects should encapsulate methods that are related to one another in purpose.
-Methods should have a single responsibility, so they do not do too much, and are concise.
-Objects should have their dependencies injected rather than hardcoded, so they can be tested in isolation.
+- Objects should encapsulate methods that are related to one another in purpose.
+- Methods should have a single responsibility, so they do not do too much, and are concise.
+- Objects should have their dependencies injected rather than hardcoded, so they can be tested in isolation.
 
 In order to keep code clear and readable, I used rubocop for linting.
 
@@ -224,7 +335,7 @@ It looks like this one is actually already complete having already implemented #
 
 _Uh oh! in retrospect, looking at the technical requirements I think I have implemented a slightly different requirement that the one asked for. Oops! I'll continue with my implementation and later on if I have time I'll come back and do it to the letter of the technical requirements._
 
-#### User Story 4
+### User Story 4
 
 > As a customer  
 > So that I am reassured that my order will be delivered on time  
@@ -250,7 +361,7 @@ I also need to inject the notification type into the order so I can test without
 
 - Now the Notification class is complete. #place tests are green.
 
-#### Manual Feature testing and Refactoring
+### Manual Feature testing and Refactoring
 
 Upon testing in IRB there needs to be some changes made. There needs to be a way to view the menu by interacting with an instance of Order.
 
@@ -265,6 +376,26 @@ Manual testing reveals that the SMS notification works, but the time is incorrec
 - Updated #place to pass 24h time to #send, test green.
 
 - Refactored #place to use private helper method #calculate_delivery_time, and a constant ONE_HOUR to remove the 60 * 60 magic number for calculating the delivery time, and also #time_as_24 to provide a 24h format. Tests still green.
+
+Manual testing reveals it is possible to place an order with an empty basket. This is an edge case and should return an error.
+
+- Wrote test to expect an error to be raised if attempting to place an order with nothing in the basket. Test red.
+
+- Added guard clause to #place to raise error if basket size is 0. Test green.
+
+- Refactored to move guard clause to #check_basket
+
+### Reflections
+
+I feel I have implemented a good solution, with good test coverage, and fully isolated tests.
+
+I feel I have done a good job of using OO principles of Encapsulation, SRP and Dependency Injection.
+
+I did try my best to follow TDD practices but at times I got sidetracked with unrelated features, but eventually got back on track.
+
+I feel a little bit silly for not understanding the requirements quite correctly, however I think I have achieved the learning objectives of practicing TDD, OOP, and gem usage well in any case.
+
+I may come back to implement a "technically correct" solution in the future.
 
 <!-- Links -->
 
