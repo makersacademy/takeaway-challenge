@@ -22,13 +22,13 @@ describe Order do
   describe '#add and #basket' do
     it 'adding a dish to the order shows that dish in the order basket' do
       mock_menu_order.add(1)
-      expect(mock_menu_order.basket).to eq "Your order:\n1x Pie (£6) - £6\nTotal: £6"
+      expect(mock_menu_order.basket).to eq "Your order:\nPie (£6)\nTotal: £6"
     end
   
     it 'adding a two dishes to the order shows both dishes in the order basket' do
       mock_menu_order.add(1)
       mock_menu_order.add(2)
-      expect(mock_menu_order.basket).to eq "Your order:\n1x Pie (£6) - £6\n1x Mash (£4) - £4\nTotal: £10"
+      expect(mock_menu_order.basket).to eq "Your order:\nPie (£6)\nMash (£4)\nTotal: £10"
     end
   end
 end
