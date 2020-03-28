@@ -8,20 +8,20 @@ The project was created in order to practice Test Driven Development and Object 
 
 ## User Stories
 
-> As a customer
-> So that I can check if I want to order something
+> As a customer  
+> So that I can check if I want to order something  
 > I would like to see a list of dishes with prices
 
-> As a customer
-> So that I can order the meal I want
+> As a customer  
+> So that I can order the meal I want  
 > I would like to be able to select some number of several available dishes
 
-> As a customer
-> So that I can verify that my order is correct
+> As a customer  
+> So that I can verify that my order is correct  
 > I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-> As a customer
-> So that I am reassured that my order will be delivered on time
+> As a customer  
+> So that I am reassured that my order will be delivered on time  
 > I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 ## Technical Requirements
@@ -62,3 +62,37 @@ Advanced! (have a go if you're feeling adventurous):
 ## Instructions
 
 ## Development Journal
+
+### Development Approach
+
+I approached this project using Test Driven Development strategies:
+
+- Only write the most basic test you need to fail.
+- Only write production code to pass a failing test.
+- Only write the most basic production code to pass the test.
+
+I approached this project with object oriented programming in mind:
+
+Objects should encapsulate methods that are related to one another in purpose.
+Methods should have a single responsibility, so they do not do too much, and are concise.
+Objects should have their dependencies injected rather than hardcoded, so they can be tested in isolation.
+
+In order to keep code clear and readable, I used rubocop for linting.
+
+### Domain Model and Class Diagram
+
+Using the user stories, I created a domain model table and a class diagram to act as a rough sketch of what the program may look like, and to help with naming variables and methods. TDD may take me in a different direction though.
+
+### User Story 1
+
+> As a customer  
+> So that I can check if I want to order something  
+> I would like to see a list of dishes with prices.
+
+_There should be a method to view a list of dishes with prices from the menu._
+
+- Created menu_spec.rb and added a describe block for the Menu class, required menu.rb. Test fails.
+- Created menu.rb in lib dir, and added an empty Menu class. Test passes.
+- Nothing to refactor.
+- Write test to expect calling #view returns a list of dishes. Test fails.
+- Wrote a #view method to return a list of dishes, hardcoded. Test passes.
