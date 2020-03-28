@@ -264,9 +264,7 @@ Manual testing reveals that the SMS notification works, but the time is incorrec
 
 - Updated #place to pass 24h time to #send, test green.
 
-- Refactored #place to use helper method #delivery_time
-
-
+- Refactored #place to use private helper method #calculate_delivery_time, and a constant ONE_HOUR to remove the 60 * 60 magic number for calculating the delivery time, and also #time_as_24 to provide a 24h format. Tests still green.
 
 <!-- Links -->
 

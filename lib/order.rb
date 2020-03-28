@@ -8,6 +8,8 @@ class Order
     @notification = notification
   end
 
+  ONE_HOUR = 60 * 60
+
   def view_menu
     @menu.view
   end
@@ -21,16 +23,21 @@ class Order
   end
 
   def place
-    @notification.send(delivery_time(Time.now))
+    delivery_time = calculate_delivery_time(Time.now)
+    @notification.send(delivery_time)
   end
 
   private
 
   BASKET_HEADER = "Your order:\n"
 
-  def delivery_time(time)
-    hour_from_now = time + 10 * 60
-    hour_from_now.strftime("%R")
+  def calculate_delivery_time(time)
+    hour_from_now = time + ONE_HOUR
+    time_as_24(hour_from_now)
+  end
+
+  def time_as_24(time)
+    time.strftime("%R")
   end
 
   def basket_list
