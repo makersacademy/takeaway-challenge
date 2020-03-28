@@ -5,7 +5,7 @@ class Dish
     raise ArgumentError, 'dish name must not be empty' if name.empty?
     raise ArgumentError, 'dish price must be greater than 0' if price <= 0
 
-    @name = name
+    @name = name.to_sym
     @price = price
   end
 end

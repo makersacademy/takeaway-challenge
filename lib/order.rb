@@ -28,6 +28,7 @@ class Order
 
   def verify_total(total)
     total_from_summary = 0
+    
     @summary.each do |_, quantity_and_price|
       total_from_summary += quantity_and_price[:quantity] * quantity_and_price[:price]
     end
