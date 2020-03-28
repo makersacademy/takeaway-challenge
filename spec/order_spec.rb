@@ -13,4 +13,9 @@ describe Order do
     )
   end
 
+  it 'allows the user to #add to their order' do
+    order = Order.new(menu_double)
+    expect(order.add("1 fish, 3 salad, 2 chips")).to eq ["1 fish", " 3 salad", " 2 chips"]
+  end
+
 end
