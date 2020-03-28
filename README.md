@@ -256,7 +256,7 @@ Upon testing in IRB there needs to be some changes made. There needs to be a way
 
 - Wrote a test in order_spec.rb for #view_menu to return the list of dishes from the menu. Test red.
 
-- Wrote #view_menu to call #view on the menu in the instance variable.
+- Wrote #view_menu to call #view on the menu in the instance variable. Test green.
 
 <!-- Links -->
 
