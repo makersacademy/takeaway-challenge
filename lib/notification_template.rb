@@ -1,4 +1,3 @@
-# Download the twilio-ruby library from twilio.com/docs/libraries/ruby
 require 'twilio-ruby'
 
 account_sid = 'xxxxxxxxxxxxxxxxxxxxxx'
