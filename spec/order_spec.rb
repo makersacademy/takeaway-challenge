@@ -34,5 +34,12 @@ describe Order do
       expect { Order.new(list_of_dishes, selections, incorrect_total) }
         .to raise_error(ArgumentError, "incorrect order total. Total given = #{incorrect_total}. Actual = #{correct_total}")
     end
+
+    it 'sends a text with the expected delivery time when an order has been verified' do
+      allow(list_of_dishes).to receive(:get_dish).with(:stew).and_return(stew_dish)
+      allow(list_of_dishes).to receive(:get_dish).with(:rice).and_return(rice_dish)
+      order = Order.new(list_of_dishes, selections, correct_total)
+      expect(order.send_text).to eq('Text sent')
+    end
   end
 end
