@@ -2,6 +2,7 @@ require 'order'
 
 describe Order do
 
+  # Set up mock menu
   # Dish instance doubles
   let(:pie_inst) { double(:pie, name: "Pie", price: 6, details: "Pie (£6)") }
   let(:mash_inst) { double(:mash, name: "Mash", price: 4, details: "Mash (£4)") }
@@ -16,19 +17,41 @@ describe Order do
     menu_inst
   end
 
-  # Order with mock menu instance
-  let(:mock_menu_order) { Order.new(menu_inst) }
+  # Set up mock notification service
+  # Times now and one hour from now in 24h format
+  let(:now) { Time.now }
+  let(:hour_from_now_24h) { (Time.now + 10*60).strftime("%R") }
+
+  # Notification instance that can receive #send and return the string with 24h time an hour from now
+  let(:notification_inst) do
+    notification_inst = double(:notification)
+    allow(notification_inst)
+      .to receive(:send).with(instance_of(Time))
+      .and_return("Thank you! Your order was placed and will be delivered before #{hour_from_now_24h}")
+    notification_inst
+  end
+
+  # Order with mock menu instance and notification instance
+  let(:mocked_order) { Order.new(menu_inst, notification_inst) }
 
   describe '#add and #basket' do
     it 'adding a dish to the order shows that dish in the order basket' do
-      mock_menu_order.add(1)
-      expect(mock_menu_order.basket).to eq "Your order:\nPie (£6)\nTotal: £6"
+      mocked_order.add(1)
+      expect(mocked_order.basket).to eq "Your order:\nPie (£6)\nTotal: £6"
     end
   
     it 'adding a two dishes to the order shows both dishes in the order basket' do
-      mock_menu_order.add(1)
-      mock_menu_order.add(2)
-      expect(mock_menu_order.basket).to eq "Your order:\nPie (£6)\nMash (£4)\nTotal: £10"
+      mocked_order.add(1)
+      mocked_order.add(2)
+      expect(mocked_order.basket).to eq "Your order:\nPie (£6)\nMash (£4)\nTotal: £10"
+    end
+  end
+
+
+  describe '#place' do
+    it 'places an order and sends a text to the user that delivery will be complete within an hour' do
+      mocked_order.add(1)
+      expect(mocked_order.place).to eq "Thank you! Your order was placed and will be delivered before #{hour_from_now_24h}"
     end
   end
 end

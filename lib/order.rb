@@ -1,7 +1,11 @@
+require_relative 'menu'
+require_relative 'notification'
+
 class Order
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, notification = Notification.new)
     @menu = menu
     @basket = []
+    @notification = notification
   end
 
   def add(dish_number)
@@ -10,6 +14,12 @@ class Order
 
   def basket
     BASKET_HEADER + basket_list + total
+  end
+
+  def place
+    order_time = Time.now
+    delivery_time = order_time + 10 * 60
+    @notification.send(delivery_time)
   end
 
   private
