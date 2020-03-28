@@ -13,6 +13,9 @@ describe Menu do
     end
     it 'returns a Mash object when passed 2' do
       expect(subject.provide_dish(2)).to be_kind_of(Mash)
+    end
+    it 'returns a Chips object when passed 3' do
+      expect(subject.provide_dish(2)).to be_kind_of(Chips)
     end 
   end
 end
