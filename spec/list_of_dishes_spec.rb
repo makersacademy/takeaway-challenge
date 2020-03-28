@@ -1,10 +1,7 @@
 require 'list_of_dishes'
 
 describe ListOfDishes do
-  let(:dishes) { [
-    {name: "Stew", price: "£2.99"}, 
-    {name: "Soup", price: "£10.50"}
-  ]}
+  let(:dishes) { double(:dishes) }
 
   it 'see a list when its empty' do
     list = ListOfDishes.new([])
@@ -13,7 +10,6 @@ describe ListOfDishes do
 
   it 'see a list when there are dishes in it' do
     list = ListOfDishes.new(dishes)
-
     expect(list.see).to eq(dishes)
   end
 end
