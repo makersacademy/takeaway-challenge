@@ -3,29 +3,37 @@ require_relative 'mash'
 require_relative 'chips'
 
 class Menu
-  def initialize(dishes = {1 => Pie, 2 => Mash, 3 => Chips})
+  def initialize(dishes = {"pie" => Pie, "mash" => Mash, "chips" => Chips})
     @dishes = dishes
     @menu_length = dishes.length
   end
 
   def view
-    @dishes.map { |number, dish|
+    number = 0
+    @dishes.map { |key, dish|
+      number += 1
       "#{number}. #{dish.new.details}"
     }.join("\n")
   end
 
-  def provide_dish(dish_number)
-    check_in_menu(dish_number)
-    get_dish(dish_number).new
+  def provide_dish(dish)
+    check_in_menu(dish)
+    get_dish(dish).new
+  end
+
+  def provide_price(dish)
+    check_in_menu(dish)
+    dish = get_dish(dish).new
+    dish.price
   end
 
   private
 
-  def check_in_menu(dish_number)
-    raise "That number isn't an item on the menu" unless @dishes.include?(dish_number)
+  def check_in_menu(dish)
+    raise "That item isn't an item on the menu" unless @dishes.include?(dish)
   end
 
-  def get_dish(dish_number)
-    @dishes[dish_number]
+  def get_dish(dish)
+    @dishes[dish]
   end
 end
