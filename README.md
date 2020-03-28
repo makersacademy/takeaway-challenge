@@ -67,4 +67,37 @@ Software Requirements
 
 
 
+## My approach
+
+### 1. Modelling
+
+  - I start by writing a domain model for a user story.
+  - Then I draw a class diagram.
+  - Do just enough design upfront to start.
+
+### 2. TDD
+
+  - Start with a test for the smallest meaningful feature.
+  - Writea test and watch it fail before writing code.
+  - Only write code to fix the test fail message I can see.
+  - Include edge cases in tests.
+  - Look for an opportunity to refactor the code after getting to green.
+  - Refactore verbose tests after the code is working.
+
+### Problem solving 
+  - Try to understand the problem by diagramming, or writing pseudo-code.
+  - Break the problem down into smaller problems.
+  - Verbalise my thought process when solving a problem.
+
+## User Story 1
+
+## Domain model
+
+Objects | Messages
+--------|--------
+Menu | list <br/> @dishes
+Dish | @price
+
+
+
 
