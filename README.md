@@ -55,10 +55,6 @@ Advanced! (have a go if you're feeling adventurous):
 
 ![Class Diagram][Class Diagram]
 
-<!-- Links -->
-
-[Class Diagram]: https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cdE9yZGVyIFwiMVwiIC0tIFwiMVwiIE1lbnUgOiBwcm92aWRlcyBhdmFpbGFibGUgZGlzaGVzXG5cdERpc2ggXCJtYW55XCIgLS0qIFwiMVwiIE1lbnUgOiBjb250YWluZWQgaW5cblx0XG5cdGNsYXNzIE9yZGVye1xuXHRcdC1tZW51OiBvYmplY3Rcblx0XHQtYmFza2V0OiBhcnJheVxuXG5cdFx0K3ZpZXdfbWVudSgpXG5cdFx0K2FkZChkaXNoKVxuXHRcdCt0b3RhbCgpXG5cdFx0K3BsYWNlKClcblx0fVxuXG5cdGNsYXNzIE1lbnV7XG5cdFx0K2Rpc2hlczogYXJyYXlcblx0XHQrdmlldygpXG5cdFx0K3Byb3ZkZV9kaXNoKClcblx0fVxuXG5cdGNsYXNzIERpc2h7XG5cdFx0K25hbWU6IHN0clxuXHRcdCtwcmljZTogaW50XG5cdH0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ
-
 ## Instructions
 
 ## Development Journal
@@ -91,11 +87,11 @@ Using the user stories, I created a domain model table and a class diagram to ac
 
 _There should be a method to view a list of dishes with prices from the menu._
 
-- Created menu_spec.rb and added a describe block for the Menu class, required menu.rb. Test fails.
-- Created menu.rb in lib dir, and added an empty Menu class. Test passes.
+- Created menu_spec.rb and added a describe block for the Menu class, required menu.rb. Test red.
+- Created menu.rb in lib dir, and added an empty Menu class. Test green.
 - Nothing to refactor.
-- Write test to expect calling #view returns a list of dishes. Test fails.
-- Wrote a #view method to return a list of dishes, hardcoded. Test passes.
+- Write test to expect calling #view returns a list of dishes. Test red.
+- Wrote a #view method to return a list of dishes, hardcoded. Test green.
 
 _As this is hardcoded at the moment it isn't very flexible, but I suspect TDD will change that soon enough._
 
@@ -168,7 +164,7 @@ _This is a functional solution, but it is fragile, adding more dishes to the men
 
 - Refactored #provide_dish to first check with #check_in_menu, then return a new instance of the desired dish from the dish returned from #get_dish.
 
-- Also added a constant MENU_LENGTH as the size of DISHES, and used that in the test for a number outside the menu so even if the menu expands the test will still pass.
+- Also added a constant MENU_LENGTH as the size of DISHES, and used that in the test for a number outside the menu so even if the menu expands the test will still be green.
 
 _Now that we have flexibility with the menu items we can add dishes easily, but the view method is still hardcoded. Testing this will require some dependency injection. I plan to inject a hash of doubled dish classes._
 
@@ -191,11 +187,47 @@ _Now that we have flexibility with the menu items we can add dishes easily, but 
   - Updated the doubles used in the menu tests, as they need to be able to respond to #details.
 
 - #view expecting only 1 item now tests green.
-- Wrote a couple more tests for #view for injected dish hashes with 2 and 3 dishes for good measure, they pass.
+- Wrote a couple more tests for #view for injected dish hashes with 2 and 3 dishes to rule out false positives, they are green.
 
-_In retrospect I realise that updating the view method to work dynamically with any dish hash was not contributing to the completion of the user story feature. However it was good practice for dependency injection. On with the user story and the two dishes in the basket feature test._
+_In retrospect I realise that updating the view method to work dynamically with any dish hash was not contributing to the completion of the user story feature, and didn't help the test pass, so it was bad TDD. However it was good practice for dependency injection. On with the user story and the two dishes in the basket feature test._
 
 _#add needs to actually start doing something, and #basket needs to return the things that have been added. As the responsibility for returning the dishes an Order is told to add lies with a Menu, a Menu needs to be mocked._
 
-- Added mocks to the tests for #add and #basket to be injected into Order construction.
-- 
+- Added mocks to the tests for #add and #basket to be injected into Order construction. Test red.
+
+- Order is now initializing with an argument, so added this parameter defaulting to a Menu instance.
+
+- Also added an instance variable @baskets as an empty array to initialize.
+
+- Wrote #add to ask the call provide_dish on the menu and push the result onto the basket array.
+
+- Wrote #basket to with several variables:
+  - header assigned with a string "Your order:\n"
+  - list assigned by mapping through basket asking each dish for its detail, the array joined with "\n"
+  - total assigned by mapping through basket asking each dish for its price and summing that array
+  - footer assigned with a string interpolating total: "\nTotal: £#{total}"
+  - finally returning header, list and footer concatenated.
+
+- Adding two items test is now green.
+
+- Refactored some of the lines out of #basket to helper methods #total, #basket_list, and a constant BASKET_HEADER.
+
+- #basket is much simpler now, tests still green.
+
+### User Story 3
+
+> As a customer  
+> So that I can verify that my order is correct  
+> I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+It looks like this one is actually already complete having already implemented #basket in order to test behaviour rather than state, nice!
+
+_Uh oh! in retrospect, looking at the technical requirements I think I have implemented a slightly different requirement that the one asked for. Oops! I'll continue with my implementation and later on if I have time I'll come back and do it to the letter of the technical requirements._
+
+#### User Story 4
+
+
+
+<!-- Links -->
+
+[Class Diagram]: https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cdE9yZGVyIFwiMVwiIC0tIFwiMVwiIE1lbnUgOiBwcm92aWRlcyBhdmFpbGFibGUgZGlzaGVzXG5cdERpc2ggXCJtYW55XCIgLS0qIFwiMVwiIE1lbnUgOiBjb250YWluZWQgaW5cblx0XG5cdGNsYXNzIE9yZGVye1xuXHRcdC1tZW51OiBvYmplY3Rcblx0XHQtYmFza2V0OiBhcnJheVxuXG5cdFx0K3ZpZXdfbWVudSgpXG5cdFx0K2FkZChkaXNoKVxuXHRcdCt0b3RhbCgpXG5cdFx0K3BsYWNlKClcblx0fVxuXG5cdGNsYXNzIE1lbnV7XG5cdFx0K2Rpc2hlczogYXJyYXlcblx0XHQrdmlldygpXG5cdFx0K3Byb3ZkZV9kaXNoKClcblx0fVxuXG5cdGNsYXNzIERpc2h7XG5cdFx0K25hbWU6IHN0clxuXHRcdCtwcmljZTogaW50XG5cdH0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ
