@@ -1,3 +1,0 @@
-class Dish
-  
-end
