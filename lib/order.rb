@@ -11,6 +11,12 @@ class Order
   def view_menu
     @menu.view
   end
+
+  def place(*dish_quantity_list, total)
+    dishes = get_dishes(dish_quantity_list)
+    quantities = get_quantities(dish_quantity_list)
+    total_price(dishes, quantities) == total
+  end
   
   # def add(dish_number)
   #   @basket << @menu.provide_dish(dish_number)
@@ -27,7 +33,22 @@ class Order
   # end
   
   private
-  
+
+  def get_dishes(dish_quantity_list)
+    dish_quantity_list.filter { |i| i.is_a?(String) }
+  end
+
+  def get_quantities(dish_quantity_list)
+    dish_quantity_list.filter { |i| i.is_a?(Integer) }
+  end
+
+  def total_price(dishes, quantities)
+    prices = dishes.map { |i| @menu.provide_price(i) }
+    prices.zip(quantities)
+      .map { |price, quantity| price * quantity }
+      .sum
+  end
+
   # ONE_HOUR = 60 * 60
   # BASKET_HEADER = "Your order:\n"
 

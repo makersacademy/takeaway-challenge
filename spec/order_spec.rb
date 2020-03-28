@@ -62,6 +62,12 @@ describe Order do
     it 'passing ("pie", 1, "mash", 1, 10) returns true' do
       expect(mocked_order.place("pie", 1, "mash", 1, 10)). to eq true
     end
+    it 'passing ("pie", 2, "mash", 1, 16) returns true' do
+      expect(mocked_order.place("pie", 2, "mash", 1, 16)). to eq true
+    end
+    it 'passing ("pie", 40, "mash", 12, "chips", 7, 323) returns true' do
+      expect(mocked_order.place("pie", 40, "mash", 12, "chips", 7, 323)). to eq true
+    end
   end
 
   # describe '#place' do
