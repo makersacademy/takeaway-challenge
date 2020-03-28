@@ -4,7 +4,7 @@ require_relative 'notification'
 class Order
   def initialize(menu = Menu.new, notification = Notification.new)
     @menu = menu
-    @basket = []
+    # @basket = []
     @notification = notification
   end
   
