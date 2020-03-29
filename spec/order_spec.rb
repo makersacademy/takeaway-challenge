@@ -1,8 +1,7 @@
 require 'order'
 
 describe CustomerOrder do
-  it {is_expected.to respond_to :see_order}
-
+  
   it {is_expected.to respond_to :total}
 
   xit 'shows the sum of the various dishes in the order' do
@@ -18,4 +17,6 @@ describe CustomerOrder do
     choice = list.apple
     expect(subject.total).to eq(choice.values.sum)
   end
+
+  it {is_expected.to respond_to :order_maker}
 end
