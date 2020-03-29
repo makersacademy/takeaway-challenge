@@ -27,7 +27,7 @@ describe Order do
   it 'allows user to confirm order' do
     order = Order.new(menu_double)
     order.update("1 fish, 3 salad, 2 chips")
-    expect(order.confirm).to include("Thank you! Your order was placed and will be delivered before")
+    expect(order.confirm).to include("Thank you! Your order was placed and will be delivered before #{Time.new + 1800}")
   end
 
 end
