@@ -242,7 +242,7 @@ Using the user stories, I created a domain model table and a class diagram to ac
 > So that I can check if I want to order something  
 > I would like to see a list of dishes with prices.
 
-_There should be a method to view a list of dishes with prices from the menu._
+There should be a method to view a list of dishes with prices from the menu.
 
 - Created menu_spec.rb and added a describe block for the Menu class, required menu.rb. Test red.
 - Created menu.rb in lib dir, and added an empty Menu class. Test green.
@@ -250,7 +250,7 @@ _There should be a method to view a list of dishes with prices from the menu._
 - Write test to expect calling #view returns a list of dishes. Test red.
 - Wrote a #view method to return a list of dishes, hardcoded. Test green.
 
-_As this is hardcoded at the moment it isn't very flexible, but I suspect TDD will change that soon enough._
+As this is hardcoded at the moment it isn't very flexible, but I suspect TDD will change that soon enough.
 
 ### User Story 2
 
@@ -311,7 +311,7 @@ To pass this feature test there needs to be several units tested and implemented
 
 - Extended the if-else to cover cases 1, 2, 3 and on else raise an error. Test green.
 
-_This is a functional solution, but it is fragile, adding more dishes to the menu is hard, needing to add to an ever growing if-else for each dish. Time to refactor._
+This is a functional solution, but it is fragile, adding more dishes to the menu is hard, needing to add to an ever growing if-else for each dish. Time to refactor.
 
 - Created a constant DISHES, a frozen hash containing keys for the dish numbers and values for the dish objects.
 
