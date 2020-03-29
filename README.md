@@ -384,6 +384,8 @@ _Uh oh! in retrospect, looking at the technical requirements I think I have impl
 
 _Turns out I did have time! Read on for the finished version of the slightly wrong implementation or [skip to the implementation of the actual requirements](#solving-the-correct-requirements)._
 
+_To view the fully implemented but incorrect solution I worked on, view the "master" branch._
+
 ### User Story 4
 
 > As a customer  
@@ -433,6 +435,8 @@ Manual testing reveals it is possible to place an order with an empty basket. Th
 - Added guard clause to #place to raise error if basket size is 0. Test green.
 
 - Refactored to move guard clause to #check_basket
+
+_To view the fully implemented but incorrect solution I worked on, view the "master" branch._
 
 ### Solving the correct requirements
 
