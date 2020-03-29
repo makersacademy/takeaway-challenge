@@ -45,5 +45,11 @@ describe Order do
     order.update("1 fish, 3 salad, 2 chips")
     expect(order.update("2 fish, 0 salad, 2 chips")).to include(:fish => 2, :chips =>2 )
   end
+
+  it 'allows the user to remove an item' do
+    order = Order.new(menu_double)
+    order.update("1 fish, 3 salad, 2 chips")
+    expect(order.update("2 fish, 0 salad, 2 chips")).to_not include(:salad)
+  end
   
 end
