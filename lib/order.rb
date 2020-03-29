@@ -2,6 +2,8 @@ require_relative 'menu'
 
 class Order
 
+  DELIVERY_TIME = 1800 # seconds
+
   attr_reader :menu, :cost, :items
 
   def initialize(menu = Menu.new)
@@ -16,8 +18,7 @@ class Order
   end
 
   def confirm
-    time = Time.new + 1800
-    "Thank you! Your order was placed and will be delivered before #{time}."
+    "Thank you! Your order was placed and will be delivered before #{Time.new + DELIVERY_TIME}."
   end
 
   private
