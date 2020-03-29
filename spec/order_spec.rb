@@ -18,4 +18,10 @@ describe Order do
     expect(order.update("1 fish, 3 salad, 2 chips")).to include(:fish => 1, :salad => 3, :chips => 2)
   end
 
+  it '#cost returns total order cost' do
+    order = Order.new(menu_double)
+    order.update("1 fish, 3 salad, 2 chips")
+    expect(order.cost).to eq 17
+  end
+
 end
