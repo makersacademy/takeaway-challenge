@@ -468,7 +468,26 @@ During manual testing I noticed that submitting a correct order, but with an inc
 
 > Implement the ability to place orders via text message.
 
-This feature will need Twilio to interact with Sinatra, another Ruby gem.
+This feature will need Twilio with my code using webhooks, a http request sent to my code. For this Sinatra can be used, another Ruby gem, which I added to the Gemfile and installed with bundle.
+
+Sinatra by default hosts the file at <http://localhost:4567,> but in order for Twilio to be able to access it I need to expose that port to the internet using [ngrok](https://ngrok.com/download).
+
+With that local host now exposed at a particular ngrok address, it can be added to the Twilio webhook configuration.
+
+After reading the Twilio docs and fiddling about for a while, I worked out how receive HTTP POST requests with Sinatra, and how messages that are sent are interpreted by Twilio.
+
+In order to sanitise the raw SMS message sent, there should be a class that treats the message before sending it onto the Order instance.
+
+- Wrote a test for SMSInterface in sms_interface_spec.rb, expecting the treat method to be passed a string such as the a correctly ordered SMS message, and pass a sanitised list of arguments to an order instances #place. The test uses a mock order instance. Test red.
+
+- Added a SMSInterface class in sms_interface.rb, and added an initialize method with a parameter for order instance, defaulting to an actual order instance, allowing for the mock in the test to be injected. Wrote #treat to pass a hardcoded set of arguments to Order#place. Test green.
+
+- Wrote another test for treat method to be passed a different correctly ordered SMS message, and pass the proper sanitised list of arguments. Test red.
+
+- Wrote #treat to take a string and split it to an array separated by ", ". Then the array is mapped through and if the element is digits then it is converted to an integer, otherwise it remains a string (to make sure the dishes are still strings and the quantities and order total are actual integers). Then the arguments array are passed into the order's #place method with a splat operator. Test green.
+
+- Refactored functionality out to private helper methods #sanitise_order to do the mapping, which uses #split_by_commas to do the splitting, and #digits_to_i to do the conversion of string digits to actual integers. Tests still green.
+
 
 ### Reflections
 
