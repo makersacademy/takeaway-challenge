@@ -28,7 +28,9 @@ class Order
     dishes = get_dishes(dish_quantity_list)
     quantities = get_quantities(dish_quantity_list)
     raise 'Incorrect arguments: each dish is followed by quantity, finally total cost' unless dishes.size == quantities.size
-    total_price(dish_quantity_list) == total
+    raise 'Total provided does not match calculated total' unless total_price(dish_quantity_list) == total
+    
+    true
   end
 
   def get_dishes(dish_quantity_list)

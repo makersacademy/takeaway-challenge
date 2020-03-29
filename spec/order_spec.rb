@@ -39,25 +39,25 @@ describe Order do
 
   describe '#place' do
     it 'passing ("pie", 1, 6) returns true' do
-      expect(mocked_order.place("pie", 1, 6)). to eq true
+      expect { mocked_order.place("pie", 1, 6) }.to_not raise_error
     end
-    it 'passing ("pie", 1, 4) returns false' do
-      expect(mocked_order.place("pie", 1, 4)). to eq false
+    it 'passing ("pie", 1, 4) returns raises error' do
+      expect { mocked_order.place("pie", 1, 4) }.to raise_error 'Total provided does not match calculated total'
     end
     it 'passing ("pie", 1, "mash", 1, 10) returns true' do
-      expect(mocked_order.place("pie", 1, "mash", 1, 10)). to eq true
+      expect { mocked_order.place("pie", 1, "mash", 1, 10) }.to_not raise_error
     end
     it 'passing ("pie", 2, "mash", 1, 16) returns true' do
-      expect(mocked_order.place("pie", 2, "mash", 1, 16)). to eq true
+      expect { mocked_order.place("pie", 2, "mash", 1, 16) }.to_not raise_error
     end
     it 'passing ("pie", 40, "mash", 12, "chips", 7, 323) returns true' do
-      expect(mocked_order.place("pie", 40, "mash", 12, "chips", 7, 323)). to eq true
+      expect { mocked_order.place("pie", 40, "mash", 12, "chips", 7, 323) }.to_not raise_error
     end
     it 'edge case: passing ("pie", 1, "mash", 10) raises error' do
-      expect { mocked_order.place("pie", 1, "mash", 10) }. to raise_error 'Incorrect arguments: each dish is followed by quantity, finally total cost'
+      expect { mocked_order.place("pie", 1, "mash", 10) }.to raise_error 'Incorrect arguments: each dish is followed by quantity, finally total cost'
     end
     it 'edge case: passing ("pie", 2, 1, 10) raises error' do
-      expect { mocked_order.place("pie", 2, 1, 10) }. to raise_error 'Incorrect arguments: each dish is followed by quantity, finally total cost'
+      expect { mocked_order.place("pie", 2, 1, 10) }.to raise_error 'Incorrect arguments: each dish is followed by quantity, finally total cost'
     end
     it 'a correct order causes a notification to be sent' do
       expect(notification_inst).to receive(:send)
