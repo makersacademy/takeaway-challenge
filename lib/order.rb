@@ -27,17 +27,22 @@ class Order
       if food_input == food
         @order << {food: food_input, price: money*amount_input, amount: amount_input}
       end 
-       total 
+      total 
     end 
   end
 
+
+
   def place_order
+    print_place_order
+    @place_order_total = total
+  end 
+  
+  def print_place_order
     order.each do |hash|
       puts "food: #{hash[:food]}, amount: #{hash[:amount]}, price: £#{hash[:price]}"
     end 
     puts "£#{total}"
-    @place_order_total = total
-
   end 
 
   def total#(order)
