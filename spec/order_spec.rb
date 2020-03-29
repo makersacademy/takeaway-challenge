@@ -28,4 +28,14 @@ describe Order do
     subject.select_pizza(1, 2)
     expect(subject.selection).to eq [{"1": "Garlic Bread with cheese", price: 6}, {"1": "Garlic Bread with cheese", price: 6}]
   end
+
+  it "responds to #calculate_total" do
+    expect(subject).to respond_to :calculate_total
+  end
+
+  it "gives the total price of the order" do
+    subject.select_pizza(1, 2)
+    subject.select_pizza(2, 1)
+    expect(subject.calculate_total).to eq 24
+  end
 end
