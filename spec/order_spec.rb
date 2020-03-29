@@ -15,7 +15,7 @@ describe Order do
 
   it 'allows the user to #add to their order' do
     order = Order.new(menu_double)
-    expect(order.update("1 fish, 3 salad, 2 chips")).to inlcude(:fish=>1, :salad=>3, :chips=>2)
+    expect(order.update("1 fish, 3 salad, 2 chips")).to include(:fish => 1, :salad => 3, :chips => 2)
   end
 
 end

@@ -133,7 +133,7 @@ order.cost
 Objects | Messages
 --------|--------
 Menu| @list
-Order | @menu <br/> update(order) <br/> @items <br/> @cost
+Order | @menu <br/> update(items) <br/> @items <br/> @cost
 
 ## Class Diagram
 
