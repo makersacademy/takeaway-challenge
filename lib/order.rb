@@ -16,7 +16,8 @@ class Order
   end
 
   def confirm
-    "Thank you! Your order was placed and will be delivered before."
+    time = Time.new + 1800
+    "Thank you! Your order was placed and will be delivered before #{time}."
   end
 
   private
