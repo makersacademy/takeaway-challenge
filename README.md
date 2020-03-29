@@ -468,7 +468,7 @@ During manual testing I noticed that submitting a correct order, but with an inc
 
 > Implement the ability to place orders via text message.
 
-
+This feature will need Twilio to interact with Sinatra, another Ruby gem.
 
 ### Reflections
 

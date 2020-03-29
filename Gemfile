@@ -6,4 +6,5 @@ group :test do
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
   gem 'twilio-ruby'
+  gem 'sinatra', '~> 1.4', '>= 1.4.7'
 end
