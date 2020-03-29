@@ -15,6 +15,10 @@ class Order
     calculate_cost
   end
 
+  def confirm
+    "Thank you! Your order was placed and will be delivered before."
+  end
+
   private
 
   def manage_order(items)
