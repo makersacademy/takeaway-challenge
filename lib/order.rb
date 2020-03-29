@@ -1,10 +1,12 @@
 require_relative 'menu'
-require_relative 'calculator'
+
 
 class Order
-  attr_reader :order
+  attr_reader :order, :final_total, :place_order_total
   def initialize 
     @order = []
+    @final_total
+    @place_order_total
   end 
   
   def open_menu(menu)
@@ -28,21 +30,28 @@ class Order
     end 
   end
 
-  def prints_order
-    @order.each do |hash|
+  def place_order(order)
+    order.each do |hash|
       puts "food: #{hash[:food]}, amount: #{hash[:amount]}, price: £#{hash[:price]}"
     end 
     puts "£#{total}"
+    @place_order_total = total
 
   end 
 
-  def total
+  def total#(order)
     total = 0
     #@order[0][:price] + @order[1][:price]
     @order.each do |hash|
       total += hash[:price]
     end 
-    total
+    @final_total = total
   end 
 
+  def verify 
+    if @place_order_total != @final_total
+      raise "total does not equal prints_order" 
+    end
+  end 
+  
 end 

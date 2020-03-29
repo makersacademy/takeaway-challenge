@@ -3,7 +3,8 @@ require 'order'
 describe Order do 
   #*  need to make a make a mock for Menu class 
   let(:menu) {Menu.new(Pancakes: 5.5, Tea: 1, Eggs: 3.35)}
-  let(:order) {[{ food: :Pancakes, price: 5.5, amount: 1}, {food: :Tea, price:2, amount: 2}]}
+  let(:order_small) {[{ food: :Pancakes, price: 5.5, amount: 1}, {food: :Tea, price:2, amount: 2}]}
+  let(:order_large) {[{ food: :Pancakes, price: 5.5, amount: 1}, {food: :Tea, price:2, amount: 2},{food: :Eggs, price: 6.70, amount: 2}]}
   #let(:menu_double) { double("anything", working?: true) } # true = stub working? method     method : what you want it to return 
   #subject(:menu) {Menu.new(Pancakes: 5.5, Tea: 1, Eggs: 3.35)}
 # 
@@ -28,14 +29,14 @@ describe Order do
       end
     end 
 
-    context "#print_order" do 
+    context "#place_order" do 
       it 'prints order' do
         subject.open_menu(menu)
         subject.choose("Pancakes", 1)
         subject.choose("Tea", 2)
   
         #! fix formating of price 
-        expect{subject.prints_order}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
+        expect{subject.place_order(order_small)}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
       end 
     end 
 
@@ -49,4 +50,23 @@ describe Order do
         expect(subject.total).to eq 7.5
       end 
     end 
+
+    context "#verify" do 
+      it 'verifies that the total the customer is given matches the sum of the dishes in the order' do
+        subject.open_menu(menu)
+        subject.choose("Pancakes", 1)
+        subject.choose("Tea", 2)
+        expect{subject.place_order(order_small)}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
+        subject.choose("Eggs", 2)
+        expect(subject.total).to eq 14.2
+        expect{subject.verify}.to raise_error "total does not equal prints_order" 
+      end 
+    end
+
   end
+
+=begin
+  it '#top_up fails if over balance' do
+    expect{ card.top_up(95) }.to raise_error "Over limit"
+  end
+=end 
