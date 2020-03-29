@@ -56,8 +56,8 @@ class Order
 
   def send_confirmation(method:Texter, number:, time:)
     # this method sends a text by default but will accept a class that
-    # uses the message() method that takes three arguments.
-    Texter.new(num: number, text_time: time)
+    # uses the make_the_call method without arguments
+    method.new(num: number, text_time: time).make_the_call
   end
   def check_total(array_of_hashes)
     puts "right I think that's everything, how much do you reckon it'll be?"

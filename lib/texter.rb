@@ -17,7 +17,7 @@ class Texter
   end
 
   def make_the_call
-    unless num == nil
+    unless @customer_number == nil
       @client.messages.create(
         from: @from,
         to: @customer_number,
