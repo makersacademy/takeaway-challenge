@@ -198,7 +198,7 @@ to = '+15555555555' # Your mobile phone number
 client.messages.create(
 from: from,
 to: to,
-body: "Hey friend!"
+body: "Thank you! Your order was placed and will be delivered in 30 mins."
 )
 ```
 

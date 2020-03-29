@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'send_sms.rb'
 
 class Order
 
@@ -6,10 +7,11 @@ class Order
 
   attr_reader :menu, :cost, :items
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, notification = Notification.new)
     @menu = menu.list
     @items = Hash.new
     @cost = 0
+    @notification = notification
   end
 
   def update(items)
@@ -18,7 +20,10 @@ class Order
   end
 
   def confirm
-    "Thank you! Your order was placed and will be delivered before #{Time.new + DELIVERY_TIME}."
+    time = Time.new + DELIVERY_TIME
+    time = time.strftime("%R")
+    "Thank you! Your order was placed and will be delivered before #{time}."
+    @notification.send(time)
   end
 
   private

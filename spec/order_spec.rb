@@ -3,6 +3,7 @@ require 'order'
 describe Order do
 
   let(:menu_double) { double :Menu, list: { :fish => "£5", :chips => "£3", :salad => "£2" } }
+  let(:order_double) { double :order, confirm: ("Thank you! Your order was placed and will be delivered before #{Time.new + Order::DELIVERY_TIME}") }
 
   it 'returns the menu on #menu' do
     order = Order.new(menu_double)
@@ -27,7 +28,7 @@ describe Order do
   it 'allows user to confirm order' do
     order = Order.new(menu_double)
     order.update("1 fish, 3 salad, 2 chips")
-    expect(order.confirm).to include("Thank you! Your order was placed and will be delivered before #{Time.new + Order::DELIVERY_TIME}")
+    expect(order_double.confirm).to include("Thank you! Your order was placed and will be delivered before #{Time.new + Order::DELIVERY_TIME}")
   end
 
   it 'throws an error if the order is not on the list' do
