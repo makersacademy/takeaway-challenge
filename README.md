@@ -22,14 +22,6 @@ Learning goals
 - Use a test driven approach to create the software.
 - Integrate the software into a Twilio API.
 
-User Stories
--------------------
-```
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
 Software Requirements
 ---------------------
 - Code must be elegant: every class has a clear responsibility, methods are short etc. <br/> Refer to the [code review rubric](docs/review.md).
@@ -84,7 +76,7 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ```
-From the users perspectiv in IRB:
+From the users perspective in IRB:
 
 ```
 order = Order.new
@@ -100,7 +92,7 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
-From the users perspectiv in IRB:
+From the users perspective in IRB:
 ```
 order = Order.new
 => #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}> 
@@ -115,7 +107,7 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ```
-From the users perspectiv in IRB:
+From the users perspective in IRB:
 ```
 order = Order.new
 => #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}, @cost=0, @items=[]> 
@@ -127,6 +119,24 @@ order.cost
 => 11
 ```
 
+## User Story 4
+
+```
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+From the users perspective in IRB:
+```
+order = Order.new
+=> #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}, @cost=0, @items=[]> 
+order.update("1 fish, 3 salad")
+=> {:fish=>1, :salad=>3}
+order.cost
+=> 11
+order.confirm
+=> "Thank you! Your order was placed and will be delivered before 2020-03-29 18:22:59 +0100."
+```
 
 ## Domain model
 
