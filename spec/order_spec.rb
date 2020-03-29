@@ -35,4 +35,9 @@ describe Order do
     expect { order.update("1 cat") }.to raise_error 'cat is not on the menu'
   end
 
+  it 'throws an error if the order number is negative' do
+    order = Order.new(menu_double)
+    expect { order.update("-3 fish") }.to raise_error 'cannot order a negative number'
+  end
+
 end

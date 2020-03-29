@@ -39,8 +39,6 @@ class Order
   end
 
   def check_order(dish, number)
-    #fail "#{dish} is not on the menu" unless @menu.include?(dish)
-    #fail 'cat is not on the menu' unless @menu.include?(dish)
     fail "#{dish} is not on the menu" unless @menu.include?(dish)
   end
 
