@@ -32,7 +32,7 @@ describe Order do
 
   it 'throws an error if the order is not on the list' do
     order = Order.new(menu_double)
-    expect { rder.update("1 cat") }.to raise "cat is not on the menu"
+    expect { order.update("1 cat") }.to raise_error 'cat is not on the menu'
   end
 
 end
