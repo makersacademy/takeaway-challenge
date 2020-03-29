@@ -11,6 +11,13 @@ class Order
   end
 
   def update(items)
+    manage_order(items)
+    calculate_cost
+  end
+
+  private
+
+  def manage_order(items)
     items = items.split(", ")
     items.each { |dish|
       dishes = dish.split(" ")
@@ -18,13 +25,7 @@ class Order
       number = dishes[0].to_i
       @items[dish] = number
     }
-    
-    calculate_cost
-    @items
-
   end
-
-  private
 
   def calculate_cost
     @cost = 0
