@@ -10,10 +10,12 @@ class Menu
   end
 
   def print
-    dishes.each { |dish, price| print dish \n }
+    dishes.each do |dish, price|
+      string = "#{dish}\n £#{price}"
+      puts string
+
+    end
   end
 end
 
 menu = Menu.new
-
-p menu.print
