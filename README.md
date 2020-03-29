@@ -120,51 +120,36 @@ These diagrams were created in the planning phase, but due to developing with TD
   my_order.view_menu
   ```
 
-### Adding dishes to your order
+  > "1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)" 
 
-- Add dishes to your order with the Order add method, passing in the menu number of the dish you want:
+### Placing an order
 
-  ```ruby
-  my_order.add(1)
-  ```
-
-- Attempting to add a dish number that isn't on the menu will result in an error:
+- Place an order using the place method. Pass in a list of dishes, and the corresponding quantities you desire, followed by a total price you have calculated:
 
   ```ruby
-  my_order.add(50)
-  ```
-
-  > RuntimeError (That number isn't an item on the menu)
-
-### View your basket
-
-- View the dishes in your basket and the total price with the Order basket method:
-
-  ```ruby
-  my_order.add(1)
-  my_order.basket
-  ```
-
-### Place your order
-
-- Place your order with the Order place method:
-
-  ```ruby
-  my_order.add(1)
-  my_order.place
+  my_order.place("mash", 1, 4)
   ```
 
   You will receive a text message to let you know your order is on its way:
 
   > Thank you! Your order was placed and will be delivered before 17:30
 
-- Attempting to place an order without adding anything to the basket will raise an error:
+
+- Attempting to add a dish that isn't on the menu will result in an error:
 
   ```ruby
-  my_order.place
+  my_order.place("squid", 1, 4)
   ```
 
-  > RuntimeError (Cannot place order with an empty basket)
+  > RuntimeError (That item isn't an item on the menu)
+
+- Placing an order with correct dishes, but an incorrect total will result in an error:
+
+  ```ruby
+  my_order.place("mash", 1, 10)
+  ```
+
+  > RuntimeError (Total provided does not match calculated total)
 
 ### Ordering via SMS
 
