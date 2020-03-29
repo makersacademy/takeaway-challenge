@@ -26,18 +26,6 @@ User Stories
 -------------------
 ```
 As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
@@ -99,8 +87,10 @@ I would like to see a list of dishes with prices
 From the users perspectiv in IRB:
 
 ```
+order = Order.new
+=> #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}> 
 order.menu
-> {:fish=>5, :chips=>3, :salad=>2} 
+=> {:fish=>5, :chips=>3, :salad=>2} 
 ```
 
 ## User Story 2
@@ -113,16 +103,37 @@ I would like to be able to select some number of several available dishes
 From the users perspectiv in IRB:
 ```
 order = Order.new
+=> #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}> 
 order.add("1 fish, 3 salad, 2 chips")
-> ["1 fish", "3 salad", "2 chips"]
+=> ["1 fish", "3 salad", "2 chips"]
 ```
+
+## User Story 3
+
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+From the users perspectiv in IRB:
+```
+order = Order.new
+=> #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}, @cost=0, @check_order=[]> 
+order.add("1 fish, 3 salad)
+=> ["1 fish", "3 salad"]
+order.review
+=> [{:fish=>5}, {:salad=>2}, {:salad=>2}, {:salad=>2}] 
+order.cost
+=> 11
+```
+
 
 ## Domain model
 
 Objects | Messages
 --------|--------
 Menu| @list
-Order | menu <br/> add(order)
+Order | menu <br/> update(order)
 
 ## Class Diagram
 
