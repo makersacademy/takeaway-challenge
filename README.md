@@ -458,6 +458,18 @@ Assuming the order is entered correctly, the user should receive a text.
 
 _At this point I removed all old commented out code, as well as Menu#provide_dish as it now redundant, everything uses #provide_price instead._
 
+During manual testing I noticed that submitting a correct order, but with an incorrect total still causes a text to be sent. This should raise an error instead.
+
+- Refactored tests to raise an error if an incorrect total is passed to #place, or not to raise an error if a correct total is passed. Tests red.
+
+- Refactored #check_order with a guard clase to raise an error if the totals do not match. 
+
+### Advanced requirement
+
+> Implement the ability to place orders via text message.
+
+
+
 ### Reflections
 
 I feel I have implemented a good solution, with good test coverage, and fully isolated tests.
