@@ -389,11 +389,15 @@ Manual testing reveals it is possible to place an order with an empty basket. Th
 
 So, previously I had implemented a slightly different solution, with separate methods to add items and place the order. This didn't match the requirements, which are to provide a single method that accepts a series of arguments: a list of dishes, their quantities and a number that should be the exact total.
 
-### User Story 2
+### User Stories 2 and 3
 
 > As a customer  
 > So that I can order the meal I want  
 > I would like to be able to select some number of several available dishes
+
+> As a customer  
+> So that I can verify that my order is correct  
+> I would like to check that the total I have been given matches the sum of the various dishes in my order
 
 This user story is partway implemented, the menu can return dishes when prompted. Now there needs to be a place method that accepts:
 
@@ -436,7 +440,21 @@ And returns true or false based on if the number is the exact total of the sum o
 
 - Added guard clause to #place to raise error if the size of the dishes array is not equal to size of the quantities array. Test green.
 
-- Refactored the guard clause out to a helper method #check_order
+- Refactored the guard clause out to a helper method #check_order.
+
+### User Story 4
+
+> As a customer  
+> So that I am reassured that my order will be delivered on time  
+> I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Assuming the order is entered correctly, the user should receive a text.
+
+- Wrote a test that a correct order will cause the notification instance to receive a send message. Test red.
+
+- Reintroduced the methods #calculate_delivery_time, #time_as_24, and added code to #place from the old #place method that sends a notification with the correctly formatted delivery time. Test green.
+
+- Refactored this out to #send_notification
 
 ### Reflections
 

@@ -13,8 +13,9 @@ class Order
   end
 
   def place(*dish_quantity_list, total)
-    check_order(dish_quantity_list)
-    total_price(dish_quantity_list) == total
+    order_status = check_order(dish_quantity_list, total)
+    send_notification
+    order_status
   end
   
   # def add(dish_number)
@@ -33,10 +34,16 @@ class Order
   
   private
 
-  def check_order(dish_quantity_list)
+  def send_notification
+    delivery_time = calculate_delivery_time(Time.now)
+    @notification.send(delivery_time)
+  end
+
+  def check_order(dish_quantity_list, total)
     dishes = get_dishes(dish_quantity_list)
     quantities = get_quantities(dish_quantity_list)
     raise 'Incorrect arguments: each dish is followed by quantity, finally total cost' unless dishes.size == quantities.size
+    total_price(dish_quantity_list) == total
   end
 
   def get_dishes(dish_quantity_list)
@@ -56,17 +63,17 @@ class Order
       .sum
   end
 
-  # ONE_HOUR = 60 * 60
+  ONE_HOUR = 60 * 60
   # BASKET_HEADER = "Your order:\n"
 
-  # def calculate_delivery_time(time)
-  #   hour_from_now = time + ONE_HOUR
-  #   time_as_24(hour_from_now)
-  # end
+  def calculate_delivery_time(time)
+    hour_from_now = time + ONE_HOUR
+    time_as_24(hour_from_now)
+  end
 
-  # def time_as_24(time)
-  #   time.strftime("%R")
-  # end
+  def time_as_24(time)
+    time.strftime("%R")
+  end
 
   # def check_basket
   #   raise 'Cannot place order with an empty basket' if @basket.size == 0
