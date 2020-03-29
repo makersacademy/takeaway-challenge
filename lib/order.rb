@@ -22,12 +22,12 @@ class Order
   end
 
   def choose(food_input,amount_input)
-    
     food_input = food_input.to_sym # assuming user enters a string
     @menu.each do |food, money|
       if food_input == food
         @order << {food: food_input, price: money*amount_input, amount: amount_input}
       end 
+       total 
     end 
   end
 
