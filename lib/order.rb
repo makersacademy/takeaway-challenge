@@ -32,12 +32,12 @@ class Order
 
   def reformat_order(dish)
     dishes = dish.split(" ")
-    convert_strings(dishes)
-  end
-
-  def convert_strings(dishes)
     dish = dishes[1].to_sym
     number = dishes[0].to_i
+    store_order(dish, number)
+  end
+
+  def store_order(dish, number)
     @items[dish] = number
   end
 
