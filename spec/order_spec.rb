@@ -24,4 +24,10 @@ describe Order do
     expect(order.cost).to eq 17
   end
 
+  it 'allows user to confirm order' do
+    order = Order.new(menu_double)
+    order.update("1 fish, 3 salad, 2 chips")
+    expect(order.confirm).to include("Thank you! Your order was placed and will be delivered before")
+  end
+
 end
