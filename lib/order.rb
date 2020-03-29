@@ -35,12 +35,12 @@ class Order
     dish = dishes[1].to_sym
     number = dishes[0].to_i
     check_order(dish, number)
-    store_order(dish, number)
   end
 
   def check_order(dish, number)
     fail 'cannot order a negative number' if number.negative?
     fail "#{dish} is not on the menu" unless @menu.include?(dish)
+    number == 0 ? @items.delete(dish) : store_order(dish, number)
   end
 
   def store_order(dish, number)
