@@ -10,5 +10,3 @@ post '/sms-quickstart' do
 
   twiml.to_s
 end
-
-

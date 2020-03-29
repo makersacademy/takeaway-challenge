@@ -3,7 +3,7 @@ require 'order'
 describe Order do
 
   let(:menu_double) { double :Menu, list: { :fish => "£5", :chips => "£3", :salad => "£2" } }
-  let(:order_double) { double :order, confirm: ("Thank you! Your order was placed and will be delivered before #{Time.new + Order::DELIVERY_TIME}") }
+  let(:order_double) { double :order, confirm: "Thank you! Your order was placed and will be delivered before #{Time.new + Order::DELIVERY_TIME}" }
 
   it 'returns the menu on #menu' do
     order = Order.new(menu_double)

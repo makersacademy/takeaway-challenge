@@ -22,8 +22,8 @@ class Order
   def confirm
     time = Time.new + DELIVERY_TIME
     time = time.strftime("%R")
-    "Thank you! Your order was placed and will be delivered before #{time}."
     @notification.send(time)
+    return "Thank you! Your order was placed and will be delivered before #{time}."
   end
 
   private
