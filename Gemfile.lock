@@ -5,10 +5,22 @@ GEM
     ast (2.4.0)
     diff-lcs (1.3)
     docile (1.3.2)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
     jaro_winkler (1.5.4)
+    jwt (2.2.1)
+    mini_portile2 (2.4.0)
+    multipart-post (2.1.1)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
     parser (2.7.0.3)
       ast (~> 2.4.0)
+    rack (2.2.2)
+    rack-protection (2.0.8.1)
+      rack
     rainbow (3.0.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -31,6 +43,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
+    ruby2_keywords (0.0.2)
     simplecov (0.18.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11.0)
@@ -39,8 +52,18 @@ GEM
       simplecov
       terminal-table
     simplecov-html (0.11.0)
+    sinatra (2.0.8.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.8.1)
+      tilt (~> 2.0)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    tilt (2.0.10)
+    twilio-ruby (5.32.0)
+      faraday (~> 1.0.0)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     unicode-display_width (1.6.1)
 
 PLATFORMS
@@ -51,6 +74,8 @@ DEPENDENCIES
   rubocop (= 0.79.0)
   simplecov
   simplecov-console
+  sinatra
+  twilio-ruby
 
 BUNDLED WITH
    2.1.4

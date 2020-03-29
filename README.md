@@ -176,6 +176,41 @@ Order | @menu <br/>  @items <br/> @cost <br/> update(items) <br/> confirm
 bundle
 ```
 
+## SMS Integration
+
+- This program can be configured to work via text using Twilio.
+- You will need your own [Twilio account](https://www.twilio.com) to set up this up.
+- You will have to create the folowing file:
+```
+lib/send_sms.rb
+```
+- Add these contents to the file
+```
+require 'twilio-ruby'
+
+account_sid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
+client = Twilio::REST::Client.new(account_sid, auth_token)
+
+from = '+15566666666' # Your Twilio number
+to = '+15555555555' # Your mobile phone number
+
+client.messages.create(
+from: from,
+to: to,
+body: "Hey friend!"
+)
+```
+
+- You will have to replace the following fields with your own credentials
+```
+account_sid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
+
+from = '+15566666666' # Your Twilio number
+to = '+15555555555' # Your mobile phone number
+```
+
 ## Use via REPL
 
 - Use your favourite REPL, I use IRB. <br/> From terminal in the main directory
