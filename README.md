@@ -42,7 +42,7 @@ Advanced:
 
 ## Models
 
-These diagrams were created in the planning phase, but due to developing with TDD and allowing the program to emerge from that process, They are slightly different from the final product.
+These diagrams were created in the planning phase, but due to developing with TDD and allowing the program to emerge from that process they are slightly different from the final product.
 
 ### Domain Model Table
 
@@ -61,8 +61,8 @@ These diagrams were created in the planning phase, but due to developing with TD
 
 ### Install dependencies
 
-- This program uses several gems to work properly. 
-  Install them from a terminal in the main directory with: 
+- This program uses several gems to work properly.
+  Install them from a terminal in the main directory with:
 
   ```bash
   bundle
@@ -92,7 +92,7 @@ These diagrams were created in the planning phase, but due to developing with TD
 ### Enter REPL
 
 - Enter your REPL of choice, I use IRB.  
-  From terminal in the main directory: 
+  From terminal in the main directory:
 
   ```bash
   irb
@@ -120,7 +120,7 @@ These diagrams were created in the planning phase, but due to developing with TD
   my_order.view_menu
   ```
 
-  > "1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)" 
+  > "1. Pie (£6)\n2. Mash (£4)\n3. Chips (£5)"
 
 ### Placing an order
 
@@ -133,7 +133,6 @@ These diagrams were created in the planning phase, but due to developing with TD
   You will receive a text message to let you know your order is on its way:
 
   > Thank you! Your order was placed and will be delivered before 17:30
-
 
 - Attempting to add a dish that isn't on the menu will result in an error:
 
@@ -162,7 +161,7 @@ These diagrams were created in the planning phase, but due to developing with TD
 - run sms_server.rb from the main directory:
 
   ```bash
-  ruby ./lib/sms_server.rb 
+  ruby ./lib/sms_server.rb
   ```
 
 - This will start up your Sinatra server ready to receive HTTP POST requests. Its address will be <http://localhost:4567/sms> by default.
@@ -287,7 +286,7 @@ To pass this feature test there needs to be several units tested and implemented
 
 - Wrote unit test for Menu #provide_dish to return a Pie object when passed 1. Test red.
 
-  - Pie is an uninitialized constant, so wrote tests in pie_spec.rb for Pie#name to be "Pie" and Pie#price to be 6. tests red. 
+  - Pie is an uninitialized constant, so wrote tests in pie_spec.rb for Pie#name to be "Pie" and Pie#price to be 6. tests red.
 
   - Created pie.rb and added a Pie class, tests green.
 
@@ -442,7 +441,7 @@ _To view the fully implemented but incorrect solution I worked on, view the "mas
 
 So, previously I had implemented a slightly different solution, with separate methods to add items and place the order. This didn't match the requirements, which are to provide a single method that accepts a series of arguments: a list of dishes, their quantities and a number that should be the exact total.
 
-### User Stories 2 and 3
+### v2 User Stories 2 and 3
 
 > As a customer  
 > So that I can order the meal I want  
@@ -485,7 +484,7 @@ And returns true or false based on if the number is the exact total of the sum o
 
 - Wrote test for #place to return true if passed: "pie", 2, "mash", 1, 16. Test red.
 
-- Updated #total_price to take both dishes and quantities as arguments. Variable prices maps through dishes and asks the menu to provide the price for that dish. Totals are calculated by zipping the prices with quantities to create a 2d array of the price of each item and how many there are. Then mapping through that array and multiplying each subarray's values together results in an array of subtotals. Finally, sum the subtotal array. Test green.
+- Updated #total_price to take both dishes and quantities as arguments. Variable prices maps through dishes and asks the menu to provide the price for that dish. Totals are calculated by zipping the prices with quantities to create a 2d array of the price of each item and how many there are. Then mapping through that array and multiplying each sub-array's values together results in an array of subtotals. Finally, sum the subtotal array. Test green.
 
 - For my own sanity wrote a test for #place to return true if passed: "pie", 40, "mash", 12, "chips", 7, 323
 
@@ -495,7 +494,7 @@ And returns true or false based on if the number is the exact total of the sum o
 
 - Refactored the guard clause out to a helper method #check_order.
 
-### User Story 4
+### v2 User Story 4
 
 > As a customer  
 > So that I am reassured that my order will be delivered on time  
@@ -515,9 +514,9 @@ During manual testing I noticed that submitting a correct order, but with an inc
 
 - Refactored tests to raise an error if an incorrect total is passed to #place, or not to raise an error if a correct total is passed. Tests red.
 
-- Refactored #check_order with a guard clase to raise an error if the totals do not match. 
+- Refactored #check_order with a guard clase to raise an error if the totals do not match.
 
-### Advanced requirement
+### v2 Advanced requirement
 
 > Implement the ability to place orders via text message.
 
