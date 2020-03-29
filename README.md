@@ -210,7 +210,7 @@ _As this is hardcoded at the moment it isn't very flexible, but I suspect TDD wi
 > So that I can order the meal I want  
 > I would like to be able to select some number of several available dishes
 
-_Following the idea I had in the class diagram, this calls for an Order class, to which dishes can be added to a basket from the menu. Let's start with a basic feature test for just adding 1 pie._
+Following the idea I had in the class diagram, this calls for an Order class, to which dishes can be added to a basket from the menu. Let's start with a basic feature test for just adding 1 pie.
 
 - Created order_spec.rb and added a describe block for the Order class, required order.rb. Test red.
 
@@ -226,15 +226,15 @@ _I could've tested for an array of dishes in the basket, but that would be testi
 
 - No refactor needed yet.
 
-_At the moment #add doesn't actually do anything, and basket just returns a hardcoded string. This will change after the next feature test though._
+At the moment #add doesn't actually do anything, and basket just returns a hardcoded string. This will change after the next feature test though.
 
-_Next up, a feature test for adding a pie and some mash._
+Next up, a feature test for adding a pie and some mash.
 
 - Wrote feature test that adding two dishes to the order shows both in the order basket. Test red.
 
 _At this point I realised I had been passing in doubles of pies and mash to #add. That's not what a user would do! I refactored the tests to add took a number as a parameter, the number of the dish on the menu. The tests still work as they did before._
 
-_To pass this feature test there needs to be several units tested and implemented. The Menu has responsibility to pass back dishes the order requests._
+To pass this feature test there needs to be several units tested and implemented. The Menu has responsibility to pass back dishes the order requests.
 
 - Wrote unit test for Menu #provide_dish to return a Pie object when passed 1. Test red.
 
@@ -275,7 +275,7 @@ _This is a functional solution, but it is fragile, adding more dishes to the men
 
 - Also added a constant MENU_LENGTH as the size of DISHES, and used that in the test for a number outside the menu so even if the menu expands the test will still be green.
 
-_Now that we have flexibility with the menu items we can add dishes easily, but the view method is still hardcoded. Testing this will require some dependency injection. I plan to inject a hash of doubled dish classes._
+Now that we have flexibility with the menu items we can add dishes easily, but the view method is still hardcoded. Testing this will require some dependency injection. I plan to inject a hash of doubled dish classes.
 
 - Wrote a new #view test expecting only 1 item when creating a menu with only one dish in the dish hash. Test red.
 
@@ -488,6 +488,9 @@ In order to sanitise the raw SMS message sent, there should be a class that trea
 
 - Refactored functionality out to private helper methods #sanitise_order to do the mapping, which uses #split_by_commas to do the splitting, and #digits_to_i to do the conversion of string digits to actual integers. Tests still green.
 
+Finally, to actually be able to receive SMS messages and have them passed to the SMS interface, I wrote a simple script in sms_server.rb that instantiates an SMSInterface and uses Sinatra to execute receive HTTP POST to <http://localhost:4567/sms> and call the interface to treat the body of the HTTP POST, sending that through to the Order#place method. Neat!
+
+Running sms_server.rb fires up a Sinatra server, and ngrok directs
 
 ### Reflections
 
