@@ -542,7 +542,7 @@ In order to sanitise the raw SMS message sent, there should be a class that trea
 
 Finally, to actually be able to receive SMS messages and have them passed to the SMS interface, I wrote a simple script in sms_server.rb that instantiates an SMSInterface and uses Sinatra to execute receive HTTP POST to <http://localhost:4567/sms> and call the interface to treat the body of the HTTP POST, sending that through to the Order#place method. Neat!
 
-Running sms_server.rb fires up a Sinatra server, and ngrok directs
+Running sms_server.rb fires up a Sinatra server, and ngrok provides a tunnel to the local Sinatra Server, Twilio forwards SMS messages as HTTP POST requests.
 
 ### Reflections
 
