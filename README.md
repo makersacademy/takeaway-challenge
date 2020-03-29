@@ -138,6 +138,27 @@ order.confirm
 => "Thank you! Your order was placed and will be delivered before 2020-03-29 18:22:59 +0100."
 ```
 
+## My own Story
+
+```
+As a customer
+So that I can change my order if it is wrong
+I would to be able alter my order before I confirm
+```
+From the users perspective in IRB:
+```
+order = Order.new
+=> #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}, @cost=0, @items=[]> 
+order.update("1 fish, 3 salad")
+=> {:fish=>1, :salad=>3}
+order.cost
+=> 11
+order.update("2 fish, 0 salad")
+=> {:fish=>2}
+order.cost
+=> 10
+```
+
 ## Domain model
 
 Objects | Messages

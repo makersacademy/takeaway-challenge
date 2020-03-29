@@ -40,4 +40,10 @@ describe Order do
     expect { order.update("-3 fish") }.to raise_error 'cannot order a negative number'
   end
 
+  it 'allows the user to change order' do
+    order = Order.new(menu_double)
+    order.update("1 fish, 3 salad, 2 chips")
+    expect(order.update("2 fish, 0 salad, 2 chips")).to include(:fish => 2, :chips =>2 )
+  end
+  
 end
