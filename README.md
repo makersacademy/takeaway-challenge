@@ -188,18 +188,23 @@ lib/send_sms.rb
 ```
 require 'twilio-ruby'
 
-account_sid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
-client = Twilio::REST::Client.new(account_sid, auth_token)
+class Notification
+  def initialize(client = Twilio::REST::Client)
+    @client = client.new(ACCOUNT_SID, AUTH_TOKEN)
+  end
+  ACCOUNT_SID = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  AUTH_TOKEN = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
 
-from = '+15566666666' # Your Twilio number
-to = '+15555555555' # Your mobile phone number
+  FROM = '+15555555555' # Your Twilio number
+  TO = '+15566666666' # Your mobile phone number
 
-client.messages.create(
-from: from,
-to: to,
-body: "Thank you! Your order was placed and will be delivered in 30 mins."
-)
+  def send(delivery_time)
+    @client.messages.create(
+    from: FROM,
+    to: TO,
+    body: "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    )
+  end
 ```
 
 - You will have to replace the following fields with your own credentials
