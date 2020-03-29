@@ -5,8 +5,6 @@ describe Order do
     expect(subject).to respond_to :show_menu
   end
 
-  # Need to think about the description here.
-  # Is this test a bit silly, should it be updated?
   it "#show_menu prints the menu" do
     expect(subject.show_menu).to be_instance_of Array
   end
@@ -19,7 +17,6 @@ describe Order do
     expect(subject).to respond_to :selection
   end
 
-  #bit of a pointless test?
   it '#selection is an array containing the order' do
     expect(subject.selection).to be_instance_of Array
   end
@@ -39,8 +36,6 @@ describe Order do
     expect(subject.calculate_total).to eq 24
   end
 
-
-
   it "responds to #complete_order" do
     expect(subject).to respond_to :complete_order
   end
@@ -53,21 +48,4 @@ describe Order do
     allow(subject).to receive(:send_sms).and_return("You have succesfully ordered your pizza! Total: £#{@total}")
     expect(subject.complete_order).to eq "You have succesfully ordered your pizza! Total: £#{@total}"
   end
-
-
 end
-
-=begin
-  describe Takeaway
-  subject(:takeaway) { described_class.new }
-
-  before do
-    allow(takeaway).to receive(:send_text)
-  end
-
-  it 'sends a payment confirmation text message' do
-    expect(takeaway).to receive(:send_text).with("Thank you for your order: £20.93")
-    takeaway.complete_order(20.93)
-  end
-end
-=end

@@ -1,4 +1,4 @@
-#require_relative 'send_sms.rb'
+require 'twilio-ruby'
 
 class Order
 
