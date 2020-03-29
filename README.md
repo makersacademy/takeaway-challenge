@@ -43,10 +43,6 @@ Software Requirements
 >
 > :key: Think about security and how you can keep your private information secret. Explore environment variables.
 
-
-
-
-
 ## My approach
 
 ### 1. Modelling
@@ -170,3 +166,62 @@ Order | @menu <br/>  @items <br/> @cost <br/> update(items) <br/> confirm
 
 ![image](./images/diagram4.png)
 
+# Instructions
+
+## Install dependency
+
+- This program requires some gems to be installed. They can be installed via terminal in the main directory with:
+
+```
+bundle
+```
+
+## Use via REPL
+
+- Use your favourite REPL, I use IRB. <br/> From terminal in the main directory
+```
+irb
+```
+- Load in order.rb
+```
+require './lib/order.rb'
+```
+## Instantiate an order
+- Instantiate an order
+```
+order = Order.new
+```
+## View menu
+- View menu
+```
+order.menu
+```
+## Choosing order
+- Update your order
+```
+order.update("2 fish, 2 chips, 1 salad")
+```
+- Change your order
+```
+order.update("3 chips")
+```
+- Remove an item
+```
+order.update("0 salad")
+```
+## Checking the order
+- Check order cost
+```
+order.cost
+```
+- Check order items
+```
+order.items
+```
+## Placing an order
+- Confirm order
+```
+order.confirm
+```
+You will recieve
+| Thank you! Your order was placed and will be delivered before 17:30
