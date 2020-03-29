@@ -11,9 +11,6 @@ describe Order do
   # Menu instance double that can provide dish doubles based on #provide_dish with different arguments
   let(:menu_inst) do 
     menu_inst = double(:menu)
-    allow(menu_inst).to receive(:provide_dish).with("pie").and_return(pie_inst)
-    allow(menu_inst).to receive(:provide_dish).with("mash").and_return(mash_inst)
-    allow(menu_inst).to receive(:provide_dish).with("chips").and_return(chips_inst)
     allow(menu_inst).to receive(:provide_price).with("pie").and_return(6)
     allow(menu_inst).to receive(:provide_price).with("mash").and_return(4)
     allow(menu_inst).to receive(:provide_price).with("chips").and_return(5)
@@ -33,18 +30,6 @@ describe Order do
 
   # Order with mock menu instance and notification instance
   let(:mocked_order) { Order.new(menu_inst, notification_inst) }
-
-  # describe '#add and #basket' do
-  #   it 'adding a dish to the order shows that dish in the order basket' do
-  #     mocked_order.add(1)
-  #     expect(mocked_order.basket).to eq "Your order:\nPie (£6)\nTotal: £6"
-  #   end
-  #   it 'adding a two dishes to the order shows both dishes in the order basket' do
-  #     mocked_order.add(1)
-  #     mocked_order.add(2)
-  #     expect(mocked_order.basket).to eq "Your order:\nPie (£6)\nMash (£4)\nTotal: £10"
-  #   end
-  # end
 
   describe '#view_menu' do
     it 'returns the list of dishes of the menu of the order' do
@@ -79,14 +64,4 @@ describe Order do
       mocked_order.place("pie", 1, 6)
     end
   end
-
-  # describe '#place' do
-  #   it 'places an order and sends a text to the user that delivery will be complete within an hour' do
-  #     mocked_order.add(1)
-  #     expect(mocked_order.place).to eq 'Mock SMS notification has received #send'
-  #   end
-  #   it 'raises an error if no dishes have been added' do
-  #     expect { mocked_order.place }.to raise_error 'Cannot place order with an empty basket'
-  #   end
-  # end
 end

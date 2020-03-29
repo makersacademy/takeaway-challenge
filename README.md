@@ -454,7 +454,9 @@ Assuming the order is entered correctly, the user should receive a text.
 
 - Reintroduced the methods #calculate_delivery_time, #time_as_24, and added code to #place from the old #place method that sends a notification with the correctly formatted delivery time. Test green.
 
-- Refactored this out to #send_notification
+- Refactored this out to #send_notification.
+
+_At this point I removed all old commented out code, as well as Menu#provide_dish as it now redundant, everything uses #provide_price instead._
 
 ### Reflections
 

@@ -32,21 +32,6 @@ describe Menu do
     end
   end
 
-  describe '#provide_dish' do
-    it 'returns a Pie object when passed "pie"' do
-      expect(subject.provide_dish("pie")).to be_kind_of(Pie)
-    end
-    it 'returns a Mash object when passed "mash"' do
-      expect(subject.provide_dish("mash")).to be_kind_of(Mash)
-    end
-    it 'returns a Chips object when passed "chips"' do
-      expect(subject.provide_dish("chips")).to be_kind_of(Chips)
-    end
-    it 'raises error when passed a something outside of the menu' do
-      expect { subject.provide_dish("pie please") }.to raise_error "That item isn't an item on the menu"
-    end
-  end
-
   describe '#provide_price' do
     it 'returns a Pie price when passed "pie"' do
       expect(subject.provide_price("pie")).to eq 6

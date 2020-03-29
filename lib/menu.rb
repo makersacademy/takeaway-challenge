@@ -16,11 +16,6 @@ class Menu
     }.join("\n")
   end
 
-  def provide_dish(dish)
-    check_in_menu(dish)
-    get_dish(dish).new
-  end
-
   def provide_price(dish)
     check_in_menu(dish)
     dish = get_dish(dish).new

@@ -4,7 +4,6 @@ require_relative 'notification'
 class Order
   def initialize(menu = Menu.new, notification = Notification.new)
     @menu = menu
-    # @basket = []
     @notification = notification
   end
   
@@ -17,20 +16,6 @@ class Order
     send_notification
     order_status
   end
-  
-  # def add(dish_number)
-  #   @basket << @menu.provide_dish(dish_number)
-  # end
-  
-  # def basket
-  #   BASKET_HEADER + basket_list + total
-  # end
-  
-  # def place
-  #   check_basket
-  #   delivery_time = calculate_delivery_time(Time.now)
-  #   @notification.send(delivery_time)
-  # end
   
   private
 
@@ -64,7 +49,6 @@ class Order
   end
 
   ONE_HOUR = 60 * 60
-  # BASKET_HEADER = "Your order:\n"
 
   def calculate_delivery_time(time)
     hour_from_now = time + ONE_HOUR
@@ -74,17 +58,4 @@ class Order
   def time_as_24(time)
     time.strftime("%R")
   end
-
-  # def check_basket
-  #   raise 'Cannot place order with an empty basket' if @basket.size == 0
-  # end
-
-  # def basket_list
-  #   @basket.map { |dish| dish.details }.join("\n")
-  # end
-
-  # def total
-  #   total = @basket.map { |dish| dish.price }.sum
-  #   "\nTotal: £#{total}"
-  # end
 end
