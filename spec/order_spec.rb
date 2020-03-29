@@ -43,7 +43,7 @@ describe Order do
   it 'allows the user to change order' do
     order = Order.new(menu_double)
     order.update("1 fish, 3 salad, 2 chips")
-    expect(order.update("2 fish, 0 salad, 2 chips")).to include(:fish => 2, :chips =>2 )
+    expect(order.update("2 fish, 0 salad, 2 chips")).to include(:fish => 2, :chips => 2)
   end
 
   it 'allows the user to remove an item' do

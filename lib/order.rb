@@ -40,7 +40,8 @@ class Order
   def check_order(dish, number)
     fail 'cannot order a negative number' if number.negative?
     fail "#{dish} is not on the menu" unless @menu.include?(dish)
-    number == 0 ? @items.delete(dish) : store_order(dish, number)
+
+    number.zero? ? @items.delete(dish) : store_order(dish, number)
   end
 
   def store_order(dish, number)
