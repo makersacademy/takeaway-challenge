@@ -11,6 +11,7 @@ class Order
   
   def open_menu(menu)
     @menu = menu.menu_hash
+    look_at_menu
   end 
 
   def look_at_menu # menu object 
@@ -30,7 +31,7 @@ class Order
     end 
   end
 
-  def place_order(order)
+  def place_order
     order.each do |hash|
       puts "food: #{hash[:food]}, amount: #{hash[:amount]}, price: £#{hash[:price]}"
     end 
@@ -42,7 +43,7 @@ class Order
   def total#(order)
     total = 0
     #@order[0][:price] + @order[1][:price]
-    @order.each do |hash|
+    order.each do |hash|
       total += hash[:price]
     end 
     @final_total = total

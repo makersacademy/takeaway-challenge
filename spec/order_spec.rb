@@ -36,7 +36,7 @@ describe Order do
         subject.choose("Tea", 2)
   
         #! fix formating of price 
-        expect{subject.place_order(order_small)}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
+        expect{subject.place_order}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
       end 
     end 
 
@@ -56,7 +56,7 @@ describe Order do
         subject.open_menu(menu)
         subject.choose("Pancakes", 1)
         subject.choose("Tea", 2)
-        expect{subject.place_order(order_small)}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
+        expect{subject.place_order}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
         subject.choose("Eggs", 2)
         expect(subject.total).to eq 14.2
         expect{subject.verify}.to raise_error "total does not equal prints_order" 
@@ -65,7 +65,7 @@ describe Order do
         subject.open_menu(menu)
         subject.choose("Pancakes", 1)
         subject.choose("Tea", 2)
-        expect{subject.place_order(order_small)}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
+        expect{subject.place_order}.to output("food: Pancakes, amount: 1, price: £5.5\nfood: Tea, amount: 2, price: £2\n£7.5\n").to_stdout
         expect(subject.total).to eq 7.5
         expect{subject.verify}.to output("send text\n").to_stdout
       end
