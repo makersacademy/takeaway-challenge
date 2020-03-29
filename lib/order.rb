@@ -39,6 +39,7 @@ class Order
   end
 
   def check_order(dish, number)
+    fail 'cannot order a negative number' if number.negative?
     fail "#{dish} is not on the menu" unless @menu.include?(dish)
   end
 
