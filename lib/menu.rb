@@ -10,7 +10,7 @@ class Menu
 
   def view
     number = 0
-    @dishes.map { |key, dish|
+    @dishes.map { |_key, dish|
       number += 1
       "#{number}. #{dish.new.details}"
     }.join("\n")
