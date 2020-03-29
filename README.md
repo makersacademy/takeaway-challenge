@@ -90,7 +90,7 @@ From the users perspectiv in IRB:
 order = Order.new
 => #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}> 
 order.menu
-=> {:fish=>5, :chips=>3, :salad=>2} 
+=> {:fish=>"£5", :chips=>"£3", :salad=>"£2"} 
 ```
 
 ## User Story 2
@@ -104,8 +104,8 @@ From the users perspectiv in IRB:
 ```
 order = Order.new
 => #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}> 
-order.add("1 fish, 3 salad, 2 chips")
-=> ["1 fish", "3 salad", "2 chips"]
+order.update("1 fish, 3 salad, 2 chips")
+=> {:fish=>1, :salad=>3, :chips=>2}
 ```
 
 ## User Story 3
@@ -118,11 +118,11 @@ I would like to check that the total I have been given matches the sum of the va
 From the users perspectiv in IRB:
 ```
 order = Order.new
-=> #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}, @cost=0, @check_order=[]> 
-order.add("1 fish, 3 salad)
-=> ["1 fish", "3 salad"]
-order.review
-=> [{:fish=>5}, {:salad=>2}, {:salad=>2}, {:salad=>2}] 
+=> #<Order:0x00007f863783fda0 @menu={:fish=>5, :chips=>3, :salad=>2}, @cost=0, @items=[]> 
+order.update("1 fish, 3 salad")
+=> {:fish=>1, :salad=>3}
+order.items
+=> {:fish=>1, :salad=>3} 
 order.cost
 => 11
 ```
@@ -133,9 +133,9 @@ order.cost
 Objects | Messages
 --------|--------
 Menu| @list
-Order | menu <br/> update(order)
+Order | @menu <br/> update(order) <br/> @items <br/> @cost
 
 ## Class Diagram
 
-![image](./images/diagram2.png)
+![image](./images/diagram3.png)
 
