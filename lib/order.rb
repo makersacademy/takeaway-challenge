@@ -20,11 +20,15 @@ class Order
   def manage_order(items)
     items = items.split(", ")
     items.each { |dish|
-      dishes = dish.split(" ")
-      dish = dishes[1].to_sym
-      number = dishes[0].to_i
-      @items[dish] = number
+      reformat_order(dish)
     }
+  end
+
+  def reformat_order(dish)
+    dishes = dish.split(" ")
+    dish = dishes[1].to_sym
+    number = dishes[0].to_i
+    @items[dish] = number
   end
 
   def calculate_cost
