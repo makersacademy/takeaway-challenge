@@ -143,9 +143,9 @@ order.confirm
 Objects | Messages
 --------|--------
 Menu| @list
-Order | @menu <br/> update(items) <br/> @items <br/> @cost
+Order | @menu <br/>  @items <br/> @cost <br/> update(items) <br/> confirm
 
 ## Class Diagram
 
-![image](./images/diagram3.png)
+![image](./images/diagram4.png)
 
