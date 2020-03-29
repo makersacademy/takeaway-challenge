@@ -38,4 +38,36 @@ describe Order do
     subject.select_pizza(2, 1)
     expect(subject.calculate_total).to eq 24
   end
+
+
+
+  it "responds to #complete_order" do
+    expect(subject).to respond_to :complete_order
+  end
+
+  it "responds to #send text" do
+    expect(subject).to respond_to :send_sms
+  end
+
+  it "sends a text" do
+    allow(subject).to receive(:send_sms).and_return("You have succesfully ordered your pizza! Total: £#{@total}")
+    expect(subject.complete_order).to eq "You have succesfully ordered your pizza! Total: £#{@total}"
+  end
+
+
 end
+
+=begin
+  describe Takeaway
+  subject(:takeaway) { described_class.new }
+
+  before do
+    allow(takeaway).to receive(:send_text)
+  end
+
+  it 'sends a payment confirmation text message' do
+    expect(takeaway).to receive(:send_text).with("Thank you for your order: £20.93")
+    takeaway.complete_order(20.93)
+  end
+end
+=end
