@@ -154,7 +154,7 @@ These diagrams were created in the planning phase, but due to developing with TD
   my_order.place
   ```
 
-  You will receive a text message to let you know your order is on its way
+  You will receive a text message to let you know your order is on its way:
 
   > Thank you! Your order was placed and will be delivered before 17:30
 
@@ -165,6 +165,70 @@ These diagrams were created in the planning phase, but due to developing with TD
   ```
 
   > RuntimeError (Cannot place order with an empty basket)
+
+### Ordering via SMS
+
+- It is possible to order via SMS message, using Twilio to forward received SMS messages as HTTP POST requests to a Sinatra server that receives them and executes the order.
+
+- Twilio and Sinatra are included in the Gemfile, so they will already have been installed using bundle previously.
+
+### Set up Sinatra server
+
+- run sms_server.rb from the main directory:
+
+  ```bash
+  ruby ./lib/sms_server.rb 
+  ```
+
+- This will start up your Sinatra server ready to receive HTTP POST requests. Its address will be <http://localhost:4567/sms> by default.
+
+### Set up ngrok
+
+- First, [download ngrok](https://ngrok.com/download) and unzip to install following the instructions provided.
+
+- Now, in your terminal run ngrok from where ever it was unzipped:
+
+  ```bash
+  ./path/to/ngrok http 4567
+  ```
+
+- This will start an ngrok server that redirects traffic to your localhost:4567. You will see something like this as ngrok runs:
+
+  ```bash
+    Session Status                online
+    Account                       ...scrubbed...
+    Version                       2.3.35
+    Region                        United States (us)
+    Web Interface                 ...scrubbed...
+    Forwarding                    http://abcd1234.ngrok.io -> http://localhost:4567
+    Forwarding                    https://abcd1234.ngrok.io -> http://localhost:4567
+  ```
+
+### Configure Twilio to forward HTTP POST requests
+
+- From ngrok take the forwarding that looks like this: `https://abcd1234.ngrok.io`, and head to your Twilio account.
+
+- Go to console > Manage Numbers > click on the phone number you want to use > head to Messaging in the configure panel.
+
+- Here choose the following settings:
+  - Configure with -> Webhooks, TwiML Bins, Functions, Studio, or Proxy
+  - A Message Comes In -> Webhook, `https://abcd1234.ngrok.io/sms` (be sure to include the "/sms" at the end!), HTTP POST
+
+- And save the configuration.
+
+- If you stop ngrok and restart it, it will provide a different URL, so you will need to update that in Twilio.
+
+### Texting in your order
+
+- Sending an SMS message to your Twilio phone number will now pass it into the ordering program. Sending an order over SMS such as:
+
+  > Pie, 1, Mash, 1, 10
+
+  You will receive a text message to let you know your order is on its way:
+
+  > Thank you! Your order was placed and will be delivered before 17:30
+
+- Remember, the Sinatra server must be running, ngrok must be running, and Twilio forwarding to the correct ngrok URL must all be set up for this to work!
 
 ## Development Journal
 
@@ -470,7 +534,7 @@ During manual testing I noticed that submitting a correct order, but with an inc
 
 This feature will need Twilio with my code using webhooks, a http request sent to my code. For this Sinatra can be used, another Ruby gem, which I added to the Gemfile and installed with bundle.
 
-Sinatra by default hosts the file at <http://localhost:4567,> but in order for Twilio to be able to access it I need to expose that port to the internet using [ngrok](https://ngrok.com/download).
+Sinatra by default hosts the file at <http://localhost:4567>, but in order for Twilio to be able to access it I need to expose that port to the internet using [ngrok](https://ngrok.com/download).
 
 With that local host now exposed at a particular ngrok address, it can be added to the Twilio webhook configuration.
 
@@ -500,9 +564,9 @@ I feel I have done a good job of using OO principles of Encapsulation, SRP and D
 
 I did try my best to follow TDD practices but at times I got sidetracked with unrelated features, but eventually got back on track.
 
-I feel a little bit silly for not understanding the requirements quite correctly, however I think I have achieved the learning objectives of practising TDD, OOP, and gem usage well in any case.
+I feel a little bit silly for not understanding the requirements quite correctly, but I did come back round to implement them properly in the end. I think doing both versions has helped me achieved the learning objectives of practising TDD, OOP, and gem usage well in any case.
 
-I may come back to implement a "technically correct" solution in the future.
+I'm glad that I got the advanced requirement of sending an order via SMS to work, however for it to be actually useful some modifications to the program would be needed, as there is no feedback via SMS on incorrect orders etc. That's a challenge for another time.
 
 <!-- Links -->
 
