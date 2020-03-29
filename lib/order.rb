@@ -51,6 +51,8 @@ class Order
   def verify 
     if @place_order_total != @final_total
       raise "total does not equal prints_order" 
+    else 
+      puts "send text"
     end
   end 
   
