@@ -82,3 +82,17 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+My Attempt
+_________________
+I tried to see if i could get further into the challenge using the atom debugger to show me the errors rather than entering IRB, I found this more flexible and it helped me sustain a steadier train of thought.
+
+The console also allowed to keep constant examples of output which I could leave there as tools for my building.
+
+This task required me to look at dependency injection. I believe I could complete the task quite quickly by finalising the order total and moving on to the SMS system however there were a lot of concepts I needed to revisit in order to be adequately prepared for this challenge.
+
+^I still need to practise more RSPEC and Process Workshops
+^Revisit doubles, have a look where i could use some
+^Revisit dependency injection
+ 
