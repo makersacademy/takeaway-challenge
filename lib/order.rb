@@ -25,8 +25,8 @@ class Order
     @summary = {}
 
     selections.each do |dish, quantity|
-      raise 'ordered dish not on menu' if list_of_dishes.get_dish(dish).nil?
-      raise 'dish quantity must be > 0' if quantity <= 0
+      raise ArgumentError, 'ordered dish not on menu' if list_of_dishes.get_dish(dish).nil?
+      raise ArgumentError, 'dish quantity must be > 0' if quantity <= 0
 
       full_dish = list_of_dishes.get_dish(dish)
       @summary[dish] = { quantity: quantity, price: full_dish.price }
