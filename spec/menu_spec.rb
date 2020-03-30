@@ -41,4 +41,12 @@ describe Menu do
       expect(subject.print_menu).to eq ["pepperoni - £9"]
     end
   end
+
+  # context 'return selected item' do
+
+  #  it 'returns MenuItem using key' do
+  #    subject.add_new_item("Burger", 8)
+  #    expect(subject.return_item("Burger")).to include(@name="Burger") 
+  #  end
+  # end
 end

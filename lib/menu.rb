@@ -17,4 +17,8 @@ class Menu
       "#{value.name} - £#{value.price}" 
     }
   end
+
+  def return_item(key)
+    @list.values_at(key) 
+  end
 end
