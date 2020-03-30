@@ -9,11 +9,15 @@ class TextHandler
 
   def send_confirmation_text(order_number, text_client = Twilio::REST::Client)
     client = text_client.new(@account_sid, @auth_token)
-    client.messages.create(
-      from: @takeaway_number,
-      to: order_number,
-      body: create_message_body
-    )
+    begin
+      client.messages.create(
+        from: @takeaway_number,
+        to: order_number,
+        body: create_message_body
+      )
+    rescue RuntimeError => e
+      raise RuntimeError, "unable to send text message. Error from text client - #{e.message}"
+    end
   end
 
   private
