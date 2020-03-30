@@ -58,8 +58,14 @@ class Order
     if @place_order_total != @final_total
       raise "total does not equal prints_order" 
     else 
-      puts "send text"
+      send_sms 
     end
   end 
+
+  def send_sms
+    #require_relative 'send_sms'
+    puts "send text"
+  end 
+
   
 end 
