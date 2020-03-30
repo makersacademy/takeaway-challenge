@@ -10,15 +10,15 @@ describe Menu do
     end
   end
   context ' parsing JSON: ' do
-    it "should be able to write the menu" do
-      expect { thing.write_menu }.to change {thing.specials.length}.by(7)
+    it 'should be able to write the menu' do
+      expect(thing.specials.length).not_to eq 0
     end
   end
-  context 'viewing menu' do
-    it "should be able to show you the menu in a readable way" do
+  context 'viewing menu: ' do
+    it 'should be able to show you the menu in a readable way' do
       expect { thing.view_menu }.to output.to_stdout
     end
-    it "should be able to store the menu" do
+    it 'should be able to store the menu' do
       expect(thing.specials).to be
     end
   end

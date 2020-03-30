@@ -10,5 +10,9 @@ describe Restaurant do
       expect(restaurant).to respond_to(:customer)
     end
   end
-  context "entering the restaurant"
+  context "starting the order" do
+    it "should be able to call the Restaurant" do
+      expect(restaurant).to respond_to(:call)
+    end
+  end
 end

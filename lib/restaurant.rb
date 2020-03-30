@@ -7,4 +7,9 @@ class Restaurant
     @todays_menu = available.new
     @customer = basket.new(set_menu: available)
   end
+  
+  def call
+    @todays_menu.view_menu
+    @customer.place_order
+  end
 end

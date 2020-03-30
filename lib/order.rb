@@ -2,20 +2,19 @@ require_relative 'Menu'
 require_relative 'Texter'
 class Order
   attr_reader :pricelist
+
   def initialize(set_menu: Menu)
     @pricelist = set_menu.new
   end
   def place_order
     intro
-    notepad = self.take_order
-    check_total(notepad)? self.gucci : self.miscalulated
-    # this method will be where they pass a hash of dishes and the amount and also the total
-    # it will call the check_total method
+    notepad = take_order
+    check_total(notepad)? gucci : miscalulated
   end
 
-  def take_order
-    dishes = 0
-    pad = []
+  protected
+
+  def take_order(dishes: 0, pad: [])
     phone_order = gets.chomp
     while !phone_order.empty? do
       request = phone_order.split(', ')
@@ -25,13 +24,13 @@ class Order
       puts "So that's #{dishes} plates so far"
       phone_order = gets.chomp
     end
-    p pad
     pad
   end
 
   def gucci
     puts "looks good to me! I'll just send you a text with the delivery estimate"
     puts "what number would you like me to send it to?"
+    puts "please input your number plus country code, e.g. 44789085764"
     number = gets.chomp
     latest_delivery = Time.new + 1800
     self.send_confirmation(number: number, time: latest_delivery)
@@ -55,10 +54,19 @@ class Order
   end
 
   def send_confirmation(method:Texter, number:, time:)
-    # this method sends a text by default but will accept a class that
-    # uses the make_the_call method without arguments
+     while check_number(number) do
+       puts "ah that number doesn't have the right number of digits, please re-enter"
+       number = gets.chomp
+     end
     method.new(num: number, text_time: time).make_the_call
   end
+  def check_number(number)
+    num_digits(number) != 11
+  end
+  def num_digits(num)
+    Math.log10(num).to_i + 1
+  end
+
   def check_total(array_of_hashes)
     puts "right I think that's everything, how much do you reckon it'll be?"
     estimate = gets.chomp.to_i
@@ -66,6 +74,7 @@ class Order
     recommended_retail = self.calculator(array_of_hashes)
     recommended_retail == estimate.to_i
   end
+
   def calculator(array_of_hashes)
     # this method will calculate the total of the dishes passed.
     total = 0
@@ -76,8 +85,20 @@ class Order
     end
     total
   end
+
   def position_of(title)
     dish_in_question = @pricelist.specials.filter { |f| f.name == title }
     @pricelist.specials.index(dish_in_question[0])
+  end
+
+  def check_input?(arr)
+    two_long?(arr) & on_the_menu?(arr[0])
+  end
+
+  def two_long?(arr)
+    arr.length == 2
+  end
+
+  def on_the_menu?(item)
   end
 end
