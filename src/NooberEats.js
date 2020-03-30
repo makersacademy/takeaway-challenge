@@ -9,6 +9,11 @@ class NooberEats{
   getCurrentItems() {
     return this.order
   }
+
+  displayCurrentItems() {
+
+  }
+  
   addItem() {
     
   }
