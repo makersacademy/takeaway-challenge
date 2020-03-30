@@ -212,7 +212,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 This story was tough to implement, and including a number of stages.
 - the dotenv gem was used to hide sensitive user date from being stored on the repo
 - the twilio-ruby gem was used to send the actual text
-- I also had to set the tests up so that texts were not sent if they were run
+- I also had to set the tests up so that texts were not sent if they were run. This was achieved using dependency injection to pass an instance of the text handler (or a double if it in the case of testing the class)
 
 Refactoring the new code out into a TextHandler class made a lot of sense, as it clearly didn't belong in Order. This kept things nice and clean.
 
