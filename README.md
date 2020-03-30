@@ -231,7 +231,7 @@ Refactoring the new code out into a TextHandler class made a lot of sense, as it
  => #<ListOfDishes:0x00007fe9384bfec8 @dishes={:rice=>#<Dish:0x00007fe938466c88 @name=:rice, @price=2>, :stew=>#<Dish:0x00007fe9384a7cd8 @name=:stew, @price=1>}> 
 2.6.5 :006 > order = Order.new(list, {stew: 3, rice: 4}, 11)
  => #<Order:0x00007fe9384cd190 @summary={:stew=>{:quantity=>3, :price=>1}, :rice=>{:quantity=>4, :price=>2}}> 
-2.6.5 :010 > order.send_text(TextHandler.new)
+2.6.5 :010 > order.send_text(insert_number_to_send_text_to, TextHandler.new)
  => # ACTUAL OUTPUT REMOVED AS IT CONTAINS PERSONAL INFORMATION
 ```
 
