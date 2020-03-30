@@ -1,8 +1,9 @@
 require 'text_handler'
 
 describe TextHandler do
-  it 'sends an order confirmation text to the customer' do
-    allow(subject).to receive(:send_confirmation_text).and_return('Text sent')
-    expect(subject.send_confirmation_text).to eq 'Text sent'
+  it 'sends a confirmation text to a specified phone number' do
+    text_client = double(:text_client)
+    allow(text_client).to receive_message_chain(:new, :messages, :create)
+    expect { subject.send_confirmation_text('0123456789', text_client) }.not_to raise_error
   end
 end

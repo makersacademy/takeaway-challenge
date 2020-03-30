@@ -7,8 +7,8 @@ class TextHandler
     read_env_variables
   end
 
-  def send_confirmation_text(order_number)
-    client = Twilio::REST::Client.new @account_sid, @auth_token
+  def send_confirmation_text(order_number, text_client = Twilio::REST::Client)
+    client = text_client.new(@account_sid, @auth_token)
     client.messages.create(
       from: @takeaway_number,
       to: order_number,

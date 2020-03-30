@@ -1,6 +1,5 @@
 require 'dotenv'
 Dotenv.load('./twilio_credentials.env')
-
 require_relative 'list_of_dishes'
 require_relative 'text_handler'
 
