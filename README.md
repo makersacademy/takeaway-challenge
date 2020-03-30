@@ -213,6 +213,7 @@ This story was tough to implement, and including a number of stages.
 - the dotenv gem was used to hide sensitive user date from being stored on the repo
 - the twilio-ruby gem was used to send the actual text
 - I also had to set the tests up so that texts were not sent if they were run. This was achieved using dependency injection to pass an instance of the text handler (or a double if it in the case of testing the class)
+- One of the last things I did was to wrap the call to the Twilio client in a begin/rescue/end block. My motivation for doing this is because the call raises an error if it fails. I want to catch this error and send a more application-relevant one in its place that also includes the message from the original error in it.
 
 Refactoring the new code out into a TextHandler class made a lot of sense, as it clearly didn't belong in Order. This kept things nice and clean.
 
