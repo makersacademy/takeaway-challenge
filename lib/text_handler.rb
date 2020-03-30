@@ -21,7 +21,6 @@ class TextHandler
   def read_env_variables
     @account_sid = ENV['ACCOUNT_SID']
     @auth_token = ENV['AUTH_TOKEN']
-    @order_number = ENV['ORDER_PHONE_NUMBER']
     @takeaway_number = ENV['TAKEAWAY_PHONE_NUMBER']
   end
 
