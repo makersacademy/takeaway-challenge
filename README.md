@@ -113,7 +113,7 @@ Here is an example of using the feature in irb:
  => #<Dish:0x00007fb6009910c0 @name="Stew", @price=2> 
 2.6.5 :003 > rice = Dish.new("Rice", 1)
  => #<Dish:0x00007fb6009a34a0 @name="Rice", @price=1> 
-2.6.5 :004 > list = ListOfDishes.new({stew.name => stew, rice.name => rice})
+2.6.5 :004 > list = ListOfDishes.new([stew, rice])
  => #<ListOfDishes:0x00007fb60093ed70 @dishes={"Stew"=>#<Dish:0x00007fb6009910c0 @name="Stew", @price=2>, "Rice"=>#<Dish:0x00007fb6009a34a0 @name="Rice", @price=1>}> 
 2.6.5 :005 > list.see
  => {"Stew"=>#<Dish:0x00007fb6009910c0 @name="Stew", @price=2>, "Rice"=>#<Dish:0x00007fb6009a34a0 @name="Rice", @price=1>
@@ -145,7 +145,7 @@ Here is an example of using the feature in irb:
  => #<Dish:0x00007fe938466c88 @name=:rice, @price=2> 
 2.6.5 :003 > stew = Dish.new('stew', 1)
  => #<Dish:0x00007fe9384a7cd8 @name=:stew, @price=1> 
-2.6.5 :004 > list = ListOfDishes.new({rice.name => rice, stew.name => stew})
+2.6.5 :004 > list = ListOfDishes.new([rice, stew])
  => #<ListOfDishes:0x00007fe9384bfec8 @dishes={:rice=>#<Dish:0x00007fe938466c88 @name=:rice, @price=2>, :stew=>#<Dish:0x00007fe9384a7cd8 @name=:stew, @price=1>}> 
 2.6.5 :005 > order = Order.new(list, {stew: 3, rice: 4}, 11)
  => #<Order:0x00007fe9384cd190 @summary={:stew=>{:quantity=>3, :price=>1}, :rice=>{:quantity=>4, :price=>2}}> 
@@ -177,7 +177,7 @@ Here is an example of using the feature in irb:
  => #<Dish:0x00007fe938466c88 @name=:rice, @price=2> 
 2.6.5 :003 > stew = Dish.new('stew', 1)
  => #<Dish:0x00007fe9384a7cd8 @name=:stew, @price=1> 
-2.6.5 :004 > list = ListOfDishes.new({rice.name => rice, stew.name => stew})
+2.6.5 :004 > list = ListOfDishes.new([rice, stew])
  => #<ListOfDishes:0x00007fe9384bfec8 @dishes={:rice=>#<Dish:0x00007fe938466c88 @name=:rice, @price=2>, :stew=>#<Dish:0x00007fe9384a7cd8 @name=:stew, @price=1>}> 
 2.6.5 :005 > order = Order.new(list, {stew: 3, rice: 4}, 11)
  => #<Order:0x00007fe9384cd190 @summary={:stew=>{:quantity=>3, :price=>1}, :rice=>{:quantity=>4, :price=>2}}> 
@@ -226,7 +226,7 @@ Refactoring the new code out into a TextHandler class made a lot of sense, as it
  => #<Dish:0x00007fe938466c88 @name=:rice, @price=2> 
 2.6.5 :004 > stew = Dish.new('stew', 1)
  => #<Dish:0x00007fe9384a7cd8 @name=:stew, @price=1> 
-2.6.5 :005 > list = ListOfDishes.new({rice.name => rice, stew.name => stew})
+2.6.5 :005 > list = ListOfDishes.new([rice, stew])
  => #<ListOfDishes:0x00007fe9384bfec8 @dishes={:rice=>#<Dish:0x00007fe938466c88 @name=:rice, @price=2>, :stew=>#<Dish:0x00007fe9384a7cd8 @name=:stew, @price=1>}> 
 2.6.5 :006 > order = Order.new(list, {stew: 3, rice: 4}, 11)
  => #<Order:0x00007fe9384cd190 @summary={:stew=>{:quantity=>3, :price=>1}, :rice=>{:quantity=>4, :price=>2}}> 
@@ -234,6 +234,6 @@ Refactoring the new code out into a TextHandler class made a lot of sense, as it
  => # ACTUAL OUTPUT REMOVED AS IT CONTAINS PERSONAL INFORMATION
 ```
 
-### Additional challenges
+### Improvements still to make
 
-I considered extracting a Selection class out of Order to represent individual dish selections and quantities. I got part way through implementing this before deciding it was an overcomplication.
+- Extracting a Selection class out of Order to represent individual dish selections and quantities.

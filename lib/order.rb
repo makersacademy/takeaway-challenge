@@ -1,18 +1,22 @@
+require 'dotenv'
+Dotenv.load('./twilio_credentials.env')
+
 require_relative 'list_of_dishes'
 require_relative 'text_handler'
 
 class Order
   attr_reader :summary
 
-  def initialize(list_of_dishes, selections, total)
+  def initialize(list_of_dishes, selections, total, phone_number = ENV['ORDER_PHONE_NUMBER'])
     raise ArgumentError, 'order must not be empty' if selections.empty?
 
+    @phone_number = phone_number
     populate_summary(list_of_dishes, selections)
     verify_total(total)
   end
 
   def send_text(text_handler = TextHandler.new)
-    text_handler.send_confirmation_text
+    text_handler.send_confirmation_text(@phone_number)
   end
 
   private
@@ -21,6 +25,8 @@ class Order
     @summary = {}
 
     selections.each do |dish, quantity|
+      raise 'ordered dish not on menu' if list_of_dishes.get_dish(dish).nil?
+      
       full_dish = list_of_dishes.get_dish(dish)
       @summary[dish] = { quantity: quantity, price: full_dish.price }
     end
