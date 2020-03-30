@@ -38,5 +38,9 @@ describe Order do
       allow(list_of_dishes).to receive(:get_dish).with(:broth).and_return(nil)
       expect { Order.new(list_of_dishes, { broth: 3 }, 9.66) }.to raise_error 'ordered dish not on menu'
     end 
+
+    it 'errors if the order contains an invalid dish quantity' do
+      expect { Order.new(list_of_dishes, { stew: 0 }, 2) }.to raise_error 'dish quantity must be > 0'
+    end 
   end
 end
