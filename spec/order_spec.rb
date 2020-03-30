@@ -1,6 +1,3 @@
-require 'dotenv'
-Dotenv.load('./twilio_credentials.env')
-
 require 'order'
 
 describe Order do
