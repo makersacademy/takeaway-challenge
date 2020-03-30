@@ -1,3 +1,18 @@
+Ed's Italian!
+
+To start the process create a new instance of the Restaurant class and use the
+call method, this should show you the menu and prompt you to place an order
+
+To do:
+
+ - low test coverage, each class only has a couple of public methods, but even then the tests which they do have aren't very good, with more time I would add more thorough testing, I made the mistake of writing the tests which described roughly what I wanted to achieve instead of testing for the most basic pass and building from there.
+
+ - taking the order has a bunch of edge cases which aren't currently covered - when you input your order unless you input it in the right way it'll either break if the second csv isn't a string that can be converted to an integer, and it won't stop you from choosing items that aren't on the menu.
+
+
+
+
+
 Takeaway Challenge
 ==================
 ```
