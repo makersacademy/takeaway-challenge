@@ -1,5 +1,4 @@
 require "order"
-require "text"
 
 class PizzaPlace
 

@@ -1,2 +1,10 @@
 /**/.DS_Store
 /coverage
+
+
+coverage
+.rspec
+.rubocop.yml
+.ruby-version
+Gemfile.lock
+LICENSE
