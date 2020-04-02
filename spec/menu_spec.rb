@@ -1,29 +1,41 @@
-require "menu"
+require 'menu'
 
 describe Menu do
 
-  subject(:menu) { Menu.new(items) }
+  describe '#initialize' do
 
-  let(:items) { { Margerita: 9, Pepperoni: 11, Vegetable: 10 } }
-  
-  it "lists the items and prices" do
-    expect(subject.items).to eq(items)
-  end 
+    it 'should contain a hash with first menu item' do
+      expect(subject.menu).to include ({pizza: 10} and {pasta: 8} and {pasta: 8} and {pasta: 8} and {chili: 12})
+    end
 
-  it "prints list of items and prices" do
-    expect(subject.prints).to eq("Margerita £9, Pepperoni £11, Vegetable £10")
-  end
-  
-  it "tells if an item is on the menu" do
-    expect(subject.include_item?(:Margerita)).to be(true)
-  end
+    it 'should start with pizza' do
+      expect(subject.menu).to start_with ({pizza: 10})
+    end
 
-  it "tells if an item is not on the menu" do
-    expect(subject.include_item?(:Chicken)).to be(false)
+    it 'should be 5 items long' do
+      expect(subject.menu.length).to eq(5)
+    end
+
   end
 
-  it "calculates a price" do
-    expect(subject.price(:Margerita)).to eq(items[:Margerita]) 
+  describe '#print_menu' do
+
+    it 'displays each menu item to the user' do
+      expect(subject).to respond_to(:print_menu)
+    end
+
+    it 'should be a string, i.e. return nil' do
+      expect(subject.print_menu).to be_nil
+    end
+
   end
-  
+
+  describe '#order_process' do
+
+    it 'should respond to and accept one arg' do
+      expect(subject).to respond_to(:order_process).with(1).arguments
+    end
+
+  end
+
 end
