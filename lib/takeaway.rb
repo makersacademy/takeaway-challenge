@@ -9,13 +9,14 @@ class Takeaway
   def show_menu
     puts "What would you like to eat? Please type your order"
     @menu.each { |k, v|
-      p "#{k} = £#{v}\n" 
+      p "#{k} = £#{v}" 
     }
   end
 
-  def order(input = gets.chomp)
+  def order(input = gets.chomp, quantity = 1)
     show_menu
     @order_item = input
+    raise "no such item" if !@menu[@order_item]
     @order_price = @menu[@order_item]
   end
 
