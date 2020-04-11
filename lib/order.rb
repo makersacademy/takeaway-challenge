@@ -6,7 +6,10 @@ class Order
     @foods = []
   end
 
-  def add_food(food)
-    @foods << food
+  def add_food(food, quantity = 1)
+    quantity.times {
+      @foods << food
+    }
+    @foods
   end
 end
