@@ -1,12 +1,12 @@
 class Order
 
-  attr_reader :order
+  attr_reader :foods
 
   def initialize
-    @order = []
+    @foods = []
   end
 
-  def add_item(food_item)
-    @order << food_item
+  def add_food(food)
+    @foods << food
   end
 end

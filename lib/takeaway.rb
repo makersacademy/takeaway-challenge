@@ -3,7 +3,11 @@ class Takeaway
   attr_reader :menu, :order_item, :order_price
 
   def initialize
-    @menu = { "Chicken Chow Mein" => 6.50, "Egg Fried Rice" => 4.80 }
+    @menu = { Chicken: 5, 
+              Steak: 8,
+              Fish: 6,
+              Sides: 4
+            }
   end
 
   def show_menu
@@ -13,11 +17,12 @@ class Takeaway
     }
   end
 
-  def order(input = gets.chomp, quantity = 1)
-    show_menu
-    @order_item = input
-    raise "no such item" if !@menu[@order_item]
-    @order_price = @menu[@order_item]
+  def place_order(order)
+    @cost = 0
+    order.foods.each { |food|
+      cost += @menu[food.to_sym]
+    }
+    @cost
   end
 
 end

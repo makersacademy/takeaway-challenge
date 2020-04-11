@@ -3,6 +3,11 @@ require "takeaway"
 describe Takeaway do
 
   subject(:takeaway) { described_class.new }
+  
+  before(:each) do
+    @order = double(:order)
+    allow(@order).to receive(:foods) { ["Chicken", "Sides"] }
+  end
 
   describe "#initialze" do
     it "creates an array called menu on initalize" do
@@ -12,25 +17,15 @@ describe Takeaway do
 
   describe "#show_menu" do
     it "return a hash of food items and their price" do
-      expect(takeaway.show_menu).to eq({ "Chicken Chow Mein" => 6.5, "Egg Fried Rice" => 4.8 })
+      expect(takeaway.show_menu).to eq({ Chicken: 5, Steak: 8, Fish: 6, Sides: 4})
     end
   end
 
-  describe "#order" do
-
-    it "should take user input for the item ordered and store it to a variable" do
-      takeaway.order("Chicken Chow Mein")
-      expect(takeaway.order_item).to eq("Chicken Chow Mein")
+  describe "#place_order" do
+    it 'should take an order and calculate the cost of the order' do
+      expect(subject.place_order(@order)).to eq 9
     end
 
-    it "should take user input for the price of the order and store it to a variable" do
-      takeaway.order("Chicken Chow Mein")
-      expect(takeaway.order_price).to eq(6.5)
-    end
-
-    it "should raise an error if the item is not on the menu" do
-      expect { takeaway.order("Chicken") }.to raise_error("no such item")
-    end
   end
 
 end
