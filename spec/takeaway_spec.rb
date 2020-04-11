@@ -27,6 +27,18 @@ describe Takeaway do
       expect(subject.place_order(@order)).to eq "Thank you! Your order will cost £9 and will be delivered before #{time}"
     end
 
+    it 'should take an order and calculate the cost of the order' do
+      allow(@order).to receive(:foods) { ["Fish", "Sides"] }
+      time = (Time.now + 60 * 60).strftime("%H:%M")
+      expect(subject.place_order(@order)).to eq "Thank you! Your order will cost £10 and will be delivered before #{time}"
+    end
+
+    it 'should take an order and calculate the cost of the order' do
+      allow(@order).to receive(:foods) { ["Steak", "Sides"] }
+      time = (Time.now + 60 * 60).strftime("%H:%M")
+      expect(subject.place_order(@order)).to eq "Thank you! Your order will cost £12 and will be delivered before #{time}"
+    end
+
   end
 
 end
