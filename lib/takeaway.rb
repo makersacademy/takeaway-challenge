@@ -20,9 +20,10 @@ class Takeaway
   def place_order(order)
     @cost = 0
     order.foods.each { |food|
-      cost += @menu[food.to_sym]
+      @cost += @menu[food.to_sym]
     }
-    @cost
+    p "Thank you! Your order will cost £#{@cost} and will be delivered before" +
+      " #{(Time.now + 60 * 60).strftime("%H:%M")}"
   end
 
 end

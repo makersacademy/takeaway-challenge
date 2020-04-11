@@ -17,13 +17,14 @@ describe Takeaway do
 
   describe "#show_menu" do
     it "return a hash of food items and their price" do
-      expect(takeaway.show_menu).to eq({ Chicken: 5, Steak: 8, Fish: 6, Sides: 4})
+      expect(takeaway.show_menu).to eq({ Chicken: 5, Steak: 8, Fish: 6, Sides: 4 })
     end
   end
 
   describe "#place_order" do
     it 'should take an order and calculate the cost of the order' do
-      expect(subject.place_order(@order)).to eq 9
+      time = (Time.now + 60 * 60).strftime("%H:%M")
+      expect(subject.place_order(@order)).to eq "Thank you! Your order will cost £9 and will be delivered before #{time}"
     end
 
   end
