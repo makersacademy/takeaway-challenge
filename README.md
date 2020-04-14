@@ -54,8 +54,14 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 You'll be able to:
 
-
-
+- Create a takeaway
+- Make an order
+- Add food to an order
+- See the menu
+- Be able to place an order
+- Get a text after making the order
+  - You'll be told the cost
+  - You'll be given an estimated arrival time
 
 ## Getting Started
 
@@ -79,7 +85,27 @@ $ cd takeaway-challenge
 
 You can run tests by running "rspec" in takeaway-challenge file.
 
-### Tests 
+### Tests
+
+### Takeaway Class
+
+- #initialze
+  - creates an array called menu on initalize
+- #show_menu
+  - return a hash of food items and their price
+- #place_order
+  - should take an order and calculate the cost of the order
+  - should take an order and calculate the cost of the order
+  - should take an order and calculate the cost of the order
+
+### Order Class
+
+- #initialize
+  - should be initialized with an empty order array
+- #add_food
+  - should add an item to the order array
+  - should add multiple items to the order array if a second argument is passed
+  - should add multiple items to the order array if a second argument is passed
 
 
 ## Versioning
