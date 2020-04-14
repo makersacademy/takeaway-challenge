@@ -1,9 +1,10 @@
 class Order
 
-  attr_reader :foods
+  attr_reader :foods, :phone_number
 
-  def initialize
+  def initialize(phone_number = 'test')
     @foods = []
+    @phone_number = phone_number
   end
 
   def add_food(food, quantity = 1)
