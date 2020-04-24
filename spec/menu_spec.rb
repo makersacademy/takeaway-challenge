@@ -22,7 +22,7 @@ Diavola: £12"
 
   describe '#view_menu' do
     it 'outputs the menu' do
-      expect{menu.view_menu }.to output(@message).to_stdout
+      expect{ menu.view_menu }.to output(@message).to_stdout
     end
   end
 end

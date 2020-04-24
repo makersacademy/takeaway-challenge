@@ -2,3 +2,5 @@
 /coverage
 /.env
 /send_sms.rb
+/Gemfile.lock
+/LICENSE

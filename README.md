@@ -223,5 +223,5 @@ Traceback (most recent call last):
 
 ## To be continued...
 
-* Add unit tests for messaging - currently no tests in place to make sure this works
+* Add unit tests for messaging feature
 * Add clear feature to the order object after the complete order function has been called
