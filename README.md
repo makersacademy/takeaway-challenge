@@ -7,7 +7,14 @@ This program simulates your favourite pizza delivery service.
 
 ## Instructions
 
-Clone or download files. Run bundle. Then:
+Clone or download files. Navigate to the root of the project and run:
+
+```
+bundle
+irb -r feature_test.rb
+```
+
+Here you can interact with the code, there are some example commands listed in the file to help you get started.
 
 To run unit tests
 ```
@@ -18,11 +25,6 @@ To run feature tests
 ```
 irb -r feature_test.rb
 
-```
-Or
-
-```
-feature_test.rb
 ```
 
 ## Requirements were:
@@ -224,4 +226,4 @@ Traceback (most recent call last):
 ## To be continued...
 
 * Add unit tests for messaging feature
-* Add clear feature to the order object after the complete order function has been called
+* Add clear feature to the order object after the complete order function has been called so that another order could be made in the same session
