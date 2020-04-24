@@ -1,8 +1,6 @@
 Takeaway Challenge
 ==================
 
-## Pizza, pizza my kingdom for a pizza
-
 This program simulates your favourite pizza delivery service.
 
 ## Instructions
