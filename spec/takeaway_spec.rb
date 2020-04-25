@@ -28,8 +28,19 @@ describe Takeaway do
       subject.add_dish(:chips, 1)
       expect(subject.order).to eq [:burger, :burger, :burger, :burger, :chips]
     end
+
+    it 'outputs the current total to customer' do
+      subject.add_dish(:burger, 4)
+      expect { subject.add_dish(:chips, 1) }.to output("Current order total is £42.\n").to_stdout
+    end
   end
 
-
+  # describe '#order_total_price' do
+  #   subject.add_dish(:burger, 4)
+  #   subject.add_dish(:sausage, 1)
+  #   subject.add_dish(:chips, 5)
+  #
+  #   expect(subject.order_total_price).to eq
+  # end
 
 end
