@@ -1,0 +1,2 @@
+class MenuItem
+end
