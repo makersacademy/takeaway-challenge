@@ -15,4 +15,12 @@ class Restaurant
     @order.add_to_basket(dish, qty)
   end
 
+  def amend_basket(dish, qty)
+    @order.remove_from_basket(dish, qty)
+  end
+
+  def view_basket
+    @order.basket.map { |dish, qty| "#{qty} x #{dish}" }
+                 .join
+  end
 end

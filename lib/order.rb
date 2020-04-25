@@ -10,4 +10,9 @@ class Order
   def add_to_basket(dish, qty)
     @basket[dish] += qty
   end
+
+  def remove_from_basket(dish, qty)
+    @basket[dish] -= qty
+  end
+
 end

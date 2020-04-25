@@ -9,6 +9,7 @@ describe Menu do
 
   it 'stores a menu of dishes and prices' do
     dishes = { 'Fish & Chips' => 4, 'Burger' => 3, 'Shawarma' => 5 }
+
     expect(subject.menu_list).to eq dishes
   end
 
@@ -36,6 +37,7 @@ describe Menu do
     it 'removes a dish from menu' do
       subject.add_dish_to_menu('Mititei', 1)
       subject.remove_dish_from_menu('Mititei')
+
       expect(subject.menu_list.has_key? 'Mititei').to be_falsey
     end
   end
