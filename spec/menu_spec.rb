@@ -10,14 +10,16 @@ context Menu do
     @dish = Dish.new(:dish_number, :dish_price, :dish_name)
   end
   
-  it { is_expected.to respond_to(:add).with(1).argument }
-
   describe '#add' do
+    it { is_expected.to respond_to(:add).with(1).argument }
+
     it 'returns dish added on success' do
       expect(subject.add(@dish)).to eq @dish
     end
   end
 
-  it { is_expected.to respond_to(:get).with(1).argument }
+  describe '#get' do
+    it { is_expected.to respond_to(:get).with(1).argument }
+  end
   
 end
