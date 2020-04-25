@@ -1,4 +1,5 @@
 class Menu
+  attr_reader :dishes
   
   ERROR_DISH_EXISTS = "Error: that dish number already exists"
   
@@ -13,10 +14,6 @@ class Menu
     
     @dishes.push(new_dish)
     @dishes.last
-  end
-  
-  def dishes
-    @dishes
   end
   
 end

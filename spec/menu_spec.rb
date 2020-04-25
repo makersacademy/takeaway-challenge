@@ -24,7 +24,7 @@ context Menu do
     
   end
   
-  describe '#list' do
+  describe '#dishes' do
     it { is_expected.to respond_to(:dishes) }
     
     it 'returns array of dishes' do
@@ -37,8 +37,6 @@ context Menu do
       subject.add(dish_2)
       expect(subject.dishes).to eq dishes
     end
-      
-  
   
   end
 
