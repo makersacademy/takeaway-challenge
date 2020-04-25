@@ -1,3 +1,5 @@
+require 'nexmo'
+
 class Takeaway
 
   attr_reader :order, :overall_total, :current_total
@@ -27,8 +29,24 @@ class Takeaway
 
   def place_order(pay)
     raise "Incorrect amount of money paid!" unless pay == @current_total
-
     puts "Thank you! Your order was placed and will be delivered before #{delivery_time}. A text will be sent to your phone shortly to confirm your order."
+    send_text
+  end
+
+  def send_text
+    api_key = ENV["API_KEY"]
+    api_secret = ENV["API_SECRET"]
+
+    @client = Nexmo::Client.new(
+      api_key: api_key,
+      api_secret: api_secret
+    )
+
+    @client.sms.send(
+      from: ENV["MY_NUMBER"],
+      to: ENV["THEIR_NUMBER"],
+      text: "Thank you! Your order was placed and will be delivered before #{delivery_time}."
+    )
   end
 
   private
