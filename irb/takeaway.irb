@@ -9,4 +9,6 @@ my_takeaway.select({:burger => 3, :chips => 1})
 
 my_takeaway.basket
 
+my_takeaway.place_order(20.00)
+
 my_takeaway.place_order(31.80)

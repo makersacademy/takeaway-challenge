@@ -7,7 +7,7 @@ class Order
   end
 
   def order(order_total, menu, basket)
-    basket.each do |_dish, quantity|
+    basket.each do |dish, quantity|
       menu.each do |hash|
         quantity.times { @order_array << hash } if hash.key?(dish)
       end
@@ -21,7 +21,7 @@ class Order
         @sum += value
       end
     end
-    raise "Error: The total given does not equal the menu total" if @sum != order_total
+    total_error if @sum != order_total
 
     send_text() if @sum == order_total
   end
@@ -29,4 +29,11 @@ class Order
   def send_text
     "The order was placed"
   end
+
+  private
+
+  def total_error
+    raise "Error: The total given does not equal the menu total"
+  end
+
 end
