@@ -8,5 +8,8 @@ class TakeAway
    @menu = menu
   end
 
+  def menu_list
+    @menu
+  end
 
 end
