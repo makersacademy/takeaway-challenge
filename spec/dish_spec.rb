@@ -2,7 +2,8 @@ require 'dish'
 
 context Dish do
   let(:dish_number) { Integer.new }
-
+  let(:dish_price) { Float.new }
+  
   describe '.new' do
     it 'takes three arguments' do
       expect(Dish).to respond_to(:new).with(3).arguments
@@ -17,9 +18,9 @@ context Dish do
   end
 
   describe '.price returns dish price' do
-    dish = Dish.new(:dish_number, 2.00, "Plain rice")
+    dish = Dish.new(:dish_number, :dish_price, "Plain rice")
     it 'returns dish price when asked' do
-      expect(dish.price).to eq 2.00
+      expect(dish.price).to eq :dish_price
     end
   end
 
