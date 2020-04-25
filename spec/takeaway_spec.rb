@@ -6,16 +6,16 @@ describe TakeAway do
   
   describe '#menu' do
     it 'should list dishes' do
-      expect(takeaway.menu).not_to be nil
+      expect{ takeaway.menu_list }.to output.to_stdout
     end
 
   end
 
-  describe '#orders' do
+  describe '#order' do
     
   end
 
-  describe '#total' do
+  describe '#checkout' do
     
   end
 
