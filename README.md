@@ -20,12 +20,12 @@ Domain Model for Take Away app
 TakeAway | Kitchen | Menu | Text 
 :---: | :---: | :---: | :---:
  | @order  |   | @number
- | | | @body
+ | @checkout| | @body
  | | |
  `----------` | `----------` | `----------` | `----------` 
-#menu() | #order_total() | #menu() | #send_text()
-#order() | #complete?() | #print() | 
-#checkout() |  | |
+#menu() | #order() | #menu() | #send_text()
+#order() | #order_total() | #print() | 
+#checkout() | #complete?() | |
 
 
 
