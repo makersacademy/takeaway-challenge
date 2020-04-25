@@ -1,10 +1,10 @@
 require './lib/dish_list'
 
-class Menu
+class OrderMenu
   attr_reader :basket, :dish_list
 
-  def initialize
-    @dish_list = DishList.new
+  def initialize(dish_list = DishList.new)
+    @dish_list = dish_list
     @basket = Array.new
     @current_selection = Hash.new
   end
@@ -28,7 +28,6 @@ class Menu
     @basket.each do |selection|
       sum += (selection["item"].price * selection["quantity"])
     end
-    sum
   end
 
   private

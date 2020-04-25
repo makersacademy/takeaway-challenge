@@ -1,6 +1,16 @@
 require './lib/menu'
 
-describe Menu do
+describe OrderMenu do
+
+  let(:subject) do
+    dishes = Array.new
+    dishes << double(:dish, :item => "Burger", "price" => 3)
+    dishes << double(:dish, :item => "Pizza", "price" => 5)
+    dishes << double(:dish, :item => "Kebab", "price" => 4)
+    dish_list = double(:dishlist, :dishes => dishes)
+    subject = OrderMenu.new(dish_list)
+  end
+
   context "has a list of dishes" do
     it "returns a list of dishes" do
       expect(subject.print.class).to eq(Array)
@@ -17,7 +27,7 @@ describe Menu do
     end
 
     context "add correct item" do
-      item = DishList.new.dishes[0].item
+      let(:item) { subject.dish_list.dishes[0].item }
 
       it "adds item" do
         expect { subject.enter_selection(item, 1) }.to change{subject.basket.count}.by(1)
@@ -34,26 +44,22 @@ describe Menu do
 
     describe "basket not empty" do
       before :each do
-        @menu = Menu.new
-        dishes = DishList.new.dishes
-        dishes.each { |dish| @menu.enter_selection(dish.item, 2) }
+        subject.dish_list.dishes.each do |dish|
+          subject.enter_selection(dish.item, 2)
+        end
       end
 
       context "sum is wrong" do
-        sum = 0
-
         it "does not place order" do
-          expect { @menu.place_order(sum) }.to raise_error("error")
+          expect { subject.place_order(0) }.to raise_error("error")
         end
       end
 
       context "sum is correct" do
         it "places an order" do
-          expect(@menu.place_order(@menu.total)).to eq("success!")
+          expect(subject.place_order(subject.total)).to eq("success!")
         end
       end
     end
   end
-
-
 end
