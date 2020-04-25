@@ -1,3 +1,4 @@
 require './lib/dish.rb'
 
-dish = Dish.new
+dish = Dish.new(1, 12.00, "Plain rice")
+
