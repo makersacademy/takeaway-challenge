@@ -18,13 +18,18 @@ describe Takeaway do
     end
   end
 
-  describe '#select_dishes' do
+  describe '#add_dish' do
     it 'responds to' do
-      expect(subject).to respond_to(:select_dishes).with(3).arguments
+      expect(subject).to respond_to(:add_dish).with(2).arguments
     end
 
-
-
+    it 'adds a dish to order' do
+      subject.add_dish(:burger, 4)
+      subject.add_dish(:chips, 1)
+      expect(subject.order).to eq [:burger, :burger, :burger, :burger, :chips]
+    end
   end
+
+
 
 end

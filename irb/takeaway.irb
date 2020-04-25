@@ -1,7 +1,13 @@
 require './lib/takeaway'
 
-papa = Takeaway.new
+chippers = Takeaway.new({burger: 10, fish: 8, sausage: 5, chips: 2})
 
-papa.see_dishes
+chippers.see_dishes
 
-papa.select_dishes(["Burger", "Fish", "Chips"], [2, 3, 4], [20])
+chippers.add_dish(:burger, 4)
+chippers.add_dish(:sausage, 1)
+chippers.add_dish(:chips, 5)
+
+chippers.order
+
+chippers.order_total_price
