@@ -5,6 +5,7 @@ describe Takeaway do
 
   describe '#display' do
     it 'displays menu' do
+      takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
       expect(takeaway.display).to eq takeaway.menu
     end
   end
@@ -15,12 +16,14 @@ describe Takeaway do
     end
 
     it 'adds order to empty order array' do
+      takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
       takeaway.select({ :burger => 3, :chips => 1 })
       expect { takeaway.place_order(31.80) }.to change { takeaway.order.order_array }.to [{ :burger => 10.0 }, { :burger => 10.0 }, { :burger => 10.0 }, { :chips => 1.80 }]
     end
 
     context 'when order verified with wrong total' do
       it 'raises error' do
+        takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
         takeaway.select({ :burger => 3, :chips => 1 })
         expect { takeaway.place_order(20.00) }.to raise_error("Error: The total given does not equal the menu total")
       end
@@ -28,6 +31,7 @@ describe Takeaway do
 
     context 'when order verified with correct total' do
       it 'prints order placed message' do
+        takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
         takeaway.select({ :burger => 3, :chips => 1 })
         expect(takeaway.place_order(31.80)).to eq "The order was placed"
       end
@@ -36,6 +40,7 @@ describe Takeaway do
 
   describe '#select' do
     it 'places items into basket' do
+      takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
       expect { takeaway.select({ :burger => 3, :chips => 1 }) }.to change { takeaway.basket }.to({ :burger => 3, :chips => 1 })
     end
   end

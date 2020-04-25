@@ -23,7 +23,7 @@ class Order
     end
     total_error if @sum != order_total
 
-    send_text() if @sum == order_total
+    send_text if @sum == order_total
   end
 
   def send_text
@@ -35,5 +35,4 @@ class Order
   def total_error
     raise "Error: The total given does not equal the menu total"
   end
-
 end
