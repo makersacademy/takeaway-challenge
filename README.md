@@ -27,11 +27,16 @@
 
 ## Classes:
 
+### Key
+:x: = Not implemented, fails tests  
+:negative_squared_cross_mark: = Partial implementation, passes tests  
+:white_check_mark: = Full implemented, passes tests  
+
 | ```Status```       |  ```Class```      | ```Notes``` |
 |:--:                |                --:|:--          |
 | :x:                | ```Customer```    | Container for everything about the Customer |
 | :x:                | ```Restaurant```  | Container for everything about the Restaurant |
-| :x:                | ```Menu```        | Holds list of dishes with prices |
+| :negative_squared_cross_mark: | ```Menu```        | Holds list of dishes with prices |
 | :white_check_mark: | ```Dish```        | Holds everything about a dish |
 | :x:                | ```Order```       | Holds everything about an order |
 | :x:                | ```TextMessage``` | Handles everything releated to sending and receiving text messages |
@@ -41,10 +46,10 @@
 | ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
 |:--:                |                --:|:--                     |:--          |
 | :white_check_mark: | ```Dish```        | ```new(number, price, name)``` | Notes |
-| :x:                | ```Menu```        | ```new``` | Notes |
-| :x:                | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
+| :white_check_mark: | ```Menu```        | ```new``` | Notes |
+| :white_check_mark: | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
 | :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
-| :x:                | ```Menu```        | ```dishes``` | Returns all dishes |
+| :white_check_mark: | ```Menu```        | ```dishes``` | Returns all dishes |
 
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
