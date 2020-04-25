@@ -1,4 +1,4 @@
-class Restaurant
+class Menu
   attr_reader :name, :menu
 
   def initialize(*menu_items)
