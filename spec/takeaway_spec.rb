@@ -16,7 +16,7 @@ describe Takeaway do
 
     it 'adds order to empty order array' do
       takeaway.select({ :burger => 3, :chips => 1 })
-      expect{ takeaway.place_order(31.80) }.to change{ takeaway.order.order_array }.to [{ :burger => 10.0 }, { :burger => 10.0 }, { :burger => 10.0 }, { :chips => 1.80 }]
+      expect { takeaway.place_order(31.80) }.to change { takeaway.order.order_array }.to [{ :burger => 10.0 }, { :burger => 10.0 }, { :burger => 10.0 }, { :chips => 1.80 }]
     end
 
     context 'when order verified with wrong total' do
@@ -36,7 +36,7 @@ describe Takeaway do
 
   describe '#select' do
     it 'places items into basket' do
-      expect{takeaway.select({ :burger => 3, :chips => 1 })}.to change{takeaway.basket}.to({ :burger => 3, :chips => 1 })
+      expect { takeaway.select({ :burger => 3, :chips => 1 }) }.to change { takeaway.basket }.to({ :burger => 3, :chips => 1 })
     end
   end
 end

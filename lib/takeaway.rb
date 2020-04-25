@@ -12,7 +12,7 @@ class Takeaway
   end
 
   def select(**dish_and_quantity)
-   @basket = dish_and_quantity
+    @basket = dish_and_quantity
   end
 
   def place_order(order_total)
