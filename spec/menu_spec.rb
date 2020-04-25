@@ -17,5 +17,7 @@ context Menu do
       expect(subject.add(@dish)).to eq @dish
     end
   end
+
+  it { is_expected.to respond_to(:get).with(1).argument }
   
 end
