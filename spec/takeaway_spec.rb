@@ -43,22 +43,24 @@ describe Takeaway do
     end
   end
 
-  describe '#check_total_order_price' do
-    it 'outputs the total price' do
-      subject.add_dish(:burger, 4)
-      subject.add_dish(:sausage, 1)
-      subject.add_dish(:chips, 5)
-      expect { subject.check_total_order_price }.to output("Final order total is £55.\n").to_stdout
-    end
-  end
-
   describe '#place_order' do
-    it 'outputs to stdout that they have placed the order' do
+    before do
       subject.add_dish(:burger, 4)
       subject.add_dish(:sausage, 1)
       subject.add_dish(:chips, 5)
-      expect { subject.place_order }.to output("Thank you! Your order was placed and will be delivered before #{delivery_time}. A text will be sent to your phone shortly to confirm your order.\n").to_stdout
     end
+
+    it 'raises an error if the incorrect amount of money is paid' do
+      expect { subject.place_order(20) }.to raise_error("Incorrect amount of money paid!")
+    end
+
+    it 'outputs to stdout that they have placed the order' do
+      expect { subject.place_order(55) }.to output("Thank you! Your order was placed and will be delivered before #{delivery_time}. A text will be sent to your phone shortly to confirm your order.\n").to_stdout
+    end
+
+    # it 'sends a text message to the phone' do
+    #
+    # end
   end
 
 end
