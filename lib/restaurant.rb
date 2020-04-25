@@ -10,4 +10,6 @@ class Restaurant
       @menu.show
     end
     
+    def select_items 
+    end
 end

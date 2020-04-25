@@ -21,4 +21,10 @@ describe Restaurant do
     end
   end
   
+  describe "#select_items" do
+    it "allows customer to select dishes" do
+      expect(subject).to respond_to(:select_items)
+    end
+  end
+  
 end

@@ -1,8 +1,8 @@
 class Menu
-  attr_reader :list
+  attr_reader :listOfDishes
     
   def initialize
-    @list = {
+    @listOfDishes = {
           croissant: 2,
           panini: 4,
           coffee: 3,
@@ -12,11 +12,11 @@ class Menu
   end
   
   def show
-    @list.each do |key, value|
+    @listOfDishes.each do |key, value|
       puts "#{key}: £#{value}"
     end
     
-    @list
+    @listOfDishes
   end
 
 end

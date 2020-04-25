@@ -5,7 +5,7 @@ describe Menu do
     
   describe "#show" do
     it "shows menu" do
-      expect(subject.show).to eq subject.list
+      expect(subject.show).to eq subject.listOfDishes
     end
   end
 end
