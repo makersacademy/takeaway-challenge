@@ -9,29 +9,26 @@ context Dish do
     @dish = Dish.new(:dish_number, :dish_price, :dish_name)
   end
   
-  describe '.new' do
+  describe '#new' do
     it 'takes three arguments' do
       expect(Dish).to respond_to(:new).with(3).arguments
     end
   end
   
-  describe '.number returns dish number' do
-#     dish = Dish.new(:dish_number, :dish_price, :dish_name)
-    it 'returns dish number when asked' do
+  describe '#number' do
+    it 'returns dish number' do
       expect(@dish.number).to eq :dish_number
     end
   end
 
-  describe '.price returns dish price' do
-#     dish = Dish.new(:dish_number, :dish_price, :dish_name)
-    it 'returns dish price when asked' do
+  describe '#price' do
+    it 'returns dish price' do
       expect(@dish.price).to eq :dish_price
     end
   end
 
-  describe '.name returns dish name' do
-#     dish = Dish.new(:dish_number, :dish_price, :dish_name)
-    it 'returns dish price when asked' do
+  describe '#name' do
+    it 'returns dish price' do
       expect(@dish.name).to eq :dish_name
     end
   end
