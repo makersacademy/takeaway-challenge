@@ -1,9 +1,9 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  W.H. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -13,6 +13,45 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+
+
+## Classes:
+
+| ```Status```       |  ```Class```      | ```Notes``` |
+|:--:                |                --:|:--          |
+| :x:                | ```Customer```    | Container for everything about the Customer |
+| :x:                | ```Restaurant```  | Container for everything about the Restaurant |
+| :x:                | ```Menu```        | Holds list of dishes with prices |
+| :x:                | ```Dish```        | Holds everything about a dish |
+| :x:                | ```Order```       | Holds everything about an order |
+| :x:                | ```TextMessage``` | Handles everything releated to sending and receiving text messages |
+
+## Methods
+
+| ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
+|:--:                |                --:|:--                     |:--          |
+| :x:                | ```Dish```        | ```new(number, price, description)``` | Notes |
+| :x:                | ```Restaurant```  | ```new``` | Notes |
+| :x:                | ```Restaurant```  | ```create_menu``` | Notes |
+| :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
+| :x:                | ```Restaurant```  | ```add(menu, dish)``` | Notes |
+| :x:                | ```Restaurant```  | ```remove(menu, dish)``` | Notes |
+| :x:                | ```Customer```    | ```new``` | Notes |
+| :x:                | ```Customer```    | ```read_menu``` | Notes |
+| :x:                | ```Customer```    | ```create_order``` | Notes |
+| :x:                | ```Customer```    | ```add(order, dish)``` | Notes |
+| :x:                | ```Customer```    | ```remove(order, dish)``` | Notes |
+| :x:                | ```Customer```    | ```total(order)``` | Notes |
+| :x:                | ```Order```       | ```new``` | Notes |
+| :x:                | ```Order```       | ```total``` | Notes |
+
+
+
+:white_check_mark:
+
+
+
+#Original README
 
 Instructions
 -------
