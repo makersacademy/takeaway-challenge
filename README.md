@@ -41,6 +41,9 @@
 | ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
 |:--:                |                --:|:--                     |:--          |
 | :white_check_mark: | ```Dish```        | ```new(number, price, name)``` | Notes |
+| :x:                | ```Menu```        | ```new``` | Notes |
+| :x:                | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
+| :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
 | :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
@@ -64,7 +67,7 @@
 * Dish could probably just be a Hash
 * Dish price would be more efficient as an Integer represented in pence, but presented as a two decimal place Float
 * Dish could have a description as well as a name
-
+* Implement Menu.remove(dish) method
 
 
 # Original README
