@@ -1,6 +1,7 @@
 require 'dish'
 
 context Dish do
+  let(:dish_number) { Integer.new }
 
   describe '.new' do
     it 'takes three arguments' do
@@ -9,10 +10,10 @@ context Dish do
   end
   
   describe '.number returns dish number' do
-    number = 2
-    dish = Dish.new(number, 2.00, "Plain rice")
+#     number = 2
+    dish = Dish.new(:dish_number, 2.00, "Plain rice")
     it 'returns dish number when asked' do
-      expect(dish.number).to eq number
+      expect(dish.number).to eq :dish_number
     end
   end
 
