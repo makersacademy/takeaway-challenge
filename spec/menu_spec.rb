@@ -16,6 +16,12 @@ context Menu do
     it 'returns dish added on success' do
       expect(subject.add(@dish)).to eq @dish
     end
+    
+    it 'raises error if dish number is not unique' do
+      subject.add(Dish.new(1, :dish_price, :dish_name))
+      expect { subject.add(Dish.new(1, :dish_price, :dish_name)) }.to raise_error "Error: that dish number already exists"
+    end
+    
   end
 
   describe '#get' do
