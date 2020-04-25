@@ -1,9 +1,10 @@
 class Order
-  attr_reader :menu, :order_items
+  attr_reader :menu, :order_items, :messenger
 
-  def initialize(menu)
+  def initialize(menu, messenger = Messenger.new)
     @menu = menu
     @order_items = Hash.new
+    @messenger = messenger
   end
 
   def add_item(name, quantity)
@@ -14,5 +15,9 @@ class Order
 
   def order_total
     @order_items.inject(0) { |total, pair| total + (pair[0].price.to_f * pair[1]) }
+  end
+
+  def confirm_order(total)
+    @messenger.send_confirmation_message
   end
 end

@@ -13,6 +13,6 @@ class Messenger
   end
 
   def send_confirmation_message
-    @client.messages.creat(from: @source_number, to: @target_number, body: "")
+    @client.messages.create(from: @source_number, to: @target_number, body: Message.new(Time.now).confirmation_message)
   end
 end

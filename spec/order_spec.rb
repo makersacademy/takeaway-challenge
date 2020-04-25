@@ -6,7 +6,8 @@ describe Order do
   let(:forcaccia) { double(name: 'Forcaccia', price: '2.00') }
   let(:lasagne) { double(name: 'Lasagne', price: '8.90') }
   let(:italian_menu) { double('Italian', items: [carbonara, forcaccia, lasagne]) }
-  let(:subject) { described_class.new(italian_menu) }
+  let(:messenger) { double() }
+  let(:subject) { described_class.new(italian_menu, messenger) }
   it { is_expected.to respond_to(:order_items) }
   it { is_expected.to respond_to(:add_item).with(2).arguments }
 
@@ -45,6 +46,14 @@ describe Order do
       subject.add_item('Forcaccia', 3)
       subject.add_item('Lasagne', 1)
       expect(subject.order_total).to eq(25.4)
+    end
+  end
+
+  describe '#confirm_order' do
+    it 'calls on messenger to send a confirmation' do
+      subject = described_class.new(italian_menu, messenger)
+      expect(messenger).to receive(:send_confirmation_message)
+      subject.confirm_order(25.4)
     end
   end
 end
