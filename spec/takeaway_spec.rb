@@ -9,9 +9,14 @@ describe Takeaway do
     end
   end
 
-  describe '#order' do
-    it 'takeaway responds to method order' do
-      expect(takeaway).to respond_to(:order)
+  describe '#place_order' do
+    it 'takeaway responds to method place_order' do
+      expect(takeaway).to respond_to(:place_order)
     end
+
+    # it 'adds order to empty order array' do
+    #   takeaway.order(31.80, {:burger => 3, :chips => 1})
+    #   expect(takeaway.order_array).to eq [{:burger=>10.0}, {:burger=>10.0}, {:burger=>10.0}, {:chips=>1.8}]
+    # end
   end
 end
