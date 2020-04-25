@@ -11,7 +11,6 @@ context Menu do
   end
   
   describe '#add' do
-    it { is_expected.to respond_to(:add).with(1).argument }
 
     it 'returns dish added on success' do
       expect(subject.add(@dish)).to eq @dish
@@ -25,7 +24,6 @@ context Menu do
   end
   
   describe '#dishes' do
-    it { is_expected.to respond_to(:dishes) }
     
     it 'returns array of dishes' do
       dishes = Array.new
