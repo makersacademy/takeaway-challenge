@@ -10,4 +10,6 @@ chippers.add_dish(:chips, 5)
 
 chippers.order
 
-chippers.order_total_price
+chippers.check_total_order_price
+
+chippers.place_order
