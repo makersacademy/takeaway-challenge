@@ -1,8 +1,28 @@
 # Run feature-test.irb
+require './lib/menu.rb'
+require './lib/dish.rb'
 
 # Set up world
 
 # Environment setup, ready to test User Stories
+
+# Begin Story 1:
+# As a customer
+# So that I can check if I want to order something
+# I would like to see a list of dishes with prices
+
+loop do
+# Press Control-C to continue
+end
+
+menu_1 = Menu.new
+menu_1.add(Dish.new(1, 2.00, "Plain rice"))
+menu_1.add(Dish.new(2, 3.00, "Special rice"))
+menu_1.add(Dish.new(3, 113.00, "Very Special rice"))
+
+menu_1.dishes
+
+# End Story 1:
 
 loop do
 # Press Control-C to continue

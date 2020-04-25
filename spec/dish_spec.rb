@@ -28,7 +28,7 @@ context Dish do
   end
 
   describe '#name' do
-    it 'returns dish price' do
+    it 'returns dish name' do
       expect(@dish.name).to eq :dish_name
     end
   end
