@@ -44,6 +44,9 @@
 | :x:                | ```Menu```        | ```new``` | Notes |
 | :x:                | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
 | :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
+| :x:                | ```Menu```        | ```get(number)``` | Returns Dish corresponding to number |
+| :x:                | ```Menu```        | ```list``` | Puts all dishes |
+
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
 | :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
