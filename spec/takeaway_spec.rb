@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe TakeAway do
-  menu = [{id: "1", name: "Kdebap", price: 1.00}]
+  menu = [{id: "1", name: "delicious", price: 2.00}]
   subject(:takeaway) { described_class.new(menu) }
 
   it 'initializing menu' do
@@ -20,6 +20,15 @@ describe TakeAway do
         allow(menu).to receive(:list).and_return menu
          takeaway.select(1)
         expect(takeaway.basket).to eq menu
+      end
+    end
+
+    describe ' #checks total' do
+      it 'shows total amount of order' do
+        allow(menu).to receive(:list).and_return menu
+         takeaway.select(1)
+         p takeaway.basket
+        expect(takeaway.checkout).to eq menu[0][:price]
       end
     end
 end
