@@ -32,7 +32,7 @@
 | :x:                | ```Customer```    | Container for everything about the Customer |
 | :x:                | ```Restaurant```  | Container for everything about the Restaurant |
 | :x:                | ```Menu```        | Holds list of dishes with prices |
-| :x:                | ```Dish```        | Holds everything about a dish |
+| :white_check_mark: | ```Dish```        | Holds everything about a dish |
 | :x:                | ```Order```       | Holds everything about an order |
 | :x:                | ```TextMessage``` | Handles everything releated to sending and receiving text messages |
 
@@ -40,7 +40,7 @@
 
 | ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
 |:--:                |                --:|:--                     |:--          |
-| :x:                | ```Dish```        | ```new(number, price, name)``` | Notes |
+| :white_check_mark: | ```Dish```        | ```new(number, price, name)``` | Notes |
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
 | :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
