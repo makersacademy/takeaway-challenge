@@ -31,16 +31,26 @@ describe Takeaway do
 
     it 'outputs the current total to customer' do
       subject.add_dish(:burger, 4)
-      expect { subject.add_dish(:chips, 1) }.to output("Current order total is £42.\n").to_stdout
+      expect { subject.add_dish(:chips, 5) }.to output("Current order total is £50.\n").to_stdout
     end
   end
 
-  # describe '#order_total_price' do
-  #   subject.add_dish(:burger, 4)
-  #   subject.add_dish(:sausage, 1)
-  #   subject.add_dish(:chips, 5)
-  #
-  #   expect(subject.order_total_price).to eq
-  # end
+  describe '#check_order_price' do
+    it 'checks overall price is equal to the current total' do
+      subject.add_dish(:burger, 4)
+      subject.add_dish(:sausage, 1)
+      subject.add_dish(:chips, 5)
+      subject.check_order_price
+
+      expect(subject.overall_total).to eq subject.current_total
+    end
+
+    it 'outputs the total price' do
+      subject.add_dish(:burger, 4)
+      subject.add_dish(:sausage, 1)
+      subject.add_dish(:chips, 5)
+      expect { subject.check_order_price }.to output("Final order total is £55.\n").to_stdout
+    end
+  end
 
 end
