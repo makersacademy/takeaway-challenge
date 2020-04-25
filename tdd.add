@@ -33,6 +33,6 @@ fi
 touch $IRB_FILE
 echo -e "require '$LIB_FILE'\n\n$OBJECT_NAME = $CLASS_NAME.new" >> $IRB_FILE
 touch $SPEC_FILE
-echo -e "require '$OBJECT_NAME'\n\ndescribe $CLASS_NAME do\n\nend" >> $SPEC_FILE
+echo -e "require '$OBJECT_NAME'\n\ncontext $CLASS_NAME do\n\nend" >> $SPEC_FILE
 touch $LIB_FILE
 echo -e "class $CLASS_NAME\n\nend" >> $LIB_FILE
