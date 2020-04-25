@@ -5,7 +5,7 @@
 describe "User stories" do
   it "can show the menu" do
     restaurant = Restaurant.new
-    expect { restaurant.see_menu }.not_to raise_error
+    expect { restaurant.show_menu }.not_to raise_error
   end
   
   it "has a menu" do
@@ -13,10 +13,10 @@ describe "User stories" do
     expect {restaurant.menu}.not_to raise_error
   end
 
-  describe "#see_menu" do
+  describe "#show_menu" do
     it "shows menu" do
       restaurant = Restaurant.new
-      expect(restaurant.see_menu).to eq restaurant.menu
+      expect(restaurant.show_menu).to be_kind_of(Hash)
     end
   end
   

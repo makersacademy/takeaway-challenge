@@ -2,18 +2,12 @@ class Restaurant
     
     attr_reader :menu
     
-    def initialize
-      @menu = {
-          croissant: 2,
-          panini: 4,
-          coffee: 3,
-          tea: 3,
-          juice: 3.5
-      }
+    def initialize (menu = Menu.new)
+      @menu = menu
     end
     
-    def see_menu
-      @menu
+    def show_menu
+      @menu.show
     end
     
 end
