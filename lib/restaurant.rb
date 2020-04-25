@@ -7,6 +7,5 @@ class Restaurant
 
   def view_menu
     menu.print_menu
-    # 'Fish & Chips £4'
   end
 end

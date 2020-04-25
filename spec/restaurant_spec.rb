@@ -1,5 +1,4 @@
 require 'restaurant'
-# require 'menu'
 
 describe Restaurant do
   subject { described_class.new(menu) }
