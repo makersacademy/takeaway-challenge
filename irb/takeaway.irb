@@ -1,0 +1,5 @@
+require './lib/takeaway'
+
+papa = Takeaway.new
+
+papa.see_dishes
