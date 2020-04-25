@@ -8,4 +8,10 @@ describe Takeaway do
       expect(takeaway.menu).to eq [{:chips => 1.80}, {:burger => 10.00}]
     end
   end
+
+  describe '#order' do
+    it 'takeaway responds to method order' do
+      expect(takeaway).to respond_to(:order)
+    end
+  end
 end

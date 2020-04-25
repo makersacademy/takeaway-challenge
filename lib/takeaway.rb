@@ -8,4 +8,7 @@ class Takeaway
   def menu
     @menu
   end
+
+  def order(order_total, **dish_and_quantity)
+  end
 end
