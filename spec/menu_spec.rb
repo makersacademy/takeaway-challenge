@@ -23,6 +23,24 @@ context Menu do
     end
     
   end
+  
+  describe '#list' do
+    it { is_expected.to respond_to(:list) }
+    
+    it 'returns array of dishes' do
+      dishes = Array.new
+      dish_1 = Dish.new(1, :dish_price, :dish_name)
+      dish_2 = Dish.new(2, :dish_price, :dish_name)
+      dishes.push(dish_1)
+      dishes.push(dish_2)
+      subject.add(dish_1)
+      subject.add(dish_2)
+      expect(subject.list).to eq dishes
+    end
+      
+  
+  
+  end
 
   
 end

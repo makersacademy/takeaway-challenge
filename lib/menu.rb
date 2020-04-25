@@ -15,5 +15,8 @@ class Menu
     @dishes.last
   end
   
-
+  def list
+    @dishes
+  end
+  
 end
