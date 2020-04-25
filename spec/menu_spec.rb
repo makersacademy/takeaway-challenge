@@ -24,8 +24,5 @@ context Menu do
     
   end
 
-  describe '#get' do
-    it { is_expected.to respond_to(:get).with(1).argument }
-  end
   
 end

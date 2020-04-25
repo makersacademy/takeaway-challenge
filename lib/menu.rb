@@ -15,8 +15,5 @@ class Menu
     @dishes.last
   end
   
-  def get(number)
-
-  end
 
 end

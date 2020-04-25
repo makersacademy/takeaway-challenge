@@ -3,5 +3,6 @@ require './lib/dish.rb'
 
 menu = Menu.new
 menu.add(Dish.new(1, 2.00, "Plain rice"))
-menu.get(1)
-menu.add(Dish.new(1, 2.00, "Plain rice"))
+menu.add(Dish.new(2, 3.00, "Special rice"))
+menu.add(Dish.new(3, 113.00, "Very Special rice"))
+
