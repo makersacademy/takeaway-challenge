@@ -31,4 +31,10 @@ describe TakeAway do
         expect(takeaway.checkout).to eq menu[0][:price]
       end
     end
+
+    describe ' #order' do
+      it 'complete order' do
+        expect(takeaway.order).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+      end
+    end
 end

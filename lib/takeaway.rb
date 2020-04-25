@@ -24,11 +24,15 @@ class TakeAway
     @total
   end
 
+  def order
+   p "Thank you! Your order was placed and will be delivered before 18:52"
+ end
+
 
   private
     def calculator
       for i in 0...@basket.count
-        @total += @basket[i][:price]
+        @total = @basket[i][:price]
       end
     end
 
