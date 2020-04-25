@@ -8,10 +8,10 @@ describe "User stories" do
     expect { restaurant.see_menu }.not_to raise_error
   end
   
-#   it "has a menu" do
-#     restaurant = Restaurant.new
-#     expect {restaurant.menu}.not_to raise_error
-#   end
+  it "has a menu" do
+    restaurant = Restaurant.new
+    expect {restaurant.menu}.not_to raise_error
+  end
 
   describe "#see_menu" do
     it "shows menu" do
@@ -19,4 +19,6 @@ describe "User stories" do
       expect(restaurant.see_menu).to eq restaurant.menu
     end
   end
+  
 end
+
