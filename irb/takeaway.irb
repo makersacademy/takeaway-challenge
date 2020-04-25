@@ -5,6 +5,4 @@ my_takeaway = Takeaway.new
 
 my_takeaway.display
 
-my_takeaway.place_order(20, {:burger => 2})
-
-my_takeaway.order.verify 
+my_takeaway.place_order(30, {:burger => 3})

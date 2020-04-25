@@ -13,4 +13,8 @@ class Takeaway
   def place_order(order_total, **dish_and_quantity)
     @order.order(order_total, @menu, **dish_and_quantity)
   end
+
+  def verify_order(order_total)
+    @order.verify(order_total)
+  end
 end
