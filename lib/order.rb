@@ -6,8 +6,8 @@ class Order
     @sum = 0
   end
 
-  def order(order_total, menu, **dish_and_quantity)
-    dish_and_quantity.each do |dish, quantity|
+  def order(order_total, menu, basket)
+    basket.each do |dish, quantity|
       menu.each do |hash|
         quantity.times { @order_array << hash } if hash.key?(dish)
       end

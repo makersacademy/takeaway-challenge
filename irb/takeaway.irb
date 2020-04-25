@@ -5,4 +5,10 @@ my_takeaway = Takeaway.new
 
 my_takeaway.display
 
-my_takeaway.place_order(30, {:burger => 3})
+my_takeaway.select({:burger => 3, :chips => 1})
+
+my_takeaway.basket
+
+my_takeaway.place_order(31.80)
+
+my_takeaway.order.order_array
