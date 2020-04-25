@@ -1,7 +1,10 @@
 require 'menu'
 
 describe Menu do
+  subject(:menu) {described_class.new}
+  let(:list) {double :list}
   it 'creates menu' do
-    expect(subject.menu).not_to be_empty
+    expect(menu.list).not_to be_empty
   end
+
 end
