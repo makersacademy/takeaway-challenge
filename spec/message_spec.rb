@@ -6,7 +6,9 @@ describe Message do
   let(:subject) { described_class.new(time) }
 
   describe "#confirmation_message" do
-    #expect(subject.confirmation_message(time)).to eq("Thank you! Your order was placed and will be delivered before 22:37")
+    it 'returns order confirmationmessage' do
+      expect(subject.confirmation_message).to eq("Thank you! Your order was placed and will be delivered before 22:37")
+    end
   end
 
   describe '#time_one_hour_ahead' do
