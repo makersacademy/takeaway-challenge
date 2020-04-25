@@ -16,4 +16,11 @@ context Dish do
     end
   end
 
+  describe '.price returns dish price' do
+    dish = Dish.new(:dish_number, 2.00, "Plain rice")
+    it 'returns dish price when asked' do
+      expect(dish.price).to eq 2.00
+    end
+  end
+
 end
