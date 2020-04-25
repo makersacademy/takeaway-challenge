@@ -1,11 +1,11 @@
 class Dish
 
   def initialize(number, price, description)
-
+    @number = number 
   end
   
   def number
-     1
+    @number 
   end
   
 end

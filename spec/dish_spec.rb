@@ -9,9 +9,10 @@ context Dish do
   end
   
   describe '.number returns dish number' do
-    dish = Dish.new(1, 2.00, "Plain rice")
+    number = 2
+    dish = Dish.new(number, 2.00, "Plain rice")
     it 'returns dish number when asked' do
-      expect(dish.number).to eq 1
+      expect(dish.number).to eq number
     end
   end
 
