@@ -1,4 +1,12 @@
 require './lib/dish.rb'
 
+dishes = Array.new
 dish = Dish.new(1, 12.00, "Plain rice")
+
+dishes.push(Dish.new(1, 2.00, "Plain rice"))
+dishes.push(Dish.new(2, 3.00, "Special rice"))
+dishes.push(Dish.new(3, 113.00, "Very Special rice"))
+
+p dishes.each { |dish| p dish }
+
 
