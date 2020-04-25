@@ -5,6 +5,7 @@ class TakeAway
 
   def initialize
     @menu = Menu.new
+    # @kitchen = Kitchen.new 
     @order_total = []
   end
 
@@ -15,6 +16,10 @@ class TakeAway
   def order(order)
     @order_total << order if in_menu?(order)
     order
+  end
+
+  def checkout
+    # @kitchen.order_total
   end
 
   private

@@ -18,7 +18,7 @@ describe TakeAway do
 
     it 'able to place' do
       takeaway.order order.order
-      expect(takeaway.order_total.shift).to eq "Tomato Salad"
+      expect(takeaway.order_total.shift).to be order.order
     end
 
     it 'more than one order' do
@@ -27,6 +27,14 @@ describe TakeAway do
       takeaway.order "Spicy Meatballs"
       expect(takeaway.order_total).to eq test_order
     end
+
+    context '#checkout' do
+      it 'should give order and total' do
+        
+      end
+
+    end
+
   end
 
 

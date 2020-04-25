@@ -32,12 +32,28 @@ describe 'User Stories' do
       end
 
       it 'should be able to order several items' do
-        test_order = ["Grilled octopus", "Calamari"]
+        order_total = ["Grilled octopus", "Calamari"]
         takeaway.order "Grilled octopus"
         takeaway.order "Calamari"
-        expect(takeaway.order_total).to eq test_order
+        expect(takeaway.order_total).to eq order_total
       end
 
+      # As a customer
+      # So that I can verify that my order is correct
+      # I would like to check that the total I have been given matches the sum of the various dishes in my order
+      it 'should respond to checkout' do 
+        expect(takeaway).to respond_to(:checkout)
+      end
+
+      it 'should give order total upon #checkout' do
+        # order_total = "Item: #{order}, cost #{order}£. Total: 38.00"
+        # expect(takeaway.checkout).to be order_total
+      end
+
+    end
+
+    context 'other' do
+      
     end
 
 end
