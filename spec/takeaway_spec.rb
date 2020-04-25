@@ -1,7 +1,12 @@
 require 'takeaway'
 
 describe Takeaway do
-  dishes = described_class::DISHES
+
+  let(:subject) do
+    dishes = {burger: 10, fish: 8, sausage: 5, chips: 2}
+    subject = described_class.new(dishes)
+  end
+
 
   describe '#see_dishes' do
     it 'responds to' do
@@ -13,5 +18,13 @@ describe Takeaway do
     end
   end
 
+  describe '#select_dishes' do
+    it 'responds to' do
+      expect(subject).to respond_to(:select_dishes).with(3).arguments
+    end
+
+
+
+  end
 
 end

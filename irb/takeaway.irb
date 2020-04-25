@@ -3,3 +3,5 @@ require './lib/takeaway'
 papa = Takeaway.new
 
 papa.see_dishes
+
+papa.select_dishes(["Burger", "Fish", "Chips"], [2, 3, 4], [20])
