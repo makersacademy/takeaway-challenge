@@ -50,7 +50,6 @@
 | :white_check_mark: | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
 | :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
 | :white_check_mark: | ```Menu```        | ```dishes``` | Returns all dishes |
-
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
 | :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
