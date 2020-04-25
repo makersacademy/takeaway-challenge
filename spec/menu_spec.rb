@@ -19,7 +19,7 @@ context Menu do
     
     it 'raises error if dish number is not unique' do
       subject.add(Dish.new(1, :dish_price, :dish_name))
-      expect { subject.add(Dish.new(1, :dish_price, :dish_name)) }.to raise_error "Error: that dish number already exists"
+      expect { subject.add(Dish.new(1, :dish_price, :dish_name)) }.to raise_error Menu::ERROR_DISH_EXISTS
     end
     
   end
