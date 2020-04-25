@@ -10,7 +10,7 @@ class Takeaway
     @menu
   end
 
-  def place_order
-    @order
+  def place_order(order_total, **dish_and_quantity)
+    @order.order(order_total, @menu, **dish_and_quantity)
   end
 end
