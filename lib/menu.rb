@@ -6,10 +6,9 @@ class Menu
     
   def add(new_dish)
     @dishes.each do |dish| 
-      if dish.number == new_dish.number
-        raise "Error: that dish number already exists"
-      end
+      raise "Error: that dish number already exists" if dish.number == new_dish.number
     end
+    
     @dishes.push(new_dish)
     @dishes.last
   end
