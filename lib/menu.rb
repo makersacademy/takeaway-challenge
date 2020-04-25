@@ -12,6 +12,7 @@ class Menu
   end
 
   def add_dish_to_menu(dish, price)
+    raise "#{dish} already part of the menu!" if has_dish?(dish)
     menu_list[dish] = price
   end
 
@@ -19,4 +20,9 @@ class Menu
     menu_list.delete(dish)
   end
 
+  private
+
+  def has_dish?(dish)
+    @menu_list.has_key? dish
+  end
 end

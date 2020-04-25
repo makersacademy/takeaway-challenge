@@ -2,13 +2,13 @@ require 'menu'
 
 describe Menu do
   subject { described_class.new }
-  let(:dishes) { { 'Fish & Chips' => 4, 'Burger' => 3, 'Shawarma' => 5 } }
 
   it { is_expected.to respond_to(:print_menu) }
   it { is_expected.to respond_to(:add_dish_to_menu).with(2).arguments }
   it { is_expected.to respond_to(:remove_dish_from_menu).with(1).arguments }
 
   it 'stores a menu of dishes and prices' do
+    dishes = { 'Fish & Chips' => 4, 'Burger' => 3, 'Shawarma' => 5 }
     expect(subject.menu_list).to eq dishes
   end
 
@@ -22,6 +22,13 @@ describe Menu do
     it 'adds a new dish to menu' do
       expect { subject.add_dish_to_menu('Mititei', 1) }
       .to change { subject.menu_list }.to include({ 'Mititei' => 1 })
+    end
+
+    context 'when a dish already exists' do
+      it 'raises an error' do
+        expect { subject.add_dish_to_menu('Burger', 1) }
+        .to raise_error 'Burger already part of the menu!'
+      end
     end
   end
 
