@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   it { is_expected.to respond_to(:name) }
-  it { is_expected.to respond_to(:menu) }
+  it { is_expected.to respond_to(:items) }
 
   let(:falafel_item) { double('Falafel', name: 'Falafel', price: '3.50') }
   let(:egg_wrap_item) { double('Egg Wrap', name: 'Egg Wrap', price: '5.10') }
@@ -15,7 +15,7 @@ describe Menu do
   describe '#initialize' do
     it 'adds a list of items to menu' do
       subject = described_class.new(falafel_item, egg_wrap_item, fresh_juice_item)
-      expect(subject.menu).to include(falafel_item, egg_wrap_item, fresh_juice_item)
+      expect(subject.items).to include(falafel_item, egg_wrap_item, fresh_juice_item)
     end
   end
 

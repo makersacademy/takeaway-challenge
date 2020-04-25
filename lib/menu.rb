@@ -1,12 +1,12 @@
 class Menu
-  attr_reader :name, :menu
+  attr_reader :name, :items
 
   def initialize(*menu_items)
-    @menu = menu_items
+    @items = menu_items
   end
 
   def show_menu
-    @menu.each do |item|
+    @items.each do |item|
       puts "#{item.name} - £#{item.price}"
     end
   end
