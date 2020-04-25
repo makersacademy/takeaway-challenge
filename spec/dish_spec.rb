@@ -11,7 +11,7 @@ context Dish do
   end
   
   describe '.number returns dish number' do
-    dish = Dish.new(:dish_number, 2.00, "Plain rice")
+    dish = Dish.new(:dish_number, :dish_price, "Plain rice")
     it 'returns dish number when asked' do
       expect(dish.number).to eq :dish_number
     end
@@ -21,6 +21,13 @@ context Dish do
     dish = Dish.new(:dish_number, :dish_price, "Plain rice")
     it 'returns dish price when asked' do
       expect(dish.price).to eq :dish_price
+    end
+  end
+
+  describe '.name returns dish name' do
+    dish = Dish.new(:dish_number, :dish_price, "Plain rice")
+    it 'returns dish price when asked' do
+      expect(dish.name).to eq "Plain rice"
     end
   end
 

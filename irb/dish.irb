@@ -7,6 +7,6 @@ dishes.push(Dish.new(1, 2.00, "Plain rice"))
 dishes.push(Dish.new(2, 3.00, "Special rice"))
 dishes.push(Dish.new(3, 113.00, "Very Special rice"))
 
-p dishes.each { |dish| p dish.number.to_s + " " + dish.price.to_s }
+p dishes.each { |dish| p "Dish number: " + dish.number.to_s + " Dish price: " + dish.price.to_s + " Dish name: " + dish.name.to_s }
 
 

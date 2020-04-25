@@ -40,7 +40,7 @@
 
 | ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
 |:--:                |                --:|:--                     |:--          |
-| :x:                | ```Dish```        | ```new(number, price, description)``` | Notes |
+| :x:                | ```Dish```        | ```new(number, price, name)``` | Notes |
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
 | :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
@@ -63,6 +63,8 @@
 
 * Dish could probably just be a Hash
 * Dish price would be more efficient as an Integer represented in pence, but presented as a two decimal place Float
+* Dish could have a description as well as a name
+
 
 
 # Original README
