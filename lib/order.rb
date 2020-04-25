@@ -7,6 +7,7 @@ class Order
     @basket = Hash.new(0)
   end
 
-  def add_to_order(dish, qty)
+  def add_to_basket(dish, qty)
+    @basket[dish] += qty
   end
 end

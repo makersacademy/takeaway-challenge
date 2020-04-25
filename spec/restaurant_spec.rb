@@ -19,7 +19,7 @@ describe Restaurant do
     it 'adds a dish to the order' do
       dish = 'Burger'
       qty = 2
-      expect(order).to receive(:add_to_order).with(dish, qty)
+      expect(order).to receive(:add_to_basket).with(dish, qty)
       subject.select_dish(dish, qty)
     end
   end

@@ -8,11 +8,11 @@ class Restaurant
   end
 
   def view_menu
-    menu.print_menu
+    @menu.print_menu
   end
 
   def select_dish(dish, qty)
-    order.add_to_order(dish, qty)
+    @order.add_to_basket(dish, qty)
   end
 
 end
