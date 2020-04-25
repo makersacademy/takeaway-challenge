@@ -5,8 +5,4 @@ class Dish
      @number = number 
   end
   
-#    def number
-#       "Number 1" 
-#    end
-  
 end

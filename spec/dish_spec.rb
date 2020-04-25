@@ -10,7 +10,6 @@ context Dish do
   end
   
   describe '.number returns dish number' do
-#     number = 2
     dish = Dish.new(:dish_number, 2.00, "Plain rice")
     it 'returns dish number when asked' do
       expect(dish.number).to eq :dish_number
