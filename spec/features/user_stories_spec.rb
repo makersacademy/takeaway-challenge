@@ -11,9 +11,9 @@ describe 'User Stories' do
     expect(takeaway.menu).not_to be nil
   end
 
-  it 'should respond to #mrnu' do
+  it 'should respond to #menu' do
     menu = Menu.new
-    expect(menu).to respond_to(:menu)
+    expect { menu.print }.to output.to_stdout
   end
 
 end

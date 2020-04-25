@@ -24,7 +24,7 @@ TakeAway | Kitchen | Menu | Text
  | | |
  `----------` | `----------` | `----------` | `----------` 
 #menu() | #order_total() | #menu() | #send_text()
-#order() | #complete?() | | 
+#order() | #complete?() | #print() | 
 #checkout() |  | |
 
 
