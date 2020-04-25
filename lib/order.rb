@@ -22,6 +22,10 @@ class Order
       end
     end
     raise "Error: The total given does not equal the menu total" if @sum != order_total
-    "The order was placed" if @sum == order_total
+    send_text() if @sum == order_total
+  end
+
+  def send_text
+    "The order was placed"
   end
 end
