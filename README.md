@@ -15,15 +15,15 @@
  ```
 ## Model
 
-A Dish has a unique identifier (number), a price and a description
-A Menu consists of a number of Dishes
-A Restaurant has a Menu and can take Orders
-A Order is a selection of Dishes
-A Customer can view all Dishes in a Menu
-A Customer can create an Order
-A Customer can ask when their Order will arrive
-A TextMessage contains a message
-A Text Message will be sent by the Restaurant to the Customer to tell them when their Order will be ready
+* A Dish has a unique identifier (number), a price and a description
+* A Menu consists of a number of Dishes
+* A Restaurant has a Menu and can take Orders
+* A Order is a selection of Dishes
+* A Customer can view all Dishes in a Menu
+* A Customer can create an Order
+* A Customer can ask when their Order will arrive
+* A TextMessage contains a message
+* A Text Message will be sent by the Restaurant to the Customer to tell them when their Order will be ready
 
 ## Classes:
 
@@ -63,7 +63,7 @@ A Text Message will be sent by the Restaurant to the Customer to tell them when 
 
 * Dish could probably just be a Hash
 
-#Original README
+# Original README
 
 Instructions
 -------
