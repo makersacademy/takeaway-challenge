@@ -62,6 +62,8 @@
 ## Improvements
 
 * Dish could probably just be a Hash
+* Dish price would be more efficient as an Integer represented in pence, but presented as a two decimal place Float
+
 
 # Original README
 
