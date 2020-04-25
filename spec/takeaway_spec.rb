@@ -1,6 +1,4 @@
 require 'takeaway'
-require 'menu'
-
 
 describe Takeaway do
   let(:takeaway) {described_class.new}
