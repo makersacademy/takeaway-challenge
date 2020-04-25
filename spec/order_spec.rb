@@ -37,4 +37,14 @@ describe Order do
       expect { subject.add_item('Gelato', 1) }.to raise_error('Item not on menu')
     end
   end
+
+  describe '#order_total' do
+    it 'returns the order total' do
+      subject = described_class.new(italian_menu)
+      subject.add_item('Carbonara', 1)
+      subject.add_item('Forcaccia', 3)
+      subject.add_item('Lasagne', 1)
+      expect(subject.order_total).to eq(25.4)
+    end
+  end
 end
