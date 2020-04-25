@@ -31,5 +31,10 @@ describe Order do
       subject.add_item('Lasagne', 1)
       expect { subject.add_item('Lasagne', 1) }.to change { subject.order_items }.to include(lasagne => 2)
     end
+
+    it 'raises an error if an item not on the menu is requested' do
+      subject = described_class.new(italian_menu)
+      expect { subject.add_item('Gelato', 1) }.to raise_error('Item not on menu')
+    end
   end
 end
