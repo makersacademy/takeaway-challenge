@@ -9,7 +9,6 @@ class Kitchen
     @menu = Menu.new
     @order_total = []
     @order_cart = []
-    @order_complete = false
   end
 
   def order(order)

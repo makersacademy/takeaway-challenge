@@ -14,12 +14,10 @@ class TakeAway
 
   def order(order)
     @kitchen.order(order)
-    # @kithen.test(order)
   end
 
   def checkout
     @kitchen.order_total
-    @kitchen.order_complete = true
   end
 
 end
