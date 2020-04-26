@@ -15,8 +15,8 @@ menu.add(dish_3)
 
 menu.dishes
 
-# menu.contains?(dish_1)
-# menu.contains?(dish_4)
+menu.check?(1)
+menu.check?(4)
 
 menu.get(1)
 menu.get(4)

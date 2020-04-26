@@ -51,6 +51,19 @@ context Menu do
   
   end
   
+  describe '#check?' do
+    it { is_expected.to respond_to(:check?).with(1).argument }
+    
+    it 'returns false if dish is not on the menu' do
+      subject.add(@dish_1)
+      expect(subject.check?(2)).to eq false
+    end
+    
+    it 'returns true if dish is on menu' do
+      subject.add(@dish_1)
+      expect(subject.check?(1)).to eq true
+    end
+  end
 #   TODO: do we need this? 
 #   describe '#locate' do
 #     it { is_expected.to respond_to(:locate).with(1).argument }
