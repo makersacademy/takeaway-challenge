@@ -1,8 +1,12 @@
 class Text 
 
-  def sms(phone, body)
+  def inisialize
+    @time = Time.new
+  end
+
+  def sms(phone)
    puts "Thanks! Order been send to #{phone}\n 
-    #{body}"
+    And will delivered #{@time}"
   end
 
 end

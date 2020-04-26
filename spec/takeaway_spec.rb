@@ -1,4 +1,4 @@
-require 'takeaway'
+require 'takeaway' 
 
 describe TakeAway do
 
@@ -35,20 +35,23 @@ describe TakeAway do
   context '#order' do
     it 'able to place once' do
       allow(takeaway).to receive(:order).and_return("Tomato Salad")
-      expect(takeaway).to receive(:order)
-      takeaway.order("Tomato Salad")
+      expect(takeaway.order).to eq "Tomato Salad"
     end
 
     it 'more than one order' do
       allow(takeaway).to receive(:order).and_return(["Lamb Burger", "Spicy Meatballs"])
-      expect(takeaway).to receive(:order)
-      takeaway.order(["Lamb Burger", "Spicy Meatballs"])
+      expect(takeaway.order).to eq ["Lamb Burger", "Spicy Meatballs"]
     end
 
     context '#checkout' do
       it 'should give order and total' do
+        allow(takeaway).to receive(:empty?).and_return false
         allow(takeaway.kitchen).to receive(:order_total).and_return order.order
         expect(takeaway.checkout).to eq order.order
+      end
+
+      it 'should raise error if no orders' do
+        expect{ takeaway.checkout }.to raise_error "Can not process the order: no items selected"
       end
     end
 

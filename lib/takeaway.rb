@@ -19,7 +19,14 @@ class TakeAway
   end
 
   def checkout
+    fail "Can not process the order: no items selected" if empty?
     @kitchen.order_total
+  end
+
+  private
+
+  def empty?
+    @kitchen.order_cart.empty?
   end
 
 end
