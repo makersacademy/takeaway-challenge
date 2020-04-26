@@ -33,7 +33,7 @@ describe Takeaway do
       it 'prints order placed message' do
         takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
         takeaway.select({ :burger => 3, :chips => 1 })
-        expect(takeaway.place_order(31.80)).to eq "The order was placed"
+        expect(takeaway.place_order(31.80)).to eq false
       end
     end
   end

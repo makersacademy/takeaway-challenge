@@ -27,7 +27,7 @@ class Order
   end
 
   def send_text
-    "The order was placed"
+    require './lib/send_sms.rb'
   end
 
   private
