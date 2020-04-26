@@ -15,5 +15,5 @@ time = time.strftime("%I:%M %p")
 client.messages.create(
 from: from,
 to: to,
-body: "This order was placed and will arrive at #{time}"
+body: "Thank you! Your order was placed and will be delivered before #{time}"
 )
