@@ -1,89 +1,31 @@
 class CustomerSelection
     
-  attr_reader :selection, :dish, :quantity, :continue, :menu
+  attr_reader :selection, :dish, :quantity, :continue, :menu, :total
     
   def initialize(menu = Menu.new)
     @selection = {}
-    @dish = nil
-    @quantity = nil
-    @continue = "Y"
     @menu = menu
+    @total = 0
   end  
     
-
-  def select_dish
-    puts "Please enter dish:"
-    @dish = gets.chomp
+  def add(item, quantity)
+    raise "Item doesn't exist" if !@menu.listOfDishes.include?(item)
+    @selection[item] = quantity
   end
   
-  def select_quantity
-    puts "Please enter quantity:"
-    @quantity = gets.chomp
-  end
-  
-  def select_continue
-    puts "Continue?"
-    @continue = gets.chomp
-  end
-  
-  # def place_order  
-  #       select_dish
-  #     select_quantity
-  #       @selection[@dish] = @quantity
-  #     select_continue
-      
-      
-  #     select_dish
-  #     select_quantity
-  #     select_continue
-  #     @selection[@dish] = @quantity
-      
-      
-  #   # @dish = nil
-  #     #@quantity = nil
-  # end
-  
-  def place_order
-    loop do
-      select_dish
-      select_quantity
-      @selection[@dish] = @quantity
-      #@dish = nil
-      #@quantity = nil
-      select_continue
-      p @selection
-      exit if @continue == "N"
+  def calculate_total
+    @total = 0
+    @selection.each do |key, value|
+      @total += @menu.listOfDishes[key] * value
     end
+    @total
   end
-  
-  
-  # def place_order
-    
-  #   2.times do
-  #     select_dish
-  #     select_quantity
-  #     @selection[@dish] = @quantity
-  #     #@dish = nil
-  #     #@quantity = nil
-  #     select_continue
-  #     #p @continue
-  #   end
-  # end
-  
-  #   def place_order
-  #   while_continue = "Y"
-  #   while true do
-  #     select_dish
-  #     select_quantity
-  #     @selection[@dish] = @quantity
-  #     #@dish = nil
-  #     #@quantity = nil
-  #     select_continue
-  #     while_continue = @continue
-  #   end
-  # end
   
   def print_order
+    @selection.each do |key, value|
+      puts "#{key}: #{value}x £#{@menu.listOfDishes[key] * value}"
+      end
+    puts "Total: £#{calculate_total}"
     @selection
   end
   

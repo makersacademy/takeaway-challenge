@@ -3,55 +3,39 @@ require "stringio"
 
 describe CustomerSelection do
   let(:subject) { described_class.new }
-  let(:dish) { "croissant" }
-  let(:quantity) { 1 }
+  let(:item) { :tea}
+  let(:item2) { :stew }
+  let(:quantity) { 2 }
 
-  it "responds to selection_process method" do
-    expect(subject).to respond_to(:select_dish) 
+  it "responds to add method" do
+    expect(subject).to respond_to(:add).with(2).arguments
   end
   
-  describe "#select_dish" do
-    let(:input) { StringIO.new("croissant") }
-    it "receives user input - dish" do
-      $stdin = input
-      expect { subject.select_dish }.to output("Please enter dish:\n").to_stdout
-      $stdin = STDIN
+  describe "#add" do 
+    context "input is valid" do
+      it "adds item to order" do
+        subject.add(item, quantity)
+        expect(subject.selection).to include(item)
+      end
+    end
+    
+    context "input is not valid" do
+      it "raises error" do
+        expect{subject.add(item2, quantity)}.to raise_error "Item doesn't exist"
+      end
     end
   end
   
-  describe "#select_quantity" do
-    let(:input) { StringIO.new("1") }
-    it "receives user input - quantity" do
-      $stdin = input
-      expect { subject.select_quantity }.to output("Please enter quantity:\n").to_stdout
-      $stdin = STDIN
-    end
+  describe "#calculate_total" do
+    it " calculates total" do
+    subject.add(item, quantity)
+    expect(subject.calculate_total).to eq(6)
   end
-
-  describe "#select_continue" do
-    let(:input) { StringIO.new("1") }
-    it "receives user input - continue" do
-      $stdin = input
-      expect { subject.select_continue }.to output("Continue?\n").to_stdout
-      $stdin = STDIN
-    end
-  end
-
-  before do
-    allow($stdout).to receive(:write)
-  end
-  
-  describe "#place_order" do
-    let(:input1) { StringIO.new("croissant\n 2\n Y\n juice\n 3\n N\n") }
-    it "receives user input - dish" do
-      $stdin = input1
-      expect { subject.place_order }.to output("Please enter dish:\nPlease enter quantity:\nContinue?\nPlease enter dish:\nPlease enter quantity:\nContinue?\n").to_stdout
-      $stdin = STDIN
-    end
   end
   
   describe "#print_order" do
     it "prints selected dishes" do
+      subject.add(item, quantity)
       expect(subject.print_order).to be_kind_of(Hash)
     end
   end

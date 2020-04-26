@@ -10,6 +10,6 @@ class Restaurant
       @menu.show
     end
     
-    def select_items 
+    def select_items(item, quantity) 
     end
 end

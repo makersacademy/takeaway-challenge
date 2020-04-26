@@ -23,7 +23,7 @@ describe Restaurant do
   
   describe "#select_items" do
     it "allows customer to select dishes" do
-      expect(subject).to respond_to(:select_items)
+      expect(subject).to respond_to(:select_items).with(2).arguments
     end
   end
   
