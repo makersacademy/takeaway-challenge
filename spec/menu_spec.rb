@@ -50,6 +50,16 @@ context Menu do
     end
   
   end
+  
+#   TODO: do we need this? 
+#   describe '#locate' do
+#     it { is_expected.to respond_to(:locate).with(1).argument }
+#     
+#     it 'raises error if dish is not on the menu' do
+#       expect { subject.locate(2) }.to raise_error Menu::ERROR_DISH_NOT_EXISTS
+#     end
+#     
+#   end
 
 #   TODO: remove check private method
 #   describe '#contains?' do

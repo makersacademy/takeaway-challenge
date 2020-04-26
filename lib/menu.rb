@@ -25,6 +25,13 @@ class Menu
     end
     raise ERROR_DISH_NOT_EXISTS
   end
+
+#   TODO: do we need this?  
+#   def locate(number)
+#     raise ERROR_DISH_NOT_EXISTS if @dishes.empty?
+#     
+#     raise ERROR_DISH_NOT_EXISTS
+#   end
   
   private
   
