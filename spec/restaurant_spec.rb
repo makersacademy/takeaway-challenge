@@ -6,7 +6,6 @@ describe Restaurant do
   let(:quantity) { 2 }
   let(:amount) { 6 }
   let(:wrong_amount) { 7 }
-  #let(:menu) { Menu.new }
 
   it "responds to see_menu method" do
     expect(subject).to respond_to(:show_menu)

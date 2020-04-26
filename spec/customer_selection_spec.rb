@@ -3,7 +3,7 @@ require "stringio"
 
 describe CustomerSelection do
   let(:subject) { described_class.new }
-  let(:item) { :tea}
+  let(:item) { :tea }
   let(:item2) { :stew }
   let(:quantity) { 2 }
 
@@ -12,6 +12,7 @@ describe CustomerSelection do
   end
   
   describe "#add" do 
+    
     context "input is valid" do
       it "adds item to order" do
         subject.add(item, quantity)

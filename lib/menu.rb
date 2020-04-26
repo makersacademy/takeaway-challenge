@@ -15,8 +15,5 @@ class Menu
     @listOfDishes.each do |key, value|
       "#{key}: £#{value}"
     end
-    
-    @listOfDishes
   end
-
 end
