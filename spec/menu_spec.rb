@@ -20,4 +20,21 @@ RSpec.describe Menu do
         })
     end
   end
+
+  describe '#add_to_basket' do
+    it 'checks for for user_input' do
+      subject.stub(:gets).and_return("Spagetti Bolognese")
+      allow($stdin).to receive(:gets).and_return("Spagetti Bolognese")
+    end
+
+    it 'asks for the quantity you would like' do
+      subject.stub(:gets).and_return("8")
+      allow($stdin).to receive(:gets).and_return("8")
+    end
+
+    it 'returns an array' do
+      subject.stub(:gets).and_return("8")
+      allow($stdin).to receive(:gets).and_return("8")
+    end
+  end
 end
