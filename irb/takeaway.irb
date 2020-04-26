@@ -1,0 +1,14 @@
+require './lib/takeaway'
+
+chippers = Takeaway.new({burger: 10, fish: 8, sausage: 5, chips: 2})
+
+chippers.see_dishes
+
+chippers.add_dish(:burger, 4)
+chippers.add_dish(:sausage, 1)
+chippers.add_dish(:chips, 5)
+
+chippers.order
+chippers.current_total
+
+chippers.place_order(55)
