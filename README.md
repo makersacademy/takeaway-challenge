@@ -38,7 +38,7 @@
 | :x:                | ```Restaurant```  | Container for everything about the Restaurant |
 | :negative_squared_cross_mark: | ```Menu```        | Holds list of dishes with prices |
 | :white_check_mark: | ```Dish```        | Holds everything about a dish |
-| :x:                | ```Order```       | Holds everything about an order |
+| :white_check_mark: | ```Order```       | Holds everything about an order |
 | :x:                | ```TextMessage``` | Handles everything related to sending and receiving text messages |
 
 ## Methods
@@ -66,15 +66,16 @@
 | :x:                | ```Customer```    | ```add(order, dish)``` | Notes |
 | :x:                | ```Customer```    | ```remove(order, dish)``` | Notes |
 | :x:                | ```Customer```    | ```total(order)``` | Notes |
-| :x:                | ```Order```       | ```new``` | Notes |
-| :x:                | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
-| :x:                | ```Order```       | ```total``` | Notes |
-| :x:                | ```Order```       | ```order``` | Returns array containing dish numbers |
+| :white_check_mark: | ```Order```       | ```new``` | Notes |
+| :white_check_mark: | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
+| :white_check_mark: | ```Order```       | ```total``` | Notes |
+| :white_check_mark: | ```Order```       | ```order``` | Returns array containing dish numbers |
+| :x:                | ```TextMessage``` | ```new``` | Notes |
 
 
 
 
-:white_check_mark:
+
 
 ## Improvements
 
