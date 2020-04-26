@@ -25,4 +25,10 @@ class Menu
     puts "* Mony braw dishes fer ye tae choose fae *"
   end
 
+  def menu
+    header
+    list
+    footer
+  end
+
 end
