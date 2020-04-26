@@ -15,6 +15,13 @@ class Order
     @current_total = calc_total
   end
 
+  def view_order
+    @order.each do |item|
+      puts "#{item[:item]} x#{item[:quantity]}"
+    end
+    puts current_total
+  end
+
   private
 
   def calc_total

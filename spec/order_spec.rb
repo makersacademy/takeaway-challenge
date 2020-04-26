@@ -12,13 +12,25 @@ describe Order do
     end
   end
 
-  describe "#current_total" do
-    it "calculates total price of current order" do
-      menu = Menu.new
+  describe "Order info" do
+    let(:menu) { Menu.new }
+
+    before(:each) do
       menu.order
       menu.my_order.add_to_order("Egg Fried Rice", 2)
       menu.my_order.add_to_order("Sweet and Sour Chicken", 2)
-      expect(menu.my_order.current_total).to eq(16.0)
+    end
+
+    describe "#current_total" do
+      it "calculates total price of current order" do
+        expect(menu.my_order.current_total).to eq(16.0)
+      end
+    end
+
+    describe "#view order" do
+      it "Prints out order" do
+        expect{ menu.my_order.view_order }.to output(String).to_stdout
+      end
     end
   end
 end
