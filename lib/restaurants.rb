@@ -3,9 +3,10 @@ require 'json'
 class Restaurants
   attr_reader :restaurants
 
-  def initialize(menu_class = Menu)
+  def initialize(menu_class = Menu, menu_item_class = MenuItem)
     @restaurants = []
-    @menu_class = Menu
+    @menu_class = menu_class
+    @menu_item_class = menu_item_class
   end
 
   def load_restaurants
@@ -26,7 +27,7 @@ class Restaurants
     dishes_hash = hash[hash.keys[0]]
 
     dishes_hash.each do |name, price|
-      dishes << MenuItem.new(name.to_s, price)
+      dishes << @menu_item_class.new(name.to_s, price)
     end
 
     @menu_class.new(hash.keys[0].to_s, *dishes)

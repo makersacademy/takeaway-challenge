@@ -5,6 +5,9 @@ describe Restaurants do
   let(:menu_instance) { double() }
   let(:menu_class) { double(new: menu_instance) }
 
+  let(:menu_item_instance) { double() }
+  let(:menu_item_class) { double(new: menu_item_instance) }
+
   describe 'load_restaurants' do
     it 'returns a structured list of possible restaurants from a JSON file' do
       restaurants = [{"Italian" => {"Pizza" => "5.00", "Lasagne" => "10.50", "Gelato" => "3.90"}},
@@ -15,11 +18,12 @@ describe Restaurants do
 
   describe '#find_restaurants' do
     it 'populates itself with a list of restaurants' do
-      subject = described_class.new(menu_class)
+      subject = described_class.new(menu_class, menu_item_class)
       expect { subject.find_restaurants }.to change { subject.restaurants.length }.by(2)
     end
   end
 
+  # How do I dependency inject this?
   describe '#create_menu' do
     it 'has the menu name from menu object when creating from a hash' do
       resturant_hash = {"Italian":{"Pizza": "5.00", "Lasagne": "10.50", "Gelato": "3.90"}}
