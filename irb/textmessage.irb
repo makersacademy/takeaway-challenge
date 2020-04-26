@@ -1,3 +1,25 @@
 require './lib/textmessage.rb'
+require './lib/order.rb'
+require './lib/menu.rb'
+require './lib/dish.rb'
 
-textmessage = TextMessage.new
+menu = Menu.new
+dish_1 = Dish.new(1, 2.00, "Plain rice")
+dish_2 = Dish.new(2, 3.00, "Special rice")
+dish_3 = Dish.new(3, 113.00, "Very Special rice")
+dish_4 = Dish.new(4, 0.01, "Unspecial rice")
+
+menu.add(dish_1)
+menu.add(dish_2)
+menu.add(dish_3)
+menu.dishes
+
+order = Order.new
+order.add(1, menu)
+order.add(2, menu)
+
+order.total(menu)
+
+text_message = TextMessage.new
+
+text_message.send_message(order)
