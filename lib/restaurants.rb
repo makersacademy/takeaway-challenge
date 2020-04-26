@@ -28,4 +28,10 @@ class Restaurants
     end
     Menu.new(hash.keys[0].to_s, *dishes)
   end
+
+  def search_for(menu_name)
+    found_menu = @restaurants.detect { |menu| menu.name == menu_name }
+    raise 'Restaurant not found' if found_menu.nil?
+    found_menu
+  end
 end

@@ -25,4 +25,17 @@ describe Restaurants do
       expect(subject.create_menu(resturant_hash).items[0].name).to eq('Pizza')
     end
   end
+
+  describe '#search_for' do
+    it 'searches for a menu by name' do
+      subject.load_restaurants
+      subject.find_restaurants
+      expect(subject.search_for('Italian').name).to eq('Italian')
+    end
+    it 'raises an error if menu does not exist' do
+      subject.load_restaurants
+      subject.find_restaurants
+      expect { subject.search_for('Mexican') }.to raise_error('Restaurant not found')
+    end
+  end
 end

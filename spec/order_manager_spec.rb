@@ -17,4 +17,10 @@ describe OrderManager do
       subject.get_restaurants(restaurants)
     end
   end
+
+  describe '#search_restaurants' do
+    it 'returns the menu specified by the user' do
+      
+    end
+  end
 end
