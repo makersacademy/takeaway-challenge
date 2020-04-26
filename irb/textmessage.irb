@@ -1,0 +1,3 @@
+require './lib/textmessage.rb'
+
+textmessage = TextMessage.new
