@@ -50,10 +50,10 @@ context Order do
   end
   
   describe '#total' do
-    it { is_expected.to respond_to(:total) }
+    it { is_expected.to respond_to(:total).with(1).argument }
     
     it 'returns 0 if no items have been added' do
-      expect(subject.total).to eq 0
+      expect(subject.total(@menu)).to eq 0
     end
     
     it 'returns order amount if items have been added' do
@@ -66,7 +66,7 @@ context Order do
       @menu.add(dish_4)
       subject.add(3, @menu)
       subject.add(4, @menu)
-      expect(subject.total).to eq price_3 + price_4
+      expect(subject.total(@menu)).to eq price_3 + price_4
     end
     
   end
