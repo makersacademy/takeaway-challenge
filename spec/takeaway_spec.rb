@@ -1,25 +1,21 @@
 require 'takeaway'
 
 describe TakeAway do
-  menu = [{id: "1", name: "delicious", price: 2.00}]
-  subject(:takeaway) { described_class.new(menu) }
 
-  it 'initializing menu' do
-    expect(takeaway.menu).to be menu
-  end
+#id: "1", name: "delicious", price: 2.00
+  let(:menu) { double :menu, generator: list }
+  let(:list) { double :list }
+  subject(:takeaway) { described_class.new(menu)}
 
-  describe ' #get_menu' do
-      it 'shows menu' do
-        allow(menu).to receive(:generator).and_return menu
-        expect(takeaway.get_menu).to be menu
+      it 'shows the menu with the dishes and prices' do
+        expect(takeaway.get_menu).to eq list
       end
-    end
 
    describe ' #select_dish' do
       it 'select dish' do
         allow(menu).to receive(:list).and_return menu
-         takeaway.select(1)
-        expect(takeaway.basket).to eq menu
+         takeaway.select(:id)
+        expect(takeaway.basket[0]).to eq menu
       end
     end
 

@@ -11,12 +11,11 @@ class TakeAway
   end
 
   def get_menu
-    p "Tanil's Restaurant Menu List:"
     @menu.generator
   end
 
   def select( meal_number )
-   @basket << @menu.list[ meal_number - 1 ]
+   @basket << @menu.list(meal_number )
   end
 
   def checkout
