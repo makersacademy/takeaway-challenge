@@ -9,7 +9,7 @@ class Menu
   end
     
   def add(dish)
-    raise ERROR_DISH_EXISTS if contains?(dish)
+    raise ERROR_DISH_EXISTS if include?(dish)
     
     @dishes.push(dish)
     @dishes.last
@@ -35,7 +35,7 @@ class Menu
   
   private
   
-  def contains?(dish)
+  def include?(dish)
     return false if @dishes.empty?
     
     @dishes.each do |on_menu| 

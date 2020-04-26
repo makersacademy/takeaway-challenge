@@ -54,7 +54,7 @@
 | :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
 | :white_check_mark: | ```Menu```        | ```get(number)``` | Returns Dish corresponding to Dish.number |
 | :white_check_mark: | ```Menu```        | ```dishes``` | Returns all dishes |
-| :white_check_mark: | ```Menu```        | ```contains?(dish)``` | Private, returns true if dish has been added |
+| :white_check_mark: | ```Menu```        | ```include?(dish)``` | Private, returns true if dish has been added |
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
 | :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
