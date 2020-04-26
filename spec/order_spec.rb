@@ -7,6 +7,8 @@ describe Order do
 
   it { is_expected.to respond_to(:add_to_basket).with(2).arguments }
   it { is_expected.to respond_to(:remove_from_basket).with(2).arguments }
+  it { is_expected.to respond_to(:basket_total) }
+  it { is_expected.to respond_to(:prepare_order) }
 
   it 'starts with an empty basket' do
     expect(subject.basket).to be_empty

@@ -35,6 +35,6 @@ class Restaurant
   private
 
   def ready?
-    @order.basket.has_key? :ready
+    @order.basket[:ready]
   end
 end
