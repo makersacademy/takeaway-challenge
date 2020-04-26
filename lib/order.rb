@@ -16,13 +16,14 @@ class Order
   end
   
   def total(menu)
-    return 0 if @order.empty?
+    total = 0
+    return total if @order.empty?
     
     @order.each do |item|
-      p item
+      total += menu.get(item).price
     end
     
-    return 3.00
+    return total
   end
   
 end

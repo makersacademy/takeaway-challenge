@@ -27,5 +27,5 @@ order.order
 order.add(4, menu)
 order.order
 
-order.total 
+order.total(menu)
 
