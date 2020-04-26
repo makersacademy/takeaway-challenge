@@ -1,9 +1,9 @@
 
 My Notes: 
 
-This week was very difficult for me, I didn't plan very well and got confused with the splitting one class into two. I'm going to work on this further in my spare time next week. To progress this challenge to the level I want it to be.
+This week was very difficult for me, I didn't plan very well from the start and got confused with the splitting one class into two. I know my error was skipping straight into separate classes, instead of starting with one class and splitting out into multiple classes, then using dependancy injection to ensure that the test coverage was maintained and functioning. I'm going to work on this further in my spare time next week to progress this challenge to the level I want it to be. This weekend I decided to focus my attention on study, so that i can come back to this feeling a bit more confident. 
 
-User stories achieved: 
+User stories achieved:
 
 As a customer
 So that I can check if I want to order something
