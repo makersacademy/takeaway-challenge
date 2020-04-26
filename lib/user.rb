@@ -1,4 +1,6 @@
 require "./lib/menu"
+require "./lib/order"
+
 
 class User
   attr_reader :order
@@ -9,12 +11,16 @@ class User
 
   def request_full_menu(menu)
     menu = Menu.new 
-      menu.full_menu 
+    menu.full_menu 
   end 
 
-  def new_order(unicorn)
-    @order = unicorn
-  end  
+  def new_order
+    @order = Order.new
+  end 
+  
+  def add_to_order(item, quantity)
+    @order.add_item(item, quantity)
+  end 
     
 
 
