@@ -15,4 +15,9 @@ class Order
     @order.last
   end
   
+  def total 
+    return 0 if @order.empty?
+    
+  end
+  
 end

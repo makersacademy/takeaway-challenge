@@ -14,6 +14,8 @@ menu.add(dish_3)
 menu.dishes
 
 order = Order.new
+order.total 
+
 order.add(1, menu)
 order.order 
 
@@ -25,4 +27,5 @@ order.order
 order.add(4, menu)
 order.order
 
+order.total 
 

@@ -48,5 +48,14 @@ context Order do
     end
     
   end
+  
+  describe '#total' do
+    it { is_expected.to respond_to(:total) }
+    
+    it 'returns 0 if no items have been added' do
+      expect(subject.total).to eq 0
+    end
+    
+  end
 
 end
