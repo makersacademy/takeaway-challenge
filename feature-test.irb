@@ -1,6 +1,7 @@
 # Run feature-test.irb
 require './lib/menu.rb'
 require './lib/dish.rb'
+require './lib/order.rb'
 
 # Set up world
 
@@ -28,6 +29,32 @@ menu_1.add(dish_3)
 menu_1.dishes
 
 # End Story 1:
+
+loop do
+# Press Control-C to continue
+end
+
+# Begin Story 2:
+# As a customer
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
+
+loop do
+# Press Control-C to continue
+end
+
+order_1 = Order.new 
+
+order_1.add(1, menu_1)
+order_1.add(1, menu_1)
+order_1.add(2, menu_1)
+
+#Should fail, dish not on menu
+order_1.add(5, menu_1)
+
+order_1.order
+
+# End Story 2:
 
 loop do
 # Press Control-C to continue
