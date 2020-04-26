@@ -12,4 +12,9 @@ describe Interface do
     expect{subject.options_menu}.to output(options).to_stdout
   end
 
+  it "Is able to :process user input '1' and call on :place_order." do
+    expect(subject).to receive(:place_order)
+    subject.input("1")
+  end
+
 end

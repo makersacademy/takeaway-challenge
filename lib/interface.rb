@@ -19,4 +19,11 @@ class Interface
     puts "9. Exit"
   end
 
+  def input(option)
+    case option
+    when "1"
+      place_order
+    end
+  end
+
 end
