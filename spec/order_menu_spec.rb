@@ -1,4 +1,4 @@
-require './lib/menu'
+require './lib/order_menu'
 
 describe OrderMenu do
   # Sets OrderMenu to recieve a Double object "dish_list" that contains dishes
