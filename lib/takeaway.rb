@@ -2,7 +2,7 @@ class Takeaway
   attr_reader :ordered, :item, :quantity, :continue
 
   def initialize
-    @ordered = []
+    @ordered = {}
     @item = nil
     @quantity = nil
     @continue = "Yes"
@@ -31,9 +31,16 @@ class Takeaway
     loop do
       items
       quantities
-      @ordered.push("#{@item} x #{@quantity}")
+      @ordered[@item.to_sym] = @quantity.to_i
       continuing
       break if @continue == "No"
     end
+  end
+
+  def check_order
+    total = view_menu.map { |k, v| v * ordered[k] if ordered.key? k }.compact.sum
+    puts "Please enter total cost:"
+    amount = gets.chomp
+    fail "Please recheck" if amount.to_i != total
   end
 end

@@ -46,4 +46,10 @@ describe Takeaway do
       $stdin = STDIN
     end
   end
+
+  describe '#check_order' do
+    it 'raises error if amount is incorrect' do
+      expect { subject.check_order }.to raise_error "Please recheck"
+    end
+  end
 end
