@@ -21,7 +21,7 @@ describe Takeaway do
     let(:input) { StringIO.new("Burger") }
     it 'receives user input for item required' do
       $stdin = input
-      expect { subject.item }.to output("What would you like to order?\n").to_stdout
+      expect { subject.item }.to output("What item would you like?\n").to_stdout
       $stdin = STDIN
     end
   end
@@ -31,6 +31,15 @@ describe Takeaway do
     it 'receives user input for quantity required' do
       $stdin = input
       expect { subject.quantity }.to output("How many would you like?\n").to_stdout
+      $stdin = STDIN
+    end
+  end
+
+  describe '#continue' do
+    let(:input) { StringIO.new("Yes") }
+    it 'receives user input for continuing order' do
+      $stdin = input
+      expect { subject.continue }.to output("Would you like anything else?\n").to_stdout
       $stdin = STDIN
     end
   end
