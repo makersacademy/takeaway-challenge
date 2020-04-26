@@ -25,10 +25,9 @@ context Order do
       expect { subject.add("Plain rice", @menu) }.to raise_error Order::ERROR_NOT_INTEGER
     end
     
-#     TODO: Find out why this test doesn't work
-#     it 'raises error if order_number not on menu' do
-#       expect { subject.add(1, @menu) }.to raise_error Menu::ERROR_DISH_NOT_EXISTS
-#     end
+    it 'raises error if order_number not on menu' do
+      expect { subject.add(3, @menu) }.to raise_error Menu::ERROR_DISH_NOT_EXISTS
+    end
     
     it 'returns number on success' do
       expect(subject.add(1, @menu)).to eq 1
