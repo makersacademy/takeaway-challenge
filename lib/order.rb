@@ -13,6 +13,7 @@ class Order
 
   def remove_from_basket(dish, qty)
     @basket[dish] -= qty
+    if @basket[dish] <= 0; @basket.delete(dish); end
   end
 
 end

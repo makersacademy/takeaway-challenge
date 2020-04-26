@@ -3,7 +3,7 @@ require 'restaurant'
 describe Restaurant do
   subject { described_class.new(menu, order) }
   let(:menu) { instance_double 'Menu' }
-  let(:order) { instance_double 'Order' } 
+  let(:order) { instance_double 'Order' }
 
   it { is_expected.to respond_to(:view_menu) }
   it { is_expected.to respond_to(:select_dish).with(2).arguments }
@@ -35,7 +35,7 @@ describe Restaurant do
 
   describe '#view_basket' do
     it 'returns the dishes in the basket' do
-      expect(order).to receive(:basket).and_return({"Burger" => 3, "Steak" => 3})
+      allow(order).to receive(:basket).and_return({"Burger" => 3, "Steak" => 3})
 
       expect(subject.view_basket).to eq '3 x Burger, 3 x Steak'
     end
