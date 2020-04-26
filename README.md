@@ -68,7 +68,7 @@ Order     | Initalise/
             attr_read :order/
             @order = []/
             @this_is_order = {} /
-            add_item(order, quan)
+            add_item(order, quan)/
               @this_is_order[:order] = quan/ 
 
 
