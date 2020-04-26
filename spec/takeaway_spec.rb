@@ -41,12 +41,11 @@ describe TakeAway do
 
     context '#checkout' do
       it 'should give order and total' do
-        
+        allow(takeaway.kitchen).to receive(:order_total).and_return order.order
+        expect(takeaway.checkout).to eq order.order
       end
-
     end
 
   end
-
 
 end

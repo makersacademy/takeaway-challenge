@@ -14,14 +14,13 @@ Takeaway Challenge
 
  ```
 
-Domain Model for Take Away app
+Domain Model for Takeaway app
 -------
 
 TakeAway | Kitchen | Menu | Text 
 :---: | :---: | :---: | :---:
  | @order  |   | @number
  | @checkout| | @body
- | | |
  `----------` | `----------` | `----------` | `----------` 
 #menu() | #order() | #menu() | #send_text()
 #order() | #order_total() | #print() | 
