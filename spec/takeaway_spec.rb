@@ -2,14 +2,8 @@ require 'takeaway'
 require 'stringio'
 
 describe Takeaway do
-  let(:item) { 'Burger' }
-  let(:quantity) { 1 }
-
-  describe 'order' do
-    it 'defaults to an empty array' do
-      expect(subject.order).to be_empty
-    end
-  end
+  let(:items) { "Burger" }
+  let(:quantities) { 1 }
 
   describe '#view_menu' do
     it 'prints a menu' do
@@ -17,29 +11,38 @@ describe Takeaway do
     end
   end
 
-  describe '#item' do
+  describe '#items' do
     let(:input) { StringIO.new("Burger") }
     it 'receives user input for item required' do
       $stdin = input
-      expect { subject.item }.to output("What item would you like?\n").to_stdout
+      expect { subject.items }.to output("What item would you like?\n").to_stdout
       $stdin = STDIN
     end
   end
 
-  describe '#quantity' do
+  describe '#quantities' do
     let(:input) { StringIO.new("1") }
     it 'receives user input for quantity required' do
       $stdin = input
-      expect { subject.quantity }.to output("How many would you like?\n").to_stdout
+      expect { subject.quantities }.to output("How many would you like?\n").to_stdout
       $stdin = STDIN
     end
   end
 
-  describe '#continue' do
+  describe '#continuing' do
     let(:input) { StringIO.new("Yes") }
     it 'receives user input for continuing order' do
       $stdin = input
-      expect { subject.continue }.to output("Would you like anything else?\n").to_stdout
+      expect { subject.continuing }.to output("Would you like anything else?\n").to_stdout
+      $stdin = STDIN
+    end
+  end
+
+  describe '#order' do
+    let(:input) { StringIO.new("Burger\n1\nYes\nChips\n1\nNo\n") }
+    it 'receives user input for ordering' do
+      $stdin = input
+      expect { subject.order }.to output("What item would you like?\nHow many would you like?\nWould you like anything else?\nWhat item would you like?\nHow many would you like?\nWould you like anything else?\n").to_stdout
       $stdin = STDIN
     end
   end

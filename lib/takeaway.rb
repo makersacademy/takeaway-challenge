@@ -1,8 +1,8 @@
 class Takeaway
-  attr_reader :order, :item, :quantity, :continue
+  attr_reader :ordered, :item, :quantity, :continue
 
   def initialize
-    @order = []
+    @ordered = []
     @item = nil
     @quantity = nil
     @continue = "Yes"
@@ -12,27 +12,28 @@ class Takeaway
     { Burger: 4, Fish: 4, Sausage: 4, Chips: 1 }
   end
 
-  def item
+  def items
     puts "What item would you like?"
     @item = gets.chomp
-    #@order << "#{quantity} x #{item}"
   end
 
-  def quantity
+  def quantities
     puts "How many would you like?"
     @quantity = gets.chomp
   end
 
-  def continue
+  def continuing
     puts "Would you like anything else?"
     @continue = gets.chomp
   end
 
-  #def order
-  #  while true do
-  #    item
-  #    quantity
-  #    @order << "#{item} x #{quantity}"
-  #  end
-  #end
+  def order
+    loop do
+      items
+      quantities
+      @ordered.push("#{@item} x #{@quantity}")
+      continuing
+      break if @continue == "No"
+    end
+  end
 end
