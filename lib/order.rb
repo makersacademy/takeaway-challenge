@@ -1,7 +1,7 @@
 require './lib/menu.rb'
 
 class Order
-  attr_reader :order, :current_total
+  attr_reader :order, :current_total, :bill
   def initialize
     @order = []
   end
@@ -20,6 +20,10 @@ class Order
       puts "#{item[:item]} x#{item[:quantity]}"
     end
     puts current_total
+  end
+
+  def checkout
+    @bill = Bill.new
   end
 
   private
