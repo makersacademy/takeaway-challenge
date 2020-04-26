@@ -25,6 +25,11 @@ class Interface
       place_order
     when "2"
       order_confirmation
+    when "9"
+      puts "Goodbye"
+      exit
+    else
+      puts "A dinnae understaun, try again"  
     end
   end
 

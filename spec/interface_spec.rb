@@ -22,4 +22,17 @@ describe Interface do
     subject.input("2")
   end
 
+  it "Is able to accept user input '9' and exit interface with 'Goodbye'." do
+    expect {subject.input("9")}.to output("Goodbye\n").to_stdout
+    rescue SystemExit
+  end
+
+  it "Is able to ignore erroneous input and ask the user to 'try again'. " do
+    $stdout = StringIO.new
+    subject.input("foo")
+    $stdout.rewind
+    expect($stdout.gets.strip).to include("try again")
+    $stdout = STDOUT
+  end
+
 end
