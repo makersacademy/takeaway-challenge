@@ -35,6 +35,13 @@ class OrderMenu
     sum
   end
 
+  def basket_summary
+    @basket.each do |selection|
+      item_total = selection["item"].price * selection["quantity"]
+      puts "#{selection["item"].item} x #{selection["quantity"]} = #{item_total}"
+    end
+  end
+
   private
   def available?(item)
     @dish_list.dishes.each { |dish| @current_selection["item"] = dish if dish.item == item }

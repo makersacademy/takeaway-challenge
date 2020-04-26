@@ -25,15 +25,21 @@ RuntimeError (Item not available)
 2.6.5 :007 > order_menu.enter_selection("Pizza", 3)\
 2.6.5 :008 > order_menu.enter_selection("Kebab", 1)
 
-#### Total: Pizza: 15, Kebab: 4, Burgers: 6
-2.6.5 :009 > order_menu.total\
+#### Check basket summary
+2.6.5 :009 > order_menu.basket_summary
+Burger x 2 = 6\
+Pizza x 3 = 15\
+Kebab x 1 = 4
+
+#### Total
+2.6.5 :010 > order_menu.total\
  => 25 
 
 #### Place order - Throws error: Wrong amount
-2.6.5 :010 > order_menu.place_order(20)\
+2.6.5 :011 > order_menu.place_order(20)\
 RuntimeError (Incorrect amount)
 
 #### Successfully places order and sends SMS
-2.6.5 :010 > order_menu.place_order(25)
+2.6.5 :012 > order_menu.place_order(25)
  => <Twilio.Api.V2010.MessageInstance account_sid: *** api_version: 2010-04-01\ 
 body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 16:48
