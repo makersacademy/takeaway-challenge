@@ -12,4 +12,11 @@ class Interface
     @food.menu
   end
 
+  def options_menu
+    puts "------------------------------------------"
+    puts "1. Place your order"
+    puts "2. View your order"
+    puts "9. Exit"
+  end
+
 end
