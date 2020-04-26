@@ -20,7 +20,7 @@ class Menu
     end
   end
 
-  def order
-    @my_order = Order.new
+  def order(order = Order.new)
+    @my_order = order 
   end
 end
