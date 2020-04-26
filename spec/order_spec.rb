@@ -56,6 +56,16 @@ context Order do
       expect(subject.total).to eq 0
     end
     
+    it 'returns order amount if items have been added' do
+      dish_3 = Dish.new(3, 1.00, :dish_name)
+      dish_4 = Dish.new(4, 2.00, :dish_name)
+      @menu.add(dish_3)
+      @menu.add(dish_4)
+      subject.add(3, @menu)
+      subject.add(4, @menu)
+      expect(subject.total).to eq 3.00
+    end
+    
   end
 
 end
