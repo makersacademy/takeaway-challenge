@@ -8,6 +8,8 @@ context Menu do
 
   before(:each) do
     @dish = Dish.new(:dish_number, :dish_price, :dish_name)
+    @dish_1 = Dish.new(1, :dish_price, :dish_name)
+    @dish_2 = Dish.new(2, :dish_price, :dish_name)
   end
   
   describe '#add' do
@@ -25,18 +27,13 @@ context Menu do
   
   describe '#get' do
     
-    it { is_expected.to respond_to(:get).with(1).argument }
-    
     it 'raises error if dish is not on the menu' do
-#       dish_1 = Dish.new(1, :dish_price, :dish_name)
-#       subject.add(dish_1)
       expect { subject.get(2) }.to raise_error Menu::ERROR_DISH_NOT_EXISTS
     end
     
     it 'returns dish corresponding the number' do
-      dish_1 = Dish.new(1, :dish_price, :dish_name)
-      subject.add(dish_1)
-      expect(subject.get(1)).to eq dish_1
+      subject.add(@dish_1)
+      expect(subject.get(1)).to eq @dish_1
     end
   
   end
@@ -45,12 +42,10 @@ context Menu do
     
     it 'returns array of dishes' do
       dishes = Array.new
-      dish_1 = Dish.new(1, :dish_price, :dish_name)
-      dish_2 = Dish.new(2, :dish_price, :dish_name)
-      dishes.push(dish_1)
-      dishes.push(dish_2)
-      subject.add(dish_1)
-      subject.add(dish_2)
+      dishes.push(@dish_1)
+      dishes.push(@dish_2)
+      subject.add(@dish_1)
+      subject.add(@dish_2)
       expect(subject.dishes).to eq dishes
     end
   
