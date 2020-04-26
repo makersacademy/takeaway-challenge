@@ -28,7 +28,15 @@ context Menu do
     it { is_expected.to respond_to(:get).with(1).argument }
     
     it 'raises error if dish is not on the menu' do
-      expect { subject.get(1) }.to raise_error Menu::ERROR_DISH_NOT_EXISTS
+#       dish_1 = Dish.new(1, :dish_price, :dish_name)
+#       subject.add(dish_1)
+      expect { subject.get(2) }.to raise_error Menu::ERROR_DISH_NOT_EXISTS
+    end
+    
+    it 'returns dish corresponding the number' do
+      dish_1 = Dish.new(1, :dish_price, :dish_name)
+      subject.add(dish_1)
+      expect(subject.get(1)).to eq dish_1
     end
   
   end

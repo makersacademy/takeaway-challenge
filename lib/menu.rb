@@ -16,7 +16,15 @@ class Menu
   end
   
   def get(number)
-    raise ERROR_DISH_NOT_EXISTS
+    raise ERROR_DISH_NOT_EXISTS if @dishes.empty?
+    
+    @dishes.each do |on_menu| 
+      if on_menu.number == number
+        return on_menu
+      else
+        raise ERROR_DISH_NOT_EXISTS
+      end
+    end
   end
   
   private
