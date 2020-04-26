@@ -36,7 +36,7 @@ class Customer
   def complete_order
     puts "Would you like to proceed with this order?"
     user = gets.chomp
-    receive_notification if user.downcase == "yes"
+    puts "Thank you! Your order has now been processed." if user.downcase == "yes"
     cancel_order if user.downcase == "no"
   end
 
