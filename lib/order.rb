@@ -9,12 +9,12 @@ class Order
   def add(number)
     raise ERROR_NOT_INTEGER unless number.is_a?(Integer)
 
-     @order.push(number)
-     @order.last
+    @order.push(number)
+    @order.last
   end
   
   def get 
-  
+    @order
   end
 
 end
