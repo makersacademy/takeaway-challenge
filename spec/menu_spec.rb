@@ -28,7 +28,7 @@ context Menu do
     it { is_expected.to respond_to(:get).with(1).argument }
     
     it 'raises error if dish is not on the menu' do
-      expect { subject.get(1) }.to raise_error "Error: that dish is not on the menu"
+      expect { subject.get(1) }.to raise_error Menu::ERROR_DISH_NOT_EXISTS
     end
   
   end

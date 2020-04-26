@@ -2,6 +2,7 @@ class Menu
   attr_reader :dishes
   
   ERROR_DISH_EXISTS = "Error: that dish number already exists"
+  ERROR_DISH_NOT_EXISTS = "Error: that dish is not on the menu"
   
   def initialize 
     @dishes = Array.new 
@@ -15,7 +16,7 @@ class Menu
   end
   
   def get(number)
-    raise "Error: that dish is not on the menu"
+    raise ERROR_DISH_NOT_EXISTS
   end
   
   private
