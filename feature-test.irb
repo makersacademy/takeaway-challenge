@@ -4,6 +4,11 @@ require './lib/dish.rb'
 
 # Set up world
 
+dish_1 = Dish.new(1, 2.00, "Plain rice")
+dish_2 = Dish.new(2, 3.00, "Special rice")
+dish_3 = Dish.new(3, 113.00, "Very Special rice")
+dish_4 = Dish.new(4, 0.01, "Unspecial rice")
+
 # Environment setup, ready to test User Stories
 
 # Begin Story 1:
@@ -16,9 +21,9 @@ loop do
 end
 
 menu_1 = Menu.new
-menu_1.add(Dish.new(1, 2.00, "Plain rice"))
-menu_1.add(Dish.new(2, 3.00, "Special rice"))
-menu_1.add(Dish.new(3, 113.00, "Very Special rice"))
+menu_1.add(dish_1)
+menu_1.add(dish_2)
+menu_1.add(dish_3)
 
 menu_1.dishes
 
