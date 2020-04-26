@@ -60,6 +60,24 @@ loop do
 # Press Control-C to continue
 end
 
+# Begin Story 3:
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+menu_1.dishes
+
+order_1.order
+
+order_1.total(menu_1)
+
+# End Story 3:
+
+loop do
+# Press Control-C to continue
+end
+
+
 # End of feature-test.irb
 loop do
 # Press Control-C to continue
