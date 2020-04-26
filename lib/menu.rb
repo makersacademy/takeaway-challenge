@@ -20,11 +20,7 @@ class Menu
     return false if @dishes.empty?
     
     @dishes.each do |on_menu| 
-      if on_menu.number == dish.number
-        return true
-      else
-        return false
-      end
+      return on_menu.number == dish.number
     end
   end
   
