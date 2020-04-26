@@ -37,13 +37,42 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
 
 
 
 Object    | Message 
-User      | Call menu class //// 
+User      | Initial - 
+              @order = nil ()
 
-Menu      | dishes and price (hash?) /// å
+
+            Call menu class //// 
+            
+            new_order(unicorn)
+              @order = unicorn
+
+            add_to_order(itemm, qu)
+              @order.add_items(item, qu)
+
+            #return_order = @order.order
+              
+
+      
+            
+            
+Menu      | dishes and price (hash?) /// 
+
+Order     | Initalise/
+            attr_read :order/
+            @order = []/
+            @this_is_order = {} /
+            add_item(order, quan)
+              @this_is_order[:order] = quan/ 
+
+
+
 
 
 ```
@@ -100,4 +129,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 irb 
 
 Jo = User.new 
-Jo.request_full_menu
+Jo.request_full_menu(Menu.new)
+return full_menu
+Jo.new_order(Order.new)
+

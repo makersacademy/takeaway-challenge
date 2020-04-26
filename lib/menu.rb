@@ -1,7 +1,10 @@
 class Menu
 
   def full_menu 
-    "Menu is empty"
+    menu = {
+      :pizza => 4000,
+      :fries => 1000
+    }
   end 
 
 end 
