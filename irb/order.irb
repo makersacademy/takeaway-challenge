@@ -4,6 +4,9 @@ order = Order.new
 order.add(1)
 order.get 
 
+order.add("Plain rice")
+
+
 order.add(2)
 order.get 
 
