@@ -11,7 +11,6 @@ describe Takeaway do
     expect(takeaway.print_menu).to eq("Rice £5")
   end
 
- 
   it "receives the method to print basket basket" do
     expect(basket).to receive(:print).once 
     subject.print_basket
