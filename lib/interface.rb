@@ -23,6 +23,8 @@ class Interface
     case option
     when "1"
       place_order
+    when "2"
+      order_confirmation
     end
   end
 
