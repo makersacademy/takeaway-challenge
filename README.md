@@ -26,7 +26,7 @@ RuntimeError (Item not available)
 2.6.5 :008 > order_menu.enter_selection("Kebab", 1)
 
 #### Check basket summary
-2.6.5 :009 > order_menu.basket_summary
+2.6.5 :009 > order_menu.basket_summary\
 Burger x 2 = 6\
 Pizza x 3 = 15\
 Kebab x 1 = 4
