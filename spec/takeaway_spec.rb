@@ -11,11 +11,20 @@ describe Takeaway do
     end
   end
 
-  describe '#order' do
-    let(:input) {StringIO.new('Burger')}
-    it 'receives user input to order food' do
+  describe '#item' do
+    let(:input) {StringIO.new("Burger")}
+    it 'receives user input for item required' do
       $stdin = input
-      expect { subject.order }.to output("What would you like to order?\n").to_stdout
+      expect { subject.item }.to output("What would you like to order?\n").to_stdout
+      $stdin = STDIN
+    end
+  end
+
+  describe '#quantity' do
+    let(:input) {StringIO.new("1")}
+    it 'receives user input for quantity required' do
+      $stdin = input
+      expect { subject.quantity }.to output("How many would you like?\n").to_stdout
       $stdin = STDIN
     end
   end
