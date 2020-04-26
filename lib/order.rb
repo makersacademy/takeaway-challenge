@@ -2,11 +2,13 @@ class Order
   attr_reader :current_items
 
   def initialize 
-    @final_order = []
     @current_items = { }
   end 
 
   def add_item(item, quantity)
-    @current_items[:item] = quantity
+    if @current_items[item.to_sym] == nil
+      @current_items[item.to_sym] = []
+    end 
+    @current_items[item.to_sym] << quantity
   end 
 end 
