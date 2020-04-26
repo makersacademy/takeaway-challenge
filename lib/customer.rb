@@ -45,6 +45,6 @@ class Customer
   end
 
   def receive_notification
-    puts "Thank you! Your order has now been processed (see text message)."
+    return "Thank you! Your order has now been processed (see text message)."
   end
 end
