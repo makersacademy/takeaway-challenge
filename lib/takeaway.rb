@@ -1,6 +1,12 @@
 class Takeaway
+  attr_reader :order
+  
+  def initialize
+    @order = []
+  end
+
   def view_menu
-    { Burger: :£4, Fish: :£4, Sausage: :£4, Chips: :£1 }
+    { Burger: 4, Fish: 4, Sausage: 4, Chips: 1 }
   end
 
   def item
@@ -10,6 +16,6 @@ class Takeaway
 
   def quantity
     puts "How many would you like?"
-    quanity = gets.chomp
+    quantity = gets.chomp
   end
 end
