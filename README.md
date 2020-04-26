@@ -39,7 +39,7 @@
 | :negative_squared_cross_mark: | ```Menu```        | Holds list of dishes with prices |
 | :white_check_mark: | ```Dish```        | Holds everything about a dish |
 | :x:                | ```Order```       | Holds everything about an order |
-| :x:                | ```TextMessage``` | Handles everything releated to sending and receiving text messages |
+| :x:                | ```TextMessage``` | Handles everything related to sending and receiving text messages |
 
 ## Methods
 
