@@ -14,6 +14,10 @@ class Menu
     @dishes.last
   end
   
+  def get(number)
+    raise "Error: that dish is not on the menu"
+  end
+  
   private
   
   def contains?(dish)

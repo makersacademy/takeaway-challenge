@@ -17,3 +17,6 @@ menu.dishes
 
 # menu.contains?(dish_1)
 # menu.contains?(dish_4)
+
+menu.get(1)
+menu.get(4)
