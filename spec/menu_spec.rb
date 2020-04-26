@@ -38,5 +38,20 @@ context Menu do
   
   end
 
+  describe '#contains?' do
+  
+    it { is_expected.to respond_to(:contains?).with(1).argument }
+    
+    it 'returns false if dish is not on menu' do 
+      expect(subject.contains?(@dish)).to eq false
+    end
+    
+    it 'return true if dish is on menu' do
+      dish_1 = Dish.new(1, :dish_price, :dish_name)
+      subject.add(dish_1)
+      expect(subject.contains?(dish_1)).to eq true
+    end
+    
+  end
   
 end

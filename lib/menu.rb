@@ -16,4 +16,16 @@ class Menu
     @dishes.last
   end
   
+  def contains?(dish)
+    return false if @dishes.empty?
+    
+    @dishes.each do |on_menu| 
+      if on_menu.number == dish.number
+        return true
+      else
+        return false
+      end
+    end
+  end
+  
 end
