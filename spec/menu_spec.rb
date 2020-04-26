@@ -19,8 +19,8 @@ context Menu do
     end
     
     it 'raises error if dish number is not unique' do
-      subject.add(Dish.new(1, :dish_price, :dish_name))
-      expect { subject.add(Dish.new(1, :dish_price, :dish_name)) }.to raise_error Menu::ERROR_DISH_EXISTS
+      subject.add(@dish_1)
+      expect { subject.add(@dish_1) }.to raise_error Menu::ERROR_DISH_EXISTS
     end
     
   end
