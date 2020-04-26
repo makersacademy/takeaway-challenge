@@ -8,6 +8,7 @@ describe Restaurant do
   it { is_expected.to respond_to(:view_menu) }
   it { is_expected.to respond_to(:select_dish).with(2).arguments }
   it { is_expected.to respond_to(:view_basket) }
+  it { is_expected.to respond_to(:place_order) }
 
   describe '#view_menu' do
     it 'returns a menu of dishes with prices' do
@@ -38,6 +39,14 @@ describe Restaurant do
       expect(order).to receive(:basket_total)
 
       subject.view_basket
+    end
+  end
+
+  describe '#place_order' do
+    it 'places the order' do
+      expect(order).to receive(:prepare_order)
+
+      subject.place_order
     end
   end
 end

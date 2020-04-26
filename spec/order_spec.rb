@@ -24,7 +24,7 @@ describe Order do
       subject.add_to_basket('Burger', 1)
 
       expect { subject.remove_from_basket('Burger', 1) }
-      .to change { subject.basket['Burger'] }.by -1
+      .to change { subject.basket['Burger'] }.by(-1)
     end
   end
 
@@ -35,6 +35,16 @@ describe Order do
       subject.add_to_basket('Shawarma', 3)
 
       expect(subject.basket_total).to eq "2 x £3 - Burger, 3 x £5 - Shawarma, Total: £21"
+    end
+  end
+
+  describe '#prepare_order' do
+    it 'prepares order for delivery' do
+      subject.add_to_basket('Shawarma', 1)
+
+      subject.prepare_order
+
+      expect(subject.basket[:ready]).to be true
     end
   end
 end

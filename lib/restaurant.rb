@@ -22,4 +22,8 @@ class Restaurant
   def view_basket
     @order.basket_total
   end
+
+  def place_order
+    @order.prepare_order
+  end
 end

@@ -17,13 +17,17 @@ class Order
   end
 
   def basket_total
-    @basket.map {|dish, qty| "#{qty} x £#{@menu.menu_list[dish]} - #{dish}, "}
+    @basket.map { |dish, qty| "#{qty} x £#{@menu.menu_list[dish]} - #{dish}, " }
            .join + "Total: £#{cost}"
+  end
+
+  def prepare_order
+    @basket[:ready] = true
   end
 
   private
 
   def cost
-    @basket.map { |dish, qty| @menu.menu_list[dish] * qty}.sum
+    @basket.map { |dish, qty| @menu.menu_list[dish] * qty }.sum
   end
 end
