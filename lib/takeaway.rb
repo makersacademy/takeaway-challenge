@@ -1,12 +1,14 @@
 require_relative 'menu'
+require_relative 'basket'
 
 class Takeaway 
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :order_arr
 
   def initialize(menu:, basket:)
     @menu = menu
     @basket = basket
+    @order_arr = []
   end
 
   def print_menu
@@ -17,7 +19,8 @@ class Takeaway
     basket.print
   end
 
-  private 
+  def add_to_basket(dish, quantity)
+    quantity.times{ @order_arr << dish}
+  end
 
-  attr_reader :menu, :basket
 end
