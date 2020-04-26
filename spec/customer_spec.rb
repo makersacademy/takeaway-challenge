@@ -61,7 +61,7 @@ RSpec.describe Customer do
       menu_double = double :menu
       subject = Customer.new(menu_double)
       expect(subject.receive_notification).to include(
-      "Thank you for ordering with us today and we hope you enjoy your meal!")
+      "Thank you! Your order has now been processed (see text message).")
     end
   end
 end
