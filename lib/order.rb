@@ -18,6 +18,7 @@ class Order
   end
 
   def confirm_order(total)
+    raise 'Order totals do not match' if total != order_total
     @messenger.send_confirmation_message
   end
 end

@@ -50,10 +50,21 @@ describe Order do
   end
 
   describe '#confirm_order' do
-    it 'calls on messenger to send a confirmation' do
+    it 'calls on messenger to send a confirmation if order total was correct' do
       subject = described_class.new(italian_menu, messenger)
+      subject.add_item('Carbonara', 1)
+      subject.add_item('Forcaccia', 3)
+      subject.add_item('Lasagne', 1)
       expect(messenger).to receive(:send_confirmation_message)
       subject.confirm_order(25.4)
+    end
+
+    it 'raises an error if order total is incorrect' do
+      subject = described_class.new(italian_menu, messenger)
+      subject.add_item('Carbonara', 1)
+      subject.add_item('Forcaccia', 3)
+      subject.add_item('Lasagne', 1)
+      expect { subject.confirm_order(10) }.to raise_error('Order totals do not match')
     end
   end
 end
