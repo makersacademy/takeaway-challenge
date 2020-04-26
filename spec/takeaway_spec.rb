@@ -12,10 +12,11 @@ describe Takeaway do
   end
 
  
-  # it "displays basket" do
-  #   expect(basket).to receive(:print).once 
-  #   subject.print_basket
-  # end
+  it "receives the method to print basket basket" do
+    expect(basket).to receive(:print).once 
+    subject.print_basket
+  end
+
   let(:basket) { double(:basket, print: basket_example) }
   let(:basket_example) { "Rice 100, Soup 20, Chefs Special 10" }
   it "shows the basket and quantity" do
