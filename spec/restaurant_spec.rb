@@ -11,9 +11,9 @@ describe Restaurant do
 
   describe '#view_menu' do
     it 'returns a menu of dishes with prices' do
-      allow(menu).to receive(:print_menu).and_return('Fish & Chips £4')
+      expect(menu).to receive(:print_menu)
 
-      expect(subject.view_menu).to eq 'Fish & Chips £4'
+      subject.view_menu
     end
   end
 
@@ -34,10 +34,10 @@ describe Restaurant do
   end
 
   describe '#view_basket' do
-    it 'returns the dishes in the basket' do
-      allow(order).to receive(:basket).and_return({"Burger" => 3, "Steak" => 3})
+    it 'returns the dishes in the basket and the total' do
+      expect(order).to receive(:basket_total)
 
-      expect(subject.view_basket).to eq '3 x Burger, 3 x Steak'
+      subject.view_basket
     end
   end
 end

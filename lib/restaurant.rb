@@ -20,7 +20,6 @@ class Restaurant
   end
 
   def view_basket
-    @order.basket.map { |dish, qty| "#{qty} x #{dish.to_s}" }
-                 .join(', ')
+    @order.basket_total
   end
 end

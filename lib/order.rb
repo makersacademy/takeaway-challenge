@@ -17,7 +17,7 @@ class Order
     if @basket[dish] <= 0; @basket.delete(dish); end
   end
 
-  def view_total
+  def basket_total
     cost = @basket.map { |dish, qty| @menu.menu_list[dish] * qty}.sum
     @basket.map {|dish, qty| "#{qty} x £#{@menu.menu_list[dish]} - #{dish}, "}
            .join + "Total: £#{cost}"
