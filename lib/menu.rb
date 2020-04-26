@@ -1,4 +1,5 @@
 require './lib/order.rb'
+require './lib/bill.rb'
 
 class Menu
 
@@ -21,6 +22,6 @@ class Menu
   end
 
   def order(order = Order.new)
-    @my_order = order 
+    @my_order = order
   end
 end

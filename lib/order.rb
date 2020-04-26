@@ -1,4 +1,5 @@
 require './lib/menu.rb'
+require './lib/bill.rb'
 
 class Order
   attr_reader :order, :current_total, :bill
@@ -20,10 +21,6 @@ class Order
       puts "#{item[:item]} x#{item[:quantity]}"
     end
     puts current_total
-  end
-
-  def checkout
-    @bill = Bill.new
   end
 
   private

@@ -33,10 +33,5 @@ describe Order do
         expect{ menu.my_order.view_order }.to output(String).to_stdout
       end
     end
-
-    describe "#checkout"
-      it 'Creates bill' do
-        expect(menu.my_order.checkout).to be_a(Bill)
-      end
   end
 end
