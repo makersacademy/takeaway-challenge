@@ -7,12 +7,12 @@ class Menu
     @dishes = Array.new 
   end
     
-  def add(new_dish)
-    @dishes.each do |dish| 
-      raise ERROR_DISH_EXISTS if dish.number == new_dish.number
+  def add(dish)
+    @dishes.each do |on_menu| 
+      raise ERROR_DISH_EXISTS if on_menu.number == dish.number
     end
     
-    @dishes.push(new_dish)
+    @dishes.push(dish)
     @dishes.last
   end
   
