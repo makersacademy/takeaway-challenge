@@ -26,4 +26,11 @@ describe Menu do
     expect{subject.footer}.to output(footer).to_stdout
   end
 
+  it "Is able to display the entire menu." do
+    expect(subject).to receive(:header)
+    expect(subject).to receive(:list)
+    expect(subject).to receive(:footer)
+    subject.menu
+  end
+
 end
