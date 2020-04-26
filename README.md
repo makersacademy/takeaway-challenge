@@ -1,3 +1,11 @@
+## My Takeaway challenge!
+
+I completed the first 3 user stories and I'm very happy with what I've done. I feel my tests are a lot better than last week, along with the way I went about doing it. I started by having everything in one class but knew I would need to split it down. After doing the first 3 user stories I then split the original class into 2 but still in the same file until I knew all my tests were passing again. Once that happened I then moved the Ordering class, along with its tests into their own respective files and yes, everything still worked! Having had issues with getting classes to work together last weekend, I found this process works better as it meant I could ensure everything worked before splitting the class.
+
+It will work in IRB but just note that to 'order' you will need to type orders.order after your class name as otherwise it won't work.
+
+4th user story not complete as I needed more time to work out Twilio.
+
 Takeaway Challenge
 ==================
 ```
