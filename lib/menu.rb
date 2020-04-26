@@ -14,6 +14,8 @@ class Menu
     @dishes.last
   end
   
+  private
+  
   def contains?(dish)
     return false if @dishes.empty?
     
