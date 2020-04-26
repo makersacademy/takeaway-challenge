@@ -18,9 +18,9 @@ describe OrderManager do
     end
   end
 
-  describe '#search_restaurants' do
-    it 'returns the menu specified by the user' do
-      
+  describe '#new_order' do
+    it 'finds a matching menu' do
+      expect { subject.new_order('Italian','',10) }.to change { subject.menu }.to be_a_kind_of(Menu)
     end
   end
 end
