@@ -1,0 +1,24 @@
+require 'order'
+require 'menu'
+
+describe Order do
+  describe "#add_to_order" do
+    it "Should add items to a user's order" do
+      expect { subject.add_to_order("Egg Fried Rice", 2) }.to change { subject.order.length }.by(1)
+    end
+
+    it "should only add an item if the item is present on the menu" do
+      expect { subject.add_to_order("Chips", 1) }.to raise_error("This item is not on the menu")
+    end
+  end
+
+  describe "#current_total" do
+    it "calculates total price of current order" do
+      menu = Menu.new
+      menu.order
+      menu.my_order.add_to_order("Egg Fried Rice", 2)
+      menu.my_order.add_to_order("Sweet and Sour Chicken", 2)
+      expect(menu.my_order.current_total).to eq(16.0)
+    end
+  end
+end
