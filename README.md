@@ -30,10 +30,24 @@ Task
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
-```
+
+/////////////////
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+
+
+
+
+Object    | Message 
+User      | Call menu class //// 
+
+Menu      | dishes and price (hash?) /// å
+
+
+```
+
 
 As a customer
 So that I can order the meal I want
@@ -82,3 +96,8 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+irb 
+
+Jo = User.new 
+Jo.request_full_menu
