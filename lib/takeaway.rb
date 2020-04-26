@@ -2,13 +2,12 @@ require 'nexmo'
 
 class Takeaway
 
-  attr_reader :order, :overall_total, :current_total
+  attr_reader :order, :current_total
 
   def initialize(dishes = {})
     @dishes = dishes
     @order = []
     @current_total = 0
-    @overall_total = 0
   end
 
   def see_dishes
@@ -31,6 +30,7 @@ class Takeaway
     raise "Incorrect amount of money paid!" unless pay == @current_total
     puts "Thank you! Your order was placed and will be delivered before #{delivery_time}. A text will be sent to your phone shortly to confirm your order."
     send_text
+    "Text sent!"
   end
 
   def send_text

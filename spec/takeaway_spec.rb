@@ -55,12 +55,16 @@ describe Takeaway do
     end
 
     it 'outputs to stdout that they have placed the order' do
+      allow(subject).to receive(:send_text) { "Hello" }
+
       expect { subject.place_order(55) }.to output("Thank you! Your order was placed and will be delivered before #{delivery_time}. A text will be sent to your phone shortly to confirm your order.\n").to_stdout
     end
 
-    # it 'sends a text message to the phone' do
-    #
-    # end
+    it 'sends a text message to the phone' do
+      allow(subject).to receive(:send_text) { "Hello" }
+
+      expect(subject.place_order(55)).to eq("Text sent!")
+    end
   end
 
 end

@@ -9,7 +9,6 @@ chippers.add_dish(:sausage, 1)
 chippers.add_dish(:chips, 5)
 
 chippers.order
+chippers.current_total
 
-chippers.check_total_order_price
-
-chippers.place_order
+chippers.place_order(55)
