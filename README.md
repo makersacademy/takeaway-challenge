@@ -67,6 +67,7 @@
 | :x:                | ```Customer```    | ```remove(order, dish)``` | Notes |
 | :x:                | ```Customer```    | ```total(order)``` | Notes |
 | :x:                | ```Order```       | ```new``` | Notes |
+| :x:                | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
 | :x:                | ```Order```       | ```total``` | Notes |
 
 
