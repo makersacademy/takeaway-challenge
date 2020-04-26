@@ -16,8 +16,12 @@ class Menu
   end
 
   def header
-    puts "Jock'O'Byte - Take Away Menu".center(41)
-    puts "-----------------------------------------"
+    puts "Jock'O'Byte - Take Away Menu".center(42)
+    puts "------------------------------------------"
+  end
+
+  def footer
+    puts "* Mony braw dishes fer ye tae choose fae *"
   end
 
 end

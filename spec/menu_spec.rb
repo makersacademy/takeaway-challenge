@@ -17,7 +17,13 @@ describe Menu do
   end
 
   it "Is able to display a menu header." do
-    header ="      Jock'O'Byte - Take Away Menu       \n-----------------------------------------\n"
+    header = "       Jock'O'Byte - Take Away Menu       \n------------------------------------------\n"
     expect{subject.header}.to output(header).to_stdout
   end
+
+  it "Is able to display a menu footer." do
+    footer = "* Mony braw dishes fer ye tae choose fae *\n"
+    expect{subject.footer}.to output(footer).to_stdout
+  end
+
 end
