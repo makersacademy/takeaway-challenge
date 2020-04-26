@@ -9,4 +9,10 @@ attr_reader :items
     @items << { name: name, price: price }
   end
 
+  def list
+    @items.each_with_index do |dish, index|
+      puts "#{(index + 1)}. #{dish[:name]}, £ #{dish[:price]}"
+    end
+  end
+
 end
