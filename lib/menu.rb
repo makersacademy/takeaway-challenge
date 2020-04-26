@@ -26,18 +26,6 @@ class Menu
     raise ERROR_DISH_NOT_EXISTS
   end
   
-#   def check?(number)
-#     return false if @dishes.empty?
-#     
-#     @dishes.each do |on_menu| 
-#       if on_menu.number == number
-#         return true
-#       end
-#     end
-#     
-#     false
-#   end
-
 #   TODO: do we need this?  
 #   def locate(number)
 #     raise ERROR_DISH_NOT_EXISTS if @dishes.empty?
