@@ -56,8 +56,11 @@ describe OrderMenu do
       end
 
       context "sum is correct" do
+        before :each do
+          allow(subject).to receive(:check) { "success!"}
+        end
         it "places an order" do
-          expect(subject.place_order(subject.total)).to eq("success!")
+          expect(subject.place_order(0)).to eq("success!")
         end
       end
     end
