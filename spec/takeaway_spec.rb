@@ -7,6 +7,7 @@ describe TakeAway do
   let(:menu_class) { double(:menu_class) }
   let(:kitchen_class) { double(:kitchen_class) }
   let(:text_class) { double(:text_class) }
+  let(:phone) { double(:phone) }
 
   context 'instance variables' do
     it 'Menu class' do
@@ -52,6 +53,12 @@ describe TakeAway do
 
       it 'should raise error if no orders' do
         expect{ takeaway.checkout }.to raise_error "Can not process the order: no items selected"
+      end
+    end
+
+    context '#confirm_order' do
+      it 'should receive text' do
+        expect{ takeaway.confirm_order(phone) }.to output.to_stdout
       end
     end
 

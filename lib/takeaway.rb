@@ -23,6 +23,10 @@ class TakeAway
     @kitchen.order_total
   end
 
+  def confirm_order(phone)
+    @text.sms(phone)
+  end
+
   private
 
   def empty?
