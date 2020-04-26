@@ -69,6 +69,8 @@
 | :x:                | ```Order```       | ```new``` | Notes |
 | :x:                | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
 | :x:                | ```Order```       | ```total``` | Notes |
+| :x:                | ```Order```       | ```order``` | Returns array containing dish numbers |
+
 
 
 
