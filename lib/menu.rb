@@ -15,4 +15,23 @@ class Menu
         puts "#{dish}: #{price}"
       end
   end
+
+  def add_to_basket
+    @user = gets.chomp
+    @menu.each do |dish, price|
+      if dish == @user
+        puts "How many orders of this dish would you like?"
+        @amount = gets.chomp
+        puts @basket.push(["#{@amount} orders of:", "#{dish},", "Total Price:", price * @amount.to_i])
+      end
+    end
+  end
+
+  def calculate_total
+    total = []
+    @basket.each do |orders|
+      total << orders[3]
+    end
+    puts "The total of your order is £#{total.sum}"
+  end
 end
