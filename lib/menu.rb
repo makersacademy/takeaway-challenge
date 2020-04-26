@@ -4,7 +4,7 @@ require './lib/twilio'
 class OrderMenu
   attr_reader :basket, :dish_list
 
-  #Dependency Injection!
+  # Dependency Injection!
   def initialize(dish_list = DishList.new)
     @dish_list = dish_list
     @basket = Array.new
@@ -17,12 +17,14 @@ class OrderMenu
 
   def enter_selection(item, quantity)
     raise "Item not available" unless available?(item)
+
     add_to_basket(quantity)
     @current_selection = Hash.new
   end
 
   def place_order(sum)
     raise "No selection made" if @basket.empty?
+    
     check(sum)
   end
 
