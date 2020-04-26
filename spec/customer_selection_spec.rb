@@ -26,17 +26,10 @@ describe CustomerSelection do
     end
   end
   
-  describe "#calculate_total" do
-    it " calculates total" do
-    subject.add(item, quantity)
-    expect(subject.calculate_total).to eq(6)
-  end
-  end
-  
   describe "#print_order" do
     it "prints selected dishes" do
       subject.add(item, quantity)
-      expect(subject.print_order).to be_kind_of(Hash)
+      expect(subject.print_order).to eq("Total: £6")
     end
   end
   

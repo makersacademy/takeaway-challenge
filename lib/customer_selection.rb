@@ -13,20 +13,21 @@ class CustomerSelection
     @selection[item] = quantity
   end
   
+  def print_order
+    @selection.each do |key, value|
+      "#{key}: #{value}x £#{@menu.listOfDishes[key] * value}"
+      end
+    "Total: £#{calculate_total}"
+  end
+  
+  private
+  
   def calculate_total
     @total = 0
     @selection.each do |key, value|
       @total += @menu.listOfDishes[key] * value
     end
     @total
-  end
-  
-  def print_order
-    @selection.each do |key, value|
-      puts "#{key}: #{value}x £#{@menu.listOfDishes[key] * value}"
-      end
-    puts "Total: £#{calculate_total}"
-    @selection
   end
   
 end
