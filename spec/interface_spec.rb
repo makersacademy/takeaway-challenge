@@ -2,12 +2,12 @@ require 'interface'
 
 describe Interface do
 
-  it "Is able to call on the takeaway menu" do
+  it "Is able to call on the takeaway menu." do
     expect(subject.food).to receive(:menu)
     subject.food_menu
   end
 
-  it "Is able to display the options_menu" do
+  it "Is able to display the options_menu." do
     options = "------------------------------------------\n1. Place your order\n2. View your order\n9. Exit\n"
     expect{subject.options_menu}.to output(options).to_stdout
   end
@@ -35,4 +35,9 @@ describe Interface do
     $stdout = STDOUT
   end
 
+  it "is able to display interactive takeaway menu, accept input and exit." do
+    expect {subject.input("9")}.to output("Goodbye\n").to_stdout
+    subject.interactive_menu
+    rescue SystemExit
+  end
 end

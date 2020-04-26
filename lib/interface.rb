@@ -1,4 +1,4 @@
-require './lib/menu.rb'
+require 'menu'
 
 class Interface
 
@@ -29,7 +29,15 @@ class Interface
       puts "Goodbye"
       exit
     else
-      puts "A dinnae understaun, try again"  
+      puts "A dinnae understaun, try again"
+    end
+  end
+
+  def interactive_menu
+    loop do
+      food_menu
+      options_menu
+      process(STDIN.gets.chomp)
     end
   end
 
