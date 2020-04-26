@@ -7,11 +7,17 @@ class Restaurants
     @restaurants = []
   end
 
-  def find_restaurants
+  def load_restaurants
     path = File.dirname(__FILE__)
     file = File.open(path + '/restaurants.json')
-    data = JSON.load(file)
-    @restaurants << create_menu(data[0])
+    JSON.load(file)
+  end
+
+  def find_restaurants
+    menus = load_restaurants
+    menus.each do |menu|
+      @restaurants << create_menu(menu)
+    end
   end
 
   def create_menu(hash)

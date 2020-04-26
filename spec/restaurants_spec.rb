@@ -1,8 +1,18 @@
 require 'restaurants'
 
 describe Restaurants do
-  it 'populates itself with a list of restaurants' do
-    expect { subject.find_restaurants }.to change { subject.restaurants.length }.by(1)
+
+  describe 'load_restaurants' do
+    it 'returns a structured list of possible restaurants from a JSON file' do
+      restaurants = [{"Italian" => {"Pizza" => "5.00", "Lasagne" => "10.50", "Gelato" => "3.90"}}]
+      expect(subject.load_restaurants).to eq(restaurants)
+    end
+  end
+
+  describe '#find_restaurants' do
+    it 'populates itself with a list of restaurants' do
+      expect { subject.find_restaurants }.to change { subject.restaurants.length }.by(1)
+    end
   end
 
   describe '#create_menu' do
