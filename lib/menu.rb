@@ -15,4 +15,9 @@ class Menu
     end
   end
 
+  def header
+    puts "Jock'O'Byte - Take Away Menu".center(41)
+    puts "-----------------------------------------"
+  end
+
 end

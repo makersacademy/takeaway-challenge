@@ -15,4 +15,9 @@ describe Menu do
     expect($stdout.gets.strip).to eq('1. Special, £ 8.50')
     # test based on https://stackoverflow.com/a/34667028
   end
+
+  it "Is able to display a menu header." do
+    header ="      Jock'O'Byte - Take Away Menu       \n-----------------------------------------\n"
+    expect{subject.header}.to output(header).to_stdout
+  end
 end
