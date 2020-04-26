@@ -3,14 +3,13 @@ require "./lib/menu"
 require "./lib/order"
 
 describe User do
-  let(:menu) { Menu.new }
   let(:unicorn) { Order.new }
   let(:item) { "order" }
   let(:quantity) { double :user }
 
   describe "#Call menu items" do 
     it "Returns the full menu" do
-      expect(subject.request_full_menu(menu)).to eq(menu.full_menu)
+      expect(subject.request_full_menu).to eq(subject.menu.full_menu)
     end
   end
 
@@ -22,6 +21,13 @@ describe User do
   end 
 
   describe "#add_to_order" do
+
+    it "configures item to downcase and removes white space" do
+      subject.new_order
+      subject.add_to_order("Tofu curry", 1)
+      expect(subject.order.current_items).to eq(:tofu_curry => [1])
+    end 
+
     it "Interacts with Order class adding item and quantity to hash of arrays" do
       subject.new_order
       subject.add_to_order(item, quantity)

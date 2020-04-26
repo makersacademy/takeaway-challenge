@@ -33,6 +33,9 @@ Task
 
 /////////////////
 
+
+
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -42,34 +45,58 @@ So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
 
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+
+
+
 
 Object    | Message 
 User      | Initial - 
               @order = nil ()
 
-
-            Call menu class //// 
+          |  Call menu class //// 
             
-            new_order(unicorn)
-              @order = unicorn
+          |  new_order(unicorn) //
+              @order = unicorn//
 
-            add_to_order(itemm, qu)
-              @order.add_items(item, qu)
+          |  add_to_order(itemm, qu)//
+              @order.add_items(item, qu)//
 
-            #return_order = @order.order
+          |  #return_order = @order.order//
+
+          |  verify order is correct 
               
+_________________________________________
 
-      
-            
-            
+
 Menu      | dishes and price (hash?) /// 
+            Update menu
 
-Order     | Initalise/
+___________________________________________
+
+Order     | Initialize/
             attr_read :order/
-            @order = []/
-            @this_is_order = {} /
-            add_item(order, quan)/
-              @this_is_order[:order] = quan/ 
+          | @current_items = {[]} / 
+            
+          | add_item(item, quantity)/
+                        - return the order and the quantity to the user ****
+                        - @current_items[:item] = quantity 
+          | basket summary 
+                        - Iterates the hash of arrays over the hash of the menu - get the correct amount
+                        - i.e. order  pizza is key - value 5 
+                        - menu pizza is key ** value (price) by the order value 
+            
+          | total takes the sum of all these values 
+                        - returns to customer 
+          
+              
+                
+
+
+
 
 
 
@@ -78,13 +105,8 @@ Order     | Initalise/
 ```
 
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+
 
 As a customer
 So that I am reassured that my order will be delivered on time

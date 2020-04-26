@@ -5,10 +5,10 @@ class Order
     @current_items = { }
   end 
 
-  def add_item(item, quantity)
-    if @current_items[item.to_sym] == nil
-      @current_items[item.to_sym] = []
+  def add_item(configured, quantity)
+    if @current_items[configured.to_sym] == nil
+      @current_items[configured.to_sym] = []
     end 
-    @current_items[item.to_sym] << quantity
+    @current_items[configured.to_sym] << quantity
   end 
 end 

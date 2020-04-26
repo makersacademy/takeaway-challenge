@@ -2,8 +2,9 @@ class Menu
 
   def full_menu 
     menu = {
-      :pizza => 4000,
-      :fries => 1000
+      :spring_rolls => 1.50,
+      :tofu_curry => 5.60,
+      :coconut_rice => 2.50
     }
   end 
 

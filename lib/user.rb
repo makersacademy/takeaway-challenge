@@ -3,15 +3,15 @@ require "./lib/order"
 
 
 class User
-  attr_reader :order
+  attr_reader :order, :menu
 
-  def initialize 
+  def initialize(menu  = Menu.new)
     @order = nil 
+    @menu = menu
   end 
 
-  def request_full_menu(menu)
-    menu = Menu.new 
-    menu.full_menu 
+  def request_full_menu
+    @menu.full_menu
   end 
 
   def new_order
@@ -19,7 +19,8 @@ class User
   end 
   
   def add_to_order(item, quantity)
-    @order.add_item(item, quantity)
+    configured = item.downcase.gsub(/([ ])/, '_') 
+    @order.add_item(configured, quantity)
   end 
     
 
