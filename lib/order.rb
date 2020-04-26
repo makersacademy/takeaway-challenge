@@ -1,4 +1,5 @@
 class Order
+  attr_reader :order 
   
   ERROR_NOT_INTEGER = "Error: only numbers can be supplied"
   
@@ -13,8 +14,8 @@ class Order
     @order.last
   end
   
-  def get 
-    @order
-  end
+#   def order 
+#     @order
+#   end
 
 end

@@ -2,11 +2,11 @@ require './lib/order.rb'
 
 order = Order.new
 order.add(1)
-order.get 
+order.order 
 
 order.add("Plain rice")
 
 
 order.add(2)
-order.get 
+order.order
 

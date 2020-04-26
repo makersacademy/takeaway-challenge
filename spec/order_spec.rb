@@ -16,8 +16,8 @@ context Order do
     
   end
   
-  describe '#get' do
-    it { is_expected.to respond_to(:get) }
+  describe '#order' do
+    it { is_expected.to respond_to(:order) }
     
     it 'returns Array containing order' do
       numbers = Array.new
@@ -25,7 +25,7 @@ context Order do
       numbers.push(2)
       subject.add(1)
       subject.add(2)
-      expect(subject.get).to eq numbers
+      expect(subject.order).to eq numbers
     end
     
   end
