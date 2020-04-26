@@ -8,9 +8,7 @@ class Menu
   end
     
   def add(dish)
-    @dishes.each do |on_menu| 
-      raise ERROR_DISH_EXISTS if on_menu.number == dish.number
-    end
+    raise ERROR_DISH_EXISTS if contains?(dish)
     
     @dishes.push(dish)
     @dishes.last
