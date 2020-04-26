@@ -1,17 +1,32 @@
 require './lib/menu'
 
 describe OrderMenu do
-
   # Sets OrderMenu to recieve a Double object "dish_list" that contains dishes
+  # instead of using it's 'real' dependencies
   # Tests will still pass if this section is uncommented
   # let(:subject) do
-    # dishes = Array.new
-    # dishes << double(:dish, :item => "Burger", "price" => 3)
-    # dishes << double(:dish, :item => "Pizza", "price" => 5)
-    # dishes << double(:dish, :item => "Kebab", "price" => 4)
-    # dish_list = double(:dishlist, :dishes => dishes)
     # subject = OrderMenu.new(dish_list)
   # end
+
+  # Setup doube for dish list
+  let(:dish_list) do
+    dishes = Array.new
+    dishes << double(:dish, :item => "Burger", "price" => 3)
+    dishes << double(:dish, :item => "Pizza", "price" => 5)
+    dishes << double(:dish, :item => "Kebab", "price" => 4)
+    double(:dishlist, :dishes => dishes)
+  end
+
+  # If a unit test needs a filled basket include this context
+  shared_context "filled basket" do
+    let(:subject) do
+      twilio = double(:twilio, :send_confirmation_text => "Sent confirmation text!")
+
+      subject = OrderMenu.new(dish_list, twilio)
+      subject.dish_list.dishes.each { |dish| subject.enter_selection(dish.item, 2) }
+      subject
+    end
+  end
 
   context "has a list of dishes" do
     it "returns a list of dishes" do
@@ -45,11 +60,7 @@ describe OrderMenu do
     end
 
     describe "basket not empty" do
-      before :each do
-        subject.dish_list.dishes.each do |dish|
-          subject.enter_selection(dish.item, 2)
-        end
-      end
+      include_context "filled basket"
 
       context "sum is wrong" do
         it "does not place order" do
@@ -58,11 +69,10 @@ describe OrderMenu do
       end
 
       context "sum is correct" do
-        before :each do
-          allow(subject).to receive(:check) { "success!" }
-        end
+        let(:correct_amount) { subject.total }
+
         it "places an order" do
-          expect(subject.place_order(0)).to eq("success!")
+          expect(subject.place_order(correct_amount)).to eq("Sent confirmation text!")
         end
       end
     end

@@ -5,10 +5,11 @@ class OrderMenu
   attr_reader :basket, :dish_list
 
   # Dependency Injection!
-  def initialize(dish_list = DishList.new)
-    @dish_list = dish_list
-    @basket = Array.new
+  def initialize(dish_list = DishList.new, twilio = RubyTwilio.new)
+    @basket            = Array.new
     @current_selection = Hash.new
+    @dish_list         = dish_list
+    @twilio            = twilio
   end
 
   def print
@@ -24,8 +25,8 @@ class OrderMenu
 
   def place_order(sum)
     raise "No selection made" if @basket.empty?
-    
-    check(sum)
+
+    total == sum ? @twilio.send_confirmation_text : (raise "Incorrect amount")
   end
 
   def total
@@ -43,9 +44,5 @@ class OrderMenu
   def add_to_basket(quantity)
     @current_selection["quantity"] = quantity
     @basket << @current_selection
-  end
-
-  def check(sum)
-    total == sum ? RubyTwilio.send_confirmation_text : (raise "Incorrect amount")
   end
 end
