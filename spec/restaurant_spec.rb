@@ -5,7 +5,6 @@ describe Restaurant do
   let(:menu) { instance_double 'Menu' }
   let(:order) { instance_double 'Order' }
   let(:text) { instance_double 'Text' }
-
   let(:qty) { instance_of Integer }
 
   it { is_expected.to respond_to(:view_menu) }

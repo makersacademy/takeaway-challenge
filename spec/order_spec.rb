@@ -36,7 +36,8 @@ describe Order do
       subject.add_to_basket('Burger', 2)
       subject.add_to_basket('Shawarma', 3)
 
-      expect(subject.basket_total).to eq "2 x £3 - Burger, 3 x £5 - Shawarma, Total: £21"
+      expect(subject.basket_total)
+      .to eq "2 x £3 - Burger, 3 x £5 - Shawarma, Total: £21"
     end
   end
 
