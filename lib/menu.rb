@@ -1,7 +1,8 @@
 class Menu
   attr_reader :name, :items
 
-  def initialize(*menu_items)
+  def initialize(name = "", *menu_items)
+    @name = name
     @items = menu_items
   end
 

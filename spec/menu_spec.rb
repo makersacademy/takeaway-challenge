@@ -14,7 +14,7 @@ describe Menu do
 
   describe '#initialize' do
     it 'adds a list of items to menu' do
-      subject = described_class.new(falafel_item, egg_wrap_item, fresh_juice_item)
+      subject = described_class.new("Falafel Haus", falafel_item, egg_wrap_item, fresh_juice_item)
       expect(subject.items).to include(falafel_item, egg_wrap_item, fresh_juice_item)
     end
   end
@@ -24,7 +24,7 @@ describe Menu do
       menu_list = "Falafel - £3.50\n"\
       "Egg Wrap - £5.10\n"\
       "Fresh Juice - £0.70\n"
-      subject = described_class.new(falafel_item, egg_wrap_item, fresh_juice_item)
+      subject = described_class.new("Falafel Haus", falafel_item, egg_wrap_item, fresh_juice_item)
       expect{ subject.show_menu }.to output(menu_list).to_stdout
     end
 
@@ -32,7 +32,7 @@ describe Menu do
       menu_list = "Hofun - £5.20\n"\
       "Noodles - £2.20\n"\
       "Rice - £1.75\n"
-      subject = described_class.new(hofun_item, noodle_item, rice_item)
+      subject = described_class.new("Lang Lo Mei", hofun_item, noodle_item, rice_item)
       expect{ subject.show_menu }.to output(menu_list).to_stdout
     end
   end
