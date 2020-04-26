@@ -21,10 +21,9 @@ class Menu
     @dishes.each do |on_menu| 
       if on_menu.number == number
         return on_menu
-      else
-        raise ERROR_DISH_NOT_EXISTS
       end
     end
+    raise ERROR_DISH_NOT_EXISTS
   end
   
   private
