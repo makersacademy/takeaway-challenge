@@ -6,6 +6,7 @@ describe TakeAway do
   let(:order) { double(:order => "Tomato Salad") }
   let(:menu_class) { double(:menu_class) }
   let(:kitchen_class) { double(:kitchen_class) }
+  let(:text_class) { double(:text_class) }
 
   context 'instance variables' do
     it 'Menu class' do
@@ -14,8 +15,13 @@ describe TakeAway do
     end
 
     it 'Kitchen class' do
-      allow(takeaway).to receive(:Kitchen) { kitchen_class }
-      expect(takeaway.Kitchen).to eq kitchen_class
+      allow(takeaway).to receive(:kitchen) { kitchen_class }
+      expect(takeaway.kitchen).to eq kitchen_class
+    end
+
+    it 'Text class' do
+      allow(takeaway).to receive(:text) { text_class }
+      expect(takeaway.text).to eq text_class
     end
 
   end
