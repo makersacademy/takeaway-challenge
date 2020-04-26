@@ -1,3 +1,22 @@
+
+My Notes: 
+
+This week was very difficult for me, I didn't plan very well and got confused with the splitting one class into two. I'm going to work on this further in my spare time next week. To progress this challenge to the level I want it to be.
+
+User stories achieved: 
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+Thanks
+
+
+
 Takeaway Challenge
 ==================
 ```
