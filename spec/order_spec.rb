@@ -26,4 +26,14 @@ describe Order do
       .to change { subject.basket['Burger'] }.by -1
     end
   end
+
+  describe '#view_total' do
+    it 'returns the total of the dishes ordered' do
+      allow(menu).to receive(:menu_list).and_return({ 'Fish & Chips' => 4, 'Burger' => 3, 'Shawarma' => 5 })
+      subject.add_to_basket('Burger', 2)
+      subject.add_to_basket('Shawarma', 3)
+
+      expect(subject.view_total).to eq "2 x £3 - Burger, 3 x £5 - Shawarma, Total: £21"
+    end
+  end
 end
