@@ -36,13 +36,13 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Ideally i wanted to make this a terminal app that putsed various questions like 'What would you like to order'. However this required the user (or test) inputting data, then gets.chomp would put the data into the code. I could not manage to work out how to run tests to cover this so opted against it. This has made the actual programe quite cumbersome, but it works. I thought it was more important to have test coverage.
 
-I have an Order class. Each instance has 4 methods.
+I have an Order class. Each instance has 5 methods.
 
-.view_menu - this shows the options available on the menu, with a corresponding number.
-.add(x,y) - this adds items to the order - x is the item number, y is the amount you would like to add.
-.total - displays the total of the order so far. I was unsure what situation was meant to throw an error, so there are no errors thrown.
-.checkout - this sends a text to confirm the delivery time. All functional.
-.add_hour - this is a private method to add an hour to the current time.
+ - .view_menu - this shows the options available on the menu, with a corresponding number.
+ - .add(x,y) - this adds items to the order - x is the item number, y is the amount you would like to add.
+ - .total - displays the total of the order so far. I was unsure what situation was meant to throw an error, so there are no errors thrown.
+ - .checkout - this sends a text to confirm the delivery time. All functional.
+ - .add_hour - this is a private method to add an hour to the current time.
 
 -----------------------------------------
 
