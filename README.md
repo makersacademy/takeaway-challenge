@@ -46,9 +46,13 @@
 | ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
 |:--:                |                --:|:--                     |:--          |
 | :white_check_mark: | ```Dish```        | ```new(number, price, name)``` | Notes |
+| :white_check_mark: | ```Dish```        | ```number``` | Returns the number |
+| :white_check_mark: | ```Dish```        | ```price``` | Returns the price |
+| :white_check_mark: | ```Dish```        | ```name``` | Returns the name |
 | :white_check_mark: | ```Menu```        | ```new``` | Notes |
 | :white_check_mark: | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
 | :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
+| :white_check_mark: | ```Menu```        | ```get(number)``` | Returns Dish corresponding to Dish.number |
 | :white_check_mark: | ```Menu```        | ```dishes``` | Returns all dishes |
 | :x:                | ```Restaurant```  | ```new``` | Notes |
 | :x:                | ```Restaurant```  | ```create_menu``` | Notes |
