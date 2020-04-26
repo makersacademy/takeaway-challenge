@@ -14,9 +14,9 @@ class CustomerSelection
   end
   
   def print_order
-    @selection.each do |key, value|
+    summary = @selection.each do |key, value|
       "#{key}: #{value}x £#{@menu.listOfDishes[key] * value}"
-      end
+    end
     "Total: £#{calculate_total}"
   end
   

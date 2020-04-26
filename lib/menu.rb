@@ -13,7 +13,7 @@ class Menu
   
   def show
     @listOfDishes.each do |key, value|
-      puts "#{key}: £#{value}"
+      "#{key}: £#{value}"
     end
     
     @listOfDishes

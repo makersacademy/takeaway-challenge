@@ -2,8 +2,11 @@ require "restaurant"
 
 describe Restaurant do
   let(:subject) { described_class.new }
-  let(:payment) { 6 }
-    #2) let(:menu) { Menu.new }
+  let(:item) { :tea }
+  let(:quantity) { 2 }
+  let(:amount) { 6 }
+  let(:wrong_amount) { 7 }
+  #let(:menu) { Menu.new }
 
   it "responds to see_menu method" do
     expect(subject).to respond_to(:show_menu)
@@ -17,14 +20,14 @@ describe Restaurant do
   
   describe "#select_items" do
     it "allows customer to select dishes" do
-      subject.select_items(:tea, 2)
-      expect(subject.order.selection).to include(:tea)
+      subject.select_items(item, quantity)
+      expect(subject.order.selection).to include(item)
     end
   end
   
   describe "#summary" do
     it "shows the order with total" do
-      subject.select_items(:tea, 2)
+      subject.select_items(item, quantity)
       expect(subject.summary).to eq "Total: £6"
     end
   end
@@ -34,21 +37,20 @@ describe Restaurant do
       expect(subject).to respond_to(:checkout).with(1).argument
     end
     
-    context "payment amount is correct" do
-      it "returns true" do
-        subject.select_items(:tea, 2)
+    context "amount is correct" do
+      it "confirms order" do
+        subject.select_items(item, quantity)
         subject.summary
-        expect(subject.checkout(6)).to eq "Order confirmed!"
+        expect(subject.checkout(amount)).to eq "Order confirmed!"
       end
     end
     
-    context "payment amount is incorrect" do
+    context "amount is incorrect" do
       it "raises error" do
-        subject.select_items(:tea, 2)
+        subject.select_items(item, quantity)
         subject.summary
-        expect{subject.checkout(7)}.to raise_error "Amount does not equal bill total"
+        expect{subject.checkout(wrong_amount)}.to raise_error "Incorrect amount"
       end
     end
-
   end
 end

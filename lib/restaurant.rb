@@ -20,7 +20,7 @@ class Restaurant
     end
     
     def checkout(amount)
-      raise "Amount does not equal bill total" if amount != @order.total
+      raise "Incorrect amount" if amount != @order.total
       "Order confirmed!"
     end
 end

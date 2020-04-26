@@ -29,7 +29,7 @@ describe CustomerSelection do
   describe "#print_order" do
     it "prints selected dishes" do
       subject.add(item, quantity)
-      expect(subject.print_order).to eq("Total: £6")
+      expect(subject.print_order).to eq "Total: £6"
     end
   end
   
