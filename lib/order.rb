@@ -15,15 +15,18 @@ class Order
       @current_items[item] = current_number
     else 
       @current_items[item] = (value + current_number)
-    end 
+    end
+    return "You have added #{item} x #{quantity}"
+    
   end  
 
   def basket_summary
-    summary = @menu.each do |food, money|
+    summary = []
+    @menu.each do |food, money|
       @current_items.each do |key, value|
         if key == food 
           total = value * money
-          return "#{key}, x#{value}, £#{total.round(2)}"
+          summary.push("#{key}, x#{value}, £#{total.round(2)}")
         end 
       end 
     end 

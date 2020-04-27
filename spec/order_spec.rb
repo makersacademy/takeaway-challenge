@@ -4,21 +4,26 @@ require "./lib/user"
 
 describe Order do
 
-  let(:configured) { "order" }
+  let(:item) { double :order }
   let(:quantity) { 1 }
 
   
   describe "#add_item" do
     it "adds an to empty hash" do 
-      subject.add_item(configured, quantity)
-      expect(subject.current_items).to eq("order" => 1)
+      subject.add_item(item, quantity)
+      expect(subject.current_items).to eq(item => 1)
     end
 
     it "adds another quantity to key" do 
-      subject.add_item(configured, quantity)
-      subject.add_item(configured, quantity)
-      expect(subject.current_items).to eq("order" => 2)
+      subject.add_item(item, quantity)
+      subject.add_item(item, quantity)
+      expect(subject.current_items).to eq(item => 2)
     end
+
+    it "returns summary of what has been added" do
+      expect(subject.add_item(item, quantity)).to eq("You have added #{item} x #{quantity}")
+ 
+    end 
   end 
 
   describe "#basket_summary" do
@@ -30,7 +35,7 @@ describe Order do
       subject.add_item("tofu curry", 5)
       subject.add_item("tofu curry", 6)
       
-      expect(subject.basket_summary).to eq("tofu curry, x11, £61.6")
+      expect(subject.basket_summary).to eq(["tofu curry, x11, £61.6"])
     end 
   end 
 end
