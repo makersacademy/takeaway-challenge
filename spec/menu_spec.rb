@@ -18,9 +18,8 @@ describe Menu do
 
   it "Is able to display a menu header." do
     header = "       Jock'O'Byte - Take Away Menu       \n------------------------------------------\n"
-    expect{subject.header}.to output(header).to_stdout
+    expect { subject.header }.to output(header).to_stdout
   end
-
 
   it "Is able to display the entire menu." do
     expect(subject).to receive(:header)

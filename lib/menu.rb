@@ -4,7 +4,7 @@ class Menu
 
   def initialize
     @items = [{ name: "Haggis Supper", price: "10.99" },
-    { name:"Fish Supper", price: "8.99"}]
+    { name: "Fish Supper", price: "8.99" }]
   end
 
   def add_dish(name, price)

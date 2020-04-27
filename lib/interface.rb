@@ -26,8 +26,7 @@ class Interface
     when "2"
       order_confirmation
     when "9"
-      puts "Goodbye"
-      exit
+      puts "Goodbye", exit
     else
       puts "A dinnae understaun, try again"
     end

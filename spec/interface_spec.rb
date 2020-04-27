@@ -9,7 +9,7 @@ describe Interface do
 
   it "Is able to display the options_menu." do
     options = "------------------------------------------\n1. Place your order\n2. View your order\n9. Exit\n"
-    expect{subject.options_menu}.to output(options).to_stdout
+    expect { subject.options_menu }.to output(options).to_stdout
   end
 
   it "Is able to accept user input '1' and call on :place_order." do
@@ -23,7 +23,7 @@ describe Interface do
   end
 
   it "Is able to accept user input '9' and exit interface with 'Goodbye'." do
-    expect {subject.input("9")}.to output("Goodbye\n").to_stdout
+    expect { subject.input("9") }.to output("Goodbye\n").to_stdout
     rescue SystemExit
   end
 
@@ -36,7 +36,7 @@ describe Interface do
   end
 
   it "is able to display interactive takeaway menu, accept input and exit." do
-    expect {subject.input("9")}.to output("Goodbye\n").to_stdout
+    expect { subject.input("9") }.to output("Goodbye\n").to_stdout
     subject.interactive_menu
     rescue SystemExit
   end
