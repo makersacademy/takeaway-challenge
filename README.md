@@ -39,41 +39,41 @@
 | :negative_squared_cross_mark: | ```Menu```        | Holds list of dishes with prices |
 | :white_check_mark: | ```Dish```        | Holds everything about a dish |
 | :negative_squared_cross_mark: | ```Order```       | Holds everything about an order |
-| :x:                | ```TextMessage``` | Handles everything related to sending and receiving text messages |
+| :negative_squared_cross_mark: | ```TextMessage``` | Handles everything related to sending and receiving text messages |
 
 ## Methods
 
 | ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
 |:--:                |                --:|:--                     |:--          |
-| :white_check_mark: | ```Dish```        | ```new(number, price, name)``` | Notes |
+| :white_check_mark: | ```Dish```        | ```new(number, price, name)``` |  |
 | :white_check_mark: | ```Dish```        | ```number``` | Returns the number |
 | :white_check_mark: | ```Dish```        | ```price``` | Returns the price |
 | :white_check_mark: | ```Dish```        | ```name``` | Returns the name |
-| :white_check_mark: | ```Menu```        | ```new``` | Notes |
+| :white_check_mark: | ```Menu```        | ```new``` |  |
 | :white_check_mark: | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
 | :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
 | :white_check_mark: | ```Menu```        | ```get(number)``` | Returns Dish corresponding to Dish.number |
 | :white_check_mark: | ```Menu```        | ```dishes``` | Returns all dishes |
 | :white_check_mark: | ```Menu```        | ```include?(dish)``` | Private, returns true if dish has been added |
-| :x:                | ```Restaurant```  | ```new``` | Notes |
-| :x:                | ```Restaurant```  | ```create_menu``` | Notes |
-| :x:                | ```Restaurant```  | ```receive(order)``` | Notes |
-| :x:                | ```Restaurant```  | ```add(menu, dish)``` | Notes |
-| :x:                | ```Restaurant```  | ```remove(menu, dish)``` | Notes |
-| :x:                | ```Customer```    | ```new``` | Notes |
-| :x:                | ```Customer```    | ```read_menu``` | Notes |
-| :x:                | ```Customer```    | ```create_order``` | Notes |
-| :x:                | ```Customer```    | ```add(order, dish)``` | Notes |
-| :x:                | ```Customer```    | ```remove(order, dish)``` | Notes |
-| :x:                | ```Customer```    | ```total(order)``` | Notes |
-| :white_check_mark: | ```Order```       | ```new``` | Notes |
+| :white_check_mark: | ```Order```       | ```new``` |  |
 | :white_check_mark: | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
 | :white_check_mark: | ```Order```       | ```remove(number)``` | Not implemented currently |
-| :white_check_mark: | ```Order```       | ```total``` | Notes |
+| :white_check_mark: | ```Order```       | ```total``` |  |
 | :white_check_mark: | ```Order```       | ```order``` | Returns array containing dish numbers |
 | :white_check_mark: | ```Order```       | ```time``` | Returns time of last change to order |
-| :white_check_mark: | ```TextMessage``` | ```new``` | Notes |
-| :negative_squared_cross_mark: | ```TextMessage``` | ```send_message(order)``` | Notes |
+| :white_check_mark: | ```TextMessage``` | ```new``` |  |
+| :negative_squared_cross_mark: | ```TextMessage``` | ```send_message(order)``` | Doesn't use API to send message currently |
+| :x:                | ```Restaurant```  | ```new``` |  |
+| :x:                | ```Restaurant```  | ```create_menu``` |  |
+| :x:                | ```Restaurant```  | ```receive(order)``` |  |
+| :x:                | ```Restaurant```  | ```add(menu, dish)``` |  |
+| :x:                | ```Restaurant```  | ```remove(menu, dish)``` |  |
+| :x:                | ```Customer```    | ```new``` |  |
+| :x:                | ```Customer```    | ```read_menu``` |  |
+| :x:                | ```Customer```    | ```create_order``` |  |
+| :x:                | ```Customer```    | ```add(order, dish)``` |  |
+| :x:                | ```Customer```    | ```remove(order, dish)``` |  |
+| :x:                | ```Customer```    | ```total(order)``` |  |
 
 
 
