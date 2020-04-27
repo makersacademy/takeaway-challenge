@@ -26,4 +26,8 @@ class Order
     return total
   end
   
+  def time
+     Time.now
+  end
+  
 end

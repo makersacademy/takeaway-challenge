@@ -15,17 +15,25 @@ menu.dishes
 
 order = Order.new
 order.total 
+order.time
 
 order.add(1, menu)
 order.order 
+order.time 
+
 
 order.add("Plain rice", menu)
 
 order.add(2, menu)
 order.order
+order.time 
 
 order.add(4, menu)
 order.order
 
+order.time 
+
 order.total(menu)
+
+order.time
 

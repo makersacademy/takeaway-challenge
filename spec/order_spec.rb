@@ -70,5 +70,13 @@ context Order do
     end
     
   end
+  
+  describe '#time' do
+    it { is_expected.to respond_to(:time) }
+    
+    it 'returns time order was last updated' do
+      expect(subject.time).to be_an_instance_of(Time)
+    end
+  end
 
 end
