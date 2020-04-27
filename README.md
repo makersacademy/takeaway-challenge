@@ -38,7 +38,7 @@
 | :x:                | ```Restaurant```  | Container for everything about the Restaurant |
 | :negative_squared_cross_mark: | ```Menu```        | Holds list of dishes with prices |
 | :white_check_mark: | ```Dish```        | Holds everything about a dish |
-| :white_check_mark: | ```Order```       | Holds everything about an order |
+| :negative_squared_cross_mark: | ```Order```       | Holds everything about an order |
 | :x:                | ```TextMessage``` | Handles everything related to sending and receiving text messages |
 
 ## Methods
@@ -68,9 +68,12 @@
 | :x:                | ```Customer```    | ```total(order)``` | Notes |
 | :white_check_mark: | ```Order```       | ```new``` | Notes |
 | :white_check_mark: | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
+| :white_check_mark: | ```Order```       | ```remove(number)``` | Not implemented currently |
 | :white_check_mark: | ```Order```       | ```total``` | Notes |
 | :white_check_mark: | ```Order```       | ```order``` | Returns array containing dish numbers |
-| :x:                | ```TextMessage``` | ```new``` | Notes |
+| :white_check_mark: | ```Order```       | ```time``` | Returns time of last change to order |
+| :white_check_mark: | ```TextMessage``` | ```new``` | Notes |
+| :negative_squared_cross_mark: | ```TextMessage``` | ```send_message(order)``` | Notes |
 
 
 
@@ -83,6 +86,10 @@
 * Dish price would be more efficient as an Integer represented in pence, but presented as a two decimal place Float
 * Dish could have a description as well as a name
 * Implement Menu.remove(dish) method
+* Implement Order.remove(number) method
+* Add Order number unique identifier to Order (and send with TextMessage)
+* Add Orders Class to hold all Orders
+
 
 
 # Original README
