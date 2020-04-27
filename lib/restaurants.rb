@@ -18,19 +18,22 @@ class Restaurants
   def find_restaurants
     menus = load_restaurants
     menus.each do |menu|
-      @restaurants << create_menu(menu)
+      create_menu(menu)
     end
   end
 
   def create_menu(hash)
     dishes = []
+    dish_info = []
     dishes_hash = hash[hash.keys[0]]
 
     dishes_hash.each do |name, price|
+      dish_info << [name.to_s, price]
       dishes << @menu_item_class.new(name.to_s, price)
     end
 
-    @menu_class.new(hash.keys[0].to_s, *dishes)
+    @restaurants << @menu_class.new(hash.keys[0].to_s, *dishes)
+    dish_info
   end
 
   def search_for(menu_name)

@@ -23,15 +23,17 @@ describe Restaurants do
     end
   end
 
-  # How do I dependency inject this?
+
   describe '#create_menu' do
     it 'has the menu name from menu object when creating from a hash' do
       resturant_hash = {"Italian":{"Pizza": "5.00", "Lasagne": "10.50", "Gelato": "3.90"}}
-      expect(subject.create_menu(resturant_hash).name).to eq('Italian')
+      subject.create_menu(resturant_hash)
+      expect(subject.restaurants[0].name).to eq('Italian')
     end
     it 'has the dish name from menu object when creating from a hash' do
       resturant_hash = {"Italian":{"Pizza": "5.00", "Lasagne": "10.50", "Gelato": "3.90"}}
-      expect(subject.create_menu(resturant_hash).items[0].name).to eq('Pizza')
+      subject = described_class.new(menu_class, menu_item_class)
+      expect(subject.create_menu(resturant_hash)).to include(['Pizza', '5.00'],["Lasagne", "10.50"],["Gelato", "3.90"])
     end
   end
 
