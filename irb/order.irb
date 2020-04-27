@@ -14,26 +14,31 @@ menu.add(dish_3)
 menu.dishes
 
 order = Order.new
-order.total 
+order.total(menu)
 order.time
 
+# Wait, to ensure order.time changes
 sleep(10)
 
 order.add(1, menu)
 order.order 
 order.time 
 
+# Wait, to ensure order.time changes
 sleep(10)
 
+# Should fail, not a menu number
 order.add("Plain rice", menu)
 
 order.add(2, menu)
 order.order
 order.time 
 
+# Should fail, not on menu
 order.add(4, menu)
 order.order
 
+# Wait, to ensure order.time changes
 sleep(10)
 
 order.time 

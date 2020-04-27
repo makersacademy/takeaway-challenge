@@ -13,6 +13,36 @@
        ':..:'                ':..:'
 
  ```
+## Tests
+
+To run Feature and Unit tests run script:
+./tdd.test
+
+## Feature Tests
+
+To test all User Stories run script:
+./tdd.feature-test
+
+Script will pause after each story, press Control-C to continue.
+
+To feature test an individual object run:
+./tdd.feature-test object-name
+
+For example:
+./tdd.feature-test order
+
+## Unit Tests
+
+To test all Unit Tests and run rubocop, run script:
+./tdd.unit-test
+
+To unit test an individual object run:
+./tdd.unit-test object-name
+
+For example:
+./tdd.unit-test order
+
+
 ## Model
 
 * A Dish has a unique identifier (number), a price and a description
@@ -25,7 +55,7 @@
 * A TextMessage contains a message
 * A Text Message will be sent by the Restaurant to the Customer to tell them when their Order will be ready
 
-## Classes:
+## Classes
 
 ### Key
 :x: = Not implemented, fails tests  
