@@ -8,8 +8,6 @@ class Menu
   end
 
   def generator
-    @list.map do |name,index|
-        "#{name}: £#{index}"
-    end.join(" ")
+    @list.join(" ")
   end
 end

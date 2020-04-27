@@ -2,31 +2,31 @@ require 'takeaway'
 
 describe TakeAway do
 
-#id: "1", name: "delicious", price: 2.00
-  let(:menu) { double :menu, generator: list }
-  let(:list) { double :list }
-  subject(:takeaway) { described_class.new(menu)}
+  let(:menu) { double :menu, generator: user_list, list: list }
+  let(:user_list) { double :user_list }
+  let(:list) {double :list}
+  let(:list_number) { double :list_number }
+  let(:value) { double :value }
+  let(:dish) {double :dish }
+  let(:basket) {double :basket}
 
-      it 'shows the menu with the dishes and prices' do
-        expect(takeaway.get_menu).to eq list
+  subject(:takeaway) { described_class.new(menu, basket)}
+
+      it ' #gets_menu' do
+        expect(takeaway.gets_menu).to eq user_list
       end
 
-   describe ' #select_dish' do
-      it 'select dish' do
-        allow(menu).to receive(:list).and_return menu
-         takeaway.select(:id)
-        expect(takeaway.basket[0]).to eq menu
+      it ' #adds dish and quantity from the menu' do
+        allow(list).to receive(:[]).and_return dish
+        expect(basket).to receive(:adding).with(dish, value)
+        takeaway.adds(list_number, value)
       end
-    end
 
-    describe ' #checks total' do
-      it 'shows total amount of order' do
-        allow(menu).to receive(:list).and_return menu
-         takeaway.select(1)
-         p takeaway.basket
-        expect(takeaway.checkout).to eq menu[0][:price]
+      it ' #checks_out calculating the sum of order' do
+        expect(basket).to receive(:total)
+        takeaway.checks_out
       end
-    end
+
 
     describe ' #order' do
       it 'complete order' do
