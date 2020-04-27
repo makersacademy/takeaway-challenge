@@ -57,7 +57,7 @@ You will require the following gems:
 * sinatra
 * twilio-ruby
 
-To run tests, complete the following steps
+To run tests, complete the following steps:
 
 1. Open your terminal and make sure you are in the correct file path ending with the directory 'takeaway-challenge'.
 2. Type the command ‘rspec’ in the terminal to run all tests.
@@ -72,9 +72,14 @@ The following links will enable you to set up a TWILIO account (its free) which 
 How to contribute
 -----
 
-If you would like to contribute to this project, you can follow the instructions below
+If you would like to contribute to this project, you can follow the instructions below:
 
-1. Clone this repository to your local computer
+1. Clone this repository to your local computer.
 2. Create a new branch: $ git checkout https://github.com/hiboabd/takeaway_challenge -b name_for_new_branch.
-3. Make changes and test
-4. Submit Pull Request with comprehensive description of changes
+3. Make changes and test.
+4. Submit Pull Request with comprehensive description of changes.
+
+License
+-----
+
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
