@@ -19,7 +19,6 @@ context Order do
   end
 
   describe '#add' do
-    it { is_expected.to respond_to(:add).with(2).argument }
     
     it 'raises error if not passed an Integer' do
       expect { subject.add("Plain rice", @menu) }.to raise_error Order::ERROR_NOT_INTEGER
@@ -36,7 +35,6 @@ context Order do
   end
   
   describe '#order' do
-    it { is_expected.to respond_to(:order) }
     
     it 'returns Array containing order' do
       numbers = Array.new
@@ -50,7 +48,6 @@ context Order do
   end
   
   describe '#total' do
-    it { is_expected.to respond_to(:total).with(1).argument }
     
     it 'returns 0 if no items have been added' do
       expect(subject.total(@menu)).to eq 0
@@ -72,7 +69,6 @@ context Order do
   end
   
   describe '#time' do
-    it { is_expected.to respond_to(:time) }
     
     it 'returns time order was last updated' do
       expect(subject.time).to be_an_instance_of(Time)
