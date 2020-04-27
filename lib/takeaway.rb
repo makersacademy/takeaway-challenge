@@ -1,5 +1,4 @@
 require_relative 'menu'
-require_relative 'basket'
 
 class Takeaway 
 
@@ -9,6 +8,7 @@ class Takeaway
     @menu = menu
     @basket = basket
     @order_arr = []
+    @total = 0
   end
 
   def print_menu
@@ -21,6 +21,13 @@ class Takeaway
 
   def add_to_basket(dish, quantity)
     quantity.times{ @order_arr << dish}
+  end
+
+  def total(*items)
+    items.each do |item| 
+      @total += item
+    end
+    @total.to_f
   end
 
 end
