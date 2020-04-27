@@ -31,8 +31,7 @@ describe TakeAway do
   end
 
   it 'sends an sms when order is done' do
-    allow(basket).to receive(:total)
     expect(sms).to receive(:deliver)
-    takeaway.checks_out
+    takeaway.order
   end
 end

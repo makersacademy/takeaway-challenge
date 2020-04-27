@@ -20,12 +20,12 @@ class TakeAway
   end
 
   def checks_out
-    sms.deliver
     @basket.total
   end
 
   def order
     "Thank you! Your order was placed and will be delivered before 18:52"
+    sms.deliver
   end
 
   private
