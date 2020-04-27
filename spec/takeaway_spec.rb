@@ -3,6 +3,7 @@ require 'takeaway'
 describe TakeAway do
 
   subject(:takeaway) { described_class.new }
+  let(:kitchen) { Kitchen.new }
   let(:order) { double(:order => "Tomato Salad") }
   let(:menu_class) { double(:menu_class) }
   let(:kitchen_class) { double(:kitchen_class) }
@@ -11,18 +12,18 @@ describe TakeAway do
 
   context 'instance variables' do
     it 'Menu class' do
-      allow(takeaway).to receive(:menu) { menu_class }
-      expect(takeaway.menu).to eq menu_class
+      expect(takeaway).to receive(:menu) { menu_class }
+      takeaway.menu
     end
 
     it 'Kitchen class' do
-      allow(takeaway).to receive(:kitchen) { kitchen_class }
-      expect(takeaway.kitchen).to eq kitchen_class
+      expect(takeaway).to receive(:kitchen) { kitchen_class }
+      takeaway.kitchen
     end
 
     it 'Text class' do
-      allow(takeaway).to receive(:text) { text_class }
-      expect(takeaway.text).to eq text_class
+      expect(takeaway).to receive(:text) { text_class }
+      takeaway.text
     end
 
   end
@@ -35,20 +36,20 @@ describe TakeAway do
 
   context '#order' do
     it 'able to place once' do
-      allow(takeaway).to receive(:order).and_return("Tomato Salad")
-      expect(takeaway.order).to eq "Tomato Salad"
+      expect(kitchen).to receive(:order).and_return("Tomato Salad")
+      kitchen.order order
     end
 
     it 'more than one order' do
-      allow(takeaway).to receive(:order).and_return(["Lamb Burger", "Spicy Meatballs"])
-      expect(takeaway.order).to eq ["Lamb Burger", "Spicy Meatballs"]
+      expect(kitchen).to receive(:order).and_return(["Lamb Burger", "Spicy Meatballs"])
+      kitchen.order order
     end
 
     context '#checkout' do
       it 'should give order and total' do
         allow(takeaway).to receive(:empty?).and_return false
-        allow(takeaway.kitchen).to receive(:order_total).and_return order.order
-        expect(takeaway.checkout).to eq order.order
+        expect(kitchen).to receive(:order_total).and_return order
+        kitchen.order_total
       end
 
       it 'should raise error if no orders' do
@@ -59,6 +60,7 @@ describe TakeAway do
     context '#confirm_order' do
       it 'should receive text' do
         expect { takeaway.confirm_order(phone) }.to output.to_stdout
+        takeaway.confirm_order phone
       end
     end
 
