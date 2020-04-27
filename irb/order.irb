@@ -17,10 +17,13 @@ order = Order.new
 order.total 
 order.time
 
+sleep(10)
+
 order.add(1, menu)
 order.order 
 order.time 
 
+sleep(10)
 
 order.add("Plain rice", menu)
 
@@ -30,6 +33,8 @@ order.time
 
 order.add(4, menu)
 order.order
+
+sleep(10)
 
 order.time 
 

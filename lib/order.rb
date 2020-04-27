@@ -1,10 +1,11 @@
 class Order
-  attr_reader :order 
+  attr_reader :order, :time
   
   ERROR_NOT_INTEGER = "Error: only numbers can be supplied"
   
   def initialize 
-    @order = Array.new 
+    @order = Array.new
+    @time = Time.now
   end
   
   def add(number, menu)
@@ -12,6 +13,7 @@ class Order
 
     menu.get(number)
     @order.push(number)
+    @time = Time.now
     @order.last
   end
   
@@ -24,10 +26,6 @@ class Order
     end
     
     return total
-  end
-  
-  def time
-     Time.now
   end
   
 end
