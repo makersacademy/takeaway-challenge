@@ -2,6 +2,7 @@
 require './lib/menu.rb'
 require './lib/dish.rb'
 require './lib/order.rb'
+require './lib/textmessage.rb'
 
 # Set up world
 
@@ -26,6 +27,7 @@ menu_1.add(dish_1)
 menu_1.add(dish_2)
 menu_1.add(dish_3)
 
+# Should return all dishes added as array
 menu_1.dishes
 
 # End Story 1:
@@ -52,6 +54,7 @@ order_1.add(2, menu_1)
 #Should fail, dish not on menu
 order_1.add(5, menu_1)
 
+# Should return array of dish numbers added to order
 order_1.order
 
 # End Story 2:
@@ -69,6 +72,7 @@ menu_1.dishes
 
 order_1.order
 
+# Should return total cost of order: 7.0
 order_1.total(menu_1)
 
 # End Story 3:
@@ -76,6 +80,20 @@ order_1.total(menu_1)
 loop do
 # Press Control-C to continue
 end
+
+# Begin Story 4:
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+text_message = TextMessage.new
+
+order_1.time
+
+# Should print confirmation message with delivery time 1 hour after order last update time
+text_message.send_message(order_1)
+
+# End Story 4:
 
 
 # End of feature-test.irb
