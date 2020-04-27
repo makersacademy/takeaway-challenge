@@ -1,31 +1,8 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
 -----
-
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
@@ -48,6 +25,22 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+Approach overview
+----
+1. Convert user stories into a draft domain model
+2. Read the code review rubric
+3. Revised my domain model
+* User interaction is one of the concerns in this application
+* User will need to (1) see menu (2) add a dish & quantity, (3) remove a dish & quantity (4) see order total (5) confirm order total is correct (6) receive confirmation of delivery via SMS
+* Application requires a Takeaway object
+* Menu could be another class, or I can skip that entirely and load the menu as a file into the Takeaway class using dependency injection via the initializer method.
+
+Approach in detail
+----
+
+
+Hints from Makers Academy
+----
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
