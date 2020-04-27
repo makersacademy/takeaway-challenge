@@ -111,6 +111,10 @@ _________________________
 
 As you can see above the User Class acts is how you interact with the rest of the classes. I do not think this is the best way to call the classes as it makes the User class extremely dependant of the others, especially Order. However it does allow for Menu/ Order to pretty independent.
 
+Test coverage 100%
+
+Rubocoop - 2 offenses but they are unassigned variables in the a class. These variables like menu = {} are called and used in other Classes. This again suggests they are too dependant on eachother. 
+
 
 _________________________        
   
@@ -120,12 +124,11 @@ Did not get round to::
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
   * Use the twilio-ruby gem to access the API
   * Use the Gemfile to manage your gems
-  * Rubocop 
 
 How I would move forward: 
 - I would have used the GIT ignore file to hide number or dotenv
 - Refactor the classes and add some private methods to ensure there is the correct encapsulation
-- Ensure that the Rubocop is ran
+- Tidy up the tests
 
 
 

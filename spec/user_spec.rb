@@ -16,7 +16,7 @@ describe User do
   describe "#new_order" do 
     it "Returns a new Order class to instance varible" do
       subject.new_order
-      expect((subject.order).class).to eq(Order)
+      expect(subject.order.class).to eq(Order)
     end 
   end 
 
@@ -42,5 +42,4 @@ describe User do
       expect(subject.review_basket).to eq(["tofu curry, x1, £5.6"])
     end 
   end 
-
 end 

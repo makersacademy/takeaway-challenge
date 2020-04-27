@@ -7,5 +7,4 @@ class Menu
       "coconut rice" => 2.50
     }
   end 
-
 end 

@@ -1,11 +1,10 @@
 require "./lib/menu"
 require "./lib/order"
 
-
 class User
   attr_reader :order, :menu
 
-  def initialize(menu  = Menu.new)
+  def initialize(menu = Menu.new)
     @order = nil 
     @menu = menu
   end 
@@ -25,6 +24,4 @@ class User
   def review_basket 
     @order.basket_summary
   end 
-
-
 end 
