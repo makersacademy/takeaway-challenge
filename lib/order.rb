@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :dishes, :menu
+  attr_reader :dishes
 
   def initialize(menu)
     @dishes = {}
@@ -10,6 +10,20 @@ class Order
   def add(dish, quantity)
     raise NoItemError, "#{dish.capitalize} not on the menu!" unless menu.has_dish?(dish)
     dishes[dish] = quantity
+  end
+
+  def total
+    item_totals.inject(:+)
+  end
+
+  private 
+
+  attr_reader :menu
+
+  def item_totals
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end
   end
 end
 
