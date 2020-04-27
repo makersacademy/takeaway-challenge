@@ -57,7 +57,7 @@
 | :white_check_mark: | ```Menu```        | ```include?(dish)``` | Private, returns true if dish has been added |
 | :white_check_mark: | ```Order```       | ```new``` |  |
 | :white_check_mark: | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
-| :white_check_mark: | ```Order```       | ```remove(number)``` | Not implemented currently |
+| :x:                | ```Order```       | ```remove(number)``` | Not implemented currently |
 | :white_check_mark: | ```Order```       | ```total``` |  |
 | :white_check_mark: | ```Order```       | ```order``` | Returns array containing dish numbers |
 | :white_check_mark: | ```Order```       | ```time``` | Returns time of last change to order |
