@@ -75,6 +75,9 @@ _________________________________________
 Menu      | dishes and price (hash?) /// 
             Update menu
 
+
+          
+
 ___________________________________________
 
 Order     | Initialize/
@@ -85,10 +88,8 @@ Order     | Initialize/
                         - return the order and the quantity to the user ****
                         - @current_items[:item] = quantity 
           | basket summary 
-                        - Iterates the hash of arrays over the hash of the menu - get the correct amount
-                        - i.e. order  pizza is key - value 5 
-                        - menu pizza is key ** value (price) by the order value 
-            
+                        - Iterates the hash of arrays over the hash of the menu - get the correct amount /
+                        
           | total takes the sum of all these values 
                         - returns to customer 
           

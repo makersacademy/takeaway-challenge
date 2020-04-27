@@ -19,10 +19,12 @@ class User
   end 
   
   def add_to_order(item, quantity)
-    configured = item.downcase.gsub(/([ ])/, '_') 
-    @order.add_item(configured, quantity)
+    @order.add_item(item.downcase, quantity)
   end 
-    
+
+  def review_basket 
+    @order.basket_summary
+  end 
 
 
 end 

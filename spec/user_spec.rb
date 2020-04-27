@@ -22,16 +22,16 @@ describe User do
 
   describe "#add_to_order" do
 
-    it "configures item to downcase and removes white space" do
+    it "configures item to downcase" do
       subject.new_order
       subject.add_to_order("Tofu curry", 1)
-      expect(subject.order.current_items).to eq(:tofu_curry => [1])
+      expect(subject.order.current_items).to eq("tofu curry" => 1)
     end 
 
     it "Interacts with Order class adding item and quantity to hash of arrays" do
       subject.new_order
       subject.add_to_order(item, quantity)
-      expect(subject.order.current_items).to eq(:order => [quantity])
+      expect(subject.order.current_items).to eq("order" => quantity)
     end 
-  end 
+  end  
 end 

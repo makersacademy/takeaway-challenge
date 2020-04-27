@@ -1,14 +1,32 @@
-class Order
-  attr_reader :current_items
+require "./lib/menu"
 
-  def initialize 
+class Order
+  attr_reader :current_items, :basket_sum
+
+  def initialize(menu = Menu.new.full_menu)
     @current_items = { }
+    @menu = menu
   end 
 
-  def add_item(configured, quantity)
-    if @current_items[configured.to_sym] == nil
-      @current_items[configured.to_sym] = []
+  def add_item(item, quantity) 
+    current_number = quantity 
+    value =  @current_items[item] 
+    if @current_items[item] == nil
+      @current_items[item] = current_number
+    else 
+      @current_items[item] = (value + current_number)
     end 
-    @current_items[configured.to_sym] << quantity
+  end  
+
+  def basket_summary
+    summary = @menu.each do |food, money|
+      @current_items.each do |key, value|
+        if key == food 
+          total = value * money
+          return "#{key}, x#{value}, £#{total.round(2)}"
+        end 
+      end 
+    end 
+    summary
   end 
 end 
