@@ -29,7 +29,7 @@ describe TakeAway do
 
   context '#menu_list' do
     it 'should list dishes' do
-      expect{ takeaway.menu_list }.to output.to_stdout
+      expect { takeaway.menu_list }.to output.to_stdout
     end
   end
 
@@ -52,13 +52,13 @@ describe TakeAway do
       end
 
       it 'should raise error if no orders' do
-        expect{ takeaway.checkout }.to raise_error "Can not process the order: no items selected"
+        expect { takeaway.checkout }.to raise_error "Can not process the order: no items selected"
       end
     end
 
     context '#confirm_order' do
       it 'should receive text' do
-        expect{ takeaway.confirm_order(phone) }.to output.to_stdout
+        expect { takeaway.confirm_order(phone) }.to output.to_stdout
       end
     end
 

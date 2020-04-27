@@ -19,7 +19,7 @@ describe Kitchen do
   it 'should print order and total' do
     kitchen.order "Calamari"
     kitchen.order "Tomato Salad"
-    expect{ kitchen.order_total }.to output.to_stdout
+    expect { kitchen.order_total }.to output.to_stdout
   end
 
 end

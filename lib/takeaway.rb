@@ -20,6 +20,7 @@ class TakeAway
 
   def checkout
     fail "Can not process the order: no items selected" if empty?
+    
     @kitchen.order_total
   end
 

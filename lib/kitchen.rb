@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'takeaway'
 
 class Kitchen
-  attr_reader :order_total, :order_cart
+  attr_reader :order_cart
   attr_accessor :order_complete
 
   def initialize
@@ -30,4 +30,3 @@ class Kitchen
   end
 
 end
-

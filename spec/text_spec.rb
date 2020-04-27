@@ -6,7 +6,7 @@ describe Text do
 
   context '#sent text' do
     it 'should pass message to cusstomer' do
-      expect{ text.sms(phone) }.to output.to_stdout
+      expect { text.sms(phone) }.to output.to_stdout
     end
 
   end
