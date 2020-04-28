@@ -14,6 +14,29 @@ Takeaway Challenge
 
  ```
 
+ ## questions
+ 1 -  I was not sure about selecting array or hash for menu_list. I used this demonstration: list={ [id: , dish_name:, dish_price:] ] }. The main reason using this, user selects menu_list_number from the menu. (for example list[1]), and then dish comes inside hash automaticly dish= {id:, dish_name:, dish_price:} which i found useful. Because, user only puts menu list_number instead of typing dish name and then i can easily play with dish using hash advantages(key, value pair). Some of my friends used only hash.
+ I think mine is more complicated. How can i do easily ? or Was it correct which i have done ?
+
+ 2- About dependency injection: what are the differences between def initialize(s = nil) { @s = s || S.new} and def initialize(s= S.new) {@s = s} and def initialize(s:) { @s = s || S.new}
+
+ 3- I created a lot of doubles. Not sure some of them are required or not.
+
+ 4- Inside the basket class with the adding function, when it multiplies with value tag, it changes every values which is tagged by price. How can i correct this ? I want to change only the dish which is adding currently.
+ for example :
+ adding(dish ={id:1, name:pizza, price:1}
+ second adding
+ adding({id:1, name: kebap, price:2} )
+  dish[price:] * 2( 2 is quantity of dish)
+  dishes = {{id:1, name:pizza, price:2},{id:1, name: kebap, price:4}}
+  I just wanted to change last dish price.
+
+  5- may i get any feedbacks about my code quality, specially about doubles and mocks ( please ignore sms part, i just copied form somewhere)
+
+  thanks you! This is my first time for getting reviews by coaches. I found that writing questions in readme file saves time. Please dm me, if you think i can improve my requesting structure more...  
+
+
+
 Welcome Tanil's Restaurant
 -------
 Unfortunately, we have taken difficult decision to close all(1 so far) Tanil's restaurant in the Uk.
