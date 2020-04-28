@@ -7,5 +7,5 @@ class Text
      " Send to: #{phone}"
     puts order_confirmation
   end
-
+  
 end

@@ -5,7 +5,7 @@ class Menu
   end
 
   def menu
-    menu = {
+    {
       "Tomato Salad" => 12.00,
       "Grilled octopus" => 16.00,
       "Lamb Burger" => 10.00,
@@ -15,10 +15,10 @@ class Menu
     }
   end
 
-  def print
+  def print_menu
     @menu.each do |item, price|
       puts "Item: #{item}, cost #{price}£"
     end
   end
-
+  
 end

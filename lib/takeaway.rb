@@ -3,19 +3,20 @@ require_relative 'kitchen'
 require_relative 'text'
 
 class TakeAway
-  attr_reader :kitchen
-  def initialize
-    @menu = Menu.new
-    @kitchen = Kitchen.new
-    @text = Text.new
+  attr_reader :menu, :kitchen, :text
+
+  def initialize(menu = Menu.new, kitchen = Kitchen.new, text = Text.new)
+    @menu = menu
+    @kitchen = kitchen
+    @text = text
   end
 
   def menu_list 
-    @menu.print
+    @menu.print_menu
   end
 
-  def order(order)
-    @kitchen.order(order)
+  def place_order(order)
+    @kitchen.order(order)  
   end
 
   def checkout
@@ -33,5 +34,5 @@ class TakeAway
   def empty?
     @kitchen.order_cart.empty?
   end
-
+  
 end

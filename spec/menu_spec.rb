@@ -8,6 +8,7 @@ describe Menu do
   end
 
   it 'should print menu' do
-    expect { menu.print }.to output.to_stdout
+    expect { menu.print_menu }.to output.to_stdout
   end
+
 end

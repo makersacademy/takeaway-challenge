@@ -3,8 +3,8 @@ require 'menu'
 require 'kitchen'
 
 describe 'User Stories' do
-  let(:takeaway) { takeaway = TakeAway.new }
-  let(:kitchen) { kitchen = Kitchen.new }
+  let(:takeaway) { TakeAway.new }
+  let(:kitchen) { Kitchen.new }
   let(:order) { double() }
 
   context 'Menu class' do
@@ -49,13 +49,13 @@ describe 'User Stories' do
     end
 
     it 'able to place order' do
-      expect(takeaway.order("Tomato Salad").empty?).to be false
+      expect(takeaway.place_order("Tomato Salad").empty?).to be false
     end
 
     it 'should be able to order several items' do
-      takeaway.order "Grilled octopus"
-      takeaway.order "Calamari"
-      expect(kitchen.order_cart).to eq kitchen.order_cart
+      takeaway.place_order "Grilled octopus"
+      takeaway.place_order "Calamari"
+      expect(takeaway.kitchen.order_cart.empty?).to eq false
     end
 
     # As a customer

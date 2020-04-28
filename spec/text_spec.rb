@@ -8,7 +8,5 @@ describe Text do
     it 'should pass message to cusstomer' do
       expect { text.sms(phone) }.to output.to_stdout
     end
-
   end
-
 end

@@ -2,24 +2,39 @@ require 'kitchen'
 require 'takeaway'
 
 describe Kitchen do
-  subject(:kitchen) { described_class.new }
-  let(:order) { double() }
+
+  subject { described_class.new(menu_class) }
+  let(:menu_class) { double(menu: { "Calamari" => 10.00, "Tomato Salad" => 10.00 }) }
+
+  context 'instance variable' do
+    it 'should be eq to object' do
+      expect(subject.menu).to eq menu_class
+    end
+  end
   
-  it 'should save order' do
-    kitchen.order "Tomato Salad"
-    expect(kitchen.order_cart).to eq kitchen.order_cart
+  context 'place order' do
+    it 'should raise error if not in a menu' do
+      expect { subject.order "Not in menu" }.to raise_error "Can not place order: item is not in a menu"
+    end
+
+    it 'with one item' do
+      subject.order "Calamari"
+      expect(subject.order_cart.empty?).to eq false
+    end
+
+    it 'multiple times' do
+      subject.order "Calamari"
+      subject.order "Tomato Salad"
+      expect(subject.order_cart.empty?).to eq false
+    end
   end
 
-  it 'should save multiple orders' do
-    kitchen.order "Calamari"
-    kitchen.order "Tomato Salad"
-    expect(kitchen.order_cart).to eq kitchen.order_cart
-  end
-
-  it 'should print order and total' do
-    kitchen.order "Calamari"
-    kitchen.order "Tomato Salad"
-    expect { kitchen.order_total }.to output.to_stdout
+  context '#order_total' do
+    it 'should print order and total' do
+      subject.order "Calamari"
+      subject.order "Tomato Salad"
+      expect { subject.order_total }.to output.to_stdout
+    end
   end
 
 end
