@@ -14,21 +14,42 @@ Takeaway Challenge
 
  ```
 
-Instructions
+ ## questions
+ 1 -  I was not sure about selecting array or hash for menu_list. I used this demonstration: list={ [id: , dish_name:, dish_price:] ] }. The main reason using this, user selects menu_list_number from the menu. (for example list[1]), and then dish comes inside hash automaticly dish= {id:, dish_name:, dish_price:} which i found useful. Because, user only puts menu list_number instead of typing dish name and then i can easily play with dish using hash advantages(key, value pair). Some of my friends used only hash.
+ I think mine is more complicated. How can i do easily ? or Was it correct which i have done ?
+
+ 2- About dependency injection: what are the differences between def initialize(s = nil) { @s = s || S.new} and def initialize(s= S.new) {@s = s} and def initialize(s:) { @s = s || S.new}
+
+ 3- I created a lot of doubles. Not sure some of them are required or not.
+
+ 4- Inside the basket class with the adding function, when it multiplies with value tag, it changes every values which is tagged by price. How can i correct this ? I want to change only the dish which is adding currently.
+ for example :
+ adding(dish ={id:1, name:pizza, price:1}
+ second adding
+ adding({id:1, name: kebap, price:2} )
+  dish[price:] * 2( 2 is quantity of dish)
+  dishes = {{id:1, name:pizza, price:2},{id:1, name: kebap, price:4}}
+  I just wanted to change last dish price.
+
+  5- may i get any feedbacks about my code quality, specially about doubles and mocks ( please ignore sms part, i just copied form somewhere)
+
+  thanks you! This is my first time for getting reviews by coaches. I found that writing questions in readme file saves time. Please dm me, if you think i can improve my requesting structure more...  
+
+
+
+Welcome Tanil's Restaurant
 -------
+Unfortunately, we have taken difficult decision to close all(1 so far) Tanil's restaurant in the Uk.
+Our top priority is to keep you safe. This shop is now takeaway only. We look forward to seeing you all again as soon as it is safe for us to open. Thank you once again for all your support in keeping one another safe. #stayhome
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+![IMG_9273](https://user-images.githubusercontent.com/61015092/80338696-e511c980-8854-11ea-93cf-d0fd52000d05.jpg)
 
-Task
+Diagram
+-------
+--will be edit--
+
+Stories
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -66,19 +87,3 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 > :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
