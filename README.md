@@ -82,3 +82,53 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+To use the app
+------------------
+```
+$ require "./lib/restaurant.rb"
+$ require "./lib/customer_selection.rb"
+$ require "./lib/menu.rb"
+
+$ cafe = Restaurant.new
+
+$ cafe.show_menu
+ => {:croissant=>2, :panini=>4, :coffee=>3, :tea=>3, :juice=>3.5} 
+
+$ cafe.select_items(:coffee, 2)
+
+$ cafe.summary
+ => "Total: £6.5" 
+ 
+$ cafe.checkout
+=> "Order confirmed!"
+```
+
+My approach
+------------------
+## From User Stories to Domain Model
+- Objects: Restaurant, Menu, Customer_Selection
+- Messages: show_menu, select_items, summary, checkout
+- Created a diagram to see how the objects interact with each otherwise
+
+## Feature tests to unit tests to code
+- write code in feature test of what we want to see in the program
+- write unit test and see the same error when running rspec
+- write minimum code to get the unit test pass
+- repeat
+
+My comments 
+-------------------
+## What is left to be done
+- proper tests, including using doubles where necessary
+- remove hardcoded expectations
+- implement the use of Twilio 
+
+## What I learnt from the process:
+- improved diagramming & breaking down the problem
+- breaking project down to objects that interact with each other
+
+## What did not go well and I want to improve
+- using mock tests
+- aiming to satisfy the user stories, nothing else
