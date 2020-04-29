@@ -62,4 +62,8 @@ Order
   * ```cost``` private method
 
   Text
-  * ```send_sms``` sends a text message 
+  * ```send_sms``` sends a text message
+
+## Known issues
+
+The Twilio implementation is not working yet despite the fact the implementation is passing the test. 
