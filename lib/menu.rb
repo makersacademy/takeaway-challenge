@@ -1,9 +1,8 @@
 
 class Menu
 
-  def initialize
-    @menu = [Item.new("name1", '£1.00'),
-             Item.new("name2", '£1.50')]
+  def initialize(*arg)
+    @menu = arg
   end
 
   def show_dishes
