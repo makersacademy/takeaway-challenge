@@ -7,20 +7,32 @@ describe Order do
   before do
     allow(name1).to receive(:name) {"name1"}
     allow(name2).to receive(:name) {"name2"}
+    allow(name1).to receive(:price) {1}
+    allow(name2).to receive(:price) {1.5}
   end
 
   describe '#add(item, number = 1)' do
     it 'should add the item to the order list' do
       subject.add(name1)
-      expect(subject.order).to eq([{"name1" => 1}])
+      expect(subject.order).to eq([{name: "name1", number: 1}])
     end
     it "should record the quatity of each item" do
       subject.add(name1, 3)
       subject.add(name2, 2)
       expect(subject.order).
-        to eq([{"name1" => 3}, {"name2" => 2}])
+        to eq([{name: "name1", number: 3}, {name: "name2", number: 2}])
+    end
+  end
+
+  describe '#show' do
+    it "should output the order with total" do
+      subject.add(name1, 2)
+      subject.add(name2, 3)
+      order = "name1: 2\nname2: 3\nTotal Price: £6.50\n"
+      expect { subject.show }.to output(order).to_stdout
     end
 
   end
+
 
 end

@@ -24,7 +24,7 @@ describe Menu do
     end
   end
 
-  describe '#check(item)' do
+  describe '#check(item.name)' do
     it "should check the dish is on the menu (true)" do ## will need to be updated when later classes are made
       expect(menu.check(name1.name)).to eq(true)
     end
