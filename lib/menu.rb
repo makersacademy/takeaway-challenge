@@ -19,12 +19,7 @@ class Menu
 
   def select(num)
     MENU_LIST.each do |meal|
-      if meal[:num] == num
-        return meal[:price]
-      else
-        raise "Sorry, that item does not exist"
-      end 
+      return meal[:price] if meal[:num] == num
     end
   end
-
 end
