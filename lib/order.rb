@@ -6,8 +6,8 @@ class Order
     @order =[]
   end
 
-  def add(name, number = 1)
-    @order << {(name) => number}
+  def add(item, number = 1)
+    @order << {(item.name) => number}
   end
 
 end
