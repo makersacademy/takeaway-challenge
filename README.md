@@ -18,9 +18,10 @@ I would like to see a list of dishes with prices
 
 * Menu Class:
   * menu_list: 
-    1.  variable with restaurant name
+    1. variable with restaurant name
+    2. change menu_list to hashes with number values and prices
   * show_list: 
-    1.  method to show variable.
+    1.  method to show hash interpolation.
 
 ------
 ```
