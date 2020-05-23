@@ -21,8 +21,10 @@ class Menu
     MENU_LIST.each do |meal|
       if meal[:num] == num
         return meal[:price]
-      end
-    end 
+      else
+        raise "Sorry, that item does not exist"
+      end 
+    end
   end
 
 end

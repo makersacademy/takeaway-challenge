@@ -24,5 +24,9 @@ describe Takeaway do
     it 'Should return an price when selecting an item number' do
       expect(subject.order(1)).to eq(5.99)
     end
+
+    it 'Should raise and error if item is not on the list' do
+      expect { subject.order(10) }.to raise_error("Sorry, that item does not exist")
+    end
   end
 end
