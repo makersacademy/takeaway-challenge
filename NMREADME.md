@@ -22,5 +22,8 @@ Takeaway Challenge
 
   - User story 1 completed - when takeaway.menu is called the menu list is given.
 
+  * decided that user story demanded different functionality, went back and changed
+  * takeaway now initializes with a menu pulled from Menu class
+
 IRB spark
 require './lib/takeaway.rb'
