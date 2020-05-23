@@ -19,9 +19,18 @@ class Takeaway
     @order.add_selection(dish, quantity, price)
   end
 
+  def see_order
+    puts @order.format_order
+    print see_total
+  end
+
 private
 
   def get_price(dish)
     @menu.get_price_for(dish)
+  end
+
+  def see_total
+    @order.format_total
   end
 end

@@ -1,9 +1,15 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:menu_double) { double :menu }
-  subject(:takeaway) { Takeaway.new(menu_double) }
-  let (:get_price_for_double) {allow(menu_double).to receive(:get_price_for) {7.90}}
+  let(:menu_double) { double :menu }
+  let(:order_double) { double :order }
+  subject(:takeaway) { Takeaway.new(menu_double, order_double) }
+
+
+  let (:get_price_for_double) { allow(menu_double).to receive(:get_price_for) {7.90} }
+  let(:menu_item_exists) { allow(menu_double).to receive(:not_on_menu?) { false } }
+  let(:order_double_format) { allow(order_double).to receive(:format_order) { "Large Fish Supper x2\n"} }
+
 
   describe '#see_menu' do
     it 'puts a formatted list of menu items to the customer' do
@@ -20,9 +26,18 @@ describe Takeaway do
       expect {takeaway.select("Large Fssssh Supper",2)}.to raise_error("I'm sorry, we don't have that on our menu.")
     end
     it 'returns "Dish added!"' do
-      allow(menu_double).to receive(:not_on_menu?) { false }
+      menu_item_exists
       get_price_for_double
+      allow(order_double).to receive(:add_selection) { "Dish added!" }
       expect(takeaway.select("Large Fish Supper",2)).to eq "Dish added!"
+    end
+  end
+
+  describe '#see_order' do
+    it 'allows the customer to see order and total' do
+      allow(order_double).to receive(:format_order) { ["Large Fish Supper x2"] }
+      allow(order_double).to receive(:format_total) { "Total: 15.8" }
+      expect { takeaway.see_order }.to output("Large Fish Supper x2\nTotal: 15.8").to_stdout
     end
   end
 end
