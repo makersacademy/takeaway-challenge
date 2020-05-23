@@ -1,4 +1,5 @@
 require 'resturant'
+require 'stringio'
 
 describe Resturant do
   subject { Resturant.new(menu_class) }
@@ -26,10 +27,14 @@ describe Resturant do
 
     context 'checkout'
 
+    before do
+      STDIN = StringIO.new("N")
+    end
+
     it 'should show order and total cost before checkout' do
       message = "Order:\nProceed with checkout?(Enter Y to proceed)\n"
       expect { subject.checkout }.to output(message).to_stdout
-    end    
+    end
 
   end
 

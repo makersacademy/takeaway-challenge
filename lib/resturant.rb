@@ -39,8 +39,7 @@ class Resturant
 
   def checkout
     print_order_at_checkout
-    input = gets.chomp.upcase
-    delivery if input == "Y"
+    delivery if user_input == "Y"
   end
 
   def print_order_at_checkout
@@ -50,6 +49,10 @@ class Resturant
   end
 
   private
+
+  def user_input
+    STDIN.gets.chomp
+  end
 
   def order_being_placed?
     fail "order not started" if !order
