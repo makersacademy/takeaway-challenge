@@ -11,4 +11,8 @@ describe Menu do
   it 'Should load an array when initialized' do
     expect(subject.menu).to be_instance_of(Array)
   end
+
+  it 'Should load menu with items to pick from constant' do
+    expect(subject.menu).to eq(Menu::MENU_LIST)
+  end
 end
