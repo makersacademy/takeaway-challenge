@@ -3,6 +3,7 @@ require 'takeaway'
 describe Takeaway do 
 
   let(:takeaway_dishes) { { "chips" => 1.50, "cheese burger" => 2.50, "chicken wings" => 3.00 } }
+  
   context '#view_dishes' do
     it { is_expected.to respond_to(:view_dishes) }
 
@@ -12,8 +13,6 @@ describe Takeaway do
   end
 
   context '#place_order' do
-    it 'responds to takeaway object' do
-      expect(subject).to respond_to(:place_order)
-    end
+    it { is_expected.to respond_to(:place_order) }
   end
 end
