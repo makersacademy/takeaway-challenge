@@ -23,12 +23,27 @@ class Resturant
   def add_to_order(dish, quantity)
     fail "order not started" if !order
 
-    if @order.any? { |dishes| dishes[:dish] == dish }
-      @order.each { |dishes| dishes[:amount] += quantity if dishes[:dish] == dish }
+    if update_amount?(dish)
+      update_amount(dish, quantity)
     else
-      @order.push({dish: dish, amount: quantity})
+      add(dish, quantity)
     end
   end
+
+  private
+
+  def update_amount?(dish)
+    @order.any? { |dishes| dishes[:dish] == dish }
+  end
+
+  def update_amount(dish, quantity)
+    @order.each { |dishes| dishes[:amount] += quantity if dishes[:dish] == dish }
+  end
+
+  def add(dish, quantity)
+    @order.push({dish: dish, amount: quantity})
+  end
+
 
 
 end
