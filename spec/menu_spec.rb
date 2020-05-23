@@ -6,4 +6,8 @@ describe Menu do
     expect(subject).to be_kind_of(Menu)
   end
 
+  it "is the place the menu is stored" do
+    expect(subject.menu).to include({ "dimsum" => 3 }, { "soup" => 4 }, { "noodles" => 6 }, { "rice" => 7 })
+  end
+
 end

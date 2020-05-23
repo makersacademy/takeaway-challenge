@@ -1,11 +1,11 @@
 class TakeAway
 attr_reader :menu
   def initialize()
-    @menu = Menu.new
+    @menu = Menu.new.menu
   end
 
   def seemenu
-    return [{ "dimsum" => 3 }, { "soup" => 4 }, { "noodles" => 6 }, { "rice" => 7 }]
+    return @menu
   end
 
   def order
