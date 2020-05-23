@@ -3,10 +3,9 @@ require_relative '../lib/menu.rb'
 describe Menu do
   let(:name1) {double(:item1)}
   let(:name2) {double(:item2)}
-  let(:menu) {Menu.new(name1, name2)}
+  let(:menu) {Menu.new([name1, name2])}
 
   before do
-    menu = Menu.new(name1, name2)
     allow(name1).to receive(:name) {"name1"}
     allow(name2).to receive(:name) {"name2"}
     allow(name1).to receive(:price) {1}

@@ -1,13 +1,15 @@
+require_relative 'formatter.rb'
 
 class Menu
 
-  def initialize(*arg)
-    @menu = arg
+  def initialize(item_list, formatter = Formatter.new)
+    @menu = item_list
+    @formatter = formatter
   end
 
   def show_dishes
     @menu.each do |item|
-      puts "#{item.name}: #{formatted(item.price)}"
+      puts "#{item.name}: #{@formatter.format(item.price)}"
     end
   end
 
@@ -15,12 +17,5 @@ class Menu
     @menu.each { |item| return true if poss_item == item.name }
     false
   end
-
-  private
-
-  def formatted(number)
-    return "£%.2f" % number
-  end
-
 
 end
