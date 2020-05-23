@@ -13,4 +13,16 @@ attr_reader :dishes
     end
     formatted_dishes_list
   end
+
+  def not_on_menu?(dish)
+    @dishes.each_key do |key|
+      return false if dish == key
+    end
+  end
+
+  def get_price_for(dish)
+    @dishes.each do |key,value|
+      return value if dish == key
+    end
+  end
 end
