@@ -25,10 +25,7 @@ Instructions
 
 Task
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* The task was to write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -61,8 +58,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * Advanced! (have a go if you're feeling adventurous):
   * Implement the ability to place orders via text message.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
 > :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
@@ -77,6 +72,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 -----
+The flow chart appended displays the flow of the user stories and the direction of the functions. :rightarrow:
 
 ![](images/Flow_Chart_TakeawayChallenge.svg)
 
