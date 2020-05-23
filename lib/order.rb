@@ -25,11 +25,19 @@ class Order
   def request_quantity
     puts 'Please enter the quantity:'
     input = gets.chomp
-    while !input.gsub(/[0-9]/,"").empty? || input.empty?
-      puts "Invalid entry, please try again:"
+    while !quantity_valid?(input)
+      invalid_entry_error
       input = gets.chomp
     end
     @dish_quantity = input
+  end
+
+  def quantity_valid?(input)
+    input.gsub(/[0-9]/,"").empty? && !input.empty?
+  end
+
+  def invalid_entry_error
+    puts "Invalid entry, please try again:"
   end
 
   def confirm_order

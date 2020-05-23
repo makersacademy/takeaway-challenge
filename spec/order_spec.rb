@@ -8,7 +8,7 @@ describe Order do
   let(:dish_prompt) { "Please enter the dish name:\n" + "[to finish, hit Return twice]\n" }
   let(:quantity_prompt) { "Please enter the quantity:\n" }
   let(:confirmation_prompt) { "-- #{@quantity} #{@dish}(s) added! --\n" }
-  let(:error_prompt) { "Invalid entry, please try again:" }
+  let(:error_prompt) { "Invalid entry, please try again:\n" }
   let(:complete_order) { 
     dish_prompt + quantity_prompt + confirmation_prompt + dish_prompt 
   }
@@ -23,10 +23,10 @@ describe Order do
       expect { subject.request_order }.to output(complete_order).to_stdout
     end
 
-    it 'alerts the  user if quantity entered is invalid and asks to re-enter' do
+    it 'alerts the user if quantity entered is invalid and asks to re-enter' do
       user_inputs
-      allow(subject).to receive(:gets).and_return(@dish, "invalid", @quantity, "")
-
+      allow(subject).to receive(:gets).and_return(@dish, "invalid quantity", @quantity, "")
+      expect { subject.request_order }.to output(invalid_quantity_order).to_stdout
     end
   end
 end
