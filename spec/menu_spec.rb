@@ -9,8 +9,8 @@ describe Menu do
     menu = Menu.new(name1, name2)
     allow(name1).to receive(:name) {"name1"}
     allow(name2).to receive(:name) {"name2"}
-    allow(name1).to receive(:price) {"£1.00"}
-    allow(name2).to receive(:price) {"£1.50"}
+    allow(name1).to receive(:price) {1}
+    allow(name2).to receive(:price) {1.5}
   end
 
   describe '#show_dishes' do

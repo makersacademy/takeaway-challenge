@@ -7,7 +7,7 @@ class Menu
 
   def show_dishes
     @menu.each do |item|
-      puts "#{item.name}: #{item.price}"
+      puts "#{item.name}: #{formatted(item.price)}"
     end
   end
 
@@ -15,5 +15,12 @@ class Menu
     @menu.each { |item| return true if poss_item == item.name }
     false
   end
+
+  private
+
+  def formatted(number)
+    return "£%.2f" % number
+  end
+
 
 end
