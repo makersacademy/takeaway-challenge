@@ -15,4 +15,10 @@ describe Takeaway do
       expect{subject.view}.to output.to_stdout
     end
   end
+  
+  describe '#order' do
+    it 'Should have an order menthod to place order' do
+      expect(subject).to respond_to(:order)
+    end
+  end
 end

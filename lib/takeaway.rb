@@ -13,4 +13,8 @@ class Takeaway
     @menu.view
   end
 
+  def order
+    
+  end
+
 end
