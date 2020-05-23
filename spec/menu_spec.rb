@@ -12,17 +12,27 @@ describe Menu do
   end
 
   context ' #show_list' do
+    let(:expected_output) { ["Costa del Oval",
+    "1. Veggie Burger and Sweet Potato Fries : £3",
+    "2. Veggie Lasagna: £5",   
+    "3. Falafel and Hallumi Wrap: £4"].join("\n") + "\n" }
+
     it 'responds to #show_list' do
       expect(subject).to respond_to(:show_list)
     end
 
-    it 'outputs the name of the restaurant before the menu' do
-      expect { subject.show_list }.to output {"Costa del Oval"}.to_stdout
-    end
-
     it 'shows entire menu list' do
-      menu_list = {item_number: 1, item: "Nuggets and Chips", price: 3}
-    expect { subject.show_list }.to output { "1. Nuggets and Chips: £3/n 2. Veggie Lasagne: £5" }.to_stdout
+      expect { subject.show_list }.to output(expected_output).to_stdout
     end
   end
+
+  context ' #select_items' do
+    it 'it should responds to #select_items' do
+      expect(subject).to respond_to(:select_items)
+    end
+
+    it 'asks customer for an items to add to their order' do
+      expect(subject.select_items).to eq('What would you like to order? Enter an item number.')
+    end
+  end 
 end
