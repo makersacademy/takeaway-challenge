@@ -23,7 +23,7 @@ class Resturant
     @order = nil
   end
 
-  def add_to_order(dish, quantity = 1)
+  def add_to_order(dish, quantity)
     order_being_placed?
 
     @order.add(dish, quantity)
