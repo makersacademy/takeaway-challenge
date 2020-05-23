@@ -16,7 +16,7 @@ describe Order do
     end
 
     it 'adds the price of the dishes to the total' do
-      expect { add_order }.to change { order.total }.by(15.8)
+      expect { add_order }.to change { order.total }.by(15.80)
     end
   end
 end

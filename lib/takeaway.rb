@@ -1,9 +1,11 @@
+require_relative './order'
 require_relative './menu'
 
 class Takeaway
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
+    @order = order
   end
 
   def see_menu
@@ -13,8 +15,8 @@ class Takeaway
   def select(dish,quantity)
     raise "I'm sorry, we don't have that on our menu." if @menu.not_on_menu?(dish)
 
-    get_price(dish)
-    "Dish added!"
+    price = get_price(dish)
+    @order.add_selection(dish, quantity, price)
   end
 
 private
