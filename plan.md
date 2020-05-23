@@ -21,8 +21,10 @@ front_menu - user_input to select: show dishes, show order, place order, add to 
 
 objects         data                      methods
 
-dishes          list of dishes            show dishes
-                array of hashes           add to order(item, number)
+Menu            list of dishes             show dishes
+                array of hashes           check is on menu(item)
+
+Dishes          name, prices             
 
 order           list of dishes ordered    show current order()
                 array of hashes           calculate cost of order
