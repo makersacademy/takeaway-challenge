@@ -16,5 +16,13 @@ class Menu
       puts "Item #{item[:num]}: #{item[:item]} - £#{item[:price]}"
     end
   end
-  
+
+  def select(num)
+    MENU_LIST.each do |meal|
+      if meal[:num] == num
+        return meal[:price]
+      end
+    end 
+  end
+
 end

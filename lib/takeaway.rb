@@ -13,8 +13,8 @@ class Takeaway
     @menu.view
   end
 
-  def order
-    
+  def order(num)
+    @menu.select(num)
   end
 
 end
