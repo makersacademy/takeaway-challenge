@@ -11,6 +11,7 @@ class Takeaway
   end
 
   def select(dish,quantity)
-    raise "I'm sorry, we don't have that on our menu."
+    raise "I'm sorry, we don't have that on our menu." if @menu.not_on_menu?(dish)
+    "Dish added!"
   end
 end

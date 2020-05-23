@@ -13,9 +13,14 @@ describe Takeaway do
     end
   end
 
-  describe '#select(dish,quantity)' do 
+  describe '#select(dish,quantity)' do
     it 'raises an error if the dish does not exist' do
+      allow(menu_double).to receive(:not_on_menu?) { true }
       expect {takeaway.select("Large Fssssh Supper",2)}.to raise_error("I'm sorry, we don't have that on our menu.")
+    end
+    it 'returns "Dish added!"' do
+      allow(menu_double).to receive(:not_on_menu?) { false }
+      expect(takeaway.select("Large Fish Supper",2)).to eq "Dish added!"
     end
   end
 end
