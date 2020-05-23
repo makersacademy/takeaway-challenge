@@ -3,6 +3,7 @@ require 'takeaway'
 describe Takeaway do
   subject(:menu_double) { double :menu }
   subject(:takeaway) { Takeaway.new(menu_double) }
+  let (:get_price_for_double) {allow(menu_double).to receive(:get_price_for) {7.90}}
 
   describe '#see_menu' do
     it 'puts a formatted list of menu items to the customer' do
@@ -20,6 +21,7 @@ describe Takeaway do
     end
     it 'returns "Dish added!"' do
       allow(menu_double).to receive(:not_on_menu?) { false }
+      get_price_for_double
       expect(takeaway.select("Large Fish Supper",2)).to eq "Dish added!"
     end
   end

@@ -12,6 +12,14 @@ class Takeaway
 
   def select(dish,quantity)
     raise "I'm sorry, we don't have that on our menu." if @menu.not_on_menu?(dish)
+
+    get_price(dish)
     "Dish added!"
+  end
+
+private
+
+  def get_price(dish)
+    @menu.get_price_for(dish)
   end
 end
