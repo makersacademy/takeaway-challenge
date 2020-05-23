@@ -12,4 +12,10 @@ describe Takeaway do
           .to_stdout
     end
   end
+
+  describe '#select(dish,quantity)' do 
+    it 'raises an error if the dish does not exist' do
+      expect {takeaway.select("Large Fssssh Supper",2)}.to raise_error("I'm sorry, we don't have that on our menu.")
+    end
+  end
 end
