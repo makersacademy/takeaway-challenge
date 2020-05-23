@@ -13,6 +13,7 @@
 
 [Input diagram here]
 
+---
 ## User Story 1
 
 ```
@@ -20,23 +21,25 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ```
-> customers request to see menu from takeaway.
+> customer can request to see menu from takeaway.
 
  - Feature test: create new takeaway menu. *test failed*
  - Write test: for Takeaway object. *test failed*
  - Write code: Define Takeaway class. *test passed*
  - **Feature test passed**
 
-
 > customer can request to view dishes on takeaway menu
  - Feature test: send message to view_dishes to new takeaway menu. *test failed*
- - Write test: define the method view_dishes. *test failed*
+ - Write test: method view_dishes repsonds to takeaway object. *test failed*
  - Write code: defined view_dishes method. *test passed*
  - **feature test passed**
 
+> takeaway menu will return a list of dishes with prices
 
-
-
+ - Feature test: view_dishes will return list of dishes with prices. *test failed*
+ - Write test: view_dishes to return 1 dish with price in hash format. *test failed*
+ - Wrote code: Added return value to the view_dishes method. *test passed*
+ - **Feature test passed**
 
 
 
