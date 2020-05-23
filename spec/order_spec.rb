@@ -31,8 +31,14 @@ describe Order do
       order = "name1: 2\nname2: 3\nTotal Price: £6.50\n"
       expect { subject.show }.to output(order).to_stdout
     end
-
   end
 
-
+  describe '#comfirm, string output' do # to be moved when Twilio is setup
+    t = Time.now
+    time_string = "#{t.hour + 1}:#{t.min}"
+    message = "Order confirmed, it will arrive at #{time_string}\n"
+    it "gives out the confirmation message and approx arrival time" do
+      expect{ subject.confirm }.to output(message).to_stdout
+    end
+  end
 end

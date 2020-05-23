@@ -18,4 +18,10 @@ class Order
     puts "Total Price: #{@formatter.format(@total)}"
   end
 
+  def confirm
+    t = Time.now
+    time_string = "#{t.hour + 1}:#{t.min}"
+    puts "Order confirmed, it will arrive at #{time_string}"
+  end
+
 end
