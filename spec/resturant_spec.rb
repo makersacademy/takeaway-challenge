@@ -1,21 +1,10 @@
 require 'resturant'
 
 describe Resturant do
-  subject { Resturant.new }
+  subject { Resturant.new(menu) }
 
   let(:dishes) { [:chicken, :beef, :pasta, :pizza, :burger] }
-
-  context 'menu' do
-
-    it 'starts with an array of dishes' do
-      expect(subject.dishes).to eq(dishes)
-    end
-
-    it 'prints menu, line by line, when you call show_menu' do
-      expect { subject.show_menu }.to output("chicken\nbeef\npasta\npizza\nburger\n").to_stdout
-    end
-
-  end
+  let(:menu) { double(:menu, show_menu: "chicken\nbeef\npasta\npizza\nburger\n") }
 
   context 'ordering' do
 
@@ -46,6 +35,23 @@ describe Resturant do
       2.times { subject.add_to_order(:chicken, 1) }
       expect(subject.order).to eq([{dish: :chicken, amount: 2}])
     end
+
+    it 'will remove an order' do
+      subject.add_to_order(:chicken, 1)
+      subject.remove(:chicken)
+      expect(subject.order).to be_empty
+    end
+
+    it 'will just update quantity if remove quantity is less than order total' do
+      2.times { subject.add_to_order(:chicken, 1) }
+      subject.remove(:chicken)
+      expect(subject.order).to include({dish: :chicken, amount: 1})
+    end
+
+    it 'will error if you try to remove dish not in order' do
+      expect { subject.remove(:beef) }.to raise_error("beef not in order")
+    end
+
 
   end
 

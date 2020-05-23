@@ -2,14 +2,14 @@
 
 class Resturant
 
-  attr_reader :dishes, :order
+  attr_reader :dishes, :order, :menu
 
-  def initialize
-    @dishes = [:chicken, :beef, :pasta, :pizza, :burger]
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
-  def show_menu
-    @dishes.each { |dish| puts dish }
+  def view_menu
+    menu.show_menu
   end
 
   def start_order
@@ -23,16 +23,31 @@ class Resturant
   def add_to_order(dish, quantity)
     fail "order not started" if !order
 
-    if update_amount?(dish)
+    if dish_in_order?(dish)
       update_amount(dish, quantity)
     else
       add(dish, quantity)
     end
+
+    def remove(dish, quantity = 1)
+      if dish_in_order?(dish)
+        @order.each { |dishes|
+          if dishes[:dish] == dish && dishes[:amount] - quantity > 0
+            dishes[:amount] -= quantity if dishes[:dish] == dish
+          else
+            @order.delete(dishes) if dishes[:dish] == dish
+          end
+        }
+      else
+        fail "#{dish} not in order"
+      end
+    end
+
   end
 
   private
 
-  def update_amount?(dish)
+  def dish_in_order?(dish)
     @order.any? { |dishes| dishes[:dish] == dish }
   end
 
@@ -43,7 +58,5 @@ class Resturant
   def add(dish, quantity)
     @order.push({dish: dish, amount: quantity})
   end
-
-
 
 end
