@@ -21,7 +21,8 @@ I would like to see a list of dishes with prices
     1. variable with restaurant name
     2. change menu_list to hashes with number values and prices
   * show_list: 
-    1.  method to show hash interpolation.
+    1.  method to show hash interpolation if entire menu list.
+    2. prints restaurant name and menu.
 
 ------
 ```
