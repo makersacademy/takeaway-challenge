@@ -15,3 +15,19 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+treat the Takeaway front face as the main program. (this might be made into a class)
+front_menu - user_input to select: show dishes, show order, place order, add to order, leave.
+
+objects         data                      methods
+
+dishes          list of dishes            show dishes
+                array of hashes           add to order(item, number)
+
+order           list of dishes ordered    show current order()
+                array of hashes           calculate cost of order
+                                          submit order
+
+formatted                                 format data from order
+
+API - Twilio    phone stuff               interface to utilise Twilio
