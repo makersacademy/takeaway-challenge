@@ -85,3 +85,6 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 
 
 ![](images/Flow_Chart_TakeawayChallenge.svg)
+
+![](images/Domain_Model_Takeout.svg)
+
