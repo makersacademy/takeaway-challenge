@@ -57,5 +57,5 @@ The flow chart appended displays the flow of the user stories and the direction 
 The below domain model was created using Mermaid :mermaid: and demonstrates the distribution of responsibilities between the classes :notebook:.
 It also illustrates the class dependencies.
 
-![](images/Domain_Model_Takeout.svg)
+                   ![](images/Domain_Model_Takeout.svg)
 
