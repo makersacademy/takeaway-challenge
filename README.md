@@ -76,11 +76,13 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   - Dependency injection
 
 
-
+-----
 
 ![](images/Flow_Chart_TakeawayChallenge.svg)
 
-
+-----
+The below domain model was created using Mermaid :mermaid: and demonstrates the distribution of responsibilities between the classes :notebook:.
+It also illustrates the class dependencies.
 
 ![](images/Domain_Model_Takeout.svg)
 
