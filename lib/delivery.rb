@@ -2,7 +2,7 @@ require_relative 'text_message'
 
 class Delivery
 
-  def initialize(text_message_class = Text_message)
+  def initialize(text_message_class = TextMessage)
     @delivery_time = calculate_delivery_time
     user_delivery_notification
     send_text(text_message_class)

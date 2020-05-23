@@ -3,19 +3,19 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = [{dish: :chicken, value: 7.50},
-      {dish: :beef, value: 9.00},
-      {dish: :pasta, value: 8.50},
-      {dish: :pizza, value: 12.00},
-      {dish: :burger, value: 7.00}]
+    @dishes = [{ dish: :chicken, value: 7.50 },
+      { dish: :beef, value: 9.00 },
+      { dish: :pasta, value: 8.50 },
+      { dish: :pizza, value: 12.00 },
+      { dish: :burger, value: 7.00 }]
   end
 
   def show_menu
-    @dishes.each { |dish| puts "#{dish[:dish].to_s.capitalize}   cost: £#{two_decimals(dish[:value])}" }
+    @dishes.each { |dish| puts "#{dish[:dish].to_s.capitalize} £#{two_decimals(dish[:value])}" }
   end
 
   def return_dish(dish)
-    fail "#{dish} not on menu" if !on_menu?(dish)
+    fail "#{dish} not on menu" unless on_menu?(dish)
 
     dishes[find_dish(dish)]
   end

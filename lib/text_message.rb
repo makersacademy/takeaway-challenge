@@ -1,6 +1,6 @@
 require 'twilio-ruby'
 
-class Text_message
+class TextMessage
 
   def initialize(body)
 

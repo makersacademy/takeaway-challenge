@@ -4,10 +4,11 @@ require_relative 'delivery'
 
 class Resturant
 
-  attr_reader :dishes, :order, :menu
+  attr_reader :order, :orders_to_cook, :menu
 
   def initialize(menu_class = Menu)
     @menu = menu_class.new
+    @orders_to_cook = []
   end
 
   def view_menu
@@ -29,6 +30,8 @@ class Resturant
   end
 
   def remove_from_order(dish, quantity = 1)
+    order_being_placed?
+
     @order.remove(dish, quantity)
   end
 
@@ -40,10 +43,16 @@ class Resturant
 
   def checkout
     print_order_at_checkout
-    delivery if user_input.upcase == "Y"
+    checkout_process if user_input.upcase == "Y"
   end
 
   private
+
+  def checkout_process
+    @orders_to_cook.push(@order)
+    @order = nil
+    delivery
+  end
 
   def delivery
     Delivery.new
@@ -60,7 +69,8 @@ class Resturant
   end
 
   def order_being_placed?
-    fail "order not started" if !order
+    fail "order not started" unless !!order
+
   end
 
 end
