@@ -1,5 +1,4 @@
-Takeaway Challenge
-by Sophie Brown
+Takeaway Challenge by Sophie Brown
 ==================
 ```
                             _________
@@ -66,13 +65,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 **Skills used:**
 -----
-```
   - Domain modelling
   - Updating Gemfiles
   - Class extraction
   - Dependency injection
 
-```
 -----
 The flow chart appended displays the flow of the user stories and the direction of the functions. :arrow_right:
 
