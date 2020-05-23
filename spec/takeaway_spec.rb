@@ -23,7 +23,11 @@ describe Takeaway do
       expect(subject.list_menu).to eq(menu)
     end
 
-
+    it 'testing ' do
+      o1 = {rice: 3, pizza: 2}
+      allow(subject).to receive(:make_order).and_return(o1)
+      expect(subject.make_order).to eq(o1)
+    end
 
   end #context #menu
 
