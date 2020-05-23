@@ -8,4 +8,10 @@ describe Item do
     end
   end
 
+  describe '#price' do
+    it "should have a readable price"do
+      item1 = Item.new("name1", '£1.00')
+      expect(item1.price).to eq("£1.00")
+    end
+  end
 end
