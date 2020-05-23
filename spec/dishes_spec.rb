@@ -1,8 +1,17 @@
 require 'dishes'
 
 describe Dishes do
+  subject { described_class.new }
+  let(:menu){ [{toast: 3, cereal: 2}]}
 
-  it "should respond to dishes" do
-    expect(subject.view).to eq true
-  end
+  context "#view(dishes)" do
+    it "should respond to #view with one argument" do
+      expect(subject).to respond_to(:view).with(1).argument
+    end
+    
+    it "should return a hash of dishes and prices" do
+      subject.view(menu)
+      expect(subject.menu).to eq menu 
+    end
+  end 
 end
