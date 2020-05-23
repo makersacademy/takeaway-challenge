@@ -63,7 +63,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
 
-
+```
 **Skills used:**
 -----
   - Domain modelling
@@ -71,7 +71,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   - Class extraction
   - Dependency injection
 
-
+```
 -----
 The flow chart appended displays the flow of the user stories and the direction of the functions. :arrow_right:
 
