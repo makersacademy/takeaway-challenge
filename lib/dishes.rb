@@ -16,6 +16,5 @@ class Dishes
     new = @menu.each do | k, v|
       puts "#{k} : £#{v.to_f}"
     end
-    new
   end
 end
