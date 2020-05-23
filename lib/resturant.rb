@@ -22,13 +22,37 @@ class Resturant
   end
 
   def add_to_order(dish, quantity)
-    fail "order not started" if !order
+    order_being_placed?
 
     @order.add(dish, quantity)
   end
 
   def remove_from_order(dish, quantity = 1)
     @order.remove(dish, quantity)
+  end
+
+  def view_order
+    order_being_placed?
+
+    @order.view_order
+  end
+
+  def checkout
+    print_order_at_checkout
+    input = gets.chomp.upcase
+    delivery if input == "Y"
+  end
+
+  def print_order_at_checkout
+    puts "Order:"
+    @order.view_order
+    puts "Proceed with checkout?(Enter Y to proceed)"
+  end
+
+  private
+
+  def order_being_placed?
+    fail "order not started" if !order
   end
 
 end

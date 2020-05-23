@@ -31,7 +31,8 @@ class Order
     end
 
     def view_order
-      @order.each { |dish| puts "#{dish[:dish]} x#{dish[:amount]} price: £#{two_decimals(dish[:price] * dish[:amount])}" }
+      @order.each { |dish| puts "#{dish[:dish]} x#{dish[:amount]} £#{two_decimals(dish[:price] * dish[:amount])}" }
+      "Total: £#{two_decimals(total)}"
     end
 
     private
@@ -51,6 +52,12 @@ class Order
 
     def two_decimals(num)
       '%.2f' % num
+    end
+
+    def total
+      sub_total = 0
+      @order.each { |meal| sub_total += (meal[:price] * meal[:amount])}
+      sub_total
     end
 
 end

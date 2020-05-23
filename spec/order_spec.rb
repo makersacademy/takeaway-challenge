@@ -39,7 +39,7 @@ describe Order do
 
       it 'will show order' do
         2.times { subject.add(:chicken, 1) }
-        expect { subject.view_order }.to output("chicken x2 price: £15.00\n").to_stdout
+        expect { subject.view_order }.to output("chicken x2 £15.00\n").to_stdout
       end
 
 end
