@@ -3,4 +3,10 @@
 # I would like to see a list of dishes with prices
 
 class Menu
-end 
+
+  attr_reader :menu
+
+  def initialize
+    @menu = []
+  end
+end
