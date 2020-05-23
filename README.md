@@ -1,4 +1,5 @@
 Takeaway Challenge
+by Sophie Brown
 ==================
 ```
                             _________
