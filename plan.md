@@ -24,7 +24,7 @@ objects         data                      methods
 Menu            list of dishes            show dishes
                 array of hashes           check is on menu(item)
 
-Dishes          name, prices             
+Item            name, prices             
 
 order           list of dishes ordered    show current order()
                 array of hashes           calculate cost of order
