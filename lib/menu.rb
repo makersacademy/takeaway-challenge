@@ -19,7 +19,7 @@ class Menu
 
   def select(num)
     MENU_LIST.each do |meal|
-      return meal[:price] if meal[:num] == num
+      return {item:meal[:item], price:meal[:price]} if meal[:num] == num
     end
   end
 end

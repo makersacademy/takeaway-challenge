@@ -21,12 +21,14 @@ describe Takeaway do
       expect(subject).to respond_to(:order)
     end
 
-    it 'Should return an price when selecting an item number' do
-      expect(subject.order(1, 1)).to eq(5.99)
+    it 'Should save items and prices when selecting an item number' do
+      subject.order(1, 1)
+      expect(subject.current_order).to eq( [{item: "Spare ribs", price: 5.99}] )
     end
 
-    it 'Should allow user to order multiples if they would like' do
-      expect(subject.order(3, 3)).to eq(18.00)
+    it 'should save multiple items when given a second argument' do
+      subject.order(2,3)
+      expect(subject.current_order).to eq( [{item: "Spring rolls", price: 3.50}, {item: "Spring rolls", price: 3.50}, {item: "Spring rolls", price: 3.50}] )
     end
   end
 end

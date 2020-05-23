@@ -5,8 +5,11 @@ require_relative 'menu'
 
 class Takeaway
 
+  attr_reader :current_order
+
   def initialize
     @menu = Menu.new
+    @current_order = []
   end
 
   def view
@@ -14,6 +17,6 @@ class Takeaway
   end
 
   def order(num, amount)
-    amount * @menu.select(num)
+    amount.times { @current_order << @menu.select(num)}
   end
 end
