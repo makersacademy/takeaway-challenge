@@ -15,4 +15,10 @@ describe Menu do
   it 'Should load menu with items to pick from constant' do
     expect(subject.menu).to eq(Menu::MENU_LIST)
   end
+
+  describe '#read' do
+    it 'Should print out a list of items' do
+      expect { subject.view }.to output.to_stdout
+    end
+  end
 end

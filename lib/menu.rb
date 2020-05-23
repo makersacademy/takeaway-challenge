@@ -11,10 +11,15 @@ class Menu
     { num: 4, item: "Fried rice", price: 6.50 }
   ]
 
-    attr_reader :menu
+  attr_reader :menu
 
   def initialize
     @menu = MENU_LIST
   end
-  
+
+  def view
+    @menu.each do |item|
+      puts "Item #{item[:num]}: #{item[:item]} - £#{item[:price]}"
+    end
+  end
 end
