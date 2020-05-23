@@ -3,13 +3,16 @@ require_relative '../lib/menu.rb'
 describe Menu do
   let(:name1) {double(:item1)}
   let(:name2) {double(:item2)}
-  let(:menu) {Menu.new([name1, name2])}
+  let(:formatter) {double(:formatter)}
+  let(:menu) {Menu.new([name1, name2], formatter)}
 
   before do
     allow(name1).to receive(:name) {"name1"}
     allow(name2).to receive(:name) {"name2"}
     allow(name1).to receive(:price) {1}
     allow(name2).to receive(:price) {1.5}
+    allow(formatter).to receive(:format).with(1).and_return("£1.00")
+    allow(formatter).to receive(:format).with(1.5).and_return("£1.50")
   end
 
   describe '#show_dishes' do
