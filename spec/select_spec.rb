@@ -2,9 +2,8 @@ require 'select'
 
 describe Select do
   let(:final_order) { [{ toast: 3, cereal: 2 }] }
-  let(:available_dishes) { double :available_dishes}
+  let(:available_dishes) { double :available_dishes }
   let(:menu) { [{ toast: 3, cereal: 2, coffee: 2 }] }
-
 
   context "#selection" do
     it "should respond to the method order with 1 arg" do
@@ -12,8 +11,7 @@ describe Select do
     end
 
     it "should receive dishes from Dishes class" do
-      subject.order(menu)
-      expect(subject.menu).to match_array menu
+      expect(subject.order(available_dishes)).to match_array(menu)
     end
   end
 end
