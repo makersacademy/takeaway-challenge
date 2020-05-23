@@ -1,7 +1,12 @@
+require_relative './menu'
+
 class Takeaway
 
+  def initialize(menu = Menu.new)
+    @menu = menu
+  end
+
   def see_menu
-    puts "Cod & Chips - 5.40",
-        "White Sausage - 2.30"
+    puts @menu.print_menu
   end
 end
