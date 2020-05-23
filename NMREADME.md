@@ -21,3 +21,6 @@ Takeaway Challenge
   * all functionality was checked in IRB in the first instance
 
   - User story 1 completed - when takeaway.menu is called the menu list is given.
+
+IRB spark
+require './lib/takeaway.rb'
