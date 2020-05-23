@@ -31,6 +31,8 @@ order           list of dishes ordered    show current order()
                                           add(item, number)
                                           submit order
 
-formatted                                 format data from order
+Need to learn - double check how to do:
+
+formatter                                 format data from order
 
 API - Twilio    phone stuff               interface to utilise Twilio
