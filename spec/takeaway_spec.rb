@@ -15,4 +15,5 @@ describe TakeAway do
   it "responds to order with any args" do
     expect(takeaway).to respond_to(:order).with_unlimited_arguments
   end
+
 end

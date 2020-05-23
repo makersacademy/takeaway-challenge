@@ -28,6 +28,7 @@ Takeaway Challenge
   - Working on user story 2
 
   * commited after passing green for "order with any args".
+  * commited after initializing @cust_order as empty array"
 
 IRB spark
 require './lib/takeaway.rb'
