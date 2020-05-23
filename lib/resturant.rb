@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'delivery'
 
 class Resturant
 
@@ -21,7 +22,7 @@ class Resturant
     @order = nil
   end
 
-  def add_to_order(dish, quantity)
+  def add_to_order(dish, quantity = 1)
     order_being_placed?
 
     @order.add(dish, quantity)
@@ -39,7 +40,13 @@ class Resturant
 
   def checkout
     print_order_at_checkout
-    delivery if user_input == "Y"
+    delivery if user_input.upcase == "Y"
+  end
+
+  private
+
+  def delivery
+    Delivery.new
   end
 
   def print_order_at_checkout
@@ -47,8 +54,6 @@ class Resturant
     @order.view_order
     puts "Proceed with checkout?(Enter Y to proceed)"
   end
-
-  private
 
   def user_input
     STDIN.gets.chomp

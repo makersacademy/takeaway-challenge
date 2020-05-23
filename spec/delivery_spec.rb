@@ -2,14 +2,13 @@ require 'delivery'
 require 'timecop'
 
 describe Delivery do
-  subject { Delivery.new }
+  subject { Delivery.new(text_message) }
+
+  let(:text_message) { double(:text_message, new: nil) }
 
   before do
     Timecop.freeze(Time.parse("16:45"))
-  end
-
-  it 'calculates delivery time' do
-    expect(subject.calculate_delivery_time).to eq("17:45")
+    allow(subject).to receive(:send_text)
   end
 
   it 'tells the user when the order has been placed' do
