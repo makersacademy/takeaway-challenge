@@ -1,8 +1,8 @@
 require 'takeaway'
 
 describe TakeAway do
-let(:takeaway) {TakeAway.new}
-let(:bum) { Menu.new }
+  let(:takeaway) { TakeAway.new }
+  let(:bum) { Menu.new }
 
   it 'should have a user scrutable menu' do
     expect(subject.menu).not_to be nil
@@ -12,10 +12,7 @@ let(:bum) { Menu.new }
     expect(subject.seemenu).to eq [{ "dimsum" => 3 }, { "soup" => 4 }, { "noodles" => 6 }, { "rice" => 7 }]
   end
 
-  it "accepts responds to order" do
-    expect(takeaway).to respond_to :order
+  it "responds to order with any args" do
+    expect(takeaway).to respond_to(:order).with_unlimited_arguments
   end
-
-
-
 end

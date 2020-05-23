@@ -25,5 +25,9 @@ Takeaway Challenge
   * decided that user story demanded different functionality, went back and changed
   * takeaway now initializes with a menu pulled from Menu class
 
+  - Working on user story 2
+
+  * commited after passing green for "order with any args".
+
 IRB spark
 require './lib/takeaway.rb'
