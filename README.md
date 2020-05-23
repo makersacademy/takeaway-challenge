@@ -67,6 +67,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
 
+>:smile:
+
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
 
