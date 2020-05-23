@@ -1,5 +1,5 @@
 
-class Dishes
+class Menu
 
   def initialize
     @menu = [{name: 'name1', price: '£1.00'},
@@ -10,6 +10,11 @@ class Dishes
     @menu.each do |item|
       puts "#{item[:name]}: #{item[:price]}"
     end
+  end
+
+  def check(poss_item)
+    @menu.each { |item| return true if poss_item == item[:name] }
+    false
   end
 
 end

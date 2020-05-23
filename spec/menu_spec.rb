@@ -11,10 +11,10 @@ describe Menu do
 
   describe '#check(item)' do
     it "should check the dish is on the menu (true)" do ## will need to be updated when later classes are made
-      expect(subject.check(:name1)).to eq(true)
+      expect(subject.check("name1")).to eq(true)
     end
     it "should check the dish is on the menu (true)" do ## will need to be updated when later classes are made
-      expect(subject.check(:name3)).to eq(false)
+      expect(subject.check("name3")).to eq(false)
     end
   end
 end
