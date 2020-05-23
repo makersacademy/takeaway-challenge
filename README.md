@@ -72,7 +72,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 -----
-The flow chart appended displays the flow of the user stories and the direction of the functions. :rightarrow:
+The flow chart appended displays the flow of the user stories and the direction of the functions. :arrow_right:
 
 ![](images/Flow_Chart_TakeawayChallenge.svg)
 
