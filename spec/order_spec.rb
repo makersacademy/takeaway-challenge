@@ -37,7 +37,8 @@ describe Order do
     time_string = Time.now.strftime("%H:%M")
     message = "Order confirmed, it will arrive at #{time_string}\n"
     it "gives out the confirmation message and approx arrival time" do
-      expect { subject.confirm }.to output(message).to_stdout
+      expect { subject.confirm }.
+      to output(/Order confirmed, it will arrive at #{time_string}/).to_stdout
     end
   end
 end
