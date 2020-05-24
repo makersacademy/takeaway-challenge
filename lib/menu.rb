@@ -12,5 +12,11 @@ class Menu
   def price(dish)
     @dishes[dish]
   end
+
+  def print_menu
+    @dishes.each do |dish, price|
+      puts "%s: £%.2f" % [dish.capitalize, price]
+    end
+  end
   
 end

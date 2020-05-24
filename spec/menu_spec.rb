@@ -3,7 +3,7 @@ require_relative '../lib/menu'
 describe Menu do
 
   subject(:menu) { Menu.new(dishes) }
-  let(:dishes) { { pizza: 5.00, kebab: 4.00 } }
+  let(:dishes) { { :pizza => 5.00, :kebab => 4.00 } }
   
   it 'should have a list of dishes and their prices' do
     expect(menu.dishes).to eq(dishes)
@@ -20,6 +20,11 @@ describe Menu do
 
   it 'should show the price for a dish' do
     expect(menu.price(:pizza)).to eq 5
+  end
+
+  it 'should print the menu' do
+    dishes = { :pizza => 5.00, :kebab => 4.00 }
+    expect { menu.print_menu }.to output("Pizza: £5.00\nKebab: £4.00\n").to_stdout
   end
 
 end
