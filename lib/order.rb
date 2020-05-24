@@ -1,6 +1,8 @@
 require_relative 'menu'
 
 class Order
+
+  attr_reader :customer_basket
   
   def initialize 
     @customer_basket = []
@@ -18,7 +20,8 @@ class Order
 
     @menu.each do |options|
       if customer_choice == options[:item_number]
-        return options[:item]
+        customer_basket <<  options[:item]
+        return customer_basket
       end
     end
   end
@@ -29,7 +32,10 @@ class Order
     order_asker
   end
 
-  private 
+  def customer_order
+    @customer_basket
+  end
+
 
   def order_asker
     puts "What would you like to order? Enter an item number."

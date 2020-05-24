@@ -2,12 +2,15 @@ require 'order'
 
 describe Order do
   let(:order) { described_class.new }  
-
   let (:menu) { double :menu }
   let (:order_choice) { double :order_choice }
 
   it 'creates a new order' do
     expect(Order.new).to be_instance_of Order
+  end
+
+  it 'initalizes with an empty customer basket' do
+    expect(Order.new.customer_basket).to eq []
   end
 
   context ' #show_menu' do
@@ -31,13 +34,36 @@ describe Order do
       expect { subject.select_items(5) }.to raise_error "Invalid number, please choose again"
     end
 
-    let (:menu) {double('fake menu')}
-    
     it 'returns the correct item name when given customers choice' do
       customer_choice = 2
+      item = "Veggie Lasagna"
       allow(menu).to receive(:customer_choice)
-      expect(order.select_items(customer_choice)).to eq("Veggie Lasagna")
-      #I need a stub/double for veggie lasagna to get this test to work independently?
+      expect(order.select_items(customer_choice)).to eq([item])
     end
   end
+    # describe '#customer_order' do
+
+    # let(:item_number) { double "item_number_double" }
+    # let(:item) { double "food_double" }
+    # let(:price) { double "price_double" }
+
+    # it 'adds order to customer_basket' do
+    #   customer_choice = 2
+    #   item = 
+    #   allow(menu).to receive(:customer_choice)
+    #   expect(subject.select_items(2)).to eq("Veggie Lasagna")
+    # end
+  # end
+  
+
+  # describe ' #order_asker' do
+  # let (:user_input) { 2 }
+  # customer_choice = 2
+
+  #   xit 'asks user what they want to order and returns it' do
+  #     allow(subject.order_asker).to receive(:gets).and_return(customer_choice)
+  #     subject.order_asker = 2
+  #     expect(subject.order_asker).to eq(customer_choice)
+  #   end
+  # end
 end
