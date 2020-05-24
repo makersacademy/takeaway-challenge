@@ -1,3 +1,4 @@
+require_relative 'formatter.rb'
 class Order
 
   attr_reader :order
