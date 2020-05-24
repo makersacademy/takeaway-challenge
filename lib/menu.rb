@@ -15,13 +15,13 @@ attr_reader :dishes
 
   def not_on_menu?(dish)
     @dishes.each_key do |key|
-      return false if dish == key
+      return false if dish.downcase  == key.downcase
     end
   end
 
   def get_price_for(dish)
     @dishes.each do |key,value|
-      return value if dish == key
+      return value if dish.downcase == key.downcase
     end
   end
 end
