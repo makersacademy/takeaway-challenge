@@ -59,3 +59,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ![Example Flow](https://github.com/Sumner1185/takeaway-challenge/blob/master/ExampleFlow.png)
 
+
+**Changes to plan as I progressed:**
+
+* Needed to add a #price method to my Menu class so that it could be pulled across by Order to sum the total.
