@@ -6,7 +6,6 @@ class Order
   end
 
   def request_order
-    @menu_data = load_file('menu.csv')
     request_dish
     until @dish_order.empty?
       request_quantity
@@ -18,7 +17,7 @@ class Order
   private
 
   def menu_data
-    #load_file('./lib/menu.csv')
+    load_data('../menu.csv')
   end
 
   def request_dish
@@ -46,7 +45,7 @@ class Order
     when 'quantity'
       input.gsub(/[0-9]/, "").empty? && !input.empty?
     when 'dish'
-      @menu_data.keys.include?(input.downcase) || input.empty?
+      menu_data.keys.include?(input.downcase) || input.empty?
     end
   end
 
@@ -58,7 +57,7 @@ class Order
     puts "-- #{@dish_quantity} #{@dish_order}(s) added! --\n\n"
   end
 
-  def load_file(file_path)
+  def load_data(file_path)
     data = {}
     CSV.foreach(file_path) do |line|
       dish, price = line
