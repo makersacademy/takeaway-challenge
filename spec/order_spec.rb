@@ -34,8 +34,7 @@ describe Order do
   end
 
   describe '#comfirm, string output' do # to be moved when Twilio is setup
-    t = Time.now
-    time_string = "#{t.hour + 1}:#{t.min}"
+    time_string = Time.now.strftime("%H:%M")
     message = "Order confirmed, it will arrive at #{time_string}\n"
     it "gives out the confirmation message and approx arrival time" do
       expect { subject.confirm }.to output(message).to_stdout

@@ -1,4 +1,6 @@
 require_relative 'formatter.rb'
+require_relative 'twilio.rb'
+
 class Order
 
   attr_reader :order
@@ -20,9 +22,10 @@ class Order
   end
 
   def confirm
-    t = Time.now
-    time_string = "#{t.hour + 1}:#{t.min}"
-    puts "Order confirmed, it will arrive at #{time_string}"
+    time_string = Time.now.strftime("%H:%M")
+    message = "Order confirmed, it will arrive at #{time_string}"
+    puts message
+    text_message(message)
   end
 
 end
