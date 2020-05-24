@@ -23,15 +23,13 @@ So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
 |  input                                           |  output    |
-|Menu.new( {dish: dish, price: price} )            |@menu_list  | 
-|menu.show                                         | "Burger, £3.50"
-                                                     "Potato Wedges, £2.50"
-                                                     "Fish&Chips, £8"
-                                                     "Chicken Wings, £5.99"
-                                                     "Breadstick, £3.50" | 
-|                                                  |            | 
-|                                                  |            | 
-|                                                  |            | 
+|Takeaway.new                                      | @takeaway  |
+|takeaway.see_menu                                 |"Potato Wedges £2.50", "Fish&Chips £8", "Chicken Wings £5.99" |
+|Menu.new                                          |  @menu     | 
+|menu.dishes                                       |{ "Potato Wedges" => 2.50, "Fish&Chips" => 8, "Chicken Wings" => 5.99 } | 
+|menu.read_menu                                    | "Potato Wedges £2.50", "Fish&Chips £8", "Chicken Wings £5.99" | 
+
+
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
