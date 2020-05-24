@@ -3,24 +3,18 @@ require './lib/order.rb'
 
 class Takeaway
   attr_reader :dishes, :menu, :order
-  def initialize
-    @dishes = {
-      "marinara" => 5,
-      "margherita" => 6,
-      "napoli" => 6,
-      "calzone" => 8
-    }
-    @menu = Menu.new
-    @order = Order.new
+  def initialize(menu, order)
+    @menu = menu
+    @order = order
   end
 
   def visualise_menu
-    @menu.show_menu(@dishes)
+    @menu.show_menu
   end
 
   def add_to_order(dish, quantity = 1)
-    raise "item not available" unless @dishes.include?(dish)
-    
+    raise "item not available" unless menu.dishes.include?(dish)
+
     @order.add_dish(dish, quantity)
     "#{dish} X #{quantity} added to your order"
   end
