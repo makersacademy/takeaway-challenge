@@ -1,4 +1,3 @@
-
 require 'menu'
 
 describe Menu do
