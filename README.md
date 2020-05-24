@@ -13,7 +13,61 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+## Notes on How Task Went
 
+### How To Use
+
+```irb
+irb -r ./lib/front.rb
+>Front.new.main_choice
+```
+Or if you want to use directly from the command line,
+uncomment line 69 in front.rb, then
+```shell
+ruby ./lib/front.rb
+```
+
+### Plan For the Code (Edit History to Plan Can be Seen in Commits to plan.md)
+
+treat the Takeaway front face as the main program. (this might be made into a class)
+front_menu - user_input to select: show dishes, show order, place order, add to order, leave.
+
+objects         data                      methods
+
+Menu            list of dishes            show dishes
+                array of hashes           check is on menu(item)
+
+Item            name, prices             
+
+order           list of dishes ordered    show current order()
+                array of hashes           calculate cost of order
+                                          add(item, number)
+                                          submit order
+
+Need to learn - double check how to do:
+
+formatter                                 format data from order
+
+API - Twilio    phone stuff               interface to utilise Twilio
+
+
+### Sources Used
+
+* [Twilio](https://www.twilio.com/docs/sms/tutorials/how-to-send-sms-messages-in-ruby)
+* [Time formatting](https://apidock.com/ruby/DateTime/strftime)
+
+### Changes From the Original Plan
+
+• I did end up creating a Front class, this means that if the program is run via irb, there are no annoying return values. Also stops the User from having to interact using methods, and just by typing strings that are collected by #gets methods.
+* I did create a class for Items (Item class), which did occur to me until creating the class that would end up being called Menu.
+* additional I didn't place an 'add to order' method into the Order class until getting relatively late into the writing process
+
+### Process of Writing the Code
+My plan was to write as much of the internal workings of the code (using TDD) before building a front end that the user would end up interacting with. The commits confirm that this approach was followed. It did mean that the form of the feature tests did change quite a bit when the Front class was added.
+
+
+-------
+-------
 Instructions
 -------
 

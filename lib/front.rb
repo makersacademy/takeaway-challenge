@@ -19,7 +19,7 @@ class Front
 'show order' to show the order or 'confirm order' to confirm the order"
       choice = gets.chomp
       return "exit" if choice == 'leave'
-      
+
       option_selection(choice)
     end
   end
@@ -66,4 +66,4 @@ class Front
 
 end
 
-# Front.new.main_choice (commeted out to make rspec test coverage possible)
+# Front.new.main_choice # (commeted out to make rspec test coverage possible)
