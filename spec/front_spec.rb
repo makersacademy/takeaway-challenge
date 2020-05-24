@@ -34,11 +34,22 @@ describe Front do
       expect(front.main_choice).to eq(true)
     end
     describe 'add sub choice' do
+      let(:user_input) {["add\n", "leave\n"]}
       it "should start add loop on 'add' choice" do
-        allow(front).to receive(:gets) {["add\n", "name1\n"]}
-        text = "enter choice in form of 'item_name, quantity' (if no quantity is specified 1 is chosen)\n"
+        allow(front).to receive(:gets).and_return(*user_input)
+        allow(menu).to receive(:check).and_return(false)
+        text = "enter choice in form of 'item_name, quantity', type 'leave' to leave (if no quantity is specified 1 is chosen)\n"
         expect{front.add_choice}.to output(text).to_stdout
       end
     end
   end
+
+  describe '#add_choice' do
+    it "should return with true if 'leave' entered" do
+      allow(front).to receive(:gets) {"leave\n"}
+      expect(front.add_choice).to eq(true)
+    end
+
+  end
+
 end
