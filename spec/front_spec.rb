@@ -10,9 +10,13 @@ describe Front do
     it "should give the user choice of;
     show memu, add to order, check order, comfirm order" do
       allow(front).to receive(:gets) {"\n"}
-      text ="type: 'menu' for the menu, 'add' to add to the order,
+      text ="type: 'leave' to exit, 'menu' for the menu, 'add' to add to the order,
 'show order' to show the order or 'confirm order' to confirm the order\n"
       expect{ front.main_choice }.to output(text).to_stdout
+    end
+    it "should exit the program on 'leave' choice" do
+      allow(front).to receive(:gets) {"leave\n"}
+      expect{ front.main_choice }.to raise_error(SystemExit)
     end
     it "should call menu.show_dishes on 'menu' choice" do
       allow(front).to receive(:gets) {"menu\n"}

@@ -14,10 +14,12 @@ class Front
   end
 
   def main_choice
-    puts "type: 'menu' for the menu, 'add' to add to the order,
+    puts "type: 'leave' to exit, 'menu' for the menu, 'add' to add to the order,
 'show order' to show the order or 'confirm order' to confirm the order"
     choice = gets.chomp
     case choice
+    when 'leave'
+      exit
     when 'menu'
       @menu.show_dishes
     when 'add'
