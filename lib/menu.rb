@@ -3,10 +3,13 @@ class Menu
   attr_reader :dishes
     
   LIST = {
-    "Potato Wedges" => 2.50, 
+    "Potato Wedges" => 2.5, 
     "Fish&Chips" => 8.50, 
-    "Chicken Wings" => 5.99
-  }
+    "Chicken Wings" => 5.99,
+    "Breadsticks" => 3.99,
+    "Hallomi Fries" => 5.50,
+    "Cheese Cake" => 6.50 
+    }
   def initialize # default dishes when a menu instance is created
     @dishes = LIST
   end
