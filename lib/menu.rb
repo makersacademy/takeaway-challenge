@@ -15,4 +15,8 @@ class Menu
     puts "\n"
   end
 
+  def on_menu?(dish)
+    @list_of_dishes.has_key?(dish)
+  end
+
 end

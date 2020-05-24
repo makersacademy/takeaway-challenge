@@ -9,8 +9,9 @@ class Order
     @order = []
   end
 
-  def add_to_order(item, quantity)
-
+  def add_to_order(dish, quantity)
+    @order << { dish: dish, quantity: quantity}
+    p @order
   end
 
 end

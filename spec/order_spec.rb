@@ -8,7 +8,7 @@ describe Order do
   # end
 
 
-  it 'adds an item to the order' do
+  it 'responds to #add_to_order with 2 arguments' do
     expect(subject).to respond_to(:add_to_order).with(2).arguments
   end
 
