@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def see_order
-    puts @order.format_order
+    puts @order.get_order
     print see_total
   end
 
@@ -42,6 +42,6 @@ private
   end
 
   def see_total
-    @order.format_total
+    @order.get_total
   end
 end

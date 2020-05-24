@@ -1,10 +1,13 @@
+require_relative './formatter'
+
 class Order
 
   attr_reader :selection, :total
 
-  def initialize
+  def initialize (formatter = Formatter.new)
     @selection = {}
     @total = 0
+    @formatter = formatter
   end
 
   def add_selection(dish,quantity,price)
@@ -13,16 +16,12 @@ class Order
     "Dish added!"
   end
 
-  def format_order
-    formatted_order = []
-    @selection.each do |dish,quantity|
-      formatted_order << "#{dish} x#{quantity}"
-    end
-    formatted_order
+  def get_order
+    @formatter.format_order(@selection)
   end
 
-  def format_total
-    "Total: #{@total}"
+  def get_total
+    @formatter.format_total(@total)
   end
 
   private

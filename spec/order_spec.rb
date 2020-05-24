@@ -15,22 +15,4 @@ describe Order do
       expect { add_order }.to change { order.total }.by(15.80)
     end
   end
-
-  context 'it adds the order' do
-    before do
-      add_order
-    end
-
-      describe '#format_order' do
-        it 'formats the order' do
-          expect(order.format_order).to eq(["Large Fish Supper x2"])
-        end
-      end
-
-      describe '#format_total' do
-        it 'formats the total' do
-          expect(order.format_total).to eq("Total: 15.8")
-        end
-      end
-  end
 end

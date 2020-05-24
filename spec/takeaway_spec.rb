@@ -35,9 +35,9 @@ describe Takeaway do
 
   describe '#see_order' do
     it 'allows the customer to see order and total' do
-      allow(order_double).to receive(:format_order) { ["Large Fish Supper x2"] }
-      allow(order_double).to receive(:format_total) { "Total: 15.8" }
-      expect { takeaway.see_order }.to output("Large Fish Supper x2\nTotal: 15.8").to_stdout
+      allow(order_double).to receive(:get_order) { ["Large Fish Supper x2"] }
+      allow(order_double).to receive(:get_total) { "Total: £15.80" }
+      expect { takeaway.see_order }.to output("Large Fish Supper x2\nTotal: £15.80").to_stdout
     end
   end
 
