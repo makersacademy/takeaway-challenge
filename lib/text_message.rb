@@ -1,22 +1,23 @@
+require 'dotenv/load'
 require 'twilio-ruby'
 
 class TextMessage
 
-  def initialize(body)
+  def initialize(body, number)
 
-    account_sid = "ACa8b2e7a32a24e06e9b6eba9fc11a96a5"
-    auth_token = "fa4b5da380abc4ec77d146a62b594c45"
+    account_sid = ENV['ACCOUNT_SID'] 
+    auth_token = ENV['AUTH_TOKEN']
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    send_message(body)
+    send_message(body, number)
 
   end
 
-  def send_message(body)
+  def send_message(body, number)
 
     from = '+18706864102' # Your Twilio number
-    to = '' # Your mobile phone number
+    to = number # Your mobile phone number
 
     @client.messages.create(
       from: from,

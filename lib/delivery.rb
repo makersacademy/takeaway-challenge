@@ -5,7 +5,8 @@ class Delivery
   def initialize(text_message_class = TextMessage)
     @delivery_time = calculate_delivery_time
     user_delivery_notification
-    send_text(text_message_class)
+    mob_number = enter_mob_number
+    send_text(text_message_class, mob_number)
   end
 
   def user_delivery_notification
@@ -13,6 +14,10 @@ class Delivery
   end
 
   private
+
+  def mobile_number_correct?(number)
+    number[0] == "+" && number.length == 13
+  end
 
   def calculate_delivery_time
     format_delivery_time(Time.now + (60 * 60))
@@ -26,8 +31,13 @@ class Delivery
     "Order placed! It will be delivered by #{@delivery_time}"
   end
 
-  def send_text(text_message_class)
-    text_message_class.new(delivery_notification)
+  def enter_mob_number
+    puts "Enter mobile number"
+    STDIN.gets.chomp
+  end
+
+  def send_text(text_message_class, mob_number)
+    text_message_class.new(delivery_notification, mob_number)
   end
 
 end

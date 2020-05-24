@@ -3,3 +3,8 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+# Ignore application configuration
+/config/application.yml
+
+.env

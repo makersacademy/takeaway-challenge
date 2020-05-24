@@ -31,7 +31,7 @@ class Order
     @order.each { |dish|
       puts "#{dish[:dish]} x#{dish[:amount]} £#{two_decimals(dish[:price] * dish[:amount])}"
     }
-    "Total: £#{two_decimals(total)}"
+    puts "Total: £#{two_decimals(total)}"
   end
 
   private
