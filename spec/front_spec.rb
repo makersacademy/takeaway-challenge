@@ -45,14 +45,21 @@ describe Front do
   end
 
   describe '#add_choice' do
-    it "should return with true if 'leave' entered" do
+    it "should return with false if 'leave' entered" do
       allow(front).to receive(:gets) {"leave\n"}
-      expect(front.add_choice).to eq(true)
+      expect(front.add_choice).to eq(false)
     end
     it "should return with nil if invalid menu choice entered" do
       allow(front).to receive(:gets) {"name3\n"}
       allow(menu).to receive(:check) {false}
       expect(front.add_choice).to eq(nil)
+    end
+    it "should return with true if valid menu choice entered" do
+      allow(front).to receive(:gets) {"name3\n"}
+      allow(menu).to receive(:check) {true}
+      allow(menu).to receive(:select) {}
+      allow(order).to receive(:add) {true}
+      expect(front.add_choice).to eq(true)
     end
   end
 

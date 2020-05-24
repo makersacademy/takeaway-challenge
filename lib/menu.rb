@@ -18,4 +18,8 @@ class Menu
     false
   end
 
+  def select
+    @menu.select{ |item| item.name == user_input[0] }
+  end
+
 end

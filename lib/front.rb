@@ -34,9 +34,9 @@ class Front
   def add_choice
     puts "enter choice in form of 'item_name, quantity', type 'leave' to leave (if no quantity is specified 1 is chosen)"
     user_input = gets.chomp.split(", ")
-    return true if user_input == ["leave"]
+    return false if user_input == ["leave"]
     if @menu.check(user_input[0])
-      item = @menu.select{ |item| item.name == user_input[0] }
+      item = @menu.select(user_input[0])
       quantity = user_input[1] || 1
       @order.add(item, quantity)
     end
