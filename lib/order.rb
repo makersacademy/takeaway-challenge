@@ -2,24 +2,22 @@ require 'csv'
 
 class Order
   def initialize
-    @customer_order = {}
+    @customer_order = Hash.new(0)
   end
 
   def request_order
     request_dish
     until @dish_order.empty?
       request_quantity
+      save_order
       confirm_order
       request_dish
     end
+    @customer_order
   end
 
   private
-
-  def menu_data
-    load_data('../menu.csv')
-  end
-
+  
   def request_dish
     puts 'Please enter the dish name:'
     puts '[to finish, hit Return]'
@@ -55,6 +53,14 @@ class Order
 
   def confirm_order
     puts "-- #{@dish_quantity} #{@dish_order}(s) added! --\n\n"
+  end
+
+  def save_order
+    @customer_order[@dish_order] += @dish_quantity.to_i
+  end
+
+  def menu_data
+    load_data('../menu.csv')
   end
 
   def load_data(file_path)
