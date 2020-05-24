@@ -32,4 +32,10 @@ describe Menu do
       expect(menu.check(name3.name)).to eq(false)
     end
   end
+
+  describe '#select(item)' do
+    it 'should return the Item' do
+      expect(menu.select("name1")).to eq([name1])
+    end
+  end
 end
