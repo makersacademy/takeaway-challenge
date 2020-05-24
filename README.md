@@ -60,6 +60,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ![Example Flow](https://github.com/Sumner1185/takeaway-challenge/blob/master/ExampleFlow.png)
 
 
-**Changes to plan as I progressed:**
+**Changes to plan as I progressed/Things learnt:**
 
 * Needed to add a #price method to my Menu class so that it could be pulled across by Order to sum the total.
+* #add method in Order needs to take both the dish and quantity as parameters
+* Use "%s %.2f" syntax to print menu with 2 decimals for price
