@@ -13,7 +13,7 @@ class Dishes
   end
 
   def view
-    new = @menu.each do | k, v|
+    @menu.each do |k, v|
       puts "#{k} : £#{v.to_f}"
     end
   end
