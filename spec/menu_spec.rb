@@ -14,8 +14,8 @@ describe Menu do
   end
 
   it 'checks if item is on menu' do
-      dish = "chicken tikka"
-      expect(subject.on_menu?(dish.to_sym)).to eq(true)
-    end
+    dish = "chicken tikka"
+    expect(subject.on_menu?(dish.to_sym)).to eq(true)
+  end
 
 end

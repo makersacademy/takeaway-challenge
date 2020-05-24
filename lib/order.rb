@@ -2,16 +2,17 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :order
+  attr_reader :selection, :menu
 
   def intialize
     @menu = Menu.new
-    @order = []
+    @selection []
   end
 
   def add_to_order(dish, quantity)
-    @order << { dish: dish, quantity: quantity}
-    p @order
+    @selection = []
+    @selection.push({ dish: dish, quantity: quantity })
+    p @selection
   end
 
 end
