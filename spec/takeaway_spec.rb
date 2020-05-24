@@ -40,4 +40,16 @@ describe Takeaway do
       expect { takeaway.see_order }.to output("Large Fish Supper x2\nTotal: 15.8").to_stdout
     end
   end
+
+  describe '#confirm_order(amount)' do
+    it 'raises an error if the customer total does not match the total' do
+      allow(order_double). to receive(:total) { 15.8 }
+      expect { takeaway.confirm_order(15.9) }.to raise_error("That isn't the right amount.")
+    end
+
+    it 'puts "Order confirmed!" if customer total matches total' do
+      allow(order_double). to receive(:total) { 15.8 }
+      expect { takeaway.confirm_order(15.8) }.to output("Order confirmed!").to_stdout
+    end
+  end
 end

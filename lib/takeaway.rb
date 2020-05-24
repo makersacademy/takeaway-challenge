@@ -24,6 +24,10 @@ class Takeaway
     print see_total
   end
 
+  def confirm_order(amount)
+    raise "That isn't the right amount." if amount != @order.total
+    print "Order confirmed!"
+  end
 private
 
   def get_price(dish)
