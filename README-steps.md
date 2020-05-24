@@ -78,7 +78,7 @@ So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ```
 
-> takeaway will create the customers order after order placed
+> The takeaway will create a new customers order after being placed
 
  - Feature test: customer order is created after order is placed. *test passed*
  - Write test: place_order will return new order. *test failed*
@@ -86,6 +86,28 @@ I would like to check that the total I have been given matches the sum of the va
  - Rewrite test: place_order will return instance of the Order class. *test passed*
  
  **Feature test passed. A new order is created once order is placed.**
+
+> The customers order will be store the selected dishes.
+
+ - Feature test: customers order to store selected dishes. *test failed*
+ - Write test: describe Order which responds to customers_order. *test failed*
+ - Write code: defined the method customer_order. *test passed*
+ - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ```
