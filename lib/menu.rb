@@ -8,5 +8,9 @@ class Menu
   def dish_available?(dish)
     @dishes.include?(dish)
   end
+
+  def price(dish)
+    @dishes[dish]
+  end
   
 end

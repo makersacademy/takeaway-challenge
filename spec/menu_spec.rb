@@ -18,4 +18,8 @@ describe Menu do
     expect(menu.dish_available?(:burger)).to be false
   end
 
+  it 'should show the price for a dish' do
+    expect(menu.price(:pizza)).to eq 5
+  end
+
 end
