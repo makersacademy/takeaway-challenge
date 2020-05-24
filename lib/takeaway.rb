@@ -19,6 +19,8 @@ class Takeaway
   end
 
   def add_to_order(dish, quantity = 1)
+    raise "item not available" unless @dishes.include?(dish)
+    
     @order.add_dish(dish, quantity)
     "#{dish} X #{quantity} added to your order"
   end

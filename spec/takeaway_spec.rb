@@ -2,7 +2,7 @@ require 'takeaway'
 require 'menu'
 
 describe Takeaway do
-  subject (:takeaway) {described_class.new}
+  subject(:takeaway) { described_class.new }
   let(:list) { ["marinara - £5", "margherita - £6", "napoli - £6", "calzone - £8"] }
 
   it 'stores a list of dishes and prices in a hash when initialised' do
@@ -14,7 +14,11 @@ describe Takeaway do
 
   it 'interacts with Order class to add dishes to the current order and return message' do
     expect(subject.add_to_order("marinara", 2)).to eq("marinara X 2 added to your order")
-    #expect(subject.order.items).to eq({ "marinara" => 2 })
+    # expect(subject.order.items).to eq({ "marinara" => 2 })
+  end
+
+  it 'raise an error if the dish is not in the dish list' do
+    expect { subject.add_to_order("prosciutto") }.to raise_error("item not available")
   end
 
 end

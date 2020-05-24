@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do
-  subject {described_class.new}
+  subject(:order) { described_class.new }
   it 'initialises a @items empty hash to store the list of ordered dishes' do
     expect(subject.items).to eq({})
   end
