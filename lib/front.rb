@@ -20,7 +20,7 @@ class Front
       choice = gets.chomp
       case choice
       when 'leave'
-        exit
+        return "exit"
       when 'menu'
         @menu.show_dishes
       when 'add'
@@ -33,6 +33,8 @@ class Front
     end
   end
 
+  private
+
   def add_choice
     puts "enter choice in form of 'item_name, quantity', type 'leave' to leave (if no quantity is specified 1 is chosen)"
     loop do
@@ -40,8 +42,8 @@ class Front
       return false if user_input == ["leave"]
       if @menu.check(user_input[0])
         item = @menu.select(user_input[0])
-        quantity = user_input[1].to_i || 1
-        @order.add(item[0], quantity)
+        quantity = user_input[1] || 1
+        @order.add(item[0], quantity.to_i)
       else
         puts "invalid menu choice"
       end
@@ -49,3 +51,5 @@ class Front
   end
 
 end
+
+# Front.new.main_choice (commeted out to make rspec test coverage possible)
