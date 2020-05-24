@@ -29,6 +29,6 @@ describe Order do
     allow(menu).to receive(:price).with(:pizza).and_return(5.00)
     order.add(:pizza, 2)
     total = 10.00
-    expect(order.bill(:pizza, 2).sum).to eq total
+    expect(order.total).to eq total
   end
 end

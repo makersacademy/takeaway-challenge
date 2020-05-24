@@ -13,9 +13,13 @@ class Order
     @dishes[dish] = quantity
   end
 
-  def bill(dish, quantity)
+  def bill
     @dishes.map do |dish, quantity|
       menu.price(dish) * quantity
     end
+  end
+
+  def total
+    bill.sum
   end
 end
