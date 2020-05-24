@@ -33,7 +33,9 @@ I would like to be able to select some number of several available dishes
 ##### To satisfy second user story TDD step implimentation:
 
 * Order Class:
-  * #select_items : ask for customer order
+  * #select_items : ask for customer order and quantity (defaults to 1)
+  * #add_item: adds item to customer_basket array 
+  * #order:process: loops select items and add item until break 'checkout' called.
 
 ------
 <!-- ```

@@ -35,13 +35,19 @@ describe Order do
     end
 
     it 'returns the correct item name when given customers choice' do
-      customer_choice = 2
-      item = "Veggie Lasagna"
       allow(menu).to receive(:customer_choice)
-      expect(order.select_items(customer_choice)).to eq([item])
+      order.select_items(2)
+      expect(order.customer_basket).to include({:item=>"Veggie Lasagna", :item_number=>2, :price=>5})
     end
   end
-    # describe '#customer_order' do
+
+  describe '#customer_order' do
+    it 'should output the order in the correct format' do
+      order.select_items(2)
+      order.customer_order_summary
+      expect(subject.customer_order_summary).to eq(subject.customer_basket)
+    end
+  end
 
     # let(:item_number) { double "item_number_double" }
     # let(:item) { double "food_double" }
