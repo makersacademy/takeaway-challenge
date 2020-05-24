@@ -13,10 +13,12 @@ class Takeaway
   end
 
   def select(dish,quantity)
-    raise "I'm sorry, we don't have that on our menu." if @menu.not_on_menu?(dish)
-
-    price = get_price(dish)
-    @order.add_selection(dish, quantity, price)
+    if check_if_on_menu(dish)
+      puts "I'm sorry, we don't have that on our menu."
+    else
+      price = get_price(dish)
+      @order.add_selection(dish, quantity, price)
+    end
   end
 
   def see_order
@@ -28,7 +30,12 @@ class Takeaway
     raise "That isn't the right amount." if amount != @order.total
     print "Order confirmed!"
   end
+  
 private
+
+  def check_if_on_menu(dish)
+     @menu.not_on_menu?(dish)
+  end
 
   def get_price(dish)
     @menu.get_price_for(dish)
