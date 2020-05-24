@@ -49,7 +49,11 @@ describe Front do
       allow(front).to receive(:gets) {"leave\n"}
       expect(front.add_choice).to eq(true)
     end
-
+    it "should return with nil if invalid menu choice entered" do
+      allow(front).to receive(:gets) {"name3\n"}
+      allow(menu).to receive(:check) {false}
+      expect(front.add_choice).to eq(nil)
+    end
   end
 
 end
