@@ -9,7 +9,7 @@ class Menu
 
   def show_dishes
     @menu.each do |item|
-      puts "#{item.name}: #{@formatter.format(item.price)}"
+      puts "#{item.name}: #{@formatter.price(item.price)}"
     end
   end
 
@@ -19,7 +19,7 @@ class Menu
   end
 
   def select(correct_item)
-    @menu.select{ |item| item.name == correct_item }
+    @menu.select { |item| item.name == correct_item }
   end
 
 end

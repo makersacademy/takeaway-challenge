@@ -1,26 +1,26 @@
 require_relative '../lib/order.rb'
 
 describe Order do
-  let(:name1) {double(:item)}
-  let(:name2) {double(:item)}
+  let(:name1) { double(:item) }
+  let(:name2) { double(:item) }
 
   before do
-    allow(name1).to receive(:name) {"name1"}
-    allow(name2).to receive(:name) {"name2"}
-    allow(name1).to receive(:price) {1}
-    allow(name2).to receive(:price) {1.5}
+    allow(name1).to receive(:name) { "name1" }
+    allow(name2).to receive(:name) { "name2" }
+    allow(name1).to receive(:price) { 1 }
+    allow(name2).to receive(:price) { 1.5 }
   end
 
   describe '#add(item, number = 1)' do
     it 'should add the item to the order list' do
       subject.add(name1)
-      expect(subject.order).to eq([{name: "name1", number: 1}])
+      expect(subject.order).to eq([{ name: "name1", number: 1 }])
     end
     it "should record the quatity of each item" do
       subject.add(name1, 3)
       subject.add(name2, 2)
       expect(subject.order).
-        to eq([{name: "name1", number: 3}, {name: "name2", number: 2}])
+        to eq([{ name: "name1", number: 3 }, { name: "name2", number: 2 }])
     end
   end
 
@@ -38,7 +38,7 @@ describe Order do
     time_string = "#{t.hour + 1}:#{t.min}"
     message = "Order confirmed, it will arrive at #{time_string}\n"
     it "gives out the confirmation message and approx arrival time" do
-      expect{ subject.confirm }.to output(message).to_stdout
+      expect { subject.confirm }.to output(message).to_stdout
     end
   end
 end

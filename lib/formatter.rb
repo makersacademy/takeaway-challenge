@@ -1,6 +1,6 @@
 class Formatter
 
-  def format(number)
-    return "£%.2f" % number
+  def price(number)
+    return format("£%<number>.2f", number: number)
   end
 end

@@ -3,7 +3,7 @@ require_relative 'menu.rb'
 require_relative 'order.rb'
 
 def item_list
-  [name1 = Item.new("name1", 1.00), name2 = Item.new("name2", 1.50)]
+  [Item.new("name1", 1.00), Item.new("name2", 1.50)]
 end
 
 class Front
@@ -36,10 +36,12 @@ class Front
   private
 
   def add_choice
-    puts "enter choice in form of 'item_name, quantity', type 'leave' to leave (if no quantity is specified 1 is chosen)"
+    puts "enter choice in form of 'item_name, quantity', type 'leave' to leave
+(if no quantity is specified 1 is chosen)"
     loop do
       user_input = gets.chomp.split(", ")
       return false if user_input == ["leave"]
+      
       if @menu.check(user_input[0])
         item = @menu.select(user_input[0])
         quantity = user_input[1] || 1
