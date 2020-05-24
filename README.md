@@ -24,13 +24,24 @@ I would like to see a list of dishes with prices
 
 |  input                                           |  output    |
 |Menu.new                                          |  @menu     | 
-|menu.dishes                                       |{ "Potato Wedges" => 2.50, "Fish&Chips" => 8.50, "Chicken Wings" => 5.99 } | 
-|menu.read                                         | "Potato Wedges £2.50", "Fish&Chips £8.50", "Chicken Wings £5.99" | 
+|menu.dishes                                       |{ "Potato Wedges" => 2.50, 
+                                                      "Fish&Chips" => 8.50, 
+                                                      "Chicken Wings" => 5.99 } | 
+|menu.read                                         | "Potato Wedges £2.50", "Fish&Chips £8.50", "Chicken Wings £5.99" |
+|Takeaway.new                                      |  @menu = Menu.new |
+|takeaway.show_menu                                |  menu.read    | 
 
 
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+
+|  input       |  output    |
+| Order.new    | @order     |
+| order.select |{ "Potato Wedges" => 2 } |
+| order.add    |{ "Potato Wedges" => 2, "Chicken Wings" => 3 }|
+|              |            |
+|              |            |
 
 As a customer
 So that I can verify that my order is correct
