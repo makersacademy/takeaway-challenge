@@ -16,4 +16,10 @@ class Takeaway
   def add_item(item, quantity)
     @order.add_to_order(item, quantity)
   end
+
+  def view_order
+    @order.order_summary
+    @order.basket_total
+    end
+
 end

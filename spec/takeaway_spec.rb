@@ -15,7 +15,7 @@ describe Takeaway do
   end
 
 describe '#add_item' do
-  
+
   it 'allows user to add items' do
     expect(subject.add_item("item", 2)).to eq(order.add_to_order("item", 2))
   end
