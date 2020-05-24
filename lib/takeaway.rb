@@ -9,7 +9,7 @@ class Takeaway
   end
 
   def see_menu
-    puts @menu.print_menu
+    puts @menu.get_menu
   end
 
   def select(dish,quantity)
@@ -30,7 +30,7 @@ class Takeaway
     raise "That isn't the right amount." if amount != @order.total
     print "Order confirmed!"
   end
-  
+
 private
 
   def check_if_on_menu(dish)

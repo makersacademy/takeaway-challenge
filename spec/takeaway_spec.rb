@@ -13,10 +13,9 @@ describe Takeaway do
 
   describe '#see_menu' do
     it 'puts a formatted list of menu items to the customer' do
-      allow(menu_double).to receive(:print_menu) { ["Large Fish Supper - 7.90"] }
-      expect { takeaway.see_menu }
-        .to output("Large Fish Supper - 7.90\n")
-          .to_stdout
+      dish = "Large Fish Supper - £7.90"
+      allow(menu_double).to receive(:get_menu) { [dish] }
+      expect { takeaway.see_menu }.to output("#{dish}\n").to_stdout
     end
   end
 

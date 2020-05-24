@@ -4,10 +4,6 @@ describe Order do
   subject(:order) { Order.new }
   let(:add_order) {order.add_selection("Large Fish Supper",2,7.90)}
 
-  it 'has a selection' do
-    expect(order.selection).to be_an_instance_of(Hash)
-  end
-
   describe 'add_selection(dish, quantity, price)' do
 
     it 'adds the dish and quantity to the selection' do
@@ -20,17 +16,21 @@ describe Order do
     end
   end
 
-  describe '#format_order' do
-    it 'formats the order' do
+  context 'it adds the order' do
+    before do
       add_order
-      expect(order.format_order).to eq(["Large Fish Supper x2"])
     end
-  end
 
-  describe '#format_total' do
-    it 'formats the total' do
-      add_order
-      expect(order.format_total).to eq("Total: 15.8")
-    end
+      describe '#format_order' do
+        it 'formats the order' do
+          expect(order.format_order).to eq(["Large Fish Supper x2"])
+        end
+      end
+
+      describe '#format_total' do
+        it 'formats the total' do
+          expect(order.format_total).to eq("Total: 15.8")
+        end
+      end
   end
 end
