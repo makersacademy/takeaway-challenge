@@ -7,6 +7,7 @@ attr_reader :dishes
   end
 
   def add(dish)
+    raise "Apologies, #{dish} is not available" unless @menu.has_dish?(dish)
     @dishes.push(dish)
   end
 
