@@ -22,10 +22,10 @@ class Order
   end
 
   def confirm
-    time_string = Time.now.strftime("%H:%M")
+    time_string = (Time.now + 3600).strftime("%H:%M")
     message = "Order confirmed, it will arrive at #{time_string}"
     puts message
-    text_message(message)
+    # text_message(message)
   end
 
 end
