@@ -3,6 +3,9 @@ require 'order'
 describe Order do
   let(:order) { described_class.new }  
 
+  let (:menu) { double :menu }
+  let (:order_choice) { double :order_choice }
+
   it 'creates a new order' do
     expect(Order.new).to be_instance_of Order
   end
@@ -28,8 +31,13 @@ describe Order do
       expect { subject.select_items(5) }.to raise_error "Invalid number, please choose again"
     end
 
-    it 'returns item name when given customers choice' do
-      expect(order.select_items(1)).to eq("Veggie Burger and Sweet Potato Fries")
+    let (:menu) {double('fake menu')}
+    
+    it 'returns the correct item name when given customers choice' do
+      customer_choice = 2
+      allow(menu).to receive(:customer_choice)
+      expect(order.select_items(customer_choice)).to eq("Veggie Lasagna")
+      #I need a stub/double for veggie lasagna to get this test to work independently?
     end
   end
 end
