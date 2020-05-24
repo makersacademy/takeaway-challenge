@@ -1,14 +1,14 @@
 class Order
-attr_reader :dishes
+  attr_reader :dishes
 
   def initialize(menu)
     @menu = menu
     @dishes = []
   end
 
-  def add(dish)
-    raise "Apologies, #{dish} is not available" unless @menu.has_dish?(dish)
-    @dishes.push(dish)
-  end
+  def add(dish, quantity)
+    raise "Apologies, #{dish} is not available" unless @menu.dish_available?(dish)
 
+    quantity.times { @dishes.push(dish) }
+  end
 end

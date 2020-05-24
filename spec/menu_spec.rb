@@ -11,11 +11,11 @@ describe Menu do
 
   it 'should check if a dish is available' do
     menu = Menu.new({ pizza: 5.00, kebab: 4.00 })
-    expect(menu.has_dish?(:pizza)).to be true
+    expect(menu.dish_available?(:pizza)).to be true
   end
 
   it 'should return false if a dish is not available' do
-    expect(menu.has_dish?(:burger)).to be false
+    expect(menu.dish_available?(:burger)).to be false
   end
 
 end

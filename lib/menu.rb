@@ -5,7 +5,7 @@ class Menu
     @dishes = dishes
   end
 
-  def has_dish?(dish)
+  def dish_available?(dish)
     @dishes.include?(dish)
   end
   
