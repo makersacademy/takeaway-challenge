@@ -3,7 +3,7 @@ require_relative 'menu.rb'
 require_relative 'order.rb'
 
 def item_list
-  [Item.new("name1", 1.00),Item.new("name2" ,1.50)]
+  [Item.new("name1", 1.00), Item.new("name2", 1.50)]
 end
 
 class Front
@@ -21,12 +21,16 @@ class Front
     when 'menu'
       @menu.show_dishes
     when 'add'
-      item_selection
+      add_choice
     when 'show order'
       @order.show
     when 'confirm order'
       @order.confirm
     end
+  end
+
+  def add_choice
+    puts "enter choice in form of 'item_name, quantity' (if no quantity is specified 1 is chosen)"
   end
 
 end
