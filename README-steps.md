@@ -1,7 +1,7 @@
 
 # Domain Model Diagram
 
-## Objects & Messages
+## Objects & Messages table
 
 | Objects    | Messages      | 
 | ---------- |:-------------:| 
@@ -21,7 +21,7 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ```
-> A customer can request to see menu from takeaway.
+> A customer can request to see menu from a takeaway.
 
  - Feature test: create new takeaway menu. *test failed*
  - Write test: Describe Takeaway object. *test failed*
@@ -30,9 +30,9 @@ I would like to see a list of dishes with prices
 **Feature test passed.**
 
 >  A customer can request to view dishes on takeaway object
- - Feature test: send message to view_dishes to new takeaway menu. *test failed*
+ - Feature test: send message view_dishes to new takeaway menu. *test failed*
  - Write test: method view_dishes repsonds to takeaway object. *test failed*
- - Write code: defined view_dishes method. *test passed*
+ - Write code: defined view_dishes method in takeaway class. *test passed*
 
 **Feature test passed. Customer can request to view dishes**
 
@@ -64,7 +64,7 @@ I would like to be able to select some number of several available dishes
 
  - Feature test: place order with selected dishes. *test failed*
  - Write test: place_order can accepts mulitple arguments. *test failed*
- - Write code: added parenthesis to place_order method. *test failed*
+ - Write code: added "(*)" to place_order method. *test passed*
 
 **Feature test passed. Customer can select dishes to order**
 
@@ -80,14 +80,14 @@ I would like to check that the total I have been given matches the sum of the va
 
 > The takeaway will create a new customers order after being placed
 
- - Feature test: customer order is created after order is placed. *test passed*
- - Write test: place_order will return new order. *test failed*
- - Write code: define Order class and file into takeaway. place_order method to now return new order object. *test failed*
+ - Feature test: customer order is created after order is placed. *test failed*
+ - Write test: place_order will return new Order object. *test failed*
+ - Write code: defined Order class and required the file into takeaway.rb. Added place_order to return an instance of Order. *test failed*
  - Rewrite test: place_order will return instance of the Order class. *test passed*
  
- **Feature test passed. A new order is created once order is placed.**
+ **Feature test passed. A new order is created once a customer's order is placed.**
 
-> The customers order will be store the selected dishes.
+> The customers can view the selected dishes in their order.
 
  - Feature test: customers order to store selected dishes. *test failed*
  - Write test: describe Order which responds to customers_order. *test failed*

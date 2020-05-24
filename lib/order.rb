@@ -1,6 +1,6 @@
 class Order
 
-  def customers_order
+  def view_order
     
   end
 
