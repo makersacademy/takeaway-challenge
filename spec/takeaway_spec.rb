@@ -2,13 +2,19 @@ require 'Takeaway'
 require 'Menu'
 
 describe Takeaway do   
-    it "recieves the dishes hash from menu class on initialization" do
-        #testing state over behaviour ##
-        expect(subject.current_menu).to eq(subject.current_menu)
+    subject(:takeaway) { described_class.new(menu: menu) } 
+
+    let(:menu) { double(:menu, print: display_menu) }
+    let(:display_menu) { "pizza: £1.00" }
+
+    it "returns the menu of dishes and prices" do
+        expect(subject.display_menu).to eq(display_menu)
     end
 
-    it "returns the menu of dishes from menu class (d_menu)" do
-        expect(subject.d_menu).to eq({ "pizza" => 1, "pasta" => 2 })
+    it "returns the dishes added to order (order method) as a string"do
+    end
+
+    it "created the basket method to display the items ordered + the price"do
     end
 
 end

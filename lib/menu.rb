@@ -2,12 +2,12 @@ class Menu
 
   attr_reader :dishes
 
-  def initialize
-    @dishes = { "pizza" => 1, "pasta" => 2 }
+  def initialize(dishes)
+    @dishes = dishes
   end
 
   def display_menu
-    @dishes 
+    @dishes.map { |object, price| "%s £%.2f" % [object.to_s, price] }.join(", ")
 end
 
 end 

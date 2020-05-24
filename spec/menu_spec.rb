@@ -1,13 +1,18 @@
 require 'Menu'
 
 describe Menu do
-    #### change so this states behaviour over state. ####
-  it "displays a hash of menu items on initialization(initialize)" do
-    expect(subject.dishes).to eq({ "pizza" => 1, "pasta" => 2 })
+
+  subject(:menu) { described_class.new(dishes) }
+
+  let(:dishes) { { pizza: 1.00, pasta: 2.00} } 
+
+  it "displays a list of dishes with prices" do
+    expect(menu.dishes).to eq(dishes)
   end
 
-  it "displays the menu(display_menu)" do
-    expect(subject.display_menu).to eq({ "pizza" => 1, "pasta" => 2 })
+  it "displays the list of dishes with prices" do
+    display_menu = "pizza £1.00, pasta £2.00"
+    expect(menu.display_menu).to eq(display_menu)
   end 
     
 end
