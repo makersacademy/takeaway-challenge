@@ -3,7 +3,7 @@ require_relative 'menu.rb'
 require_relative 'order.rb'
 
 def item_list
-  [nmae1 = Item.new("name1", 1.00), name2 = Item.new("name2", 1.50)]
+  [name1 = Item.new("name1", 1.00), name2 = Item.new("name2", 1.50)]
 end
 
 class Front

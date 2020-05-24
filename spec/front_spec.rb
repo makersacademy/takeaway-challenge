@@ -6,6 +6,12 @@ describe Front do
   let(:order) {double(:order)}
   let(:front) {Front.new(menu, order)}
 
+  describe '#item_list' do
+    it "creates the list of items on the menu" do
+      expect(item_list).to be_an_instance_of(Array)
+    end
+  end
+
   describe '#main_choice' do
     it "should give the user choice of;
     show memu, add to order, check order, comfirm order" do
