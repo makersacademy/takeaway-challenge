@@ -1,9 +1,9 @@
 require "menu"
 
 describe Menu do
-  subject(:menu) { described_class.new(dishes) }
+  subject(:menu) { described_class.new }
   let(:dishes) do
-    { "Potato Wedges" => 2.50, "Fish&Chips" => 8.50, "Chicken Wings" => 5.99 }
+    { "Potato Wedges" => 2.5, "Fish&Chips" => 8.50, "Chicken Wings" => 5.99 }
   end
   
   it "has a list of dishes and prices" do
