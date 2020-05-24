@@ -1,5 +1,6 @@
 require_relative './order'
 require_relative './menu'
+require_relative './send_sms'
 
 class Takeaway
 
@@ -9,7 +10,7 @@ class Takeaway
   end
 
   def see_menu
-    puts @menu.get_menu
+    @menu.get_menu
   end
 
   def select(dish,quantity)
@@ -28,6 +29,7 @@ class Takeaway
 
   def confirm_order(amount)
     raise "That isn't the right amount." if amount != @order.total
+    send_sms
     print "Order confirmed!"
   end
 
