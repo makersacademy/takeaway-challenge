@@ -30,7 +30,7 @@ describe Front do
       allow(order).to receive(:show) {true}
       expect(front.main_choice).to eq('exit')
     end
-    let(:user_input2) {["confirm\n", "leave\n"]}
+    let(:user_input2) {["confirm order\n", "leave\n"]}
     it "should call order.confirm on 'confirm order' choice" do
       allow(front).to receive(:gets).and_return(*user_input2)
       allow(order).to receive(:confirm) {true}
@@ -45,6 +45,12 @@ describe Front do
         allow(order).to receive(:add) {true}
         # text = "enter choice in form of 'item_name, quantity', type 'leave' to leave (if no quantity is specified 1 is chosen)"
         expect{front.main_choice}.to output(/form of 'item_name, quantity', type 'leave' to leave /).to_stdout
+      end
+      let(:user_input3) {["add\n", "name3\n", "leave\n", "leave\n"]}
+      it "should start add loop on 'add' choice" do
+        allow(front).to receive(:gets).and_return(*user_input3)
+        allow(menu).to receive(:check).and_return(false)
+        expect{front.main_choice}.to output(/Invalid menu choice/).to_stdout
       end
     end
   end

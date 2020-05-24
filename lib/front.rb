@@ -45,7 +45,7 @@ class Front
         quantity = user_input[1] || 1
         @order.add(item[0], quantity.to_i)
       else
-        puts "invalid menu choice"
+        puts "Invalid menu choice"
       end
     end
   end
