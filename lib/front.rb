@@ -18,22 +18,26 @@ class Front
       puts "type: 'leave' to exit, 'menu' for the menu, 'add' to add to the order,
 'show order' to show the order or 'confirm order' to confirm the order"
       choice = gets.chomp
-      case choice
-      when 'leave'
-        return "exit"
-      when 'menu'
-        @menu.show_dishes
-      when 'add'
-        add_choice
-      when 'show order'
-        @order.show
-      when 'confirm order'
-        @order.confirm
-      end
+      return "exit" if choice == 'leave'
+      
+      option_selection(choice)
     end
   end
 
   private
+
+  def option_selection(choice)
+    case choice
+    when 'menu'
+      @menu.show_dishes
+    when 'add'
+      add_choice
+    when 'show order'
+      @order.show
+    when 'confirm order'
+      @order.confirm
+    end
+  end
 
   def add_choice
     puts "enter choice in form of 'item_name, quantity', type 'leave' to leave
@@ -41,15 +45,23 @@ class Front
     loop do
       user_input = gets.chomp.split(", ")
       return false if user_input == ["leave"]
-      
-      if @menu.check(user_input[0])
-        item = @menu.select(user_input[0])
-        quantity = user_input[1] || 1
-        @order.add(item[0], quantity.to_i)
-      else
-        puts "Invalid menu choice"
-      end
+
+      check_and_add(user_input)
     end
+  end
+
+  def check_and_add(user_input)
+    if @menu.check(user_input[0])
+      add_to_order(user_input)
+    else
+      puts "Invalid menu choice"
+    end
+  end
+
+  def add_to_order(user_input)
+    item = @menu.select(user_input[0])
+    quantity = user_input[1] || 1
+    @order.add(item[0], quantity.to_i)
   end
 
 end
