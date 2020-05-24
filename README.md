@@ -42,12 +42,20 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 **Domain Model Diagrams**
 
+
 **Responsibilities**
+
 ![Responsibilities](https://github.com/Sumner1185/takeaway-challenge/blob/master/ResponsibilityTable.png)
 
+
 **Class Diagram**
+
+
 ![Class Diagram](https://github.com/Sumner1185/takeaway-challenge/blob/master/ClassDiagram.png)
 
+
 **Example Flow**
+
+
 ![Example Flow](https://github.com/Sumner1185/takeaway-challenge/blob/master/ExampleFlow.png)
 
