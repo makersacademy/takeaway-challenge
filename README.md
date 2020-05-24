@@ -26,8 +26,8 @@ I would like to see a list of dishes with prices
 |Takeaway.new                                      | @takeaway  |
 |takeaway.see_menu                                 |"Potato Wedges £2.50", "Fish&Chips £8", "Chicken Wings £5.99" |
 |Menu.new                                          |  @menu     | 
-|menu.dishes                                       |{ "Potato Wedges" => 2.50, "Fish&Chips" => 8, "Chicken Wings" => 5.99 } | 
-|menu.read_menu                                    | "Potato Wedges £2.50", "Fish&Chips £8", "Chicken Wings £5.99" | 
+|menu.dishes                                       |{ "Potato Wedges" => 2.50, "Fish&Chips" => 8.50, "Chicken Wings" => 5.99 } | 
+|menu.read                                         | "Potato Wedges £2.50", "Fish&Chips £8.50", "Chicken Wings £5.99" | 
 
 
 As a customer
