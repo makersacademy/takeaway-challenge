@@ -1,12 +1,14 @@
-class Order
+require 'csv'
 
+class Order
   def initialize
     @customer_order = {}
   end
 
   def request_order
+    @menu_data = load_file('menu.csv')
     request_dish
-    while !@dish_order.empty?
+    until @dish_order.empty?
       request_quantity
       confirm_order
       request_dish
@@ -15,25 +17,37 @@ class Order
 
   private
 
+  def menu_data
+    #load_file('./lib/menu.csv')
+  end
+
   def request_dish
     puts 'Please enter the dish name:'
-    puts '[to finish, hit Return twice]'
-    input = gets.chomp
-    @dish_order = input
+    puts '[to finish, hit Return]'
+    @dish_order = recieve_user_input('dish')
   end
 
   def request_quantity
     puts 'Please enter the quantity:'
+    @dish_quantity = recieve_user_input('quantity')
+  end
+
+  def recieve_user_input(type)
     input = gets.chomp
-    while !quantity_valid?(input)
+    until input_valid?(input, type)
       invalid_entry_error
       input = gets.chomp
     end
-    @dish_quantity = input
+    input
   end
 
-  def quantity_valid?(input)
-    input.gsub(/[0-9]/,"").empty? && !input.empty?
+  def input_valid?(input, type)
+    case type
+    when 'quantity'
+      input.gsub(/[0-9]/, "").empty? && !input.empty?
+    when 'dish'
+      @menu_data.keys.include?(input.downcase) || input.empty?
+    end
   end
 
   def invalid_entry_error
@@ -41,9 +55,15 @@ class Order
   end
 
   def confirm_order
-    puts "-- #{@dish_quantity} #{@dish_order}(s) added! --"
+    puts "-- #{@dish_quantity} #{@dish_order}(s) added! --\n\n"
   end
 
-
+  def load_file(file_path)
+    data = {}
+    CSV.foreach(file_path) do |line|
+      dish, price = line
+      data[dish] = price
+    end
+    data
+  end
 end
-

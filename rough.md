@@ -20,11 +20,10 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 takeaway = TakeAway.new
 
 A RESTAURANT
-> to see the menu enter          'menu'
-> to place an order enter       'order'
-> to see your basket enter     'basket'
-> to empty your basket enter    'empty'
-> to checkout enter          'checkout'
+> to see the menu enter             'menu'
+> to place an order enter          'order'
+> to see your basket enter        'basket'
+> to checkout your order enter  'checkout'
 > to exit hit Return twice
 
 'menu'

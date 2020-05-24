@@ -1,5 +1,6 @@
-class Menu
+require 'csv'
 
+class Menu
   def show_menu
     header
     menu_display
@@ -7,7 +8,7 @@ class Menu
   end
 
   private
-
+  
   def header
     puts "TAKEAWAY MENU"
     puts "=" * 39
@@ -18,20 +19,23 @@ class Menu
   end
 
   def menu_display
-    items.each_with_index do |(item, price), i|
+    menu_data.each_with_index do |(item, price), i|
       capitalised_item = item.split.map { |word| word.capitalize }.join(" ")
       puts "#{i + 1}. #{capitalised_item.ljust(30, '.')} £#{price}"
     end
     return
   end
 
-  def items
-    {
-      "spring roll"        => 0.99, 
-      "char sui bun"       => 3.99, 
-      "pork dumpling"      => 2.99, 
-      "peking duck"        => 7.99, 
-      "fu-king fried rice" => 5.99
-    }
+  def menu_data
+    load_data('../menu.csv')
+  end
+
+  def load_data(file_path)
+    data = {}
+    CSV.foreach(file_path) do |line|
+      dish, price = line
+      data[dish] = price
+    end
+    data
   end
 end

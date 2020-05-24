@@ -1,13 +1,11 @@
 require 'order'
 
 describe Order do
-  let(:user_inputs) { 
-    @dish = "dish name"
-    @quantity = "3"
-  }
-  let(:dish_prompt) { "Please enter the dish name:\n" + "[to finish, hit Return twice]\n" }
+  let(:double_data) { { "spring roll" => 0.99, "pork dumpling" => 2.99 } }
+  let(:user_inputs) { @dish = "Spring roll" ; @quantity = "3" }
+  let(:dish_prompt) { "Please enter the dish name:\n" + "[to finish, hit Return]\n" }
   let(:quantity_prompt) { "Please enter the quantity:\n" }
-  let(:confirmation_prompt) { "-- #{@quantity} #{@dish}(s) added! --\n" }
+  let(:confirmation_prompt) { "-- #{@quantity} #{@dish}(s) added! --\n\n" }
   let(:error_prompt) { "Invalid entry, please try again:\n" }
   let(:complete_order) { 
     dish_prompt + quantity_prompt + confirmation_prompt + dish_prompt 
@@ -15,6 +13,8 @@ describe Order do
   let(:invalid_quantity_order) { 
     dish_prompt + quantity_prompt + error_prompt + confirmation_prompt + dish_prompt
   }
+
+  before(:each) { allow(subject).to receive(:load_data) { double_data} }
 
   describe '#request_order' do
     it 'prompts the user to make an order' do
@@ -24,6 +24,12 @@ describe Order do
     end
 
     it 'alerts the user if quantity entered is invalid and asks to re-enter' do
+      user_inputs
+      allow(subject).to receive(:gets).and_return(@dish, "invalid quantity", @quantity, "")
+      expect { subject.request_order }.to output(invalid_quantity_order).to_stdout
+    end
+
+    it 'alerts the user if dish entered is not on the menu and asks to re-enter' do
       user_inputs
       allow(subject).to receive(:gets).and_return(@dish, "invalid quantity", @quantity, "")
       expect { subject.request_order }.to output(invalid_quantity_order).to_stdout

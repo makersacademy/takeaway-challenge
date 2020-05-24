@@ -9,12 +9,12 @@ describe Menu do
     "2. " + "Item Two".ljust(30, '.') + " £1.99\n" +
     "=" * 39 + "\n"
   }
-
+  
   describe '#show_menu' do
     it { is_expected.to respond_to(:show_menu) }
     
     it 'displays menu' do
-      allow(subject).to receive(:items).and_return(double_items)
+      allow(subject).to receive(:load_data).and_return(double_items)
       expect { subject.show_menu }.to output(double_menu_display).to_stdout
     end
   end
