@@ -14,31 +14,37 @@ class Front
   end
 
   def main_choice
-    puts "type: 'leave' to exit, 'menu' for the menu, 'add' to add to the order,
+    loop do
+      puts "type: 'leave' to exit, 'menu' for the menu, 'add' to add to the order,
 'show order' to show the order or 'confirm order' to confirm the order"
-    choice = gets.chomp
-    case choice
-    when 'leave'
-      exit
-    when 'menu'
-      @menu.show_dishes
-    when 'add'
-      add_choice
-    when 'show order'
-      @order.show
-    when 'confirm order'
-      @order.confirm
+      choice = gets.chomp
+      case choice
+      when 'leave'
+        exit
+      when 'menu'
+        @menu.show_dishes
+      when 'add'
+        add_choice
+      when 'show order'
+        @order.show
+      when 'confirm order'
+        @order.confirm
+      end
     end
   end
 
   def add_choice
     puts "enter choice in form of 'item_name, quantity', type 'leave' to leave (if no quantity is specified 1 is chosen)"
-    user_input = gets.chomp.split(", ")
-    return false if user_input == ["leave"]
-    if @menu.check(user_input[0])
-      item = @menu.select(user_input[0])
-      quantity = user_input[1] || 1
-      @order.add(item, quantity)
+    loop do
+      user_input = gets.chomp.split(", ")
+      return false if user_input == ["leave"]
+      if @menu.check(user_input[0])
+        item = @menu.select(user_input[0])
+        quantity = user_input[1].to_i || 1
+        @order.add(item[0], quantity)
+      else
+        puts "invalid menu choice"
+      end
     end
   end
 
