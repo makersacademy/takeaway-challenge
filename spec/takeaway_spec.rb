@@ -12,4 +12,15 @@ describe Takeaway do
     expect(subject.instance_variable_get(:@order).selection).to include({ dish: "chicken tikka", quantity: 2 })
   end
 
+  context 'adding several items to order' do
+    tk = Takeaway.new
+    tk.add_item("chicken tikka", 2)
+    tk.add_item("beef madras", 1)
+
+    it 'raises an error if the given total does not match order total' do
+      expect { tk.place_order_with_total(25) }.to raise_error("Total is incorrect, please try again")
+    end
+
+  end
+
 end
