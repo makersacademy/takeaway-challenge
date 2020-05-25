@@ -1,13 +1,13 @@
 require_relative 'dish'
 
-class List
+class Menu
   attr_reader :dishes
 
   def initialize
     @dishes = []
   end
 
-  def print_list
+  def print_menu
     @dishes
   end
 

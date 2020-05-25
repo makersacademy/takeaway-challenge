@@ -1,14 +1,14 @@
-require 'list'
+require 'menu'
 require 'dish'
 
-describe List do
+describe Menu do
   it 'should have an empty list of dishes when initialized' do
     expect(subject.dishes).to be_empty
   end
 
-  describe '#print_list' do
+  describe '#print_menu' do
     it 'should print the list of dishes' do
-      expect(subject.print_list).to eq([])
+      expect(subject.print_menu).to eq([])
     end
   end
 
@@ -16,7 +16,7 @@ describe List do
     dish = Dish.new('burger', 10)
     it 'should add a new dish to the list of dishes' do
       subject.add(dish)
-      expect(subject.print_list). to eq([{ :name => 'burger', :price => 10 }])
+      expect(subject.print_menu). to eq([{ :name => 'burger', :price => 10 }])
     end
   end
 
