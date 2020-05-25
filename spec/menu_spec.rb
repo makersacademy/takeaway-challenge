@@ -8,6 +8,6 @@ describe Menu do
   end
 
   it 'should print the menu' do
-    expect(menu.view).to eq ({"Apple" => 1, "Banana" => 2, "Mango" => 3, "Peach" => 4, "Pear" => 5})
+    expect(menu.view).to eq({ "Apple" => 1, "Banana" => 2, "Mango" => 3, "Peach" => 4, "Pear" => 5 })
   end
 end
