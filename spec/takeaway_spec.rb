@@ -10,11 +10,9 @@ describe Takeaway do
     it 'check if subject respond to a method menu' do
       expect(subject).to respond_to(:list_menu)
     end
-
     # it 'check if a list of dishes with prices' do
     #   expect(subject.list_menu).to eq(rice: 2.00)
     # end
-
     it 'subject needs back an hash' do
       menu = {rice: 2,
       beef: 3,
@@ -22,15 +20,14 @@ describe Takeaway do
       beer: 2}
       expect(subject.list_menu).to eq(menu)
     end
-
-    it 'testing ' do
+ context "#total_counter"
+    it 'test the order ' do
       o1 = {rice: 3, pizza: 2}
-      allow(subject).to receive(:make_order).and_return(o1)
+      allow(subject).to receive(:make_order).and_return(o1) # STUB
       expect(subject.make_order).to eq(o1)
     end
 
   end #context #menu
-
 
 
 

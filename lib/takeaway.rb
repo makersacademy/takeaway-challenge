@@ -20,7 +20,8 @@ class Takeaway
   def make_order
     puts list_menu
     loop do
-      puts " Select your order"
+      puts "Select your dish: "
+      puts "Digit 'end' to close the order."
       item = gets.chomp
       if item == "end"
         break
@@ -36,20 +37,28 @@ class Takeaway
       end
     end
     total_counter
+    # message_conferm
     # chek items, check the price in list menu * quantity
     # save in total variable
   end
 
 def total_counter
-  @order.each { |key, value|  @total += list_menu[key.to_sym] * value }
-end
+  @order.each { |key, value| @total += list_menu[key.to_sym] * value }
+   puts "Your order is: #{@order}"
+   puts "Your bill is: " + "#{@total}" + " £"
 
 end
 
-# ask for a order  DONE !!!!
-# Store input       DONE !!!
-# If anserw = End , close the order  DONE !!!
+# def message_conferm
+#   fail "Bill NOT matches your order" if @order[key] != @total
+#   return "Thank you! Your order was placed and will be delivered before in an hour from now !"
+# end
 
+end
+
+# ask for a order
+# Store input
+# If anserw = End , close the order
 # Check if item is in the menu
 # Ask of quantity of items needs
 # Store input
