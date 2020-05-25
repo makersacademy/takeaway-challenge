@@ -22,14 +22,14 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 The Takeaway app is split up into various classes that understand the behaviour of various methods. The classes encapsulate these behaviours. 
 
-The Takeaway app is based on my favorite takeaway option - Hawaiian Poké Bowls!
+The Takeaway app is based on my favourite takeaway option - Hawaiian Poké Bowls!
 
 The takeaway class understands the behaviour of the view_menu, add_item and view_order methods.
 
 - Class ----> takeaway
 - Method (behaviour) ----> view_menu, add_item and view_order 
 
-The order class understands the behavious of the add_to_order, order_summary and basket_total methods.
+The order class understands the behaviours of the add_to_order, order_summary and basket_total methods.
 
 - Class ----> order
 - Method (behaviour) ----> add_to_order, order_summary and basket_total
