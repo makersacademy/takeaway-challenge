@@ -108,3 +108,11 @@ Menu    | View    # Menu is a hash, view prints them
 Basket  | Select  # Puts Menu items in a basket
 Basket  | Summary # View total cost of basket (also prints basket)
 Basket  | Order   # Send massage to phone comnfirming order?
+
+
+User story 1 complete:
+
+:001 > menu = Menu.new
+(New menu is created with attributes)
+:002 > menu.view
+ => {"Apple"=>1, "Banana"=>2, "Mango"=>3, "Peach"=>4, "Pear"=>5}
