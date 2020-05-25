@@ -1,38 +1,25 @@
-CUST_ORDER = []
+require_relative 'menu'
+require_relative 'order'
 
 class TakeAway
 
-  attr_accessor :menu, :conf_order, :order
-  def initialize(menu = Menu.new)
-    @menu = menu.menu
+  attr_reader :menu, :order
 
-
+  def initialize
+    @menu = Menu.new
+    @order = Order.new
   end
 
   def seemenu
-    return @menu
+    @menu.menu
   end
 
-  def order(*args)
-    CUST_ORDER << args
+  def order(food, amount)
+    @order.order_add(food, amount)
   end
 
   def see_order
-    CUST_ORDER
+    @order.summary
+    @order.value
   end
-
-end
-
-class Order
-
-  def initialize(order = CUST_ORDER)
-    @order = order
-  end
-
-  def cust_order
-    @order
-  end
-
-
-
 end

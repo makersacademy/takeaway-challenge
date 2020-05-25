@@ -1,8 +1,17 @@
-class Order
+require_relative 'menu'
+require_relative 'takeaway'
 
-  attr_accessor :cust_order
-  def initialize
-    @cust_order = []
-  end
+
+class Order
+  attr_reader :choice, :menu
+
+def initialize
+  @choice = {}
+  @tot_cost = 0
+  @menu = Menu.new
+end
+
+def input_order(food, amount)
+end
 
 end

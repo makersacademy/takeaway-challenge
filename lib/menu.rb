@@ -1,10 +1,9 @@
 class Menu
 
   def menu
-    @menu = [{ "dimsum" => 3 },
-      { "soup" => 4 },
-      { "noodles" => 6 },
-      { "rice" => 7 }]
+    @menu = [{ :food => "dimsum", :price => 3 },
+      { :food => "soup", :price => 4 },
+      { :food => "rice", :price => 7 }]
   end
 
 end
