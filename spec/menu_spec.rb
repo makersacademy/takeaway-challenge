@@ -12,4 +12,9 @@ describe Menu do
     expect(menu.show_menu).to eq(list)
   end
 
+  it 'has a method that establish if a dish is in the menu' do
+    expect(menu.in_menu?("fish")).to be(false)
+    expect(menu.in_menu?("calzone")).to be(true)
+  end
+
 end

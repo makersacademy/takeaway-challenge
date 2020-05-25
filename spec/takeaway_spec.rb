@@ -23,7 +23,4 @@ describe Takeaway do
       expect { subject.add_to_order("prosciutto") }.to raise_error("item not available")
     end
   end
-
-  
-
 end

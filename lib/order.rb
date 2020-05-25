@@ -9,17 +9,18 @@ class Order
   def add_dish(dish, quantity = 1)
     @items[dish] = 0 unless items[dish]
     @items[dish] += quantity
+    "#{dish} X #{quantity} added to your order"
   end
 
-  def get_price(dish)
+  def single_item_price(dish)
     @menu.dishes[dish]
   end
 
-  def get_total_price
+  def order_price
     total = 0
     @items.each do |dish, quantity|
-      total +=  get_price(dish) * quantity
+      total +=  single_item_price(dish) * quantity
     end
-    total 
+    total
   end
 end

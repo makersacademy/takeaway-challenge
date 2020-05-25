@@ -18,13 +18,13 @@ describe Order do
 
   it 'return price for a specific dish' do
     allow(menu).to receive(:dishes).and_return({ "marinara" => 5 })
-    expect(subject.get_price(dish)).to eq(5)
+    expect(subject.single_item_price(dish)).to eq(5)
   end
 
   it 'returns total price of the order' do
-    allow(menu).to receive(:dishes).and_return({ "marinara" => 5, "calzone" => 8})
+    allow(menu).to receive(:dishes).and_return({ "marinara" => 5, "calzone" => 8 })
     subject.add_dish("marinara", 2)
     subject.add_dish("calzone")
-    expect(subject.get_total_price).to eq(18)
+    expect(subject.order_price).to eq(18)
   end
 end
