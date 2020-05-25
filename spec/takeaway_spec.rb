@@ -11,6 +11,13 @@ describe Takeaway do
   let(:order_double_format) { allow(order_double).to receive(:format_order) { "Large Fish Supper x2\n" } }
   let(:get_name_for_double) { allow(menu_double).to receive(:get_name) { "Large Fish Supper" } }
 
+  describe '#welcome' do
+    it 'returns a prompt to type in option to user' do
+      message = "Please type in one of the above options."
+      expect(takeaway.welcome).to eq(message)
+    end
+  end
+  
   describe '#see_menu' do
     it 'puts a formatted list of menu items to the customer' do
       dish = "Large Fish Supper - £7.90"

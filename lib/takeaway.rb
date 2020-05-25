@@ -9,6 +9,11 @@ class Takeaway
     @order = order
   end
 
+  def welcome
+    puts welcome_message
+    "Please type in one of the above options."
+  end
+
   def see_menu
     puts @menu.get_menu
     order_prompt
@@ -38,6 +43,11 @@ class Takeaway
   end
 
 private
+
+  def welcome_message
+    ["Hello, welcome to Nikita's Takeaway!", "see_menu", "select(dish, quantity)",
+      "see_order - this will also return your total", "confirm_order(amount)"]
+  end
 
   def order_prompt
     "What would you like to order?"
