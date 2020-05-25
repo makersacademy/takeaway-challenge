@@ -46,13 +46,12 @@ def total_counter
   @order.each { |key, value| @total += list_menu[key.to_sym] * value }
    puts "Your order is: #{@order}"
    puts "Your bill is: " + "#{@total}" + " £"
-
 end
 
-# def message_conferm
-#   fail "Bill NOT matches your order" if @order[key] != @total
-#   return "Thank you! Your order was placed and will be delivered before in an hour from now !"
-# end
+def message_conferm
+  fail "Bill NOT matches your order" if @order[key] != @total
+  return "Thank you! Your order was placed and will be delivered before in an hour from now !"
+end
 
 end
 
