@@ -6,6 +6,7 @@ class Order
   end
 
   def request_order
+    store_menu_data
     request_dish
     until @dish_order.empty?
       request_quantity
@@ -35,7 +36,7 @@ class Order
       invalid_entry_error
       input = gets.chomp
     end
-    input
+    input.downcase
   end
 
   def input_valid?(input, type)
@@ -43,7 +44,7 @@ class Order
     when 'quantity'
       input.gsub(/[0-9]/, "").empty? && !input.empty?
     when 'dish'
-      menu_data.keys.include?(input.downcase) || input.empty?
+      @menu_data.keys.include?(input.downcase) || input.empty?
     end
   end
 
@@ -52,15 +53,15 @@ class Order
   end
 
   def confirm_order
-    puts "-- #{@dish_quantity} #{@dish_order}(s) added! --\n\n"
+    puts "-- #{@dish_quantity.capitalize} #{@dish_order.capitalize}(s) added! --\n\n"
   end
 
   def save_order
     @customer_order[@dish_order] += @dish_quantity.to_i
   end
 
-  def menu_data
-    load_data('../menu.csv')
+  def store_menu_data
+    @menu_data = load_data('../menu.csv')
   end
 
   def load_data(file_path)

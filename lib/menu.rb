@@ -2,6 +2,7 @@ require 'csv'
 
 class Menu
   def show_menu
+    store_menu_data
     header
     menu_display
     footer
@@ -19,15 +20,18 @@ class Menu
   end
 
   def menu_display
-    menu_data.each_with_index do |(item, price), i|
-      capitalised_item = item.split.map { |word| word.capitalize }.join(" ")
-      puts "#{i + 1}. #{capitalised_item.ljust(30, '.')} £#{price}"
+    @menu_data.each_with_index do |(dish, price), i|
+      puts "#{i + 1}. #{capitalise_item(dish).ljust(30, '.')} £#{price}"
     end
     return
   end
 
-  def menu_data
-    load_data('../menu.csv')
+  def capitalise_item(dish)
+    dish.split.map { |word| word.capitalize }.join(" ")
+  end
+
+  def store_menu_data
+    @menu_data = load_data('../menu.csv')
   end
 
   def load_data(file_path)
