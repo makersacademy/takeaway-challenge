@@ -11,7 +11,5 @@ class Menu
     @dishes
   end
 
-  def add(dish)
-    @dishes << { :name => dish.name, :price => dish.price }
-  end
 end
+
