@@ -15,9 +15,9 @@ class Takeaway
   end
 
   def add_item(dish, quantity)
-    if @menu.on_menu?(dish)
-      @order.add_to_order(dish, quantity)
-    end
+    return unless @menu.on_menu?(dish)
+
+    @order.add_to_order(dish, quantity)
   end
 
 end

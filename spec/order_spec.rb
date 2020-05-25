@@ -17,4 +17,11 @@ describe Order do
     expect(order.selection).to eq([{ dish: "chicken tikka", quantity: 2 }])
   end
 
+  it 'calculates the total cost of an order' do
+    order = Order.new
+    order.add_to_order("chicken tikka", 2)
+    order.add_to_order("beef madras", 1)
+    expect(order.calculate_total).to eq(28)
+  end
+
 end
