@@ -23,8 +23,9 @@ class Order
   end
 
   def summary
-    blah = @food_array.uniq.join(" & ")
-    puts "you've ordered #{blah}, your meal will cost £#{@tot_cost}"
+    result = @food_array.each_with_object(Hash.new(0)) { |food, counts| counts[food] += 1 }
+    bresult = result.map { |h| h.join ' x ' }.join ' & '
+    puts "you've ordered #{bresult}, your meal will cost £#{@tot_cost}"
 
   end
 end

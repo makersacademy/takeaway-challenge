@@ -14,6 +14,6 @@ describe Order do
 
   it "returns the customer order cost" do
     subject.sum_cost("soup")
-    expect { subject.summary }.to output("you've ordered soup, your meal will cost £4\n").to_stdout
+    expect { subject.summary }.to output("you've ordered soup x 1, your meal will cost £4\n").to_stdout
   end
 end
