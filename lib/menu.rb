@@ -1,2 +1,4 @@
 class Menu
-end 
+  def view
+  end
+end
