@@ -19,6 +19,12 @@ attr_reader :dishes
     end
   end
 
+  def get_name(dish)
+    @dishes.each_key do |key|
+      return key if dish.downcase  == key.downcase
+    end
+  end
+
   def get_price_for(dish)
     @dishes.each do |key,value|
       return value if dish.downcase == key.downcase

@@ -18,4 +18,10 @@ describe Menu do
       expect(menu.get_price_for("Large Fish Supper")).to eq 7.90
     end
   end
+
+  describe '#get_name' do
+    it 'returns the actual name of the dish' do
+      expect(menu.get_name("large fish supper")).to eq("Large Fish Supper")
+    end
+  end
 end

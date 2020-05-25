@@ -3,12 +3,14 @@ require 'takeaway'
 describe Takeaway do
   let(:menu_double) { double :menu }
   let(:order_double) { double :order }
+  let(:sms_double) { double :sms }
   subject(:takeaway) { Takeaway.new(menu_double, order_double) }
 
 
   let (:get_price_for_double) { allow(menu_double).to receive(:get_price_for) {7.90} }
   let(:menu_item_exists) { allow(menu_double).to receive(:not_on_menu?) { false } }
   let(:order_double_format) { allow(order_double).to receive(:format_order) { "Large Fish Supper x2\n"} }
+  let(:get_name_for_double) { allow(menu_double).to receive(:get_name) { "Large Fish Supper" } }
 
 
   describe '#see_menu' do
@@ -27,6 +29,7 @@ describe Takeaway do
     end
     it 'returns "Dish added!"' do
       menu_item_exists
+      get_name_for_double
       get_price_for_double
       allow(order_double).to receive(:add_selection) { "Dish added!" }
       expect(takeaway.select("Large Fish Supper",2)).to eq "Dish added!"
@@ -42,14 +45,20 @@ describe Takeaway do
   end
 
   describe '#confirm_order(amount)' do
-    it 'raises an error if the customer total does not match the total' do
-      allow(order_double). to receive(:total) { 15.8 }
-      expect { takeaway.confirm_order(15.9) }.to raise_error("That isn't the right amount.")
-    end
 
-    it 'return "Order confirmed!" if customer total matches total' do
-      allow(order_double). to receive(:total) { 15.8 }
-      expect(takeaway.confirm_order(15.8)).to eq("Order confirmed!")
+    context do
+      before(:example) do
+        allow(order_double).to receive(:total) { 15.8 }
+        allow(takeaway). to receive(:send_sms) {"Order confirmed!"}
+      end
+
+        it 'raises an error if the customer total does not match the total' do
+          expect { takeaway.confirm_order(15.9) }.to raise_error("That isn't the right amount.")
+        end
+
+        it 'return "Order confirmed!" if customer total matches total' do
+          expect(takeaway.confirm_order(15.8)).to eq("Order confirmed!")
+        end
     end
   end
 end
