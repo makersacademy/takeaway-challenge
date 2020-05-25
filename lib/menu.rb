@@ -25,6 +25,9 @@ class Menu
     end
   end
 
+  def basket_total
+  end
+
 
 
 end
