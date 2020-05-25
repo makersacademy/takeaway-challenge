@@ -116,3 +116,5 @@ User story 1 complete:
 (New menu is created with attributes)
 :002 > menu.view
  => {"Apple"=>1, "Banana"=>2, "Mango"=>3, "Peach"=>4, "Pear"=>5}
+
+ User story 2 and 3 complete:
