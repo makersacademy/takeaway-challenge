@@ -10,7 +10,7 @@ class Menu
       "Peach" => 4,
       "Pear" => 5
       }
-      @basket = []
+    @basket = []
   end
 
   def view_menu
@@ -24,5 +24,5 @@ class Menu
       end
     end
   end
-  
+
 end
