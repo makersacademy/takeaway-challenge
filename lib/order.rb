@@ -11,8 +11,18 @@ class Order
     dishes[item] = quantity
   end
   
+  def total
+    item_total.reduce(:+)
+  end
+
   private
   attr_reader :menu
+
+  def item_total
+    dishes.map do |item, quantity |
+      menu.price(item) * quantity
+    end
+  end
 end
 
 class NoItemError < StandardError; end  # write your own type of error. Inheritate the behavior of StandardError class.

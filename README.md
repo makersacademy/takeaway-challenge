@@ -17,7 +17,11 @@ Takeaway Challenge
 Task
 -----
 
+* Have been following the walk through from  https://www.youtube.com/watch?v=mgiJKdH9x8c&feature=youtu.be 
+for the takeaway challenge
+
 ```
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -36,9 +40,6 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
-* Have been following the walk through from  https://www.youtube.com/watch?v=mgiJKdH9x8c&feature=youtu.be 
-for the takeaway challenge
-
 |  input                      |  output       |
 |takeaway.place_order(dishes) | dishes.each do |item, quantity| |
 | Order.new                   | @order,  @menu    |
@@ -49,6 +50,11 @@ for the takeaway challenge
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+|  input                      |  output       |
+| order.total                 |   16.50       |
+| menu.price                  |    3.99       |
+
 
 As a customer
 So that I am reassured that my order will be delivered on time

@@ -28,4 +28,7 @@ describe Menu do
     expect(menu.has_dish?(:beef)).to be false
   end
     
+  it "return the price for the dish" do
+    expect(menu.price(:fish)).to eq(dishes[:fish])
+  end
 end
