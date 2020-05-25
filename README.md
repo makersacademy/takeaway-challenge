@@ -36,12 +36,14 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
-|  input       |  output    |
-| Order.new    | @order     |
-| order.select |{ "Potato Wedges" => 2 } |
-| order.add    |{ "Potato Wedges" => 2, "Chicken Wings" => 3 }|
-|              |            |
-|              |            |
+* Have been following the walk through from  https://www.youtube.com/watch?v=mgiJKdH9x8c&feature=youtu.be 
+for the takeaway challenge
+
+|  input                      |  output       |
+|takeaway.place_order(dishes) | " 2 portion of breadsticks has been added" |
+| Order.new                   | @order     |
+| order.add                   |{ "Potato Wedges" => 2, "Chicken Wings" => 3 }|
+
 
 As a customer
 So that I can verify that my order is correct
