@@ -33,6 +33,8 @@ Takeaway Challenge
   - Working on user story 3
 
   * commited after storing and returning customer order
+  -
+  * Order class is storing customer order
 
 IRB spark
 require './lib/takeaway.rb'

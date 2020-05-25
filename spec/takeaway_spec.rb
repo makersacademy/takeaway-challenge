@@ -22,7 +22,6 @@ describe TakeAway do
   end
 
   it "returns the customers order" do
-    takeaway.order("soup")
     expect(takeaway.see_order).to eq([["soup"]])
   end
 end

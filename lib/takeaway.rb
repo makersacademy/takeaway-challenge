@@ -1,9 +1,12 @@
+CUST_ORDER = []
+
 class TakeAway
 
-  attr_reader :menu, :cust_order, :conf_order
+  attr_accessor :menu, :conf_order, :order
   def initialize(menu = Menu.new)
     @menu = menu.menu
-    @conf_order = []
+
+
   end
 
   def seemenu
@@ -11,11 +14,25 @@ class TakeAway
   end
 
   def order(*args)
-    @conf_order << args
+    CUST_ORDER << args
   end
 
   def see_order
-    @conf_order
+    CUST_ORDER
   end
+
+end
+
+class Order
+
+  def initialize(order = CUST_ORDER)
+    @order = order
+  end
+
+  def cust_order
+    @order
+  end
+
+
 
 end

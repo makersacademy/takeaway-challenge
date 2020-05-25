@@ -1,12 +1,12 @@
-require 'order'
+require 'takeaway'
 
 describe Order do
 
-  it "responds to cust_order" do
-    expect(subject).to respond_to :cust_order
+  it "is an order" do
+    expect(subject).to be_kind_of Order
   end
 
-  it "stores the customer orders in an array" do
+  it "access the order store" do
     expect(subject.cust_order).to eq []
   end
 
