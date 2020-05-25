@@ -21,6 +21,10 @@ describe Takeaway do
       expect { tk.place_order_with_total(25) }.to raise_error("Total is incorrect, please try again")
     end
 
+    it 'Tells you your order has been placed, if you give the correct total' do
+      expect(tk.place_order_with_total(28)).to eq("Your order has been placed and costs £28")
+    end
+
   end
 
 end
