@@ -10,9 +10,9 @@ def sms
 
   message = @client.messages
     .create (
-    body: "Thank you, your order has been placed and will arrive at #{(Time.new + 3600).strftime("%H:%M")}.",
-    from: '+12513571363',
-    to: num,
+    body: "Thank you, your order has been placed and will arrive at #{(Time.new + 3600).strftime("%H:%M")}."
+    from: '+12513571363'
+    to: num
   )
 
   puts message.sid

@@ -3,12 +3,12 @@ class Dishes
 
   def initialize
     @menu = {
-      "pavlova" => 4,
-      "financier" => 3.50,
-      "croissant" => 2,
-      "tart" => 3,
-      "gateau" => 15,
-      "canele" => 1.50
+      :pavlova => 4,
+      :financier => 3.50,
+      :croissant => 2,
+      :tart => 3,
+      :gateau => 15,
+      :canele => 1.50
     }
   end
 
