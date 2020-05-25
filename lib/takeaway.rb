@@ -3,7 +3,7 @@ require_relative 'order'
 
 class TakeAway
 
-  attr_reader :menu, :order
+  attr_reader :menu
 
   def initialize
     @menu = Menu.new
@@ -15,7 +15,7 @@ class TakeAway
   end
 
   def order(food, amount)
-    @order.order_add(food, amount)
+    @order.input_order(food, amount)
   end
 
   def see_order
