@@ -20,7 +20,7 @@ class Order
   end
 
   def order(num, amount)
-    amount.times { @current_order << @menu.select(num)}
+    amount.times { @current_order << @menu.select(num) }
   end
 
   def total
@@ -29,6 +29,11 @@ class Order
       @order_total += item[:price]
     end
     puts "current order total is £%0.2f" % [@order_total]
+  end
+
+  def confrim(number)
+    @message = Message.new
+    @message.text_message(number)
   end
 
 end
