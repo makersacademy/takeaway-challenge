@@ -1,13 +1,13 @@
 Nikita's Takeaway Challenge
 ===========================
 
-# What is the Takeaway Challenge?
+## What is the Takeaway Challenge?
 
 The Takeaway Challenge script allows the user to view a menu, select a quantity of dishes, view their order, and confirm the order amount; successful confirmation results in an SMS being sent to the user's phone, which states that their order will be delivered one hour from now.
 
 I wrote this script in May 2020, in response to the Makers Academy [Takeaway Challenge]()
 
-# How to use the Takeaway Challenge
+## How to use the Takeaway Challenge
 
 The Takeaway Challenge is written in Ruby - you will need to install Ruby before using this script.
 
@@ -23,7 +23,7 @@ file with your Twilio details and mobile number - more info on how to do that [h
 
 The tests were written with RSpec - run `rspec` when you're in the takeaway-challenge root directory to run the tests.
 
-# How I Built the Takeaway Challenge
+## How I Built the Takeaway Challenge
 
 First off, I decided that I wanted the program to work in IRB. I then went through the user stories and created a sequence diagram, to plan out
 what classes and methods I would need to create.
@@ -38,7 +38,7 @@ I then implemented my confirmation message, working through the resources on Twi
 
 I did a lot of refactoring in this challenge, as I debated whether my methods should use `puts` statements for communicating with the user, or should just `return` their values. Eventually I went for a combination of both, as I disliked the aesthetics of the return value being `nil` after I had `puts`'ed a statement. Silly, I know, but I'm sensitive to that kind of nonsense.
 
-## Things for me to think about going forward...
+### Things for me to think about going forward...
 - Build your programmes to run on the command line. The aesthetic is preferable.
 - __ALWAYS__ run `rspec` after you refactor and before you commit and push.
 - A README is like a bibliography - do not leave it til the end. It's a pain.
