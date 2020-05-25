@@ -10,7 +10,7 @@ describe Menu do
 
   it 'can disply a list of dishes' do
     menu = Menu.new
-    expect { menu.show_menu }.to output.to_stdout
+    expect { menu.print_menu }.to output.to_stdout
   end
 
   it 'checks if item is on menu' do

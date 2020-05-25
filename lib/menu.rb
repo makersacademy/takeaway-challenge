@@ -7,7 +7,7 @@ class Menu
     @list_of_dishes = list
   end
 
-  def show_menu
+  def print_menu
     puts "\nMenu\n\n"
     @list_of_dishes.each { |dish, price|
       puts "#{dish}........£#{price}"
