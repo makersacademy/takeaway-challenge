@@ -1,12 +1,11 @@
 class Order
 
-def initialize
-  @cust_order = []
-end
-
-  def cust_order
-    @cust_order
+  attr_reader :cust_order
+  def initialize
+    @cust_order = []
   end
 
+  def order
 
+  end
 end

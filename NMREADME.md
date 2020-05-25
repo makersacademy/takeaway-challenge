@@ -30,5 +30,13 @@ Takeaway Challenge
   * commited after passing green for "order with any args".
   * commited after initializing @cust_order as empty array"
 
+  - Working on user story 3
+
+  * commited after storing and returning customer order
+
 IRB spark
 require './lib/takeaway.rb'
+require './lib/menu.rb'
+require './lib/order.rb'
+ta = TakeAway.new
+o = Order.new

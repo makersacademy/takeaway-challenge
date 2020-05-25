@@ -2,7 +2,8 @@ require 'takeaway'
 
 describe TakeAway do
   let(:takeaway) { TakeAway.new }
-  let(:bum) { Menu.new }
+  let(:menu) { Menu.new }
+  let(:order) { TakeAway.new.order("soup") }
 
   it 'should have a user scrutable menu' do
     expect(subject.menu).not_to be nil
@@ -16,4 +17,12 @@ describe TakeAway do
     expect(takeaway).to respond_to(:order).with_unlimited_arguments
   end
 
+  it "stores the customer order" do
+    expect(order).to eq [["soup"]]
+  end
+
+  it "returns the customers order" do
+    takeaway.order("soup")
+    expect(takeaway.see_order).to eq([["soup"]])
+  end
 end
