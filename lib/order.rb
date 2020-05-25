@@ -5,25 +5,26 @@ class Order
   attr_reader :choice, :menu
 
   def initialize
-    @choice = {}
+    @food_array = []
     @tot_cost = 0
     @menu = Menu.new
   end
 
   def sum_cost(food)
-    input = food
+    @food_array << food
     @menu.menu.each do |k, v|
-      if input == k
+      if k == food
         @tot_cost += v
       end
     end
   end
 
-  def summary
-    puts "your meal will cost £#{@tot_cost}"
-
+  def sum_food(food)
   end
 
-  def value
+  def summary
+    blah = @food_array.uniq.join(" & ")
+    puts "you've ordered #{blah}, your meal will cost £#{@tot_cost}"
+
   end
 end

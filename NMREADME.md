@@ -45,6 +45,9 @@ Takeaway Challenge
   -
   * Some refactoring and adjusting to get sum of cost.
 
+  -
+  * Got the list of food and cost returning
+
 IRB spark
 require './lib/takeaway.rb'
 require './lib/menu.rb'
