@@ -24,10 +24,10 @@ I would like to see a list of dishes with prices
 
 |  input                                           |  output    |
 |Menu.new                                          |  @menu     | 
-|menu.dishes                                       |{ "Potato Wedges" => 2.50, 
-                                                      "Fish&Chips" => 8.50, 
-                                                      "Chicken Wings" => 5.99 } | 
-|menu.read                                         | "Potato Wedges £2.50", "Fish&Chips £8.50", "Chicken Wings £5.99" |
+|menu.dishes                                       |{ "potato" => 2.50, 
+                                                      "fish" => 8.50, 
+                                                      "chicken" => 5.99 } | 
+|menu.read                                         | "Potato £2.50", "Fish £8.50", "Chicken £5.99" |
 |Takeaway.new                                      |  @menu = Menu.new |
 |takeaway.show_menu                                |  menu.read    | 
 
@@ -36,12 +36,14 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
-|  input       |  output    |
-| Order.new    | @order     |
-| order.select |{ "Potato Wedges" => 2 } |
-| order.add    |{ "Potato Wedges" => 2, "Chicken Wings" => 3 }|
-|              |            |
-|              |            |
+* Have been following the walk through from  https://www.youtube.com/watch?v=mgiJKdH9x8c&feature=youtu.be 
+for the takeaway challenge
+
+|  input                      |  output       |
+|takeaway.place_order(dishes) | dishes.each do |item, quantity| |
+| Order.new                   | @order,  @menu    |
+| order.add                   |{ potato: 2, chicken: 3 }|
+| menu.has_dish?              |  true / false           |
 
 As a customer
 So that I can verify that my order is correct
