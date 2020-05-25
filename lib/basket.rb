@@ -23,7 +23,11 @@ class Basket
 
   def footer
     puts "-" * 39
-    puts "TOTAL:".ljust(32, ' ') + "£#{basket_total}"
+    puts "TOTAL:".ljust(32, ' ') + "£%.2f" % basket_total
+  end
+
+  def basket_total
+    @basket_data.reduce(0) { |sum, order| sum + order[:subtotal] }
   end
 
   def basket_breakdown
@@ -43,10 +47,6 @@ class Basket
   def sub_total(dish, quantity)
     store_menu_data
     (@menu_data[dish].to_f * quantity).round(2)
-  end
-
-  def basket_total
-    @basket_data.reduce(0) { |sum, order| sum + order[:subtotal] }
   end
 
   def capitalise_item(item)

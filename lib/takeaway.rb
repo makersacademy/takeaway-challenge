@@ -1,11 +1,13 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'basket'
+require_relative 'checkout'
 
 class TakeAway
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, checkout = Checkout.new)
     @menu = menu
     @order = order
+    @checkout = checkout
     @customer_order = {}
   end
 
@@ -45,6 +47,7 @@ class TakeAway
     when "menu" then menu
     when "order" then order
     when "basket" then basket
+    when "checkout" then checkout
     when "" then exit
     else invalid_entry_error
     end
@@ -61,6 +64,10 @@ class TakeAway
   def basket
     @basket = Basket.new(@customer_order)
     @basket.show_basket
+  end
+
+  def checkout
+    @checkout.place_order
   end
 
   def invalid_entry_error
