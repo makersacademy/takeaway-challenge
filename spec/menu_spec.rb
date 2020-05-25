@@ -18,4 +18,11 @@ describe Menu do
   it 'should respond to basket_total' do
     expect(menu).to respond_to(:basket_total)
   end
+
+  it 'should print basket total' do
+    menu = Menu.new
+    menu.select("Mango", 4)
+    expect(menu.basket_total).to eq("Apple x 4 = £12")
+  end
+
 end
