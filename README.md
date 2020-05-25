@@ -1,35 +1,20 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
+## Summary of challenge
+- Create a command line application that can display a takeaway food menu
+- Allow a user to make an order by specifying the dish names and quantities of each
+- Allow the user to see the total cost of their order, including a line by line breakdown of each dish
+- Allow the user to place their order
+- Have the user receive a confirmation text specifying when the order will arrive
+
+## How To Use
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+irb -r ./lib/takeaway.rb
+>t = TakeAway.new
+> t.start
+```
 
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+## User Stories
 ```
 As a customer
 So that I can check if I want to order something
@@ -48,37 +33,11 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Considerations
+- A decision was made early on to present the application as an interactive menu so that different functions could be carried out by typing strings into the command line, as opposed to having to run individual methods. The prompts and user responses were carried out using `puts` and `gets` methods. The code implementation was not too difficult, but there was a real challenge in writing the rspec tests. Trying to mock the user inputs and testing that the user prompts all appeared correctly and in the right order was extremely cumbersome. I will look into whether there is an easier way to test this type of process.
+- I was careful to restrict public access only to class methods that would either be used by the User or by other classes. This seemed like a reasonable thing to do, but also resulted in the vast majority of my unit tests being deleted. I assumed that since I would be testing behavior instead of state, that so long as the public methods acted as they were supposed to, and that there were no redundant private methods, that all the methods would end up being tested, either explicitly or implicitly. However, after implementing all the tests, the test coverage was found to be fairly low - around 80%. I am still trying to determine whether I implemented the tests correctly, or if I was too strict in allowing public access to class methods.
+- I struggled to figure out the correct way to store the menu data, such that it could be displayed by the `Menu` class, as well as used by the `Order` class to verify user inputs and `Basket` class to calculate price totals. I had originally planned to to store the data within the Menu class, but did not like the idea of each class accessing the `Menu` class individually, which, as far as I could tell, would result in many instances of the `Menu` class being created. I instead opted to store the menu data in a .csv file that each class would access individually. This also has the added benefit of easily being able to change the menu and prices without modifying any of the classes.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+## Future development
+- The use of a presentation class would have made code implementation a lot easier and would also prevent return values from appearing in IRB which can be distracting.
+- Adding functionality so that orders could be made via sms message
