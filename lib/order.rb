@@ -9,7 +9,6 @@ class Order
     @customer_basket_subtotal = []
     @menu = Menu.new.menu_list
     @restaurant_name = Menu.new.take_away_name
-
   end
 
   def show_menu
@@ -27,11 +26,23 @@ class Order
     end
   end
 
- def customer_order_summary
+  def customer_order_summary
     @customer_basket.each do |order|
       puts "#{order[:item]}, price £#{order[:price]}"
     end
   end
+  
+  def subtotal
+    @customer_basket.each { |value| puts value[:price].to_i }
+  end
+
+  private
+  
+  def order_asker
+    puts "Enter an item number or checkout to pay"
+  end
+
+end
 
   # def add_new_item
   #   @customer_choice = gets.chomp
@@ -53,12 +64,3 @@ class Order
   #   select_items(@customer_choice)
   #   customer_order
   # end
-
-  private
-
- 
-
-  def order_asker
-    puts "Enter an item number or checkout to pay"
-  end
-end

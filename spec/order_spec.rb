@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
   let(:order) { described_class.new }  
-  let (:menu) { double :menu }
-  let (:order_choice) { double :order_choice }
+  let(:menu) { double :menu }
+  let(:order_choice) { double :order_choice }
 
   it 'creates a new order' do
     expect(Order.new).to be_instance_of Order
@@ -37,7 +37,7 @@ describe Order do
     it 'returns the correct item name when given customers choice' do
       allow(menu).to receive(:customer_choice)
       order.select_items(2)
-      expect(order.customer_basket).to include({:item=>"Veggie Lasagna", :item_number=>2, :price=>5})
+      expect(order.customer_basket).to include({ :item => "Veggie Lasagna", :item_number => 2, :price => 5 })
     end
   end
 
@@ -48,6 +48,22 @@ describe Order do
       expect(subject.customer_order_summary).to eq(subject.customer_basket)
     end
   end
+
+  describe '#subtotal' do
+      
+    it { is_expected.to respond_to(:subtotal) }
+
+    it 'returns sum of all items in customer basket' do
+      customer_basket = [2, 4]
+      order.select_items(2)
+      order.select_items(1)
+      order.customer_order_summary
+      order.subtotal
+      subtotal_test = order.subtotal
+      expect(order.subtotal)clear.to eq(subtotal_test)
+    end
+  end
+end
 
     # let(:item_number) { double "item_number_double" }
     # let(:item) { double "food_double" }
@@ -61,7 +77,6 @@ describe Order do
     # end
   # end
   
-
   # describe ' #order_asker' do
   # let (:user_input) { 2 }
   # customer_choice = 2
@@ -72,4 +87,3 @@ describe Order do
   #     expect(subject.order_asker).to eq(customer_choice)
   #   end
   # end
-end
