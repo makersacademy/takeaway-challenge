@@ -8,7 +8,7 @@ describe Menu do
 
   describe '#print_menu' do
     it 'should print the list of dishes' do
-      expect(subject.print_menu).to eq([])
+      expect(subject.print_menu).to eq(Menu::MY_MENU)
     end
   end
 
