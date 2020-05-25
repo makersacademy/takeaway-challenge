@@ -13,11 +13,11 @@ describe List do
   end
 
   describe '#add' do
-  dish = Dish.new('burger', 10)
-  it 'should add a new dish to the list of dishes' do
-    subject.add(dish)
-    expect(subject.print_list). to eq([{:name => 'burger', :price => 10}])
-  end
+    dish = Dish.new('burger', 10)
+    it 'should add a new dish to the list of dishes' do
+      subject.add(dish)
+      expect(subject.print_list). to eq([{ :name => 'burger', :price => 10 }])
+    end
   end
 
 end
