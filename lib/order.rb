@@ -4,15 +4,15 @@ class Order
 
   attr_reader :selection, :total
 
-  def initialize (formatter = Formatter.new)
+  def initialize(formatter = Formatter.new)
     @selection = {}
     @total = 0
     @formatter = formatter
   end
 
-  def add_selection(dish,quantity,price)
+  def add_selection(dish, quantity, price)
     @selection.store(dish, quantity)
-    add_to_total(quantity,price)
+    add_to_total(quantity, price)
     "Dish added!"
   end
 

@@ -14,7 +14,7 @@ class Takeaway
     order_prompt
   end
 
-  def select(dish,quantity = 1)
+  def select(dish, quantity = 1)
     if check_if_on_menu(dish)
       "I'm sorry, we don't have that on our menu."
     else
@@ -31,7 +31,10 @@ class Takeaway
 
   def confirm_order(amount)
     raise "That isn't the right amount." if amount != @order.total
-    send_sms
+
+    message = confirmation_message
+
+    send_sms(message)
   end
 
 private
@@ -41,7 +44,7 @@ private
   end
 
   def check_if_on_menu(dish)
-     @menu.not_on_menu?(dish)
+    @menu.not_on_menu?(dish)
   end
 
   def get_actual_name(dish)
@@ -54,5 +57,9 @@ private
 
   def see_total
     @order.get_total
+  end
+
+  def confirmation_message
+    "Thank you! Your order was placed and will be delivered before"
   end
 end
