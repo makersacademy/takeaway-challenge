@@ -56,7 +56,6 @@ describe Order do
       allow($stdout).to receive(:puts) # console output suppressed
       allow(subject).to receive(:gets).and_return("Spring Roll", "2", "pOrk dumPling", "4", "")
       expect(subject.request_order).to eq({ "spring roll" => 2, "pork dumpling" => 4 })
-
     end
   end
 end
