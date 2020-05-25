@@ -35,10 +35,11 @@ Takeaway Challenge
   * commited after storing and returning customer order
   -
   * Order class is storing customer order
+  -
+  * Order class properly integrated
+  
 
 IRB spark
 require './lib/takeaway.rb'
 require './lib/menu.rb'
-require './lib/order.rb'
 ta = TakeAway.new
-o = Order.new
