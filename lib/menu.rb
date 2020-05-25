@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :list
+  attr_reader :list, :basket
 
   def initialize
     @list = {
@@ -10,10 +10,19 @@ class Menu
       "Peach" => 4,
       "Pear" => 5
       }
+      @basket = []
   end
 
-  def view
+  def view_menu
     @list
   end
 
+  def select(food, quantity)
+    @list.each do |item, cost|
+      if food == item
+        quantity.times { @basket << { item => cost } }
+      end
+    end
+  end
+  
 end

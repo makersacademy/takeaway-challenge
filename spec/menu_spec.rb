@@ -4,14 +4,15 @@ describe Menu do
   let(:menu) { Menu.new }
 
   it 'should respond to view' do
-    expect(menu).to respond_to(:view)
+    expect(menu).to respond_to(:view_menu)
   end
 
   it 'should print the menu' do
-    expect(menu.view).to eq({ "Apple" => 1, "Banana" => 2, "Mango" => 3, "Peach" => 4, "Pear" => 5 })
+    expect(menu.view_menu).to eq({ "Apple" => 1, "Banana" => 2, "Mango" => 3, "Peach" => 4, "Pear" => 5 })
   end
 
   it 'should respond to select' do
-    expect(menu).to respond_to(:select).with(2).argument
-  end 
+    expect(menu).to respond_to(:select).with(2).arguments
+  end
+  
 end
