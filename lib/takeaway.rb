@@ -1,22 +1,27 @@
+require "order"
 require_relative 'menu'
-require_relative 'order'
 
 class Takeaway
-
-attr_reader :current_menu, :order
-
-  def initialize
-    @current_menu = Menu.new
-    @order = Order.new
+# attr_reader :menu, :order
+  def initialize(menu:, order: nil)
+    @menu = menu
+    @order = order || Order.new
   end
 
   def display_menu
-    @current_menu.display_menu 
+    @menu.display_menu 
   end
 
-  def order(dish, quantity)
-   @order.to_order(dish, quantity)
-    "#{quantity} #{dish}(s) added to order"
+  def place_order(dishes)
+    dishes.each { |dish, quantity| order.add(dish, quantity) }
+    order.total
   end
-    
+#   def order(dish, quantity)
+#    @order.to_order(dish, quantity)
+#     "#{quantity} #{dish}(s) added to order"
+#   end
+private 
+
+  attr_reader :menu, :order
+
 end

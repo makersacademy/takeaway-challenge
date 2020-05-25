@@ -3,25 +3,27 @@ require_relative 'menu'
 
 class Order
 
-    attr_reader :items, :menu
+  attr_reader :dishes 
 
-    def initialize
-      @items = Hash.new(0)
-      @menu = Menu.new
-    end
-
-    def to_order(dish, quantity = 1) 
-       @items[dish] += quantity
-    end
-
-    def order_total
-    meal = @menu.display_menu
-    @items.each { |key, value| return (5 * value) }
+  def initialize(menu)
+    @dishes = {} 
+    @menu = menu
   end
 
+  def add(dish, quantity)
+    fail "#{dish} is not available" unless menu.has_dish?(dish)
 
-    
+    @dishes[dish] = quantity
+  end
+
+  def total
+    item_totals.inject(:+)
+  end
+private
+
+  attr_reader :menu
+
+  def item_totals 
+    dishes.map { |dish, quantity| menu.price(dish) * quantity }
+  end
 end
-
-
-
