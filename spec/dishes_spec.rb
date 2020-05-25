@@ -16,7 +16,7 @@ describe Dishes do
     end
 
     it "should print items and prices" do
-      expect{subject.view}.to output.to_stdout
+      expect { subject.view }.to output.to_stdout
     end
   end 
 end
