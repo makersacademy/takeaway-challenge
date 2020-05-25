@@ -6,12 +6,6 @@ describe Menu do
     expect(subject).to be_instance_of Menu
   end
 
-describe '#menu' do
-
-  it 'responds to the class menu' do
-    expect(subject).to respond_to(:menu)
-  end
-
   it 'provides a list of dishes and drinks' do
     expect(subject.menu).to include(
       'Salmon Poke Bowl' => 8,
@@ -24,5 +18,4 @@ describe '#menu' do
       'Hawaiian Margarita Cocktail' => 7,
       'Mango Martini Cocktail' => 7)
   end
-end
 end
