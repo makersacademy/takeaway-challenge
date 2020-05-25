@@ -22,8 +22,8 @@ describe Takeaway do
   describe '#select(dish,quantity)' do
     it 'puts message if dish does not exist' do
       allow(menu_double).to receive(:not_on_menu?) { true }
-      expect {takeaway.select("Large Fssssh Supper",2)}
-      .to output("I'm sorry, we don't have that on our menu.\n").to_stdout
+      message = "I'm sorry, we don't have that on our menu."
+      expect(takeaway.select("Large Fssssh Supper",2)).to eq(message)
     end
     it 'returns "Dish added!"' do
       menu_item_exists
@@ -37,7 +37,7 @@ describe Takeaway do
     it 'allows the customer to see order and total' do
       allow(order_double).to receive(:get_order) { ["Large Fish Supper x2"] }
       allow(order_double).to receive(:get_total) { "Total: £15.80" }
-      expect { takeaway.see_order }.to output("Large Fish Supper x2\nTotal: £15.80").to_stdout
+      expect { takeaway.see_order }.to output("Large Fish Supper x2\n").to_stdout
     end
   end
 
@@ -49,7 +49,7 @@ describe Takeaway do
 
     it 'return "Order confirmed!" if customer total matches total' do
       allow(order_double). to receive(:total) { 15.8 }
-      expect { takeaway.confirm_order(15.8) }.to output("Order confirmed!").to_stdout
+      expect(takeaway.confirm_order(15.8)).to eq("Order confirmed!")
     end
   end
 end
