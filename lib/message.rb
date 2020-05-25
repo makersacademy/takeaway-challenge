@@ -13,7 +13,7 @@ class Message
     @client.messages.create(
     from: '+12069844265',
     to: @my_number,
-    body: "Your order is confirmed and it will arrive at #{@time}"
+    body: "Your order is confirmed and it will arrive at #{@time.strftime("%I:%M %p")}"
     )
   end
 end
