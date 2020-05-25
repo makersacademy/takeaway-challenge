@@ -48,7 +48,26 @@ Takeaway Challenge
   -
   * Got the list of food and cost returning
 
+  -
+  * installed Twilio and started following instructions, but didn't have the time to see
+  * through as it was clearly a big part of the undertaking.
 IRB spark
 require './lib/takeaway.rb'
-require './lib/menu.rb'
 ta = TakeAway.new
+ta.seemenu
+ta.orders("soup")
+ta.orders("soup")
+
+2.6.5 :001 > require './lib/takeaway.rb'
+ => true
+2.6.5 :002 > ta = TakeAway.new
+ => #<TakeAway:0x00007fc79207ec28 @menu=#<Menu:0x00007fc79207ec00>, @order=#<Order:0x00007fc79207ebd8 @food_array=[], @tot_cost=0, @menu=#<Menu:0x00007fc79207eb88>>>
+
+2.6.5 :003 > ta.seemenu
+ => {"dimsum"=>3, "soup"=>4, "rice"=>7}
+2.6.5 :004 > ta.orders("soup")
+ => {"dimsum"=>3, "soup"=>4, "rice"=>7}
+2.6.5 :005 > ta.orders("soup")
+ => {"dimsum"=>3, "soup"=>4, "rice"=>7}
+2.6.5 :006 > ta.see_order
+you've ordered soup x 2, your meal will cost £8
