@@ -13,6 +13,5 @@ def text_message(body)
       to: ENV["PHONE_NUM"]
     )
 
-  puts message.sid
-
+  return true
 end

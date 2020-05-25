@@ -53,8 +53,8 @@ API - Twilio    phone stuff               interface to utilise Twilio
 
 ### Sources Used
 
-* [Twilio](https://www.twilio.com/docs/sms/tutorials/how-to-send-sms-messages-in-ruby)
-* [Time formatting](https://apidock.com/ruby/DateTime/strftime)
+* [Twilio, for the text message](https://www.twilio.com/docs/sms/tutorials/how-to-send-sms-messages-in-ruby)
+* [Time formatting, for the confirmation of order message](https://apidock.com/ruby/DateTime/strftime)
 
 ### Changes From the Original Plan
 
