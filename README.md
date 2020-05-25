@@ -1,4 +1,12 @@
-Takeaway Challenge
+Not quite sure what exactly what functionality the user stories require but they are all satisfied in feature tests, to some degree.
+
+I didn't know how to test twilio features in rspec and ran out of time, so there are no unit tests for the fourth user story.
+
+The spec tests don't really use any mocks or doubles, so I know they're not very well written.
+
+After dead ends on Saturday/Sunday I to go back to the drawing board and ask for some guidance from my mentor at the planning/modelling stage.
+
+akeaway Challenge
 ==================
 ```
                             _________
