@@ -6,7 +6,7 @@ The spec tests don't really use any mocks or doubles, so I know they're not very
 
 After dead ends on Saturday/Sunday I had to go back to the drawing board and ask for some guidance from my mentor at the planning/modelling stage.
 
-akeaway Challenge
+Takeaway Challenge
 ==================
 ```
                             _________
