@@ -16,7 +16,8 @@ class Menu
   end
 
   def on_menu?(dish)
-    @list_of_dishes.has_key?(dish)
+    @list_of_dishes.has_key?(dish.to_sym)
+
   end
 
 end
