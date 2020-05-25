@@ -47,7 +47,7 @@ describe Takeaway do
       expect { takeaway.confirm_order(15.9) }.to raise_error("That isn't the right amount.")
     end
 
-    it 'puts "Order confirmed!" if customer total matches total' do
+    it 'return "Order confirmed!" if customer total matches total' do
       allow(order_double). to receive(:total) { 15.8 }
       expect { takeaway.confirm_order(15.8) }.to output("Order confirmed!").to_stdout
     end

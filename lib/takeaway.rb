@@ -13,7 +13,7 @@ class Takeaway
     @menu.get_menu
   end
 
-  def select(dish,quantity)
+  def select(dish,quantity = 1)
     if check_if_on_menu(dish)
       puts "I'm sorry, we don't have that on our menu."
     else
