@@ -36,9 +36,9 @@ After I'd created these classes and got them to work, I reformatted the latter t
 
 I then implemented my confirmation message, working through the resources on Twilio, the chosen API, and building the `send_sms.rb` file. The [Twilio SMS Ruby Quickstart](https://www.twilio.com/docs/sms/quickstart/ruby) is very intuitive and allowed me to add this functionality quickly and easily.
 
-I did a lot of refactoring in this challenge, as I debated whether my methods should use `puts` statements for communicating with the user, or should just `return` their values. Eventually I went for a combination of both, as I disliked the aesthetics of the return value being `nil` after I had `puts`'ed a statement. Silly, I know, but I'm sensitive to that kind of nonsense.
+I did a lot of refactoring in this challenge, as I debated whether my methods should use `puts` statements for communicating with the user or should just `return` their values. Eventually, I went for a combination of both, as I disliked the aesthetics of the return value being `nil` after I had `puts`'ed a statement. Silly, I know, but I'm sensitive to that kind of nonsense.
 
 ### Things for me to think about going forward...
 - Build your programmes to run on the command line. The aesthetic is preferable.
 - __ALWAYS__ run `rspec` after you refactor and before you commit and push.
-- A README is like a bibliography - do not leave it til the end. It's a pain.
+- A README is like a bibliography - do not leave it till the end. It's a pain.
