@@ -14,34 +14,47 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Have been following the walk through from  https://www.youtube.com/watch?v=mgiJKdH9x8c&feature=youtu.be 
+for the takeaway challenge
 
 ```
+
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+
+|  input                                           |  output    |
+|Menu.new                                          |  @menu     | 
+|menu.dishes                                       |{ "potato" => 2.50, 
+                                                      "fish" => 8.50, 
+                                                      "chicken" => 5.99 } | 
+|menu.read                                         | "Potato £2.50", "Fish £8.50", "Chicken £5.99" |
+|Takeaway.new                                      |  @menu = Menu.new |
+|takeaway.show_menu                                |  menu.read    | 
+
 
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
+|  input                      |  output       |
+|takeaway.place_order(dishes) | dishes.each do |item, quantity| |
+| Order.new                   | @order,  @menu    |
+| order.add                   |{ potato: 2, chicken: 3 }|
+| menu.has_dish?              |  true / false           |
+
+
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+|  input                      |  output       |
+| order.total                 |   16.50       |
+| menu.price                  |    3.99       |
+
 
 As a customer
 So that I am reassured that my order will be delivered on time
@@ -63,22 +76,3 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
