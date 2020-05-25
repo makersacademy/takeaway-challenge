@@ -1,11 +1,17 @@
+require_relative 'dish'
+
 class List
     attr_reader :dishes
 
     def initialize
-    @dishes = []
+      @dishes = []
     end
 
     def print_list
-    @dishes
+      @dishes
+    end
+
+    def add(dish)
+      @dishes << {:name => dish.name, :price => dish.price}
     end
 end
