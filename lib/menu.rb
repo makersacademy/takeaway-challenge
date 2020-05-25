@@ -12,6 +12,4 @@ class Menu
       puts "* Pizza #{key}: £#{value}"
     end
   end
-
 end
-

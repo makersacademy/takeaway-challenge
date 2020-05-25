@@ -3,16 +3,15 @@ require 'menu'
 
 describe Order do
 
-   before do
-     @order = []
-   end
+  before do
+    @order = []
+  end
 
   it 'should show the order' do
     expect(subject.order).to eq(subject.instance_variable_get(:@order))
   end
 
   describe '#place' do
-
     it 'should store the item and the quantity asked for' do
       expect(subject.place(:marguerita, 2)).to eq([{ :item => :marguerita, :quantity => 2 }])
     end
