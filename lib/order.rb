@@ -10,7 +10,6 @@ class Order
 
   def add_to_order(dish, quantity)
     @selection.push({ dish: dish, quantity: quantity })
-    p @selection
   end
 
 end
