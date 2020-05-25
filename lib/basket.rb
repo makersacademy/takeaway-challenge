@@ -45,7 +45,6 @@ class Basket
   end
 
   def sub_total(dish, quantity)
-    store_menu_data
     (@menu_data[dish].to_f * quantity).round(2)
   end
 
