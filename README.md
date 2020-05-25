@@ -82,3 +82,29 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+
+
+################################################################################
+
+Planning stage
+
+Extracting important information
+
+User story 1: See list of dishes with prices
+
+User story 2: Select some number of several dishes
+
+User story 3: Check that the total
+
+User story 4: Receive a text after order
+
+
+
+Objects | Message
+--------+---------
+Menu    | View    # Menu is a hash, view prints them
+Basket  | Select  # Puts Menu items in a basket
+Basket  | Summary # View total cost of basket (also prints basket)
+Basket  | Order   # Send massage to phone comnfirming order?
