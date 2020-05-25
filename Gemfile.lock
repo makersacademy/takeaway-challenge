@@ -65,7 +65,7 @@ DEPENDENCIES
   twilio-ruby
 
 RUBY VERSION
-   ruby 2.7.0p0
+   ruby 2.6.5p114
 
 BUNDLED WITH
    2.1.4
