@@ -9,7 +9,6 @@ class Order
   def add_dish(dish, quantity = 1)
     @items[dish] = 0 unless items[dish]
     @items[dish] += quantity
-    "#{dish} X #{quantity} added to your order"
   end
 
   def single_item_price(dish)
