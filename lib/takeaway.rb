@@ -14,12 +14,11 @@ class TakeAway
     @menu.menu
   end
 
-  def order(food, amount)
-    @order.input_order(food, amount)
+  def orders(food)
+    @order.sum_cost(food)
   end
 
   def see_order
     @order.summary
-    @order.value
   end
 end

@@ -10,13 +10,20 @@ class Order
     @menu = Menu.new
   end
 
-  def input_order(food, amount)
+  def sum_cost(food)
+    input = food
+    @menu.menu.each do |k, v|
+      if input == k
+        @tot_cost += v
+      end
+    end
   end
 
   def summary
+    puts "your meal will cost £#{@tot_cost}"
+
   end
 
   def value
   end
-
 end

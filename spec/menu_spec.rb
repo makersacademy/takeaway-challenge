@@ -7,7 +7,7 @@ describe Menu do
   end
 
   it "is the place the menu is stored" do
-    expect(subject.menu).to include({ :food => "dimsum", :price => 3 }, { :food => "soup", :price => 4 }, { :food => "rice", :price => 7 })
+    expect(subject.menu).to include({ 'dimsum' => 3, 'soup' => 4, 'rice' => 7 })
   end
 
 end

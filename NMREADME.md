@@ -37,7 +37,13 @@ Takeaway Challenge
   * Order class is storing customer order
   -
   * Order class properly integrated
-  
+
+  -
+  * Outputs summary of users choices
+  * Outputs summary of cost
+
+  -
+  * Some refactoring and adjusting to get sum of cost.
 
 IRB spark
 require './lib/takeaway.rb'
