@@ -1,7 +1,7 @@
-require 'resturant'
+require 'restaurant'
 
-describe Resturant do
-  subject { Resturant.new(menu_class) }
+describe Restaurant do
+  subject { Restaurant.new(menu_class) }
 
   let(:menu_class) { double(:menu_class, new: menu) }
   let(:menu) { double(:menu, show_menu: nil) }

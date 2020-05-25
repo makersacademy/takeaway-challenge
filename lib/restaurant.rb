@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'order'
 require_relative 'delivery'
 
-class Resturant
+class Restaurant
 
   attr_reader :order, :orders_to_cook, :menu
 
