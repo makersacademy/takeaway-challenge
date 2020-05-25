@@ -4,7 +4,7 @@ I didn't know how to test twilio features in rspec and ran out of time, so there
 
 The spec tests don't really use any mocks or doubles, so I know they're not very well written.
 
-After dead ends on Saturday/Sunday I to go back to the drawing board and ask for some guidance from my mentor at the planning/modelling stage.
+After dead ends on Saturday/Sunday I had to go back to the drawing board and ask for some guidance from my mentor at the planning/modelling stage.
 
 akeaway Challenge
 ==================
