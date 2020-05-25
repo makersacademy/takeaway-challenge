@@ -5,7 +5,7 @@ Nikita's Takeaway Challenge
 
 The Takeaway Challenge script allows the user to view a menu, select a quantity of dishes, view their order, and confirm the order amount; successful confirmation results in an SMS being sent to the user's phone, which states that their order will be delivered one hour from now.
 
-I wrote this script in May 2020, in response to the Makers Academy [Takeaway Challenge]()
+I wrote this script in May 2020, in response to the Makers Academy [Takeaway Challenge](https://github.com/NikitaDouglas/takeaway-challenge/blob/master/CHALLENGE.md)
 
 ## How to use the Takeaway Challenge
 
@@ -28,7 +28,7 @@ The tests were written with RSpec - run `rspec` when you're in the takeaway-chal
 First off, I decided that I wanted the program to work in IRB. I then went through the user stories and created a sequence diagram, to plan out
 what classes and methods I would need to create.
 
-IMAGE
+![image of takeaway-challenge sequence diagram](https://github.com/NikitaDouglas/takeaway-challenge/blob/master/takeaway_challenge_sequence_diagram.png)
 
 This was my initial plan for the programme, utilising three classes - `Takeaway`, `Menu`, and `Order`. `Takeaway` is responsible for communicating with the customer, interfacing with the other two classes and relaying information between them. `Menu` is responsible for holding the menu, and `Order` contains the user's order, including dishes, quantity and total price.
 
