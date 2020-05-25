@@ -2,7 +2,6 @@ require 'menu'
 
 describe Menu do
   let(:menu) { Menu.new }
-  let(:dishes) { Takeaway.new.dishes }
   let(:list) { ["marinara - £5", "margherita - £6", "napoli - £6", "calzone - £8"] }
   it 'creates a hash with a list of dishes' do
     expect(menu.instance_variable_get(:@dishes)).to eq({ "marinara" => 5, "margherita" => 6, "napoli" => 6, "calzone" => 8 })
@@ -16,5 +15,4 @@ describe Menu do
     expect(menu.in_menu?("fish")).to be(false)
     expect(menu.in_menu?("calzone")).to be(true)
   end
-
 end

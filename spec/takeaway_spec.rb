@@ -4,7 +4,8 @@ require 'menu'
 describe Takeaway do
   let(:menu) { double :menu }
   let(:order) { double :order }
-  subject(:takeaway) { described_class.new(menu, order) }
+  let(:message) { double :message }
+  subject(:takeaway) { described_class.new(menu, order, message) }
   let(:list) { ["marinara - £5", "margherita - £6", "napoli - £6", "calzone - £8"] }
 
   it 'uses the class menu, show_menu method, to make the user visualise dishes in a menu format' do
