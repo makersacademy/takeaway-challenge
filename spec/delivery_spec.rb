@@ -1,4 +1,5 @@
 require 'delivery'
+require 'stringio'
 require 'timecop'
 
 describe Delivery do
@@ -8,12 +9,12 @@ describe Delivery do
 
   before do
     Timecop.freeze(Time.parse("16:45"))
-    allow(subject).to receive(:send_text)
+    STDIN = StringIO.new("+44123456789")
   end
 
   it 'tells the user when the order has been placed' do
-    message = "Order placed! It will be delivered by 17:45\n"
-    expect { subject.user_delivery_notification }.to output(message).to_stdout
+    message = "Order placed! It will be delivered by 17:45\nEnter mobile number\n"
+    expect { subject }.to output(message).to_stdout
   end
 
 end

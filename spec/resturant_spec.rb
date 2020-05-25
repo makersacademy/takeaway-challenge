@@ -1,11 +1,10 @@
 require 'resturant'
-require 'stringio'
 
 describe Resturant do
   subject { Resturant.new(menu_class) }
 
   let(:menu_class) { double(:menu_class, new: menu) }
-  let(:menu) { double(:menu) }
+  let(:menu) { double(:menu, show_menu: nil) }
   let(:order_class) { double(:order_class, new: order) }
   let(:order) { double(:order, view_order: "chicken x2 £15.00\nTotal: £15.00\n") }
 
@@ -15,6 +14,10 @@ describe Resturant do
 
   it 'starts with no orders to cook' do
     expect(subject.orders_to_cook).to be_empty
+  end
+
+  it 'responds to view_menu' do
+    expect(subject).to respond_to(:view_menu)
   end
 
   context 'order not started errors' do
@@ -44,6 +47,11 @@ describe Resturant do
     it 'should cancel and order' do
       subject.cancel_order
       expect(subject.order).to be_nil
+    end
+
+    it 'sets order to a new instance of order_class' do
+      subject.start_order(order_class)
+      expect(subject.order).to eq(order)
     end
 
   end

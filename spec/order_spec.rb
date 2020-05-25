@@ -14,6 +14,7 @@ describe Order do
 
     before do
       subject.add(:chicken, 2)
+      allow(subject).to receive(:two_decimals) { '15.00' }
     end
 
     it 'should add dishes to order with quantity' do
@@ -40,7 +41,7 @@ describe Order do
     end
 
     it 'will show order' do
-      expect { subject.view_order }.to output("chicken x2 £15.00\n").to_stdout
+      expect { subject.view_order }.to output("chicken x2 £15.00\nTotal: £15.00\n").to_stdout
     end
 
   end

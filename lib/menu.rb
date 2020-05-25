@@ -1,6 +1,14 @@
+module TwoDecimals
+  def two_decimals(num)
+    '%.2f' % num
+  end
+end
+
 class Menu
 
   attr_reader :dishes
+
+  include TwoDecimals
 
   def initialize
     @dishes = [{ dish: :chicken, value: 7.50 },
@@ -28,10 +36,6 @@ class Menu
 
   def find_dish(dish)
     dishes.each_with_index { |meal, i| return i if meal[:dish] == dish }
-  end
-
-  def two_decimals(num)
-    '%.2f' % num
   end
 
 end

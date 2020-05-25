@@ -1,6 +1,10 @@
+require_relative 'menu'
+
 class Order
 
   attr_reader :order
+
+  include TwoDecimals
 
   def initialize(menu)
     @order = []
@@ -47,10 +51,6 @@ class Order
   def add_new(dish, quantity)
     meal = @menu.return_dish(dish)
     @order.push({ dish: meal[:dish], amount: quantity, price: meal[:value] })
-  end
-
-  def two_decimals(num)
-    '%.2f' % num
   end
 
   def total
