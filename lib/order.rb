@@ -31,7 +31,7 @@ class Order
     puts "current order total is £%0.2f" % [@order_total]
   end
 
-  def confrim(number)
+  def confirm(number)
     @message = Message.new
     @message.text_message(number)
   end
