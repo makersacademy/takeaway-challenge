@@ -36,3 +36,6 @@ I tried to create this app without hard coding a menu into it, the plan being to
 I would also like to be able to create a version of this with a menu hard coded in for further testing purposes.
 
 My menu class had the least test covereage of the classes, feedback on how to improve the RSpec tests would greatly be appriciated.
+
+My approach in creating the app without having a menu hard coded in was influenced by this tutorial:
+https://www.youtube.com/watch?v=mgiJKdH9x8c
