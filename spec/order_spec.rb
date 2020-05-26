@@ -35,9 +35,9 @@ describe Order do
     end
   end
 
-  describe '#confrim' do
+  describe '#confirm' do
     it 'Should have a #confrim method' do
-      expect(subject).to respond_to(:confrim).with(1).argument
+      expect(subject).to respond_to(:confirm).with(1).argument
     end
   end
 end
