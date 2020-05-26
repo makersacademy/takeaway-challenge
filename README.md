@@ -117,4 +117,13 @@ User story 1 complete:
 :002 > menu.view
  => {"Apple"=>1, "Banana"=>2, "Mango"=>3, "Peach"=>4, "Pear"=>5}
 
- User story 2 and 3 complete:
+ User story 2 and 3 (partially) complete:
+
+:001 > menu = Menu.new
+(New menu is created with attributes)
+:002 > menu.select("Mango", 2)
+=> {"Apple"=>1, "Banana"=>2, "Mango"=>3, "Peach"=>4, "Pear"=>5}
+:003 > menu.basket_total
+ => "Mango x 2 = £6"
+
+ (this only works with one menu item and needed as huge refactor)
