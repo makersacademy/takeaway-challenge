@@ -1,6 +1,7 @@
 require_relative 'order'
 require_relative 'menu'
 require 'twilio-ruby'
+require_relative 'send_sms'
 
 class OrderProcess
 
@@ -35,19 +36,7 @@ class OrderProcess
   end
 
   def confirmation_text
-
-    account_sid = 'AC434407bd7130d35abe9799d542f94116'
-    auth_token = 'c95e989cf07855de0747bd4a32a117bf'
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    from = '+12513579138' # Your Twilio number
-    to = '+447912212181' # Your mobile phone number
-
-    client.messages.create(
-    from: from,
-    to: to,
-    body: "Thanks for your order of from Costa Del Oval. It will arrive #{Time.new}!"
-    )
+    Message.new.confirmation_text
   end
 
   private
