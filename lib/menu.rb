@@ -26,6 +26,16 @@ class Menu
   end
 
   def basket_total
+    counts = Hash.new(0)
+    @basket.each do |unit|
+      unit.each do |item, cost|
+        counts[unit] += 1
+      end
+    end
+    counts.each do |unit, quantity|
+      unit.each do |item, cost|
+        return "#{item} x #{quantity} = £#{(quantity * cost)}"
+      end
+    end
   end
-  
 end

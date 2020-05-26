@@ -22,7 +22,7 @@ describe Menu do
   it 'should print basket total' do
     menu = Menu.new
     menu.select("Mango", 4)
-    expect(menu.basket_total).to eq("Apple x 4 = £12")
+    expect(menu.basket_total).to eq("Mango x 4 = £12")
   end
 
 end
