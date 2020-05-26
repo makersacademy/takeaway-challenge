@@ -1,34 +1,7 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+This program aims to allow a customer to order a takeaway and recieve an sms with confirmation and delivery time, these are the user stories:
 
 ```
 As a customer
@@ -48,37 +21,21 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
-
-Notes on Test Coverage
+Approach 
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+The domain diagram I used to structure my approach is found below:
+
+www.diagram.codes/d/sequence/alias%20user%20%3D%20%22user%2FTA%20class%22%0Aalias%20menu%20%3D%20%22menu%20class%22%0Aalias%20order%20%3D%20%22order%20class%22%0Aalias%20sms%20%3D%20%22sms%22%0A%0A%0Amenu%20-%3E%20user%3A%20%22shows%20the%20user%20the%20dishes%20and%20prices%20options%22%0Auser%20-%3E%20order%3A%20%22selects%20the%20dishes%20w'%20prices%20they%20want%20to%20order%22%0Aorder%20-%3E%20user%3A%20%22calculate%20the%20price%20of%20the%20dishes%20selected%2C%20and%20return%20them%20to%20the%20user%22%0Auser%20-%3E%20sms%3A%20%22sends%20the%20current%20order%20to%20sms%20to%20use%20API%22%0Asms%20-%3E%20user%3A%20%22use%20API%20to%20send%20text%20to%20user%20thanking%20for%20order%20and%20delivery%20after%201%20hour%22%0A%0A%0A%0A%0A%0A%0A%0A%0A
+
+Notes 
+------------------
+
+I tried to create this app without hard coding a menu into it, the plan being to run a script, from the bin folder into the command line, this is still unfinished, I would like to continue working on this this week.
+
+I would also like to be able to create a version of this with a menu hard coded in for further testing purposes.
+
+My menu class had the least test covereage of the classes, feedback on how to improve the RSpec tests would greatly be appriciated.
+
+My approach in creating the app without having a menu hard coded in was influenced by this tutorial:
+https://www.youtube.com/watch?v=mgiJKdH9x8c
