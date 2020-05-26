@@ -1,10 +1,9 @@
+class Text
 def send_text(message, numbers_to_message)
     require 'rubygems'
     require 'twilio-ruby'
     require 'dotenv/load'
 
-    # Your Account Sid and Auth Token from twilio.com/console
-    # DANGER! This is insecure. See http://twil.io/secure
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN'] 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
@@ -17,5 +16,12 @@ def send_text(message, numbers_to_message)
         )
     end
 
-    puts message.sid
+    print message.sid
+    return true
 end
+
+end
+
+#text = Text.new
+#text.send_text('Hello', ['+447590606244'])
+

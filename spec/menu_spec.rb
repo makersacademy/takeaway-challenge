@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/menu.rb'
+require 'menu.rb'
 describe Menu do
   let(:menu) { Menu.new(items) }
   let(:items) { { 'Burger' => 5, 'Chips' => 3 } }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './lib/order.rb'
-require './lib/text_message.rb'
+require_relative 'order.rb'
+require_relative 'text_message.rb'
 
 class Takeaway
   attr_reader :order, :menu
@@ -18,10 +18,11 @@ class Takeaway
   def order_process(dishes)
     place_order(dishes)
     print order.basket_total
-    #send_text('Thankyou', ['+447590606244'])
-
   end
 
+  #def text
+  #  send_text('Thankyou', ['+447590606244'])
+  #end
   private
 
   def place_order(dishes)
@@ -30,3 +31,5 @@ class Takeaway
     end
    end
 end
+
+
