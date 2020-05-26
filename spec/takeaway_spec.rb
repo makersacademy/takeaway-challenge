@@ -10,7 +10,7 @@ describe TakeAway do
   end
 
   it "shows the user the menu" do
-    expect(subject.seemenu).to eq({ 'dimsum' => 3, 'soup' => 4, 'rice' => 7 })
+    expect(subject.see_menu).to eq({ 'dimsum' => 3, 'soup' => 4, 'rice' => 7 })
   end
 
   it "responds to order with any args" do

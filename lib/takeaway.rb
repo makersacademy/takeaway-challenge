@@ -5,12 +5,12 @@ class TakeAway
 
   attr_reader :menu
 
-  def initialize
-    @menu = Menu.new
-    @order = Order.new
+  def initialize(menu = Menu.new, order = Order.new)
+    @menu = menu
+    @order = order
   end
 
-  def seemenu
+  def see_menu
     @menu.menu
   end
 

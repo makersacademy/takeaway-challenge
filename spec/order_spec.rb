@@ -4,10 +4,6 @@ describe Order do
 
   let(:withorder) { Orders.new.input_order("soup") }
 
-  it "is an order" do
-    expect(subject).to be_kind_of Order
-  end
-
   it "stores an order" do
     expect(subject).to respond_to(:sum_cost).with(1).arguments
   end
