@@ -1,5 +1,6 @@
 require_relative 'order'
 require_relative 'menu'
+require_relative 'message'
 
 class Takeaway
 
@@ -24,6 +25,8 @@ class Takeaway
     raise "Total is incorrect, please try again" if total != @order.calculate_total
 
     p "Your order has been placed and costs £#{total}"
+    message = Message.new
+    message.send_message
   end
 
 end
