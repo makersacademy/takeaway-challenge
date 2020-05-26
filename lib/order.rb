@@ -9,8 +9,8 @@ class Order
 
   attr_reader :current_order
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu= Menu.new)
+    @menu = menu
     @current_order = []
     @order_total = 0
   end
@@ -31,8 +31,8 @@ class Order
     puts "current order total is £%0.2f" % [@order_total]
   end
 
-  def confirm(number)
-    @message = Message.new
+  def confirm(number, message= Message.new)
+    @message = message
     @message.text_message(number)
   end
 
