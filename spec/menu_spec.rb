@@ -6,8 +6,8 @@ describe Menu do
 
   let(:dishes) do
     {
-      raclette: 6.5,
-      fondue: 15.0
+      raclette: 6,
+      fondue: 15
     }
   end
   it 'has a list of dishes with prices' do
@@ -15,7 +15,7 @@ describe Menu do
   end
 
   it 'prints a list of dishes with prices' do
-    printed_menu = 'Raclette £6.50, Fondue £15.00'
+    printed_menu = 'Raclette £6.00, Fondue £15.00'
     expect(menu.print).to eq(printed_menu)
   end
 
