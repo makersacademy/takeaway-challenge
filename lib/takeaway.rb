@@ -1,14 +1,32 @@
-require './lib/order.rb'
+require_relative 'order'
 
 class Takeaway
 
+  # DISHES = [{number: 1, dish: "chips", price: 1.50}, {number: 2, dish: "wings", price: 3.50 }]   
+
+  DISHES = {chips: 2.50, burgers: 3.50, wings: 5.00}
+
   def view_dishes
-    { "chips" => 1.50, "cheese burger" => 2.50, "chicken wings" => 3.00 }
+    puts "here are the dishes available"
+    @view_dishes = DISHES
   end
 
-  def place_order(*)
+# place order input should be dish and quantities. Should return total price.
+  
+  def place_order(*arg)
+    @selected_dish = arg
+    create_order
+  end
 
-    Order.new
+  private 
+
+  def create_order
+    @order = Order.new(@selected_dish)
+  end
+
+  def order_confirmation
 
   end
+
 end
+
