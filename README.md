@@ -49,9 +49,14 @@ I would like to check that the total I have been given matches the sum of the va
 ------
 ##### To satisfy fourth user story TDD step implimentation:
 
+* OrderProcess Class 
+  - extract relevant methods into order process and create a start method.
+* Send sms Class
+  - link text message body with order summary and price
+
 ```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
+------

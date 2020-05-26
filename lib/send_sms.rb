@@ -3,6 +3,10 @@ require 'twilio-ruby'
 
 class Message
 
+  def food_summary
+    puts summary = OrderProcess.new.customer_order_summary
+  end
+
   def confirmation_text
 
     account_sid = 'AC434407bd7130d35abe9799d542f94116'
@@ -15,9 +19,8 @@ class Message
     client.messages.create(
     from: from,
     to: to,
-    body: "Thanks for your order from Costa Del Oval. You're delicious food will arrive in #{1 + 1}!"
+    body: "Thanks for your order of from Costa Del Oval. It will arrive #{Time.new}!"
     )
-
   end
 end
 
