@@ -1,0 +1,21 @@
+!#/usr/bin/ruby
+
+require './lib/takeaway'
+
+menu_list = 
+  {
+    "pizza" => 1.00
+    "pasta" => 2.00
+  }
+
+menu = Menu.new(menu_list)
+
+dishes = {}
+loop do 
+  print "What would you like to order, enter done when finished?"
+  dish = gets.strip
+  break if dish == 'done'
+  print "how many would you like?"
+  quantity = gets.to_i
+  dishes[dish] = quantity
+end
