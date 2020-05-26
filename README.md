@@ -48,37 +48,65 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+**Planning**
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+https://trello.com/b/qCYjX4bM/10-saturday-23-5-20
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+  **User story 1**
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+  * First commit - This is later than intended and follows the additional step
+  * Set up file with takeaway, takeaway_spec, menu, menu_spec.
+  * have written and passed 2 tests in takeaway_spec
+  * have written and passed 1 test in menu_spec
+  * all functionality was checked in IRB in the first instance
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+  **User story 1 completed**
 
+  * decided that user story demanded different functionality, went back and changed
 
-In code review we'll be hoping to see:
+  * takeaway now initializes with a menu pulled from Menu class
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+  **Working on user story 2**
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+  * commited after passing green for "order with any args".
 
-Notes on Test Coverage
-------------------
+  * commited after initializing @cust_order as empty array"
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+  **Working on user story 3**
+
+  * commited after storing and returning customer order
+
+  * Order class is storing customer order
+
+  * Order class properly integrated
+
+  * Outputs summary of users choices
+
+  * Outputs summary of cost
+
+  * Some refactoring and adjusting to get sum of cost.
+
+  * Got the list of food and cost returning
+
+  * installed Twilio and started following instructions, but didn't have the time to see\
+  * through as it was clearly a big part of the undertaking.
+IRB spark\
+require './lib/takeaway.rb'\
+ta = TakeAway.new\
+ta.seemenu\
+ta.orders("soup")\
+ta.orders("soup")
+
+2.6.5 :001 > require './lib/takeaway.rb'\
+ => true\
+2.6.5 :002 > ta = TakeAway.new\
+ => #<TakeAway:0x00007fc79207ec28 @menu=#<Menu:0x00007fc79207ec00>, @order=#<Order:0x00007fc79207ebd8 @food_array=[], @tot_cost=0,\ @menu=#<Menu:0x00007fc79207eb88>>>
+
+2.6.5 :003 > ta.seemenu\
+ => {"dimsum"=>3, "soup"=>4, "rice"=>7}\
+2.6.5 :004 > ta.orders("soup")\
+ => {"dimsum"=>3, "soup"=>4, "rice"=>7}\
+2.6.5 :005 > ta.orders("soup")\
+ => {"dimsum"=>3, "soup"=>4, "rice"=>7}\
+2.6.5 :006 > ta.see_order\
+you've ordered soup x 2, your meal will cost £8
