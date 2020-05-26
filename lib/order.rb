@@ -1,4 +1,6 @@
 require_relative 'menu'
+require_relative 'send_sms.rb'
+
 
 class Order
 
@@ -11,13 +13,17 @@ class Order
     @restaurant_name = Menu.new.take_away_name
   end
 
+  def send_order_confirmation
+    Message.new.confirmation_text
+  end
+
   def show_menu
     Menu.new.show_list
   end
 
   def select_items(customer_choice) 
     order_asker
-    raise "Invalid number, please choose again" if customer_choice > 3
+    raise "Invalid number, please choose again" if customer_choice > @menu.length
 
     @menu.each do |choice|
       if customer_choice == choice[:item_number]
@@ -33,7 +39,10 @@ class Order
   end
   
   def subtotal
-    @customer_basket.each { |value| puts value[:price].to_i }
+    total = []
+    @customer_basket.each { |value| total << (value[:price].to_i) 
+    puts total.sum }
+
   end
 
   private
