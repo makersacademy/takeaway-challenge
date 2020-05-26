@@ -1,9 +1,10 @@
 require "order"
+require "menu"
 
 describe Order do
   subject(:order) { described_class.new(menu) }
 
-  let(:menu) { double(:menu) }
+  let(:menu) { instance_double("Menu") }
 
   let(:dishes) do
     {
@@ -13,8 +14,8 @@ describe Order do
   end
 
   before do
-    allow(menu).to receive(:has_dish).with(:raclette).and_return(true)
-    allow(menu).to receive(:has_dish).with(:fondue).and_return(true)
+    allow(menu).to receive(:has_dish?).with(:raclette).and_return(true)
+    allow(menu).to receive(:has_dish?).with(:fondue).and_return(true)
   end
 
   it "selects several dishes from the menu" do
