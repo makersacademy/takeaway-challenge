@@ -53,7 +53,7 @@ Finaly, if you are happy with everything you can confirm your order! the followi
 with that
 
 ```
-chinese.confrim("+44your_number_here")
+chinese.confirm("+44your_number_here")
 ```
 
 By doing this you will get a confirmation, by text to let you know that your food will be with you
