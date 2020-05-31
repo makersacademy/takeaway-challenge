@@ -51,7 +51,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 -----
 The flow chart appended displays the flow of the user stories and the direction of the functions. :arrow_right:
 
-![](images/Flow_Chart_TakeawayChallenge.svg)
+![](images/Final_page.png)
 
 -----
 The below domain model was created using Mermaid :mermaid: and demonstrates the distribution of responsibilities between the classes :notebook:.
