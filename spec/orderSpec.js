@@ -15,8 +15,30 @@ describe('Menu', function() {
         dishes: []
       };
 
-      order.add_dish_to_order(dish)
+      order.addDishToOrder(dish)
       expect(order.orderItems).toContain(dish)
+    });
+
+    it ('give the order price total', function () {
+      var dish = {
+        name : "Cheeseburger",
+        price : 4.99
+      };
+
+      var dish2 = {
+        name : "Chips",
+        price : 1.99
+      };
+
+      var menu = {
+        dishes: []
+      };
+
+      order.addDishToOrder(dish);
+      order.addDishToOrder(dish2);
+      order.addDishPrices();
+      console.log(order.priceTotal);
+      expect(order.priceTotal).toEqual(6.98);
     });
   });
 });
