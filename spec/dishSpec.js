@@ -9,7 +9,7 @@ describe('Dish', function() {
       expect(dish.name).toEqual('Cheeseburger')
     });
 
-    it ('can store the name of dish', function() {
+    it ('can store the price of dish', function() {
       expect(dish.price).toEqual(4.99)
     });
   });

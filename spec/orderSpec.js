@@ -1,10 +1,10 @@
-describe('Menu', function() {
+describe('Order', function() {
 
   beforeEach(function() {
     order = new Order();
   })
 
-  describe('Order', function(){
+  describe('addDishToOrder', function(){
     it ('can add a dish to the an order', function () {
       var dish = {
         name : "Cheeseburger",
@@ -18,8 +18,9 @@ describe('Menu', function() {
       order.addDishToOrder(dish)
       expect(order.orderItems).toContain(dish)
     });
-
-    it ('give the order price total', function () {
+  });
+  describe('addDishPrices', function(){
+    it ('can fetch the total order price', function () {
       var dish = {
         name : "Cheeseburger",
         price : 4.99
@@ -37,8 +38,21 @@ describe('Menu', function() {
       order.addDishToOrder(dish);
       order.addDishToOrder(dish2);
       order.addDishPrices();
-      console.log(order.priceTotal);
       expect(order.priceTotal).toEqual(6.98);
+    });
+  });
+
+  describe('submitOrder', function(){
+    it ('can change the orderStatus to complete', function () {
+      order.submitOrder();
+      expect(order.orderStatus).toEqual('Out for Delivery');
+    });
+  });
+
+  describe('completeOrder', function(){
+    it ('can change the orderStatus to complete', function () {
+      order.deliveryComplete();
+      expect(order.orderStatus).toEqual('Delivered');
     });
   });
 });
