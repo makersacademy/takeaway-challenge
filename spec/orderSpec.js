@@ -12,7 +12,7 @@ describe('Menu', function() {
       };
 
       order.add_dish_to_order(dish)
-      expect(menu.dishes).toContain([dish])
+      expect(menu.dishes).toContain(dish)
     });
   });
 });

@@ -18,8 +18,8 @@ describe('Menu', function() {
 
       menu.add_dish(dish)
       menu.add_dish(dish2)
-      expect(menu.dishes).toContain([dish])
-      expect(menu.dishes).toContain([dish2])
+      expect(menu.dishes).toContain(dish)
+      expect(menu.dishes).toContain(dish2)
     });
   });
 
@@ -31,7 +31,7 @@ describe('Menu', function() {
       };
 
       menu.add_dish(dish)
-      expect(menu.dishes).toContain([dish])
+      expect(menu.dishes).toContain(dish)
     });
   });
 });
