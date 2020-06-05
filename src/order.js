@@ -1,9 +1,9 @@
 class Order {
   constructor() {
-    this.order_items = []
+    this.orderItems = []
   }
 
-  add_dish_to_order(dish) {
-    this.order_items.push(dish)
+  addDishToOrder(menuitem) {
+    this.orderItems.push(menuitem)
   };
 };

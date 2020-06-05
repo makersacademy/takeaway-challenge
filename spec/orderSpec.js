@@ -11,8 +11,12 @@ describe('Menu', function() {
         price : 4.99
       };
 
+      var menu = {
+        dishes: []
+      };
+
       order.add_dish_to_order(dish)
-      expect(menu.dishes).toContain(dish)
+      expect(order.orderItems).toContain(dish)
     });
   });
 });
