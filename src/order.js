@@ -19,10 +19,8 @@ class Order {
     console.log("order quantities before" + orderQuantities)
     this.orderItems.forEach (item => {
         if (item.name in orderQuantities) {
-        console.log("already exists: " + item)
         orderQuantities[item.name] += 1;
       } else {
-        console.log("doesn't exist: " + item)
         orderQuantities[item.name] = 1
     }});
     console.log("order quantities after" + orderQuantities);
