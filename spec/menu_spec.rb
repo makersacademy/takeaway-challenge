@@ -23,7 +23,7 @@ describe Menu do
   describe '#choose_dishes' do
     it 'allows the customer to choose a dish' do
       menu = Menu.new
-      expect(menu.choose_dishes).to eq("You have chosen #{menu.full_menu { 1 }}, thank you for ordering")
+      expect(menu.choose_dishes).to eq("You have chosen #{ { "1. cheeseburger" => "£5"} }, thank you for ordering")
     end
   end
 end
