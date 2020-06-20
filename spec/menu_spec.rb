@@ -20,7 +20,6 @@ describe 'Menu' do
     it 'will display all of the dishes correctly' do
       menu.display
     end
-
     #This test is not working properly - I need to try and get it to expect the right format of the display
   end
   
