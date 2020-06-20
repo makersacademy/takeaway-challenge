@@ -32,8 +32,8 @@ describe Order do
   describe "#add_dish" do
     it { is_expected.to respond_to(:add_dish).with(1).argument }
 
-    xit "stores added dishes using dish names and prices" do
-      expect { subject.add_dish(dish) }.to change{ subject.trolley.length }.by 1
+    it "stores added dishes using dish names and prices" do
+      expect { subject.add_dish(dish) }.to change { subject.trolley.length }.by 1
     end
   end
 end

@@ -11,7 +11,7 @@ class Order
   end
   
   def add_dish(dish)
-    @trolley << Dish.new(dish)
+    @trolley << dish
     @trolley
   end
   
