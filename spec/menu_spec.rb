@@ -2,18 +2,22 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { Menu.new }
+  MENU = [
+    { "Magherita" => "£5.00" },
+    { "Pepperoni" => "£8.00" }
+  ]
 
   describe '#initialize' do
     it "creates an instance of Menu class" do
       expect(subject).to be_an_instance_of(Menu)
     end
 
-    it "stores list of dishes in an array" do
-      expect(subject.dishes).to be_an_instance_of(Array)
+    it "stores list of dishes" do
+      expect(subject.dishes).to eq(MENU)
     end
 
     it "stores hash of dishes" do
-      expect(subject.dishes).to include({"Magherita" => "£5.00"}, {"Pepperoni" => "£8.00"})
+      expect(subject.dishes).to include({ "Magherita" => "£5.00" }, { "Pepperoni" => "£8.00" })
     end
   end
 

@@ -1,11 +1,12 @@
 class Menu
   attr_reader :dishes
+  MENU = [
+    { "Magherita" => "£5.00" },
+    { "Pepperoni" => "£8.00" }
+  ]
 
   def initialize
-    @dishes = [
-      {"Magherita" => "£5.00"},
-      {"Pepperoni" => "£8.00"}
-    ]
+    @dishes = MENU
   end
 
   def view_menu
