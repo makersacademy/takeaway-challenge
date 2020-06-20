@@ -7,5 +7,4 @@ class Takeaway
     @menu = Menu.new
   end
 
-
 end
