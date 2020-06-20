@@ -13,8 +13,8 @@ describe Order do
 
   describe '#add' do
     it 'will add the correct dish to the basket' do
-    order.add(1)
-    expect(order.basket).to include()
+    order.add(0)
+    expect(order.basket).to include({ "1. Vegetable Ramen" => 5 })
     end
   end
 
