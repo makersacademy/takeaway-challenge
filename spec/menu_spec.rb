@@ -3,12 +3,12 @@ require 'menu'
 describe 'Menu' do
 
   let(:menu) { Menu.new }
-  dishes = {
-    "1. Vegetable Ramen" => 5,
-    "2. Crispy Tofu" => 3,
-    "3. Egg-fried Rice" => 3,
-    "4. Chilli Prawns" => 6
-  }
+  dishes = [
+    { "1. Vegetable Ramen" => 5 },
+    { "2. Crispy Tofu" => 3 },
+    { "3. Egg-fried Rice" => 3 },
+    { "4. Chilli Prawns" => 6 }
+  ]
 
   describe 'initialize' do
     it 'initializes with a list of dishes' do
