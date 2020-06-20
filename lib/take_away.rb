@@ -3,7 +3,7 @@ class Takeaway
   attr_reader :menu
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order
+    @order = order || Order.new
   end
 
   def print_menu
@@ -14,7 +14,7 @@ class Takeaway
     dishes.each do |dish, quan|
       order.add(dish, quan)
     end
-    puts "Your order total is: £15.00"
+    order.total
   end
   private
 

@@ -14,4 +14,8 @@ class Menu
     !!dishes[dish] #not not returns a boolean
   end
 
+  def price(dish)
+    dishes[dish]
+  end
+
 end

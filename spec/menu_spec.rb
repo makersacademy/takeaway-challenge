@@ -3,8 +3,8 @@ describe Menu do
   subject(:menu) { described_class.new(dishes) }
   let(:dishes) do
     {
-      Prawns: 3.50,
-      Curry: 7.00
+      prawns: 3.50,
+      curry: 7.00
     }
   end
 
@@ -13,11 +13,17 @@ describe Menu do
   end
 
   it 'prints a list of dishes and their prices' do
-    printed_menu = "Prawns £3.50, Curry £7.00"
+    printed_menu = "prawns £3.50, curry £7.00"
     expect(menu.print).to eq(printed_menu)
   end
 
   it 'checks if a dish is on a menu' do
-  expect(menu.has_dish?(:Prawns)).to be true
+  expect(menu.has_dish?(:prawns)).to be true
   end
-end
+  it 'checks if a dish is not on the menu' do
+  expect(menu.has_dish?(:chicken)).to be false
+  end
+  it 'tells us the price' do
+    expect(menu.price(:rice)).to eq(dishes[:rice])
+  end
+  end
