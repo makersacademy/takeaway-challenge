@@ -1,6 +1,6 @@
 class Menu
     
-  attr_reader :full_menu
+  attr_reader :full_menu, :my_order
     
   def initialize
     @full_menu = [
@@ -10,19 +10,28 @@ class Menu
         { "4. chips" => "£3" },
         { "5. cheesey chips" => "£4" },
     ]
+    
+    @my_order = []
   end
   
   def view_menu
     @full_menu
   end
   
-  def choose_dishes
-    print "what number would you like to order?"
-    order = gets.chomp
+  def choose_dishes(order)
     menu = Menu.new
-    if order == "1"
-      "You have chosen #{menu.full_menu[0]}, thank you for ordering"
-    end
+    @order = order
+    raise "Sorry that number is unavailable, please pick again" if @order >= 6
+    
+    "You have chosen #{menu.full_menu[@order - 1]}, thank you for ordering"
+  end
+ 
+  def collect_order
+    @my_order << choose_dishes(@order)
+  end  
+  
+  def view_order
+    @my_order
   end
   
 end

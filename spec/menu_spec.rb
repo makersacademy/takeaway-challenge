@@ -21,9 +21,49 @@ describe Menu do
   end
   
   describe '#choose_dishes' do
-    it 'allows the customer to choose a dish' do
-      menu = Menu.new
-      expect(menu.choose_dishes).to eq("You have chosen #{ { "1. cheeseburger" => "£5"} }, thank you for ordering")
+    it 'allows the customer to choose dish 1' do
+      # menu = Menu.new
+      expect(subject.choose_dishes(1)).to eq("You have chosen {\"1. cheeseburger\"=>\"£5\"}, thank you for ordering")
+    end
+   
+    it 'allows the customer to choose dish 2' do
+      # menu = Menu.new
+      expect(subject.choose_dishes(2)).to eq("You have chosen {\"2. bacon burger\"=>\"£6\"}, thank you for ordering")
+    end
+   
+    it 'allows the customer to choose dish 3' do
+      # menu = Menu.new
+      expect(subject.choose_dishes(3)).to eq("You have chosen {\"3. veggie burger\"=>\"£6\"}, thank you for ordering")
+    end
+   
+    it 'allows the customer to choose dish 4' do
+      # menu = Menu.new
+      expect(subject.choose_dishes(4)).to eq("You have chosen {\"4. chips\"=>\"£3\"}, thank you for ordering")
+    end
+   
+    it 'allows the customer to choose dish 5' do
+      # menu = Menu.new
+      expect(subject.choose_dishes(5)).to eq("You have chosen {\"5. cheesey chips\"=>\"£4\"}, thank you for ordering")
+    end
+   
+    it 'tells user to try again if another number is placed' do
+      # menu = Menu.new
+      expect { subject.choose_dishes(6) }.to raise_error "Sorry that number is unavailable, please pick again"
     end
   end
+  
+  describe '#collect_order' do
+    it 'puts the chosen dishes into @my_order' do
+      subject.choose_dishes(1)
+      subject.collect_order
+      expect(subject.my_order).to eq([subject.choose_dishes(1)])
+    end
+  end
+  
+  describe '#view_order' do
+    it 'has array of chosen dishes' do
+      expect(subject.view_order).to be_an_instance_of(Array)
+    end
+  end
+ 
 end
