@@ -1,19 +1,17 @@
 class Order
-attr_reader :customer_order
+  attr_reader :basket
 
   def initialize
-    @customer_order = []
+    @basket= []
   end
 
-  def show_list
-    { 
-      "Vegetable Ramen" => 5,
-      "Crispy Tofu" => 4
-    }
+  def add
   end
 
-  def add(dish)
-    @customer_order << dish
+  def remove
+  end
+  
+  def show_price
   end
 
 end
