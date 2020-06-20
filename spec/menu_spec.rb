@@ -16,4 +16,8 @@ describe Menu do
     printed_menu = "Prawns £3.50, Curry £7.00"
     expect(menu.print).to eq(printed_menu)
   end
+
+  it 'checks if a dish is on a menu' do
+  expect(menu.has_dish?(:Prawns)).to be true
+  end
 end

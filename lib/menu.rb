@@ -10,4 +10,8 @@ class Menu
       }.to_a.join(", ")
   end
 
+  def has_dish?(dish)
+    !!dishes[dish] #not not returns a boolean
+  end
+
 end
