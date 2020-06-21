@@ -3,6 +3,13 @@ require 'order'
 describe Order do
   let(:order) { Order.new }
 
+  @dishes = [
+    { "1. Vegetable Ramen" => 5 },
+    { "2. Crispy Tofu" => 3, },
+    { "3. Egg-fried Rice" => 3, },
+    { "4. Chilli Prawns" => 6 }
+  ]
+
   describe '#initialize' do
 
     it 'is initialized with an empty basket' do
@@ -26,5 +33,12 @@ describe Order do
     end
     
   end
+
+  # describe '#show price' do
+  #   it 'will display the correct price' do
+  #     allow(order).to receive(:basket).and return(@dishes)
+  #   end
+
+  # end
 
 end
