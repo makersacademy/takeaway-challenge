@@ -1,10 +1,16 @@
 require_relative 'menu'
 
 class Takeaway
-  attr_reader :menu
+  def initialize(menu)
+    @menu = menu
+  end
 
-  def initialize
-    @menu = Menu.new
+  def see_menu
+    display = String.new
+    @menu.list.each do |dish, price|
+       display << "#{dish}: £#{price}\n"
+    end
+    display
   end
 
 end
