@@ -54,9 +54,9 @@ describe Menu do
   
   describe '#collect_order' do
     it 'puts the chosen dishes into @my_order' do
-      subject.choose_dishes(1)
+      subject.choose_dishes(3)
       subject.collect_order
-      expect(subject.my_order).to eq([subject.choose_dishes(1)])
+      expect(subject.my_order).to eq([subject.choose_dishes(3)])
     end
   end
   

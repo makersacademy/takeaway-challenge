@@ -22,7 +22,6 @@ class Menu
     menu = Menu.new
     @order = order
     raise "Sorry that number is unavailable, please pick again" if @order >= 6
-    
     "You have chosen #{menu.full_menu[@order - 1]}, thank you for ordering"
   end
  
@@ -35,3 +34,4 @@ class Menu
   end
   
 end
+
