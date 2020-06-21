@@ -13,7 +13,41 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Joanne Chen's Takeaway Challenge
 
+I've spent hours failing at writing this challenge in two classes, dependency injections and mock/double tests. Instead of having nothing written, I decided to write it in 1 class and at least I can pracitce writing TDD codes.
+---------------------
+In this challenge, I have achieved(in using only 1 class):
+
+User Story 1: To let customers see a list of menu and prices.
+
+User Story 2: To enable customers to select several dishes in whatever quantity.
+
+User Story 3: Tn enable customers to check the total price.
+
+---------------------
+
+I have NOT achieved:
+
+User Story 4: To enable customers to receive a text after order has been placed.
+---------------------
+You can run this code in the irb like this:
+
+2.6.5 :001 > require './lib/order.rb'
+ => true 
+2.6.5 :003 > order = Order.new
+ => #<Order:0x00007fb2251d3998 @basket=[], @extract=[]> 
+2.6.5 :009 > order.menu_hash
+=> {"Noodles"=>7.5, "Pizza"=>11.89, "Chicken Curry"=>6.75, "Boiled Rice"=>2.0} 
+2.6.5 :004 > order.select("Noodles",2)
+ => "You've added 2X Noodles(s) in your basket" 
+2.6.5 :005 > order.select("Pizza",1)
+ => "You've added 1X Pizza(s) in your basket" 
+2.6.5 :007 > order.basket
+ => ["Noodles", "Noodles", "Pizza"] 
+2.6.5 :008 > order.total_price
+ => "Total price: £26.89" 
+2.6.5 :009 > 
 Instructions
 -------
 
