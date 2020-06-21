@@ -5,6 +5,8 @@ class Menu
     @dishes = dishes
   end
   def print
+    puts "Menu"
+    inp = gets.chomp
     dishes.map { |dish, price|
       p "#{dish} £#{('%.2f' % price)}"
       }.to_a.join(", ")

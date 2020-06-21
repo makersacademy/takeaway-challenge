@@ -1,10 +1,12 @@
 require 'take_away'
 require 'order'
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu: menu, order: order) }
+  subject(:takeaway) { described_class.new(menu: menu, order: order, sms: sms) }
 
   let(:menu) { double(:menu, print: printed_menu) }
   let(:order) { double(:order, total: 15) }
+  let(:sms) { double(:sms, send_text: "Thank you! Your order was placed and will be delivered before #{@time}.") }
+
   let(:printed_menu) {"Egg Rice, £3.99"}
 
   let(:dishes) { {rice: 2, somosa: 1} }

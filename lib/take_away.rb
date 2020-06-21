@@ -1,9 +1,9 @@
-require 'order'
+require_relative 'sms'
 class Takeaway
-  attr_reader :menu
-  def initialize(menu:, order: nil)
+  def initialize(menu:, order: nil, sms:)
     @menu = menu
-    @order = order || Order.new
+    @order = order
+    @sms = sms
   end
 
   def print_menu
@@ -11,12 +11,18 @@ class Takeaway
   end
 
   def place_order(dishes)
+    puts "To place your order, confirm what you have selected."
+    input = gets.chomp
     dishes.each do |dish, quan|
       order.add(dish, quan)
     end
     order.total
   end
-  private
+  def send_text
+    sms.send_text
+  end
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :sms
+
+
 end
