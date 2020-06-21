@@ -2,18 +2,10 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { Menu.new }
-  MENU = {
-    "Margherita" => 5.00,
-    "Pepperoni" => 8.00
-  }
 
   describe '#initialize' do
     it "creates an instance of Menu class" do
       expect(subject).to be_an_instance_of(Menu)
-    end
-
-    it "stores list of dishes" do
-      expect(subject.dishes).to eq(MENU)
     end
 
     it "stores hash of dishes and their price" do
@@ -34,6 +26,7 @@ describe Menu do
   describe '#dish_available?' do
     it "checks if a dish is available" do
       expect(subject.dish_available?("Margherita")).to eq(true)
+      expect(subject.dish_available?("Pepperoni")).to eq(true)
     end
   end
 end

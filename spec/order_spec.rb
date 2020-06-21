@@ -1,4 +1,5 @@
 require 'order'
+require 'menu'
 
 describe Order do
   subject(:order) { Order.new }
@@ -22,6 +23,15 @@ describe Order do
       subject.add_to_basket("Margherita", 1)
       subject.add_to_basket("Pepperoni", 1)
       expect(subject.basket).to eq(["Margherita", "Pepperoni"])
+    end
+  end
+
+  # incomplete - test does not pass
+  describe '#total_price' do
+    it "gives price of dish" do
+      subject.add_to_basket("Margherita", 1)
+      subject.add_to_basket("Pepperoni", 1)
+      expect(subject.total_price).to eq(13.00)
     end
   end
 end
