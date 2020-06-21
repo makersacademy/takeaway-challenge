@@ -1,34 +1,18 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
-
-Instructions
+Design
 -------
 
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Top level class Takeaway will handle all the interface with the customer and access Menu class and Order class to satisfy the user story requirements.  
+* Takeaway class will retrieve the menu when initialized and create a new instance of order class.
+* Takeaway class will allow the customer to add items to the order through the 'add_to_order(item, qty) method.
+* Takeaway class will return the order total in a string with "Order total is " and the order total.
+* Takeaway class will print out the order items in strings returned to STD out.
+* Takeaway class has a 'finalise_order' method that will call send_text method that uses the Twilio API to send a text message with the time of delivery (currently hardcoded) 
+* Menu class will store the menu and have a lookup method to return the price for an item when queried.
+* Menu class currently uses an array of hashes for food items and is hardcoded with some test values but has scope to take menu from other inputs.
+* Order class will store a list of items with quantities and price.  Interface to the class is through an add method to add an item to the order and 'total' method to return the total price of the order.
 
-Task
+Userstories
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -48,37 +32,59 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Test Coverage
+-----
+```
+COVERAGE:  97.59% -- 81/83 lines in 7 files
+```
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Usage Example
+-----
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+* New Takeaway
+```
+irb(main):001:0> takeaway = Takeaway.new
+=> #<Takeaway:0x0000000007c64510 @menu=#<Menu:0x0000000007c644e8 @menu=[{:item=>"food1", :price=>"1.00"}, {:item=>"food2", :price=>"2.00"}]>, @order=#<Order:0x0000000007c643a8 @order=[]>>
+```
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+* Read Menu
+```
+irb(main):002:0> takeaway.read_menu
+food1 @ £1.00 each
+food2 @ £2.00 each
+=> [{:item=>"food1", :price=>"1.00"}, {:item=>"food2", :price=>"2.00"}]
+```
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* Add Items to Order
+```
+irb(main):003:0> takeaway.add_to_order('food1', 1)
+=> [{:item=>"food1", :qty=>1, :price=>1}]
+irb(main):004:0> takeaway.add_to_order('food2', 2)
+=> [{:item=>"food1", :qty=>1, :price=>1}, {:item=>"food2", :qty=>2, :price=>2}]
+```
 
+* Show Order
+```
+irb(main):005:0> takeaway.show_order
+1x food1 @ £1 each
+2x food2 @ £2 each
+=> [{:item=>"food1", :qty=>1, :price=>1}, {:item=>"food2", :qty=>2, :price=>2}]
+```
 
-In code review we'll be hoping to see:
+* Check Order Total
+```
+irb(main):006:0> takeaway.order_total
+=> "Order total is: £5"
+```
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* Finalise Order
+```
+irb(main):007:0> takeaway.finalise_order
+```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Follow Up
+-----
 
-Notes on Test Coverage
-------------------
+* Tests are unit tests in menu and order but system tests without stubs in takeaway_spec.  Can be improved to stub the other classes to allow unit testing of Takeaway.
+* Personal data removed which now breaks the send_text method.  Need to learn about github secrets and implement.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
