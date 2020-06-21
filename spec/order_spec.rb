@@ -11,11 +11,9 @@ describe Order do
   ]
 
   describe '#initialize' do
-
     it 'is initialized with an empty basket' do
     expect(order.basket).to eq([])
     end
-
   end
 
   describe '#add_to_basket' do
@@ -31,8 +29,9 @@ describe Order do
       order.make_selection
       expect(order.basket).to include({ "1. Vegetable Ramen" => 5 }, { "2. Crispy Tofu" => 3, })
     end
-    
   end
+
+  descibe ''
 
   # describe '#show price' do
   #   it 'will display the correct price' do

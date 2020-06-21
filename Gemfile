@@ -8,5 +8,3 @@ group :test do
 end
 
 gem 'twilio-ruby'
-account_sid = 'AC9132f72c39521dc8c32c732807df6236'
-auth_token = 'f62a99a685c4bef44d342be3e6a96876'
