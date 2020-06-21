@@ -1,0 +1,20 @@
+require './lib/takeaway'
+require './lib/order'
+
+describe Takeaway do
+  subject (:takeaway) {Takeaway.new}
+  let(:dish1) { double :'Chow mein', dish: 'chow mein', price: '3' }
+
+  describe "takeaway creation" do
+    it "checks for instance of takeaway" do
+      expect(subject).to be_an_instance_of(Takeaway)
+    end
+  end
+  describe "display_menu" do
+    it "displays the menu" do
+      #menulist = takeaway.menu
+      menu = takeaway.menu
+      expect(subject.display_menu).to eq menu
+    end
+  end
+end
