@@ -2,10 +2,10 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { Menu.new }
-  MENU = [
-    { "Magherita" => "£5.00" },
-    { "Pepperoni" => "£8.00" }
-  ]
+  MENU = {
+    "Margherita" => 5.00,
+    "Pepperoni" => 8.00
+  }
 
   describe '#initialize' do
     it "creates an instance of Menu class" do
@@ -16,8 +16,8 @@ describe Menu do
       expect(subject.dishes).to eq(MENU)
     end
 
-    it "stores hash of dishes" do
-      expect(subject.dishes).to include({ "Magherita" => "£5.00" }, { "Pepperoni" => "£8.00" })
+    it "stores hash of dishes and their price" do
+      expect(subject.dishes).to include({ "Margherita" => 5.00, "Pepperoni" => 8.00 })
     end
   end
 
@@ -26,8 +26,14 @@ describe Menu do
       expect(subject).to respond_to(:view_menu)
     end
 
-    it "prints the menu_items" do
-      expect(subject.view_menu).to eq(subject.dishes)
+    it "prints the dishes and their prices" do
+      expect(subject.view_menu).to eq(["Margherita: £5.00", "Pepperoni: £8.00"])
+    end
+  end
+
+  describe '#dish_available?' do
+    it "checks if a dish is available" do
+      expect(subject.dish_available?("Margherita")).to eq(true)
     end
   end
 end
