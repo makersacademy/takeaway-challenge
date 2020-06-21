@@ -17,10 +17,16 @@ class Takeaway
   end
 
   def place_order(item, quantity)
-    if !@menu.list.include?(item.to_sym) 
-      raise "Sorry we don't do that here"
-    end
-    @order.store item.to_sym, quantity.to_i
+    validate_order(item, quantity)
+    @order.store item, quantity
+  end
+
+  private
+
+  def validate_order(item, quantity)
+    raise "Please order whole dishes only, thanks" if !quantity.is_a? Integer
+    raise "Sorry we don't do that here" if !@menu.list.include?(item.to_sym) 
+    raise "Are you having a laugh?!" if quantity.to_i < 1
   end
 
 end
