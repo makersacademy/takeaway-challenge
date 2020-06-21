@@ -1,18 +1,12 @@
 class Order
-  attr_reader :trolley, :total, :menu, :dish
+  attr_reader :trolley
   
   def initialize
-    @total = 0
-    @trolley = []
+    @trolley = {}
   end
-  
-  def view_menu(menu)
-    @menu = menu
-  end
-  
-  def add_dish(dish)
-    @trolley << dish
-    @trolley
+
+  def add_dish(dish, quantity)
+    @trolley[dish] = quantity
   end
   
 end
