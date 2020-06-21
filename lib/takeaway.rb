@@ -21,12 +21,20 @@ class Takeaway
     @order.store item, quantity
   end
 
-  def check_total
+  def check_total(order = @order)
     sum = 0
-    @order.each do |item, quantity|
+    order.each do |item, quantity|
       sum += quantity * @menu.list[item.to_sym]
     end
     sum
+  end
+
+  def complete_order(order, total)
+    if check_total(order) != total
+      raise "Incorrect total"
+    else
+      
+    end
   end
 
   private
