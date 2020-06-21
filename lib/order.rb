@@ -11,9 +11,7 @@ class Order
   end
 
   def total
-    sum = 0
-    @order.each { |i| sum += i[:qty] * i[:price] }
-    sum
+    @order.sum { |i| i[:qty] * i[:price] }
   end
   
 end
