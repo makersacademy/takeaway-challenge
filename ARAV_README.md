@@ -35,3 +35,9 @@ New takeaways can be added using
 Dishes can be added to the restaurant menu using the `.add` function
 
 A user can view the list of available items using the `.list` method
+
+## Areas for review
+Code structure - is it well encapsulated
+Naming convention - how easy is it to understand the relevant variables
+Domain modelling - is the modelling appropriate
+Features - are the features suitable, especially the ordering mechanism
