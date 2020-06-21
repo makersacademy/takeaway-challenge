@@ -11,7 +11,7 @@ class Takeaway
   def see_menu
     display = String.new
     @menu.list.each do |dish, price|
-       display << "#{dish}: £#{price}\n"
+      display << "#{dish}: £#{price}\n"
     end
     display
   end
@@ -21,11 +21,19 @@ class Takeaway
     @order.store item, quantity
   end
 
+  def check_total
+    sum = 0
+    @order.each do |item, quantity|
+      sum += quantity * @menu.list[item.to_sym]
+    end
+    sum
+  end
+
   private
 
   def validate_order(item, quantity)
-    raise "Please order whole dishes only, thanks" if !quantity.is_a? Integer
-    raise "Sorry we don't do that here" if !@menu.list.include?(item.to_sym) 
+    raise "Please order whole dishes only, thanks" unless quantity.is_a? Integer
+    raise "Sorry we don't do that here" unless @menu.list.include?(item.to_sym) 
     raise "Are you having a laugh?!" if quantity.to_i < 1
   end
 

@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  let (:menu) { double(:menu, list: {Potato: 1, Hummus: 2}) }
+  let(:menu) { double(:menu, list: { Potato: 1, Hummus: 2 }) }
 
   describe '#see_menu' do
     it 'should display a list of dishes and prices' do
@@ -12,10 +12,11 @@ describe Takeaway do
   end
 
   describe '#place_order' do
-    it 'adds the dish and quantity to the order' do
+    it 'adds the dishes and quantities to the order' do
       ta = Takeaway.new(menu)
       ta.place_order('Potato', 2)
-      expect(ta.order).to eq({"Potato" => 2})
+      ta.place_order('Hummus', 4)
+      expect(ta.order).to eq({ "Potato" => 2, "Hummus" => 4 })
     end
 
     it 'stops customer adding something not on the menu' do
@@ -34,5 +35,18 @@ describe Takeaway do
     end
   end
 
+  describe '#check_total' do
+    it 'returns the current total of the order' do
+      ta = Takeaway.new(menu)
+      ta.place_order('Potato', 2)
+      ta.place_order('Hummus', 4)
+      expect(ta.check_total).to eq 10
+    end
+
+    it 'returns 0 when an order has not been placed' do
+      ta = Takeaway.new(menu)
+      expect(ta.check_total).to eq 0
+    end
+  end
 
 end
