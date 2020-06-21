@@ -92,3 +92,10 @@ Step 1: Created new takeaway files and established a print list menu method with
 
 Step 2: Created new menu class and initialized dishes. Created tests that allowed us to use a hash list in rspec and created tests around this.[found an example of how to use this here](https://stackoverflow.com/questions/29808721/writing-a-rspec-test-to-add-an-item-to-a-hash)
 
+Interesting note: One key interest point is that rspec wouldn't allow me to .titleize words. It would only allow me to capitalize.
+
+Step 3: Added new order class which allows the user to select several things from the menu and built menu into testing.
+Created test that raises an error when user asks for a dish that doesn't include a dish.
+
+
+
