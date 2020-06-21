@@ -43,6 +43,8 @@ class Order
   end
 
   def place_order
+    time = Time.now.getutc + 60*120
+
     account_sid = "AC9132f72c39521dc8c32c732807df6236" # Your Test Account SID from www.twilio.com/console/settings
     auth_token = "f62a99a685c4bef44d342be3e6a96876"   # Your Test Auth Token from www.twilio.com/console/settings
 
@@ -50,7 +52,7 @@ class Order
     message = @client.messages.create(
     body: "Your order is confirmed!
 
-    It will arrive at #{Time.now.getutc + 1}
+    It will arrive at #{time}
     
     ",
     to: "+447565608571",    # Replace with your phone number

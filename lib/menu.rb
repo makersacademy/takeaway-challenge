@@ -11,14 +11,11 @@ class Menu
   end
 
   def display
-
     @dishes.each do |menu|
         menu.each do |item, value|
         puts "#{item}: £#{value}"
       end
-
     end
-
   end
 
 end
