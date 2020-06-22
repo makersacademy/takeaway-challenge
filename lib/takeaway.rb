@@ -10,11 +10,10 @@ class Takeaway
     @menu = menu
     @order = {}
     @sms_class = sms_class
-    @sms = sms_class.new
   end
 
   def see_menu
-    display = String.new
+    display = ""
     @menu.list.each do |dish, price|
       display << "#{dish}: £#{price},"
     end
@@ -36,8 +35,7 @@ class Takeaway
 
   def complete_order(order, total)
     raise "Incorrect total" if check_total(order) != total
-    
-    @sms.send
+    @sms = @sms_class.new
   end
 
   private
