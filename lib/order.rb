@@ -5,10 +5,7 @@ class Order
 
   def initialize
     @basket = []
-    @dishes = {
-      "Margherita" => 5.00,
-      "Pepperoni" => 8.00
-    }
+    @dishes = Menu.new
   end
 
   def add_to_basket(dish, qty = 1)

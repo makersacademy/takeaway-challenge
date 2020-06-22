@@ -1,7 +1,6 @@
 require 'menu'
 
 describe Menu do
-  subject(:menu) { Menu.new }
 
   describe '#initialize' do
     it "creates an instance of Menu class" do
