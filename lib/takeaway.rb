@@ -2,9 +2,9 @@ require 'order'
 
 class Takeaway
 
-  def initialize(menu:, order: nil)
+  def initialize(menu:, order: Order.new(menu))
     @menu = menu
-    @order = order || Order.new(menu)
+    @order = order
   end
 
   def list_menu

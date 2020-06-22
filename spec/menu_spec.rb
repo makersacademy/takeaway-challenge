@@ -20,8 +20,9 @@ describe Menu do
   end
 
   it 'prints a list of dishes with prices' do
-    printed_menu = "Chicken satay (5 pieces) £1.99, Fried rice £2.50, Won ton mee £3.00, Loh mee £6.50, Curry mee £6.50, Seafood laksa £5.50, Tofu fa £3.00"
-    expect(menu.print).to eq(printed_menu)
+    #printed_menu = "Chicken satay (5 pieces) £1.99, Fried rice £2.50, Won ton mee £3.00, Loh mee £6.50, Curry mee £6.50, Seafood laksa £5.50, Tofu fa £3.00"
+    new_printed_menu = dishes.map { |name, price| "%s £%.2f" % [name.to_s.capitalize, price] }.join(", ")
+    expect(menu.print).to eq(new_printed_menu)
   end
 
 end
