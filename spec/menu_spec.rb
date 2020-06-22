@@ -13,7 +13,30 @@ describe Menu do
   describe '#add' do
     it "adds a dish to the list with a price and name" do
       subject.add("Fish",1.20)
-      expect(subject.list).to eq([{:name => "Fish", :price => 1.20}])
+      expect(subject.list[0][:name]).to eq("Fish")
     end
   end
+
+  describe '#unavailable' do
+    it 'adds an item as default available' do
+      subject.add("Fish",1.20)
+      expect(subject.list[0][:available]).to eq("true")
+    end
+    it 'makes an item unavailable' do
+      subject.add("Fish",1.20)
+      subject.unavailable(1)
+      expect(subject.list[0][:available]).to eq("false")
+    end
+  end
+
+  describe '#display' do
+    it 'displays the available items first as a list' do
+      subject.add("Fish",1.20)
+      subject.add("Chips",2)
+      subject.unavailable(1)
+      expect(subject.display.class).to eq(String)
+    end
+  end
+      
+
 end
