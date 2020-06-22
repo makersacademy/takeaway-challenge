@@ -2,7 +2,6 @@ require "menu"
 
 describe Menu do
   let(:menu) { Menu.new }
-  let(:order) { double :order }
   
   describe "initialize" do
     it "creates an instance of a menu" do
@@ -34,5 +33,15 @@ describe Menu do
   
   describe "#check_out" do
     it { is_expected.to respond_to(:check_out).with(1).argument }
+    
+    it "totals the sum of the order" do
+      order = Order.new
+      menu.add("Sushi", 5)
+      menu.add("Ramen", 9)
+      order.add_dish("Sushi", 1)
+      order.add_dish("Ramen", 2)
+      expect(menu.check_out(order)).to eq(23)
+    end  
+    
   end
 end
