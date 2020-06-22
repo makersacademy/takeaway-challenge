@@ -46,7 +46,7 @@ describe Takeaway do
 
   describe '#complete_order' do
     it 'raises an error if the order total is incorrect' do
-      expect { ta.complete_order({'Potato': 2, 'Hummus': 4}, 6) }.to raise_error "Incorrect total"
+      expect { ta.complete_order({ 'Potato': 2, 'Hummus': 4 }, 6) }.to raise_error "Incorrect total"
     end
 
     xit 'places the order when the total is correct' do
@@ -56,7 +56,7 @@ describe Takeaway do
       ta.place_order('Potato', 2)
       ta.place_order('Hummus', 4)
       expect(sms_class_dbl).to receive(:new)
-      ta.complete_order({'Potato': 2, 'Hummus': 4}, 10)
+      ta.complete_order({ 'Potato': 2, 'Hummus': 4 }, 10)
     end
   end
 
