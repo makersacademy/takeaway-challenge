@@ -6,7 +6,7 @@ require_relative 'SMS'
 class Takeaway
   attr_reader :order
 
-  def initialize(menu, sms_class = SMS)
+  def initialize(menu = Menu.new, sms_class = SMS)
     @menu = menu
     @order = {}
     @sms_class = sms_class
