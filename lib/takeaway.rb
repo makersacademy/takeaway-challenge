@@ -1,19 +1,24 @@
+require 'dotenv/load'
+require 'twilio-ruby'
 require_relative 'menu'
+require_relative 'SMS'
 
 class Takeaway
   attr_reader :order
 
-  def initialize(menu)
+  def initialize(menu, sms_class = SMS)
     @menu = menu
     @order = {}
+    @sms_class = sms_class
+    @sms = sms_class.new
   end
 
   def see_menu
     display = String.new
     @menu.list.each do |dish, price|
-      display << "#{dish}: £#{price}\n"
+      display << "#{dish}: £#{price},"
     end
-    display
+    puts display.split(",")
   end
 
   def place_order(item, quantity)
@@ -33,7 +38,7 @@ class Takeaway
     if check_total(order) != total
       raise "Incorrect total"
     else
-      
+      @sms.send
     end
   end
 

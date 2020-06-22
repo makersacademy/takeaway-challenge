@@ -6,8 +6,9 @@ describe Takeaway do
 
   describe '#see_menu' do
     it 'should display a list of dishes and prices' do
-      actual = ta.see_menu
-      expect(actual).to eq "Potato: £1\nHummus: £2\n"
+      expect do
+        ta.see_menu
+      end.to output("Potato: £1\nHummus: £2\n").to_stdout
     end
   end
 
@@ -49,13 +50,13 @@ describe Takeaway do
     end
 
     it 'places the order when the total is correct' do
+      sms_class_dbl = class_double('SMS')
+      # allow(sms_class_dbl).to receive(:new)
+      ta = Takeaway.new(menu, sms_class_dbl)
       ta.place_order('Potato', 2)
       ta.place_order('Hummus', 4)
+      expect(sms_class_dbl).to receive(:new)
       ta.complete_order({'Potato': 2, 'Hummus': 4}, 10)
-      mock = mock(Twilio::REST::Client)
-      twapi = mock('Instantiated TW API')
-      mock.should_receive(:new).once.with(any_args()).and_return(twapi)
-
     end
   end
 
