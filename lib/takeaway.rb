@@ -35,6 +35,7 @@ class Takeaway
 
   def complete_order(order, total)
     raise "Incorrect total" if check_total(order) != total
+    
     @sms = @sms_class.new
   end
 

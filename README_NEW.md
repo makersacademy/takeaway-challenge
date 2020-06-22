@@ -2,8 +2,13 @@
 
 WIP: Couldn't get the text message to send, not sure why at the moment.
 
+Update: text messages don't send from the test credentials of Twilio, but I think the functionality is working.
+
+Help received: After hours stuck and deleting everything I'd written 4 times, I got help pairing on this challenge from @rbbri 
+
 ## How it works ##
-``` irb -r './lib/takeaway.rb'
+``` 
+irb -r './lib/takeaway.rb'
 2.6.5 :001 > ta = Takeaway.new
 # confirmation of new takeaway object
 2.6.5 :002 > ta.see_menu
