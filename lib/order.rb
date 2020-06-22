@@ -8,7 +8,7 @@ class Order
   def add(dish, quant)
     puts "Add to order"
     input = gets.chomp
-    fail "Chicken is not on the menu" unless menu.has_dish?(dish)
+    fail "Chicken is not on the menu" unless menu.available_dish?(dish)
     dishes[dish] = quant
   end
   def total

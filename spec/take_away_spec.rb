@@ -7,16 +7,16 @@ describe Takeaway do
   let(:order) { double(:order, total: 15) }
   let(:sms) { double(:sms, send_text: "Thank you! Your order was placed and will be delivered before #{@time}.") }
 
-  let(:printed_menu) {"Egg Rice, £3.99"}
+  let(:printed_menu) { "Egg Rice, £3.99" }
 
-  let(:dishes) { {rice: 2, somosa: 1} }
+  let(:dishes) {{rice: 2, somosa: 1}}
 
     it 'shows menu with dishes and prices' do
       expect(takeaway.print_menu).to eq(printed_menu)
     end
 
     it 'selects some number of several available dishes and places order' do
-      allow(order).to receive(:add).twice
+      allow(order).to receive(:add)
       takeaway.place_order(dishes)
     end
     it 'knows the total price for the order' do

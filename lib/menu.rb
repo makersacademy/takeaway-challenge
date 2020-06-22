@@ -4,6 +4,7 @@ class Menu
   def initialize(dishes)
     @dishes = dishes
   end
+
   def print
     puts "Menu"
     inp = gets.chomp
@@ -12,7 +13,7 @@ class Menu
       }.to_a.join(", ")
   end
 
-  def has_dish?(dish)
+  def available_dish?(dish)
     !!dishes[dish] #not not returns a boolean
   end
 

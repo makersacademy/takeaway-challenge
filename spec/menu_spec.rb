@@ -18,10 +18,10 @@ describe Menu do
   end
 
   it 'checks if a dish is on a menu' do
-  expect(menu.has_dish?(:prawns)).to be true
+  expect(menu.available_dish?(:prawns)).to be true
   end
   it 'checks if a dish is not on the menu' do
-  expect(menu.has_dish?(:chicken)).to be false
+  expect(menu.available_dish?(:chicken)).to be false
   end
   it 'tells us the price' do
     expect(menu.price(:rice)).to eq(dishes[:rice])
