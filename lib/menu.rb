@@ -9,9 +9,7 @@ class Menu
   end
 
   def view_menu
-    @dishes.map do |dish, price|
-      "#{dish}: £#{('%.2f' % price)}"
-    end
+    @dishes.map {|dish, price| "#{dish}: £#{('%.2f' % price)}" }
   end
 
   def dish_available?(chosen_dish)
