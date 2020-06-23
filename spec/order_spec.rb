@@ -22,12 +22,13 @@ describe Order do
       expect(subject).to respond_to(:add).with(1).argument
     end
     it 'adds an item to the order' do
+      subject.default_menu
       subject.add(1)
       expect(subject.list.count).to eq(1)
     end
     it 'adds the correct item to the order' do
       subject.add(1)
-      expect(subject.list[0]).to eq(MENU.list[0])
+      expect(subject.list[0]).to eq(subject.menu[0])
     end
   end
 
@@ -44,7 +45,7 @@ describe Order do
       subject.add(1)
       subject.add(2)
       subject.remove(2)
-      expect(subject.list[0]).to eq(MENU.list[0])
+      expect(subject.list[0]).to eq(subject.menu[0])
     end
   end
   describe '#total' do

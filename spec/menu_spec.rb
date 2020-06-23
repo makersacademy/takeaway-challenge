@@ -34,7 +34,7 @@ describe Menu do
       subject.add("Fish",1.20)
       subject.add("Chips",2)
       subject.unavailable(1)
-      expect(subject.display.class).to eq(String)
+      expect(subject.display.class).to eq(Array)
     end
   end
       

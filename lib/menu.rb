@@ -1,6 +1,6 @@
 class Menu
   attr_reader :list
-  def initialize
+  def initialize()
     @list = []
   end
 
