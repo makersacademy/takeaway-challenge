@@ -1,10 +1,10 @@
 require_relative 'takeaway'
 
 class Order
-  attr_reader :takeaway, :orderlist, :dish, :price
+  attr_reader :takeaway, :orderlist, :dish, :price, :menu
 
   def initialize
-    @takeaway = Takeaway.new
+    @takeaway = Takeaway.new(menu)
     @orderlist = []
   end
 

@@ -12,9 +12,7 @@ describe Order do
     end
   end
     describe "add items" do
-        takeaway = Takeaway.new
         it { is_expected.to respond_to(:add).with(2).argument }
-        #expect(subject.add).to eq"chicken_chow_mein"
     end
     describe "total of order" do
       it "calculates the sum of the order" do
