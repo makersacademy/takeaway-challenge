@@ -2,8 +2,8 @@ require './lib/takeaway'
 require './lib/order'
 
 describe Takeaway do
-  subject(:takeaway) {Takeaway.new(menu)}
-  let(:menu) { double :'menu', display_menu: print }
+  subject(:takeaway) { Takeaway.new(menu) }
+  let(:menu) { double :menu, display_menu: print }
 
   describe "takeaway creation" do
     it "checks for instance of takeaway" do

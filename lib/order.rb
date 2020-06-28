@@ -9,7 +9,7 @@ class Order
   end
 
   def add(dish, price)
-    @orderlist << {dish: price}
+    @orderlist << { dish: price }
   end
 
   def total
