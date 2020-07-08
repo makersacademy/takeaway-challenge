@@ -13,16 +13,6 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
@@ -47,6 +37,56 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+To use the app
+------------------
+```
+$ require "./lib/restaurant.rb"
+$ require "./lib/customer_selection.rb"
+$ require "./lib/menu.rb"
+
+$ cafe = Restaurant.new
+
+$ cafe.show_menu
+ => {:croissant=>2, :panini=>4, :coffee=>3, :tea=>3, :juice=>3.5}
+
+$ cafe.select_items(:coffee, 2)
+
+$ cafe.summary
+ => "Total: £6.5"
+
+$ cafe.checkout
+=> "Order confirmed!"
+```
+
+My approach
+------------------
+## From User Stories to Domain Model
+- Objects: Restaurant, Menu, Customer_Selection
+- Messages: show_menu, select_items, summary, checkout
+- Created a diagram to see how the objects interact with each otherwise
+
+## Feature tests to unit tests to code
+- write code in feature test of what we want to see in the program
+- write unit test and see the same error when running rspec
+- write minimum code to get the unit test pass
+- repeat
+
+My comments
+-------------------
+## What is left to be done
+- proper tests, including using doubles where necessary
+- remove hardcoded expectations
+- implement the use of Twilio
+
+## What I learnt from the process:
+- improved diagramming & breaking down the problem
+- breaking project down to objects that interact with each other
+
+## What did not go well and I want to improve
+- using mock tests
+- aiming to satisfy the user stories, nothing else
+
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
@@ -82,53 +122,3 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
-
-
-To use the app
-------------------
-```
-$ require "./lib/restaurant.rb"
-$ require "./lib/customer_selection.rb"
-$ require "./lib/menu.rb"
-
-$ cafe = Restaurant.new
-
-$ cafe.show_menu
- => {:croissant=>2, :panini=>4, :coffee=>3, :tea=>3, :juice=>3.5} 
-
-$ cafe.select_items(:coffee, 2)
-
-$ cafe.summary
- => "Total: £6.5" 
- 
-$ cafe.checkout
-=> "Order confirmed!"
-```
-
-My approach
-------------------
-## From User Stories to Domain Model
-- Objects: Restaurant, Menu, Customer_Selection
-- Messages: show_menu, select_items, summary, checkout
-- Created a diagram to see how the objects interact with each otherwise
-
-## Feature tests to unit tests to code
-- write code in feature test of what we want to see in the program
-- write unit test and see the same error when running rspec
-- write minimum code to get the unit test pass
-- repeat
-
-My comments 
--------------------
-## What is left to be done
-- proper tests, including using doubles where necessary
-- remove hardcoded expectations
-- implement the use of Twilio 
-
-## What I learnt from the process:
-- improved diagramming & breaking down the problem
-- breaking project down to objects that interact with each other
-
-## What did not go well and I want to improve
-- using mock tests
-- aiming to satisfy the user stories, nothing else
