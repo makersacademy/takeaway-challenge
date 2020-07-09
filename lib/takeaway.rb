@@ -1,5 +1,3 @@
-require_relative 'ordering.rb'
-
 class Takeaway
   attr_reader :orders
 
