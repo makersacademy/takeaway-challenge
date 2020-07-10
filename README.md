@@ -1,10 +1,31 @@
-## My Takeaway challenge!
+[![Build Status](https://travis-ci.org/cmb84scd/takeaway-challenge.svg?branch=master)](https://travis-ci.org/cmb84scd/takeaway-challenge)
 
+## This is my takeaway challenge!
+This is Makers Academy's week 2 weekend challenge.
+
+### How to use
+To use clone this repo and then do the following:
+```
+run 'bundle'
+open 'irb'
+require './lib/takeaway.rb'
+require './lib/ordering.rb'
+order = Ordering.new
+chippy = Takeaway.new(order)
+```
+
+### User stories and requirements
+These are <a href="#userstories">here</a>
+
+### How it went
 I completed the first 3 user stories and I'm very happy with what I've done. I feel my tests are a lot better than last week, along with the way I went about doing it. I started by having everything in one class but knew I would need to split it down. After doing the first 3 user stories I then split the original class into 2 but still in the same file until I knew all my tests were passing again. Once that happened I then moved the Ordering class, along with its tests into their own respective files and yes, everything still worked! Having had issues with getting classes to work together last weekend, I found this process works better as it meant I could ensure everything worked before splitting the class.
 
-It will work in IRB but just note that to 'order' you will need to type orders.order after your class name as otherwise it won't work.
+It will work in IRB but just note that to 'order' you will need to type `orders.order` after your class name as otherwise it won't work.
 
-4th user story not complete as I needed more time to work out Twilio.
+4th user story not done as I need more time to work out Twilio.
+
+##### Edit: 10/7/2020
+I have amended the tests slightly so that they now use doubles. I also removed `require 'ordering'` from the top of the takeaway file as it is not needed due to dependency injection. Just remember when in IRB, to require both files and inject your ordering instance into your takeaway instance! I feel these minor changes have improved it and in due course I hope to work out Twilio.
 
 Takeaway Challenge
 ==================
@@ -21,36 +42,27 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
--------
-
-* Challenge time: rest of the day and weekend, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
+<a name="userstories"></a>
 Task
 -----
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
-
+```
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
-
+```
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
@@ -74,9 +86,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 > :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
 
 In code review we'll be hoping to see:
 
