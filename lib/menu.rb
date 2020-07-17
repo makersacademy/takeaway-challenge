@@ -1,5 +1,4 @@
 class Menu
-  attr_reader :dishes, :menu
 
   MENU = {
       1 => { curry: 4.00 },
@@ -8,15 +7,17 @@ class Menu
       4 => { rice: 2.00 }
   }
 
-  def view
+  def display
+    puts "TAKEAWAY MENU: "
+    MENU.each_pair { |id, item|
+      item.map { |food, price|
+        puts "#{id}: #{food.capitalize} -> £#{'%.2f' % price}"
+      }
+    }
+  end
+
+  def options
     MENU
   end
 
 end
-
-=begin
-p a = Menu.new
-p a.select(2, 2)
-p a.select(1,2)
-p a.dishes
-=end
