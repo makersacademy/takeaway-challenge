@@ -1,11 +1,11 @@
 require_relative './menu'
-#require_relative './sms'
+require_relative './sms'
 
 class Order
   attr_reader :current_order
 
   def initialize(menu: Menu.new)
-    @menu = menu.options; #@message_service = message_service
+    @menu = menu.options
     @menu_display = menu.display
     @current_order = []; @total = 0; @checked = false
   end
@@ -26,6 +26,10 @@ class Order
 
   def place_order
     @checked ? send_text : "Please place an order after checking your total"
+  end
+
+  def reset
+    @current_order = []
   end
 
   private
@@ -52,13 +56,8 @@ class Order
     end
   end
 
-  def send_text
-    @message_service.new
+  def send_text(message_service = Twilio_Class)
+    @message_service = message_service
   end
 
 end
-
-a = Order.new
-a.select(1,2)
-a.select(3,2)
-a.check_total
