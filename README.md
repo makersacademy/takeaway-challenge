@@ -81,3 +81,48 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+
+
+################################################################################
+
+Planning stage
+
+Extracting important information
+
+User story 1: See list of dishes with prices
+
+User story 2: Select some number of several dishes
+
+User story 3: Check that the total
+
+User story 4: Receive a text after order
+
+
+
+Objects | Message
+--------+---------
+Menu    | View    # Menu is a hash, view prints them
+Basket  | Select  # Puts Menu items in a basket
+Basket  | Summary # View total cost of basket (also prints basket)
+Basket  | Order   # Send massage to phone comnfirming order?
+
+
+User story 1 complete:
+
+:001 > menu = Menu.new
+(New menu is created with attributes)
+:002 > menu.view
+ => {"Apple"=>1, "Banana"=>2, "Mango"=>3, "Peach"=>4, "Pear"=>5}
+
+ User story 2 and 3 (partially) complete:
+
+:001 > menu = Menu.new
+(New menu is created with attributes)
+:002 > menu.select("Mango", 2)
+=> {"Apple"=>1, "Banana"=>2, "Mango"=>3, "Peach"=>4, "Pear"=>5}
+:003 > menu.basket_total
+ => "Mango x 2 = £6"
+
+ (this only works with one menu item and needed as huge refactor)
