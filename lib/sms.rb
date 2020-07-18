@@ -6,11 +6,11 @@ class Sms
 
     require 'twilio-ruby'
 
-    account_sid = 'AC6461bcffbe6f3e83dbe173cf19577ede'
-    auth_token = '319e45ce15eed8cacdc4fb9231fb3853'
+    account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxx'
+    auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    from = '+12052067667' # Your Twilio number
+    from = '+000000000000' # Your Twilio number
     to = '+000000000000' # Your mobile phone number
 
     client.messages.create(
