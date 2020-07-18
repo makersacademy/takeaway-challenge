@@ -9,6 +9,16 @@ describe Basket do
     it 'with a total' do
       expect(subject.total).to be_an(Integer)
     end
-end
+  end
+
+  describe '#add_to_basket()' do
+
+    let(:item) {double(:item)}
+
+    it 'adds an item to the items list' do
+      subject.add_to_basket(:item)
+      expect(subject.items).to include(:item)
+    end
+  end
 
 end
