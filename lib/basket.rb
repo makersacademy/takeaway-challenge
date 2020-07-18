@@ -11,4 +11,8 @@ class Basket
     items << item
   end
 
+  def calc_total
+    items.map { |item| item.item_price[:price]}.sum
+  end
+
 end

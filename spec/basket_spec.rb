@@ -21,4 +21,18 @@ describe Basket do
     end
   end
 
+  describe '#calc_total' do
+
+    let(:item) { double("item") }#, item_price: {price: 1}) }
+    #let(:price) { double(:price) }
+    #allow(:item).to receive(:[]).with(:price).and_return{1}
+    
+    it 'sums prices of items in item list' do
+      subject.add_to_basket(item)
+      allow(item).to receive(:item_price) {{ price: 1}}
+      expect(subject.calc_total).to eq(1)
+    end
+  end
+
+
 end
