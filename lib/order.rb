@@ -1,5 +1,6 @@
 require_relative 'takeaway'
 require_relative 'time'
+require_relative 'sms'
 
 class Order
 
@@ -11,7 +12,7 @@ class Order
     @order_total = 0
   end
 
-  def add_to_order(item, quantity) # need to add failure if item not available
+  def add_to_order(item, quantity)
 
     fail "Item does not exist" unless @menu.display_menu.include?(item)
 
@@ -31,9 +32,14 @@ class Order
     "Order total: £#{@order_total}" # this will be a sum of the subtotal array
   end
 
-  def place_order(time = Time.new)
-    order_time = time.time_in_an_hour
-    "Thank you! Your order was placed and will be delivered before #{order_time}"
+  def place_order(sms = Sms.new)
+    order_message
+    sms.send_sms
+  end
+
+  def order_message(time = Time.new)
+    delivery_time = time.time_in_an_hour
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   end
 
 end
