@@ -12,7 +12,13 @@ class Basket
   end
 
   def calc_total
-    items.map { |item| item.item_price[:price]}.sum
+    @total += items.map { |item| item.item_price[:price]}.sum
+    #items.map { |item| item[:price]}.sum
+  end
+
+  def show_total
+    calc_total
+    @total
   end
 
 end

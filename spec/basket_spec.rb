@@ -20,19 +20,34 @@ describe Basket do
       expect(subject.items).to include(:item)
     end
   end
-
+      
   describe '#calc_total' do
 
-    let(:item) { double("item") }#, item_price: {price: 1}) }
-    #let(:price) { double(:price) }
-    #allow(:item).to receive(:[]).with(:price).and_return{1}
+    let(:item) { double(:item) }#, item_price: {price: 1}) }
+    ##let(:price) { double(:price) }
+    ##allow(:item).to receive(:[]).with(:price).and_return{1}
     
     it 'sums prices of items in item list' do
       subject.add_to_basket(item)
+      ##allow(item).to receive([:price]).and_return(1)
       allow(item).to receive(:item_price) {{ price: 1}}
-      expect(subject.calc_total).to eq(1)
+      #expect(subject.calc_total).to eq(1)
+      subject.calc_total
+      expect(subject.total).to eq(1)
     end
   end
+
+  describe '#show_total' do
+
+    let(:item) { double(:item) }
+
+    it 'returns total of listed items' do
+      subject.add_to_basket(item)
+      allow(item).to receive(:item_price) {{ price: 1}}
+      expect(subject.show_total).to eq(1)
+    end
+  end
+
 
 
 end
