@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   it 'allows the customer to add item and quantity to an order' do
-    expect(subject.add_to_order('mexican', 2)).to eq 'mexican - Qty:2 added to order'
+    expect(subject.add_to_order('mexican', 2)).to eq '2x mexican added to order. Subtotal £9.98'
   end
   it 'raised an error if an item is incorrectly entered' do
     expect { subject.add_to_order('chips', 1) }.to raise_error 'Item does not exist'
@@ -11,7 +11,7 @@ describe Order do
   it 'allows the customer to display current items in basket' do
     subject.add_to_order('mexican', 2)
     subject.add_to_order('meat feast', 1)
-    expect(subject.display_order).to eq 'Current order: mexican - Qty:2, meat feast - Qty:1'
+    expect(subject.display_order).to eq 'Current order: 2x mexican, 1x meat feast'
   end
 
   it 'displays the total price of the current order' do

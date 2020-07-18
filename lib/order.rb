@@ -4,32 +4,35 @@ require_relative 'sms'
 
 class Order
 
-  attr_reader :order_items, :order_total, :menu
+  attr_reader :order_items, :order_total, :menu, :subtotal
 
   def initialize(menu = Takeaway.new)
     @menu = menu
     @order_items = []
-    @order_total = 0
+    @order_total = []
+
   end
 
   def add_to_order(item, quantity)
 
     fail "Item does not exist" unless @menu.display_menu.include?(item)
 
+    @subtotal = 0
     quantity.times do
       @order_items.push(item)
-      @order_total += @menu.display_menu[item]
+      @subtotal += @menu.display_menu[item]
     end
+    @order_total.push(@subtotal)
+    "#{quantity}x #{item} added to order. Subtotal £#{@subtotal}"
 
-    "#{item} - Qty:#{quantity} added to order" # need to add running total. New hash called subtotal
   end
 
   def display_order
-    "Current order: #{order_items.uniq.map { |x| "#{x} - Qty:#{order_items.count(x)}" }.join(', ')}"
+    "Current order: #{order_items.uniq.map { |x| "#{order_items.count(x)}x #{x}" }.join(', ')}"
   end
 
   def display_total
-    "Order total: £#{@order_total}" # this will be a sum of the subtotal array
+    "Order total: £#{@order_total.sum}" 
   end
 
   def place_order(sms = Sms.new)
