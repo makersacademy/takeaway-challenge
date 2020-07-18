@@ -7,4 +7,7 @@ describe Dish do
   it 'has a price' do
     expect(subject.price).to eq("£8.95")
   end
+  it 'can be added to an order' do
+    expect(subject.order).to eq("Added to order")
+  end
 end

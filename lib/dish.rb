@@ -4,4 +4,8 @@ class Dish
     @name = name
     @price = price
   end
+  def order(current_order = Order.new)
+    current_order.add(self)
+    "Added to order"
+  end
 end
