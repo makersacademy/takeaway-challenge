@@ -4,13 +4,13 @@ require_relative 'sms'
 
 class Order
 
-  attr_reader :order_items, :order_total, :menu, :subtotal
+  attr_reader :order_items, :order_total, :menu, :subtotal, :running_total
 
   def initialize(menu = Takeaway.new)
     @menu = menu
     @order_items = []
     @order_total = []
-
+    @running_total = 0
   end
 
   def add_to_order(item, quantity)
@@ -23,8 +23,8 @@ class Order
       @subtotal += @menu.display_menu[item]
     end
     @order_total.push(@subtotal)
+    @running_total += @subtotal
     "#{quantity}x #{item} added to order. Subtotal £#{@subtotal}"
-
   end
 
   def display_order
@@ -32,12 +32,14 @@ class Order
   end
 
   def display_total
-    "Order total: £#{@order_total.sum}" 
+    fail "Incorrect total" if order_total.sum != @running_total
+
+    "Order total: £#{@order_total.sum}"
   end
 
   def place_order(sms = Sms.new)
     order_message
-    sms.send_sms
+    # sms.send_sms
   end
 
   def order_message(time = Time.new)
