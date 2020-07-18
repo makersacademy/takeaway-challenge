@@ -1,6 +1,9 @@
 require './lib/basket.rb'
 
 describe Basket do
+
+    let(:item) {double(:item)}
+    let(:item2) {double(:item2)}
   
   describe '#initializes' do
     it 'with an item list' do
@@ -13,17 +16,21 @@ describe Basket do
 
   describe '#add_to_basket()' do
 
-    let(:item) {double(:item)}
+    #let(:item) {double(:item)}
 
     it 'adds an item to the items list' do
       subject.add_to_basket(:item)
       expect(subject.items).to include(:item)
     end
+    it 'can add varying quantities of an item at one time' do
+        subject.add_to_basket(:item, 5)
+        expect(subject.items.count).to eq(5)
+    end
   end
       
   describe '#calc_total' do
 
-    let(:item) { double(:item) }#, item_price: {price: 1}) }
+    #let(:item) { double(:item) }#, item_price: {price: 1}) }
     ##let(:price) { double(:price) }
     ##allow(:item).to receive(:[]).with(:price).and_return{1}
     
@@ -39,7 +46,7 @@ describe Basket do
 
   describe '#show_total' do
 
-    let(:item) { double(:item) }
+    #let(:item) { double(:item) }
 
     it 'returns total of listed items' do
       subject.add_to_basket(item)

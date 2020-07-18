@@ -7,8 +7,8 @@ class Basket
     @total = 0
   end
 
-  def add_to_basket(item)
-    items << item
+  def add_to_basket(item, quantity=1)
+    quantity.times {items << item}
   end
 
   def calc_total
