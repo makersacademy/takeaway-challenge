@@ -1,5 +1,15 @@
  ## Takeaway
 ---
+
+## Disclaimer
+
+Totally messed this up, was building a Takeaway class incorporating the Menu and Basket classes using dependency injection (as can be seen within the /lib/takeaway.rb and /spec/takeaway_spec.rb files, but then thought that wasn't what was required and started building a student-directory esque program (no overarching class). Subsequently rushed through and didn't use rspec to test the code. After finishing I then looked over the review rubric and realised I'd made a huge mistake. 
+
+### Domain Modelling Diagram 
+
+![Domain Modelling Diagram](https://github.com/rjkviegas/takeaway-challenge/blob/master/takeaway-firstdraft%20(1).jpg?raw=true)
+
+
  ### Specifications
 
  #### User Stories
@@ -21,4 +31,5 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
 
