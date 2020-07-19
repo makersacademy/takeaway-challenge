@@ -58,6 +58,6 @@ attr_reader :grand_total
       prices_with_quantities << (price * quantities[n])
       n += 1
     end
-    prices_with_quantities.inject(:+) == total ? true : raise("Sum dishes and total don't match.")
+    prices_with_quantities.inject(:+) == total ? Text.new : raise("Sum dishes and total don't match.")
   end
 end
