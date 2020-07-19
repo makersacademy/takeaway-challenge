@@ -1,12 +1,18 @@
 require 'Takeaway'
 describe Takeaway do 
+  let(:text) { double("textmessage", send_message: true) }
+  let(:textmessage) { double("textmessage", new: text) }
   let(:menu) { double("menu", items: [
         { name: "Chicken Wings", price: "3.00" },
         { name: "Burger", price: "4.00" }
         ]) 
   }
+  let(:basket_full) { double("basket", current_order: [
+    { name: "Chicken Wings", price: "3.00", quantity: 1 },
+    { name: "Burger", price: "4.00", quantity: 2 }
+    ])
+  }
   let(:basket) { double("basket", current_order: []) }
-  let(:basket_class) { double("basket_class", new: basket) }
   subject { described_class.new(menu) }
 
   it 'initializes with a menu' do
@@ -43,7 +49,19 @@ describe Takeaway do
   end
 
   describe '#place_order' do
+    before do 
+      subject.basket = basket_full
+    end
+    
     it 'raises an error if the order total does not match the sum of the items' do
+      expect { subject.place_order(basket_full, 13.00, textmessage) }.to raise_error "Incorrect total value"
+    end
+    it 'does not raise an error if the order total does match the sum of the items' do
+      expect { subject.place_order(basket_full, 11.00, textmessage) }.not_to raise_error
+    end
+    it 'sends confirmation message' do
+      expect(textmessage).to receive(:new)
+      subject.place_order(basket_full, 11.00, textmessage)
     end
   end
 end

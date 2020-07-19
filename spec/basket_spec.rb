@@ -12,6 +12,5 @@ describe Basket do
       ]
       expect(subject.total).to eq "12.00"
     end
-    it ''
   end
 end

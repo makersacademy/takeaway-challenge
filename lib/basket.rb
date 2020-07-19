@@ -7,6 +7,6 @@ class Basket
   def total
     total = 0
     @current_order.each { |item| total += (item[:price].to_f * item[:quantity]) }
-    '%.2f' % total 
+    '%.2f' % total
   end
 end
