@@ -1,24 +1,25 @@
+require_relative 'menu'
 
 class Basket
-  attr_reader :items, :total
-
-  def initialize
-    @items = []
+  attr_reader :menu_class, :total, :items
+  
+  def initialize(menu_class = Menu)
+    @menu_class = menu_class
     @total = 0
+    @items = []
   end
 
-  def add_to_basket(item, quantity=1)
-    quantity.times {items << item}
+  def add(item, quantity=1)
+      quantity.times {@items << item}
   end
 
   def calc_total
-    @total += items.map { |item| item.item_price[:price]}.sum
-    #items.map { |item| item[:price]}.sum
+    @total += @items.map { |item| @menu_class.new.item_price(item) }.sum 
   end
 
   def show_total
     calc_total
-    @total
+    total
   end
 
 end
