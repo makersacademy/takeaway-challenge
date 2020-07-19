@@ -29,5 +29,14 @@ describe Takeaway do
       expect(subject.current_basket.items.count).to eq(2)
     end
   end
+
+  describe '#view_basket_breakdown' do
+    it 'shows basket with prices and total price' do
+        item = Menu.new.items[0]
+        subject.add_to_basket(item)
+        expect(subject.view_basket_breakdown).to be(nil)
+    end
+  end
+
 end
 

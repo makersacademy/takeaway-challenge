@@ -21,6 +21,16 @@ class Takeaway
     current_basket.add(item)
   end
 
+  def view_basket_breakdown
+    i = 1
+    puts "In your current basket:"
+    current_basket.items.each do |item|
+      puts "#{i} x #{item[:name]} = £#{item[:price]}"
+      i += 1
+    end
+    puts "Total: £#{current_basket.show_total}"
+  end
+
 end
 
 # view_menu to puts menu
