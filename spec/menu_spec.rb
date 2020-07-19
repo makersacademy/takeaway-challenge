@@ -15,4 +15,8 @@ describe Menu do
     expect(menu.dishes).to eq(dishes)
   end
 
+  it "prints a list of dishes with prices" do
+    printed_list = "Rice £1.50, Chicken £2.00, Salad £4.00, Plantain £2.50" 
+    expect(menu.printing).to eq(printed_list)
+  end
 end
