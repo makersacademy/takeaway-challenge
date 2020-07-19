@@ -31,20 +31,26 @@ def view_basket
     spacer
 end
 
-def choose_item
+def choose_item_and_servings
     menu
     puts "Input the number of the item you want added to your basket:"
     user_input = Integer(gets) rescue nil
     @item = Menu.new.items[(user_input-1)]
-    puts "Your chosen food item is #{@item[:name]}"
+    puts "How many servings of #{@item} do you want?"
+    @servings = Integer(gets) rescue nil
+    puts "You have selected #{@servings} servings of #{@item[:name]}."
     spacer
     puts "Choose Option 4 - Add Chosen Item To Basket - on the main menu to add it to your basket"
     spacer
 end
     
 def add_to_basket
-    current_basket.add(@item)
-    puts "#{@item[:name]} has been added to your basket!"
+    current_basket.add(@item, @servings)
+    if @servings > 1
+      puts "#{@servings} servings of #{@item[:name]} has been added to your basket!"
+    else
+      puts "1 servings of #{@item[:name]} has been added to your basket!"
+    end
     spacer
 end
 

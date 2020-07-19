@@ -1,9 +1,6 @@
 require_relative 'menu'
 require_relative 'basket'
 
-
-takeaway = Takeaway.new
-
 class Takeaway
   attr_reader :menu
   
