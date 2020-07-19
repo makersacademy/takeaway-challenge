@@ -4,7 +4,19 @@ describe Takeaway do
 
   describe '#view_menu' do
      it "returns the menu" do
-     expect(subject.view_menu).to be_an(Array)
+     expect(subject.menu).to be_an(Array)
+    end
+  end
+
+  describe '#current_basket' do
+    it "returns an instance of Basket" do
+    expect(subject.current_basket).to be_an_instance_of(Basket)
+   end
+ end
+
+  describe '#view_basket' do
+    it 'returns an array' do
+      expect(subject.view_basket).to eq([])
     end
   end
 
@@ -13,6 +25,8 @@ describe Takeaway do
       item = Menu.new.items[0]
       subject.add_to_basket(item)
       expect(subject.current_basket.items).to include(item)
+      subject.add_to_basket(item)
+      expect(subject.current_basket.items.count).to eq(2)
     end
   end
 end
