@@ -3,7 +3,7 @@ require "./lib/menu"
 require "./lib/order"
 
 describe User do
-  let(:unicorn) { Order.new }
+
   let(:item) { double :user }
   let(:quantity) { double :user }
 
