@@ -1,6 +1,7 @@
 /**/.DS_Store
 /coverage
 ./idea
+./lib/views
 
 # Local cache of Rubocop remote config
 .rubocop-*
