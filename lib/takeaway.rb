@@ -1,6 +1,9 @@
 require_relative 'menu'
 require_relative 'basket'
 
+
+takeaway = Takeaway.new
+
 class Takeaway
   attr_reader :menu
   
@@ -31,6 +34,13 @@ class Takeaway
     puts "Total: £#{current_basket.show_total}"
   end
 
+  
 end
 
+require_relative 'textmessage'
+
+
+
 # view_menu to puts menu
+
+
