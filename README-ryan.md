@@ -3,7 +3,7 @@
 
 ## Disclaimer
 
-Totally messed this up, was building a Takeaway class incorporating the Menu and Basket classes using dependency injection and rpsec tests (as can be seen within the /lib/takeaway.rb and /spec/takeaway_spec.rb files and my DMD), but then thought that wasn't what was required and started building a student-directory esque program . Subsequently rushed through and didn't use rspec to test the code. After finishing I then looked over the review rubric and realised I'd made a huge mistake. 
+Totally messed this up, was building a Takeaway class incorporating the Menu and Basket classes (using dependency injection) and rpsec tests (as can be seen within the /lib/takeaway.rb and /spec/takeaway_spec.rb files and my DMD), but then thought that wasn't what was required (HAVE NO IDEA WHY!!!) and started building a student-directory esque program . Subsequently rushed, TDD went out the window. After finishing I then looked over the review rubric and realised I'd made a huge mistake. 
 
 ### Domain Modelling Diagram 
 

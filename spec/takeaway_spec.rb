@@ -38,13 +38,5 @@ describe Takeaway do
     end
   end
 
-  describe '#send_confirmation' do
-    it 'sends a text' do
-      item = Menu.new.items[0]
-      subject.add_to_basket(item)
-      expect(subject.send_confirmation)
-    end
-  end
-
 end
 
