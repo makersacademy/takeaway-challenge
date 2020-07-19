@@ -3,11 +3,11 @@ require "order"
 describe Order do
   subject(:order) { described_class.new(menu) }
   
-  let(:menu){ instance_double("Menu") }
+  let(:menu) { instance_double("Menu") }
   let(:dishes) do
-      {
-        rice: 2
-      }
+    {
+      rice: 2
+    }
   end
   before do
     

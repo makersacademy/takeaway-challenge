@@ -10,7 +10,7 @@ class Order
   end
   
   def total
-    sum_total[0]
+    sum_total.reduce(:+)
   end
   
   private
