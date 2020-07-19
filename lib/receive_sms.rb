@@ -7,7 +7,6 @@ class OrderApp < Sinatra::Base
 
   get '/' do
     #"<b><u>Welcome to the SMS Viewport<u></b>"
-
     erb(:index)
   end
 

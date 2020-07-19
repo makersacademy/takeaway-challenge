@@ -24,7 +24,7 @@ class OrderRead
   end
 
   def send_text(message_list)
-    message_list.include?("order") ? TwilioClass.new.send : "No order to send"
+    message_list.first.include?("order") ? TwilioClass.new.send : "No order to send"
   end
 
 end
