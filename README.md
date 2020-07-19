@@ -17,7 +17,7 @@ Takeaway Challenge
 Task
 -------
 
-This involved the creation of an takeaway ordering service written in Ruby using TDD.
+This involved the creation of a takeaway ordering service written in Ruby using TDD.
 
 My approach was to first ensure all of the 4 user stores below were met, and then to defend against edge cases.
 
@@ -42,7 +42,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Progress
 ---------
 
-My code satisfies all of the above user stories and does defend against some edge cases such as displaying a basket or order total when no items have been added, attempted to place an order with no items, and attempting to order an item not included on the menu.
+My code satisfies all of the above user stories and does defend against edge cases such as displaying a basket or order total when no items have been added, attempting to place an order with no items, and attempting to an item not included on the menu to an order.
 
 See examples below;
 
@@ -81,10 +81,10 @@ Traceback (most recent call last):
 RuntimeError (Basket empty)
 ```
 
-My code is also able to send an SMS order confirmation using the twilio gem. I was not able to add unit test for this behaviour so my next step would be to implement these, as well as adding toubles to current tests.
+My code is also able to send an SMS order confirmation using the twilio gem (see below screenshot). I was not able to add unit test for this behaviour so my next step would be to implement these, as well as adding doubles to current tests.
 
-<img src="./IMG_0567.jpg" width="180" height="390" />
+<img src="./IMG_0567.jpg" width="270" height="585" />
 
 The sms file has been amended to use variables stored in the .env file (using dotenv gem) to not expose sensitive information.
 
-I would also like my 'display_order' method to display a total price for each item, at present it only shows the quantity.  
+My next steps in the project would be to amend the 'display_order' method to display a total price for each item, at present it only shows the quantity. I would also like to add functionality for removing an item from basket or amending order quantity, to look at refactoring the 'add_to_order; method, which is currently too long, and too look into being able to place an order by sms message. 
