@@ -14,9 +14,6 @@
 
  ```
 
-
-/////////////////
-
 ```
 As a customer
 So that I can check if I want to order something
