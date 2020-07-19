@@ -42,7 +42,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Progress
 ---------
 
-My code satisfies all of the above user stories and does defend against edge cases such as displaying a basket or order total when no items have been added, attempting to place an order with no items, and attempting to an item not included on the menu to an order.
+My code satisfies all of the above user stories and does defend against edge cases such as displaying a basket or order total when no items have been added, attempting to place an order with no items, and attempting to add an item not on the menu.
 
 See examples below;
 
@@ -87,4 +87,4 @@ My code is also able to send an SMS order confirmation using the twilio gem (see
 
 The sms file has been amended to use variables stored in the .env file (using dotenv gem) to not expose sensitive information.
 
-My next steps in the project would be to amend the 'display_order' method to display a total price for each item, at present it only shows the quantity. I would also like to add functionality for removing an item from basket or amending order quantity, to look at refactoring the 'add_to_order' method, which is currently too long, and too look into being able to place an order by sms message. 
+My next steps in the project would be to amend the 'display_order' method to display a total price for each item, at present it only shows the quantity. I would also like to add functionality for removing an item from basket or amending order quantity, to look at refactoring the 'add_to_order' method, which is currently too long, and too look into being able to place an order by sms message.
