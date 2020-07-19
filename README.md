@@ -14,20 +14,12 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Task
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This involved the creation of a takeaway ordering service written in Ruby using TDD.
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+My approach was to first ensure all of the 4 user stores below were met, and then to defend against edge cases.
 
 ```
 As a customer
@@ -47,37 +39,52 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Progress
+---------
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+My code satisfies all of the above user stories and does defend against edge cases such as displaying a basket or order total when no items have been added, attempting to place an order with no items, and attempting to add an item not on the menu.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+See examples below;
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+```
+➜  takeaway-challenge git:(master) ✗ irb
+2.6.5 :001 > require './lib/order.rb'
+ => true
+2.6.5 :002 > sunday = Order.new
+ => #<Order:0x00007fecf2914768 @menu=#<Takeaway:0x00007fecf2914678 @menu={"meat feast"=>5.99, "marinara"=>3.99, "mexican"=>4.99, "fully_loaded"=>8.99, "veg_supreme"=>6.99}>, @order_items=[], @order_total=[], @running_total=0>
+2.6.5 :003 > sunday.menu
+ => #<Takeaway:0x00007fecf2914678 @menu={"meat feast"=>5.99, "marinara"=>3.99, "mexican"=>4.99, "fully_loaded"=>8.99, "veg_supreme"=>6.99}>
+2.6.5 :004 > sunday.add_to_order('Chicken Wings', 2)
+Traceback (most recent call last):
+        5: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `<main>'
+        4: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `load'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        2: from (irb):4
+        1: from /Users/student/Documents/Projects/Week2/takeaway-challenge/lib/order.rb:18:in `add_to_order'
+RuntimeError (Item does not exist)
+```
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+```
+➜  takeaway-challenge git:(master) ✗ irb
+2.6.5 :001 > require './lib/order.rb'
+ => true
+2.6.5 :002 > sunday = Order.new
+ => #<Order:0x00007fbbc01cff10 @menu=#<Takeaway:0x00007fbbc01cfee8 @menu={"meat feast"=>5.99, "marinara"=>3.99, "mexican"=>4.99, "fully_loaded"=>8.99, "veg_supreme"=>6.99}>, @order_items=[], @order_total=[], @running_total=0>
+2.6.5 :003 > sunday.place_order
+Traceback (most recent call last):
+        6: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `<main>'
+        5: from /Users/student/.rvm/rubies/ruby-2.6.5/bin/irb:23:in `load'
+        4: from /Users/student/.rvm/rubies/ruby-2.6.5/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        3: from (irb):3
+        2: from /Users/student/Documents/Projects/Week2/takeaway-challenge/lib/order.rb:44:in `place_order'
+        1: from /Users/student/Documents/Projects/Week2/takeaway-challenge/lib/order.rb:49:in `order_message'
+RuntimeError (Basket empty)
+```
 
+My code is also able to send an SMS order confirmation using the twilio gem (see below screenshot). I was not able to add unit test for this behaviour so my next step would be to implement these, as well as adding doubles to current tests.
 
-In code review we'll be hoping to see:
+<img src="./IMG_0567.jpg" width="270" height="585" />
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+The sms file has been amended to use variables stored in the .env file (using dotenv gem) to not expose sensitive information.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+My next steps in the project would be to amend the 'display_order' method to display a total price for each item, at present it only shows the quantity. I would also like to add functionality for removing an item from basket or amending order quantity, to look at refactoring the 'add_to_order' method, which is currently too long, and too look into being able to place an order by sms message.
