@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'shotgun'
+gem 'sinatra'
 gem 'twilio-ruby'
 
 group :test do

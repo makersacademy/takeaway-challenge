@@ -1,5 +1,5 @@
 require_relative './menu'
-require_relative './sms'
+require_relative './send_sms'
 
 class Order
   attr_reader :current_order
@@ -56,8 +56,8 @@ class Order
     end
   end
 
-  def send_text(message_service = Twilio_Class)
-    @message_service = message_service
+  def send_text(message_service = TwilioClass.new)
+    @message_service = message_service.send
   end
 
 end

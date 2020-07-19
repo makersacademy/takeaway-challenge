@@ -25,7 +25,12 @@ describe Order do
   end
 
   it '#reset' do
-    expect{ order.reset}.to change{order.current_order.size}.to 0
+    select
+    expect{ order.reset }.to change{order.current_order.size}.to 0
+  end
+
+  it '#check_total' do
+    expect{checked}.to output.to_stdout
   end
 
 end

@@ -2,6 +2,7 @@
 /coverage
 ./idea
 ./lib/views
+./lib/receive_sms.rb
 
 # Local cache of Rubocop remote config
 .rubocop-*
