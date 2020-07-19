@@ -8,6 +8,7 @@ describe Dish do
     expect(subject.price).to eq("£8.95")
   end
   it 'can be added to an order' do
-    expect(subject.order).to eq("Added to order")
+    order = double("order").as_null_object
+    expect(subject.order(order)).to eq("Added to order #{order}")
   end
 end

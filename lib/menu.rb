@@ -29,4 +29,11 @@ class Menu
     end
     file.close
   end
+  def list
+    counter = 0
+    dishes.each { |item|
+      puts "#{counter}. #{item.name}, #{item.price}"
+      counter += 1
+    }
+  end
 end
