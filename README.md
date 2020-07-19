@@ -83,7 +83,7 @@ RuntimeError (Basket empty)
 
 My code is also able to send an SMS order confirmation using the twilio gem. I was not able to add unit test for this behaviour so my next step would be to implement these, as well as adding toubles to current tests.
 
-<img src="./IMG_0567.jpg">
+<img src="./IMG_0567.jpg" width="90" height="195" />
 
 The sms file has been amended to use variables stored in the .env file (using dotenv gem) to not expose sensitive information.
 
