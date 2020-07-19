@@ -1,4 +1,5 @@
 require_relative 'order.rb'
+require 'dotenv/load'
 
 class Sms
 
@@ -6,16 +7,11 @@ class Sms
 
     require 'twilio-ruby'
 
-    account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxx'
-    auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    from = '+000000000000' # Your Twilio number
-    to = '+000000000000' # Your mobile phone number
+    client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 
     client.messages.create(
-      from: from,
-      to: to,
+      from: ENV['TWILIO_PHONE'],
+      to: ENV['MY_PHONE'],
       body: order.order_message
     )
 

@@ -41,13 +41,13 @@ class Order
   end
 
   def place_order(sms = Sms.new)
+
+    fail "Basket empty" if @order_items.empty?
     order_message
-    # sms.send_sms
+    sms.send_sms
   end
 
   def order_message(time = Time.new)
-    fail "Basket empty" if @order_items.empty?
-
     delivery_time = time.time_in_an_hour
     "Thank you for ordering from Ralph's Pizza! Your food will be delivered before #{delivery_time}"
   end
