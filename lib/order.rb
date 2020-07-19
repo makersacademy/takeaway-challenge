@@ -13,7 +13,7 @@ class Order
 
   def order_total
     @basket.each do |k,v|
-      @total = @menu.menu[k] * v
+      @total = @menu.meals[k] * v
     end
     @total
   end

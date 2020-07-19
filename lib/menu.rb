@@ -1,9 +1,9 @@
 class Menu
 
-  attr_reader :menu
+  attr_reader :meals
 
   def initialize
-    @menu = {
+    @meals = {
       :padthai => 6.00,
       :massamancurry => 7.00,
       :bokchoi => 2.00,
@@ -12,6 +12,6 @@ class Menu
   end
 
   def view_menu
-    @menu
+    @meals
   end
 end
