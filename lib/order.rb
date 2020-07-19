@@ -28,11 +28,14 @@ class Order
   end
 
   def display_order
+    fail "Basket empty" if @order_items.empty?
+
     "Current order: #{order_items.uniq.map { |x| "#{order_items.count(x)}x #{x}" }.join(', ')}"
   end
 
   def display_total
     fail "Incorrect total" if order_total.sum != @running_total
+    fail "Basket empty" if @order_items.empty?
 
     "Order total: £#{@order_total.sum}"
   end
@@ -43,8 +46,10 @@ class Order
   end
 
   def order_message(time = Time.new)
+    fail "Basket empty" if @order_items.empty?
+
     delivery_time = time.time_in_an_hour
-    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    "Thank you for ordering from Ralph's Pizza! Your food will be delivered before #{delivery_time}"
   end
 
 end

@@ -14,15 +14,27 @@ describe Order do
     expect(subject.display_order).to eq 'Current order: 2x mexican, 1x meat feast'
   end
 
+  it 'raises an error if the customer tries to display an empty basket' do
+    expect { subject.display_order }.to raise_error 'Basket empty'
+  end
+
   it 'displays the total price of the current order' do
     subject.add_to_order('meat feast', 1)
     expect(subject.display_total).to eq("Order total: £5.99")
   end
 
+  it 'raises an error if the customer tries to display the price of an empty basket' do
+    expect { subject.display_total }.to raise_error 'Basket empty'
+  end
+
   it 'displays a confirmation message when the order is sent' do
     time = (Time.now + 1 * 60 * 60).strftime("%I:%M %p")
     subject.add_to_order('meat feast', 1)
-    expect(subject.place_order).to eq "Thank you! Your order was placed and will be delivered before #{time}"
+    expect(subject.place_order).to eq "Thank you for ordering from Ralph's Pizza! Your food will be delivered before #{time}"
+  end
+
+  it 'raises an error if the customer tries to place order with an empty basket' do
+    expect { subject.place_order }.to raise_error 'Basket empty'
   end
 
 end
