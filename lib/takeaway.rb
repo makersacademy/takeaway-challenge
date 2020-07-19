@@ -24,6 +24,7 @@ class Takeaway
     fail "Incorrect total value" if total != basket_value(basket)
 
     text.new.send_message if total != 0
+    @basket.current_order.clear
   end
 
   private
@@ -35,7 +36,7 @@ class Takeaway
   def basket_value(basket)
     basket_total = 0
     basket.current_order.each do |item| 
-      menu_item = @menu.find { |food| food[:name] == item[:name] }
+      menu_item = @menu.find { |food_item| food_item[:name] == item[:name] }
       basket_total += (menu_item[:price].to_f * item[:quantity])
     end
     basket_total

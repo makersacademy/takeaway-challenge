@@ -6,7 +6,7 @@ class TextConfirmation
     auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    @from = '+12058522446' # Your Twilio number
+    @from = ENV['TWILIO_NUMBER'] # Your Twilio number
     @to = ENV['MOBILE_NUMBER'] # Your mobile phone number
     @delivery_time = (time.new + (60 * 60)).strftime("%k:%M")
   end

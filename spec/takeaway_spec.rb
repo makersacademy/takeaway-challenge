@@ -63,5 +63,9 @@ describe Takeaway do
       expect(textmessage).to receive(:new)
       subject.place_order(basket_full, 11.00, textmessage)
     end
+    it 'clears the current order' do
+      subject.place_order(subject.basket, 11.00, textmessage)
+      expect(subject.basket.current_order).to eq []
+    end
   end
 end
