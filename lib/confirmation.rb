@@ -5,22 +5,22 @@ require 'dotenv'
 
 class Confirmation
 
-  def place_order
+  attr_reader :time
+  def initialize
     Dotenv.load
 
-    time = Time.now + 60 * 60
-    time = time.strftime("at %I:%M %p")
+    @time = Time.now + 60 * 60
+    @time = @time.strftime("at %I:%M %p")
 
-    account_sid = ENV["TWILIO_ACCOUNT_SID"]
-    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+    @account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    @auth_token = ENV["TWILIO_AUTH_TOKEN"]
+  end
 
-    @client = Twilio::REST::Client.new account_sid, auth_token
+  def place_order
+    @client = Twilio::REST::Client.new @account_sid, @auth_token
     message = @client.messages.create(
 
-
-    body: "Your takeaway order is confirmed! It will arrive at #{time}",
-
-
+    body: "Your takeaway order is confirmed! It will arrive at #{@time}",
 
     to: ENV["TWILIO_MY_PHONE"],
     from: ENV["TWILIO_PHONE"])

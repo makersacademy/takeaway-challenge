@@ -1,10 +1,10 @@
-require './lib/menu.rb'
 class Order
 
-  attr_reader :basket
+  attr_reader :basket, :cart
   def initialize(menu = Menu.new)
     @basket = Hash.new
     @menu = menu
+    @cart = []
   end
 
   def order(item_number, quantity = 1)
@@ -16,5 +16,9 @@ class Order
       @total = @menu.meals[k] * v
     end
     @total
+  end
+
+  def send_text(confirmation = Confirmation.new)
+    confirmation.place_order
   end
 end

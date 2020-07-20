@@ -15,3 +15,10 @@ class Menu
     @meals
   end
 end
+
+# @meals = {
+#   1 => {:padthai => 6.00},
+#   2 => {:massamancurry => 7.00},
+#   3 => {:bokchoi => 2.00},
+#   4 => {:rice => 1.00}
+# }
