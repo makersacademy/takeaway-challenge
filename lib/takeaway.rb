@@ -5,6 +5,7 @@ class Takeaway
     def initialize(menu:, order: nil)
         @menu = menu
         @order = order || Order.new
+        @sms = sms
     end
 
     def print_list
@@ -20,5 +21,5 @@ class Takeaway
 
     private
 
-    attr_reader :menu, :order
+    attr_reader :menu, :order, :sms
 end

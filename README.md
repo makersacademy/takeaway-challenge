@@ -90,3 +90,6 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 |         | Verify |
 |         | Text   |
 |         |         |
+
+ref:
+[Sam Morgan](https://www.youtube.com/watch?v=mgiJKdH9x8c&t=2644s)
