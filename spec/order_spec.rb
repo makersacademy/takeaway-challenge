@@ -1,4 +1,5 @@
 require "order"
+require "menu"
 
 describe Order do
     subject(:order) { described_class.new(menu) }
@@ -14,6 +15,9 @@ describe Order do
     before do
        allow(menu).to receive(:has_dish?).with(:chicken).and_return(true)
        allow(menu).to receive(:has_dish?).with(:beef).and_return(true)
+
+       allow(menu).to receive(:price).with(:chicken).and_return(2)
+       allow(menu).to receive(:price).with(:beef).and_return(1)
     end
 
     it "selects several dishes from the menu" do
@@ -25,5 +29,12 @@ describe Order do
     it "doesn't allow items to be added that are not on the menu" do
       allow(menu).to receive(:has_dish?).with(:prawns).and_return(false)
        expect{ order.add(:prawns, 5) }.to raise_error NoItemError, "Prawns are not available"
+    end
+
+    it "calculates the total" do
+        order.add(:chicken, 2)
+        order.add(:beef, 1) 
+        total = 6.00
+        expect(order.total).to eq(total)
     end
 end 
