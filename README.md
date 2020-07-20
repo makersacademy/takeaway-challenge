@@ -81,3 +81,15 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+| Nouns | Verbs |
+| --- | ---|
+|Customer | see(print)|
+|         | Select |
+|         | Verify |
+|         | Text   |
+|         |         |
+
+ref:
+[Sam Morgan](https://www.youtube.com/watch?v=mgiJKdH9x8c&t=2644s)
