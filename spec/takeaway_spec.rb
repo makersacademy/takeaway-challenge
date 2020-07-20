@@ -27,4 +27,18 @@ describe Takeaway do
       expect(subject.total).to eq("Your order of 3 items comes to a total of £26")
     end
   end
+
+  describe '#view_order' do
+    it 'shows the current order' do
+      subject.add_dish("sashimi")
+      expect(subject.view_order).to eq("Your order of 1 items comes to a total of £14")
+    end
+  end
+
+  describe '#confirm_order' do
+    it 'sends a confirmation text' do  
+      subject.add_dish("bento")
+      expect(subject).to respond_to(:confirm_order)
+    end
+  end
 end
