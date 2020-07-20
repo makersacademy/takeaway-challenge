@@ -37,7 +37,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 Difficulties
 -----
-For the moment, my app is not complete. I failed to implement TDD and DDD approaches which cost me time and effort down the line. The app is working but is not completely tested with Rspec as I experienced difficulties with 'stub', 'gets', 'chomp' and 'while' in Rspec.
+For the moment, my app is not complete. I failed to implement TDD and BDD approaches which cost me time and effort down the line. The app is working but is not completely tested with Rspec as I experienced difficulties with 'stub', 'gets', 'chomp' and 'while' in Rspec.
 
 Moreover, Twilio returns an error for me : saying that my smartphone does not support text messaging. I am not sure of the cause of this error message. At this time, I could not find any solution to this problem.
 
