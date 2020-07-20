@@ -43,8 +43,8 @@ class Takeaway
   end
 
   def confirm_order
-    account_sid = 'AC51ce1f5ee87d8cf24e9fc28e47d49788'
-    auth_token = '8b14e35f0332fcd828c1f4465cb80d27'
+    account_sid = #my account sid
+    auth_token = #my auth token 
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = #my Twilio number
