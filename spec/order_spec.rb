@@ -24,6 +24,6 @@ describe Order do
 
     it "doesn't allow items to be added that are not on the menu" do
       allow(menu).to receive(:has_dish?).with(:prawns).and_return(false)
-       expect{ order.add(:prawns, 5) }.to raise_error "Prawns are not available"
+       expect{ order.add(:prawns, 5) }.to raise_error NoItemError, "Prawns are not available"
     end
 end 
