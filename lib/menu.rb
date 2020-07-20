@@ -10,4 +10,9 @@ class Menu
         "%s £%.2f" % [name.to_s.capitalize, price]
       }.join(", ")  
     end
+
+    def has_dish?(dish)
+      !dishes[dish].nil?
+    end
+
 end

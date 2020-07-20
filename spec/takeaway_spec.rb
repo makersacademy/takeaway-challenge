@@ -17,4 +17,11 @@ describe Takeaway do
         expect(order).to receive(:add).twice
         takeaway.create_order(dishes)
     end
+
+
+  it "knows the order total" do
+    allow(order).to receive(:add)
+    total = takeaway.create_order(dishes)
+    expect(total).to eq(10.90)
+  end
 end

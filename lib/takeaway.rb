@@ -13,10 +13,12 @@ class Takeaway
 
     def create_order(dishes)
         dishes.each { |dish, amount|
-          @order.add(dish, amount)
+          order.add(dish, amount)
         }
+        order.total
     end
 
     private
-    attr_reader :menu
+
+    attr_reader :menu, :order
 end
