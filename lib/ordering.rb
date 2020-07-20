@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 attr_reader :grand_total
@@ -10,10 +11,9 @@ attr_reader :grand_total
     @quantities_list = []
     @menu = menu
     @menu.display
-    clients_order
   end
 
-  def clients_order
+  def make_order
     puts "Please enter you orders' numbers one by one. When finish, type 'checkout'."
     while true do
       clients_choice = STDIN.gets.chomp
@@ -58,6 +58,13 @@ attr_reader :grand_total
       prices_with_quantities << (price * quantities[n])
       n += 1
     end
-    prices_with_quantities.inject(:+) == total ? Text.new : raise("Sum dishes and total don't match.")
+    prices_with_quantities.inject(:+) == total ? true : raise("Sum dishes and total don't match.")
+    confirm
+  end
+
+  def confirm
+    puts "Please enter your phone number to get confirmation."
+    number = STDIN.gets.chomp
+    Text.new.send_confirmation(number)
   end
 end

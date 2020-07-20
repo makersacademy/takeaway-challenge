@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :list, :prices, :categories
+  attr_reader :list, :prices
 
   def initialize
 
