@@ -1,3 +1,8 @@
+N.B. I used this weekend challenge as an exercise in
+understanding problem solving and strategies. As such,
+I used the video exemplar, provided on Sam Morgan's Youtube
+channel
+
 Takeaway Challenge
 ==================
 ```
