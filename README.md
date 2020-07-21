@@ -14,6 +14,41 @@ Takeaway Challenge
 
  ```
 
+
+Ist User Story:
+
+nouns: customer, list of dishes, prices
+verb : order something, see a list
+
+Objects       |  Messages
+--------------|------------
+customer      |
+list of dishes| able to see list and prices
+order         | order something
+
+
+Takeaway             Dishes
+-------------       ---------
+order               @name
+Menu                @price
+
+
+I have completed my first story
+
+2nd User Story:
+
+nouns: customer, meal, dishes
+verbs: select, order
+
+Objects       |  Messages
+--------------|------------
+customer      |
+list of dishes| able to select from
+Meal          | order meal
+
+
+Still working on my 2nd user story.....
+
 Instructions
 -------
 
