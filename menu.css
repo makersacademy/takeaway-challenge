@@ -1,0 +1,26 @@
+
+head {
+  padding: 15px;
+  background-color: rgba(255,255,255,0.7);
+  box-shadow: 1px 0 3px rgba(0,0,0,0.3);
+}
+body {
+  background-image: url(./beach.jpeg);
+  text-align: center;
+  color: purple;
+  font-family: Helvetica, Arial;
+  margin: 0;
+  padding: 0;
+}
+
+.low-usage {
+  color: green;
+}
+
+.medium-usage {
+  color: darkorange;
+}
+
+.high-usage {
+  color: red;
+}
