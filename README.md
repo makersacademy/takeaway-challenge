@@ -14,6 +14,15 @@ Takeaway Challenge
 
  ```
 
+COMPLETION RECORD
+----------------
+
+User_story 1 - created a DishesList class that instantiates dishes with name and price
+               created a Menu class that displays a menu
+User_story 2 - created an Order class that:
+                  * saves the ordered dishes in an hash
+                  * calculates the order total
+
 Instructions
 -------
 
