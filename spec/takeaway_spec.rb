@@ -19,4 +19,11 @@ describe Takeaway do
       expect(subject).to respond_to(:add_item).with(2).arguments
     end
   end
+
+  describe '#order_total' do
+    it 'returns total price of order' do
+      subject.add_item('fried rice', 3)
+      expect(subject.order_total).to eq 11.50
+    end
+  end
 end
