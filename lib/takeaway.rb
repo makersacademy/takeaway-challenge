@@ -8,5 +8,8 @@ class Takeaway
     @menu = Menu.new
     @order = Order.new
   end
+
+  def add_item(item, quantity = 1)
   
+  end
 end

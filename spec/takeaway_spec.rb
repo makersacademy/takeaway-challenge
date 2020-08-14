@@ -16,7 +16,7 @@ describe Takeaway do
   
   describe '#add_item' do
     it 'takes two arguments' do
-      expect(subject.add_item).to take 2.arguments
+      expect(subject).to respond_to(:add_item).with(2).arguments
     end
   end
 end
