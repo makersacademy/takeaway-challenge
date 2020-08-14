@@ -1,7 +1,13 @@
 require_relative 'takeaway_kitchen'
 
 class OrderSystem
+  attr_reader :menu
+
+  def initialize
+    @menu = TakeawayKitchen.new.menu
+  end
+
   def view_menu
-    { dish: "dish", price: 1 }
+    menu
   end
 end
