@@ -11,4 +11,8 @@ class OrderSystem
   def view_menu
     menu
   end
+
+  def add_to_order(dish, quantity=1)
+    order << {dish: dish, quantity: quantity}
+  end
 end

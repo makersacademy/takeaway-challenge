@@ -1,7 +1,7 @@
 require 'ordersystem'
 
 describe OrderSystem do
-  let(:dish) { double :dish}
+  let(:dish) { double :dish }
   let(:takeaway) { TakeawayKitchen.new.menu }
   
   it 'returns the menu from TakeawayKitchen' do
