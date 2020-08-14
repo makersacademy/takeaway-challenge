@@ -10,5 +10,4 @@ describe Takeaway do
   it 'intializes with instance of order accessible with .order' do
     expect(subject.order).to be_instance_of Order
   end
-
 end

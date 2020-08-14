@@ -18,4 +18,10 @@ describe Order do
       expect{ subject.add('fried rice', 1, 3.50) }.to change {subject.order.count}.by 1
     end
   end
+  describe '#total' do
+    it 'should return the total cost of the order' do
+      subject.add('crispy chilli beef', 5.50, 3)
+      expect(subject.total).to eq 16.50
+    end
+  end
 end
