@@ -9,6 +9,10 @@ class Order
   end
 
   def total
-  
+    total = 0
+    @order.each do |hash|
+      total += (hash[:price] * hash[:quantity])
+    end
+    total
   end
 end
