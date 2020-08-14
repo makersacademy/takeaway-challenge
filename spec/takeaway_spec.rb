@@ -26,4 +26,10 @@ describe Takeaway do
       expect(subject.order_total).to eq 10.50
     end
   end
+  describe '#check_order' do
+    it 'returns list items in order' do
+      subject.add_item('fried rice', 2)
+      expect(subject.check_order).to contain({ :item => 'fried rice', :price => 3.50, :quantity => 2 })
+    end
+  end
 end
