@@ -8,7 +8,7 @@ describe Menu do
     expect(subject.menu.count).to be >= 1
   end
   
-  define '#price' do
+  describe '#price' do
     let(:menu) { {:item => "spring rolls", :price => 3} }
     it 'returns the price of an item' do
       expect(subject.price("spring rolls")). to eq 3
