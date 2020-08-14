@@ -6,3 +6,7 @@ group :test do
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
 end
+
+group :development do
+  gem 'twilio-ruby', '~> 5.39.3'
+end

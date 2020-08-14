@@ -3,3 +3,6 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+# Twilio env variables
+twilio.env
