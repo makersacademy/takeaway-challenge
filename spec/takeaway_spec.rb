@@ -23,7 +23,7 @@ describe Takeaway do
   describe '#order_total' do
     it 'returns total price of order' do
       subject.add_item('fried rice', 3)
-      expect(subject.order_total).to eq 11.50
+      expect(subject.order_total).to eq 10.50
     end
   end
 end

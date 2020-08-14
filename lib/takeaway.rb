@@ -10,6 +10,10 @@ class Takeaway
   end
 
   def add_item(item, quantity = 1)
-    @order.add(item, '???', quantity)
+    @order.add(item, @menu.price(item), quantity)
+  end
+
+  def order_total
+    @order.total
   end
 end
