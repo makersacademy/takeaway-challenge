@@ -29,7 +29,8 @@ describe Takeaway do
   describe '#check_order' do
     it 'returns list items in order' do
       subject.add_item('fried rice', 2)
-      expect(subject.check_order).to contain({ :item => 'fried rice', :price => 3.50, :quantity => 2 })
+      expect(STDOUT).to receive(:puts).with("2 X fried rice for £3.5 each")
+      subject.check_order
     end
   end
 end
