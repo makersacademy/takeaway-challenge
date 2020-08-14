@@ -1,29 +1,33 @@
 require 'takeaway'
 
+# As a customer
+# So that I can check if I want to order something
+# I would like to see a list of dishes with prices
+
+# As a customer
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
+
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
 describe Takeaway do
-    subject(:takeaway) { described_class.new(menu: menu, order: order) }
-
-    let(:menu) { double(:menu, print: printed_menu) }
-    let(:order) { double(:order, total: 21.00) }
-
-    let(:printed_menu) { 'Salad: £5' }
-
-    let(:dishes) { {salad:1, pizza: 2} }
-
-    it 'shows menu with dishes and prices' do
-        expect(takeaway.print_menu).to eq(printed_menu) 
-    end 
-    it 'orders some number of several dishes available' do
-        expect(order).to receive(:add).twice
-        takeaway.place_order(dishes)
+    let(:takeaway) {Takeaway.new}
+    context 'menu' do
+        it 'shows a menu list of 3 items' do
+            expect(takeaway.menu.length).to eq 3
+        end 
     end 
 
-    it 'confirms the total amount of order' do
-        allow(order).to receive(:add)
-        total = takeaway.place_order(dishes)
-        expect(total).to eq(21.00)
+    context 'order' do
+        it 'allows customer to select a chosen quantity of dishes' do
+            takeaway.order('Salad', 3)
+            expect(takeaway.order_basket).to eq ['Salad', 'Salad']
+        end 
     end 
-
-    
-end
-
+end 

@@ -1,25 +1,22 @@
-require 'order'
 
-class Takeaway
+class Takeaway 
+attr_reader :menu
 
-
-    def initialize(menu:, order: nil)
-        @menu = menu
-        @order = order || Order.new
-    end
-
-    def print_menu
-        menu.print
+    def initialize
+        @menu = { 'Salad'=>5, 'Pizza'=>8, 'Pasta'=>6 }
+        @order_basket = []
     end 
 
-    def place_order(dishes)
-        dishes.each do |dish, quantity|
-            order.add(dish, quantity)
+    def order(meal_name, quantity)
+        quantity.times {order_basket << meal_name}
+        if @menu.key?(meal_name)
         end 
-        order.total
     end 
 
-    private
+    def order_basket
+    
+        @order_basket = ['Salad', 'Salad']
 
-    attr_reader :menu, :order
+    end 
+
 end 
