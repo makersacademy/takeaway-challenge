@@ -10,5 +10,11 @@ describe Takeaway do
   it 'intializes with instance of order accessible with .order' do
     expect(subject.order).to be_instance_of Order
   end
+  it 'has a method add' do
+    expect(subject).to respond_to(:add)
+  end
+  it 'has a method total' do
+    expect(subject).to respond_to(:total)
+  end
 
 end
