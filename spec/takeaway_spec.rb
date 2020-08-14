@@ -4,7 +4,7 @@ describe Takeaway do
   it "should exist" do
     expect(subject).to be_instance_of Takeaway
   end
-  it 'should respond to menu' do
-    expect(subject).to respond_to(:menu)
+  it 'intialize with instance of menu accessible with .menu' do
+    expect(subject.menu).to be_instance_of Menu
   end
 end
