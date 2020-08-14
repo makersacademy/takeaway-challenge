@@ -3,4 +3,12 @@ class Order
   def initialize
     @order = []
   end
+
+  def add(item)
+
+  end
+
+  def total
+  
+  end
 end
