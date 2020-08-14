@@ -9,9 +9,8 @@ describe Menu do
   end
   
   describe '#price' do
-    let(:menu) { {:item => "spring rolls", :price => 3} }
     it 'returns the price of an item' do
-      expect(subject.price("spring rolls")). to eq 3
+      expect(subject.price("spring rolls")).to eq 3.00
     end
   end
 end
