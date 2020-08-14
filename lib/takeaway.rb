@@ -8,4 +8,5 @@ class Takeaway
     @menu = Menu.new
     @order = Order.new
   end
+  
 end
