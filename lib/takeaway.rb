@@ -1,4 +1,5 @@
 
+
 class Order
 
 	attr_reader :menu
@@ -9,6 +10,13 @@ class Order
 		@menu
 	end
 
+  def start
 
+  end
+
+
+  def finish
+
+  end
 
 end
