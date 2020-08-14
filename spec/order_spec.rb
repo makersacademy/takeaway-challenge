@@ -13,4 +13,9 @@ describe Order do
   it 'has a method total' do
     expect(subject).to respond_to(:total)
   end
+  describe '#add' do
+    it 'should add an item to the order' do
+      expect{ subject.add('fried rice', 1, 3.50) }.to change {subject.order.count}.by 1
+    end
+  end
 end

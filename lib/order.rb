@@ -4,8 +4,8 @@ class Order
     @order = []
   end
 
-  def add(item)
-
+  def add(item, price, quantity)
+    
   end
 
   def total
