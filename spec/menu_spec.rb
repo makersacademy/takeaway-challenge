@@ -8,8 +8,8 @@ describe Menu do
   it { is_expected.to respond_to(:view) }
 
   describe '#view' do
-    it 'will output the menu' do
-        expect(subject.view).to eq({:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00})
+    it 'will print the menu' do
+        expect(subject.view).to output({:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00}).to_stdout
     end
   end
 end
