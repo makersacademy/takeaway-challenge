@@ -1,21 +1,21 @@
 require_relative 'menu'
-require 'order'
+require_relative 'order'
 
 class Takeaway
 
 	attr_reader :menu
 	attr_reader :avail_dishes
+	attr_reader :order
 
 
 	def initialize
 		@menu = Menu.new
-		@order = Order.new
+		@order = nil
 	end
 
-  def start_order(dishes)
-
+  def place_order
+    @order = Order.new
   end
-
 
   def finish_order
 

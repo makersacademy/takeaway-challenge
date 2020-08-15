@@ -11,7 +11,7 @@ describe Takeaway do
   end
 
   it 'responds to start method' do
-  	expect(subject).to respond_to(:start_order).with(1).argument
+  	expect(subject).to respond_to(:place_order)
   end
 
   #describe 'start_order' do
