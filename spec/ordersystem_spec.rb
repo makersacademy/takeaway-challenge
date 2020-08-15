@@ -30,7 +30,7 @@ describe OrderSystem do
     end
 
     it 'only allows menu items to be added' do
-      
+      expect { subject.add_to_order "fake dish"}.to raise_error "This isn't on the menu"
     end
   end
 
