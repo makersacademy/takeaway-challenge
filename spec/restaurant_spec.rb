@@ -25,6 +25,11 @@ describe Restaurant do
       subject.new_order(customer)
       expect{subject.print_bill}.to output("Your Order: \n1. Pizza - Price: 12\n2. Soup - Price: 3\nTotal: 15\n").to_stdout
     end
+
+    it "Raise an error if you trey to get the bill without order" do 
+      expect { subject.print_bill }.to raise_error "You need to order first"
+    end
+
   end
 
   describe "#send_confirmation" do 
