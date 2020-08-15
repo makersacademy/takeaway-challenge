@@ -1,8 +1,8 @@
 require "restaurant"
 
 describe Restaurant do 
-  let(:customer) { double("Customer", place_order: ["pizza", "soup"] ) }
-  before (:each) do 
+  let(:customer) { double("Customer", place_order: ["pizza", "soup"]) }
+  before(:each) do 
     allow(subject).to receive(:send_sms)
   end
   
