@@ -1,4 +1,5 @@
 require_relative "menu"
+require_relative "customer"
 
 class Restaurant
 
@@ -9,7 +10,8 @@ class Restaurant
     @menu = @new_menu.menu
   end
 
-  def customers
+  def new_order(new_custumer)
+    new_custumer.place_order
   end
 
   def print_bill(order)
