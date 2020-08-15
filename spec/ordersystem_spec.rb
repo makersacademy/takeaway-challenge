@@ -2,6 +2,8 @@ require 'ordersystem'
 
 describe OrderSystem do
   let(:dish) { double :dish }
+  let(:price) { double :price }
+  let(:item) { { dish: dish, price: 1 } }
   let(:takeaway) { TakeawayKitchen.new.menu }
   
   it 'returns the menu from TakeawayKitchen' do
@@ -9,7 +11,7 @@ describe OrderSystem do
   end
 
   it 'initializes with an empty order' do
-    expect(subject.order).to be_empty
+    expect(subject.my_order).to be_empty
   end
 
   describe '#view_menu' do
@@ -22,8 +24,9 @@ describe OrderSystem do
     it { is_expected.to respond_to(:add_to_order).with(2).argument }
 
     it 'increases order count' do
+      subject.menu << item
       subject.add_to_order(dish)
-      expect(subject.order.count).to eq 1
+      expect(subject.my_order.count).to eq 1
     end
   end
 end
