@@ -11,10 +11,10 @@ describe Restaurant do
     end
   end
   
-  describe "#bill" do 
-    it { expect(subject).to respond_to(:bill) } 
+  describe "#print_bill" do 
+    it { expect(subject).to respond_to(:print_bill) } 
     it "prints the bill for the last order" do 
-      expect{subject.bill(["pizza", "soup"])}.to output("Your Order: \n1. Pizza - Price: 12\n2. Soup - Price: 3\nTotal: 15\n").to_stdout
+      expect{subject.print_bill(["pizza", "soup"])}.to output("Your Order: \n1. Pizza - Price: 12\n2. Soup - Price: 3\nTotal: 15\n").to_stdout
     end
   end
   

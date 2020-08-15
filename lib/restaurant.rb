@@ -12,7 +12,7 @@ class Restaurant
   def customers
   end
 
-  def bill(order)
+  def print_bill(order)
     counter = 1
     price = 0
     puts "Your Order: " 
