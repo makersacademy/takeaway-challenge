@@ -2,8 +2,8 @@ require 'ordersystem'
 
 describe OrderSystem do
   let(:dish) { double :dish }
-  let(:price) { double :price }
-  let(:item) { { dish: dish, price: 1 } }
+  let(:option_one) { { dish: dish, price: 3 } }
+  let(:option_two) { { dish: dish, price: 5 } }
   let(:takeaway) { TakeawayKitchen.new.menu }
   
   it 'returns the menu from TakeawayKitchen' do
@@ -24,17 +24,19 @@ describe OrderSystem do
     it { is_expected.to respond_to(:add_to_order).with(2).argument }
 
     it 'increases order count' do
-      subject.menu << item
+      subject.menu << option_one
       subject.add_to_order dish
       expect(subject.order.count).to eq 1
     end
+
+    it 'only allows menu items to be added'
   end
 
   describe '#remove_from_order' do
     it { is_expected.to respond_to(:remove_from_order).with(2).argument }
 
     it 'decreases order count' do
-      subject.order << item
+      subject.order << option_one
       subject.remove_from_order dish
       expect(subject.order).to be_empty
     end
@@ -44,20 +46,33 @@ describe OrderSystem do
     end
 
     it 'raises an error if it doesnt exist' do
-      subject.order << item
+      subject.order << option_one
       expect { subject.remove_from_order "fake_dish" }.to raise_error "This isn't on the order"
     end
   end
 
   describe '#view_order' do
     it { is_expected.to respond_to :view_order }
+
+    it 'shows the correct summary' do
+      subject.order << option_one
+      subject.order << option_two
+      expect(subject.view_order).to eq ("1 x #{dish} at £3\n1 x #{dish} at £5")
+      
+    end
   end
 
-  describe '#checkout' do
-    it { is_expected.to respond_to :checkout}
+  describe '#view_total' do
+    it { is_expected.to respond_to :total }
+
+    it 'returns the correct total' do
+      subject.order option_one
+      subject.order option_two
+      expect(subject.view_total).to eq 8
+    end
   end
 
   describe '#place_order' do
-    it { is_expected.to respond_to :place_order}
+    it { is_expected.to respond_to :place_order }
   end
 end

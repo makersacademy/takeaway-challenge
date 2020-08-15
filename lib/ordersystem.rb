@@ -16,7 +16,7 @@ class OrderSystem
     order << { dish: dish, quantity: quantity, price: calculate_price(dish, quantity) }
   end
 
-  def remove_from_order(dish, quantity = 1)
+  def remove_from_order(dish, _quantity = 1)
     fail "The order is currently empty" if empty?
 
     fail "This isn't on the order" if in_order? dish
@@ -41,7 +41,7 @@ class OrderSystem
   end
 
   def in_order?(dish)
-    order.any? {|item| item[:dish] == dish} == false
+    order.any? { |item| item[:dish] == dish } == false
   end
 
   def empty?
