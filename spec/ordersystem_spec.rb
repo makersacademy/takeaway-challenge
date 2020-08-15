@@ -37,7 +37,15 @@ describe OrderSystem do
       subject.menu << item
       subject.remove_from_order dish
       expect(subject.order).to be_empty
+    end
 
+    it 'raises an error if already empty' do
+      expect { subject.remove_from_order dish }.to raise_error "The order is already empty"
+    end
+
+    it 'raises an error if it doesnt exist' do
+      subject.menu << item
+      expect { subject.remove_from_order "fake_dish" }.to raise_error "This isn't on the order"
     end
   end
 
