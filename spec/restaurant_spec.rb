@@ -23,8 +23,15 @@ describe Restaurant do
       expect{subject.print_bill(["pizza", "soup"])}.to output("Your Order: \n1. Pizza - Price: 12\n2. Soup - Price: 3\nTotal: 15\n").to_stdout
     end
   end
-  
-  it { expect(subject).to respond_to(:confirmation) }
 
+  describe "#send_confirmation" do 
+
+    it { expect(subject).to respond_to(:send_confirmation) }
+
+    it "sends a confirmatio with date and time" do 
+      allow(subject).to receive(:Time).and_return("12:21:00")
+      expect(subject.send_confirmation).to eq "Thank you! Your order was placed and will be delivered before 13:21"
+    end
+  end
 
 end

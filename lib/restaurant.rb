@@ -26,7 +26,7 @@ class Restaurant
     puts "Total: #{price}"
   end
 
-  def confirmation
+  def send_confirmation
   end
 
 end
