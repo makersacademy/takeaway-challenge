@@ -9,6 +9,7 @@ class Menu
   end
 
   def get_price(dish_name)
+    fail "Sorry we don't have that this please check your order" if find_in_menu(dish_name) == nil
     find_in_menu(dish_name).values.join.to_i
   end
 
