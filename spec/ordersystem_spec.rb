@@ -29,7 +29,9 @@ describe OrderSystem do
       expect(subject.order.count).to eq 1
     end
 
-    it 'only allows menu items to be added'
+    it 'only allows menu items to be added' do
+      
+    end
   end
 
   describe '#remove_from_order' do
@@ -55,19 +57,19 @@ describe OrderSystem do
     it { is_expected.to respond_to :view_order }
 
     it 'shows the correct summary' do
-      subject.order << option_one
-      subject.order << option_two
-      expect(subject.view_order).to eq ("1 x #{dish} at £3\n1 x #{dish} at £5")
+      subject.order << { dish: dish, price: 3, quantity: 1 }
+      subject.order << { dish: dish, price: 5, quantity: 1 }
+      expect(subject.view_order).to eq ["#{dish} x 1 = £3", "#{dish} x 1 = £5"]
       
     end
   end
 
   describe '#view_total' do
-    it { is_expected.to respond_to :total }
+    it { is_expected.to respond_to :view_total }
 
     it 'returns the correct total' do
-      subject.order option_one
-      subject.order option_two
+      subject.order << option_one
+      subject.order << option_two
       expect(subject.view_total).to eq 8
     end
   end

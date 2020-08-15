@@ -26,12 +26,15 @@ class OrderSystem
   end
 
   def view_order
+    order.map { |item| p "#{item[:dish]} x #{item[:quantity]} = £#{item[:price]}" }
   end
 
-  def checkout
+  def view_total
+    order.map { |item| item[:price] }.compact.reduce(:+)
   end
 
   def place_order
+    
   end
 
   private
