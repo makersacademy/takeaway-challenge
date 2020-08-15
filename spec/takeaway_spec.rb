@@ -2,6 +2,11 @@ require 'takeaway'
 
 describe Takeaway do
 
+  before do
+    subject.place_order
+  end
+
+
 	it 'basic instance creation' do
 		expect(subject).to be_instance_of(Takeaway)
 	end
@@ -20,12 +25,17 @@ describe Takeaway do
   #  end
   #end
 
+  it 'allows customer to view order' do
+    expect(subject).to respond_to(:view_order)
+  end
+
+
   it 'responds to finish method' do
   	expect(subject).to respond_to(:finish_order)
   end
 
   it 'responds to finish method' do
-    expect(subject).to respond_to(:print_menu)
+    expect(subject).to respond_to(:view_menu)
   end
 
 
@@ -33,7 +43,7 @@ describe Takeaway do
 
     it 'returns a list of dishes when called' do
       choose = Menu.new
-      expect(subject.print_menu).to eq(choose.avail_dishes)
+      expect(subject.view_menu).to eq choose.avail_dishes 
     end
 
   end
