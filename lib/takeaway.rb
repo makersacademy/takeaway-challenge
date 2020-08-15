@@ -18,7 +18,7 @@ class Takeaway
   end
 
   def view_order
-  	@order.price_calc
+  	@order.total
   	@order.basket
   end
 

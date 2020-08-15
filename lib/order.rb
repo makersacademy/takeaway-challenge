@@ -24,14 +24,18 @@ class Order
 			item.each do |dish, quant|
 				@cost = menu.avail_dishes[dish] * quant
 				@receipt << @cost
-				@total = @receipt.inject(0){|sum,x| sum + x }
 			end
 		end
 	end
 
+  def total
+  	price_calc
+    @total = @receipt.inject(0){|sum,x| sum + x }
+  end
+
   def basket
+  	puts "Your order is as follows: "
   	puts ""
-  	puts "Your order is as follows: " 
   	@current_order.each do |item|
   		item.each do |dish, quant| 
   			puts "#{dish}, X #{quant} "
