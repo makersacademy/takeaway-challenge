@@ -3,7 +3,7 @@ class Menu
 
 	
 
-	def dishes
+	def avail_dishes
 		{
 			:salmon => "£3.50",
 			:chicken => "£4.50",

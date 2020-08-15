@@ -1,15 +1,18 @@
 require_relative 'menu'
+require 'order'
 
 class Takeaway
 
 	attr_reader :menu
+	attr_reader :avail_dishes
 
 
 	def initialize
 		@menu = Menu.new
+		@order = Order.new
 	end
 
-  def start_order
+  def start_order(dishes)
 
   end
 
@@ -19,9 +22,10 @@ class Takeaway
   end
 
   def print_menu
-    @menu.dishes.each do |dish, price|
-    	puts "#{dish.to_s}: #{price}"
-    end
+  	@menu.avail_dishes
+    #@menu.dishes.each do |dish, price|
+    	#{}"#{dish.to_s}: #{price}"
+    #end
   end
 
 end

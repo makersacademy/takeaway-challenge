@@ -11,8 +11,14 @@ describe Takeaway do
   end
 
   it 'responds to start method' do
-  	expect(subject).to respond_to(:start_order)
+  	expect(subject).to respond_to(:start_order).with(1).argument
   end
+
+  #describe 'start_order' do
+  #  it 'can place order' do
+  #    expect(subject.start_order(:dishes)).to eq()
+  #  end
+  #end
 
   it 'responds to finish method' do
   	expect(subject).to respond_to(:finish_order)
@@ -27,7 +33,7 @@ describe Takeaway do
 
     it 'returns a list of dishes when called' do
       choose = Menu.new
-      expect(subject.print_menu).to eq(choose.dishes)
+      expect(subject.print_menu).to eq(choose.avail_dishes)
     end
 
   end
