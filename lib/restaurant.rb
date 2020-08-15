@@ -15,6 +15,17 @@ class Restaurant
   end
 
   def print_bill
+    fail "You need to order first" if !@current_order
+    make_bill
+  end
+
+  def send_confirmation
+    "Thank you! Your order was placed and will be delivered before #{calculate_time}"
+  end
+
+  private 
+  
+  def make_bill 
     counter = 1
     price = 0
     puts "Your Order: " 
@@ -24,10 +35,6 @@ class Restaurant
       counter += 1
     end
     puts "Total: #{price}"
-  end
-
-  def send_confirmation
-    "Thank you! Your order was placed and will be delivered before #{calculate_time}"
   end
 
   def calculate_time
