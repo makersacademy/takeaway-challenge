@@ -59,7 +59,7 @@ describe OrderSystem do
     it 'shows the correct summary' do
       subject.order << { dish: dish, price: 3, quantity: 1 }
       subject.order << { dish: dish, price: 5, quantity: 1 }
-      expect(subject.view_order).to eq ["#{dish} x 1 = £3", "#{dish} x 1 = £5"]
+      expect { subject.view_order }.to output("#{dish} x 1 = £3\n#{dish} x 1 = £5\n").to_stdout
       
     end
   end

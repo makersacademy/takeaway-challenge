@@ -26,7 +26,7 @@ class OrderSystem
   end
 
   def view_order
-    order.map { |item| p "#{item[:dish]} x #{item[:quantity]} = £#{item[:price]}" }
+    order.map { |item| puts "#{item[:dish]} x #{item[:quantity]} = £#{item[:price]}" }
   end
 
   def view_total
