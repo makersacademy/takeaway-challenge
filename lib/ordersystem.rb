@@ -1,11 +1,11 @@
 require_relative 'takeaway_kitchen'
 
 class OrderSystem
-  attr_reader :menu, :my_order
+  attr_reader :menu, :order
 
   def initialize
     @menu = TakeawayKitchen.new.menu
-    @my_order = []
+    @order = []
   end
 
   def view_menu
@@ -13,7 +13,7 @@ class OrderSystem
   end
 
   def add_to_order(dish, quantity = 1)
-    my_order << { dish: dish, quantity: quantity, price: calculate_price(dish, quantity) }
+    order << { dish: dish, quantity: quantity, price: calculate_price(dish, quantity) }
   end
 
   private

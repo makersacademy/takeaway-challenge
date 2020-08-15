@@ -11,7 +11,7 @@ describe OrderSystem do
   end
 
   it 'initializes with an empty order' do
-    expect(subject.my_order).to be_empty
+    expect(subject.order).to be_empty
   end
 
   describe '#view_menu' do
@@ -25,8 +25,31 @@ describe OrderSystem do
 
     it 'increases order count' do
       subject.menu << item
-      subject.add_to_order(dish)
-      expect(subject.my_order.count).to eq 1
+      subject.add_to_order dish
+      expect(subject.order.count).to eq 1
     end
+  end
+
+  describe '#remove_from_order' do
+    it { is_expected.to rspond_to(:remove_from_order).with(2).argument }
+
+    it 'decreases order count' do
+      subject.menu << item
+      subject.remove_from_order dish
+      expect(subject.order).to be_empty
+
+    end
+  end
+
+  describe '#view_order' do
+    it { is_expected.to respond_to :view_order }
+  end
+
+  describe '#checkout' do
+    it { is_expected.to respond_to :checkout}
+  end
+
+  describe '#place_order' do
+    it { is_expected.to respond_to :place_order}
   end
 end
