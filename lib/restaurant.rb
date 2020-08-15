@@ -27,6 +27,10 @@ class Restaurant
   end
 
   def send_confirmation
+    time_now = Time.now.to_s
+    add_an_hour = time_now[11..12].to_i + 1
+    end_time = "#{add_an_hour}#{time_now[13..15]}"
+    "Thank you! Your order was placed and will be delivered before #{end_time}"
   end
 
 end

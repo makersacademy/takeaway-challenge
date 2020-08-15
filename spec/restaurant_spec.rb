@@ -29,7 +29,7 @@ describe Restaurant do
     it { expect(subject).to respond_to(:send_confirmation) }
 
     it "sends a confirmatio with date and time" do 
-      allow(subject).to receive(:Time).and_return("12:21:00")
+      allow(Time).to receive(:now).and_return("2020-08-15 12:21:18 +0300")
       expect(subject.send_confirmation).to eq "Thank you! Your order was placed and will be delivered before 13:21"
     end
   end
