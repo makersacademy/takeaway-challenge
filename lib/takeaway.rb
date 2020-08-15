@@ -1,26 +1,27 @@
 require_relative 'menu'
 
-class Order
+class Takeaway
 
 	attr_reader :menu
 
 
 	def initialize
-		@total = 0
 		@menu = Menu.new
 	end
 
-  def start
+  def start_order
 
   end
 
 
-  def finish
+  def finish_order
 
   end
 
   def print_menu
-    @menu.dishes
+    @menu.dishes.each do |dish, price|
+    	puts "#{dish.to_s}: #{price}"
+    end
   end
 
 end

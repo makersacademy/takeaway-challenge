@@ -1,9 +1,9 @@
 require 'takeaway'
 
-describe Order do
+describe Takeaway do
 
 	it 'basic instance creation' do
-		expect(subject).to be_instance_of(Order)
+		expect(subject).to be_instance_of(Takeaway)
 	end
 
   it 'responds to menu inst var' do
@@ -11,11 +11,11 @@ describe Order do
   end
 
   it 'responds to start method' do
-  	expect(subject).to respond_to(:start)
+  	expect(subject).to respond_to(:start_order)
   end
 
   it 'responds to finish method' do
-  	expect(subject).to respond_to(:finish)
+  	expect(subject).to respond_to(:finish_order)
   end
 
   it 'responds to finish method' do
