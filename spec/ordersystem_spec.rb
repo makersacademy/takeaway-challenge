@@ -31,20 +31,20 @@ describe OrderSystem do
   end
 
   describe '#remove_from_order' do
-    it { is_expected.to rspond_to(:remove_from_order).with(2).argument }
+    it { is_expected.to respond_to(:remove_from_order).with(2).argument }
 
     it 'decreases order count' do
-      subject.menu << item
+      subject.order << item
       subject.remove_from_order dish
       expect(subject.order).to be_empty
     end
 
     it 'raises an error if already empty' do
-      expect { subject.remove_from_order dish }.to raise_error "The order is already empty"
+      expect { subject.remove_from_order dish }.to raise_error "The order is currently empty"
     end
 
     it 'raises an error if it doesnt exist' do
-      subject.menu << item
+      subject.order << item
       expect { subject.remove_from_order "fake_dish" }.to raise_error "This isn't on the order"
     end
   end
