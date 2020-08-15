@@ -6,7 +6,8 @@ describe Restaurant do
     it { expect(subject).to respond_to(:new_order) }
     it "Return new custumer order" do 
       customer = double("Customer", place_order: ["pizza", "pasta"])
-      expect(subject.new_order(customer).length).to eq 2
+      subject.new_order(customer)
+      expect(subject.current_order.length).to eq 2
     end
   end
 

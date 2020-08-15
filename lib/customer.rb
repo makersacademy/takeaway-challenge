@@ -1,7 +1,7 @@
 
 class Customer 
 
-  attr_reader :order
+  attr_accessor :order
 
   def initialize(order)
     @order = order

@@ -3,7 +3,7 @@ require_relative "customer"
 
 class Restaurant
 
-  attr_reader :menu
+  attr_reader :menu, :current_order
 
   def initialize
     @new_menu = Menu.new
@@ -12,6 +12,8 @@ class Restaurant
 
   def new_order(new_custumer)
     @current_order = new_custumer.place_order
+    print_bill
+    send_confirmation
   end
 
   def print_bill
