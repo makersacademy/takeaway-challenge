@@ -13,7 +13,7 @@ class Restaurant
   def new_order(new_custumer)
     @current_order = new_custumer.place_order
     print_bill
-    send_sms(send_confirmation)
+    send_sms(confirmation)
   end
 
   def print_bill
@@ -22,7 +22,7 @@ class Restaurant
     make_bill
   end
 
-  def send_confirmation
+  def confirmation
     fail "You need to order first" unless @current_order
     "Thank you! Your order was placed and will be delivered before #{calculate_time}"
   end
