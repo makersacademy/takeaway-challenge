@@ -20,6 +20,7 @@ class Restaurant
   end
 
   def send_confirmation
+    fail "You need to order first" if !@current_order
     "Thank you! Your order was placed and will be delivered before #{calculate_time}"
   end
 
