@@ -1,4 +1,4 @@
-
+require_relative 'menu'
 
 class Order
 
@@ -7,7 +7,7 @@ class Order
 
 	def initialize
 		@total = 0
-		@menu
+		@menu = Menu.new
 	end
 
   def start
@@ -17,6 +17,10 @@ class Order
 
   def finish
 
+  end
+
+  def print_menu
+    @menu.dishes
   end
 
 end
