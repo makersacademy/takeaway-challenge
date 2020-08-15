@@ -4,10 +4,20 @@ describe Takeaway do
 let(:menu) { double :menu }
 
 subject {described_class.new(menu)}
+
+it { is_expected.to respond_to(:pick) }
   
   describe '#initialize' do
     it 'creates a menu' do
     expect(subject.menu).to eq menu
     end
   end
+
+ #describe '#pick' do
+   # it 'returns items user selected' do
+        
+    #    allow(menu).to receive(:view).and_return(:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00)
+   #   expect(subject.pick).to eq :Chicken => 5.00, :Burger => 5.00
+ #   end
+#  end
 end

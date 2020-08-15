@@ -10,7 +10,5 @@ class Menu
      
     end
 
-    def select
-      #ask user what dish they want and how many
-    end
+   
 end

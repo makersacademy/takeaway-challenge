@@ -6,4 +6,9 @@ class Takeaway
     def initialize(menu= Menu.new)
         @menu = menu
     end
+
+    def pick
+        @menu.view
+       
+    end
 end
