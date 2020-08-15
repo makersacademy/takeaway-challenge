@@ -17,12 +17,14 @@ class Restaurant
   end
 
   def print_bill
-    fail "You need to order first" if !@current_order
+    fail "You need to order first" unless @current_order
+
     make_bill
   end
 
   def send_confirmation
-    fail "You need to order first" if !@current_order
+    fail "You need to order first" unless @current_order
+
     "Thank you! Your order was placed and will be delivered before #{calculate_time}"
   end
 
@@ -43,7 +45,7 @@ class Restaurant
   def calculate_time
     time_now = Time.now.to_s
     add_an_hour = time_now[11..12].to_i + 1
-    end_time = "#{add_an_hour}#{time_now[13..15]}"
+    "#{add_an_hour}#{time_now[13..15]}"
   end
 
 end

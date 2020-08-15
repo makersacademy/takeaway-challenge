@@ -22,9 +22,9 @@ describe Restaurant do
     it { expect(subject).to respond_to(:print_bill) } 
     
     it "prints the bill for the last order" do 
-      customer = double("customer", place_order:["pizza", "soup"])
+      customer = double("customer", place_order: ["pizza", "soup"])
       subject.new_order(customer)
-      expect{subject.print_bill}.to output("Your Order: \n1. Pizza - Price: 12\n2. Soup - Price: 3\nTotal: 15\n").to_stdout
+      expect { subject.print_bill }.to output("Your Order: \n1. Pizza - Price: 12\n2. Soup - Price: 3\nTotal: 15\n").to_stdout
     end
 
     it "Raise an error if you trey to get the bill without order" do 
@@ -38,7 +38,7 @@ describe Restaurant do
     it { expect(subject).to respond_to(:send_confirmation) }
 
     it "sends a confirmatio with date and time" do 
-      customer = double("customer", place_order:["pizza", "soup"])
+      customer = double("customer", place_order: ["pizza", "soup"])
       subject.new_order(customer)
       allow(Time).to receive(:now).and_return("2020-08-15 12:21:18 +0300")
       expect(subject.send_confirmation).to eq "Thank you! Your order was placed and will be delivered before 13:21"
