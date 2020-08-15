@@ -1,5 +1,5 @@
 require_relative "menu"
-require_relative "customer"
+require_relative 'send_message'
 
 class Restaurant
 
@@ -13,7 +13,7 @@ class Restaurant
   def new_order(new_custumer)
     @current_order = new_custumer.place_order
     print_bill
-    send_confirmation
+    send_sms(send_confirmation)
   end
 
   def print_bill
@@ -24,9 +24,9 @@ class Restaurant
 
   def send_confirmation
     fail "You need to order first" unless @current_order
-
     "Thank you! Your order was placed and will be delivered before #{calculate_time}"
   end
+
 
   private 
   

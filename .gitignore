@@ -4,4 +4,4 @@
 # Local cache of Rubocop remote config
 .rubocop-*
 
-lib/.ENV
+.env

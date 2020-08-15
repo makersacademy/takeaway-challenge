@@ -6,6 +6,7 @@ describe Restaurant do
     it { expect(subject).to respond_to(:new_order) }
     it "Return new custumer order" do 
       customer = double("Customer", place_order: ["pizza", "pasta"])
+      allow(subject).to receive(:send_sms).and_return(nil)
       subject.new_order(customer)
       expect(subject.current_order.length).to eq 2
     end
@@ -23,6 +24,7 @@ describe Restaurant do
     
     it "prints the bill for the last order" do 
       customer = double("customer", place_order: ["pizza", "soup"])
+      allow(subject).to receive(:send_sms).and_return(nil)
       subject.new_order(customer)
       expect { subject.print_bill }.to output("Your Order: \n1. Pizza - Price: 12\n2. Soup - Price: 3\nTotal: 15\n").to_stdout
     end
@@ -39,6 +41,7 @@ describe Restaurant do
 
     it "sends a confirmatio with date and time" do 
       customer = double("customer", place_order: ["pizza", "soup"])
+      allow(subject).to receive(:send_sms).and_return(nil)
       subject.new_order(customer)
       allow(Time).to receive(:now).and_return("2020-08-15 12:21:18 +0300")
       expect(subject.send_confirmation).to eq "Thank you! Your order was placed and will be delivered before 13:21"
