@@ -1,6 +1,6 @@
 require 'order'
 
-describe 'Order' do
+describe Order do
 
   it 'returns menu item from dishes hash' do
     menu = double("menu")
@@ -8,10 +8,12 @@ describe 'Order' do
   end
 
   it 'customer order is empty before customer input' do
-    order = Order.new
-    expect(order.customer_order).to eq([])
+    expect(subject.customer_order).to eq({})
   end
 
-
+  it 'customers order and quantity is added to a hash' do
+    subject.customer_selection("Shepards pie", 2)
+    expect(subject.customer_order.count).to eq(1)
+  end
 
 end
