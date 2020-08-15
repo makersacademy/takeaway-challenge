@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 let(:menu) { double :menu }
-let(:order) {double :order }
+let(:first_order) {double :first_order }
 subject {described_class.new(menu)}
 
 
@@ -17,10 +17,11 @@ it { is_expected.to respond_to(:pick) }
  describe '#new_order' do
    
    it 'creates a new order' do
-    allow(subject).to receive(:new_order).and_return order
+    allow(subject).to receive(:new_order).and_return first_order
+    
     allow(menu).to receive(:view).and_return(:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00)
     subject.pick 
-    expect(subject.order).to eq order
+    expect(subject.new_order).to eq first_order
    end
 
    # it 'returns items user selected' do
