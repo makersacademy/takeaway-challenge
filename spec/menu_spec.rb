@@ -7,7 +7,7 @@ describe Menu do
 
   it { is_expected.to respond_to(:view) }
 
-  it { is expected.to respond_to(:select).with(1).argument }
+  it { is_expected.to respond_to(:select) }
 
   describe '#view' do
   
