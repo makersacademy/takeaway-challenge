@@ -27,6 +27,7 @@ class Takeaway
 
   def check_order
     @order.order.each { |x| puts "#{x[:quantity]} X #{x[:item]} for £#{x[:price]} each" }
+    puts "For a total of £#{@order.total}"
   end
 
   def place_order
