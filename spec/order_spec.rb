@@ -11,7 +11,7 @@ describe Order do
 
     it "pushes hash onto @order" do
       subject.add("spring rolls", 1, 1.99)
-      item = { :item => "spring rolls", :quantity => 1, :price => "£1.99 each" }
+      item = { :item => "spring rolls", :quantity => 1, :price => 1.99 }
       expect(subject.order).to eq([item])
     end
   end
