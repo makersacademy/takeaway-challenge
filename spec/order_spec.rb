@@ -4,7 +4,6 @@ describe Order do
 
   let(:Order) { Order.new }
   let(:dish) { double :dish }
-  let(:selection) { { dish: dish, quant: 3 } }
 
   it 'successfully creates instance of class' do
     expect(subject).to be_instance_of(Order)
@@ -21,20 +20,8 @@ describe Order do
     end
 
     it 'Error if item not on the menu' do
-      expect { subject.add "human flesh" }.to raise_error "Please select something from the menu"
-    end
-
-  end
-
-  it 'responds to price calculator method' do
-    expect(subject).to respond_to(:price_calc)
-  end
-
-  describe 'price_calc' do
-
-    it 'stores prices of all ordered dishes in receipt' do
-      subject.current_order = [{ :chicken => 2 }]
-      expect { subject.price_calc }.to change { subject.receipt }.from([]).to([9.0])
+      choice = "human"
+      expect { subject.add choice }.to raise_error "Please select something from the menu"
     end
 
   end
@@ -50,6 +37,11 @@ describe Order do
       expect { subject.checkout }.to change { subject.basket }.from([]).to(["chicken, X 2 "])
     end
 
+    it 'stores prices of all ordered dishes in receipt' do
+      subject.current_order = [{ :chicken => 2 }]
+      expect { subject.checkout }.to change { subject.receipt }.from([]).to([9.0])
+    end
+
   end
 
   it 'responds to print_basket method' do
@@ -62,6 +54,10 @@ describe Order do
       expect(subject.print_basket).to include("Total to pay:")
     end
 
+  end
+
+  it 'responds to total method' do
+    expect(subject).to respond_to(:total)
   end
 
 end

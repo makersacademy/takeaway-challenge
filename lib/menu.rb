@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Menu
 
   def avail_dishes
