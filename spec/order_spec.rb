@@ -17,15 +17,15 @@ describe Order do
 
   describe '#add_to_order' do
     it "Expects item to be added to an order" do
-      expect{(order.add_to_order("Pizza"))}.to change { order.order.count}.by (1)
+      expect{(order.add_to_order("Pizza", 8))}.to change { order.order.count}.by (1)
     end
   end
 
   describe '#order_total' do
     it "Expects correct total of order" do
-      order.add_to_order("Pizza")
-      order.add_to_order("Cheeseburger")
-      expect(order.order_total).to eq(12)
+      order.add_to_order("Pizza", 8)
+      order.add_to_order("Cheeseburger", 2, 4)
+      expect(order.order_total).to eq(16)
     end
   end
 end
