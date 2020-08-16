@@ -7,6 +7,13 @@ class Order
 
   def initialize
     @customer_order = {}
+    text
+  end
+
+  def text
+    puts "This is our takeaway menu for today:"
+    show_menu
+    customer_selection
   end
 
   def show_menu
@@ -17,11 +24,22 @@ class Order
     @customer_order[@dish] = @quantity
   end
 
-  def customer_selection(dish, quantity)
-    @dish = dish
-    @quantity = quantity
-    return add_dish if DISHES.keys.include? @dish
+  def customer_selection
+    while true do
+      puts "Pick a dish you'd like the add or type 'done' to finish your order."
+      @dish = gets.chomp
+      puts "Select quantity of dish"
+      @quantity = gets.chomp
+      if @dish == "done"
+        break
+      elsif DISHES.keys.include? @dish
+        add_dish
+      else !DISHES.keys.include? @dish
+        puts "This item isn't on the menu, please select something else."
+      end
+    end
   end
+
 
   def order_price
     prices = []
