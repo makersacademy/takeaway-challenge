@@ -12,6 +12,7 @@ class Takeaway
         @menu.view
         new_order
         #if it comes to it ask user for input
+        # array.push({:Burger => 5.00})
     end
 
     def new_order
