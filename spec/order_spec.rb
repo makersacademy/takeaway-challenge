@@ -1,4 +1,5 @@
 require 'order'
+require 'text'
 
 describe Order do
 

@@ -19,7 +19,6 @@ class Order
     customer_selection
     show_order
     order_price
-    send_message
   end
 
   def show_menu
@@ -32,9 +31,9 @@ class Order
 
   def customer_selection
     while true do
-      puts "Pick a dish you'd like the add or type 'done' to finish your order."
+      puts "Pick a dish you'd like the add or type 'done' twice to finish your order."
       @dish = gets.chomp
-      puts "Select quantity of dish"
+      puts "Select quantity of dish or type 'done' again to finish your order."
       @quantity = gets.chomp
       if @dish == "done"
         break
@@ -54,7 +53,6 @@ class Order
     end
   end
 
-
   def order_price
     prices = []
     @customer_order.each do |name, quantity|
@@ -63,7 +61,20 @@ class Order
       prices.push(price)
     end
      total = prices.sum
-     puts "The total price of your order is £#{total.ceil(2)}"
+     @total_rounded = total.round(2)
+     puts "The total price of your order is £#{@total_rounded}"
+     payment_confirmation
+  end
+
+  def payment_confirmation
+    puts "To confirm payment, please enter payment amount:"
+    price_confirm = gets.chomp.to_f
+    if price_confirm != @total_rounded
+      puts "Wrong amount, please try again."
+      order_price
+    else
+      return send_message
+    end
   end
 
 end
