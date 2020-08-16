@@ -43,7 +43,7 @@ class Order
 
   def print_basket
     show_menu = @menu.customer_view
-    puts "#{show_menu}" + "\n" + "Your order is as follows: " + "\n" + "#{basket}" + "\n" + "Total to pay: £#{@total}"
+    puts "#{show_menu}" + "\n" + "Your order is as follows: " + "\n"
     checkout
     puts basket
     puts "\n"
