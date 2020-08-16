@@ -21,13 +21,19 @@ class Takeaway
         @food_list
     end
 
+    def basket
+      @amount = @order.sum(@food_list) 
+      @amount
+      
+     end
+
     def new_order(order= Order.new)
         @order = order
     end
 
     def check_sum
-       fail 'incorrect sum' if @order.sum(@food_list) != add
-
+       fail 'incorrect sum' if @amount != add
+       true
     end
 
      private
