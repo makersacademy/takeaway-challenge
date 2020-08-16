@@ -19,4 +19,8 @@ class Order
     end
     @total
   end
+
+  def order_correct?
+    true if @total
+  end
 end

@@ -28,4 +28,10 @@ describe Order do
       expect(order.order_total).to eq(16)
     end
   end
+
+  it "Expects order to be correct" do
+    order.add_to_order("Pizza", 8)
+    order.add_to_order("Cheeseburger", 2, 4)
+    expect(order).to be_order_correct
+  end
 end
