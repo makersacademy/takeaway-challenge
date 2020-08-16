@@ -29,9 +29,9 @@ describe Takeaway do
       subject.add_item("spring rolls", 1)
     end
 
-    it "raises error if trying to add an item not on the menu" do
+    it "notifies user if trying to add an item not on the menu" do
       allow(menu).to receive(:on_menu?) { false }
-      expect { subject.add_item("pizza") }.to raise_error("Item not on menu")
+      expect(subject.add_item("pizza")).to eq("Item not on menu")
     end
   end
 
@@ -51,6 +51,12 @@ describe Takeaway do
     it "returns a confirmation text" do
       allow(order).to receive(:total) { 6.97 }
       expect(subject.order_total).to eq("Your order total is £6.97")
+    end
+  end
+
+  describe "confirm_order" do
+    it "notifies user if price is not the same" do
+      expect(subject.confirm_order(100)).to eq("Incorrect amount, please try again")
     end
   end
 end
