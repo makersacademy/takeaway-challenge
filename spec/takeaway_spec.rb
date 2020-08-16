@@ -32,4 +32,13 @@ it { is_expected.to respond_to(:check_sum) }
    #   expect(subject.pick).to eq :Chicken => 5.00, :Burger => 5.00
  #   end
   end
+
+  describe '#check_sum' do
+    it 'raises an error if sum is incorrect' do
+        
+        allow(first_order).to receive(:sum).and_return 18
+        subject.new_order(first_order)
+        expect{ subject.check_sum }.to raise_error 'incorrect sum'
+    end
+  end
 end

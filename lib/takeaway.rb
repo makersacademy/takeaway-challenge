@@ -15,7 +15,11 @@ class Takeaway
         # array.push({:Burger => 5.00})
     end
 
-    def new_order
-        @order = Order.new
+    def new_order(order= Order.new)
+        @order = order
+    end
+
+    def check_sum
+
     end
 end
