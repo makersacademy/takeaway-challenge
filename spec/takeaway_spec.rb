@@ -6,9 +6,11 @@ let(:first_order) {double :first_order }
 subject {described_class.new(menu)}
 
 
-it { is_expected.to respond_to(:pick) }
+it { is_expected.to respond_to(:pick).with(2).arguments }
   
 it { is_expected.to respond_to(:check_sum) }
+
+it { is_expected.to respond_to(:basket) }
 
   describe '#initialize' do
     it 'creates a menu' do
@@ -52,8 +54,18 @@ it { is_expected.to respond_to(:check_sum) }
 
   describe '#view' do
     it 'returns the menu list' do
-        allow(menu).to receive(:view).and_return({:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00})
-        expect(subject.view).to eq({:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00}) 
+        allow(menu).to receive(:view).and_return({"Burger" => 5.00, "Pizza" => 4.00, "Fish" => 6.00, "Chicken" => 5.00})
+        expect(subject.view).to eq({"Burger" => 5.00, "Pizza" => 4.00, "Fish" => 6.00, "Chicken" => 5.00}) 
+    end
+  end
+
+  describe '#basket' do
+    it 'returns total cost of order' do 
+        allow(menu).to receive(:menu).and_return({"Burger" => 5.00, "Pizza" => 4.00, "Fish" => 6.00, "Chicken" => 5.00}) 
+        subject.pick('Chicken', 2)
+        subject.pick('Fish', 1)
+        subject.pick('Pizza', 1)
+        expect(subject.basket).to eq 20
     end
   end
 end
