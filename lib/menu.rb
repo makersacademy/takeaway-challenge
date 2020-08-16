@@ -15,4 +15,8 @@ class Menu
     @items[item.to_sym]
   end
 
+  def on_menu?(item)
+    @items.include?(item.to_sym)
+  end
+
 end

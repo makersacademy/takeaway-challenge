@@ -13,4 +13,8 @@ class Takeaway
     @menu.view
   end
 
+  def add_item(item,quantity=1)
+    @order.add(item,quantity,@menu.price(item))
+  end
+
 end
