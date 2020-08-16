@@ -35,9 +35,10 @@ it { is_expected.to respond_to(:check_sum) }
 
   describe '#check_sum' do
     it 'raises an error if sum is incorrect' do
-        
-        allow(first_order).to receive(:sum).and_return 18
+        allow(subject).to receive(:add).and_return 11
+        allow(first_order).to receive(:sum).and_return 9
         subject.new_order(first_order)
+        p subject.order.sum
         expect{ subject.check_sum }.to raise_error 'incorrect sum'
     end
   end

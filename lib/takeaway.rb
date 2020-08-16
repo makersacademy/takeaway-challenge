@@ -6,6 +6,8 @@ class Takeaway
     
     def initialize(menu= Menu.new)
         @menu = menu
+        @total_price = 0
+        @food_list = []
     end
 
     def pick
@@ -20,6 +22,12 @@ class Takeaway
     end
 
     def check_sum
-
+       fail 'incorrect sum' if @order.sum != add
     end
+
+     private
+     def add
+        @food_list.each { |hash| hash.each {|food, price| @total_price += price } }
+        @total_price
+     end
 end
