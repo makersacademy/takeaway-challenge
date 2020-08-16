@@ -1,4 +1,13 @@
 class Menu
 
+  attr_reader :dishes
 
-end
+  def initialize(dishes)
+
+    @dishes = dishes
+
+  end
+
+   
+
+ end
