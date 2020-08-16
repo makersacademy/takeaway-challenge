@@ -18,7 +18,7 @@ module Text
    end
 
   def time
-    time = Time.now + 1800
+    time = Time.now + 3600
     time.strftime("%k:%M")
   end
 
