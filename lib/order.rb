@@ -1,6 +1,10 @@
+require_relative 'text'
+
 class Order
 
-  def initialize 
+  attr_accessor :menu ,:text
+
+  def initialize (text = Text_message.new)
     @menu = @menu = {
       "Sushi set" => 12,
       "Prawn katsu curry" => 9,
@@ -10,6 +14,7 @@ class Order
     }
     @total = 0
     @order = []
+    @text = text
   end
 
   def print_menu
@@ -22,7 +27,8 @@ class Order
          @order.push(food)
          print @order
       elsif food == 'done'
-        return order_total
+        puts  "Order total £#{order_total}"
+        @text.send_text
       elsif @menu.include?(food) == false
         puts "Item not on menu"
         return
