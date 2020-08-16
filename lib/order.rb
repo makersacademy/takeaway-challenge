@@ -23,7 +23,14 @@ class Order
     return add_dish if DISHES.keys.include? @dish
   end
 
-  def price_of_order
+  def order_price
+    prices = []
+    @customer_order.each do |name, quantity|
+      price = DISHES[name] * quantity
+      prices.push(price)
+    end
+    total = prices.sum
+    return "£#{total.ceil(2)}"
   end
 
 end
