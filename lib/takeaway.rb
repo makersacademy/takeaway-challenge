@@ -1,16 +1,23 @@
 class Takeaway
 
 
-def initialize(menu:)
-   @menu = menu
-end
+  def initialize(menu:, order: nil)
+    @menu = menu
+    @order = order
+  end
 
-def view_menu
-  menu.view
-end
+  def view_menu
+    menu.view
+  end
 
-private
+  def place_order(dishes)
+    dishes.each do |dish, quantity| 
+      order.add(dish, quantity)
+    end
+  end
 
-attr_reader :menu
+  private
+
+  attr_reader :menu, :order
 
 end
