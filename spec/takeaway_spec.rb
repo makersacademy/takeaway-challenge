@@ -25,6 +25,12 @@ describe Takeaway do
     it 'takes two arguments' do
       expect(subject).to respond_to(:add_item).with(2).arguments
     end
+    it 'gives an error if item is not on menu' do
+      expect { subject.add_item 'pad thai' }.to raise_error 'Item is not available'
+    end
+    it 'does not give an error if item is on menu' do
+      expect { subject.add_item 'spring rolls' }.not_to raise_error
+    end
   end
 
   describe '#order_total' do

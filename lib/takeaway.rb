@@ -18,6 +18,8 @@ class Takeaway
   end
 
   def add_item(item, quantity = 1)
+    raise 'Item is not available' unless @menu.menu.find { |x| x[:item] == item }
+
     @order.add(item, quantity, @menu.price(item))
   end
 
@@ -27,7 +29,6 @@ class Takeaway
 
   def check_order
     @order.order.each { |x| puts "#{x[:quantity]} X #{x[:item]} for £#{x[:price]} each" }
-    puts "For a total of £#{@order.total}"
   end
 
   def place_order
