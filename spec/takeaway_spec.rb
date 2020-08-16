@@ -15,9 +15,16 @@ describe Takeaway do
   end
   
   it 'allows customer to order different quantities of available dishes' do
+    allow(order).to receive(:total)
     expect(order).to receive(:add).twice
     takeaway.place_order(dishes)
-
   end   
+
+  it 'calculates the order total' do
+    allow(order).to receive(:add)
+    allow(order).to receive(:total).and_return(27.90)
+    total = takeaway.place_order(dishes)
+    expect(total).to eq(27.90)
+  end
 
 end
