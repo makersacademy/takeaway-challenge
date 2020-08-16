@@ -2,9 +2,9 @@ require_relative 'text'
 
 class Order
 
-  attr_accessor :menu ,:text
+  attr_accessor :menu, :text
 
-  def initialize (text = Text_message.new)
+  def initialize(text = Text_message.new)
     @menu = @menu = {
       "Sushi set" => 12,
       "Prawn katsu curry" => 9,
@@ -22,17 +22,16 @@ class Order
   end
 
   def user_order(food)
-    # puts "Please enter the names of the items you would like to order.\nPlease type 'done' when you've finished."
-      if @menu.include?(food) == true
-         @order.push(food)
-         print @order
-      elsif food == 'done'
-        puts  "Order total £#{order_total}"
-        @text.send_text
-      elsif @menu.include?(food) == false
-        puts "Item not on menu"
-        return
-      end
+    if @menu.include?(food) == true
+      @order.push(food)
+      print @order
+    elsif food == 'done'
+      puts "Order total £#{order_total}"
+      @text.send_text
+    elsif @menu.include?(food) == false
+      puts "Item not on menu"
+      return
+    end
   end
 
   def order_total
