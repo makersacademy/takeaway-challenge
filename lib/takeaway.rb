@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def finish_order
-
+    
   end
 
   def view_menu

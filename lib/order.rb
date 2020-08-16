@@ -15,9 +15,7 @@ class Order
   end
 
   def add(dish, quant = 1)
-    p dish.to_sym
-    p @menu.avail_dishes.any?(dish.to_sym)
-    fail "Please select something from the menu" if @menu.avail_dishes.any?(dish) == false
+    #fail "Please select something from the menu" if @menu.avail_dishes.any?(dish) == false
     @select = { dish.to_sym => quant }
     @current_order << @select
   end
@@ -30,9 +28,9 @@ class Order
   def checkout
     @current_order.each do |item|
       item.each do |dish, quant| 
-        @basket << "#{dish}, X #{quant} "
         @cost = menu.avail_dishes[dish] * quant
         @receipt << @cost
+        @basket << "#{dish}, X #{quant} "
       end
     end
   end
