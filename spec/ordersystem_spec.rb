@@ -69,11 +69,11 @@ describe OrderSystem do
     it 'returns the correct total' do
       subject.order << option_one
       subject.order << option_two
-      expect(subject.view_total).to eq "£8"
+      expect { subject.view_total }.to output("Order total is: £8\n").to_stdout
     end
   end
 
-  describe '#place_order' do
-    it { is_expected.to respond_to :place_order }
+  describe '#checkout' do
+    it { is_expected.to respond_to :checkout }
   end
 end

@@ -1,4 +1,5 @@
 require_relative 'takeaway_kitchen'
+require_relative 'text'
 
 class OrderSystem
   attr_reader :menu, :order
@@ -31,11 +32,12 @@ class OrderSystem
   end
 
   def view_total
-    "£#{order.map { |item| item[:price] }.compact.reduce(:+)}"
+    puts "Order total is: £#{order.map { |item| item[:price] }.compact.reduce(:+)}"
   end
 
-  def place_order
-    
+  def checkout
+    puts "Happy to proceed with order (y/n) ?"
+    gets.chomp == "y" ? Text.new.send_text : return
   end
 
   private
