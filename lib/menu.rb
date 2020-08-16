@@ -7,6 +7,9 @@ attr_reader :dishes
   end
 
   def view_dishes
+    @dishes.each do |item, price|
+      puts "#{item}: £#{price}"
+    end
   end
 
 end

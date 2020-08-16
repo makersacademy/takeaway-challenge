@@ -27,7 +27,7 @@ describe Menu do
 
   describe '#view_dishes' do
     it "Expexts to see a menu item and price" do
-      expect(menu.view_dishes).to include("Cheeseburger: £4")
+      expect(menu.view_dishes).to include("Cheeseburger" => 4)
     end
   end
 
