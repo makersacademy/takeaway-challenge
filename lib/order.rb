@@ -13,7 +13,7 @@ class Order
   end
 
   def total
-    dish_totals
+    dish_totals.sum
   end
 
   private
