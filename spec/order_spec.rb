@@ -3,6 +3,8 @@ require 'text'
 
 describe Order do
 
+  let(:pancakes) { double :name, price: 5.55 }
+
   it 'returns menu item from dishes hash' do
     menu = double("menu")
     allow(menu).to receive(:dishes) { "Shepards Pie" }
