@@ -19,7 +19,7 @@ class Order
     @order.each do |hash|
       total += (hash[:price] * hash[:quantity])
     end
-    total.round(2)
+    return total.round(2)
   end
 
 end

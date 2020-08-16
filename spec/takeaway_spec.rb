@@ -43,10 +43,14 @@ describe Takeaway do
   end
 
   describe "#order_total" do
-    it "returns a confirmation using @order.total" do
+    it "uses @order.total" do
       expect(order).to receive(:total)
-      expect(subject.order_total).to eq("Your order total is £0")
+      subject.order_total
+    end
+
+    it "returns a confirmation text" do
+      allow(order).to receive(:total) { 6.97 }
+      expect(subject.order_total).to eq("Your order total is £6.97")
     end
   end
-
 end

@@ -24,4 +24,8 @@ class Takeaway
     @order.view
   end
 
+  def order_total
+    "Your order total is £#{@order.total}"
+  end
+
 end
