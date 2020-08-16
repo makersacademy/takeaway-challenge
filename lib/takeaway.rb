@@ -10,6 +10,8 @@ class Takeaway
         @food_list = []
     end
 
+    
+
     def pick(food, number)
         @menu.view
         new_order

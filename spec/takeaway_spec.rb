@@ -49,4 +49,10 @@ it { is_expected.to respond_to(:check_sum) }
       expect(subject.pick('Burger', 2)).to eq([{"Chicken" => 5.00}, {"Chicken"=> 5.00}, {"Burger" => 5.00}, {"Burger" => 5.00}])
     end
   end
+
+  describe '#view' do
+    it 'returns the menu list' do
+        expect(subject.view).to eq({:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00}) 
+    end
+  end
 end
