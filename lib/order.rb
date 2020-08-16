@@ -1,12 +1,14 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
-  attr_reader :order
+  attr_reader :order, :text
 
   def initialize
     @order = []
     @total = 0
+    @text = Text.new
   end
 
   def add_to_order(item, quantity=1, price)
