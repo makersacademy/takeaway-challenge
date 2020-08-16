@@ -5,6 +5,9 @@ describe Menu do
   describe "#view" do
     it "returns @items" do
       expect(subject.view).to eq subject.items
+      expect do
+        subject.view
+      end.to output("spring rolls....£1.99\n").to_stdout
     end
   end
 

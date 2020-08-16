@@ -20,7 +20,9 @@ describe Order do
     it "returns a print out of @order" do
       subject.add("spring rolls", 1, 1.99)
       expect(subject.view).to eq(subject.order)
+      expect do
+        subject.view
+      end.to output("1x spring rolls....£1.99 each\n").to_stdout
     end
   end
-
 end
