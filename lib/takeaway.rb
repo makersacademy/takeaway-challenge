@@ -14,6 +14,7 @@ class Takeaway
   end
 
   def add_item(item,quantity=1)
+    raise ("Item not on menu") unless @menu.on_menu(item)
     @order.add(item,quantity,@menu.price(item))
   end
 
