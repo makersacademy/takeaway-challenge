@@ -27,7 +27,7 @@ class Order
 
   def checkout
     @current_order.each do |item|
-      item.each do |dish, quant| 
+      item.each do |dish, quant|
         @cost = menu.avail_dishes[dish] * quant
         @receipt << @cost
         @basket << "#{dish}, X #{quant} "

@@ -29,7 +29,7 @@ describe Takeaway do
   #    expect(subject.view_order).to respond_to(:total)
   #  end
 
-  #end
+  # end
 
   it 'responds to finish method' do
     expect(subject).to respond_to(:finish_order)
