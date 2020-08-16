@@ -49,6 +49,11 @@ describe Takeaway do
     it 'raises error if you try to check an empty order' do
       expect { subject.check_order }.to raise_error "You haven't ordered anything yet"
     end
+
+    it "doesn't raise an error if you check an order with something in" do
+      subject.add_item('spring rolls')
+      expect { subject.check_order }.not_to raise_error
+    end
   end
   # could not figure out how to test this properly using doubles/mocking
   # describe '#place_order' do
