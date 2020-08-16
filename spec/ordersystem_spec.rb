@@ -60,7 +60,6 @@ describe OrderSystem do
       subject.order << { dish: dish, price: 3, quantity: 1 }
       subject.order << { dish: dish, price: 5, quantity: 1 }
       expect { subject.view_order }.to output("#{dish} x 1 = £3\n#{dish} x 1 = £5\n").to_stdout
-      
     end
   end
 
@@ -70,7 +69,7 @@ describe OrderSystem do
     it 'returns the correct total' do
       subject.order << option_one
       subject.order << option_two
-      expect(subject.view_total).to eq "£#{8}"
+      expect(subject.view_total).to eq "£8"
     end
   end
 
