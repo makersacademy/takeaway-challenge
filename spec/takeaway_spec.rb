@@ -38,6 +38,15 @@ describe Takeaway do
       subject.add_item('fried rice', 3)
       expect(subject.order_total).to eq 10.50
     end
+
+    it 'raises error if you check total of empty order' do
+      expect { subject.order_total }.to raise_error "You haven't ordered anything yet"
+    end
+
+    it "doesn't raise error if you check total of an order with items" do
+      subject.add_item('spring rolls')
+      expect { subject.order_total }.not_to raise_error
+    end
   end
   describe '#check_order' do
     it 'returns list items in order' do

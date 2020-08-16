@@ -4,7 +4,7 @@ require_relative 'text'
 require 'time'
 
 class Takeaway
-  attr_reader :order, :time
+  attr_reader :order
 
   def initialize
     @menu = Menu.new
@@ -24,6 +24,8 @@ class Takeaway
   end
 
   def order_total
+    raise "You haven't ordered anything yet" unless @order.order.count >= 1
+    
     @order.total
   end
 
