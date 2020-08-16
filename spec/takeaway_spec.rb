@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:menu) { double :menu, :price=> 1.99, :on_menu=> true }
+  let(:menu) { double :menu, :price => 1.99 }
   let(:order) { double :order }
 
   subject { described_class.new(menu, order) }
@@ -25,15 +25,14 @@ describe Takeaway do
   describe "#add_item" do
 
     it "calls @order.add when item is on menu" do
-      #allow(menu).to receive(:price) { 1.99 }
-      #allow(menu).to receive(:on_menu) { true }
-      expect(order).to receive(:add).with("spring rolls",1,1.99)
-      subject.add_item("spring rolls",1)
+      allow(menu).to receive(:on_menu?) { true }
+      expect(order).to receive(:add).with("spring rolls", 1, 1.99)
+      subject.add_item("spring rolls", 1)
     end
 
     it "raises error if trying to add an item not on the menu" do
-      allow(menu).to receive(:on_menu) { false }
-      expect{ subject.add_item("pizza") }.to raise_error("Item not on menu")
+      allow(menu).to receive(:on_menu?) { false }
+      expect { subject.add_item("pizza") }.to raise_error("Item not on menu")
     end
 
   end

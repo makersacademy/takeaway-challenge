@@ -10,11 +10,10 @@ describe Order do
     it { is_expected.to respond_to(:add).with(3).arguments }
 
     it "pushes hash onto @order" do
-      subject.add("spring rolls",1,1.99)
-      item = {:item=> "spring rolls", :quantity=> 1, :price=> "£1.99 each"}
+      subject.add("spring rolls", 1, 1.99)
+      item = { :item => "spring rolls", :quantity => 1, :price => "£1.99 each" }
       expect(subject.order).to eq([item])
     end
-
 
   end
 

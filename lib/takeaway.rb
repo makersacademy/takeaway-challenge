@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
@@ -13,9 +14,10 @@ class Takeaway
     @menu.view
   end
 
-  def add_item(item,quantity=1)
-    raise ("Item not on menu") unless @menu.on_menu(item)
-    @order.add(item,quantity,@menu.price(item))
+  def add_item(item, quantity = 1)
+    raise("Item not on menu") unless @menu.on_menu?(item)
+
+    @order.add(item, quantity, @menu.price(item))
   end
 
 end
