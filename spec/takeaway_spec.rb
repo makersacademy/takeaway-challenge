@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   let(:menu) { double :menu, :price => 1.99 }
-  let(:order) { double :order }
+  let(:order) { double :order, :total => 6.97 }
 
   subject { described_class.new(menu, order) }
 
@@ -49,7 +49,6 @@ describe Takeaway do
     end
 
     it "returns a confirmation text" do
-      allow(order).to receive(:total) { 6.97 }
       expect(subject.order_total).to eq("Your order total is £6.97")
     end
   end

@@ -16,6 +16,7 @@ class Takeaway
 
   def add_item(item, quantity = 1)
     return "Item not on menu" unless @menu.on_menu?(item)
+
     @order.add(item, quantity, @menu.price(item))
   end
 
@@ -27,4 +28,9 @@ class Takeaway
     "Your order total is £#{@order.total}"
   end
 
+  def confirm_order(price)
+    return "Incorrect amount, please try again" unless price == @order.total
+    
+    "Order has been placed"
+  end
 end
