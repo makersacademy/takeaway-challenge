@@ -8,6 +8,8 @@ subject {described_class.new(menu)}
 
 it { is_expected.to respond_to(:pick) }
   
+it { is_expected.to respond_to(:check_sum) }
+
   describe '#initialize' do
     it 'creates a menu' do
     expect(subject.menu).to eq menu
