@@ -25,4 +25,12 @@ describe Order do
       end.to output("1x spring rolls....£1.99 each\n").to_stdout
     end
   end
+
+  describe "#total" do
+    it "returns sum of prices in @order" do
+      subject.add("spring rolls", 2, 1.99)
+      subject.add("noodles", 1, 2.99)
+      expect(subject.total).to eq(6.97)
+    end
+  end
 end
