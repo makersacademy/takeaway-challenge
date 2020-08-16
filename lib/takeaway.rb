@@ -20,4 +20,8 @@ class Takeaway
     @order.add(item, quantity, @menu.price(item))
   end
 
+  def view_order
+    @order.view
+  end
+
 end
