@@ -8,5 +8,6 @@ group :test do
 end
 
 group :development do
+  gem 'sinatra'
   gem 'twilio-ruby', '~> 5.39.3'
 end
