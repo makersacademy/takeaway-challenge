@@ -4,13 +4,17 @@ require_relative 'text'
 require 'time'
 
 class Takeaway
-  attr_reader :menu, :order, :time
+  attr_reader :order, :time
 
   def initialize
     @menu = Menu.new
     @order = Order.new
     @text = Text.new
     @time = Time.new
+  end
+
+  def view_menu
+    @menu.menu.each { |x| puts " #{x[:item]}: £#{x[:price]}" }
   end
 
   def add_item(item, quantity = 1)
@@ -26,6 +30,6 @@ class Takeaway
   end
 
   def place_order
-    @text.send_text("Your order of  will be with you by #{@time.hour + 1}:#{@time.min}")
+    @text.send_text("Your order of ??? will be with you by #{@time.hour + 1}:#{@time.min}")
   end
 end

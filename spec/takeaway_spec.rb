@@ -4,19 +4,23 @@ describe Takeaway do
   it 'should exist' do
     expect(subject).to be_instance_of Takeaway
   end
-  it 'intializes with instance of menu accessible with .menu' do
-    expect(subject.menu).to be_instance_of Menu
-  end
   it 'intializes with instance of order accessible with .order' do
     expect(subject.order).to be_instance_of Order
   end
   it 'has an add_item method' do
     expect(subject).to respond_to(:add_item)
   end
-  it 'has a ' do
+  it 'has a place_order method' do
     expect(subject).to respond_to(:place_order)
   end
+  it 'has a view_menu method' do
+    expect(subject).to respond_to(:view_menu)
+  end
   
+  describe '#view_menu' do
+    
+  end
+
   describe '#add_item' do
     it 'takes two arguments' do
       expect(subject).to respond_to(:add_item).with(2).arguments

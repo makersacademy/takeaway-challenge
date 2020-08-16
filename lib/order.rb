@@ -5,7 +5,7 @@ class Order
   end
 
   def add(item, quantity, price)
-    @order.push({item: item, quantity: quantity, price: price})
+    @order.push({ item: item, quantity: quantity, price: price })
   end
 
   def total
