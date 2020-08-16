@@ -18,16 +18,37 @@ require 'takeaway'
 
 describe Takeaway do
     let(:takeaway) {Takeaway.new}
+    
     context 'menu' do
         it 'shows a menu list of 3 items' do
             expect(takeaway.menu.length).to eq 3
+        end 
+
+        it 'it contains a salad' do
+            expect(takeaway.menu.include?('Salad')).to be true
         end 
     end 
 
     context 'order' do
         it 'allows customer to select a chosen quantity of dishes' do
-            takeaway.order('Salad', 3)
+            takeaway.order('Salad', 2)
             expect(takeaway.order_basket).to eq ['Salad', 'Salad']
         end 
     end 
-end 
+
+          it 'adds the price of the dishes to the order basket' do
+              takeaway.order('Salad', 3)
+              takeaway.order('Pizza', 1)
+              expect(takeaway.payment).to eq 23
+         end 
+    end 
+     context 'total' do
+        let(:takeaway) {Takeaway.new}
+
+         it 'checks if the total matches the sum' do
+             takeaway.order('Salad', 3)
+             takeaway.order('Pizza', 1)
+             expect(lambda{takeaway.total(10)}).to raise_error 'the total does not match the sum'
+         end 
+     end 
+ 
