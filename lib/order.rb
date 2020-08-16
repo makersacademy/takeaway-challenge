@@ -29,10 +29,6 @@ class Order
       end
   end
 
-  def current_order
-    print @order
-  end
-
   def order_total
     @order.each do |item|
       price = @menu.fetch(item)
