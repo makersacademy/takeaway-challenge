@@ -8,16 +8,17 @@ class Takeaway
         @menu = menu
         @total_price = 0
         @food_list = []
+        
     end
 
-    
+    def view
+        @menu.view
+    end
 
     def pick(food, number)
-        @menu.view
         new_order
-        number.times { food_list.push(food => @menu[food])}
+        number.times { food_list.push(food => @menu.menu[food])}
         @food_list
-
     end
 
     def new_order(order= Order.new)
