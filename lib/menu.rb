@@ -8,6 +8,8 @@ class Menu
 
   end
 
-   
+  def view
+    dishes.map { |dish , price | "#{dish} £#{price}" }.join(", ")
+  end
 
  end

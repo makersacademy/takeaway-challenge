@@ -12,7 +12,7 @@ describe Menu do
   end
 
   it 'allows user to view the dishes and prices' do
-    expect(menu.view).to eq("Burger £9.99", "Pizza £11.99")
+    expect(menu.view).to eq("Burger £9.99, Pizza £11.99")
   end
 
 end
