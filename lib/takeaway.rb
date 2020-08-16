@@ -30,6 +30,6 @@ class Takeaway
   end
 
   def place_order
-    @text.send_text("Your order of ??? will be with you by #{@time.hour + 1}:#{@time.min}")
+    @text.send_text("Your order will be with you by #{@time.hour + 1}:#{@time.min}. Please ensure you have £#{@order.total} in cash to pay for your order. Thank you for ordering from us.")
   end
 end

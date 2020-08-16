@@ -15,7 +15,7 @@ describe Order do
   end
   describe '#add' do
     it 'should add an item to the order' do
-      expect{ subject.add('fried rice', 3.50, 1) }.to change {subject.order.count}.by 1
+      expect { subject.add('fried rice', 3.50, 1) }.to change { subject.order.count }.by 1
     end
   end
   describe '#total' do
