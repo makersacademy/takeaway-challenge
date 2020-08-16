@@ -28,6 +28,8 @@ class Takeaway
   end
 
   def check_order
+    raise "You haven't ordered anything yet" unless @order.order.count >= 1
+
     @order.order.each { |x| puts "#{x[:quantity]} X #{x[:item]} for £#{x[:price]} each" }
   end
 

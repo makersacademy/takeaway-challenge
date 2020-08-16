@@ -45,6 +45,10 @@ describe Takeaway do
       expect(STDOUT).to receive(:puts).with("2 X fried rice for £3.5 each")
       subject.check_order
     end
+
+    it 'raises error if you try to check an empty order' do
+      expect { subject.check_order }.to raise_error "You haven't ordered anything yet"
+    end
   end
   # could not figure out how to test this properly using doubles/mocking
   # describe '#place_order' do
