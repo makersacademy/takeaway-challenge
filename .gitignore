@@ -6,3 +6,4 @@
 
 # Twilio env variables
 twilio.env
+twilio.env.save

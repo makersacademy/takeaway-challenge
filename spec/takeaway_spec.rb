@@ -13,6 +13,9 @@ describe Takeaway do
   it 'has an add_item method' do
     expect(subject).to respond_to(:add_item)
   end
+  it 'has a ' do
+    expect(subject).to respond_to(:place_order)
+  end
   
   describe '#add_item' do
     it 'takes two arguments' do
@@ -33,4 +36,11 @@ describe Takeaway do
       subject.check_order
     end
   end
+  # could not figure out how to test this properly using doubles/mocking
+  # describe '#place_order' do
+  #   it 'sends order confirmation text' do
+  #     expect(subject.place_order).to receive(:text)
+  #     subject.place_order
+  #   end
+  # end
 end
