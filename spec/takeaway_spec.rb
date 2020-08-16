@@ -3,55 +3,48 @@ require 'takeaway'
 describe Takeaway do
 
   before do
+    @list = Menu.new
     subject.place_order
   end
 
-
-	it 'basic instance creation' do
-		expect(subject).to be_instance_of(Takeaway)
-	end
+  it 'basic instance creation' do
+    expect(subject).to be_instance_of(Takeaway)
+  end
 
   it 'responds to menu inst var' do
-  	expect(subject).to respond_to(:menu)
+    expect(subject).to respond_to(:menu)
   end
 
   it 'responds to start method' do
-  	expect(subject).to respond_to(:place_order)
+    expect(subject).to respond_to(:place_order)
   end
-
-  #describe 'start_order' do
-  #  it 'can place order' do
-  #    expect(subject.start_order(:dishes)).to eq()
-  #  end
-  #end
 
   it 'allows customer to view order' do
     expect(subject).to respond_to(:view_order)
   end
+  
+  # describe 'view_order' do
 
+  #  it 'successfully calls basket on Order instance' do
+  #    expect(subject.view_order).to respond_to(:total)
+  #  end
+
+  #end
 
   it 'responds to finish method' do
-  	expect(subject).to respond_to(:finish_order)
+    expect(subject).to respond_to(:finish_order)
   end
 
   it 'responds to finish method' do
     expect(subject).to respond_to(:view_menu)
   end
 
-
-  describe 'print_menu' do
+  describe 'view_menu' do
 
     it 'returns a list of dishes when called' do
-      choose = Menu.new
-      expect(subject.view_menu).to eq choose.avail_dishes 
+      expect(subject.view_menu).to eq @list.customer_view
     end
 
   end
-
-
-
-
-
-
 
 end

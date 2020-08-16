@@ -3,23 +3,22 @@ require_relative 'order'
 
 class Takeaway
 
-	attr_reader :menu
-	attr_reader :avail_dishes, :current_order
-	attr_accessor :order
+  attr_reader :menu, :total
+  attr_reader :avail_dishes, :current_order
+  attr_accessor :order
 
-
-	def initialize
-		@menu = Menu.new
-		@order = nil
-	end
+  def initialize
+    @menu = Menu.new
+    @order = nil
+  end
 
   def place_order
     @order = Order.new
   end
 
   def view_order
-  	@order.total
-  	@order.basket
+    @order.total
+    @order.print_basket
   end
 
   def finish_order
@@ -27,10 +26,7 @@ class Takeaway
   end
 
   def view_menu
-  	@menu.avail_dishes
-    #@menu.dishes.each do |dish, price|
-    	#{}"#{dish.to_s}: #{price}"
-    #end
+    @menu.customer_view
   end
 
 end
