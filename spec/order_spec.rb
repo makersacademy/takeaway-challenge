@@ -14,6 +14,13 @@ describe Order do
       item = { :item => "spring rolls", :quantity => 1, :price => 1.99 }
       expect(subject.order).to eq([item])
     end
+
+    it "adds to quantity if item already exist in order" do
+      subject.add("spring rolls", 1, 1.99)
+      subject.add("spring rolls", 1, 1.99)
+      item = { :item => "spring rolls", :quantity => 2, :price => 1.99 }
+      expect(subject.order).to eq([item])
+    end
   end
 
   describe "#view}" do

@@ -7,7 +7,9 @@ class Order
   attr_reader :order
 
   def view
-    @order.each { |hash| puts "#{hash[:quantity]}x #{hash[:item]}....£#{hash[:price]} each" }
+    @order.each do |hash|
+      puts "#{hash[:quantity]}x #{hash[:item]}....£#{hash[:price]} each"
+    end
   end
 
   def add(item, quantity, price)
