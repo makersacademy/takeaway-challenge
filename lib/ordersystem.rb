@@ -13,6 +13,8 @@ class OrderSystem
   end
 
   def add_to_order(dish, quantity = 1)
+    fail "This isn't on the menu" if in_menu? dish
+
     order << { dish: dish, quantity: quantity, price: calculate_price(dish, quantity) }
   end
 
@@ -30,7 +32,7 @@ class OrderSystem
   end
 
   def view_total
-    order.map { |item| item[:price] }.compact.reduce(:+)
+    "£#{order.map { |item| item[:price] }.compact.reduce(:+)}"
   end
 
   def place_order
@@ -45,6 +47,10 @@ class OrderSystem
 
   def in_order?(dish)
     order.any? { |item| item[:dish] == dish } == false
+  end
+
+  def in_menu?(dish)
+    menu.any? { |item| item[:dish] == dish } == false
   end
 
   def empty?
