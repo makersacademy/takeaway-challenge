@@ -5,5 +5,5 @@
 .rubocop-*
 
 # Twilio env variables
-.twilio.env
-.twilio.env.save
+twilio.env
+twilio.env.save
