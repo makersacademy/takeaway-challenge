@@ -7,7 +7,7 @@ require_relative 'takeaway'
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = '+12513090304'
-    to = '+447450968247' 
+    to = '+44' 
 
     client.messages.create(
     from: from,
