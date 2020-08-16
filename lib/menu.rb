@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Menu
 
 attr_reader :dishes
