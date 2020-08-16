@@ -1,7 +1,7 @@
 
 class Order
 
-   def sum
+   def sum(food_list)
    end
 
 end
