@@ -11,6 +11,7 @@ class Takeaway
     def pick
         @menu.view
         new_order
+        #if it comes to it ask user for input
     end
 
     def new_order
