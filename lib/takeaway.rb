@@ -2,7 +2,7 @@ require_relative 'menu'
 require_relative 'order'
 
 class Takeaway
-    attr_reader :menu, :order
+    attr_reader :menu, :order, :food_list
     
     def initialize(menu= Menu.new)
         @menu = menu
@@ -13,8 +13,7 @@ class Takeaway
     def pick
         @menu.view
         new_order
-        #if it comes to it ask user for input
-        # array.push({:Burger => 5.00})
+       
     end
 
     def new_order(order= Order.new)
@@ -22,7 +21,8 @@ class Takeaway
     end
 
     def check_sum
-       fail 'incorrect sum' if @order.sum != add
+       fail 'incorrect sum' if @order.sum(@food_list) != add
+
     end
 
      private
