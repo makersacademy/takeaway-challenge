@@ -1,15 +1,16 @@
 class Takeaway
 
-attr_reader :menu
 
-def initialize(menu)
-  
-  @menu = menu
-end  
-
+def initialize(menu:)
+   @menu = menu
+end
 
 def view_menu
-  menu 
+  menu.view
 end
+
+private
+
+attr_reader :menu
 
 end

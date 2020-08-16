@@ -2,14 +2,14 @@ require 'takeaway'
 
 describe Takeaway do 
 
-  subject(:takeaway) { described_class.new(dish: "Pizza", price: "£11.99") }
-
+  subject(:takeaway) { described_class.new(menu: menu) }
+    
+  let(:menu) { double("menu") }
+   
   it 'displays a menu showing the dishes and prices' do
- 
-    expect(takeaway.view_menu).to eq({dish:"Pizza", price: "£11.99"})
-  
+    allow(menu).to receive(:view).and_return("Pizza: £11.99")
+    
+    expect(takeaway.view_menu).to eq("Pizza: £11.99")
   end
-
-  #subject(:takeaway) { described_class.new }
   
 end
