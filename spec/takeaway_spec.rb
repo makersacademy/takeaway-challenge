@@ -64,11 +64,20 @@ describe Takeaway do
       expect { subject.check_order }.not_to raise_error
     end
   end
-  # could not figure out how to test this properly using doubles/mocking
-  # describe '#place_order' do
-  #   it 'sends order confirmation text' do
-  #     expect(subject.place_order).to receive(:text)
-  #     subject.place_order
-  #   end
-  # end
+
+  describe '#place_order' do
+    let(:text) { double :text }
+
+    it 'sends order confirmation text' do
+      allow(text).to receive(:send_text).and_return("Your order will be with you by #{subject.time.hour + 1}:#{subject.time.min}. Please ensure you have £#{subject.order.total} in cash to pay for your order. Thank you for ordering from us.")
+
+      subject.add_item('spring rolls', 5)
+      expect(subject).to receive(:place_order).and_return("Your order will be with you by #{subject.time.hour + 1}:#{subject.time.min}. Please ensure you have £#{subject.order.total} in cash to pay for your order. Thank you for ordering from us.") 
+      subject.place_order
+    end
+
+    it 'raises error if you try to order less than MINIMUM_ORDER' do
+      expect { subject.place_order }.to raise_error "£#{subject.minimum_order} minimum order requirement, currently £#{subject.order.total}"
+    end
+  end
 end

@@ -4,13 +4,15 @@ require_relative 'text'
 require 'time'
 
 class Takeaway
-  attr_reader :order
+  attr_reader :order, :minimum_order, :time, :text
+  MINIMUM_ORDER = 10
 
-  def initialize
+  def initialize(min = MINIMUM_ORDER)
     @menu = Menu.new
     @order = Order.new
     @text = Text.new
     @time = Time.new
+    @minimum_order = min
   end
 
   def view_menu
@@ -25,7 +27,7 @@ class Takeaway
 
   def order_total
     raise "You haven't ordered anything yet" unless @order.order.count >= 1
-    
+
     @order.total
   end
 
@@ -36,6 +38,8 @@ class Takeaway
   end
 
   def place_order
+    raise "£#{@minimum_order} minimum order requirement, currently £#{@order.total}" unless @order.total >= @minimum_order
+
     @text.send_text("Your order will be with you by #{@time.hour + 1}:#{@time.min}. Please ensure you have £#{@order.total} in cash to pay for your order. Thank you for ordering from us.")
   end
 end
