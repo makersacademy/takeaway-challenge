@@ -23,11 +23,20 @@ describe Takeaway do
   end
 
   describe "#add_item" do
+
+    before do
+      allow(menu).to receive(:price) { 1.99 }
+    end
+
     it "calls @order.add when item is on menu" do
       #allow(menu).to receive(:on_menu?) { true }
-      allow(menu).to receive(:price) { 1.99 }
       expect(order).to receive(:add).with("spring rolls",1,1.99)
       subject.add_item("spring rolls",1)
+    end
+
+    it "raises error if trying to add an item not on the menu" do
+      allow(order).to receive(:add).with("pizza",1,1.99)
+      expect(subject.add_item("pizza")).to raise_error("Item not on menu")
     end
 
   end
