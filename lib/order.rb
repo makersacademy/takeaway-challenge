@@ -44,11 +44,13 @@ class Order
   def order_price
     prices = []
     @customer_order.each do |name, quantity|
-      price = DISHES[name] * quantity
-      prices.push(price)
+    price_of_item = DISHES[name]
+    price = price_of_item * quantity.to_f
+
+    prices.push(price)
     end
-    total = prices.sum
-    return "£#{total.ceil(2)}"
+     total = prices.sum
+     puts "The total price of your order is £#{total.ceil(2)}"
   end
 
 end
