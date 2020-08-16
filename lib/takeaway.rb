@@ -2,10 +2,9 @@ class Takeaway
 
 attr_reader :menu
 
-def initialize
+def initialize(menu)
   
-  @menu = {}
-
+  @menu = menu
 end  
 
 
