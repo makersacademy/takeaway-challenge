@@ -14,12 +14,12 @@ describe Takeaway do
     it 'takeaway responds to method place_order' do
       expect(takeaway).to respond_to(:place_order)
     end
-
-    it 'adds order to empty order array' do
-      takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
-      takeaway.select({ :burger => 3, :chips => 1 })
-      expect { takeaway.place_order(31.80) }.to change { takeaway.order.order_array }.to [{ :burger => 10.0 }, { :burger => 10.0 }, { :burger => 10.0 }, { :chips => 1.80 }]
-    end
+    #
+    # it 'adds order to empty order array' do
+    #   takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
+    #   takeaway.select({ :burger => 3, :chips => 1 })
+    #   expect { takeaway.place_order(31.80) }.to change { takeaway.order.order_array }.to [{ :burger => 10.0 }, { :burger => 10.0 }, { :burger => 10.0 }, { :chips => 1.80 }]
+    # end
 
     context 'when order verified with wrong total' do
       it 'raises error' do
@@ -30,10 +30,13 @@ describe Takeaway do
     end
 
     context 'when order verified with correct total' do
-      it 'prints order placed message' do
-        takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
-        takeaway.select({ :burger => 3, :chips => 1 })
-        expect(takeaway.place_order(31.80)).to eq false
+      it 'user receives text message' do
+        order_double = double("order")
+        order_double.instance_variable_set(:@sum, 31.8)
+        my_takeaway = Takeaway.new(order_double)
+        my_takeaway.instance_variable_set(:@menu, [{ :chips => 1.80 }, { :burger => 10.00 }])
+        my_takeaway.select({ :burger => 3, :chips => 1 })
+        expect(takeaway.place_order(31.80)).to eq "The text message was sent"
       end
     end
   end

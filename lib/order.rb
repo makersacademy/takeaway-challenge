@@ -21,6 +21,8 @@ class Order
         @sum += value
       end
     end
+    p @sum
+    p order_total
     total_error if @sum != order_total
 
     send_text if @sum == order_total
