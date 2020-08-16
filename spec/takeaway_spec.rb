@@ -23,7 +23,6 @@ describe Takeaway do
   end
 
   describe "#add_item" do
-
     it "calls @order.add when item is on menu" do
       allow(menu).to receive(:on_menu?) { true }
       expect(order).to receive(:add).with("spring rolls", 1, 1.99)
@@ -34,7 +33,13 @@ describe Takeaway do
       allow(menu).to receive(:on_menu?) { false }
       expect { subject.add_item("pizza") }.to raise_error("Item not on menu")
     end
+  end
 
+  describe "#view_order" do
+    it "returns @order.view" do
+      expect(order).to receive(:view)
+      subject.view_order
+    end
   end
 
 end
