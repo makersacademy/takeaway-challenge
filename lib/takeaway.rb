@@ -10,10 +10,12 @@ class Takeaway
         @food_list = []
     end
 
-    def pick
+    def pick(food, number)
         @menu.view
         new_order
-       
+        number.times { food_list.push(food => @menu[food])}
+        @food_list
+
     end
 
     def new_order(order= Order.new)

@@ -22,7 +22,8 @@ it { is_expected.to respond_to(:check_sum) }
     allow(subject).to receive(:new_order).and_return first_order
     
     allow(menu).to receive(:view).and_return(:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00)
-    subject.pick
+    allow(menu).to receive(:[]).and_return 5.00
+    subject.pick('Chicken', 1)
     expect(subject.new_order).to eq first_order
    end
 
@@ -43,8 +44,9 @@ it { is_expected.to respond_to(:check_sum) }
     it 'returns items user selected' do
        
       allow(menu).to receive(:view).and_return(:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00)
-      
-      expect(subject.pick(:Chicken, 2)).to eq([{:Chicken => 5.00}, {:Burger => 5.00}])
+      allow(menu).to receive(:[]).and_return 5.00
+      subject.pick('Chicken', 2)
+      expect(subject.pick('Burger', 2)).to eq([{"Chicken" => 5.00}, {"Chicken"=> 5.00}, {"Burger" => 5.00}, {"Burger" => 5.00}])
     end
   end
 end
