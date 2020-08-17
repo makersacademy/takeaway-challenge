@@ -1,10 +1,14 @@
+require_relative 'sms'
+
 class Order
 
   def initialize
     @order = []
+    @text = Sms.new
+    @time = Time.now
   end
 
-  attr_reader :order
+  attr_reader :order, :text
 
   def view
     @order.each do |hash|
@@ -23,6 +27,11 @@ class Order
       total += (hash[:price] * hash[:quantity])
     end
     return total.round(2)
+  end
+
+  def confirmed
+    message = "Your order is confirmed and is expected to arrive at #{@time.hour + 1}:#{@time.min}"
+    @text.send_message(message)
   end
 
   private

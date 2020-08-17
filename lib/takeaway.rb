@@ -30,7 +30,7 @@ class Takeaway
 
   def confirm_order(price)
     return "Incorrect amount, please try again" unless price == @order.total
-    
-    "Order has been placed"
+
+    @order.confirmed
   end
 end

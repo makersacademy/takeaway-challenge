@@ -57,5 +57,10 @@ describe Takeaway do
     it "notifies user if price is not the same" do
       expect(subject.confirm_order(100)).to eq("Incorrect amount, please try again")
     end
+
+    it "calls @order.confirmed" do
+      expect(order).to receive(:confirmed)
+      subject.confirm_order(6.97)
+    end
   end
 end

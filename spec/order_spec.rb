@@ -23,7 +23,7 @@ describe Order do
     end
   end
 
-  describe "#view}" do
+  describe "#view" do
     it "returns a print out of @order" do
       subject.add("spring rolls", 1, 1.99)
       expect(subject.view).to eq(subject.order)
