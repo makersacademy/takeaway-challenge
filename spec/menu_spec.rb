@@ -11,11 +11,10 @@ describe Menu do
 
   describe '#view' do
   
-    xit 'will print the menu' do
-        expect{subject.view}.to output( {:Burger => 5.00, :Pizza => 4.00, :Fish => 6.00, :Chicken => 5.00}).to_stdout
+    it 'will return the menu' do
+        expect(subject.view).to eq( {"Burger" => 5.00, "Pizza" => 4.00, "Fish" => 6.00, "Chicken" => 5.00})
     end
   end
 
- # describe '#select' do
-  #  it 'returns the selected items' 
+ 
 end

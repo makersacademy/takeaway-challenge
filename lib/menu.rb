@@ -7,7 +7,7 @@ class Menu
     end
     
     def view
-      puts @menu
+       @menu
      
     end
 

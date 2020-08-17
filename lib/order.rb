@@ -3,7 +3,7 @@ class Order
 
    def initialize
     @total_price = 0
-    @total_cost = 0
+    
    end
 
    def sum(food_list)
