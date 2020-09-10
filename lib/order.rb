@@ -1,4 +1,4 @@
-#require 'menu'
+require './lib/menu'
 class Order
   attr_reader :order_price, :valid_item
   def initialize
@@ -6,6 +6,7 @@ class Order
     @current_order = []
     @order_price = 0
   end
+
 
 
 end
