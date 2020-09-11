@@ -1,18 +1,18 @@
 US1 As a customer
 So that I can check if I want to order something
 I would like to -see- a list of -dishes with prices-
-* List of dishes with prices
+* List of dishes with prices 
 
 
 US2 As a customer
 So that I can order the meal I want
 I would like to be able to -select- some number of several -available dishes-
-* Select dishes from the list
+* Select dishes from the list 
 
 US3 As a customer
 So that I can verify that my order is correct
 I would like to -check- that the -total- I have been given -matches the sum- of the various dishes in my order
-* Check if £ is correct according to qty of dishes in basket
+* Check if £ is correct according to qty of dishes in basket 
 * if not correct, raise error
 
 
@@ -22,8 +22,8 @@ I would like to -receive a text- such as -"Thank you! Your order was placed and 
 * if £ correct, send text message
 
 
-- list of dishes with prices
-- select some dishes with prices
-    - check total == qty * prices
+- list of dishes with prices (hash dish => price)
+- select some dishes with prices (fetch values of selected keys)
+    - check total == qty * prices (sum values)
         - if false, raise error
         - if true, send text message
