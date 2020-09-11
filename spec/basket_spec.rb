@@ -14,10 +14,11 @@ describe Basket do
               ]
       y =  Basket.new(order)
       y.price_total
-      expect(y.instance_variable_get(:@price)).to eq 11
+      expect(y.instance_variable_get(:@basket)).to eq 11
     end
   end
 
 
 
+  
 end

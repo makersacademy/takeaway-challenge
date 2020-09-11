@@ -1,5 +1,5 @@
 class Basket
-  attr_reader  :current_order
+  attr_accessor  :current_order
   def initialize(order_array = [])
     @current_order = order_array
     @price = 0
