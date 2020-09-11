@@ -2,6 +2,7 @@ require 'order'
 
 class Restaurant
 
+  MENU = @menu
   attr_reader :menu
 
   def initialize(menu = $example_menu)
@@ -11,6 +12,8 @@ class Restaurant
   def place_order
     view_menu
     order = Order.new
+    #order.take_order
+    #order.show_order
 
   end
 
@@ -25,7 +28,7 @@ end
 
 
 $example_menu = [
-  ["Pici_cacio & pepe" => 6],
+  "Pici_cacio & pepe" => 6,
   "Burrata" => 5,
   "Salmon crudo" => 10,
   "Ribeye steak" => 26, 
@@ -34,4 +37,5 @@ $example_menu = [
   "Duck breast" => 14,
   "Spinach (side)" => 6,
   "Chips (side)" => 5,
-]
+  "Salmon" => 4
+  ]
