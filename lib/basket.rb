@@ -1,5 +1,11 @@
 class Basket
-  def initialize
-    @current_order = []
+  attr_reader  :current_order
+  def initialize(order_array = [])
+    @current_order = order_array
+    @price = 0
+  end
+
+  def price_total
+    @current_order.each {|order| @price += order[:price]}
   end
 end
