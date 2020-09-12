@@ -9,7 +9,7 @@ class Order
   end
 
   def add(dish_name, qty)
-    @dish_name = dish_name
-    @qty = qty
+    dish = @restaurant.find_dish(dish_name)
+    @basket << { dish: dish, qty: qty }
   end
 end

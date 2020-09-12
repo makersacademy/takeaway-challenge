@@ -30,7 +30,8 @@ describe Order do
     end
 
     it 'adds the dish and selected quantity to the basket' do
-
+      expect{ order.add('Pepperoni pizza', 1) }.to change{ order.basket.count }.by(1)
+      expect(order.basket[0]).to eq({dish: dish_dbl, qty: 1})
     end
   end
 
