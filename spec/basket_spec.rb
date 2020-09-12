@@ -1,4 +1,5 @@
 require 'basket'
+require 'timecop'
 describe Basket do
   it "contains the current order array" do
     expect(subject.instance_variable_get(:@current_order)).to be_an_instance_of(Array)
@@ -29,4 +30,10 @@ describe Basket do
     end
   end
 
+  describe "#confirm_order" do 
+  #Add timecop here and include time detail in twilio_double 
+  twilio_double = double :twilio, send_message: "order Confirmed:\n Total Price 3 \n Estimated Delivery time"
+  it "sends a message confirming delivery one hour from now"
+  #add tests here  
+end
 end
