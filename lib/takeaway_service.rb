@@ -12,6 +12,7 @@ class TakeawayService
   def print_menu
     puts @restaurant.format_menu
   end
+
 end
 
 @takeaway = TakeawayService.new(

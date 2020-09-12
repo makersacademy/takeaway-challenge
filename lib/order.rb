@@ -1,7 +1,8 @@
 class Order
-  attr_reader :basket
+  attr_reader :restaurant, :basket
 
-  def initialize
+  def initialize(restaurant)
+    @restaurant = restaurant
     @basket = []
   end
 end
