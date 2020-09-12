@@ -1,2 +1,13 @@
-require "./lib/dish"
-menu = [Dish.new("Crispy Tofu", 7.99), Dish.new("Spring Rolls", 3.50), Dish.new("Crispy Seaweed", 1.75)]
+require "./lib/menu"
+mildreds = Menu.new
+
+
+
+
+
+ # View menu
+2.6.5 :005 > mildreds.view_menu
+Soul Bowl.....................£13.99
+Tofu Donburi..................£13.50
+Buffalo Chick'n Burger........£10.00
+Gyoza.........................£6.50
