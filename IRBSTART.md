@@ -1,4 +1,4 @@
-require "./lib/menu"
+require "./lib/order"
 mildreds = Menu.new
 mildreds_order = Order.new(mildreds)
 

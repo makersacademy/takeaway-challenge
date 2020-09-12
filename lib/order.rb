@@ -8,20 +8,21 @@ class Order
   end
 
   def add(dish_name, quantity)
-    raise "Dish is not on the menu" if dish_not_on_menu?(dish_name)
+    dish = @menu.get_dish(dish_name)
+    store_to_order(dish, quantity)
+  end
+
+  def total
+    total = 0
+    @customer_selection.each { |dish|
+      total += dish.price
+    }
+    return total
   end
 
   private
 
-  def dish_not_on_menu?(dish_name)
-    @menu.each { |menu_dish|
-      if dish_name == menu_dish.name
-        return false
-      end
-    }
-  end
-
-  def store_order(dish_name)
-    quanity.times { dish }
+  def store_to_order(dish, quantity)
+    quantity.times { @customer_selection << dish }
   end
 end

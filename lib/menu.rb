@@ -1,4 +1,5 @@
 require_relative "dish"
+require_relative "order"
 
 class Menu
   attr_reader :name, :menu
@@ -22,7 +23,24 @@ class Menu
     puts menu_items
   end
 
+  def get_dish(dish_name)
+    raise "Dish is not on the menu" if dish_not_on_menu?(dish_name)
+    @menu.each { |menu_dish|
+      if dish_name.capitalize == menu_dish.name
+        return menu_dish
+      end
+    }
+  end
+
   private
+
+  def dish_not_on_menu?(dish_name)
+    @menu.each { |menu_dish|
+      if dish_name.capitalize == menu_dish.name
+        return false
+      end
+    }
+  end
 
   def format_dish(dish)
     return "#{dish.name.ljust(30, ".")}£#{"%.2f" % dish.price}"

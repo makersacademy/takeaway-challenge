@@ -4,10 +4,10 @@ require "order"
 
 describe Order do
   let(:menu) {
-    menu = [Dish.new("Soul Bowl", 13.99),
-            Dish.new("Tofu Donburi", 13.50),
-            Dish.new("Buffalo Chick'n Burger", 10.00),
-            Dish.new("Gyoza", 6.50)]
+    Menu.new([Dish.new("Soul Bowl", 13.99),
+              Dish.new("Tofu Donburi", 13.50),
+              Dish.new("Buffalo Chick'n Burger", 10.00),
+              Dish.new("Gyoza", 6.50)])
   }
   let(:order) { Order.new(menu) }
 
