@@ -28,4 +28,11 @@ describe Order do
       expect { order.add("Buns", 4) }.to raise_error "Dish is not on the menu"
     end
   end
+
+  describe "#total" do
+    it "returns total value of the dishes added" do
+      order.add("Gyoza", 2)
+      expect(order.total).to eq 2 * 6.50
+    end
+  end
 end

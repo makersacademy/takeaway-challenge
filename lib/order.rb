@@ -20,4 +20,8 @@ class Order
       end
     }
   end
+
+  def store_order(dish_name)
+    quanity.times { dish }
+  end
 end
