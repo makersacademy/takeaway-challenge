@@ -11,6 +11,6 @@ class Menu
 	end
 
 		def exist?(dish)
-			@dishes.has_key?(dish)
+			!!dishes[dish]
 		end 
 end
