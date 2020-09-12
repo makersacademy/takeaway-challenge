@@ -8,5 +8,9 @@ class Menu
 		@dishes.map do |name, price|
 			"#{name} £#{price}"
 		end.join(", ")
-		end
+	end
+
+		def exist?(dish)
+			@dishes.has_key?(dish)
+		end 
 end
