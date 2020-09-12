@@ -24,11 +24,11 @@ describe Order do
     end
   end
 
-  describe '#finalise' do
+  describe '#confirm' do
     it 'completes the order' do
       order = Order.new
       order.add("Ramen")
-      expect(order.finalise).to be_empty
+      expect(order.confirm).to be_empty
     end
   end
 

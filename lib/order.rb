@@ -14,13 +14,13 @@ class Order
     @list.delete(dish)
   end
 
-  def finalise
+  def confirm
     send_text
     @list = []
   end
 
   def send_text
-    "Thank you! Your order was placed and will be delivered before 18:52"
+    puts "Thank you! Your order was placed and will be delivered before 18:52"
   end
 
 
