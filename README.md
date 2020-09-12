@@ -14,7 +14,7 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Instructions -
 -------
 
 * Feel free to use google, your notes, books, etc. but work on your own
