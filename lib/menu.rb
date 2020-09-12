@@ -1,20 +1,20 @@
 require_relative 'order'
 
 class Menu
-
+  
+  MEALS = { "pizza" => 6, "noodles" => 4, "ice cream" => 3 }
   attr_reader :meals, :order
 
   def initialize(order = Order.new)
-    @meals = { "pizza" => 6, "noodles" => 4, "ice cream" => 3 }
     @order = order
   end
 
   def view
-    @meals
+    MEALS
   end
 
   def select(dish)
-    @order.add(dish) if @meals.include?(dish)
+    @order.add(dish) if MEALS.include?(dish)
   end
 
 end

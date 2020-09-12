@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Order
 
   attr_reader :list
@@ -19,9 +21,15 @@ class Order
     @list = []
   end
 
+  def total
+    total = 0
+    @list.each { |dish| 
+    total += Menu::MEALS[dish] }
+    total
+  end
+
   def send_text
     puts "Thank you! Your order was placed and will be delivered before 18:52"
   end
-
 
 end

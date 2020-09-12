@@ -30,6 +30,13 @@ describe Order do
     end
   end
 
+  describe '#total' do
+    it 'shows an order total' do
+      order.add("pizza")
+      expect(order.total).to eq 6
+    end
+  end
+
   describe "send text" do
     it 'sends a text back to the user' do
       expect { order.send_text } .to output("Thank you! Your order was placed and will be delivered before 18:52\n").to_stdout
