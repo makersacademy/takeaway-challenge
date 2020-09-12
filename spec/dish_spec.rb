@@ -13,4 +13,10 @@ describe Dish do
   it 'stores the dish price' do
     expect(dish.price).to eq(price)
   end
+
+  describe '#format' do
+    it 'formats the dish for printing' do
+      expect(dish.format).to eq('Pepperoni pizza      £8.90')
+    end
+  end
 end

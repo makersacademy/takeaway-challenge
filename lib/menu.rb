@@ -1,15 +1,16 @@
+require_relative 'dish'
+
 class Menu
 
   attr_reader :dishes
 
-  def initialize(*dish)
-    @dishes = []
-    dish.each { |dish| @dishes << dish }
+  def initialize(*dishes)
+    @dishes = dishes
   end
 
   def view
     print_header
-    puts format_dishes.join("\n")
+    print_dishes
   end
 
   private
@@ -19,7 +20,8 @@ class Menu
     puts "#{"".ljust(28, '-')}"
   end
 
-  def format_dishes
-    @dishes.map { |dish| "#{dish.name.ljust(20)} £#{'%.2f' % dish.price}" }
+  def print_dishes
+    formatted_dishes = @dishes.map { |dish| dish.format }
+    puts formatted_dishes.join("\n")
   end
 end
