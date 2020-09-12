@@ -20,6 +20,9 @@ class Order
     return total
   end
 
+  def place_order
+  end
+
   private
 
   def store_to_order(dish, quantity)

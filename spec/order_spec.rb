@@ -35,4 +35,10 @@ describe Order do
       expect(order.total).to eq 2 * 6.50
     end
   end
+
+  describe "#place_order" do
+    it "checks that order responds to place_order" do
+      expect(order).to respond_to(:place_order)
+    end
+  end
 end
