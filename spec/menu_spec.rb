@@ -28,4 +28,14 @@ describe Menu do
     end
   end
 
+  describe '#find_dish(dish_name)' do
+    it 'takes a dish name as an argument' do
+      expect(menu).to respond_to(:find_dish).with(1).argument
+    end
+
+    it 'returns the dish object with the given dish name' do
+      expect(menu.find_dish('Pepperoni pizza')).to eq(dish_dbl1)
+    end
+  end
+
 end
