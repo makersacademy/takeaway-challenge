@@ -1,7 +1,7 @@
-require 'takeaway'
+require 'takeaway_service'
 
-describe Takeaway do
-  subject(:takeaway) { Takeaway.new(restaurant_dbl) }
+describe TakeawayService do
+  subject(:takeaway) { TakeawayService.new(restaurant_dbl) }
   let(:restaurant_dbl) { double('restaurant', format_menu: formatted_menu) }
   let(:formatted_menu) { "Mock example\nof a\nformatted menu" }
 
@@ -15,7 +15,7 @@ describe Takeaway do
       takeaway.print_menu
     end
 
-    it "prints the formatted menu from @restaurant" do
+    it "prints the formatted menu received from restaurant" do
       expected = "#{formatted_menu}\n"
       expect{ takeaway.print_menu }.to output(expected).to_stdout
     end

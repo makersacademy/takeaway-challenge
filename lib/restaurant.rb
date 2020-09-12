@@ -10,5 +10,4 @@ class Restaurant
   def format_menu
     @menu.format
   end
-
 end

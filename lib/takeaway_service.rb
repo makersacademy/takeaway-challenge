@@ -2,7 +2,7 @@ require_relative 'restaurant'
 require_relative 'menu'
 require_relative 'dish'
 
-class Takeaway
+class TakeawayService
   attr_reader :restaurant
 
   def initialize(restaurant)
@@ -14,7 +14,7 @@ class Takeaway
   end
 end
 
-@takeaway = Takeaway.new(
+@takeaway = TakeawayService.new(
   Restaurant.new(
     Menu.new(
       Dish.new('Tom yum soup', 4.50),
