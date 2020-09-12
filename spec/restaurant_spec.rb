@@ -19,4 +19,16 @@ describe Restaurant do
       expect(restaurant.format_menu).to eq(menu_dbl.format)
     end
   end
+
+  describe '#find_dish(dish_name)' do
+    it 'takes a dish name as an argument' do
+      expect(restaurant).to respond_to(:find_dish).with(1).argument
+    end
+
+    it 'sends a find_dish message to the menu with the dish_name' do
+      expect(menu_dbl).to receive(:find_dish).once.with('Pepperoni pizza')
+
+      restaurant.find_dish('Pepperoni pizza')
+    end
+  end
 end

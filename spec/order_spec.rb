@@ -23,7 +23,7 @@ describe Order do
       expect(order).to respond_to(:add).with(2).arguments
     end
 
-    it 'looks up the dish from the given dish name' do
+    it 'sends a find_dish message to the restaurant with the dish_name' do
       expect(restaurant_dbl).to receive(:find_dish).once.with('Pepperoni pizza')
 
       order.add('Pepperoni pizza', 1)
