@@ -21,7 +21,6 @@ How to use:
 You are able to set-up your own takeaway or use the default restaurant I have created!
 
 
-
 # For default:
 
 
