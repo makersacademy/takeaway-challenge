@@ -1,4 +1,4 @@
-require 'restaurant'
+require_relative 'restaurant'
 
 class Order
   attr_reader :restaurant, :basket

@@ -37,7 +37,11 @@ describe TakeawayService do
     end
 
     it 'increases the order_counter by 1' do
-      expect{ takeaway.create_order(order_dbl) }.to change(order.counter).by(1)
+      expect{ takeaway.create_order(order_dbl) }.to change{ takeaway.order_counter }.by(1)
+    end
+
+    it 'returns the order id' do
+      expect(takeaway.create_order(order_dbl)).to eq(1)
     end
   end
 
