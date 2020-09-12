@@ -11,6 +11,5 @@ class Order
 		raise "Sorry, we do not serve this" unless @menu.exist?(dish)
 		@dishes[dish] = number
 	end
-
 	
 end 

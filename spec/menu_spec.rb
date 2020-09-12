@@ -20,4 +20,8 @@ describe Menu do
 		dish = "Pizza"
 		expect(menu.exist?(dish)).to eq false
 	end 
+
+	it "shows the price of the dish" do
+		expect(menu.price("PadThai")).to eq 7.99
+	end 
 end 
