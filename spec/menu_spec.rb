@@ -15,11 +15,11 @@ describe Menu do
     expect(menu.dishes).to eq([dish_dbl1, dish_dbl2, dish_dbl3])
   end
 
-  describe '#view' do
-    it 'prints a header and the formatted dishes' do
+  describe '#format' do
+    it 'returns a string with formatted menu header and dishes' do
       header = "Dish                 Price\n----------------------------"
-      expected = "#{header}\n#{dish_dbl1.format}\n#{dish_dbl2.format}\n#{dish_dbl3.format}\n"
-      expect{ menu.view }.to output(expected).to_stdout
+      expected = "#{header}\n#{dish_dbl1.format}\n#{dish_dbl2.format}\n#{dish_dbl3.format}"
+      expect(menu.format).to eq(expected)
     end
   end
 

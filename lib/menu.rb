@@ -8,19 +8,17 @@ class Menu
     @dishes = dishes
   end
 
-  def view
-    print_header
-    print_dishes
+  def format
+    "#{header}\n#{format_dishes}"
   end
 
   private
 
-  def print_header
-    puts "#{"Dish".ljust(Dish::FORMAT_LENGTH)} Price\n#{'-' * (Dish::FORMAT_LENGTH + 8)}"
+  def header
+    "#{'Dish'.ljust(Dish::FORMAT_LENGTH)} Price\n#{'-' * (Dish::FORMAT_LENGTH + 8)}"
   end
 
-  def print_dishes
-    formatted_dishes = @dishes.map { |dish| dish.format }
-    puts formatted_dishes.join("\n")
+  def format_dishes
+    @dishes.map { |dish| dish.format }.join("\n")
   end
 end
