@@ -2,7 +2,7 @@ require_relative 'order'
 
 class Menu
   
-  MEALS = { "pizza" => 6, "noodles" => 4, "ice cream" => 3 }
+  MEALS = { "pizza" => 6.99, "noodles" => 4.99, "ice cream" => 3.99 }
   attr_reader :meals, :order
 
   def initialize(order = Order.new)

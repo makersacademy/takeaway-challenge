@@ -25,11 +25,12 @@ class Order
     total = 0
     @list.each { |dish| 
     total += Menu::MEALS[dish] }
-    total
+    puts "Your order comes to £#{total}"
   end
 
   def send_text
-    puts "Thank you! Your order was placed and will be delivered before 18:52"
+    delivery_time = (Time.now+(60*60)).strftime("%H:%M")
+    puts "Thank you! Your order was placed and will be delivered before #{delivery_time}."
   end
 
 end

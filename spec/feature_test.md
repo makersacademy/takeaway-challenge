@@ -1,17 +1,3 @@
-require './lib/order.rb'
-order = Order.new
-order.add("Prawn Crackers")
-order.add("Dumplings")
-order.add("Pepperoni Pizza")
-order.remove("Pepperoni Pizza")
-order.add("Singapore Noodles")
-order.list
-order.confirm
-
-require './lib/menu.rb'
-menu = Menu.new
-menu.select("pizza")
-
 
 
 As a customer
@@ -34,6 +20,8 @@ menu.view
 menu.select("pizza")
 menu.select("ice cream")
 
+-------------------------------------------
+
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
@@ -44,3 +32,17 @@ menu.view
 menu.select("pizza")
 menu.select("ice cream")
 menu.order.total
+
+------------------------------------------
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+require './lib/menu.rb'
+menu = Menu.new
+menu.view
+menu.select("pizza")
+menu.select("ice cream")
+menu.order.total
+menu.order.confirm
