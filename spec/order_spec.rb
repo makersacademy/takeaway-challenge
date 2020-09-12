@@ -1,15 +1,15 @@
 require 'order'
 
 describe Order do
+  let(:order) { Order.new }
   describe '#initialize' do
     it 'creates an empty list' do
-      expect(subject.list).to be_an(Array)
+      expect(order.list).to be_an(Array)
     end
   end
 
   describe '#add' do
     it 'adds dishes to the order' do
-      order = Order.new
       order.add("Ramen")
       expect(order.list).to eq ["Ramen"]
     end
@@ -17,7 +17,6 @@ describe Order do
 
   describe '#remove' do
     it 'removes a dish from the order' do
-      order = Order.new
       order.add("Ramen")
       order.remove("Ramen")
       expect(order.list).to be_empty
@@ -26,7 +25,6 @@ describe Order do
 
   describe '#confirm' do
     it 'completes the order' do
-      order = Order.new
       order.add("Ramen")
       expect(order.confirm).to be_empty
     end
@@ -34,7 +32,7 @@ describe Order do
 
   describe "send text" do
     it 'sends a text back to the user' do
-      expect(subject.send_text).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+      expect { order.send_text } .to output("Thank you! Your order was placed and will be delivered before 18:52\n").to_stdout
     end
   end
 

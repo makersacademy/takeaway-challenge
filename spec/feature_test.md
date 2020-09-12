@@ -7,3 +7,8 @@ order.remove("Pepperoni Pizza")
 order.add("Singapore Noodles")
 order.list
 order.confirm
+
+require './lib/menu.rb'
+menu = Menu.new
+menu.select("pizza")
+
