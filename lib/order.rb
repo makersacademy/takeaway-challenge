@@ -16,34 +16,39 @@ class Order
   end
 
   def remove_item(item, quantity = 1)
-    @items.each do |item0|
-      #p item0[:name]
-      #p item
-      if item0[:name] == item
-        if item0[:quantity] < quantity
-          quantity = item0[:quantity]
-        end
-      end
-    end
-
+    item_in_order?(item) ? quantity = quantity_validator(item, quantity) : quantity = 0
     decrease_quantity(item, quantity)
     remove_zero_quantity
     decrease_total(item, quantity)
   end
 
   def check_sum
+    @total == create_bill
+  end
+
+  def place_order
+  end
+
+  private 
+
+  def quantity_validator(item, quantity)
+    @items.each do |item0|
+      if item0[:name] == item
+        quantity = item0[:quantity] if item0[:quantity] < quantity
+      end
+    end
+    quantity
+  end
+
+  def create_bill
     bill = 0
     @items.each do |item|
       @menu.menu_list.each do |dish|
         bill += dish[:price] * item[:quantity] if dish[:name] == item[:name]
       end
     end
-    puts @total
-    puts bill
-    @total == bill
+    bill
   end
-
-  private 
 
   def increase_quantity(item, quantity)
     @items.each do |dish|
