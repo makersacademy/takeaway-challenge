@@ -7,4 +7,8 @@ class Restaurant
     @menu = menu
   end
 
+  def format_menu
+    @menu.format
+  end
+
 end
