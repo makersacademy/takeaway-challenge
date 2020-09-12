@@ -11,7 +11,5 @@ describe Menu do
         end
     end
 
-    describe "#add" do
-        
-    end
+
 end
