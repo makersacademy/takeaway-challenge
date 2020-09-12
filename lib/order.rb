@@ -11,19 +11,11 @@ class Order
   def select(*items)
     fail "Please select at least one dish" if items.empty?
     items.each do |item|
-    @menu.food_items.each do |dish_hash|
-      @basket.current_order << dish_hash if dish_hash[:food] == item
+    @menu.food_items.each { |dish_hash| @basket.current_order << dish_hash if dish_hash[:food] == item }
     end
   end
-
-  
-
-  
-  
-    
-   
-  end
-    
-
-
 end
+    
+
+
+
