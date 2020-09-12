@@ -1,6 +1,6 @@
 require "./lib/menu"
 mildreds = Menu.new
-
+mildreds_order = Order.new(mildreds)
 
 
 
