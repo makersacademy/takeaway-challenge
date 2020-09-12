@@ -2,10 +2,10 @@ require "menu"
 
 describe Menu do
   let(:menu) {
-    Menu.new([Dish.new("Soul Bowl", 13.99),
-              Dish.new("Tofu Donburi", 13.50),
-              Dish.new("Buffalo Chick'n Burger", 10.00),
-              Dish.new("Gyoza", 6.50)])
+    Menu.new("Mildreds", [Dish.new("Soul Bowl", 13.99),
+                          Dish.new("Tofu Donburi", 13.50),
+                          Dish.new("Buffalo Chick'n Burger", 10.00),
+                          Dish.new("Gyoza", 6.50)])
   }
 
   it "creates a menu class with two arguments" do
@@ -27,7 +27,7 @@ describe Menu do
 
   describe "#view_menu" do
     it "allows customer to view the menu" do
-      expect { menu.view_menu }.to output("Soul Bowl.....................£13.99\nTofu Donburi..................£13.50\nBuffalo Chick'n Burger........£10.00\nGyoza.........................£6.50\n").to_stdout
+      expect { menu.view_menu }.to output("Welcome to Mildreds.................\nSoul Bowl.....................£13.99\nTofu Donburi..................£13.50\nBuffalo Chick'n Burger........£10.00\nGyoza.........................£6.50\n").to_stdout
     end
   end
 end

@@ -49,9 +49,10 @@ describe Order do
     it "sends a text to the client when an order is placed" do
       message = Message.new("", "", "", twilio_class_double)
       time = Time.now
+      delivery_time = (time + (60 * 60)).strftime "%H:%M"
       new_order = Order.new(menu, message)
       new_order.add("Gyoza", 2)
-      expect(twilio_create_double).to receive(:create).with({ :body => "Thank you for your order! It will be delivered by #{(time + (60 * 60)).strftime "%H:%M"}.", :from => "", :to => "123456789" })
+      expect(twilio_create_double).to receive(:create).with({ :body => "Thank you for your order! It will be delivered by #{delivery_time}.", :from => "", :to => "123456789" })
       new_order.place_order("123456789")
     end
   end

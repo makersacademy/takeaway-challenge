@@ -25,6 +25,7 @@ class Menu
 
   def get_dish(dish_name)
     raise "Dish is not on the menu" if dish_not_on_menu?(dish_name)
+
     @menu.each { |menu_dish|
       if dish_name.downcase == menu_dish.name.downcase
         return menu_dish

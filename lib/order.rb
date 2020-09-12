@@ -25,7 +25,8 @@ class Order
 
   def place_order(phone_number)
     time = Time.now
-    confirmation_message = "Thank you for your order! It will be delivered by #{(time + (60 * 60)).strftime "%H:%M"}."
+    delivery_time = (time + (60 * 60)).strftime "%H:%M"
+    confirmation_message = "Thank you for your order! It will be delivered by #{delivery_time}."
     @messenger.send_message(phone_number, confirmation_message)
   end
 
