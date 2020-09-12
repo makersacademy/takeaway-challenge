@@ -23,5 +23,9 @@ describe Order do
     it "adds the dish to the order without raising an error" do
       expect { order.add("Gyoza", 2) }.not_to raise_error
     end
+
+    it "raises an error if the dish added is not on the menu" do
+      expect { order.add("Buns", 4) }.to raise_error "Dish is not on the menu"
+    end
   end
 end
