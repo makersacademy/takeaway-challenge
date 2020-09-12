@@ -10,6 +10,10 @@ class Order
     @list << dish
   end
 
+  def remove(dish)
+    @list.delete(dish)
+  end
+
   def finalise
     send_text
     @list = []

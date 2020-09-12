@@ -15,6 +15,15 @@ describe Order do
     end
   end
 
+  describe '#remove' do
+    it 'removes a dish from the order' do
+      order = Order.new
+      order.add("Ramen")
+      order.remove("Ramen")
+      expect(order.list).to be_empty
+    end
+  end
+
   describe '#finalise' do
     it 'completes the order' do
       order = Order.new
