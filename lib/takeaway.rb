@@ -9,7 +9,12 @@ class Takeaway
   end
 
   def view_menu
-    formatted_menu = @menu.map { |dish| "#{dish.name} - £#{'%.2f' % dish.price}" }
-    puts formatted_menu.join("\n")
+    puts format_menu.join("\n")
+  end
+
+  private
+
+  def format_menu
+    @menu.map { |dish| "#{dish.name} - £#{'%.2f' % dish.price}" }
   end
 end
