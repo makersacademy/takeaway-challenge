@@ -1,14 +1,16 @@
+require_relative 'dish'
+
 class Restaurant
   attr_reader :menu, :dish_class
 
   SAVED_MENU = [
     { name: 'Tom yum soup', price: 4.50 },
     { name: 'Pad thai', price: 8.95 },
-    { name: 'Pad see yiew', price: 8.95 },
+    { name: 'Pad see yew', price: 8.95 },
     { name: 'Egg fried rice', price: 3.89 }
   ]
 
-  def initialize(dish_class = 'Dish')
+  def initialize(dish_class = Dish)
     @menu = []
     @dish_class = dish_class
     setup_menu
@@ -25,6 +27,5 @@ class Restaurant
   def create_dish(name, price)
     @dish_class.new(name, price)
   end
-
 
 end

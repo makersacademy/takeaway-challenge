@@ -4,7 +4,7 @@ describe Restaurant do
 
   subject(:restaurant) { Restaurant.new(dish_class_double) }
   let(:dish_class_double) { double('dish_class', new: dish_double) }
-  let(:dish_double) {double('dish_double') }
+  let(:dish_double) { double('dish_double') }
 
   it 'has a menu' do
     expect(restaurant).to respond_to(:menu)
@@ -23,4 +23,5 @@ describe Restaurant do
     restaurant
     expect(restaurant.menu.count).to eq(Restaurant::SAVED_MENU.count)
   end
+
 end
