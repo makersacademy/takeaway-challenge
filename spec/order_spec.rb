@@ -1,6 +1,7 @@
 require "menu"
 require "dish"
 require "order"
+require "date"
 
 describe Order do
   let(:menu) {
@@ -38,7 +39,19 @@ describe Order do
 
   describe "#place_order" do
     it "checks that order responds to place_order" do
-      expect(order).to respond_to(:place_order)
+      expect(order).to respond_to(:place_order).with(1).argument
+    end
+
+    it "sends a text to the client when an order is placed" do
+      twilio_create_double = double :twilio_create_double, create: nil
+      twilio_double = double :twilio_double, messages: twilio_create_double
+      twilio_class_double = double :twilio_class_double, new: twilio_double
+      message = Message.new("", "", "", twilio_class_double)
+      time = Time.now
+      new_order = Order.new(menu, message)
+      new_order.add("Gyoza", 2)
+      expect(twilio_create_double).to receive(:create).with("12345789", "Thank you for your order! It will be delivered by #{(time + (60 * 60)).strftime "%H:%M"}.")
+      new_order.place_order("123456789")
     end
   end
 end

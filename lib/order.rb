@@ -20,7 +20,7 @@ class Order
     return total
   end
 
-  def place_order
+  def place_order(phone_number)
   end
 
   private
