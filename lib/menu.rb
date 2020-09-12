@@ -14,6 +14,10 @@ class Menu
     "#{header}\n#{format_dishes}"
   end
 
+  def find_dish(dish_name)
+    @dishes.select.first { |dish| dish.name == dish_name }
+  end
+
   private
 
   def header

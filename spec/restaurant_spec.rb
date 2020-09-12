@@ -3,7 +3,8 @@ require 'restaurant'
 describe Restaurant do
 
   subject(:restaurant) { Restaurant.new(menu_dbl) }
-  let(:menu_dbl) { double('menu', format: 'formatted menu') }
+  let(:menu_dbl) { double('menu', format: 'formatted menu', find_dish: dish_dbl) }
+  let(:dish_dbl) { double('dish') }
 
   it 'stores the given menu' do
     expect(restaurant).to have_attributes(:menu => menu_dbl)
@@ -29,6 +30,10 @@ describe Restaurant do
       expect(menu_dbl).to receive(:find_dish).once.with('Pepperoni pizza')
 
       restaurant.find_dish('Pepperoni pizza')
+    end
+
+    it 'returns the dish object received from menu.find_dish' do
+      expect(restaurant.find_dish('Pepperoni pizza')).to eq(menu_dbl.find_dish)
     end
   end
 end
