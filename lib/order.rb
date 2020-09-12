@@ -1,10 +1,12 @@
 require_relative 'restaurant'
 
 class Order
-  attr_reader :restaurant, :basket
+  attr_reader :restaurant, :id, :status, :basket
 
-  def initialize(restaurant)
+  def initialize(restaurant, id)
     @restaurant = restaurant
+    @id = id
+    @status = 'open'
     @basket = []
   end
 
