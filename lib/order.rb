@@ -28,7 +28,7 @@ class Order
   end
 
   def place_order(total = @total, items = @items, text_class = Text)
-    text_class.new(items, total)
+    check_sum ? text_class.new(items, total) : "The total does not match the bill"
   end
 
   private 
