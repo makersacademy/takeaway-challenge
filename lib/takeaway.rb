@@ -4,4 +4,8 @@ class Takeaway
   def initialize(restaurant = Restaurant.new)
     @restaurant = restaurant
   end
+
+  def view_menu
+
+  end
 end
