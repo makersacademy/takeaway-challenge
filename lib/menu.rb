@@ -16,8 +16,7 @@ class Menu
   private
 
   def print_header
-    puts "#{"Dish".ljust(20)} Price"
-    puts "#{"".ljust(28, '-')}"
+    puts "#{"Dish".ljust(Dish::FORMAT_LENGTH)} Price\n#{'-' * (Dish::FORMAT_LENGTH + 8)}"
   end
 
   def print_dishes

@@ -16,7 +16,7 @@ describe Menu do
   end
 
   describe '#view' do
-    it 'prints the menu in a nice format with a header' do
+    it 'prints a header and the formatted dishes' do
       header = "Dish                 Price\n----------------------------"
       expected = "#{header}\n#{dish_dbl1.format}\n#{dish_dbl2.format}\n#{dish_dbl3.format}\n"
       expect{ menu.view }.to output(expected).to_stdout
