@@ -7,4 +7,16 @@ describe Dish do
   it "checks that dish is created with two parameters" do
     expect(Dish).to respond_to(:new).with(2).arguments
   end
+
+  describe "#initialize" do
+    it "checks that name is equal to dish name" do
+      tofu = Dish.new("Tofu", 7.99)
+      expect(tofu.name).to eq "Tofu"
+    end
+
+    it "checks that name is equal to dish name" do
+      tofu = Dish.new("Tofu", 7.99)
+      expect(tofu.price).to eq 7.99
+    end
+  end
 end
