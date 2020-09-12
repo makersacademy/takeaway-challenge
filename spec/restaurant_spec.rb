@@ -10,7 +10,7 @@ describe Restaurant do
   end
 
   describe '#format_menu' do
-    it "calls the format method on the restaurant's @menu" do
+    it "sends a format message to the restaurant's @menu" do
       expect(menu_dbl).to receive(:format).once
       restaurant.format_menu
     end

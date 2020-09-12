@@ -10,7 +10,7 @@ class Takeaway
   end
 
   def print_menu
-    puts @restaurant.menu.format
+    puts @restaurant.format_menu
   end
 end
 
