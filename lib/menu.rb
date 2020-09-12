@@ -1,3 +1,12 @@
-#Menu consist of a list of dishes that have a name and a price. 
-#potentially could be an emtry hash that stores all of the possible dished inside
+class Menu
+	attr_reader :dishes
+	def initialize(dishes)
+		@dishes = dishes
+	end 
 
+	def print
+		@dishes.map do |name, price|
+			"#{name} £#{price}"
+		end.join(", ")
+		end
+end
