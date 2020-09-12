@@ -1,10 +1,13 @@
 require_relative "dish"
 require_relative "menu"
+require_relative "message"
+require "date"
 
 class Order
-  def initialize(menu)
+  def initialize(menu, messenger)
     @menu = menu
     @customer_selection = []
+    @messenger = messenger
   end
 
   def add(dish_name, quantity)
@@ -21,6 +24,9 @@ class Order
   end
 
   def place_order(phone_number)
+    time = Time.now
+    confirmation_message = "Thank you for your order! It will be delivered by #{(time + (60 * 60)).strftime "%H:%M"}."
+    @messenger.send_message(phone_number, confirmation_message)
   end
 
   private

@@ -1,6 +1,13 @@
 require "menu"
 
 describe Menu do
+  let(:menu) {
+    Menu.new([Dish.new("Soul Bowl", 13.99),
+              Dish.new("Tofu Donburi", 13.50),
+              Dish.new("Buffalo Chick'n Burger", 10.00),
+              Dish.new("Gyoza", 6.50)])
+  }
+
   it "creates a menu class with two arguments" do
     expect(Menu).to respond_to(:new).with(2).arguments
   end
@@ -12,10 +19,15 @@ describe Menu do
     end
   end
 
+  describe "#get_dish" do
+    it "matchs menu items irrespective of capitalisation" do
+      expect { menu.get_dish("TOFU DONBURI") }.not_to raise_error
+    end
+  end
+
   describe "#view_menu" do
     it "allows customer to view the menu" do
-      wagamama = Menu.new("Wagamama", [Dish.new("Vegan Yasai Cha Han", 13.99), Dish.new("Gyoza", 6.50)])
-      expect { wagamama.view_menu }.to output("Vegan Yasai Cha Han...........£13.99\nGyoza.........................£6.50\n").to_stdout
+      expect { menu.view_menu }.to output("Soul Bowl.....................£13.99\nTofu Donburi..................£13.50\nBuffalo Chick'n Burger........£10.00\nGyoza.........................£6.50\n").to_stdout
     end
   end
 end

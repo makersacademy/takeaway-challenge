@@ -19,14 +19,14 @@ class Menu
     menu_items = @menu.collect { |dish|
       format_dish(dish)
     }
-
+    print_header
     puts menu_items
   end
 
   def get_dish(dish_name)
     raise "Dish is not on the menu" if dish_not_on_menu?(dish_name)
     @menu.each { |menu_dish|
-      if dish_name.capitalize == menu_dish.name
+      if dish_name.downcase == menu_dish.name.downcase
         return menu_dish
       end
     }
@@ -36,10 +36,14 @@ class Menu
 
   def dish_not_on_menu?(dish_name)
     @menu.each { |menu_dish|
-      if dish_name.capitalize == menu_dish.name
+      if dish_name.downcase == menu_dish.name.downcase
         return false
       end
     }
+  end
+
+  def print_header
+    puts "Welcome to #{@name.ljust(25, ".")}"
   end
 
   def format_dish(dish)

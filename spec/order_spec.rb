@@ -10,10 +10,14 @@ describe Order do
               Dish.new("Buffalo Chick'n Burger", 10.00),
               Dish.new("Gyoza", 6.50)])
   }
-  let(:order) { Order.new(menu) }
+  let(:twilio_create_double) { double :twilio_create_double, create: nil }
+  let(:twilio_double) { double :twilio_double, messages: twilio_create_double }
+  let(:twilio_class_double) { double :twilio_class_double, new: twilio_double }
+  let(:message) { Message.new("", "", "", twilio_class_double) }
+  let(:order) { Order.new(menu, message) }
 
   it "expects order to be initalised with a menu" do
-    expect(Order).to respond_to(:new).with(1).argument
+    expect(Order).to respond_to(:new).with(2).argument
   end
 
   describe "#add" do
@@ -43,14 +47,11 @@ describe Order do
     end
 
     it "sends a text to the client when an order is placed" do
-      twilio_create_double = double :twilio_create_double, create: nil
-      twilio_double = double :twilio_double, messages: twilio_create_double
-      twilio_class_double = double :twilio_class_double, new: twilio_double
       message = Message.new("", "", "", twilio_class_double)
       time = Time.now
       new_order = Order.new(menu, message)
       new_order.add("Gyoza", 2)
-      expect(twilio_create_double).to receive(:create).with("12345789", "Thank you for your order! It will be delivered by #{(time + (60 * 60)).strftime "%H:%M"}.")
+      expect(twilio_create_double).to receive(:create).with({ :body => "Thank you for your order! It will be delivered by #{(time + (60 * 60)).strftime "%H:%M"}.", :from => "", :to => "123456789" })
       new_order.place_order("123456789")
     end
   end
