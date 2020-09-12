@@ -1,4 +1,4 @@
-Takeaway Challenge
+Catzkorn's Takeaway
 ==================
 ```
                             __________
@@ -14,70 +14,126 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Welcome to Catzkorns Takeaway!
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+How to use:
+You are able to set-up your own takeaway or use the default restaurant I have created!
 
-Task
------
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+
+# For default:
+
+
+### Please Note:
+Using this method below will not send you a text message as intended, but has a replacement that will print a confirmation message in the terminal. If you wish to receive a text message, you will need a [Twilio](https://www.twilio.com) account. For this to happen, you will need to input details of your Twilio account as the second parameter in `Order.new` by this syntax:
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+twilio_messenger = Message.new(account_sid, auth_token, account_phone_num) 
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+order = Order.new(menu, twilio_messenger)
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## IRB
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+To use the standard menu, open IRB in your terminal
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+```
+charlotte@Charlottes-MBP takeaway-challenge % irb
+2.6.5 :001 > 
+```
+ and run these commands in IRB.
 
 
-In code review we'll be hoping to see:
+> require "./lib/order"
+```
+2.6.5 :004 > require "./lib/order"
+ => true 
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+ ```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+ ### To generate the menu:
+ > mildreds = Menu.new
+ ```
+2.6.5 :005 > mildreds = Menu.new
+ => #<Menu:0x00007fc14bc51570 @name="Mildreds", @menu=[#<Dish:0x00007fc14b83cf48 @name="Soul Bowl", @price=13.99>, #<Dish:0x00007fc14b83ce58 @name="Tofu Donburi", @price=13.5>, #<Dish:0x00007fc14b83cc28 @name="Buffalo Chick'n Burger", @price=10.0>, #<Dish:0x00007fc14b83cb10 @name="Gyoza", @price=6.5>]> 
+2.6.5 :006 > 
+```
 
-Notes on Test Coverage
-------------------
+### To view the menu:
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+> mildreds.view_menu
+```
+2.6.5 :007 > mildreds.view_menu
+Welcome to Mildreds.................
+Soul Bowl.....................£13.99
+Tofu Donburi..................£13.50
+Buffalo Chick'n Burger........£10.00
+Gyoza.........................£6.50
+```
+
+
+### To create an order: 
+
+> order = Order.new(mildreds)
+
+```
+2.6.5 :003 > order = Order.new(mildreds)
+ => #<Order:0x00007fe4f2b09918 @menu=#<Menu:0x00007fe4f2b02b18 @name="Mildreds", @menu=[#<Dish:0x00007fe4ee160528 @name="Soul Bowl", @price=13.99>, #<Dish:0x00007fe4ee1604b0 @name="Tofu Donburi", @price=13.5>, #<Dish:0x00007fe4ee160410 @name="Buffalo Chick'n Burger", @price=10.0>, #<Dish:0x00007fe4ee1603c0 @name="Gyoza", @price=6.5>]>, @customer_selection=[], @messenger=#<MessengerStandIn:0x00007fe4f2b098f0>> 
+2.6.5 :004 > 
+
+```
+
+### To add dishes to your order:
+
+> order.add("dish", quantity)
+
+```
+2.6.5 :004 > order.add("Tofu Donburi", 3)
+ => 3 
+ 2.6.5 :005 > order.add("gyoza", 2)
+ => 2 
+ 2.6.5 :006 > order.add("BUFFALO CHICK'N BURGER", 1)
+ => 1 
+```
+
+### To check order total:
+
+> order.total
+
+```
+2.6.5 :007 > order.total
+ => 63.5 
+```
+
+### To place your order:
+
+> order.place_order("phone number with area code")
+
+```
+2.6.5 :008 > order.place_order("+44123456789")
+Thank you for your order! It will be delivered by 20:24.
+```
+
+# To create your own takeaway and menu:
+
+Initialize Menu.new as follows:
+
+
+>restaurant_name = Menu.new(resturant name, [array of `Dish.new(name, cost)`])
+
+```
+redemption = Menu.new("Redemption", [Dish.new("Vegan Korma", 13.99), Dish.new("Pesto Pasta", 8.50), Dish.new("Dragon Soup", 12.99)])
+ => #<Menu:0x00007fe4f2b58568 @name="Redemption", @menu=[#<Dish:0x00007fe4f2b58658 @name="Vegan Korma", @price=13.99>, #<Dish:0x00007fe4f2b58608 @name="Pesto Pasta", @price=8.5>, #<Dish:0x00007fe4f2b585b8 @name="Dragon Soup", @price=12.99>]> 
+2.6.5 :010 > redemption.view_menu
+Welcome to Redemption...............
+Vegan Korma...................£13.99
+Pesto Pasta...................£8.50
+Dragon Soup...................£12.99
+
+```
+and follow the result of the steps detailed under default!
+
+---
+
+Any questions, contact me [@Catzkorn](https://twitter.com/catzkorn) on twitter!

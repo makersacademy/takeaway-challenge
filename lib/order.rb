@@ -1,10 +1,11 @@
 require_relative "dish"
 require_relative "menu"
 require_relative "message"
+require_relative "messenger_stand_in"
 require "date"
 
 class Order
-  def initialize(menu, messenger)
+  def initialize(menu, messenger = MessengerStandIn.new)
     @menu = menu
     @customer_selection = []
     @messenger = messenger
