@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
@@ -26,13 +27,11 @@ class Order
     @total == create_bill
   end
 
-  def place_order(telephone = OLLIES_TELEPHONE)
-    puts telephone
+  def place_order(total = @total, items = @items, text_class = Text)
+    text_class.new(items, total)
   end
 
   private 
-
-  OLLIES_TELEPHONE = 07403659123
 
   def quantity_validator(item, quantity)
     @items.each do |item0|
