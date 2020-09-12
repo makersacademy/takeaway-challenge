@@ -26,10 +26,13 @@ class Order
     @total == create_bill
   end
 
-  def place_order
+  def place_order(telephone = OLLIES_TELEPHONE)
+    puts telephone
   end
 
   private 
+
+  OLLIES_TELEPHONE = 07403659123
 
   def quantity_validator(item, quantity)
     @items.each do |item0|
