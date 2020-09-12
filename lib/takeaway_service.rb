@@ -19,13 +19,19 @@ class TakeawayService
   def create_order(order = Order.new(@restaurant))
     order_hash = { id: @order_counter, order: order }
     @orders << order_hash
-    @order_counter += 1
+    increase_counter
     order_hash[:id]
   end
-  #
+
   # def add_to_order(dish_name, qty)
   #   order
   # end
+  #
+  private
+
+  def increase_counter
+    @order_counter += 1
+  end
 end
 
 @takeaway = TakeawayService.new(

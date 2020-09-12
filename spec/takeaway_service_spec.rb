@@ -4,7 +4,7 @@ describe TakeawayService do
   subject(:takeaway) { TakeawayService.new(restaurant_dbl) }
   let(:restaurant_dbl) { double('restaurant', format_menu: formatted_menu) }
   let(:formatted_menu) { "Mock example\nof a\nformatted menu" }
-  let(:order_dbl) { double('order') }
+  let(:order_dbl) { double('order', add: add_confirmation) }
 
   it 'sets the restaurant' do
     expect(takeaway.restaurant).to eq(restaurant_dbl)
@@ -42,6 +42,25 @@ describe TakeawayService do
 
     it 'returns the order id' do
       expect(takeaway.create_order(order_dbl)).to eq(1)
+    end
+  end
+
+  describe '#add_to_order(order_id, dish_name, qty)' do
+    it 'takes an order_id, dish_name and qty as arguments' do
+      expect(takeaway).to respond_to(add_to_order).with(3).arguments
+    end
+
+    context 'when the order id is valid' do
+      it 'sends the add message to the relevant order object' do
+        takeaway.create_order(order_dbl)
+        expect(order_dbl).to receive(:add).once.with('Pepperoni pizza', 1)
+
+        takeaway.add_to_order(1, 'Pepperoni pizza', 1)
+      end
+
+      it 'returns the add details received from order.add' do
+        expect(takeaway.add_to_order(1, 'Pepperoni pizza', 1)).to eq(order_dbl.add)
+      end
     end
   end
 
