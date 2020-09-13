@@ -8,12 +8,5 @@ describe Menu do
     end
   end
 
-  describe '#select' do
-    let(:meals) {  { "pizza" => 7} }
-    it 'selects a dish' do
-      expect(menu.select("pizza")).to eq ["pizza"]
-    end
-  end
-
   
 end

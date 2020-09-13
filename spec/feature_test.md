@@ -4,9 +4,9 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
-require './lib/menu.rb'
-menu = Menu.new
-menu.view
+require './lib/restaurant.rb'
+fat_tonys = Restaurant.new
+fat_tonys.menu.view
 
 -------------------------------------------
 
@@ -14,11 +14,12 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
-require './lib/menu.rb'
-menu = Menu.new
-menu.view
-menu.select("pizza")
-menu.select("ice cream")
+require './lib/restaurant.rb'
+fat_tonys = Restaurant.new
+fat_tonys.menu.view
+takeaway = fat_tonys.new_order
+takeaway.add("pizza", 5)
+takeaway.("ice cream", 2)
 
 -------------------------------------------
 
@@ -31,6 +32,7 @@ menu = Menu.new
 menu.view
 menu.select("pizza")
 menu.select("ice cream")
+menu.order.list
 menu.order.total
 
 ------------------------------------------
@@ -44,5 +46,12 @@ menu = Menu.new
 menu.view
 menu.select("pizza")
 menu.select("ice cream")
+menu.order.list
 menu.order.total
 menu.order.confirm
+
+require './lib/restaurant.rb'
+pizzahut = Restaurant.new
+pizzahut.new_order
+pizzahut.order.add("pizza")
+pizzahut.place_order(6.99)
