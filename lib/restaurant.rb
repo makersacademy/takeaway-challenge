@@ -1,41 +1,17 @@
-require 'order'
+require_relative 'order'
+require_relative 'menu'
 
 class Restaurant
 
-  MENU = @menu
-  attr_reader :menu
+  attr_accessor :menu, :order
 
-  def initialize(menu = $example_menu)
-    @menu = menu
+  def initialize
+    @menu = Menu.new
+    @order = nil
   end
 
   def place_order
-    view_menu
-    order = Order.new
-    #order.take_order
-    #order.show_order
-
-  end
-
-  def view_menu
-    formatted_menu = []
-    @menu.each_with_index { |item, i| item.each do |name, price| formatted_menu << "#{name} - £#{price}" end }
-    formatted_menu
+    @order = Order.new
   end
 
 end
-
-
-
-$example_menu = [
-  "Pici_cacio & pepe" => 6,
-  "Burrata" => 5,
-  "Salmon crudo" => 10,
-  "Ribeye steak" => 26, 
-  "Ocotpus potjie" => 9,
-  "Charred aubergine" => 12,
-  "Duck breast" => 14,
-  "Spinach (side)" => 6,
-  "Chips (side)" => 5,
-  "Salmon" => 4
-  ]

@@ -1,43 +1,32 @@
-require 'restaurant'
+require_relative 'menu'
 
 class Order
 
-  DEFAULT_BILL = @food_cost
-  MENU = Restaurant::MENU
+  BILL = 0
 
-  attr_reader :dishes, :total_bill
+  attr_accessor :menu, :full_order, :bill
 
-  def initialize(total_bill = 0)
-    @dishes = []
-    @total_bill = total_bill
+  def initialize(bill = BILL)
+    @full_order = []
+    @bill = bill
+    @menu = Menu::MENU
   end
 
-  def take_order
-    puts "What would you like to eat?"
-    puts "Hit enter again to finalise your choice."
-    # gets a 
+  def add(dish, quantity = 1) #to full_order
+    raise "This item is not on the menu" unless on_menu?(dish)
+    quantity.times { @full_order << dish }
+    quantity.times { @bill += @menu[dish] }
   end
 
-  def new_dish(dish)
-    # creates a new 'dish' object
-    # gets name and cost from the menu hash
-    
-    # search MENU for a dish name corresponding to the parameter in the method
-    # name, cost = MENU[:name], MENU[:name] = cost
-    # dish = Dish.new(name, cost)
+  def total_correct?
+    count = 0
+    @full_order.each { |dish| count += @menu[dish] }
+    @bill == count 
   end
 
-  def add_cost
-    # adds the cost of the most recently requested meal to the total
-  end
-
-  def show_order
-    # shows the user the order they have submitted
-    # Food name - quantity number
-  end
-
-  def total_is_total?
-    # Returns true if the total of the dishes passed as an order == total cost of the different dishes. 
+private
+  def on_menu?(dish) # move to menu class...
+    @menu.has_key?(dish)
   end
 
 end
