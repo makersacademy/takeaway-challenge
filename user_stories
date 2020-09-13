@@ -43,13 +43,13 @@ Note that you can only send texts in the same country as you have your account. 
 Diagram
 
 
-Superclass Takeaway
+Superclass Takeaway (requires Ordering, requires SMS)
 - responsibility
  - print menu
  - place order
  - send SMS
 
-Subclass Menu                     ----->         Subsubclass Ordering
+Subclass Menu                      ----->        Subsubclass Ordering (requires Menu)
 - responsibility                                 - responsibility
  - mapping list of dishes                         - add ordered dishes
  - check if dish is available                     - sum ordered dishes
