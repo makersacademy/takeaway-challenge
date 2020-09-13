@@ -9,16 +9,10 @@ describe Restaurant do
 
   describe '#finalise_order' do
     it 'sends a text when passed true' do
-      # allow(thai_titanic).to receive(:finalise_order).with(5.99)
-      # # allow(order).to receive(:verify).with(5.99).and_return true
-      # # allow(order).to receive(:check_total).and_return true
-      # expect(thai_titanic.finalise_order(5.99)).to receive(:send_text)
-      # thai_titanic.finalise_order(5.99)
       order_double = double :order
       order_class_double = double :order_class, new: order_double
       friday_order = thai_titanic.new_order(order_class_double)
       allow(order_double).to receive(:verify) { 4.99 }
-      # expect(order_double).to receive(verify(4.99))
       thai_titanic.finalise_order(4.99)
     end
   end

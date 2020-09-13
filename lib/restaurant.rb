@@ -1,5 +1,6 @@
 require_relative 'order'
 require_relative 'menu'
+require_relative 'text'
 
 class Restaurant
 
@@ -13,9 +14,9 @@ class Restaurant
     @order = order_class.new
   end
 
-  def finalise_order(amount)
+  def finalise_order(amount, text_class = Text)
     @order.verify(amount)
-    send_text
+    text_class.new
   end
 
   def send_text
