@@ -18,6 +18,24 @@ class TakeawayService
   def create_order(order = Order.new(@restaurant))
     order
   end
+
+  def place_order(order)
+    raise 'Incorrect total, cannot complete order' unless correct_total?(order)
+  end
+
+  private
+
+  def correct_total?(order)
+    actual_total = order.basket.map {
+      |item| find_dish(item[:dish]).price * item[:qty] }.reduce(:+)
+    actual_total == order.total
+  end
+
+  def find_dish(dish)
+    @restaurant.find_dish(dish.name)
+  end
+
+
 end
 
 # @takeaway = TakeawayService.new(

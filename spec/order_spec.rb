@@ -37,18 +37,9 @@ describe Order do
       expect{ order.add('Pepperoni pizza', 1) }.to change{ order.basket.count }.by(1)
       expect(order.basket[0]).to eq({dish: dish_dbl, qty: 1})
     end
-  end
 
-  describe '#place(total)' do
-    it 'takes a total price as an argument' do
-      expect(order).to respond_to(:place).with(1).argument
-    end
-
-    it 'raises an error if the provided total is not correct for the order' do
-      order.add('Pepperoni pizza', 1)
-
-      expect{ order.place(5.00) }.to raise_error(RuntimeError)
+    it 'updates the order total' do
+      expect{ order.add('Pepperoni pizza', 2) }.to change{ order.total }.by(17.98)
     end
   end
-
 end
