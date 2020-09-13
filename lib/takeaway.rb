@@ -12,6 +12,7 @@ class Takeaway
     list_of_dishes.each do |dish, qty|
       ordering.add(dish, qty)
     end
+    ordering.sum
   end
 
   private

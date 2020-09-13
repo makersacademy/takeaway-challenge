@@ -23,4 +23,8 @@ describe Menu do
   it "says if a dish is available in the list of dishes" do
     expect(menu.dish_available?(:Coffee)).to be true
   end
+
+  it "says if a dish is NOT available in the list of dishes" do
+    expect(menu.dish_available?(:Sundaes)).to be false
+  end
 end
