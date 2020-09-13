@@ -15,7 +15,7 @@ class Menu
   end
 
   def find_dish(dish_name)
-    @dishes.select.first { |dish| dish.name == dish_name }
+    @dishes.find { |dish| dish.name == dish_name }
   end
 
   private
