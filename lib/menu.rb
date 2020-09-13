@@ -11,9 +11,8 @@ class Menu
 	end 
 
 	def print
-		@dishes.map do |name, price|
-			"#{name} £#{price}"
-		end.join(", ")
+		@dishes.map { |name, price|
+			"#{name} £#{price}" }.join(", ")
 	end
 
 		def exist?(dish)
