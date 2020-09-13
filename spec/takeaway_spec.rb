@@ -5,7 +5,7 @@ describe Takeaway do
   # pass menu class with menu instance, pass order class with order instance to takeaway class
   let(:menu) { double(:menu, print: printed_menu) } # create double of menu to access menu from takeaway class, has method print in its Class, injected here to the takeaway class
   let(:ordering) { double(:ordering, sum: 4.98) } #create double of order class and inject line 4, US 5 ordering is responsible for sum
-  let(:sms) { double(:sms, deliver_sms: nil) } # create double of sms class with deliver_sms method, nil as no start value
+  let(:sms) { instance_double("SMS", deliver_sms: nil) } # create double of sms class with deliver_sms method, nil as no start value
 
   let(:printed_menu) { "Coffee: 0.99" }
 
