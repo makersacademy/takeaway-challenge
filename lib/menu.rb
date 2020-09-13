@@ -15,7 +15,9 @@ class Menu
   end
 
   def find_dish(dish_name)
-    @dishes.find { |dish| dish.name.downcase == dish_name.downcase }
+    dish = @dishes.find { |dish| dish.name.downcase == dish_name.downcase }
+    raise 'Dish not found' if dish.nil?
+    dish
   end
 
   private

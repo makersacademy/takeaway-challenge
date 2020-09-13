@@ -33,6 +33,10 @@ describe Menu do
       expect(menu).to respond_to(:find_dish).with(1).argument
     end
 
+    it 'raises an error is the dish name cannot be found' do
+      expect { menu.find_dish('test') }.to raise_error(RuntimeError)
+    end
+
     it 'returns the dish object with the given dish name' do
       expect(menu.find_dish('Pepperoni PIZZA')).to eq(dish_dbl1)
       expect(menu.find_dish('lasagne')).to eq(dish_dbl2)
