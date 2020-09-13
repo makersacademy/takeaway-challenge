@@ -5,8 +5,9 @@ RSpec.describe Customer do
 let (:customer) { Customer.new }
 let (:takeaway) { double('takeaway', :view => {}) }
   
-  it 'customer can view menu' do 
-    expect(customer.view(takeaway)).to be_instance_of Hash
+  it 'calls #view on instance of takeaway' do 
+    expect(takeaway).to receive(:view)
+    customer.view(takeaway)
   end 
 
   it 'customer can add item to basket' do 
