@@ -2,7 +2,7 @@ require "takeaway"
 
 describe Takeaway do
   before(:each) { @menu_list = "1: Pizza, £7  2: Pasta, £6  3: Beer, £4  "
-  order = [1, 2, 3, 3] }
+  @order = [{ :Pizza => 7}, {:Pasta => 6}, {:Beer => 4}] }
   
   let(:menu) { double 'menu' }
   
@@ -14,6 +14,16 @@ describe Takeaway do
 
   it "responds to place_order" do
     expect(takeaway).to respond_to(:place_order) 
+  end
+
+  it "responds to view_order" do
+    expect(takeaway).to respond_to(:view_order)
+  end
+
+  it "Checks that items are added up" do
+    allow(menu).to receive(:item).and_return(@order)
+    takeaway.select(1,2,3,3)
+    expect(takeaway.view_order).to eq "Total = £17"
   end
 
   it "throws error message if @order is empty and user attempts to place order" do

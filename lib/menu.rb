@@ -18,7 +18,7 @@ class Menu
         pretty_menu << "#{key}: #{item}, £#{price}  "
       end
     end
-    pretty_menu
+    sprintf pretty_menu
   end
 
   def item(selection)

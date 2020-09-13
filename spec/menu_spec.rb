@@ -6,6 +6,6 @@ describe Menu do
     expect(subject.list_items).to eq(menu_list)  
   end
   it "responds to #item" do
-    expect(subject).to respond.to(:selection)
+    expect(subject).to respond_to(:item)
   end
 end
