@@ -18,7 +18,7 @@ describe Ordering do
     allow(menu).to receive(:dish_available?).with(:Sandwich).and_return(true)
 
     allow(menu).to receive(:price).with(:Coffee).and_return(0.99)
-    allow(menu).to receive(:price).with(:Coffee).and_return(3.99)
+    allow(menu).to receive(:price).with(:Sandwich).and_return(3.99)
   end
 
   it 'selects several dishes from list of dishes' do
