@@ -14,4 +14,9 @@ let (:takeaway) { double('takeaway', :view => {}) }
     expect { customer.add("dish") }.to change { customer.basket.count }.by(1)
   end 
   
+  it 'customer can add selection and price to basket array' do 
+    expected = [ {:chicken => 4.99} ]
+    expect(customer.add('chicken')).to eq(expected)
+  end 
+
 end 

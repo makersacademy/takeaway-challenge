@@ -1,9 +1,12 @@
+require_relative 'takeaway'
+
 class Customer 
 
 attr_reader :basket
 
-  def initialize 
+  def initialize(takeaway = Takeaway) 
     @basket = []
+    @takeaway = takeaway.new
   end 
 
   def view(takeaway)
@@ -11,7 +14,8 @@ attr_reader :basket
   end 
 
   def add(dish)
-    @basket << dish
+    a = dish.to_sym
+    @basket << @takeaway.menu.select {|k| k == a}
   end 
 
 end 
