@@ -1,7 +1,7 @@
 require 'Takeaway'
 # US1
 describe Takeaway do
-  subject(:takeaway) { Takeaway.new(menu: menu, ordering: ordering, sms: sms) } # inject menu/ordering/sms to takeaway as responsibility of takeaway class should be delegateded
+  subject(:takeaway) { Takeaway.new(menu: menu, ordering: ordering, sms: sms, config: {}) } # inject menu/ordering/sms to takeaway as responsibility of takeaway class should be delegateded
   # pass menu class with menu instance, pass order class with order instance to takeaway class
   let(:menu) { double(:menu, print: printed_menu) } # create double of menu to access menu from takeaway class, has method print in its Class, injected here to the takeaway class
   let(:ordering) { double(:ordering, sum: 4.98) } #create double of order class and inject line 4, US 5 ordering is responsible for sum

@@ -2,10 +2,10 @@ require 'Ordering'
 require 'SMS'
 
 class Takeaway
-  def initialize(menu:, ordering: nil, sms: nil) # injecting menu as we don't want to creat menu in takeaway class
+  def initialize(menu:, ordering: nil, sms: nil, config: {}) # injecting menu as we don't want to creat menu in takeaway class
     @menu = menu
     @ordering = ordering || Ordering.new(menu) #initialize order from order class, order being nil
-    @sms = sms || SMS.new
+    @sms = sms || SMS.new(config)
   end
 
   def print_menu # US1
