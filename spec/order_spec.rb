@@ -2,20 +2,20 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { Order.new(restaurant_dbl, 1) }
+  subject(:order) { Order.new(restaurant_dbl) }
   let(:restaurant_dbl) { double('restaurant', find_dish: dish_dbl) }
   let(:dish_dbl) { double('dish', price: 8.99) }
 
-  it 'takes a restaurant and an id as an argument' do
-    expect(Order).to respond_to(:new).with(2).arguments
+  it 'takes a restaurant as an argument' do
+    expect(Order).to respond_to(:new).with(1).arguments
   end
 
   it 'stores the given restaurant' do
     expect(order.restaurant).to eq(restaurant_dbl)
   end
 
-  it 'initialises with a status of open' do
-    expect(order.status).to eq('open')
+  it 'initialises with a total equal to 0' do
+    expect(order.total).to eq(0)
   end
 
   it 'initialises with an empty basket' do

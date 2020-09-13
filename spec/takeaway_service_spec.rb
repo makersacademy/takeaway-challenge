@@ -27,7 +27,7 @@ describe TakeawayService do
     end
   end
 
-  describe '#create_order(order)' do
+  describe '#create_order(order=)' do
     it 'returns the order object' do
       expect(takeaway.create_order(order_dbl)).to eq(order_dbl)
     end

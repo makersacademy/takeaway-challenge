@@ -1,13 +1,12 @@
 require_relative 'restaurant'
 
 class Order
-  attr_reader :restaurant, :id, :status, :basket
+  attr_reader :restaurant, :basket, :total
 
-  def initialize(restaurant, id)
+  def initialize(restaurant)
     @restaurant = restaurant
-    @id = id
-    @status = 'open'
     @basket = []
+    @total = 0
   end
 
   def add(dish_name, qty)
