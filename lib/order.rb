@@ -14,4 +14,9 @@ class Order
     dish = @restaurant.find_dish(dish_name)
     @basket << { dish: dish, qty: qty }
   end
+
+  def place(total)
+    total_arr = @basket.map { |item| item[:dish].price * item[:qty] }
+    raise 'Incorrect total' if total_arr.reduce(:+) != total
+  end
 end
