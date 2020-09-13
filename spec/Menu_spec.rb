@@ -1,4 +1,4 @@
-require 'Menu'
+require 'menu'
 
 describe Menu do
  
@@ -8,10 +8,11 @@ describe Menu do
             "Pan Bagnat" => 9,
             "Pasta arrabiatta" => 10
             }
-      expect(subject.print).to eq(dishes)
+      expect(subject.display).to eq(dishes)
     end
 
     it 'print a selected dish price' do
      expect(subject.price("Cassoulet")).to eq 11
     end
+
 end
