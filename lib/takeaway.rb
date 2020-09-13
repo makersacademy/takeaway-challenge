@@ -1,7 +1,8 @@
 class Takeaway
-  def initialize(menu:, ordering: nil) # injecting menu as we don't want to creat menu in takeaway class
+  def initialize(menu:, ordering: nil, sms: nil) # injecting menu as we don't want to creat menu in takeaway class
     @menu = menu
     @ordering = ordering || Ordering.new #initialize order from order class, order being nil
+    @sms = sms
   end
 
   def print_menu # US1
@@ -9,13 +10,19 @@ class Takeaway
   end
 
   def place_order(list_of_dishes)
-    list_of_dishes.each do |dish, qty|
-      ordering.add(dish, qty)
-    end
+    add_dish(list_of_dishes)
+    sms.deliver_sms
     ordering.sum
   end
 
   private
 
-  attr_reader :menu, :ordering # making menu, order accessible
+  attr_reader :menu, :ordering, :sms # making menu, order accessible
+
+  def add_dish(list_of_dishes)
+    list_of_dishes.each do |dish, qty|
+      ordering.add(dish, qty)
+    end
+  end
+
 end
