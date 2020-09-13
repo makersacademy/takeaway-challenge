@@ -1,54 +1,56 @@
 require_relative 'menu'
 require_relative 'order_item'
+require_relative 'send_text'
 class Order 
 
-attr_reader  :dishes_ordered, :menu, :total
+attr_reader  :dishes_ordered, :menu, :total, :text_message
 
-def initialize(menu = Menu.new, total = 0)
-@dishes_ordered = []
-@total = total
-@menu = menu
-
-end
-
-
-def display_menu
-menu.display
-end
-
-def add(dish_id, quantity)
-    if menu.menu_price.has_key?(dish_id)
-    sub_total = menu.menu_price[dish_id] * quantity
-    item = OrderItem.new(dish_id, quantity, sub_total)
-    @total += sub_total
-    @dishes_ordered.push(item)
-    else
-        raise "Dish doesn't exist"
+    def initialize(menu = Menu.new, total = 0, text_message = TwilioClass.new, order_item = OrderItem)
+        @dishes_ordered = []
+        @total = total
+        @menu = menu
+        @text_message = text_message
+        @order_item = order_item
     end
 
-end
+    def display_menu
+        menu.display
+    end
 
-def place_order
-    raise "Total is incorrect" if check == false 
-    puts "Order Succesful" if check == true #placeholder for sending text message
-end
+    def add(dish_id, quantity)
+        if menu.price_exist(dish_id)
+            sub_total = menu.get_price(dish_id) * quantity
+            item = @order_item.new(dish_id, quantity, sub_total)
+            @total += sub_total
+            @dishes_ordered.push(item)
+        else
+            raise "Dish doesn't exist"
+        end
+    end
 
-def get_total
-    @total
-end
+    def place_order
+        raise "Total is incorrect" if check == false 
+        if send_text == true
+             "Text successfully sent" 
+        else
+            "Text failed to send"
+        end  
+    end
 
 
 private
 
-def check #iterate through dishes_ordered and get subtotal, then sum all the subtotal and compare with total
-    all_subtotal =0
-    @dishes_ordered.each do |item|
-        all_subtotal +=  item.sub_total
+    def check #iterate through dishes_ordered and get subtotal, then sum all the subtotal and compare with total
+        all_subtotal =0
+            @dishes_ordered.each do |item|
+            all_subtotal +=  item.sub_total
+        end
+    all_subtotal == @total ? true : false
     end
-    
 
-    all_subtotal == get_total ? true : false
-end
+    def send_text
+        @text_message.send
+    end
 
 
 

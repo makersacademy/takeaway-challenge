@@ -21,8 +21,6 @@ def initialize
     }
 end
 
-
-
     def display
         @menu_price.each do |key, value|
             price = @menu_price[key]
@@ -31,4 +29,11 @@ end
         end
     end
 
+    def get_price(dish_id)
+        @menu_price[dish_id]
+    end
+
+    def price_exist(dish_id)
+        @menu_price.has_key?(dish_id)
+    end
 end
