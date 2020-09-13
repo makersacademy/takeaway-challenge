@@ -16,7 +16,14 @@ class Order
   end
 
   def place(total)
-    total_arr = @basket.map { |item| item[:dish].price * item[:qty] }
-    raise 'Incorrect total' if total_arr.reduce(:+) != total
+    raise 'Incorrect total' unless correct_total?(total)
+  end
+
+  private
+
+  def correct_total?(total)
+    actual_total = @basket.map {
+      |item| item[:dish].price * item[:qty] }.reduce(:+)
+    actual_total == total
   end
 end
