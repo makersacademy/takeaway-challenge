@@ -1,4 +1,5 @@
 require 'Ordering'
+require 'Menu'
 
 describe Ordering do
   subject(:ordering) { Ordering.new(menu) } # ref1

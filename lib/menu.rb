@@ -14,4 +14,8 @@ class Menu
     end.join(", ") # join array with comma, method chaining
   end
 
+  def dish_available?(dish)
+    !list_of_dishes[dish].nil? # returns true if dish is not nil
+  end
+
 end

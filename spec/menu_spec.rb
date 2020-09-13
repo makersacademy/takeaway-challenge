@@ -20,4 +20,7 @@ describe Menu do
     expect(menu.print).to eq (printed_menu)
   end
   # US1
+  it "says if a dish is available in the list of dishes" do
+    expect(menu.dish_available?(:Coffee)).to be true
+  end
 end
