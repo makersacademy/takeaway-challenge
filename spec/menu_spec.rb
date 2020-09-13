@@ -34,8 +34,8 @@ describe Menu do
     end
 
     it 'returns the dish object with the given dish name' do
-      expect(menu.find_dish('Pepperoni pizza')).to eq(dish_dbl1)
-      expect(menu.find_dish('Lasagne')).to eq(dish_dbl2)
+      expect(menu.find_dish('Pepperoni PIZZA')).to eq(dish_dbl1)
+      expect(menu.find_dish('lasagne')).to eq(dish_dbl2)
     end
   end
 
