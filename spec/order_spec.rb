@@ -1,7 +1,6 @@
 require 'order'
 require 'menu'
 
-
 describe Order do
   let(:order) { Order.new }
 
@@ -44,10 +43,7 @@ describe Order do
   describe '#total_correct?' do
     it 'provides the correct total without user input' do
       order.add("Burrata", 2)
-      p order.full_order
-      p order.bill
       expect(order.total_correct?).to eq true
     end
   end
-
 end

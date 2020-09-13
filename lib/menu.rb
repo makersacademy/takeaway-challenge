@@ -17,7 +17,7 @@ class Menu
   end
 
   def on_menu?(dish)
-    !!dishes[dish]
+    @dishes.has_key?(dish)
   end
 
   def cost(dish)

@@ -12,7 +12,7 @@ class Order
     @menu = Menu::MENU
   end
 
-  def add(dish, quantity = 1) #to full_order
+  def add(dish, quantity = 1)
     raise "This item is not on the menu" unless on_menu?(dish)
     quantity.times { @full_order << dish }
     quantity.times { @bill += @menu[dish] }
