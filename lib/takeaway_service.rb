@@ -19,8 +19,10 @@ class TakeawayService
     order
   end
 
-  def place_order(order)
+  def place_order(order, customer_phone)
     raise 'Incorrect total, cannot complete order' unless correct_total?(order)
+
+    @sms_service.send_sms(customer_phone, confirmation_message)
   end
 
   private
@@ -35,6 +37,13 @@ class TakeawayService
     @restaurant.find_dish(dish.name)
   end
 
+  def confirmation_message
+    "Thank you! Your order was placed and will be delivered before #{est_arrival}"
+  end
+
+  def est_arrival
+    (Time.now + 3600).strftime("%-I:%M%p")
+  end
 
 end
 

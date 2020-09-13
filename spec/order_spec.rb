@@ -41,5 +41,9 @@ describe Order do
     it 'updates the order total' do
       expect{ order.add('Pepperoni pizza', 2) }.to change{ order.total }.by(17.98)
     end
+
+    it 'returns a confirmation with the updated total' do
+      expect(order.add('Pepperoni pizza', 2)).to eq('Dish added! Your order total is £17.98')
+    end
   end
 end

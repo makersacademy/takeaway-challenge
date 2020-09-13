@@ -13,5 +13,12 @@ class Order
     dish = @restaurant.find_dish(dish_name)
     @basket << { dish: dish, qty: qty }
     @total += dish.price * qty
+    add_confirmation
+  end
+
+  private
+
+  def add_confirmation
+    "Dish added! Your order total is £#{total}"
   end
 end
