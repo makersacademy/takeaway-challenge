@@ -1,5 +1,5 @@
 require 'twilio-ruby'
-class SMS 
+class Sms 
 	def initialize
 		account_sid = ENV['TWILIO_ACCOUNT_SID']
 		auth_token = ENV['TWILIO_AUTH_TOKEN']
