@@ -26,11 +26,16 @@ describe TakeawayService do
 
     it "prints the formatted menu received from restaurant" do
       expected = "#{formatted_menu}\n"
-      expect{ takeaway.print_menu }.to output(expected).to_stdout
+      expect { takeaway.print_menu }.to output(expected).to_stdout
     end
   end
 
   describe '#create_order(order = Order.new())' do
+    it 'creates a new Order object if none provided' do
+      expect(Order).to receive(:new).once.with(restaurant_dbl)
+      takeaway.create_order
+    end
+
     it 'returns the order object' do
       expect(takeaway.create_order(order_dbl)).to eq(order_dbl)
     end
@@ -46,7 +51,7 @@ describe TakeawayService do
       allow(restaurant_dbl).to receive(:find_dish).with(dish_dbl1.name).and_return(dish_dbl1)
       allow(restaurant_dbl).to receive(:find_dish).with(dish_dbl2.name).and_return(dish_dbl2)
 
-      expect{ takeaway.place_order(order_dbl, to_phone) }.to raise_error(RuntimeError)
+      expect { takeaway.place_order(order_dbl, to_phone) }.to raise_error(RuntimeError)
     end
 
     it 'sends a send_sms message to sms_service with phone no. and message' do

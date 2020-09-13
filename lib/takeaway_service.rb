@@ -2,6 +2,7 @@ require_relative 'restaurant'
 require_relative 'menu'
 require_relative 'dish'
 require_relative 'order'
+require_relative 'twilio_service'
 
 class TakeawayService
   attr_reader :restaurant, :sms_service
@@ -44,17 +45,4 @@ class TakeawayService
   def est_arrival
     (Time.now + 3600).strftime("%-I:%M%p")
   end
-
 end
-
-# @takeaway = TakeawayService.new(
-#   TwilioService.new,
-#   Restaurant.new(
-#     Menu.new(
-#       Dish.new('Tom yum soup', 4.50),
-#       Dish.new('Pad thai', 8.95),
-#       Dish.new('Pad see yew', 8.95),
-#       Dish.new('Egg fried rice', 3.89)
-#     )
-#   )
-# )
