@@ -2,15 +2,16 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :list, :total
+  attr_reader :list, :total, :menu
 
   def initialize
     @list = []
+    @menu = Menu::MEALS
   end
 
   def add(dish, quantity = 1)
     quantity.times { 
-      @list << dish unless !Menu::MEALS.include?(dish)
+      @list << dish unless !@menu.include?(dish)
     }
   end
 
@@ -18,10 +19,15 @@ class Order
     @list.delete(dish)
   end
 
-  def sum
+  def verify(amount)
+    fail "The total is incorrect" unless check_total == amount
+    true
+  end
+
+  def check_total
     @total = 0
     @list.each {
-      |dish| @total += (Menu::MEALS[dish])
+      |dish| @total += (@menu[dish])
     }
     @total.round(2)
   end

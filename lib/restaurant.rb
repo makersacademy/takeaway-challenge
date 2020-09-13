@@ -5,16 +5,16 @@ class Restaurant
 
   attr_reader :menu, :order
 
-  def initialize(menu = Menu.new)
-    @menu = menu
+  def initialize(menu_class = Menu)
+    @menu = menu_class.new
   end
 
-  def new_order(order = Order.new)
-    @order = order
+  def new_order(order_class = Order )
+    @order = order_class.new
   end
 
-  def place_order(amount)
-    fail "The total is incorrect" unless @order.sum == amount
+  def finalise_order(amount)
+    @order.verify(amount)
     send_text
   end
 
