@@ -18,4 +18,7 @@ class Menu
     !list_of_dishes[dish].nil? # returns true if dish is not nil
   end
 
+  def price(dish)
+    list_of_dishes[dish]
+  end
 end

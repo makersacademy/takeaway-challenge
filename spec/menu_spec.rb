@@ -27,4 +27,8 @@ describe Menu do
   it "says if a dish is NOT available in the list of dishes" do
     expect(menu.dish_available?(:Sundaes)).to be false
   end
+
+  it 'fetches a price from the list of dishes' do
+    expect(menu.price(:Coffee)).to eq(list_of_dishes[:Coffee])
+  end
 end
