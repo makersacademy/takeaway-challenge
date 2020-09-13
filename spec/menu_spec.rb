@@ -9,7 +9,7 @@ describe Menu do
   describe '#view' do
     it "shows the menu in a clean format" do
       format_menu = "Pici cacio & pepe - £6, Burrata - £5, Salmon crudo - £10"
-      expect(subject.view).to eq (format_menu)
+      expect(subject.view).to eq format_menu
     end
   end
 
@@ -26,10 +26,9 @@ describe Menu do
   end
 
   describe '#cost' do
-   it 'returns the price of the dish' do
-    dish = "Burrata"
-    expect(subject.cost(dish)).to eq 5
-   end
+    it 'returns the price of the dish' do
+      dish = "Burrata"
+      expect(subject.cost(dish)).to eq 5
+    end
   end
-
 end

@@ -16,7 +16,6 @@ describe Order do
     expect(order.bill).to eq(Order::BILL)
   end
 
-
   describe 'Adding a dish to an order' do
     it 'responds to #add' do
       expect(order).to respond_to(:add).with(2).arguments
@@ -32,7 +31,7 @@ describe Order do
 
     it 'add the cost of the dish to @bill' do
       burrata_cost = 5
-      expect { order.add("Burrata") }.to change{order.bill}.from(Order::BILL).to(burrata_cost)
+      expect { order.add("Burrata") }.to change { order.bill }.from(Order::BILL).to(burrata_cost)
     end
 
     it 'adds multiple dishes to full_order' do
@@ -46,4 +45,15 @@ describe Order do
       expect(order.total_correct?).to eq true
     end
   end
+
+  describe '#text_confirm' do
+    it 'sends a confirmation message' do
+      order2 = double("order")
+      allow(order2).to receive(:text_confirm).and_return("Order done")
+
+      expect(order).to respond_to :text_confirm
+      expect(order2.text_confirm).to eq("Order done")
+    end
+  end
+
 end

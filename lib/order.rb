@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
@@ -10,10 +11,12 @@ class Order
     @full_order = []
     @bill = bill
     @menu = Menu::MENU
+    @text = Text.new
   end
 
   def add(dish, quantity = 1)
     raise "This item is not on the menu" unless on_menu?(dish)
+
     quantity.times { @full_order << dish }
     quantity.times { @bill += @menu[dish] }
   end
@@ -24,8 +27,12 @@ class Order
     @bill == count 
   end
 
+  def text_confirm
+    @text.confirm_order
+  end
+
 private
-  def on_menu?(dish) # move to menu class...
+  def on_menu?(dish)
     @menu.has_key?(dish)
   end
 
