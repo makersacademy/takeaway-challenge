@@ -16,21 +16,27 @@ class TakeawayService
     puts @restaurant.format_menu
   end
 
-  def create_order(order = Order.new(@restaurant))
-    order_hash = { id: @order_counter, order: order }
-    @orders << order_hash
-    increase_counter
-    order_hash[:id]
+  def create_order(order = Order.new(@restaurant, @order_counter))
+    @orders << order
+    increment_order_counter
+    "Your order ID is #{order.id}"
   end
 
-  # def add_to_order(dish_name, qty)
-  #   order
-  # end
-  #
+  def add_to_order(order_id, dish_name, qty)
+    order = find_order(order_id)
+    order.add(dish_name, qty)
+  end
+
   private
 
-  def increase_counter
+  def increment_order_counter
     @order_counter += 1
+  end
+
+  def find_order(id)
+    @orders.find do |order|
+      id == order.id
+    end
   end
 end
 

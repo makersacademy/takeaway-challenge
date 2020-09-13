@@ -6,7 +6,7 @@ describe Order do
   let(:restaurant_dbl) { double('restaurant', find_dish: dish_dbl) }
   let(:dish_dbl) { double('dish') }
 
-  it 'takes a restaurant as an argument' do
+  it 'takes a restaurant and an id as an argument' do
     expect(Order).to respond_to(:new).with(2).arguments
   end
 
