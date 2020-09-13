@@ -20,4 +20,10 @@ it "shows the order total price of the order" do
 	total = bao.confirm_order(dishes)
 	expect(total).to eq(41.95)
 end
+
+=begin it "sends the text message with order confirmation" do 
+	allow(order).to receive(:add_order)
+	allow(sms).to receive(:send)
+	bao.confirm_order(dishes)
+=end 
 end 

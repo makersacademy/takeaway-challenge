@@ -16,7 +16,7 @@ class Restaurant
 
 	def confirm_order(dishes)
 		dishes.each do |dish, amount|
-			order.add_order(dish, amount)
+		order.add_order(dish, amount)
 		end
 		order.total 
 	end 
