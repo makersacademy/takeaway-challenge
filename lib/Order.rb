@@ -1,5 +1,5 @@
 require_relative 'menu'
-require_relative 'sms'
+# require_relative 'sms'
   
 class Order
     
@@ -30,7 +30,7 @@ class Order
   end  
 
   def complete_order
-    @sms.send("Thank you! Your order was placed and will be delivered before: #{(Time.now + 2500).strftime("%k:%M")}.")
+    # SMS.new
   end
 
   def sum_ok?(total)
