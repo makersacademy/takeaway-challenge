@@ -1,37 +1,41 @@
 require_relative 'takeaway'
 require_relative 'confirm'
 
-require 'rubygems'
-require 'twilio-ruby'
-
 class Customer 
 
-attr_reader :basket, :takeaway
+attr_reader :basket, :takeaway, :total
 
   def initialize(takeaway = Takeaway) 
     @basket = []
     @takeaway = takeaway.new
     @text = Text.new
+    @selection = {}
+    @total = 0
   end 
 
-  def view(takeaway)
-    takeaway.view
+  def view
+    @takeaway.view
   end 
 
-  def add(dish)
-    a = dish.to_sym
-    @basket << @takeaway.menu.select {|k| k == a}
+  def select_dish(dish, quantity, price)
+    @selection[dish] = quantity
+    sum_total(quantity, price)
+    add_to_basket
+    @selection = nil
+  end
+
+  def add_to_basket
+    @basket << @selection
   end 
 
-  def total
-    sum = 0 
-    @basket.each { |hash| hash.each_value {|v| sum += v}}
-    sum
+  def sum_total(quantity, price)
+    @total += (quantity * price)
   end 
 
   def place_order
     fail "Nothing in basket" if @basket == []
     @text.sms
   end 
+ 
 
 end 
