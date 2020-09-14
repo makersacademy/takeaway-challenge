@@ -1,22 +1,28 @@
-require 'twilio-ruby'
-require 'dotenv/load'
+# require 'twilio-ruby'
+# require 'dotenv/load'
 
-class Text
+# class Text
 
-  def initialize
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_ID']
-    client = Twilio::REST::Client.new(account_sid, auth_token)
+#   attr_reader :client, :from, :to
 
-    from = ENV['TWILIO_MOBILE']
-    to = ENV['LOUIS_MOBILE']
+#   def initialize
+#     account_sid = ENV['TWILIO_ACCOUNT_SID']
+#     auth_token = ENV['TWILIO_AUTH_ID']
+#     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    delivery_time = (Time.now+(60*60)).strftime("%H:%M")
+#     @from = ENV['TWILIO_MOBILE']
+#     @to = ENV['LOUIS_MOBILE']
 
-    client.messages.create(
-      from: from,
-      to: to,
-      body: "Thank you! Your order was placed and will be delivered before #{delivery_time}."
-    )
-  end
-end
+#   end
+
+#   def send
+
+#     delivery_time = (Time.now+(60*60)).strftime("%H:%M")
+
+#     @client.messages.create(
+#       from: @from,
+#       to: @to,
+#       body: "Thank you! Your order was placed and will be delivered before #{delivery_time}."
+#     )
+#   end
+# end
