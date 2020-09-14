@@ -32,8 +32,20 @@ describe Basket do
 
   describe "#confirm_order" do 
   #Add timecop here and include time detail in twilio_double 
-  twilio_double = double :twilio, send_message: "order Confirmed:\n Total Price 3 \n Estimated Delivery time"
-  it "sends a message confirming delivery one hour from now"
+  #twilio_double = double :twilio, send_message: "order Confirmed:\n Total Price 3 \n Estimated Delivery time"
+    it "sends a message confirming delivery one hour from now" do
+      new_time = Time.local(2020, 12, 20, 11, 0)
+      Timecop.freeze(new_time)
+      twilio_double = double :twilio, send_message: "Order Confirmed:\n Total Price 3 \n Estimated Delivery time "
+      basket = Basket.new([
+        { food: "vinegar yogurt", price: 3 },
+        { food: "pickled crumpets", price: 6 },
+        { food: "tomato ice-cream", price: 2 }])
+      basket.price_total
+      expect(basket.confirm_order).to eq "Order Confirmed:\n Total Price 3 \n Estimated Delivery time 12"
+
+    end
+  end
   #add tests here  
-end
+
 end

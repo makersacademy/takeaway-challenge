@@ -31,9 +31,8 @@ class Basket
 end
 
  #puts testing below to be deleted
-=begin 
+
 y = Basket.new([{ food: "roadkill jumbalaya", price: 7 }, { food: "stawberry lasagne", price: 20 }, { food: "vinegar yogurt", price: 3 }])
 y.price_total
 y.order_summary
 y.confirm_order
-=end
