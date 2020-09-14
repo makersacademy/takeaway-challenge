@@ -1,7 +1,7 @@
 require_relative 'takeaway'
 require_relative 'confirm'
 
-class Customer 
+class Order 
 
 attr_reader :basket, :takeaway, :total
 
