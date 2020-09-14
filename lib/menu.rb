@@ -1,4 +1,4 @@
-class Menu
+class Menu1
   def initialize
     @list_of_dishes = []
   end
