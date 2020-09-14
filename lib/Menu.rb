@@ -10,8 +10,8 @@ class Menu
     }
   end
 
-  def display
-    @dishes.each { |name, price| puts "#{name}: £#{price}" } 
+  def to_s
+    @dishes.each { |name, price| "#{name}: £#{price}" } 
   end
 
   def price(dish_name)

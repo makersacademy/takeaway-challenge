@@ -37,7 +37,7 @@ describe Order do
   expect(subject.print_menu).to eq(dishes)
   end
   
-  context '#checkout?' do
+  context '#checkout?' 
       
     it 'double check the total is correct' do
       total = 49
@@ -48,13 +48,16 @@ describe Order do
     end
 
     it 'Or raises an error otherwise' do
-      total = 49
+      total = 48
       subject.add("Cassoulet", 2)
       subject.add("Pan Bagnat", 3)
       subject.total
-      expect{subject.checkout?(total)}.to raise_error('No can do')
+      expect{subject.sum_ok?(total)}.to raise_error('No can do')
     end
 
-  end 
+  context "#complete_order"
+      it "send a text confirming the order an total" do
+      #
+      end 
 
 end
