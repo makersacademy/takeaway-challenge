@@ -103,4 +103,11 @@ describe Order do
       expect(order.check_sum).to eq true
     end
   end
+  
+  #let(:text_double) { double :text }
+  #let(:text_class_double) { double :text_class, new: text_double }
+
+  #describe '#place_order' do
+  #  it 'creates a new text' do
+  #    expect(order.place_order).to
 end
