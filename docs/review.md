@@ -93,7 +93,7 @@ end
 can be stubbed out like so:
 
 ```ruby
-describe Takeaway
+describe TakeawayService
   subject(:takeaway) { described_class.new }
 
   before do
