@@ -20,6 +20,10 @@ class Order
    @total_price = @order_list.map do |item| item[:quantity] * item[:price_each] end.reduce(:+)
   end
 
+  def complete_order
+    SMS.new
+  end  
+
   def checkout?(total)
     @total_price != total ? raise 'No can do' : complete
   end
