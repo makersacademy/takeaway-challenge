@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 --color --format documentation
 --require spec_helper
+=======
+--require spec_helper
+>>>>>>> 07d35f2487bb93c4fdfb629eb5cdc306fe8ed9d0

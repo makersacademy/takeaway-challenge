@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/takeaway-challenge.iml" filepath="$PROJECT_DIR$/.idea/takeaway-challenge.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/takeaway-challenge1.iml" filepath="$PROJECT_DIR$/.idea/takeaway-challenge1.iml" />
+>>>>>>> 07d35f2487bb93c4fdfb629eb5cdc306fe8ed9d0
     </modules>
   </component>
 </project>
