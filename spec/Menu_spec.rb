@@ -8,7 +8,7 @@ describe Menu do
             "Pan Bagnat" => 9,
             "Pasta arrabiatta" => 10
             }
-      expect(subject.display).to eq(dishes)
+      expect(subject.to_s).to eq(dishes)
     end
 
     it 'print a selected dish price' do
