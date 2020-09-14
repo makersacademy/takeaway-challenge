@@ -1,7 +1,7 @@
 require "restaurant"
 
 describe Restaurant do 
-subject(:bao) { Restaurant.new(menu, order, sms) }
+subject(:bao) { Restaurant.new(menu, order) }
 let(:menu) { double :menu, print: shown_menu }
 let(:order) { instance_double("Order", total: 41.95) }
 let(:sms) { double :sms } 
@@ -22,8 +22,7 @@ it "shows the order total price of the order" do
 	expect(total).to eq(41.95)
 end
 
- it "sends the text message with order confirmation" do 
+ it "sends a text message confirming the order" do 
 	allow(sms).to receive(:send)
-	expect(bao.send_confirmation).to eq(sms.send)
-	end 
+	
 end 

@@ -6,10 +6,10 @@ require "sms"
 class Restaurant
 	attr_accessor :menu, :order, :sms
 	
-	def initialize(menu, order, sms)
+	def initialize(menu, order)
 		@menu = menu
 		@order = order
-		@sms = sms 
+		#@sms = sms 
 	end 
 	def show_menu
 		@menu.print

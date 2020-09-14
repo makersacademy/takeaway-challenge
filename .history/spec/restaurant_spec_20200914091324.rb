@@ -23,7 +23,6 @@ it "shows the order total price of the order" do
 end
 
  it "sends the text message with order confirmation" do 
-	allow(sms).to receive(:send)
 	expect(bao.send_confirmation).to eq(sms.send)
 	end 
 end 
