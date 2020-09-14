@@ -3,3 +3,6 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+# Phone number
+./lib/secret_number.rb
