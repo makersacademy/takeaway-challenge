@@ -3,7 +3,7 @@ require_relative 'confirm'
 
 class Order 
 
-attr_reader :basket, :takeaway, :total
+  attr_reader :basket, :takeaway, :total
 
   def initialize(takeaway = Takeaway) 
     @basket = []
@@ -34,8 +34,9 @@ attr_reader :basket, :takeaway, :total
 
   def place_order
     fail "Nothing in basket" if @basket == []
+
     @text.sms
   end 
  
 
-end 
+end

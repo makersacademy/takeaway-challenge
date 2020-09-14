@@ -2,8 +2,8 @@ require 'customer'
 
 RSpec.describe Order do 
 
-let (:order) { Order.new }
-let (:takeaway) { double('takeaway', :view => {}, :menu => {chicken: 4.99, chips: 1.50}) }
+  let(:order) { Order.new }
+  let(:takeaway) { double('takeaway', :view => {}, :menu => { chicken: 4.99, chips: 1.50 }) }
   
   it 'customer can view menu' do 
     expect(order.view).to be_instance_of Hash
@@ -15,7 +15,7 @@ let (:takeaway) { double('takeaway', :view => {}, :menu => {chicken: 4.99, chips
   
   it 'customer can select dish and add to basket' do 
     order.select_dish('chicken', 2, 4.99)
-    expected = [ {'chicken' => 2} ]
+    expected = [{ 'chicken' => 2 }]
     expect(order.basket).to eq(expected)
   end 
 
@@ -24,4 +24,4 @@ let (:takeaway) { double('takeaway', :view => {}, :menu => {chicken: 4.99, chips
     expect(order.total).to eq 9.98
   end 
 
-end 
+end
