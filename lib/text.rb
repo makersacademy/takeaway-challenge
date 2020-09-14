@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require 'dotenv/load'
 
 class Text
 
