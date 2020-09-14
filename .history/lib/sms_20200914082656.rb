@@ -1,13 +1,12 @@
 require 'twilio-ruby'
-require 'dotenv/load'
 
 class Sms 
 	def initialize
-		account_sid = ENV["TWILIO_ACCOUNT_SID"]
-		auth_token = ENV["TWILIO_AUTH_TOKEN"]
+		account_sid = "AC7b1231d8c0c14e594fac7a0ddeda5b88"
+		auth_token = "3f227450d5be6332ac5997788f0b126e"
 		@client = Twilio::REST::Client.new(account_sid, auth_token)
-		@from = ENV['MMOB']
-		@to = ENV['VJMOB']
+		@from = '+441253523345'
+		@to = '+447392293131'
 	end 
 	
 	def send

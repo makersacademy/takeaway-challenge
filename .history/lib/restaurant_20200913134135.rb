@@ -4,12 +4,11 @@ require "order"
 require "sms"
 
 class Restaurant
-	attr_accessor :menu, :order, :sms
+	attr_accessor :menu, :order
 	
 	def initialize(menu, order)
 		@menu = menu
 		@order = order
-		#@sms = sms 
 	end 
 	def show_menu
 		@menu.print
@@ -19,7 +18,6 @@ class Restaurant
 		dishes.each do |dish, amount|
 		order.add_order(dish, amount)
 		end
-		#sms.send
 		order.total 
 	end 
 end 
