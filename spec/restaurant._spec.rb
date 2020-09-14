@@ -5,8 +5,8 @@ describe Restaurant do
     it 'creates a new order' do
       text_double = double :text
       text_class_double = double :text_class, new: text_double
-      allow(thai_tanic)
-      expect(thai_tanic.new_order).to be_an(Order)
+      allow(thai_tanic).to receive(:new_order) { text_double }
+      expect(thai_tanic.new_order)
     end
   end
 
