@@ -1,0 +1,16 @@
+irb -r './lib/takeaway.rb'
+load './lib/menu.rb'
+menu = Menu.new
+dish_object1 = Dish.new('kebab', 3.50)
+dish_object2 = Dish.new('chips', 2.00)
+menu.add_dish(dish_object1)
+menu.add_dish(dish_object2)
+menu.read_menu
+takeaway = Takeaway.new(menu)
+takeaway.see_menu
+takeaway.order('kebab', 3)
+takeaway.order('chips', 1)
+takeaway.basket
+takeaway.basket_summary
+takeaway.order_total
+takeaway.checkout

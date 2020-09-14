@@ -6,13 +6,13 @@ class Menu
     @dishes = []
   end
 
-  def addDish(dish_object)
+  def add_dish(dish_object)
     @dishes << dish_object
   end 
 
-  def readMenu
+  def read_menu
     @dishes.each do |dish_object|
-      return "Dish: #{dish_object.name} Price: £#{dish_object.price}"
+      puts "Dish: #{dish_object.name} Price: £#{dish_object.price}"
     end
   end
 end
