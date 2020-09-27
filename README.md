@@ -82,3 +82,18 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+## Progress
+User can order if they know what they want, with price.
+Total bill can be produced
+7 tests written and passed
+
+## Improvements
+Producing a menu for selection
+
+## Installation
+To run use ```irb``` command
+
+To run tests ```rspec``` in terminal
+## Collaborators
+mattybwoy

@@ -2,7 +2,7 @@ require './lib/order'
 require './lib/takeaway'
 
 describe Order do
-  subject(:order) {Order.new}
+  subject(:order) { Order.new }
   let(:dish1) { double :'Chow mein', dish: 'chow mein', price: '3' }
   let(:dish2) { double :'Egg fried rice', dish: 'egg fried rice', price: '2' }
 

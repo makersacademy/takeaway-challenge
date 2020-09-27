@@ -13,7 +13,7 @@ describe Menu do
 
   describe "print the menu" do
     it "prints out the menu for the customer" do
-      expect(menu.dishes).to eq(dishes)
+      expect(menu.print).to eq(dishes)
     end
   end
 end
