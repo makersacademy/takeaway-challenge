@@ -17,11 +17,15 @@ class Order
     raise "This item doesn't exist!" if check_if_not_in_menu(item)
 
     @basket << item
-    @total += @menu.items[item]
-  end
-
+    add_to_total(item)
+  end 
+  
   private
   def check_if_not_in_menu(item)
     !@menu.items.include?(item)
+  end
+
+  def add_to_total(item)
+    @total += @menu.items[item]
   end
 end
