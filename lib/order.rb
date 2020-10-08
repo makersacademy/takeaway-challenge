@@ -12,7 +12,7 @@ class Order
     puts @menu.print_menu
   end
 
-  # def add_item(item)
-    
-  # end
+  def add_item(item)
+    @basket << item
+  end
 end
