@@ -20,6 +20,14 @@ class Order
     add_to_total(item)
   end 
   
+  def show_order
+    @basket.each do |item|
+      puts "#{item}, £#{@menu.items[item]}"
+    end
+    puts "---------------------"
+    puts "Your total is: £#{@total}."
+  end
+
   private
   def check_if_not_in_menu(item)
     !@menu.items.include?(item)

@@ -34,4 +34,11 @@ describe Order do
       expect(order.total).to eq(menu.items["Blini"])
     end
   end
+
+  describe '#show_order' do
+    it 'shows the order' do
+      order.add_item("Blini")
+      expect { order.show_order }.to output.to_stdout
+    end
+  end
 end
