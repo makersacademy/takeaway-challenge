@@ -13,4 +13,8 @@ class Menu
   def add_item(name, price)
     @items[name] = price
   end
+
+  def delete_item(name)
+    @items.delete(name)
+  end
 end
