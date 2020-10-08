@@ -27,7 +27,5 @@ describe Menu do
     it 'can print the menu to stdout' do
       expect { menu.print_menu }.to output.to_stdout
     end
-    
   end
-  
 end
