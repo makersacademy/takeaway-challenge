@@ -13,6 +13,7 @@ class Order
   end
 
   def add_item(item)
+    raise "This item doesn't exist!" unless @menu.items.include?(item)
     @basket << item
   end
 end
