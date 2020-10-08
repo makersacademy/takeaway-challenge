@@ -19,8 +19,3 @@ describe Basket do
     expect(basket.total_price).to eq 11
   end
 end
-
-@dishes
-#add
-#total_price
-#checkout
