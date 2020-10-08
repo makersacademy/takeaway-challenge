@@ -26,6 +26,7 @@ class Order
     @basket.each do |item|
       puts "#{item}, £#{@menu.items[item]}"
     end
+    
     print_total
   end
 
