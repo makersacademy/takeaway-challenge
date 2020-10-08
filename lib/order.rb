@@ -21,6 +21,8 @@ class Order
   end 
   
   def show_order
+    raise "Your basket is empty." if @basket.empty?
+
     @basket.each do |item|
       puts "#{item}, £#{@menu.items[item]}"
     end
