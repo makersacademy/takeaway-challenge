@@ -17,4 +17,10 @@ class Menu
   def delete_item(name)
     @items.delete(name)
   end
+
+  def print_menu
+    @items.each do |name, price|
+      puts "#{name}, £#{price}"
+    end
+  end
 end

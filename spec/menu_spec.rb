@@ -22,4 +22,12 @@ describe Menu do
       expect(menu.items).not_to include("Shuba")
     end
   end
+
+  describe "#print_menu" do
+    it 'can print the menu to stdout' do
+      expect { menu.print_menu }.to output.to_stdout
+    end
+    
+  end
+  
 end
