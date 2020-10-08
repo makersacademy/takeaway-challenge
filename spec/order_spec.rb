@@ -18,5 +18,9 @@ describe Order do
       order.add_item("Blini")
       expect(order.basket).to include("Blini")
     end
+
+    it 'raises error when trying to add item not in menu' do
+      expect { order.add_item("Burger") }.to raise_error("This item doesn't exist!")
+    end
   end
 end
