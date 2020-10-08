@@ -8,6 +8,12 @@ describe Order do
       expect(order.basket).to be_empty
     end
 
+    it 'total should be 0 by default' do
+      expect(order.total).to eq 0
+    end
+  end
+
+  describe '#show_menu' do
     it 'gets the menu' do
       expect { order.show_menu }.to output.to_stdout
     end
