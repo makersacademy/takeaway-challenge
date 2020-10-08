@@ -17,6 +17,7 @@ class Order
     raise "This item doesn't exist!" if check_if_not_in_menu(item)
 
     @basket << item
+    @total += @menu.items[item]
   end
 
   private
