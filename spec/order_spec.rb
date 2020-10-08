@@ -40,5 +40,9 @@ describe Order do
       order.add_item("Blini")
       expect { order.show_order }.to output.to_stdout
     end
+
+    it 'raises error if basket is empty' do
+      expect { order.show_order }.to raise_error("Your basket is empty.")
+    end
   end
 end
