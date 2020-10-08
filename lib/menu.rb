@@ -10,4 +10,7 @@ class Menu
     }
   end
   
+  def add_item(name, price)
+    @items[name] = price
+  end
 end
