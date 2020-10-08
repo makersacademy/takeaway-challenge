@@ -24,8 +24,7 @@ class Order
     @basket.each do |item|
       puts "#{item}, £#{@menu.items[item]}"
     end
-    puts "---------------------"
-    puts "Your total is: £#{@total}."
+    print_total
   end
 
   private
@@ -35,5 +34,10 @@ class Order
 
   def add_to_total(item)
     @total += @menu.items[item]
+  end
+
+  def print_total
+    puts "---------------------"
+    puts "Your total is: £#{@total}."
   end
 end
