@@ -8,12 +8,18 @@ class Order
     @menu = menu
   end
 
-  def get_menu
+  def show_menu
     puts @menu.print_menu
   end
 
   def add_item(item)
-    raise "This item doesn't exist!" unless @menu.items.include?(item)
+    raise "This item doesn't exist!" if check_if_not_in_menu(item)
+
     @basket << item
+  end
+
+  private
+  def check_if_not_in_menu(item)
+    !@menu.items.include?(item)
   end
 end

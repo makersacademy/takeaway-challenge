@@ -1,15 +1,15 @@
 require 'order'
 
 describe Order do
-  let (:menu) { double :menu, items: { "Blini" => 7 }, print_menu: "Blini, £7" }
-  subject(:order) { Order.new(menu)}
+  let(:menu) { double :menu, items: { "Blini" => 7 }, print_menu: "Blini, £7" }
+  subject(:order) { Order.new(menu) }
   describe '#initialize' do
     it 'the basket is empty by default' do
       expect(order.basket).to be_empty
     end
 
     it 'gets the menu' do
-      expect { order.get_menu }.to output.to_stdout
+      expect { order.show_menu }.to output.to_stdout
     end
   end
 
