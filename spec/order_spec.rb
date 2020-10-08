@@ -22,5 +22,10 @@ describe Order do
     it 'raises error when trying to add item not in menu' do
       expect { order.add_item("Burger") }.to raise_error("This item doesn't exist!")
     end
+
+    it 'should add the item price to total' do
+      order.add_item("Blini")
+      expect(order.total).to eq(menu.items["Blini"])
+    end
   end
 end
