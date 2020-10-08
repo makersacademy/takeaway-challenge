@@ -1,0 +1,15 @@
+Customer:
+
+Menu:
+@dishes
+#print
+
+Dish:
+@name
+@price
+
+Basket:
+@dishes
+#add
+#total_price
+#checkout
