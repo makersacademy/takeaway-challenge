@@ -15,4 +15,11 @@ describe Menu do
       expect(menu.items).to include("Ukha" => 9)
     end
   end
+
+  describe '#delete_item' do
+    it 'can delete an item from the menu' do
+      menu.delete_item("Shuba")
+      expect(menu.items).not_to include("Shuba")
+    end
+  end
 end
