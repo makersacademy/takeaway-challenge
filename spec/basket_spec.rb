@@ -26,12 +26,20 @@ describe Basket do
     it "adds price of an item to total" do
       expect(subject.total).to eq 7
     end
+
+    it "raises error if item doesn't exist" do
+      expect { subject.add_item("Burger") }.to raise_error("This item doesn't exist!")
+    end
   end
 
   describe "#show" do
     it 'shows the basket' do
       subject.add_item("Blini")
       expect { subject.show }.to output.to_stdout
+    end
+
+    it 'raises error if basket empty' do
+      expect { subject.show }.to raise_error("Your basket is empty.")
     end
   end
 
