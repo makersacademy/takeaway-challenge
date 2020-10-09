@@ -56,5 +56,11 @@ describe Order do
     it "raises error if basket is empty" do
       expect { order.place_order }.to raise_error("Can't place an order with an empty basket!")
     end
+
+    it "clears your basket" do
+      order.add_item("Blini")
+      order.place_order
+      expect(order.basket).to be_empty
+    end
   end
 end
