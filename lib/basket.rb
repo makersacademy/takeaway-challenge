@@ -5,4 +5,8 @@ class Basket
     @items = []
     @total = 0
   end
+
+  def add_item(item)
+    @items << item
+  end
 end
