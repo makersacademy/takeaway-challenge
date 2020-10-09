@@ -52,5 +52,9 @@ describe Order do
       expect(order.place_order).to eq (
         "Thank you! Your order was placed and will arrive no later than #{(Time.now + 3600).strftime("%k:%M")}.")
     end
+
+    it "raises error if basket is empty" do
+      expect { order.place_order }.to raise_error("Can't place an order with an empty basket!")
+    end
   end
 end
