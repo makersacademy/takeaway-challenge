@@ -30,6 +30,10 @@ class Order
     print_total
   end
 
+  def place_order
+    "Thank you! Your order was placed and will arrive no later than #{(Time.now + 3600).strftime("%k:%M")}."
+  end
+
   private
   def check_if_not_in_menu(item)
     !@menu.items.include?(item)
