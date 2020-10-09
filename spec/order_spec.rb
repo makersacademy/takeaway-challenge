@@ -45,4 +45,12 @@ describe Order do
       expect { order.show_order }.to raise_error("Your basket is empty.")
     end
   end
+
+  describe '#place_order' do
+    it "outputs a thank you message, order arrives within an hour" do
+      order.add_item("Blini")
+      expect(order.place_order).to eq (
+        "Thank you! Your order was placed and will arrive no later than #{(Time.now + 3600).strftime("%k:%M")}.")
+    end
+  end
 end
