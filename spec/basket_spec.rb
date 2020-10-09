@@ -27,4 +27,19 @@ describe Basket do
       expect(subject.total).to eq 7
     end
   end
+
+  describe "#show" do
+    it 'shows the basket' do
+      subject.add_item("Blini")
+      expect { subject.show }.to output.to_stdout
+    end
+  end
+
+  describe "#empty" do
+    it "clears the basket" do
+      subject.add_item("Blini")
+      subject.empty
+      expect(subject.items).to be_empty
+    end
+  end
 end

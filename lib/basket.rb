@@ -11,14 +11,27 @@ class Basket
 
   def add_item(item)
     @items << item
+    add_to_total(item)
+  end
+
+  def show
+    @items.each do |item|
+      puts "#{item}, £#{@menu.items[item]}"
+    end
+
+    print_total
+  end
+
+  def empty
+    @items = []
+  end
+
+  private
+  def add_to_total(item)
     @total += @menu.items[item]
   end
 
-  # @basket.each do |item|
-  #   puts "#{item}, £#{@menu.items[item]}"
-  # end
-
-  # def add_to_total(item)
-  #   @total += @menu.items[item]
-  # end
+  def print_total
+    puts "Your total is: £#{@total}."
+  end
 end
