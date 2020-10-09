@@ -33,6 +33,7 @@ class Order
   def place_order
     raise "Can't place an order with an empty basket!" if @basket.empty?
 
+    @basket = []
     "Thank you! Your order was placed and will arrive no later than #{(Time.now + 3600).strftime("%k:%M")}."
   end
 
