@@ -46,6 +46,7 @@ describe Order do
         order_select = Order::DISHES.select { |item| item[:id] == each[0] }
         order.push("£" + (order_select[0][:price].to_i * (each[1]).to_i).to_s + " : " + each[1] + " x " + (order_select[0][:item]) + "\n")
       }
+      order.push(["-----\n", "Is this correct?: yes/no\n"])
       expect { order_inst.print_order }.to output(order.join("")).to_stdout
     end
 
@@ -53,6 +54,26 @@ describe Order do
       message = "You haven't ordered yet!...\n"
       order_inst = Order.new
       expect { order_inst.print_order }.to output(message).to_stdout
+    end
+  end
+
+  context '#sent_text' do
+
+
+
+    it ' sends text when order is confirmed' do
+      order_inst = Order.new
+      allow(order_inst).to receive(:send_text).and_return(true)
+      allow(order_inst).to receive(:gets).and_return("001", "2", "002", "1", "003", "1", "005", "3", "end", "yes")
+      
+      order = ["Your Order:\n\n"]
+      order_inst.order
+      order_inst.order_list.each { |each|
+        order_select = Order::DISHES.select { |item| item[:id] == each[0] }
+        order.push("£" + (order_select[0][:price].to_i * (each[1]).to_i).to_s + " : " + each[1] + " x " + (order_select[0][:item]) + "\n")
+      }
+      # order_inst.print_order
+      expect(order_inst.print_order).to eq true
     end
   end
 end
