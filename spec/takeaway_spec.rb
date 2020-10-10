@@ -20,4 +20,11 @@ describe Takeaway do
 
     end
   end
+
+  describe '#view_order' do
+    it 'can veiw an order' do 
+      allow(order).to receive(:view) { order }
+      subject.view_order
+    end
+  end
 end
