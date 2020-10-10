@@ -59,5 +59,12 @@ describe Basket do
       expect(basket).to receive(:correct_total?)
       basket.place_order
     end
+
+    it "prints a summary of the order with a total price" do
+      basket.add(curry,2)
+      basket.add(rice)
+      expected_output = "Curry x2 - £16\nRice x1 - £3\n\nTotal: £19"
+      expect {basket.place_order}.to output(expected_output).to_stdout
+    end 
   end
 end
