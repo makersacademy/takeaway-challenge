@@ -1,25 +1,30 @@
+require_relative './menu'
 class Restaurant
 
   RESTAURANT_NAME = "Rex Whistler Restaurant"
-  LIST_OF_DISHES = {
-    "Malt Loaf Rarebit" => 10,
-    "Shellfish Raviolo" => 16,
-    "Hampshire Trout Duo" => 11,
-    "Pressed Game Terrine" => 14,
-    "Yorkshire Wolds Duck" => 22,
-    "Loch Duart Salmon" => 19,
-    "Celeriac Steak" => 18,
-    "Pistachio Pudding" => 9,
-    "Alfio's Affogato" => 8,
-    "Coconut & Mango" => 7
-  }
 
-  attr_reader :list_of_dishes, :menu
+  attr_reader :menu
 
-  def initialize
+  def initialize(menu = Menu.new)
     @name = RESTAURANT_NAME
-    @list_of_dishes = LIST_OF_DISHES
-    @menu = Menu.new
+    @menu = menu
+  end
+
+  def show_menu
+    menu_header + menu_body + menu_footer
+  end
+
+  private
+  def menu_header
+    "Welcome to #{RESTAURANT_NAME}\n\nThis is our menu:\n\n"
+  end
+
+  def menu_body
+    menu.to_s
+  end
+
+  def menu_footer
+    "\nWhat would you like to order?"
   end
 
 end
