@@ -33,12 +33,16 @@ class Order
   end
 
   def print_order
-    puts "Your Order:"
-    puts ""
-    @order_list.each { |each|
-      order_select = Order::DISHES.select { |item| item[:id] == each[0]}
-      puts "£#{((order_select[0][:price]).to_i * (each[1].to_i))} : #{each[1]} x #{order_select[0][:item]}"
-    }
+    if @order_list.empty?
+      puts "You haven't ordered yet!..."
+    else
+      puts "Your Order:"
+      puts ""
+      @order_list.each { |each|
+        order_select = Order::DISHES.select { |item| item[:id] == each[0]}
+        puts "£#{((order_select[0][:price]).to_i * (each[1].to_i))} : #{each[1]} x #{order_select[0][:item]}"
+      }
+    end
   end
 
   attr_reader :order_list

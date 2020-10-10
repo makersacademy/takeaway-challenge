@@ -47,5 +47,11 @@ describe Order do
         order.push("£" + ((order_select[0][:price].to_i) * (each[1]).to_i ).to_s + " : " + each[1] + " x " + (order_select[0][:item]) + "\n")}
       expect { order_inst.print_order }.to output(order.join("")).to_stdout
     end
+
+    it ' displays message if user hasn\'t ordered yet' do
+      message = "You haven't ordered yet!...\n"
+      order_inst = Order.new
+      expect { order_inst.print_order }.to output(message).to_stdout
+    end
   end
 end
