@@ -1,3 +1,6 @@
-class Order 
+class Order
+  DISHES = []
 
+  def initialize
+  end
 end
