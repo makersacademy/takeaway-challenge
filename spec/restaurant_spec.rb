@@ -1,12 +1,15 @@
 require 'restaurant'
 
 describe Restaurant do
+
+  subject(:restaurant) { Restaurant.new}
+  let(:printer_module) {double (:printer_module) }
+
   it "exists" do
     expect(Restaurant).to receive(:new)
     Restaurant.new
   end
   it "contains a list of dishes and prices" do
-    restaurant = Restaurant.new
     expect(restaurant.menu[:trout_snout]).to eq(6.50)
     expect(restaurant.menu[:mysterious_dumpling]).to eq(8.00)
     expect(restaurant.menu[:hoof_broth]).to eq(3.30)
@@ -19,7 +22,9 @@ describe Restaurant do
       hoof_broth: 3.30
     })
   end
-  xit "prints the list of dishes for the customer" do
+  it "passes the menu to printer" do
+    expect(printer_module).to receive(:menu_printer)
+    restaurant.print_menu(printer_module)
   end
 
 end

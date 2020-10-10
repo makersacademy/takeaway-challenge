@@ -1,4 +1,8 @@
+require 'printer'
+
 class Restaurant
+
+  include Printer
 
   attr_reader :menu
 
@@ -12,5 +16,10 @@ class Restaurant
       hoof_broth: 3.30
     }
   end
+
+  def print_menu(printer = Printer)
+    printer.menu_printer(@menu)
+  end
+
 
 end
