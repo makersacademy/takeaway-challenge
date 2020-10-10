@@ -5,8 +5,11 @@ describe Basket do
   let(:curry) {double(:dish, :name => "curry", :price => 8)}
   let(:rice) {double(:dish, :name => "rice", :price => 3)}
   let(:printer) {double :printer}
+  let(:texter) {double :texter}
+  let(:time) {double :time, hour: 18, min: 52}
   before do
     allow(printer).to receive(:print_basket)
+    allow(texter).to receive(:send_text)
   end
   it "starts off with no dishes" do
     expect(basket.dishes).to be_empty
@@ -49,24 +52,26 @@ describe Basket do
   end
 
   describe "#place_order" do
-    # it "sends a confirmation the order has been placed" do
-      
-    # end
+    it "sends a confirmation the order has been placed" do
+      comfirmation = "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
+      expect(texter).to receive(:send_text).with(comfirmation)  
+      basket.place_order(printer, texter, time)
+    end
 
     it "clears the basket" do
       basket.add(curry)
-      basket.place_order
+      basket.place_order(printer, texter)
       expect(basket.dishes).to be_empty
     end
 
     it "checks the order total" do
       expect(basket).to receive(:correct_total?)
-      basket.place_order
+      basket.place_order(printer, texter, time)
     end
 
     it "prints a summary of the order with a total price" do
       expect(printer).to receive(:print_basket).with(basket)
-      basket.place_order(printer)
+      basket.place_order(printer, texter, time)
     end 
   end
 end

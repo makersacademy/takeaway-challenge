@@ -16,17 +16,17 @@ class Basket
     true
   end
 
-  def place_order(printer = Printer.new)
+  def place_order(printer = Printer.new, texter = Text.new, time = Time.new)
     correct_total?
     printer.print_basket(self)
+    texter.send_text(confirmation(time))
     clear_basket
-    send_confirmation
   end
 
   private
 
-  def send_confirmation
-    "Thank you! Your order was placed and will be delivered before 18:52"
+  def confirmation(time)
+    "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
   end
 
   def clear_basket
