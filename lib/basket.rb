@@ -16,8 +16,9 @@ class Basket
     true
   end
 
-  def place_order
+  def place_order(printer = Printer.new)
     correct_total?
+    printer.print_basket(self)
     clear_basket
     send_confirmation
   end
@@ -36,5 +37,9 @@ class Basket
     total = 0
     @dishes.each { |dish, quantity| total += quantity*dish.price}
     total
+  end
+
+  def print_summary
+    @dishes.each{}
   end
 end

@@ -5,7 +5,9 @@ describe Basket do
   let(:curry) {double(:dish, :name => "curry", :price => 8)}
   let(:rice) {double(:dish, :name => "rice", :price => 3)}
   let(:printer) {double :printer}
-  allow(printer).to receive(print_basket).with(1).arguments
+  before do
+    allow(printer).to receive(:print_basket)
+  end
   it "starts off with no dishes" do
     expect(basket.dishes).to be_empty
   end
@@ -64,7 +66,7 @@ describe Basket do
 
     it "prints a summary of the order with a total price" do
       expect(printer).to receive(:print_basket).with(basket)
-      basket.place_order
+      basket.place_order(printer)
     end 
   end
 end
