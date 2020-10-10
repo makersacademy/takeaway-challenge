@@ -1,11 +1,11 @@
 class Order
   DISHES = [
-    {id: "001", item: "Pepperoni Pizza", price: "7.99"},
-    {id: "002", item: "Margherita Pizza", price: "7.49"},
-    {id: "003", item: "Chips", price: "3.00"},
-    {id: "004", item: "Onion Rings", price: "3.50"},
-    {id: "005", item: "Diet Coke", price: "2.50"},
-    {id: "006", item: "Fanta", price: "2.50"}
+    { id: "001", item: "Pepperoni Pizza", price: "7.99" },
+    { id: "002", item: "Margherita Pizza", price: "7.49" },
+    { id: "003", item: "Chips", price: "3.00" },
+    { id: "004", item: "Onion Rings", price: "3.50" },
+    { id: "005", item: "Diet Coke", price: "2.50" },
+    { id: "006", item: "Fanta", price: "2.50" }
   ]
 
   def initialize
@@ -21,10 +21,11 @@ class Order
   end
 
   def order
-    while true
+    loop do
       puts "Please enter the FULL ID number or 'end' to finish ordering: "
       order_id = gets.chomp
       break if order_id == 'end'
+
       order_item = DISHES.select { |item| item[:id] == order_id }
       puts "Please enter quantity of #{order_item[0][:item]}"
       order_quantity = gets.chomp
@@ -36,11 +37,11 @@ class Order
     if @order_list.empty?
       puts "You haven't ordered yet!..."
     else
-      puts "Your Order:"
-      puts ""
+      puts "Your Order:\n\n"
       @order_list.each { |each|
-        order_select = Order::DISHES.select { |item| item[:id] == each[0]}
-        puts "£#{((order_select[0][:price]).to_i * (each[1].to_i))} : #{each[1]} x #{order_select[0][:item]}"
+        order_select = Order::DISHES.select { |item| item[:id] == each[0] }
+        print "£#{((order_select[0][:price]).to_i * each[1].to_i)} "
+        puts ": #{each[1]} x #{order_select[0][:item]}"
       }
     end
   end
