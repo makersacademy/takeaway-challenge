@@ -9,8 +9,8 @@ context '#initialize' do
       expect(order_inst).to be_a Order
     end
 
-    it ' has empty dish constant' do
-      expect(Order::DISHES).to be_empty
+    it ' has dish constant with array of menu items' do
+      expect(Order::DISHES).to_not be_empty
     end
 
   end
