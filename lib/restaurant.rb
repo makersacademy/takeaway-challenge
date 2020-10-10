@@ -11,7 +11,7 @@ class Restaurant
   end
 
   def show_menu
-    menu_header + menu_body + menu_footer
+    menu_header + menu_body + menu_footer + "\n"
   end
 
   private
@@ -24,7 +24,7 @@ class Restaurant
   end
 
   def menu_footer
-    "\nWhat would you like to order?"
+    "\n\nWhat would you like to order?"
   end
 
 end

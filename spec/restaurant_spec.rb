@@ -12,8 +12,11 @@ describe Restaurant do
     it 'shows menu' do
 
       restaurant = Restaurant.new(menu)
+      output = restaurant.show_menu
 
-      expect(restaurant.show_menu).to eq("Welcome to #{Restaurant::RESTAURANT_NAME}\n\nThis is our menu:\n\nMalt Loaf Rarebit: £10\nAlfio's Affogato: £8\nWhat would you like to order?")
+      expect(output).to eq <<~OUTPUT
+      Welcome to #{Restaurant::RESTAURANT_NAME}\n\nThis is our menu:\n\nMalt Loaf Rarebit: £10\nAlfio's Affogato: £8\n\nWhat would you like to order?
+      OUTPUT
     end
   end
 end
