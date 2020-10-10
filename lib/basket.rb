@@ -17,6 +17,7 @@ class Basket
   end
 
   def place_order
+    correct_total?
     clear_basket
     send_confirmation
   end

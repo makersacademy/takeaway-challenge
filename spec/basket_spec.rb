@@ -45,14 +45,19 @@ describe Basket do
   end
 
   describe "#place_order" do
-    it "sends a confirmation the order has been placed" do
-      expect(basket.place_order).to eq "Thank you! Your order was placed and will be delivered before 18:52"
-    end
+    # it "sends a confirmation the order has been placed" do
+      
+    # end
 
     it "clears the basket" do
       basket.add(curry)
       basket.place_order
       expect(basket.dishes).to be_empty
+    end
+
+    it "checks the order total" do
+      expect(basket).to receive(:correct_total?)
+      basket.place_order
     end
   end
 end
