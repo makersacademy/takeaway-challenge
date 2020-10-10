@@ -1,12 +1,14 @@
 require 'takeaway'
 
 describe Takeaway do
+    let(:menu) { double :menu }
     describe '#view_menu' do
 
         it { is_expected.to respond_to(:view_menu) }
 
-        it 'returns list of dishes and prices' do
-            expect(subject.view_menu).to eq({"California Rolls" => 8, "Avocado Maki" => 7, "Edamame" => 3})
+        it 'prints the menu' do
+            expect(menu).to receive(:print_menu)
+            subject.view_menu(menu)
         end
         
     end
