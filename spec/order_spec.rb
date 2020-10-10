@@ -10,7 +10,7 @@ describe Order do
     it 'adds items to the order' do
       subject.order_item(menu_item, 2)
 
-      expect(subject.order).to eq([menu_item, menu_item])
+      expect(subject.items).to eq([menu_item, menu_item])
     end
   end
 

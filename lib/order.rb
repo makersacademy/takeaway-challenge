@@ -1,18 +1,18 @@
 class Order
 
-  attr_reader :order
+  attr_reader :items
 
   def initialize
-    @order = []
+    @items = []
   end
 
   def order_item(menu_item, quantity)
-    quantity.times { @order.push(menu_item) }
+    quantity.times { @items.push(menu_item) }
   end
 
   def total_price
     total_price = 0
-    @order.each { |item| total_price += item.price
+    @items.each { |item| total_price += item.price
     }
     total_price
   end
