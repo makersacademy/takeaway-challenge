@@ -13,7 +13,7 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
+<!-- 
 Instructions
 -------
 
@@ -28,15 +28,47 @@ Task
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
+<!--  -->
+
+The Takeawy allows customers to view a menu, order available items, check the total and recieve SMS confirmation of their food orders
 
 ```
-As a customer
+<!-- As a customer
 So that I can check if I want to order something
-I would like to see a list of dishes with prices
+I would like to see a list of dishes with prices --> -->
 
-As a customer
+1) Customer would like to be able to see a list of dishes
+                    ***** Todo **********
+Takeaway class
+  i) Create a class Takeaway that is initialized with an argument that is a menu class object which is stored as an instance variable on takeaway
+  ii) create a method 'print_menu' on takeaway that prints a menu. It should call a print method on the menu object
+
+  Menu class
+  i) Create a class menu that is initialized with an argument menu_items. This is stored as an instance variable and is a hash of dishes
+  ii) create a method print which prints out a list of dishes
+                    ***** done *********  
+
+2) Customer would like to select a number of available dishes
+                    ***** Todo **********
+Takeaway class
+  i) create a method order which takes two arguments: item and quantity
+  ii) create an instance variable current_order which is initialized as an empty array. The order method should push orders to this.
+  Menu class
+    i) 
+                    ***** done ********* 
+
+3) 
+
+
+
+
+
+User story
+<!-- As a customer
 So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+I would like to be able to select some number of several available dishes -->
+
+1. 
 
 As a customer
 So that I can verify that my order is correct
