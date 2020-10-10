@@ -43,11 +43,22 @@ describe Basket do
     end
   end
 
-  describe "#empty" do
+  describe "#clear" do
     it "clears the basket" do
       subject.add_item("Blini")
-      subject.empty
+      subject.clear
       expect(subject.items).to be_empty
+    end
+  end
+
+  describe "#empty?" do
+    it "returns true when basket empty" do
+      expect(subject.empty?).to eq true
+    end
+
+    it "returns false when basket not empty" do
+      subject.add_item("Blini")
+      expect(subject.empty?).to eq false
     end
   end
 end

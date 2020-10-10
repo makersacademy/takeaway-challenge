@@ -1,7 +1,7 @@
 require_relative 'menu'
 
 class Basket
-  attr_reader :items, :total
+  attr_reader :items, :total, :menu
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -26,8 +26,12 @@ class Basket
     print_total
   end
 
-  def empty
+  def clear
     @items = []
+  end
+
+  def empty?
+    @items == []
   end
 
   private
