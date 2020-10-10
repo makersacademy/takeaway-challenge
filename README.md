@@ -1,5 +1,5 @@
  ```
-# 1 
+# 1
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -26,7 +26,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 -|-
 List of dishes | Order
 List of prices | Check order
-|Delivery
+.....|Delivery
 
 - note
 ˜
