@@ -1,4 +1,3 @@
-require_relative './menu_item'
 class Menu
 
   REX_WHISTLER_MENU_ITEMS = [
@@ -13,6 +12,7 @@ class Menu
     MenuItem.new("Alfio's Affogato", 8, "dessert"),
     MenuItem.new("Coconut & Mango",  7, "dessert")
   ]
+  attr_reader :items
 
   def initialize(items = REX_WHISTLER_MENU_ITEMS)
     @items = items

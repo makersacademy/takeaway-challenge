@@ -1,4 +1,3 @@
-require_relative './menu'
 class Restaurant
 
   RESTAURANT_NAME = "Rex Whistler Restaurant"
