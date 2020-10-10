@@ -20,5 +20,5 @@ describe Menu do
     })
   end
   xit "prints the list of dishes for the customer" do
-    
+
 end
