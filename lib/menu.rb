@@ -10,7 +10,7 @@ class Menu
   
   def add_item(name, price)
     item = @item_class.new(name, price)
-    @items[name] = price
+    @items[item.name] = item.price
   end
 
   def delete_item(name)
