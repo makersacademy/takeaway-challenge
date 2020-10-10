@@ -1,11 +1,12 @@
 require 'menu'
 
 describe Menu do
-  subject(:menu) { Menu.new }
+  let(:item) { double :item }
+  subject(:menu) { Menu.new(item) }
 
   describe '#initialize' do
-    it 'there is a menu with items' do
-      expect(menu.items).not_to be_empty
+    it 'there is an empty menu' do
+      expect(menu.items).to be_empty
     end
   end
 
@@ -25,6 +26,7 @@ describe Menu do
 
   describe "#print_menu" do
     it 'can print the menu to stdout' do
+      menu.add_item("Ukha", 9)
       expect { menu.print_menu }.to output.to_stdout
     end
   end
