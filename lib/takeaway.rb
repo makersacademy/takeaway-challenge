@@ -12,6 +12,8 @@ class Takeaway
   end
 
   def add_to_order(dish, price, quantity)
+    raise "Dish unavailable" if @menu.available?(dish) == false
+
     @order.add(dish, price, quantity)
   end
 end
