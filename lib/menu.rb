@@ -3,12 +3,13 @@ require_relative 'item'
 class Menu
   attr_reader :items
 
-  def initialize(item = Item.new)
-    @item = item
+  def initialize(item_class = Item)
+    @item_class = item_class
     @items = {}
   end
   
   def add_item(name, price)
+    item = @item_class.new(name, price)
     @items[name] = price
   end
 
