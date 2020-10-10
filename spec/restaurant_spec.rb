@@ -5,6 +5,9 @@ describe Restaurant do
   subject(:restaurant) { Restaurant.new}
   let(:printer_module) {double (:printer_module) }
   let(:order_class) {double (:order_class)}
+  let(:food) { double(:food)}
+  let(:price) {double(:price)}
+  let(:choice) { {food: price} }
 
   it "exists" do
     expect(Restaurant).to receive(:new)
@@ -29,7 +32,12 @@ describe Restaurant do
   end
   it "creates a new instance of the order class when user tries to place an order" do
     expect(order_class).to receive(:new)
-    restaurant.place_order(order_class)
+    restaurant.create_order(order_class)
+  end
+  it "takes the user's order and sends it to the order class" do
+    allow_any_instance_of(Restaurant).to receive(:gets).and_return(1)
+    expect(order_class).to receive(:add).with({trout_snout: 6.50})
+    restaurant.create_order(order_class)
   end
 
 end

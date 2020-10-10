@@ -22,8 +22,16 @@ class Restaurant
     printer.menu_printer(@menu)
   end
 
-  def place_order(order = Order)
-    order = order.new
+  def create_order(order = Order)
+    @order = order.new
+    choose_dish
   end
+
+  def choose_dish
+    @choice = gets
+    @order.add(@menu.to_a[@choice.to_i])
+  end
+
+
 
 end
