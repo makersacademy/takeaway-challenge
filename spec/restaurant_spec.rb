@@ -4,6 +4,7 @@ describe Restaurant do
 
   subject(:restaurant) { Restaurant.new}
   let(:printer_module) {double (:printer_module) }
+  let(:order_class) {double (:order_class)}
 
   it "exists" do
     expect(Restaurant).to receive(:new)
@@ -25,6 +26,10 @@ describe Restaurant do
   it "passes the menu to printer" do
     expect(printer_module).to receive(:menu_printer)
     restaurant.print_menu(printer_module)
+  end
+  it "creates a new instance of the order class when user tries to place an order" do
+    expect(order_class).to receive(:new)
+    restaurant.place_order(order_class)
   end
 
 end

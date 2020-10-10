@@ -1,4 +1,5 @@
 require 'printer'
+require 'order'
 
 class Restaurant
 
@@ -21,5 +22,8 @@ class Restaurant
     printer.menu_printer(@menu)
   end
 
+  def place_order(order = Order)
+    order = order.new
+  end
 
 end
