@@ -13,4 +13,8 @@ class Menu
       puts "#{price}".center(10)
     end
   end
+
+  def item_available?(item) 
+    @menu.has_key?(item)
+  end
 end
