@@ -1,6 +1,6 @@
 /**/.DS_Store
 /coverage
-messager.rb
+lib/messager.rb
 
 # Local cache of Rubocop remote config
 .rubocop-*
