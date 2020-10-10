@@ -5,7 +5,7 @@ class Order
     @order = []
   end 
 
-  def add(item, price, quantity) 
-    @order << {item => item, price => price, quantity => quantity}
+  def add(dish, price, quantity) 
+    @order << { dish => dish, price => price, quantity => quantity }
   end 
 end
