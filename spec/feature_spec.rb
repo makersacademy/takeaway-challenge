@@ -1,3 +1,3 @@
-require 'menu'
+require 'restaurant'
 
 describe "takeaway features"

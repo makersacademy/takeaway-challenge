@@ -1,9 +1,9 @@
-class Menu
+class Restaurant
 
-  attr_reader :dishes
+  attr_reader :menu
 
   def initialize
-    @dishes = {
+    @menu = {
       trout_snout: 6.50,
       hog_soup: 4.90,
       mysterious_dumpling: 8.00,
