@@ -24,7 +24,9 @@ describe "takeaway features" do
   it "can receive an order and print an accurate receipt" do
     restaurant.create_order
     restaurant.choose_dish
+    restaurant.choose_quantity
     restaurant.choose_dish
+    restaurant.choose_quantity
     restaurant.check_bill
     expect{restaurant.print_receipt}.to output("hog_soup: £4.90\nhog_soup: £4.90\nhog_soup: £4.90\nmysterious_dumpling: £8.00\nmysterious_dumpling: £8.00\nmysterious_dumpling: £8.00\nmysterious_dumpling: £8.00\nTotal: £46.70\n").to_stdout
   end

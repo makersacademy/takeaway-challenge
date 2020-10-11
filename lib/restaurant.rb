@@ -1,5 +1,6 @@
 require_relative './printer'
 require_relative './order'
+require_relative './Send_SMS'
 
 class Restaurant
 
@@ -31,6 +32,9 @@ class Restaurant
     puts "Enter selection (number)"
     @choice = $stdin.gets.chomp
     @choice = @menu.to_a[@choice.to_i - 1]
+  end
+
+  def choose_quantity
     puts "Enter quantity (number)"
     @quantity = $stdin.gets.chomp.to_i
     @quantity.times { @order.add(@choice) }
@@ -44,6 +48,17 @@ class Restaurant
 
   def print_receipt(printer = Printer)
     printer.receipt_printer(@order)
+  end
+
+  def text_confirmation(sender = Send_SMS)
+    time_calculator
+    sender.send(@delivery_time)
+  end
+
+  def time_calculator
+    time = (Time.now + 3600)
+    @delivery_time = time.strftime("%k:%M")
+    @delivery_time
   end
 
 end
