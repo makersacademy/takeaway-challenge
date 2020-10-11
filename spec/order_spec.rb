@@ -11,8 +11,8 @@ describe Order do
     end
   end
 
-  describe '#place_order' do
-    it { is_expected.to respond_to(:place_order).with(1).argument}
+  describe '#finalize_order' do
+    it { is_expected.to respond_to(:finalize_order).with(1).argument }
   end
 
 end

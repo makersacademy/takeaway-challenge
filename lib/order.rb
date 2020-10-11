@@ -9,7 +9,7 @@ class Order
     @order << { item => quantity }
   end
 
-  def place_order(payment)
+  def finalize_order(payment)
 
   end
 end
