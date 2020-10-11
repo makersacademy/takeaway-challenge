@@ -2,7 +2,8 @@ require_relative 'menu'
 
 class Basket
 
-    def initialize
+    def initialize(menu = Menu.new.menu)
+      @menu = menu
       @basket = []
       @order_total = 0
     end
@@ -16,7 +17,18 @@ class Basket
     end
 
     def order(item)
-      @basket << item
+      if valid_item?(item)
+        @basket << item
+        @order_total += @menu[item]
+      end
     end
+
+    private
+
+    def valid_item?(item)
+        menu = Menu.new.menu
+        menu.has_key?(item)
+    end
+        
 
 end

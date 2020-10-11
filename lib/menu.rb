@@ -12,8 +12,8 @@ class Menu
     
   end
 
-    def menu
-        @menu
-    end
+  def menu
+    @menu
+  end
 
 end
