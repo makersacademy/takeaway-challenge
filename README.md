@@ -9,7 +9,7 @@ With our new system in place, you can easily order a takeaway AND receive text c
 
 Fork and Clone the repository, and run bundle to install all necessary Gems.
 ```shell
-$ git clone *URL
+$ git clone <URL>
 ```
 then:
 ```shell
