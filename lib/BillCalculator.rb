@@ -1,31 +1,52 @@
 class BillCalculator
   attr_accessor :total, :order
+  attr_writer :meal_options
 
-  def initialize
+  def initialize(meal_options)
+    @meal_options = meal_options
     @total = 0
     @order = []
   end
 
+  def calculate_total(dishes)
+    dishes.each do |k,v|
+      if k == @meal_options.keys[0]
+        @total += v * @meal_options.values[0]
+      elsif k == @meal_options.keys[1]
+        @total += v * @meal_options.values[1]
+      elsif k == @meal_options.keys[2]
+        @total += v * @meal_options.values[2]
+      elsif k == @meal_options.keys[3]
+        @total += v * @meal_options.values[3]
+      elsif k == @meal_options.keys[4]
+        @total += v * @meal_options.values[4]
+      elsif k == @meal_options.keys[5]
+        @total += v * @meal_options.values[5]
+      end
+    end
+  end
+
+
   def store_order(dishes)
     dishes.each do |k,v|
-      if k == "Hamburger"
+      if k == @meal_options.keys[0]
         hamburger_total = v*5
-        @order << "#{k} (£5) x #{v} = £#{hamburger_total}"
-      elsif k == "Pizza"
+        @order << "#{k} (£#{@meal_options.values[0]}) x #{v} = £#{hamburger_total}"
+      elsif k == @meal_options.keys[1]
         pizza_total = v*6
-        order << "#{k} (£6) x #{v} = £#{pizza_total}"
-      elsif k == "Pasta"
+        @order << "#{k} (£#{@meal_options.values[1]}) x #{v} = £#{pizza_total}"
+      elsif k == @meal_options.keys[2]
         pasta_total = v*4
-        order << "#{k} (£4) x #{v} = £#{pasta_total}"
-      elsif k == "Fish and chips"
+        @order << "#{k} (£#{@meal_options.values[2]}) x #{v} = £#{pasta_total}"
+      elsif k == @meal_options.keys[3]
         fishchipstotal = v*5
-        order << "#{k} (£5) x #{v} = £#{fishchipstotal}"
-      elsif k == "Salad"
+        @order << "#{k} (£#{@meal_options.values[3]}) x #{v} = £#{fishchipstotal}"
+      elsif k == @meal_options.keys[4]
         saladtotal = v*3
-        order << "#{k} (£3) x #{v} = £#{saladtotal}"
-      elsif k == "Lamb shank"
+        @order << "#{k} (£#{@meal_options.values[4]}) x #{v} = £#{saladtotal}"
+      elsif k == @meal_options.keys[5]
         lambtotal = v*7
-        order << "#{k} (£7) x #{v} = £#{lambtotal}"
+        @order << "#{k} (£#{@meal_options.values[5]}) x #{v} = £#{lambtotal}"
       end
     end
   end

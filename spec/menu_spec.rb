@@ -6,13 +6,13 @@ describe Menu do
   let(:price) { double :price }
     describe '#meal_options'
       it 'returns menu' do
-        expect(subject.meal_options).to eq([
-          {"Hamburger"=>5},
-          {"Pizza"=>6},
-          {"Pasta"=>4},
-          {"Fish and chips"=>5},
-          {"Salad"=>3},
-          {"Lamb shank"=>7}])
+        expect(Menu::MEAL_OPTIONS).to eq(
+          {:Hamburger=>5,
+          :Pizza=>6,
+          :Pasta=>4,
+          :Fish_and_chips=>5,
+          :Salad=>3,
+          :Lamb_Shank=>7})
         end
 
   describe '#select' do
@@ -37,18 +37,17 @@ describe Menu do
     end
 
     it 'check that if total entered is incorrect an error is given' do
-      subject.total_entered(total)
-      expect{ subject.total_error(actual_total)}.to raise_error("Total entered (£#{total}) is incorrect.  Actual total is £#{actual_total}")
+      subject.select(:Hamburger=>3, :Pizza=>2, :Salad=>5)
+      subject.total_entered(41)
+      expect{ subject.total_error}.to raise_error("Total entered (£41) is incorrect.  Actual total is £42")
     end
-
-
   end
 
   describe '#print_selected'
     it 'expects order to print out with quantities' do
-      subject.select("Hamburger"=>3, "Pizza"=>2, "Salad"=>5)
+      subject.select(:Hamburger=>3, :Pizza=>2, :Salad=>5)
       subject.store_order
-        expect{subject.print_dishes}.to output("Hamburger (£5) x 3 = £15\nPizza (£6) x 2 = £12\nSalad (£3) x 5 = £15\n").to_stdout
+      expect{subject.print_dishes}.to output("Hamburger (£5) x 3 = £15\nPizza (£6) x 2 = £12\nSalad (£3) x 5 = £15\n").to_stdout
     end
 
 
