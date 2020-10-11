@@ -7,7 +7,7 @@ describe Menu do
 
   describe '#initialize' do
     it 'there is an empty menu' do
-      expect(menu.items).to be_empty
+      expect(menu.items).not_to be_empty
     end
   end
 
