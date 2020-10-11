@@ -16,7 +16,7 @@ class Basket
       @order_total
     end
 
-    def order(item)
+    def add_to_basket(item)
       if valid_item?(item)
         @basket << item
         @order_total += @menu[item]

@@ -20,9 +20,9 @@ describe Print do
 describe 'Printing related to baskets' do
 
     before do 
-        basket.order("Double Double")
-        basket.order("Double Double")
-        basket.order("Milkshake")
+        basket.add_to_basket("Double Double")
+        basket.add_to_basket("Double Double")
+        basket.add_to_basket("Milkshake")
     end
 
     it '#print_order_total should print the order total to the console' do

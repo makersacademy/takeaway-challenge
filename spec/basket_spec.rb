@@ -14,18 +14,19 @@ describe Basket do
     end
   end 
 
-  describe 'order(item)' do
+  describe 'add_to_basket(item)' do
 
     it 'adds an item to the basket' do
-    subject.order("Double Double")
+    subject.add_to_basket("Double Double")
     expect(subject.basket).to include("Double Double")
     end
 
     it 'adds an items price to the order total' do
-    subject.order("Double Double")
-    subject.order("Double Double")
-    subject.order("Milkshake")
+    subject.add_to_basket("Double Double")
+    subject.add_to_basket("Double Double")
+    subject.add_to_basket("Milkshake")
     expect(subject.order_total).to eq 9
     end
   end
+
 end 
