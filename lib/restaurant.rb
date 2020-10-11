@@ -27,16 +27,16 @@ class Restaurant
   end
 
   def choose_dish
-    print_menu
     #take choice of dish as number
     @choice = $stdin.gets.chomp
     @choice = @menu.to_a[@choice.to_i - 1]
     #take quantity as number
-    @quantity = $stdin.gets.chomp
-    @quantity = @quantity.to_i
+    @quantity = $stdin.gets.chomp.to_i
     @quantity.times { @order.add(@choice) }
   end
 
+  def check_price
 
+  end
 
 end
