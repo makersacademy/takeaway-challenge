@@ -23,9 +23,8 @@ describe Menu do
   end
 
   describe '#print_all' do
-    let(:printed_dishes){ {Dish: dish, price: price} }
       it 'prints all dishes using the Print class' do
-        expect(subject.print_all(printed_dishes)).to include printed_dishes
+        expect{subject.print_all}.to output("Dish: Hamburger, Price: £5\nDish: Pizza, Price: £6\nDish: Pasta, Price: £4\nDish: Fish_and_chips, Price: £5\nDish: Salad, Price: £3\nDish: Lamb_Shank, Price: £7\n").to_stdout
       end
   end
 

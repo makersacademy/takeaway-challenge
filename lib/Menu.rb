@@ -14,8 +14,8 @@ MEAL_OPTIONS = {:Hamburger=>5, :Pizza=>6, :Pasta=>4,:Fish_and_chips=>5,:Salad=>3
     @dishes = dishes
   end
 
-  def print_all(dishes)
-     @printer.print_dishes(dishes)
+  def print_all
+     @printer.print_dishes(MEAL_OPTIONS)
    end
 
    def total_entered(total)
