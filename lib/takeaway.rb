@@ -32,11 +32,7 @@ class Takeaway
   end
 
   def check_order(payment)
-    item_prices = @order.map do |order|
-      order.map { |item, quantity| quantity * @menu[item] }
-    end
-    final_price = item_prices.flatten.inject(:+)
-    final_price == payment
+    @order.calculate_price(@menu) == payment
   end
 
 end
