@@ -1,9 +1,9 @@
 class Menu
-  attr_reader :list
+  attr_reader :menu_list
 
   def initialize
-    @list = {
-      "hamburger" => 0.99,
+    @menu_list = {
+      "hamburger" => 1.99,
       "chicken nuggets" => 2.99,
       "double cheeseburger" => 1.99,
       "fries" => 1.29,
@@ -11,9 +11,9 @@ class Menu
     }
   end
 
-  def prettify_list
-    @list.each do |meal, price|
-      puts "#{meal}: £#{price}\n"
+  def prettify_menu_list
+    @menu_list.each do |meal, price|
+      puts "#{meal}: £#{price}\n".capitalize
     end
   end
 end
