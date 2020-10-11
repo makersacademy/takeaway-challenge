@@ -1,7 +1,7 @@
 require 'order'
 describe Order do
-  subject(:order) { Order.new }
-#   let(:menu) { double :menu }
+  let(:menu) { double :menu, price: 20 }
+  subject(:order) { Order.new(menu) }
 
   describe '#initialize' do
     it 'initializes with an empty basket' do 
@@ -23,13 +23,13 @@ describe Order do
       expect(order.basket).to be_empty
     end
   end  
-
+#come back to this test
   describe '#total' do
     it 'calculates the total price' do
-    #   allow(menu).to receive(:menu).and_return(20)
+      allow(menu).to receive(:menu).and_return({"Carbonara" => 20})
       order.add("Carbonara")
       order.add("Carbonara")
-      expect(order.total).to eq(30)
+      expect(order.total).to eq(40)
     end
   end
 end
