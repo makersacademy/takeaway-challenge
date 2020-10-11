@@ -40,7 +40,7 @@ describe Takeaway do
     
     it 'places an order' do
       allow(order).to receive(:calculate_price).and_return(correct_payment)
-      expect(confirmation).to receive(:finalize_order)
+      expect(confirmation).to receive(:send_message)
       takeaway.place_order(correct_payment)
     end
 
