@@ -24,6 +24,4 @@ describe Menu do
     puts "#{menu.dishes}"
     expect(menu.available?("chicken curry")).to eq true
   end
-
-
 end

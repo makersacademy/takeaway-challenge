@@ -11,19 +11,20 @@ describe Takeaway do
     end
   end
 
-  describe '#order' do
+  describe '#add_to_cart' do
     subject(:takeaway)  { described_class.new(menu) }
     let(:menu)          { double('menu', available?: true) }
     
 
-    it 'accepts dish and quantity arguments and adds to customers order' do
-      takeaway.order("chicken_curry", 1)
-      # before do
-      # allow(menu).to receive(:available?).and_return(true)
-      # end
-      expect(takeaway.current_order).to eq ["chicken_curry"]
+    it 'accepts dish and quantity arguments and adds to customers cart' do
+      takeaway.add_to_cart("chicken_curry", 1)
+ 
+      expect(takeaway.cart).to eq ({"chicken_curry"=> 1})
 
     end
   end
 
 end
+
+#  doubel for order - the variable associated with takeaway
+# let(:order)

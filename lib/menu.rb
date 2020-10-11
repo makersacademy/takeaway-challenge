@@ -13,10 +13,6 @@ class Menu
 
   def available?(item)
     @dishes.has_key?(item.to_sym)
-      
-    
-
 
   end
-
 end
