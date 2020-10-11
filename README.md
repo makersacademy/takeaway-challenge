@@ -1,18 +1,3 @@
-# Title
-- brief Description of what the project is.
-- Screenshots
-
-# Getting Started
-- git clone
-- bunde install, etc.
-
-# Usage
-- COmmand to start
-
-# Running Tests
-- Rspec, etc.
-
-
 # EATS ALL | Takeaway
 
 <img src="logo.png" width="50%">
