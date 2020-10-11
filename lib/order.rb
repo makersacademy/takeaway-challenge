@@ -6,7 +6,7 @@ class Order
     @menu = menu.list
   end
 
-  def add(order)
+  def update(order)
     order = order.split(", ")
   end
 
