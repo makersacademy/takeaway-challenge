@@ -1,7 +1,7 @@
 class Menu
 attr_reader :meal_options, :dishes
 
-  def initialize
+  def initialize(printer = Print.new)
     @meal_options = [
     {"Hamburger"=>5},
     {"Pizza"=>6},
@@ -10,10 +10,17 @@ attr_reader :meal_options, :dishes
     {"Salad"=>3},
     {"Lamb shank"=>7}]
     @dishes = dishes
+    @printer = printer
   end
 
   def select(dishes)
     @dishes = dishes
   end
+
+  def print_all(dishes)
+     @printer.print_dishes(dishes)
+   end
+
+
 
 end
