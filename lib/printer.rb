@@ -1,5 +1,3 @@
-require 'restaurant'
-
 module Printer
 
   def self.menu_printer(menu)
@@ -9,4 +7,12 @@ module Printer
        counter += 1
     end
   end
+
+  def self.receipt_printer(order)
+    order.selection.each do |pair|
+      puts "#{pair[0].to_s}: £#{pair[1]}0"
+    end
+    puts "Total: £#{order.total}0"
+  end
+
 end

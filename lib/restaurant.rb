@@ -1,5 +1,5 @@
-require 'printer'
-require 'order'
+require_relative './printer'
+require_relative './order'
 
 class Restaurant
 
@@ -28,10 +28,10 @@ class Restaurant
   end
 
   def choose_dish
-    #take choice of dish as number
+    puts "Enter selection (number)"
     @choice = $stdin.gets.chomp
     @choice = @menu.to_a[@choice.to_i - 1]
-    #take quantity as number
+    puts "Enter quantity (number)"
     @quantity = $stdin.gets.chomp.to_i
     @quantity.times { @order.add(@choice) }
     @quantity.times { @running_total.push(@choice[-1]) }
