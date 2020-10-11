@@ -22,6 +22,12 @@ class Takeaway
   end
 
   def order_total
-    puts "You basket contains #{@order.dish_count} dishes with the total value of £#{@order.total_cost}, please confirm your order."
+    puts "You basket contains #{@order.dish_count} dishes with the total value of £#{@order.total_cost}."
+  end
+
+  def confirm_order(payment)
+    raise "Incorrect payment" unless @order.total_cost == payment 
+
+    @order.confirmed
   end
 end
