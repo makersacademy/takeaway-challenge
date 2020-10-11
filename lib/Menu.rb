@@ -11,6 +11,9 @@ MEAL_OPTIONS = {:Hamburger=>5, :Pizza=>6, :Pasta=>4,:Fish_and_chips=>5,:Salad=>3
   end
 
   def select(dishes)
+    raise 'Selection must be entered in the format ":dish=>quantity"' if dishes.class != Hash
+    raise 'Quantity must be an integer e.g. 4' if !dishes.values.any?(Integer)
+    raise 'Dish selected must be a symbol e.g. :Hamburger' if !dishes.keys.any?(Symbol)
     @dishes = dishes
   end
 

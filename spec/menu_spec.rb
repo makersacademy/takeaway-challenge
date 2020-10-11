@@ -6,11 +6,20 @@ describe Menu do
   let(:price) { double :price }
 
   describe '#select' do
-    it 'check method stores selection to #dishes variable' do
-      subject.select(dish=>price, dish=>price)
-        expect(subject.dishes).to eq(dish=>price, dish=>price)
+
+    it 'Edge case: if non hash given then error is returned' do
+      expect{subject.select("this is not a hash")}.to raise_error('Selection must be entered in the format ":dish=>quantity"')
     end
-  end
+
+    it 'Edge case: quantity not integer' do
+      expect{subject.select(:Hamburger=>"2")}.to raise_error('Quantity must be an integer e.g. 4')
+    end
+
+    it 'Edge case: dish given is not a symbol' do
+      expect{subject.select("Hamburger"=>2)}.to raise_error('Dish selected must be a symbol e.g. :Hamburger')
+    end
+
+end
 
   describe '#print_all' do
       it 'prints all dishes using the Print class' do
@@ -32,14 +41,13 @@ describe Menu do
     end
   end
 
-  describe '#print_selected'
+  describe '#print_selected' do
     it 'expects order to print out with quantities' do
       subject.select(:Hamburger=>3, :Pizza=>2, :Salad=>5)
       subject.store_order
       expect{subject.print_dishes}.to output("Hamburger (£5) x 3 = £15\nPizza (£6) x 2 = £12\nSalad (£3) x 5 = £15\n").to_stdout
     end
-
-
+  end
 
 
 end
