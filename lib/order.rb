@@ -8,20 +8,37 @@ class Order
     @menu = menu
   end
 
-  def add(food, quantity = 1)
-    basket[food] += quantity
+  def add(item, quantity = 1)
+    raise "Item not available at this restaurant" if !item_on_menu?(item)
+
+    basket[item] += quantity
   end
 
-  def remove(food)
-    basket.include?(food) ? basket.delete(food) : "Item not in basket"
+  def remove(item)
+    raise "Item not in basket" if !item_in_basket?(item)
+    
+    basket.delete(item)
   end
   
   def total
     total = 0
-    basket.each do |item, quantity|
-      price = @menu.menu[item]
-      total += price * quantity
-    end
+    basket.each { |item, quantity| total += price(item) * quantity }
     total
   end
+
+  private
+
+  def price(item)
+    @menu.menu[item]
+  end
+
+  def item_on_menu?(item)
+    @menu.menu.include?(item) 
+  end
+
+  def item_in_basket?(item)
+    basket.include?(item)
+  end
+
+
 end
