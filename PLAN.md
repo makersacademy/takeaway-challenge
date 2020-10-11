@@ -38,7 +38,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |Customer||
 |Phone|send_text_when_order_confirmed|
 
-#Class Diagram
+# Class Diagram
 
 ||
 |----|
