@@ -7,14 +7,16 @@ class Order
   end
 
   def add_order(item, quantity)
-    fail "Item not available" if not_available?
+    fail "Could not add to order: Item not available" unless available?(item)
 
     @current_order.fill(item, @current_order.size, quantity)
   end
 
   private
 
-  def not_available?
+  def available?(item)
+    @menu.any?(item)
+
   end
 
 end
