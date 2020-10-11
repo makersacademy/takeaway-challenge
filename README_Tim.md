@@ -20,5 +20,15 @@ I drew up a plan before beginning using Miro.
 
 Having tried for a long time to get the @dishes hash to give me the price so I could sum, I had to give-up for time and stub these amounts in my tests. (see takeaway_spec.rb)
 
-I found this super challenging and in the time I could give this weekend, this was what I could do. I'm not convinced some of my code choices were correct, and that may have hindered my progress and brought me trouble! 
+The classes I ended with were:
 
+1. Takeaway - This is where almost everything happened and in hindsight, I should have had an 'Ordering' I think. 
+2. Messager - This was where the Texting API was
+3. Printer - Currently this is low on code. I had intended to pass everything that was going to be printed into this class i.e. total price, basket summary.
+
+I found this super challenging and in the time I could give this weekend, this was what I could do. I'm not convinced some of my code choices were correct, and that may have hindered my progress and brought me trouble in the end. 
+
+## With more time/patience
+
+1. I would have refactored my code to be in those classes
+2. I would have written more tests to drive my code.
