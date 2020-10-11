@@ -30,22 +30,22 @@ class BillCalculator
   def store_order(dishes)
     dishes.each do |k,v|
       if k == @meal_options.keys[0]
-        hamburger_total = v*5
+        hamburger_total = v*@meal_options.values[0]
         @order << "#{k} (£#{@meal_options.values[0]}) x #{v} = £#{hamburger_total}"
       elsif k == @meal_options.keys[1]
-        pizza_total = v*6
+        pizza_total = v*@meal_options.values[1]
         @order << "#{k} (£#{@meal_options.values[1]}) x #{v} = £#{pizza_total}"
       elsif k == @meal_options.keys[2]
-        pasta_total = v*4
+        pasta_total = v*@meal_options.values[2]
         @order << "#{k} (£#{@meal_options.values[2]}) x #{v} = £#{pasta_total}"
       elsif k == @meal_options.keys[3]
-        fishchipstotal = v*5
+        fishchipstotal = v*@meal_options.values[3]
         @order << "#{k} (£#{@meal_options.values[3]}) x #{v} = £#{fishchipstotal}"
       elsif k == @meal_options.keys[4]
-        saladtotal = v*3
+        saladtotal = v*@meal_options.values[4]
         @order << "#{k} (£#{@meal_options.values[4]}) x #{v} = £#{saladtotal}"
       elsif k == @meal_options.keys[5]
-        lambtotal = v*7
+        lambtotal = v*@meal_options.values[5]
         @order << "#{k} (£#{@meal_options.values[5]}) x #{v} = £#{lambtotal}"
       end
     end
