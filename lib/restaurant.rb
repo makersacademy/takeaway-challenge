@@ -24,12 +24,11 @@ class Restaurant
 
   def create_order(order = Order)
     @order = order.new
-    choose_dish
   end
 
   def choose_dish
-    @choice = gets
-    @order.add(@menu.to_a[@choice.to_i])
+    @choice = $stdin.gets.chomp
+    @order.add(@menu.to_a[@choice.to_i - 1])
   end
 
 

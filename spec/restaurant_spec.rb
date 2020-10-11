@@ -1,4 +1,5 @@
 require 'restaurant'
+require 'stringio'
 
 describe Restaurant do
 
@@ -34,10 +35,18 @@ describe Restaurant do
     expect(order_class).to receive(:new)
     restaurant.create_order(order_class)
   end
-  it "takes the user's order and sends it to the order class" do
-    allow_any_instance_of(Restaurant).to receive(:gets).and_return(1)
-    expect(order_class).to receive(:add).with({trout_snout: 6.50})
-    restaurant.create_order(order_class)
+
+  before do
+    $stdin = StringIO.new("1\n")
+  end
+  after do
+    $stdin = STDIN
+  end
+  it "when the user chooses a dish it is sent to the order class" do
+    allow(Order).to receive(:new).and_return(order_class)
+    restaurant.create_order
+    expect(order_class).to receive(:add).with([:trout_snout, 6.50])
+    restaurant.choose_dish
   end
 
 end
