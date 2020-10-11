@@ -19,7 +19,7 @@ class Menu
   end
 
   def to_s
-    @items.map { |item| item.to_s }
+    items.map { |item| item.to_s }
     .join("\n")
   end
 

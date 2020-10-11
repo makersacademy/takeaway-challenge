@@ -13,8 +13,7 @@ class Order
 
   def total_price
     total_price = 0
-    @items.each { |item| total_price += item.price
-    }
+    items.each { |item| total_price += item.price }
     total_price
   end
 

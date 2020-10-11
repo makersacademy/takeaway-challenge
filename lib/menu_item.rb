@@ -9,7 +9,7 @@ class MenuItem
   end
 
   def to_s
-    @name + ": " + "£#{@price}"
+    name + ": " + "£#{price}"
   end
 
 end
