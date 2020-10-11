@@ -14,7 +14,7 @@ class Menu
 
   def read
     @menu.each do |item, price|
-      puts "#{item}: £#{price}"
+      "#{item} #{price}"
     end
   end
 end
