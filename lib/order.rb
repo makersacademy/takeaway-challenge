@@ -4,6 +4,7 @@ class Order
 
   def initialize
     @items = []
+    @total_price = 0
   end
 
   def order_item(menu_item, quantity)

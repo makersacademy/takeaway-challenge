@@ -16,3 +16,4 @@ Takeaway Challenge
 
 Proces
 -------  
+![Takeaway diagram.](/./takeaway.png "A sequence diagram")
