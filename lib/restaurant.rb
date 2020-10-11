@@ -42,4 +42,8 @@ class Restaurant
     raise "CALCULATION ERROR" if @running_total.sum != @order.total
   end
 
+  def print_receipt(printer = Printer)
+    printer.receipt_printer(@order)
+  end
+
 end

@@ -74,4 +74,11 @@ describe Restaurant do
       expect { restaurant.check_bill}.to raise_error("CALCULATION ERROR")
     end
   end
+
+  describe "#print_receipt" do
+    it "passes information to the printer so that it can print the receipt" do
+      expect(printer_module).to receive(:receipt_printer)
+      restaurant.print_receipt(printer_module)
+    end
+  end
 end
