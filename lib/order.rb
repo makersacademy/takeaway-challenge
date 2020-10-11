@@ -3,24 +3,15 @@ require 'menu'
 class Order
   attr_reader :basket
 
-  def initialize(menu = Menu.new, printer = Printer.new)
+  def initialize(menu = Menu.new)
     @basket = Hash.new(0)
     @menu = menu
-    @printer = printer
   end
 
   def add(item, quantity = 1)
-    @printer.place_order
+    raise "Item not available at this restaurant" unless item_on_menu?(item)
 
-    while true 
-      item = gets.chomp
-      raise "Item not available at this restaurant" unless item_on_menu?(item)
-      break if item == ""
-
-      @printer.input_quantity
-      quantity = gets.chomp
-      basket[item] += quantity
-    end
+    basket[item] += quantity
   end
 
   def remove(item)

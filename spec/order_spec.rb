@@ -1,6 +1,7 @@
 require 'order'
+
 describe Order do
-  let(:menu) { double :menu, price: 20 }
+  let(:menu) { double :menu }
   subject(:order) { Order.new(menu) }
   before do
     allow(menu).to receive(:menu).and_return({ "Carbonara" => 20 })  
