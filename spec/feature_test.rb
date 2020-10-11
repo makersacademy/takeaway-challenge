@@ -10,4 +10,4 @@ restaurant.place_order("fries", 2)
 
 p restaurant.order.total_cost.to_f
 p restaurant.view_basket
-p restaurant.confirm_order(2.58)
+restaurant.confirm_order(2.58)
