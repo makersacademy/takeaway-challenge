@@ -7,7 +7,7 @@ describe Takeaway do
 
   describe "#read_menu" do
     it 'prints out menu' do
-      expect(takeaway.read_menu).to eq('carbonara')
+      expect{ takeaway.read_menu }.to output("carbonara\n").to_stdout
     end
   end
 end

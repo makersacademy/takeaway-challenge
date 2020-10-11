@@ -10,7 +10,7 @@ class Takeaway
   end
 
   def read_menu
-    @menu.display_menu
+    puts @menu.display_menu
   end
 
 end
