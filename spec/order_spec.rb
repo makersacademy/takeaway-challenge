@@ -14,10 +14,6 @@ describe Order do
     end
   end
 
-  describe '#finalize_order' do
-    it { is_expected.to respond_to(:finalize_order).with(1).argument }
-  end
-
   describe '#calculate_price' do
     it { is_expected.to respond_to(:calculate_price).with(1).argument }
 

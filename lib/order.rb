@@ -9,14 +9,11 @@ class Order
     @final_order << { item => quantity }
   end
 
-  def finalize_order(payment)
-
-  end
-
   def calculate_price(menu)
     menu = menu.menu
     @final_order.map { |ord|
       ord.map { |item, quantity| quantity * menu[item] }
     }.flatten.inject(:+)
   end
+  
 end
