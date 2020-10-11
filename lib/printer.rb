@@ -8,7 +8,7 @@ class Printer
   end
 
   def print_basket(basket)
-    basket.dishes.each {|dish, quantity| quantity.times{print_dish(dish)}}
+    basket.dishes.each { |dish, quantity| quantity.times { print_dish(dish) } }
     print_total(basket)
   end
 end
