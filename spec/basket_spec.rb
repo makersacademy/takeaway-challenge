@@ -53,7 +53,7 @@ describe Basket do
 
   describe "#place_order" do
     it "sends a confirmation the order has been placed" do
-      comfirmation = "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
+      comfirmation = "Thank you! Your order was placed and will be delivered before #{time.hour+1}:#{time.min}"
       expect(texter).to receive(:send_text).with(comfirmation)  
       basket.place_order(printer, texter, time)
     end

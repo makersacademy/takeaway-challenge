@@ -11,22 +11,22 @@ class Basket
     @total_price += quantity*dish.price
   end
 
-  def correct_total?
-    raise "Total price is wrong. Please try again." if @total_price != calculate_total
-    true
-  end
-
-  def place_order(printer = Printer.new, texter = Text.new, time = Time.new)
+  def place_order(printer = Printer.new, texter = Texter.new, time = Time.new)
     correct_total?
     printer.print_basket(self)
     texter.send_text(confirmation(time))
     clear_basket
   end
 
+  def correct_total?
+    raise "Total price is wrong. Please try again." if @total_price != calculate_total
+    true
+  end
+
   private
 
   def confirmation(time)
-    "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
+    "Thank you! Your order was placed and will be delivered before #{time.hour+1}:#{time.min}"
   end
 
   def clear_basket
