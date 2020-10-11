@@ -4,13 +4,18 @@ class Takeaway
   def initialize(menu)
     # when order is moved out to its own class - makesure menu the object is added as an argument to orders initialize
     @menu = menu
-    @current_order = []
+    @order = Order.new(menu)
   end
 
 
   def order(item, quantity)
-    @current_order.fill(item, @current_order.size, quantity)
+    @order.add_order(item, quantity)
   end
+
+  def current_order
+    @order.current_order
+  end
+
 
 
   def print_menu

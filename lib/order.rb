@@ -15,7 +15,8 @@ class Order
   private
 
   def available?(item)
-    @menu.any?(item)
+    # @menu.dishes.any?(item)
+    @menu.available?
 
   end
 

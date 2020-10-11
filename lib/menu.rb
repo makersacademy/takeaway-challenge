@@ -11,4 +11,12 @@ class Menu
     end.join(', ')
   end
 
+  def available?(item)
+    @dishes.has_key?(item.to_sym)
+      
+    
+
+
+  end
+
 end

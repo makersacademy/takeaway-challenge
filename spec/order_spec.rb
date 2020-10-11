@@ -16,7 +16,7 @@ describe Order do
     } 
     context 'item is available' do
       before do
-        allow(menu).to receive(:any?).and_return(true)
+        allow(order).to receive(:available?).and_return(true)
       end
       it 'adds item to order' do
         current_order = ["chicken curry"]
@@ -27,7 +27,7 @@ describe Order do
 
     context 'item is not available' do 
       before do
-        allow(menu).to receive(:any?).and_return(false)
+        allow(order).to receive(:available?).and_return(false)
       end
       it 'raises an error if the item is not available' do
 

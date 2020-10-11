@@ -19,4 +19,11 @@ describe Menu do
     expect(menu.print_menu).to eq printed_menu
   end
 
+  it 'can check if an item is available' do 
+
+    puts "#{menu.dishes}"
+    expect(menu.available?("chicken curry")).to eq true
+  end
+
+
 end

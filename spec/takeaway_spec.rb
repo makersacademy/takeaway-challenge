@@ -13,11 +13,14 @@ describe Takeaway do
 
   describe '#order' do
     subject(:takeaway)  { described_class.new(menu) }
-    let(:menu)          { double('menu') }
+    let(:menu)          { double('menu', available?: true) }
+    
 
     it 'accepts dish and quantity arguments and adds to customers order' do
       takeaway.order("chicken_curry", 1)
-
+      # before do
+      # allow(menu).to receive(:available?).and_return(true)
+      # end
       expect(takeaway.current_order).to eq ["chicken_curry"]
 
     end
