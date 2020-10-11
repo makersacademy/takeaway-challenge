@@ -5,4 +5,8 @@ class Restaurant
     @menu = menu
   end
 
+  def view_menu
+    @menu.prettify_list
+  end
+
 end

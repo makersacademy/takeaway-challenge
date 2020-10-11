@@ -10,4 +10,10 @@ class Menu
       "milkshake" => 2.09
     }
   end
+
+  def prettify_list
+    @list.each do |meal, price|
+      puts "#{meal}: £#{price}\n"
+    end
+  end
 end
