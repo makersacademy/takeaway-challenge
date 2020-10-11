@@ -36,17 +36,25 @@ describe Restaurant do
     restaurant.create_order(order_class)
   end
 
-  before do
-    $stdin = StringIO.new("1\n")
+  describe "#choose_dish" do
+    before do
+      io = StringIO.new
+      io.puts"1"
+      io.puts"2"
+      io.rewind
+      $stdin = io
+    end
+    after do
+      $stdin = STDIN
+    end
+    it "takes user input and passes the choice to the order class the correct number of times" do
+      allow(Order).to receive(:new).and_return(order_class)
+      restaurant.create_order
+      expect(order_class).to receive(:add).with([:trout_snout, 6.50]).twice
+      restaurant.choose_dish
+    end
   end
-  after do
-    $stdin = STDIN
-  end
-  it "when the user chooses a dish it is sent to the order class" do
-    allow(Order).to receive(:new).and_return(order_class)
-    restaurant.create_order
-    expect(order_class).to receive(:add).with([:trout_snout, 6.50])
-    restaurant.choose_dish
-  end
+
+
 
 end
