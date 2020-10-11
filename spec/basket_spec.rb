@@ -27,6 +27,9 @@ describe Basket do
     expect(subject.order_total).to eq 9
     end
 
+    it 'raises an error if somebody tries to add an item that does not exist on the menu' do 
+    expect { subject.add_to_basket("4x4", 4) }.to raise_error("Not a valid item, please select again")
+    end
   end
 
 #   describe '#complete_order' do
