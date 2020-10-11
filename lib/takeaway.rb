@@ -18,11 +18,7 @@ class Takeaway
   end
 
   def place_order(payment)
-    item_prices = @order.map do |order|
-      order.map { |item, quantity| quantity * @menu[item] }
-    end
-    final_price = item_prices.flatten.inject(:+)
-    final_price == payment ? @order.finalize_order(payment) : incorrect_payment
+    check_order(payment) ? @order.finalize_order(payment) : incorrect_payment
   end
 
   private 
@@ -33,6 +29,14 @@ class Takeaway
 
   def incorrect_payment
     raise "Incorrect payment."
+  end
+
+  def check_order(payment)
+    item_prices = @order.map do |order|
+      order.map { |item, quantity| quantity * @menu[item] }
+    end
+    final_price = item_prices.flatten.inject(:+)
+    final_price == payment
   end
 
 end
