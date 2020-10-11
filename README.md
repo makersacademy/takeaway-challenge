@@ -81,3 +81,31 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+## My Approach
+
+- Analyse user stories and use diagrams to plan basic program.
+- Ensure unit tests for each class function in isolation.
+- Use TDD: feature test, unit test, code, repeat.
+
+## How to use
+
+Using the command line:
+require ./lib/takeaway.rb
+
+Create a takeaway:
+new_takeaway = Takeaway.new
+
+View menu:
+new_takeaway.view_menu
+
+Create an order:
+new_takeaway.add_to_order(food item, optional quantity (default = 1))
+
+Place order:
+new_takeaway.place_order(payment)
+
+Running tests:
+- Tests written using rspec.
+
