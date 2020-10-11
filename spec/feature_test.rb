@@ -9,6 +9,5 @@ restaurant.view_menu
 restaurant.place_order("hamburger", 3)
 restaurant.place_order("chicken nuggets", 6)
 
-
-p restaurant.order.basket
 p restaurant.order.total_cost.to_f
+p restaurant.view_basket

@@ -10,6 +10,10 @@ class Restaurant
     @menu.prettify_menu_list
   end
 
+  def view_basket
+    @order.basket.each { |item| p item}
+  end
+
   def place_order(meal, quantity = 1)
     @order.order(meal, quantity)
   end

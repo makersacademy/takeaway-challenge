@@ -26,4 +26,13 @@ describe Restaurant do
       expect(restaurant.place_order("hamburger", 4)).to eq "You added 4 hamburgers to your basket."
     end
   end
+
+  describe "#view_basket" do
+    it 'shows orders in basket' do
+      order_double = double :order, basket: ["hamburger (1): £1.99"]
+      restaurant = Restaurant.new(order_double)
+      restaurant.place_order("hamburger", 1)
+      expect(restaurant.view_basket).to eq ["hamburger (1): £1.99"]
+    end
+  end
 end
