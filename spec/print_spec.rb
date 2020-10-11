@@ -17,21 +17,16 @@ describe Print do
         expect { subject.print_menu(menu) }.to output("Double Double: $4\nCheeseburger: $3\nHamburger: $2\nFrench Fries: $1\nMilkshake: $1\nSmall Soda: $1\n").to_stdout
     end
 
-describe 'Printing related to baskets' do
+  describe 'Printing related to baskets' do
 
     before do 
-        basket.add_to_basket("Double Double")
-        basket.add_to_basket("Double Double")
-        basket.add_to_basket("Milkshake")
-    end
-
-    it '#print_order_total should print the order total to the console' do
-        expect { subject.print_order_total(basket.order_total) }.to output("Your order total is #{basket.order_total}\n").to_stdout
+        basket.add_to_basket("Double Double", 2)
+        basket.add_to_basket("Milkshake", 1)
     end
 
     it '#print_basket should print the items in the basket' do
-        expect {subject.print_basket(basket.basket)}.to output("1.Double Double\n2.Double Double\n3.Milkshake\n").to_stdout
+        expect {subject.print_basket(basket.basket, basket.order_total)}.to output("Your Basket:\nDouble Double: x2\nMilkshake: x1\nYour order total is $9\n").to_stdout
     end 
     
-    end 
+  end 
 end

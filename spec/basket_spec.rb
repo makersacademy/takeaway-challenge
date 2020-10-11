@@ -16,17 +16,23 @@ describe Basket do
 
   describe 'add_to_basket(item)' do
 
-    it 'adds an item to the basket' do
-    subject.add_to_basket("Double Double")
-    expect(subject.basket).to include("Double Double")
+    it 'adds an item and quantity to the basket which is a hash' do
+    subject.add_to_basket("Double Double", 1)
+    expect(subject.basket).to include({"Double Double" => 1})
     end
 
     it 'adds an items price to the order total' do
-    subject.add_to_basket("Double Double")
-    subject.add_to_basket("Double Double")
-    subject.add_to_basket("Milkshake")
+    subject.add_to_basket("Double Double", 2)
+    subject.add_to_basket("Milkshake", 1)
     expect(subject.order_total).to eq 9
     end
+
   end
+
+#   describe '#complete_order' do
+#     before do
+#         subject.add_to_basket
+
+#     it 'shows the order to the customer with items, quantities and total price' do
 
 end 

@@ -16,10 +16,10 @@ class Basket
       @order_total
     end
 
-    def add_to_basket(item)
+    def add_to_basket(item, quantity)
       if valid_item?(item)
-        @basket << item
-        @order_total += @menu[item]
+        @basket << {item => quantity}
+        @order_total += @menu[item] * quantity
       end
     end
 

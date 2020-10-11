@@ -10,17 +10,20 @@ class Print
 
   end
 
-  def print_order_total(order_total)
-    puts "Your order total is #{order_total}"
+  def print_basket(basket, order_total)
+    puts 'Your Basket:'
+    basket.each do |hash|
+        hash.each do |item, quantity|
+        puts item + ": x" + quantity.to_s
+        end
+    end
+    print_order_total(order_total)
   end
 
-  def print_basket(basket)
-    i = 1
-    basket.each do |item|
-        puts i.to_s + "." + item
-        i += 1
-    end
+  private 
 
-end
+  def print_order_total(order_total)
+    puts "Your order total is $#{order_total}"
+  end
 
 end
