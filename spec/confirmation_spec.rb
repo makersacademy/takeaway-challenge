@@ -22,4 +22,14 @@ describe Confirmation do
     expect(messages).to have_received(:create).with(message_contents)
   end
 
+  describe '#eta' do
+    it { is_expected.to respond_to(:eta) }
+
+    it 'returns current time + 1 hour' do
+        time = Time.new + 60 * 60
+        expect(confirmation.eta).to eq(time.strftime("%H:%M"))
+    end
+  end
+
+
 end

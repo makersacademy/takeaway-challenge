@@ -19,5 +19,9 @@ class Confirmation
     body: "Thank you! Your order was placed and will be delivered shortly." }
   end
 
+  def eta
+    time = Time.now + 60 * 60
+    time.strftime("%H:%M")
+  end
 
 end
