@@ -46,6 +46,13 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+# Domain Model:
+
+Object | Behaviour
+------ | ---------
+Dish | price
+Menu | print_menu, find_price()
+Takeaway | #see_dishes, #place_order, #verify_order text_confirmation 
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
