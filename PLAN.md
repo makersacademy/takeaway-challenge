@@ -37,3 +37,23 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |----|----|
 |Customer||
 |Phone|send_text_when_order_confirmed|
+
+#Class Diagram
+
+||
+|----|
+|Class: Order|
+|Methods: select_dishes(), list_items(), check_total()|
+|Variables: Array_of_dish_hashes|
+
+||
+|----|
+|Class: Print|
+|Methods: print_order(), print_dishes()|
+|Variables: Array_of_dish_hashes|
+
+||
+|----|
+|Class: Phone|
+|Methods: send_text()|
+|Variables: number|
