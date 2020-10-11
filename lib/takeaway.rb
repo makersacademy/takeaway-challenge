@@ -1,8 +1,9 @@
 require 'order'
 require 'menu'
+require 'confirmation_text'
 
 class Takeaway
-  def initialize(order = Order.new, menu = Menu.new)
+  def initialize(order = Order.new, menu = Menu.new, sms = ConfirmationText.new)
     @order = order
     @menu = menu
   end
@@ -22,5 +23,8 @@ class Takeaway
   def total_price
     @order.total
   end
-
+  
+  def confirmation_text
+    @sms.send_message
+  end
 end
