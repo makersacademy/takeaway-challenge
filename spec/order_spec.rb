@@ -21,7 +21,15 @@ describe Order do
       subject.add("Seafood linguine", 30, 1)
       subject.add("Pizza", 18, 1)
       subject.add("Carbonara", 26, 1)
-      expect(subject.total).to eq 104
+      expect(subject.total_cost).to eq 104
     end 
+
+    it 'total number if dishes ordered' do
+      subject.add("Seafood linguine", 30, 1)
+      subject.add("Seafood linguine", 30, 1)
+      subject.add("Pizza", 18, 1)
+      subject.add("Carbonara", 26, 1)
+      expect(subject.dish_count).to eq 4
+    end
   end
 end

@@ -4,6 +4,7 @@ class Order
   def initialize
     @order = []
     @total = []
+    @total_dishes = []
   end 
 
   def add(dish, price, quantity) 
@@ -14,8 +15,13 @@ class Order
     @order.each { |dish, price, quantity| p "#{dish}, #{price}, #{quantity}" }
   end
 
-  def total
+  def total_cost
     @order.map { |hash| @total << hash[:price] }
     return @total.sum
+  end
+
+  def dish_count
+    @order.map { |hash| @total_dishes << hash[:quantity] }
+    return @total_dishes.sum
   end
 end
