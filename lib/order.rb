@@ -22,11 +22,8 @@ class Order
   end
 
 
-
-
   private
 
- 
 
   def available?(item)
 

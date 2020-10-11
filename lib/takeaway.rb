@@ -1,9 +1,9 @@
 class Takeaway
   attr_reader :menu
 
-  def initialize(menu)
+  def initialize(menu, order = Order.new(menu))
     @menu = menu
-    @order = Order.new(menu)
+    @order = order
   end
 
   def add_to_cart(item, quantity)
@@ -13,6 +13,11 @@ class Takeaway
   def cart
     @order.cart
   end
+
+  def checkout
+    @order.checkout
+  end
+  
 
   def print_menu
     @menu.print

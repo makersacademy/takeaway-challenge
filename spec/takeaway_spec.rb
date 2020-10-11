@@ -24,6 +24,19 @@ describe Takeaway do
     end
   end
 
+  describe '#checkout' do
+    let(:menu)          { double('menu') }
+    let(:order_class)     { double('order', checkout: message) }
+    let(:message)         { ("Your order has been placed. Total cost is £22.50")}
+    subject(:full_order)  { described_class.new(menu, order_class)}
+
+    it 'checks out the cart and tells customer the cost of the order' do
+     
+      
+      expect(full_order.checkout).to eq message
+    end
+  end
+
 end
 
 #  doubel for order - the variable associated with takeaway
