@@ -4,16 +4,6 @@ require 'BillCalculator.rb'
 describe Menu do
   let(:dish) { double :dish }
   let(:price) { double :price }
-    describe '#meal_options'
-      it 'returns menu' do
-        expect(Menu::MEAL_OPTIONS).to eq(
-          {:Hamburger=>5,
-          :Pizza=>6,
-          :Pasta=>4,
-          :Fish_and_chips=>5,
-          :Salad=>3,
-          :Lamb_Shank=>7})
-        end
 
   describe '#select' do
     it 'check method stores selection to #dishes variable' do
