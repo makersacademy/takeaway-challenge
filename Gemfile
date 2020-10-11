@@ -8,5 +8,6 @@ group :test do
 end
 
 group :development do
+  gem 'dotenv'
   gem 'twilio-ruby'
 end

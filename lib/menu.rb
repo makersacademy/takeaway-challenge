@@ -5,7 +5,11 @@ class Menu
 
   def initialize(item_class = Item)
     @item_class = item_class
-    @items = {}
+    @items = {
+      "Blini" => 7,
+      "Pirozhki" => 3,
+      "Pelmeni" => 12
+    }
   end
   
   def add_item(name, price)

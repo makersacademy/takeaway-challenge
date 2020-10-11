@@ -28,13 +28,6 @@ describe Order do
   end
 
   describe '#place_order' do
-    it "outputs a thank you message, order arrives within an hour" do
-      order.add_item("Blini")
-      allow(basket).to receive(:empty?).and_return(false)
-      allow(basket).to receive(:clear)
-      expect(order.place_order).to eq "Thank you! Your order will arrive no later than #{(Time.now + 3600).strftime("%k:%M")}."
-    end
-
     it "raises error if basket is empty" do
       allow(basket).to receive(:empty?).and_return(true)
       expect { order.place_order }.to raise_error("Can't place an order with an empty basket!")
