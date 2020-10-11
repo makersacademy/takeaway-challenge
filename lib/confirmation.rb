@@ -11,7 +11,6 @@ class Confirmation
     @client.messages.create(
       message_contents
     )
-    puts "Message sent"
   end
 
   def message_contents

@@ -6,7 +6,7 @@ require_relative 'confirmation'
 class Takeaway
   attr_reader :order 
 
-  def initialize(menu = Menu.new, order = Order.new, confirmation = Confirmation.new)
+  def initialize(menu = Menu.new, order = Order.new, confirmation = Confirmation)
     @menu = menu
     @order = order
     @confirmation = confirmation
@@ -21,10 +21,15 @@ class Takeaway
   end
 
   def place_order(payment)
-    check_order(payment) ? @confirmation.send_message : incorrect_payment
+    check_order(payment) ? confirm_delivery : incorrect_payment
   end
 
   private 
+
+  def confirm_delivery
+    @confirmation = @confirmation.new
+    @confirmation.send_message
+  end
 
   def not_available
     raise "Please select items from the menu."
