@@ -4,9 +4,10 @@ require_relative 'order'
 class Takeaway
   attr_reader :order 
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, confirmation = Confirmation.new)
     @menu = menu
     @order = order
+    @confirmation = confirmation
   end
 
   def view_menu
@@ -18,7 +19,7 @@ class Takeaway
   end
 
   def place_order(payment)
-    check_order(payment) ? @order.finalize_order(payment) : incorrect_payment
+    check_order(payment) ? @confirmation.finalize_order(payment) : incorrect_payment
   end
 
   private 

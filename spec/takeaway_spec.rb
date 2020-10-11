@@ -4,7 +4,8 @@ describe Takeaway do
   let(:menu) { double :menu }
   let(:order) { double :order }
   let(:payment) { double :payment }
-  let(:takeaway) { described_class.new(menu, order) }
+  let(:confirmation) { double :confirmation }
+  let(:takeaway) { described_class.new(menu, order, confirmation) }
   let(:correct_payment) { 32 }
   let(:incorrect_payment) { 100 }
 
@@ -39,7 +40,7 @@ describe Takeaway do
     
     it 'places an order' do
       allow(order).to receive(:calculate_price).and_return(correct_payment)
-      expect(order).to receive(:finalize_order)
+      expect(confirmation).to receive(:finalize_order)
       takeaway.place_order(correct_payment)
     end
 
