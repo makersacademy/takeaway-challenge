@@ -9,10 +9,11 @@ class Menu
     "Milkshake" => 2.45,
     "Small Soda" => 1.75
     }
+    
   end
 
-  def menu
-    @menu
-  end
+    def menu
+        @menu
+    end
 
 end
