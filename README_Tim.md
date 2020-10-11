@@ -28,7 +28,7 @@ The classes I ended with were:
 
 I found this super challenging and in the time I could give this weekend, this was what I could do. I'm not convinced some of my code choices were correct, and that may have hindered my progress and brought me trouble in the end. 
 
-## With more time/patience
+## With more time/patience
 
 1. I would have refactored my code to be in those classes
 2. I would have written more tests to drive my code.
