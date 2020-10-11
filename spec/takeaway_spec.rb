@@ -27,4 +27,14 @@ describe Takeaway do
       subject.view_order
     end
   end
+
+  describe '#order_total' do
+    it 'confirms the value of an order and quantity' do
+      subject.add_to_order("Seafood linguine", 30, 1)
+      subject.add_to_order("Seafood linguine", 30, 1)
+      subject.add_to_order("Pizza", 18, 1)
+      subject.add_to_order("Carbonara", 26, 1)
+      expect { subject.order_total }.to output("You basket contains 4 dishes with the total value of £104, please confirm your order.\n").to_stdout
+    end
+  end
 end

@@ -20,4 +20,8 @@ class Takeaway
   def view_order
     @order.view
   end
+
+  def order_total
+    puts "You basket contains #{@order.dish_count} dishes with the total value of £#{@order.total_cost}, please confirm your order."
+  end
 end
