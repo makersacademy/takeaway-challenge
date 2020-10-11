@@ -9,13 +9,13 @@ class Order
   end
 
   def add(item, quantity = 1)
-    raise "Item not available at this restaurant" if !item_on_menu?(item)
+    raise "Item not available at this restaurant" unless item_on_menu?(item)
 
     basket[item] += quantity
   end
 
   def remove(item)
-    raise "Item not in basket" if !item_in_basket?(item)
+    raise "Item not in basket" unless item_in_basket?(item)
     
     basket.delete(item)
   end
@@ -39,6 +39,5 @@ class Order
   def item_in_basket?(item)
     basket.include?(item)
   end
-
-
+  
 end
