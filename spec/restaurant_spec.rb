@@ -35,4 +35,13 @@ describe Restaurant do
       expect(restaurant.view_basket).to eq ["hamburger (1): £1.99"]
     end
   end
+
+  describe "#confirm_order" do
+    it 'confirms a complete order' do
+      order_double = double :order, pay: "Order complete! Thank you for your purchase."
+      restaurant = Restaurant.new(order_double)
+      restaurant.place_order("hamburger", 1)
+      expect{restaurant.confirm_order(1.99)}.to output("Order complete! Thank you for your purchase.\n").to_stdout
+    end
+  end
 end

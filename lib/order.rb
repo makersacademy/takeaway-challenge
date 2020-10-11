@@ -9,12 +9,16 @@ class Order
 
   def order(meal, quantity)
     raise "Oops! We don't stock that meal." if !@menu.menu_list[meal]
-
     price = quantity * @menu.menu_list[meal]
-
     @basket << ("#{meal} (#{quantity}): £#{price}")
-
     @total_cost += price
     "You added #{quantity} #{meal}s to your basket."
+  end
+
+  def pay(amount)
+    raise "Incorrect amount specified" if @total_cost != amount
+    puts "Order complete! Thank you for your purchase."
+    @total_cost = 0
+    @basket = []
   end
 end

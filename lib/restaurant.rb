@@ -18,4 +18,7 @@ class Restaurant
     @order.order(meal, quantity)
   end
 
+  def confirm_order(amount)
+    @order.pay(amount)
+  end
 end
