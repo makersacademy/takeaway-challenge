@@ -27,24 +27,24 @@ describe Menu do
       end
     end
 
-    describe '#total_entered' do
+    describe '#my_total' do
       let(:total) {double :total}
       let(:actual_total) {double :actual_total}
 
         it 'check that if total entered is incorrect an error is given' do
           subject.select(:Hamburger=>3, :Pizza=>2, :Salad=>5)
-          expect{ subject.total_entered(41)}.to raise_error("Total entered (£41) is incorrect.  Actual total is £42")
+          expect{ subject.my_total(41)}.to raise_error("Total entered (£41) is incorrect.  Actual total is £42")
         end
 
         it 'checks that if total entered twice the total doesnt change' do
           subject.select(:Hamburger=>3, :Pizza=>2, :Salad=>5)
-          expect{ subject.total_entered(41)}.to raise_error("Total entered (£41) is incorrect.  Actual total is £42")
-          expect{ subject.total_entered(41)}.to raise_error("Total entered (£41) is incorrect.  Actual total is £42")
+          expect{ subject.my_total(41)}.to raise_error("Total entered (£41) is incorrect.  Actual total is £42")
+          expect{ subject.my_total(41)}.to raise_error("Total entered (£41) is incorrect.  Actual total is £42")
         end
 
         it 'check that if total entered is incorrect an error is given' do
           subject.select(:Hamburger=>3, :Pizza=>2, :Salad=>5)
-          expect{ subject.total_entered(42)}.to output("Amount given is correct.  Food ordered\n").to_stdout
+          expect{ subject.my_total(42)}.to output("Amount given is correct.  Food ordered\n").to_stdout
         end
     end
 
