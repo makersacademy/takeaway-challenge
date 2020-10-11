@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'twilio-ruby'
 
 class Restaurant
