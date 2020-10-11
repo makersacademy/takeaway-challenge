@@ -9,4 +9,11 @@ class Order
     basket[food] += quantity
   end
 
+  def remove(food)
+    basket.include?(food) ? basket.delete(food) : "Item not in basket"
+  end
+  
+
+
+
 end

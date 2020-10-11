@@ -14,4 +14,12 @@ describe Order do
       expect(order.basket).to eq({"steak" => 2})
     end
   end
+
+  describe '#remove_from_basket' do
+    it 'removes food from basket' do
+      order.add("pineapple")
+      order.remove("pineapple")
+      expect(order.basket).to be_empty
+    end
+  end  
 end
