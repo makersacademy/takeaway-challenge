@@ -3,6 +3,7 @@ class Printing
   def initialize(phone, dishes)
     @phone = phone
     @dishes = dishes
+    @total = 0
   end
 
   def menu
@@ -24,13 +25,12 @@ class Printing
     else
       puts "Your Order:\n\n"
       order_list.each { |each|
-        # order_select = @dishes.select_item(each[0])
         order_select = @dishes.select_item(each[0])[0]
-        # print "£#{((order_select[0][:price]).to_i * each[1].to_i)} "
         print "£#{((order_select[:price]).to_i * each[1].to_i)} "
-        # puts ": #{each[1]} x #{order_select[0][:item]}"
         puts ": #{each[1]} x #{order_select[:item]}"
+        @total += (order_select[:price].to_i * each[1].to_i)
       }
+      puts "£#{@total.round(2)} Total"
       puts "-----"
       puts "Is this correct?: yes/no"
       correct = gets.chomp

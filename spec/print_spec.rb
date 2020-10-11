@@ -54,7 +54,7 @@ describe Printing do
 
     it " prints specific ordered items" do
       allow_any_instance_of(Printing).to receive(:gets).and_return("no")
-      message = "Your Order:\n\n: 1 x test_item\n-----\nIs this correct?: yes/no\n"
+      message = "Your Order:\n\n: 1 x test_item\n£0 Total\n-----\nIs this correct?: yes/no\n"
       print_inst = Printing.new(phone_dbl, dishes_dbl)
       expect { print_inst.order([["1", "1"]]) }.to output(message).to_stdout
     end
