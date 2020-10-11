@@ -23,7 +23,9 @@ describe Basket do
 
     it 'adds an items price to the order total' do
     subject.order("Double Double")
-    expect(subject.order_total).to eq 4.35
+    subject.order("Double Double")
+    subject.order("Milkshake")
+    expect(subject.order_total).to eq 9
     end
   end
 end 

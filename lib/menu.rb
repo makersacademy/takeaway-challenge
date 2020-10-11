@@ -2,12 +2,12 @@ class Menu
 
   def initialize
     @menu = {
-    "Double Double" => 4.35,
-    "Cheeseburger" => 3.15,
-    "Hamburger" => 2.85,
-    "French Fries" => 2.05,
-    "Milkshake" => 2.45,
-    "Small Soda" => 1.75
+    "Double Double" => 4,
+    "Cheeseburger" => 3,
+    "Hamburger" => 2,
+    "French Fries" => 1,
+    "Milkshake" => 1,
+    "Small Soda" => 1
     }
     
   end
