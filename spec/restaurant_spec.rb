@@ -58,8 +58,20 @@ describe Restaurant do
   end
 
   describe "#check_bill" do
+    before do
+      allow(Order).to receive(:new).and_return(order_class)
+      restaurant.create_order
+      io = StringIO.new
+      io.puts"1"
+      io.puts"2"
+      io.rewind
+      $stdin = io
+      allow(order_class).to receive(:add).with([:trout_snout, 6.5])
+      restaurant.choose_dish
+      allow(order_class).to receive(:total).and_return(11.3)
+    end
     it "raises an error if the total of the final bill is wrong" do
-      expect { restaurant.check_bill(order.total)}.to raise_error
+      expect { restaurant.check_bill}.to raise_error("CALCULATION ERROR")
     end
   end
 end

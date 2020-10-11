@@ -1,5 +1,7 @@
 class Order
 
+  attr_reader :selection, :total
+
   def initialize
     @selection = []
   end

@@ -24,6 +24,7 @@ class Restaurant
 
   def create_order(order = Order)
     @order = order.new
+    @running_total = []
   end
 
   def choose_dish
@@ -33,10 +34,12 @@ class Restaurant
     #take quantity as number
     @quantity = $stdin.gets.chomp.to_i
     @quantity.times { @order.add(@choice) }
+    @quantity.times { @running_total.push(@choice[-1]) }
   end
 
-  def check_price
-
+  def check_bill
+  #  @comparison_total = []
+    raise "CALCULATION ERROR" if @running_total.sum != @order.total
   end
 
 end
