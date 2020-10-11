@@ -1,17 +1,20 @@
 require 'confirmation'
 
 describe Confirmation do
-  let(:messages) { spy :messages}
-  let(:client) { double :client, messages: messages}
+  let(:messages) { spy :messages }
+  let(:client) { double :client, messages: messages }
+  let(:time) { Time.new + 60 * 60 }
+  let(:estimated_time) { time.strftime("%H:%M") }
   let(:env) { { 
       'TWILIO_ACCOUNT_SID' => '123',
       'TWILIO_AUTH_TOKEN' => '321',
-      } }
-  let(:message_contents) { { 
-    body: "Thank you! Your order was placed and will be delivered shortly.",
-    from: nil,
-    to: nil
-   } }
+      } 
+    }
+  let(:message_contents) { 
+  { body: "Thank you! Your order was placed and will be delivered before #{estimated_time}.",
+  from: nil,
+  to: nil } 
+   }
   let(:confirmation) { Confirmation.new(env, client) }
   let(:body) { "test" }
   
@@ -26,10 +29,8 @@ describe Confirmation do
     it { is_expected.to respond_to(:eta) }
 
     it 'returns current time + 1 hour' do
-        time = Time.new + 60 * 60
-        expect(confirmation.eta).to eq(time.strftime("%H:%M"))
+      expect(confirmation.eta).to eq(estimated_time)
     end
   end
-
 
 end

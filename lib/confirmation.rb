@@ -11,12 +11,13 @@ class Confirmation
     @client.messages.create(
       message_contents
     )
+    puts "Message sent"
   end
 
   def message_contents
     { from: @env['TWILIO_PHONE_NO'],
     to: @env['PHONE_NO'],
-    body: "Thank you! Your order was placed and will be delivered shortly." }
+    body: "Thank you! Your order was placed and will be delivered before #{eta}." }
   end
 
   def eta

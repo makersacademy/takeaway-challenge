@@ -1,5 +1,7 @@
+require 'twilio-ruby'
 require_relative 'menu'
 require_relative 'order'
+require_relative 'confirmation'
 
 class Takeaway
   attr_reader :order 
@@ -19,7 +21,7 @@ class Takeaway
   end
 
   def place_order(payment)
-    check_order(payment) ? @confirmation.finalize_order(payment) : incorrect_payment
+    check_order(payment) ? @confirmation.send_message : incorrect_payment
   end
 
   private 
