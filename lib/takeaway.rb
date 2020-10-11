@@ -4,9 +4,9 @@ require_relative 'order'
 class Takeaway
   attr_reader :order 
 
-  def initialize(menu = Menu.new, order = Order)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
-    @order = order.new
+    @order = order
   end
 
   def view_menu
@@ -15,6 +15,10 @@ class Takeaway
 
   def add_to_order(item, quantity = 1)
     @menu.item_available?(item) ? @order.add_item(item, quantity) : not_available
+  end
+
+  def place_order(payment)
+    @order.place_order(payment)
   end
 
   private 

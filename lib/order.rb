@@ -8,4 +8,8 @@ class Order
   def add_item(item, quantity)
     @order << { item => quantity }
   end
+
+  def place_order(payment)
+
+  end
 end

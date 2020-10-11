@@ -1,6 +1,7 @@
 require 'order'
 
 describe Order do
+
   it { is_expected.to respond_to(:add_item).with(2).arguments }
 
   describe '#add_item' do
@@ -9,4 +10,9 @@ describe Order do
       expect(subject.order).to include({ "California Rolls" => 1 })
     end
   end
+
+  describe '#place_order' do
+    it { is_expected.to respond_to(:place_order).with(1).argument}
+  end
+
 end

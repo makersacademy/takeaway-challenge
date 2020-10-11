@@ -17,4 +17,5 @@ class Menu
   def item_available?(item) 
     @menu.has_key?(item)
   end
+  
 end
