@@ -32,10 +32,4 @@ describe Basket do
     end
   end
 
-#   describe '#complete_order' do
-#     before do
-#         subject.add_to_basket
-
-#     it 'shows the order to the customer with items, quantities and total price' do
-
 end 

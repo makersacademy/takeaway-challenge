@@ -21,7 +21,6 @@ class Basket
         @basket << {item => quantity}
         @order_total += @menu[item] * quantity
       else raise "Not a valid item, please select again"  
-    
       end
     end
 
