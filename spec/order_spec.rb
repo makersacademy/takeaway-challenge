@@ -1,6 +1,7 @@
 require 'order'
 describe Order do
   subject(:order) { Order.new }
+#   let(:menu) { double :menu }
 
   describe '#initialize' do
     it 'initializes with an empty basket' do 
@@ -17,9 +18,18 @@ describe Order do
 
   describe '#remove_from_basket' do
     it 'removes food from basket' do
-      order.add("pineapple")
-      order.remove("pineapple")
+      order.add("pad thai")
+      order.remove("pad thai")
       expect(order.basket).to be_empty
     end
   end  
+
+  describe '#total' do
+    it 'calculates the total price' do
+    #   allow(menu).to receive(:menu).and_return(20)
+      order.add("Carbonara")
+      order.add("Carbonara")
+      expect(order.total).to eq(30)
+    end
+  end
 end
