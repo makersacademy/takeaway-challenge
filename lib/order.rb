@@ -1,10 +1,11 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :menu
+  attr_reader :menu, :cost, :items
   def initialize(menu = Menu.new)
     @menu = menu.list
     @items = {}
+    cost = 0
   end
 
   def update(items)
@@ -15,8 +16,17 @@ class Order
       number = dishes[0].to_i
       @items[dish] = number
     }
+    calculate_cost
     @items
 
   end
 
+  private
+  def calculate_cost
+    @cost = 0
+    @items.each { |meal, number|
+      item_cost = @menu[meal].split("£")[1].to_i
+      @cost += (item_cost * number)
+    }
+  end
 end
