@@ -8,11 +8,11 @@ class Text
 
     def send_confirmation
         @client.messages.create(
-            from: ENV["TWILIO_NUMBER"],
+            from: ENV["TWILIO_TRIAL_NUMBER"],
             to: ENV["MY_NUMBER"],
             body: "Thank you for ordering with us, your order will be ready by #{(Time.now + 3600).strftime("%k:%M")}"
         )
     end
 
-
+    
 end
