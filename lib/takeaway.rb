@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'send_sms'
 class Takeaway 
   attr_reader :menu, :order_total
   def initialize(menu = Menu.new, order = Order.new, send_sms = SendSms.new)
@@ -29,6 +30,6 @@ class Takeaway
   def confirm_order(payment)
     raise "Incorrect payment" if @order.total_cost != payment 
 
-    #@send_sms.send_message
+    @send_sms.send_message
   end
 end

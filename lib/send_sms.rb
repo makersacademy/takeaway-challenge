@@ -1,3 +1,5 @@
+require 'dotenv'
+Dotenv.load
 require 'twilio-ruby'
 class SendSms
   def initialize(client = nil, env = ENV)
