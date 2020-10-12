@@ -14,11 +14,26 @@ Takeaway Challenge
 
  ```
 # How to Use:
-First, load in IRB using ```irb -r './lib/takeaway.rb'```
 
-If you would like to use a new menu, add your menu to the 'Menus' directory with the following format:
+### Before Launching:
+
+Before launching, if you would like to use a your own menu, add your menu to the 'Menus' directory with the following format as a CSV file:
 
 ```food,price```
+
+Setup your environment by entering the following information from your Twilio account:
+
+```
+> export SID = '...'
+> export AUTH_TOKEN = '...'
+> export TEST_NUMBER = '...'
+```
+
+The ```TEST_NUMBER``` is the number that the text will be sent from. This should be your Twilio number.
+
+### In IRB:
+
+First, load in IRB using ```irb -r './lib/takeaway.rb'```
 
 Then, you can start your order using: ```my_order = Takeaway.new('my_file_name.csv')```
 Now, you can begin your order! (If you don't want to add a menu, just type ```my_order = Takeaway.new```)
@@ -30,9 +45,6 @@ To order: ```my_order.place_order```
 To verify your order: ```my_order.verify_order```
 
 Once you've verified your order, you will be asked to enter your phone number. From here, you will receive a text confirming your order and expected arrival time.
-
-## Note:
-Please enter in your own Twilio API account SID, authentication token, and phone number to use.
 
 # User Stories:
 

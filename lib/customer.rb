@@ -1,5 +1,3 @@
-require '../config'
-
 class Customer
 
   def initialize(phone = nil)
@@ -17,11 +15,11 @@ class Customer
   end
 
   def send_text(client = Twilio::REST::Client)
-    account_sid = Config::ACCT_SID
-    auth_token = Config::AUTH_TOKEN
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["AUTH_TOKEN"]
     client = client.new(account_sid, auth_token)
 
-    from = Config::TEST_PHONE
+    from = ENV["TEST_PHONE"]
     to = @phone
 
     client.messages.create(
