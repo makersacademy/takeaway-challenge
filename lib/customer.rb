@@ -1,4 +1,3 @@
-require 'twilio-ruby'
 require '../config'
 
 class Customer
@@ -13,7 +12,7 @@ class Customer
   end
 
   def send_confirmation
-    send_text if !@phone.nil?
+    send_text unless @phone.nil?
     puts "A text has been sent confirming your order"
   end
 

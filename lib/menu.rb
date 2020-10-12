@@ -1,5 +1,5 @@
-
 class Menu
+  attr_reader :menu
 
   def initialize(menu_file = "menu_1.csv")
     @menu = []
@@ -8,7 +8,7 @@ class Menu
   end
 
   def print_menu
-    @menu.each {|item| puts "#{item[:item]} ~ £#{item[:price]}"}
+    @menu.each { |item| puts "#{item[:item]} ~ £#{item[:price]}" }
     true
   end
 
@@ -16,10 +16,6 @@ class Menu
     @menu.each do |food|
       return food[:price] if same_food?(food[:item], item)
     end
-  end
-
-  def menu
-    @menu
   end
 
   private
@@ -36,6 +32,6 @@ class Menu
   end
 
   def add_items(item, price)
-    @menu << {item: item, price: price.to_i }
+    @menu << { item: item, price: price.to_i }
   end
 end

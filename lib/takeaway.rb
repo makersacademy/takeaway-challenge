@@ -2,6 +2,7 @@ require_relative 'customer'
 require_relative 'menu'
 
 class Takeaway
+  attr_reader :order
 
   def initialize(menu = Menu, customer = Customer)
     @menu = menu.new
@@ -12,10 +13,6 @@ class Takeaway
 
   def see_dishes
     @menu.print_menu
-  end
-
-  def order
-    @order
   end
 
   def place_order
@@ -32,6 +29,7 @@ class Takeaway
   def verify_order
     print_order
     return reset_order if order_wrong?
+
     text_confirmation
   end
 
@@ -58,6 +56,7 @@ class Takeaway
     puts "Is everything correct? Y or N"
     answer = gets.chomp.upcase
     return false if answer == "Y"
+
     true
   end
 
@@ -86,10 +85,11 @@ class Takeaway
 
   def true_or_false?(choice)
     return true if choice == "Y"
+
     false
   end
 
   def add_to_order(item, quantity, price)
-    @order << {item: item, quantity: quantity, price: price}
+    @order << { item: item, quantity: quantity, price: price }
   end
 end

@@ -5,7 +5,7 @@ describe Menu do
   
   describe '#initialize' do
     it 'loads the menu' do
-      expect(new_menu.menu).to eq([{:item=>"Quiche", :price=>3}, {:item=>"Mac & Cheese", :price=>6}, {:item=>"Mashed Potatoes", :price=>2}, {:item=>"Tea", :price=>1}, {:item=>"Tiramisu", :price=>5}])
+      expect(new_menu.menu).to eq([{ item: "Quiche", price: 3 }, { item: "Mac & Cheese", price: 6 }, { item: "Mashed Potatoes", price: 2 }, { item: "Tea", :price => 1 }, { item: "Tiramisu", price: 5 }])
     end
   end
 
