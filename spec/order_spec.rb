@@ -2,6 +2,7 @@ require 'order'
 
 describe Order do
   let(:menu_double) { double :Menu, list: { :fish => "£5", :chips => "£3", :salad => "£2" } }
+  
   it 'returns the menu on #menu' do
     order = Order.new(menu_double)
     expect(order.menu).to include(
@@ -20,6 +21,12 @@ describe Order do
     order = Order.new(menu_double)
     order.update("1 fish, 3 salad, 2 chips")
     expect(order.cost).to eq 17
+  end
+
+  it 'allows user to confirm order' do
+    order = Order.new(menu_double)
+    order.update("1 fish, 3 salad, 2 chips")
+    expect(order.confirm).to include("Thank you! Your order was placed and will be delivered before")
   end
 
 end
