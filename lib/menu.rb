@@ -3,9 +3,10 @@ class Menu
     
   def initialize
     @list = {
-      :fish => "£5",
+      :shawarma => "£5",
       :chips => "£3",
       :salad => "£2",
+      :pepsi => "£1"
     }
   end
 
