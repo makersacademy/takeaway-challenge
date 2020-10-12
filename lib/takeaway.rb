@@ -16,8 +16,8 @@ class Takeaway
   end
 
   def place_order
-    item = what_would_you_like?
-    quantity = how_many?
+    item = what_would_you_like
+    quantity = how_many
     price = @menu.find_price(item)
 
     add_to_order(item, quantity, price)
@@ -68,12 +68,12 @@ class Takeaway
     puts "TOTAL: £#{@total}"
   end
 
-  def what_would_you_like?
+  def what_would_you_like
     puts "What would you like to order?"
     gets.chomp
   end
 
-  def how_many?
+  def how_many
     puts "Input Quantity:"
     gets.chomp.to_i
   end
