@@ -14,7 +14,7 @@ Takeaway Challenge
 
  ```
 # How to Use:
-First, load in IRB using ```irb -r './lib/takeaway.rb'``
+First, load in IRB using ```irb -r './lib/takeaway.rb'```
 
 If you would like to use a new menu, add your menu to the 'Menus' directory with the following format:
 
