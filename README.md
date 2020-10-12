@@ -73,7 +73,8 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 
 Using irb:
 ```
-require ./lib/takeaway.rb
+irb
+require './lib/takeaway.rb'
 ```
 
 Create a takeaway:
