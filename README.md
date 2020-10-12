@@ -100,9 +100,7 @@ new_takeaway.place_order(payment)
 Running tests:
 - Tests written using rspec.
 
-## Planning:
-
-### User Story Analysis
+## User Story Analysis:
 
 ```
 As a customer
