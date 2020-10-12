@@ -77,13 +77,7 @@ class Takeaway
 
   def anything_else?
     puts "Anything else? Y or N"
-    true_or_false?(gets.chomp.upcase)
-  end
-
-  def true_or_false?(choice)
-    return true if choice == "Y"
-
-    false
+    gets.chomp.upcase == "Y"
   end
 
   def add_to_order(item, quantity, price)
