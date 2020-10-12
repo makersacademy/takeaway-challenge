@@ -2,6 +2,7 @@ require_relative 'menu'
 
 class Order
   attr_reader :menu, :cost, :items
+  DELIVERY_TIME = 1800
 
   def initialize(menu = Menu.new)
     @menu = menu.list
@@ -15,8 +16,7 @@ class Order
   end
 
   def confirm
-    time = Time.new + 1800
-    "Thank you! Your order was placed and will be delivered before #{time}."
+    "Thank you! Your order was placed and will be delivered before #{Time.new + DELIVERY_TIME}."
   end
 
   private
@@ -32,6 +32,10 @@ class Order
     dishes = dish.split(" ")
     dish = dishes[1].to_sym
     number = dishes[0].to_i
+    save_order(dish, number)
+  end 
+
+  def save_order(dish, number)
     @items[dish] = number
   end
 

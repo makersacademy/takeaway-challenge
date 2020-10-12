@@ -4,9 +4,10 @@ describe Menu do
 
   it 'returns a list of dishes on #list' do
     expect(subject.list).to include(
-      :fish => "£5",
+      :shawarma => "£5",
       :chips => "£3",
-      :salad => "£2"
+      :salad => "£2",
+      :pepsi => "£1"
     )
   end
 
