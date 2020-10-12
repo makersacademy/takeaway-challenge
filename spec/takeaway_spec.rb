@@ -39,5 +39,3 @@ describe Takeaway do
 
 end
 
-#  doubel for order - the variable associated with takeaway
-# let(:order)
