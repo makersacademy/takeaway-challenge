@@ -11,9 +11,6 @@ describe Restaurant do
   let(:choice) { {food: price} }
 
   it "contains a list of dishes and prices" do
-    expect(restaurant.menu[:trout_snout]).to eq(6.50)
-    expect(restaurant.menu[:mysterious_dumpling]).to eq(8.00)
-    expect(restaurant.menu[:hoof_broth]).to eq(3.30)
     expect(restaurant.menu).to eq({
       trout_snout: 6.50,
       hog_soup: 4.90,
@@ -39,27 +36,23 @@ describe Restaurant do
   end
 
   describe "#choose_dish" do
-    before do
+    it "takes user input and passes the choice to the order class the correct number of times" do
       io = StringIO.new
       io.puts"1"
       io.puts"2"
       io.rewind
       $stdin = io
-    end
-    after do
-      $stdin = STDIN
-    end
-    it "takes user input and passes the choice to the order class the correct number of times" do
       allow(Order).to receive(:new).and_return(order_class)
       restaurant.create_order
       expect(order_class).to receive(:add).with([:trout_snout, 6.50]).twice
       restaurant.choose_dish
       restaurant.choose_quantity
+      $stdin = STDIN
     end
   end
 
   describe "#check_bill" do
-    before do
+    it "raises an error if the total of the final bill is wrong" do
       allow(Order).to receive(:new).and_return(order_class)
       restaurant.create_order
       io = StringIO.new
@@ -71,9 +64,8 @@ describe Restaurant do
       restaurant.choose_dish
       restaurant.choose_quantity
       allow(order_class).to receive(:total).and_return(11.3)
-    end
-    it "raises an error if the total of the final bill is wrong" do
       expect { restaurant.check_bill}.to raise_error("CALCULATION ERROR")
+      $stdin = STDIN
     end
   end
 
