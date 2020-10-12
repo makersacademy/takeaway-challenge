@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require '../config'
 
 class Customer
 
@@ -17,11 +18,11 @@ class Customer
   end
 
   def send_text(client = Twilio::REST::Client)
-    account_sid = 'AC5500b960ae18a5f094a8171473453196'
-    auth_token = 'e4406214551185379e1bd41d6b7324e2'
+    account_sid = Config::ACCT_SID
+    auth_token = Config::AUTH_TOKEN
     client = client.new(account_sid, auth_token)
 
-    from = '+447782337790'
+    from = Config::TEST_PHONE
     to = @phone
 
     client.messages.create(

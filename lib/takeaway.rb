@@ -25,6 +25,7 @@ class Takeaway
 
     add_to_order(item, quantity, price)
     update_total(price, quantity)
+
     place_order if anything_else?
   end
 
