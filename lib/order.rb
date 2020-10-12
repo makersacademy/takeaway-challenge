@@ -12,9 +12,7 @@ class Order
   end
 
   def total_price
-    total_price = 0
-    items.each { |item| total_price += item.price }
-    total_price
+    items.map { |item| item.price }.reduce { |sum, price| sum + price }
   end
 
 end

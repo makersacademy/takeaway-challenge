@@ -19,6 +19,7 @@ describe Order do
     end
 
     it ' gives total price of the order' do
+
       subject.order_item(menu_item, 2)
 
       expect(subject.total_price).to eq(20)
@@ -26,7 +27,6 @@ describe Order do
 
     it 'change total_price after ordering item' do
       subject.order_item(menu_item, 2)
-
       expect { subject.order_item(menu_item, 1) }.to change { subject.total_price }.by(10)
     end
 
