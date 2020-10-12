@@ -98,7 +98,10 @@ new_takeaway.place_order(payment)
 ```
 
 Running tests:
-- Tests written using rspec.
+- Tests written with rspec, run from root directory:
+```
+rspec
+```
 
 ## User Story Analysis:
 
@@ -110,8 +113,7 @@ I would like to see a list of dishes with prices
 |Objects|Messages|
 |----------|-----------|
 |Customer||
-|Menu|view_menu|
-||print_menu|
+|Menu|view_menu, print_menu|
 ```
 As a customer
 So that I can order the meal I want
