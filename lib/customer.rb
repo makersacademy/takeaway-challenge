@@ -6,7 +6,8 @@ class Customer
 
   def input_number
     puts "What number should we text a confirmation to?"
-    @phone = "+44#{gets.chomp}"
+    number = gets.chomp
+    @phone = format_phone(number)
   end
 
   def send_confirmation
@@ -33,5 +34,15 @@ class Customer
 
   def one_hour_from_now
     "#{(Time.now.hour + 1)}:#{Time.now.min}"
+  end
+
+  def format_phone(number)
+    phone_num = ['+44']
+    number.each_char.with_index do |num, index|
+      phone_num << num if index.zero? && !num.to_i.zero?
+      phone_num << num
+    end
+
+    phone_num.join
   end
 end
