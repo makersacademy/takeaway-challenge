@@ -32,8 +32,13 @@ class Order
     dishes = dish.split(" ")
     dish = dishes[1].to_sym
     number = dishes[0].to_i
+    check_order(dish, number)
     save_order(dish, number)
   end 
+
+  def check_order(dish, number)
+    fail "#{dish} is not on the menu" unless @menu.include?(dish)
+  end
 
   def save_order(dish, number)
     @items[dish] = number
