@@ -1,5 +1,9 @@
 /**/.DS_Store
 /coverage
+/twilio_send_sms.rb
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+# Ignore application configuration
+/config/application.yml
