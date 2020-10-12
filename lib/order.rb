@@ -2,6 +2,7 @@ require_relative 'menu'
 
 class Order
   attr_reader :menu, :cost, :items
+
   def initialize(menu = Menu.new)
     @menu = menu.list
     @items = {}
@@ -9,19 +10,30 @@ class Order
   end
 
   def update(items)
-    items = items.split(", ")
-    items.each { |dish|
-      dishes = dish.split(" ")
-      dish = dishes[1].to_sym
-      number = dishes[0].to_i
-      @items[dish] = number
-    }
+    manage_order(items)
     calculate_cost
-    @items
+  end
 
+  def confirm
+    "Thank you! Your order was placed and will be delivered before."
   end
 
   private
+
+  def manage_order(items)
+    items = items.split(", ")
+    items.each { |dish|
+    reformat_order(dish)
+    }
+  end
+
+  def reformat_order(dish)
+    dishes = dish.split(" ")
+    dish = dishes[1].to_sym
+    number = dishes[0].to_i
+    @items[dish] = number
+  end
+
   def calculate_cost
     @cost = 0
     @items.each { |meal, number|
@@ -29,4 +41,5 @@ class Order
       @cost += (item_cost * number)
     }
   end
+  
 end
