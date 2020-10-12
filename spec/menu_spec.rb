@@ -6,7 +6,7 @@ describe Menu do
   subject(:menu) { Menu.new(item_class) }
 
   describe '#initialize' do
-    it 'there is an empty menu' do
+    it 'there is not an empty menu' do
       expect(menu.items).not_to be_empty
     end
   end
