@@ -1,5 +1,6 @@
 require './lib/order'
 describe Order do
+  let(:subject) { described_class.new }
   describe '#add' do
     it 'add items from the menu to the order' do
       expect { subject.add("Pizza", 18, 1) }.to(change { subject.order })

@@ -1,10 +1,11 @@
 require_relative 'menu'
 require_relative 'order'
 class Takeaway 
-  attr_reader :menu
-  def initialize(menu = Menu.new, order = Order.new)
+  attr_reader :menu, :order_total
+  def initialize(menu = Menu.new, order = Order.new, send_sms = SendSms.new)
     @menu = menu
     @order = order
+    @send_sms = send_sms
   end
 
   def view_menu
@@ -22,12 +23,12 @@ class Takeaway
   end
 
   def order_total
-    puts "You basket contains #{@order.dish_count} dishes with the total value of £#{@order.total_cost}."
+    puts "You have selected #{@order.dish_count} dishes at a total cost of £#{@order.total_cost}."
   end
 
   def confirm_order(payment)
-    raise "Incorrect payment" unless @order.total_cost == payment 
+    raise "Incorrect payment" if @order.total_cost != payment 
 
-    @order.confirmed
+    #@send_sms.send_message
   end
 end
