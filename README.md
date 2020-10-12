@@ -14,7 +14,9 @@ Takeaway Challenge
 
  ```
 
-Instructions
+ In this challenge, I created a program that allows users to view the in-n-out menu, add items to their basket, and finally complete their order when they are ready. I was trying to integrate the twilio feature to send a text to confirm this morning, but haven't managed to fully sort that out as of yet. 
+
+<!-- Instructions
 -------
 
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -80,4 +82,4 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 Notes on Test Coverage
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests. -->
