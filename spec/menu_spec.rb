@@ -10,12 +10,19 @@ describe TakeawayMenu do
     it ' allows the user to order using meal names' do
       order = TakeawayMenu.new
       allow(order).to receive(:gets).and_return("Lasagne")
-      order.select_meals
-      expect(order.select_meals).to eq("Lasagne")
+      expect(order.select_meals).to eq(["Lasagne"])
+    end
+
+    it "allows the user to order using meal names" do
+      order = TakeawayMenu.new
+      allow(order).to receive(:gets).and_return("Lamb Saag")
+      expect(order.select_meals).to eq(["Lamb Saag"])
     end
 
   end
 
-end
+  # RSpec.describe @chosen_meals do
+  #   it { is_expected.to include("Lamb Saag") }
+  # end
 
-# Place the order by giving the list of dishes, their quantities and a number that should be the exact total
+end
