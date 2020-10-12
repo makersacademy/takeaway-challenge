@@ -15,7 +15,6 @@ describe Takeaway do
   end
   
   it 'returns order total cost' do
-    expect(takeaway.total_price).to eq (20)
+    expect(takeaway.total_price).to eq 20
   end
-
 end

@@ -39,5 +39,4 @@ class Order
   def item_in_basket?(item)
     basket.include?(item)
   end
-  
 end
