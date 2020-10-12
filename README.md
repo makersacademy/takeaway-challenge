@@ -14,7 +14,7 @@ Takeaway Challenge
 
  ```
 # How to Use:
-First, load in IRB using ```irb -r './lib/takeaway.rb'``
+First, load in IRB using ```irb -r './lib/takeaway.rb'```
 
 If you would like to use a new menu, add your menu to the 'Menus' directory with the following format:
 
@@ -24,7 +24,9 @@ Then, you can start your order using: ```my_order = Takeaway.new('my_file_name.c
 Now, you can begin your order! (If you don't want to add a menu, just type ```my_order = Takeaway.new```)
 
 To see the menu: ```my_order.see_dishes```
+
 To order: ```my_order.place_order```
+
 To verify your order: ```my_order.verify_order```
 
 Once you've verified your order, you will be asked to enter your phone number. From here, you will receive a text confirming your order and expected arrival time.
