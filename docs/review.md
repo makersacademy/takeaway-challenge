@@ -215,7 +215,7 @@ It is likely that the `Restaurant` (or equivalent) class is dependent on another
 ```ruby
 class Restaurant
   def initialize()
-    @mmessager = Messager.new
+    @messager = Messager.new
   end
 end
 ...
