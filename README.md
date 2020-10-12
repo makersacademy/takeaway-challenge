@@ -81,3 +81,31 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+Progress:
+
+Steady progress was made at the start whilst practising the RGR process.
+
+However, a lot of time was spent trying to work out how to allow the tests to run without having to provide user input (from gets.chomp) during the running of the tests (which is time consuming). This was resolved.
+
+At present, I am in the process of working out how to use the include method with an array. Once I have done this, I will add a gets.chomp for the amount of each dish ordered, and add this to the same array.
+
+The plan going forwards is to create a hash with the chosen meals and the amount ordered of each dish.
+
+The next step is to create a method which checks the balance, which would be taken from the values of the chosen meals hash. If this is correct, a confirmation text will be sent out. For when this is not correct, a raise_error test will be created, to ensure that errors are flagged.
+
+From a user perspective, this is the progress:
+
+iMac:takeaway-challenge username$ irb
+
+2.6.5 :001 > require './lib/menu'
+ => true
+2.6.5 :002 > meal = TakeawayMenu.new
+ => #<TakeawayMenu:0x00007fabaa8548c0 @dish_wanted=0, @chosen_meals=[]>
+2.6.5 :003 > meal.select_meals
+Which dish do you want to order?
+Lamb Saag
+How many Lamb Saags would you like?
+ => ["Lamb Saag"]
+2.6.5 :004 >
