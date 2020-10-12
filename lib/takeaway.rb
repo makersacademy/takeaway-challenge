@@ -54,10 +54,7 @@ class Takeaway
 
   def order_wrong?
     puts "Is everything correct? Y or N"
-    answer = gets.chomp.upcase
-    return false if answer == "Y"
-
-    true
+    !(gets.chomp.upcase == "Y")
   end
 
   def update_total(price, quantity)
