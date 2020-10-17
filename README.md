@@ -15,10 +15,10 @@ First set up a Twilio account here: https://www.twilio.com/.
 Set your newly created auth details and test number as environment variables:
 
 ```shell
-> export SID = '...'
-> export AUTH_TOKEN = '...'
-> export TWILIO_NUMBER = '...'
-> export TEST_NUMBER '...' # Your own number, which you have verified with Twilio
+> export SID='...'
+> export AUTH_TOKEN='...'
+> export TWILIO_NUMBER='...'
+> export TEST_NUMBER='...' # Your own number, which you have verified with Twilio
 ```
 
 Then run in IRB:
