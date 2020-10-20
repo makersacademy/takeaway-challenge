@@ -32,8 +32,7 @@ class Takeaway
 
   def confirm_order
     #confirmation text
-    #link to data base
-    $takeaway = convert_to_item
+    $takeaway = return_order_item
     load './db/add_takeaway.rb'
   end
 
@@ -47,7 +46,7 @@ class Takeaway
   
   private 
 
-  def convert_to_item
+  def return_order_item
     view_basket.keys
   end
 end
