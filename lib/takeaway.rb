@@ -30,16 +30,19 @@ class Takeaway
     @order.total
   end
 
-  #def confirm_order
+  def confirm_order
     #confirmation text
     #link to data base
-  #end
+    $takeaway = 'carbonara'
+    load './db/add_takeaway.rb'
+  end
 
-  def list_all_takeaways
-    require './db/db_connector.rb'
+  def list_previous_takeaways
+    require './db/list_all_takeaways.rb'
   end
   
   def confirmation_text
     @sms.send_message
   end
+
 end
