@@ -1,6 +1,6 @@
-require 'order'
-require 'menu'
-require 'confirmation_text'
+require_relative 'order.rb'
+require_relative 'menu.rb'
+require_relative 'confirmation_text.rb'
 
 class Takeaway
   def initialize(order = Order.new, menu = Menu.new, sms = ConfirmationText.new)
@@ -19,6 +19,10 @@ class Takeaway
 
   def remove_from_basket(item)
     @order.remove(item)
+  end
+
+  def view_basket
+    @order.basket 
   end
 
   def total_price
