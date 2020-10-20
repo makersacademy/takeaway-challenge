@@ -1,4 +1,4 @@
-require 'menu'
+require_relative 'menu.rb'
 
 class Order
   attr_reader :basket
