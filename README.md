@@ -1,3 +1,22 @@
+## Set up
+#### Database set up
+- In your terminal load psql
+```
+$ psql
+```
+- Then create a database
+``` 
+admin=# CREATE DATABASE takeaways;
+```
+- Connect to your database
+```
+admin=# \c
+```
+- Create table as demonstrated in ./db/migrations/01_create_takeaways_table.sql
+
+
+
+
 Takeaway Challenge
 ==================
 ```
