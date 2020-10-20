@@ -7,3 +7,5 @@ group :test do
   gem 'simplecov-console', require: false, group: :test
   gem 'twilio-ruby', require: true, group: :test
 end
+
+gem 'pg'
