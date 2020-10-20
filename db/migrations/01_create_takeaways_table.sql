@@ -1,0 +1,1 @@
+CREATE TABLE takeaways (id SERIAL PRIMARY KEY, takeaway VARCHAR(200));
