@@ -33,7 +33,7 @@ class Takeaway
   def confirm_order
     #confirmation text
     #link to data base
-    $takeaway = 'carbonara'
+    $takeaway = convert_to_item
     load './db/add_takeaway.rb'
   end
 
@@ -44,5 +44,10 @@ class Takeaway
   def confirmation_text
     @sms.send_message
   end
+  
+  private 
 
+  def convert_to_item
+    view_basket.keys
+  end
 end
