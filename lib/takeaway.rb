@@ -1,6 +1,7 @@
 require_relative 'order.rb'
 require_relative 'menu.rb'
 require_relative 'confirmation_text.rb'
+# require './db/db_connector.rb'
 
 class Takeaway
   def initialize(order = Order.new, menu = Menu.new, sms = ConfirmationText.new)
@@ -27,6 +28,15 @@ class Takeaway
 
   def total_price
     @order.total
+  end
+
+  #def confirm_order
+    #confirmation text
+    #link to data base
+  #end
+
+  def list_all_takeaways
+    require './db/db_connector.rb'
   end
   
   def confirmation_text
