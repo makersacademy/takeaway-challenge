@@ -9,6 +9,7 @@ describe Order do
   it { is_expected.to respond_to(:select) }
   it { is_expected.to respond_to(:see_order) }
   it { is_expected.to respond_to(:total) }
+  it { is_expected.to respond_to(:confirm_order) }
 
   describe "#select" do
     it "records a dish hash with price and qunatity into order_list" do
@@ -32,5 +33,12 @@ describe Order do
       expect { subject.total }.to output("total to pay: £11\n").to_stdout
     end
   end
-
+  describe ".confirm_order" do
+    it "sends a text confirmation" do
+      text = "Thank you! Your order was placed and will be delivered before #{(Time.now + 60 * 60).strftime("%k:%M")}"
+      expect(subject).to receive(:send_text).with(text)
+      allow(subject).to receive(:send_text)
+      subject.send_text(text)
+    end
+  end
 end
