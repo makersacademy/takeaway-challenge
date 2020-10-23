@@ -20,3 +20,7 @@ properties  --> total
             --> time
             --> order completed
 actions     --> send
+
+
+I then moved on to writing a failing test for the initialize method of my first class 'Dishes'. These tests checked to make sure that an array of hashes was created, and that this array included both names and costs for the dishes. The list also needed to be printable.
+I then wrote tests to make the test pass, then refactored my test. 
