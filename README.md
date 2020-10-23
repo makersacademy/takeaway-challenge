@@ -72,4 +72,4 @@ In order to run the code, when starting a new command line session, you will hav
 * Authentication Token: `ENV['token']`
 * Twilio Phone Number:  `ENV['num']`
 
-To safe `ENV['VAR']`'s for the session, follow this syntax: `KEY=VALUE`
+To safe `ENV['VAR']`'s for the session, follow given syntax: `KEY=VALUE`.
