@@ -43,7 +43,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 In the process of working on the solution I have achieved:
 
-* All tests passing
+* All tests passing.
 * Average test coverage: 94%; mainly because of long test code for text sending feature.
 * The code is elegant: rubocop accepts the code to be clean. 
 * All classes are tested in isolation, with suitable doubles and stubbs performed.
