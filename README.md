@@ -49,4 +49,27 @@ In the process of working on the solution I have achieved:
 * All classes are tested in isolation, with suitable doubles and stubbs performed.
 * The classes are coherent and are linked by the use of forwarding or dependency injection.
 
+Examplar usage of the code:
+-----
 
+Below, you can find an examplar way in which end user could interact with the code in `irb`.
+
+
+![](/irbshot.png)
+
+The text shot displays the result of the use of: `order_instance.confirm_order(phone_number)` command.
+
+![](/textshot.jpeg)
+
+
+Running the code:
+-----
+Before runing, `bundle` the `Gemfile`. 
+
+In order to run the code, when starting a new command line session, you will have to declare `ENV['VAR']`'s for:
+
+* Twilio Account SID: `ENV['TWILIO_ACCOUNT_SID']`
+* Authentication Token: `ENV['token']`
+* Twilio Phone Number:  `ENV['num']`
+
+To safe `ENV['VAR']`'s for the session, follow this syntax: `KEY=VALUE`
