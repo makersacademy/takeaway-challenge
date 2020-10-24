@@ -33,4 +33,17 @@ describe Takeaway do
       expect(subject.show_current_order).not_to be nil
     end
   end
+
+  describe 'current_order' do
+    it 'shows the customer their current order' do
+      subject.take_order(4, 2)
+      subject.take_order(1, 3)
+      expect(subject.show_current_order).to include 'Your current order is: '
+    end
+
+    it 'tells the customer that they havent added a dish to their order when they havent ordered anything yet' do
+      expect(subject.show_current_order).to include "You haven't"
+    end
+  end
+
 end

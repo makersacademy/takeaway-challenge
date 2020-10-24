@@ -21,12 +21,20 @@ class Takeaway
     format_menu
     @current_order.dish_to_order = @list_of_dishes.all_dishes[dish - 1]
     @current_order.add_to_order(dish, quantity)
+    @current_order.order_started = true
   end
 
   def show_current_order
-    p "Your current order is #{@current_order}"
+    return "You haven't ordered anything yet" unless order_started?
+
+    return "Your current order is: #{@current_order}"
   end
 
+  def show_current_order_cost
+    p @current_order.customer_order
+  end
 
-
+  def order_started?
+    @current_order.order_started
+  end
 end

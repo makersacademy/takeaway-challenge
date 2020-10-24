@@ -1,10 +1,12 @@
-
 class Order
-attr_accessor :dish_to_order, :customer_order
+
+  attr_accessor :dish_to_order, :customer_order, :order_cost, :order_completed, :order_started
 
   def initialize
     @customer_order = []
-    @dish_to_order
+    @order_cost = 0
+    @order_started = false
+    @order_completed = false
   end
 
   def show_current_order
@@ -16,6 +18,8 @@ attr_accessor :dish_to_order, :customer_order
     show_current_order
   end
 
-  
+  def price_check
+    @order_cost += 8
+  end
 
 end

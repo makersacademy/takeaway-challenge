@@ -32,4 +32,8 @@ I then wrote tests for a new takeaway class, which would handle the menu, the or
 
 The first functionality of the takeaway class that i tested/worked on was the 'show  a list of dishes with prices', which would print the menu from the dishes class.
 
-Then i ordered on being able to make a order. Once i had the test/code passing for this, i decided to make a new order class to handle the dishes required and the overall cost. 
+Then i ordered on being able to make a order. Once i had the test/code passing for this, i decided to make a new order class to handle the dishes required and the overall cost.
+
+Added a conditional to return whether the customer has placed an order yet.
+
+Began to work on returning the cost of the dish/order
