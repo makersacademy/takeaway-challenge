@@ -12,8 +12,9 @@ class Order
     @items.map { |dish| dish.price }.sum
   end
 
-  def receipt
-    @items.map { |x| ["#{x.name} - £#{x.price}" ] }.push("Total: £#{total}")
+  def print_receipt
+    receipt = Receipt.new(@items, total)
+    receipt.print
   end
 
 end
