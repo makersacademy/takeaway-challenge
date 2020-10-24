@@ -7,4 +7,8 @@ class Menu
   def list
     @dishes.map { |dish| [dish.name, dish.price] }
   end
+
+  def add(dish)
+    @dishes << dish
+  end
 end
