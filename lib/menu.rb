@@ -4,7 +4,7 @@ class Menu
     @dishes = []
   end
 
-  def list_menu
+  def list
     @dishes.map { |dish| [dish.name, dish.price] }
   end
 end
