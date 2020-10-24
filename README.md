@@ -44,7 +44,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 In the process of working on the solution I have achieved:
 
 * All tests passing.
-* Average test coverage: 94%; mainly because of long test code for text sending feature.
+* Overall test coverage of 98.86%.
 * The code is elegant: rubocop accepts the code to be clean. 
 * All classes are tested in isolation, with suitable doubles and stubbs performed.
 * The classes are coherent and are linked by the use of forwarding or dependency injection.
@@ -59,7 +59,7 @@ Below, you can find an examplar way in which end user could interact with the co
 
 The text shot displays the result of the use of: `order_instance.confirm_order(phone_number)` command.
 
-![](/textshot.jpeg)
+![](/textsample.png)
 
 
 Running the code:
@@ -72,4 +72,4 @@ In order to run the code, when starting a new command line session, you will hav
 * Authentication Token: `ENV['token']`
 * Twilio Phone Number:  `ENV['num']`
 
-To safe `ENV['VAR']`'s for the session, follow given syntax: `KEY=VALUE`.
+To safe `ENV['VAR']`'s for the session, follow given syntax: `export KEY=VALUE`.
