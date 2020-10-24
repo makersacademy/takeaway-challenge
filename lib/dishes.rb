@@ -1,5 +1,5 @@
 class ListOfDishes
-
+  attr_reader :dishes, :all_dishes
   def initialize
     @dishes = {
       "rice" => 1,
@@ -9,16 +9,16 @@ class ListOfDishes
       "aromatic duck" => 15,
       "chicken chow mein" => 4
     }
+    @all_dishes = []
   end
 
-  def read_dishes
-    @dishes
-  end
-
-  def print
+  def menu_layout
     @dishes.each_with_index do |(name, cost), index|
-      return "#{index + 1}. #{name}: £#{cost}"
+      @all_dishes << "#{index + 1}. #{name}: £#{cost}"
     end
   end
 
+  def print_menu
+    p "The available dishes are: #{@all_dishes}"
+  end
 end

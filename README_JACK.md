@@ -26,4 +26,10 @@ I then moved on to writing a failing test for the initialize method of my first 
 I then wrote tests to make the test pass, then refactored my test.
 
 I then wrote a test to list all of the given dishes and their costs. When implementing this code, i recognised that i just needed a hash, not an array of hashes. This meant that i had to re-write my code/checks to reflect this.
-Created a new document for the dishes, and moved current code and tests to the appropriate documents. 
+Created a new document for the dishes, and moved current code and tests to the appropriate documents.
+
+I then wrote tests for a new takeaway class, which would handle the menu, the order and the text message at the end. Once the tests were failing, I made the new class with a number of different variable that i knew i would need.
+
+The first functionality of the takeaway class that i tested/worked on was the 'show  a list of dishes with prices', which would print the menu from the dishes class.
+
+Then i ordered on being able to make a order. Once i had the test/code passing for this, i decided to make a new order class to handle the dishes required and the overall cost. 
