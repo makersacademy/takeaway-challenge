@@ -11,5 +11,9 @@ describe Text do
       allow(subject).to receive(:send_text)
       subject.send_text(text)
     end
+    it "throws an error if wrong phone format given" do
+      subject { described_class.new(478) }
+      expect { subject.send_text }.to raise_error(Twilio::REST::RestError)
+    end
   end
 end
