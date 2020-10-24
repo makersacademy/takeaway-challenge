@@ -46,4 +46,27 @@ describe Takeaway do
     end
   end
 
+  describe '#cost_of_order' do
+    it 'returns the current cost of the entire customer order' do
+      subject.take_order(4, 2)
+      subject.take_order(1, 3)
+      expect(subject.cost_of_order).to eq 17
+    end
+  end
+
+  describe '#finish_order' do
+    it 'sects the current order to be finished' do
+      subject.take_order(4, 2)
+      subject.finish_order
+      expect(subject.current_order.order_completed).to be true
+    end
+  end
+
+  describe '#finish_order' do
+    it 'sects the current order to be finished' do
+      subject.take_order(4, 2)
+      expect(subject.finish_order).to include "which comes to a total of"
+    end
+  end
+
 end

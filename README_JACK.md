@@ -36,4 +36,12 @@ Then i ordered on being able to make a order. Once i had the test/code passing f
 
 Added a conditional to return whether the customer has placed an order yet.
 
-Began to work on returning the cost of the dish/order
+Began to work on returning the cost of the dish/order.
+
+i have made a new array to just store the costs of the dishes. This is now called when adding a dish to the order, and is adding the cost to the total cost of the order.
+
+I have also written a test and the code to finish an order.
+
+I found out through feature testing that the orders werent being stored correctly, so i editted the code to push them properly. However i am not happy with the method i used and would like to find a better solution.
+
+I have not included the text functionality as i havnet had time to research the methods required. 

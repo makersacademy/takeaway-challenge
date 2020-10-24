@@ -22,6 +22,7 @@ describe ListOfDishes do
 
   describe '#print_menu' do
     it 'lets the customer decide to look at the menu' do
+      subject.menu_layout
       expect(subject.print_menu).to include("The available dishes are: ")
     end
   end
