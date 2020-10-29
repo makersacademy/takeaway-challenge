@@ -17,5 +17,12 @@ RSpec.describe Takeaway do
       expect(subject.food).to include({'water' => 1.50})
     end
   end
+
+  describe '#choose your meal' do
+    it 'should allow me to choose' do
+      takeaway.food
+      expect(subject.choose_dish).to eq ()
+    end
+  end
 end
 

@@ -10,7 +10,7 @@ class Takeaway
   }
   end
 
-  def list_of_dishes
+  def 
   end
 
 end
