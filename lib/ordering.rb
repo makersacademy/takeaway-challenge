@@ -6,7 +6,7 @@ class Ordering
     @basket = []
   end
 
-  def add
+  def add(item, price)
     @basket << {:item=>item, :price=>price}
   end
 end
