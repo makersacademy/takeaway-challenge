@@ -52,7 +52,7 @@ The README is a great place to show the full story of how your app is used (from
 
 ## Tests should test real behaviours not stubs
 
-You may have read about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
+You may have read about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#avoid-vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
 
 ```ruby
 it 'sends a payment confirmation text message' do
@@ -184,7 +184,7 @@ end
 
 ## Use of modules
 
-There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are sometimes a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behaviour can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on (e.g. sending text messages for the restaurant) should be injected (see [this practical on dependency injection](https://github.com/makersacademy/skills-workshops/blob/f5b4801840fe07d26ff70341652dc81dcda12289/practicals/object_oriented_design/dependency_injection.md).
+There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are sometimes a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behaviour can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on (e.g. sending text messages for the restaurant) should be injected (see [this practical on dependency injection](https://github.com/makersacademy/skills-workshops/blob/f5b4801840fe07d26ff70341652dc81dcda12289/practicals/object_oriented_design/dependency_injection.md)).
 
 ## Law of Demeter
 
