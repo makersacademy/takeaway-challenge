@@ -32,4 +32,8 @@ class Drink < Goods
     super(item_name, item_price)
     @alcoholic = alcoholic
   end
+
+  def to_s
+    super.to_s + " (Drink)"
+  end
 end

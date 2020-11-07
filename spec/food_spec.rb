@@ -27,6 +27,8 @@ describe Food do
 end
 
 describe Drink do
+  let(:sample_drink) { Drink.new("Beer", 6, true) }
+
   it "initializes with the correct name, price and whether alcoholic" do
     beer = Drink.new("Beer", 4.50, true)
     cola = Drink.new("Cola", 2, false)
@@ -34,5 +36,11 @@ describe Drink do
     expect(beer.item_price).to eq(4.50)
     expect(beer.alcoholic).to eq(true)
     expect(cola.alcoholic).to eq(false)
+  end
+
+  describe "#to_s" do
+    it "identifies itself as a drink while printing" do
+      expect(sample_drink.to_s).to eq("Item ##{sample_drink.id}: #{sample_drink.item_name} - £#{sample_drink.item_price.round(2)} (Drink)")
+    end
   end
 end
