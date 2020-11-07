@@ -15,7 +15,7 @@ describe Order do
         expect { subject.add('pizza', 1) }.to raise_error('Please choose valid menu option')
       end
 
-      it 'raises error if quantity is not a number' do
+      it 'raises error if quantity is not a valid integer' do
         expect { subject.add('curry goat', '1') }.to raise_error('Quantity must be a valid integer')
       end
     end
@@ -27,6 +27,15 @@ describe Order do
         expect { subject.review }.to output(
           "Your order\nx1 beef patty, £2.50\nx2 fried dumpling, £3.00\nTotal: £5.50\n"
           ).to_stdout
+      end
+    end
+
+    describe '#place_order' do
+      let(:process_order) { double :process_order }
+
+      it 'calls the process_order method' do
+        allow(subject).to receive(:process_order) { 'Sending order confirmation' }
+        expect(subject.place_order).to eq('Sending order confirmation')
       end
     end
   end
