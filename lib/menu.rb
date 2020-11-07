@@ -1,8 +1,8 @@
 class Menu
-  attr_reader :food
+  attr_reader :menu_items
 
   def initialize
-    @food = {
+    @menu_items = {
       "Goan pork vindaloo" => 14.00,
       "Kadai gosht" => 12.50,
       "Jaipuri kofta" => 12.50,

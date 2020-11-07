@@ -1,5 +1,7 @@
 /**/.DS_Store
 /coverage
+lib/quickstart.rb
+lib/send_sms.rb
 
 # Local cache of Rubocop remote config
 .rubocop-*
