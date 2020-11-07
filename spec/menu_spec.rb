@@ -1,14 +1,14 @@
 require 'menu'
 
 describe Menu do
-  let(:fake_menu){{ burger: 3, cheeseburger: 4, chips: 2 }}
+  let(:fake_menu) { { burger: 3, cheeseburger: 4, chips: 2 } }
   msg = <<~PUBLISHED
   Our menu is:
   burger, £3
   cheeseburger, £4
   chips, £2
   PUBLISHED
-  
+
   it 'responds to print menu' do
     expect(subject).to respond_to(:print_menu)
   end
