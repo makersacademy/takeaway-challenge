@@ -8,9 +8,9 @@ class Order
 
   def add_to_order(name, qty, price)
     if in_basket?(name)
-      increase_qty_in_basket(name, qty.to_i)
+      increase_qty_in_basket(name, qty)
     else
-      @order << { name: name, qty: qty.to_i, price: price }
+      @order << { name: name, qty: qty, price: price }
     end
     update_total
   end
@@ -22,6 +22,17 @@ class Order
     clean_order
     update_total
   end
+
+  def print_order
+    puts ""
+    puts "Current order:"
+    @order.each do |item|
+      puts "#{item[:qty]} x #{item[:name]} (£#{'%.2f' % (item[:price].to_f/100)} each)"
+    end
+    puts "Total: £#{'%.2f' % (@total.to_f/100)}"
+    puts ""
+  end
+
 
 
   private
