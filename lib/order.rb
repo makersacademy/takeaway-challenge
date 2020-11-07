@@ -29,7 +29,7 @@ class Order
 
   def add(item, qty)
     raise 'Please choose valid menu option' if not_on_menu?(item)
-    raise 'Quantity must be a number' if not_a_number?(qty)
+    raise 'Quantity must be a valid integer' if not_a_number?(qty)
 
     @basket[item.to_sym] += qty.to_i
   end
@@ -56,7 +56,7 @@ class Order
   end
 
   def not_a_number?(qty)
-    ![Integer, Float].include?(qty.class)
+    qty.class != Integer || qty.negative?
   end
 
   def price_format(num)

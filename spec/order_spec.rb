@@ -16,11 +16,7 @@ describe Order do
       end
 
       it 'raises error if quantity is not a number' do
-        expect { subject.add('curry goat', '1') }.to raise_error('Quantity must be a number')
-      end
-
-      it 'raises error if quantity is a negative number' do
-        expect { subject.add('curry goat', -1) }.to raise_error('Quantity must be 1 or greater')
+        expect { subject.add('curry goat', '1') }.to raise_error('Quantity must be a valid integer')
       end
     end
 
