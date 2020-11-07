@@ -1,11 +1,15 @@
 class Order
 
   MENU = {
-    1 => {dish: :'curry goat and brown rice', price: 15},
-    2 => {dish: :'steak and fries', price: 19},
-    3 => {dish: :'brown stew chicken and white rice', price: 14},
-    4 => {dish: :'chilli freak pizza', price: 15},
-    5 => {dish: :'seafood pasta', price: 14}
+    1 => {item: :'curry goat', price: 9},
+    2 => {item: :'brown stew chicken', price: 8},
+    3 => {item: :'jerk chicken', price: 8},
+    4 => {item: :'steamed fish', price: 7},
+    5 => {item: :'vegetable curry', price: 6},
+    6 => {item: :'brown rice', price: 4},
+    7 => {item: :'white rice', price: 4},
+    8 => {item: :'roti', price: 5},
+    8 => {item: :'salad', price: 4}
   }
 
   def see_menu
