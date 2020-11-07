@@ -22,9 +22,11 @@ class Order
     MENU
   end
 
-  def add_to_basket(item, quantity)
+  def add(item, qty)
     raise 'Please choose valid menu option' if not_on_menu?(item)
-    @basket << { item: item.to_sym, qty: quantity }
+    raise 'Quantity must be a number' if not_a_number?(qty)
+
+    @basket << { item: item.to_sym, qty: qty }
   end
 
   def basket
@@ -35,5 +37,9 @@ class Order
 
   def not_on_menu?(item)
     MENU[item.to_sym] == nil
+  end
+
+  def not_a_number?(qty)
+    ![Integer, Float].include?(qty.class)
   end
 end
