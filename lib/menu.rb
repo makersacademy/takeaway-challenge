@@ -16,4 +16,8 @@ class Menu
     @items.each { |item| puts item if item.class == Drink }
     nil
   end
+
+  def add(item)
+    @items.push(item)
+  end
 end
