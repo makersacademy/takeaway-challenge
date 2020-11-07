@@ -18,7 +18,7 @@ Approach
 -------
 * This takeaway project was done in Ruby.
 
-* The task was solved in a test driven manner using rspec. due to there being multiple classes, doubles and stubs had to be used to ensure their isolation in testing.
+* The task was solved in a test driven manner using rspec. Due to there being multiple classes, doubles and stubs had to be used to ensure their isolation in testing.
 
 * The problem was split into 3 classes responsible for 3 separate issues.
 
