@@ -18,7 +18,4 @@ class Menu
     @menu = MENU
   end
 
-  def view_menu
-    @menu
-  end
 end
