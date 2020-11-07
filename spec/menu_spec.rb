@@ -29,4 +29,8 @@ describe Menu do
     expect(menu.has_dish?(:hamburger)).to be false
   end
 
+  it "calculate a price" do
+    expect(menu.price(:hotdog)).to eq(dishes[:hotdog])
+  end
+
 end
