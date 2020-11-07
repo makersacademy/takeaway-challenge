@@ -8,7 +8,11 @@ describe Order do
 
     describe '#add_to_basket' do
       it 'adds a menu item to the basket' do
-        expect { subject.add_to_basket('curry goat', 3) }.to change { subject.basket.length }.by(1)
+        expect { subject.add_to_basket('curry goat', 1) }.to change { subject.basket.length }.by(1)
+      end
+
+      it 'raises error if menu item is not on menu' do
+        expect { subject.add_to_basket('pizza', 1) }.to raise_error('Please choose valid menu option')
       end
     end
   end
