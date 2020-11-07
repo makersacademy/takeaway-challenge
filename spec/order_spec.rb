@@ -12,7 +12,7 @@ describe Order do
 
     context 'allowing the menu double to store items' do
       before do
-        hash = {"Goan pork vindaloo" => 14.00, "Shahi murg" => 11.00}
+        hash = { "Goan pork vindaloo" => 14.00, "Shahi murg" => 11.00 }
         allow(menu).to receive(:menu_items).and_return(hash)
         allow(message).to receive(:send).and_return(true)
       end
@@ -31,12 +31,12 @@ describe Order do
       end
 
       it 'can take multiple orders at once' do
-        expect { subject.whole_order({"Goan pork vindaloo" => 2, "Shahi murg" =>5}) }.to change { subject.cheque }.by 83
+        expect { subject.whole_order({ "Goan pork vindaloo" => 2, "Shahi murg" => 5 }) }.to change { subject.cheque }.by 83
       end
 
       context "we're placing a whole order now" do
         before do
-          subject.whole_order({"Goan pork vindaloo" => 2, "Shahi murg" =>5})
+          subject.whole_order({ "Goan pork vindaloo" => 2, "Shahi murg" => 5 })
         end
 
         it 'can check if the order total matches the balance' do

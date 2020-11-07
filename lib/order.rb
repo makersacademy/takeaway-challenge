@@ -20,14 +20,14 @@ class Order
 
   def check_cheque?
     check_cheque = 0
-    my_order.each { |order| order.each_pair { |food, price| check_cheque += @menu.menu_items[food] } }
+    my_order.each { |order| order.each_pair { |food, _| check_cheque += @menu.menu_items[food] } }
     check_cheque != @cheque ? raise(ARITHMETIC_ERROR) : true
   end
 
   private
 
   def order(food)
-    raise ITEM_ERROR if !@menu.menu_items.include?(food)
+    raise ITEM_ERROR unless @menu.menu_items.include?(food)
 
     place_order(food)
   end
