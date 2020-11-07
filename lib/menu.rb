@@ -17,6 +17,7 @@ end
     @falafel_menu.each do |item, price|
       puts ("#{item}:").ljust(linewidth/2) + ("£#{"%.2f" % price}").rjust(linewidth/2)
     end
+    nil
   end
 
   private
