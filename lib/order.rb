@@ -1,7 +1,7 @@
 require_relative 'menu'
 class Order
 
-  attr_reader :total, :selected_items
+  attr_reader :total, :selected_items, :menu
 
   def initialize
     @total = 0
@@ -9,18 +9,18 @@ class Order
   end
 
   def see_menu
-    puts "----"
-    puts "Burger £5"
-    puts "Fries £3"
-    puts "Drink £2"
+    @menu = {"Burger" => 5, "Fries" => 3, "Drink" => 2}
+    @menu.each { |item, price| puts "Item: #{item}, Price: £#{price}"}
   end
 
   def select(dish)
     @selected_items << dish
+    @total = @total + @menu[dish]
   end
 
   def view
     puts @selected_items
+    puts @total
   end
 
   def place(phone)

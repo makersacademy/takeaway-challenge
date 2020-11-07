@@ -29,7 +29,7 @@ describe Order do
     end
   end
 
-  describe "#view_order" do
+  describe "#view" do
     it "displays the user's selections" do
       subject.select("Burger")
       subject.select("Fries")
