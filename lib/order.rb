@@ -22,12 +22,18 @@ class Order
     MENU
   end
 
-  def add_to_basket(menu_item, quantity)
-    @basket << { item: menu_item.to_sym, qty: quantity }
+  def add_to_basket(item, quantity)
+    raise 'Please choose valid menu option' if not_on_menu?(item)
+    @basket << { item: item.to_sym, qty: quantity }
   end
 
   def basket
     @basket.dup
   end
 
+  private
+
+  def not_on_menu?(item)
+    MENU[item.to_sym] == nil
+  end
 end
