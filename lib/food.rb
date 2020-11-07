@@ -17,3 +17,11 @@ class Food < Goods
     @course = course
   end
 end
+
+class Drink < Goods
+  attr_reader :alcoholic
+  def initialize(item_name, item_price, alcoholic)
+    super(item_name, item_price)
+    @alcoholic = alcoholic
+  end
+end
