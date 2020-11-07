@@ -12,7 +12,7 @@ class Menu
     'Spicy Pepper Squid' => 7
   }.freeze
 
-  attr_reader :menu
+  attr_accessor :menu
 
   def initialize
     @menu = MENU
