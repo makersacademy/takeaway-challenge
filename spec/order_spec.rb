@@ -10,4 +10,10 @@ describe Order do
       expect(subject.total).to eq(31)
     end
   end
+
+  describe "#to_s" do
+    it "prints current order in human readable form" do
+      skip
+    end
+  end
 end

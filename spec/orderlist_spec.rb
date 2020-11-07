@@ -9,5 +9,9 @@ describe OrderList do
     it "creates a new order" do
       skip
     end
+
+    it "pushes order notification to the customer" do
+      skip
+    end
   end
 end
