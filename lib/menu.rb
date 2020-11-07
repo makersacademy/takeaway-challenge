@@ -10,7 +10,7 @@ class Menu
 
   def print_menu
     @menu.each do |item|
-      puts "#{item[:number]}. #{item[:name]} - £#{'%.2f' % item[:price]}"
+      puts "#{item[:number]}. #{item[:name]} - £#{'%.2f' % (item[:price].to_f/100)}"
     end
   end
 
@@ -24,7 +24,7 @@ class Menu
   end
 
   def add_item_to_menu(number, name, price)
-    @menu << {number: number, name: name, price: price.to_f}
+    @menu << {number: number, name: name, price: price.to_i}
   end
 
 end
