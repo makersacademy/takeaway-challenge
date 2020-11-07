@@ -1,7 +1,6 @@
 /**/.DS_Store
 /coverage
 lib/quickstart.rb
-lib/send_sms.rb
 .env
 lib/apis.rb
 
