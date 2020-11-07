@@ -7,8 +7,8 @@ describe Order do
     end
 
     describe '#add_to_basket' do
-      it 'adds a menu item to the cart' do
-        expect { subject.add_to_basket('curry goat', 3) }.to change { subject.basket }.by(1)
+      it 'adds a menu item to the basket' do
+        expect { subject.add_to_basket('curry goat', 3) }.to change { subject.basket.length }.by(1)
       end
     end
   end
