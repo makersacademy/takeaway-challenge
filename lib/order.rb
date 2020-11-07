@@ -1,3 +1,5 @@
+require_relative './twilio_client.rb'
+
 class Order
 
   MENU = {
@@ -51,8 +53,8 @@ class Order
     puts "Total: #{price_format(order_total)}"
   end
 
-  def place_order
-    process_order
+  def place_order(name, mobile_number = ENV['MOBILE_NUMBER'])
+    process_order(name, mobile_number)
   end
 
   private
@@ -73,7 +75,7 @@ class Order
     @basket.reduce(0) { |sum, (item, qty)| sum + MENU[item] * qty }
   end
 
-  def process_order
-
+  def process_order(name, mobile_number, sms_client = TwilioClient.new)
+    sms_client.send_order_confirmation(name, mobile_number)
   end
 end

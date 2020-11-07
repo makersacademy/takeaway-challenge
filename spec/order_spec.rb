@@ -31,11 +31,9 @@ describe Order do
     end
 
     describe '#place_order' do
-      let(:process_order) { double :process_order }
-
       it 'calls the process_order method' do
-        allow(subject).to receive(:process_order) { 'Sending order confirmation' }
-        expect(subject.place_order).to eq('Sending order confirmation')
+        expect(subject).to receive(:process_order)
+        subject.place_order('Malachi')
       end
     end
   end
