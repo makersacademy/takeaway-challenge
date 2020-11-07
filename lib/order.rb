@@ -18,9 +18,10 @@ class Order
     @total = @total + @menu[dish]
   end
 
+
+
   def view
     puts @selected_items
-    puts @total
   end
 
   def place(phone)

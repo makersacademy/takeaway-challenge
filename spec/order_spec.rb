@@ -25,7 +25,11 @@ describe Order do
       expect(subject).to respond_to(:select).with(1).argument
     end
     it "stores the selection in the selected_items array" do
-      expect{ subject.select("Burger") }.to change{ subject.selected_items.count }.by 1
+      menu = double("double for menu")
+      expect{ subject.select("Burger") }.to change { subject.selected_items.count }.by 1
+    end
+    it "calculates the total based on the user's selection" do
+      expect{ subject.select("Burger") }.to change { subject.total }.by 5
     end
   end
 
