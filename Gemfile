@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 source 'https://rubygems.org'
 
 group :test do
@@ -6,3 +7,10 @@ group :test do
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
 end
+=======
+source "https://rubygems.org"
+
+gem "rspec"
+gem "twilio-ruby"
+
+>>>>>>> 07d35f2487bb93c4fdfb629eb5cdc306fe8ed9d0

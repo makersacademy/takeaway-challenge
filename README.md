@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Takeaway Challenge
 ==================
 ```
@@ -81,3 +82,6 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+=======
+# takeaway-challenge1
+>>>>>>> 07d35f2487bb93c4fdfb629eb5cdc306fe8ed9d0
