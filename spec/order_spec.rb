@@ -2,8 +2,8 @@ require 'order'
 
 describe Order do
   describe '#see_menu' do
-    it 'returns a Hash of the available dishes' do
-      expect(subject.see_menu).to be_instance_of(Hash)
+    it 'prints the available dishes and their prices' do
+      expect { subject.see_menu }.to output.to_stdout
     end
 
     describe '#add' do

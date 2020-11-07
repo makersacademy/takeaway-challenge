@@ -24,14 +24,16 @@ class Order
   end
 
   def see_menu
-    MENU
+    MENU.each do |item, price|
+      puts "#{item}, #{price_format(price)}"
+    end
   end
 
   def add(item, qty)
     raise 'Please choose valid menu option' if not_on_menu?(item)
     raise 'Quantity must be a valid integer' if not_a_number?(qty)
 
-    @basket[item.to_sym] += qty.to_i
+    @basket[item.to_sym] += qty
   end
 
   def basket
