@@ -1,24 +1,23 @@
 require_relative 'menu'
+
 class Order
 
   attr_reader :total, :selected_items, :menu
 
-  def initialize
+  def initialize(menu = Menu.new)
+    @menu = menu
     @total = 0
     @selected_items = []
   end
 
   def see_menu
-    @menu = {"Burger" => 5, "Fries" => 3, "Drink" => 2}
-    @menu.each { |item, price| puts "Item: #{item}, Price: £#{price}"}
+    @menu.print
   end
 
   def select(dish)
     @selected_items << dish
-    @total = @total + @menu[dish]
+    #@total = @total + @menu[dish]
   end
-
-
 
   def view
     puts @selected_items

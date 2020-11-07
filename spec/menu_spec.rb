@@ -1,8 +1,12 @@
-# require 'menu'
-#
-# describe Menu do
-#
-#   it "initializes by printing a menu" do
-#     expect{ subject }.to output("Burger £5").to_stdout
-#   end
-# end
+require 'menu'
+
+describe Menu do
+
+  it "initializes with menu items" do
+    expect(subject.menu).to eq Menu::MENU
+  end
+
+  it "displays a menu" do
+    expect{ subject.print}.to output.to_stdout
+  end
+end
