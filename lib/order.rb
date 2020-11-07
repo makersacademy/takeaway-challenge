@@ -51,6 +51,10 @@ class Order
     puts "Total: #{price_format(order_total)}"
   end
 
+  def place_order
+    process_order
+  end
+
   private
 
   def not_on_menu?(item)
@@ -67,5 +71,9 @@ class Order
 
   def order_total
     @basket.reduce(0) { |sum, (item, qty)| sum + MENU[item] * qty }
+  end
+
+  def process_order
+
   end
 end
