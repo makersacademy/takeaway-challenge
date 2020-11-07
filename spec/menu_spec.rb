@@ -1,11 +1,11 @@
 require 'menu'
 
 describe Menu do
-  let(:food1) { class_double "Food", to_s: "Item #1: Nachos - £6 (Starter)", class: Food }
-  let(:food2) { class_double "Food", to_s: "Item #2: Pizza - £6 (Main)", class: Food }
-  let(:food3) { class_double "Food", to_s: "Item #3: Chips - £3 (Side)", class: Food }
-  let(:food4) { class_double "Food", to_s: "Item #4: Cake - £3 (Dessert)", class: Food }
-  let(:drink1) { class_double "Drink", to_s: "Item #5: Beer - £4 (Drink)", class: Drink }
+  let(:food1) { class_double Food, to_s: "Item #1: Nachos - £6 (Starter)", class: Food }
+  let(:food2) { class_double Food, to_s: "Item #2: Pizza - £6 (Main)", class: Food }
+  let(:food3) { class_double Food, to_s: "Item #3: Chips - £3 (Side)", class: Food }
+  let(:food4) { class_double Food, to_s: "Item #4: Cake - £3 (Dessert)", class: Food }
+  let(:drink1) { class_double Drink, to_s: "Item #5: Beer - £4 (Drink)", class: Drink }
   let(:sample_menu) { Menu.new([food1, food2, food3, food4, drink1]) }
 
   it "can be initialised with an array of items" do
