@@ -18,13 +18,17 @@ describe Order do
       it 'raises error if quantity is not a number' do
         expect { subject.add('curry goat', '1') }.to raise_error('Quantity must be a number')
       end
+
+      it 'raises error if quantity is a negative number' do
+        expect { subject.add('curry goat', -1) }.to raise_error('Quantity must be 1 or greater')
+      end
     end
 
-    describe '#check_order' do
-      it 'prints out order items, quantities and total' do
+    describe '#review' do
+      it 'prints out basket items, quantities, subtotals and total' do
         subject.add('beef patty', 1)
         subject.add('fried dumpling', 2)
-        expect { subject.check_order }.to output(
+        expect { subject.review }.to output(
           "Your order\nx1 beef patty, £2.50\nx2 fried dumpling, £3.00\nTotal: £5.50\n"
           ).to_stdout
       end

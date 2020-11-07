@@ -31,14 +31,14 @@ class Order
     raise 'Please choose valid menu option' if not_on_menu?(item)
     raise 'Quantity must be a number' if not_a_number?(qty)
 
-    @basket[item.to_sym] += qty
+    @basket[item.to_sym] += qty.to_i
   end
 
   def basket
     @basket.dup
   end
 
-  def check_order
+  def review
     puts "Your order"
 
     @basket.each do |item, qty|
@@ -56,7 +56,7 @@ class Order
   end
 
   def not_a_number?(qty)
-    qty.class != Integer
+    ![Integer, Float].include?(qty.class)
   end
 
   def price_format(num)
