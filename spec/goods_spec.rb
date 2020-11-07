@@ -1,4 +1,4 @@
-require 'food'
+require 'goods'
 
 describe Food do
   let(:sample_food) { Food.new("Ice Cream", 5, :dessert) }
