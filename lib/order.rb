@@ -1,4 +1,5 @@
 require_relative "./menu"
+require_relative "./send_sms"
 class Order
   ITEM_ERROR = "That item isn't on the menu!".freeze
   ARITHMETIC_ERROR = 'Wow, you broke maths, good job!'.freeze
@@ -13,7 +14,7 @@ class Order
   end
 
   def whole_order(all_the_food)
-    all_the_food.each_pair { |key, value| value.times { order(key) } }
+    all_the_food.each_pair { |menu_item, quantity| quantity.times { order(menu_item) } }
     @cheque if check_cheque?
     @message.send("Thank you! Your order was placed and will be delivered before #{Time.now + 3600}")
   end

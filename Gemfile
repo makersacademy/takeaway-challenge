@@ -7,4 +7,5 @@ group :test do
   gem 'simplecov-console', require: false, group: :test
   gem 'sinatra'
   gem 'twilio-ruby'
+  gem 'dotenv-rails'
 end
