@@ -6,13 +6,14 @@ describe Menu do
     expect(subject).to be_instance_of(Menu)
   end
 
-  it "Initializes with empty menu" do
-    expect(subject.menu.length).to eq(0)
-  end
-
   it "Has 15 items in menu after loading" do # this is a magic number
-    subject.load_menu
     expect(subject.menu.length).to eq(15)
   end
+
+  it "Prints to stdout when .print_menu is called" do
+    expect { subject.print_menu }.to output.to_stdout
+  end
+
+
 
 end
