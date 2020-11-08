@@ -21,6 +21,7 @@ class OrderList
         quantity = @input.gets.chomp.to_i
         order.add(selection, quantity)
       elsif response == "confirm"
+        raise "Your order is empty!" if order.empty?
         @confirmed_orders.push(order)
         puts "Order received! You'll get a text shortly confirming your delivery time."
         break

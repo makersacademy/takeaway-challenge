@@ -11,6 +11,16 @@ describe Order do
     end
   end
 
+  describe "#empty?" do
+    it "returns false if populated" do
+      skip
+    end
+
+    it "returns true if empty" do
+      skip
+    end
+  end
+
   describe "#to_s" do
     it "prints current order in human readable form" do
       skip

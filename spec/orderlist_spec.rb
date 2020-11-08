@@ -46,12 +46,16 @@ describe OrderList do
       expect(kernel).to receive(:gets).and_return("2", "1", "1", "confirm")
       expect(menu).to receive(:select).with(1).and_return(item_ordered)
       expect(order).to receive(:add).with(item_ordered, 1)
+      expect(order).to receive(:empty?).and_return(false)
+
 
       expect{ test_list.new_order }.to output(/Order received!/).to_stdout
     end
 
     it "throws an error trying to finalise an empty order" do
-      skip
+      expect(kernel).to receive(:gets).and_return("confirm")
+      expect(order).to receive(:empty?).and_return(true)
+      expect{ test_list.new_order }.to raise_error("Your order is empty!")
     end
 
     it "pushes order notification to the customers mobile with finalisation" do
