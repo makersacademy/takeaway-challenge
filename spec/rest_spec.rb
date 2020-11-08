@@ -9,6 +9,6 @@ describe Rest do
   end
 
   it 'creates a new instance of a menu' do
-    expect(subject.place_order). to be_an_instance_of Order
+    expect(subject.place_order). to be_an_instance_of Ordergit
   end
 end

@@ -32,6 +32,6 @@ class Order
   private
 
   def dish?(dish)
-    @menu[dish] ? true : false
+    @menu[dish]
   end
 end
