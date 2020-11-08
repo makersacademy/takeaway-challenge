@@ -41,6 +41,8 @@ describe Order do
     expect { subject.remove_from_order("oreos", 1) }.to change { subject.order[0][:qty] }.by(-1)
   end
 
-
+  it "Prints to stdout when .print_order is called" do
+    expect { subject.print_order }.to output.to_stdout
+  end
 
 end

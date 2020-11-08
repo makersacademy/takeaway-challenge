@@ -14,6 +14,4 @@ describe Menu do
     expect { subject.print_menu }.to output.to_stdout
   end
 
-
-
 end

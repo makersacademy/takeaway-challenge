@@ -1,11 +1,13 @@
 require_relative './menu'
 require_relative './order'
+require_relative './messenger'
 
 class UserInterface
 
-  def initialize(menu = Menu.new, order = Order.new)
+  def initialize(menu = Menu.new, order = Order.new, messenger = Messenger.new)
     @menu = menu
     @order = order
+    @messenger = messenger
     @complete = false
   end
 
@@ -13,10 +15,11 @@ class UserInterface
     puts "Welcome to Rough Randy's Road Roasts, please take your time to browse the menu and order when you are ready."
     print_menu
     create_order # more stuff after this, relating to the texting ability
+    order_finished
   end
 
 
-  #could be private
+  private
 
   def create_order
     while !@complete
@@ -81,9 +84,6 @@ class UserInterface
     puts ""
   end
 
-
-  # definitly private
-
   def print_menu
     puts ""
     puts "Rough Randy's Road Roasts menu:"
@@ -110,6 +110,13 @@ class UserInterface
       choice = STDIN.gets.chomp
     end
     choice
+  end
+
+  def order_finished
+    puts ""
+    puts "Thank you for ordering from Rough Randy's, your total is £#{'%.2f' % (@order.total.to_f/100)}"
+    puts "You will receive a message confirming your order is on the way"
+    @messenger.send_confirmation_message(Time.now + 1*60*60)
   end
 
 end
