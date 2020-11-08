@@ -7,6 +7,11 @@ describe Menu do
   end
 
   it "displays a menu" do
-    expect{ subject.print}.to output.to_stdout
+    expect{ subject.view_menu }.to output.to_stdout
   end
+
+  it "checks we have the dish" do
+    expect{ subject.item_available?("Pizza") }.to raise_error "Error - don't think we have that. Have you checked your spelling?"
+  end
+  
 end

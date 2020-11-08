@@ -2,29 +2,35 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :total, :selected_items, :menu
+  attr_reader :selected_items, :menu, :total
 
-  def initialize(menu = Menu.new)
-    @menu = menu
-    @total = 0
+  def initialize
+    @menu = Menu.new
     @selected_items = []
   end
 
   def see_menu
-    @menu.print
+    @menu.view_menu
   end
 
-  def select(dish)
-    @selected_items << dish
-    #@total = @total + @menu[dish]
+  def select(dish_name, quantity)
+    dish = @menu.item_available?(dish_name)
+    add_to_order(dish, quantity)
+  end
+  
+  def total
+    @total = 0
+    @selected_items.map { |key| hash[key] }.compact.reduce(:+)
   end
 
-  def view
-    puts @selected_items
-  end
+private
 
-  def place(phone)
-    puts "Thank you! Your order was placed and will be delivered before 18:52"
-  end
+def add_to_order(dish, quantity)
+  quantity.times { @selected_items << dish }
+end
+
+def hash
+  @hash = @menu.menu
+end
 
 end
