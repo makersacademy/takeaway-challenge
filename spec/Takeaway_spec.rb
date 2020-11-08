@@ -1,11 +1,19 @@
 require 'Takeaway'
+require './lib/Menu'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new }
-  it "Instance variable has the list of dishes and prices" do
-    expect(takeaway.dishes).to include("spring roll" => 0.99, "char sui bun" => 3.99,
-             "pork dumpling" => 2.99, "peking duck" => 7.99,
-             "fu-king fried rice" => 5.99)
+
+  describe '#read_menu' do
+    it "Shows the menu with the prices of each dish" do
+      expect(subject.read_menu).to eq(Menu::MENU)
+    end
+  end
+
+  describe '#order' do
+    it "takes an argument" do
+      expect(subject).to respond_to(:order).with(1).argument
+    end
   end
 end
 
