@@ -21,7 +21,7 @@ RSpec.describe Restaurant do
     end
 
     it "returns the menu" do
-      allow(food_menu).to receive(:send).and_return({'Rainbow dumplings' => 28, 'Half crispy aromatic duck' => 39})
+      allow(food_menu).to receive(:send).and_return({'Rainbow dumpling' => 28, 'Half crispy aromatic duck' => 39})
       expect(restaurant.show_menu).to eq(food_menu.send)
     end
   end

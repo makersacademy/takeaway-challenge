@@ -21,7 +21,7 @@ RSpec.describe Takeaway do
     end
 
     it 'returns the restaurant\'s menu' do
-      allow(restaurant).to receive(:show_menu).and_return({'Rainbow dumplings' => 28, 'Half crispy aromatic duck' => 39})
+      allow(restaurant).to receive(:show_menu).and_return({'Rainbow dumpling' => 28, 'Half crispy aromatic duck' => 39})
       expect(takeaway.see_menu).to eq(restaurant.show_menu)
     end
   end

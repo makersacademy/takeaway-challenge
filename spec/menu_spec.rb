@@ -6,7 +6,7 @@ RSpec.describe Menu do
 
   describe "#initialize" do
     it 'creates a menu upon initialisation' do
-      expect(food_menu.food_list).to eq({'Rainbow dumplings' => 28, 'Half crispy aromatic duck' => 39})
+      expect(food_menu.food_list).to eq({'Rainbow dumpling' => 28, 'Half crispy aromatic duck' => 39})
     end
   end
 
