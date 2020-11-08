@@ -49,4 +49,14 @@ describe Menu do
       expect{ empty_menu.display_all }.to output("Item #1: Nachos - £6 (Starter)\n").to_stdout
     end
   end
+
+  describe "#select" do
+    it "returns the food with a given ID" do
+      skip
+    end
+
+    it "throws an error if given ID not in the menu" do
+      skip
+    end
+  end
 end
