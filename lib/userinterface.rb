@@ -120,3 +120,8 @@ class UserInterface
   end
 
 end
+
+# creating instance of this class and beggining program, run this file to begin
+
+ui = UserInterface.new
+ui.begin
