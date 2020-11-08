@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
@@ -8,6 +9,7 @@ class Order
     @basket = []
     @total = total
     @menu = Menu::DISHES
+    @text = Text.new
   end
 
   def add(dish, quantity = 1)
@@ -21,15 +23,14 @@ class Order
     if empty?
       print "Your basket is empty"
     else
-      @basket.each { |items| puts items }
+      @basket.each { |items| puts items } # need to remove {}
       puts "Your total to pay is £#{@total}"
     end
   end
 
   def pay(amount)
     raise StandardError.new "Incorrect amount. Please pay #{@total}" if amount != @total
-
-    puts "Thank you! Your order was placed and will be delivered within 1 hour."
+    @text.confirm_order
   end
 
   private

@@ -1,0 +1,44 @@
+language: ruby
+cache: bundler
+bundler_args: --without development
+
+rvm:
+  - ruby-head
+  - 2.7
+  - 2.6
+  - 2.5
+  - 2.4
+  - jruby-9.2
+
+services:
+  - docker
+
+install: make install
+script: make test
+
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+  fast_finish: true
+
+deploy:
+  - provider: script
+    script: make docker-build && make docker-push
+    skip_cleanup: true
+    on:
+      tags: true
+      rvm: "2.4"
+  - provider: rubygems
+    api_key: $RUBYGEMS_APIKEY
+    on:
+      tags: true
+      rvm: "2.4"
+
+notifications:
+  slack:
+    if: branch = main
+    on_pull_requests: false
+    on_success: never
+    on_failure: change
+    rooms:
+      - secure: AxzkBxp8izIXqkOEDiUaGjjym60GvuJeV1sBAHnLXqujDDpvdCeM+G8r274Xp48l7YqFz72PR2prFrAl8qMY5IVVFBolH1BtXqa7MsgclFKXXhq87y7OqzrUHVwdB1TAhse7k/wkeVN+mFPZswzSYqDzR3WmAbBG0iT6d1szO6c=
