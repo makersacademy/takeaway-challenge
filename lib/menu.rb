@@ -11,7 +11,8 @@ class Menu
              { dish: "Spicy Tuna Roll", price: 11.95 },
              { dish: "Toro Dragon Roll", price: 14.95 }]
   end
-    def print_menu
-      @menu.each { |dish| puts "#{@menu.index(dish) + 1}. #{dish[:dish]} £#{dish[:price]}" }
-    end
+
+  def print
+    @menu.each { |dish| puts "#{@menu.index(dish) + 1}. #{dish[:dish]} £#{dish[:price]}" }
   end
+end
