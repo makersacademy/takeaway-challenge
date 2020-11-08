@@ -13,9 +13,12 @@ RSpec, incl mocking & doubles, linking to an API.
 
 ## Challenge status
 Initial review of user stories completed, notes made on types of objects to create.
+Written code & tests for first user story re reading menu.
+Written code within takeaway class to add ordered items to order, tested within RSpec.
 
 ## Steps to finish challenge
 *update last, showing what you would do next to complete challenge*
+* consider limiting user to ordering items from menu. Not explicitly requested, but seems logical to include.
 
 ## User Stories & task planning
 
@@ -41,7 +44,17 @@ takeaway.read_menu # should return menu hash
 
 Need to be able to place order for several dishes  
 Objects: customer, order  
-Actions: place_order
+Actions: order  
+Notes:
+* customer to be able to order multiples of each dish
+* confirmation sentence after each item
+* store order in a hash, with name of menu item as key and number of menu items as value.  Then refer to dishes hash when calculating total
+
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.order("pizza", 3) # should add 3 pizzas to an order
+```
 
 > As a customer  
 > So that I can verify that my order is correct  
