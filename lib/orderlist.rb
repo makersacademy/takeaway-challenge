@@ -1,9 +1,13 @@
+require 'dotenv'
+require 'twilio-ruby'
+
 class OrderList
-  def initialize(restaurant, input = Kernel, order_class = Order)
+  def initialize(restaurant, input = Kernel, order_class = Order, sms_class = Twilio::REST::Client)
     p restaurant
     @menu = restaurant.menu
     @order_class = order_class
     @input = input
+    @sms_class = sms_class
     @confirmed_orders = []
   end
 
@@ -58,6 +62,7 @@ class OrderList
 
     @confirmed_orders.push(order)
     puts "Order received! You'll get a text shortly confirming your delivery time."
+    send_sms_confirmation
   end
 
   def display_order(order)
@@ -65,5 +70,18 @@ class OrderList
     puts "Current order:"
     order.to_s
     puts
+  end
+
+  def send_sms_confirmation
+    Dotenv.load
+    estimated_delivery = Time.now+3600
+    message = "Your order has been accepted! It will be with you before #{estimated_delivery.hour}:#{estimated_delivery.min}."
+    client = @sms_class.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+
+    client.messages.create(
+      from: ENV['TWILIO_FROM'],
+      to: ENV['TWILIO_TO'],
+      body: message
+    )
   end
 end

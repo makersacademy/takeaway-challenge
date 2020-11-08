@@ -7,7 +7,10 @@ describe OrderList do
   let(:kernel) { double :kernel }
   let(:menu) { double :menu }
   let(:restaurant) { double :restaurant, menu: menu }
-  let(:test_list) { OrderList.new(restaurant, kernel, order_class) }
+  let(:messages) { double :messages }
+  let(:sms) { double :sms, messages: messages }
+  let(:sms_class) { double :smsclass, new: sms }
+  let(:test_list) { OrderList.new(restaurant, kernel, order_class, sms_class) }
 
   describe "#new_order" do
     it "starts the process of taking an order, lets user immediately quit" do
@@ -47,6 +50,7 @@ describe OrderList do
       expect(menu).to receive(:select).with(1).and_return(item_ordered)
       expect(order).to receive(:add_item).with(item_ordered, 1)
       expect(order).to receive(:empty?).and_return(false)
+      allow(messages).to receive(:create)
       expect{ test_list.new_order }.to output(/Order received!/).to_stdout
     end
 
@@ -57,7 +61,13 @@ describe OrderList do
     end
 
     it "pushes order notification to the customers mobile with finalisation" do
-      skip
+      expect(sms_class).to receive(:new).and_return(sms)
+      expect(messages).to receive(:create)
+      allow(kernel).to receive(:gets).and_return("2", "1", "1", "confirm")
+      allow(menu).to receive(:select).with(1).and_return(item_ordered)
+      allow(order).to receive(:add_item).with(item_ordered, 1)
+      allow(order).to receive(:empty?).and_return(false)
+      expect { test_list.new_order }.to output.to_stdout
     end
   end
 end

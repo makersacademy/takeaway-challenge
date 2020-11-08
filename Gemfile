@@ -7,4 +7,10 @@ group :test do
   gem 'simplecov-console', require: false, group: :test
 end
 
-gem 'twilio'
+group :development do
+  gem 'dotenv'
+end
+
+group :production do
+  gem 'twilio-ruby'
+end
