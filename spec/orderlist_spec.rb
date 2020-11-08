@@ -29,6 +29,11 @@ describe OrderList do
       test_list.new_order
     end
 
+    it "reacts okay to weird user input" do
+      expect(kernel).to receive(:gets).and_return("fo", "efew", "rip", "3fwef", "quit")
+      test_list.new_order
+    end
+
 
     it "pushes order notification to the customer" do
       skip
