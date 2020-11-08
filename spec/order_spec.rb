@@ -3,6 +3,7 @@ require 'order'
 describe Order do
 
 let(:menu) { double('Menu.new') }
+let(:message) { double('Message.new') }
 
   it "created an instance of Order" do
     expect(subject).to be_an_instance_of Order
@@ -45,4 +46,10 @@ let(:menu) { double('Menu.new') }
       end
     end
 
-  end
+    #DON'T KNOW HOW TO RSPEC FOR THIS. FEATURE TEST PASSES IN IRB.
+    # describe "#place_order" do
+    #   it "sends a text when the order has been placed" do
+    #   end
+    # end
+
+end

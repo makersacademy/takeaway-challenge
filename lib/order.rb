@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'message'
 
 class Order
 
@@ -17,10 +18,15 @@ class Order
     dish = @menu.item_available?(dish_name)
     add_to_order(dish, quantity)
   end
-  
+
   def total
     @total = 0
     @selected_items.map { |key| hash[key] }.compact.reduce(:+)
+  end
+
+  def place_order(phone)
+    @message = Message.new
+    @message.confirmation
   end
 
 private
