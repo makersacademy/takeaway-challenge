@@ -1,9 +1,9 @@
 class Takeaway
-  attr_reader :orders_list
+  # attr_reader :orders_list
 
-  def initialize(menu_instance)
+  def initialize(menu_instance, order_instance)
     @menu_instance = menu_instance
-    @orders_list = []
+    @order_instance = order_instance
   end
 
   def print_menu
@@ -16,7 +16,6 @@ class Takeaway
   end
 
   def order(number)
-    raise "The number you chose it's not associated to any dish" unless number > 0 && number <= @menu_instance.dishes.length
-    @orders_list << number
+    @order_instance.take_order(number)
   end
 end
