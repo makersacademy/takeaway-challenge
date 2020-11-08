@@ -40,7 +40,7 @@ class Takeaway
   private
 
   def not_on_menu?(item)
-    @menu.raw_menu[item.to_sym] == nil
+    @menu.dishes[item.to_sym] == nil
   end
 
   def not_a_number?(qty)
