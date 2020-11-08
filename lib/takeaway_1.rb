@@ -1,9 +1,10 @@
 class TakeAway
 
-  attr_reader :dishes
+  attr_reader :dishes, :order
 
   def initialize
     @dishes = { hotdog: 5.00, fries: 3.50 }
+    @order = {}
   end
 
   def print_menu
@@ -12,5 +13,8 @@ class TakeAway
     end.join(", ")
   end
 
+  def add(dish, quantity)
+    order[dish] = quantity
+  end
 
 end
