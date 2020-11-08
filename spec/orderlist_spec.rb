@@ -34,8 +34,27 @@ describe OrderList do
       test_list.new_order
     end
 
+    it "prints the current order at the end of every loop" do
+      expect(kernel).to receive(:gets).and_return("2", "1", "1", "quit")
+      expect(menu).to receive(:select).with(1).and_return(item_ordered)
+      expect(order).to receive(:add).with(item_ordered, 1)
+      expect(order).to receive(:to_s)
+      test_list.new_order
+    end
 
-    it "pushes order notification to the customer" do
+    it "allows user to finalise order" do
+      expect(kernel).to receive(:gets).and_return("2", "1", "1", "confirm")
+      expect(menu).to receive(:select).with(1).and_return(item_ordered)
+      expect(order).to receive(:add).with(item_ordered, 1)
+
+      expect{ test_list.new_order }.to output(/Order received!/).to_stdout
+    end
+
+    it "throws an error trying to finalise an empty order" do
+      skip
+    end
+
+    it "pushes order notification to the customers mobile with finalisation" do
       skip
     end
   end
