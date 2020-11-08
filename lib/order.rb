@@ -11,7 +11,7 @@ class Order
   end
 
   def add(dish, amount = 1)
-    raise "#{dish} is not avialable" unless dish?(dish)
+    raise "#{dish} is not available" unless dish?(dish)
 
     amount.times { @order << dish }
     amount.times { @total += @menu[dish] }

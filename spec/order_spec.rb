@@ -28,7 +28,7 @@ describe Order do
 
   it "raises an error when dish isn't on menu" do
     dish = 'Katmandu'
-    expect { order.add(dish) }.to raise_error("#{dish} is not avialable")
+    expect { order.add(dish) }.to raise_error("#{dish} is not available")
   end
 
   it 'shows the customer that the order value matches the total' do
