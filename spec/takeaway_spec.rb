@@ -3,15 +3,12 @@ require 'takeaway'
 RSpec.describe Takeaway do
 
   let(:restaurant) { double :Restaurant }
+  let(:basket) { double :Basket }
   subject(:takeaway) { described_class.new(restaurant) }
 
   describe "#initialize" do
     it "creates a restaurant instance variable" do
       expect(takeaway.restaurant).to eq(restaurant)
-    end
-
-    it 'creates an empty basket array of hashes' do
-      expect(takeaway.basket).to be_empty
     end
   end
 
@@ -41,8 +38,8 @@ RSpec.describe Takeaway do
       dish = 'Rainbow dumplings'
       quantity = 4
       allow(restaurant).to receive(:check_availability).with(dish).and_return(true)
-      takeaway.order(dish, quantity)
-      expect(takeaway.basket).to include({dish => quantity})
+      allow(basket).to receive(:add_to_basket).with(dish, quantity).and_return("#{quantity}x #{dish}(s) added to your basket.")
+      expect(takeaway.order(dish, quantity)).to eq("#{quantity}x #{dish}(s) added to your basket.")
     end
   end
 end
