@@ -30,6 +30,7 @@ class Order
 
   def pay(amount)
     raise StandardError.new "Incorrect amount. Please pay #{@total}" if amount != @total
+    
     @text.confirm_order
   end
 

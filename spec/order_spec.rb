@@ -2,9 +2,6 @@ require 'order'
 
 describe Order do
 
-  let(:amount) {double :amount}
-  let(:confirm_order) {double :confirm_order}
-
   context "#initialize" do
     it "has an empty order array" do
       expect(subject.basket).to eq([])
@@ -46,9 +43,9 @@ describe Order do
   context "paying" do
     it "doesn't let customer pay wrong amount" do
       subject.add("Burger", 5)
-      expect{subject.pay(20)}.to raise_error(StandardError)
+      expect{ subject.pay(20) }.to raise_error(StandardError)
     end
 
     # Need a test for sending the text message
-  end 
+  end
 end
