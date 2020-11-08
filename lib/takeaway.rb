@@ -17,4 +17,16 @@ class Takeaway
     amount.times { @basket << item }
   end
 
+  def print_total
+    @total = []
+    @basket.each { |h| h[:burger]
+        h.select { |x,y| @total << y}
+   }
+    @total.sum
+  end
+
+  def checkout
+    puts "In your basket is #{@basket} and you're current total is £#{print_total}"
+  end
+
 end

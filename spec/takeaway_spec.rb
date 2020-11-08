@@ -34,8 +34,38 @@ describe Takeaway do
 
     it 'updates the basket' do
       subject.add_item("burger", 2)
-      expect(subject.basket).to eq ([{:burger => 3},{:burger => 3}])
+      expect(subject.basket.last).to eq ({:burger => 3})
+    end
+  end
+
+  context '#print_total' do
+
+    it 'allows the user to call print_total' do
+      expect(subject).to respond_to(:print_total)
     end
 
+    it 'gives the user their current total' do
+      subject.add_item("burger", 2)
+      expect(subject.print_total).to eq 6
+    end
+
+    it 'gives the user an updated total' do
+      subject.add_item("cheeseburger", 3)
+      subject.add_item("burger", 2)
+      expect(subject.print_total).to eq 18
+    end
+  end
+
+  context '#checkout' do
+    order_2 = "In your basket is [{:burger=>3}, {:burger=>3}] and you're current total is £6\n"
+
+     it 'allows the user to call checkout' do
+       expect(subject).to respond_to(:checkout)
+     end
+
+     it 'allows the user to see their final bill' do
+       subject.add_item("burger", 2)
+       expect{ subject.checkout }.to output(order_2).to_stdout
+     end
   end
 end
