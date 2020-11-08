@@ -19,7 +19,11 @@ class Menu
     'veg patty': 2.50
   }
 
-  def see_menu
+  def dishes
+    MENU
+  end
+
+  def user_menu
     MENU.each do |item, price|
       puts "#{item}, #{price_format(price)}"
     end

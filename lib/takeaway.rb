@@ -26,7 +26,7 @@ class Takeaway
     puts "Your order"
 
     @current_order.basket.each do |item, qty|
-      subtotal = @menu.raw_menu[item] * qty
+      subtotal = @menu.dishes[item] * qty
       puts "x#{qty} #{item}, #{price_format(subtotal)}"
     end
 
@@ -53,7 +53,7 @@ class Takeaway
 
   def order_total
     @current_order.basket.reduce(0) do |sum, (item, qty)| 
-      sum + @menu.raw_menu[item] * qty
+      sum + @menu.dishes[item] * qty
     end
   end
 
@@ -70,7 +70,7 @@ class Takeaway
     str5 = "Total: #{price_format(order_total)}.\n"
 
     @current_order.basket.each do |item, qty|
-      subtotal = @menu.raw_menu[item] * qty
+      subtotal = @menu.dishes[item] * qty
       str4 << "x#{qty} #{item}, #{price_format(subtotal)}\n"
     end
 

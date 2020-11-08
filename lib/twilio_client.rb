@@ -7,11 +7,11 @@ class TwilioClient
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
-  def send_order_confirmation(customer_name, customer_number)
+  def send_order_confirmation(customer_mobile, message)
     client.messages.create(
       from: twilio_number,
-      to: customer_number,
-      body: "Thank you for your order, #{customer_name}."
+      to: customer_mobile,
+      body: message
     )
   end
 
@@ -29,4 +29,3 @@ class TwilioClient
     ENV['TWILIO_NUMBER']
   end
 end
-
