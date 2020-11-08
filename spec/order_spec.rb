@@ -13,17 +13,35 @@ describe Order do
 
   describe "#empty?" do
     it "returns false if populated" do
-      skip
+      expect(Order.new([food1]).empty?).to eq(false)
     end
 
     it "returns true if empty" do
-      skip
+      expect(subject.empty?).to eq(true)
     end
   end
 
   describe "#to_s" do
-    it "prints current order in human readable form" do
-      skip
+    it "calls puts on each unique food item with quantity in simplest case" do
+      test = Order.new([food1])
+      expect(food1).to receive(:to_s)
+      expect { puts test }.to output(/Quantity: 1/).to_stdout
+    end
+
+    it "follows above in case of 2" do
+      test = Order.new([food1, food1])
+      expect(food1).to receive(:to_s)
+      expect { puts test }.to output(/Quantity: 2/).to_stdout
+    end
+
+    it "outputs the total of the current order at the end" do
+      test = Order.new([food1, food1])
+      expect { puts test }.to output(/Total: £10/).to_stdout
+    end
+
+    it "hasn't hardcoded the total!" do
+      test = Order.new([food1, food2])
+      expect { puts test }.to output(/Total: £7/).to_stdout
     end
   end
 end

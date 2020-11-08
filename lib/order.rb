@@ -10,4 +10,22 @@ class Order
   def total
     @items.map { |i| i.item_price }.sum
   end
+
+  def empty?
+    @items.empty?
+  end
+
+  def to_s
+    @items.uniq.each do |item|
+      puts item
+      puts "Quantity: #{quantity(item)}"
+    end
+    puts "Total: £#{total}"
+  end
+
+  private
+
+  def quantity(item)
+    @items.count(item)
+  end
 end
