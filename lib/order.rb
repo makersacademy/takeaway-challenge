@@ -3,7 +3,7 @@ require_relative "./send_sms"
 class Order
   ITEM_ERROR = "That item isn't on the menu!".freeze
   ARITHMETIC_ERROR = 'Wow, you broke maths, good job!'.freeze
-  DELVERY_MESSAGE = "Thank you! Your order was placed and will be delivered before"
+  DELVERY_MESSAGE = "Thank you! Your order was placed and will be delivered before".freeze
 
   attr_reader :menu, :my_order, :cheque
 
