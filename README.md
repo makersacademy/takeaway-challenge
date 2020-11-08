@@ -14,11 +14,11 @@ RSpec, incl mocking & doubles, linking to an API.
 ## Challenge status
 Initial review of user stories completed, notes made on types of objects to create.
 Written code & tests for first user story re reading menu.
-Written code within takeaway class to add ordered items to order, tested within RSpec.
+Written code within takeaway class to add ordered items to order, tested within RSpec. Moved order to Order class.
 
 ## Steps to finish challenge
 *update last, showing what you would do next to complete challenge*
-* consider limiting user to ordering items from menu. Not explicitly requested, but seems logical to include.
+* consider limiting customer to ordering items from menu. Not explicitly requested, but seems logical to include.
 
 ## User Stories & task planning
 
@@ -44,7 +44,7 @@ takeaway.read_menu # should return menu hash
 
 Need to be able to place order for several dishes  
 Objects: customer, order  
-Actions: order  
+Actions: place_order  
 Notes:
 * customer to be able to order multiples of each dish
 * confirmation sentence after each item
@@ -53,7 +53,7 @@ Notes:
 ```
 require './lib/takeaway'
 takeaway = Takeaway.new
-takeaway.order("pizza", 3) # should add 3 pizzas to an order
+takeaway.place_order("pizza", 3) # should add 3 pizzas to an order
 ```
 
 > As a customer  
@@ -62,7 +62,15 @@ takeaway.order("pizza", 3) # should add 3 pizzas to an order
 
 Need to check that total is correct  
 Objects: customer, order, total  
-Actions: check_total
+Actions: total
+
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.place_order("pizza", 3)
+takeaway.place_order("burger")
+takeaway.total == "Total: £24.96" # should return true
+```
 
 > As a customer  
 > So that I am reassured that my order will be delivered on time  
@@ -72,8 +80,8 @@ Need to receive a text advising that the order will be delivered before one hour
 Objects: customer, order  
 Actions: order_acknowledgement(via text)  
 Notes:
-* register for Twilio
-* update Gemfile to include twilio-ruby gem
+* register for Twilio - done
+* update Gemfile to include twilio-ruby gem - done
 * use own mobile number - make this private & don't push to GitHub  
 * also need to keep Twilio API key private - check how to do this on GitHub
 * tests shouldn't send texts, so use mocking or stubs here

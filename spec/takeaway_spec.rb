@@ -13,12 +13,30 @@ describe Takeaway do
   describe "#order" do
 
     it "responds to order" do
-      expect(subject).to respond_to(:order).with(2).arguments
+      expect(subject).to respond_to(:place_order).with(2).arguments
     end
 
     it "adds an order to the basket" do
-      subject.order("pizza")
-      expect(subject.basket.length).to eq 1
+      subject.place_order("pizza")
+      expect(subject.order.length).to eq 1
     end
+  end
+
+  describe "#basket_summary" do
+
+    it "returns summary of the basket" do
+      subject.place_order("pizza", 3)
+      subject.place_order("burger")
+      expect(subject.basket_summary).to eq "pizza x3 = £14.97, burger x1 = £9.99"
+    end
+  end
+
+  describe "#total" do
+    it "returns the basket total" do
+      subject.place_order("pizza", 3)
+      subject.place_order("burger")
+      expect(subject.total).to eq "Total: £24.96"
+    end
+
   end
 end
