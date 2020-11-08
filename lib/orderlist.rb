@@ -74,7 +74,8 @@ class OrderList
   def send_sms_confirmation
     Dotenv.load
     estimated_delivery = Time.now + 3600
-    message = "Your order has been accepted! It will be with you before #{estimated_delivery.hour}:#{estimated_delivery.min}."
+    formatted = "#{estimated_delivery.hour}:#{estimated_delivery.min}"
+    message = "Your order has been accepted! It will be with you before #{formatted}."
     client = @sms_class.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 
     client.messages.create(
