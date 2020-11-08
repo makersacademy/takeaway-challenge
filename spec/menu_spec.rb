@@ -19,7 +19,7 @@ describe Menu do
       expect(food3).to receive(:to_s)
       expect(food4).to receive(:to_s)
       expect(drink1).to receive(:to_s)
-      sample_menu.display_all
+      expect { sample_menu.display_all }.to output.to_stdout
     end
   end
 
@@ -30,7 +30,7 @@ describe Menu do
       expect(food3).to receive(:to_s)
       expect(food4).to receive(:to_s)
       expect(drink1).not_to receive(:to_s)
-      sample_menu.display_food
+      expect { sample_menu.display_food }.to output.to_stdout
     end
   end
 
@@ -38,7 +38,7 @@ describe Menu do
     it "calls #to_s on every beverage" do
       expect(drink1).to receive(:to_s)
       expect(food1).not_to receive(:to_s)
-      sample_menu.display_drinks
+      expect { sample_menu.display_drinks }.to output.to_stdout
     end
   end
 
