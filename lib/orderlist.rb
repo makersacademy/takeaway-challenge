@@ -1,5 +1,6 @@
 class OrderList
   def initialize(restaurant, input = Kernel, order_class = Order)
+    p restaurant
     @menu = restaurant.menu
     @order_class = order_class
     @input = input
@@ -16,7 +17,7 @@ class OrderList
       break if response == "quit"
 
       if response == "1"
-        @menu.display_all
+        show_menu
       elsif response == "2"
         add_to_order(pending_order)
       elsif response == "confirm"
@@ -30,6 +31,11 @@ class OrderList
 
   private
 
+  def show_menu
+    puts "\nMenu\n-----------------------"
+    @menu.display_all
+  end
+
   def show_choices
     puts "Enter:"
     puts "1 to see the menu"
@@ -42,7 +48,7 @@ class OrderList
     id = @input.gets.chomp.to_i
     selection = @menu.select(id)
     quantity = @input.gets.chomp.to_i
-    order.add(selection, quantity)
+    order.add_item(selection, quantity)
   end
 
   def finalise_order(order)
@@ -53,7 +59,9 @@ class OrderList
   end
 
   def display_order(order)
+    puts
     puts "Current order:"
-    puts order
+    order.to_s
+    puts
   end
 end

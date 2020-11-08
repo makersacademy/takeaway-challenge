@@ -25,7 +25,7 @@ describe OrderList do
     it "feeds choices through to #add in the order" do
       expect(kernel).to receive(:gets).and_return("2", "1", "1", "quit")
       expect(menu).to receive(:select).with(1).and_return(item_ordered)
-      expect(order).to receive(:add).with(item_ordered, 1)
+      expect(order).to receive(:add_item).with(item_ordered, 1)
       expect { test_list.new_order }.to output.to_stdout
     end
 
@@ -37,7 +37,7 @@ describe OrderList do
     it "prints the current order at the end of every loop" do
       expect(kernel).to receive(:gets).and_return("2", "1", "1", "quit")
       expect(menu).to receive(:select).with(1).and_return(item_ordered)
-      expect(order).to receive(:add).with(item_ordered, 1)
+      expect(order).to receive(:add_item).with(item_ordered, 1)
       expect(order).to receive(:to_s)
       expect { test_list.new_order }.to output.to_stdout
     end
@@ -45,7 +45,7 @@ describe OrderList do
     it "allows user to finalise order" do
       expect(kernel).to receive(:gets).and_return("2", "1", "1", "confirm")
       expect(menu).to receive(:select).with(1).and_return(item_ordered)
-      expect(order).to receive(:add).with(item_ordered, 1)
+      expect(order).to receive(:add_item).with(item_ordered, 1)
       expect(order).to receive(:empty?).and_return(false)
       expect{ test_list.new_order }.to output(/Order received!/).to_stdout
     end
