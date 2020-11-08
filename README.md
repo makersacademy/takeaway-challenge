@@ -8,7 +8,8 @@ Weekend challenge for the end of week 2 of Makers Academy.
 RSpec, incl mocking & doubles, linking to an API.
 
 ## How the code works
-*insert sample run-through here*
+*insert sample run-through here*  
+*will need to advise user to create their own Twilio account, and then to create a file called key.rb, with relevant parameters so that the Twilio key can be kept hidden from GitHub(i.e. by putting it in a file within .gitignore)*
 
 ## Challenge status
 Initial review of user stories completed, notes made on types of objects to create.
@@ -24,9 +25,15 @@ Initial review of user stories completed, notes made on types of objects to crea
 
 Need to return a menu when requested.  
 Objects: customer, menu (list of dishes)  
-Actions: view_menu
+Actions: read_menu  
 Notes:
 * create a list of dishes with prices - a hash sounds best
+
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.read_menu # should return menu hash
+```
 
 > As a customer  
 > So that I can order the meal I want  
