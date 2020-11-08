@@ -1,25 +1,40 @@
-require 'order'
+class TakeAway
 
-class Takeaway
+  attr_reader :dishes, :order, :sms
 
-  def initialize(menu:, order: nil)
-    @menu = menu
-    @order = order || Order.new
+  def initialize
+    @dishes = { hotdog: 5.00, fries: 3.50 }
+    @order = {}
+    @sms = sms
   end
 
   def print_menu
-    menu.print
+    dishes.map do |dish, price|
+      "%s £%.2f" % [dish.to_s.capitalize, price]
+    end.join(", ")
   end
 
-  def place_order(dishes)
-    dishes.each do |dish, quantity|
-      order.add(dish, quantity)
+  def add(dish, quantity)
+    fail "#{dish.capitalize} is not on the menu!" unless has_dish?(dish)
+    order[dish] = quantity
+  end
+
+  def total
+    item_totals.inject(:+)
+  end
+
+  def price(dish)
+    dishes[dish]
+  end
+
+  def item_totals
+    order.map do |dish, quantity|
+      dishes[dish] * quantity
     end
-    order.total
   end
 
-  private
-
-  attr_reader :menu, :order
+  def has_dish?(dish)
+    !dishes[dish].nil?
+  end
 
 end
