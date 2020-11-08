@@ -35,4 +35,12 @@ describe Order do
     order.add('Beef Teriyaki', 2)
     expect(order.total_correct?).to eq true
   end
+
+  it 'send a text to confirm the order' do
+    testorder = double("order")
+    allow(testorder).to receive(:confirm_order).and_return("Correct")
+
+    # expect(order).to respond_to :confirm_order
+    expect(testorder.confirm_order).to eq("Correct")
+  end
 end

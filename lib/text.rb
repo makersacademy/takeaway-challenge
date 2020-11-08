@@ -9,15 +9,15 @@ class TextConfirm
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    @from = '+447401201912' # Your Twilio number
+    @from = ENV['SECRET_TWIL_NUM'] # Your Twilio number
     @to = ENV['SECRET_MOBILE'] # Your mobile phone number
   end
 
-  def confirm_order
+  def confirmation
     @client.messages.create(
       from: @from,
       to: @to,
-      body: "Thank you for your order! It will be with you in #{Time.now + 3600.strftime('%I:%M %p')}"
+      body: "Thank you! Your order will be with you at #{(Time.now + 3600).strftime('%I:%M %p')}"
     )
   end
 end

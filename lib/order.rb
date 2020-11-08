@@ -1,9 +1,13 @@
+require_relative 'menu'
+require_relative 'text'
+
 class Order
-  attr_accessor :menu, :order, :total
+  attr_accessor :menu, :order, :total, :text
   def initialize
     @order = []
     @total = 0
     @menu = Menu::MENU
+    @text = TextConfirm.new
   end
 
   def add(dish, amount = 1)
@@ -19,6 +23,10 @@ class Order
       balance += @menu[dish]
     end
     @total == balance
+  end
+
+  def confirm_order
+    @text.confirmation
   end
 
   private
