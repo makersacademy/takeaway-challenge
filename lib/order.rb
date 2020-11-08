@@ -13,6 +13,14 @@ class Order
     amount.times { @total += @menu[dish] }
   end
 
+  def total_correct?
+    balance = 0
+    @order.map do |dish|
+      balance += @menu[dish]
+    end
+    @total == balance
+  end
+
   private
 
   def dish?(dish)

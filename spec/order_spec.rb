@@ -30,4 +30,9 @@ describe Order do
     dish = 'Katmandu'
     expect { order.add(dish) }.to raise_error("#{dish} is not avialable")
   end
+
+  it 'shows the customer that the order value matches the total' do
+    order.add('Beef Teriyaki', 2)
+    expect(order.total_correct?).to eq true
+  end
 end
