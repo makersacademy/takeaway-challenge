@@ -12,4 +12,5 @@ class Rest
   def place_order
     @order = Order.new
   end
+
 end
