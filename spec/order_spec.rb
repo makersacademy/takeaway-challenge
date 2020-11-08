@@ -33,7 +33,7 @@ describe Order do
     describe '#place_order' do
       it 'calls the process_order method' do
         expect(subject).to receive(:process_order)
-        subject.place_order('Malachi')
+        subject.place_order('Malachi', ENV['MOBILE_NUMBER'])
       end
     end
   end

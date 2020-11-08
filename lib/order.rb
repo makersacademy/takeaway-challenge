@@ -53,7 +53,7 @@ class Order
     puts "Total: #{price_format(order_total)}"
   end
 
-  def place_order(name, mobile_number = ENV['MOBILE_NUMBER'])
+  def place_order(name, mobile_number)
     process_order(name, mobile_number)
   end
 
