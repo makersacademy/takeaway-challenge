@@ -9,6 +9,10 @@ RSpec.describe Takeaway do
     it "creates a restaurant instance variable" do
       expect(takeaway.restaurant).to eq(restaurant)
     end
+
+    it 'creates an empty basket array of hashes' do
+      expect(takeaway.basket).to be_empty
+    end
   end
 
   describe "#see_menu" do
