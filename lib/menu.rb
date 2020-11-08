@@ -20,4 +20,10 @@ class Menu
   def add(item)
     @items.push(item)
   end
+
+  def select(id)
+    @items.each { |item| return item if item.id == id }
+
+    raise "Item doesn't exist in the menu"
+  end
 end

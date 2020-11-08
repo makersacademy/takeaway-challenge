@@ -1,11 +1,12 @@
 require 'menu'
+require 'goods'
 
 describe Menu do
-  let(:food1) { class_double Food, to_s: "Item #1: Nachos - £6 (Starter)", class: Food }
-  let(:food2) { class_double Food, to_s: "Item #2: Pizza - £6 (Main)", class: Food }
-  let(:food3) { class_double Food, to_s: "Item #3: Chips - £3 (Side)", class: Food }
-  let(:food4) { class_double Food, to_s: "Item #4: Cake - £3 (Dessert)", class: Food }
-  let(:drink1) { class_double Drink, to_s: "Item #5: Beer - £4 (Drink)", class: Drink }
+  let(:food1) { double :food, to_s: "Item #1: Nachos - £6 (Starter)", class: Food, id: 1 }
+  let(:food2) { double :food, to_s: "Item #2: Pizza - £6 (Main)", class: Food, id: 2 }
+  let(:food3) { double :food, to_s: "Item #3: Chips - £3 (Side)", class: Food, id: 3 }
+  let(:food4) { double :food, to_s: "Item #4: Cake - £3 (Dessert)", class: Food, id: 4 }
+  let(:drink1) { double :drink, to_s: "Item #5: Beer - £4 (Drink)", class: Drink, id: 5 }
   let(:sample_menu) { Menu.new([food1, food2, food3, food4, drink1]) }
 
   it "can be initialised with an array of items" do
@@ -51,12 +52,14 @@ describe Menu do
   end
 
   describe "#select" do
-    it "returns the food with a given ID" do
-      skip
+    it "throws error if food with that ID doesn't exist" do
+      empty_menu = Menu.new
+      expect { empty_menu.select(1) }.to raise_error("Item doesn't exist in the menu")
     end
 
-    it "throws an error if given ID not in the menu" do
-      skip
+    it "returns the food with a given ID" do
+      allow(food3).to receive(:id).and_return(3)
+      expect(sample_menu.select(3)).to eq(food3)
     end
   end
 end
