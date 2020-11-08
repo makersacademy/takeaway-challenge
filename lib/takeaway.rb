@@ -4,11 +4,11 @@ class Takeaway
   end
 
   def print_menu
-    dishes = ""
-    @menu_instance.menu.each do |dish|
-      dishes += "#{dish[:name]}: #{dish[:price]}" + "\n"
+    output = ""
+    @menu_instance.dishes.each do |dish|
+      output += "#{dish[:name]}: #{dish[:price]}" + "\n"
     end
-    return dishes
+    return output
   end
 
 end
