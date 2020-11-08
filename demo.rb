@@ -15,5 +15,7 @@ drink2 = Drink.new("Cola", 3, false)
 
 test_restaurant = Restaurant.new
 
-[food1, food2, food3, food4, food5, food6, drink1, drink2].each { |item| test_restaurant.menu.add(item) }
+[food1, food2, food3, food4, food5, food6, drink1, drink2].each do |item|
+  test_restaurant.menu.add(item)
+end 
 test_restaurant.orders.new_order
