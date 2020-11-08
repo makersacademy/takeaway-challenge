@@ -47,7 +47,7 @@ describe Menu do
     it "adds a received item to a menu" do
       empty_menu = Menu.new
       empty_menu.add(food1)
-      expect{ empty_menu.display_all }.to output("Item #1: Nachos - £6 (Starter)\n").to_stdout
+      expect { empty_menu.display_all }.to output("Item #1: Nachos - £6 (Starter)\n").to_stdout
     end
   end
 

@@ -3,7 +3,7 @@ require 'orderlist'
 describe OrderList do
   let(:item_ordered) { double :food }
   let(:order) { double :order }
-  let(:order_class) { double :order_class, new: order}
+  let(:order_class) { double :order_class, new: order }
   let(:kernel) { double :kernel }
   let(:menu) { double :menu }
   let(:restaurant) { double :restaurant, menu: menu }
@@ -51,13 +51,13 @@ describe OrderList do
       expect(order).to receive(:add_item).with(item_ordered, 1)
       expect(order).to receive(:empty?).and_return(false)
       allow(messages).to receive(:create)
-      expect{ test_list.new_order }.to output(/Order received!/).to_stdout
+      expect { test_list.new_order }.to output(/Order received!/).to_stdout
     end
 
     it "throws an error trying to finalise an empty order" do
       expect(kernel).to receive(:gets).and_return("confirm")
       expect(order).to receive(:empty?).and_return(true)
-      expect{ test_list.new_order }.to raise_error("Your order is empty!")
+      expect { test_list.new_order }.to raise_error("Your order is empty!")
     end
 
     it "pushes order notification to the customers mobile with finalisation" do

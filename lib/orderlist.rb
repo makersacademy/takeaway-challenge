@@ -3,7 +3,6 @@ require 'twilio-ruby'
 
 class OrderList
   def initialize(restaurant, input = Kernel, order_class = Order, sms_class = Twilio::REST::Client)
-    p restaurant
     @menu = restaurant.menu
     @order_class = order_class
     @input = input
@@ -74,7 +73,7 @@ class OrderList
 
   def send_sms_confirmation
     Dotenv.load
-    estimated_delivery = Time.now+3600
+    estimated_delivery = Time.now + 3600
     message = "Your order has been accepted! It will be with you before #{estimated_delivery.hour}:#{estimated_delivery.min}."
     client = @sms_class.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 
