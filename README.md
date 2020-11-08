@@ -63,6 +63,10 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |Customer|place order with phone number|
 |Menu||
 ```
+"DON'T GET IT PERFECT, JUST GET IT DONE"
+
+I made good progress with Twilio but was pretty exhausted by the time it came to writing out the code so I took it from ALM. I haven't been able to figure out how to write the Rspec for that method (place_order) but have decided to stop here. Feature tests work!
+
 
 The Result
 ----------
@@ -102,4 +106,9 @@ Check your total
 ```shell
 2.6.5 :008 > order.total
  => 16
+```
+Place your order with your phone number
+```shell
+2.6.5 :007 > order.place_order("12345")
+ => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order will be with you at 06:06 PM
 ```
