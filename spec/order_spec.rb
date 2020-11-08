@@ -39,8 +39,8 @@ describe Order do
           subject.whole_order({ "Goan pork vindaloo" => 2, "Shahi murg" => 5 })
         end
 
-        it 'can check if the order total matches the balance' do
-          expect(subject.check_cheque?).to be true
+        it 'whole order takes the whole order and adds to the cheque' do
+          expect(subject.cheque).to eq 83
         end
       end
     end

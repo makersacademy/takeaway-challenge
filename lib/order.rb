@@ -3,6 +3,7 @@ require_relative "./send_sms"
 class Order
   ITEM_ERROR = "That item isn't on the menu!".freeze
   ARITHMETIC_ERROR = 'Wow, you broke maths, good job!'.freeze
+  DELVERY_MESSAGE = "Thank you! Your order was placed and will be delivered before"
 
   attr_reader :menu, :my_order, :cheque
 
@@ -15,17 +16,16 @@ class Order
 
   def whole_order(all_the_food)
     all_the_food.each_pair { |menu_item, quantity| quantity.times { order(menu_item) } }
-    @cheque if check_cheque?
-    @message.send("Thank you! Your order was placed and will be delivered before #{Time.now + 3600}")
-  end
-
-  def check_cheque?
-    check_cheque = 0
-    my_order.each { |order| order.each_pair { |food, _| check_cheque += @menu.menu_items[food] } }
-    check_cheque != @cheque ? raise(ARITHMETIC_ERROR) : true
+    @message.send(DELVERY_MESSAGE + "#{Time.now + 3600}") if check_cheque?
   end
 
   private
+
+  def check_cheque?
+    check_cheque = 0
+    my_order.each { |order| order.each_pair { | _, price| check_cheque += price } }
+    check_cheque != @cheque ? raise(ARITHMETIC_ERROR) : true
+  end
 
   def order(food)
     raise ITEM_ERROR unless @menu.menu_items.include?(food)
