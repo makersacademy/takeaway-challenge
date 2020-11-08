@@ -1,9 +1,10 @@
+
 Takeaway Challenge
 ==================
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            | A.W.S |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -14,19 +15,78 @@ Takeaway Challenge
 
  ```
 
-Instructions
+
+My solution to the Makers Academy Week 2 challenge, building a Ruby app for a restaurant in which a user can place orders. This was an exercise in TDD, including the extensive use of mocking to prevent class and API dependencies being hardcoded, as well as OOP and some basic Polymorphism.  It was also my first experience using the Twilio API.
+
+My Implementation
+-------
+I broke the user stories down into several interacting classes.
+
+ - **Restaurant**: the main object that holds all others together.
+ - **OrderHistory**: a list of orders with the capability to generate new orders.
+ - **Order**: a list of food, and associated methods.
+ - **Good**: a parent class to **Food** and **Drink**, done to make the classes as universally applicable as possible for the projects longevity.
+
+All unit testing has been completed using mocking to ensure that the code would be easy to change, as well as to test Twilio without making a real API call. I've then implemented a demonstration of the classes working together in the './demo.rb' file.
+
+The idea was to make everything as modular and customisable as possible, to ensure that you could use this code as a jumping off point for a platform hosting multiple restaurants and serving multiple customers.
+
+Installing the app
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ - Clone the Github repo
+ - Register for a free Twilio account
+ - In the parent directory, create a file called .env
+ - Add to this file your Twilio API key, token, to and from numbers as outlined here:
+         
+       export TWILIO_ACCOUNT_SID='XXXXXXXXXXXXXXX'
+       export TWILIO_AUTH_TOKEN='XXXXXXXXXXXXXXX'
+       export TWILIO_TO=+44XXXXXXXXX
+       export TWILIO_FROM=+44XXXXXXXXX
+       
+ Example Usage
+-------
 
-Task
------
+    ❯ ruby ./demo.rb
+    Enter:
+    1 to see the menu
+    2 to add to your order
+    'confirm' to place your order
+    'quit' to cancel
+    > 1
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
+    Menu
+    -----------------------
+    Item #1: Garlic Bread - £4 (Starter)
+    Item #2: Olives - £2 (Starter)
+    Item #3: Halloumi Fries - £4 (Starter)
+    Item #4: Margherita Pizza - £8 (Main)
+    Item #5: Caesar Salad - £8 (Main)
+    Item #6: Ice Cream Sundae - £6 (Dessert)
+    Item #7: Beer - £4 (Drink)
+    Item #8: Cola - £3 (Drink)
+
+    Current order:
+    Your basket is empty
+    
+    Enter:
+    1 to see the menu
+    2 to add to your order
+    'confirm' to place your order
+    'quit' to cancel
+    > 2
+    Input the Item Number:
+    > 1
+    Enter the quantity you'd like:
+    > 5
+
+    Current order:
+    Item #1: Garlic Bread - £4 (Starter)
+    Quantity: 5
+    Total: £20
+
+Assignment Brief
+-------
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -76,8 +136,3 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
