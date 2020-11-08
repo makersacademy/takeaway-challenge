@@ -4,13 +4,13 @@ describe RamenBar do
   
   it "initializes with dishes" do 
     expect(subject.dishes).to eq( 
-  [
-    {:name => 'tonkotsu', :price => 10}, 
-    {:name => 'kakugiri', :price => 9 },
-    {:name => 'shoyu',    :price => 9 },
-    {:name => 'gyoza',    :price => 5 },
-    {:name => 'edamame',  :price => 3 },
-  ]
+      {
+        'tonkotsu' => 10,
+        'kakugiri' => 9,
+        'shoyu'    => 9,
+        'gyoza'    => 5,
+        'edamame'  => 3
+      }
   )
   end
 
@@ -18,5 +18,8 @@ describe RamenBar do
     expect(subject).to respond_to(:menu)
   end
 
+  it "has an oder function that asks for your order" do 
+    expect(subject).to respond_to(:order)
+  end
 
 end
