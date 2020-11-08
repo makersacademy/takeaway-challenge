@@ -2,30 +2,49 @@ require 'order'
 
 describe Order do
 
-  describe "#initialize" do
+  context "#initialize" do
     it "has an empty order array" do
-      expect(subject.order_record).to eq([])
+      expect(subject.basket).to eq([])
     end
 
     it "has a bill of 0" do
-      expect(subject.bill).to eq 0
+      expect(subject.total).to eq 0
     end
   end
 
-  describe "#add" do
+  context "adding items" do
+
     it "raises an error if person tries to order item not on menu" do
       expect { subject.add("foie gras") }.to raise_error("Dish not on menu")
     end
 
-    it "lets user add items to their order" do
+    it "adds items to the user's basket" do
       subject.add("Burger", 1)
-      expect(subject.order_record.length).to eq 1
+      expect(subject.basket).to eq [{:dish=>"Burger", :price=>9}]
+    end
+
+    it "lets user add several items to their order" do
+      subject.add("Burger", 5)
+      expect(subject.basket.length).to eq 5
     end
 
     it "adds items to user's bill" do
-      subject.add("Burger", 1)
-      expect(subject.bill).to eq 9
-    end 
+      subject.add("Burger", 5)
+      expect(subject.total).to eq 45
+    end
+  end
+
+  context "checkout" do
+    it "tell user if basket is empty" do
+      expect { subject.checkout }.to output("Your basket is empty").to_stdout
+    end
+  end
+
+  context "paying" do
+    it "doesn't let customer pay wrong amount" do
+      subject.add("Burger", 5)
+      expect{subject.pay(20)}.to raise_error(StandardError)
+    end
   end
 
 end

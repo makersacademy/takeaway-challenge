@@ -2,26 +2,44 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :order_record, :bill, :menu
+  attr_reader :basket, :total, :menu
 
-  def initialize(bill = 0)
-    @order_record  = []
-    @bill = bill
+  def initialize(total = 0)
+    @basket = []
+    @total = total
     @menu = Menu::DISHES
   end
 
   def add(dish, quantity = 1)
-    raise "Dish not on menu" if !on_menu?(dish)
+    raise "Dish not on menu" unless on_menu?(dish)
 
-    quantity.times { @order_record << dish}
-    quantity.times { @bill += @menu[dish] }
+    quantity.times { @basket << { dish: dish, price: @menu[dish] } }
+    @total += (@menu[dish] * quantity)
+  end
 
+  def checkout
+    if empty?
+      print "Your basket is empty"
+    else
+      @basket.each { |items| puts items }
+      puts "Your total to pay is £#{@total}"
+    end
+  end
+
+  def pay(amount)
+    raise StandardError.new "Incorrect amount. Please pay #{@total}" if amount != @total
+
+    puts "Thank you! Your order was placed and will be delivered within 1 hour."
   end
 
   private
 
   def on_menu?(dish)
     @menu.key?(dish)
+  end
+
+  def empty?
+    @basket.empty?
   end
 
 end
