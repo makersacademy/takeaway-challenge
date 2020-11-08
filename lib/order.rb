@@ -16,6 +16,11 @@ class Order
   end
 
   def to_s
+    if empty?
+      puts "Your basket is empty"
+      return
+    end
+
     @items.uniq.each do |item|
       puts item
       puts "Quantity: #{quantity(item)}"

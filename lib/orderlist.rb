@@ -45,8 +45,10 @@ class OrderList
   end
 
   def add_to_order(order)
+    puts "Input the Item Number:"
     id = @input.gets.chomp.to_i
     selection = @menu.select(id)
+    puts "Enter the quantity you'd like:"
     quantity = @input.gets.chomp.to_i
     order.add_item(selection, quantity)
   end

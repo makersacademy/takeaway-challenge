@@ -22,6 +22,10 @@ describe Order do
   end
 
   describe "#to_s" do
+    it "states that order currently empty if printing empty order" do
+      expect { puts subject }.to output(/empty/).to_stdout
+    end
+
     it "calls puts on each unique food item with quantity in simplest case" do
       test = Order.new([food1])
       expect(food1).to receive(:to_s)
