@@ -44,4 +44,14 @@ describe Basket do
     end
   end
 
+  describe "#total_value" do
+    it 'is called on a Basket instance' do
+      expect(subject).to respond_to(:total_value)
+    end
+
+    it 'returns the basket\'s value' do
+      expect(subject.total_value).to eq(subject.basket_val)
+    end
+  end
+
 end

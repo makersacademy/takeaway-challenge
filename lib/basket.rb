@@ -18,6 +18,10 @@ class Basket
     end
   end
 
+  def total_value
+    @basket_val
+  end
+
   private
 
   def update_basket(item, quantity, item_price)

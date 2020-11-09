@@ -4,6 +4,7 @@ RSpec.describe Takeaway do
 
   let(:restaurant) { double :Restaurant }
   let(:basket) { double :Basket }
+  let(:message) { double :Message }
   subject(:takeaway) { described_class.new(restaurant, basket) }
 
   describe "#initialize" do
@@ -53,6 +54,37 @@ RSpec.describe Takeaway do
     it 'returns the summary of the basket' do
       allow(basket).to receive(:summary).and_return("Rainbow dumpling x4 = £112")
       expect(takeaway.basket_summary).to eq("Rainbow dumpling x4 = £112")
+    end
+  end
+
+  describe "#total" do
+    it 'is called on a takeaway instance' do
+      expect(takeaway).to respond_to(:total)
+    end
+
+    it 'returns the total value of the basket' do
+      random_value = 10
+      allow(basket).to receive(:total_value).and_return(random_value)
+      expect(takeaway.total).to eq(10)
+    end
+  end
+
+  describe "#checkout" do
+    it 'is called on a Takeaway instance' do
+      expect(takeaway).to respond_to(:checkout).with(1).argument
+    end
+
+    it 'raises an error if customer pays wrong amount' do
+      payment = 8
+      allow(basket).to receive(:total_value).and_return(10)
+      expect { takeaway.checkout(payment) }.to raise_error(StandardError)
+    end
+
+    it 'completes the order and sends a message over' do
+      payment = 10
+      allow(basket).to receive(:total_value).and_return(10)
+      allow(takeaway).to receive(:complete_order).and_return("Thank you for your order: £10")
+      expect(takeaway.checkout(payment)).to eq("Thank you for your order: £10")
     end
   end
 end

@@ -1,13 +1,15 @@
 require_relative 'restaurant'
 require_relative 'basket'
+require_relative 'messaging'
 
 class Takeaway
 
   attr_reader :restaurant, :basket
 
-  def initialize(restaurant = Restaurant.new, basket = Basket.new)
+  def initialize(restaurant = Restaurant.new, basket = Basket.new, message = Messaging.new)
     @restaurant = restaurant
     @basket = basket
+    @message = message
   end
 
   def see_menu
@@ -26,6 +28,21 @@ class Takeaway
 
   def total
     @basket.total_value
+  end
+
+  def checkout(payment)
+    raise StandardError.new "Incorrect amount, the amount due is £#{total}." if !correct_amount?(payment)
+    complete_order
+  end
+
+  private
+
+  def correct_amount?(payment)
+    payment == total
+  end
+
+  def complete_order
+    @message.send_text("Thank you for your order: £#{total}")
   end
 
 end
