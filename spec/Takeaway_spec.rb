@@ -4,16 +4,10 @@ require './lib/Menu'
 describe Takeaway do
   subject(:takeaway) { described_class.new }
 
-  describe '#read_menu' do
-    it "Shows the menu with the prices of each dish" do
-      expect(subject.read_menu).to eq(Menu::MENU)
-    end
-  end
+  let(:menu) { double(:menu) }
 
-  describe '#order' do
-    it "takes an argument" do
-      expect(subject).to respond_to(:order).with(1).argument
-    end
+  it "Shows the menu with the prices of each dish" do
+    expect(subject.read_menu).to eq(Menu::MENU)
   end
 end
 

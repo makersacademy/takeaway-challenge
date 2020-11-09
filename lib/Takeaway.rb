@@ -21,8 +21,7 @@ class Takeaway
     break if @food_item == "exit"
     select_quantity
     add_items
-  end
-  confirm_order
+  end 
 end
 
   def select_item
