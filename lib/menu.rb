@@ -2,8 +2,8 @@ class Menu
 attr_reader :menu
 MENU = {"Burger" => 5, "Fries" => 3, "Drink" => 2}
 
-def initialize
-  @menu = MENU
+def initialize(menu= MENU)
+  @menu = menu
 end
 
 def view_menu
