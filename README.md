@@ -39,7 +39,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
   * Orders placed by giving the list of dishes and their quantities
   * Payment must be the exact total. If the sum is not correct the method raises an error. Otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered within the hour.
   * The text sending functionality is implemented using Twilio API.
-  * Creatd environment variables to hide my Twilio API key and mobile number
+  * Created environment variables to hide my Twilio API key and mobile number
 
 * Room for improvement:
   * Needs better tests for the Twilio text confirmation
