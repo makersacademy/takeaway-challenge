@@ -2,10 +2,11 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :dishes, :order
+  attr_reader :dishes, :order, :menu
 
   def initialize
-    @dishes = { hotdog: 5.00, fries: 3.50 }
+    @menu = Menu::MENU
+  #  @dishes = { hotdog: 5.00, fries: 3.50 }
     @order = {}
   end
 
@@ -19,17 +20,17 @@ class Order
   end
 
   def price(dish)
-    @dishes[dish]
+    @menu[dish]
   end
 
   def item_totals
     order.map do |dish, quantity|
-      @dishes[dish] * quantity
+      @menu[dish] * quantity
     end
   end
 
   def has_dish?(dish)
-    !@dishes[dish].nil?
+    !@menu[dish].nil?
   end
 
 end

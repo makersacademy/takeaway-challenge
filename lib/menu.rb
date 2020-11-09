@@ -1,9 +1,14 @@
 class Menu
 
+  MENU = {
+    hotdog: 5.00,
+    fries: 3.50
+  }
+
   attr_reader :dishes
 
-  def initialize
-    @dishes = { hotdog: 5.00, fries: 3.50 }
+  def initialize(dishes = MENU)
+    @dishes = dishes
   end
 
   def print_menu
