@@ -8,17 +8,31 @@ Weekend challenge for the end of week 2 of Makers Academy.
 RSpec, incl mocking & doubles, linking to an API.
 
 ## How the code works
+In addition to installing the Gems listed in the Gemfile, the user will need to register for a trial account with Twilio (it's free).  
+They will then need to create a file called 'keys.rb', which should be saved in the lib folder.  This file should have the following format:  
+```
+class Keys
+
+  attr_reader :account_sid, :auth_token, :recipient, :host
+
+  def initialize(account_sid = '(obtained from Twilio account)',
+     auth_token = '(obtained from Twilio account)', recipient = '(test customer number)',
+     host = '(Twilio trial account number)')
+    @account_sid = account_sid
+    @auth_token = auth_token
+    @recipient = recipient
+    @host = host
+  end
+
+end
+```
 *insert sample run-through here*  
-*will need to advise user to create their own Twilio account, and then to create a file called key.rb, with relevant parameters so that the Twilio key can be kept hidden from GitHub(i.e. by putting it in a file within .gitignore)*
 
-## Challenge status
-Initial review of user stories completed, notes made on types of objects to create.
-Written code & tests for first user story re reading menu.
-Written code within takeaway class to add ordered items to order, tested within RSpec. Moved order to Order class.
-
-## Steps to finish challenge
-*update last, showing what you would do next to complete challenge*
+## Challenge status & steps to finish
+Basic satisfaction of all user stories achieved.  
+To improve the code I would:
 * consider limiting customer to ordering items from menu. Not explicitly requested, but seems logical to include.
+* consider preventing checkout from issuing a text message if order is empty
 
 ## User Stories & task planning
 
@@ -78,10 +92,18 @@ takeaway.total == "Total: £24.96" # should return true
 
 Need to receive a text advising that the order will be delivered before one hour from now. Need to link to current time! Need to utilise Twilio API (text message API).  
 Objects: customer, order  
-Actions: order_acknowledgement(via text)  
+Actions: checkout(generates text)  
 Notes:
 * register for Twilio - done
 * update Gemfile to include twilio-ruby gem - done
-* use own mobile number - make this private & don't push to GitHub  
-* also need to keep Twilio API key private - check how to do this on GitHub
+* use own mobile number - make this private & don't push to GitHub - done!
+* also need to keep Twilio API key private - check how to do this on GitHub - done
 * tests shouldn't send texts, so use mocking or stubs here
+
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.place_order("pizza", 3)
+takeaway.place_order("burger")
+takeaway.checkout # should generate text message confirming order, and return confirmation message.
+```

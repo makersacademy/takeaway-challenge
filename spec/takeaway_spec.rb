@@ -1,7 +1,6 @@
 require 'takeaway'
 
 describe Takeaway do
-
   it "returns a menu when requested" do
     expect(subject).to respond_to(:read_menu)
   end
@@ -11,7 +10,6 @@ describe Takeaway do
   end
 
   describe "#order" do
-
     it "responds to order" do
       expect(subject).to respond_to(:place_order).with(2).arguments
     end
@@ -23,7 +21,6 @@ describe Takeaway do
   end
 
   describe "#basket_summary" do
-
     it "returns summary of the basket" do
       subject.place_order("pizza", 3)
       subject.place_order("burger")
@@ -37,6 +34,16 @@ describe Takeaway do
       subject.place_order("burger")
       expect(subject.total).to eq "Total: £24.96"
     end
+  end
 
+  subject(:takeaway) { described_class.new }
+
+  before do
+    allow(takeaway).to receive(:send_message)
+  end
+
+  it 'sends a payment confirmation text message' do
+    expect(takeaway).to receive(:send_message)
+    takeaway.checkout
   end
 end
