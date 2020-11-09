@@ -11,7 +11,7 @@ describe Menu do
   end
 
   it "can view the menu" do
-    expect(menu.dishes).to eq(Menu::MENU)
+    expect(menu.final_menu).to eq(Menu::MENU)
   end
 
   it "shows the menu when called" do

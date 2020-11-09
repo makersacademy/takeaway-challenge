@@ -5,14 +5,14 @@ class Menu
     fries: 3.50
   }
 
-  attr_reader :dishes
+  attr_reader :final_menu
 
-  def initialize(dishes = MENU)
-    @dishes = dishes
+  def initialize
+    @final_menu = MENU
   end
 
   def print_menu
-    dishes.map do |dish, price|
+    MENU.map do |dish, price|
       "%s £%.2f" % [dish.to_s.capitalize, price]
     end.join(", ")
   end

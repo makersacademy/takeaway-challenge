@@ -3,16 +3,20 @@ require_relative './order.rb'
 
 class TakeAway
 
-  attr_reader :order, :menu, #:dishes
+  attr_reader :order, :menu
 
   def initialize
-    #@dishes = { hotdog: 5.00, fries: 3.50 }
-    @order = {}
+    @menu = menu
+    @order = order
+  end
+
+  def new_order
     @menu = Menu.new
+    @order = Order.new
   end
 
   def place_order
-    @order = Order.new
+    puts "Your order has been placed"
   end
-  
+
 end

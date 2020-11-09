@@ -6,7 +6,6 @@ class Order
 
   def initialize
     @menu = Menu::MENU
-  #  @dishes = { hotdog: 5.00, fries: 3.50 }
     @order = {}
   end
 
