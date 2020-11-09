@@ -1,9 +1,9 @@
-Takeaway Challenge
+Takeaway App
 ==================
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  C.A. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -14,18 +14,83 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Introduction
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The Takeaway App was my own implementation version of the Takeaway Challenge as part of the Makers' curriculum. In short, the app is a command line application that enables the user to place a takeaway order from a predefined restaurant and be able to checkout by receiving a confirmation of their order via SMS.
 
-Task
+The implementation of this application provided good training in,
+
+|#| Software Engineering OOP & TDD Aspects |
+|-|------------------------|
+|1| TDD and Modular Design |
+|2| Use of Doubles, Stubbing and Mocking as part of Dependency Injection |
+|3| Refactoring |
+|4| Polymorphism |
+|5| Object Oriented Delegation |
+|6| Domain Modelling using UML diagrams (Class, Sequence) |
+|7| Class Extraction |
+|8| Use of and interaction with a REST API |
+
+To implement the `messaging functionality` of the application, the Twilio API was used via the 'twilio-ruby' gem.
+
+How to use the app
 -----
 
-* Fork this repo
+This app is implemented in such a way so that the user can interact with a UI from the command line. In order to reach that stage though, several elementary steps need to be followed to ensure flawless functionality of the program.
+
+#### Getting the code from this Repo
+
+Initially, you would need to `clone this repo` in your local repository,
+
+```bash
+$ git clone https://github.com/CodeZeus-dev/takeaway-challenge.git
+```
+
+After cloning the repo, make sure to have all necessary gems required,
+
+```bash
+$ bundle
+```
+
+To install the 'twilio-ruby' gem type the following in the terminal,
+
+```bash
+$ gem install 'twilio-ruby'
+```
+
+#### Storing and importing sensitive information using ENV variables
+
+The SMS functionality of the application requires the use of sensitive information, such as SID and Authorisation Token from a Twilio account. Thus, in order to ensure a safe and smooth run of the application, `Environment Variables` are used for storing sensitive data. In order to be able to receive an SMS with the confirmation of the order, execute the following steps,
+
+1. Create a free [Twilio Account](https://www.twilio.com/try-twilio)
+2. Get a Twilio Phone Number (make sure it belongs to the same country as your phone number)
+3. Note down the following
+   1. Account SID
+   2. Authorisation Token
+   3. Twilio Phone Number
+
+Having aquired all aforementioned data, create the appropriare ENV variables in which to store them. For instance,
+```bash
+$ echo "export TWILIO_SID=ACxxxxxxxxxxxxxxxxx" >> ~/.zshrc
+$ echo "export TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxx" >> ~/.zshrc
+$ echo "export TWILIO_PHONE_NUMBER=+44xxxxxxxxxx" >> ~/.zshrc
+$ echo "export PHONE_NUMBER=+44xxxxxxxxxx" >> ~/.zshrc
+```
+In this example, the ENV variables are appended to the end of the `.zshrc` dot file in my root directory; other alternatives are `.bash_profile` and `.bashrc`. For the changes to take effect (save and load new configuration), execute the following,
+
+```bash
+$ source ~/.zshrc
+```
+In order to use those ENV variables from inside the application, there is no need to change anything in the code itself, but just for reference purposes, in order to access an ENV variable from inside a ruby script, use the following syntax,
+
+```ruby
+# Access an ENV variable and store it in variable
+account_sid = ENV['TWILIO_SID']
+auth_token = ENV['TWILIO_AUTH_TOKEN']
+```
+Similarly, the twilio and personal phone numbers can be accessed.
+
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
