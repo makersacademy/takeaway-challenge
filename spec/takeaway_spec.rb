@@ -32,7 +32,7 @@ describe Takeaway do
     it "returns the basket total" do
       subject.place_order("pizza", 3)
       subject.place_order("burger")
-      expect(subject.total).to eq "Total: £24.96"
+      expect(subject.total).to eq 24.96
     end
   end
 

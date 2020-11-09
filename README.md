@@ -26,16 +26,19 @@ class Keys
 
 end
 ```
-*insert sample run-through here*  
 
 ## Challenge status & steps to finish
-Basic satisfaction of all user stories achieved.  
+Basic satisfaction of all user stories achieved.
+To improve the README I would:
+* add a class diagram
+* add a run through
 To improve the code I would:
-* consider limiting customer to ordering items from menu. Not explicitly requested, but seems logical to include.
+* move the Twilio code into a separate file, to shorten the send_message method
+* limit customer to ordering items from menu
 * consider preventing checkout from issuing a text message if order is empty
 
 ## User Stories & task planning
-
+### User story 1
 > As a customer  
 > So that I can check if I want to order something  
 > I would like to see a list of dishes with prices
@@ -51,7 +54,7 @@ require './lib/takeaway'
 takeaway = Takeaway.new
 takeaway.read_menu # should return menu hash
 ```
-
+### User story 2
 > As a customer  
 > So that I can order the meal I want  
 > I would like to be able to select some number of several available dishes
@@ -69,7 +72,7 @@ require './lib/takeaway'
 takeaway = Takeaway.new
 takeaway.place_order("pizza", 3) # should add 3 pizzas to an order
 ```
-
+### User story 3
 > As a customer  
 > So that I can verify that my order is correct  
 > I would like to check that the total I have been given matches the sum of the various dishes in my order
@@ -85,7 +88,7 @@ takeaway.place_order("pizza", 3)
 takeaway.place_order("burger")
 takeaway.total == "Total: £24.96" # should return true
 ```
-
+### User story 4
 > As a customer  
 > So that I am reassured that my order will be delivered on time  
 > I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered

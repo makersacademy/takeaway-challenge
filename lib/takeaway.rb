@@ -3,11 +3,12 @@ require_relative 'keys'
 require 'twilio-ruby'
 
 class Takeaway
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :order_total
 
-  def initialize(menu = Menu.new, order = {})
+  def initialize(menu = Menu.new, order = {}, order_total = 0)
     @menu = menu
     @order = order
+    @order_total = order_total
   end
 
   def read_menu
@@ -28,16 +29,15 @@ class Takeaway
   end
 
   def total
-    order_total = 0
     @order.each {
-      |dish, quantity| order_total += menu.dishes[dish] * quantity
+      |dish, quantity| @order_total += menu.dishes[dish] * quantity
     }
-    return "Total: £#{order_total}"
+    return @order_total
   end
 
   def send_message
     keys = Keys.new
-    
+
     client = Twilio::REST::Client.new keys.account_sid, keys.auth_token
 
     time = (Time.now + 3600).strftime("%k:%M")
@@ -51,6 +51,6 @@ class Takeaway
 
   def checkout
     send_message
-    return "Thanks for your order, you will receive SMS confirmation"
+    return "Thanks for your order: £#{total}"
   end
 end
