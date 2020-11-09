@@ -11,20 +11,24 @@ class Restaurant
   end
 
   def see_menu
-    @menu.dishes
+    @menu.dishes.map { |dish, price| "#{dish}: £#{price}" }
   end
 
-  def add_to_order(dish, quantity = 1)
-    @order_item = Order.new(dish, quantity)
-    raise 'This dish is not on the menu' unless item_on_menu?(dish)
+  def add_to_order(dish, quantity = 1, total)
+    @order_item = Order.new(dish, quantity, total)
+    raise 'This is not on the menu' unless item_on_menu?(dish)
 
-    store_order_item
+    store_order_item(dish, quantity, total)
+  end
+
+  def see_basket
+    @basket.map { |item| "#{item[:dish]} x#{item[:quantity]} = £#{item[:total]}" }
   end
 
 private
 
-  def store_order_item
-    @basket << @order_item
+  def store_order_item(dish, quantity, total)
+    @basket << { dish: dish, quantity: quantity, total: total }
   end
 
   def item_on_menu?(item)
