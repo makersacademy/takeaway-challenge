@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
 group :test do
+  gem 'dotenv'
   gem 'rspec'
   gem 'rubocop', '0.79.0'
-  gem 'twilio-ruby'
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
+  gem 'twilio-ruby'
 end
