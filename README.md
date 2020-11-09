@@ -13,7 +13,8 @@ Welcome to Savanna's Takeaway
        ':..:'                ':..:'
 
  ```
-Ooh helloo! In this challenge, the task was to create a Ruby takeaway application, whereby the customer can view a menu, select dishes, place an order and receive a deliver confirmation text.
+Ooh helloo!
+In this challenge, the task was to create a Ruby takeaway application, whereby the customer can view a menu, select dishes, place an order and receive a deliver confirmation text.
 This application was developed by TDD using RSpec, making use of mocking to prevent external dependencies, and adheres to the single-responsibility principle of OOD.
 I used the Twilio API to send text messages and exercised encapsulation, dependency-injection and abstraction. I hope you like it!
 
