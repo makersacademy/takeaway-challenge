@@ -15,19 +15,18 @@ class OrderList
     
     loop do
       show_choices
-
       response = @input.gets.chomp
-      break if response == "quit"
-
-      if response == "1"
+      case response
+      when "1"
         show_menu
-      elsif response == "2"
+      when "2"
         add_to_order(pending_order)
-      elsif response == "confirm"
+      when "quit"
+        break
+      when "confirm"
         finalise_order(pending_order)
         break
       end
-
       display_order(pending_order)
     end
   end
