@@ -8,5 +8,5 @@ auth_token = ENV["TWILIO_AUTH_TOKEN"]
 @client.messages.create(
   to: ENV["MY_PHONE_NUMBER"],
   from: "+12058989460",
-  body: "Thank you! Your order was placed and will be delivered before #{Time.now+3600}"
+  body: "Thank you! Your order was placed and will be delivered before #{Time.now + 3600}"
 )
