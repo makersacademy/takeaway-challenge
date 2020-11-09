@@ -27,4 +27,14 @@ RSpec.describe Menu do
     end
   end
 
+  describe "#price?" do
+    it 'is called on a Menu instance' do
+      expect(food_menu).to respond_to(:price?).with(1).argument
+    end
+
+    it 'returns the price of an item' do
+      expect(subject.price?('Rainbow dumpling')).to eq(28)
+    end
+  end
+
 end

@@ -16,4 +16,8 @@ class Restaurant
     @menu.available?(item)
   end
 
+  def item_price(item)
+    @menu.price?(item)
+  end
+
 end

@@ -37,4 +37,15 @@ RSpec.describe Restaurant do
       expect(restaurant.check_availability(dish)).to eq(true).or eq(false)
     end
   end
+
+  describe "#item_price" do
+    it 'is called on Restaurant object' do
+      expect(restaurant).to respond_to(:item_price).with(1).argument
+    end
+
+    it 'returns the price of the item argument' do
+      allow(food_menu).to receive(:price?).with('fish').and_return(7)
+      expect(restaurant.item_price('fish')).to eq(7)
+    end
+  end
 end

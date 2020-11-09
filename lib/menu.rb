@@ -14,4 +14,8 @@ class Menu
     @food_list.keys.include?(item)
   end
 
+  def price?(item)
+    @food_list[item]
+  end
+
 end
