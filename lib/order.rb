@@ -1,9 +1,9 @@
 require_relative './menu.rb'
+require_relative './message.rb'
 
 class Order
-  attr_reader :balance, :menu, :order
+  attr_reader :menu, :order
   def initialize(order = {}, menu = Menu.new)
-    @balance = balance
     @menu = menu
     @order = order
   end
@@ -17,10 +17,15 @@ class Order
   end
 
   def current_total
-    @order.sum { |item,quantity| @menu.food[item]*quantity}
+    @order.sum { |item, quantity| @menu.food[item] * quantity }
+  end
+
+  def current_order
+    @order.map { |item, amount| "#{item} --- Quantity; #{amount}" }.join("\n")
   end
 
   def checkout
-    # Will need to do the message class to know whats next
+    message = Message.new
+    message.confirmation
   end
 end

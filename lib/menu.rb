@@ -13,6 +13,6 @@ class Menu
   end
 
   def view_menu
-    @food.map { |item, price|"#{item} --- £#{price}" }.join("\n")
+    @food.map { |item, price| "#{item} --- £#{price}" }.join("\n")
   end
 end
