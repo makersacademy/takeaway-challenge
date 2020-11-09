@@ -12,23 +12,7 @@ class OrderList
 
   def new_order
     pending_order = @order_class.new
-    
-    loop do
-      show_choices
-      response = @input.gets.chomp
-      case response
-      when "1"
-        show_menu
-      when "2"
-        add_to_order(pending_order)
-      when "quit"
-        break
-      when "confirm"
-        finalise_order(pending_order)
-        break
-      end
-      display_order(pending_order)
-    end
+    take_users_order(pending_order)
   end
 
   private
@@ -82,5 +66,25 @@ class OrderList
       to: ENV['TWILIO_TO'],
       body: message
     )
+  end
+
+  def take_users_order(order)
+    loop do
+      show_choices
+
+      case @input.gets.chomp
+      when "1"
+        show_menu
+      when "2"
+        add_to_order(order)
+      when "quit"
+        break
+      when "confirm"
+        finalise_order(order)
+        break
+      end
+      
+      display_order(order)
+    end
   end
 end
