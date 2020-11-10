@@ -5,10 +5,10 @@ class Menu
     fries: 3.50
   }
 
-  attr_reader :final_menu
+  attr_reader :menu
 
   def initialize
-    @final_menu = MENU
+    @menu = MENU
   end
 
   def print_menu

@@ -4,7 +4,7 @@ describe Menu do
   subject(:menu) { described_class.new }
 
   it "can view the menu" do
-    expect(menu.final_menu).to eq(Menu::MENU)
+    expect(menu.menu).to eq(Menu::MENU)
   end
 
   it "shows the menu when called" do
