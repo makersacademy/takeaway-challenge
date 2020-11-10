@@ -6,6 +6,11 @@ describe Menu do
   end
 
   it "initializes with a full menu" do
-    expect(subject.dishes.length).to eq 5
+    expect(subject.dishes).to include("pizza", "burger", "steak", "ice cream", "chow mein")
+  end
+
+  it "can be initialized with a custom menu" do
+    custom_menu = Menu.new(dishes = { "chips" => 1.50, "fish" => 3.50, "sausage" => 2.50})
+    expect(custom_menu.dishes).to include("chips", "fish", "sausage")
   end
 end

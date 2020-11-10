@@ -6,7 +6,7 @@ describe Takeaway do
   end
 
   it "returns the full menu when requested" do
-    expect(subject.menu.dishes.length).to eq 5
+    expect(subject.read_menu).to include("pizza", "burger", "chow mein", "steak", "ice cream")
   end
 
   describe "#order" do
