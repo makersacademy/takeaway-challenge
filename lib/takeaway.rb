@@ -11,7 +11,6 @@ class TakeAway
   end
 
   def new_order
-    @menu = Menu.new
     @order = Order.new
   end
 

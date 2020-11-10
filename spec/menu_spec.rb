@@ -3,13 +3,6 @@ require 'menu'
 describe Menu do
   subject(:menu) { described_class.new }
 
-  let(:dishes) do
-    {
-      hotdog: 5.00,
-      fries: 3.50
-    }
-  end
-
   it "can view the menu" do
     expect(menu.final_menu).to eq(Menu::MENU)
   end

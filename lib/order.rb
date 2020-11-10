@@ -18,6 +18,12 @@ class Order
     item_totals.inject(:+)
   end
 
+  def has_dish?(dish)
+    !@menu[dish].nil?
+  end
+
+private
+
   def price(dish)
     @menu[dish]
   end
@@ -26,10 +32,6 @@ class Order
     order.map do |dish, quantity|
       @menu[dish] * quantity
     end
-  end
-
-  def has_dish?(dish)
-    !@menu[dish].nil?
   end
 
 end
