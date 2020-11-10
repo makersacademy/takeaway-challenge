@@ -9,14 +9,10 @@ describe TakeAway do
     end
   end
 
-  context "The Menu" do
-    it "creates a new menu when #new_order is called" do
+  context "The Order" do
+    it "creates a new order when #new_order is called" do
       expect(takeaway.new_order).to be_an_instance_of Order
     end
-
-  end
-
-  context "The Order" do
 
   end
 
