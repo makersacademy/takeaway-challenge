@@ -7,11 +7,20 @@ class TakeAway
 
   def initialize
     @menu = Menu.new
-    @order = order
+  #  @order = order
   end
+
+  # def order
+  #   @order
+  # end
 
   def new_order
     @order = Order.new
+    @menu.print_menu
+  end
+
+  def add_item(dish, quantity)
+    @order.add(dish, quantity)
   end
 
   def place_order

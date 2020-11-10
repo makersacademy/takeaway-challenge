@@ -21,13 +21,6 @@ describe Order do
     expect(main_order.order).to eq(order)
   end
 
-  it "calculates the total for the order" do
-    main_order.add(:hotdog, 2)
-    main_order.add(:fries, 1)
-    total = 13.50
-    expect(main_order.total).to eq(total)
-  end
-
   it "tells if a dish is on the menu" do
     expect(main_order.has_dish?(:hotdog)).to be true
   end

@@ -12,17 +12,18 @@ class Order
   def add(dish, quantity)
     fail "#{dish.capitalize} is not on the menu!" unless has_dish?(dish)
     order[dish] = quantity
+    total
   end
-
-  def total
-    item_totals.inject(:+)
-  end
-
+  
   def has_dish?(dish)
     !@menu[dish].nil?
   end
 
 private
+
+  def total
+    item_totals.inject(:+)
+  end
 
   def price(dish)
     @menu[dish]

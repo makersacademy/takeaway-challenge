@@ -8,12 +8,5 @@ describe TakeAway do
       expect(takeaway).to be_a_kind_of TakeAway
     end
   end
-
-  context "The Order" do
-    it "creates a new order when #new_order is called" do
-      expect(takeaway.new_order).to be_an_instance_of Order
-    end
-
-  end
-
+  
 end
