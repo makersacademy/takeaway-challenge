@@ -1,83 +1,112 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+Create a basic takeaway ordering system, containing a menu of items and prices, which allows the user to place an order and to receive text confirmation of that order.
+
+## Motivation for Project
+Weekend challenge for the end of week 2 of Makers Academy.
+
+## Skills Practised
+RSpec, incl mocking & doubles, linking to an API.
+
+## How the code works
+In addition to installing the Gems listed in the Gemfile, the user will need to register for a trial account with Twilio (it's free).  
+They will then need to create a file called 'keys.rb', which should be saved in the lib folder.  This file should have the following format:  
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+class Keys
 
- ```
+  attr_reader :account_sid, :auth_token, :recipient, :host
 
-Instructions
--------
+  def initialize(account_sid = '(obtained from Twilio account)',
+     auth_token = '(obtained from Twilio account)', recipient = '(test customer number)',
+     host = '(Twilio trial account number)')
+    @account_sid = account_sid
+    @auth_token = auth_token
+    @recipient = recipient
+    @host = host
+  end
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+end
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Challenge status & steps to finish
+Basic satisfaction of all user stories achieved.
+To improve the README I would:
+* add a class diagram
+* add a run through
+To improve the code I would:
+* move the Twilio code into a separate file, to shorten the send_message method
+* limit customer to ordering items from menu
+* consider preventing checkout from issuing a text message if order is empty
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## User Stories & task planning
+### User story 1
+> As a customer  
+> So that I can check if I want to order something  
+> I would like to see a list of dishes with prices
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+Need to return a menu when requested.  
+Objects: customer, menu (list of dishes)  
+Actions: read_menu  
+Notes:
+* create a list of dishes with prices - a hash sounds best
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.read_menu # should return menu hash
+```
+### User story 2
+> As a customer  
+> So that I can order the meal I want  
+> I would like to be able to select some number of several available dishes
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Need to be able to place order for several dishes  
+Objects: customer, order  
+Actions: place_order  
+Notes:
+* customer to be able to order multiples of each dish
+* confirmation sentence after each item
+* store order in a hash, with name of menu item as key and number of menu items as value.  Then refer to dishes hash when calculating total
 
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.place_order("pizza", 3) # should add 3 pizzas to an order
+```
+### User story 3
+> As a customer  
+> So that I can verify that my order is correct  
+> I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-In code review we'll be hoping to see:
+Need to check that total is correct  
+Objects: customer, order, total  
+Actions: total
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.place_order("pizza", 3)
+takeaway.place_order("burger")
+takeaway.total == "Total: £24.96" # should return true
+```
+### User story 4
+> As a customer  
+> So that I am reassured that my order will be delivered on time  
+> I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+Need to receive a text advising that the order will be delivered before one hour from now. Need to link to current time! Need to utilise Twilio API (text message API).  
+Objects: customer, order  
+Actions: checkout(generates text)  
+Notes:
+* register for Twilio - done
+* update Gemfile to include twilio-ruby gem - done
+* use own mobile number - make this private & don't push to GitHub - done!
+* also need to keep Twilio API key private - check how to do this on GitHub - done
+* tests shouldn't send texts, so use mocking or stubs here
 
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```
+require './lib/takeaway'
+takeaway = Takeaway.new
+takeaway.place_order("pizza", 3)
+takeaway.place_order("burger")
+takeaway.checkout # should generate text message confirming order, and return confirmation message.
+```

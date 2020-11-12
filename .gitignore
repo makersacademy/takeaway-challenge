@@ -1,5 +1,8 @@
 /**/.DS_Store
 /coverage
+twilio.rb
+keys.rb
+keys_spec.rb
 
 # Local cache of Rubocop remote config
 .rubocop-*
