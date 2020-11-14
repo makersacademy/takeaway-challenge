@@ -13,7 +13,18 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
+RESPONDS To Meals class
+2.5.0 :001 > require './lib/Meals'
+ => true
+2.5.0 :002 > meals = Meals.new
+ => #<Meals:0x00007fba1282dbf0>
+ ---------------------------------
+CHECK dishes hash in the order method
+2.5.0 :002 > meals = Meals.new
+ => #<Meals:0x00007fac0b8c9088 @order=[], @dishes=[{:dish=>"Soup", :price=>1.5}, {:dish=>"Fish and Chips", :price=>3.0}, {:dish=>"Curry", :price=>3.25}]>
+2.5.0 :003 > meals.order('Soup')
+ => ["Soup"]
+ ---------------------------------- 
 Instructions
 -------
 
