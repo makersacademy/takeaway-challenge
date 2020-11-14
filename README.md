@@ -12,7 +12,12 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
- ```
+ ``
+
+ takeaway = Takeaway.new
+ => #<Takeaway:0x00007f93150af0a0>
+ 2.5.0 :001 > menu = Menu.new
+ => #<Menu:0x00007faed81414d0 @menu_list={"rice"=>1.5, "pasta"=>6.5, "pizza"=>7.5}> `
 
 Instructions
 -------
