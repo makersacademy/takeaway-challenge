@@ -1,0 +1,57 @@
+body {
+  background-color: #addef0;
+}
+
+#bottom-section{
+  text-align: center;
+}
+
+button{
+  margin-right: 10px;
+  display: inline-block;
+}
+
+#container {
+  margin: 0 auto;
+  width: 60%;
+}
+
+h1{
+  text-align: center;
+  font-family: 'Big Shoulders Inline Display', cursive;
+}
+
+h3{
+  text-align: left;
+}
+
+i{
+  display: inline-block;
+}
+
+#order-section{
+  margin: 0 auto;
+  width: 50%;
+}
+
+.quant {
+  text-align:center;
+}
+
+td {
+  font-family: 'Roboto', sans-serif;
+  padding: 5px;
+}
+
+th {
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+}
+
+#thank-you {
+  display: none;
+}
+
+.title{
+  margin: 0 auto;
+}
