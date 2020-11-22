@@ -2,7 +2,6 @@
 
 class Menu{
   constructor(){
-    this.total = 0;
     this.order = [];
     this.items = [
      {"item": "fish and chips", "price": 4.99, "quantity": 0, "totalPrice": 0},
@@ -35,19 +34,47 @@ class Menu{
            let price = this.items[i].price * quantity;
            this.order.push(food, quantity, price);
           }
-       }
-       console.log(this.order);
+        }return this.order;
+      }
 
-}
+      receipt(){
+        let array = [];
+        for (var i = 0; i <this.items.length; i++){
+          if (this.items[i].quantity > 0){
+            let quantity = this.items[i].quantity;
+            let food = this.items[i].item;
+            let price = this.items[i].price * quantity;
+             this.order.push({"food": food, "quantity": quantity, "price": price});
+           }
+
+         }   return this.order;
+
+
+         }
+
+
+
+
 
    totals() {
-   let combined = this.choice();
-   let array = combined.filter(price => combined[2]);
-    let final = array.reduce((a,b) => a + b, 0)
-   return final;
-
-   }
-
-
-
+     let array = this.order;
+   let prices =[];
+    for (var j = 0; j < array.length; j++){
+      prices.push(array[j]["price"]);
+    }
+    let total = 0;
+        for (var l = 0; l < prices.length; l++){
+                 total += prices[l];
+      }
+       return total;
   }
+//
+//   receipt(){
+//     let array2 = this.choice();
+//     for (var j = 0; j < array2.length; j++){
+//       return array2[j] + array2[j+1] + array2[j+2]+'\n';
+//       j +=2;
+//   }
+// }
+//}
+}

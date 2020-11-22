@@ -73,8 +73,17 @@ $(document).ready(function() {
             };
 
             $('#accept-bill').click(function() {
-              menu.choice();
-              // menu.total();
-  })
+              let array1 = menu.receipt();
+              for (let p = 0; p <array1.length; p++){
+                var element = document.createElement("h3");
+                element.innerHTML = array1[p]["quantity"] + ' ' + array1[p]["food"]
+                + ' ' + array1[p]["price"];
+                $("#ordered-item").append(element);
+              }
+              $(`#total-price`).text(menu.totals());
 
-});
+              })
+
+
+
+            })

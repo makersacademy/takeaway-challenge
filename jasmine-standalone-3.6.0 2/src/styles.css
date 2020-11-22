@@ -16,6 +16,9 @@ h1{
   text-align: center;
   font-family: 'Big Shoulders Inline Display', cursive;
 }
+h3{
+  text-align: left;
+}
 i{
   display: inline-block;
 }
