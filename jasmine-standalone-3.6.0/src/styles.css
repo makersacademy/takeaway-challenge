@@ -1,12 +1,16 @@
 body {
   background-color: #addef0;
 }
+
 #bottom-section{
   text-align: center;
 }
+
 button{
   margin-right: 10px;
+  display: inline-block;
 }
+
 #container {
   margin: 0 auto;
   width: 60%;
@@ -16,9 +20,11 @@ h1{
   text-align: center;
   font-family: 'Big Shoulders Inline Display', cursive;
 }
+
 h3{
   text-align: left;
 }
+
 i{
   display: inline-block;
 }
@@ -28,20 +34,24 @@ i{
   width: 50%;
 }
 
-.title{
-  margin: 0 auto;
+.quant {
+  text-align:center;
 }
+
 td {
   font-family: 'Roboto', sans-serif;
+  padding: 5px;
 }
+
 th {
   font-family: 'Roboto', sans-serif;
   text-align: left;
 }
 
-.quant {
-  text-align:center;
+#thank-you {
+  display: none;
 }
-td {
-  padding: 5px;
+
+.title{
+  margin: 0 auto;
 }
