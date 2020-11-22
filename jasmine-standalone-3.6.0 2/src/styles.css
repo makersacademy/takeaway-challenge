@@ -1,0 +1,44 @@
+body {
+  background-color: #addef0;
+}
+#bottom-section{
+  text-align: center;
+}
+button{
+  margin-right: 10px;
+}
+#container {
+  margin: 0 auto;
+  width: 60%;
+}
+
+h1{
+  text-align: center;
+  font-family: 'Big Shoulders Inline Display', cursive;
+}
+i{
+  display: inline-block;
+}
+
+#order-section{
+  margin: 0 auto;
+  width: 50%;
+}
+
+.title{
+  margin: 0 auto;
+}
+td {
+  font-family: 'Roboto', sans-serif;
+}
+th {
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+}
+
+.quant {
+  text-align:center;
+}
+td {
+  padding: 5px;
+}

@@ -1,0 +1,145 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Scottish Takeaway</title>
+  <meta name="description" content="The Scottish Takeaway">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Display:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <table class="title">
+    <tr>
+      <td>
+  <i class="fas fa-hamburger"></i>
+</td>
+<td>
+<h1>The Scottish Takeaway</h1>
+</td>
+<td>
+<i class="fas fa-pizza-slice"></i>
+</td>
+</tr>
+</table>
+<div>
+
+<table id="container">
+  <tr>
+    <th>Item</th>
+    <th>Price</th>
+    <th></th>
+    <th>Quantity</th>
+  </tr>
+  <tr>
+    <td>Fish and Chips</td>
+    <td>4.99</td>
+    <td><button id="quantity-increase0"><i class="fas fa-plus"></i></button></td>
+      <td><span id="quant-0">0</span></td>
+      <td><button id="quantity-decrease0"><i class="fas fa-minus"></i></button></td>
+  </tr>
+  <tr>
+    <td>Deep Fried Pizza</td>
+    <td>3.99</td>
+    <td><button id="quantity-increase1"><i class="fas fa-plus"></i></button></td>
+<td><span id="quant-1">0</span></td>
+    <td><button id="quantity-decrease1"><i class="fas fa-minus"></i></button></td>
+
+
+
+  </tr>
+  <tr>
+    <td>Battered Sausage</td>
+    <td>2.99</td>
+    <td><button id="quantity-increase2"><i class="fas fa-plus"></i></button></td>
+<td><span id="quant-2">0</span></td>
+   <td ><button id="quantity-decrease2"><i class="fas fa-minus"></i></button></td>
+
+
+  </tr>
+  <tr>
+    <td>Battered White Pudding</td>
+    <td>2.50</td>
+    <td><button id="quantity-increase3"<i class="fas fa-plus"></i></button></td>
+<td><span id="quant-3">0</span></td>
+    <td><button id="quantity-decrease3"><i class="fas fa-minus"></i></button></td>
+
+
+  </tr>
+  <tr>
+    <td>Deep Fried Mars Bar</td>
+    <td>1.50</td>
+    <td><button id="quantity-increase4"><i class="fas fa-plus"></i></button></td>
+<td><span id="quant-4">0</span></td>
+ <td><button id="quantity-decrease4"><i class="fas fa-minus"></i></button></td>
+
+
+  </tr>
+  <tr>
+    <td>Irn Bru 1.5l bottle</td>
+    <td>1.99</td>
+    <td><button id="quantity-increase5"><i class="fas fa-plus"></i></button></td>
+<td><span id="quant-5">0</span></td>
+   <td><button id="quantity-decrease5"><i class="fas fa-minus"></i></button></td>
+
+
+  </tr>
+</table>
+</div>
+
+<section>
+  <div id="bottom-section">
+    <table id="order-section">
+      <tr>
+        <td>
+    <h2>Your Order</h2></td>
+      <td id="start-over">
+      <button type="" name="clear">Start Again</button>
+    </td>
+    <td id="accept-bill">
+    <button type="" name="confirm">Confirm Order</button>
+  </td>
+    </tr>
+      <tr>
+        <th>
+        </th>
+        <th>Price
+        </th>
+      </tr>
+      <tr>
+        <td id="list-of-items"><span id="ordered-items"></span>
+        </td>
+        <td id="price-per-item">
+        </td>
+      </tr>
+      <tr>
+        <th>Total Price: £
+        </th>
+        <th id="total-price">
+        </th>
+      </tr>
+    </table>
+      <form action="" method="" id="phone-form">
+        <input type="text" name="name" id="name" placeholder="name">
+        <input type="number" name="phone" id="phone" placeholder="mobile number">
+        <button type="submit" name="Submit">Submit</button>
+      </form>
+  </div>
+</section>
+<section>
+  <h1>Thank You For Your Order</h1>
+</section>
+<script src="https://kit.fontawesome.com/de2b0ad954.js" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+ <script src="interface.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
