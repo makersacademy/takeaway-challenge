@@ -48,7 +48,23 @@ I would like to *RECEIVE TEXT* such as "Thank you! Your order was placed and wil
 | ------------------------- | --------- |
 | list of dishes with price | order     |
 | select number             | order     |
-|                           |           |
+| available dishes          | order     |
+| check total               | order     |
+| receive text              | order     |
+
+| Actions                   | Property it reads or changes |
+| ------------------------- | ---------------------------- |
+| list of dishes with price | order                        |
+| select number             | order                        |
+| available dishes          | status(owned by order )      |
+| check total               | order                        |
+| receive text              | order                        |
+
+## Class diagrams for these user stories:
+
+| Class (Owners) | Properties (instance variables) | Actions (methods) |
+| -------------- | ------------------------------- | ----------------- |
+| Order          |                                 |                   |
 
 - Hints on functionality to implement:
 
