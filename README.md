@@ -16,8 +16,9 @@
 
 ## user stories:
 
-\**Nouns
-*Actions highlighted in blue.
+\*\*Nouns
+
+\*Actions
 
 ```
 As a customer
