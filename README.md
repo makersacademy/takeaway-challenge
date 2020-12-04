@@ -16,23 +16,38 @@
 
 ## user stories:
 
+\**Nouns
+*Actions highlighted in blue.
+
 ```
 As a customer
-So that I can check if I want to **order** something
-I would like to see a *list of dishes with prices*
+So that I can check if I want to **ORDER** something
+I would like to see a *LIST OF DISHES WIHT PRICES*
 
 As a customer
 So that I can order the meal I want
-I would like to be able to *select some number* of several *available dishes*
+I would like to be able to *SELECT some NUMBER* of several *AVAILABLE DISHES*
 
 As a customer
 So that I can verify that my order is correct
-I would like to *check that the total* I have been given matches the sum of the various dishes in my order
+I would like to *CHECK that the TOTAL* I have been given matches the sum of the various dishes in my order
 
 As a customer
 So that I am reassured that my order will be delivered on time
-I would like to *receive a text* such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+I would like to *RECEIVE TEXT* such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+## Investigating the user stories.
+
+| Nouns | Property or Owner of property? |
+| ----- | ------------------------------ |
+| order | owner                          |
+
+| Actions                   | Owned by? |
+| ------------------------- | --------- |
+| list of dishes with price | order     |
+| select number             | order     |
+|                           |           |
 
 - Hints on functionality to implement:
 
