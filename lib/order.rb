@@ -21,4 +21,10 @@ class Order
     @menu.has_key?(dish)
   end
 
+  def check_order_total
+    possible_total = 0
+    @contents.map { |dish| possible_total += @menu[dish] }
+    possible_total == @total
+  end
+
 end
