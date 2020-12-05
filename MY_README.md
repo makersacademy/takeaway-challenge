@@ -40,3 +40,19 @@ So that I am reassured that my order will be delivered on time
     * Added menu.rb and menu_spec.rb
     * Wrote menu functionality (Provided menu hash, can call open on menu to display the current items and prices).
     * TDD the menu with 100% test coverage.
+  
+2. 2nd Commit
+    * Added receipt files (spec and lib) to use to record customer order and costs.
+    * Added takeaway files (spec and lib) to provide takeaway functionality.
+    * Added placeholders in receipt file to plan out what methods I want to be able to call.
+
+3. 3rd Commit
+    * Changed name of receipt to order to better reflect nature of the file.
+    * Added in functionality for the following methods:
+        * add_to_basket - Adds customer items to the basket with quantities provided.
+        * order_summary - Print of the quantity and item for the customer.
+        * order_cost - calculates the cost of all items in the basket.
+        * empty_basket - deletes all items in the basket.
+    * TDD all of the above methods with 100% test coverage.
+    * Analysed code quality using 'rubocop' gem:
+        * All checked and only offence is the use of the string print formatter to return the price to two decimal places.
