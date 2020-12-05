@@ -10,13 +10,13 @@ tom_yum = Dish.new("tom yum goong", 70)
 gaeng_som = Dish.new("gaeng som", 80)
 
 # create menu and add all dishes to menu
-thai_menu = Menu.new
-thai_menu.add_dish(pad_kapow)
-thai_menu.add_dish(pad_thai)
-thai_menu.add_dish(papaya_salad)
-thai_menu.add_dish(green_curry)
-thai_menu.add_dish(tom_yum)
-thai_menu.add_dish(gaeng_som)
+@thai_menu = Menu.new
+@thai_menu.add_dish(pad_kapow)
+@thai_menu.add_dish(pad_thai)
+@thai_menu.add_dish(papaya_salad)
+@thai_menu.add_dish(green_curry)
+@thai_menu.add_dish(tom_yum)
+@thai_menu.add_dish(gaeng_som)
 
 # customer interaction
 puts "Welcome to the Thai Takeaway!"
@@ -27,13 +27,18 @@ def show_customer_choices
   puts "2 - create an order"
 end
 
+def show_menu
+  puts "Please see our full menu:"
+  @thai_menu.see_menu
+end
+
 while true
   show_customer_choices
   choice = gets.chomp.to_i
   if choice == 0
     break
   elsif choice == 1
-    thai_menu.see_menu
+    show_menu
   elsif choice == 2
     puts "running create order function"
   else
@@ -47,7 +52,7 @@ end
 #   puts "Type 'menu' to see the menu"
 #   choice = gets.chomp
 #   if choice == "menu"
-#     thai_menu.see_menu
+#     @thai_menu.see_menu
 #     break
 #   end
 #   puts "I don't uderstand what you typed! Try again..."
