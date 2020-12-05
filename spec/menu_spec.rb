@@ -7,11 +7,11 @@ describe Menu do
   end
 
   it 'responds to contents' do
-    expect(menu).to respond_to(:contents)
+    expect(menu).to respond_to(:dishes)
   end
 
   it 'initializes with MEALS by default' do
-    expect(menu.contents).to include("chicken curry" => 12)
+    expect(menu.dishes).to include("chicken curry" => 12)
   end
 
   it 'responds to view_menu' do
@@ -20,7 +20,7 @@ describe Menu do
 
   describe '#view_menu' do
     it 'returns a list of dishes and their prices' do
-      expect(menu.view_menu).to include(menu.contents)
+      expect(menu.view_menu).to include(menu.dishes)
     end
   end
 end

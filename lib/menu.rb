@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :contents
+  attr_reader :dishes
 
   MEALS = {
     "chicken curry" => 12,
@@ -11,12 +11,12 @@ class Menu
     "braised pork belly" => 15
   }
 
-  def initialize(contents = MEALS)
-    @contents = contents
+  def initialize(dishes = MEALS)
+    @dishes = dishes
   end
 
   def view_menu
-    @contents.each { |dish, price| puts "#{dish}: #{price}" }
+    @dishes.each { |dish, price| puts "#{dish}: #{price}" }
   end
 
 end
