@@ -39,6 +39,24 @@ describe Order do
 
   it 'will display the order for the customer' do
     subject.add_to_order("1 Chip")
-    expect(subject.order_array).to eq([{"1 Chip" => 90 }])
+    expect { subject.view_order }.to output("1 Chip: £90\n").to_stdout
+  end
+
+  describe '#total' do
+    # let(:menu) { double :menu, price: '£1.00', contains?: true }
+    # subject(:order) { described_class.new(menu) }
+    #
+    # it 'order total to be sum of items added' do
+    #   order.add_to_order('Pizza')
+    #   order.add_to_order('Pizza')
+    #   expect(order.total).to eq '£2.00'
+    # end
+    # menu = double("menu")
+    # allow(menu).to receive(:add_to_order).and_
+
+
+    it 'responds to total' do
+      expect(subject).to respond_to(:total)
+    end
   end
 end

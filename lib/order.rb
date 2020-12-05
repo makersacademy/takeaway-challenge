@@ -14,6 +14,7 @@ class Order
   def add_to_order(item, quantity = ORDER_MIN)
     raise "That is not on the menu!" unless item_exists?(item)
     quantity.times { @order_array << { item => @menu.price(item) } }
+    "You added #{item} to your order and it cost you £#{@menu.price(item)}!"
   end
 
   def item_exists?(item)
@@ -24,6 +25,14 @@ class Order
     @order_array.each do |items|
       items.each { |item, price| puts "#{item}: £#{price}" }
     end
+  end
+
+  def total
+    price_array = []
+    @order_array.each do |items|
+      items.each { |item, price| price_array << price }
+    end
+    puts "Your order comes to a total of £#{price_array.sum}"
   end
 
 
