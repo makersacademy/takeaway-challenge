@@ -13,7 +13,6 @@ class Menu
   end
 
   def see_menu
-    # @dishes[0].price
     menu_text = ""
     @dishes.each{ |dish|
     menu_text << "#{dish.name}, #{dish.price}\n"
