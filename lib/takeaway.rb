@@ -7,7 +7,12 @@ class Takeaway
   end
 
   def place_order
-    @menu.check_total
+    fail "Total incorrect!" unless @menu.check_total
+    order_confirmation
+  end
+
+  def order_confirmation
+    "Thank you! Your order was placed and will be delivered before 18:52"
   end
 
 end
