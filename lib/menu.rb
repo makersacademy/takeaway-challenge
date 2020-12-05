@@ -10,4 +10,7 @@ attr_reader :menu
     @menu.each { |item, price| puts "#{item}: £#{price}" }
   end
 
+  def price(item)
+    @menu[item]
+  end
 end
