@@ -17,4 +17,15 @@ class Menu
     @dishes.each { |item| return "#{item.name}: £#{item.price}" }
   end
 
+  def check_total(order, given_total)
+    totalizer(order) == given_total
+  end
+
+  private
+
+  def totalizer(order)
+    price_array = []
+    order.each { |dish| price_array << dish.price }
+    price_array.sum
+  end
 end

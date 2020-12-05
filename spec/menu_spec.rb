@@ -18,4 +18,11 @@ describe Menu do
       expect(subject.print_menu).to eq "Pie: £5"
     end
   end
+
+  describe "#check_total" do
+    it "ensures the total order price is correct" do
+      order = [dish, dish]
+      expect(subject.check_total(order, 10)).to eq true
+    end
+  end
 end
