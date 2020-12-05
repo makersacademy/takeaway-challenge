@@ -1,7 +1,7 @@
 require './lib/menu.rb'
 require './lib/dish.rb'
 
-# preset list of dishes
+# create list of dishes
 pad_kapow = Dish.new("pad kapow", 50)
 pad_thai = Dish.new("pad thai", 50)
 papaya_salad = Dish.new("som tum", 50)
@@ -25,7 +25,7 @@ gaeng_som = Dish.new("gaeng som", 80)
 puts "Welcome to the Thai Takeaway!"
 
 def show_customer_choices
-  puts "Choose your option below> Alternatively, press enter or 0 to quit:"
+  puts "Choose your option below. Alternatively, press enter or 0 to quit:"
   puts "1 - view menu"
   puts "2 - create/add to an order"
 end
@@ -53,16 +53,20 @@ def add_to_order
   end
 end
 
-while true
-  show_customer_choices
-  choice = gets.chomp.to_i
-  if choice == 0
-    break
-  elsif choice == 1
-    show_menu
-  elsif choice == 2
-    add_to_order
-  else
-    puts "option not recognised"
+def perform_customer_choice
+  while true
+    show_customer_choices
+    choice = gets.chomp.to_i
+    if choice == 0
+      break
+    elsif choice == 1
+      show_menu
+    elsif choice == 2
+      add_to_order
+    else
+      puts "option not recognised"
+    end
   end
 end
+
+perform_customer_choice
