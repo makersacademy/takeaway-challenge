@@ -23,4 +23,11 @@ describe Takeaway do
     end
   end
 
+  describe "#add_to_order" do
+    it "adds a dish to the current order" do
+      subject.add_to_order(dish)
+      expect(subject.current_order).to include(dish)
+    end
+  end
+
 end
