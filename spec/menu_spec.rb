@@ -11,4 +11,11 @@ describe Menu do
     expect(subject.dishes).to include(dish)  
     end
   end
+
+  describe "print_menu" do
+    it "prints the full menu" do
+      subject.add_dish("Pie", 5)
+      expect(subject.print_menu).to eq "Pie: £5"
+    end
+  end
 end

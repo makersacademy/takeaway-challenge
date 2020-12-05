@@ -13,4 +13,8 @@ class Menu
     @dishes << @dish.new(name, price)
   end
 
+  def print_menu
+    @dishes.each { |item| return "#{item.name}: £#{item.price}" }
+  end
+
 end
