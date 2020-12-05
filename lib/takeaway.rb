@@ -18,18 +18,39 @@ gaeng_som = Dish.new("gaeng som", 80)
 @thai_menu.add_dish(tom_yum)
 @thai_menu.add_dish(gaeng_som)
 
+#create an empty order for the new customer
+@customer_order = Menu.new
+
 # customer interaction
 puts "Welcome to the Thai Takeaway!"
 
 def show_customer_choices
   puts "Choose your option below> Alternatively, press enter or 0 to quit:"
   puts "1 - view menu"
-  puts "2 - create an order"
+  puts "2 - create/add to an order"
 end
 
 def show_menu
   puts "Please see our full menu:"
   @thai_menu.see_menu
+end
+
+def add_to_order
+  choice = ""
+  while true
+    puts "Type the name of dish you would like to add to your order, or type 'finish' to stop adding dishes"
+    choice = gets.chomp.downcase
+    break if choice == "finish"
+    matched = false
+    @thai_menu.dishes.each { |dish|
+      if choice == dish.name
+        @customer_order.dishes << dish
+        puts "#{dish.name} has been added to your order"
+        matched = true
+      end
+    }
+    puts "Sorry, we don't have that dish on our menu!" if matched == false
+  end
 end
 
 while true
@@ -40,20 +61,8 @@ while true
   elsif choice == 1
     show_menu
   elsif choice == 2
-    puts "running create order function"
+    add_to_order
   else
     puts "option not recognised"
   end
 end
-
-
-
-# while choice != "menu"
-#   puts "Type 'menu' to see the menu"
-#   choice = gets.chomp
-#   if choice == "menu"
-#     @thai_menu.see_menu
-#     break
-#   end
-#   puts "I don't uderstand what you typed! Try again..."
-# end
