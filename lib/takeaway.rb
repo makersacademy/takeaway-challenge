@@ -28,6 +28,7 @@ def show_customer_choices
   puts "Choose your option below. Alternatively, press enter or 0 to quit:"
   puts "1 - view menu"
   puts "2 - create/add to an order"
+  puts "3 - review order"
 end
 
 def show_menu
@@ -53,6 +54,20 @@ def add_to_order
   end
 end
 
+def calculate_total
+  total = 0
+  @customer_order.dishes.each{ |dish|
+    total += dish.price
+  }
+  total
+end
+
+def review_order
+  puts "Your order so far:"
+  @customer_order.see_menu
+  puts "Total cost is #{calculate_total}"
+end
+
 def perform_customer_choice
   while true
     show_customer_choices
@@ -63,6 +78,8 @@ def perform_customer_choice
       show_menu
     elsif choice == 2
       add_to_order
+    elsif choice ==3
+      review_order
     else
       puts "option not recognised"
     end
