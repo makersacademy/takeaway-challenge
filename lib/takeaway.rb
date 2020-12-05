@@ -13,8 +13,8 @@ class Takeaway
     @current_order << dish
   end
 
-  def place_order(order, given_total)
-    fail "Total incorrect!" unless @menu.check_total(order, given_total)
+  def place_order(given_total)
+    fail "Total incorrect!" unless @menu.check_total(@current_order, given_total)
     reset_current_order
     order_confirmation
   end

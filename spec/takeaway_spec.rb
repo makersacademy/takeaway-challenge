@@ -10,16 +10,19 @@ describe Takeaway do
   describe "#place_order" do
     it "checks the total with the menu" do
       expect(menu).to receive(:check_total)
-      subject.place_order(dish, 5)
+      subject.add_to_order(dish)
+      subject.place_order(5)
     end
     
     it "sends a confirmation if the total is correct" do
-      expect(subject.place_order(dish, 5)).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+      subject.add_to_order(dish)
+      expect(subject.place_order(5)).to eq "Thank you! Your order was placed and will be delivered before 18:52"
     end
 
     it "raises an error if the total is incorrect" do
       allow(menu).to receive(:check_total) { false }
-      expect{ subject.place_order(dish, 5) }.to raise_error "Total incorrect!"
+      subject.add_to_order(dish)
+      expect{ subject.place_order(5) }.to raise_error "Total incorrect!"
     end
   end
 
