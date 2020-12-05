@@ -6,8 +6,8 @@ class Takeaway
     @menu = menu.new
   end
 
-  def place_order
-    fail "Total incorrect!" unless @menu.check_total
+  def place_order(order, given_total)
+    fail "Total incorrect!" unless @menu.check_total(order, given_total)
     order_confirmation
   end
 
