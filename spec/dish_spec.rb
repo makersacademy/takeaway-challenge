@@ -2,10 +2,10 @@ require 'dish'
 
 describe Dish do
 
-  subject {described_class.new("Name", 5)}
+  subject {described_class.new("Pie", 5)}
 
   it "has a name" do
-    expect(subject.name).to eq "Name"
+    expect(subject.name).to eq "Pie"
   end
 
   it "has a price" do
