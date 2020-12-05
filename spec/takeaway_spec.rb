@@ -5,7 +5,9 @@ describe Takeaway do
   let(:dish) { double :dish, details: {:name => "Pie", :price => 5} }
   let(:menu) { double :menu, check_total: true, dishes: [dish] }
   let(:menu_class) { double :menu_class, new: menu }
-  subject {described_class.new(menu_class)}
+  let(:twilio) { double :twilio, twilio_message: true }
+  let(:twilio_sender_class) { double :twilio_sender_class, new: twilio }
+  subject {described_class.new(menu_class, twilio_sender_class)}
   
   describe "#place_order" do
     it "checks the total with the menu" do
@@ -14,9 +16,10 @@ describe Takeaway do
       subject.place_order(5)
     end
     
-    it "sends a confirmation if the total is correct" do
+    it "sends a message to twilio if the total is correct" do
       subject.add_to_order(dish)
-      expect(subject.place_order(5)).to eq "Thank you! Your order was placed and will be delivered before #{Time.now + 60*60}"
+      expect(twilio).to receive(:twilio_message)
+      subject.place_order(5)
     end
 
     it "raises an error if the total is incorrect" do
@@ -37,6 +40,13 @@ describe Takeaway do
     it "sends a message to menu" do
       expect(menu).to receive(:add_dish)
       subject.add_dish("Pie", 5)
+    end
+  end
+
+  describe "print_menu" do
+    it "sends a message to menu" do
+      expect(menu).to receive(:print_menu)
+      subject.print_menu
     end
   end
 end

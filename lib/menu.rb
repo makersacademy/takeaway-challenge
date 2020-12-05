@@ -14,7 +14,7 @@ class Menu
   end
 
   def print_menu
-    @dishes.each { |item| return "#{item.name}: £#{item.price}" }
+    @dishes.each { |item| puts "#{item.details[:name]}: £#{item.details[:price]}" }
   end
 
   def check_total(order, given_total)
@@ -25,7 +25,7 @@ class Menu
 
   def totalizer(order)
     price_array = []
-    order.each { |dish| price_array << dish.price }
+    order.each { |dish| price_array << dish.details[:price] }
     price_array.sum
   end
 end

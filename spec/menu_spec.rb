@@ -1,7 +1,7 @@
 require 'menu'
 
 describe Menu do
-  let(:dish) { double :dish, name: "Pie", price: 5 }
+  let(:dish) { double :dish, details: {:name => "Pie", :price => 5} }
   let(:dish_class) { double :dish_class, new: dish }
   subject {described_class.new(dish_class)}
 
@@ -15,7 +15,7 @@ describe Menu do
   describe "print_menu" do
     it "prints the full menu" do
       subject.add_dish("Pie", 5)
-      expect(subject.print_menu).to eq "Pie: £5"
+      expect { subject.print_menu }.to output("Pie: £5\n").to_stdout
     end
   end
 
