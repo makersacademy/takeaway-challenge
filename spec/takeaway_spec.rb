@@ -15,7 +15,7 @@ describe TakeAway do
 
   describe "#summary" do
     it "shows empty basket" do
-      expect(neworder.summary).to eq described_class::Error[2]
+      expect(neworder.summary).to eq described_class::ERROR[2]
     end
   end
 end

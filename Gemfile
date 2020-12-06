@@ -11,6 +11,3 @@ end
 
 gem "sinatra"
 gem "twilio-ruby"
-
-gem "dotenv-rails", require: "dotenv/rails-now"
-gem "gem-that-requires-env-variables"
