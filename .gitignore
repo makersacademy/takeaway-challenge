@@ -5,3 +5,4 @@
 .rubocop-*
 
 private.rb
+.env
