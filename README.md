@@ -19,6 +19,7 @@ How to run the program
 
 Please run the program in irb like the following:
 
+```
 2.6.5 :001 > require './lib/takeaway'
  
 2.6.5 :002 > t = Takeaway.new
@@ -57,6 +58,7 @@ Successfully placed the order. A text confirmation will be sent to you shortly.
 
 A twilio message is sent with the following message "Thank you! Your order was placed and will be delivered before 11.41 (real local time + 1)"
 
+```
 
 My approaches
 -------
