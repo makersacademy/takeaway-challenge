@@ -1,8 +1,10 @@
+require 'dish'
+
 class Menu
   def dish_list
-    {
-      "Fish and chips" => 10.99,
-      "Beef wellington" => 8.99
-    }
+    [
+      Dish.new(name: "Fish and chips", price: 10.99),
+      Dish.new(name: "Beef wellington", price: 8.99)
+    ]
   end
 end

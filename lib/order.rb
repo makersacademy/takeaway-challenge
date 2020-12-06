@@ -7,11 +7,11 @@ class Order
   end
 
   def add_dish(dish)
-    @order << { dish => @menu.dish_list[dish] }
+    @order << menu.dish_list.find { |menu_item| menu_item.name == dish }
   end
 
   def total_price
-    @order.map { |hash| hash.values }.flatten.sum
+    @order.map(&:price).sum
   end
 
   def check_price(price)

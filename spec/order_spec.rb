@@ -5,7 +5,9 @@ describe Order do
     it "adds dishes to order" do
       subject.add_dish("Fish and chips")
       subject.add_dish("Beef wellington")
-      expect(subject.order).to eq([ { "Fish and chips" => 10.99 }, { "Beef wellington" => 8.99 } ])
+
+      expect(subject.order[0].name).to eq("Fish and chips")
+      expect(subject.order[1].name).to eq("Beef wellington")
     end
   end
 

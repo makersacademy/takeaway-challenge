@@ -3,12 +3,8 @@ describe Menu do
 
   describe "#dish_list" do
     it "shows list of dishes" do
-      dishes = {
-        "Fish and chips" => 10.99,
-        "Beef wellington" => 8.99
-      }
-
-      expect(subject.dish_list).to eq(dishes)
+      expect(subject.dish_list.size).to eq(2)
+      expect(subject.dish_list).to all(be_kind_of(Dish))
     end
   end
 end
