@@ -14,15 +14,14 @@ attr_reader :order
     end
 
     def check_total
-        total = @order.flat_map(&:values)
-        "Your Total Comes to: £#{total.sum}."
+        @total = @order.flat_map(&:values)
+        "Your Total Comes to: £#{@total.sum}."
     end
 
     def checkout(payment)
-        if payment != check_total
-            raise "Wrong total!"
-        else
-            puts "Order Placed!"
-        end
+       raise "Wrong payment amount!" if payment != @total.sum
+       #load 'text.rb'
+       print "Thank you, your order has been placed!"
+       
     end
 end
