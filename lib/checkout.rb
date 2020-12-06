@@ -18,19 +18,14 @@ class Checkout
     puts "Write your total amount to purchase order"
     pay = gets.chomp.to_f
     if pay == @sum
-      @complete_order
-      # puts "Thank you for your purchase"
-
+      sms
+      puts "Thank you for your purchase"
     else
       puts "Try again"
     end
   end
 
-  def complete_order
-    send_text("Thank you for your order: #{@totalorder}")
-  end
-
-  def send_text(message)
-    # this method calls the Twilio API
+  def sms
+    load "send_sms.rb"
   end
 end
