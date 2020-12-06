@@ -27,4 +27,14 @@ class Order
     possible_total == @total
   end
 
+  def confirm_order
+    send_sms if check_order_total
+  end
+
+  private
+
+  def send_sms
+    load './lib/send_sms.rb'
+  end
+
 end
