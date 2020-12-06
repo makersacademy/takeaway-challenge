@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'twilio-ruby'
 gem 'dotenv'
+gem 'twilio-ruby'
 
 group :test do
   gem 'rspec'

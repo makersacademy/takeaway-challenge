@@ -12,7 +12,6 @@ class Invoice
 
   def initialize(twilio = $twilio_info)
     @twilio = twilio
-    p @twilio
     @total = 0
   end
 
@@ -24,7 +23,7 @@ class Invoice
   end
 
   def send_text(client = Twilio::REST::Client.new(@twilio[:account_sid], @twilio[:auth_token]))
-    delivery_time = (Time.new+3600).strftime("%k:%M")
+    delivery_time = (Time.new + 3600).strftime("%k:%M")
     message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
 
     client.messages.create(
