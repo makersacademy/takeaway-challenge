@@ -36,30 +36,29 @@ describe Order do
     end
   end
 
-  describe '#summary' do
+  let(:order) { double("order") }
+  describe '#summarise' do
     it "creates array of dish names" do
       subject.select(dish, 2)
-      expect{ subject.summary }.to change { subject.order_summary }
+      expect { subject.summarise(order) }.to change { subject.order_summary }
     end
   end
 
-# Also struggling with this test. I'm just going round in circles.
-  # describe '#calculate total' do
-  #   let(:order_summary) { double("order summary") }
-  #   it "calculates total" do
-  #     allow(dish).to receive_messages(price: 3)
-  #     allow(dish).to receive_messages(quantity: 2, price_per_item: dish.price)
-  #     subject.select(dish, 2)
-  #     p subject.order
-  #     allow(subject.order).to receive(:count) { 2 }
-  #     subject.summary
-  #     p subject.order_summary
-  #     expect(subject.calculate_total(subject.order_summary)).to eq dish.price * 2
-  #   end
-  # end
+  let(:invoice) { instance_double("invoice") }
+  subject { described_class.new(menu, invoice) }
+  before(:each) do
+    allow(invoice).to receive(:calculate).with(order) { 6 }
+  end
+
+  it "calculates_total" do
+    subject.calculate_total(order)
+    expect(subject.total).to eq 6
+  end
 
   describe '#place_order' do
-    it "returns list of dishes" do
+    it "returns list of dishes to stdout" do
+      allow(subject).to receive(:calculate_total) { 6 }
+      allow(invoice).to receive(:send_text)
       expect { subject.place_order }.to output.to_stdout
     end
   end

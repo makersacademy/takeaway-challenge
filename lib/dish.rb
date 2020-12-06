@@ -11,5 +11,4 @@ class Dish
     "#{name}: £#{formatted_price}"
   end
 
-
 end

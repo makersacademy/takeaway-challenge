@@ -16,7 +16,7 @@ class Menu
 
   def view
     view_dish_list = []
-    @dishes.each do |key, dish|
+    @dishes.each do |_key, dish|
       view_dish_list << dish.display
     end
     view_dish_list.join("\n")

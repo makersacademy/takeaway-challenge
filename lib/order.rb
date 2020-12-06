@@ -1,12 +1,13 @@
 require_relative './menu.rb'
+require_relative './invoice.rb'
 
 class Order
-  attr_reader :order, :running_total, :order_summary
+  attr_reader :order, :total, :order_summary
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, invoice = Invoice.new)
     @menu = menu
     @order = []
-    @running_total = 0
+    @invoice = invoice
   end
 
   def view_menu
@@ -18,26 +19,21 @@ class Order
     quantity.times { @order << @menu.select(choice) }
   end
 
-  def summary
+  def summarise(order)
     @order_summary = []
     # iterate through each dish on menu and count quantity in order
     @menu.dishes.values.each do |dish|
       @order_summary << {
         :item => dish.name,
         :price_per_item => dish.price,
-        :quantity => @order.count { |choice| choice.name == dish.name }
+        :quantity => order.count { |choice| choice.name == dish.name }
       }
-      end
+    end
     @order_summary
   end
 
   def calculate_total(order)
-    # iterate through order summary and multiply quantity by dish.price
-    @total = 0
-    order.each do |dish|
-      @total += dish[:quantity] * dish[:price_per_item]
-    end
-    @total
+    @total = @invoice.calculate(order)
   end
 
   def prints_order_summary(order)
@@ -47,35 +43,21 @@ class Order
         order_output << "#{summary[:item]} x #{summary[:quantity]}"
       end
     end
-    formatted_total = format('%<price>.2f', price: @total)
     puts "You have ordered:\n" + order_output.join(",\n") +
-    ".\nThe total comes to £#{formatted_total}."
+    ".\nThe total comes to £#{@total}."
   end
 
   def place_order
-    summary
-    calculate_total(@order_summary)
-    prints_order_summary(@order_summary)
+    summarise(@order)
+    order = @order_summary
+    calculate_total(order)
+    prints_order_summary(order)
     # fail if @total is not corrected - I don't understand what 2 things we're comparing
 
-    send_text
+    @invoice.send_text
   end
 
   # def order
   #   @order.dup
   # end
-
-  def order_summary2
-    order_summary = {}
-    @order.each do |dish|
-      name = dish.name
-
-      if order_summary[name] == nil
-        order_summary[name] = 0
-      end
-
-      order_summary[name] += 1
-    end
-    order_summary
-  end
 end
