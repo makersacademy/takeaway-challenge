@@ -45,6 +45,6 @@ class Takeaway
   end
 
   def send_sms
-    load 'send_sms.rb'
+    load './lib/send_sms.rb'
   end
 end
