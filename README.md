@@ -1,3 +1,46 @@
+## Takeaway Challenge ##
+==================
+
+## How to Use
+
+```shell
+irb -r './lib/order.rb'
+```
+Create a new order, then choose any of the following methods:
+view_menu --> displays the menu
+select(dish, quantity) --> eg ("dishname", 3)
+place_order --> this submits your order
+
+eg.
+```irb
+my_order = Order.new
+Welcome! Please use view_menu to see the menu.
+To add a dish to your order, use select(dish, quantity)
+To place your order, use place_order.
+2.6.5 :002 > my_order.view_menu
+Pizza: £6.50
+Spaghetti: £5.75
+Salad: £5.25 => nil
+2.6.5 :003 > my_order.select("pizza",3)
+=> "3 pizza(s) added to your order."
+```
+
+
+## My thoughts on the takeaway challenge
+
+I THINK I'M MAKING A BIT OF A MEAL OUT OF THIS CHALLENGE (pun fully intended)
+
+I have really struggled with this challenge and found it very frustrating. I spent hours on it before even attempting the phone stuff!
+
+I would like to focus on my understanding of the SOLID principles (the structure of the classes and methods, high cohesion - low coupling etc), but I feel like RSpec syntax, mocks, stubs etc are getting in the way. I'm spending ages trying to find out how to make an RSpec test work when I know the code is (mostly) working because I've tested it multiple times in irb. For example, in my Dish class I format the price of the dish. When I declare price as a double in RSpec, it then errors in this line because it can't format the double because it's not a float. I can't figure out how to tell RSpec to allow this to happen. I have therefore commented out some of the tests, which has reduced my test coverage.
+
+I also don't understand the 3rd user story, as I don't understand what 2 things need comparing. As far as I can tell, you have to work out the sum of the order and compare that to... the sum of the order...??? Please tell me what I'm missing!
+
+I also know many of my methods are too long.
+
+I will be revisiting this later using the review to help redo it.
+
+
 Takeaway Challenge
 ==================
 ```
