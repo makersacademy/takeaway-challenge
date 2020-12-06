@@ -81,3 +81,16 @@ To design a takeaway programme using TDD that fulfils the User Story requirement
         * check_price? - checks the price the customer has input to pay again the total order price and returns a boolean.
     * Added additional information to the order_summary method to return not only the quantity and item but also the price per       individual item and the total cost of the item with the quantity specified.
     * TDD all of the above methods with 100% test coverage.
+  
+5. 5th Commit
+    * Added the use of Twillio to project.
+    * Set up new files for messaging and messaging_spec.
+    * Set up functionality for accessing Twilio API and sending specified text message.
+    * Added feature of calculating the ETA of delivery by using the Time.now feature.
+    * Set up accessing the Twilio API feature from the takeaway file through the checkout method.
+    * TDD all of the above with 98.70% (unsure of how to test for the output of calling send_message function).
+    * Final test in IRB to make sure all features and functionality was working as intended.
+    * Checked with RuboCop - two main issues are:
+      *  The use of string print formatter to fix decimal place issue with printing price.
+      *  Long line used in order_summary method to print out item, price, quantity, quantity*price information.
+

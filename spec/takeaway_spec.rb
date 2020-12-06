@@ -62,13 +62,6 @@ RSpec.describe Takeaway do
   describe "#checkout" do
     it { expect(takeaway).to respond_to(:checkout).with(1).argument }
 
-    it "should allow customer to pay if amount is correct" do
-      takeaway.add_to_order("Small Chips", 3)
-      takeaway.add_to_order("Sausage", 1)
-      takeaway.order_total
-      expect(takeaway.checkout(4.40)).to eq("Pay")
-    end
-
     it "should throw an error if amount is incorrect" do
       takeaway.add_to_order("Small Chips", 3)
       takeaway.add_to_order("Sausage", 1)

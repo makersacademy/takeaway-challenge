@@ -1,9 +1,14 @@
-class Takeaway
-  attr_reader :menu, :order, :price
+require_relative "menu"
+require_relative "order"
+require_relative "messaging"
 
-  def initialize(menu = Menu.new, order = Order.new)
+class Takeaway
+  attr_reader :menu, :order, :price, :messager
+
+  def initialize(menu = Menu.new, order = Order.new, messager = Messager.new)
     @menu = menu
     @order = order
+    @messager = messager
   end
 
   def open_menu
@@ -26,13 +31,17 @@ class Takeaway
 
   def checkout(amount)
     p check_price?(amount)
-    check_price?(amount) ? "Pay" : (fail "Wrong amount")
+    check_price?(amount) ? send_text : (fail "Wrong amount")
   end
 
   private
 
   def check_price?(amount)
     sprintf("%.2f", amount) == @price
+  end
+
+  def send_text
+    messager.send_message
   end
 
 end
