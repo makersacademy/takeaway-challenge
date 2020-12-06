@@ -1,15 +1,15 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:dish1_double) {double :dish1, name: "Porridge", price: 1}
-  let(:dish2_double) {double :dish2, name: "Soup", price: 3}
-  let(:dishes_array) {[dish1_double, dish2_double]}
-  let(:orders_hash) { {dish1_double => 1, dish2_double => 2} }
-  let(:exact_total) {dish1_double.price * orders_hash[dish1_double] + dish2_double.price * orders_hash[dish2_double]}
-  let(:menu_double) {double :menu, add_dish: true, see: dishes_array }
-  let(:menu_class_double) {double :menu_class, new: menu_double }
-  let(:order_double) {double :order, send_text: true}
-  let(:order_class_double) {double :order_class, new: order_double}
+  let(:dish1_double) { double :dish1, name: "Porridge", price: 1 }
+  let(:dish2_double) { double :dish2, name: "Soup", price: 3 }
+  let(:dishes_array) { [dish1_double, dish2_double] }
+  let(:orders_hash) { { dish1_double => 1, dish2_double => 2 } }
+  let(:exact_total) { dish1_double.price * orders_hash[dish1_double] + dish2_double.price * orders_hash[dish2_double] }
+  let(:menu_double) { double :menu, add_dish: true, see: dishes_array }
+  let(:menu_class_double) { double :menu_class, new: menu_double }
+  let(:order_double) { double :order, send_text: true }
+  let(:order_class_double) { double :order_class, new: order_double }
   let(:takeaway) { described_class.new(menu_class_double, order_class_double) }
 
   describe '#new' do

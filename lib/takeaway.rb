@@ -22,8 +22,8 @@ class Takeaway
 
   def choose
     @menu.see.each do |item|
-        quantity = gets.chomp
-        @orders_list[item] = quantity.to_i
+      quantity = gets.chomp
+      @orders_list[item] = quantity.to_i
     end
     @orders_list
   end

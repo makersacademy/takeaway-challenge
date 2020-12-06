@@ -16,7 +16,7 @@ class Text
     @client.messages.create(
       from: @from,
       to: @to,
-      body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60*60).strftime "%H:%M"}"
+      body: "Thank you! Your order was placed and will be delivered before #{(Time.now + 60 * 60).strftime "%H:%M"}"
     )
     true
   end
