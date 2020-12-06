@@ -47,9 +47,6 @@ Please run the program in irb like the following:
 2.6.5 :007 > t.basket_summary
  => {:burgers=>3.0, :burrito=>13.0} 
  
- 2.6.5 :007 > t.basket_summary
- => {:burgers=>3.0, :burrito=>13.0} 
- 
  2.6.5 :009 > t.checkout(19)
 => RuntimeError (Incorrect total provided. Basket total is 16.0)
 
