@@ -5,7 +5,7 @@ describe Restaurant do
     expect(subject).to be_kind_of(Restaurant)
   end
 
-  it 'responds to the method .list' do
+  it 'responds to the method .list_menu' do
     expect(subject).to respond_to(:list_menu)
   end
 
@@ -20,6 +20,10 @@ describe Restaurant do
   it 'responds to method .total_price' do
     expect(subject).to respond_to(:total_price)
   end
+
+#   describe '#list_menu' do
+#     it 'should output a menu list from the Restaurant' do 
+#     end 
 
   describe '#order(dish,quantity)' do
     it 'adds the order to the basket' do
@@ -50,6 +54,6 @@ describe Restaurant do
     subject.order('Bufala', 10) 
     expect(subject.price_correct?(2)).to eq false 
     end
-  end 
+  end
 end
 
