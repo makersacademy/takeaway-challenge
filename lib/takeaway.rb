@@ -8,8 +8,6 @@ class Takeaway
     @basket = []
   end
 
-  # choose a dish from the menu
-
   def read_menu
     @dishes.print_menu
   end
@@ -39,7 +37,6 @@ class Takeaway
 
   private
 
-  # add the dish choice x 1 to the basket
   def add(chosen_dish)
     basket << chosen_dish
   end
