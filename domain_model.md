@@ -2,6 +2,7 @@
 
 
 | **Class**      | Dish         |
+|----------------|--------------|
 | **Properties** | name, price  |
 | **Actions**    |               |
 
