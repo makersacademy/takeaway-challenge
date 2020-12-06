@@ -7,7 +7,6 @@ class Menu
       "Char sui bun" => 3.99,
       "Pork dumpling" => 2.99,
       "Peking duck" => 7.99,
-      "Fu-king fried rice" => 5.99,
     }
   end
 

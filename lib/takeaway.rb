@@ -3,7 +3,7 @@ require_relative "checkout"
 
 class TakeAway
   attr_accessor :checkout
-  Error = ["Meal Not Found, try again", "Empty menu", "Empty basket"]
+  Error = ["Item not available", "Empty menu", "Empty basket"]
   # attr_reader :order
   def initialize
     @checkout = Checkout.new #access to checkout class
@@ -11,30 +11,38 @@ class TakeAway
   end
 
   def menu
-    fail Error[1] if @menu.show_menu.empty?
     @menu.show_menu
   end
 
   #add meal to the basket
-  def add(meal)
-    item = @menu.menu
-    item = item[meal]
-    fail Error[0] if meal.empty?
-    puts "#{item} added to your basket"
-    #basket is global to added in checkout
-    $basket << item
+  def add
+    menu = @menu.menu
+    puts "Add the name of the item"
+    item = gets.chomp
+    # search_item = item[meal]
+    fail Error[2] if menu.has_key?(item)
+    if menu.has_key?(item)
+      puts "Quantity"
+      quantity = gets.chomp.to_i
+      puts "#{quantity} - #{item} added to your basket"
+      quantity.times {
+        $basket << menu[item]
+      }
+    else
+      Error[0]
+    end
   end
-
-  # def check_basket
-  #   checkout.added
-  # end
 
   def summary
-    fail Error[2] if $basket.size == 0
-    @checkout.total
+    sum = @checkout.total
+    @checkout.total == 0 ? Error[2] : sum.round(2)
   end
 
-  def payment(price)
-    @checkout.payment
+  def checkout
+    if @checkout.total == 0
+      "Your basket is empty"
+    else
+      @checkout.payment
+    end
   end
 end
