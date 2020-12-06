@@ -2,6 +2,8 @@ My thoughts on the takeaway challenge
 
 I THINK I'M MAKING A BIT OF A MEAL OUT OF THIS CHALLENGE (pun fully intended)
 
+I have really struggled with this challenge. Mostly because of trying to do RSpec, but also I don't understand what check_total is comparing. I've spent hours on it and not even attempted the phone stuff yet.
+
 I am getting a bit frustrated. I would like to focus on my understanding of the SOLID principles, the structure of the classes / methods etc and high cohesion - low coupling concept, but I feel like RSpec syntax and mocks are getting in the way. I'm spending ages trying to find out how to make an RSpec test work when I know the code is (mostly) correct because I've tested it multiple times in irb. For example, in my Dish class I format the price of the dish. When I declare price as a double in RSpec, it then errors in this line because it can't format the double because it's not a float. I can't figure out how to tell RSpec to allow this to happen. I have therefore commented out some of the tests, which has reduced my test coverage.
 
 Now I'm struggling with how to iterate over the order_summary (which contains dish.name and quantity) to calculate the price. Maybe the order summary should contain dish.price too so that I'm just multiplying things in each hash?
