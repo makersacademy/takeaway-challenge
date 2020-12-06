@@ -25,12 +25,12 @@ describe Order do
   it 'will allow the customer to order several different items' do
     subject.add_to_order("1 Chip", 1)
     subject.add_to_order("Pea", 1)
-    expect(subject.order_array).to eq([{"1 Chip" => 90 }, {"Pea" => 200}])
+    expect(subject.order_array).to eq([{ "1 Chip" => 90 }, { "Pea" => 200 }])
   end
 
   it 'will allow the customer to order several of the same items' do
     subject.add_to_order("1 Chip", 2)
-    expect(subject.order_array).to eq([{"1 Chip" => 90 }, {"1 Chip" => 90}])
+    expect(subject.order_array).to eq([{ "1 Chip" => 90 }, { "1 Chip" => 90 }])
   end
 
   it 'will respond to view_order' do
@@ -43,20 +43,22 @@ describe Order do
   end
 
   describe '#total' do
-    # let(:menu) { double :menu, price: '£1.00', contains?: true }
-    # subject(:order) { described_class.new(menu) }
-    #
-    # it 'order total to be sum of items added' do
-    #   order.add_to_order('Pizza')
-    #   order.add_to_order('Pizza')
-    #   expect(order.total).to eq '£2.00'
-    # end
-    # menu = double("menu")
-    # allow(menu).to receive(:add_to_order).and_
-
+    it 'displays the total cost of the order' do
+      subject.add_to_order("1 Chip")
+      message = "Your order comes to a total of £90\n"
+      expect { subject.total }.to output(message).to_stdout
+    end
 
     it 'responds to total' do
       expect(subject).to respond_to(:total)
     end
+  end
+
+  it 'responds to checkout' do
+    expect(subject).to respond_to(:checkout)
+  end
+
+  it 'sends a sms message when user checks out' do
+    expect(subject.checkout).to eq('hello')
   end
 end
