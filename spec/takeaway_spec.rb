@@ -2,12 +2,12 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:dish) { double :dish, details: {:name => "Pie", :price => 5} }
+  let(:dish) { double :dish, details: { :name => "Pie", :price => 5 } }
   let(:menu) { double :menu, check_total: true, dishes: [dish] }
   let(:menu_class) { double :menu_class, new: menu }
   let(:twilio) { double :twilio, twilio_message: true }
   let(:twilio_sender_class) { double :twilio_sender_class, new: twilio }
-  subject {described_class.new(menu_class, twilio_sender_class)}
+  subject { described_class.new(menu_class, twilio_sender_class) }
   
   describe "#place_order" do
     it "checks the total with the menu" do
@@ -25,7 +25,7 @@ describe Takeaway do
     it "raises an error if the total is incorrect" do
       allow(menu).to receive(:check_total) { false }
       subject.add_to_order(dish)
-      expect{ subject.place_order(5) }.to raise_error "Total incorrect!"
+      expect { subject.place_order(5) }.to raise_error "Total incorrect!"
     end
   end
 

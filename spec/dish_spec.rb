@@ -2,7 +2,7 @@ require 'dish'
 
 describe Dish do
 
-  subject {described_class.new("Pie", 5)}
+  subject { described_class.new("Pie", 5) }
 
   it "has a name" do
     expect(subject.details[:name]).to eq "Pie"

@@ -1,14 +1,14 @@
 require 'twilio-ruby'
 
-class Twilio_Sender
+class TwilioSender
 
   def twilio_message
     account_sid = ENV["TWILIO_SID"]
     auth_token = ENV["TWILIO_AUTH"]
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    from = '+12532640401' # Your Twilio number
-    to = '+447865193917' # Your mobile phone number
+    from = '+12532640401'
+    to = '+447865193917'
 
     client.messages.create(
     from: from,
@@ -20,7 +20,7 @@ class Twilio_Sender
   private
 
   def delivery_time
-    time = Time.now + 60*60
+    time = Time.now + 60 * 60
     time.strftime("%k:%M")
   end
 

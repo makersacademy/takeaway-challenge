@@ -5,7 +5,7 @@ class Takeaway
 
   attr_reader :current_order
 
-  def initialize(menu = Menu, twilio = Twilio_Sender)
+  def initialize(menu = Menu, twilio = TwilioSender)
     @menu = menu.new
     @twilio = twilio.new
     @current_order = []
@@ -17,6 +17,7 @@ class Takeaway
 
   def place_order(given_total)
     fail "Total incorrect!" unless @menu.check_total(@current_order, given_total)
+
     reset_current_order
     @twilio.twilio_message
   end
