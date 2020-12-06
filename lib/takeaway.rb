@@ -20,10 +20,12 @@ class Takeaway
     puts "#{quantity}x #{dish} added to your basket."
   end
 
+  # show total sum of the basket
   def total
     basket.flat_map(&:values).inject(:+)
   end
 
+  # group the same items and show total price per item
   def basket_summary
     basket.inject { |item, price| item.merge(price) { |_k, p, sum| p + sum } }
   end
