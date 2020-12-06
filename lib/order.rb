@@ -15,6 +15,7 @@ class Order
   end
 
   def check_price(price)
-    price == total_price
+    raise "Incorrect price" unless  price == total_price
+    true
   end
 end

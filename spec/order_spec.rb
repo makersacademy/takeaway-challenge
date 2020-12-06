@@ -26,8 +26,8 @@ describe Order do
       expect(subject.check_price(19.98)).to be_truthy
     end
 
-    it "returns false if given price does not match total price" do
-      expect(subject.check_price(20.00)).to be_falsey
+    it "raises an error if given price does not match total price" do
+      expect { subject.check_price(20.00) }.to raise_error("Incorrect price")
     end
   end
 end
