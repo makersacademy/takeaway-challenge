@@ -30,4 +30,19 @@ describe Order do
       expect { subject.check_price(20.00) }.to raise_error("Incorrect price")
     end
   end
+
+  describe '#complete' do
+    let(:fake_client) { double }
+    let(:fake_message_api) { double }
+
+    it 'sends a text message' do
+      allow(Twilio::REST::Client).to receive(:new) { fake_client }
+
+      expect(fake_client).to receive(:messages) { fake_message_api }
+      expect(fake_message_api).to receive(:create)
+
+      subject.add_dish("Fish and chips")
+      subject.complete
+    end
+  end
 end
