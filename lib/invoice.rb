@@ -2,7 +2,10 @@
 require 'twilio-ruby'
 
 # Set up environment variables
-account_side = ENV[]
+account_side = ENV[AC13183f9d8cff503d9b9b8c291f083e88]
+auth_token = a90b72b54cbf093e919e5af007177679
+client = Twilio::REST::Client.new(account_sid, auth_token)
+
 class Invoice
   attr_reader :total
 
