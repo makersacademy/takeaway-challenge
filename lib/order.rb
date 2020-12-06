@@ -20,5 +20,6 @@ class Order
   def send_text
     raise "Incorrect Total" unless @exact_total == total
     @text = @text_class.new
+    @text.send_message
   end
 end

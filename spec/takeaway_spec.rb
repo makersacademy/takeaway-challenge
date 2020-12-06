@@ -8,7 +8,7 @@ describe Takeaway do
   let(:exact_total) {dish1_double.price * orders_hash[dish1_double] + dish2_double.price * orders_hash[dish2_double]}
   let(:menu_double) {double :menu, add_dish: true, see: dishes_array }
   let(:menu_class_double) {double :menu_class, new: menu_double }
-  let(:order_double) {double :order}
+  let(:order_double) {double :order, send_text: true}
   let(:order_class_double) {double :order_class, new: order_double}
   let(:takeaway) { described_class.new(menu_class_double, order_class_double) }
 
@@ -41,9 +41,16 @@ describe Takeaway do
     end
   end
 
+  describe '#create_order' do
+    it 'should create order object' do
+      expect(takeaway.create_order).to eq order_double
+    end
+  end
+
   describe '#place_order' do
     it 'should create order object' do
-      expect(takeaway.place_order).to eq order_double
+      takeaway.create_order
+      expect(takeaway.place_order).to eq true
     end
   end
 

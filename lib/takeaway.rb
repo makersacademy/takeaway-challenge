@@ -1,4 +1,8 @@
 require 'csv'
+require './lib/dish.rb'
+require './lib/menu.rb'
+require './lib/order.rb'
+require './lib/text.rb'
 
 class Takeaway
   def initialize(menu_class = Menu,
@@ -28,8 +32,12 @@ class Takeaway
     @exact_total = gets.chomp.to_i
   end
 
+  def create_order
+    @order = @order_class.new(@order_list, @exact_total)
+  end
+
   def place_order
-    @order = @order_class.new
+    @order.send_text
   end
 
   private

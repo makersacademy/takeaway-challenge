@@ -6,7 +6,7 @@ describe Order do
   let(:dish2_double) {double :dish2, name: "Soup", price: 3}
   let(:orders_hash) { {dish1_double => 1, dish2_double => 2} }
   let(:check_total) {dish1_double.price * orders_hash[dish1_double] + dish2_double.price * orders_hash[dish2_double]}
-  let(:text_double) {double :text}
+  let(:text_double) {double :text, send_message: true}
   let(:text_class_double) { double :text_class, new: text_double}
   let(:order) { described_class.new(orders_hash, check_total, text_class_double) }
 
@@ -32,7 +32,7 @@ describe Order do
   describe '#send_text' do
     context 'total check is correct' do
       it 'should send a text' do
-        expect(order.send_text).to eq text_double
+        expect(order.send_text).to eq true
       end
     end
 
