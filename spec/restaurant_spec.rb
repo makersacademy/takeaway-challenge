@@ -36,11 +36,20 @@ describe Restaurant do
     end
   end
 
-#   describe '#total_price' do
-#     it 'can total the price of multiple orders' do
-#     subject.order('Margarita', 2)
-#     subject.order('Bufala', 10)
+  describe '#total_price' do
+    it 'can total the price of multiple orders' do
+    subject.order('Margarita', 2)
+    subject.order('Bufala', 10)
+    expect(subject.total_price).to eq "Total bill: £104"
+    end
+  end
 
-#   end 
+  describe '#price_correct?' do
+    it 'checks the basket total against customers price' do
+    subject.order('Margarita', 2)
+    subject.order('Bufala', 10) 
+    expect(subject.price_correct?(2)).to eq false 
+    end
+  end 
+end
 
-end 
