@@ -1,7 +1,7 @@
 require_relative './menu.rb'
 
 class Order
-  attr_reader :order, :running_total
+  attr_reader :order, :running_total, :order_summary
 
   def initialize(menu = Menu.new)
     @menu = menu
@@ -18,33 +18,47 @@ class Order
     quantity.times { @order << @menu.select(choice) }
   end
 
-  def order_summary
+  def summary
     @order_summary = []
-    @order.each do |dish|
-      # look to see if order summary already contains dish name
-      selection = @order_summary.find { |item| item.value?(dish.name) }
-      if selection != nil # if choice is already in order list
-        selection[:quantity] += 1
-      else
-        @order_summary << { :item => dish.name, :quantity => 1 }
+    # iterate through each dish on menu and count quantity in order
+    @menu.dishes.values.each do |dish|
+      @order_summary << {
+        :item => dish.name,
+        :price_per_item => dish.price,
+        :quantity => @order.count { |choice| choice.name == dish.name }
+      }
       end
-      @running_total += dish.price
-    end
-    prints_order_summary
+    @order_summary
   end
 
-  def prints_order_summary
-    order_output = []
-    @order_summary.each do |summary|
-      order_output << "#{summary[:item]} x #{summary[:quantity]}"
+  def calculate_total(order)
+    # iterate through order summary and multiply quantity by dish.price
+    @total = 0
+    order.each do |dish|
+      @total += dish[:quantity] * dish[:price_per_item]
     end
-    formatted_running_total = format('%<price>.2f', price: @running_total)
+    @total
+  end
+
+  def prints_order_summary(order)
+    order_output = []
+    order.each do |summary|
+      if summary[:quantity] != 0
+        order_output << "#{summary[:item]} x #{summary[:quantity]}"
+      end
+    end
+    formatted_total = format('%<price>.2f', price: @total)
     puts "You have ordered:\n" + order_output.join(",\n") +
-    ".\nThe total comes to £#{formatted_running_total}."
+    ".\nThe total comes to £#{formatted_total}."
   end
 
   def place_order
+    summary
+    calculate_total(@order_summary)
+    prints_order_summary(@order_summary)
+    # fail if @total is not corrected - I don't understand what 2 things we're comparing
 
+    send_text
   end
 
   # def order
