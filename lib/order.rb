@@ -12,7 +12,7 @@ class Order
   end
 
   def order_summary
-    @basket.map { |item, quantity| "x#{quantity} #{item}" }.join(", ")
+    @basket.map { |item, quantity| "x#{quantity} #{item}(£#{sprintf("%.2f", Menu::MENU_ITEMS[item])}) = £#{sprintf("%.2f", Menu::MENU_ITEMS[item] * quantity)}"}.join(", ")
   end
 
   def order_cost

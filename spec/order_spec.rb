@@ -26,7 +26,7 @@ RSpec.describe Order do
     it "should print out the current selections and their quantities" do
       order.add_to_basket("Large Fish", 2)
       order.add_to_basket("Small Chips", 2)
-      expect(order.order_summary).to eq("x2 Large Fish, x2 Small Chips")
+      expect(order.order_summary).to eq("x2 Large Fish(£3.60) = £7.20, x2 Small Chips(£1.20) = £2.40")
     end
   end
 

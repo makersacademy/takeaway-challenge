@@ -1,22 +1,36 @@
 ## Takeaway Challenge (Week 2)
 
+### Task
+To design a takeaway programme using TDD that fulfils the User Story requirements (below).
+
+### How To Use
+    git clone https://github.com/lukewickens1989/takeaway-challenge.git
+    bundle install
 ### User Stories
 
-As a customer
-So that I can check if I want to order something
-#### I would like to see a list of dishes with prices
 
-As a customer
-So that I can order the meal I want
-#### I would like to be able to select some number of several available dishes
+    As a customer
+    So that I can check if I want to order something
+    I would like to see a list of dishes with prices
+    
+    As a customer
+    So that I can order the meal I want
+    I would like to be able to select some number of several available dishes
+    
+    As a customer
+    So that I can verify that my order is correct
+    I would like to check that the total I have been given matches the sum of the various dishes in my order
+    
+    As a customer
+    So that I am reassured that my order will be delivered on time
+    I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-As a customer
-So that I can verify that my order is correct
-#### I would like to check that the total I have been given matches the sum of the various dishes in my order
+### Project Tasks
 
-As a customer
-So that I am reassured that my order will be delivered on time
-#### I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+ - [ ] I would like to see a list of dishes with prices.
+ - [ ] I would like to be able to select some number of several available dishes.
+ - [ ] I would like to check that the total I have been given matches the sum of the various dishes in my order.
+ - [ ] I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered.
 
 ### Initial Action Plan
   1. Create a menu hash with dishes as keys and prices as values
@@ -51,8 +65,19 @@ So that I am reassured that my order will be delivered on time
     * Added in functionality for the following methods:
         * add_to_basket - Adds customer items to the basket with quantities provided.
         * order_summary - Print of the quantity and item for the customer.
-        * order_cost - calculates the cost of all items in the basket.
-        * empty_basket - deletes all items in the basket.
+        * order_cost - Calculates the cost of all items in the basket.
+        * empty_basket - Deletes all items in the basket.
     * TDD all of the above methods with 100% test coverage.
     * Analysed code quality using 'rubocop' gem:
         * All checked and only offence is the use of the string print formatter to return the price to two decimal places.
+
+4. 4th Commit
+    * Added takeaway functionality for the following methods:
+        * open_menu - Allows customer to open menu from the takeaway interface.
+        * add_to_order - Allows customer to add to their order from the takeaway interface.
+        * view_basket - Displays the basket of current items along with quantity and price (both per item and quantity total).
+        * order_total - Prints out the total cost of the order to the customer
+        * checkout - checks the price (check_price?) matches and allows the customer to pay if matches and raises and error if not.
+        * check_price? - checks the price the customer has input to pay again the total order price and returns a boolean.
+    * Added additional information to the order_summary method to return not only the quantity and item but also the price per       individual item and the total cost of the item with the quantity specified.
+    * TDD all of the above methods with 100% test coverage.
