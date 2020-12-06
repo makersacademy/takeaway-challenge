@@ -5,19 +5,19 @@ class Checkout
 
   def initialize
     $basket = []
-    @sum = 0
+    $sum = 0
   end
 
   def total
-    @sum = $basket.inject(0) { |sum, item| sum + item }
+    $sum = $basket.inject(0) { |sum, item| sum + item }
   end
 
   def payment
-    @sum = @sum.round(2)
-    puts "Your total is #{@sum}"
+    $sum = $sum.round(2)
+    puts "Your total is #{$sum}"
     puts "Write your total amount to purchase order"
     pay = gets.chomp.to_f
-    if pay == @sum
+    if pay == $sum
       sms
       puts "Thank you for your purchase"
     else
@@ -26,6 +26,6 @@ class Checkout
   end
 
   def sms
-    load "send_sms.rb"
+    load "./lib/sms.rb"
   end
 end

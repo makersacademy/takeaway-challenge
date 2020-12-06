@@ -19,8 +19,6 @@ class TakeAway
     menu = @menu.menu
     puts "Add the name of the item"
     item = gets.chomp
-    # search_item = item[meal]
-    fail Error[2] if menu.has_key?(item)
     if menu.has_key?(item)
       puts "Quantity"
       quantity = gets.chomp.to_i
