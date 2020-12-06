@@ -1,3 +1,4 @@
+gem "dotenv-rails", groups: [:development, :test]
 source "https://rubygems.org"
 
 group :test do
@@ -10,3 +11,6 @@ end
 
 gem "sinatra"
 gem "twilio-ruby"
+
+gem "dotenv-rails", require: "dotenv/rails-now"
+gem "gem-that-requires-env-variables"

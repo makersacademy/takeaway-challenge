@@ -10,6 +10,9 @@ class TakeAway
     @menu = Menu.new
   end
 
+  def options
+  end
+
   def menu
     @menu.show_menu
   end
