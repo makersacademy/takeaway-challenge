@@ -3,9 +3,12 @@ describe Menu do
 
   describe "#dish_list" do
     it "shows list of dishes" do
-      fish_and_chips = { "Fish and chips" => 10.99 }
-      beef_wellington = { "Beef wellington" => 8.99 }
-      expect(subject.dish_list).to eq([fish_and_chips, beef_wellington])
+      dishes = {
+        "Fish and chips" => 10.99,
+        "Beef wellington" => 8.99
+      }
+
+      expect(subject.dish_list).to eq(dishes)
     end
   end
 end
