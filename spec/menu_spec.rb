@@ -10,6 +10,7 @@ describe Menu do
     it 'should be able to view available dishes' do
         expect(subject.see_menu).to include "Pizza"
     end
-      
+    
+    
   end
 end

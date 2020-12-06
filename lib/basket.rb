@@ -9,13 +9,20 @@ attr_reader :order
     def select_dish(dish, quantity = 1)
         items = @dishes.dishes.select { |food, price| food == dish }
         raise "Error, item not found!" if items.empty? 
-        #@order << quantity
-        @order << items
+        quantity.times{ @order << items }
         puts "#{quantity} #{dish}(s) added to basket!"
     end
 
     def check_total
         total = @order.flat_map(&:values)
         "Your Total Comes to: £#{total.sum}."
+    end
+
+    def checkout(payment)
+        if payment != check_total
+            raise "Wrong total!"
+        else
+            puts "Order Placed!"
+        end
     end
 end
