@@ -1,18 +1,18 @@
 require './lib/order'
+require './lib/sms'
+require './lib/menu'
 
 class Takeaway
-  attr_reader :menu
+  attr_reader :menu, :order, :sms
   
-  def initialize(menu:, order: nil)
+  def initialize(menu = Menu.new, config = {}, order: nil, sms: nil)
     @menu = menu
-    @order = order || Order.new
+    @order = order || Order.new(menu)
+    @sms = sms || SMS.new(config)
   end
   
   def print_menu
-    menu.show
+    @menu.show_menu
   end
 
-  def place_order(dishes)
-    dishes.each { |dish, quantity| @order.add(dish, quantity) }
-  end
 end
