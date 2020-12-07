@@ -8,6 +8,4 @@ describe MessageSender do
     end 
   end
 
-
-
 end

@@ -21,8 +21,6 @@ order1.order_list
 total_price = restaurant.take_order(order1)
 puts total_price
 expected_price = 10
-if total_price == expected_price
-  restaurant.confirm_order(ENV['CUSTOMER_PHONE_NUMBER'])
-else 
-  puts "Wrong total"
-end
+
+return restaurant.confirm_order(ENV['CUSTOMER_PHONE_NUMBER']) if total_price == expected_price
+return "Wrong total" if total_price != expected_price

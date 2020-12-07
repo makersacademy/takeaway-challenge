@@ -51,7 +51,7 @@ describe Restaurant do
   describe "#confirm_order" do
 
     it "responds_to confirm_order" do
-        expect(restaurant).to respond_to(:confirm_order).with(1).argument
+      expect(restaurant).to respond_to(:confirm_order).with(1).argument
     end
 
     it "sends a message" do

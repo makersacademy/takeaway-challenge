@@ -5,9 +5,9 @@ class Order
   end 
 
   def order_dish(dish_name, quantity = 1)
-    for _ in 0...quantity
-      @order_list << dish_name
-    end
+
+    quantity.times { @order_list << dish_name }
+
   end
 
 end
