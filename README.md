@@ -16,6 +16,7 @@ Takeaway Challenge
 
 Steps
 -------
+I began by attempting to use domain modelling techniques to help me to visualise what my code would look like. I wasn't always able to stick to this, but it did help to start like this. I tried to complete everything test first and for the most part I succeeded, though sometimes I found it hard not to work on multiple steps at once. I managed to complete all the tasks in some sense, though I was unable to work out how to use doubles. Also, I could not get the tests for the twilio text messages to work, supposedly because I needed to pay for a number from which the text would be sent. Instead, I commented out this code, and had the method simply return 'hello' in order to test that my general code worked the way I wanted it to.
 
 Task
 -----
