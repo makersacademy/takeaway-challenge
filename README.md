@@ -1,6 +1,7 @@
 ## Takeaway Challenge
-A small takeaway app, built in ruby.
 ==================
+
+A small takeaway app, built in ruby.
 ```
                             _________
               r==           |       |
