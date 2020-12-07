@@ -11,7 +11,7 @@ class Messager
   def send_message
     @client.messages.create(
     from: '+447429428513',
-    to: '+447368481653',
+    to: '+44736848165345',
     body: "Thank you! Your order was placed and will be delivered before #{@time}."
     )
   end
