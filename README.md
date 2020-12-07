@@ -1,4 +1,4 @@
-##Takeaway Challenge
+## Takeaway Challenge
 A small takeaway app, built in ruby.
 ==================
 ```
