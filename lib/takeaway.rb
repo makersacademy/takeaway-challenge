@@ -18,7 +18,8 @@ gaeng_som = Dish.new("gaeng som", 80)
 @thai_menu.add_dish(tom_yum)
 @thai_menu.add_dish(gaeng_som)
 
-
+#create an empty order for the new customer
+@customer_order = Menu.new
 
 # customer interaction
 puts "Welcome to the Thai Takeaway!"
@@ -36,7 +37,6 @@ def show_menu
 end
 
 def add_to_order
-  choice = ""
   while true
     puts "Type the name of dish you would like to add to your order, or type 'finish' to stop adding dishes"
     choice = gets.chomp.downcase
@@ -68,8 +68,6 @@ def review_order
 end
 
 def perform_customer_choice
-  #create an empty order for the new customer
-  @customer_order = Menu.new
   while true
     show_customer_choices
     choice = gets.chomp.to_i
