@@ -11,4 +11,12 @@ describe Takeaway do
     end
   end
 
+  describe "#add_item" do
+    it { expect(subject).to respond_to(:add_item) }
+
+    it 'adds item to order' do
+      expect { subject.add_item('fish', 1) }. to change { subject.order }
+    end
+  end
+
 end
