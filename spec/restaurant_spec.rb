@@ -8,7 +8,7 @@ describe Restaurant do
   let(:quantity) { 2 }
   let(:price) { 6 }
 
-  let(:order_double) { double :order, add_item: quantity }
+  let(:order_double) { double :order, add_item: plate, total_bill: ( "Total: £#{quantity * price}") }
   let(:text_double) { double :text, send: true }
   let(:plate) { "chicken tikka massala" }
 
@@ -26,34 +26,21 @@ describe Restaurant do
   describe '.total method' do
     it 'shows the total amount to be paid' do
       restaurant.order.add_item(plate, quantity)
-      restaurant.order.total_bill(dishes_hash)
-      expect(restaurant.total).to eq("Total: £12")
+      expect(restaurant.order.total_bill(menu_double)).to eq('Total: £12')
     end
   end
-
-  # describe '.correct_amount?' do
-  #   it 'checks whether the trolley sum matches the total bill' do
-  #     expect(restaurant).to respond_to(:correct_amount?).with(1).arguments
-  #     amount = £12
-  #     order_double.add_item(plate, quantity)
-  #     order_double.total_bill(menu_double)
-  #     expect(restaurant.correct_amount?(amount)).to eq(true)
-  #   end
-  # end
 
   describe '.finalise method' do
     it 'sends a confirmation sms if trolley sum matches total bill' do
-      restaurant.order.add_item(plate, quantity)
-      amount = 12
-      expect(restaurant.finalise(amount)).to eq(true)
+      expect(restaurant).to receive(:correct_amount?).and_return(true)
+      expect(restaurant).to receive(:send_text).and_return(true)
+      restaurant.finalise
     end
-
 
     it 'raises an error when trolley sum amount does not match total bill' do
-      restaurant.order.add_item(plate, quantity)
-      amount = 10
-      expect { restaurant.finalise(amount) }.to raise_error "Error: sum of dishes in order does not match total bill!"
+      expect(restaurant).to receive(:correct_amount?).and_return(false)
+      expect { restaurant.finalise }.to raise_error "Error: sum of dishes in order does not match total bill!"
     end
   end
 
-  end
+end
