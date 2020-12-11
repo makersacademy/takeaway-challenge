@@ -11,7 +11,6 @@ describe Menu do
   end
 
   describe ".display method" do
-    # subject(:sample_menu) {{ 'chicken tikka massala' => 6 }}
     it 'shows the contents of the menu' do
       expect(menu.display).to satisfy { |k, v| "#{k}: £#{v}" }
     end
