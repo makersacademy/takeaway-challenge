@@ -16,13 +16,16 @@ class Order
   end
 
   def place
-    confirmation = Notification.new
-    confirmation.send_message("Thank you! Your order was placed and will be delivered
-                              before #{(Time.new + 3600).strftime('%H:%M')}")
+    send_confirmation
     print_receipt
   end
 
   private
+
+  def send_confirmation
+    confirmation = Notification.new
+    confirmation.send_message("Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime('%H:%M')}")
+  end
 
   def print_receipt
     receipt = Receipt.new(@items, total)

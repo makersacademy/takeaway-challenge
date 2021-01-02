@@ -30,10 +30,13 @@ RSpec.describe Order do
       expect(subject.total).to eq 18.98
     end
   end
-  # describe '#place' do
-  #   it 'responds' do
-  #     expect(subject).to respond_to(place)
-  #   end
-  # end
+  describe '#place' do
+    it 'responds' do
+      expect(subject).to respond_to(:place)
+    end
+    it 'sends a message and prints a receipt' do
+      
+    end
+  end
 
 end
