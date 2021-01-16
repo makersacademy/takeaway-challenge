@@ -22,14 +22,14 @@ class Menu
     @dishes_list << dish
   end
 
-  def print_dishes
-    dishes_list.each_with_index do |dish, index|
+  def print_dishes(list)
+    list.each_with_index do |dish, index|
       puts "#{index + 1}. #{dish.name.ljust(25, ".")} £#{sprintf("%.2f", dish.price)}"
     end
   end
 
   def create_order
-    print_dishes
+    print_dishes(dishes_list)
     @selected_dishes = []
     get_user_choices
     Order.new(@selected_dishes)
@@ -44,10 +44,20 @@ class Menu
       if input.empty?
         break
       elsif input.to_i <= dishes_list.length
-        puts "Added to order: #{dishes_list[input.to_i - 1].name}"
         @selected_dishes << dishes_list[input.to_i - 1]
+        puts "Added to order: #{dishes_list[input.to_i - 1].name}"
+        puts "Your order so far:"
+        print_dishes(@selected_dishes)
+        puts "Total cost so far: £#{sprintf("%.2f", prices_sum(@selected_dishes))}"
+        
       end
     end
+  end
+
+  def prices_sum(list_of_dishes)
+    @total = 0
+    list_of_dishes.each { |dish| @total += dish.price }
+    @total
   end
 
 end
