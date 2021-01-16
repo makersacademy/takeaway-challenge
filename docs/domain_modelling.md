@@ -38,6 +38,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - Text Contents (implied)
 
 ## Actions:
+- add dish to menu
 - list dishes
 - select dishes
 - place order (implied)
@@ -67,6 +68,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Action        | Action Owner   |
 |---------------|----------------|
+| add_dish      | Menu           |
 | list_dishes   | Menu           |
 | select_dish   | Order          |
 | place_order   | Order          |
@@ -78,6 +80,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Action      | Property it reads or changes  |
 |-------------|-------------------------------|
+| add_dish | changes - Menu.Dishes |
 | list_dishes | reads - Menu.Dishes |
 | select_dishes| changes - Order.Basket |
 | place_order | changes - Order.Delivery_Time, Text.contents |
@@ -89,7 +92,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
-| Menu       | Dishes     | list_dishes, sum_of_dishes  |
+| Menu       | Dishes     | add_dish, list_dishes, sum_of_dishes  |
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
