@@ -12,7 +12,7 @@ describe Menu do
 
   it "loads in a file to create many dishes" do
     file = "./lib/menu.csv"
-    expect { subject.load_menu(file) }.to change(subject.dishes_list.length)
+    expect { subject.load_menu(file) }.to change { subject.dishes_list.length }
   end
 
   it "lists dishes" do
