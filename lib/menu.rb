@@ -14,7 +14,7 @@ class Menu
     pretty_menu = ''
 
     for dish in @dishes
-      dish_price = "%.2f" % dish["price"]
+      dish_price = "%<price>d.2f" % dish["price"]
       pretty_menu += "#{dish["name"]}\t£#{dish_price}\n"
     end
 

@@ -1,14 +1,14 @@
 require 'menu'
 
 describe Menu do
-  let (:file_reader) { double("mock file reader") }
-  let (:json_parser) { double("mock json parser") }
-  let (:path_to_config) { "CONFIG_PATH" }
+  let(:file_reader) { double("mock file reader") }
+  let(:json_parser) { double("mock json parser") }
+  let(:path_to_config) { "CONFIG_PATH" }
   subject { Menu.new(path_to_config, file_reader, json_parser) }
 
   before :each do
     menu_json_data = "MENU_DATA"
-    @menu_hash_data = [{"name" => "dish1", "price" => 5}, {"name" => "cool_dish", "price" => 4}]
+    @menu_hash_data = [{ "name" => "dish1", "price" => 5 }, { "name" => "cool_dish", "price" => 4 }]
 
     allow(file_reader).to receive(:read).with(path_to_config).and_return(menu_json_data)
     allow(json_parser).to receive(:parse).with(menu_json_data).and_return(@menu_hash_data)
