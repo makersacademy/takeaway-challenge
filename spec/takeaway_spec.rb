@@ -2,7 +2,7 @@ require 'takeaway'
 require 'order'
 
 describe Takeaway do
-  let(:order) { double :order}
+  let(:order) { described_class.new }
 
   it 'shows the menu' do
     expect(subject.menu).to eq Takeaway::MENU

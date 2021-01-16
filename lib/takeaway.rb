@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Takeaway
   MENU = {
     Hotdog: 5
