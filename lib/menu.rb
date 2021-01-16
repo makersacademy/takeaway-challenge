@@ -1,10 +1,10 @@
 class Menu
 
-  attr_reader :menu
+  attr_reader :dishes
 
   def initialize
 
-    @menu = {
+    @dishes = {
       "Parhelic Triangle" => 8.95,
       "Theme of Sudden Roundabout" => 10.52,
       "Hello Meow" => 11.23,
@@ -20,7 +20,7 @@ class Menu
   end
 
   def show_menu
-    @menu.each { |item, price| puts "#{item} - #{price}" }
+    @dishes.each { |item, price| puts "#{item} - #{price}" }
   end
 
 end

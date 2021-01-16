@@ -14,14 +14,22 @@ Takeaway Challenge
 
  ```
 
-Welcome to The Sabrehide Institute Trust
+Welcome to Makers Ice Cream Academy
 
-We're an experimental restaurant specialising in genetically modified edible goods (we're not technically allowed to call our products "food").
+We're an experimental restaurant specialising in genetically modified and chemically enhanced ice-cream flavours.
 
-Our products have no calories, fat, sugar or salt and are completely devoid of any nutritional value whatsoever.
+Our products have no calories, fat, sugar or natural ingredients and are completely devoid of any nutritional value whatsoever.
 
-We ship our orders by supersonic drone so we can deliver worldwide within seconds.
+We generate our prices randomly and ship our ice creams by supersonic drone.
 
-For oral use only. Suitable for vegans.
+For oral use only. Always read the label. Suitable for vegans.
 
-<h3>How to Order</h3>
+<h3>How to View the Menu</h3>
+
+irb -r './lib/takeaway.rb'
+
+takeaway = Takeaway.new
+
+takeaway.display_menu
+
+<h3>How to Place an Order</hr>
