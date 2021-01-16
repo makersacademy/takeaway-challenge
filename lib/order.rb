@@ -8,8 +8,8 @@ class Order
     @menu = menu
   end
 
-  def add_to_basket(dish_name)
-    @total_price += item_price(dish_name)
+  def add_to_basket(dish_name, quantity = 1)
+    @total_price += quantity * item_price(dish_name)
   end
 
   private
