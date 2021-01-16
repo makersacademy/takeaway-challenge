@@ -1,11 +1,11 @@
 class Menu
   attr_reader :dishes
   def initialize
-    @dishes = {"Buffalo chicken burger" => 12,
-             "Angus beef burger" => 14,
-             "Plantastic burger" => 8,
-             "Chips" => 3.50,
-             "Shoestring fries" => 3.50,
-             "Coke" => 2.50}
+    @dishes = { "Buffalo chicken burger" => 12,
+                "Angus beef burger" => 14,
+                "Plantastic burger" => 8,
+                "Chips" => 3.50,
+                "Shoestring fries" => 3.50,
+                "Coke" => 2.50 }
   end
 end
