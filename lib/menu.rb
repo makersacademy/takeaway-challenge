@@ -14,6 +14,10 @@ class Menu
     p dishes_to_string
   end
 
+  def select_dish(name)
+    @dishes.select { |dish| dish.name == name }.first
+  end
+
   private
 
   def dishes_to_string

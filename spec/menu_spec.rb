@@ -13,9 +13,19 @@ describe Menu do
   end
 
   describe '#select_dish' do
-    it 'allows us to select a dish by name' do
-      expect(subject.select_dish(dish_name)).to eq dish
+    context 'when given a dish name that exists' do
+      it 'returns the dish with that name' do
+        expect(subject.select_dish(dish_name)).to eq dish
+      end
     end
+    # context 'when given a dish name that does not exist' do
+    #   it 'raises a dish does not exist error' do
+    #     imaginary_name = "BonBonBonBons"
+    #     imaginary_price = 99
+    #     imaginary_dish = Dish.new(imaginary_name, imaginary_price)
+    #     expect { subject.select_dish(imaginary_name) }.to raise_error "Dish does not exist"
+    #   end
+    # end
   end
 
 end
