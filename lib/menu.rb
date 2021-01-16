@@ -1,3 +1,5 @@
+require_relative 'dish'
+
 class Menu
 
   def initialize
@@ -9,8 +11,14 @@ class Menu
   end
 
   def list_dishes
+    p dishes_to_string
+  end
+
+  private
+
+  def dishes_to_string
     dish_list = ""
-    @dishes.each { |dish| dish_list << "#{dish.name}: #{dish.price}\n" }
+    @dishes.each { |dish| dish_list << "#{dish.name}: £#{dish.price}\n" }
     dish_list
   end
 
