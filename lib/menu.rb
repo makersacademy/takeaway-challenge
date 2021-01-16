@@ -13,7 +13,7 @@ class Menu
     @dishes = MENU
   end
 
-  def view_menu
+  def see_menu
     @dishes.map { |dish, price| "#{dish} = £#{price}"}.join(', ')
   end
 
