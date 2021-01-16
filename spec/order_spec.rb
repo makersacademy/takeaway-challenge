@@ -13,4 +13,8 @@ describe Order do
     expect(order.total_price).to eq 450
   end
 
+  it "knows when it was made" do
+    expect(order.time.class).to eq Time
+  end
+
 end
