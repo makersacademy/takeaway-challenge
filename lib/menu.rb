@@ -3,11 +3,10 @@ require "csv"
 
 class Menu
 
-  attr_reader :dishes_list, :selected_dishes
+  attr_reader :dishes_list
 
   def initialize
     @dishes_list = []
-    @selected_dishes = []
   end
 
   def load_menu(file)
@@ -28,7 +27,10 @@ class Menu
     end
   end
 
-  def choose_dishes
+  def create_order
+    puts "What would you like to order?"
+
+    @selected_dishes = []
     @selected_dishes << "dishes"
   end
 
