@@ -15,6 +15,7 @@ class Menu
   end
 
   def select_dish(name)
+    raise "Dish does not exist" if @dishes.select { |dish| dish.name == name }.empty?
     @dishes.select { |dish| dish.name == name }.first
   end
 
