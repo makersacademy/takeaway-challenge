@@ -6,8 +6,6 @@ describe Menu do
   let(:dishes) { {burger: 7, hamburger: 7, chips: 2} }
   let(:menu) {"burger = £7, hamburger = £7, chips = £2"}
 
-
-
   it { is_expected.to respond_to(:see_menu) }
   it { is_expected.to respond_to(:dishes) }
 
