@@ -10,13 +10,34 @@ class Takeaway
   end
 
   def see_menu 
-    #@menu.each { |item| puts "%{dish}: %{price}" % item}
+    # @menu.each { |item| puts "%{dish}: %{price}" % item}
     @menu
   end
 
   def add_to_order(dish, quantity)
-    raise "Dish not on menu" if !menu.any? { |item| item[:dish] == dish }
-    @basket << {dish: dish, quantity: quantity}
+    raise "Dish not on menu" unless menu.any? { |item| item[:dish] == dish }
+
+    @basket << { dish: dish, quantity: quantity, unit_price: calculate_unit_price(dish) }
+  end
+
+  def calculate_unit_price(dish)
+    unit = menu.select { |item| item[:dish] == dish }
+    unit[0][:price]
+  end
+
+  def calculate_total
+    sum = 0
+    basket.each { |dish| sum += (dish[:unit_price] * dish[:quantity]) }
+    sum
+  end
+
+  def view_order
+    balance_with_total = nil
+    balance_with_total = [basket, calculate_total]
+  end
+
+  def place_order
+    require_relative 'send_sms'
   end
 
 end
