@@ -16,7 +16,7 @@ class Menu
 
   def select_dish(name)
     raise "Dish does not exist" unless dish_exists?(name)
-    
+
     dish_from(name)
   end
 

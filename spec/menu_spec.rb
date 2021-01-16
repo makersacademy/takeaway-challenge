@@ -10,6 +10,12 @@ describe Menu do
     it 'adds a dish that can be listed' do
       expect(subject.list_dishes).to include(dish_name, dish_price.to_s)
     end
+    context 'when passed a dish with a name that already exists' do
+      it 'raises a dish already exists error' do
+        existing_dish = Dish.new(dish_name, 12.99)
+        expect { subject.add_dish(existing_dish)}.to raise_error 'Dish already exists'
+      end
+    end
   end
 
   describe '#select_dish' do
