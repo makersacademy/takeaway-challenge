@@ -1,5 +1,9 @@
 class Menu
+    def initialize
+        @dishes = ['Ramen - £1.99']
+    end
+
     def list
-        puts 'Ramen - £1.99'
+        @dishes.each { |dish| puts dish }
     end
 end
