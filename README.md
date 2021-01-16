@@ -26,15 +26,16 @@ For oral use only. Always read the label. Suitable for vegans.
 
 <h3>How to View the Menu</h3>
 
-irb -r './lib/takeaway.rb'
 
 ```rb
+irb -r './lib/takeaway.rb'
+
 takeaway = Takeaway.new
 
 takeaway.display_menu
 ```
 
-<h3>How to Select an Ice Cream</hr>
+<h3>How to Select an Ice Cream</h3>
 
 ```
 takeaway.select_dish(dish)
