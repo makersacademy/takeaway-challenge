@@ -2,19 +2,22 @@ require 'menu'
 
 describe Menu do
 
+  subject { described_class.new(dishes) }
+  let(:dishes) { {burger: 7, hamburger: 7, chips: 2} }
+  let(:menu) {"burger = £7, hamburger = £7, chips = £2"}
+
+
+
   it { is_expected.to respond_to(:see_menu) }
+  it { is_expected.to respond_to(:dishes) }
 
   context 'on initalization' do
-    it { is_expected.to respond_to(:dishes) }
-
-    it 'dishes equals menu' do
-      expect(subject.dishes).to eq described_class::MENU
+    it 'it has menu with dishes and prices' do
+      expect(subject.dishes).to eq(dishes)
     end
   end
 
-  describe '#view_menu' do
-    let(:menu) { "Beef Burger = £7, Double Cheese Burger = £9, Hamburger = £7, Fish Taco = £6, Hot Dog = £5, Chips = £2" }
-
+  describe '#see_menu' do
     it 'shows the menu' do
       expect(subject.see_menu).to eq(menu)
     end

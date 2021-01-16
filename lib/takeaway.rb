@@ -3,21 +3,21 @@ require_relative 'order'
 
 class Takeaway
 
-  attr_reader :current_order
+  attr_reader :menu
 
-  def initialize
-    @current_order = []
+  def initialize(menu:)
+    @menu = menu
   end
+
   def view_menu
-    Menu.new.see_menu
+    menu.see_menu
   end
 
   def place_order(dishes)
-    @current_order << Order.new.add_to_order(dishes)
+    dishes.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
   end
 
-  def review_order
-    @current_order.join(', ')
-  end
 
 end

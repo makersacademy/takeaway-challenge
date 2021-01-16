@@ -4,13 +4,10 @@ describe Order do
   subject { described_class.new }
   let(:new_order) { "Beef Burger" }
   let(:wrong_order) { "Fish Burger" }
-  let(:menu) { {
-    "Beef Burger" => 7,
-    "Double Cheese Burger" => 9,
-    "Hamburger" => 7,
-    "Fish Taco" => 6,
-    "Hot Dog" => 5,
-    "Chips" => 2,
+  let(:menu) {  {
+    burger: 7,
+    hamburger: 7,
+    chips: 2
   } }
 
 
