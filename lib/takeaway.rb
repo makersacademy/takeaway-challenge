@@ -7,7 +7,7 @@ class Takeaway
 
   def initialize
     @menu = Menu.new
-    @order = Array.new
+    @order = []
     @get_bill = BillCalculator.new
   end
 
@@ -23,6 +23,7 @@ class Takeaway
 
   def place_order
     @get_bill.bill(@order)
+    @order = []
   end
 
 end

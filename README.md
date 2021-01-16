@@ -30,7 +30,11 @@ We will:
 - check that it's correct; and
 - confirm the order with a text message.
 
-We ship our ice creams by supersonic drone. For oral use only. Always read the label. Suitable for vegans.
+We ship our ice creams by supersonic drone.
+
+For oral use only. Always read the label.
+
+Suitable for vegans.
 
 <h3>How to View the Menu</h3>
 

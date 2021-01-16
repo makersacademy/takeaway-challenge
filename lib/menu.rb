@@ -1,9 +1,6 @@
 class Menu
 
-  attr_reader :dishes
-
-  def initialize
-
+  def dishes
     @dishes = {
       "Parhelic Triangle" => 8.95,
       "Theme of Sudden Roundabout" => 10.52,
@@ -17,13 +14,16 @@ class Menu
       "Solo Barn Dance" => 9.25,
       "Wavfile Dayjob" => 9.25,
       "Vanilla" => 11.52 }
-  end
+    end
+
 
   def show_menu
+    dishes
     @dishes.each { |item, price| puts "#{item} - £#{price}" }
   end
 
   def on_menu?(dish)
+    dishes
     @dishes.include?(dish)
   end
 
