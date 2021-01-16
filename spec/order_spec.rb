@@ -7,4 +7,9 @@ describe Order do
   let(:menu) { Menu.new }
   before { menu.add_dish dish }
 
+  describe '#add_to_basket' do
+    it 'increases the total price by the price of the item' do
+      expect { subject.add_to_basket(dish) }.to change(subject.total_price).by dish_price
+    end
+  end
 end
