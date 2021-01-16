@@ -21,7 +21,7 @@ We specialise in the finest lab-grown experimental ice-cream flavours.
 Our products have no calories, fat, sugar or natural ingredients and are completely devoid of any nutritional value whatsoever.
 
 You can:
-- view the menu;
+- display the menu;
 - select an ice cream; and
 - place an order.
 
@@ -36,7 +36,7 @@ For oral use only. Always read the label.
 
 Suitable for vegans.
 
-<h3>How to View the Menu</h3>
+<h3>Get Started</h3>
 
 
 ```rb
@@ -44,13 +44,25 @@ irb -r './lib/takeaway.rb'
 
 takeaway = Takeaway.new
 
+```
+<h3>View the Menu</h3>
+```rb
 takeaway.display_menu
 ```
 
-<h3>How to Select an Ice Cream</h3>
+<h3>Select an Ice Cream</h3>
 
 ```
 takeaway.select_dish(dish)
 ```
 
 We'll add the dish to your order if it's on the menu.
+
+Keep adding items till you're ready to place an order
+
+<h3>Place an Order</h3>
+
+```
+takeaway.place_order
+```
+We'll let you know the bill total.
