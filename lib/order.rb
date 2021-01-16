@@ -16,7 +16,7 @@ class Order
   private
 
   def item_price(dish_name, quantity)
-    @menu.select_dish(dish_name).price * quantity
+    @menu.select_price(dish_name) * quantity
   end
 
   def positive_int_check(quantity)

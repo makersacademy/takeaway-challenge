@@ -22,7 +22,7 @@ class Menu
 
   def select_price(name)
     check_non_existent(name)
-    @dishes.select { |dish| dish.name == name }.first.price
+    get_price_from(name)
   end
 
   private
@@ -37,6 +37,10 @@ class Menu
 
   def get_dish_from(name)
     @dishes.select { |dish| dish.name == name }.first
+  end
+
+  def get_price_from(name)
+    get_dish_from(name).price
   end
 
   def dish_exists?(name)
