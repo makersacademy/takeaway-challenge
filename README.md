@@ -14,7 +14,7 @@ Takeaway Challenge
 
  ```
 
-Welcome to Makers Ice Cream Academy
+Welcome to Pete's Ice Cream Emporium
 
 We specialise in the finest lab-grown experimental ice-cream flavours.
 
@@ -63,7 +63,7 @@ takeaway.select_dish(dish)
 
 We'll add the dish to your order if it's on the menu.
 
-Keep adding items till you're ready to place an order
+Keep adding items till you're ready to place an order.
 
 <h3>Place an Order</h3>
 
