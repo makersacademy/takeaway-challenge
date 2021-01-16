@@ -20,6 +20,16 @@ We're an experimental restaurant specialising in genetically modified and chemic
 
 Our products have no calories, fat, sugar or natural ingredients and are completely devoid of any nutritional value whatsoever.
 
+You can
+- view the menu
+- select an ice cream
+- place an order
+
+We will
+- calculate the order total
+- check that it's correct
+- confirm the order with a text message
+
 We generate our prices randomly and ship our ice creams by supersonic drone.
 
 For oral use only. Always read the label. Suitable for vegans.
