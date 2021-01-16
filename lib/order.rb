@@ -1,9 +1,6 @@
-class OrderProcess
-
-  attr_reader :order_progress
+class Order
 
   def initialize
-    @order_progress = nil
     start_order
   end
 

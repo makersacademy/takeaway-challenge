@@ -44,15 +44,15 @@ These can be preliminarily sorted into some objects, and their variables.
   * `@menu_item_category`
 * `Order`
   * `@basket`
-* `OrderProcess`
-  * `@order_progress`
+* `Basket`
+  * `@contents`
 * `Twilio`
   * `@contact_number`
 
 The preliminary messages between these objects might include:
 
 * `#start_order`
-* `#add_contact_number`
+* `#acquire_details`
 * `#show_menu`
 * `#add_to_basket`
 * `#show_basket`
@@ -64,10 +64,10 @@ The preliminary messages between these objects might include:
 
 Object | Messages | Variables
 ---|---|---
-`OrderProcess` | `#acquire_details` `#start_order` `#show_basket` `#checkout` `#place_order` `#confirm_order` | `@order_progress` `@twilio`
+`Order` | `#start_order` `#acquire_details` `#show_basket` `#checkout` `#place_order` `#confirm_order` | `@basket` `@twilio`
 `Menu` | `#show_menu` | `@menu`
 `MenuItem` | `#add_to_basket` | `@menu_item_name` `@menu_item_price` `menu_item_category`
-`Order` | `#remove_from_basket` `#place_order` | `@basket`
+`Basket` | `#remove_from_basket` `#place_order` | `@contents`
 `Twilio` | `#add_contact_number` `#send_text` | `@contact_number`
 
 ##  3.  Identifying Features:
@@ -84,11 +84,10 @@ There are four specific features listed, and one implied:
 
 Each object will require a class. In preliminary order of creation, these are:
 
-1.  `OrderProcess`
+1.  `Order`
 2.  `Menu`
 3.  `MenuItem`
-4.  `Order`
-5.  `Twilio`
+4.  `Twilio`
 
 ##  5.  Feature Testing
 

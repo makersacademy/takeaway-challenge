@@ -1,18 +1,17 @@
-require 'orderprocess'
+require 'order'
 
-describe OrderProcess do
+describe Order do
   let(:menu) { double :menu }
   let(:menu_item) { double :menu_item }
   let(:menu_item_name) { double :menu_item_name }
   let(:menu_item_price) { double :menu_item_price }
   let(:menu_item_category) { double :menu_item_category }
-  let(:order) { double :order }
+  let(:basket) { double :basket }
+  let(:contents) { double :contents }
   let(:Twilio) { double :Twilio }
   let(:contact_number) { double :contact_number }
 
   describe 'initialize' do
-    it { is_expected.to respond_to :order_progress }
-    it { expect(subject.order_progress).to eq nil }
     it { is_expected.to respond_to :start_order }
   end
 
