@@ -95,7 +95,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
-| Menu       | Dishes     | select_dish, add_dish, list_dishes, sum_of_dishes  |
+| Menu       | Dishes     | select_dish, add_dish, list_dishes, select_price  |
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
@@ -103,7 +103,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
-| Order      | Basket, Total_Price, Delivery_Time  | add_to_basket, place_order, check_total   |
+| Order      | Total_Price, Delivery_Time  | add_to_basket, place_order  |
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
