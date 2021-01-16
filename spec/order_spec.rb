@@ -1,45 +1,15 @@
 require 'order'
 
-# describe Order do
-#   subject { described_class.new }
-#   let(:new_order) { "Beef Burger" }
-#   let(:wrong_order) { "Fish Burger" }
-#   let(:menu) {  {
-#     burger: 7,
-#     hamburger: 7,
-#     chips: 2
-#   } }
-#
-#
-#   it { is_expected.to respond_to(:order) }
-#   it { is_expected.to respond_to(:total) }
-#   it { is_expected.to respond_to(:add_to_order).with(1).argument }
-#   it { is_expected.to respond_to(:price_of_order) }
-#
-#   context 'on initalization' do
-#     it 'order is empty' do
-#       expect(subject.order).to be_empty
-#     end
-#
-#     it 'menu is preloaded' do
-#       expect(subject.menu).to eq(menu)
-#     end
-#   end
-#
-#   describe '#add_to_order' do
-#     it 'adds menu items to order' do
-#       expect{ subject.add_to_order(new_order)}.to change{ subject.order}.to([new_order])
-#     end
-#   end
-#
-#     it 'adds the price of the dish to total' do
-#       expect{subject.add_to_order(new_order)}.to change{ subject.total}.by(menu[new_order])
-#     end
-#
-#   context 'raises an error' do
-#     it "when item not on menu" do
-#       expect { subject.add_to_order(wrong_order)}.to raise_error "#{wrong_order} is not on the menu!"
-#     end
-#   end
-#
-# end
+describe Order do
+
+  subject { described_class.new }
+
+  let(:dishes) { { burger: 2, hamburger: 1,} }
+
+  it 'can order dishes from the menu' do
+    subject.add(burger: 2)
+    subject.add(hamburger: 1)
+    expect(subject.dishes).to eq(dishes)
+  end
+
+end
