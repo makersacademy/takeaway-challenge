@@ -6,10 +6,12 @@ describe Order do
   let(:dish) { Dish.new(dish_name, dish_price) }
   let(:menu) { Menu.new }
   before { menu.add_dish dish }
+  subject { described_class.new(menu) }
 
   describe '#add_to_basket' do
     it 'increases the total price by the price of the item' do
-      expect { subject.add_to_basket(dish) }.to change(subject.total_price).by dish_price
+      expect { subject.add_to_basket(dish_name) }.to change { subject.total_price }.by dish_price
     end
   end
+
 end
