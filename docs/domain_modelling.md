@@ -82,10 +82,10 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Action        | Property it reads or changes  |
 |-------------  |-------------------------------|
-| Menu.add_dish | changes - Menu.Dishes |
+| add_dish      | changes - Menu.Dishes |
 | list_dishes   | reads - Menu.Dishes |
 | select_dish   | reads - Menu.Dishes |
-| Order.add_dish| changes - Order.Basket |
+| add_to_basket | changes - Order.Basket |
 | place_order   | changes - Order.Delivery_Time, Text.contents |
 | check_total   | reads - Order.Total_Price, Menu.Dishes -> Dish.Price |
 | sum_of_dishes | reads - Menu.Dishes -> Dish.Price|
@@ -95,7 +95,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
-| Menu       | Dishes     | add_dish, list_dishes, sum_of_dishes  |
+| Menu       | Dishes     | select_dish, add_dish, list_dishes, sum_of_dishes  |
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
@@ -103,7 +103,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
-| Order      | Basket, Total_Price, Delivery_Time  | select_dishes, place_order, check_total   |
+| Order      | Basket, Total_Price, Delivery_Time  | add_to_basket, place_order, check_total   |
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
