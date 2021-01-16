@@ -5,7 +5,7 @@ class Menu
     "Hamburger" => 7,
     "Fish Taco" => 6,
     "Hot Dog" => 5,
-    "Chips" => 1.50,
+    "Chips" => 2,
   }
   attr_accessor :dishes
 
