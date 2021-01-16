@@ -3,6 +3,10 @@ class Takeaway
     Hotdog: 5
   }
   def menu
-    MENU 
+    MENU
+  end
+
+  def order
+    @order = Order.new
   end
 end
