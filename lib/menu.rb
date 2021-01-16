@@ -16,11 +16,15 @@ class Menu
       "Droplet Mirror" => 9.55,
       "Solo Barn Dance" => 9.25,
       "Wavfile Dayjob" => 9.25,
-      "Pepperoni" => 11.52 }
+      "Vanilla" => 11.52 }
   end
 
   def show_menu
-    @dishes.each { |item, price| puts "#{item} - #{price}" }
+    @dishes.each { |item, price| puts "#{item} - £#{price}" }
+  end
+
+  def on_menu?(dish)
+    @dishes.include?(dish)
   end
 
 end

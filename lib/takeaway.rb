@@ -1,12 +1,14 @@
 require_relative 'menu'
+require_relative 'bill_calculator'
 
 class Takeaway
 
-  attr_reader :order
+  attr_reader :order, :cost, :get_bill
 
   def initialize
     @menu = Menu.new
     @order = Array.new
+    @get_bill = BillCalculator.new
   end
 
   def display_menu
@@ -14,16 +16,13 @@ class Takeaway
   end
 
   def select_dish(dish)
-    fail "Selection unavailable" if on_menu?(dish) == false
+    fail "Selection unavailable" if @menu.on_menu?(dish) == false
 
-    order.push(dish)
-  end
-
-  def on_menu?(dish)
-    @menu.dishes.include?(dish)
+    @order.push(dish)
   end
 
   def place_order
-  end 
+    @get_bill.bill(@order)
+  end
 
 end

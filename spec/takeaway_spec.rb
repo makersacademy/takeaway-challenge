@@ -4,8 +4,6 @@ require 'menu'
 describe Takeaway do
 
   let(:menu) { Menu.new }
-  let(:dish) { "Hello Meow" }
-  let(:unavailable) {"Beep"}
 
   describe "display_menu" do
     it "displays the menu" do
@@ -21,13 +19,22 @@ describe Takeaway do
 
     it "adds a dish to the order if it's on the menu" do
       subject.select_dish("Hello Meow")
-      expect(subject.order).to include(dish)
+      expect(subject.order).to include("Hello Meow")
     end
 
     it "raises an error if a dish is unavailable" do
-      expect{ subject.select_dish("None") }.to raise_error "Selection unavailable"
+      expect { subject.select_dish("None") }.to raise_error "Selection unavailable"
     end
 
+  end
+
+  describe "place_order" do
+    it "puts the total cost of the order" do
+      subject.select_dish("Hello Meow")
+      subject.select_dish("Vanilla")
+      subject.select_dish("Perforated Air")
+      expect{ subject.place_order }.to output("Total order cost is £32.73\n").to_stdout
+    end
 
   end
 
