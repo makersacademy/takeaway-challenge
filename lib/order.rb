@@ -1,5 +1,9 @@
 class Order
-    def initialize
+
+    attr_reader :menu
+    
+    def initialize(menu)
+        @menu = menu
         @items = []
     end
 

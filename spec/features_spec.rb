@@ -9,22 +9,30 @@ describe 'User Stories' do
         expect { menu.add(:dish) }.not_to raise_error
     end
     
-    it '#1 - so I can see what to order, show me a list of dishes with prices' do
-        menu = Menu.new
-        dish1 = Dish.new(44, 'Ramen', 1.99)
-        dish2 = Dish.new(53, 'Katsu', 2.49)
-        menu.add(dish1)
-        menu.add(dish2)
-        menu.list
-    end
+    context 'Using a full menu' do
 
-    # As a customer
-    # So that I can order the meal I want
-    # I would like to be able to select some number of several available dishes
+        it '#1 - so I can see what to order, show me a list of dishes with prices' do
+            menu = Menu.new
+            dish1 = Dish.new(44, 'Ramen', 1.99)
+            dish2 = Dish.new(53, 'Katsu', 2.49)
+            menu.add(dish1)
+            menu.add(dish2)    
+            menu.list
+        end
 
-    it '#2 - Allows you to order one or more dishes from the menu' do
-        order = Order.new
-        order.add(:dish)
+        # As a customer
+        # So that I can order the meal I want
+        # I would like to be able to select some number of several available dishes
+
+        it '#2 - Allows you to order one or more dishes from the menu' do
+            menu = Menu.new
+            dish1 = Dish.new(44, 'Ramen', 1.99)
+            dish2 = Dish.new(53, 'Katsu', 2.49)
+            menu.add(dish1)
+            menu.add(dish2)
+            order = Order.new(menu)
+            order.add(:dish)
+        end
     end
 
 end
