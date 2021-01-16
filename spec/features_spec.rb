@@ -11,8 +11,10 @@ describe 'User Stories' do
     
     it '#1 - so I can see what to order, show me a list of dishes with prices' do
         menu = Menu.new
-        menu.add('Ramen - £1.99')
-        menu.add('Katsu - £2.49')
+        dish1 = Dish.new('Ramen', 1.99)
+        dish2 = Dish.new('Katsu', 2.49)
+        menu.add(dish1)
+        menu.add(dish2)
         menu.list
     end
 
