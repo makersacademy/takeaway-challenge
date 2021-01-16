@@ -32,4 +32,12 @@ describe Menu do
     end
   end
 
+  describe '#select_price' do
+    context 'when given a dish name that exists' do
+      it 'returns the price of the dish with that name' do
+        expect(subject.select_price(dish_name)).to eq dish_price
+      end
+    end
+  end
+
 end
