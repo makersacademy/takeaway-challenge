@@ -81,3 +81,7 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+To help me complete this weekend challenge i used a talk through by Sam Morgan(link attached below). I found it incredibly helpful when trying to understand the challenge as a whole. I also found it very useful in understanding doubles and why and when they're needed. Would definetely reccommend this resource to anyone else who struggled.
+
+https://www.youtube.com/watch?v=mgiJKdH9x8c&t=401s
