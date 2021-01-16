@@ -32,6 +32,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - Basket (implied)
 - Total Price
 - Text
+- Phone Number (implied)
 - Delivery Time (implied)
 - Text Contents (implied)
 
@@ -58,6 +59,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Text          | Owner of Properties             |
 | Delivery_Time | Property of Order               |
 | Text_Contents | Property of Text                |
+| Phone_Number  | Property of Text                |
 
 ## Identifying Action Owners
 
@@ -78,8 +80,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | select_dishes| changes - Order.Basket |
 | place_order | changes - Order.Delivery_Time, Text.contents |
 | check_total | reads - Order.Total_Price, Menu.Dishes -> Dish.Price |
-| sum_of_dishes | Menu.Dishes -> Dish.Price|
-| send_text| Text.Text_Contents|
+| sum_of_dishes | reads - Menu.Dishes -> Dish.Price|
+| send_text| reads - Text.Text_Contents, Text.Phone_Number|
 
 ## Classes with Actions & Properties
 
