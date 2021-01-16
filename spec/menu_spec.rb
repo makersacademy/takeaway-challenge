@@ -13,5 +13,10 @@ describe Menu do
     subject.add_dish(dish)
     expect { subject.print_dishes }.to output(/#{Regexp.quote(dish.name)}/).to_stdout
   end
+
+  it "allows user to select dishes" do
+    subject.choose_dishes
+    expect(subject.selected_dishes).not_to be_empty
+  end
   
 end

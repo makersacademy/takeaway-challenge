@@ -9,9 +9,8 @@ describe Dish do
   end
 
   it "has a price" do
-    expect(dish.price).to eq 250
+    expect(dish.price).to eq 2.50
   end
 
-  # it { is_expected.to respond_to :description }
 
 end
