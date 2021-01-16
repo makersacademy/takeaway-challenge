@@ -5,6 +5,7 @@ class Takeaway
 
   def initialize
     @order = Array.new
+    @menu = File.read('support/menu.csv').split(/\r\n/)
   end
 
   def add_dish(quantity, dish)
@@ -18,7 +19,8 @@ class Takeaway
   end
 
   def list_dishes
-
+    iteration = 0
+    @menu.each { |dish| puts "#{iteration}. #{dish.name} : #{dish.price}"}
   end
 
 end

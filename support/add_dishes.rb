@@ -1,17 +1,16 @@
 require 'csv'
 require_relative '../lib/dish.rb'
 
-def csv_tool(headers, data)
+def csv_tool(data)
   CSV.open('support/menu.csv', 'wb') do |csv|
-    csv << headers
 
     data.each do |column|
       csv << column
     end
+
   end
 end
 
-headers = %w{Dish}
 menu_data = [
   [Dish.new('Chicken chow mein', 5)],
   [Dish.new('Singapore noodles', 5)],
@@ -20,4 +19,4 @@ menu_data = [
   [Dish.new('Plain rice', 2)]
 ]
 
-csv_tool(headers, menu_data)
+csv_tool(menu_data)
