@@ -46,7 +46,7 @@ describe Takeaway do
   end
 
   context '#place_order' do 
-    let(:takeaway) { Takeaway.new }
+    let(:takeaway) { double :takeaway }
     it 'should send text message' do 
       allow(takeaway).to receive(:place_order) { true }
       expect(takeaway.place_order).to eq true
