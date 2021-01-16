@@ -10,13 +10,13 @@ class Order
 
   def add_to_basket(dish_name, quantity = 1)
     positive_int_check(quantity)
-    @total_price += quantity * item_price(dish_name)
+    @total_price += item_price(dish_name, quantity)
   end
 
   private
 
-  def item_price(dish_name)
-    @menu.select_dish(dish_name).price
+  def item_price(dish_name, quantity)
+    @menu.select_dish(dish_name).price * quantity
   end
 
   def positive_int_check(quantity)

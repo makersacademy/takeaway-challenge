@@ -41,9 +41,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - add dish to menu
 - list dishes
 - select dish from menu
+- select price from menu
 - add dish to order (implied)
 - place order (implied)
-- check total
 - sum of dishes
 - send text
 
@@ -72,6 +72,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | add_dish      | Menu           |
 | list_dishes   | Menu           |
 | select_dish   | Menu           |
+| select_price  | Menu           |
 | add_dish      | Order          |
 | place_order   | Order          |
 | check_total   | Order          |
@@ -85,10 +86,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | add_dish      | changes - Menu.Dishes |
 | list_dishes   | reads - Menu.Dishes |
 | select_dish   | reads - Menu.Dishes |
+| select_price  | reads - Menu.Dishes -> Dish.Price |
 | add_to_basket | changes - Order.Basket |
 | place_order   | changes - Order.Delivery_Time, Text.contents |
-| check_total   | reads - Order.Total_Price, Menu.Dishes -> Dish.Price |
-| sum_of_dishes | reads - Menu.Dishes -> Dish.Price|
 | send_text     | reads - Text.Text_Contents, Text.Phone_Number|
 
 ## Classes with Actions & Properties
