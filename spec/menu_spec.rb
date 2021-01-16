@@ -21,8 +21,6 @@ describe Menu do
     context 'when given a dish name that does not exist' do
       it 'raises a dish does not exist error' do
         imaginary_name = "BonBonBonBons"
-        imaginary_price = 99
-        imaginary_dish = Dish.new(imaginary_name, imaginary_price)
         expect { subject.select_dish(imaginary_name) }.to raise_error "Dish does not exist"
       end
     end

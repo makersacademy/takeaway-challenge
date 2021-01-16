@@ -15,11 +15,20 @@ class Menu
   end
 
   def select_dish(name)
-    raise "Dish does not exist" if @dishes.select { |dish| dish.name == name }.empty?
-    @dishes.select { |dish| dish.name == name }.first
+    raise "Dish does not exist" unless dish_exists?(name)
+    
+    dish_from(name)
   end
 
   private
+
+  def dish_from(name)
+    @dishes.select { |dish| dish.name == name }.first
+  end
+
+  def dish_exists?(name)
+    !@dishes.select { |dish| dish.name == name }.empty?
+  end
 
   def dishes_to_string
     dish_list = ""
