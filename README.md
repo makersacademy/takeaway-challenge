@@ -26,7 +26,7 @@ You can:
 - place an order.
 
 We will:
-- calculate the order total;
+- calculate the bill;
 - check that it's correct; and
 - confirm the order with a text message.
 
@@ -36,7 +36,7 @@ For oral use only. Always read the label.
 
 Suitable for vegans.
 
-<h3>Get Started</h3>
+<h3>Get started</h3>
 
 
 ```rb
@@ -45,7 +45,7 @@ irb -r './lib/takeaway.rb'
 takeaway = Takeaway.new
 
 ```
-<h3>View the Menu</h3>
+<h3>View the menu</h3>
 
 ```rb
 
@@ -53,7 +53,7 @@ takeaway.display_menu
 
 ```
 
-<h3>Select an Ice Cream</h3>
+<h3>Select an ice cream</h3>
 
 ```rb
 
