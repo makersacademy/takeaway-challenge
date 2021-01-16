@@ -13,7 +13,7 @@ describe Menu do
     context 'when passed a dish with a name that already exists' do
       it 'raises a dish already exists error' do
         existing_dish = Dish.new(dish_name, 12.99)
-        expect { subject.add_dish(existing_dish)}.to raise_error 'Dish already exists'
+        expect { subject.add_dish(existing_dish) }.to raise_error 'Dish already exists'
       end
     end
   end

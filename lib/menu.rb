@@ -7,6 +7,7 @@ class Menu
   end
 
   def add_dish(dish)
+    check_already_existing(dish.name)
     @dishes << dish
   end
 
@@ -15,14 +16,21 @@ class Menu
   end
 
   def select_dish(name)
-    raise "Dish does not exist" unless dish_exists?(name)
-
-    dish_from(name)
+    check_non_existent(name)
+    get_dish_from(name)
   end
 
   private
 
-  def dish_from(name)
+  def check_already_existing(name)
+    raise "Dish already exists" if dish_exists?(name)
+  end
+
+  def check_non_existent(name)
+    raise "Dish does not exist" unless dish_exists?(name)
+  end
+
+  def get_dish_from(name)
     @dishes.select { |dish| dish.name == name }.first
   end
 
