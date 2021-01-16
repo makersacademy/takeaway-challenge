@@ -7,8 +7,9 @@ describe Menu do
 
   describe '#add_dish' do
     before { subject.add_dish(dish) }
-    it 'should add a dish to the available dishes' do
+    it 'adds a dish that can be listed' do
       expect(subject.list_dishes).to include(dish_name, dish_price.to_s)
     end
   end
+  
 end
