@@ -16,4 +16,13 @@ describe 'User Stories' do
         menu.list
     end
 
+    # As a customer
+    # So that I can order the meal I want
+    # I would like to be able to select some number of several available dishes
+
+    it '#2 - Allows you to order one or more dishes from the menu' do
+        order = Order.new
+        order.add(:dish)
+    end
+
 end
