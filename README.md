@@ -46,14 +46,19 @@ takeaway = Takeaway.new
 
 ```
 <h3>View the Menu</h3>
+
 ```rb
+
 takeaway.display_menu
+
 ```
 
 <h3>Select an Ice Cream</h3>
 
-```
+```rb
+
 takeaway.select_dish(dish)
+
 ```
 
 We'll add the dish to your order if it's on the menu.
@@ -62,7 +67,9 @@ Keep adding items till you're ready to place an order
 
 <h3>Place an Order</h3>
 
-```
+```rb
+
 takeaway.place_order
+
 ```
 We'll let you know the bill total.
