@@ -9,4 +9,16 @@ class Menu
     @dishes = json_parser.parse(json_data)
   end
 
+  def pretty_dishes
+
+    pretty_menu = ''
+
+    for dish in @dishes
+      dish_price = "%.2f" % dish["price"]
+      pretty_menu += "#{dish["name"]}\t£#{dish_price}\n"
+    end
+
+    pretty_menu.chomp
+  end
+
 end

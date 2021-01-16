@@ -8,7 +8,7 @@ describe Menu do
 
   before :each do
     menu_json_data = "MENU_DATA"
-    @menu_hash_data = [{name: "dish1", price: 5}, {name: "cool_dish", price: 4}]
+    @menu_hash_data = [{"name" => "dish1", "price" => 5}, {"name" => "cool_dish", "price" => 4}]
 
     allow(file_reader).to receive(:read).with(path_to_config).and_return(menu_json_data)
     allow(json_parser).to receive(:parse).with(menu_json_data).and_return(@menu_hash_data)
@@ -24,7 +24,7 @@ describe Menu do
   describe '#pretty_dishes' do
 
     it 'should return dishes as formatted string' do
-      expected_menu = "dish1....................£5.00\ncool_dish..............£4.00"
+      expected_menu = "dish1\t£5.00\ncool_dish\t£4.00"
       expect(subject.pretty_dishes).to eq expected_menu
     end
   end
