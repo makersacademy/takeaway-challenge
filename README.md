@@ -1,3 +1,89 @@
+TAKEAWAY CHALLENGE PLAN
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+nouns:
+list of dishes(menu)
+prices
+
+actions:
+order
+see
+
+plan-
+create a menu object
+create a method that shows hash of dishes and prices - method - list_of_dishes called on menu
+
+Object classes needed:
+menu
+Takeaway
+----------------------------------------------------------------------------
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+nouns:
+dishes
+
+actions:
+select amount of dishes
+
+plan:
+create method called select that takes a dish from the list_of_dishes and the amount wanted
+- it then stores the dish and its amount into an array or hash. or array of hashes.
+
+object classes needed:
+order
+
+
+----------------------------------------------------------------------------
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+noun:
+order
+total
+
+actions:
+check total
+see full order
+
+plan:
+create a method that gives total of order- in order class
+method to show break down of dishes, prices and total
+----------------------------------------------------------------------------
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+nouns:
+text
+
+action:
+send text with timestamp
+
+plan:
+when order complete figure out how to send text with confirmation and time.
+
+Object needed.
+Text
+
+
+
+
+
+
+
+
+
+
+
 Takeaway Challenge
 ==================
 ```
