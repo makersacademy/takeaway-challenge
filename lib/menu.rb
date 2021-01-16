@@ -1,4 +1,5 @@
 require_relative "dish"
+require_relative "order"
 require "csv"
 
 class Menu
@@ -28,10 +29,25 @@ class Menu
   end
 
   def create_order
-    puts "What would you like to order?"
-
+    print_dishes
     @selected_dishes = []
-    @selected_dishes << "dishes"
+    get_user_choices
+    Order.new(@selected_dishes)
+  end
+
+  def get_user_choices
+    puts "What would you like to order?"
+    puts "To finish, just hit return twice."
+    loop do
+      puts "Please select dish by number."
+      input = gets.chomp
+      if input.empty?
+        break
+      elsif input.to_i <= dishes_list.length
+        puts "Added to order: #{dishes_list[input.to_i - 1].name}"
+        @selected_dishes << dishes_list[input.to_i - 1]
+      end
+    end
   end
 
 end

@@ -25,4 +25,7 @@ describe Menu do
     expect(subject.create_order.total_price).to eq 1500
   end
 
+  it "allows user to create an actual Order" do
+    expect(subject.create_order.class).to eq Order
+  end
 end

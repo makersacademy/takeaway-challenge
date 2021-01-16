@@ -13,5 +13,4 @@ class Order
     @total_price
   end
 
-
 end
