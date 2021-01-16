@@ -21,19 +21,4 @@ describe Menu do
     expect { subject.print_dishes(subject.dishes_list) }.to output(/#{Regexp.quote(dish.name)}/).to_stdout
   end
 
-  it "allows user to create an order" do
-    allow(subject).to receive(:create_order).and_return(order)
-    expect(subject.create_order.total_price).to eq 1500
-  end
-
-  it "allows user to create an actual Order" do
-    expect(subject.create_order.class).to eq Order
-  end
-
-  # pending "it gets user input" do
-  # end
-
-  it "adds up prices of selected dishes" do
-    expect(subject.prices_sum([dish, dish2])).to eq (dish.price + dish2.price)
-  end
 end

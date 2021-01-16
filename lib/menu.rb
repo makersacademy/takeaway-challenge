@@ -24,9 +24,11 @@ class Menu
 
   def print_dishes(list)
     list.each_with_index do |dish, index|
-      puts "#{index + 1}. #{dish.name.ljust(25, ".")} £#{sprintf("%.2f", dish.price)}"
+      print "#{index + 1}.".center(4)
+      puts "#{dish.name.ljust(25, ".")} £#{sprintf("%.2f", dish.price)}"
     end
   end
+  
 
   def create_order
     print_dishes(dishes_list)
@@ -54,10 +56,8 @@ class Menu
     end
   end
 
-  def prices_sum(list_of_dishes)
-    @total = 0
-    list_of_dishes.each { |dish| @total += dish.price }
-    @total
-  end
+
+
+
 
 end
