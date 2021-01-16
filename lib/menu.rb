@@ -12,7 +12,7 @@ class Menu
   end
 
   def list_dishes
-    p dishes_to_string
+    dishes_to_string
   end
 
   def select_dish(name)

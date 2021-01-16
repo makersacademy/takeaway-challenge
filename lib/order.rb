@@ -9,7 +9,13 @@ class Order
   end
 
   def add_to_basket(dish_name)
-    @total_price += @menu.select_dish(dish_name).price
+    @total_price += item_price(dish_name)
+  end
+
+  private
+
+  def item_price(dish_name)
+    @menu.select_dish(dish_name).price
   end
 
 end
