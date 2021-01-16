@@ -3,14 +3,20 @@ require_relative 'menu'
 class Order
   attr_reader :total_price
 
-  def initialize(menu)
+  def initialize(menu, text_class = Text)
     @total_price = 0
     @menu = menu
+    @text_class = text_class
   end
 
   def add_to_basket(dish_name, quantity = 1)
     positive_int_check(quantity)
     @total_price += item_price(dish_name, quantity)
+  end
+
+  def place_order
+    order_time = Time.now
+    @text_class.send_delivery_expected(order_time)
   end
 
   private
