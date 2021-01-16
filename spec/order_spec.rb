@@ -17,6 +17,16 @@ describe Order do
         expect { subject.add_to_basket(dish_name, 2) }.to change { subject.total_price }.by 2 * dish_price
       end
     end
+    context 'when passed a non-integer decimal' do
+      it 'raises a must be positive integer error' do
+        expect { subject.add_to_basket(dish_name, 2.5) }.to raise_error 'Quantity must be a positive integer'
+      end
+    end
+    context 'when passed a negative number' do
+      it 'raises a must be positive integer error' do
+        expect { subject.add_to_basket(dish_name, -1) }.to raise_error 'Quantity must be a positive integer'
+      end
+    end
   end
 
 end
