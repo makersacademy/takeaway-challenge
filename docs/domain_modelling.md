@@ -27,6 +27,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - Menu (implied)
 - Dishes (implied list)
 - Dish
+- Dish Name (implied)
 - Price
 - Order
 - Basket (implied)
@@ -53,6 +54,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Dishes        | Property of Menu                |
 | Dish          | Owner of Properties             |
 | Price         | Property of Dish                |
+| Name          | Property of Dish                |
 | Order         | Owner of Properties             |
 | Basket        | Property of Order               |
 | Total_Price   | Property of Order               |
@@ -66,7 +68,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Action        | Action Owner   |
 |---------------|----------------|
 | list_dishes   | Menu           |
-| select_dishes | Order          |
+| select_dish   | Order          |
 | place_order   | Order          |
 | check_total   | Order          |
 | sum_of_dishes | Menu           |
@@ -91,7 +93,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
-| Dish       | Price           |         |
+| Dish       | Price, Name           |         |
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
