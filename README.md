@@ -23,3 +23,5 @@ Our products have no calories, fat, sugar or salt and are completely devoid of a
 We ship our orders by supersonic drone so we can deliver worldwide within seconds.
 
 For oral use only. Suitable for vegans.
+
+<h3>How to Order</h3>
