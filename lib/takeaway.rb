@@ -17,4 +17,8 @@ class Takeaway
     sum
   end
 
+  def list_dishes
+
+  end
+
 end
