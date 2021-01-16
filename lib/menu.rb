@@ -15,7 +15,7 @@ class Menu
 
     for dish in @dishes
       dish_price = "%<price>.2f" % { price: dish["price"] }
-      pretty_menu += "#{dish["name"]}\t£#{dish_price}\n"
+      pretty_menu += "#{dish["id"]}.#{dish["name"]}\t£#{dish_price}\n"
     end
 
     pretty_menu.chomp
