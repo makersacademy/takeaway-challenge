@@ -4,7 +4,7 @@ describe Menu do
   let (:file_reader) { double("mock file reader") }
   let (:json_parser) { double("mock json parser") }
   let (:path_to_config) { "CONFIG_PATH" }
-  subject { Menu.new(file_reader, json_parser, path_to_config) }
+  subject { Menu.new(path_to_config, file_reader, json_parser) }
 
   describe '#initialize' do
 
