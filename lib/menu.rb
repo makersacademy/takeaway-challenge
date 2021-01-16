@@ -20,6 +20,11 @@ class Menu
     get_dish_from(name)
   end
 
+  def select_price(name)
+    check_non_existent(name)
+    @dishes.select { |dish| dish.name == name }.first.price
+  end
+
   private
 
   def check_already_existing(name)

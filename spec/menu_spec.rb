@@ -38,6 +38,12 @@ describe Menu do
         expect(subject.select_price(dish_name)).to eq dish_price
       end
     end
+    context 'when given a dish name that does not exist' do
+      it 'raises a dish does not exist error' do
+        imaginary_name = "BonBonBonBons"
+        expect { subject.select_price(imaginary_name) }.to raise_error "Dish does not exist"
+      end
+    end
   end
 
 end
