@@ -57,16 +57,17 @@ The preliminary messages between these objects might include:
 * `#add_to_basket`
 * `#show_basket`
 * `#remove_from_basket`
+* `#checkout`
 * `#place_order`
 * `#confirm_order`
 * `#send_text`
 
 Object | Messages | Variables
 ---|---|---
-`OrderProcess` | `#start_order` `#place_order` `confirm_order` | `@order_progress`
+`OrderProcess` | `#acquire_details` `#start_order` `#show_basket` `#checkout` `#place_order` `#confirm_order` | `@order_progress` `@twilio`
 `Menu` | `#show_menu` | `@menu`
 `MenuItem` | `#add_to_basket` | `@menu_item_name` `@menu_item_price` `menu_item_category`
-`Order` | `#show_basket` `#remove_from_basket` `#place_order` | `@basket`
+`Order` | `#remove_from_basket` `#place_order` | `@basket`
 `Twilio` | `#add_contact_number` `#send_text` | `@contact_number`
 
 ##  3.  Identifying Features:
@@ -90,5 +91,7 @@ Each object will require a class. In preliminary order of creation, these are:
 5.  `Twilio`
 
 ##  5.  Feature Testing
+
+The feature/unit testing cyle will proceed for each of the features listed in step 3.
 
 ##  6.  Unit testing
