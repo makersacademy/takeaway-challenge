@@ -1,6 +1,10 @@
 class Menu
     def initialize
-        @dishes = ['Ramen - £1.99']
+        @dishes = []
+    end
+
+    def add(dish)
+        @dishes << dish
     end
 
     def list
