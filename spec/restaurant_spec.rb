@@ -1,9 +1,9 @@
-require 'restaurant'
+require 'takeaway'
 require 'menu'
 require 'order'
 
 
-describe Restaurant do
+describe Takeaway do
 
   subject { described_class.new }
   let(:first_dish) { "Beef Burger" }
@@ -32,24 +32,24 @@ describe Restaurant do
     end
   end
 
-  describe '#place_order' do
-
-    it 'adds dishes to order' do
-      expect{ first_order }.to change{subject.current_order}.to([[first_dish]])
-    end
-
-    it 'can add extra dishes after first order' do
-      first_order
-      expect { second_order }.to change{subject.current_order}.to(full_order)
-    end
-  end
-
-  describe '#review_order' do
-
-    it 'returns ordered items in a string' do
-      first_order
-      expect(subject.review_order).to eq(first_dish)
-    end
-
-  end
+  # describe '#place_order' do
+  #
+  #   it 'adds dishes to order' do
+  #     expect{ first_order }.to change{subject.current_order}.to([[first_dish]])
+  #   end
+  #
+  #   it 'can add extra dishes after first order' do
+  #     first_order
+  #     expect { second_order }.to change{subject.current_order}.to(full_order)
+  #   end
+  # end
+  #
+  # describe '#review_order' do
+  #
+  #   it 'returns ordered items in a string' do
+  #     first_order
+  #     expect(subject.review_order).to eq(first_dish)
+  #   end
+  #
+  # end
 end

@@ -1,7 +1,7 @@
 require_relative 'order'
 
 
-class Restaurant
+class Takeaway
 
   attr_reader :current_order
 

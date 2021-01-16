@@ -15,7 +15,8 @@ describe Order do
 
 
   it { is_expected.to respond_to(:order) }
-  it { is_expected.to respond_to(:add_to_order).with(2).argument }
+  it { is_expected.to respond_to(:total) }
+  it { is_expected.to respond_to(:add_to_order).with(1).argument }
   it { is_expected.to respond_to(:price_of_order) }
 
   context 'on initalization' do
@@ -34,9 +35,13 @@ describe Order do
     end
   end
 
+    it 'adds the price of the dish to total' do
+      expect{subject.add_to_order(new_order)}.to change{ subject.total}.by(menu[new_order])
+    end
+
   context 'raises an error' do
     it "when item not on menu" do
-      expect { subject.add_to_order(wrong_order)}.to raise_error "This item is not an the menu!"
+      expect { subject.add_to_order(wrong_order)}.to raise_error "#{wrong_order} is not on the menu!"
     end
   end
 

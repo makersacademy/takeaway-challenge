@@ -1,21 +1,29 @@
 require_relative 'menu'
-require_relative 'restaurant'
+require_relative 'takeaway'
 
 class Order
 
-  attr_reader :order, :menu
+  attr_accessor :menu, :order, :total
 
   def initialize
     @order = []
     @menu = Menu::MENU
+    @total = 0
   end
 
-  def add_to_order(new_order, quantity = 1)
-    fail "This item is not an the menu!" unless dish?(new_order)
-    @order << new_order
-    
+  def add_to_order(dish)
+    fail "#{dish} is not on the menu!" unless dish?(dish)
+    @order << dish
+    @total += @menu[dish]
   end
-
+  #
+  #   def total_correct?
+  #     balance = 0
+  #     @order.map do |dish|
+  #       balance += @menu[dish]
+  #     end
+  #     @total == balance
+  #   end
   def price_of_order
 
   end
