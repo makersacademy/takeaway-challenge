@@ -9,9 +9,24 @@ class Order
   end
 
   def add_dish(dish, quantity = MINIMUM_QUANTITY)
-    dish["quantity"] = quantity
+    got_dish = get_dish(dish["id"])
 
-    @dishes << dish
+    if got_dish != nil
+      got_dish["quantity"] += quantity
+    else
+      dish["quantity"] = quantity
+      @dishes << dish
+    end
+  end
+
+  private
+
+  def get_dish(id)
+    for dish in @dishes
+      return dish if id == dish["id"]
+    end
+
+    return nil
   end
 
 end

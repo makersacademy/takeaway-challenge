@@ -1,21 +1,26 @@
 [
   {
+    "id": 1,
     "name": "Sharkfin Filtered Water (500ml)",
     "price": 7.5
   },
   {
+    "id": 2,
     "name": "Amazon Rainforest Water (250ml)",
     "price": 5
   },
   {
+    "id": 3,
     "name": "Super Neutral Water (ph7 500ml)",
     "price": 3.2
   },
   {
+    "id": 4,
     "name": "Nothern Glacial Water (750ml)",
     "price": 1.5
   },
   {
+    "id": 5,
     "name": "Electrocuted Water (25ml)",
     "price": 10
   }
