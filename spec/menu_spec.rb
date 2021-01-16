@@ -3,6 +3,7 @@ require "menu"
 describe Menu do
 
   let(:dish) { double(name: "Naan", price: 195) }
+  let(:order) { double :order}
 
   it "stores dishes" do
     subject.add_dish(dish)
@@ -20,8 +21,9 @@ describe Menu do
   end
 
   it "allows user to select dishes" do
-    subject.choose_dishes
-    expect(subject.selected_dishes).not_to be_empty
+    expect(subject.create_order).to return order
   end
+
+
   
 end
