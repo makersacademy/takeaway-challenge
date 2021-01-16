@@ -32,8 +32,7 @@ class Takeaway
   end
 
   def view_order
-    balance_with_total = nil
-    balance_with_total = [basket, calculate_total]
+    [basket, calculate_total]
   end
 
   def place_order
