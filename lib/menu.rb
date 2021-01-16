@@ -8,6 +8,6 @@ class Menu
     end
 
     def list
-        @dishes.each { |dish| puts "#{dish.name} - £#{dish.price}" }
+        @dishes.each { |dish| puts "(#{dish.id}) #{dish.name} - £#{dish.price}" }
     end
 end
