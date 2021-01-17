@@ -7,18 +7,18 @@ class Takeaway
   end
 
   def print_menu
-    #Displays the menu
+    # Displays the menu
     menu.print
   end
 
   def place_order(dishes)
-    #Adds the dishes
+    # Adds the dishes
     dishes.each do |dish, quantity|
       order.add(dish, quantity)
     end
-    #Deliver an sms
+    # Deliver an sms
     sms.deliver
-    #Return the order total
+    # Return the order total
     order.total
   end
 
