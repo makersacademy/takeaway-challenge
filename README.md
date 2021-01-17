@@ -14,6 +14,43 @@ Takeaway Challenge
 
  ```
 
+ Intro
+ ---------
+ This is my submission for the second weekend challenge of the Makers Academy course. The idea was to build a ruby programme that simulates some of the functionality you might want from a takeaway app, as described in [Task](#task) below.
+
+ The Code
+ -------
+ - There are four classes over four files: dish, menu, order and text
+ - Dishes have a name and a price
+ - Dishes are added to a menu, which will check if a dish with that name already exists
+ - An order is then set up with a given menu, and dishes from the menu can be added to the order
+ - Once you place an order, a text confirming the delivery time is sent from a text object
+ - The text uses the twilio-ruby gem to interact with the Twilio API
+ - Sensitive information (Twilio access info, phone numbers) are stored in environment variables
+
+My Approach
+ --------
+ - Built in ruby, spec written using rspec, and using rubocop for style checking.
+ - Using twilio-ruby to interact with the Twilio API, and Dotenv to control environment variables
+ - I tried to use a TDD approach when coding this challenge.
+ - I started off by converting the user stories given into a [domain model](docs/domain_model.md). This was a more thorough domain model than for the airport challenge, having had a workshop on domain modelling in the week. It separates out objects and actions, with properties and methods listed by class. Having a thorough plan definitely helped when it came to writing the code.
+ - Then, starting with the first user story, I built features one at a time, ensuring all tests still passed.
+ - I tried to ensure I was committing regularly - pretty much after every test was passed.
+ - I then would often refactor to follow the SRP as much as possible, meaning there are lots of short methods, but hopefully the result is easy to follow.  
+ - I also tried to make sure I wasn't over-engineering, which I think I did last week a bit. I made sure to only create what was in the user stories, rather than overcomplicating things for myself.
+
+ New Learnings
+ ---------
+ - This was the first time I had used environment variables in any actual code. Storing them in a .env file (not committed to Github of course) and then using the Dotenv gem to load them on deployment of the code was relatively painless.
+ - I used mocking in a couple of places which took me a while to set up and make sure I was checking the right inputs for it. I feel a little uneasy still with whether some of the tests I've done are completely rigorous but I think they'll do.
+ - Using Twilio was a first for me, and indeed it was the first time I've built something in Ruby that interacts with something outside of its own environment. Setting it up was easier than testing it, since Twilio have some good documentation on using it.
+
+ Issues Encountered
+ --------
+ - Drew back from over-engineering the basket - the user stories actually don't look at a way to look at the basket contents for example, only the price of what's in there. This was something I began thinking about how to build before realising I didn't need to.
+ - I began fiddling about with calculating the item price for things in an order from the order class, but then realised this should be functionality of the menu, so moved it into there.  
+ - Having added `Menu#select_price` to solve the above issue, I realised that `#select_dish` actually wasn't being used, but I decided to leave it in there as it would likely be useful with only very slightly more complex functionality required.
+
 Instructions
 -------
 
