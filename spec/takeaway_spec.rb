@@ -36,9 +36,9 @@ describe Takeaway do
   describe 'reconcile' do
     context 'Checks the sum of items in basket match the grand_total' do
     
-      it 'Sends a confirmation message if correct' do 
+      it 'Sends a confirmation message if correct and calls time method' do 
         subject.order("chow mein", 2)
-          expect(subject.reconcile).to eq("Thank you your order will be delivered before 6pm")
+          expect(subject.reconcile).to eq("Thank you! Your order was placed and will be delivered before #{subject.time}")
       end
     end
   end 

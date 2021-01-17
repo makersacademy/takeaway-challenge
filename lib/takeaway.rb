@@ -28,8 +28,13 @@ class Takeaway
       if item_total != @grand_total
         raise "grand_total does not equal total of items"
       else
-       "Thank you your order will be delivered before 6pm"
+       "Thank you! Your order was placed and will be delivered before #{time}"
       end
   end
- 
+  
+  def time
+    t = Time.now + 1*60*60
+    t.strftime('%H:%M')
+  end
+  
 end
