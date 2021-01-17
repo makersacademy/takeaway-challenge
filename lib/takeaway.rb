@@ -16,11 +16,11 @@ class Takeaway
   end
 
   def add_order
-    @current_order = @order_class.new if @current_order == nil
+    @current_order = @order_class.new if @current_order.nil?
 
     got_dish = select_dish
 
-    if got_dish == nil
+    if got_dish.nil?
       puts "Invalid Dish"
       return
     end
@@ -39,7 +39,7 @@ class Takeaway
   end
 
   def make_order
-    if @current_order == nil
+    if @current_order.nil?
       puts "No order to make"
       return
     end
@@ -55,18 +55,12 @@ class Takeaway
     user_input = gets.chomp
 
     case user_input
-    when "1"
-      show_menu
-    when "2"
-      add_order
-    when "3"
-      show_order
-    when "4"
-      make_order
-    when "9"
-      exit 0
-    else
-      puts "Please select a valid option"
+    when "1"; show_menu
+    when "2"; add_order
+    when "3"; show_order
+    when "4"; make_order
+    when "9"; exit 0
+    else; puts "Please select a valid option"
     end
   end
 
