@@ -5,7 +5,7 @@ describe SMS do
   let(:client) { double(:client) }
 
   it 'delivers an sms with an estimated time' do
-    sms.deliver
-  end 
+    expect(sms.deliver).to eq("message")
+  end
 
 end

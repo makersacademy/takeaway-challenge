@@ -5,6 +5,6 @@ class SMS
   end
 
   def deliver
-
+    "message"
   end 
 end
