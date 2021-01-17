@@ -21,11 +21,4 @@ class Menu
     @dishes_list << dish
   end
 
-  def print_dishes(list)
-    list.each_with_index do |dish, index|
-      print "#{index + 1}.".center(4)
-      puts "#{dish.name.ljust(25, ".")} £#{sprintf("%.2f", dish.price)}"
-    end
-  end
-
 end

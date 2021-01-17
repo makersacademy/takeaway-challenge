@@ -8,7 +8,7 @@ class OrderManager
   attr_reader :orders, :menu
 
   # 45 min for delivery
-  DELIVERY_TIME = 45*60
+  DELIVERY_TIME = 45 * 60
 
   def initialize
     @menu = Menu.new
@@ -34,7 +34,7 @@ class OrderManager
   def print_dishes(list)
     list.each_with_index do |dish, index|
       print "#{index + 1}.".center(4)
-      puts "#{dish.name.ljust(25, ".")} £#{sprintf("%.2f", dish.price)}"
+      puts "#{dish.name.ljust(25, ".")} £#{sprintf("%<price>.2f", price: dish.price)}"
     end
   end
 
@@ -48,13 +48,11 @@ class OrderManager
     loop do
       puts "Please select dish by number."
       choice = user_choice
-      if choice.empty?
-        break
-      else
-        @basket << dish_choice_from_input(choice)
-        puts "Added to order: #{@basket[-1].name}"
-        puts "Total cost so far: £#{sprintf("%.2f", prices_sum(@basket))}"
-      end
+      break if choice.empty?
+
+      @basket << dish_choice_from_input(choice)
+      puts "Added to order: #{@basket[-1].name}"
+      puts "Total cost so far: £#{sprintf("%<price>.2f", price: prices_sum(@basket))}"
     end
   end
 
@@ -75,7 +73,7 @@ class OrderManager
     puts "Your order has been created."
     puts "You ordered:"
     print_dishes(@orders[-1].dishes)
-    puts "The total cost will be £#{sprintf("%.2f", prices_sum(@orders[-1].dishes))}"
+    puts "The total cost will be £#{sprintf("%<price>.2f", price: prices_sum(@orders[-1].dishes))}"
     puts "Thanks for ordering!"
   end
 
@@ -87,6 +85,5 @@ class OrderManager
   def estimated_arrival_time(order)
     order.time + DELIVERY_TIME
   end
-
 
 end

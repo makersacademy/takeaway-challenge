@@ -6,9 +6,7 @@ require "dotenv/load"
 class TwilioManager
 
   def initialize
-    account_sid = ENV["TWILIO_ACCOUNT_SID"]
-    auth_token = ENV["TWILIO_AUTH_TOKEN"]
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"])
     @from_phone_number = ENV["TWILIO_PHONE_NUMBER"]
     @to_phone_number = ENV["MY_PHONE_NUMBER"]
   end

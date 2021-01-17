@@ -75,10 +75,6 @@ describe OrderManager do
       expect(subject).to respond_to :send_sms
     end
 
-    # it "says it's sent a text" do
-    #   expect { subject.send_sms }.to output(/#{Regexp.quote("You will receive a confirmation SMS soon.")}/).to_stdout
-    # end
-
     it "calculates estimated arrival time" do
       expect(subject.estimated_arrival_time(subject.orders[-1])).to eq(subject.orders[-1].time + described_class::DELIVERY_TIME)
     end
