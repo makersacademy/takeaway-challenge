@@ -19,6 +19,8 @@ describe Takeaway do
     expect(takeaway.print_menu).to eq(print_menu)
   end
 
+  #need to add to order, have missed some elements out.
+
   it "can order some number of several available dishes" do
     expect(order).to receive(:add).twice
     takeaway.place_order(dishes)
