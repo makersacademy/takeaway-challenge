@@ -8,7 +8,7 @@ class Takeaway
   end
 
   def show_menu
-    menu.display
+    puts menu.display
   end
 
   def order(dish, quantity = 1)

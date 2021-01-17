@@ -5,10 +5,10 @@ describe Takeaway do
     subject(:takeaway) { described_class.new(menu) }
 
     let(:menu) { double(:menu, display: show_menu) }
-    let(:show_menu) { "Korma: £5.00" }
+    let(:show_menu) { "Korma: £5.00\n" }
 
     it 'shows a list of dishes with prices' do
-      expect(takeaway.show_menu).to eq(show_menu)
+      expect { takeaway.show_menu }.to output(show_menu).to_stdout
     end
   end
 
