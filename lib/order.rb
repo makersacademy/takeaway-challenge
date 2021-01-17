@@ -5,7 +5,7 @@ class Order
 
   MINIMUM_QUANTITY = 1
 
-  attr_reader :dishes
+  attr_accessor :dishes
 
   def initialize
     @dishes = []
@@ -20,6 +20,17 @@ class Order
       dish["quantity"] = quantity
       @dishes << dish
     end
+  end
+
+  def order_total
+    total = 0
+
+    @dishes.each do |dish|
+      dish_total = dish["price"] * dish["quantity"] 
+      total += dish_total
+    end
+
+    total
   end
 
 end

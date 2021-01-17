@@ -18,7 +18,7 @@ describe Takeaway do
   describe '#prompt' do
 
     before :each do
-      expect(subject).to receive(:puts).with("Select an option:\n1.\tMenu\n2.\tOrder\n9.\tExit")
+      expect(subject).to receive(:puts).with("Select an option:\n1.\tMenu\n2.\tOrder\n3.\tShow Order\n9.\tExit")
     end
 
     it 'should display menu when 1 is entered' do
@@ -33,6 +33,14 @@ describe Takeaway do
       user_input = "2\n"
       allow(subject).to receive(:gets).and_return(user_input)
       expect(subject).to receive(:add_order)
+
+      subject.prompt
+    end
+
+    it 'should show order when 3 is entered' do
+      user_input = "3\n"
+      allow(subject).to receive(:gets).and_return(user_input)
+      expect(subject).to receive(:show_order)
 
       subject.prompt
     end
@@ -84,6 +92,12 @@ describe Takeaway do
       expect(order).not_to receive(:add_dish)
 
       subject.add_order
+    end
+  end
+
+  describe '#show_order' do
+    it '' do
+
     end
   end
 end

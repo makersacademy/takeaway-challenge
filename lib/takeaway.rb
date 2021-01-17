@@ -26,8 +26,17 @@ class Takeaway
     @current_order.add_dish(got_dish, quantity)
   end
 
+  def show_order
+    if @current_order != nil
+      total = @current_order.order_total
+      puts "Cost: £%<total>.2f" % { total: total }
+    else
+      puts "Order is empty"
+    end
+  end
+
   def prompt
-    puts "Select an option:\n1.\tMenu\n2.\tOrder\n9.\tExit"
+    puts "Select an option:\n1.\tMenu\n2.\tOrder\n3.\tShow Order\n9.\tExit"
 
     user_input = gets.chomp
 
@@ -36,6 +45,8 @@ class Takeaway
       show_menu
     when "2"
       add_order
+    when "3"
+      show_order
     when "9"
       exit 0
     else

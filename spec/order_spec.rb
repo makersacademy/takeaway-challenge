@@ -41,4 +41,23 @@ describe Order do
 
   end
 
+  describe "#order_total" do
+
+    let(:dish1) { double("dish1") }
+    let(:dish2) { double("dish2") }
+
+    it 'return total amount' do
+      subject.dishes = [dish1, dish2]
+      
+      allow(dish1).to receive(:[]).with("price").and_return(3)
+      allow(dish1).to receive(:[]).with("quantity").and_return(2)
+
+      allow(dish2).to receive(:[]).with("price").and_return(2)
+      allow(dish2).to receive(:[]).with("quantity").and_return(1)
+
+      expect(subject.order_total).to eq 8
+    end
+
+  end
+
 end
