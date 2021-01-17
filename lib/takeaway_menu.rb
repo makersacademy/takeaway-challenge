@@ -2,25 +2,21 @@ require_relative 'menu'
 require_relative 'text'
 
 class Takeaway
+  attr_accessor :total
+  attr_reader :dishes
 
-  attr_accessor :basket
   def initialize
     @dishes = Menu.new.dishes
     @basket = {}
     @total = 0
-  end
-
-  def read_menu
-    @dishes
+    @send_text = Text.new
   end
 
   def order(dish, quantity = 1)
     raise "#{dish} is not available" unless dish?(dish)
-    if @basket.include?(dish)
-      @basket[dish] += quantity
-    else
-      @basket[dish] = quantity
-    end
+
+    @basket.include?(dish) ? repeated_item_in_basket(dish, quantity)
+      : new_item_in_basket(dish, quantity)
     update_total(@dishes[dish])
     "#{dish}, x#{quantity}"
   end
@@ -31,16 +27,15 @@ class Takeaway
     }
   end
 
-  def total
+  def total_cost
     @basket.map { |item, quantity|
       @total += (@dishes[item] * quantity)
     }
-    puts "#{@total.to_f.round(2)}"
+    @total
   end
 
   def checkout
-    send_text = Text.new
-    send_text.send_text
+    @send_text.send_text
   end
 
   private
@@ -51,5 +46,13 @@ class Takeaway
 
   def update_total(price)
     @total += price
+  end
+
+  def new_item_in_basket(dish, quantity)
+    @basket[dish] = quantity
+  end
+
+  def repeated_item_in_basket(dish, quantity)
+    @basket[dish] += quantity
   end
 end

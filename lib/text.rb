@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 
 class Text
+  attr_reader :from, :to 
   def initialize
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']

@@ -2,14 +2,10 @@ require 'takeaway_menu'
 
 describe Takeaway do
 
-  describe '#read_menu' do
-    it 'reads the menu to the user' do
-      expect(subject.read_menu).to eq ({ "onion bhaji" => 2.95, "vegetable samosa" => 2.95,
-         "aloo pakora" => 2.95, "chicken tikka" => 3.95, "mixed kebab" => 4.95 })
-    end
-  end
-
   describe '#order' do
+    it 'responds to .order with 2 arguments' do
+      expect(subject).to respond_to(:order).with(2).arguments
+    end
     it 'will find the item and price' do
       expect(subject.order("onion bhaji")).to eq 'onion bhaji, x1'
     end
@@ -32,23 +28,24 @@ describe Takeaway do
     end
   end
 
-  describe '#total' do
+  describe '#total_cost' do
     it 'returns the total cost of the items in the basket' do
       subject.order("onion bhaji")
       subject.order("vegetable samosa")
-      expect(subject.total).to eq 5.9
+      expect(subject.total_cost).to eq 11.8
     end
   end
-end
 
-describe Menu do
+  describe '#checkout' do
+    subject(:takeaway) { described_class.new }
 
-  it 'tells you the items on the menu' do
-    expect(subject.dishes).to eq ({ "onion bhaji" => 2.95, "vegetable samosa" => 2.95,
-    "aloo pakora" => 2.95, "chicken tikka" => 3.95, "mixed kebab" => 4.95 })
-  end
+    before do
+      allow(takeaway).to receive(:checkout)
+    end
 
-  it 'allows you to add items to the menu' do
-    expect(subject.add_item("aloo chat", 1.95)).to eq "aloo chat, 1.95"
+    it 'sends a payment confirmation text message' do
+      expect(takeaway).to receive(:checkout).and_return("Thank you for your order")
+      expect(takeaway.checkout).to eq "Thank you for your order"
+    end
   end
 end
