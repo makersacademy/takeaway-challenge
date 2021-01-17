@@ -1,6 +1,8 @@
 require 'json'
+require 'dish_filter'
 
 class Menu
+  include DishFilter
 
   attr_reader :dishes
 
