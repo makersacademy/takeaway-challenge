@@ -19,23 +19,22 @@ class Text
   end
 
   def send_delivery_expected(order_time)
+    delivery_time = delivery_time_string_from(order_time)
+    create_text(delivery_time)
+  end
+
+  private
+
+  def delivery_time_string_from(order_time)
     delivery_time = order_time + 3600 - order_time.sec
+    delivery_time.strftime("%k:%M")
+  end
+
+  def create_text(delivery_time)
     @twilio_client.messages.create(
-        body: "sdsd " + delivery_time.strftime("%k:%M") + "sdsdsdsd",
+        body: "Thanks for your order. It will be with you by #{delivery_time}",
         to: PHONE_NUMBER_TO,
         from: PHONE_NUMBER_FROM)
   end
 
 end
-
-# @client =
-# message = @client.messages.create(
-#     body: "Love you Emily",
-#     to: phone_number_to,    # Replace with your phone number
-#     from: phone_number_from)  # Use this Magic Number for creating SMS
-#
-# message_sid =  message.sid
-#
-# made_message =  @client.api.messages(message_sid).fetch
-#
-# p made_message

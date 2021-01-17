@@ -15,11 +15,16 @@ class Order
   end
 
   def place_order
+    check_empty_order
     order_time = Time.now
     @text_class.send_delivery_expected(order_time)
   end
 
   private
+
+  def check_empty_order
+    raise "Can't place empty order" if @total_price.zero?
+  end
 
   def item_price(dish_name, quantity)
     @menu.select_price(dish_name) * quantity

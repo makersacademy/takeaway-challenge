@@ -32,13 +32,15 @@ describe Order do
 
   describe '#place_order' do
     it 'passes the order time to send in text class' do
-      expect(text_class).to receive(:send_delivery_expected)
+      t = Time.now
+      acceptable_time_range = a_value_between(t, t + 5)
+      expect(text_class).to receive(:send_delivery_expected).with(acceptable_time_range)
       subject.add_to_basket dish_name
       subject.place_order
     end
     context 'when the basket is empty' do
       it "should raise a can't place empty order error" do
-        # expect
+        expect { subject.place_order }.to raise_error "Can't place empty order"
       end
     end
   end
