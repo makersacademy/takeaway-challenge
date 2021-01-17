@@ -10,9 +10,10 @@ describe Takeaway do
   end
 
   describe "#order" do 
-    it "adds food and amount to basket" do
-      subject.order
-    end
+    # it "adds food and amount to basket" do
+    #   expect(subject.order.with(2).arguments 
+      it { is_expected.to respond_to(:order).with(2).arguments }
+    # end
   end
 
 end
