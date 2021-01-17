@@ -1,20 +1,18 @@
 require 'takeaway'
 describe Takeaway do
+  subject(:takeaway) { described_class.new(menu) }
+  let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
+  let(:basket) { double(:basket, contents: []) }
 
   describe '#menu' do
-    subject(:takeaway) { described_class.new(menu) }
-
     let(:menu) { double(:menu, display: show_menu) }
     let(:show_menu) { "Korma: £5.00\n" }
-
     it 'shows a list of dishes with prices' do
       expect { takeaway.show_menu }.to output(show_menu).to_stdout
     end
   end
 
   describe '#check_basket' do
-    subject(:takeaway) { described_class.new(menu) }
-    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
 
     it "will display nothing when initialised" do
       expect(takeaway.check_basket).to be_empty
@@ -27,9 +25,6 @@ describe Takeaway do
   end
 
   describe '#order' do
-    subject(:takeaway) { described_class.new(menu) }
-    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
-    let(:basket) { double(:basket, contents: []) }
 
     it "confirms that your order has been added" do
       expect { takeaway.order('Korma') }.to output("1x Korma(s) added to basket\n").to_stdout
@@ -46,9 +41,6 @@ describe Takeaway do
   end
 
   describe '#order_total' do
-    subject(:takeaway) { described_class.new(menu) }
-    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
-    let(:basket) { double(:basket, contents: []) }
 
     it 'will return 0 if you have nothing in the basket' do
       expect(takeaway.order_total).to eq "£0.00"
@@ -63,11 +55,8 @@ describe Takeaway do
   end
 
   describe '#order_summary' do
-    subject(:takeaway) { described_class.new(menu) }
-    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
-    let(:basket) { double(:basket, contents: []) }
 
-    it "will puts the current order to the stdout" do
+    it "will puts the current order to the stdout with total" do
       takeaway.order('Korma', 2)
       takeaway.order('Rice', 3)
       expect { takeaway.order_summary }.to output("2x Korma, \n3x Rice \nOrder total = £16.00\n").to_stdout

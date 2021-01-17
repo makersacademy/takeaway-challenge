@@ -2,7 +2,6 @@ require 'menu'
 describe Menu do
 
   subject(:menu) { described_class.new(dishes) }
-
   let(:dishes) do
     {
     Korma: 5.00,
@@ -15,9 +14,9 @@ describe Menu do
     expect(menu.dishes).to eq(dishes)
   end
 
-  describe '#print' do
+  describe '#display' do
 
-    it 'prints a list of dishes with their prices' do
+    it 'shows a list of dishes with their prices' do
       displayed_menu = "Korma: £5.00, \nNaan: £3.50, \nRice: £2.00"
       expect(menu.display).to eq(displayed_menu)
     end

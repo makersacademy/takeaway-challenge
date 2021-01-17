@@ -1,5 +1,6 @@
 require 'basket'
 describe Basket do
+  let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
 
   describe "#contents" do
 
@@ -24,7 +25,6 @@ describe Basket do
   end
 
   describe "#total" do
-    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
 
     it 'will return 0 if nothing is in the basket' do
       expect(subject.total(menu)).to eq 0
@@ -43,9 +43,8 @@ describe Basket do
   end
 
   describe '#order_summary' do
-    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
 
-    it "prints out a statement of the baskets contents and order total" do
+    it "returns a statement of the baskets contents and order total" do
       subject.add_dish('Korma')
       subject.add_dish('Naan', 2)
       order_statement = "1x Korma, \n2x Naan \nOrder total = £12.00"

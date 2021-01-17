@@ -5,9 +5,7 @@ class Menu
   end
 
   def display
-    dishes.map do |key, value|
-      "#{key}: £%.2f" % [value]
-    end.join(", \n")
+    dishes.map { |key, value| "#{key}: £%.2f" % [value] }.join(", \n")
   end
 
 end
