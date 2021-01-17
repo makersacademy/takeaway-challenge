@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Order
 
     attr_reader :menu, :items
@@ -17,7 +19,9 @@ class Order
     def open
         menu.list
         select
-        confirm
+        if confirm
+            send_confirmation
+        end
     end
 
     def select
@@ -30,6 +34,12 @@ class Order
     end
 
     def confirm
+        print
+        puts "Enter 'YES' to confirm order, leave blank to cancel order"
+        STDIN.gets.chomp.upcase == 'YES'
+    end
+
+    def print
         summarise_order
         puts "Your order summary is as follows:"
         puts "---------------------------------"
@@ -61,5 +71,20 @@ class Order
             end 
         end
         dish_detail
+    end
+
+    def send_confirmation
+        account_sid = ENV['TWILIO_ACCOUNT_SID']
+        auth_token = ENV['TWILIO_AUTH_TOKEN']
+        message_body = "Thank you! Your order was placed and will be delivered before #{(Time.now + 3600).strftime("%k:%M")}"
+        @client = Twilio::REST::Client.new(account_sid, auth_token)
+         
+        message = @client.messages.create( 
+                                     body: message_body, 
+                                     from: '+12142734771',       
+                                     to: '+447985254497' 
+                                   ) 
+         
+        puts message.sid
     end
 end
