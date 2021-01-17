@@ -1,14 +1,21 @@
 require_relative 'order'
+require_relative 'menu'
 
 class Takeaway
-  MENU = {
-    Hotdog: 5
-  }
-  def menu
-    MENU
+
+  attr_reader :menu, :order
+
+  def initialize
+    @menu = Menu.new
+    @order = nil
   end
 
-  def order
+  def view_menu
+    @menu.display_menu
+  end
+
+  def place_order
     @order = Order.new
   end
+
 end

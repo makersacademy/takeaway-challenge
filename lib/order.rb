@@ -1,4 +1,5 @@
 require_relative 'takeaway'
+
 class Order
 
   attr_reader :order_list
@@ -7,8 +8,8 @@ class Order
     @order_list = []
   end
 
-  def add(item)
-    @order_list << item
+  def add(item, quantity)
+    @order_list << [item, quantity]
   end
 
 end
