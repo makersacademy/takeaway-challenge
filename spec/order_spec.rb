@@ -24,6 +24,6 @@ describe Order do
     order.add("chicken", 5)
     order.add("potato", 2)
     verify = 29
-    expect(order.verify).to eq(verify)
+    expect(order.verify_order).to eq(verify)
   end
 end

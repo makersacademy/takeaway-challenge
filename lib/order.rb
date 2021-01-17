@@ -1,13 +1,15 @@
 require_relative 'takeaway'
 require_relative 'menu'
+require_relative 'text_message'
 
 class Order
 
-  attr_reader :order_list, :menu
+  attr_reader :order_list, :menu, :textmessage
 
   def initialize
     @order_list = {}
     @menu = Menu::MENU
+    @text = TextMessage.new
   end
 
   def add(item, quantity = 1)
@@ -16,8 +18,12 @@ class Order
     add_to_order_list(item, quantity)
   end
 
-  def verify
+  def verify_order
     order_sum
+  end
+
+  def confirm_order
+    @text.confirm
   end
 
   private
