@@ -14,4 +14,8 @@ class Menu
     dishes[dish] == nil ? false : true
   end
 
+  def price(dish)
+    dishes[dish]
+  end
+
 end
