@@ -32,7 +32,7 @@ describe Takeaway do
         expect(dinnerFor3.grand_total).to eq(5.98)
     end
   end
-    
+  
   describe 'reconcile' do
     context 'Checks the sum of items in basket match the grand_total' do
       
