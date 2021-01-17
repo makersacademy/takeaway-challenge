@@ -19,7 +19,7 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-``` 
+```
 
 Investigating the user stories.
 Take the nouns and actions highlighted in the user stories and fill in the three tables below to help us uncover some more details about them and see how they relate to each other.
@@ -66,7 +66,6 @@ Total price|Property of order
 
 |Actions|Action owner|
 |---------|------------|
-Add dish to menu|Menu  
 See a list of dishes and prices|Menu
 Add dish to basket|Order  
 Check total of dishes in basket|Order  
@@ -76,8 +75,7 @@ Send text|Text_generator
 
 |Actions|Property it reads or changes|
 |---------|------------|
-Add dish to menu|Changes menu.dishes
-See a list of dishes and prices|Reads menu.dishes
+See a list of dishes and prices|Reads menu.full_menu
 Add dish to basket|Changes order.basket
 Check total of dishes in basket|Reads order.total price  
 Place order|Changes order.status  
@@ -87,6 +85,5 @@ Send text|Text_generator
 |Class|Properties(instance variables)|Actions(methods)|
 |---------|------------|-----------|
 |Menu|Dishes|Add dish to menu,  See a list of dishes and prices|
-|Dish|Description,Price| |
 |Order|Basket,Total price|Add dish to basket,  Check total of dishes in basket,  Place order|
 |Text_generator|Text|Send text|
