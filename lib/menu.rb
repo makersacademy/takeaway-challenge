@@ -5,6 +5,12 @@ class Menu
     potato: 2
   }
 
+  attr_reader :menu
+
+  def initialize(dishes = MENU)
+    @dishes = dishes
+  end
+
   def display_menu
     printed_menu
   end
@@ -12,8 +18,9 @@ class Menu
   private
 
   def printed_menu
-    MENU.map do |item, price|
+    @dishes.map do |item, price|
       "#{item.capitalize}: £#{price}"
     end.join(", ")
   end
+
 end
