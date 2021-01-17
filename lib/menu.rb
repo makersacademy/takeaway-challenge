@@ -9,4 +9,5 @@ class Menu
       "#{key}: £%.2f" % [value]
     end.join(", \n")
   end
+
 end
