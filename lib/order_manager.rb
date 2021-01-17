@@ -11,9 +11,9 @@ class OrderManager
   end
 
   def prices_sum(list_of_dishes)
-    @total = 0
+    total = 0
     list_of_dishes.each { |dish| @total += dish.price }
-    @total
+    total
   end
 
 
@@ -42,6 +42,7 @@ class OrderManager
       else
         selected_dishes << process_choice(choice, menu)
         puts "Added to order: #{selected_dishes[-1].name}"
+        puts "Total cost so far: £#{sprintf("%.2f", prices_sum(selected_dishes))}"
       end
     end
     selected_dishes
@@ -55,7 +56,7 @@ class OrderManager
     input = STDIN.gets.chomp
   end
 
-  def print_chosen_dishes
+  def print_subtotal
 
         # puts "Your order so far:"
         # print_dishes(@selected_dishes)
