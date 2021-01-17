@@ -96,8 +96,22 @@ describe Takeaway do
   end
 
   describe '#show_order' do
-    it '' do
 
+    let(:current_order) { double("current_order") }
+
+    it 'shows total cost of order' do
+      subject.current_order = current_order
+      allow(current_order).to receive(:order_total).and_return(5)
+
+      expect(subject).to receive(:puts).with("Cost: £5.00")
+
+      subject.show_order
+    end
+
+    it 'shows order is empty if current order is nil' do
+      expect(subject).to receive(:puts).with("Order is empty")
+
+      subject.show_order
     end
   end
 end

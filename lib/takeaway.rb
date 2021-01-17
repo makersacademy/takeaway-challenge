@@ -3,6 +3,8 @@ require_relative 'dish_filter'
 
 class Takeaway
 
+  attr_accessor :current_order
+
   def initialize(menu, order_class = Order)
     @menu = menu
     @order_class = order_class
