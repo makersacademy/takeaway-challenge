@@ -13,7 +13,11 @@ class Order
   def add(item, quantity = 1)
     fail "Item is not on the menu" unless on_menu?(item)
 
-    @order_list[item.downcase.to_sym] = quantity
+    add_to_order_list(item, quantity)
+  end
+
+  def verify
+    order_sum
   end
 
   private
@@ -22,4 +26,17 @@ class Order
     @menu[item.to_sym]
   end
 
+  def order_sum
+    @order_list.map do |item, quantity|
+      @menu[item] * quantity
+    end.sum
+  end
+
+  def add_to_order_list(item, quantity)
+    if @order_list.include?(item.downcase.to_sym)
+      @order_list[item.downcase.to_sym] += quantity
+    else
+      @order_list[item.downcase.to_sym] = quantity
+    end
+  end
 end
