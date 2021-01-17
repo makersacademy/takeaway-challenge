@@ -19,13 +19,26 @@ describe Takeaway do
     end
 
     it 'should output confirmation' do
-      message = "3x Plantastic burger(s) added to your basket."
+      message = "3x plantastic burger(s) added to your basket."
       expect { subject.add 'Plantastic burger', 3 }.to output(message).to_stdout
     end
 
+    before do
+      subject.add "Plantastic burger", 3
+      #allow(subject).to receive(:basket) { [{"Plantastic burger" => 8, "count" => 3}] }
+    end
+
     it 'should add items to a basket' do
-      subject.add 'Plantastic burger', 3
-      expect(subject.basket.select { |x| x["Plantastic burger"] == 8 }.length).to eq 3
+      expect(subject.basket.length).to eq 1
+    end
+
+    it 'should compute a total' do
+      expect(subject.basket_total).to eq 24
+    end
+
+    it 'should output an order list and total' do
+      message = "You have ordered:\n3 plantastic burger(s)\nTotal: £24\n"
+      expect { subject.complete_order }.to output(message).to_stdout
     end
   end
 

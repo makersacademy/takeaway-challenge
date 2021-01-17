@@ -2,7 +2,6 @@ require_relative 'menu'
 
 class Takeaway
   attr_reader :menu, :basket, :basket_total, :price
-  attr_reader :wrong_price
 
   def initialize
     @menu = Menu.new
@@ -21,7 +20,9 @@ class Takeaway
   end
 
   def complete_order
-    check_total
+    raise "Sorry, incorrect total." if wrong_price?
+
+    confirmation_message_2
   end
 
   private
@@ -32,22 +33,24 @@ class Takeaway
   end
 
   def add_to_basket(like, count)
-    count.times do basket << { like => menu.dishes[like] } end
+    basket << { like => menu.dishes[like], "count" => count }
   end
 
   def confirmation_message(like, count)
-    print "#{count}x #{like}(s) added to your basket."
+    print "#{count}x #{like.downcase}(s) added to your basket."
   end
 
   def update_basket_total
-    self.basket_total = basket.map { |x| x.values[0] }.sum
-  end
-
-  def check_total
-    raise "Sorry, incorrect total." if wrong_price?
+    self.basket_total = basket.map { |x| x.values[0] * x.values[1] }.sum
   end
 
   def wrong_price?
-    basket_total != basket.map { |x| x.values[0] }.sum
+    basket_total != basket.map { |x| x.values[0] * x.values[1] }.sum
+  end
+
+  def confirmation_message_2
+    puts "You have ordered:"
+    basket.map { |x| puts x.values[1].to_s + " " + x.keys[0].downcase + "(s)"}
+    puts "Total: £#{basket_total.to_i}"
   end
 end
