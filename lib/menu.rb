@@ -13,5 +13,9 @@ class Menu
 
   def has_dish?(dish)
     !dishes[dish].nil?
-  end 
+  end
+
+  def price(dish)
+    dishes[dish]
+  end
 end

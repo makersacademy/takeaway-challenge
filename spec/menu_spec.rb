@@ -6,7 +6,7 @@ describe Menu do
   let(:dishes) do
     {
       chicken: 3.50,
-      aubergine: 2.75
+      veg: 2.75
     }
   end
 
@@ -15,7 +15,7 @@ describe Menu do
   end
 
   it 'prints a list of dishes with prices' do
-    printed_menu = "Chicken £3.50, Aubergine £2.75"
+    printed_menu = "Chicken £3.50, Veg £2.75"
     expect(menu.print).to eq(printed_menu)
   end
 
@@ -25,6 +25,9 @@ describe Menu do
 
   it 'tells if a dish is not on the menu' do
     expect(menu.has_dish?(:beef)).to be false
-  end 
+  end
 
+  it 'tells us the price of an order' do
+    expect(menu.price(:chicken)).to eq(dishes[:chicken])
+  end
 end
