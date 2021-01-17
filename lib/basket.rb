@@ -5,8 +5,8 @@ class Basket
     @contents = []
   end
 
-  def add_dish(dish)
-
+  def add_dish(dish, quantity = 1)
+    quantity.times { contents << dish }
   end
 
 end

@@ -12,17 +12,31 @@ describe Takeaway do
     end
   end
 
-  describe '#order' do
+  describe '#check_basket' do
     subject(:takeaway) { described_class.new(menu) }
     let(:menu) { double(:menu) }
+
+    it "will display the contents of the basket" do
+      expect(takeaway.check_basket).to eq []
+    end
+  end
+
+  describe '#order' do
+    subject(:takeaway) { described_class.new(menu) }
+    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
     let(:basket) { double(:basket, contents: []) }
 
     it "confirms that your order has been added" do
-    expect{ takeaway.order('Korma') }.to output("1x Korma added to basket\n").to_stdout
+      expect { takeaway.order('Korma') }.to output("1x Korma(s) added to basket\n").to_stdout
     end
 
     it "adds the item to basket" do
-      
+      takeaway.order('Korma')
+      expect(takeaway.check_basket).to include('Korma')
+    end
+
+    it "raises an error if that dish is not on the menu" do
+      expect { takeaway.order('Vinderloo') }.to raise_error "This item is not available on the menu"
     end
   end
 end
