@@ -7,6 +7,12 @@ class Takeaway
   end
 
   def show_menu
-    puts menu.dishes
+    x = menu.dishes
+    puts x
+    return x
+    end
+
+  def confirm(like, count = 1)
+    print "#{count}x #{like}(s) added to your basket."
   end
 end
