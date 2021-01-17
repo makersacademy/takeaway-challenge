@@ -7,6 +7,6 @@ class Takeaway
   end
 
   def show_menu
-
+    puts menu.dishes
   end
 end
