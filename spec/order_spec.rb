@@ -5,7 +5,8 @@ describe Order do
   let(:dish_price) { 7.99 }
   let(:dish) { Dish.new(dish_name, dish_price) }
   let(:menu) { Menu.new }
-  let(:text_class) { double(:text) }
+  let(:text) { double(:text) }
+  let(:text_class) { double(:text_class, new: text) }
   before { menu.add_dish dish }
   subject { described_class.new(menu, text_class) }
 
@@ -31,10 +32,10 @@ describe Order do
   end
 
   describe '#place_order' do
-    it 'passes the order time to send in text class' do
+    it 'passes the order time to send on a text object' do
       t = Time.now
       acceptable_time_range = a_value_between(t, t + 5)
-      expect(text_class).to receive(:send_delivery_expected).with(acceptable_time_range)
+      expect(text).to receive(:send_delivery_expected).with(acceptable_time_range)
       subject.add_to_basket dish_name
       subject.place_order
     end

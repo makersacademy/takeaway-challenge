@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
   attr_reader :total_price
@@ -17,7 +18,7 @@ class Order
   def place_order
     check_empty_order
     order_time = Time.now
-    @text_class.send_delivery_expected(order_time)
+    @text_class.new.send_delivery_expected(order_time)
   end
 
   private
