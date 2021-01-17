@@ -3,9 +3,9 @@ require "order"
 
 describe OrderManager do
 
-  let(:dish) { double(:dish1, name: "Naan", price: 195) }
-  let(:dish2) { double(:dish2, name: "Rice", price: 350) }
-  let(:order) { double(total_price: 1500) }
+  let(:dish) { double(:dish1, name: "Naan", price: 1.95) }
+  let(:dish2) { double(:dish2, name: "Rice", price: 3.50) }
+  let(:order) { double(total_price: 15.00) }
   let(:menu) { double(dishes_list: [dish, dish2]) }
 
   it "stores orders" do
@@ -63,6 +63,15 @@ describe "#create_order" do
 
     it "prints out the ordered dishes" do
       expect { subject.print_confirmation }.to output(/#{Regexp.quote(dish2.name)}/).to_stdout
+    end
+
+    it "has method for sending confirmation SMS" do
+      expect(subject).to respond_to :send_sms
+    end
+
+    it "says it's sent a text" do
+      allow(TwilioManager.new).to receive(:send_sms).and_return("You will receive a confirmation SMS soon.")
+      expect { subject.send_sms }.to output(/#{Regexp.quote("You will receive a confirmation SMS soon.")}/).to_stdout
     end
 
   end

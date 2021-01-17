@@ -1,6 +1,7 @@
 require_relative "order"
 require_relative "menu"
 require_relative "dish"
+require_relative "twilio_manager"
 
 class OrderManager
 
@@ -23,6 +24,7 @@ class OrderManager
     print_options(menu, selected_dishes)
     @orders << Order.new(selected_dishes)
     print_confirmation
+    send_sms
   end
 
   def print_dishes(list)
@@ -63,6 +65,10 @@ class OrderManager
     print_dishes(@orders[-1].dishes)
     puts "The total cost will be £#{sprintf("%.2f", prices_sum(@orders[-1].dishes))}"
     puts "Thanks for ordering!"
+  end
+
+  def send_sms
+    TwilioManager.new.send_sms
   end
 
 
