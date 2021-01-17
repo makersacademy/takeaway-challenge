@@ -1,5 +1,6 @@
 require 'json'
-require 'dish_filter'
+
+require_relative 'dish_filter'
 
 class Menu
   include DishFilter
@@ -21,6 +22,10 @@ class Menu
     end
 
     pretty_menu.chomp
+  end
+
+  def get_dish(id)
+    find_by_id(@dishes, id)
   end
 
 end

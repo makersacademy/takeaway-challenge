@@ -29,4 +29,16 @@ describe Menu do
     end
   end
 
+  describe '#get_dish' do
+    let(:dish) { double("dish") }
+
+    before :each do
+      allow(subject).to receive(:find_by_id).with(subject.dishes, 1).and_return(dish)
+    end
+
+    it 'return retrieved dish' do
+      expect(subject.get_dish(1)).to eq(dish)
+    end
+  end
+
 end

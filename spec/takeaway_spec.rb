@@ -18,13 +18,21 @@ describe Takeaway do
   describe '#prompt' do
 
     before :each do
-      expect(subject).to receive(:puts).with("Select an option:\n1.\tMenu\n9.\tExit")
+      expect(subject).to receive(:puts).with("Select an option:\n1.\tMenu\n2.\tOrder\n9.\tExit")
     end
 
     it 'should display menu when 1 is entered' do
       user_input = "1\n"
       allow(subject).to receive(:gets).and_return(user_input)
       expect(subject).to receive(:show_menu)
+
+      subject.prompt
+    end
+
+    it 'should add order when 2 is entered' do
+      user_input = "2\n"
+      allow(subject).to receive(:gets).and_return(user_input)
+      expect(subject).to receive(:add_order)
 
       subject.prompt
     end
@@ -43,6 +51,39 @@ describe Takeaway do
       expect(subject).to receive(:puts).with("Please select a valid option")
 
       subject.prompt
+    end
+  end
+
+  describe '#add_order' do
+    let(:order_class) { double("Order class") }
+    let(:order) { double("order") }
+    let(:dish) { double("dish") }
+    subject { Takeaway.new(menu, order_class) }
+
+    before :each do
+      allow(order_class).to receive(:new).and_return(order)
+      expect(subject).to receive(:puts).with("Please input a dish id")
+    end
+
+    it 'should add dish to current order' do
+      dish_id_input = "1\n"
+      dish_qt_input = "5\n"
+      allow(subject).to receive(:gets).and_return(dish_id_input, dish_qt_input)
+      allow(menu).to receive(:get_dish).with(1).and_return(dish)
+      expect(subject).to receive(:puts).with("How many would you like?")
+      expect(order).to receive(:add_dish).with(dish, 5)
+
+      subject.add_order
+    end
+
+    it 'should not add an invalid dish to current order' do
+      user_input = "99\n"
+      allow(subject).to receive(:gets).and_return(user_input)
+      allow(menu).to receive(:get_dish).with(99).and_return(nil)
+      expect(subject).to receive(:puts).with("Invalid Dish")
+      expect(order).not_to receive(:add_dish)
+
+      subject.add_order
     end
   end
 end

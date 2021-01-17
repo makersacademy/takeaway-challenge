@@ -1,4 +1,4 @@
-require 'dish_filter'
+require_relative 'dish_filter'
 
 class Order
   include DishFilter
