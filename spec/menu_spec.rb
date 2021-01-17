@@ -2,9 +2,9 @@ require 'menu'
 
 describe Menu do
 
-  let (:menu) { described_class.new }
-  let (:dish) { "Battered cod" }
-  let (:price) { 3.99 }
+  let(:menu) { described_class.new }
+  let(:dish) { "Battered cod" }
+  let(:price) { 3.99 }
 
   describe "#view_menu" do
     it "shows a list of dishes" do
