@@ -1,3 +1,5 @@
+require_relative 'menu'
+
 class Order
 
   def initialize
@@ -5,6 +7,7 @@ class Order
   end
 
   def start_order
+    @menu = Menu.new
   end
 
   def acquire_details
