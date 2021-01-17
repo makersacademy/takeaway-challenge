@@ -84,6 +84,6 @@ Send text|Text_generator
 
 |Class|Properties(instance variables)|Actions(methods)|
 |---------|------------|-----------|
-|Menu|Dishes|Add dish to menu,  See a list of dishes and prices|
+|Menu|Dishes|See a list of dishes and prices|
 |Order|Basket,Total price|Add dish to basket,  Check total of dishes in basket,  Place order|
 |Text_generator|Text|Send text|

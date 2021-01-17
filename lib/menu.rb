@@ -9,4 +9,5 @@ class Menu
   def view_menu
     @full_menu
   end
+
 end
