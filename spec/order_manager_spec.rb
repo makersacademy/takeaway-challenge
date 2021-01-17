@@ -5,7 +5,6 @@ describe OrderManager do
 
   let(:dish) { double(:dish1, name: "Naan", price: 1.95) }
   let(:dish2) { double(:dish2, name: "Rice", price: 3.50) }
-  # let(:order) { double(total_price: 15.00) }
   let(:menu) { double(dishes_list: [dish, dish2]) }
 
   before(:each) do
@@ -28,14 +27,14 @@ describe OrderManager do
       expect { subject.print_dishes(menu.dishes_list) }.to output(/#{Regexp.quote(dish.name)}/).to_stdout
     end
 
-    it "gets user choice of dish for the order" do
-      expect(subject.user_choice).to eq "2"
-    end
-
     it "asks for user input" do
       expect { subject.create_order }.to output(/#{Regexp.quote("What would you like to order?")}/).to_stdout
     end
 
+    it "gets user choice of dish for the order" do
+      expect(subject.user_choice).to eq "2"
+    end
+    
     it "translates user input into dish choice" do
       expect(subject.dish_choice_from_input(subject.user_choice)).to eq dish2
     end
