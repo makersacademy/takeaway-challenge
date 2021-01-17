@@ -20,5 +20,4 @@ describe Menu do
     print_menu = "Spring_roll £0.99, Char_sui_bun £3.99, Pork_dumpling £2.99, Peking_duck £7.99, Fu_king_fried_rice £5.99"
     expect(menu.print).to eq(print_menu)
   end
-    
 end
