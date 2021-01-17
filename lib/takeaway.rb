@@ -1,7 +1,9 @@
 require_relative 'menu'
 
 class Takeaway
-  attr_reader :menu, :basket, :basket_total
+  attr_reader :menu, :basket, :basket_total, :price
+  attr_reader :wrong_price
+
   def initialize
     @menu = Menu.new
     @basket = []
@@ -14,8 +16,12 @@ class Takeaway
   def add(like, count = 1)
     order_present?(like)
     add_to_basket(like, count)
-    confirmation_message(like, count)
     update_basket_total
+    confirmation_message(like, count)
+  end
+
+  def complete_order
+    check_total
   end
 
   private
@@ -35,5 +41,13 @@ class Takeaway
 
   def update_basket_total
     self.basket_total = basket.map { |x| x.values[0] }.sum
+  end
+
+  def check_total
+    raise "Sorry, incorrect total." if wrong_price?
+  end
+
+  def wrong_price?
+    basket_total != basket.map { |x| x.values[0] }.sum
   end
 end

@@ -23,16 +23,16 @@ describe Takeaway do
       expect { subject.add 'Plantastic burger', 3 }.to output(message).to_stdout
     end
 
-    before do
-      subject.add 'Plantastic burger', 3
-    end
-
     it 'should add items to a basket' do
+      subject.add 'Plantastic burger', 3
       expect(subject.basket.select { |x| x["Plantastic burger"] == 8 }.length).to eq 3
     end
+  end
 
-    it 'should compute the correct total' do
-      expect(subject.basket_total).to eq 24
+  context "incorrect order total" do
+    it 'should raise an error' do
+      allow(subject).to receive(:wrong_price?) { true }
+      expect { subject.complete_order }.to raise_error "Sorry, incorrect total."
     end
   end
 end
