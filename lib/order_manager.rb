@@ -12,7 +12,7 @@ class OrderManager
 
   def prices_sum(list_of_dishes)
     total = 0
-    list_of_dishes.each { |dish| @total += dish.price }
+    list_of_dishes.each { |dish| total += (dish.price) }
     total
   end
 
@@ -22,6 +22,7 @@ class OrderManager
     print_dishes(menu.dishes_list)
     print_options(menu, selected_dishes)
     @orders << Order.new(selected_dishes)
+    print_confirmation
   end
 
   def print_dishes(list)
@@ -56,33 +57,13 @@ class OrderManager
     input = STDIN.gets.chomp
   end
 
-  def print_subtotal
-
-        # puts "Your order so far:"
-        # print_dishes(@selected_dishes)
-  
+  def print_confirmation
+    puts "Your order has been created."
+    puts "You ordered:"
+    print_dishes(@orders[-1].dishes)
+    puts "The total cost will be £#{sprintf("%.2f", prices_sum(@orders[-1].dishes))}"
+    puts "Thanks for ordering!"
   end
-
-
-
-  # def get_user_choices
-  #   puts "What would you like to order?"
-  #   puts "To finish, just hit return twice."
-  #   loop do
-  #     puts "Please select dish by number."
-  #     input = gets.chomp
-  #     if input.empty?
-  #       break
-  #     elsif input.to_i <= dishes_list.length
-  #       @selected_dishes << dishes_list[input.to_i - 1]
-  #       puts "Added to order: #{dishes_list[input.to_i - 1].name}"
-  #       puts "Your order so far:"
-  #       print_dishes(@selected_dishes)
-  #       puts "Total cost so far: £#{sprintf("%.2f", prices_sum(@selected_dishes))}"
-        
-  #     end
-  #   end
-  # end
 
 
 end

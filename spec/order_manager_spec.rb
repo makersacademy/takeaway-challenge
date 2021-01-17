@@ -17,12 +17,7 @@ describe OrderManager do
     expect(subject.prices_sum(menu.dishes_list)).to eq (dish.price + dish2.price)
   end
 
-  # it "allows user to create an order" do
-  #   allow(subject).to receive(:create_order).and_return(order)
-  #   expect(subject.create_order(menu).total_price).to eq 1500
-  # end
-
-  describe "#create_order" do
+describe "#create_order" do
 
     before(:each) do
       allow(STDIN).to receive(:gets).and_return("2", "")
@@ -56,6 +51,18 @@ describe OrderManager do
 
     it "prints out chosen dishes and subtotal during order creation" do
       expect { subject.create_order(menu) }.to output(/#{Regexp.quote(dish2.name)}/).to_stdout
+    end
+  end
+
+  describe "order confirmation" do
+
+    before(:each) do
+      allow(STDIN).to receive(:gets).and_return("2", "")
+      subject.create_order(menu)
+    end
+
+    it "prints out the ordered dishes" do
+      expect { subject.print_confirmation }.to output(/#{Regexp.quote(dish2.name)}/).to_stdout
     end
 
   end
