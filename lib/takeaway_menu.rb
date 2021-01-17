@@ -15,18 +15,19 @@ class Takeaway
   end
 
   def order(dish, quantity = 1)
-    raise "#{dish} is not available" if !@dishes[dish]
+    raise "#{dish} is not available" unless dish?(dish)
     if @basket.include?(dish)
       @basket[dish] += quantity
     else
       @basket[dish] = quantity
     end
+    update_total(@dishes[dish])
     "#{dish}, x#{quantity}"
   end
 
   def basket
     @basket.each { |item, quantity|
-      puts "#{item}, x#{quantity}"
+      puts "#{item}, x#{quantity}, £#{@total}"
     }
   end
 
@@ -34,11 +35,21 @@ class Takeaway
     @basket.map { |item, quantity|
       @total += (@dishes[item] * quantity)
     }
-    @total.round(2)
+    puts "#{@total.to_f.round(2)}"
   end
 
   def checkout
     send_text = Text.new
     send_text.send_text
+  end
+
+  private
+
+  def dish?(dish)
+    @dishes[dish]
+  end
+
+  def update_total(price)
+    @total += price
   end
 end
