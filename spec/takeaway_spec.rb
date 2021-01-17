@@ -7,7 +7,7 @@ describe Takeaway do
   let(:order) { double(:order) }
   let(:print_menu) { "Pizza - £5.00" }
   
-
+# Can use two dishes
   let(:dishes) do
     { spring_roll: 0.99, 
       char_sui_bun: 3.99 }
