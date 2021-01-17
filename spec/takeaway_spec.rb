@@ -1,7 +1,6 @@
 require 'takeaway'
 
 describe Takeaway do 
-
   context 'On initializing Takeaway' do
     it { is_expected.to respond_to(:menu) }
     it { is_expected.to respond_to(:basket) }
@@ -15,10 +14,9 @@ describe Takeaway do
   end
 
   describe 'order' do 
-    
     it 'Updates the basket with an order item' do
       subject.order("chow mein", 2)
-      expect(subject.basket.count).to eq(1)
+        expect(subject.basket.count).to eq(1)
     end
     
     it 'Provides a confirmation message of basket entry' do 
@@ -26,13 +24,22 @@ describe Takeaway do
     end
   end 
   
-  describe 'total' do
+  describe 'grand_total' do
     it 'Provides the total cost of an order' do
       dinnerFor3 = subject
       dinnerFor3.order("chow mein", 2)
       dinnerFor3.order("chicken balls")
         expect(dinnerFor3.grand_total).to eq(5.98)
     end
+  end
+    
+  describe 'reconcile' do
+    context 'Checks the sum of items in basket match the grand_total' do
+    
+      it 'Sends a confirmation message if correct' do 
+        subject.order("chow mein", 2)
+          expect(subject.reconcile).to eq("Thank you your order will be delivered before 6pm")
+      end
+    end
   end 
-  
 end 
