@@ -32,5 +32,6 @@ describe Takeaway do
       subject.place_order(dishes)
       expect(subject.order_amount).to eq("£21")
     end
-  end 
+  end
+
 end

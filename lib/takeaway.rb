@@ -18,12 +18,10 @@ class Takeaway
     dishes.each do |dish, quantity|
       order.add_order(dish, quantity)
     end
+    sms.deliver
   end
 
   def order_amount
     order.order_total
   end
-
-
-
 end
