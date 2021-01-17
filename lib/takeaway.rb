@@ -13,9 +13,10 @@ class Takeaway
 
   def add(like, count = 1)
     count.times do self.basket << {like => menu.dishes[like]} end
+    #a = subject.basket.map { |x| x.values[0] }
     print "#{count}x #{like}(s) added to your basket."
   end
-  
+
   private
   attr_writer :basket
 end
