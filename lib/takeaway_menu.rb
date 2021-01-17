@@ -11,7 +11,6 @@ class Menu
   end
 end
 
-
 class Takeaway
   
   attr_accessor :basket
@@ -36,7 +35,7 @@ class Takeaway
 
   def total
     @basket.map { |item, quantity|
-      @total +=  (@dishes[item] * quantity)
+      @total += (@dishes[item] * quantity)
     }
     @total.round(2)
   end
