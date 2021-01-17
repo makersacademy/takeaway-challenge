@@ -1,5 +1,6 @@
 require_relative "order"
 require_relative "menu"
+require_relative "dish"
 
 class OrderManager
 
@@ -16,18 +17,12 @@ class OrderManager
   end
 
 
-  def create_order(menu)
+  def create_order(menu) # menu must be Menu object
+    selected_dishes = []
     print_dishes(menu.dishes_list)
-    print_options(menu)
-    @orders << Order.new([])
+    print_options(menu, selected_dishes)
+    @orders << Order.new(selected_dishes)
   end
-
-  # def create_order
-  #   print_dishes(dishes_list)
-  #   @selected_dishes = []
-  #   get_user_choices
-  #   @orders << Order.new(@selected_dishes)
-  # end
 
   def print_dishes(list)
     list.each_with_index do |dish, index|
@@ -36,24 +31,37 @@ class OrderManager
     end
   end
 
-  def get_user_choice
-    input = STDIN.gets.chomp
-  end
-
-  def print_options(menu)
+  def print_options(menu, selected_dishes)
     puts "What would you like to order?"
     puts "To finish, just hit return twice."
     loop do
       puts "Please select dish by number."
-      # input = get_user_choice
-      process_choice(get_user_choice, menu)
-      break
+      choice = get_user_choice
+      if choice.empty?
+        break
+      else
+        selected_dishes << process_choice(choice, menu)
+        puts "Added to order: #{selected_dishes[-1].name}"
+      end
     end
+    selected_dishes
   end
 
   def process_choice(input, menu)
     menu.dishes_list[input.to_i - 1]
   end
+
+  def get_user_choice
+    input = STDIN.gets.chomp
+  end
+
+  def print_chosen_dishes
+
+        # puts "Your order so far:"
+        # print_dishes(@selected_dishes)
+  
+  end
+
 
 
   # def get_user_choices
