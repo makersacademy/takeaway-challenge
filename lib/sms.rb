@@ -1,8 +1,8 @@
 require "twilio-ruby"
 class Sms
-    TIME_FORMAT = "%H:%M"
+  TIME_FORMAT = "%H:%M"
   def initialize(config, client: nil)
-    @client = client || Twilio::REST::Client.new(config[:account_sid],config[:auth_token])
+    @client = client || Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
     @config = config
     end
 
@@ -10,7 +10,7 @@ class Sms
     client.messages.create(message_args)
   end
 private
-attr_reader :client, :config
+  attr_reader :client, :config
 
   def message_args
     { from: config[:from],
@@ -20,7 +20,7 @@ attr_reader :client, :config
   end
 
   def delivery_time
-    (Time.now + 60*60).strftime(TIME_FORMAT)
+    (Time.now + 60 * 60).strftime(TIME_FORMAT)
   end
 
 end
