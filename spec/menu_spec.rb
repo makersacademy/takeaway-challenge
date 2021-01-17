@@ -24,7 +24,7 @@ describe Menu do
   describe '#pretty_dishes' do
 
     it 'should return dishes as formatted string' do
-      expected_menu = "1.dish1\t£5.00\n2.cool_dish\t£4.00"
+      expected_menu = "1.\tdish1\t£5.00\n2.\tcool_dish\t£4.00"
       expect(subject.pretty_dishes).to eq expected_menu
     end
   end
