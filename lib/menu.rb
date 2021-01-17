@@ -1,17 +1,20 @@
+require_relative 'order'
+
 class Menu
+  
   attr_reader :menu
   
   MENU = {
-    "Sloppy Joe Burger": 10,
-     "Fries": 3,
-      "Beer": 5
+    burger: 10,
+    fries: 3,
+    beer: 5
   }
 
   def initialize
     @menu = MENU
   end
 
-  def read_menu
+  def read
     @menu.each {|dish, price| puts "#{dish} : £#{price}"}
   end
 
