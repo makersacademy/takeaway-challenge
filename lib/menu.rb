@@ -15,7 +15,6 @@ class Menu
       dish_name, dish_price = line
       dishes_list << Dish.new(dish_name, dish_price.to_i)
     end
-
   end
 
   def add_dish(dish)

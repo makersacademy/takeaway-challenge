@@ -7,6 +7,9 @@ class OrderManager
 
   attr_reader :orders, :menu
 
+  # 45 min for delivery
+  DELIVERY_TIME = 45*60
+
   def initialize
     @menu = Menu.new
     @menu.load_menu("lib/menu.csv")
@@ -77,7 +80,12 @@ class OrderManager
   end
 
   def send_sms
-    TwilioManager.new.send_sms(@orders[-1])
+    it_will_arrive_before = estimated_arrival_time(@orders[-1])
+    TwilioManager.new.send_sms(it_will_arrive_before)
+  end
+
+  def estimated_arrival_time(order)
+    order.time + DELIVERY_TIME
   end
 
 

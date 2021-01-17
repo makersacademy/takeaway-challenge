@@ -13,13 +13,17 @@ class TwilioManager
     @to_phone_number = ENV["MY_PHONE_NUMBER"]
   end
 
-  def send_sms
+  def send_sms(order_estimated_time)
     @client.messages.create(
     from: @from_phone_number,
     to: @to_phone_number,
-    body: "Your order is on its way!"
+    body: "Your order is on its way! It will be with you by: #{time_string(order_estimated_time)}."
       )
     puts "You will receive a confirmation SMS soon."
+  end
+
+  def time_string(time)
+    time.strftime("%-l:%M %p")
   end
 
 end
