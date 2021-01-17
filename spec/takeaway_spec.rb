@@ -39,4 +39,21 @@ describe Takeaway do
       expect { takeaway.order('Vinderloo') }.to raise_error "This item is not available on the menu"
     end
   end
+
+  describe '#order_total' do
+    subject(:takeaway) { described_class.new(menu) }
+    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
+    let(:basket) { double(:basket, contents: []) }
+
+    it 'will return 0 if you have nothing in the basket' do
+      expect(takeaway.order_total).to eq "£0.00"
+    end
+
+    let(:basket) { double(:basket, total: 16) }
+    it 'will return the correct total for the baskets contents' do
+      takeaway.order('Korma', 2)
+      takeaway.order('Rice', 3)
+      expect(takeaway.order_total).to eq "£16.00"
+    end
+  end
 end

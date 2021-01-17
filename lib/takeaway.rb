@@ -21,6 +21,10 @@ class Takeaway
     @basket.contents
   end
 
+  def order_total
+    "£%.2f" % [@basket.total(menu)]
+  end
+
   private #-------------------------------
   attr_reader :menu, :basket
 
