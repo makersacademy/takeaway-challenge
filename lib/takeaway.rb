@@ -25,6 +25,10 @@ class Takeaway
     format("£%.2f", @basket.total(menu))
   end
 
+  def order_summary
+    puts basket.order_summary(menu)
+  end
+
   private #-------------------------------
   attr_reader :menu, :basket
 

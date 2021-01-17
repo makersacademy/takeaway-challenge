@@ -63,6 +63,14 @@ describe Takeaway do
   end
 
   describe '#order_summary' do
+    subject(:takeaway) { described_class.new(menu) }
+    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
+    let(:basket) { double(:basket, contents: []) }
 
+    it "will puts the current order to the stdout" do
+      takeaway.order('Korma', 2)
+      takeaway.order('Rice', 3)
+      expect { takeaway.order_summary }.to output("2x Korma, \n3x Rice \nOrder total = £16.00\n").to_stdout
+    end
   end
 end

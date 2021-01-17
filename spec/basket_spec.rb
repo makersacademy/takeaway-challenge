@@ -42,7 +42,14 @@ describe Basket do
     end
   end
 
-  describe '#basket_summary' do
+  describe '#order_summary' do
+    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
 
+    it "prints out a statement of the baskets contents and order total" do
+      subject.add_dish('Korma')
+      subject.add_dish('Naan', 2)
+      order_statement = "1x Korma, \n2x Naan \nOrder total = £12.00"
+      expect(subject.order_summary(menu)).to eq order_statement
+    end
   end
 end

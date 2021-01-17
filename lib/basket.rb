@@ -16,6 +16,11 @@ class Basket
     calculate_total(menu)
   end
 
+  def order_summary(menu)
+    contents.map do |dish, quantity|
+      "#{quantity}x #{dish}"
+    end.join(", \n") + format(" \nOrder total = £%.2f", total(menu))
+  end
   private #-----------------------------
 
   def calculate_total(menu)
