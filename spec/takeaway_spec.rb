@@ -14,10 +14,15 @@ describe Takeaway do
 
   describe '#check_basket' do
     subject(:takeaway) { described_class.new(menu) }
-    let(:menu) { double(:menu) }
+    let(:menu) { double(:menu, :dishes => { Korma: 5.00, Naan: 3.50, Rice: 2.00 }) }
 
-    it "will display the contents of the basket" do
-      expect(takeaway.check_basket).to eq []
+    it "will display nothing when initialised" do
+      expect(takeaway.check_basket).to be_empty
+    end
+
+    it 'will display the dish when added to the basket' do
+      takeaway.order('Korma')
+      expect(takeaway.check_basket).to include('Korma'.to_sym)
     end
   end
 
@@ -32,7 +37,7 @@ describe Takeaway do
 
     it "adds the item to basket" do
       takeaway.order('Korma')
-      expect(takeaway.check_basket).to include('Korma')
+      expect(takeaway.check_basket['Korma'.to_sym]).to eq 1
     end
 
     it "raises an error if that dish is not on the menu" do
@@ -55,5 +60,9 @@ describe Takeaway do
       takeaway.order('Rice', 3)
       expect(takeaway.order_total).to eq "£16.00"
     end
+  end
+
+  describe '#order_summary' do
+
   end
 end

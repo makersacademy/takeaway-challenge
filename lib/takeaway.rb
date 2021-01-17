@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def order_total
-    "£%.2f" % [@basket.total(menu)]
+    format("£%.2f", @basket.total(menu))
   end
 
   private #-------------------------------

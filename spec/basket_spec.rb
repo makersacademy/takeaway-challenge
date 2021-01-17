@@ -13,12 +13,13 @@ describe Basket do
 
     it "will add the dish to the basket contents" do
       subject.add_dish(dish)
-      expect(subject.contents).to include(dish)
+      expect(subject.contents).to include(dish.to_sym)
     end
 
     it "will add the quantity of dishes to the basket" do
-      subject.add_dish(dish, 2)
-      expect(subject.contents).to match_array([dish, dish])
+      quantity = 2
+      subject.add_dish(dish, quantity)
+      expect(subject.contents[dish.to_sym]).to eq quantity
     end
   end
 
@@ -39,5 +40,9 @@ describe Basket do
       subject.add_dish('Naan', 2)
       expect(subject.total(menu)).to eq 12
     end
+  end
+
+  describe '#basket_summary' do
+
   end
 end
