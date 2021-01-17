@@ -32,7 +32,7 @@ actions:
 select amount of dishes
 
 plan:
-create method called select that takes a dish from the list_of_dishes and the amount wanted
+create method called add_to_order that takes a dish from the list_of_dishes and the amount wanted
 - it then stores the dish and its amount into an array or hash. or array of hashes.
 
 object classes needed:

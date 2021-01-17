@@ -1,27 +1,26 @@
-require './lib/menu'
+require_relative 'menu'
+require_relative 'takeaway'
 
 class Order
 
+attr_reader :order, :menu, :total_value
 
   def initialize
-    @order = []
-
+    @order = Hash.new(0)
+    @menu = Menu::DISHES
+    @total_value = 0
   end
 
-
-  def add_to_order(dish, amount)
-    @order << Menu::DISHES.select { |k,v| k == dish }
-    @order <<  amount
+  def add_to_order(dish, amount = 1)
+    @order[dish] += amount
+    amount.times {@total_value += @menu[dish]}
   end
 
   def show_order
     @order
   end
 
-
-private
-
-  def amount(num)
-    @order << num
+  def order_summary
+   p "Your order is: #{show_order} with a total due of £#{@total_value}"
   end
 end

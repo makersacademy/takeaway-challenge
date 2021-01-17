@@ -2,7 +2,10 @@ require_relative 'order'
 
 class Menu
 
-DISHES = {"pizza" => 10, "chips" => 4, "beer" => 5, "coke" => 3}
+DISHES = { "pizza": 10,
+  "chips": 4,
+  "beer": 5,
+  "coke": 3}
 
 
 
