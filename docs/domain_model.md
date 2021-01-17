@@ -23,6 +23,7 @@ Take the nouns and actions highlighted in the user stories and fill in the three
 Nouns
 -----
 Menu  
+Dishes
 Dish   
 Dish description   
 Dish price   
@@ -48,7 +49,8 @@ Send text
 |Noun|Property or owner of property?|
 |---------|------------|
 Menu|Owner of property (dish)
-Dish|Property of menu and owner of properties (description and price)  
+Dishes|Property of menu
+Dish|Owner of properties (description and price)  
 Dish description|Property of dish
 Dish price|Property of dish
 Text|Property of text_generator  
@@ -70,28 +72,17 @@ Send text|Text_generator
 
 |Actions|Property it reads or changes|
 |---------|------------|
-Add dish to menu|Changes menu  
-See a list of dishes and prices|Menu
-Add dish to basket|Order  
-Check total of dishes in basket|Order  
-Place order|Order  
+Add dish to menu|Changes menu.dishes
+See a list of dishes and prices|Reads menu.dishes
+Add dish to basket|Changes order.basket
+Check total of dishes in basket|Reads order.total price  
+Place order|Changes order.status  
 Send text|Text_generator
 
-Class diagrams for these user stories:
-Summarise what we have learned from the three tables in the previous section into class diagrams.
 
-Class
-Menu
-Properties (instance variables)
-Description, Price
-Actions (methods)
-
-Class
-Restaurant
-Properties (instance variables)
-Basket, running total
-Actions (methods)
-See list of dishes and prices (menu)
-Add items to basket
-Check running total
-Place order
+|Class|Properties(instance variables)|Actions(methods)|
+|---------|------------|-----------|
+|Menu|Dishes|Add dish to menu, See a list of dishes and prices|
+|Dish|Description,Price| |
+|Order|Basket,Total price|Add dish to basket, Check total of dishes in basket, Place order|
+|Text_generator|Text|Send text|
