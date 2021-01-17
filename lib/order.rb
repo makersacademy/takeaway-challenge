@@ -26,15 +26,12 @@ class Order
     end
     @total_cost
   end
-    # @basket.select do |item,quantity|
-    #   if @menu.view_menu.include?(item)
-    #     cost = @menu.view_menu[item]
-    #     @total_cost += cost * quantity
-    #   end
-    #   @total_cost
-    # end
 
   def view_basket
     @basket
+  end
+
+  def checkout
+    puts "Thank you for checking out, amount to pay is #{basket_value}"
   end
 end
