@@ -8,4 +8,8 @@ class Order
   def add(dish, quantity)
     dishes[dish] = quantity
   end
+
+  def total
+    item_total.inject(:+)
+  end
 end
