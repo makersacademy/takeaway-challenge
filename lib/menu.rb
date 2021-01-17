@@ -13,6 +13,16 @@ class Menu
   end
 
   def view
+    print
+  end
+
+  def on_menu?(dish)
+    @dishes_hash.include?(dish.to_sym)
+  end
+
+  private
+
+  def print
     @dishes_hash.each do |dish, price|
       puts "#{dish}: #{price}"
     end

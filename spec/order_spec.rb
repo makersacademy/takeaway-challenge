@@ -21,10 +21,12 @@ describe Order do
   end
 
   describe '#total' do
+
     it 'should return the correct total' do
       subject.add("Pork", 1, 7)
       subject.add("Sushi", 3, 15)
       expect(subject.total).to eq(52)
     end
   end
+
 end

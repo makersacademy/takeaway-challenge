@@ -11,6 +11,12 @@ class Order
   end
 
   def total
+    calculation
+  end
+
+  private
+
+  def calculation
     total = 0
     @orders.each do |hash|
       total += (hash[:quantity] * hash[:price])
