@@ -35,8 +35,15 @@ describe Takeaway do
     
   describe 'reconcile' do
     context 'Checks the sum of items in basket match the grand_total' do
+      
+      it 'Raises an error if reconcile unsuccessful' do
+        takeaway = Takeaway.new
+        takeaway.order("chow mein", 2)
+        takeaway.instance_variable_set(:@grand_total, 0.01)
+          expect{ takeaway.reconcile }.to raise_error("grand_total does not equal total of items")
+      end
     
-      it 'Sends a confirmation message if correct and calls time method' do 
+      it 'Sends a confirmation message if reconcile successful' do 
         subject.order("chow mein", 2)
           expect(subject.reconcile).to eq("Thank you! Your order was placed and will be delivered before #{subject.time}")
       end
