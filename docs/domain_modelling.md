@@ -45,7 +45,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - add dish to order (implied)
 - place order (implied)
 - sum of dishes
-- send text
+- send text with expected delivery time
 
 
 ## Identifying Object Types
@@ -107,4 +107,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 | Class      | Properties | Actions |
 |------------|------------|---------|
-| Text       | Contents           | send        |
+| Text       | Contents           | send_delivery_expected        |
