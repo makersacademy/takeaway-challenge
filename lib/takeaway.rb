@@ -1,29 +1,26 @@
 require_relative 'menu'
 
 class Takeaway
-attr_reader :menu, :basket
+attr_reader :dishes, :basket
 
   def initialize
-    @menu = Menu.new
+    @dishes = Menu.new.dishes
     @basket = {}
   end
 
-  def read_menu
-    @menu
-  end
-
-  def order(food_item)
-    @food_item = food_item
-    
+  def order(food, amount = 1)
+    @basket[food] = amount
   end
 
   def add
   end
 
   def basket_summary
+    @basket
   end
 
   def total
   end
+
 
 end

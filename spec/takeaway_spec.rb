@@ -1,7 +1,7 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:menu) {double}
+  let(:dishes) {double}
 
   describe '#basket' do
     it "should have an empty basket" do 
@@ -9,6 +9,10 @@ describe Takeaway do
     end
   end
 
-
+  describe "#order" do 
+    it "adds food and amount to basket" do
+      subject.order
+    end
+  end
 
 end
