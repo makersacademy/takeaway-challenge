@@ -5,7 +5,6 @@ class Takeaway
   def initialize
     @menu = Menu.new
     @basket = []
-    # @basket_total
   end
 
   def show_menu
@@ -13,13 +12,28 @@ class Takeaway
   end
 
   def add(like, count = 1)
-    raise "Sorry, no #{like.downcase}." unless menu.dishes.has_key?(like)
-
-    count.times do basket << { like => menu.dishes[like] } end
-    print "#{count}x #{like}(s) added to your basket."
-    self.basket_total = basket.map { |x| x.values[0] }.sum
+    order_present?(like)
+    add_to_basket(like, count)
+    confirmation_message(like, count)
+    update_basket_total
   end
 
   private
   attr_writer :basket, :basket_total
+
+  def order_present?(like)
+    raise "Sorry, no #{like.downcase}." unless menu.dishes.has_key?(like)
+  end
+
+  def add_to_basket(like, count)
+    count.times do basket << { like => menu.dishes[like] } end
+  end
+
+  def confirmation_message(like, count)
+    print "#{count}x #{like}(s) added to your basket."
+  end
+
+  def update_basket_total
+    self.basket_total = basket.map { |x| x.values[0] }.sum
+  end
 end
