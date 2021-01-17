@@ -9,4 +9,3 @@ class Order
     dishes[dish] = quantity
   end
 end
-
