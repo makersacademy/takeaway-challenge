@@ -5,8 +5,9 @@ class Takeaway
 
   attr_accessor :current_order
 
-  def initialize(menu, order_class = Order)
+  def initialize(menu, api_client, order_class = Order)
     @menu = menu
+    @api_client = api_client
     @order_class = order_class
   end
 
@@ -37,8 +38,19 @@ class Takeaway
     end
   end
 
+  def make_order
+    if @current_order == nil
+      puts "No order to make"
+      return
+    end
+
+    @current_order = nil
+
+    create_message
+  end
+
   def prompt
-    puts "Select an option:\n1.\tMenu\n2.\tOrder\n3.\tShow Order\n9.\tExit"
+    puts "Select an option:\n1.\tMenu\n2.\tOrder\n3.\tShow Order\n4.\tMake Order\n9.\tExit"
 
     user_input = gets.chomp
 
@@ -49,6 +61,8 @@ class Takeaway
       add_order
     when "3"
       show_order
+    when "4"
+      make_order
     when "9"
       exit 0
     else
@@ -68,6 +82,17 @@ class Takeaway
     puts "How many would you like?"
     user_input = gets.chomp
     user_input.to_i
+  end
+
+  def create_message
+    expected_time = Time.now + 3600
+    formatted_time = expected_time.strftime("%H:%M")
+
+    @api_client.messages.create(
+      body: "Thank you! Your order was placed and will be delivered before #{formatted_time}",
+      to: ENV["PHONE_NUMBER"],
+      from: "+44 7588 065563"
+    )
   end
 
 end

@@ -2,7 +2,8 @@ require 'takeaway'
 
 describe Takeaway do
   let(:menu) { double('menu') }
-  subject { Takeaway.new(menu) }
+  let(:api_client) { double('api client') }
+  subject { Takeaway.new(menu, api_client) }
 
   describe '#show_menu' do
     
@@ -18,7 +19,7 @@ describe Takeaway do
   describe '#prompt' do
 
     before :each do
-      expect(subject).to receive(:puts).with("Select an option:\n1.\tMenu\n2.\tOrder\n3.\tShow Order\n9.\tExit")
+      expect(subject).to receive(:puts).with("Select an option:\n1.\tMenu\n2.\tOrder\n3.\tShow Order\n4.\tMake Order\n9.\tExit")
     end
 
     it 'should display menu when 1 is entered' do
@@ -45,6 +46,14 @@ describe Takeaway do
       subject.prompt
     end
 
+    it 'should make order when 4 is entered' do
+      user_input = "4\n"
+      allow(subject).to receive(:gets).and_return(user_input)
+      expect(subject).to receive(:make_order)
+
+      subject.prompt
+    end
+
     it 'should exit application when 9 is entered' do
       user_input = "9\n"
       allow(subject).to receive(:gets).and_return(user_input)
@@ -66,7 +75,7 @@ describe Takeaway do
     let(:order_class) { double("Order class") }
     let(:order) { double("order") }
     let(:dish) { double("dish") }
-    subject { Takeaway.new(menu, order_class) }
+    subject { Takeaway.new(menu, api_client, order_class) }
 
     before :each do
       allow(order_class).to receive(:new).and_return(order)
@@ -112,6 +121,43 @@ describe Takeaway do
       expect(subject).to receive(:puts).with("Order is empty")
 
       subject.show_order
+    end
+  end
+
+  describe '#make_order' do
+    let(:current_order) { double("current order") }
+    let(:time) { double("time") }
+    let(:later_time) { double("time in an hour") }
+    let(:message) { double("message") }
+
+    it 'sends sms to phone when successfully making order' do
+      subject.current_order = current_order
+
+      allow(Time).to receive(:now).and_return(time)
+      allow(time).to receive(:+).with(3600).and_return(later_time)
+
+      formatted_time = "formatted_time"
+      allow(later_time).to receive(:strftime).with("%H:%M").and_return(formatted_time)
+      allow(api_client).to receive(:messages).and_return(message)
+
+      phone_number = "+0123456789"
+      allow(ENV).to receive(:[]).with("PHONE_NUMBER").and_return(phone_number)
+
+      expect(message).to receive(:create).with(
+        :body => "Thank you! Your order was placed and will be delivered before #{formatted_time}",
+        :to => phone_number,
+        :from => "+44 7588 065563"
+      )
+      
+      subject.make_order
+
+      expect(subject.current_order).to eq(nil)
+    end
+
+    it 'displays no order to make if no current order' do
+      expect(subject).to receive(:puts).with("No order to make")
+
+      subject.make_order
     end
   end
 end
