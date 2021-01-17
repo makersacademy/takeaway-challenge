@@ -31,7 +31,7 @@ describe 'User Stories' do
             menu.add(dish1)
             menu.add(dish2)
             order = Order.new(menu)
-            order.add(:dish)
+            order.open
         end
     end
 
