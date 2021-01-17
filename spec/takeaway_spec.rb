@@ -29,11 +29,13 @@ describe Takeaway do
   end
 
   describe "place_order" do
+
     it "puts the total cost of the order" do
       subject.select_dish("Hello Meow")
       subject.select_dish("Vanilla")
       subject.select_dish("Perforated Air")
-      expect{ subject.place_order }.to output("Total order cost is £32.73\n").to_stdout
+      allow(subject).to receive(:text) { true }
+      expect{ subject.place_order("+441234567890") }.to output("Total order cost is £32.73\n").to_stdout
     end
 
   end

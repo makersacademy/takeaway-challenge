@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'bill_calculator'
-
+require_relative 'text'
 class Takeaway
 
   attr_reader :order, :cost, :get_bill
@@ -21,9 +21,14 @@ class Takeaway
     @order.push(dish)
   end
 
-  def place_order
+  def place_order(number)
     @get_bill.bill(@order)
+    text(number)
     @order = []
+  end
+
+  def text(number)
+    Text.new.send(number)
   end
 
 end

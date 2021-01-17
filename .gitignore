@@ -5,3 +5,4 @@
 .rubocop-*
 
 takeaway-domain-model.pages
+twilio.env

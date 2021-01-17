@@ -57,7 +57,7 @@ takeaway.display_menu
 
 ```rb
 
-takeaway.select_dish(dish)
+takeaway.select_dish("dish")
 
 ```
 
@@ -65,11 +65,11 @@ We'll add the dish to your order if it's on the menu.
 
 Keep adding items till you're ready to place an order.
 
-<h3>Place an Order</h3>
+<h3>Place an order</h3>
 
 ```rb
 
-takeaway.place_order
+takeaway.place_order("+441234567890")
 
 ```
 We'll let you know the bill total.
