@@ -77,7 +77,7 @@ class OrderManager
   end
 
   def send_sms
-    TwilioManager.new.send_sms
+    TwilioManager.new.send_sms(@orders[-1])
   end
 
 
