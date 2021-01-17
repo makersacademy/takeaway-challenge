@@ -1,6 +1,5 @@
 require "twilio_manager"
 
-
 describe TwilioManager do
 
   it "has send_sms" do

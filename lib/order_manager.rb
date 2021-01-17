@@ -5,26 +5,27 @@ require_relative "twilio_manager"
 
 class OrderManager
 
-  attr_reader :orders
+  attr_reader :orders, :menu
 
   def initialize
+    @menu = Menu.new
+    @menu.load_menu("lib/menu.csv")
     @orders = []
+    @basket = []
   end
 
   def prices_sum(list_of_dishes)
     total = 0
-    list_of_dishes.each { |dish| total += (dish.price) }
+    list_of_dishes.each { |dish| total += dish.price }
     total
   end
 
-
-  def create_order(menu) # menu must be Menu object
-    selected_dishes = []
+  def create_order
     print_dishes(menu.dishes_list)
-    print_options(menu, selected_dishes)
-    @orders << Order.new(selected_dishes)
-    print_confirmation
-    send_sms
+    ask_what_user_wants_to_order
+    @orders << Order.new(@basket)
+    order_confirmation
+    @basket = []
   end
 
   def print_dishes(list)
@@ -34,29 +35,37 @@ class OrderManager
     end
   end
 
-  def print_options(menu, selected_dishes)
+  def ask_what_user_wants_to_order
     puts "What would you like to order?"
     puts "To finish, just hit return twice."
+    add_items_to_basket
+  end
+
+  def add_items_to_basket
     loop do
       puts "Please select dish by number."
-      choice = get_user_choice
+      choice = user_choice
       if choice.empty?
         break
       else
-        selected_dishes << process_choice(choice, menu)
-        puts "Added to order: #{selected_dishes[-1].name}"
-        puts "Total cost so far: £#{sprintf("%.2f", prices_sum(selected_dishes))}"
+        @basket << dish_choice_from_input(choice)
+        puts "Added to order: #{@basket[-1].name}"
+        puts "Total cost so far: £#{sprintf("%.2f", prices_sum(@basket))}"
       end
     end
-    selected_dishes
   end
 
-  def process_choice(input, menu)
+  def dish_choice_from_input(input)
     menu.dishes_list[input.to_i - 1]
   end
 
-  def get_user_choice
-    input = STDIN.gets.chomp
+  def user_choice
+    STDIN.gets.chomp
+  end
+
+  def order_confirmation
+    print_confirmation
+    send_sms
   end
 
   def print_confirmation
