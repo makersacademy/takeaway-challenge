@@ -23,7 +23,7 @@ Take the nouns and actions highlighted in the user stories and fill in the three
 Nouns
 -----
 Menu  
-Dishes
+Dishes  
 Dish   
 Dish description   
 Dish price   
@@ -54,8 +54,8 @@ Dish|Owner of properties (description and price)
 Dish description|Property of dish
 Dish price|Property of dish
 Text|Property of text_generator  
-Text_generator|Owner of text
-Order|Owner of basket, total price
+Text_generator|Owner of property (text)
+Order|Owner of properties (basket, total price)
 Basket|Property of order
 Total price|Property of order
 
@@ -82,7 +82,7 @@ Send text|Text_generator
 
 |Class|Properties(instance variables)|Actions(methods)|
 |---------|------------|-----------|
-|Menu|Dishes|Add dish to menu, See a list of dishes and prices|
+|Menu|Dishes|Add dish to menu,  See a list of dishes and prices|
 |Dish|Description,Price| |
-|Order|Basket,Total price|Add dish to basket, Check total of dishes in basket, Place order|
+|Order|Basket,Total price|Add dish to basket,  Check total of dishes in basket,  Place order|
 |Text_generator|Text|Send text|
