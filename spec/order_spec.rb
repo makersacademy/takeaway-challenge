@@ -1,5 +1,4 @@
 require 'order'
-require 'takeaway'
 
 describe Order do 
 
