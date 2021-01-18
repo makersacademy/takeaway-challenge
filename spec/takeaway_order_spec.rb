@@ -1,24 +1,7 @@
-require 'takeaway'
+require 'takeaway_order'
 
-describe Takeaway do 
-  context '#menu' do
-    it '#see_menu should return the menu' do 
-      expect(subject.see_menu).to eq subject.menu
-    end
+describe TakeawayOrder do 
 
-    it 'should be an array' do 
-      expect(subject.menu).to be_a Array
-    end
-
-    it 'should include hashes' do 
-      expect(subject.menu).to include Hash
-    end
-
-    it 'should have individual dishes as hashes' do 
-      expect(subject.menu[-2]).to be_a Hash
-    end
-
-  end
 
   context '#add_to_order' do 
     it 'should add dish to order' do
@@ -46,10 +29,9 @@ describe Takeaway do
   end
 
   context '#place_order' do 
-    let(:takeaway) { double :takeaway }
     it 'should send text message' do 
-      allow(takeaway).to receive(:place_order) { true }
-      expect(takeaway.place_order).to eq true
+      allow(subject).to receive(:confirmation_message) { true }
+      expect(subject.place_order).to eq true
     end
   end
 end
