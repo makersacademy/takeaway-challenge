@@ -6,7 +6,7 @@ class Messenger
   @auth_token = "X"
 
   def confirm
-    message = "Thank you! Your order was placed and will be delivered before #{(Time.now + 3600).strftime("%H:%M")}."
+    message = "Thank you! Your order will be delivered by #{(Time.now + 3600).strftime("%H:%M")}."
     send(message)
   end
 
@@ -17,7 +17,7 @@ class Messenger
       to: "X",
       from: "X")
 
-  puts message.sid
+    puts message.sid
   end
 
 end

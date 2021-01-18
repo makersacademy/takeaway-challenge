@@ -1,6 +1,6 @@
-require 'menu_item'
+require 'menuitem'
 
-describe Menu_Item do
+describe MenuItem do
 =begin
   describe '#initialize' do
      it { is_expected.to respond_to :name }

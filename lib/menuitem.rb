@@ -1,6 +1,6 @@
 require_relative 'menu'
 
-class Menu_Item
+class MenuItem
 
   attr_reader :name, :description, :price, :category
 

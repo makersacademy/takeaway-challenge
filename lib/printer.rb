@@ -6,8 +6,9 @@ class Printer
     @print_array = []
   end
 
-  def print(input)
-    @input = input
+  def print(input, header)
+    @input = input.insert(0, { :description => "header" })
+    @header = header
     justify_input
     print_input
     clear_job
@@ -15,33 +16,32 @@ class Printer
 
   def justify_input
     itr = 1
-    @input.each do |item|
-      case item[:description]
-        when "title"
-          justify_title(item)
+    @input.each do |row|
+      case row[:description]
+        when "header"
+          justify_header
         when "total"
-          justify_total(item)
+          justify_total(row)
         else
-          justify_table(item, itr)
+          justify_table(row, itr)
           itr += 1
       end
     end
   end
 
-  def justify_title(item)
-    item_name = item[:name].center(@total_width + 4)
-    @print_array.push("#{item_name}")
+  def justify_header
+    header = @header.center(@total_width + 4)
+    @print_array.push(header)
   end
 
-  def justify_total(item)
-    item_name = item[:name].rjust(@col_width[0] + 3)
-    item_price = "#{('£%.2f' % item[:price]).rjust(@col_width[2] + 1)}"
-    @print_array.push("#{item_name} #{item_price}")
+  def justify_total(total)
+    total_name = "Total:".rjust(@col_width[0] + 3)
+    total_price = "#{('£%.2f' % total[:price]).rjust(@col_width[2] + 1)}"
+    @print_array.push("#{total_name} #{total_price}")
   end
 
   def justify_table(item, itr)
     item_name = item[:name].ljust(@col_width[0])
-    item_description = item[:description].ljust(@col_width[1])
     item_price = "#{('£%.2f' % item[:price]).rjust(@col_width[2] + 1)}"
     @print_array.push("#{'%.2d' % itr} #{item_name} #{item_price}")
   end

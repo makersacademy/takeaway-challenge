@@ -3,6 +3,8 @@ require_relative 'basket'
 require_relative 'printer'
 require_relative 'messenger'
 
+conf.echo = false
+
 class Order
 
   def initialize
@@ -14,8 +16,8 @@ class Order
   end
 
   def start
-    puts "Welcome to Dang's Thai Restaurant!",""
-    @printer.print(@menu.print)
+    puts "Welcome to Dang's Thai Restaurant!", ""
+    @printer.print(@menu.print, "Menu")
   end
 
   def add(index)
@@ -27,17 +29,14 @@ class Order
   end
 
   def show_basket
-    @printer.print(@basket.print)
+    @printer.print(@basket.print, "Basket")
   end
 
   def checkout
-    @printer.print(@basket.print)
-    puts "","Your order total is #{'£%.2f' % @basket.total}."
-    confirm
+    @printer.print(@basket.print, "Checkout")
   end
 
   def confirm
-    @messenger.confirm
   end
 
 end

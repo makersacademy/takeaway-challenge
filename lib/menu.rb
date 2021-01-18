@@ -1,10 +1,8 @@
 require 'csv'
 
-conf.echo = false
-
 class Menu
 
-  attr_reader :menu, :col_width
+  attr_reader :menu
 
   def initialize
     @file = './lib/menu.csv'
@@ -18,13 +16,12 @@ class Menu
   end
 
   def sort_table
-    @menu = @menu.sort_by!{ |row| [row[:category], row[:name]] }
-    @menu.insert(0, {:name=>"Menu", :description=>"title"})
+    @menu = @menu.sort_by! { |row| [row[:category], row[:name]] }
   end
 
   def col_width
     table = CSV.parse(File.read(@file))
-    @col_width = table.transpose.map { |col| col.map{ |cell| cell.to_s.length}.max }
+    @col_width = table.transpose.map { |col| col.map { |cell| cell.to_s.length }.max }
   end
 
   def print

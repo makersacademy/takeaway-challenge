@@ -1,4 +1,4 @@
-require_relative 'menu_item'
+require_relative 'menuitem'
 
 class Basket
 
@@ -8,7 +8,7 @@ class Basket
   end
 
   def add(item)
-    item = Menu_Item.new(item)
+    item = MenuItem.new(item)
     @basket.push(item)
     @sum += item.price.to_f
     puts "Item added to basket!"
@@ -21,19 +21,19 @@ class Basket
   end
 
   def print
-    print_array = [{:name=>"Basket", :description=>"title"}]
+    print_array = []
 
     @basket.each do |item|
       item = {
-        :name=>item.name,
-        :description=>item.description,
-        :price=>item.price,
-        :category=>item.category
+        :name => item.name,
+        :description => item.description,
+        :price => item.price,
+        :category => item.category
       }
       print_array.push(item)
     end
 
-    print_array.insert(-1, {:name=>"Total:", :description=>"total", :price=>@sum})
+    print_array.insert(-1, { :description => "total", :price => @sum })
   end
 
   def total
