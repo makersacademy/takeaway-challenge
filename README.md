@@ -81,3 +81,5 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+finished up to user story 3 ran out of time for user story 4 and struggled to integrate the twilio-gem
