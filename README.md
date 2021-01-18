@@ -43,5 +43,11 @@ I created two classes: Menu and Takeaway. My idea here was that Takeaway should 
 What I still need to work on in this project is:
 
 ~~1. Adding the ability to update the prices~~
+
 ~~2. Making sure that what the customer orders is actually on the menu~~
-~~3. Totalling the price of the items ordered~~ 4. Setting up the Twilio API to send out confirmation texts 5. Implementing doubles correctly - right now I understand the theory of them, but not the actual use of them
+
+~~3. Totalling the price of the items ordered~~
+
+4. Setting up the Twilio API to send out confirmation texts
+
+5. Implementing doubles correctly - right now I understand the theory of them, but not the actual use of them
