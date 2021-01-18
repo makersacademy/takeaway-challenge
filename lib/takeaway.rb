@@ -27,6 +27,8 @@ class Takeaway
     @order = []
   end
 
+  private
+
   def text(number)
     Text.new.send(number)
   end

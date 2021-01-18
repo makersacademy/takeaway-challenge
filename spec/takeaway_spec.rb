@@ -30,12 +30,24 @@ describe Takeaway do
 
   describe "place_order" do
 
-    it "puts the total cost of the order" do
-      subject.select_dish("Hello Meow")
-      subject.select_dish("Vanilla")
-      subject.select_dish("Perforated Air")
-      allow(subject).to receive(:text) { true }
-      expect{ subject.place_order("+441234567890") }.to output("Total order cost is £32.73\n").to_stdout
+    context "after dishes have been added" do
+
+      before :each do
+        subject.select_dish("Hello Meow")
+        subject.select_dish("Vanilla")
+        subject.select_dish("Perforated Air")
+        allow(subject).to receive(:text) { true }
+      end
+
+      it "puts the total cost of the order" do
+        expect{ subject.place_order("+441234567890") }.to output("Total order cost is £32.73\n").to_stdout
+      end
+
+      it "empties the order book" do
+        subject.place_order("+441234567890")
+        expect(subject.order).to be_empty
+      end
+
     end
 
   end

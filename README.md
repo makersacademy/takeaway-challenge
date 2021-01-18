@@ -30,9 +30,7 @@ We will:
 - check that it's correct; and
 - confirm the order with a text message.
 
-We ship our ice creams by supersonic drone.
-
-For oral use only. Always read the label.
+Always read the label.
 
 Suitable for vegans.
 
@@ -72,4 +70,4 @@ Keep adding items till you're ready to place an order.
 takeaway.place_order("+441234567890")
 
 ```
-We'll let you know the bill total.
+We'll let you know the bill total and send a confirmation to your phone number
