@@ -4,10 +4,11 @@ class Order
 
   attr_reader :basket, :basket_total
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, text = Text.new)
     @basket = Hash.new(0)
     @total_cost = 0
     @menu = menu
+    @text = text
   end
 
   def read_menu
@@ -32,6 +33,7 @@ class Order
   end
 
   def checkout
-    puts "Thank you for checking out, amount to pay is #{basket_value}"
+    puts "Thank you for your payment of #{basket_value}, a confirmation text should be sent shortly."
+    @text.send_message
   end
 end
