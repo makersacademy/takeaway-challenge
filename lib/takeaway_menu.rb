@@ -2,8 +2,7 @@ require_relative 'menu'
 require_relative 'text'
 
 class Takeaway
-  attr_accessor :total
-  attr_reader :dishes
+  attr_reader :total, :dishes
 
   def initialize
     @dishes = Menu.new.dishes
