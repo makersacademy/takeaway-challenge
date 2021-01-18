@@ -1,3 +1,4 @@
+require 'sinatra'
 require 'twilio-ruby'
 
 account_sid = ENV["TWILIO_ACCOUNT_SID"]

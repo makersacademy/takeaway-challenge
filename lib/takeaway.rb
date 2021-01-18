@@ -10,7 +10,6 @@ class Takeaway
   end
 
   def see_menu 
-    # @menu.each { |item| puts "%{dish}: %{price}" % item}
     @menu
   end
 
