@@ -14,70 +14,60 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+Welcome to Pete's Ice Cream Emporium
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+We specialise in the finest lab-grown experimental ice-cream flavours.
 
-Task
------
+Our products have no calories, fat, sugar or natural ingredients and are completely devoid of any nutritional value whatsoever.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+You can:
+- display the menu;
+- select an ice cream; and
+- place an order.
+
+We will:
+- calculate the bill;
+- check that it's correct; and
+- confirm the order with a text message.
+
+Always read the label.
+
+Suitable for vegans.
+
+<h3>Get started</h3>
+
+
+```rb
+irb -r './lib/takeaway.rb'
+
+takeaway = Takeaway.new
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+<h3>View the menu</h3>
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+```rb
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+takeaway.display_menu
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+<h3>Select an ice cream</h3>
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+```rb
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+takeaway.select_dish("dish")
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+```
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+We'll add the dish to your order if it's on the menu.
 
+Keep adding items till you're ready to place an order.
 
-In code review we'll be hoping to see:
+<h3>Place an order</h3>
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+```rb
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+takeaway.place_order("+441234567890")
 
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+```
+We'll let you know the bill total and send a confirmation to your phone number
