@@ -30,5 +30,11 @@ end
   end
 end
 
+describe "#basket_price" do
+  it "calculates the total cost of the basket" do
+    expect(subject.basket_price).to eq total_cost
+  end
+end
+
 end 
 
