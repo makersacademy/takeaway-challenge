@@ -13,7 +13,11 @@ attr_reader :dishes, :basket
   end
 
   def order(food, amount = 1)
+    if @dishes.has_key?(food.to_sym)
     @basket[food] = amount
+    else
+      "Item not on menu, please try again"
+    end
   end
 
   # def add
