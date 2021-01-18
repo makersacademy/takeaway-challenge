@@ -6,16 +6,16 @@ class Order
 
   def initialize
     @basket = {}
-    @menu = Menu.new
+    @menu = Menu::MENU
   end
 
-  def create
+  def add_to_basket
     puts "What would you like to order?"
     item = gets.chomp.downcase.to_sym
-    if @menu.menu.has_key?(item)
+    if @menu.has_key?(item)
       puts "How many #{item}'s would you like?"
-      quantity = gets.chomp
-      @basket[item] = quantity.to_i
+      quantity = gets.chomp.to_i
+      @basket[item] = quantity
       puts "#{item} added to basket!"
     else
       puts "#{item} is not on the menu."
@@ -23,10 +23,11 @@ class Order
   end
 
   def cost
+    total = 0
     @basket.each do |item, quantity|
-      total = @menu.menu[item] * quantity
-      puts "Basket total is £#{total}"
+      total += @menu[item] * quantity
     end
+    puts "Basket total is £#{total}"
   end
 
 end
