@@ -1,6 +1,7 @@
 require_relative 'menu'
 require_relative 'basket'
 require_relative 'printer'
+require_relative 'messenger'
 
 class Order
 
@@ -8,6 +9,7 @@ class Order
     @basket = Basket.new
     @menu = Menu.new
     @printer = Printer.new(@menu.col_width)
+    @messenger = Messenger.new
     start
   end
 
@@ -29,12 +31,13 @@ class Order
   end
 
   def checkout
-  end
-
-  def place
+    @printer.print(@basket.print)
+    puts "","Your order total is #{'£%.2f' % @basket.total}."
+    confirm
   end
 
   def confirm
+    @messenger.confirm
   end
 
 end

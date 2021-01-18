@@ -8,14 +8,9 @@ class Printer
 
   def print(input)
     @input = input
-    clone_input
     justify_input
     print_input
     clear_job
-  end
-
-  def clone_input
-
   end
 
   def justify_input

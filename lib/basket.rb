@@ -8,14 +8,16 @@ class Basket
   end
 
   def add(item)
-    menu_item = Menu_Item.new(item)
-    @basket.push(menu_item)
-    @sum += menu_item.price.to_f
+    item = Menu_Item.new(item)
+    @basket.push(item)
+    @sum += item.price.to_f
+    puts "Item added to basket!"
   end
 
   def remove(index)
     @sum -= @basket[index].price.to_f
     @basket.delete_at(index)
+    puts "Item removed from basket."
   end
 
   def print
@@ -32,6 +34,12 @@ class Basket
     end
 
     print_array.insert(-1, {:name=>"Total:", :description=>"total", :price=>@sum})
+  end
+
+  def total
+    total = 0
+    @basket.each { |item| total += item.price.to_f }
+    return total
   end
 
 end

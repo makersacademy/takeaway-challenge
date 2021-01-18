@@ -19,6 +19,7 @@ class Menu
 
   def sort_table
     @menu = @menu.sort_by!{ |row| [row[:category], row[:name]] }
+    @menu.insert(0, {:name=>"Menu", :description=>"title"})
   end
 
   def col_width
@@ -27,7 +28,7 @@ class Menu
   end
 
   def print
-    @menu.clone
+    @menu
   end
 
   def lookup_item(index)
