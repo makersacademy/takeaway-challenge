@@ -1,15 +1,16 @@
 require "order_manager"
-require "order"
 
 describe OrderManager do
 
   let(:dish) { double(:dish1, name: "Naan", price: 1.95) }
   let(:dish2) { double(:dish2, name: "Rice", price: 3.50) }
+  let(:order) { double(:order, time: Time.now, dishes: [dish2]) }
   let(:menu) { double(dishes_list: [dish, dish2]) }
 
   before(:each) do
     allow(subject).to receive(:send_sms).and_return("You will receive a confirmation SMS soon.")
     allow(subject).to receive(:menu).and_return(menu)
+    allow(subject).to receive(:orders).and_return([order])
     allow(STDIN).to receive(:gets).and_return("2", "")
   end
 
@@ -18,17 +19,13 @@ describe OrderManager do
   end
 
   describe "#create_order" do
-    it "stores orders" do
-      allow(STDIN).to receive(:gets).and_return("2", "")
-      expect { subject.create_order }.to change { subject.orders.length }.by 1
-    end
 
     it "lists dishes" do
       expect { subject.print_dishes(menu.dishes_list) }.to output(/#{Regexp.quote(dish.name)}/).to_stdout
     end
 
     it "asks for user input" do
-      expect { subject.create_order }.to output(/#{Regexp.quote("What would you like to order?")}/).to_stdout
+      expect { subject.ask_what_user_wants_to_order }.to output(/#{Regexp.quote("What would you like to order?")}/).to_stdout
     end
 
     it "gets user choice of dish for the order" do
@@ -45,14 +42,6 @@ describe OrderManager do
   end
 
   describe "makes and confirms orders" do
-    before(:each) do
-      subject.create_order
-    end
-
-    it "allows user to create an actual Order" do
-      expect(subject.orders[-1].class).to eq Order
-    end
-
     it "makes an Order with user choice of dishes" do
       expect(subject.orders[-1].dishes).to include dish2
     end

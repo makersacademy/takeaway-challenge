@@ -72,13 +72,13 @@ class OrderManager
   def print_confirmation
     puts "Your order has been created."
     puts "You ordered:"
-    print_dishes(@orders[-1].dishes)
-    puts "The total cost will be £#{sprintf("%<price>.2f", price: prices_sum(@orders[-1].dishes))}"
+    print_dishes(orders[-1].dishes)
+    puts "The total cost will be £#{sprintf("%<price>.2f", price: prices_sum(orders[-1].dishes))}"
     puts "Thanks for ordering!"
   end
 
   def send_sms
-    it_will_arrive_before = estimated_arrival_time(@orders[-1])
+    it_will_arrive_before = estimated_arrival_time(orders[-1])
     TwilioManager.new.send_sms(it_will_arrive_before)
   end
 
