@@ -1,5 +1,4 @@
-Takeaway Challenge
-==================
+
 ```
                             _________
               r==           |       |
@@ -14,70 +13,78 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+# Takeaway Challenge
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Takeaway Challenge is a collection of Ruby classes and unit tests developed to satisfy the requirements of a challenge set during the first week of the Makers Academy bootcamp.
 
-Task
------
+## Installation
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Use the Ruby package manager [Bundler](https://bundler.io/) to setup your environment after cloning the repository.
+
+```bash
+git clone git@github.com:Mornevanzyl/takeaway-challenge.git
+
+gem install bundle
+
+bundle
+```
+### Twilio
+The program uses the [Twilio](www.twilio.com) messaging API to send SMS order confirmations to the client. Register for your own account and API keys [here](https://www.twilio.com/try-twilio) and update your environment variables as outlined below: -
+
+```bash
+$export TWILIO_ACCOUNT_SID="your account sid"
+$export TWILIO_AUTH_TOKEN="your supplied token"
+```
+---
+
+## Usage
+
+```ruby
+require './lib/dish'
+require './lib/menu'
+require './lib/order'
+
+# Substitute your own dishes below
+dish1 = Dish.new(44, 'Ramen', 1.99)
+dish2 = Dish.new(53, 'Katsu', 2.49)
+
+# Create menu and add dishes
+menu = Menu.new
+menu.add(dish1)
+menu.add(dish2)
+
+# Create new order with selected menu and open
+order = Order.new(menu)
+order.open
+
+# Follow menu-prompts to add dishes to your order. Confirm order and you'll receive a SMS order confirmation.
+
+# Bon Appétit!
+```
+
+## Approach
+The chosen approach to this application challenge was to implement three classes that played together nicely, but could be deployed independantly and re-used in other apps.
+
+A simple ```Dish``` class exposes ```id```, ```name``` and ```price``` properties.
+
+The ```Menu``` class exposes the list of dishes on the menu via the ```dishes``` property. You can add dishes to the menu via the appropriately-titled ```add``` method. The ```list``` method outputs the list of dishes.
+
+Finally, the ```Order``` class is the real worker bee that brings it all together. The order is instantiated with any ```menu``` that you have created. Dishes are listed and you can select one or more, or cancel prior to order completion. The app sends a SMS to confirm order and delivery time.
+
+> The user story listed above have not yet been implemented. I would like to discuss this with the client as I believe offering this functionality to an App user may suggest a lack of confidence in the underlying implementation.
 
 ```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * Place the order by giving the list of dishes, their quantities and a number that should be the exact total. If the sum is not correct the method should raise an error, otherwise the customer is sent a text saying that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Suggested Improvements
+This section outlines known/identified areas of improvement/optimisation that serve as input to future development of this project.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+- Some unit tests have been implemented in a fairly rudimentary way to overcome 'blockers'. They should be revisited and made more specific and rigorous.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+- The application would benefit from a more stylish web interface.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+##  Acknowledgements/Appreciations
+- I'd like to thank the Academy. Also, Kids… go to bed!
