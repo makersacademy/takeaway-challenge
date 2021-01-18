@@ -11,9 +11,9 @@ attr_reader :order, :menu, :total_value
     @total_value = 0
   end
 
-  def add_to_order(dish, amount = 1)
-    @order[dish] += amount
-    amount.times {@total_value += @menu[dish]}
+  def add_to_order(dish, quantity = 1)
+    @order[dish] += quantity
+    quantity.times {@total_value += @menu[dish]}
   end
 
   def show_order
@@ -21,6 +21,6 @@ attr_reader :order, :menu, :total_value
   end
 
   def order_summary
-   p "Your order is: #{show_order} with a total due of £#{@total_value}"
+ "Your order is: #{show_order} with a total due of £#{@total_value}"
   end
 end
