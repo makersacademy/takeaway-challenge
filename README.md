@@ -14,7 +14,7 @@
 
 ```
 
-In this mini-project I partially created a command line app for ordering a takeaway, using TDD.
+In this mini-project I created part of a command line app for ordering a takeaway, using TDD.
 
 This project was a weekend challenge for Makers Academy bootcamp (week 2 of 12).
 
