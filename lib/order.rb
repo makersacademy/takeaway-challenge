@@ -22,24 +22,7 @@ class Order
     puts "Your order details are below:"
     @selected_dishes.each {|item| puts item }
     puts "Your total is #{total}."
-    # require_relative 'send_sms'
+    require_relative 'send_sms'
   end 
 
 end 
-
-
-
-  # def show_order
-  #   @checkout = []
-  #   @selected_dishes.each { |item|
-  #   if @selected_dishes.count(item) > 1
-  #     @checkout << "#{item} x #{@selected_dishes.count(item)}"
-  #   else
-  #     @checkout << "#{item} x 1"
-  #   end 
-  # }
-  #   @final_checkout = 
-  #   puts "Here is your order summary:"
-  #   puts @checkout 
-  #   puts "Total = #{total}"
-  # end 
