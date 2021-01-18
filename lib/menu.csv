@@ -1,23 +1,27 @@
-"Chicken Satay","Char-grilled on bamboo skewers and served with peanut sauce and cucumber relish.",5.5,starter
-"Goong Chup Pang Tod","Deep-fried king prawn fillets in a light crispy batter. Served with sweet chilli sauce.",5.95,starter
-"Kha Nom Pang Nah Moo","Crispy deep-fried slices of toast topped with minced pork. Served with chilli sauce.",5,starter
-"Chicken Gyoza","Served with sweet soya sauce.",5.5,starter
-"Tod Man Pla","Mixed minced cod, king prawns, Thai herbs and chilli. Served with chilli sauce.",5.95,starter
-"Pla Muk Tod","Deep-fried squid served with sweet chilli sauce.",5.5,starter
-"Poh Pia Goong","King prawns wrapped in filo pastry and deep-fried. served with chilli sauce.",5.5,starter
-"Gra Dook Moo","Spare ribs cooked in a unique mouth-watering sauce. served with onions and pepper.",5.5,starter
-"Butterfly King Prawn","King prawn deep-fried in breaded crumbs.",5.95,starter
-"Poo Nim Tod","Deep-fried soft-shell crab. served with sweet chilli sauce.",6.95,starter
-"Mixed Starters","A set of chicken satay, khan nom pang nah moo, gra dook moo, poh pia pak and tod man pla. For two people or more.",12.5,starter
-"Corn Cake Thai Style","Served with sweet chilli sauce.",4.95,vegetarian starter
-"Vegetable Tempura","Served with sweet chilli sauce.",4.95,vegetarian starter
-"Vegetable Gyoza","Vegetables served with sweet soya sauce.",4.95,vegetarian starter
-"Poh Pia Pak","Vegetable spring rolls served with chilli sauce.",4.95,vegetarian starter
-"Yum Talay","Mixed seafood seasoned with lemongrass, onions, shallots, tomatoes, fish sauce and chilli.",11.95,thai salad
-"Yum Nua Yang","Grilled sirloin beef sesoned with a tasty Thai salad of lemongrass, lime juice, shallots and chilli.",10.95,thai salad
-"Gang Dang","Thai red curry cooked with tomato, pineapple, conocnut milk, pepper, sweet basil and spices.",8.95,curry
-"Gang Keo Wan","Green curry cooked with bamboo, coconut milk, green beans, pepper, sweet basil and spices.",9.95,curry
-"Gang Pa","Village-style curry with bamboo shoots, green beans and holy basil.",7.95,curry
-"Pa Nang","Medium-spiced red curry cooked with coconut milk and vegetables.",7.95,curry
-"Masaman","Tender meat, slow cooked with coconut milk and potatoes.",9.95,curry
-"Chu Che Pla","Deep fried sea bass, filleted and dressed in a tasty Thai red curry sauce.",14.95,curry
+"Chicken Satay","Char-grilled on bamboo skewers and served with peanut sauce and cucumber relish.",5.5,0
+"Goong Chup Pang Tod","Deep-fried king prawn fillets in a light crispy batter. Served with sweet chilli sauce.",5.95,0
+"Kha Nom Pang Nah Moo","Crispy deep-fried slices of toast topped with minced pork. Served with chilli sauce.",5,0
+"Chicken Gyoza","Served with sweet soya sauce.",5.5,0
+"Tod Man Pla","Mixed minced cod, king prawns, Thai herbs and chilli. Served with chilli sauce.",5.95,0
+"Pla Muk Tod","Deep-fried squid served with sweet chilli sauce.",5.5,0
+"Poh Pia Goong","King prawns wrapped in filo pastry and deep-fried. served with chilli sauce.",5.5,0
+"Gra Dook Moo","Spare ribs cooked in a unique mouth-watering sauce. served with onions and pepper.",5.5,0
+"Butterfly King Prawn","King prawn deep-fried in breaded crumbs.",5.95,0
+"Poo Nim Tod","Deep-fried soft-shell crab. served with sweet chilli sauce.",6.95,0
+"Mixed Starters","A set of chicken satay, khan nom pang nah moo, gra dook moo, poh pia pak and tod man pla. For two people or more.",12.5,0
+"Corn Cake Thai Style","Served with sweet chilli sauce.",4.95,0
+"Vegetable Tempura","Served with sweet chilli sauce.",4.95,0
+"Vegetable Gyoza","Vegetables served with sweet soya sauce.",4.95,0
+"Poh Pia Pak","Vegetable spring rolls served with chilli sauce.",4.95,0
+"Yum Talay","Mixed seafood seasoned with lemongrass, onions, shallots, tomatoes, fish sauce and chilli.",11.95,1
+"Yum Nua Yang","Grilled sirloin beef seasoned with a tasty Thai salad of lemongrass, lime juice, shallots and chilli.",10.95,1
+"Gang Dang","Thai red curry cooked with tomato, pineapple, coconut milk, pepper, sweet basil and spices.",8.95,2
+"Gang Keo Wan","Green curry cooked with bamboo, coconut milk, green beans, pepper, sweet basil and spices.",9.95,2
+"Gang Pa","Village-style curry with bamboo shoots, green beans and holy basil.",7.95,2
+"Pa Nang","Medium-spiced red curry cooked with coconut milk and vegetables.",7.95,2
+"Masaman","Tender meat, slow cooked with coconut milk and potatoes.",9.95,2
+"Chu Che Pla","Deep fried sea bass, filleted and dressed in a tasty Thai red curry sauce.",14.95,2
+"Pad Thai","Rice noodles stir-fried with bean sprouts, spring onion and crushed nuts. (Spicy, or plain.)",9.95,3
+"Pad Siew","Stir-fried rice noodles with mushrooms, spring greens, carrots and spring onion.",8.95,3
+"Pad Mee Luang","Stir-fried egg noodles with bean sprouts, spring greens, carrots and spring onion.",7.5,3
+"Spicy Noodles","Distinct fusion of stir-fried noodle with garlic, chilli, holy basil and vegetables.",8.95,3

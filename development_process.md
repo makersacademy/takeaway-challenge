@@ -3,8 +3,8 @@
 This repository contains programming concerning the Makers Week 02 weekend development project "Takeaway Challenge". This file documents the process of designing, coding and testing this project. This process will use the TDD process, divided into several steps. These steps are:
 
 1. [ ] Setting up the development environment.
-2. [ ] Identifying User Stories, and sorting them into Objects and their Instance Variables, and the Messages to be sent between them.
-3. [ ] Identifying Features
+2. [x] Identifying User Stories, and sorting them into Objects and their Instance Variables, and the Messages to be sent between them.
+3. [x] Identifying Features
 4. [ ] Creating individual files for each Class.
 5. [ ] Creating individual RSpec files for each Class.
 6. [ ] Write RSpec Unit tests for each individual feature.
@@ -38,7 +38,7 @@ These can be preliminarily sorted into some objects, and their variables.
 
 *  `Menu`
   * `@menu`
-*  `MenuItem`
+*  `Menu_Item`
   * `@menu_item_name`
   * `@menu_item_price`
   * `@menu_item_category`
@@ -66,7 +66,7 @@ Object | Messages | Variables
 ---|---|---
 `Order` | `#start_order` `#acquire_details` `#show_basket` `#checkout` `#place_order` `#confirm_order` | `@basket` `@twilio`
 `Menu` | `#show_menu` | `@menu`
-`MenuItem` | `#add_to_basket` | `@menu_item_name` `@menu_item_price` `menu_item_category`
+`Menu_Item` | `#add_to_basket` | `@menu_item_name` `@menu_item_price` `menu_item_category`
 `Basket` | `#remove_from_basket` `#place_order` | `@contents`
 `Twilio` | `#add_contact_number` `#send_text` | `@contact_number`
 
@@ -87,10 +87,13 @@ Each object will require a class. In preliminary order of creation, these are:
 1.  `Order`
 2.  `Menu`
 3.  `MenuItem`
-4.  `Twilio`
+4.  `Basket`
+5.  `Twilio`
 
 ##  5.  Feature Testing
 
-The feature/unit testing cyle will proceed for each of the features listed in step 3.
+The feature testing cycle will proceed for each of the features listed in step 3.
 
 ##  6.  Unit testing
+
+The unit testing cycle will proceed for each of the features listed in step 3.

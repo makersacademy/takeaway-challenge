@@ -10,12 +10,16 @@ describe Order do
   let(:contents) { double :contents }
   let(:Twilio) { double :Twilio }
   let(:contact_number) { double :contact_number }
-
+=begin
   describe 'initialize' do
-    it { is_expected.to respond_to :start_order }
+
+    it 'should initialize with an empty #basket' do
+      expect(subject.basket).to be_empty
+    end
   end
 
   describe '#start_order' do
+    it { is_expected.to respond_to :start_order }
   end
 
   describe '#acquire_details' do
@@ -41,5 +45,5 @@ describe Order do
 
   describe '#confirm_order' do
   end
-
+=end
 end

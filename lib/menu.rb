@@ -1,25 +1,37 @@
 require 'csv'
 
+conf.echo = false
+
 class Menu
 
-  attr_reader :menu
+  attr_reader :menu, :col_width
 
   def initialize
-    @menu = []
-    load_menu
-    print_menu
+    @file = './lib/menu.csv'
+    load_file
   end
 
-  def load_menu
-    keys = [:menu_item_name, :menu_item_description, :menu_item_price, :menu_item_category]
-    @menu = CSV.parse(File.open('./lib/menu.csv')).map { |a| Hash[keys.zip(a)] }
-    # @menu.sort_by!{ |menu_item| [menu_item[:menu_item_category], menu_item[:menu_item_name]] }
+  def load_file
+    @keys = [:name, :description, :price, :category]
+    @menu = CSV.parse(File.read(@file)).map { |row| Hash[@keys.zip(row)] }
+    sort_table
   end
 
-  def print_menu
-    @menu.each do |menu_item|
-      # puts "#{menu_item[:menu_item_name]} - £#{'%.2f' % menu_item[:menu_item_price].to_f}"
-    end
+  def sort_table
+    @menu = @menu.sort_by!{ |row| [row[:category], row[:name]] }
+  end
+
+  def col_width
+    table = CSV.parse(File.read(@file))
+    @col_width = table.transpose.map { |col| col.map{ |cell| cell.to_s.length}.max }
+  end
+
+  def print
+    @menu.clone
+  end
+
+  def lookup_item(index)
+    @menu[index]
   end
 
 end
