@@ -1,0 +1,15 @@
+{:dish => "Cheeseburger", :price => 0.99}
+{:dish => "Hamburger", :price => 0.89}
+{:dish => "Bacon Double Cheeseburger", :price => 1.99}
+{:dish => "Chicken Burger", :price => 3.89}
+{:dish => "Big Lad", :price => 3.19}
+{:dish => "Quarter Pound Burger", :price => 3.19}
+{:dish => "9 Chicken Nuggets", :price => 3.39}
+{:dish => "Fish Burger", :price => 3.09}
+{:dish => "Small Fries", :price => 0.99}
+{:dish => "Medium Fries", :price => 1.19}
+{:dish => "Large Fries", :price => 0.99}
+{:dish => "Vanilla Milkshake", :price => 1.69}
+{:dish => "Banana Milkshake", :price => 1.69}
+{:dish => "Strawberry Milkshake", :price => 1.69}
+{:dish => "Soft Vanilla Ice Cream", :price => 0.99}
