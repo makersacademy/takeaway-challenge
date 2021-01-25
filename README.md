@@ -1,33 +1,47 @@
 Takeaway Challenge
 ==================
  
-### Setup and Usage
+### Setup
 
 From the command line run the following:
 ```
 1. git clone git@github.com:otisvg/takeaway-challenge.git
 ```
 ```
-cd takeaway-challenge
+2. cd takeaway-challenge
 ```
 ```
-bundle
+3. bundle
 ```
 ```
-irb
+4. irb
 ```
-
-require './lib/Restaurant.rb'
-require './lib/Order.rb'
-require './lib/Menu.rb'
-
+```
+5. require './lib/Restaurant.rb'
+```
+```
+6. require './lib/Order.rb'
+```
+```
+7. require './lib/Menu.rb'
+```
+```
 restaurant = Restaurant.new
+```
+```
 order = Order.new
+```
+```
 menu = Menu.new
+```
+### Usage
 
-View menu: restaurant.view_menu
-Add food(s) and quantity to order: restaurant.place_order("hamburger", 2), restaurant.place_order("chicken nuggets", 1)
-Pay (with exact amount) for order: restaurant.confirm_order(6.97)
+##### View menu: 
+```restaurant.view_menu```
+##### Add food(s) and quantity to order
+```restaurant.place_order("hamburger", 2), restaurant.place_order("chicken nuggets", 1)```
+Pay (with exact amount) for order
+```restaurant.confirm_order(6.97)```
 
 Voila! Order complete.
 ```
