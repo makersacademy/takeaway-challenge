@@ -14,6 +14,7 @@ From the command line run the following:
 8. ```restaurant = Restaurant.new```
 9. ```order = Order.new```
 10.```menu = Menu.new```
+
 ### Usage
 
 ##### View menu: 
