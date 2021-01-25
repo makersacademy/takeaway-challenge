@@ -6,7 +6,7 @@ From the command line run the following:
 ```
 git clone git@github.com:otisvg/takeaway-challenge.git
 cd takeaway-challenge
-run `bundle` to install dependencies
+run 'bundle' to install dependencies
 Enter 'irb' into the console
 
 Require restaurant: require './lib/Restaurant.rb'
@@ -23,11 +23,6 @@ Pay (with exact amount) for order: restaurant.confirm_order(6.97)
 
 Voila! Order complete.
 
-```
-### Install dependencies
-```
-bundle
-```
 ### To run tests
 ```
 rspec
