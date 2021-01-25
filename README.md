@@ -1,18 +1,23 @@
 Takeaway Challenge
 ==================
+ 
+### Setup
+From the command line run the following:
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
+git clone 
+cd takeaway-challenge-revisited
+```
+### Install dependencies
+```
+bundle
+```
+### To run tests
+```
+rspec
+```
+ 
+Task & Requirments
+-----
 
 Instructions
 -------
@@ -22,12 +27,8 @@ Instructions
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+User Stories
+----
 
 ```
 As a customer
