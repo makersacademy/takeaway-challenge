@@ -24,15 +24,8 @@ From the command line run the following:
 #### Pay (with exact amount) for order
 ```restaurant.confirm_order(6.97)```
 
-Voila! Order complete.
-```
-
-### To run tests
-
-```
-rspec
-```
-
+#### To run tests
+```rspec```
 ### User Stories
 
 ```
