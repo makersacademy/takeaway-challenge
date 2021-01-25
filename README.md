@@ -6,6 +6,7 @@ From the command line run the following:
 ```
 git clone git@github.com:otisvg/takeaway-challenge.git
 cd takeaway-challenge
+run `bundle` to install dependencies
 Enter 'irb' into the console
 
 Require restaurant: require './lib/Restaurant.rb'
