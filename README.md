@@ -13,7 +13,7 @@ From the command line run the following:
 7. ```require './lib/Menu.rb'```
 8. ```restaurant = Restaurant.new```
 9. ```order = Order.new```
-10.```menu = Menu.new```
+10. ```menu = Menu.new```
 
 ### Usage
 
