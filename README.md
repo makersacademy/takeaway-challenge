@@ -20,8 +20,8 @@ From the command line run the following:
 #### View menu: 
 ```restaurant.view_menu```
 #### Add food(s) and quantity to order
-```restaurant.place_order("hamburger", 2)
-restaurant.place_order("chicken nuggets", 1)```
+```restaurant.place_order("hamburger", 2)```
+```restaurant.place_order("chicken nuggets", 1)```
 #### Pay (with exact amount) for order
 ```restaurant.confirm_order(6.97)```
 
