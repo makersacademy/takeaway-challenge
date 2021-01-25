@@ -5,10 +5,17 @@ Takeaway Challenge
 
 From the command line run the following:
 ```
-git clone git@github.com:otisvg/takeaway-challenge.git
+1. git clone git@github.com:otisvg/takeaway-challenge.git
+```
+```
 cd takeaway-challenge
+```
+```
 bundle
+```
+```
 irb
+```
 
 require './lib/Restaurant.rb'
 require './lib/Order.rb'
