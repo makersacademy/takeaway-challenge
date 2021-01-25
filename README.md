@@ -22,8 +22,9 @@ Add food(s) and quantity to order: restaurant.place_order("hamburger", 2), resta
 Pay (with exact amount) for order: restaurant.confirm_order(6.97)
 
 Voila! Order complete.
-
+```
 ### To run tests
+
 ```
 rspec
 ```
