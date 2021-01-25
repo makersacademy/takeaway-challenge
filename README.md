@@ -17,7 +17,7 @@ From the command line run the following:
 
 ### Usage
 
-#### View menu: 
+#### View menu
 ```restaurant.view_menu```
 #### Add food(s) and quantity to order
 ```restaurant.place_order("hamburger", 2)```  
