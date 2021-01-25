@@ -2,20 +2,21 @@ Takeaway Challenge
 ==================
  
 ### Setup and Usage
+
 From the command line run the following:
 ```
 git clone git@github.com:otisvg/takeaway-challenge.git
 cd takeaway-challenge
-run 'bundle' to install dependencies
-Enter 'irb' into the console
+bundle
+irb
 
-Require restaurant: require './lib/Restaurant.rb'
-Require order: require './lib/Order.rb'
-Require menu: require './lib/Menu.rb'
+require './lib/Restaurant.rb'
+require './lib/Order.rb'
+require './lib/Menu.rb'
 
-Create restaurant: restaurant = Restaurant.new
-Create order: order = Order.new
-Create menu: menu = Menu.new
+restaurant = Restaurant.new
+order = Order.new
+menu = Menu.new
 
 View menu: restaurant.view_menu
 Add food(s) and quantity to order: restaurant.place_order("hamburger", 2), restaurant.place_order("chicken nuggets", 1)
@@ -23,14 +24,14 @@ Pay (with exact amount) for order: restaurant.confirm_order(6.97)
 
 Voila! Order complete.
 ```
+
 ### To run tests
 
 ```
 rspec
 ```
 
-User Stories
-----
+### User Stories
 
 ```
 As a customer
