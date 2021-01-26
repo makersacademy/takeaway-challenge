@@ -33,6 +33,8 @@ class Menu
       total_error
     end
 
+    private
+
     def total_error
       raise "Total entered (£#{@customer_total}) is incorrect.  Actual total is £#{@bill.total}" if @customer_total != @bill.total
       puts "Amount given is correct.  Food ordered"
