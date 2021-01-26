@@ -3,8 +3,8 @@ require_relative 'menu'
 class Takeaway
 attr_reader :dishes, :basket, :total_cost
 
-  def initialize
-    @dishes = Menu.new.dishes
+  def initialize(dishes = Menu.new.dishes)
+    @dishes = dishes
     @basket = {}
     @total_cost = 0
   end

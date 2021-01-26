@@ -1,21 +1,25 @@
 require 'takeaway'
 
-describe Takeaway do
-  let(:dishes) {double}
-
+  describe Takeaway do
+  let(:dishes) { double }
+  let(:total_cost) { 0 }
+  subject { Takeaway.new(dishes) }
+  
+  describe '#read_menu' do
+    it "returns the dishes" do
+     # allow(dishes).to receive(:read_menu).and_return(:dishes)
+      expect(subject.read_menu).to eq dishes
+      #({hamburger: 3.99, tacos: 4.99, spaghetti: 5.99, fries: 4.59}) 
+  end
+end
+  
   describe '#basket' do
     it "should have an empty basket" do 
      expect(subject.basket).to eq Hash.new
     end
   end
 
-   describe "#read_menu" do
-   let(:dishes){double}
-  it "displays the menu" do
-    expect(subject.read_menu).to eq dishes
-    #({hamburger: 3.99, tacos: 4.99, spaghetti: 5.99, fries: 4.59}) 
-  end
-end
+
 
   describe "#order" do 
     # it "adds food and amount to basket" do
