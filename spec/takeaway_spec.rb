@@ -7,9 +7,7 @@ require 'takeaway'
   
   describe '#read_menu' do
     it "returns the dishes" do
-     # allow(dishes).to receive(:read_menu).and_return(:dishes)
       expect(subject.read_menu).to eq dishes
-      #({hamburger: 3.99, tacos: 4.99, spaghetti: 5.99, fries: 4.59}) 
   end
 end
   
@@ -22,10 +20,7 @@ end
 
 
   describe "#order" do 
-    # it "adds food and amount to basket" do
-    #   expect(subject.order.with(2).arguments 
       it { is_expected.to respond_to(:order).with(2).arguments }
-    # end
   end
 
   describe "#basket_summary" do
