@@ -8,6 +8,19 @@ class BillCalculator
       @order = []
     end
 
+    def store_order(dishes)
+      dishes.each do |chosen_dish, quantity|
+        menu_item = @meal_options.keys
+        price =  @meal_options
+          @order << compile_order(chosen_dish, price[:Hamburger], quantity) if chosen_dish == menu_item[0]
+          @order << compile_order(chosen_dish, price[:Pizza], quantity) if chosen_dish == menu_item[1]
+          @order << compile_order(chosen_dish, price[:Pasta], quantity) if chosen_dish == menu_item[2]
+          @order << compile_order(chosen_dish, price[:Fish_and_chips], quantity) if chosen_dish == menu_item[3]
+          @order << compile_order(chosen_dish, price[:Salad], quantity) if chosen_dish == menu_item[4]
+          @order << compile_order(chosen_dish, price[:Lamb_Shank], quantity) if chosen_dish == menu_item[5]
+      end
+    end
+
     def calculate_total(dishes)
       dishes.each do |chosen_dish, quantity|
         menu_item = @meal_options.keys
@@ -21,24 +34,8 @@ class BillCalculator
       end
     end
 
-    def store_order(dishes)
-      dishes.each do |chosen_dish, quantity|
-        menu_item = @meal_options.keys
-        price =  @meal_options
-        if chosen_dish == menu_item[0]
-          @order << "#{chosen_dish} (£#{price[:Hamburger]}) x #{quantity} = £#{quantity*price[:Hamburger]}"
-        elsif chosen_dish == menu_item[1]
-          @order << "#{chosen_dish} (£#{price[:Pizza]}) x #{quantity} = £#{quantity*price[:Pizza]}"
-        elsif chosen_dish == menu_item[2]
-          @order << "#{chosen_dish} (£#{price[:Pasta]}) x #{quantity} = £#{quantity*price[:Pasta]}"
-        elsif chosen_dish == menu_item[3]
-          @order << "#{chosen_dish} (£#{price[:Fish_and_chips]}) x #{quantity} = £#{quantity*price[:Fish_and_chips]}"
-        elsif chosen_dish == menu_item[4]
-          @order << "#{chosen_dish} (£#{price[:Salad]}) x #{quantity} = £#{quantity*price[:Salad]}"
-        elsif chosen_dish == menu_item[5]
-          @order << "#{chosen_dish} (£#{price[:Lamb_Shank]}) x #{quantity} = £#{quantity*price[:Lamb_Shank]}"
-        end
-      end
-   end
+    def compile_order(dish, price, quantity)
+      return "#{dish} (£#{price}) x #{quantity} = £#{quantity*price}"
+    end
 
 end

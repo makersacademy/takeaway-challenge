@@ -23,6 +23,11 @@ class Menu
       @printer.print_dishes(MEAL_OPTIONS)
     end
 
+    def print_my_dishes
+      store_order
+      puts @bill.order
+    end
+
     def my_total(total)
       @customer_total = total
       total_error
@@ -37,9 +42,4 @@ class Menu
       @bill.store_order(@dishes)
     end
 
-    def print_my_dishes
-      store_order
-      puts @bill.order
-    end
-
-end
+  end
