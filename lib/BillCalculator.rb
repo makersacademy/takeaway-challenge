@@ -9,20 +9,15 @@ class BillCalculator
     end
 
     def calculate_total(dishes)
-      dishes.each do |k,v|
-        if k == @meal_options.keys[0]
-          @total += v * @meal_options.values[0]
-        elsif k == @meal_options.keys[1]
-          @total += v * @meal_options.values[1]
-        elsif k == @meal_options.keys[2]
-          @total += v * @meal_options.values[2]
-        elsif k == @meal_options.keys[3]
-          @total += v * @meal_options.values[3]
-        elsif k == @meal_options.keys[4]
-          @total += v * @meal_options.values[4]
-        elsif k == @meal_options.keys[5]
-          @total += v * @meal_options.values[5]
-        end
+      dishes.each do |chosen_dish, quantity|
+        menu_item = @meal_options.keys
+        price =  @meal_options
+          (@total += (quantity * price[:Hamburger])) if chosen_dish == menu_item[0]
+          (@total += (quantity * price[:Pizza])) if chosen_dish == menu_item[1]
+          (@total += (quantity * price[:Pasta])) if chosen_dish == menu_item[2]
+          (@total += (quantity * price[:Fish_and_chips])) if chosen_dish == menu_item[3]
+          (@total += (quantity * price[:Salad])) if chosen_dish == menu_item[4]
+          (@total += (quantity * price[:Lamb_Shank])) if chosen_dish == menu_item[5]
       end
     end
 

@@ -6,7 +6,6 @@ describe Menu do
   let(:price) { double :price }
 
     describe '#select' do
-
       it 'Edge case: if non hash given then error is returned' do
         expect{subject.select("this is not a hash")}.to raise_error('Selection must be entered in the format ":dish=>quantity"')
       end
