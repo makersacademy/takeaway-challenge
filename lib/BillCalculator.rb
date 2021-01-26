@@ -21,29 +21,24 @@ class BillCalculator
       end
     end
 
-
     def store_order(dishes)
-      dishes.each do |k,v|
-        if k == @meal_options.keys[0]
-          hamburger_total = v*@meal_options.values[0]
-          @order << "#{k} (£#{@meal_options.values[0]}) x #{v} = £#{hamburger_total}"
-        elsif k == @meal_options.keys[1]
-          pizza_total = v*@meal_options.values[1]
-          @order << "#{k} (£#{@meal_options.values[1]}) x #{v} = £#{pizza_total}"
-        elsif k == @meal_options.keys[2]
-          pasta_total = v*@meal_options.values[2]
-          @order << "#{k} (£#{@meal_options.values[2]}) x #{v} = £#{pasta_total}"
-        elsif k == @meal_options.keys[3]
-          fishchipstotal = v*@meal_options.values[3]
-          @order << "#{k} (£#{@meal_options.values[3]}) x #{v} = £#{fishchipstotal}"
-        elsif k == @meal_options.keys[4]
-          saladtotal = v*@meal_options.values[4]
-          @order << "#{k} (£#{@meal_options.values[4]}) x #{v} = £#{saladtotal}"
-        elsif k == @meal_options.keys[5]
-          lambtotal = v*@meal_options.values[5]
-          @order << "#{k} (£#{@meal_options.values[5]}) x #{v} = £#{lambtotal}"
+      dishes.each do |chosen_dish, quantity|
+        menu_item = @meal_options.keys
+        price =  @meal_options
+        if chosen_dish == menu_item[0]
+          @order << "#{chosen_dish} (£#{price[:Hamburger]}) x #{quantity} = £#{quantity*price[:Hamburger]}"
+        elsif chosen_dish == menu_item[1]
+          @order << "#{chosen_dish} (£#{price[:Pizza]}) x #{quantity} = £#{quantity*price[:Pizza]}"
+        elsif chosen_dish == menu_item[2]
+          @order << "#{chosen_dish} (£#{price[:Pasta]}) x #{quantity} = £#{quantity*price[:Pasta]}"
+        elsif chosen_dish == menu_item[3]
+          @order << "#{chosen_dish} (£#{price[:Fish_and_chips]}) x #{quantity} = £#{quantity*price[:Fish_and_chips]}"
+        elsif chosen_dish == menu_item[4]
+          @order << "#{chosen_dish} (£#{price[:Salad]}) x #{quantity} = £#{quantity*price[:Salad]}"
+        elsif chosen_dish == menu_item[5]
+          @order << "#{chosen_dish} (£#{price[:Lamb_Shank]}) x #{quantity} = £#{quantity*price[:Lamb_Shank]}"
         end
-     end
+      end
    end
 
 end
