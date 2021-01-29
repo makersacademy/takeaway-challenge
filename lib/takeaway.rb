@@ -41,7 +41,7 @@ class Takeaway
     client = Twilio::REST::Client.new(account_sid, auth_token)
     client.messages.create(
     from: '+12132386475',
-    to: '+447391405893',
+    to: ENV['TWILIO_MOBILE_NUMBER']
     body: "Your order was placed at #{order_placed}. Your food should be with you by #{delivery_due}."
     )
   end    
