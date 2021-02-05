@@ -5,6 +5,12 @@ describe Takeaway do
     @menu = double
     allow(@menu).to receive(:dish).with("Pizza") { [{ name: "Pizza", price: 10 }] }
   end
+  
+  describe '#menu' do
+    it 'gets the full menu' do
+      expect(subject.menu).to eq subject.menu
+    end
+  end
 
   describe '#order' do
     it 'can recieve a single item order' do

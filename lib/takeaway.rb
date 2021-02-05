@@ -2,7 +2,7 @@ require './lib/menu.rb'
 require './lib/basket.rb'
 
 class Takeaway
-  attr_reader :order
+  attr_reader :order, :menu
 
   def initialize
     @order = []
