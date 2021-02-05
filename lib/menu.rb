@@ -1,6 +1,6 @@
-require 'viewer'
-require 'dish'
-require 'cart'
+require_relative './viewer'
+require_relative './dish'
+require_relative './cart'
 
 class Menu
   attr_reader :dishes
@@ -15,12 +15,12 @@ class Menu
 
   def add_to_order(item)
     fail "item not on menu" unless on_menu?(item)
-    
+
     @cart.receive_item(item)
   end
 
   def view_cart
-    Viewer.new.view(@cart.order)
+    [Viewer.new.view(@cart.order), convert(@cart.calculate_total)]
   end
 
   def place_order
@@ -30,5 +30,9 @@ class Menu
   private
   def on_menu?(item)
     @dishes.include?(item)
+  end
+
+  def convert(price)
+    "£#{price.to_s.chars[(0..-3)].join}.#{price.to_s.chars[(-2..-1)].join}"
   end
 end
