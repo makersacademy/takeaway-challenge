@@ -1,4 +1,5 @@
 require './lib/menu.rb'
+require './lib/basket.rb'
 
 class Takeaway
   attr_reader :order
