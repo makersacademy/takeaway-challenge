@@ -23,13 +23,18 @@ describe Menu do
 
   describe '#dishes' do
     it 'returns a list of all available dishes and their prices' do
-      expect(subject.dishes).to include({dish: "Pizza", price: 10})
+      expect(subject.dishes).to include({name: "Pizza", price: 10})
     end
   end
 
-  describe '#dish' do
+  describe '#order_dish' do
     it 'returns a single dish from the menu' do
-      expect(subject.dish("Pizza")).to eq({dish:"Pizza", price: 10})
+      expect(subject.dish("Pizza")).to eq({name:"Pizza", price: 10})
+    end
+
+    it 'adds multiple dishes' do
+      subject.dishes(2, "Pizza")
+      expect(subject.order).to eq [{name:"Pizza", price: 10}, {name:"Pizza", price: 10}]
     end
   end
   
