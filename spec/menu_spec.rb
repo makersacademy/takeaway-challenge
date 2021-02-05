@@ -3,8 +3,6 @@ require 'dish'
 require 'viewer'
 require 'sms_sender'
 
-
-
 peperoni = Dish.new('Peperoni', 700)
 kiev = Dish.new('Pollo Kiev', 800)
 margherita = Dish.new('Margherita', 500)
@@ -44,7 +42,7 @@ describe Menu do
   describe '#place_order' do
     pizzeria_ii = Menu.new(peperoni, kiev, margherita, bolognese, four_seasons)
     pizzeria_ii.add_to_order(kiev)
-    let(:pizzeria_ii) {double :pizzeria_ii, place_order: "Thank you! Your order was placed and will be delivered before 18:52"}
+    let(:pizzeria_ii) { double :pizzeria_ii, place_order: "Thank you! Your order was placed and will be delivered before 18:52" }
   
     it 'also provides SMS confirmation once order has been received by takeout' do
       expect(pizzeria_ii.place_order).to eq 'Thank you! Your order was placed and will be delivered before 18:52'
