@@ -24,6 +24,6 @@ class Takeaway
   private
 
   def check_item(item)
-    @menu.dish(item) ? true : false
+    @menu.dish(item)
   end
 end
