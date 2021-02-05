@@ -24,7 +24,7 @@ class Menu
   end
 
   def place_order
-
+    
   end
 
   private
