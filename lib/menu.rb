@@ -10,8 +10,8 @@ class Menu
     ]  
   end
 
-  def dish
-    
+  def dish(chosen_dish)
+    @dishes.find { |dish| dish[:dish] = chosen_dish}
   end
 
 end

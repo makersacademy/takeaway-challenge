@@ -29,7 +29,7 @@ describe Menu do
 
   describe '#dish' do
     it 'returns a single dish from the menu' do
-      expect(subject.dish("Pizza")).to eq({dish:"Pizza, price: 10"})
+      expect(subject.dish("Pizza")).to eq({dish:"Pizza", price: 10})
     end
   end
   
