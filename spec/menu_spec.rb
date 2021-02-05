@@ -23,7 +23,7 @@ describe Menu do
 
   describe '#dishes' do
     it 'returns a list of all available dishes and their prices' do
-      expect(subject.dishes).to include({dish: "pizza", price: 10})
+      expect(subject.dishes).to include({dish: "Pizza", price: 10})
     end
   end
   
