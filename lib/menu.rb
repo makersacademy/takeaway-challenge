@@ -14,7 +14,7 @@ class Menu
   end
 
   def view_cart
-
+    
   end
 
   def place_order

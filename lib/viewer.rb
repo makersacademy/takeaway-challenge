@@ -1,6 +1,6 @@
 class Viewer
   def view(dishes)
-    dishes.map {|dish| {"#{dish.name}" => "#{convert(dish.price)}"}}
+    dishes.map { |dish| { "#{dish.name}" => "#{convert(dish.price)}" } }
   end
 
   private
