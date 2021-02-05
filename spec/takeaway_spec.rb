@@ -36,12 +36,12 @@ describe Takeaway do
   describe '#complete_order' do
     it 'completes the order and gets the total price' do
       subject.order_dish("Pizza")
-      expect(subject.complete_order).to eq "The total cost is £10"
+      expect(subject.complete_order).to eq 10
     end
 
     it 'gets a price for a multiple line order' do
       subject.order_dish(4, "Pizza")
-      expect(subject.complete_order).to eq "The total cost is £40"
+      expect(subject.complete_order).to eq 40
     end
   end
 end

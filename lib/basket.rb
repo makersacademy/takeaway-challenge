@@ -10,4 +10,10 @@ class Basket
     order.each { |item| @total += item[:price] }
     @total
   end
+  
+  def receipt(order)
+    order.each { |item| puts "#{item[:name]} - £#{item[:price]}" } 
+    puts "Total - £#{price(order)}"
+    @total
+  end
 end
