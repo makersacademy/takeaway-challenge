@@ -1,10 +1,12 @@
-
+require 'viewer'
+require 'dish'
 class Menu
-  def initialize(dishes)
+  attr_reader :dishes
+  def initialize(*dishes)
     @dishes = dishes
   end
 
   def view
-    Viewer.new(@dishes)
+    Viewer.new.view(@dishes)
   end
 end
