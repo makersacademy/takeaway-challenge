@@ -25,4 +25,11 @@ describe Order do
       expect(subject.order_list).to include( { 'Yuk Sung' => 6.4 })
     end
   end
+  describe '#print_current_order' do
+    it 'prints a list of all items on order with prices and total' do
+      subject.add_by_name('Prawn Cocktail')
+      subject.add_by_name('Yuk Sung')
+      expect { subject.print_current_order }.to output("Prawn Cocktail : £3.70\nYuk Sung : £6.40\nTotal : £10.10\n").to_stdout
+    end
+  end
 end

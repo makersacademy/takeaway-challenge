@@ -20,6 +20,15 @@ class Order
     end
   end
 
+  def print_current_order
+    total = 0
+    @order_list.each do |item|
+      puts "#{item.keys.first} : £%.2f" % item.values.first
+      total += item.values.first
+    end
+    puts "Total : £%.2f" % total
+  end
+
   def interactive_menu
     while true
       item_name = gets.chomp
