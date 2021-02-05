@@ -13,11 +13,22 @@ class Menu
     Viewer.new.view(@dishes)
   end
 
-  def view_cart
+  def add_to_order(item)
+    fail "item not on menu" unless on_menu?(item)
     
+    @cart.receive_item(item)
+  end
+
+  def view_cart
+    Viewer.new.view(@cart.order)
   end
 
   def place_order
 
+  end
+
+  private
+  def on_menu?(item)
+    @dishes.include?(item)
   end
 end
