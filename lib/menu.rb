@@ -15,4 +15,5 @@ class Menu
   def dish(chosen_dish)
     @dishes.find { |item_by_name| item_by_name[:name] == chosen_dish }
   end
+
 end

@@ -10,6 +10,8 @@ class Takeaway
   end
 
   def order_dish(quantity = 1, item)
+    fail "Sorry, that item is not on the menu" unless check_item(item)
+    
     quantity.times { @order << @menu.dish(item) }
     @order
   end
@@ -19,4 +21,9 @@ class Takeaway
     "The total cost is £#{basket.price(@order)}"
   end
 
+  private
+
+  def check_item(item)
+    @menu.dish(item) ? true : false
+  end
 end

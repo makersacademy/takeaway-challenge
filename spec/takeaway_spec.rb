@@ -5,7 +5,7 @@ describe Takeaway do
     @menu = double
     allow(@menu).to receive(:dish).with("Pizza") { [{ name: "Pizza", price: 10 }] }
   end
-  
+
   describe '#menu' do
     it 'gets the full menu' do
       expect(subject.menu).to eq subject.menu
@@ -26,6 +26,10 @@ describe Takeaway do
     it 'can add multiple of a single dish' do
       subject.order_dish(2, "Pizza")
       expect(subject.order).to eq [{ name: "Pizza", price: 10 }, { name: "Pizza", price: 10 }]
+    end
+
+    it 'wont add items that are not in the menu, returns an error' do
+      expect { subject.order_dish("Curry") }.to raise_error 'Sorry, that item is not on the menu'
     end
   end
   
