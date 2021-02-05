@@ -17,4 +17,10 @@ class Takeaway
     quantity.times { @order << @menu.dish(item) }
     @order
   end
+
+  def complete_order
+    basket = Basket.new
+    "The total cost is £#{basket.price(@order)}"
+  end
+
 end

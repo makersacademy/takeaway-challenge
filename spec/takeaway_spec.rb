@@ -28,15 +28,11 @@ describe Takeaway do
       subject.order_dish("Pizza")
       expect(subject.complete_order).to eq "The total cost is £10"
     end
+
+    it 'gets a price for a multiple line order' do
+      subject.order_dish(4, "Pizza")
+      expect(subject.complete_order).to eq "The total cost is £40"
+    end
   end
 end
 
-# test taking a single item order
-
-# test taking a multi line order
-
-# test getting the price for an order
-
-# test returning the price for an order
-
-# test dispatching the order - sending text
