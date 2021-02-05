@@ -1,7 +1,6 @@
 require './lib/menu.rb'
 
 class Takeaway
-
   attr_reader :order
 
   def initialize
