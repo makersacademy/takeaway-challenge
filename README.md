@@ -31,7 +31,7 @@ I would like to check that the TOTAL I have been given matches the SUM of the va
 |----------|----------------------|---------------|
 |cart/order|`view`                |CONTENTS, TOTAL|
 
-## US 4
+### US 4
 As a customer  
 So that I am _reassured_ that my order will be _delivered_ on time  
 I would like to receive a **text** such as "Thank you! Your order was placed and will be delivered before 18:52" after I have _ordered_  
