@@ -10,4 +10,8 @@ class Menu
     ]  
   end
 
+  def dish
+    
+  end
+
 end
