@@ -5,6 +5,9 @@ require 'viewer'
 peperoni = Dish.new('Peperoni', 700)
 kiev = Dish.new('Pollo Kiev', 800)
 margherita = Dish.new('Margherita', 500)
+bolognese = Dish.new('Bolognese', 700)
+four_seasons = Dish.new('Four Seasons', 650)
+
 pizzeria = Menu.new(peperoni, kiev)
 
 describe Menu do
@@ -17,11 +20,22 @@ describe Menu do
   describe '#add' do
     pizzeria.add_to_order(peperoni)
     it 'lets the customer add meals to their order' do
-      expect(pizzeria.view_cart).to eq [{ 'Peperoni' => '£7.00' }]
+      expect(pizzeria.view_cart).to eq [[{ 'Peperoni' => '£7.00' }], '£7.00']
     end
 
     it 'guards against the system adding items that are not on the menu' do
       expect { pizzeria.add_to_order(margherita) }.to raise_error 'item not on menu'
+    end
+  end
+
+  describe '#view_cart' do
+    pizzeria_ii = Menu.new(peperoni, kiev, margherita, bolognese, four_seasons)
+    pizzeria_ii.add_to_order(peperoni)
+    pizzeria_ii.add_to_order(margherita)
+    pizzeria_ii.add_to_order(four_seasons)
+
+    it 'customer knows they have correct price for order as #view_cart automatically calculates this' do
+      expect(pizzeria_ii.view_cart).to eq [[{ 'Peperoni' => '£7.00' }, { 'Margherita' => '£5.00' }, { 'Four Seasons' => '£6.50' }], '£18.50']
     end
   end
 end
