@@ -29,6 +29,7 @@ class Menu
   end
 
   private
+  
   def on_menu?(item)
     @dishes.include?(item)
   end

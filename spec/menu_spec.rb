@@ -9,9 +9,8 @@ margherita = Dish.new('Margherita', 500)
 bolognese = Dish.new('Bolognese', 700)
 four_seasons = Dish.new('Four Seasons', 650)
 
-pizzeria = Menu.new(peperoni, kiev)
-
 describe Menu do
+  pizzeria = Menu.new(peperoni, kiev)
   describe '#view_menu' do
     it 'allows the customer to view a list of available dishes' do
       expect(pizzeria.view_menu).to eq [{ 'Peperoni' => '£7.00' }, { 'Pollo Kiev' => '£8.00' }]
