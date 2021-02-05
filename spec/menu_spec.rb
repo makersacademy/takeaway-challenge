@@ -26,5 +26,11 @@ describe Menu do
       expect(subject.dishes).to include({dish: "Pizza", price: 10})
     end
   end
+
+  describe '#dish' do
+    it 'returns a single dish from the menu' do
+      expect(dish("Pizza")).to eq({dish:"Pizza, price: 10"})
+    end
+  end
   
 end
