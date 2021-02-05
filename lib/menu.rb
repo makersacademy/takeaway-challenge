@@ -1,9 +1,10 @@
+
 class Menu
   def initialize(dishes)
     @dishes = dishes
   end
-  
+
   def view
-    @dishes
+    Viewer.new(@dishes)
   end
 end
