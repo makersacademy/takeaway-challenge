@@ -22,10 +22,6 @@ class Takeaway
     @current_order.add_item(@menu.find { |n| n[:item] == meal })
   end
 
-  # def see_order
-  #   @current_order.order
-  # end
-
   def confirm_order
     @current_order.total
   end
@@ -43,7 +39,7 @@ class Takeaway
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = '+447782549143' # Your Twilio number
-    to = '+447453297338' # Your mobile phone number
+    to = '+447777777777' # Your mobile phone number
 
     client.messages.create(
       from: from,
