@@ -10,7 +10,7 @@ class Takeaway
   end
 
   def order_dish(quantity = 1, item)
-    fail "Sorry, that item is not on the menu" unless check_item(item)
+    fail "Sorry, that item is not on the menu" unless on_menu?(item)
 
     quantity.times { @order << @menu.dish(item) }
     @order
@@ -23,7 +23,7 @@ class Takeaway
 
   private
 
-  def check_item(item)
+  def on_menu?(item)
     @menu.dish(item)
   end
 end
