@@ -25,7 +25,7 @@ class Menu
   end
 
   def place_order
-    SmsSender.new.send(message)
+    SmsSender.new.send
   end
 
   private
