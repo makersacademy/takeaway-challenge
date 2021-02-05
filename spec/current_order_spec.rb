@@ -1,5 +1,5 @@
 require 'current_order'
-require_relative 'menu_spec'
+require_relative 'takeaway_spec'
 
 describe CurrentOrder do
 

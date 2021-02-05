@@ -1,4 +1,4 @@
-require 'menu'
+require 'takeaway'
 require 'current_order'
 
 describe Takeaway do
@@ -16,14 +16,6 @@ describe Takeaway do
   describe '#choose_meal' do
     it 'selects a meal from the menu' do
       expect(subject.choose_meal(TEST_MEAL)).to eq([TEST_ORDER])
-    end
-  end
-
-  describe '#see_order' do
-    it 'shows current order' do
-      subject.choose_meal(TEST_MEAL)
-      subject.choose_meal(TEST_MEAL)
-      expect(subject.see_order).to eq([TEST_ORDER, TEST_ORDER])
     end
   end
 
