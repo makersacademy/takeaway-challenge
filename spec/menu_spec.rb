@@ -2,7 +2,7 @@ require 'menu'
 require 'dish'
 require 'viewer'
 
-let(:sms_sender) {double :sms_sender, send: "Thank you! Your order was placed and will be delivered before 18:52"}
+
 
 peperoni = Dish.new('Peperoni', 700)
 kiev = Dish.new('Pollo Kiev', 800)
@@ -35,14 +35,16 @@ describe Menu do
     pizzeria_ii.add_to_order(peperoni)
     pizzeria_ii.add_to_order(margherita)
     pizzeria_ii.add_to_order(four_seasons)
-
     it 'customer knows they have correct price for order as #view_cart automatically calculates this' do
       expect(pizzeria_ii.view_cart).to eq [[{ 'Peperoni' => '£7.00' }, { 'Margherita' => '£5.00' }, { 'Four Seasons' => '£6.50' }], '£18.50']
     end
   end
 
   describe '#place_order' do
-
+    pizzeria_ii = Menu.new(peperoni, kiev, margherita, bolognese, four_seasons)
+    pizzeria_ii.add_to_order(kiev)
+    let(:sms_sender) {double :sms_sender, send: "Thank you! Your order was placed and will be delivered before 18:52"}
+  
     it 'also provides SMS confirmation once order has been received by takeout' do
       expect(pizzeria_ii.place_order).to eq 'Thank you! Your order was placed and will be delivered before 18:52'
     end

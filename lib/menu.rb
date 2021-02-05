@@ -1,6 +1,7 @@
 require_relative './viewer'
 require_relative './dish'
 require_relative './cart'
+require_relative './sms_sender'
 
 class Menu
   attr_reader :dishes
@@ -24,7 +25,7 @@ class Menu
   end
 
   def place_order
-    
+    SmsSender.new.send(message)
   end
 
   private
