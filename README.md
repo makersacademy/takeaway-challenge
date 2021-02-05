@@ -31,6 +31,7 @@ I would like to check that the TOTAL I have been given matches the SUM of the va
 |----------|----------------------|---------------|
 |cart/order|`view`                |CONTENTS, TOTAL|
 
+
 ### US 4  
 As a customer  
 So that I am _reassured_ that my order will be _delivered_ on time  
