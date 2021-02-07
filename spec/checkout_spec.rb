@@ -9,8 +9,8 @@ describe Checkout do
     end
 
     it 'calculates the sum total of multiple orders' do
-      multiple_order = [ {dish: 'Fritto Misto di Calamari', price: 17.45},
-                { dish: 'Vitello Milanese', price: 16.55} ]
+      multiple_order = [{ dish: 'Fritto Misto di Calamari', price: 17.45 },
+                { dish: 'Vitello Milanese', price: 16.55 }]
       expect(subject.order_checkout(multiple_order)).to eq(34)
     end
   end

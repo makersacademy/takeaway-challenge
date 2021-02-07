@@ -12,6 +12,7 @@ class Order
 
   def order_dish(quantity = 1, dish)
     raise "This dish is not on the menu, please choose another one!" unless dish_on_menu?(dish)
+    
     quantity.times { @order << @menu.select(dish) }
     @order
   end

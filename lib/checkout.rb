@@ -15,7 +15,7 @@ class Checkout
   private
 
   def order_total(order)
-    order.each { |item| @total += item[:price]}
+    order.each { |item| @total += item[:price] }
     @total
   end
 end
