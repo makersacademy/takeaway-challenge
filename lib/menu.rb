@@ -7,7 +7,7 @@ class Menu
               { dish: 'Salsiccia e Friarelli', price: 12.75},
               { dish: 'Prosciutto di Parma e Rucola', price: 12.45},
               { dish: 'Grilled Salmon with Mayonnaise Sauce', price: 16.95 },
-              { dish: 'Misto Fritto di Calamari', price: 17.45},
+              { dish: 'Fritto Misto di Calamari', price: 17.45},
               { dish: 'Vitello Milanese', price: 16.55} ]
   end
 
