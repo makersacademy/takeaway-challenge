@@ -25,9 +25,10 @@ As a customer
 So that I can verify that my **order** is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my **order**
 
-| Objects | Messages     | State           |
-| ------- | ------------ | --------------- |
-| order   | `view_order` | SUMMARY , TOTAL | 
+| Objects  | Messages        | State           |
+| -------- | --------------- | --------------- |
+| checkout | `order_total`, `order_checkout` | TOTAL | 
+| order    | `confirm_order` | |
 
 As a customer
 So that I am reassured that my order will be delivered on time
