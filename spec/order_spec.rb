@@ -6,12 +6,6 @@ describe Order do
       expect(subject.order_list).to be_empty()
     end
   end
-  describe '#add_item' do
-    it 'adds a item and price hash to order_list' do
-      subject.add_item({ 'Mixed Starter' => 7 })
-      expect(subject.order_list).to include({ 'Mixed Starter' => 7 })
-    end
-  end
   describe '#add_by_name' do
     it 'adds an item price hash to order_list by item name' do
       subject.add_by_name('Mixed Starter')
@@ -30,6 +24,14 @@ describe Order do
       subject.add_by_name('Prawn Cocktail')
       subject.add_by_name('Yuk Sung')
       expect { subject.print_current_order }.to output("Prawn Cocktail : £3.70\nYuk Sung : £6.40\nTotal : £10.10\n").to_stdout
+    end
+  end
+  describe 'confirm_order' do
+    it 'gives conformation message and shows full order' do
+      subject.add_by_name('Prawn Cocktail')
+      subject.add_by_name('Yuk Sung')
+      time = Time.now + 60*60
+      expect { subject.confirm_order }.to output("Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}\n").to_stdout
     end
   end
 end

@@ -8,10 +8,6 @@ class Order
     @takeaway = takeaway
   end
 
-  def add_item(item)
-    @order_list.append(item)
-  end
-
   def add_by_name(name)
     @takeaway.menu_hash.each do |item_name, price|
       if name == item_name
@@ -38,5 +34,15 @@ class Order
         add_by_name(item_name)
       end
     end
+  end
+
+  def confirm_order
+    time = Time.now + 60 * 60
+    puts "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
+  end
+  private 
+
+  def add_item(item)
+    @order_list.append(item)
   end
 end
