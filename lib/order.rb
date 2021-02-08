@@ -38,6 +38,7 @@ class Order
 
   def confirm_order
     time = Time.now + 60 * 60
+    print_current_order
     puts "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
   end
   private 

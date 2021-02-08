@@ -31,7 +31,7 @@ describe Order do
       subject.add_by_name('Prawn Cocktail')
       subject.add_by_name('Yuk Sung')
       time = Time.now + 60*60
-      expect { subject.confirm_order }.to output("Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}\n").to_stdout
+      expect { subject.confirm_order }.to output("Prawn Cocktail : £3.70\nYuk Sung : £6.40\nTotal : £10.10\nThank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}\n").to_stdout
     end
   end
 end
