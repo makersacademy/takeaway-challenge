@@ -1,10 +1,17 @@
 describe Restaurant do
-  let(:menu) { instance_double(Menu, :menu, meals: Menu::PIZZERIA) }
+  let(:menu) { instance_double(Menu, :menu, meals: Menu::PIZZA) }
   subject { described_class.new(menu) }
 
-  describe '#see_menu' do
+  describe '#view_menu' do
     it 'displays the meals and prices' do
-      expect(subject.see_menu).to be menu.meals
+      expect(subject.view_menu).to be menu.meals
+    end
+  end
+
+  describe '#add' do
+    it 'adds meal to order' do
+      subject.add(:marinara)
+      expect(subject.view_order).to include Menu::PIZZA.slice(:marinara)
     end
   end
 end
