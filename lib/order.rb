@@ -3,8 +3,7 @@ require_relative 'menu'
 class Order
 
 def view_menu
-  menu = Menu.new
-  menu.list
+  menu = Menu.new.list
 end
 
 end

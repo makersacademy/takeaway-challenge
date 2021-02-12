@@ -1,4 +1,5 @@
 require 'order'
+require 'menu'
 
 describe Order do
 
@@ -11,6 +12,6 @@ describe Order do
   end
 
   it 'should show a menu' do
-    expect(subject.view_menu).to eq [{pizza: 5}, {spaghetti: 6}, {sushi: 10}, {nachos: 8}, {burger: 7}]
+    expect(subject.view_menu).to eq({ "pizza" => 5, "spaghetti" => 6, "sushi" => 10, "nachos" => 8, "burger" => 7 })
   end
 end
