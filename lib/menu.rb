@@ -8,6 +8,7 @@ class Menu
     diavola:     14,
     napoli:      14,
     calzone:     14,
+    fiorentina:  14,
     capricciosa: 15
   }
 
