@@ -26,4 +26,16 @@ describe TakeAway do
       expect { subject.add_to_basket(:fish) }.to raise_error "fish is not available"
     end
   end 
+
+  context 'when checking out' do 
+    before do 
+      subject.add_to_basket(:pierogi, 2)
+    end
+    it 'checks if payment is equal to the total price of all items in the basket' do 
+      expect { subject.checkout(23.98) }.not_to raise_error 
+    end
+    it 'raises an error when payment is not equal to the total price of all item in the basket' do 
+      expect { subject.checkout(10.00) }.to raise_error "Incorrect amount"
+    end
+  end
 end 

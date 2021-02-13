@@ -16,4 +16,22 @@ class TakeAway
     @basket[dish] += quantity
   end
 
+  def checkout(payment)
+    fail "Incorrect amount" if !is_correct_amount?(payment)
+  end
+
+  def basket_total()
+    total_price = 0
+    @basket.each do |dish, quantity| 
+      total_price += @menu.dishes[dish] * quantity
+    end
+    total_price
+  end
+
+  private 
+
+  def is_correct_amount?(payment)
+    basket_total() == payment 
+  end
+
 end 
