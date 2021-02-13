@@ -1,5 +1,5 @@
 # Takeaway Challenge
-==================
+
 ```
                             _________
               r==           |       |
@@ -16,11 +16,27 @@
 
 ## Getting started
 
-git clone
+Clone
+- `git clone git@github.com:AJ8GH/takeaway-challenge`
+
+Install dependencies
+- `bundle`
+
+cd into root folder
+- `cd takeaway-challenge`
+
+run takeaway script
+- `ruby takeaway.rb`
 
 ## Dependencies
 
-- gems
+- `ruby 2.6.5`
+- `twilio`
+- `rspec`
+- `rubocop`
+- `coveralls`
+- `bundler`
+- `rake`
 
 ## How to use
 
