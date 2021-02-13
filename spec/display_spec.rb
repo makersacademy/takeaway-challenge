@@ -3,10 +3,9 @@ describe Display do
   let(:order) { [{ bufalina: 13 }, { diavola: 14 }] }
   let(:menu) { Menu::PIZZA }
 
-  let(:confirmation) do [
-    described_class::CONFIRMATION_PROMPT,
-    "#{described_class::ORDER_CONFIRMATION}\n",
-  ].join("\n")
+  let(:confirmation) do
+    [described_class::CONFIRMATION_PROMPT,
+     described_class::ORDER_CONFIRMATION].join("\n") + "\n"
   end
 
   describe '#view_menu' do

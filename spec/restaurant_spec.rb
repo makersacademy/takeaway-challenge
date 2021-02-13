@@ -3,22 +3,20 @@ describe Restaurant do
   let(:order_output) { ['napoli: £13.00', 'Diavola: £14.00', 'Total: £27.00'] }
   let(:menu) { instance_double(Menu, :menu, meals: Menu::PIZZA) }
 
-  let(:menu_output) do [
-    'Marinara: £8.00',
-    'Margherita: £10.00',
-    'Bufalina: £13.00',
-    'Diavola: £14.00',
-    'Napoli: £14.00',
-    'Calzone: £14.00',
-    'Fiorentina: £14.00',
-    'Capricciosa: £15.00'
-  ]
+  let(:menu_output) do
+    ['Marinara: £8.00',
+     'Margherita: £10.00',
+     'Bufalina: £13.00',
+     'Diavola: £14.00',
+     'Napoli: £14.00',
+     'Calzone: £14.00',
+     'Fiorentina: £14.00',
+     'Capricciosa: £15.00']
   end
 
   let(:customer_service) do instance_double(
     CustomerService, :customer_service,
-    confirmation_text: 'text sent'
-    )
+    confirmation_text: 'text sent')
   end
 
   let(:display) do instance_double(
@@ -27,15 +25,13 @@ describe Restaurant do
     view_order: order_output,
     confirm_order: nil,
     confirm_added: nil,
-    invalid: Display::INVALID_MEAL
-    )
+    invalid: Display::INVALID_MEAL)
   end
 
   subject do described_class.new(
     menu: menu,
     display: display,
-    customer_service: customer_service
-    )
+    customer_service: customer_service)
   end
 
   describe '#view_menu' do
