@@ -1,3 +1,5 @@
+require_relative './checkout.rb'
+
 class Takeaway
   attr_reader :menu, :basket
 
@@ -12,9 +14,7 @@ class Takeaway
 
   def add_to_basket(item)
     self.menu.map do |food, price|
-      if item == food
-        @basket.push("#{item}, #{price}")
-      end
+      @basket.push("#{item}, #{price}") if item == food
     end
   end
 
