@@ -1,7 +1,8 @@
 require 'takeaway'
 
 describe Checkout do
-  it 'displays the total order by default' do
+  it '' do
+
 
   end
 end
