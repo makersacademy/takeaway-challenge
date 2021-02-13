@@ -1,7 +1,7 @@
 class Display
-  CONFIRMATION_PROMPT = 'Confirm order? Hit ⏎ to confirm'
-  MEAL_ADD_CONFIRMATION =  ' has been added to your order 🍕'
-  ORDER_CONFIRMATION = [
+  CONFIRMATION_PROMPT   = 'Confirm order? Hit ⏎ to confirm, c to cancel'
+  MEAL_ADD_CONFIRMATION = ' has been added to your order 🍕'
+  ORDER_CONFIRMATION    = [
     'Thanks for your order! Check your phone',
     ' for confirmation. Buon Appetito!'
   ].join
@@ -20,7 +20,8 @@ class Display
   end
 
   def confirm_order
-    puts CONFIRMATION_PROMPT; gets.chomp
+    puts CONFIRMATION_PROMPT
+    input = gets.chomp; fail if input == 'c'
     puts ORDER_CONFIRMATION
   end
 

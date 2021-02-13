@@ -3,16 +3,14 @@ require 'dotenv'
 Dotenv.load
 
 class CustomerService
-  MESSAGE = [
-    "Thanks for your order! 🍕 It's being prepared and will",
-    " be with you by #{(Time.now + 3600).strftime('%H:%M')}"
-  ].join
-
   def confirmation_text
     client.messages.create(
-      from: ENV['TWILIO_NUMBER'],
-      to:   ENV['MOBILE_NUMBER'],
-      body: MESSAGE
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to:   ENV['MOBILE_PHONE_NUMBER'],
+      body: [
+        "Thanks for your order! 🍕 It's being prepared and will",
+        " be with you by #{(Time.now + 3600).strftime('%H:%M')}"
+      ].join
     )
   end
 
