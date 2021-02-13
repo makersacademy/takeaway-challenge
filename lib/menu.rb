@@ -1,4 +1,7 @@
+require_relative 'dish_lister'
+
 class Menu
+  include DishLister
   attr_reader :dishes, :client
 
   def initialize(*args)
@@ -7,7 +10,7 @@ class Menu
 
   def peruse
     puts "TODAY'S MENU:"
-    @dishes.each { |dish| puts "#{dish[:name]}, £" + "%.2f" % dish[:price] }
+    list_dishes
   end
 
   def pick(item)

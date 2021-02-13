@@ -3,8 +3,8 @@ require 'order'
 #potential for more functionality - adding several of one item at once.
 
 describe Order do
-  let(:dish1) { double(:dish, :name => "Baked Potato", :price => 3.25) }
-  let(:dish2) { double(:dish, :name => "Spaghetti Bolognese", :price => 4.70) }
+  let(:dish1) { {name: "Baked Potato", price: 3.25} }
+  let(:dish2) { {name: "Spaghetti Bolognese", price: 4.70} }
   let(:test_menu) { double(:menu, :dishes => [dish1, dish2], :pick => dish1) }
 
   let(:test_order) { described_class.new(test_menu) }
@@ -33,7 +33,7 @@ describe Order do
       expect { test_order.add_item(dish2)}.to raise_error "this order is closed"
     end
     it 'adds the price of the added item to the balance' do
-      expect { test_order.add_item(dish1) }.to change { test_order.balance }.by 3.25
+      expect { test_order.add_item(dish1) }.to change { test_order.balance }.by dish1[:price]
     end
   end
 

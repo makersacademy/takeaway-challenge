@@ -1,8 +1,10 @@
-require 'script'
+require_relative 'script'
 require_relative 'menu'
+require_relative 'dish_lister'
 require 'twilio-ruby'
 
 class Order
+  include DishLister
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_AUTH_TOKEN']
   @client = Twilio::REST::Client.new(account_sid, auth_token)
@@ -18,16 +20,19 @@ class Order
   def add_item(item)
     order_closed_error
     @dishes << @menu.pick(item)
-    @balance += @dishes.last.price.round(2)
+    @balance += @dishes.last[:price]
+    @balance.round(2)
   end
 
-  def balance
-    @balance
+  def total
+    "£ %.2f" % @balance
   end
 
   def check_balance
-    @dishes.each { |dish| puts "#{dish.name}, £" + "%.2f" % dish.price }
-    puts "Total: £" + "%.2f" % @balance
+    list_dishes
+    sum = 0
+    @dishes.each { |dish| sum += dish[:price] }
+    puts "Total: £" + "%.2f" % sum
   end
 
   def complete_order
