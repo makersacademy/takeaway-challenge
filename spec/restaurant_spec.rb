@@ -17,7 +17,8 @@ describe Restaurant do
   let(:display) do instance_double(
     Display, :display,
     view_menu: menu_output,
-    view_order: order_output
+    view_order: order_output,
+    confirm_added: nil
     )
   end
 

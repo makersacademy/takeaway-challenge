@@ -5,9 +5,9 @@ class Restaurant
 
   def add(meal)
     choice = meal.downcase.to_sym
-    return 'Please make a valid choice' unless menu.meals.include?(choice)
+    fail 'Please make a valid choice' unless menu.meals.include?(choice)
     order << menu.meals.slice(choice)
-    "#{meal.capitalize} has been added to your order 🍕"
+    display.confirm_added(meal)
   end
 
   def view_order
@@ -17,6 +17,7 @@ class Restaurant
   def place_order
     puts view_order
     confirm_order
+    order.clear
   end
 
   private
@@ -30,7 +31,7 @@ class Restaurant
   end
 
   def confirm_order
-    puts 'Confirm order? Hit ⏎ to confirm'
+    puts 'Confirm order? Hit ⏎ to confirm or c to cancel'
     gets.chomp
     'Thanks for your order! Check your phone for confirmation. Buon Appetito!'
   end

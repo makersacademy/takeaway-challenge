@@ -1,4 +1,11 @@
 class Display
+  CONFIRMATION_PROMPT = 'Confirm order? Hit ⏎ to confirm'
+  MEAL_ADD_CONFIRMATION =  ' has been added to your order 🍕'
+  ORDER_CONFIRMATION = [
+    'Thanks for your order! Check your phone',
+    ' for confirmation. Buon Appetito!'
+  ].join
+
   def view_menu(menu)
     menu.map { |meal, price| "#{meal.to_s.capitalize}: #{format(price)}" }
   end
@@ -9,7 +16,12 @@ class Display
   end
 
   def confirm_added(meal)
-    "#{meal.capitalize} has been added to your order 🍕"
+    "#{meal.capitalize}#{MEAL_ADD_CONFIRMATION}"
+  end
+
+  def confirm_order
+    puts CONFIRMATION_PROMPT; gets.chomp
+    puts ORDER_CONFIRMATION
   end
 
   private
