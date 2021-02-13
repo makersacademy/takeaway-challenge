@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
   describe '#display' do
     it 'displays items in the menu' do
-      expect(subject.display).to eq ({"katsu curry" => 7.50,
+      expect(subject.display).to eq({ "katsu curry" => 7.50,
        "nanban chicken" => 7.50,
        "tonkotsu ramen" => 10.00,
        "nasi lemak" => 8.00,

@@ -5,7 +5,7 @@ class Menu
   end
 
   def items
-    {"katsu curry" => 7.50,
+    { "katsu curry" => 7.50,
      "nanban chicken" => 7.50,
      "tonkotsu ramen" => 10.00,
      "nasi lemak" => 8.00,

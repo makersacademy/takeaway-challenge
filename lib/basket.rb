@@ -3,25 +3,23 @@ class Basket
     @list = []
   end
 
-  def store(item, n, price)
-    if @list.any? {|x| x[:name] == item}
-
+  def store(item, num, price)
+    if @list.any? { |x| x[:name] == item }
       @list.each do |x|
         if x[:name] == item
-          totalnum = x[:number] + n
+          totalnum = x[:number] + num
           x[:number] = totalnum
           x[:price] = totalnum * price
         end
       end
-
     else
-      @list << {:name => item, :number => n, :price => price}
+      @list << { :name => item, :number => num, :price => price }
     end
   end
 
   def show_basket
     @list.each do |x|
-      puts "#{x[:name]} x #{x[:number]} = #{'%.2f' % x[:price] }"
+      puts "#{x[:name]} x #{x[:number]} = #{'%.2f' % x[:price]}"
     end
   end
 
