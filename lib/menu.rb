@@ -15,7 +15,13 @@ class Menu
   end
 
   def check(dish)
-    @list.include?(dish.downcase) ? :present : :not_on_menu
+    @list.each do |item|
+      if item.name == dish.downcase
+        return :unavailable if item.available == "false"
+        return :present
+      end
+    end
+    return :not_on_menu
   end
 
 # need a check method, so we can check availability
@@ -29,8 +35,8 @@ class Menu
     close_file(file)
   end
 
-  def open_file(menu_file = "./lib/data.csv", "r")
-    File.open(menu_file)
+  def open_file
+    File.open("./lib/data.csv", 'r')
   end
 
   def load_file(file)

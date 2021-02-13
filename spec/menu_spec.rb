@@ -24,4 +24,16 @@ describe Menu do
     end
   end
 
+  describe '#check' do
+    it 'checks whether dish is on menu' do
+      expect(new_menu.check("pizza")).to eq :present
+    end
+    it 'confirms if a dish is not on menu' do
+      expect(new_menu.check("dog")).to eq :not_on_menu
+    end
+    it 'confirms if a dish is unavailable' do
+      expect(new_menu.check("lobster")).to eq :unavailable
+    end
+  end
+
 end
