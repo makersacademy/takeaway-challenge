@@ -5,8 +5,8 @@ describe Menu do
   let(:dish2) { double(:dish, :name => "Spaghetti Bolognese", :price => 4.70) }
   let(:test_menu) { described_class.new(dish1, dish2) }
 
-  it 'stores dishes passed as arguments to @dishes on creation' do
-    expect(test_menu).to have_attributes(:dishes => [dish1, dish2])
+  it 'stores dishes passed as arguments to @dishes on creation as an array of hashes' do
+    expect(test_menu).to have_attributes(:dishes => [{name: dish1.name, price: dish1.price}, {name: dish2.name, price: dish2.price}])
   end
 
   describe '#peruse' do
@@ -21,7 +21,7 @@ describe Menu do
       expect { test_menu.pick("Really fake dish name") }.to raise_error "this item isn't on the menu"
     end
     it 'returns the menu item if it is on the menu' do
-      expect(test_menu.pick("Baked Potato")).to eq dish1
+      expect(test_menu.pick("Baked Potato")).to eq({name: dish1.name, price: dish1.price})
     end
   end
 end

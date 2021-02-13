@@ -43,4 +43,10 @@ describe Order do
     end
   end
 
+  describe '#check_balance' do
+    it 'prints a list of items ordered and total balance so user can check the sums' do
+      expect { test_order.check_balance }.to output(String).to_stdout
+    end
+  end
+
 end
