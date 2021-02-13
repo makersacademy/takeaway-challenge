@@ -1,5 +1,5 @@
 require 'menu'
 
-describe 'Menu' do
-  
+describe Menu do
+
 end
