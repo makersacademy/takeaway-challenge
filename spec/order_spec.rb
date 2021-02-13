@@ -3,7 +3,7 @@ require 'order'
 describe Order do
   let(:dish1) { double(:dish, :name => "Baked Potato", :price => 3.25) }
   let(:dish2) { double(:dish, :name => "Spaghetti Bolognese", :price => 4.70) }
-  let(:test_menu) { double(:menu, :dishes => [dish1, dish2]) }
+  let(:test_menu) { double(:menu, :dishes => [dish1, dish2], :pick => dish1) }
 
   let(:test_order) { described_class.new(test_menu) }
 
@@ -19,6 +19,12 @@ describe Order do
     end
     it 'is set to incomplete' do
       expect(test_order.complete).to be false
+    end
+  end
+
+  describe '#add_item' do
+    it 'adds a dish to the dishes array' do
+      expect { test_order.add_item("Baked Potato") }.to change { test_order.dishes.length }.by 1
     end
   end
 

@@ -9,7 +9,7 @@ class Order
   end
 
   def add_item(item)
-
+    @dishes << @menu.pick(item)
   end
 
   def balance
