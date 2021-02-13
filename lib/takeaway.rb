@@ -1,4 +1,5 @@
 require_relative 'menu.rb'
+require_relative 'basket.rb'
 
 class Takeaway
   def initialize(menuclass = Menu)

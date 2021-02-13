@@ -30,4 +30,10 @@ describe Takeaway do
     end
   end
 
+  describe '#basket_summary' do
+    it "shows an empty basket if nothing is ordered" do
+      expect{subject.basket_summary}.to output("").to_stdout
+    end
+  end
+
 end
