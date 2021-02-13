@@ -81,3 +81,7 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+Notes - things I want to improve:
+I ended up adding a string of '0' to pass the tests, which works for my menu but not if the price in pence is not multipes of ten.
