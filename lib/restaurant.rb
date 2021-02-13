@@ -1,14 +1,17 @@
 class Restaurant
   def view_menu
-    menu.meals
+    display.view_menu(menu.meals)
   end
 
   def add(meal)
-    order << menu.meals.slice(meal)
+    choice = meal.downcase.to_sym
+    return 'Please make a valid choice' unless menu.meals.include?(choice)
+    order << menu.meals.slice(choice)
+    "#{meal.capitalize} has been added to your order 🍕"
   end
 
   def view_order
-    order.dup
+    display.view_order(order)
   end
 
   def place_order
@@ -18,15 +21,17 @@ class Restaurant
 
   private
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :display
 
-  def initialize(menu = Menu.new)
-    @menu = menu
-    @order = []
+  def initialize(args = {})
+    @menu    = args[:menu]    || Menu.new
+    @display = args[:display] || Display.new
+    @order   = []
   end
 
   def confirm_order
     puts 'Confirm order? Hit ⏎ to confirm'
-    gets
+    gets.chomp
+    'Thanks for your order! Check your phone for confirmation. Buon Appetito!'
   end
 end
