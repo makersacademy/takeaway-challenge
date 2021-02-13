@@ -1,7 +1,8 @@
 describe Display do
-  let(:order) { [{ bufalina: 13 }, { diavola: 14 }] }
   let(:confirm_add) { described_class::MEAL_ADD_CONFIRMATION }
+  let(:order) { [{ bufalina: 13 }, { diavola: 14 }] }
   let(:menu) { Menu::PIZZA }
+
   let(:confirmation) do [
     described_class::CONFIRMATION_PROMPT,
     "#{described_class::ORDER_CONFIRMATION}\n",
@@ -31,12 +32,26 @@ describe Display do
   end
 
   describe '#confirm_order' do
-    it 'confirms the order' do
-      allow(subject).to receive(:gets) { "\n"}
-      allow(STDOUT).to receive(:puts) { nil }
-      expect {
-        subject.confirm_order
-      }.to output(confirmation).to_stdout
+    context 'when customer cancels' do
+      it 'throws error' do
+        allow(STDOUT).to receive(:puts) { nil }
+        allow(subject).to receive(:gets) { 'c' }
+        expect { subject.confirm_order }.to raise_error RuntimeError
+      end
+    end
+
+    context 'when customer confirms' do
+      it 'confirms the order' do
+        allow(STDOUT).to receive(:puts) { nil }
+        allow(subject).to receive(:gets) { "\n"}
+        expect { subject.confirm_order }.to output(confirmation).to_stdout
+      end
+    end
+  end
+
+  describe '#invalid_meal' do
+    it 'tells customer choice is invalid' do
+      expect(subject.invalid('chips')).to eq "chips#{described_class::INVALID_MEAL}"
     end
   end
 end

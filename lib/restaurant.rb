@@ -5,7 +5,7 @@ class Restaurant
 
   def add(meal)
     choice = meal.downcase.to_sym
-    return 'Please make a valid choice' unless menu.meals.include?(choice)
+    return display.invalid(meal) unless menu.meals.include?(choice)
     order << menu.meals.slice(choice)
     display.confirm_added(meal)
   end

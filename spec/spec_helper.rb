@@ -1,4 +1,4 @@
-require 'takeaway_challenge'
+require 'takeaway'
 require 'simplecov'
 require 'simplecov-console'
 

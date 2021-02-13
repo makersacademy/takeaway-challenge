@@ -9,7 +9,7 @@ class CustomerService
       to:   ENV['MOBILE_PHONE_NUMBER'],
       body: [
         "Thanks for your order! 🍕 It's being prepared and will",
-        " be with you by #{(Time.now + 3600).strftime('%H:%M')}"
+        " be with you by #{delivery_time}"
       ].join
     )
   end
@@ -28,5 +28,9 @@ class CustomerService
       ENV['TWILIO_ACCOUNT_SID'],
       ENV['TWILIO_AUTH_TOKEN']
     )
+  end
+
+  def delivery_time
+    (Time.now + 3600).strftime('%H:%M')
   end
 end
