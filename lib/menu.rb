@@ -18,7 +18,7 @@ class Menu
     @list.each do |item|
       if item.name == dish.downcase
         return :unavailable if item.available == "false"
-        return :present
+        return item
       end
     end
     return :not_on_menu

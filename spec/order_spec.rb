@@ -10,8 +10,9 @@ describe Order do
     it 'starts with no dishes added' do
       expect(new_order.view).to eq []
     end
-    # it displays dishes in the order
-    # it displays the total
+    it 'displays the total' do
+      expect(complete_order.view).to output(/22/).to_stdout
+    end
   end
 
   describe '#add' do
