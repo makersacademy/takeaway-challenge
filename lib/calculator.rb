@@ -1,9 +1,5 @@
 class Calculator
-  def initialize(order)
-    @calculation = order.view
-  end
-
-  def total
-    @calculation.reduce(0) { |sum, item| sum + item.price }
+  def total(prices)
+    prices.reduce(0) { |sum, item| sum + item }
   end
 end

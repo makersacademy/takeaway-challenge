@@ -6,8 +6,9 @@ class Order
   end
 
   def view
-    @list.each { |item| puts "#{item.name.upcase}: £#{item.price}" }
-    puts("Total price is #{calculate}")
+    @list.each { |item| puts "#{item.name.capitalize}: £#{item.price}" }
+    total = calculate
+    puts("Total price is £#{total}")
   end
 
   def add(menu, dish)
@@ -20,8 +21,10 @@ class Order
   private
 
   def calculate(calc_class = Calculator)
-    @calc = calc_class.new(self)
-    total = @calc.total(@list)
+    prices = []
+    @list.each { |item| prices.push(item.price) }
+    @calc = calc_class.new
+    total = @calc.total(prices)
   end
 
   def unavailable_error(status)

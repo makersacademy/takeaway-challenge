@@ -42,7 +42,7 @@ class Menu
   def load_file(file)
     file.readlines.each do |line|
       name, price, available = line.chomp.split(',')
-      dish = @dish_class.new(name, price, available)
+      dish = @dish_class.new(name, price.to_i, available)
       @list.push(dish)
     end
   end
