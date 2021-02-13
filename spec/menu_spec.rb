@@ -21,7 +21,7 @@ describe Menu do
       expect { test_menu.pick("Really fake dish name") }.to raise_error "this item isn't on the menu"
     end
     it 'returns the menu item if it is on the menu' do
-      expect(test_menu.pick("Baked Potato")).to eq [dish1]
+      expect(test_menu.pick("Baked Potato")).to eq dish1
     end
   end
 end

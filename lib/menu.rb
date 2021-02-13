@@ -18,11 +18,11 @@ class Menu
 private
 
   def find_item(item)
-    @dishes.select { |dish| dish.name == item }
+    @dishes.select { |dish| dish.name == item }[0]
   end
 
   def item_exists(item)
-    fail "this item isn't on the menu" if find_item(item) == []
+    fail "this item isn't on the menu" if find_item(item) == nil
   end
 
 end

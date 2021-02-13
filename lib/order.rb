@@ -10,6 +10,7 @@ class Order
 
   def add_item(item)
     @dishes << @menu.pick(item)
+    @balance += @dishes.last.price
   end
 
   def balance
