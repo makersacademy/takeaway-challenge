@@ -32,6 +32,15 @@ describe Order do
       test_order.complete_order
       expect { test_order.add_item(dish2)}.to raise_error "this order is closed"
     end
+    it 'adds the price of the added item to the balance' do
+      expect { test_order.add_item(dish1) }.to change { test_order.balance }.by 3.25
+    end
+  end
+
+  describe '#complete_order' do
+    it 'changes @complete from false to true' do
+      expect { test_order.complete_order }.to change { test_order.complete }.to true
+    end
   end
 
 end
