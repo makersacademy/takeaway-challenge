@@ -9,7 +9,7 @@ class Basket
 
   def show_basket
     @list.each do |x|
-      puts "#{x[:name]} x #{x[:number]} = #{x[:price]}"
+      puts "#{x[:name]} x #{x[:number]} = #{'%.2f' % x[:price] }"
     end
   end
 end
