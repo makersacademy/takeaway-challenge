@@ -13,4 +13,12 @@ describe Basket do
       expect{subject.show_basket}.to output("katsu curry x 1 = 6.00\n").to_stdout
     end
   end
+
+  describe '#total' do
+    it "calculates the total price of the basket's contents" do
+      subject.store("katsu curry", 1, 6.00)
+      subject.store("katsu curry", 1, 6.00)
+      expect(subject.total).to eq(12.00)
+    end
+  end
 end

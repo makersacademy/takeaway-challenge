@@ -26,4 +26,8 @@ class Takeaway
   def basket_summary
     @basket.show_basket
   end
+
+  def total
+    "Total: £#{@basket.total}"
+  end
 end

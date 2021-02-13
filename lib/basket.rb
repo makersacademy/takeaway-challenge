@@ -24,4 +24,12 @@ class Basket
       puts "#{x[:name]} x #{x[:number]} = #{'%.2f' % x[:price] }"
     end
   end
+
+  def total
+    sum = 0
+    @list.each do |x|
+      sum += x[:price]
+    end
+    sum
+  end
 end
