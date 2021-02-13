@@ -1,10 +1,11 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:menu) { [
-    { item: 'Marinara', price: 7.50 },
-    { item: 'Margherita', price: 8.95 },
-    { item: 'Bufala DOP', price: 11.25 }] }
+  # let(:menu) { [
+  #   { item: 'Marinara', price: 7.50 },
+  #   { item: 'Margherita', price: 8.95 },
+  #   { item: 'Bufala DOP', price: 11.25 }]
+  # }
 
   it 'contains collection of available' do
     expect(subject).to respond_to(:menu)
@@ -29,13 +30,21 @@ describe Takeaway do
     end
     it 'should add the items to order' do
       my_order = Order.new
-      subject.add(0, 3, my_order)
+      subject.add(1, 3, my_order)
       expect(my_order.items_ordered).to contain_exactly('Marinara', 'Marinara', 'Marinara')
     end
     it 'should add the item prices to order' do
       my_order = Order.new
-      subject.add(0, 3, my_order)
+      subject.add(1, 3, my_order)
       expect(my_order.items_price).to contain_exactly(7.50, 7.50, 7.50)
+    end
+  end
+
+  describe '#checkout' do
+    it 'should return the bill total for the order' do
+      my_order = Order.new
+      subject.add(2, 2, my_order)
+      expect(subject.checkout(my_order)).to eq(17.9)
     end
   end
 

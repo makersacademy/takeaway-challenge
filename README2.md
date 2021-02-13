@@ -55,7 +55,9 @@ text sending functionality - Twilio API
 twilio-ruby gem to access the API
 
 ### Steps
-- [x] Create a Dishes class responsable for storing menu and pushing items to the order
+- [x] Create a Takeaway class responsable for storing menu and pushing items to the order
 - [x] Initialize with an already-made dish list
-- [ ] Order methods: 'browse', 'start_ordering', 'add_to_order', 'finish_order'
-- [ ] Create an Order class responsable for storing the items and calculating the bill
+- [ ] Order methods: 'browse', 'start_ordering', 'add_to_order', 'finish_order', 'print_bill'
+- [x] Create an Order class responsable for storing the items and calculating the bill
+- [ ] Order methods: 'calculate_bill'
+- [ ] Read about Twilio API

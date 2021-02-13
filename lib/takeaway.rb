@@ -17,28 +17,33 @@ class Takeaway
   end
 
   def browse
-    @menu.each_with_index { |dish, index| puts "Item #{index+1} - #{dish[:item]} £#{dish[:price]}" }
+    @menu.each_with_index do |dish, index|
+      puts "#{index + 1} - #{dish[:item]} £#{dish[:price]}"
+    end
   end
 
   def start_order
-    @@my_order = Order.new
+    @my_order = Order.new
   end
 
-  def add(index, quantity = 1, order_id = @@my_order )
+  def add(index, quantity = 1, order_id = @my_order)
     add_items(index, quantity, order_id)
     add_prices(index, quantity, order_id)
   end
 
+  def checkout(order_id = @my_order)
+    order_id.get_bill
+  end
 
 private
 
   def add_items(index, quantity, order_id)
-    item = @menu.at(index)[:item]
+    item = @menu.at(index - 1)[:item]
     quantity.times { order_id.items_ordered << item }
   end
 
   def add_prices(index, quantity, order_id)
-    price = @menu.at(index)[:price]
+    price = @menu.at(index - 1)[:price]
     quantity.times { order_id.items_price << price }
   end
 end

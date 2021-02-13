@@ -6,9 +6,7 @@ class Order
     @items_price = []
   end
 
+  def get_bill
+    @items_price.sum
+  end
 end
-
-# @menu.at(index)[:item]
-
-# pizza_pilgrim.menu.at(3)
-#  => {:item=>"Nduja", :price=>11.5}
