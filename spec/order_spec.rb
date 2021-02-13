@@ -2,8 +2,9 @@ require 'order'
 
 describe Order do
   let(:dish) { double(:dish) }
+  let(:menu) { double(:menu, :check => :present) }
   subject(:new_order) { described_class.new }
-  subject(:complete_order) { new_order.add(dish) }
+  subject(:complete_order) { new_order.add(menu, dish) }
 
   describe '#view' do
     it 'starts with no dishes added' do
@@ -17,14 +18,16 @@ describe Order do
     it 'user can add dishes to an order' do
       expect(complete_order).to include(dish)
     end
-    context 'when not on menu' do
+    context 'when dish not on menu' do
       it 'user will see error' do
-        expect(new_order.add(dish)).to raise("I'm sorry, that dish is not on our menu")
+        menu = double(:menu, :check => :not_on_menu)
+        expect { new_order.add(menu, dish) }.to output(/I'm sorry, that dish is not on our menu/).to_stdout
       end
     end
-    context 'when unavailable' do
+    context 'when dish unavailable' do
       it 'user will see error' do
-        expect(new_order.add(dish)).to raise("I'm sorry, that dish is currently unavailable")
+        menu = double(:menu, :check => :unavailable)
+        expect { new_order.add(menu, dish) }.to output(/I'm sorry, that dish is currently unavailable/).to_stdout
       end
     end
   end
