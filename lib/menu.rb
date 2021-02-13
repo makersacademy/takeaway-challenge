@@ -2,6 +2,7 @@ require_relative 'dish'
 
 class Menu
   attr_reader :list
+# refactor this - get rid of list attribute
 
   def initialize(dish_class = Dish)
     @dish_class = dish_class
@@ -13,6 +14,12 @@ class Menu
     print_menu
   end
 
+  def check(dish)
+    @list.include?(dish.downcase) ? :present : :not_on_menu
+  end
+
+# need a check method, so we can check availability
+
   private
 
 # note - new class, MenuFile, so I can isolate and test with a testfile. Inject file into class.
@@ -22,8 +29,8 @@ class Menu
     close_file(file)
   end
 
-  def open_file
-    File.open("./lib/data.csv", "r")
+  def open_file(menu_file = "./lib/data.csv", "r")
+    File.open(menu_file)
   end
 
   def load_file(file)

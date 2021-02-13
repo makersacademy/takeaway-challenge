@@ -17,6 +17,16 @@ describe Order do
     it 'user can add dishes to an order' do
       expect(complete_order).to include(dish)
     end
+    context 'when not on menu' do
+      it 'user will see error' do
+        expect(new_order.add(dish)).to raise("I'm sorry, that dish is not on our menu")
+      end
+    end
+    context 'when unavailable' do
+      it 'user will see error' do
+        expect(new_order.add(dish)).to raise("I'm sorry, that dish is currently unavailable")
+      end
+    end
   end
   # will fail if dish not on menu
 
