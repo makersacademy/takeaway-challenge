@@ -2,8 +2,8 @@ class Display
   CONFIRMATION_PROMPT   = 'Confirm order? Hit ⏎ to confirm, c to cancel'
   INVALID_MEAL          = ' is not a meal. Please make a valid choice'
   MEAL_ADD_CONFIRMATION = ' has been added to your order 🍕'
-  ORDER_CONFIRMATION    = [ 'Thanks for your order! Check your phone',
-                            ' for confirmation. Buon Appetito!'].join
+  ORDER_CONFIRMATION    = ['Thanks for your order! Check your phone',
+                           ' for confirmation. Buon Appetito!'].join
 
   def view_menu(menu)
     menu.map { |meal, price| "#{meal.to_s.capitalize}: #{format(price)}" }
@@ -21,6 +21,7 @@ class Display
   def confirm_order
     puts CONFIRMATION_PROMPT
     input = gets.chomp; fail if input == 'c'
+
     puts ORDER_CONFIRMATION
   end
 

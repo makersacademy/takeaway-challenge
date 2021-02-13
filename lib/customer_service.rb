@@ -7,10 +7,8 @@ class CustomerService
     client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
       to:   ENV['MOBILE_PHONE_NUMBER'],
-      body: [
-        "Thanks for your order! 🍕 It's being prepared and will",
-        " be with you by #{delivery_time}"
-      ].join
+      body: ["Thanks for your order! 🍕 It's being prepared and will",
+             " be with you by #{delivery_time}"].join
     )
   end
 
@@ -24,7 +22,7 @@ class CustomerService
   end
 
   def create_client
-    client = client_class::REST::Client.new(
+    client_class::REST::Client.new(
       ENV['TWILIO_ACCOUNT_SID'],
       ENV['TWILIO_AUTH_TOKEN']
     )

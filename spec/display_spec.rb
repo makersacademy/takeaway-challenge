@@ -43,7 +43,7 @@ describe Display do
     context 'when customer confirms' do
       it 'confirms the order' do
         allow(STDOUT).to receive(:puts) { nil }
-        allow(subject).to receive(:gets) { "\n"}
+        allow(subject).to receive(:gets) { "\n" }
         expect { subject.confirm_order }.to output(confirmation).to_stdout
       end
     end

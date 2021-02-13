@@ -7,8 +7,8 @@ describe Menu do
     end
 
     context 'when intialized with argument' do
-    let(:thai) { { pad_thai: 12 } }
-    subject { described_class.new(thai) }
+      let(:thai) { { pad_thai: 12 } }
+      subject { described_class.new(thai) }
 
       it 'overrides default menu' do
         expect(subject.meals).to be thai
