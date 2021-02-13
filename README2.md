@@ -57,6 +57,6 @@ twilio-ruby gem to access the API
 ### Steps
 - [x] Create a Dishes class responsable for storing menu and pushing items to the order
 - [x] Initialize with an already-made dish list
-- [x] Order methods: 'browse', 'start_ordering', 'add_to_order', 'finish_order'
+- [ ] Order methods: 'browse', 'start_ordering', 'add_to_order', 'finish_order'
 - [x] Create an Order class responsable for storing the items and caculating the bill
 - [ ] Order methods:

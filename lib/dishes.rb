@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Dishes
   attr_reader :dishes_list
   def initialize
@@ -13,7 +15,11 @@ class Dishes
   end
 
   def browse
-    @dishes_list.each { |dish| puts "#{dish[:item]} - £#{dish[:price]}" }
+    @dishes_list.each_with_index { |dish, index| puts "Item #{index+1} - #{dish[:item]} £#{dish[:price]}" }
+  end
+
+  def start_order
+    @my_order = Order.new
   end
 
 end
