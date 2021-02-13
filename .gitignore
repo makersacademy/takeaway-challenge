@@ -5,3 +5,4 @@
 .rubocop-*
 notes.md
 challenge_instructions.md
+.env

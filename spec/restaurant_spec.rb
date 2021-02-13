@@ -14,4 +14,11 @@ describe Restaurant do
       expect(subject.view_order).to include Menu::PIZZA.slice(:marinara)
     end
   end
+
+  describe '#place_order' do
+    it 'asks for user input to confirm order' do
+      expect(subject).to receive(:gets)
+      subject.place_order
+    end
+  end
 end

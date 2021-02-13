@@ -11,6 +11,11 @@ class Restaurant
     order.dup
   end
 
+  def place_order
+    puts view_order
+    confirm_order
+  end
+
   private
 
   attr_reader :menu, :order
@@ -18,5 +23,10 @@ class Restaurant
   def initialize(menu = Menu.new)
     @menu = menu
     @order = []
+  end
+
+  def confirm_order
+    puts 'Confirm order? Hit ⏎ to confirm'
+    gets
   end
 end
