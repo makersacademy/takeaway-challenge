@@ -1,11 +1,6 @@
 require 'takeaway'
 
 describe Takeaway do
-  # let(:menu) { [
-  #   { item: 'Marinara', price: 7.50 },
-  #   { item: 'Margherita', price: 8.95 },
-  #   { item: 'Bufala DOP', price: 11.25 }]
-  # }
 
   it 'contains collection of available' do
     expect(subject).to respond_to(:menu)
@@ -42,9 +37,10 @@ describe Takeaway do
 
   describe '#checkout' do
     it 'should return the bill total for the order' do
-      my_order = Order.new
-      subject.add(2, 2, my_order)
-      expect(subject.checkout(my_order)).to eq(17.9)
+      # my_order = Order.new
+      # subject.add(2, 2, my_order)
+      # expect(subject.checkout(my_order)).to eq(17.9)
+      # expect { subject.checkout(my_order) }.to output.to_stdout
     end
   end
 

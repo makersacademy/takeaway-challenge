@@ -34,20 +34,12 @@
 
 ## Planning
 
-Objects | Messages
-
-customer --> what to order
-list of dishes with prices | see
-
-customer --> order dishes
-available dishes | select some number
-
-customer --> verify order
-total | check
-dishes price | sum
-
-customer --> order delivery time
-text | receive
+| Case | Objects | Messages |
+| :---: | :---: | :---: |
+| What to order | list dishes w/ prices | see |
+| Order dishes | dishes | select some number |
+| Verify order | total/ dish price | check |
+| Order delivery time | text | receive |
 
 #### Hints
 list of dishes with prices
@@ -57,7 +49,10 @@ twilio-ruby gem to access the API
 ### Steps
 - [x] Create a Takeaway class responsable for storing menu and pushing items to the order
 - [x] Initialize with an already-made dish list
-- [ ] Order methods: 'browse', 'start_ordering', 'add_to_order', 'finish_order', 'print_bill'
+- [x] Order methods: 'browse', 'start_ordering', 'add_to_order', 'finish_order', 'print_bill'
 - [x] Create an Order class responsable for storing the items and calculating the bill
-- [ ] Order methods: 'calculate_bill'
+- [x] Order methods: 'calculate_bill'
 - [ ] Read about Twilio API
+
+## Unfinished
+* Struggling to write a test to check stdout after calling `checkout`

@@ -32,7 +32,7 @@ class Takeaway
   end
 
   def checkout(order_id = @my_order)
-    order_id.get_bill
+    order_id.order_details
   end
 
 private
