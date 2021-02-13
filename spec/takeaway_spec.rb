@@ -18,7 +18,7 @@ describe Takeaway do
 
     describe '#total' do
       it 'gives the total sum of the basket' do
-        expect(@takeaway.total).to eq('£31.50')
+        expect { @takeaway.order_total }.to output("£31.50\n").to_stdout
       end
     end
 end

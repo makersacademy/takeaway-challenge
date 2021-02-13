@@ -1,5 +1,4 @@
 require_relative './checkout.rb'
-require 'bigdecimal'
 
 class Takeaway
   attr_reader :menu, :basket
@@ -27,12 +26,14 @@ class Takeaway
     @basket.join << '0'
   end
 
-  def total
+  def order_total
     costs = []
     @basket.select do |element|
       costs.push(element) if element.is_a? Float
     end
-    "£#{costs.inject(:+)}0"
+    total = costs.inject(:+)
+    puts "£#{total}0"
+    total
   end
 
 end
