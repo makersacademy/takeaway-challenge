@@ -7,8 +7,8 @@ class CustomerService
     client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
       to:   ENV['MOBILE_PHONE_NUMBER'],
-      body: ["Thanks for your order! 🍕 It's being prepared and will",
-             " be with you by #{delivery_time}"].join
+      body: ["Thanks for your order! 🍕 It's being prepared ",
+             "and will be with you by #{delivery_time}"].join
     )
   end
 
