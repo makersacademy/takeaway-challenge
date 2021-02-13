@@ -14,6 +14,15 @@ Takeaway Challenge
 
  ```
 
+How to Use
+-------
+
+* Dishes are created with 2 arguments - their name and price. Tests assume these will be a string and a float.
+* Menus are created by passing their dishes to them as arguments. As many dishes as you like can be put into a menu. Currently there is no way to add dishes to a menu from the API as this feels like it would create user errors but this could be worked on.
+* Orders are created by passed a menu as an argument. You can add items to an order, check your balance, get your total and finalize your order to set it to complete and get a confirmation text. Twilio details are to be set as ENV variables.
+* Once completed, an order cannot be amended. This will throw an error message.
+* An error message will also be thrown if a user tries to order something that isn't on the menu.
+
 Instructions
 -------
 
