@@ -1,0 +1,7 @@
+class TakeAway
+
+
+
+
+
+end 
