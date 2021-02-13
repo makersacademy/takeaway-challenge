@@ -4,7 +4,19 @@ class Basket
   end
 
   def store(item, n, price)
-    @list << {:name => item, :number => n, :price => price.ceil(2)}
+    if @list.any? {|x| x[:name] == item}
+
+      @list.each do |x|
+        if x[:name] == item
+          totalnum = x[:number] + n
+          x[:number] = totalnum
+          x[:price] = totalnum * price
+        end
+      end
+
+    else
+      @list << {:name => item, :number => n, :price => price}
+    end
   end
 
   def show_basket
