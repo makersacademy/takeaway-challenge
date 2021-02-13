@@ -9,6 +9,7 @@ class Order
   end
 
   def add_item(item)
+    fail "this order is closed" if @complete == true
     @dishes << @menu.pick(item)
     @balance += @dishes.last.price
   end
@@ -22,7 +23,7 @@ class Order
   end
 
   def complete_order
-
+    @complete = true
   end
 
 end

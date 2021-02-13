@@ -1,5 +1,7 @@
 require 'order'
 
+#potential for more functionality - adding several of one item at once.
+
 describe Order do
   let(:dish1) { double(:dish, :name => "Baked Potato", :price => 3.25) }
   let(:dish2) { double(:dish, :name => "Spaghetti Bolognese", :price => 4.70) }
@@ -25,6 +27,10 @@ describe Order do
   describe '#add_item' do
     it 'adds a dish to the dishes array' do
       expect { test_order.add_item("Baked Potato") }.to change { test_order.dishes.length }.by 1
+    end
+    it 'throws an error if the order has already been completed' do
+      test_order.complete_order
+      expect { test_order.add_item(dish2)}.to raise_error "this order is closed"
     end
   end
 
