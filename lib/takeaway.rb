@@ -10,4 +10,12 @@ class Takeaway
     @basket = []
   end
 
+  def add_to_basket(item)
+    self.menu.map do |food, price|
+      if item == food
+        @basket.push("#{item}, #{price}")
+      end
+    end
+  end
+
 end
