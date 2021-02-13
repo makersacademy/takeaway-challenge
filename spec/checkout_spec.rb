@@ -16,4 +16,9 @@ end
       expect { @checkout.final_total }.to output("£31.50\n").to_stdout
     end
   end
+  describe 'text confirmation' do
+    it 'sends a text to confirm that food is an hour away' do
+
+    end
+  end
 end

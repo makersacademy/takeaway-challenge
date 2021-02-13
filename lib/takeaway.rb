@@ -37,8 +37,3 @@ class Takeaway
   end
 
 end
-
-
-
-
-# I now have a hash, which I want to print as a string when I show the basket
