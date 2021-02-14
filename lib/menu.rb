@@ -5,12 +5,12 @@ class Menu
   attr_reader :dishes, :client
 
   def initialize(*args)
-    @dishes = args.map { |dish| {name: dish.name, price: dish.price}  }
+    @dishes = args.map { |dish| { name: dish.name, price: dish.price } }
   end
 
   def peruse
     puts "TODAY'S MENU:"
-    list_dishes
+    puts list_dishes
   end
 
   def pick(item)
@@ -25,7 +25,7 @@ private
   end
 
   def item_exists(item)
-    fail "this item isn't on the menu" if find_item(item) == nil
+    fail "this item isn't on the menu" if find_item(item).nil?
   end
 
 end

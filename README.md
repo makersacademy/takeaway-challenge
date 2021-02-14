@@ -19,9 +19,14 @@ How to Use
 
 * Dishes are created with 2 arguments - their name and price. Tests assume these will be a string and a float.
 * Menus are created by passing their dishes to them as arguments. As many dishes as you like can be put into a menu. Currently there is no way to add dishes to a menu from the API as this feels like it would create user errors but this could be worked on.
-* Orders are created by passed a menu as an argument. You can add items to an order, check your balance, get your total and finalize your order to set it to complete and get a confirmation text. Twilio details are to be set as ENV variables.
+* To facilitate sending order confirmation messages, you will need to create a TwilioAdapter object. This is done by setting environment variables for the twilio account credentials and the twilio phone number and then called Twilio_Adapter.new.
+* Orders are created by passing a menu object, a twilio adapter object and the customer phone number as arguments. You can add items to an order, check your balance, get your total and finalize your order to set it to complete and get a confirmation text.
+(in terms of real world function I wonder if it would make more sense to set the twilio adapter with the menu class, but I have to stop fiddling with this at some point!)
+* Test coverage shows as full but is currently a bit lacking in terms of string outputs - I have now resolved this in a couple of places by using regexp pattern matchers and this could be extended. I have done a full irb runthrough.
+* Rubocop wants me to use 'annotated tokens' rather than 'unannotated tokens' but I haven't been able to make this syntax work.
 * Once completed, an order cannot be amended. This will throw an error message.
 * An error message will also be thrown if a user tries to order something that isn't on the menu.
+* I used quite a few resources to assist with extracting the twilio adapter class.
 
 Instructions
 -------

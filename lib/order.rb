@@ -1,16 +1,15 @@
 require_relative 'script'
 require_relative 'menu'
 require_relative 'dish_lister'
-require 'twilio-ruby'
+require_relative 'twilio_adapter'
 
 class Order
   include DishLister
-  account_sid = ENV['TWILIO_ACCOUNT_SID']
-  auth_token = ENV['TWILIO_AUTH_TOKEN']
-  @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-  attr_reader :menu, :balance, :dishes, :complete
-  def initialize(menu)
+  attr_reader :menu, :dishes, :complete, :balance
+  def initialize(menu, twilio_adapter, customer_number)
+    @twilio_adapter = twilio_adapter
+    @customer_number = customer_number
     @menu = menu
     @dishes = []
     @balance = 0
@@ -25,33 +24,31 @@ class Order
   end
 
   def total
-    "£ %.2f" % @balance
+    print_money(@balance)
   end
 
   def check_balance
-    list_dishes
-    sum = 0
-    @dishes.each { |dish| sum += dish[:price] }
-    puts "Total: £" + "%.2f" % sum
-  end
-
-  def complete_order
-    @complete = true
+    puts list_dishes
+    sum = @dishes.map { |dish| dish[:price] }.inject(0, :+)
+    puts "Total: " + print_money(sum)
   end
 
   def finalize
     complete_order
-    client.messages.create(
-      from: ENV['TWILIO_PHONE_NUMBER'],
-      to: ENV['CUSTOMER_PHONE_NUMBER'],
-      body: 'Thank you! Your order has been placed and will be delivered when I feel like it.'
-    )
+    @twilio_adapter.send_message(@customer_number, @message)
   end
 
 private
 
   def order_closed_error
     fail "this order is closed" if @complete == true
+  end
+
+  def complete_order
+    @complete = true
+    @message = "Thank you! Your order for:\n" +
+    list_dishes +
+    "\nat a total of #{total} has been placed and will be delivered when we feel like it."
   end
 
 end
