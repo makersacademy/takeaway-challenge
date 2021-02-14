@@ -44,11 +44,12 @@ run takeaway script
 
 - examples
 
-## techniques applied
+## Techniques applied
 
 - Automated messaging: programming sms message sending through Twilio messaging client
-- domain modelling:
-- skills
+- Domain modelling: translating user stories into sequence digrams into code
+- TDD
+- OOD: SRP, Encapsulation, Dependency injection, Polymorphism
 
 Reflections
 
