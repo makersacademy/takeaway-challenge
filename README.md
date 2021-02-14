@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/kerisic/takeaway-challenge.svg?branch=master)](https://travis-ci.com/kerisic/takeaway-challenge)
+
 Takeaway Challenge
 ==================
 ```
