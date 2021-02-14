@@ -80,7 +80,6 @@ end
  def order
    puts 'You will recieve text message confirming your order'
    @text.send_message
-   true
  end
 
  def order?

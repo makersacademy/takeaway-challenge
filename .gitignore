@@ -4,3 +4,4 @@
 # Local cache of Rubocop remote config
 .rubocop-*
 text.rb
+text_spec.rb

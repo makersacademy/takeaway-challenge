@@ -68,8 +68,10 @@ describe UI do
       allow(input_handler).to receive(:get_dish_quantity){'2'}
       allow(input_handler).to receive(:get_dish_number){'2'}
       allow(input_handler).to receive(:complete){'no'}
-      ui = UI.new(input_handler)
-      expect(ui.start_UI).to eq true
+      text = double()
+      allow(text).to receive(:send_message){'true'}
+      ui = UI.new(input_handler,Basket.new,Menu.new,text)
+      expect(ui.start_UI).to eq "true"
     end
   end
 
