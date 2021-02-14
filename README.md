@@ -5,7 +5,13 @@ Takeaway Challenge
 
 All user stories have been completed in this challenge.
 
-A user would run the program as follows. In IRB, load a menu with:
+A user would run the program from the takeaway-challenge folder as follows. 
+
+```
+irb -r './lib/runfile.rb'
+```
+
+In IRB, load a menu with:
 
 ```ruby
 menu = Menu.new
