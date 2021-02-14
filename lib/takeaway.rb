@@ -43,7 +43,7 @@ class Takeaway
   private
   def complete_order(_price)
     time = (Time.new + 2400).strftime("%I:%M %p")
-    @texter.send_text("Thank you for your payment of £#{'%.2f' % total}! Your delivery will arrive before #{time}")
+    @texter.send_text("Thank you for your payment! Your delivery will arrive before #{time}")
   end
 
   def total
