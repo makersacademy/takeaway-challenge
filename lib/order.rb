@@ -10,11 +10,11 @@ class Order
     @items_price.sum
   end
 
-  def order_details
+  def print_order
     puts "ORDER DETAILS\n"
     i = 0
     while i < @items_ordered.length do
-      puts "* #{@items_ordered[i]} --- £#{items_price[i]}"
+      puts "* #{@items_ordered[i]} --- £#{@items_price[i]}"
       i += 1
     end
     puts "TOTAL BILL: £#{order_total}"

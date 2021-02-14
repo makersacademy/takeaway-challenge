@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  it 'contains collection of available' do
+  it 'contains collection of available dishes' do
     expect(subject).to respond_to(:menu)
   end
 
@@ -35,7 +35,7 @@ describe Takeaway do
     end
   end
 
-  describe '#checkout' do
+  describe '#basket' do
     it 'should return the bill total for the order' do
       # my_order = Order.new
       # subject.add(2, 2, my_order)

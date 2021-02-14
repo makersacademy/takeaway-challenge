@@ -1,3 +1,5 @@
+require 'sinatra'
+require 'twilio-ruby'
 require_relative 'order'
 
 class Takeaway
@@ -31,8 +33,8 @@ class Takeaway
     add_prices(index, quantity, order_id)
   end
 
-  def checkout(order_id = @my_order)
-    order_id.order_details
+  def basket(order_id = @my_order)
+    order_id.print_order
   end
 
 private
@@ -46,4 +48,12 @@ private
     price = @menu.at(index - 1)[:price]
     quantity.times { order_id.items_price << price }
   end
+end
+
+get '/' do
+  content_type 'text/xml'
+
+  Twilio::TwiML::VoiceResponse.new do | response |
+    response.say(message: 'Hello Sandy')
+  end.to_s
 end

@@ -17,7 +17,7 @@ describe Order do
     end
   end
 
-  describe 'order_details' do
+  describe 'print_order' do
     it 'prints each item ordered and its price to stdout' do
       # subject.items_ordered << 'Marinara' << 'Margherita'
       # subject.items_price << 7.50 << 8.95
