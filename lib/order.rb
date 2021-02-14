@@ -20,7 +20,7 @@ class Order
     order_closed_error
     new_dishes = args.map { |item| @menu.pick(item) }
     add_dishes(new_dishes)
-    @balance += new_dishes.map { |dish| dish.price }.inject(0, :+).round(2)
+    get_balance
   end
 
   def total
@@ -48,6 +48,10 @@ private
     @message = "Thank you! Your order from #{@menu.title} for:\n" +
     list_dishes +
     "\nat a total of #{total} has been placed and will be delivered as soon as possible."
+  end
+
+  def get_balance
+    @balance = @dishes.map { |dish| dish.price }.inject(0, :+).round(2)
   end
 
 end

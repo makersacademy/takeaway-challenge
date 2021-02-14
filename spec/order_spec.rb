@@ -36,8 +36,8 @@ describe Order do
       test_order.finalize
       expect { test_order.add_items(dish2) }.to raise_error "this order is closed"
     end
-    it 'adds the price of the added item to the balance' do
-      expect { test_order.add_items(dish1) }.to change { test_order.balance }.by (dish1.price)
+    it 'adds the price of the added items to the balance' do
+      expect { test_order.add_items(dish1, dish1) }.to change { test_order.balance }.by(dish1.price * 2)
     end
 
   end

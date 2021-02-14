@@ -19,7 +19,6 @@ class Menu
     add_dishes(args)
   end
 
-
   def pick(item)
     item_exists(item)
     find_item(item)
