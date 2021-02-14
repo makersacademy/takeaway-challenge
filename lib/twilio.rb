@@ -1,15 +1,20 @@
 require 'rubygems' 
 require 'twilio-ruby'
-require 'dotenv/load'
 
-account_sid = TWILIO_ACCOUNT_SID 
-auth_token = TWILIO_AUTH_TOKEN 
+
+
+
+account_sid = ENV["TWILIO_ACCOUNT_SID"] 
+auth_token = ENV['TWILIO_AUTH_TOKEN']
+my_phone = ENV['MY_PHONE']
 @client = Twilio::REST::Client.new(account_sid, auth_token) 
  
-message = @client.messages.create( 
-                             body: 'hello',  
-                             messaging_service_sid: 'MG101b57a7e36158f025914ed97d206892',      
-                             to: '+447809651034' 
-                           ) 
- 
-puts message.sid
+from = '+447401390119' # Your Twilio number
+to = ENV['MY_PHONE'] # Your mobile phone number
+
+
+		@client.messages.create(
+		from: from,
+		to: to,
+		body: "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
+		)

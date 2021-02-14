@@ -1,7 +1,9 @@
-require 'twilio'
+
+require 'date'
+require_relative 'twilio'
 
 class Order 
-		attr_reader :cart, :cart_total
+		attr_reader :cart, :cart_total, :message
 
 		def initialize
 				@cart = []
@@ -20,11 +22,14 @@ class Order
 		end
 
 		def confirm_order
-				puts "Thank you! Your order was placed and will be delivered before 18:52"
 				@cart.clear
-				# SEND MESSAGE VIA TWILIO!
-				
+				# somehow call twilio to send a message
+				puts confirmation_message	
 		end
+
+		def confirmation_message
+				return "Thank you! Your order was placed and will be delivered before #{Time.now.hour + 1}:#{Time.now.min}"
+			end
 end
 
 # As a customer
