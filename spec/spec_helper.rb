@@ -2,7 +2,6 @@ require 'coveralls'
 Coveralls.wear!
 
 require 'takeaway'
-
 # require 'simplecov'
 # require 'simplecov-console'
 

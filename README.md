@@ -1,6 +1,4 @@
-# Takeaway Challenge]
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/79727ec5f4c93807146c/maintainability)](https://codeclimate.com/github/AJ8GH/takeaway-challenge/maintainability) [![Build Status](https://travis-ci.com/AJ8GH/takeaway-challenge.svg?branch=master)](https://travis-ci.com/AJ8GH/takeaway-challenge)
+# Takeaway Challenge
 
 ```
                             _________
@@ -33,8 +31,7 @@ run takeaway script
 ## Dependencies
 
 - `ruby 2.6.5`
-- `twilio-ruby`
-- `dotenv`
+- `twilio`
 - `rspec`
 - `rubocop`
 - `coveralls`
