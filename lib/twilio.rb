@@ -2,7 +2,7 @@
 
 #class Messenger
 #  account_sid = "ACea5bb4181914c5245611e44d450184c8"
-#  auth_token = "1d05c70568ddac2203b1405984b8cc1e"
+#  auth_token = ""
 
 #  @client = Twilio::REST::Client.new account_sid, auth_token
 #  @time = (Time.now + (60*60)).strftime("%H:%M")
