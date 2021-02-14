@@ -1,6 +1,6 @@
 class Display
   CONFIRMATION_PROMPT   = 'Confirm order? Hit ⏎ to confirm, c to cancel'
-  INVALID_MEAL          = ' is not a meal. Please make a valid choice'
+  INVALID_MEAL_MESSAGE  = ' is not a meal. Please make a valid choice'
   MEAL_ADD_CONFIRMATION = ' has been added to your order 🍕'
   ORDER_CONFIRMATION    = ['Thanks for your order! Check your phone',
                            ' for confirmation. Buon Appetito!'].join
@@ -26,7 +26,7 @@ class Display
   end
 
   def invalid(meal)
-    "#{meal}#{INVALID_MEAL}"
+    "#{meal}#{INVALID_MEAL_MESSAGE}"
   end
 
   private

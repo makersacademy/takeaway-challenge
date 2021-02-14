@@ -1,20 +1,13 @@
 describe Display do
-  let(:confirm_add) { described_class::MEAL_ADD_CONFIRMATION }
-  let(:order) { [{ bufalina: 13 }, { diavola: 14 }] }
-  let(:menu) { Menu::PIZZA }
-
-  let(:confirmation) do
-    [described_class::CONFIRMATION_PROMPT,
-     described_class::ORDER_CONFIRMATION].join("\n") + "\n"
-  end
-
   describe '#view_menu' do
     it 'shows the menu in nice format' do
-      expect(subject.view_menu(menu)).to include("Marinara: £8.00")
+      expect(subject.view_menu(Menu::PIZZA)).to include("Marinara: £8.00")
     end
   end
 
   describe '#view_order' do
+    let(:order) { [{ bufalina: 13 }, { diavola: 14 }] }
+
     it 'displays the order in nice format' do
       expect(subject.view_order(order)).to include("Diavola: £14.00")
     end
@@ -26,6 +19,7 @@ describe Display do
 
   describe '#confirm_added' do
     it 'confirms meal was added to order' do
+      confirm_add = described_class::MEAL_ADD_CONFIRMATION
       expect(subject.confirm_added('marinara')).to eq "Marinara#{confirm_add}"
     end
   end
@@ -40,6 +34,11 @@ describe Display do
     end
 
     context 'when customer confirms' do
+      let(:confirmation) do
+        [described_class::CONFIRMATION_PROMPT,
+         described_class::ORDER_CONFIRMATION].join("\n") + "\n"
+      end
+
       it 'confirms the order' do
         allow(STDOUT).to receive(:puts) { nil }
         allow(subject).to receive(:gets) { "\n" }
@@ -50,7 +49,8 @@ describe Display do
 
   describe '#invalid_meal' do
     it 'tells customer choice is invalid' do
-      expect(subject.invalid('chips')).to eq "chips#{described_class::INVALID_MEAL}"
+      invalid = "chips#{described_class::INVALID_MEAL_MESSAGE}"
+      expect(subject.invalid('chips')).to eq invalid
     end
   end
 end
