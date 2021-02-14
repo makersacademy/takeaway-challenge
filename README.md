@@ -1,6 +1,6 @@
 # Takeaway Challenge
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/79727ec5f4c93807146c/maintainability)](https://codeclimate.com/github/AJ8GH/takeaway-challenge/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/79727ec5f4c93807146c/maintainability)](https://codeclimate.com/github/AJ8GH/takeaway-challenge/maintainability) [![Build Status](https://travis-ci.com/AJ8GH/takeaway-challenge.svg?branch=master)](https://travis-ci.com/AJ8GH/takeaway-challenge) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/takeaway-challenge/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/takeaway-challenge?branch=master)
 
 ```
                             _________
