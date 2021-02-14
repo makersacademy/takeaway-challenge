@@ -24,12 +24,14 @@ class Ordering
     invoice = @cart.invoice()
     order = invoice_to_order_form(invoice)
     order_success = @kitchen.order(order)
+    invoice
     # send confirmation text to customer
   end
 
   private
 
   def invoice_to_order_form invoice
-    invoice.map{ |k, v| [k, v[:number]] unless k == :Total }[0..-2].to_h
+    puts invoice.reject{|k| k == :Total}
+    invoice.reject{|k| k == :Total}.map{ |k, v| [k, v[:number]] }.to_h
   end
 end

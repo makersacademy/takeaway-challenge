@@ -52,24 +52,14 @@ describe Ordering do
   end
 
   context "#checkout" do
-    order_hash = {Hamburger: 1, Beer: 2}
+    order_hash = {"Cheese Burger" => 1, "Beer" => 2}
     before(:each) do
       bill = 13.95
       allow(cart).to receive(:total).and_return(bill)
-      invoice = {Hamburger: {number: 1, price: 5.95}, Beer: {number: 2, price: 8}, Total: bill}
+      invoice = {"Cheese Burger" => {number: 1, price: 5.95}, "Beer" => {number: 2, price: 8}, Total: bill}
       allow(cart).to receive(:invoice).and_return(invoice)
       allow(kitchen).to receive(:order).with(order_hash).and_return(true)
     end
-
-    # handling money wasn't actually requested in the user stories
-    # it "raises error if amount is less than total" do
-    #   expect{subject.checkout(bill / 2)}.to raise_error("Not enough funds: please give £#{bill - (bill/2).floor(2)} more")
-    # end
-
-    # it "sends payment and invoice to accounts" do
-    #   subject.checkout(bill)
-    #   expect(accounts).to receive(:order).with(bill, invoice).and_return("Order Processed")
-    # end
 
     it "requests invoice" do
       expect(cart).to receive(:invoice)
