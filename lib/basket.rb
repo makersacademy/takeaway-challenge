@@ -4,7 +4,7 @@ require './ui'
 
 
 class Basket
- attr_reader :menu
+ attr_reader :contents
 
   def initialize
     @contents = []
