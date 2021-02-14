@@ -8,7 +8,7 @@ describe Menu do
 
   context 'a new menu' do
     it 'starts with a full list of dishes' do
-      expect(new_menu.list).to_not be_empty
+      expect(new_menu.show).to_not be_empty
     end
   end
 

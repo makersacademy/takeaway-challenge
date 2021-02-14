@@ -1,8 +1,6 @@
 require_relative 'dish'
 
 class Menu
-  attr_reader :list
-# refactor this - get rid of list attribute
 
   def initialize(dish_class = Dish)
     @dish_class = dish_class
