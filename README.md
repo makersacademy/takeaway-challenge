@@ -1,7 +1,7 @@
 # Ian_McNicholas Take-away Challenge #
 
 All user requirements have been met.
-More knowledge of RSPEC is required, as evidence by the test coverage being only 80%.  I struggled with what tests to write for the text.rb file, along with how to write tests to check if a method prints a certain statement.
+More knowledge of RSPEC is required, as evidenced by the test coverage being only 80%.  I struggled with what tests to write for the text.rb file, along with how to write tests to check if a method prints a certain statement.
 
 ## How to use this program ##
 The program can be initiated with the following command:
