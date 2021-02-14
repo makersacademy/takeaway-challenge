@@ -11,11 +11,32 @@ describe Takeaway do
     expect(mock_dishes).to include({ Burger: 2.50 }, { Chips: 1.00 }, { Cod: 4.00 })
   end
 
-#cant get this to automate?
-  it 'basket should contain food' do
+#cant get these to automate? doubles?
+  it 'burger should be added to basket' do
     allow(subject.add_to_basket).to receive(:gets)
     expect(subject.basket).to include({:dish => "Burger", :price => 2.50 })
   end
+  it 'chips should be added to basket' do
+    allow(subject.add_to_basket).to receive(:gets)
+    expect(subject.basket).to include({:dish => "Chips", :price => 1.00 })
+  end
+  it 'savaloy should be added to basket' do
+    allow(subject.add_to_basket).to receive(:gets)
+    expect(subject.basket).to include({:dish => "Savaloy", :price => 2.00 })
+  end
+  it 'cod should be added to basket' do
+    allow(subject.add_to_basket).to receive(:gets)
+    expect(subject.basket).to include({:dish => "Cod", :price => 4.50 })
+  end
+  it 'coke should be added to basket' do
+    allow(subject.add_to_basket).to receive(:gets)
+    expect(subject.basket).to include({:dish => "Coke", :price => 1.50 })
+  end
+
+  #dont know how to make this test?
+  #it 'if anything other than menu item then tell user not on menu'
+    #allow(subject.add_to_basket).to receive(:gets)
+    #expect
 
   it 'basket should give correct total' do
     print_basket_dbl = double

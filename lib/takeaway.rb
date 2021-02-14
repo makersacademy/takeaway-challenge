@@ -1,12 +1,12 @@
-#require_relative 'twilio'
+require_relative 'twilio'
 
 class Takeaway
-  attr_reader :basket, :total, :messenger
-  def initialize#(messenger = Messenger.new)
+  attr_reader :basket, :total
+  def initialize(messenger = Messenger.new)
     @dishes = []
     @basket = []
     @total = total
-    #@messenger = messenger
+    @messenger = messenger
     dishes
   end
 
@@ -37,8 +37,8 @@ class Takeaway
       when "coke"
         @basket << @dishes[4]
         puts "Added to Basket!"
-      when "exit"
-        interactive_menu
+      else
+        puts "Not on the menu"
       end
   end
 
@@ -58,6 +58,6 @@ class Takeaway
 
  def checkout
    puts "Order has been placed, you will receive a SMS shortly."
-   #messenger.send_text
+   messenge_sent
  end
 end
