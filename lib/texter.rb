@@ -17,3 +17,9 @@ class Texter
     )
   end
 end
+
+#save below env variables using your phone numbers and Twilio details in a separate .env file to use in texter
+#TWILIO_ACCOUNT_SID=xxxxxxxxxxxxxxxxxxxxx
+#TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxx
+#MY_PHONE_NUMBER=xxxxxxxxxxxxxxx
+#TWILIO_PHONE=xxxxxxxxxxxxxxxxx
