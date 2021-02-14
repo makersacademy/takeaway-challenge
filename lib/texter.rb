@@ -2,7 +2,6 @@ require 'rubygems'
 require 'twilio-ruby'
 
 class Texter
-  # note - these should be environment variables
   def initialize
     @account_sid = ENV["TWILIO_ACCOUNT_SID"]
     @auth_token = ENV["TWILIO_AUTH_TOKEN"]
@@ -11,7 +10,6 @@ class Texter
 
   def send
     @client.messages.create(
-      # note - this should be an environment variable
       to: ENV["MY_PHONE_NUMBER"],
       from: ENV["TWILIO_PHONE_NUMBER"],
       body: "Thank you! Your order was placed and will be delivered before #{time}"
