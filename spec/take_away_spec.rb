@@ -16,11 +16,11 @@ describe TakeAway do
   context 'when adding to basket' do
 
     it 'allows to add dish' do 
-      expect { subject.add_to_basket(:pierogi) }.to change { subject.basket.count }.by(1)
+      expect { subject.add_to_basket(:pierogi) }.to change { subject.basket.items.count }.by(1)
     end
     it 'allows to add various quantity of the same dish' do 
       subject.add_to_basket(:pierogi, 2)
-      expect(subject.basket[:pierogi]).to eq 2
+      expect(subject.basket.items[:pierogi]).to eq 2
     end
     it 'raises an error when dish is not in the menu' do 
       expect { subject.add_to_basket(:fish) }.to raise_error "fish is not available"
