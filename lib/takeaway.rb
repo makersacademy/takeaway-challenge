@@ -34,15 +34,14 @@ class Takeaway
 
   def checkout(price)
     if correct_amount?(price)
-      complete_order(price)
+      complete_order
     else
       "Sorry that is not the right amount, please try again."
     end
   end
 
   private
-  def complete_order(_price)
-    time = (Time.new + 2400).strftime("%I:%M %p")
+  def complete_order
     @texter.send_text("Thank you for your payment! Your delivery will arrive before #{time}")
   end
 
@@ -52,5 +51,9 @@ class Takeaway
 
   def correct_amount?(num)
     num == total
+  end
+
+  def time
+    (Time.new + 2400).strftime("%I:%M %p")
   end
 end
