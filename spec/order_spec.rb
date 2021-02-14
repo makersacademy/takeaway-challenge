@@ -27,8 +27,18 @@ describe Order do
   it 'should check the total matches the dishes ordered' do
      subject.add("pizza")
      subject.add("sushi")
-    expect(subject.check_order).to eq(subject.bill)
+    expect(subject.check_order?).to eq(true)
   end
+
+ it 'should not let you add an item that isnt on the menu' do
+   dish = "toast"
+   expect{subject.add(dish)}.to raise_error("This dish is unavailable, please select a dish from the menu")
+ end
+
+  # it 'should send a text when an order is placed'
+  # subject.add("pizza")
+
+
 #private method
 #   it 'should increase the total by the amount of the item selected' do
 #     dish = "sushi"
