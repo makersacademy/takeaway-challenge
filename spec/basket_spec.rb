@@ -20,9 +20,18 @@ describe Basket do
       expect(subject.total_cost). to eq(5.50 + 2.50)
     end 
   end 
+  
    describe '#show_basket' do 
      it "displays the basket contents" do 
        expect(subject).to respond_to(:show_basket)
     end
   end
+  
+  describe '#place_order' do 
+    it "returns a total cost that matches the total_cost variable" do 
+      expect(subject.place_order). to eq(subject.total_cost)
+    end 
+  end
+  
+  
 end

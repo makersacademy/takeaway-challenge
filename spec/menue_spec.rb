@@ -8,12 +8,11 @@ describe Menue do
     end 
   end 
   
-#  describe '#look_for_dish' do 
-#    it "finds dishes containing search terms" do 
-#      expect(subject.look_for_dish("Pad")).to include("Pad Thai")
-#    end
-#
-# end
+  describe '#look_for_dish' do 
+    it "responds to 'look_for_dish' method eith 1 argument" do 
+      expect(subject).to respond_to(:look_for_dish).with(1).argument
+    end
+ end
   
   
   
