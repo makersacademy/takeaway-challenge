@@ -21,15 +21,12 @@ class Menue
     }
   end 
 
-#  def look_for_dish(name_keyword_or_number) 
-#    @menue.map { |dish| 
-#      results = []
-#      dish.each { |info| 
-#        results << dish if info.include?(name_keyword_or_number)
-#      }
-#      return results 
-#    }
-#  end 
-  
+  def look_for_dish(name_keyword_or_number) 
+    if name_keyword_or_number.is_a?(Integer)
+      @menue.each { |dish| return dish if dish.menue_number == name_keyword_or_number}
+    elsif name_keyword_or_number.is_a?(String)
+      @menue.each { |dish| return dish if dish.name.downcase.include?(name_keyword_or_number.downcase)}
+    end 
+  end
   
 end 

@@ -7,20 +7,28 @@ class Basket
   def initialize
     @basket = [] 
     @total_cost = 0
-    @menue_for_reading = Menue.new
+    @menue = Menue.new
   end 
     
   def add_to_basket(menue_number_or_name) 
-    @menue_for_reading.menue.each { |dish| 
+    @menue.menue.each { |dish| 
       if dish.menue_number == menue_number_or_name
         @basket << dish 
         add_cost(dish.cost)
       end 
     } 
   end
-    
+  
+  def show_basket
+    @basket.each { |dish| 
+      puts "#{dish.name} -- £#{dish.cost}"
+    }
+    puts "Total Cost: £#{total_cost}"
+  end 
+  
+  private 
+  
   def add_cost(cost)
     @total_cost += cost
   end 
-    
 end 

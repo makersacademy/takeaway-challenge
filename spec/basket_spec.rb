@@ -20,5 +20,9 @@ describe Basket do
       expect(subject.total_cost). to eq(5.50 + 2.50)
     end 
   end 
-  
+   describe '#show_basket' do 
+     it "displays the basket contents" do 
+       expect(subject).to respond_to(:show_basket)
+    end
+  end
 end
