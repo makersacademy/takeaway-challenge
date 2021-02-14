@@ -1,11 +1,11 @@
 class Menu
 
   def menu
-    { "Dal Makhani" => 9.10,
-      "Mixed Vegetable" => 8.45,
-      "Sarson ka Saag" => 9.10,
-      "Palak Paneer" => 9.75,
-      "Bhindi Masala" => 9.10 }
+    { "1. Dal" => 4.10,
+      "2. Mixed Vegetable" => 5.45,
+      "3. Saag" => 4.10,
+      "4. Paneer" => 5.75,
+      "5. Bhindi" => 5.10 }
   end
 
 end
