@@ -11,11 +11,6 @@ class Menu
   end
 
   def view
-    print_menu
-  end
-
-private
-  def print_menu
     puts "PIZZA".ljust(20) + "PRICE"
     @contents.each { |item| puts "#{item[:pizza]}".ljust(20) + "£#{item[:price]}" }
   end

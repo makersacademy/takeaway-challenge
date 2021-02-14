@@ -13,9 +13,9 @@ class Text
 
   private
   def send_text
-    account_sid = "AC067d5602903fba0cde581de4ceefc0e1"
-    auth_token = "759fa30a45cc32f6860bb17d8176010e"
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
     message = @client.messages.create(
         body: "Thank you for your order.
               Our 1 hour delivery means
@@ -28,11 +28,8 @@ class Text
   def delivery_time
     hour = Time.now.hour
     minute = Time.now.min
-    if minute < 10
-      "#{hour + 1}:0#{minute}"
-    else
-      "#{hour + 1}:#{minute}"
-    end
+    "#{hour + 1}:0#{minute}" if minute < 10
+    "#{hour + 1}:#{minute}"
   end
 
 end
