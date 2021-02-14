@@ -1,15 +1,28 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :order_list, :total
+  attr_reader :order_list, :bill, :menu
 
   def initialize
     @order_list = []
-    @total = 0
+    @bill = 0
+    @menu = Menu.new.list
   end
 
-def view_menu
-  menu = Menu.new.list
+def add(dish)
+  amount = @menu[dish]
+  total(amount)
+  @order_list << dish
+end
+
+def check_order
+  @order_list.each do |dish|
+end
+
+
+private
+def total(amount)
+  @bill += amount
 end
 
 end
