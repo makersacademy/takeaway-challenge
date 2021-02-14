@@ -3,7 +3,7 @@ require_relative 'text'
 
 class Order
 
-attr_reader :basket, :menu
+  attr_reader :basket, :menu
 
   def initialize
     @basket = []
@@ -12,15 +12,16 @@ attr_reader :basket, :menu
 
   def add(item, quantity = 1)
     fail "That is not on the menu" unless @menu.contents.any? { |hash| hash[:pizza] == item }
-    (quantity).times do
+
+    quantity.times do
       @menu.contents.each do |option|
-         @basket << option if option[:pizza] == item
+        @basket << option if option[:pizza] == item
       end
     end
   end
 
   def total
-  @basket.map { |item| item[:price] }.sum
+    @basket.map { |item| item[:price] }.sum
   end
 
   def check
@@ -34,9 +35,9 @@ attr_reader :basket, :menu
   end
 
 private
-def order_summary
-  puts "PIZZA".ljust(20) + "PRICE"
-  @basket.each { |item| puts "#{item[:pizza]}".ljust(20) + "£#{item[:price]}" }
-end
+  def order_summary
+    puts "PIZZA".ljust(20) + "PRICE"
+    @basket.each { |item| puts "#{item[:pizza]}".ljust(20) + "£#{item[:price]}" }
+  end
 
 end
