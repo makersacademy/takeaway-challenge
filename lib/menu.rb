@@ -2,14 +2,15 @@ require_relative 'dish_lister'
 
 class Menu
   include DishLister
-  attr_reader :dishes, :client
+  attr_reader :dishes, :title
 
-  def initialize(*args)
-    @dishes = args.map { |dish| { name: dish.name, price: dish.price } }
+  def initialize(name)
+    @title = name
+    @dishes = []
   end
 
   def peruse
-    puts "TODAY'S MENU:"
+    puts "Today's menu at #{@title}:"
     puts list_dishes
   end
 
@@ -21,7 +22,7 @@ class Menu
 private
 
   def find_item(item)
-    @dishes.select { |dish| dish[:name] == item }[0]
+    @dishes.select { |dish| dish.name == item }[0]
   end
 
   def item_exists(item)

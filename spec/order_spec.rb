@@ -4,9 +4,9 @@ require 'order'
 
 describe Order do
   let(:twilio_adapter) { double(:twilio_adapter, :send_message => "sends a message") }
-  let(:dish1) { { name: "Baked Potato", price: 3.25 } }
-  let(:dish2) { { name: "Spaghetti Bolognese", price: 4.70 } }
-  let(:test_menu) { double(:menu, :dishes => [dish1, dish2], :pick => dish1) }
+  let(:dish1) { double(:dish, :name => "Baked Potato", :price => 3.25) }
+  let(:dish2) { double(:dish, :name => "Spaghetti Bolognese", :price => 4.70) }
+  let(:test_menu) { double(:menu, :title => "Fake Ass Restaurant", :dishes => [dish1, dish2], :pick => dish1) }
   let(:test_order) { described_class.new(test_menu, twilio_adapter, '7777777777777') }
 
   describe '#initialize' do
@@ -26,14 +26,14 @@ describe Order do
 
   describe '#add_item' do
     it 'adds a dish to the dishes array' do
-      expect { test_order.add_item("Baked Potato") }.to change { test_order.dishes.length }.by 1
+      expect { test_order.add_items(dish1) }.to change { test_order.dishes.length }.by 1
     end
     it 'throws an error if the order has already been finalized' do
       test_order.finalize
-      expect { test_order.add_item(dish2) }.to raise_error "this order is closed"
+      expect { test_order.add_items(dish2) }.to raise_error "this order is closed"
     end
     it 'adds the price of the added item to the balance' do
-      expect { test_order.add_item(dish1) }.to change { test_order.balance }.by dish1[:price]
+      expect { test_order.add_items(dish1) }.to change { test_order.balance }.by dish1.price
     end
   end
 

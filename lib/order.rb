@@ -16,10 +16,10 @@ class Order
     @complete = false
   end
 
-  def add_item(item)
+  def add_items(*args)
     order_closed_error
-    @dishes << @menu.pick(item)
-    @balance += @dishes.last[:price]
+    add_dishes(args)
+    @balance += @dishes.last.price
     @balance.round(2)
   end
 
@@ -29,7 +29,7 @@ class Order
 
   def check_balance
     puts list_dishes
-    sum = @dishes.map { |dish| dish[:price] }.inject(0, :+)
+    sum = @dishes.map { |dish| dish.price }.inject(0, :+)
     puts "Total: " + print_money(sum)
   end
 
@@ -46,9 +46,9 @@ private
 
   def complete_order
     @complete = true
-    @message = "Thank you! Your order for:\n" +
+    @message = "Thank you! Your order from #{@menu.title} for:\n" +
     list_dishes +
-    "\nat a total of #{total} has been placed and will be delivered when we feel like it."
+    "\nat a total of #{total} has been placed and will be delivered the very second lockdown ends."
   end
 
 end
