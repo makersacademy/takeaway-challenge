@@ -47,8 +47,8 @@ run takeaway script
 ## Techniques applied
 
 - Automated messaging: programming sms message sending through Twilio messaging client
-- Domain modelling: translating user stories into sequence digrams into code
-- TDD
+- Domain modelling: translating user stories into sequence diagrams into code
+- TDD: Test driving the design and build, using red, green refactor approach
 - OOD: SRP, Encapsulation, Dependency injection, Polymorphism
 
 Reflections
