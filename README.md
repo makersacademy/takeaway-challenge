@@ -14,20 +14,57 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
------
+# How to use :takeout_box:
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Clone to your machine  
+``git clone https://github.com/olgachmaj/takeaway-challenge.git``
+
+Bundle dependencies  
+``bundle``
+
+Run ui.rb in irb when in takeaway-challengle/lib and follow instructions on the screen  
+``require_relative 'ui.rb'``  
+
+Create new UI class instance  
+
+``my_ui = UI.new``  
+
+Start UI and follow instructions on the screen
+
+``my_ui.start_UI``  
+
+---
+
+## Features 
+:heavy_check_mark: Sends confirmation text message and the time food is due to arrive  
+:heavy_check_mark: Displays total of the order after adding the item to the basket  
+:heavy_check_mark: Double checks before the order if user would like to add more items  
+:heavy_check_mark: Checks for invalid dish numbers and takes user back to the beggining in case that dish doesn't exsist  
+:heavy_check_mark: Checks for invalid dish quantities and takes user back to the beggining in case that quantity is invalid  
+:heavy_check_mark: Allows for customization of the menu and ui through dependency injection  
+
+---
+ ## Applying this week's concepts 
+ 
+ * Rest API
+ * Managing gem dependencies in the gem file
+ * Protecting data by adding it to .gitignore
+ * Using Twilio messaging system through twilio-ruby gem
+ * Domain modelling
+ * Test driven design and development of the project
+ * Testing classes in full isolation by using mocks  
+ 
+ ---
+ 
+ ## To-do
+ 
+ * Add internal logic to .start_ui method to enable more in depth testing
+ * Lint the project 
+ * DRY the .add_to_basket method
+ * Change the .dish_quantity method to include more invalid possible inputs
+
 
 ```
 As a customer
