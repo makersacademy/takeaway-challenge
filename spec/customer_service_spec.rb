@@ -9,6 +9,12 @@ describe CustomerService do
       allow(subject).to receive(:create_client) { client }
       expect(subject.confirmation_text).to eq 'text has been sent'
     end
+
+    it 'calls create client method on self' do
+      allow(subject).to receive(:create_client) { client }
+      expect(subject).to receive(:create_client)
+      subject.confirmation_text
+    end
   end
 
   describe '#delivery_time' do

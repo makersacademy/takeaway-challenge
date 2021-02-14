@@ -20,7 +20,8 @@ class Display
 
   def confirm_order
     puts CONFIRMATION_PROMPT
-    input = gets.chomp; fail if input == 'c'
+    input = gets.chomp
+    fail if input == 'c'
 
     puts ORDER_CONFIRMATION
   end
