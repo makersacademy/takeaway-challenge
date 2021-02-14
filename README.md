@@ -35,6 +35,9 @@ my_order.complete("phone_number")
 ```
 A text will be sent to the number stating that delivery will occur an hour from now, with a specific time stated.
 
+<img width="979" alt="design diagram for takeaway challenge" src="https://user-images.githubusercontent.com/75983723/107888824-b5789e80-6f06-11eb-848b-69a2dc039e76.png">
+
+
 ## Original Instructions Below ##
 
 Takeaway Challenge
