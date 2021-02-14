@@ -8,9 +8,9 @@
 | @kitchen (class instance)|
 |--|
 |menu()|
-|add_to_order(item_hash)|
+|add_to_order(item_name)|
 |view_cart()|
-|checkout(payment)|
+|checkout|
 
 \#####
 |Menu|
@@ -24,10 +24,18 @@
 |Cart|
 |--|
 | @items (list of hashes)|
+| @open (bool, is the cart still open?)
 |--|
 |show_cart() --returns a duplicate of @items|
 |add_item(item_hash) --adds the item to @items|
-|
+|total() --returns just the total|
+|invoice() --returns invoice in form {item_name: {number: , price: }, Total: }|
+
+|Kitchen|
+|--|
+|@current_orders|
+|--|
+|order(item_hash) --item_hash should be a hash of elements {item_name: number}|
 
 ## Sequence Diagram
 
@@ -53,7 +61,7 @@ open [playground.diagram sequence diagram](https://playground.diagram.codes/d/se
     menu->ordering: "returns dish or false (i.e. confirms availability)"
     ordering->cart: "adds dish to order"
     
-    user=>ordering: "go to cart"
+    user=>ordering: "view cart"
     ordering->cart: "request orders and prices, and total"
     cart-->user: "prints orders and prices, and totals"
     
