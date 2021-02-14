@@ -50,10 +50,10 @@ private
   end
 end
 
-get '/' do
-  content_type 'text/xml'
-
-  Twilio::TwiML::VoiceResponse.new do | response |
-    response.say(message: 'Hello Sandy')
-  end.to_s
-end
+# get '/' do
+#   content_type 'text/xml'
+#
+#   Twilio::TwiML::VoiceResponse.new do | response |
+#     response.say(message: 'Hello Sandy')
+#   end.to_s
+# end

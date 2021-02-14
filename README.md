@@ -33,7 +33,6 @@
  ```
 
 ## Planning
-
 | Case | Objects | Messages |
 | :---: | :---: | :---: |
 | What to order | list dishes w/ prices | see |
@@ -46,15 +45,16 @@ list of dishes with prices
 text sending functionality - Twilio API
 twilio-ruby gem to access the API
 
-### Steps
+### Tasks
 - [x] Create a Takeaway class responsable for storing menu and pushing items to the order
 - [x] Initialize with an already-made dish list
-- [x] Order methods: 'browse', 'start_ordering', 'add_to_order', 'finish_order', 'print_bill'
+- [x] Order methods: 'browse', 'start_ordering', 'add_to_order', 'print_bill'
 - [x] Create an Order class responsable for storing the items and calculating the bill
 - [x] Order methods: 'calculate_bill'
 - [x] Read about Twilio API and Sinatra
 - [x] Run a simple Sinatra application following tutorial
 - [x] Set-up ngrok server and run the Sintra App on it
+- [ ] Create a method `checkout` that confirms the order and calls Twilio
 - [ ] Implement SMS alert using Twilo-ruby
 
 ## Learnings
@@ -71,8 +71,21 @@ Very popular Ruby framework, it basically allows you to run your Ruby code on th
 `require 'sinatra'`
 
 ## Issues encountered
-* Struggling to write a test to check stdout after calling `checkout`
-* A little of confusion as of where to store the sinatra repo - I didn't store it within my takeaway repo so I might encounter issues later on.
-* Encountering some issues to run `bundle exec rakeup` to set-up a local host - I wasn't following the correct resource
-* I was able to run sinatra server by following the set-up process here (https://www.twilio.com/docs/usage/tutorials/how-to-set-up-your-ruby-and-sinatra-development-environment)
-* I still need to get my head around how to fit this into a standard Ruby code.
+* Struggling to write a test to check stdout after calling `basket` - this has brought my coverage down to 90%
+* I wasn't following the correct resources to set-up Sinatra so I lost a lot of time trying to run the bundles
+* I was able to run Sinatra server by following the set-up process [here](https://www.twilio.com/docs/usage/tutorials/how-to-set-up-your-ruby-and-sinatra-development-environment)
+* I still need to get my head around how to fit this into a standard Ruby code in order to create the `checkout` method
+
+## How to Use
+
+```
+$ git clone git@github.com:sandyMax974/takeaway-challenge.git
+$ bundle install
+```
+
+`class Takeaway`
+* Run `new` to create a new takeaway restaurant
+* Run `browse` to see the menu
+* Run `start_order` to create a new order
+* Run `add(item_number, quantity)` to add items to your basket
+* Run `basket` to see a breakdown of the items ordered and the total cost
