@@ -33,4 +33,9 @@ class ShoppingCart
   def total
     @total.dup
   end
+
+  def invoice
+    @open = false
+    {Total: total()}.merge(@items)
+  end
 end

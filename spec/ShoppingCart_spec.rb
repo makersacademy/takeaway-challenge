@@ -59,21 +59,22 @@ describe ShoppingCart do
     end
   end
 
-  # context "#invoice" do
-  #   before(:each) do
-  #     items_hash = {"Cheese Burger" => {number: 1, price: 5.50}, "Soft Drink" => {number: 2, price: 2.00}}
-  #     invoice = {"Cheese Burger" => {number: 1, price: 5.50}, "Soft Drink" => {number: 2, price: 2.00}, Total: 9.50}
-  #     subject.instance_variable_set(:@items, items_hash)
-  #   end
+  context "#invoice" do
+    let(:invoice_hash){{"Cheese Burger" => {number: 1, price: 5.50}, "Soft Drink" => {number: 2, price: 2.00}, Total: 9.50}}
+    before(:each) do
+      items_hash = {"Cheese Burger" => {number: 1, price: 5.50}, "Soft Drink" => {number: 2, price: 2.00}}
+      subject.instance_variable_set(:@items, items_hash)
+      subject.instance_variable_set(:@total, 9.50)
+    end
 
-  #   it "returns correct invoice for an order" do
-  #     expect(subject.invoice).to eq invoice
-  #   end
+    it "returns correct invoice for an order" do
+      expect(subject.invoice).to eq invoice_hash
+    end
 
-  #   it "sets open to false" do
-  #     subject.invoice.should change {subject.open?}.from(true).to(false)
-  #   end
-  # end
+    it "sets open to false" do
+      expect{subject.invoice}.to change {subject.open?}.from(true).to(false)
+    end
+  end
 
   context "#open" do
     it "cannot be changed outside of invoice method" do
