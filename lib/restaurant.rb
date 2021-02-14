@@ -1,13 +1,13 @@
 class Restaurant
   def view_menu
-    display.view_menu(menu.meals)
+    display.view_menu(menu)
   end
 
   def add(meal)
     choice = meal.downcase.to_sym
-    return display.invalid(meal) unless menu.meals.include?(choice)
+    return display.invalid(meal) unless menu.include?(choice)
 
-    order << menu.meals.slice(choice)
+    order << menu.slice(choice)
     display.confirm_added(meal)
   end
 
@@ -29,7 +29,7 @@ class Restaurant
   def initialize(args = {})
     @customer_service = args[:customer_service] || CustomerService.new
     @display          = args[:display]          || Display.new
-    @menu             = args[:menu]             || Menu.new
+    @menu             = args[:menu]             || Menu.new.meals
     @order            = []
   end
 end

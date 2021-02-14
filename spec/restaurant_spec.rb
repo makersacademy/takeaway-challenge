@@ -1,7 +1,7 @@
 describe Restaurant do
   let(:test_order) { [{ napoli: 13 }, { diavola: 14 }] }
   let(:order_output) { ['napoli: £13.00', 'Diavola: £14.00', 'Total: £27.00'] }
-  let(:menu) { instance_double(Menu, :menu, meals: Menu::PIZZA) }
+  let(:menu) { Menu::PIZZA }
 
   let(:menu_output) do
     ['Marinara: £8.00',
