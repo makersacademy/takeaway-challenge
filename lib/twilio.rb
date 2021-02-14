@@ -1,10 +1,15 @@
+require 'rubygems' 
 require 'twilio-ruby'
-require 'sinatra'
+require 'dotenv/load'
 
-=begin
-account_sid = ACCOUNT_SID 
-auth_token = AUTH_TOKEN 
-
-# set up a client to talk to the Twilio REST API
-@clinet = Twilio::REST::Client.new account_sid, auth_token
-=end
+account_sid = TWILIO_ACCOUNT_SID 
+auth_token = TWILIO_AUTH_TOKEN 
+@client = Twilio::REST::Client.new(account_sid, auth_token) 
+ 
+message = @client.messages.create( 
+                             body: 'hello',  
+                             messaging_service_sid: 'MG101b57a7e36158f025914ed97d206892',      
+                             to: '+447809651034' 
+                           ) 
+ 
+puts message.sid

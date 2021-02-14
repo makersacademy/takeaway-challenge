@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :test do
+	gem 'dotenv'
 	gem 'envyable', '~> 1.2' 
 	gem 'http', '~> 4.4'
   gem 'rspec'
