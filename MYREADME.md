@@ -18,7 +18,7 @@
 | @menu (list of hashes {item: , description: , price: , available: })|
 | -- |
 | print() |
-| available?(item) --returns item hash or false|
+| available?(item_name) --returns item hash or false|
 
 
 |Cart|
