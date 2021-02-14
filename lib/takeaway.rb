@@ -1,4 +1,6 @@
-require 'runner.rb'
+require_relative 'menu'
+require_relative 'basket'
+require_relative 'texter'
 
 class Takeaway
   def initialize(menu = Menu.new, basket = Basket.new, texter = Texter.new)

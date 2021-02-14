@@ -13,6 +13,7 @@ class Basket
         end
       end
     else
+      price = num * price
       @list << { :name => item, :number => num, :price => price }
     end
   end

@@ -1,3 +1,8 @@
+require 'twilio-ruby'
+require 'rubygems'
+require 'dotenv'
+Dotenv.load('conf.env')
+
 class Texter
   def send_text(message)
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
@@ -7,7 +12,7 @@ class Texter
 
     @client.messages.create(
       to: ENV["MY_PHONE_NUMBER"],
-      from: "+447411007187",
+      from: ENV["TWILIO_PHONE"],
       body: message
     )
   end
