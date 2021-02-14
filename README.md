@@ -120,7 +120,7 @@ Thanks for your order! Check your phone for confirmation. Buon Appetito!
 
 #### All classes are designed to have maximum flexibility and extendability using `dependency injection`
 
-Menu.new takes optional hash argument of dishes and prices, which overrides the Pizza menu
+`Menu.new` takes optional hash argument of dishes and prices, which overrides the Pizza menu
 
 ```ruby
 RUBY_MURRAY = { jalfrezi: 11, rice: 3.5, lassi: 4, popadoms: 2.5 }
