@@ -14,6 +14,12 @@ class Menu
     puts list_dishes
   end
 
+  def append(*args)
+    args.each { |item| already_there_error(item) }
+    add_dishes(args)
+  end
+
+
   def pick(item)
     item_exists(item)
     find_item(item)
@@ -27,6 +33,10 @@ private
 
   def item_exists(item)
     fail "this item isn't on the menu" if find_item(item).nil?
+  end
+
+  def already_there_error(item)
+    fail "this item is already on the menu!" if @dishes.include?(item)
   end
 
 end

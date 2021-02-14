@@ -3,6 +3,8 @@ require 'menu'
 describe Menu do
   let(:dish1) { double(:dish, :name => "Baked Potato", :price => 3.25) }
   let(:dish2) { double(:dish, :name => "Spaghetti Bolognese", :price => 4.70) }
+  let(:dish3) { double(:dish, :name => "Ham Sandwich", :price => 2.65) }
+  let(:dish4) { double(:dish, :name => "Tartiflette", :price => 6.80) }
   let(:test_menu) { described_class.new("Fake Ass Restaurant") }
 
   describe '#initialize' do
@@ -22,10 +24,19 @@ describe Menu do
   end
 
   context 'dishes have been added' do
-    before(:each) { test_menu.add_dishes(dish1, dish2) }
+    before(:each) { test_menu.append(dish1, dish2) }
     describe '#peruse' do
       it 'is expected to print list of menu items' do
         expect { test_menu.peruse }.to output(String).to_stdout
+      end
+    end
+
+    describe '#append' do
+      it 'throws an error if trying to append items already on the menu' do
+        expect { test_menu.append(dish2) }.to raise_error "this item is already on the menu!"
+      end
+      it 'can add multiple items at once' do
+        expect { test_menu.append(dish3, dish4) }.to change { test_menu.dishes.length }.by 2
       end
     end
 

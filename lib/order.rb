@@ -18,8 +18,8 @@ class Order
 
   def add_items(*args)
     order_closed_error
-    add_dishes(args)
-    @balance += @dishes.last.price
+    @dishes += args.map { |item| @menu.pick(item) }
+    @balance += get_balance(args)
     @balance.round(2)
   end
 
@@ -29,8 +29,7 @@ class Order
 
   def check_balance
     puts list_dishes
-    sum = @dishes.map { |dish| dish.price }.inject(0, :+)
-    puts "Total: " + print_money(sum)
+    puts "Total: " + print_money(get_balance(@dishes))
   end
 
   def finalize
@@ -49,6 +48,10 @@ private
     @message = "Thank you! Your order from #{@menu.title} for:\n" +
     list_dishes +
     "\nat a total of #{total} has been placed and will be delivered the very second lockdown ends."
+  end
+
+  def get_balance(dishes)
+    dishes.map { |dish| dish.price }.inject(0, :+)
   end
 
 end

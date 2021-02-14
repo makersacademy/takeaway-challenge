@@ -24,16 +24,21 @@ describe Order do
     end
   end
 
-  describe '#add_item' do
+  describe '#add_items' do
     it 'adds a dish to the dishes array' do
       expect { test_order.add_items(dish1) }.to change { test_order.dishes.length }.by 1
     end
+    it 'adds multiple items at once, and multiple of the same' do
+      expect { test_order.add_items(dish1, dish1, dish1, dish1) }.to change { test_order.dishes.length }.by 4
+    end
+
     it 'throws an error if the order has already been finalized' do
       test_order.finalize
       expect { test_order.add_items(dish2) }.to raise_error "this order is closed"
     end
-    it 'adds the price of the added item to the balance' do
-      expect { test_order.add_items(dish1) }.to change { test_order.balance }.by dish1.price
+    it 'adds the price of the added items to the balance' do
+      puts test_order.balance
+      expect { test_order.add_items(dish1, dish2) }.to change { test_order.balance }.by (dish1.price + dish2.price)
     end
   end
 
