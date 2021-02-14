@@ -1,6 +1,6 @@
 # Takeaway Challenge]
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/79727ec5f4c93807146c/maintainability)](https://codeclimate.com/github/AJ8GH/takeaway-challenge/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/79727ec5f4c93807146c/maintainability)](https://codeclimate.com/github/AJ8GH/takeaway-challenge/maintainability) [![Build Status](https://travis-ci.com/AJ8GH/takeaway-challenge.svg?branch=master)](https://travis-ci.com/AJ8GH/takeaway-challenge)
 
 ```
                             _________
@@ -47,7 +47,7 @@ run takeaway script
 
 ## techniques applied
 
-- tools
+- Automated sms sending through Twilio messaging client
 - concepts
 - skills
 
