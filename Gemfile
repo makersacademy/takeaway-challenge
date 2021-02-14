@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem "twilio-ruby"
 gem "dotenv"
 gem "sinatra"
+gem "twilio-ruby"
 
 group :test do
   gem 'rspec'
