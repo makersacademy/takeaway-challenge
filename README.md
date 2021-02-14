@@ -1,3 +1,42 @@
+# Ian_McNicholas Take-away Challenge #
+
+All user requirements have been met.
+More knowledge of RSPEC is required, as evidence by the test coverage being only 80%.  I struggled with what tests to write for the text.rb file, along with how to write tests to check if a method prints a certain statement.
+
+## How to use this program ##
+The program can be initiated with the following command:
+```shell
+irb -r ./lib/order.rb
+```
+The menu can be viewed with the following command:
+```shell
+Menu.new.view
+```
+To begin creating an order:
+```shell
+my_order = Order.new
+```
+Your order will be begin with an empty basket:
+```shell
+my_order.basket = []
+```
+To add an item from the menu to your order use the "add" method, providing the item you want and a quantity as the arguments.  The item must be in quotation marks.
+```shell
+my_order.add("item", quantity)
+```
+There is currently no method of removing an item from the list.
+To check your order:
+```shell
+my_order.check
+```
+Finally, to place your order:
+```shell
+my_order.complete("phone_number")
+```
+A text will be sent to the number stating that delivery will occur an hour from now, with a specific time stated.
+
+## Original Instructions Below ##
+
 Takeaway Challenge
 ==================
 ```
