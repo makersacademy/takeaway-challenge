@@ -3,7 +3,8 @@ require 'take_away'
 describe TakeAway do 
   # let(:dishes) { double :Dishes, pierogi: 11.99 }
   let(:menu) { double :Menu } 
-  subject { described_class.new(menu) }
+  let(:messenger) { double :Messenger }
+  subject { described_class.new(menu, messenger) }
 
   before do 
     allow(menu).to receive(:dishes).and_return({ pierogi: 11.99 })
@@ -29,7 +30,8 @@ describe TakeAway do
 
   context 'when checking out' do 
     before do 
-      subject.add_to_basket(:pierogi, 2)
+      allow(messenger).to receive(:send_order_notification)
+      subject.add_to_basket(:pierogi, 2)      
     end
     it 'checks if payment is equal to the total price of all items in the basket' do 
       expect { subject.checkout(23.98) }.not_to raise_error 
@@ -37,5 +39,9 @@ describe TakeAway do
     it 'raises an error when payment is not equal to the total price of all item in the basket' do 
       expect { subject.checkout(10.00) }.to raise_error "Incorrect amount"
     end
+    it 'sends order confirmation' do 
+      expect(messenger).to receive(:send_order_notification)
+      subject.checkout(23.98)
+    end 
   end
 end 

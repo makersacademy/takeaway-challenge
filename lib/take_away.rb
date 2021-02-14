@@ -1,11 +1,13 @@
 require 'menu'
 require 'basket'
+require 'messenger'
 
 class TakeAway
   attr_reader :basket
-  def initialize(menu = Menu.new, basket = Basket.new)
+  def initialize(menu = Menu.new, messenger = Messenger.new, basket = Basket.new)
     @menu = menu
     @basket = basket
+    @messenger = messenger
   end 
 
   def read_menu
@@ -19,7 +21,9 @@ class TakeAway
   end
 
   def checkout(payment)
-    fail "Incorrect amount" unless correct_amount?(payment)    
+    fail "Incorrect amount" unless correct_amount?(payment) 
+    
+    @messenger.send_order_notification
   end
 
   private 
