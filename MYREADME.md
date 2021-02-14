@@ -24,12 +24,14 @@
 |Cart|
 |--|
 | @items (list of hashes)|
-| @open (bool, is the cart still open?)
+| @open (bool, is the cart still open?)|
+| @total (float) |
 |--|
 |show_cart() --returns a duplicate of @items|
-|add_item(item_hash) --adds the item to @items|
+|add_to_order(item_hash) --adds the item to @items|
 |total() --returns just the total|
 |invoice() --returns invoice in form {item_name: {number: , price: }, Total: }|
+|open?|
 
 |Kitchen|
 |--|
