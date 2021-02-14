@@ -40,18 +40,29 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * Create an .env file to store your Twilio details and phone numbers to be used for the texting functionality of this app.
 
 ### Usage
-Begin with creating a new Takeaway instance
- `t = Takeaway.new`
-Have a look at the menu for what is on offer
-`t.show_menu`
-Order a dish by its name and desired quantity
-`t.order('katsu curry', 2)`
-Display the basket summary of items in quantity and price
-`t.basket_summary`
-Show the basket current cost total
-`t.show_total`
-Checkout the order
-`t.checkout(price)`
+* `t = Takeaway.new` Begin with creating a new Takeaway instance
+* `t.show_menu` Have a look at the menu for what is on offer
+```
+{"katsu curry"=>7.5, "nanban chicken"=>7.5, "tonkotsu ramen"=>10.0, "nasi lemak"=>8.0, "mapo tofu"=>7.5, "massaman curry"=>8.0, "
+karaage chicken"=>5.0, "korean fried chicken"=>5.0, "soju"=>6.0, "iced tea"=>3.0}
+```
+* `t.order('katsu curry', 2)` Order a dish by its name and desired quantity
+```
+"2 x katsu curry has been added to your basket"
+```
+* `t.basket_summary` Display the basket summary of items in quantity and price
+```
+katsu curry x 2 = 15.00
+```
+* `t.show_total` Show the basket current cost total
+```
+"Total: £15.00"
+```
+* `t.checkout(price)` Checkout the order and receive a text confirming estimated delivery time
+```
+Thank you for your payment! Your delivery will arrive before 07:23 PM
+```
+
 ### Notes
 This app consists of the main `Takeaway `class - which allows the user to input the above described methods, the `Menu` class - which allows Takeaway to invoke the menu-display and associated methods, the `Basket` class - which acts as a container for ordered items and its pricing information to be accessed later, and finally, the `Texter` class - which sends a text to the customer to inform them of their estimated delivery time.
 
