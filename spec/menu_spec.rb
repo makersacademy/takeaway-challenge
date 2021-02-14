@@ -16,4 +16,22 @@ describe Menu do
       })
     end
   end
+
+  describe '#has?' do
+    context 'checks if the menu contains the item' do
+      it 'returns true if the menu does have the item' do
+        expect(subject.has?("soju")).to eq(true)
+      end
+
+      it 'returns false if the menu does not have the item' do
+        expect(subject.has?("something")).to eq(false)
+      end
+    end
+  end
+
+  describe '#price' do
+    it 'returns the price of a dish' do
+      expect(subject.price("soju")).to eq(6.00)
+    end
+  end
 end

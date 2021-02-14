@@ -17,4 +17,12 @@ class Menu
      "iced tea" => 3.00,
     }
   end
+
+  def has?(dish)
+    items.include?(dish)
+  end
+
+  def price(dish)
+    items[dish]
+  end
 end
