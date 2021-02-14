@@ -9,11 +9,11 @@ class InputHandler
   end
 
   def get_dish_quantity
-    gets.chomp
+     gets.chomp
   end
-
 
   def complete
     gets.chomp
   end
+
 end

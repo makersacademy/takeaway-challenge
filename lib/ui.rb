@@ -4,7 +4,7 @@ require './input_handler'
 require "./text"
 
 class UI
-  attr_reader :basket,:dish_number
+  attr_reader :basket,:dish_number,:dish_quantity
 
   def initialize(input_handler = InputHandler.new,basket = Basket.new,menu = Menu.new, text = Text.new )
     @input_handler = input_handler
@@ -80,6 +80,7 @@ end
  def order
    puts 'You will recieve text message confirming your order'
    @text.send_message
+   true
  end
 
  def order?
