@@ -52,7 +52,7 @@ karaage chicken"=>5.0, "korean fried chicken"=>5.0, "soju"=>6.0, "iced tea"=>3.0
 ```
 * `t.basket_summary` Display the basket summary of items in quantity and price
 ```
-katsu curry x 2 = 15.00
+"katsu curry x 2 = 15.00"
 ```
 * `t.show_total` Show the basket current cost total
 ```
