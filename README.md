@@ -64,6 +64,6 @@ Thank you for your payment! Your delivery will arrive before 07:23 PM
 ```
 
 ### Notes
-This app consists of the main `Takeaway `class - which allows the user to input the above described methods, the `Menu` class - which allows Takeaway to invoke the menu-display and associated methods, the `Basket` class - which acts as a container for ordered items and its pricing information to be accessed later, and finally, the `Texter` class - which sends a text to the customer to inform them of their estimated delivery time.
+This app consists of the main `Takeaway` class - which allows the user to input the above described methods, the `Menu` class - which allows Takeaway to invoke the menu-display and associated methods, the `Basket` class - which acts as a container for ordered items and its pricing information to be accessed later, and finally, the `Texter` class - which sends a text to the customer to inform them of their estimated delivery time.
 
 The texting functionality is created using Twilios API. To obtain the credentials needed, an account needs to be registered on their website, where the Auth Token and Account SID can be accessed. These information will need to be stored as `ENV` variables within the working directory. By using bundle, you will install the `sinatra`, `dotenv` and `twilio-ruby` gems which will support Texters send_text method. 
