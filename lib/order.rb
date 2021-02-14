@@ -1,10 +1,17 @@
 class Order
 
 # will need to be an array of hashes - dish name and price
-  def initialize(dish_class = Dish, calc_class = Calculator)
+  def initialize(dish_class = Dish, calc_class = Calculator, text_class = Texter)
     @list = []
     @dish_class = dish_class
     @calc_class = calc_class
+    @text_class = text_class
+  end
+
+  def add(menu, dish)
+    status = menu.check(dish)
+    check_errors(status)
+    @list.push(status) if status.class == @dish_class
   end
 
   def view
@@ -12,10 +19,12 @@ class Order
     puts("Total price is £#{calculate}")
   end
 
-  def add(menu, dish)
-    status = menu.check(dish)
-    check_errors(status)
-    @list.push(status) if status.class == @dish_class
+  def place
+    if @text_class.new.send == :message_sent
+      puts "Your order has been successfully placed"
+    else
+      puts "Something has gone wrong, please try again"
+    end
   end
 
   private
