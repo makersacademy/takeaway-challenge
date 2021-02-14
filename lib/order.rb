@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text'
 
 class Order
 
@@ -10,7 +11,12 @@ attr_reader :basket, :menu
   end
 
   def add(item, quantity = 1)
-    (quantity).times { @menu.contents.each { |option| @basket << option if option[:pizza] == item } }
+    fail "That is not on the menu" unless @menu.contents.any? { |hash| hash[:pizza] == item }
+    (quantity).times do
+      @menu.contents.each do |option|
+         @basket << option if option[:pizza] == item
+      end
+    end
   end
 
   def total
@@ -21,6 +27,10 @@ attr_reader :basket, :menu
     puts "This is what your order looks like:"
     order_summary
     puts "Total cost:".ljust(20) + "£#{total}"
+  end
+
+  def complete(phone_number)
+    Text.new(phone_number)
   end
 
 private

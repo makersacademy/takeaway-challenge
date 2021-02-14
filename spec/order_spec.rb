@@ -27,6 +27,10 @@ describe Order do
       order.add('margherita', 2)
       expect(order.basket).to eq [{:pizza => 'margherita', :price => 7}, {:pizza => 'margherita', :price => 7}]
     end
+
+    it "raises an error if the item is not on the menu" do
+      expect { order.add('false-item') }.to raise_error "That is not on the menu"
+    end
   end
 
   context "checking order" do
@@ -44,6 +48,14 @@ describe Order do
       order.add('margherita', 2)
       expect(order.total).to eq 14
     end
+  end
+
+  context "completes the order" do
+
+    it "responds to complete with the customer providing their phone number" do
+      expect(order).to respond_to(:complete).with(1).argument
+    end
+
   end
 
 
