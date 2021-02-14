@@ -1,5 +1,7 @@
 # Takeaway Challenge
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/79727ec5f4c93807146c/maintainability)](https://codeclimate.com/github/AJ8GH/takeaway-challenge/maintainability)
+
 ```
                             _________
               r==           |       |
@@ -35,18 +37,18 @@ run takeaway script
 - `rspec`
 - `rubocop`
 - `coveralls`
-- `bundler`
 - `rake`
 
 ## How to use
 
 - examples
 
-## techniques applied
+## Techniques applied
 
-- tools
-- concepts
-- skills
+- Automated messaging: programming sms message sending through Twilio messaging client
+- Domain modelling: translating user stories into sequence diagrams into code
+- TDD: Test driving the design and build, using red, green refactor approach
+- OOD: SRP, Encapsulation, Dependency injection, Polymorphism
 
 Reflections
 

@@ -1,7 +1,7 @@
 describe Menu do
   describe '#meals' do
     context 'when initialized without arguments' do
-      it 'contains default menu' do
+      it 'contains default pizza menu' do
         expect(subject.meals).to be described_class::PIZZA
       end
     end
