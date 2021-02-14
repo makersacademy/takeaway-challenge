@@ -1,43 +1,42 @@
 require 'order'
 
 describe Order do
-  let(:dish_1) { double(:dish_1, :name => "pizza", :price => 10, :class => Dish) }
-  let(:dish_2) { double(:dish_2, :name => "burger", :price => 12, :class => Dish) }
-  let(:menu_1) { double(:menu_1, :check => dish_1) }
-  let(:menu_2) { double(:menu_2, :check => dish_2) }
-
-  subject(:new_order) { described_class.new }
+  let(:dish_double) { double(:dish, :name => "pizza", :price => 10) }
+  let(:dish_class_double) { double(:dish_class, :new => dish_double) }
+  let(:calc_double) { double(:calc, :total => 20) }
+  let(:calc_class_double) { double(:calc_class, :new => calc_double) }
+  let(:menu) { double(:menu, :check => dish_double) }
+  subject { described_class.new(dish_class_double, calc_class_double) }
 
   describe '#view' do
     it 'starts with no dishes added' do
-      expect(new_order.view).to eq nil
+      expect(subject.view).to eq nil
     end
     it 'displays the total' do
-      new_order.add(menu_1, dish_1)
-      new_order.add(menu_2, dish_2)
-      expect { new_order.view }.to output(/22/).to_stdout
+      2.times { subject.add(menu, dish_double) }
+      expect { subject.view }.to output(/20/).to_stdout
     end
   end
 
   describe '#add' do
     it 'user can add dishes to an order' do
-      new_order.add(menu_1, "pizza")
-      expect { new_order.view }.to output(/Pizza/).to_stdout
+      expect(subject).to respond_to(:add)
     end
     context 'when dish not on menu' do
       it 'user will see error' do
-        menu = double(:menu, :check => :not_on_menu)
-        expect { new_order.add(menu, "pizza") }.to output(/I'm sorry, that dish is not on our menu/).to_stdout
+        menu_2 = double(:menu, :check => :not_on_menu)
+        expect { subject.add(menu_2, "pizza") }.to output(/I'm sorry, that dish is not on our menu/).to_stdout
       end
     end
     context 'when dish unavailable' do
       it 'user will see error' do
-        menu = double(:menu, :check => :unavailable)
-        expect { new_order.add(menu, "pizza") }.to output(/I'm sorry, that dish is currently unavailable/).to_stdout
+        menu_3 = double(:menu_3, :check => :unavailable)
+        expect { subject.add(menu_3, "pizza") }.to output(/I'm sorry, that dish is currently unavailable/).to_stdout
       end
     end
   end
-  # will fail if dish not on menu
 
-  # will fail if dish not available
+
+
+
 end
