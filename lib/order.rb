@@ -1,6 +1,5 @@
 class Order
 
-# will need to be an array of hashes - dish name and price
   def initialize(dish_class = Dish, calc_class = Calculator, text_class = Texter)
     @list = []
     @dish_class = dish_class
