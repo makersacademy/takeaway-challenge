@@ -38,7 +38,6 @@ run takeaway script
 - `rspec`
 - `rubocop`
 - `coveralls`
-- `bundler`
 - `rake`
 
 ## How to use
@@ -47,8 +46,8 @@ run takeaway script
 
 ## techniques applied
 
-- Automated sms sending through Twilio messaging client
-- concepts
+- Automated messaging: programming sms message sending through Twilio messaging client
+- domain modelling:
 - skills
 
 Reflections
