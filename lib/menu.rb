@@ -22,11 +22,8 @@ class Menu
     return :not_on_menu
   end
 
-# need a check method, so we can check availability
-
   private
 
-# note - new class, MenuFile, so I can isolate and test with a testfile. Inject file into class.
   def load_menu
     file = open_file
     load_file(file)
