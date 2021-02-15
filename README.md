@@ -14,6 +14,19 @@ Takeaway Challenge
 
  ```
 
+How to Use
+-------
+
+* Dishes are created with 2 arguments - their name and price. Tests assume these will be a string and a float.
+* Menus are created with the restaurant title as an argument and will default to having an empty array of dishes. Use add_dishes to add dish items - as many dishes as you like can be put into a menu at once. An error will be raised if you try to add an item that is already there.
+* To facilitate sending order confirmation messages, you will need to create a TwilioAdapter object. This is done by setting environment variables for the twilio account credentials and the twilio phone number and then called Twilio_Adapter.new.
+* Orders are created by passing a menu object, a twilio adapter object and the customer phone number as arguments. You can add items to an order, check your balance, get your total and finalize your order to set it to complete and get a confirmation text. As many items as you like can be added at once.
+(in terms of real world function I wonder if it would make more sense to set the twilio adapter with the menu class, but I have to stop fiddling with this at some point!)
+* Test coverage shows as full but is currently a bit lacking in terms of string outputs - I have now resolved this in a couple of places by using regexp pattern matchers and this could be extended. I have done a full irb runthrough.
+* Once completed, an order cannot be amended. This will throw an error message.
+* An error message will also be thrown if a user tries to order something that isn't on the menu.
+* I used quite a few resources to assist with extracting the twilio adapter class.
+
 Instructions
 -------
 
