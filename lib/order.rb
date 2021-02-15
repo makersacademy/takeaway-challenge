@@ -1,11 +1,12 @@
 
 require 'date'
-# require_relative 'twilio'
+require_relative 'twilio'
 
 class Order 
-		attr_reader :cart, :cart_total, :message
+		attr_reader :cart, :cart_total, :message, :sms
 
-		def initialize
+		def initialize(sms = SMS.new)
+				@sms = sms
 				@cart = []
 		end
 
@@ -24,6 +25,7 @@ class Order
 		def confirm_order
 				@cart.clear
 				# somehow call twilio to send a message#
+				sms.send_message(confirmation_message)
 				puts confirmation_message	
 		end
 
