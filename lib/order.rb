@@ -1,6 +1,6 @@
 
 require 'date'
-require_relative 'twilio'
+# require_relative 'twilio'
 
 class Order 
 		attr_reader :cart, :cart_total, :message
@@ -15,7 +15,7 @@ class Order
 				@cart_total.sum
 		end
 
-		def receipt
+		def view_order
 			# should return a list of all the items with price and finally the total
 				@cart.each { |item| puts "#{item.name}, £#{item.price}" }
 				puts "Your Total is: £#{total}"
@@ -23,7 +23,7 @@ class Order
 
 		def confirm_order
 				@cart.clear
-				# somehow call twilio to send a message
+				# somehow call twilio to send a message#
 				puts confirmation_message	
 		end
 

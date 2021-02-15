@@ -31,9 +31,9 @@ describe Order do
 				end
 		end
 
-		describe '#receipt' do
+		describe '#view_order' do
 				it 'should return a string' do
-						expect { subject.receipt } .to output(String).to_stdout
+						expect { subject.view_order } .to output(String).to_stdout
 				end
 		end
 

@@ -1,9 +1,6 @@
 require 'rubygems' 
 require 'twilio-ruby'
 
-
-
-
 account_sid = ENV["TWILIO_ACCOUNT_SID"] 
 auth_token = ENV['TWILIO_AUTH_TOKEN']
 my_phone = ENV['MY_PHONE']
