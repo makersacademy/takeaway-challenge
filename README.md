@@ -54,8 +54,8 @@ twilio-ruby gem to access the API
 - [x] Read about Twilio API and Sinatra
 - [x] Run a simple Sinatra application following tutorial
 - [x] Set-up ngrok server and run the Sintra App on it
+- [x] Implement SMS alert using Twilo-ruby
 - [ ] Create a method `checkout` that confirms the order and calls Twilio
-- [ ] Implement SMS alert using Twilo-ruby
 
 ## Learnings
 **What is an API?**
@@ -74,6 +74,7 @@ Very popular Ruby framework, it basically allows you to run your Ruby code on th
 * Struggling to write a test to check stdout after calling `basket` - this has brought my coverage down to 90%
 * I wasn't following the correct resources to set-up Sinatra so I lost a lot of time trying to run the bundles
 * I was able to run Sinatra server by following the set-up process [here](https://www.twilio.com/docs/usage/tutorials/how-to-set-up-your-ruby-and-sinatra-development-environment)
+* I think I added a lot of unecessary set-up steps due to my lack of understanding of the use of each of these systems
 * I still need to get my head around how to fit this into a standard Ruby code in order to create the `checkout` method
 
 ## How to Use

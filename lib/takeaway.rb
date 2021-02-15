@@ -49,11 +49,3 @@ private
     quantity.times { order_id.items_price << price }
   end
 end
-
-# get '/' do
-#   content_type 'text/xml'
-#
-#   Twilio::TwiML::VoiceResponse.new do | response |
-#     response.say(message: 'Hello Sandy')
-#   end.to_s
-# end

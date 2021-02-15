@@ -4,4 +4,4 @@
 # Local cache of Rubocop remote config
 .rubocop-*
 # Contain Twilo credentials
-twilio.env
+.env
