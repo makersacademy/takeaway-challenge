@@ -1,11 +1,12 @@
 class Menu
 
-  def menu
-    { "1. Dal" => 4.10,
-      "2. Mixed Vegetable" => 5.45,
-      "3. Saag" => 4.10,
-      "4. Paneer" => 5.75,
-      "5. Bhindi" => 5.10 }
+  def items
+    [ { :dish => "Dal", :price => 4.10 },
+      { :dish => "Chicken", :price => 6.45 },
+      { :dish => "Saag", :price  => 4.10 },
+      { :dish => "Paneer", :price => 5.75 },
+      { :dish => "Bhindi", :price => 5.10 }
+    ]
   end
 
 end
