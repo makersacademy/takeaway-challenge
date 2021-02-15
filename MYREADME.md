@@ -1,43 +1,52 @@
+# Usage
+
+
+
+# Parts
+
 ## Classes
 
-|Ordering|
-|--|
-| @menu (class instance)|
-| @cart (class instance)|
-| @accounts (class instance)|
-| @kitchen (class instance)|
-|--|
-|menu()|
-|add_to_order(item_name)|
-|view_cart()|
-|checkout|
+              Ordering
+    ---------------------------
+      @menu (class instance)
 
-\#####
-|Menu|
-|--|
-| @menu (list of hashes {item: , description: , price: , available: })|
-| -- |
-| print() |
-| available?(item_name) --returns item hash or false|
+      @cart (class instance)
+
+      @accounts (class instance)
+
+      @kitchen (class instance)|
+    ---------------------------
+               menu()
+       add_to_order(item_name)
+            view_cart()
+             checkout
 
 
-|Cart|
-|--|
-| @items (list of hashes)|
-| @open (bool, is the cart still open?)|
-| @total (float) |
-|--|
-|show_cart() --returns a duplicate of @items|
-|add_to_order(item_hash) --adds the item to @items|
-|total() --returns just the total|
-|invoice() --returns invoice in form {item_name: {number: , price: }, Total: }|
-|open?|
+                Menu
+    ---------------------------
+     @menu (list of hashes {item: , description: , price: , available: })
+     ---------------------------
+              print() 
+    available?(item_name) --returns item hash or false
 
-|Kitchen|
-|--|
-|@current_orders|
-|--|
-|order(item_hash) --item_hash should be a hash of elements {item_name: number}|
+
+    Cart
+    ---------------------------
+      @items (list of hashes)
+     @open (bool, is the cart still open?)
+        @total (float) 
+    ---------------------------
+      show_cart() --returns a duplicate of @items
+    add_to_order(item_hash) --adds the item to @items
+      total() --returns just the total
+    invoice() --returns invoice in form {item_name: {number: , price: }, Total: }
+    open?
+
+              Kitchen
+    ---------------------------
+          @current_orders
+    ---------------------------
+    order(item_hash) --item_hash should be a hash of elements {item_name: number}
 
 ## Sequence Diagram
 
@@ -50,30 +59,24 @@ open [playground.diagram sequence diagram](https://playground.diagram.codes/d/se
     alias menu="Menu"
     alias cart="Shopping Cart"
     alias kitchen="Kitchen"
-    alias account="Accounts"
-    
+
     user=>ordering: "Request Menu"
     ordering->menu: "Request menu"
     menu-->user: "returns copy of Menu"
-    
-    user=>ordering: "start order"
-    ordering->cart: "creates new order with unique order ID"
+
     user=>ordering: "select dish"
-    ordering->menu: "checks dish is available"
+    ordering->menu: "checks if dish is available"
     menu->ordering: "returns dish or false (i.e. confirms availability)"
-    ordering->cart: "adds dish to order"
-    
+    ordering->cart: "add dish to order"
+    cart->cart: "adds dish to @items"
+
     user=>ordering: "view cart"
     ordering->cart: "request orders and prices, and total"
     cart-->user: "prints orders and prices, and totals"
-    
+
     user=>ordering: "checkout"
-    ordering->cart: "request orders and prices, and total"
-    cart-->ordering: "prints orders and prices, and total"
-    ordering->cart: "closes cart"
-    cart->ordering: "returns self"
-    ordering-->account: "sends copy of order to Accounts"
-    ordering->account: "sends payment to Accounts"
-    account->account: "increases @balance by payment"
-    ordering-->kitchen: "sends order to kitchen"
+    ordering->cart: "requests invoice/order form"
+    cart-->ordering: "Returns invoice"
+    ordering->kitchen: "sends order to kitchen"
+    kitchen-->ordering: "kitchen confirms order can be processed"
     ordering-->user: "sends confirmation text to user"
