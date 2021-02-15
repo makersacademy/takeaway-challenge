@@ -14,19 +14,9 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -69,19 +59,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 * Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
 
-In code review we'll be hoping to see:
+Progress 
+--------
+I have implemented the first three of the four user stories.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
-
-
-Notes - things I want to improve:
-I ended up adding a string of '0' to pass the tests, which works for my menu but not if the price in pence is not multiples of ten. I tried looking at BigDecimal but it didn't give me the output I wanted. 
+One particular issue was how to ensure that there were always two digits after the decimal place when displaying the price. I ended up adding a string of '0' to pass the tests, which works for my menu but not if the price in pence is not multiples of ten. I tried looking at BigDecimal but it didn't give me the output I wanted. 
