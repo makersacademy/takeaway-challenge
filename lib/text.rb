@@ -4,12 +4,12 @@ class Text
   attr_reader :from, :to
 
   def initialize
-    account_sid = 'AC5fe05dfe905688785a8e0fc5cb03c952'
-    auth_token = '31575102d86a1cbf72641823d5a9a932'
+    account_sid = ENV['TWILIO_ACC_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    @from = '+447429699897'
-    @to = '+447927712807'
+    @from = ENV['TWILIO_NUMBER']
+    @to = ENV['UK_NUMBER']
   end
 
   def send_text
