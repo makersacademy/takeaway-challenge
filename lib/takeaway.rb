@@ -28,11 +28,7 @@ class Takeaway
   end
 
   def checkout(price)
-    if correct_amount?(price)
-      complete_order
-    else
-      "Sorry that is not the right amount, please try again."
-    end
+    correct_amount?(price) ? complete_order : "Sorry that is not the right amount, please try again."
   end
 
   private
