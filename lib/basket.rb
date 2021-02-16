@@ -16,6 +16,7 @@ class Basket
       price = num * price
       @list << { :name => item, :number => num, :price => price }
     end
+    puts "#{num} x #{item} has been added to your basket"
   end
 
   def show_basket
@@ -26,9 +27,7 @@ class Basket
 
   def total
     sum = 0
-    @list.each do |x|
-      sum += x[:price]
-    end
+    @list.each {|x| sum += x[:price] }
     sum
   end
 end

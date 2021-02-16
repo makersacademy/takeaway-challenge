@@ -15,12 +15,12 @@ describe Takeaway do
   end
 
   describe '#order' do
-    it 'orders items from the menu and tells user it is in basket' do
-      allow(basket).to receive(:store).with("dish", 1, nil)
+    it 'orders items from the menu and stores it in the basket' do
       allow(menu).to receive(:items).and_return({})
-      allow(menu).to receive(:price).with("dish")
-      allow(menu).to receive(:has?).with("dish").and_return(true)
-      expect(subject.order(dish)).to eq("1 x dish has been added to your basket")
+      allow(menu).to receive(:price).and_return(1.00)
+      allow(menu).to receive(:has?).and_return(true)
+      expect(basket).to receive(:store).with("dish", 1, 1.00)
+      subject.order(dish)
     end
 
     it "tells user item ordered is not in menu if it menu doesn't have it" do

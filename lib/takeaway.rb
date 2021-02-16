@@ -15,13 +15,8 @@ class Takeaway
 
   def order(dish, quantity = 1)
     name = dish.downcase
-    if @menu.has?(name)
-      price = @menu.price(name)
-      @basket.store(name, quantity, price)
-      "#{quantity} x #{name} has been added to your basket"
-    else
-      "Sorry! We don't have what you've just ordered. Check the menu for what's on offer!"
-    end
+    message = "Sorry! We don't have what you've just ordered. Check the menu for what's on offer!"
+    @menu.has?(name) ? @basket.store(name, quantity, @menu.price(name)) : message
   end
 
   def basket_summary
