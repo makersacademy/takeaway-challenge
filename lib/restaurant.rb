@@ -1,4 +1,11 @@
 class Restaurant
+  def initialize(args = {})
+    @customer_service = args[:customer_service] || CustomerService.new
+    @display          = args[:display]          || Display.new
+    @menu             = args[:menu]             || Menu.new.meals
+    @order            = []
+  end
+  
   def view_menu
     display.view_menu(menu)
   end
@@ -25,11 +32,4 @@ class Restaurant
   private
 
   attr_reader :menu, :order, :display, :customer_service
-
-  def initialize(args = {})
-    @customer_service = args[:customer_service] || CustomerService.new
-    @display          = args[:display]          || Display.new
-    @menu             = args[:menu]             || Menu.new.meals
-    @order            = []
-  end
 end

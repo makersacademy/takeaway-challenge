@@ -3,6 +3,10 @@ require 'dotenv'
 Dotenv.load
 
 class CustomerService
+  def initialize(client_class = Twilio)
+    @client_class = client_class
+  end
+
   def confirmation_text
     create_client.messages.create(
     from: ENV['TWILIO_PHONE_NUMBER'],
@@ -15,10 +19,6 @@ class CustomerService
   private
 
   attr_reader :client, :client_class
-
-  def initialize(client_class = Twilio)
-    @client_class = client_class
-  end
 
   def create_client
     client_class::REST::Client.new(

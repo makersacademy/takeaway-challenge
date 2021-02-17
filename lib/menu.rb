@@ -1,6 +1,10 @@
 class Menu
   attr_reader :meals
 
+  def initialize(meals = PIZZA)
+    @meals = meals
+  end
+
   PIZZA = {
     marinara:    8,
     margherita:  10,
@@ -11,8 +15,4 @@ class Menu
     fiorentina:  14,
     capricciosa: 15
   }
-
-  def initialize(meals = PIZZA)
-    @meals = meals
-  end
 end
