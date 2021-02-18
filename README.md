@@ -1,5 +1,117 @@
 Takeaway Challenge
 ==================
+
+### Notes
+
+All user stories have been completed in this challenge.
+
+A user would run the program from the takeaway-challenge folder as follows. 
+
+```
+irb -r './lib/runfile.rb'
+```
+
+In IRB, load a menu with:
+
+```ruby
+menu = Menu.new
+```
+
+To see what dishes are on the menu:
+
+```ruby
+menu.show
+```
+
+To start a new order:
+
+```ruby
+order = Order.new
+```
+
+To add a dish to the order, the user needs to pass two arguments into the method; the menu and the name of the dish in the form of a string, as follows:
+
+```ruby
+order.add(menu, "pizza")
+```
+
+To see the order and how much the order will cost:
+
+```ruby
+order.view
+```
+
+To place the order:
+
+```ruby
+order.place
+```
+
+A text message confirming the order will then be sent to the user.
+
+### Design
+
+There are five classes in this program:
+
+* [Menu](#menu-class)
+* [Order](#order-class)
+* [Dish](#dish-class)
+* [Calculator](#calculator-class)
+* [Texter](#texter-class)
+
+#### Menu class
+
+The menu is an array of dish objects. This is loaded from a .csv file on initialisation through the load_file private method. The .csv file contains all items on the menu, whether available or unavailable.
+
+The show method prints out a list of available items on the menu, with their prices; any items that are unavailable will not appear on screen.
+
+The check method takes the name of a dish (in the form of a string) as an argument. This checks whether the dish is 1) on the menu at all, or 2) unavailable. If the dish is on the menu and available then the method returns the dish - this method is called when the user asks to add a dish to their order (this defends against edge cases, such as a user trying to add a dish to the order that is unavailable).
+
+I have not used an attribute reader, to help maintain encapsulation, and the Dish class is injected into the menu object on initialisation to keep the classes isolated.
+
+#### Order class
+
+This class is where the user can store dishes that they wish to order.
+
+When the object is initialised, an empty array is created as the @list variable.
+
+The user can add dishes to this list through the add method. Add takes two variables; menu and dish. THe method checks whether the dish is in the menu through a call to menu.check, which if the dish is valid, returns the dish. That dish is then stored in @list.
+
+Ideally there would only be one variable (dish) but I wasn't able to work out how to define which menu instance to use as a default. I think now I could just create a new object of the menu class as this would have the same default attributes, but I am not going to do any more refactoring on this challenge now.
+
+The user can view their order, including the prices of each individual dish and the total, with the view method. This invokes the Calculator class to add up the total cost. The private method calculate creates an array of the prices to be calculated, and passes that to the Calculator class through the Calculator.total() method.
+
+The user places their order with the place method, which invokes the Texter class to create and send the text message.
+
+I have not used an attribute reader, to help maintain encapsulation, and the Dish, Calculator and Texter classes are injected into the menu object on initialisation to keep the classes isolated.
+
+#### Dish class
+
+This class stores information about dishes, including the name, price and whether it is available.
+
+Attributes are accessible only through methods, which each return a duplicate of the attribute rather than the attribute itself, to help maintain encapsulation.
+
+#### Calculator class
+
+This has a single method, total, that takes an array of prices as an argument and returns the total.
+
+#### Texter class
+
+This class contains the text functionality. It has one public method, send, which sends a message (invoking the private method, time) and returns :message_sent.
+
+The private method time calculates what time the order should arrive with the client.
+
+### Reflection
+
+Possible further refactoring:
+
+* Remove hard-coding of values in the test suite.
+* Refactor order.add to only take a single variable, the name of the dish.
+* Refactor order.add to defend against edge cases, such as users entering the name of a dish in capital letters.
+* Consider all classes in light of SRP.
+* Check test suite to ensure it is DRY.
+* Expanding test coverage of the texter class - I don't really know how to test that properly.
+
 ```
                             _________
               r==           |       |
