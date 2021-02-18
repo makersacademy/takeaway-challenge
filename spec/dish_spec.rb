@@ -3,7 +3,7 @@ require 'dish'
 describe Dish do
   subject(:pizza) { described_class.new(:pizza, 10, false) }
   subject(:burger) { described_class.new(:burger, 12) }
-
+  
   it 'stores the name of the dish' do
     expect(pizza.name).to eq(:pizza)
   end

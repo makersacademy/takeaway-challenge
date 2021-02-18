@@ -13,9 +13,8 @@ describe Menu do
   end
 
   describe '#show' do
-    it 'menu responds to show method' do
-      expect(subject).to respond_to(:show)
-    end
+    it { is_expected.to respond_to(:show) }
+    
     it 'user can see dishes on menu' do
       expect { subject.show }.to output(/Pizza/).to_stdout
     end

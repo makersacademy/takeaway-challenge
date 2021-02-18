@@ -22,9 +22,8 @@ describe Order do
   end
 
   describe '#add' do
-    it 'user can add dishes to an order' do
-      expect(subject).to respond_to(:add)
-    end
+    it { is_expected.to respond_to(:add) }
+
     context 'when dish not on menu' do
       it 'user will see error' do
         menu_2 = double(:menu, :check => :not_on_menu)
@@ -44,8 +43,4 @@ describe Order do
       end
     end
   end
-
-
-
-
 end
