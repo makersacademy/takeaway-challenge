@@ -19,7 +19,7 @@ class TakeAway
 
   def view_order
     @basket.each { |item| puts "#{item}" }
-    "TOTAL: £#{check_total}0"
+    "Your order total so far is: £#{check_total}0"
   end
 
   def check_total

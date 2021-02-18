@@ -2,15 +2,20 @@ require 'menu'
 
 describe Menu do
 
+
   describe '#initialize' do
-    it 'initializes with a menu' do
-      expect(subject).to respond_to(:list)
+    it 'has dishes' do
+      expect(subject.list).to eq([{ dish: 'green curry', price: 3.00 },
+                                  { dish: 'singapore noodles', price: 4.00 },
+                                  { dish: 'salmon teriyaki', price: 5.00 }])
     end
   end
 
   describe '#view_menu' do
     it 'lets the user view the menu' do
-      expect(subject).to respond_to(:view_menu)
+      expect(subject.view_menu).to eq([{ dish: 'green curry', price: 3.00 },
+                                  { dish: 'singapore noodles', price: 4.00 },
+                                  { dish: 'salmon teriyaki', price: 5.00 }])
     end
   end
 
