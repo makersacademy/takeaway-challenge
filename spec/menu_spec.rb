@@ -2,7 +2,6 @@ require 'menu'
 
 describe Menu do
 
-
   describe '#initialize' do
     it 'has dishes' do
       expect(subject.list).to eq([{ dish: 'green curry', price: 3.00 },

@@ -1,4 +1,5 @@
 require_relative 'takeaway'
+require 'rubygems'
 require 'twilio-ruby'
 
 class Sms
@@ -10,19 +11,19 @@ class Sms
   end
 
   private
-    def send_message
-      account_sid = ENV['################################']
-      auth_token = ENV['#################################']
-      @client = ::Twilio::REST::Client.new(account_sid, auth_token)
-      message = @client.messages.create(
-       body: "Hello, your order has been place, thank you!
-       You will receive your order at #{time}",
-       to: @phone_number,
-       from: "+447723950804")
-    end
+  def send_message
+    account_sid = ENV['################################']
+    auth_token = ENV['#################################']
+    @client = ::Twilio::REST::Client.new(account_sid, auth_token)
+    message = @client.messages.create(
+    body: "Hello, your order has been place, thank you!
+    You will receive your order at #{time}",
+    to: @phone_number,
+    from: "+447723950804")
+  end
 
-    def time
-      @time = Time.now + 1*60*60
-    end
+  def delivery_time
+    @time = Time.now + 1 * 60 * 60
+  end
 
 end

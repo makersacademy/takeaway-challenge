@@ -13,7 +13,7 @@ describe TakeAway do
 
   context 'adding items to order' do
     before do
-      meal = TakeAway.new
+      meal = TakeAway.new({ dish: 'green curry', price: 3.00 })
       meal.order('green curry')
 
       it 'lets the user to select dishes to add to order' do
@@ -22,6 +22,11 @@ describe TakeAway do
 
       it 'lets the user check the total order' do
         expect(meal.view_order).to eq("Your order total so far is: £3.00")
+      end
+
+      it 'lets the user add multiple items' do
+        meal.order('green curry', 4)
+        expect(meal.vew_order).to eq("Your order total so far is: £15.00")
       end
     end
   end
