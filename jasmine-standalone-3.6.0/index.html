@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al's Pizzas</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <h1>Al's Pizzas</h1>
+  <h2>The menu:</h2>
+
+  <div class="dish">
+    <div class="dishText">
+      <h3 id="PeperoniHeader"></h3>
+      <p id="PeperoniDescr"></p>
+      <p id="PeperoniPrice"></p>
+      <button class="addRemove" id="addPeperoni">+</button>
+      <button class="addRemove" id="removePeperoni">-</button>
+    </div>
+    <img src="https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?cs=srgb&dl=pexels-sydney-troxell-708587.jpg&fm=jpg" alt="image of kiev pizza" class="dishImg">
+  </div>
+
+  <div class="dish">
+    <div class="dishText">
+      <h3 id="BBQChickenHeader"></h3>
+      <p id="BBQChickenDescr"></p>
+      <p id="BBQChickenPrice"></p>
+      <button class="addRemove" id="addBBQChicken">+</button>
+      <button class="addRemove" id="removeBBQChicken">-</button>
+    </div>
+    <img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?cs=srgb&dl=pexels-pixabay-315755.jpg&fm=jpg" alt="image of BBQ chicken pizza" class="dishImg">
+  </div>
+
+  <div class="dish">
+    <div class="dishText">
+      <h3 id="TomatoandBasilHeader"></h3>
+      <p id="TomatoandBasilDescr"></p>
+      <p id="TomatoandBasilPrice"></p>
+      <button class="addRemove" id="addTomatoandBasil">+</button>
+      <button class="addRemove" id="removeTomatoandBasil">-</button>
+    </div>
+    <img src="https://images.pexels.com/photos/1260968/pexels-photo-1260968.jpeg?cs=srgb&dl=pexels-daria-shevtsova-1260968.jpg&fm=jpg" alt="image of tomato and basil pizza" class="dishImg">
+  </div>
+
+  <div class="order">
+    <p><span>Total:</span><span id="orderTotal"></span></p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="src/dish.js"></script>
+  <script src="src/cart.js"></script>
+  <script src="src/controller.js"></script>
+</body>
+</html>
