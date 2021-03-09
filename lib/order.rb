@@ -6,7 +6,7 @@ class Order
 
   def initialize(menu = Menu.new, invoice = Invoice.new)
     @menu = menu
-    @order = []
+    @basket = []
     @invoice = invoice
     self.welcome
   end
@@ -23,13 +23,13 @@ class Order
 
   def select(item, quantity = 1)
     choice = item.downcase.to_sym
-    quantity.times { @order << @menu.select(choice) }
+    quantity.times { @basket << @menu.select(choice) }
     "#{quantity} #{item.downcase}(s) added to your order."
   end
 
   def place_order
-    calculate_total(summarise(@order.dup))
-    prints_order_summary(summarise(@order.dup))
+    calculate_total(summarise(@basket.dup))
+    prints_order_summary(summarise(@basket.dup))
     # fail if @total is not corrected - I don't understand what 2 things we're comparing
 
     @invoice.send_text
@@ -66,7 +66,7 @@ class Order
     ".\nThe total comes to £#{@total}."
   end
 
-  def order
-    @order.dup
+  def basket
+    @basket.dup
   end
 end

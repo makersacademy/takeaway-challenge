@@ -21,9 +21,9 @@ describe Dish do
 
   # I have struggled with getting this test to pass - RSpec complains
   # because it is trying to format a double (line 10 of code)
-  # let(:formatted_price) { double("formatted_price") }
-  # it "displays dish" do
-  #   expect(subject.display).to eq "#{name}: £#{formatted_price}"
-  # end
+  subject { described_class.new(name, 5) }
+  it "displays dish" do
+    expect(subject.display).to eq "#{name}: £5.00"
+  end
 
 end

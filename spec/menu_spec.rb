@@ -1,6 +1,8 @@
 require 'menu'
 
 describe Menu do
+  let(:dish) { double("dish") }
+  let(:dish2) { double("dish") }
   it { is_expected.to be_instance_of(Menu) }
 
   it { is_expected.to respond_to(:view) }
@@ -20,12 +22,10 @@ describe Menu do
 
   # I have checked this in irb but can't get the unit test to work.
   # Have tried multiple mocks/stubs/doubles
-  # describe '#select' do
-  #   it "returns chosen dish" do
-  #     allow(dishes).to receive(:each) { dish }
-  #     allow(dish).to receive(:name) { dish }
-  #     expect(subject.select(dish)).to eq dish
-  #   end
-  # end
+  describe '#select' do
+    it "returns chosen dish" do
+      expect(subject.select(:pizza)).to be_instance_of Dish
+    end
+  end
 
 end
