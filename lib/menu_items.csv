@@ -1,10 +1,10 @@
-name,price,preparation time
-Veggie chow mein,4,15
-Tofu chow mein,5,15
-Steamed rice,2,10
-Vegetable fried rice,3,10
-Tofu fried rice,3,10
-Garlic eggplant,3,10
-Tofu and broccoli,5,15
-Kung Pao tofu,5,15
-Sweet-and-sour tofu,5,15
+number,name,price,preparation time
+1,Veggie chow mein,4,15
+2,Tofu chow mein,5,15
+3,Steamed rice,2,10
+4,Vegetable fried rice,3,10
+5,Tofu fried rice,3,10
+6,Garlic eggplant,3,10
+7,Tofu and broccoli,5,15
+8,Kung Pao tofu,5,15
+9,Sweet-and-sour tofu,5,15
