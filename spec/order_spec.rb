@@ -13,12 +13,16 @@ describe Order do
 
   describe "add_to_order" do
     it "allows the user to enter multiple dishes to their order." do
+      allow($stdout).to receive(:write)
       allow($stdin).to receive(:gets).and_return("1", "y", "y")
       expect(subject.add_to_order(menu)).to be_a(Array)
     end
   end
 
   describe "order_entry" do
+    before do
+      allow($stdout).to receive(:write)
+    end
     it "should capture the customers order" do
       allow($stdin).to receive(:gets).and_return("1", "y")
       expect(subject.order_entry(menu)).to eq(1)

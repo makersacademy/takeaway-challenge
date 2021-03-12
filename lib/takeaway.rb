@@ -37,16 +37,12 @@ class Takeaway
   def interface
     selection = $stdin.gets.chomp
     case selection
-    when "1"
-      print_menu
-    when "2"
-
-    when "3"
-  
-    when "9"
-     exit
+    when "1"; print_menu
+    when "2"; "make new order"
+    when "3"; "check total"
+    when "9"; exit
     else
-      puts "That selection is incorrect, try again.".center(70)
+      print "That selection is incorrect, try again.".center(70)
     end
   end
 
