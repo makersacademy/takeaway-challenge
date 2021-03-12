@@ -43,7 +43,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |            |                       |                       |
 | Order      | @order name/number    | view_basket           |
 |            | @basket = []          | calculate_total       |
-|            | @prices = []          | total_correct?        |
+|            | @prices = []    X     | total_correct?        |
 |            |                       | complete_order        |
 
 
@@ -57,3 +57,12 @@ additional notes:
 
 
 #### IRB testing
+
+*require './lib/restaurant.rb'
+*sparkleBurgers = Restaurant.new("Sparkle Burgers LTD")
+*sparkleBurgers.menu
+      => [{:"Cheese burger"=>10}, {:"Cheese and bacon burger"=>12}, {:"Pulled pork burger"=>15},  
+          {:Fries=>6}, {:"Chilli fries"=>8}, {:"Onion rings"=>7}, {:"Coke 330ml"=>2},
+          {:"Fanta 330ml"=>2}, {:"Brew Dog Vegabond 4.5%"=>5}]
+*sparkleBurgers.view_menu
+      => "Sparkle Burgers LTD's Menu:\n, 1: Cheese burger, £10\n, 2: Cheese and bacon burger, £12\n, 3: Pulled pork burger, £15\n, 4: Fries, £6\n, 5: Chilli fries, £8\n, 6: Onion rings, £7\n, 7: Coke 330ml, £2\n, 8: Fanta 330ml,£2\n, 9: Brew Dog Vegabond 4.5%, £5"
