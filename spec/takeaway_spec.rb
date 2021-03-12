@@ -19,19 +19,9 @@ describe Takeaway do
     end
   end
 
-  describe "order_entry" do
-    it "will captures the customers order" do
-      allow($stdin).to receive(:gets) { "1" }
-      expect(subject.order_entry).to eq(1)
-    end
-  end
-
-  describe "input_check" do
-    it "when the input is a string return downcase of that string" do
-      expect(subject.input_check("Word")).to eq("word")
-    end
-    it "when the input is a number in a string return the int of that number" do
-      expect(subject.input_check("10")).to eq(10)
+  describe "interface_print" do
+    it "outputs the interface to stdout" do
+      expect { subject.interface_print }.to output.to_stdout
     end
   end
 end
