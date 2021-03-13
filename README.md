@@ -75,3 +75,11 @@ sparkleBurgers.start_order
 
 sparkleBurgers.choose_dish(2)
         => "Cheese and bacon burger has been added to your basket"
+
+sparkleBurgers.open_basket.basket
+        => ["Cheese and bacon burger"]
+
+sparkleBurgers.choose_dish(4)
+        => "Fries has been added to your basket"
+sparkleBurgers.open_basket.basket
+        => ["Cheese and bacon burger", "Fries"] 

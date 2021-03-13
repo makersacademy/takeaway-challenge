@@ -6,4 +6,8 @@ attr_reader :number, :basket
     @number = 1
     @basket = []
   end
+
+  def add_to_basket(dish)
+    @basket << dish
+  end
 end

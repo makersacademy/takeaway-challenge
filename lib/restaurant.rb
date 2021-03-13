@@ -41,6 +41,7 @@ attr_reader :name, :menu, :open_basket
 
   def choose_dish(dish_num)
     dish = @menu.keys
+    @open_basket.add_to_basket(dish[dish_num-1].to_s)
     "#{dish[dish_num-1]} has been added to your basket"
   end
 

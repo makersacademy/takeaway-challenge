@@ -3,7 +3,7 @@ require 'restaurant'
 describe Restaurant do
   let(:sparkleBurgers) { Restaurant.new('Sparkle Burgers LTD')}
 
-  let(:order001) { instance_double("Order", number: 1)}
+  let(:order001) { instance_double("Order", number: 1, basket: [])}
 
   it "initializes with a menu" do
     expect(sparkleBurgers.menu.kind_of?(Hash)).to eq(true)
@@ -19,15 +19,28 @@ describe Restaurant do
     end
   end
 
-  describe "#start_order" do
-    it "initializes a new order instance when user decides to start an order" do
-      expect(sparkleBurgers.start_order).to eq("Your basket is now open for order number #{order001.number}")
-    end
-  end
+  # describe "#start_order" do
+  #   it "initializes a new order instance when user decides to start an order" do
+  #     expect(sparkleBurgers.start_order).to eq("Your basket is now open for order number #{order001.number}")
+  #   end
+  # end
 
   describe "#choose_dish" do
     it "allows a user to select a dish number" do
       expect(sparkleBurgers.choose_dish(2)).to eq("Cheese and bacon burger has been added to your basket")
     end
+
+    it "adds chosen dish to the order basket" do
+      sparkleBurgers.choose_dish(2)
+      expect(sparkleBurgers.open_basket.basket).to eq ["Cheese and bacon burger"]
+    end
+
+    it "adds more than one dish to the order basket" do
+      sparkleBurgers.choose_dish(2)
+      sparkleBurgers.choose_dish(4)
+      expect(sparkleBurgers.open_basket.basket).to eq ["Cheese and bacon burger", "Fries"]
+    end
   end
+
+
 end
