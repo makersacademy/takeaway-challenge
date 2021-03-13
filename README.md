@@ -76,17 +76,17 @@ sparkleBurgers.view_menu
 
 sparkleBurgers.choose_dish(2)
         => "Cheese and bacon burger has been added to your basket"
-sparkleBurgers.open_order.basket
+sparkleBurgers.order.basket
         => ["Cheese and bacon burger"]
 
 sparkleBurgers.choose_dish(4)
         => "Fries has been added to your basket"
-sparkleBurgers.open_order.basket
+sparkleBurgers.order.basket
         => ["Cheese and bacon burger", "Fries"]
 
-sparkleBurgers.open_order.view_basket
+sparkleBurgers.order.view_basket
 
         => [[:"Cheese and bacon burger", 12], [:Fries, 6]]
 
-sparkleBurgers.open_order.total_due
+sparkleBurgers.order.total_due
          => 18

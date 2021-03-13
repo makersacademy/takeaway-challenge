@@ -31,7 +31,7 @@ describe Order do
     it "let's the customer know the total cost of the order so far" do
     order002.add_to_basket(cheeseBurger)
     order002.add_to_basket(fries)
-    expect(order002.pending_total).to eq(16)
+    expect(order002.total).to eq(16)
     end
   end
 
@@ -40,7 +40,7 @@ describe Order do
     it "can view the basket" do
       order001.add_to_basket(cheeseBurger)
       order001.add_to_basket(fries)
-      expect(order001.view_basket).to eq("Viewing basket for order number 1:\n, Cheese Burger £10\n, Fries £6\n, Total cost of order: 16")
+      expect(order001.view_basket).to eq("Viewing basket for order number 1:\n, Cheese Burger £10\n, Fries £6\n, Total cost of order: £16")
     end
   end
 
@@ -52,11 +52,17 @@ describe Order do
     end
   end
 
-
   describe "#total_correct?" do
     it "double checks the total is correct against the menu" do
     expect(order001.total_correct?).to be(true)
     end
+  end
+
+  describe "#complete_order" do
+    it "confirms the order is complete and will be delivered an hour from now" do
+      expect(order001.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.now + 60*60}")
+    end
+
   end
 
 end
