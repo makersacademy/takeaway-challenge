@@ -52,6 +52,4 @@ describe Restaurant do
     end
   end
 
-
-
 end

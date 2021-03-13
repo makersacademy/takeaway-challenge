@@ -1,11 +1,12 @@
 class Order
 
-attr_reader :number, :basket, :total
+attr_reader :number, :basket, :total, :history
 
   def initialize
     @number = 1
     @basket = []
     @total = 0
+    @history = []
   end
 
   def add_to_basket(dish)
@@ -29,8 +30,13 @@ attr_reader :number, :basket, :total
 
   def complete_order
     fail "The total of this order is not correct!" if !total_correct?
-    
+    order_history
     "Thank you! Your order was placed and will be delivered before #{Time.now + 60*60}"
+  end
+
+  def order_history
+    @history << @basket.flatten
+    @number +=1
   end
 
 

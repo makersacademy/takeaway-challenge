@@ -69,7 +69,34 @@ describe Order do
     it "confirms the order is complete and will be delivered an hour from now" do
       expect(order001.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.now + 60*60}")
     end
+  end
 
+  describe "#order_history" do
+    it "has a history" do
+      expect(order001.history).to be_kind_of(Array)
+    end
+
+    before do
+      order001.add_to_basket(cheeseBurger)
+      order001.add_to_basket(fries)
+    end
+
+    it "adds to the history when complete_order" do
+      order001.complete_order
+      expect(order001.history).to eq ([["Cheese Burger", 10, "Fries", 6]])
+    end
+
+    it "doesn't have a history unless first order completes" do
+      expect(order001.history).to eq ([])
+    end
+
+    it "has two history records when two orders are completed" do
+      order001.complete_order
+      order001.add_to_basket(cheeseBurger)
+      order001.add_to_basket(fries)
+      order001.complete_order
+      expect(order001.history.length).to eq(2)
+    end
   end
 
 end
