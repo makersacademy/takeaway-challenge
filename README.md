@@ -88,5 +88,6 @@ sparkleBurgers.order.view_basket
 
         => [[:"Cheese and bacon burger", 12], [:Fries, 6]]
 
-sparkleBurgers.order.total_due
-         => 18
+
+sparkleBurgers.order.complete_order
+          => "Thank you! Your order was placed and will be delivered before 2021-03-13 18:58:17 +0000"

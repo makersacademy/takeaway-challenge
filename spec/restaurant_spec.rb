@@ -19,6 +19,15 @@ describe Restaurant do
     end
   end
 
+  describe "#add_to_order" do
+    let(:dish_order) { [:"Cheese and bacon burger", 12] }
+
+    it "adds the customers dish choice to the order basket" do
+      sparkleBurgers.add_to_order(dish_order)
+      expect(sparkleBurgers.order.basket).to eq [[:"Cheese and bacon burger", 12]]
+    end
+  end
+
   describe "#choose_dish" do
     it "allows a user to select a dish number" do
       expect(sparkleBurgers.choose_dish(2)).to eq("Cheese and bacon burger has been added to your basket")

@@ -33,11 +33,14 @@ attr_reader :name, :menu, :order
     @print.join(", ").chomp
   end
 
-  def choose_dish(dish_num)
-    dish = @menu.to_a
-    @order.add_to_basket(dish[dish_num-1])
-    "#{dish[dish_num-1][0]} has been added to your basket"
+  def add_to_order(dish)
+    @order.add_to_basket(dish)
   end
 
+  def choose_dish(dish_num)
+    dish = @menu.to_a
+    add_to_order(dish[dish_num-1])
+    "#{dish[dish_num-1][0]} has been added to your basket"
+  end
 
 end
