@@ -46,4 +46,12 @@ describe Restaurant do
       expect(restaurant.add_to_order("Pizza")).to eq("Dish not available")
     end
   end
+
+  describe 'display_order' do
+    it 'displays the selected dishes and the sub-total of the order' do
+      restaurant.design_dish("Pizza", "5")
+      restaurant.add_to_order("Pizza")
+      expect(restaurant.display_order).to eq("Pizza: 5\nTotal: 5\n")
+    end
+  end
 end

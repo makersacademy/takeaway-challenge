@@ -12,9 +12,29 @@ class Menu
   end
 
   def compile_menu
-    list = @dishes.map do |dish|
+    list = format_dishes(@dishes)
+    list.join
+  end
+
+  def compile_order(order)
+    list = format_dishes(order)
+    total = calculate_total(order)
+    list << "Total: #{total}\n"
+    list.join
+  end
+
+  private
+
+  def format_dishes(dishes)
+    dishes.map do |dish|
       "#{dish.name}: #{dish.price}\n"
     end
-    list.join
+  end
+
+  def calculate_total(dishes)
+    prices = dishes.map do |dish|
+      dish.price.to_i
+    end
+    prices.sum
   end
 end

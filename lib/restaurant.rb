@@ -13,7 +13,13 @@ class Restaurant
   end
 
   def display_menu
+    # check if empty
     @menu.compile_menu
+  end
+
+  def display_order
+    # check if empty
+    @menu.compile_order(@order)
   end
 
   def add_to_order(name)
