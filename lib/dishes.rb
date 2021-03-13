@@ -6,8 +6,6 @@ class Dishes
     end
   end
 
-private
-
   def dishes
     @menu = { "MexiCali Beef Burger" => 12,
             "The Burrito Burger" => 15,
