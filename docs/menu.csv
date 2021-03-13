@@ -1,0 +1,17 @@
+id,category,dish,price
+1,Soup Base,Tomato Soup Base,5
+2,Soup Base,Spicy Soup Base,5
+3,Soup Base,Mushroom Soup Base,5
+4,Meat,Beef Slice,6.5
+5,Meat,Blood Tofu,6.5
+6,Meat,Pig Brain,6.5
+7,Meat,Duck Tongue,6.5
+8,Sea Food,Fish Slice,6.95
+9,Sea Food,Squid Tentacles,6.95
+10,Sea Food,Tiger Shrimp,6.95
+11,Vegetable,Chinese Cabbage,4
+12,Vegetable,Spinach,4
+13,Vegetable,Romaine Lettuce,4
+14,Vegetable,Enoki Mushroom,4.5
+15,Vegetable,Shiitake Mushroom,4.5
+16,Vegetable,Wood Ear Fungus,4.5
