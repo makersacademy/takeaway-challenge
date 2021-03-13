@@ -1,6 +1,6 @@
-require 'menu'
+require 'order_menu'
 
-describe Menu do
+describe OrderMenu do
   describe 'intialize' do
     it "is an array" do
       expect(subject.menu_list).to be_a(Array)
@@ -68,7 +68,7 @@ describe Menu do
 
   describe "order_total_update" do
     it "updates the order_total from the current order_list" do
-      menu = Menu.new
+      menu = OrderMenu.new
       allow($stdout).to receive(:write)
       allow($stdin).to receive(:gets).and_return("1", "y", "y")
       menu.add_to_order
@@ -78,7 +78,7 @@ describe Menu do
 
   describe "order_recipt" do
     it "produces a print out of the current order_list" do
-      menu = Menu.new
+      menu = OrderMenu.new
       allow($stdout).to receive(:write)
       allow($stdin).to receive(:gets).and_return("1", "y", "n", "2", "y", "y")
       menu.add_to_order

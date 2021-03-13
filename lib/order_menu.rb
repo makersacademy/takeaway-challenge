@@ -1,7 +1,7 @@
 require 'terminal-table'
 require 'csv'
 
-class Menu 
+class OrderMenu 
 
   attr_reader :menu_list, :order_list, :order_total
 

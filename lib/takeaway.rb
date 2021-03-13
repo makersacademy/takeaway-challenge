@@ -1,4 +1,4 @@
-require './lib/menu'
+require './lib/order_menu'
 require 'terminal-table'
 require 'csv'
 
@@ -7,7 +7,7 @@ class Takeaway
   attr_reader :menu, :active_orders, :order_history
   
   def initialize
-    @menu = Menu.new
+    @menu = OrderMenu.new
   end
 
   def ascii_render

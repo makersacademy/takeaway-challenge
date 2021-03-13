@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
   describe "initialize" do
     it "create a menu object" do
-      expect(subject.menu).to be_a(Menu)
+      expect(subject.menu).to be_a(OrderMenu)
     end
   end
 
