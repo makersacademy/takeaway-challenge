@@ -2,12 +2,10 @@ require 'csv'
 
 class Takeaway
 
-  attr_reader :menu, :active_orders, :order_history, :array_of_rows
+  attr_reader :menu, :active_orders, :order_history
   
   def initialize
     @menu = Menu.new
-    @active_orders = Array.new
-    @order_history = Array.new
   end
 
   def ascii_render
@@ -21,26 +19,23 @@ class Takeaway
     end
   end
 
-  def new_order
-    Order.new
-  end
-
   def interface_print
     print "\n
            Please make a selection
            -----------------------
            1. View menu
-           3. New order
+           2. New order
+           3. Order total
            9. Exit\n"
   end
 
   def interface
     selection = $stdin.gets.chomp
     case selection
-    when "1"; print_menu
-    when "2"; "make new order"
-    when "3"; "check total"
-    when "9"; exit
+    when "1" then print_menu
+    when "2" then @menu.add_to_order; puts @menu.order_list
+    when "3" then @menu.order_total_update; puts "The current order total is:#{@menu.order_total}"
+    when "9" then exit
     else
       print "That selection is incorrect, try again.".center(70)
     end
