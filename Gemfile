@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :test do
+  gem 'dotenv'
   gem 'rake'
   gem 'rspec'
   gem 'rubocop', '1.11.0'
