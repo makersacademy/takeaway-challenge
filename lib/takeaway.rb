@@ -6,6 +6,8 @@ class Takeaway
     @current_order = []
   end
 
+  attr_accessor :current_order
+
   def display_menu
     display_menu_format
   end
@@ -22,14 +24,27 @@ class Takeaway
     item_order
   end
 
-  def checkout(customer)
-    display_current_order
-    customer_address = "#{customer.address[:address]}, #{customer.address[:post_code]}"
-    customer_number = customer.number
-    checkout_message(customer_address, customer_number)
+  def remove_from_order(item_number, quantity)
+    return "Cannot edit order by a negative number." if quantity < 1
+
+    name = find_menu_item_by_number(item_number)
+    @current_order.each_with_index do |item, index|
+      if item.has_key?(name)
+        item[name] -= quantity
+        @current_order.delete_at(index) if item[name] <= 0
+      end
+    end
+    "Removed #{quantity} #{name} from order."
   end
 
-  def place_order(customer)
+  def checkout(customer)
+    display_current_order
+    address = "#{customer.address[:address]}, #{customer.address[:post_code]}"
+    number = customer.number
+    checkout_message(address, number)
+  end
+
+  def place_order(_customer)
     text_confirmation
     order_message
   end
@@ -107,3 +122,15 @@ TEST_MENU = [
   { 'Space Whale Sashimi' => 16.00 },
   { 'Venerable Dragon Roll' => 9.80 }
 ]
+
+test_takeaway = Takeaway.new
+
+test_takeaway.add_to_order(2, 2)
+test_takeaway.add_to_order(4, 2)
+test_takeaway.add_to_order(5, 1)
+
+puts test_takeaway.current_order.inspect
+
+test_takeaway.remove_from_order(4, 1)
+
+puts test_takeaway.current_order.inspect
