@@ -35,11 +35,11 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 #### Domain Model
 
-| Class      | Properties                 | Methods               |
+| Class      | Properties                 | Methods              |
 |------------|---------------------------|-----------------------|
 | Restaurant | @name                     | view_menu             |
-|            | @menu = []                | start_order           |
-|            | @open_basket = Order.new  | choose_dish(dish_num) |
+|            | @menu = []                | start_order X         |
+|            | @open_order = Order.new  | choose_dish(dish_num) |
 |            |                           |                       |
 | Order      | @order number             | view_basket           |
 |            | @basket = []              | calculate_total       |
@@ -82,4 +82,4 @@ sparkleBurgers.open_basket.basket
 sparkleBurgers.choose_dish(4)
         => "Fries has been added to your basket"
 sparkleBurgers.open_basket.basket
-        => ["Cheese and bacon burger", "Fries"] 
+        => ["Cheese and bacon burger", "Fries"]

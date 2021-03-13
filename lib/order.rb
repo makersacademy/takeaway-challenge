@@ -10,4 +10,8 @@ attr_reader :number, :basket
   def add_to_basket(dish)
     @basket << dish
   end
+
+  def view_basket
+    @basket
+  end
 end

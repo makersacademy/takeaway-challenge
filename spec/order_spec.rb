@@ -24,4 +24,12 @@ describe Order do
     end
   end
 
+  describe "#view_basket" do
+    it "can view the basket" do
+      order001.add_to_basket("Cheese Burger")
+      order001.add_to_basket("Fries")
+      expect(order001.view_basket).to eq(["Cheese Burger", "Fries"])
+    end
+  end
+
 end

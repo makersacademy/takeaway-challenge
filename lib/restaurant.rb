@@ -2,7 +2,7 @@ require_relative 'order'
 
 class Restaurant
 
-attr_reader :name, :menu, :open_basket
+attr_reader :name, :menu, :open_order
 
   def initialize(name)
     @name = name
@@ -16,7 +16,7 @@ attr_reader :name, :menu, :open_basket
       "Coke 330ml": 2,
       "Fanta 330ml": 2,
       "Brew Dog Vegabond 4.5%": 5 }
-    @open_basket = Order.new
+    @open_order = Order.new
   end
 
 #view menu prints the hash in a reabable list with numbers assinged to each dish for easy ordering
@@ -34,14 +34,14 @@ attr_reader :name, :menu, :open_basket
 
   def start_order
     num = 1
-    @open_basket
+    @open_order
     # num+=1
-    "Your basket is now open for order number #{@open_basket.number}"
+    "Your basket is now open for order number #{@open_order.number}"
   end
 
   def choose_dish(dish_num)
     dish = @menu.keys
-    @open_basket.add_to_basket(dish[dish_num-1].to_s)
+    @open_order.add_to_basket(dish[dish_num-1].to_s)
     "#{dish[dish_num-1]} has been added to your basket"
   end
 
