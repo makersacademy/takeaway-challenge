@@ -1,19 +1,20 @@
 class Order
-    require './lib/takeaway'
-    attr_accessor :order, :takeaway  
-    def initialize 
+    require './lib/menu'
+    attr_accessor :order 
+    def initialize(menu = Menu.new) 
          @order = []
-         @takeaway = Takeaway.new 
+         @menu = menu
     end 
-# this adds items to the @order array but also returns 
-# nil for the other menu items. 
+   
     def add(item)
-        @takeaway.menu.map {|food, price|
-            if item == food
-            @order << "#{item}, #{price}" end }.reject(&:nil?)
-        end 
-
-    def total 
-
+        @pizzas = {
+            "cheese" => 10,
+            "pepperoni" => 12,
+            "hawaiian" => 13,
+            "vegetarian" => 13,
+            "meat" => 15 }
+        
+      @order.push(["#{item}", @pizzas[item]])
     end 
 end 
+

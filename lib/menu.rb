@@ -1,16 +1,15 @@
-class Takeaway
-    def menu
-        @menu  = {
+class Menu
+    attr_accessor :pizzas
+    def initialize 
+        @pizzas  = {
             "cheese" => 10,
             "pepperoni" => 12,
             "hawaiian" => 13,
             "vegetarian" => 13,
-            "meat lovers" => 15
-            }
+            "meat" => 15 }
     end 
     def print_menu
-        menu 
-        @menu.each do |key, value|
+        @pizzas.each do |key, value|
             puts "#{key} : #{value}"
         end  
     end 
