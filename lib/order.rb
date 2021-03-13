@@ -14,7 +14,16 @@ attr_reader :number, :basket, :pending_total
   end
 
   def view_basket
-    @basket
+    @print = ["Viewing basket for order number #{@number}:\n"]
+    num = 1
+    unless num >= @basket.length
+      @basket.each do |dish|
+        @print << "#{dish[0]} £#{dish[1]}\n"
+        num+=1
+      end
+    end
+    @print << "Total cost of order: #{@pending_total}"
+    @print.join(", ").chomp
   end
 
   def total_so_far

@@ -2,7 +2,7 @@ require_relative 'order'
 
 class Restaurant
 
-attr_reader :name, :menu, :open_order
+attr_reader :name, :menu, :order
 
   def initialize(name)
     @name = name
@@ -16,7 +16,7 @@ attr_reader :name, :menu, :open_order
       "Coke 330ml": 2,
       "Fanta 330ml": 2,
       "Brew Dog Vegabond 4.5%": 5 }
-    @open_order = Order.new
+    @order = Order.new
     @price = []
   end
 
@@ -33,23 +33,9 @@ attr_reader :name, :menu, :open_order
     @print.join(", ").chomp
   end
 
-  # def start_order
-  #   num = 1
-  #   @open_order
-  #   # num+=1
-  #   "Your basket is now open for order number #{@open_order.number}"
-  # end
-
-
-  # def choose_dish(dish_num)
-  #   dish = @menu.keys
-  #   @open_order.add_to_basket(dish[dish_num-1].to_s)
-  #   "#{dish[dish_num-1]} has been added to your basket"
-  # end
-
   def choose_dish(dish_num)
     dish = @menu.to_a
-    @open_order.add_to_basket(dish[dish_num-1])
+    @order.add_to_basket(dish[dish_num-1])
     "#{dish[dish_num-1][0]} has been added to your basket"
   end
 

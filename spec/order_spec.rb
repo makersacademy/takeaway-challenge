@@ -40,7 +40,7 @@ describe Order do
     it "can view the basket" do
       order001.add_to_basket(cheeseBurger)
       order001.add_to_basket(fries)
-      expect(order001.view_basket).to eq([["Cheese Burger", 10], ["Fries", 6]])
+      expect(order001.view_basket).to eq("Viewing basket for order number 1:\n, Cheese Burger £10\n, Fries £6\n, Total cost of order: 16")
     end
   end
 
