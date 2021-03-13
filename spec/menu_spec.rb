@@ -53,11 +53,16 @@ describe Menu do
   end  
 
   describe "input_check" do
-    it "when the input is a string return downcase of that string" do
-      expect(subject.input_check("WoRd")).to eq("Word")
+    context "the input is known to be within the dataset" do
+      it "and is a string return .downcase.capitalise of that string" do
+        expect(subject.input_check("Tofu CHOW MEIN")).to eq("Tofu chow mein")
+      end
+      it "and is a number in a string return as an Integer" do
+        expect(subject.input_check("5")).to eq(5)
+      end
     end
-    it "when the input is a number in a string return the int of that number" do
-      expect(subject.input_check("10")).to eq(10)
+    it "if the input is not within the dataset then it returns false" do
+      expect(subject.input_check("Not in there")).to eq(false)
     end
   end
 
@@ -68,7 +73,16 @@ describe Menu do
       allow($stdin).to receive(:gets).and_return("1", "y", "y")
       menu.add_to_order
       expect(menu.order_total_update).to be(4)
-      puts menu.order_total
+    end
+  end
+
+  describe "order_recipt" do
+    it "produces a print out of the current order_list" do
+      menu = Menu.new
+      allow($stdout).to receive(:write)
+      allow($stdin).to receive(:gets).and_return("1", "y", "n", "2", "y", "y")
+      menu.add_to_order
+      expect { menu.order_recipt }.to output.to_stdout
     end
   end
 end

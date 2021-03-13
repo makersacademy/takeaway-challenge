@@ -6,4 +6,6 @@ group :test do
   gem 'rubocop', '1.11.0'
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
+  gem 'terminal-table'
+  gem 'twilio-ruby', '~> 5.48.0'
 end
