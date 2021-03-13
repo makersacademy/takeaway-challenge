@@ -76,7 +76,10 @@ see_menu - lists out dishes with prices
 
 US2
 select_dishes - select and store dishes
+getting user input - mock this
+Edge case - input does not match case
 dish owns available
+- restaurant method to say dish is out of stock.
 
 US3
 check_total - sum of prices of selected dishes
@@ -93,3 +96,8 @@ Menu owns MAX_WAITING_TIME
 Twilio API
   gem file
   set phone number to environment variable
+
+Notes
+- add implementation for extra menus (drinks)
+- subclasses starter, main, desert, drinks and polymorphic
+  functions

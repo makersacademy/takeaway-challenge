@@ -1,7 +1,6 @@
 require 'dish'
 
 class Menu
-
   attr_reader :dishes
 
   def initialize
@@ -12,4 +11,10 @@ class Menu
     @dishes << Dish.new(name, price)
   end
 
+  def compile_menu
+    list = @dishes.map do |dish|
+      "#{dish.name}: #{dish.price}\n"
+    end
+    list.join
+  end
 end

@@ -6,6 +6,7 @@ describe Dish do
   it 'has a name and price' do
     expect(dish).to respond_to(:name)
     expect(dish).to respond_to(:price)
+    expect(dish).to respond_to(:available)
   end
 
 end
