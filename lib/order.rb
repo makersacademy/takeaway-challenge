@@ -38,7 +38,7 @@ attr_reader :number, :basket, :total, :history
 private
 
   def order_history
-    @history << @basket.flatten
+    @history << { "Order ##{@number}, completed on #{Time.now}:": @basket.flatten }
   end
 
   def reset_basket

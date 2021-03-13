@@ -86,7 +86,7 @@ describe Order do
 
     it "adds to the history when complete_order" do
       order001.complete_order
-      expect(order001.history).to eq ([["Cheese Burger", 10, "Fries", 6]])
+      expect(order001.history).to eq ([{:"Order #1, completed on #{Time.now}:"=>["Cheese Burger", 10, "Fries", 6]}])
     end
 
     it "doesn't have a history unless first order completes" do
@@ -112,7 +112,7 @@ describe Order do
       end
 
       describe "#reset_total" do
-        it "resets the basket after order is complete" do
+        it "resets the total after order is complete" do
           order001.add_to_basket(cheeseBurger)
           order001.add_to_basket(fries)
           order001.complete_order
