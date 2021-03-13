@@ -3,5 +3,3 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
-
-./lib/burgers.csv
