@@ -61,6 +61,9 @@ describe Order do
     it "throws an error if the total is not correct" do
       incorrect_total.add_to_basket(cheeseBurger)
       incorrect_total.add_to_basket(fries)
+      p incorrect_total.view_basket
+      p incorrect_total.total
+
     expect { incorrect_total.complete_order }.to raise_error "The total of this order is not correct!"
     end
   end
@@ -97,6 +100,31 @@ describe Order do
       order001.complete_order
       expect(order001.history.length).to eq(2)
     end
-  end
 
+    describe "#reset_order"do
+      describe "#reset_basket" do
+        it "resets the basket after order is complete" do
+          order001.add_to_basket(cheeseBurger)
+          order001.add_to_basket(fries)
+          order001.complete_order
+          expect(order001.basket).to eq([])
+        end
+      end
+
+      describe "#reset_total" do
+        it "resets the basket after order is complete" do
+          order001.add_to_basket(cheeseBurger)
+          order001.add_to_basket(fries)
+          order001.complete_order
+          expect(order001.total).to eq(0)
+        end
+      end
+
+      it "increases the order count after order is complete" do
+        order001.add_to_basket(cheeseBurger)
+        order001.add_to_basket(fries)
+        expect { order001.complete_order }.to change {order001.number }.by(+1)
+      end
+  end
+end
 end

@@ -31,16 +31,30 @@ attr_reader :number, :basket, :total, :history
   def complete_order
     fail "The total of this order is not correct!" if !total_correct?
     order_history
+    reset_order
     "Thank you! Your order was placed and will be delivered before #{Time.now + 60*60}"
   end
 
+private
+
   def order_history
     @history << @basket.flatten
+  end
+
+  def reset_basket
+    @basket = []
+  end
+
+  def reset_total
+    @total = 0
+  end
+
+  def reset_order
+    reset_basket
+    reset_total
     @number +=1
   end
 
-
-private
 
   def total_so_far
     @total += @basket[-1][1]

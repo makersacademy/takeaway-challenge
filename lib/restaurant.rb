@@ -17,7 +17,6 @@ attr_reader :name, :menu, :order
       "Fanta 330ml": 2,
       "Brew Dog Vegabond 4.5%": 5 }
     @order = Order.new
-    @price = []
   end
 
 #view menu prints the hash in a reabable list with numbers assinged to each dish for easy ordering
