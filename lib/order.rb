@@ -28,13 +28,17 @@ attr_reader :number, :basket, :total
 
 
   def complete_order
+    fail "The total of this order is not correct!" if !total_correct?
+    
     "Thank you! Your order was placed and will be delivered before #{Time.now + 60*60}"
   end
+
+
+private
 
   def total_so_far
     @total += @basket[-1][1]
   end
-
 
 
   def total_due

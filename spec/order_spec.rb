@@ -48,13 +48,20 @@ describe Order do
     it "calculates the total of the order" do
       order001.add_to_basket(cheeseBurger)
       order001.add_to_basket(fries)
-      expect(order001.total_due).to eq(16)
+      expect(order001.total).to eq(16)
     end
   end
 
   describe "#total_correct?" do
-    it "double checks the total is correct against the menu" do
-    expect(order001.total_correct?).to be(true)
+    let(:incorrect_total) { Order.new}
+    before do
+      allow(incorrect_total).to receive(:total_due).and_return(+5)
+    end
+
+    it "throws an error if the total is not correct" do
+      incorrect_total.add_to_basket(cheeseBurger)
+      incorrect_total.add_to_basket(fries)
+    expect { incorrect_total.complete_order }.to raise_error "The total of this order is not correct!"
     end
   end
 
