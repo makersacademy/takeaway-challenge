@@ -24,4 +24,10 @@ describe Restaurant do
       expect(sparkleBurgers.start_order).to eq("Your basket is now open for order number #{order001.number}")
     end
   end
+
+  describe "#choose_dish" do
+    it "allows a user to select a dish number" do
+      expect(sparkleBurgers.choose_dish(2)).to eq("Cheese and bacon burger has been added to your basket")
+    end
+  end
 end

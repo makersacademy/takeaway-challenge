@@ -39,4 +39,9 @@ attr_reader :name, :menu, :open_basket
     "Your basket is now open for order number #{@open_basket.number}"
   end
 
+  def choose_dish(dish_num)
+    dish = @menu.keys
+    "#{dish[dish_num-1]} has been added to your basket"
+  end
+
 end

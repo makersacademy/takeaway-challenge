@@ -35,16 +35,16 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 #### Domain Model
 
-| Class      | Properties            | Methods               |
-|------------|-----------------------|-----------------------|
-| Restaurant | @name                 | view_menu             |
-|            | @menu = []            | start_order           |
-|            |                       | choose_dish(dish_num) |
-|            |                       |                       |
-| Order      | @order number         | view_basket           |
-|            | @basket = []          | calculate_total       |
-|            | @prices = []    X     | total_correct?        |
-|            |                       | complete_order        |
+| Class      | Properties                 | Methods               |
+|------------|---------------------------|-----------------------|
+| Restaurant | @name                     | view_menu             |
+|            | @menu = []                | start_order           |
+|            | @open_basket = Order.new  | choose_dish(dish_num) |
+|            |                           |                       |
+| Order      | @order number             | view_basket           |
+|            | @basket = []              | calculate_total       |
+|            | @prices = []    X         | total_correct?        |
+|            |                           | complete_order        |
 
 
 Optional extras:
@@ -58,17 +58,20 @@ additional notes:
 
 #### IRB testing
 
-*require './lib/restaurant.rb'
+require './lib/restaurant.rb'
 
-*sparkleBurgers = Restaurant.new("Sparkle Burgers LTD")
+sparkleBurgers = Restaurant.new("Sparkle Burgers LTD")
 
-*sparkleBurgers.menu
+sparkleBurgers.menu
       => [{:"Cheese burger"=>10}, {:"Cheese and bacon burger"=>12}, {:"Pulled pork burger"=>15},  
           {:Fries=>6}, {:"Chilli fries"=>8}, {:"Onion rings"=>7}, {:"Coke 330ml"=>2},
           {:"Fanta 330ml"=>2}, {:"Brew Dog Vegabond 4.5%"=>5}]
 
-*sparkleBurgers.view_menu
+sparkleBurgers.view_menu
       => "Sparkle Burgers LTD's Menu:\n, 1: Cheese burger, £10\n, 2: Cheese and bacon burger, £12\n, 3: Pulled pork burger, £15\n, 4: Fries, £6\n, 5: Chilli fries, £8\n, 6: Onion rings, £7\n, 7: Coke 330ml, £2\n, 8: Fanta 330ml,£2\n, 9: Brew Dog Vegabond 4.5%, £5"
 
 sparkleBurgers.start_order
        => "Your basket is now open for order number 1"
+
+sparkleBurgers.choose_dish(2)
+        => "Cheese and bacon burger has been added to your basket"
