@@ -1,40 +1,28 @@
 require_relative 'customer.rb'
 
 class Takeaway
-  def initialize
-    @menu = Menu.new
-    @current_order = []
+  def initialize(menu = Menu.new, order_class = Order)
+    @menu = menu
+    @order_class = order_class
+    @current_order = @order_class.new(@menu)
   end
 
-  attr_accessor :current_order
+  attr_accessor :current_order # to remove at end
 
   def display_menu
     @menu.display_menu
   end
 
   def display_current_order
-    return "You have not selected any items." if @current_order.empty?
-
-    display_order_format
+    @current_order.display_current_order
   end
 
   def add_to_order(item_number, quantity)
-    item_order = { find_menu_item_by_number(item_number) => quantity }
-    @current_order << item_order
-    item_order
+    @current_order.add_to_order(item_number, quantity)
   end
 
   def remove_from_order(item_number, quantity)
-    return "Cannot edit order by a negative number." if quantity < 1
-
-    name = find_menu_item_by_number(item_number)
-    @current_order.each_with_index do |item, index|
-      if item.has_key?(name)
-        item[name] -= quantity
-        @current_order.delete_at(index) if item[name] <= 0
-      end
-    end
-    "Removed #{quantity} #{name} from order."
+    @current_order.remove_from_order(item_number, quantity)
   end
 
   def checkout(customer)
@@ -55,48 +43,8 @@ class Takeaway
   end
 
 private
-
-  def find_menu_item_by_number(item_number)
-    @menu.access[item_number - 1].flatten[0]
-  end
-
-  def find_price(item_name)
-    @menu.access.each { |item| return item[item_name] if item.has_key?(item_name) }
-  end
-
-  def display_order_format
-    display = ["YOUR ORDER\n"]
-    @current_order.each_with_index { |item, index| display << order_line_format(item, index) }
-    display.push("\nTOTAL: £#{total_cost(@current_order)}").join("\n")
-  end
-
-  def order_line_format(item, index)
-    number = index + 1
-    name = item.flatten[0]
-    quantity = item.flatten[1]
-    price = find_price(name)
-    total = price * quantity
-
-    "#{number}. #{name}  Price: £#{gbp_format(price)}  Qty: #{quantity}  Sub: £#{gbp_format(total)}"
-  end
-
-  def gbp_format(amount)
-    sprintf('%<gbp>.2f', gbp: amount)
-  end
-
-  def total_cost(order)
-    total = 0
-    order.each do |item|
-      name = item.flatten[0]
-      quantity = item.flatten[1]
-      price = find_price(name)
-      total += quantity * price
-    end
-    gbp_format(total)
-  end
-
   def checkout_message(address, number)
-    display = "Your order is £#{total_cost(@current_order)}.\nYour address is: #{address}\n"
+    display = "Your order is £#{@current_order.current_cost}.\nYour address is: #{address}\n"
     display << "Your number is: #{number}\n\nPlease press PLACE ORDER to confirm."
   end
 

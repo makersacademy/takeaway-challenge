@@ -55,6 +55,7 @@ describe Takeaway do
       test_takeaway.add_to_order(2, 2)
       test_takeaway.add_to_order(4, 2)
       test_takeaway.add_to_order(5, 1)
+      # puts test_takeaway.current_order.cost
       expect(test_takeaway.checkout(dummy_customer)).to eq checkout_message_1
     end
   end
