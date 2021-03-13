@@ -2,14 +2,14 @@ require_relative 'customer.rb'
 
 class Takeaway
   def initialize
-    @menu = TEST_MENU
+    @menu = Menu.new
     @current_order = []
   end
 
   attr_accessor :current_order
 
   def display_menu
-    display_menu_format
+    @menu.display_menu
   end
 
   def display_current_order
@@ -57,21 +57,11 @@ class Takeaway
 private
 
   def find_menu_item_by_number(item_number)
-    @menu[item_number - 1].flatten[0]
+    @menu.access[item_number - 1].flatten[0]
   end
 
   def find_price(item_name)
-    @menu.each { |item| return item[item_name] if item.has_key?(item_name) }
-  end
-
-  def display_menu_format
-    display = ['MENU']
-    @menu.each_with_index { |item, index| display << menu_line_format(item, index) }
-    display.join("\n")
-  end
-
-  def menu_line_format(item, index)
-    "#{index + 1}. #{item.flatten[0]}  Price: £#{gbp_format(item.flatten[1])}"
+    @menu.access.each { |item| return item[item_name] if item.has_key?(item_name) }
   end
 
   def display_order_format
@@ -114,14 +104,6 @@ private
     "Payment Confirmed.\nOrder placed.\nConfirmation test issued."
   end
 end
-
-TEST_MENU = [
-  { 'Spicy Edamame' => 4.20 },
-  { 'Salt and Chilli Vat Chicken Strips' => 5.20 },
-  { 'Tempura Seaweed Fish' => 8.00 },
-  { 'Space Whale Sashimi' => 16.00 },
-  { 'Venerable Dragon Roll' => 9.80 }
-]
 
 test_takeaway = Takeaway.new
 
