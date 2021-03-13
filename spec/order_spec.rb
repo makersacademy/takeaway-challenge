@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   let(:order001) { Order.new }
-  let(:cheeseBurger) { ["Cheese Burger", 10]}
+  let(:cheeseBurger) { ["Cheese Burger", 10] }
   let(:fries) { ["Fries", 6] }
 
   it "initializes with an order number" do
@@ -28,13 +28,13 @@ describe Order do
 
   describe "#total_so_far" do
     let(:order002) { Order.new }
+
     it "let's the customer know the total cost of the order so far" do
-    order002.add_to_basket(cheeseBurger)
-    order002.add_to_basket(fries)
-    expect(order002.total).to eq(16)
+      order002.add_to_basket(cheeseBurger)
+      order002.add_to_basket(fries)
+      expect(order002.total).to eq(16)
     end
   end
-
 
   describe "#view_basket" do
     it "can view the basket" do
@@ -53,7 +53,8 @@ describe Order do
   end
 
   describe "#total_correct?" do
-    let(:incorrect_total) { Order.new}
+    let(:incorrect_total) { Order.new }
+
     before do
       allow(incorrect_total).to receive(:total_due).and_return(+5)
     end
@@ -61,16 +62,13 @@ describe Order do
     it "throws an error if the total is not correct" do
       incorrect_total.add_to_basket(cheeseBurger)
       incorrect_total.add_to_basket(fries)
-      p incorrect_total.view_basket
-      p incorrect_total.total
-
-    expect { incorrect_total.complete_order }.to raise_error "The total of this order is not correct!"
+      expect { incorrect_total.complete_order }.to raise_error "The total of this order is not correct!"
     end
   end
 
   describe "#complete_order" do
     it "confirms the order is complete and will be delivered an hour from now" do
-      expect(order001.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.now + 60*60}")
+      expect(order001.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.now + 60 * 60}")
     end
   end
 
@@ -86,11 +84,11 @@ describe Order do
 
     it "adds to the history when complete_order" do
       order001.complete_order
-      expect(order001.history).to eq ([{:"Order #1, completed on #{Time.now}:"=>["Cheese Burger", 10, "Fries", 6]}])
+      expect(order001.history).to eq([{ :"Order #1, completed on #{Time.now}:" => ["Cheese Burger", 10, "Fries", 6] }])
     end
 
     it "doesn't have a history unless first order completes" do
-      expect(order001.history).to eq ([])
+      expect(order001.history).to eq []
     end
 
     it "has two history records when two orders are completed" do
@@ -101,7 +99,7 @@ describe Order do
       expect(order001.history.length).to eq(2)
     end
 
-    describe "#reset_order"do
+    describe "#reset_order" do
       describe "#reset_basket" do
         it "resets the basket after order is complete" do
           order001.add_to_basket(cheeseBurger)
@@ -123,8 +121,8 @@ describe Order do
       it "increases the order count after order is complete" do
         order001.add_to_basket(cheeseBurger)
         order001.add_to_basket(fries)
-        expect { order001.complete_order }.to change {order001.number }.by(+1)
+        expect { order001.complete_order }.to change { order001.number }.by(+1)
       end
+    end
   end
-end
 end
