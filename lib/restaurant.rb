@@ -32,17 +32,24 @@ attr_reader :name, :menu, :open_order
     @print.join(", ").chomp
   end
 
-  def start_order
-    num = 1
-    @open_order
-    # num+=1
-    "Your basket is now open for order number #{@open_order.number}"
-  end
+  # def start_order
+  #   num = 1
+  #   @open_order
+  #   # num+=1
+  #   "Your basket is now open for order number #{@open_order.number}"
+  # end
+
+
+  # def choose_dish(dish_num)
+  #   dish = @menu.keys
+  #   @open_order.add_to_basket(dish[dish_num-1].to_s)
+  #   "#{dish[dish_num-1]} has been added to your basket"
+  # end
 
   def choose_dish(dish_num)
-    dish = @menu.keys
-    @open_order.add_to_basket(dish[dish_num-1].to_s)
-    "#{dish[dish_num-1]} has been added to your basket"
+    dish = @menu.to_a
+    @open_order.add_to_basket(dish[dish_num-1])
+    "#{dish[dish_num-1][0]} has been added to your basket"
   end
 
 end

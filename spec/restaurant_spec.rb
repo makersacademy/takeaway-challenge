@@ -32,13 +32,20 @@ describe Restaurant do
 
     it "adds chosen dish to the order basket" do
       sparkleBurgers.choose_dish(2)
-      expect(sparkleBurgers.open_order.basket).to eq ["Cheese and bacon burger"]
+      expect(sparkleBurgers.open_order.basket).to eq [[:"Cheese and bacon burger", 12]]
     end
 
     it "adds more than one dish to the order basket" do
       sparkleBurgers.choose_dish(2)
       sparkleBurgers.choose_dish(4)
-      expect(sparkleBurgers.open_order.basket).to eq ["Cheese and bacon burger", "Fries"]
+      expect(sparkleBurgers.open_order.basket).to eq [[:"Cheese and bacon burger", 12], [:"Fries", 6]]
+    end
+
+    describe "#add_to_order" do
+      it "adds a hash to the order basket" do
+        sparkleBurgers.choose_dish(1)
+        expect(sparkleBurgers.open_order.basket).to eq [[:"Cheese burger", 10]]
+      end
     end
   end
 
