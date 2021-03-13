@@ -26,6 +26,16 @@ describe Order do
     end
   end
 
+  describe "#total_so_far" do
+    let(:order002) { Order.new }
+    it "let's the customer know the total cost of the order so far" do
+    order002.add_to_basket(cheeseBurger)
+    order002.add_to_basket(fries)
+    expect(order002.pending_total).to eq(16)
+    end
+  end
+
+
   describe "#view_basket" do
     it "can view the basket" do
       order001.add_to_basket(cheeseBurger)
@@ -38,7 +48,14 @@ describe Order do
     it "calculates the total of the order" do
       order001.add_to_basket(cheeseBurger)
       order001.add_to_basket(fries)
-      expect(order001.total_due).to eq("£16")
+      expect(order001.total_due).to eq(16)
+    end
+  end
+
+
+  describe "#total_correct?" do
+    it "double checks the total is correct against the menu" do
+    expect(order001.total_correct?).to be(true)
     end
   end
 

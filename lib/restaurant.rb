@@ -17,6 +17,7 @@ attr_reader :name, :menu, :open_order
       "Fanta 330ml": 2,
       "Brew Dog Vegabond 4.5%": 5 }
     @open_order = Order.new
+    @price = []
   end
 
 #view menu prints the hash in a reabable list with numbers assinged to each dish for easy ordering
@@ -51,5 +52,6 @@ attr_reader :name, :menu, :open_order
     @open_order.add_to_basket(dish[dish_num-1])
     "#{dish[dish_num-1][0]} has been added to your basket"
   end
+
 
 end
