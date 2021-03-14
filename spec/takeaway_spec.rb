@@ -10,7 +10,7 @@ describe Takeaway do
   describe "interactive_menu" do
     it "loops the menu so that the user can move between options" do
       allow($stdout).to receive(:write)
-      allow($stdin).to receive(:gets).and_return("9")
+      allow($stdin).to receive(:gets).and_return("1", "wrong", "5")
       expect { subject.interactive_menu }.to raise_error(SystemExit)
     end
   end
@@ -24,7 +24,7 @@ describe Takeaway do
   describe "interface" do
     it "collects the user input and carries out the actions" do
       allow($stdout).to receive(:write)
-      allow($stdin).to receive(:gets).and_return("1", "wrong", "2", "1", "y", "y", "3", "9")
+      allow($stdin).to receive(:gets).and_return("1", "wrong", "2", "1", "y", "y", "3", "5")
       expect { subject.interactive_menu }.to raise_error(SystemExit)
     end
   end
@@ -33,6 +33,14 @@ describe Takeaway do
     it "loads a CSV and removes a column and prints data" do
       allow($stdout).to receive(:write)
       expect { subject.ascii_render }.to output.to_stdout
+    end
+  end
+
+  describe "enter_number" do
+    it "takes the customer number and checks it is adjusted as an international number" do
+      allow($stdout).to receive(:write)
+      allow($stdin).to receive(:gets).and_return("07812345678", "y")
+      expect(subject.enter_number).to eq("+447812345678")
     end
   end
 end

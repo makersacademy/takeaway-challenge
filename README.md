@@ -13,8 +13,6 @@ webmock
 
 vcr
 
-test-unit
-
 
 https://www.rubyguides.com/2018/12/ruby-vcr-gem/
 

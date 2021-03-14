@@ -2,7 +2,7 @@ require 'dotenv/load'
 require 'simplecov'
 require 'simplecov-console'
 require 'rubygems'
-require 'test/unit'
+# require 'test/unit'
 require 'vcr'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
@@ -11,8 +11,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # SimpleCov::Formatter::HTMLFormatter
 ])
 SimpleCov.start
-
-
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/vcr"

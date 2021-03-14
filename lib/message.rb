@@ -10,8 +10,8 @@ class Message
 
   def sms(phone_number)
     time = Time.new + 3600
-    message = @client.messages.create(
-      body: "Your order is being processed you can expect delivery at #{time.hour}:#{time.min}",
+    @client.messages.create(
+      body: "Your order is being processed you can expect delivery by #{time.hour}:#{time.min}",
       to: phone_number,
       from: ENV['ACCOUNT_NUMBER'])
   end

@@ -24,7 +24,7 @@ class OrderMenu
     loop do
       @order_list << order_entry
       puts "Is your order complete?"
-      if $stdin.gets.chomp.downcase == "y"
+      if confirmation?
         return @order_list
       end
     end
@@ -36,7 +36,7 @@ class OrderMenu
       dish = input_check($stdin.gets.chomp)
       redo if dish == false
       puts "You have chosen #{dish} is this correct?"
-      if $stdin.gets.chomp.downcase == "y"
+      if confirmation?
         return search_menu_items(dish)
       end
     end
@@ -69,5 +69,9 @@ class OrderMenu
     end
     recipt_table.style = { :alignment => :center }
     puts recipt_table
+  end
+
+  def confirmation?
+    $stdin.gets.chomp.downcase == "y"
   end
 end
