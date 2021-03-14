@@ -1,6 +1,7 @@
-
-class Order
-	def menu
+class Menu
+	attr_reader :dishes
+	
+	def initialize
 		@dishes = [
 			{:dish_number => 1, :dish => 'Chicken', :price => 10},
 			{:dish_number => 2, :dish => 'Beef', :price => 10},
