@@ -1,4 +1,8 @@
 class Dishes
+  attr_reader :menu
+  def initialize
+    @menu = nil
+  end
 
   def list_menu
     dishes.each do |key, value|

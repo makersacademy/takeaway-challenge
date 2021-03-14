@@ -1,26 +1,36 @@
 class Order
-  attr_reader :whole_order
+  attr_reader :whole_order, :total
   def initialize
     @whole_order = []
+    @total = []
     @dishes = Dishes.new
   end
 
   def select_dishes
-    order = gets.chomp
-    list_of_dishes = @dishes.dishes
-    list_of_dishes.each do |key, value|
-      if order == key
-        @whole_order << "#{key} ---> #{value}"
-      end
+    until @order == "end order"
+      @order = gets.chomp
+      push_order_and_total_to_array
     end
+    return @whole_order
   end
 
-  def return_order
-    @whole_order.each do |key, value|
-      "Hi"
+  def summarised_bill
+    @whole_order.each do |line|
+      puts "#{line}".center(50)
     end
-  #Taking a break - select_dishes now pushes the key
-  #value pairs into the array. Now need to find a way of
-  # returning the prices only.
+    puts "------------".center(50)
+    puts "#{@total.sum}".center(50)
+  end
+
+private
+
+  def push_order_and_total_to_array
+    list_of_dishes = @dishes.dishes
+    list_of_dishes.each do |key, value|
+      if @order == key
+        @whole_order << "#{key} ---> #{value}"
+        @total << value
+      end
+    end
   end
 end
