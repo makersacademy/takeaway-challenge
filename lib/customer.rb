@@ -6,16 +6,4 @@ class Customer
   end
 
   attr_reader :number, :address, :payment
-
-  # def number
-  #   @number
-  # end
-  #
-  # def address
-  #   @address
-  # end
-  #
-  # def payment
-  #   @payment
-  # end
 end

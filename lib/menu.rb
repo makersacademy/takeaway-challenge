@@ -1,6 +1,6 @@
 class Menu
-  def initialize
-    @menu = TEST_MENU
+  def initialize(menu = TEST_MENU)
+    @menu = menu
   end
 
   def display_menu

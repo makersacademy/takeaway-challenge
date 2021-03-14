@@ -13,7 +13,7 @@ class Order
   def remove_from_order(item_number, quantity)
     return "Cannot edit order by a negative number." if quantity < 1
 
-    name = find_menu_item_by_number(item_number)
+    name = find_order_item_by_number(item_number)
     @current_order.each_with_index do |item, index|
       if item.has_key?(name)
         item[name] -= quantity
@@ -24,7 +24,7 @@ class Order
   end
 
   def display_current_order
-    return "You have not selected any items." if @current_order.empty?
+    return "You have not selected any items." if empty?
 
     display_order_format
   end
@@ -33,10 +33,18 @@ class Order
     total_cost(@current_order)
   end
 
+  def empty?
+    @current_order.empty?
+  end
+
   private
 
   def find_menu_item_by_number(item_number)
     @menu.access[item_number - 1].flatten[0]
+  end
+
+  def find_order_item_by_number(item_number)
+    @current_order[item_number - 1].flatten[0]
   end
 
   def find_price(item_name)

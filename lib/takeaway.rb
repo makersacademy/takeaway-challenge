@@ -1,13 +1,15 @@
 require_relative 'customer.rb'
+require_relative 'order.rb'
+require_relative 'menu.rb'
+require_relative 'send_text.rb'
 
 class Takeaway
-  def initialize(menu = Menu.new, order_class = Order)
+  def initialize(menu = Menu.new, order_class = Order, text = SendText.new)
     @menu = menu
     @order_class = order_class
     @current_order = @order_class.new(@menu)
+    @text = text
   end
-
-  attr_accessor :current_order # to remove at end
 
   def display_menu
     @menu.display_menu
@@ -26,6 +28,8 @@ class Takeaway
   end
 
   def checkout(customer)
+    return "Please add items before checking out." if empty_order?
+
     display_current_order
     address = "#{customer.address[:address]}, #{customer.address[:post_code]}"
     number = customer.number
@@ -33,34 +37,29 @@ class Takeaway
   end
 
   def place_order(_customer)
-    text_confirmation
-    order_message
-  end
+    return "Please add items before placing an order." if empty_order?
 
-  def text_confirmation
-    delivery_time = (Time.now + 60 * 60).strftime "%H:%M"
-    "Thank you! Your order was placed and will be delivered by #{delivery_time}"
+    order_message # redundant? 
+    text_confirmation
   end
 
 private
+
   def checkout_message(address, number)
     display = "Your order is £#{@current_order.current_cost}.\nYour address is: #{address}\n"
     display << "Your number is: #{number}\n\nPlease press PLACE ORDER to confirm."
   end
 
   def order_message
-    "Payment Confirmed.\nOrder placed.\nConfirmation test issued."
+    "Payment Confirmed.\nOrder placed.\nConfirmation text issued."
+  end
+
+  def text_confirmation
+    delivery_time = (Time.now + 60 * 60).strftime "%H:%M"
+    @text.send_confirmation(delivery_time)
+  end
+
+  def empty_order?
+    @current_order.empty?
   end
 end
-
-test_takeaway = Takeaway.new
-
-test_takeaway.add_to_order(2, 2)
-test_takeaway.add_to_order(4, 2)
-test_takeaway.add_to_order(5, 1)
-
-puts test_takeaway.current_order.inspect
-
-test_takeaway.remove_from_order(4, 1)
-
-puts test_takeaway.current_order.inspect

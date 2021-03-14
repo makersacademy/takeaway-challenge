@@ -17,7 +17,7 @@ describe Order do
       test_order.add_to_order(2, 2)
       test_order.add_to_order(4, 2)
       test_order.add_to_order(5, 1)
-      expect(test_order.remove_from_order(4, 1)).to eq revised_order_1
+      expect(test_order.remove_from_order(2, 1)).to eq revised_order_1
     end
   end
 
@@ -44,6 +44,12 @@ describe Order do
       test_order.add_to_order(4, 2)
       test_order.add_to_order(5, 1)
       expect(test_order.current_cost).to eq '52.20'
+    end
+  end
+
+  describe '#empty?' do
+    it 'returns true if the order basket is empty' do
+      expect(test_order).to be_empty
     end
   end
 end

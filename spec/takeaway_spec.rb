@@ -29,7 +29,7 @@ describe Takeaway do
       test_takeaway.add_to_order(2, 2)
       test_takeaway.add_to_order(4, 2)
       test_takeaway.add_to_order(5, 1)
-      expect(test_takeaway.remove_from_order(4, 1)).to eq revised_order_1
+      expect(test_takeaway.remove_from_order(2, 1)).to eq revised_order_1
     end
   end
 
@@ -51,25 +51,44 @@ describe Takeaway do
   end
 
   describe '#checkout' do
-    it 'displays your order, your address, number and asks you to place your order' do
-      test_takeaway.add_to_order(2, 2)
-      test_takeaway.add_to_order(4, 2)
-      test_takeaway.add_to_order(5, 1)
-      # puts test_takeaway.current_order.cost
-      expect(test_takeaway.checkout(dummy_customer)).to eq checkout_message_1
+    context 'when no items have been added to the order' do
+      it 'tells you to add items before checkingout' do
+        expect(test_takeaway.checkout(dummy_customer)).to eq "Please add items before checking out."
+      end
+    end
+
+    context 'when items have been added to the order' do
+      it 'displays your order, your address, number and asks you to place your order' do
+        test_takeaway.add_to_order(2, 2)
+        test_takeaway.add_to_order(4, 2)
+        test_takeaway.add_to_order(5, 1)
+        # puts test_takeaway.current_order.cost
+        expect(test_takeaway.checkout(dummy_customer)).to eq checkout_message_1
+      end
     end
   end
 
   describe '#place_order' do
-    it 'confirms your payment and sends a text message' do
-      expect(test_takeaway.place_order(dummy_customer)).to eq place_order_message_1
+    before do
+      @test_text = instance_double('SendText')
+      @test_takeaway_text = Takeaway.new(Menu.new, Order, @test_text)
+      allow(@test_text).to receive(:send_confirmation).with(any_args).and_return("Thank you! Your order was placed and will be delivered by 19:15")
     end
-  end
 
-  describe '#text_confirmation' do
-    it 'sends you a text message confirming your order and delivery time' do
-      Timecop.freeze(Time.new(2021, nil, nil, 18, 15))
-      expect(test_takeaway.text_confirmation).to eq dummy_text
+    context 'when no items have been added to order' do
+      it 'tells you to add items before placing an order' do
+        expect(@test_takeaway_text.place_order(dummy_customer)).to eq "Please add items before placing an order."
+      end
+    end
+
+    context 'when several items have been added to the order' do
+      it 'confirms your payment and sends a text message' do
+        @test_takeaway_text.add_to_order(2, 2)
+        @test_takeaway_text.add_to_order(4, 2)
+        @test_takeaway_text.add_to_order(5, 1)
+        Timecop.freeze(Time.new(2021, nil, nil, 18, 15))
+        expect(@test_takeaway_text.place_order(dummy_customer)).to eq dummy_text
+      end
     end
   end
 end
@@ -82,7 +101,7 @@ REVISED_ORDER_1_DISPLAY_STRING = "Removed 1 Space Whale Sashimi from order."
 
 TEST_CHECKOUT_MESSAGE_1 = "Your order is £52.20.\nYour address is: 72 Reunification Avenue, New Tokyo, UNC, 12NE XS9\nYour number is: 08008888888\n\nPlease press PLACE ORDER to confirm."
 
-TEST_PLACE_ORDER_CONFIRMATION = "Payment Confirmed.\nOrder placed.\nConfirmation test issued."
+TEST_PLACE_ORDER_CONFIRMATION = "Payment Confirmed.\nOrder placed.\nConfirmation text issued."
 
 DUMMY_TEXT = "Thank you! Your order was placed and will be delivered by 19:15"
 
