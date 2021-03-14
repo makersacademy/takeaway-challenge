@@ -2,8 +2,10 @@ require 'order'
 
 describe Order do
   let(:order001) { Order.new }
+  let(:incorrect_total) { Order.new }
   let(:cheeseBurger) { ["Cheese Burger", 10] }
   let(:fries) { ["Fries", 6] }
+  let(:no_text) { double('Text') }
 
   it "initializes with an order number" do
     expect(order001.number).to eq(1)
@@ -53,9 +55,10 @@ describe Order do
   end
 
   describe "#total_correct?" do
-    let(:incorrect_total) { Order.new }
 
     before do
+      allow(Text).to receive(:new).and_return(no_text)
+      allow(no_text).to receive(:send_text)
       allow(incorrect_total).to receive(:total_due).and_return(+5)
     end
 
@@ -67,6 +70,11 @@ describe Order do
   end
 
   describe "#complete_order" do
+    before do
+      allow(Text).to receive(:new).and_return(no_text)
+      allow(no_text).to receive(:send_text)
+    end
+
     it "confirms the order is complete and will be delivered an hour from now" do
       expect(order001.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.now + 60 * 60}")
     end
@@ -78,6 +86,8 @@ describe Order do
     end
 
     before do
+      allow(Text).to receive(:new).and_return(no_text)
+      allow(no_text).to receive(:send_text)
       order001.add_to_basket(cheeseBurger)
       order001.add_to_basket(fries)
     end
@@ -101,6 +111,11 @@ describe Order do
 
     describe "#reset_order" do
       describe "#reset_basket" do
+        before do
+          allow(Text).to receive(:new).and_return(no_text)
+          allow(no_text).to receive(:send_text)
+        end
+
         it "resets the basket after order is complete" do
           order001.add_to_basket(cheeseBurger)
           order001.add_to_basket(fries)
@@ -110,6 +125,11 @@ describe Order do
       end
 
       describe "#reset_total" do
+        before do
+          allow(Text).to receive(:new).and_return(no_text)
+          allow(no_text).to receive(:send_text)
+        end
+
         it "resets the total after order is complete" do
           order001.add_to_basket(cheeseBurger)
           order001.add_to_basket(fries)
