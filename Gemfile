@@ -8,5 +8,8 @@ group :test do
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
   gem 'terminal-table'
+  gem 'test-unit'
   gem 'twilio-ruby', '~> 5.48.0'
+  gem 'vcr'
+  gem 'webmock'
 end
