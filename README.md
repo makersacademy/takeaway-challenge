@@ -17,15 +17,26 @@ Takeaway Challenge
 Instructions
 -------
 Welcome to Parrot Pizza Parlour!
+
+
 To use our order creator, run bundle install. Then simply require menu, order and message_sender.
+
 Create a new order:
+
 order = Order.new
+
 To see a list of commands, type order.help
+
 To view the menu, type order.view_menu
+
 To add an item to your order, type order.add_item(item_no). The menu will provide you with the item number.
+
 To delete an item from your order, type order.delete_item(item_no).
+
 To view your order, type view_order, or if you just want to view the total cost, type order.view_total.
+
 When you're ready to place your order, type order.place_order(phone_number starting with +44)
+
 
 ```
 As a customer
