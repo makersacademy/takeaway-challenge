@@ -76,7 +76,7 @@ describe Order do
     end
 
     it "confirms the order is complete and will be delivered an hour from now" do
-      expect(order001.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.now + 60 * 60}")
+      expect(order001.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{(Time.now + 60 * 60).strftime("%I:%M %p")}")
     end
   end
 

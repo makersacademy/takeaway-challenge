@@ -7,7 +7,6 @@ class Text
     @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
   end
 
-
   def send_text
     @client.messages.create(
       from: ENV['PHONE_FROM'],

@@ -39,7 +39,7 @@ class Order
     @text.send_text
     order_history
     reset_order
-    "Thank you! Your order was placed and will be delivered before #{Time.now + 60 * 60}"
+    "Thank you! Your order was placed and will be delivered before #{(Time.now + 60 * 60).strftime("%I:%M %p")}"
   end
 
 private
