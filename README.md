@@ -32,7 +32,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
-https://miro.com/app/board/o9J_lQciVi4=/
+![image](https://user-images.githubusercontent.com/74908625/111074134-90615680-84d9-11eb-9f6e-83707bb2ba71.png)
 
 **irb output**
 
