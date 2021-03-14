@@ -1,0 +1,23 @@
+require 'menu'
+
+describe Menu do
+  alias_method :test_menu, :subject
+  # it stores menu items including a name and a price
+  describe 'the menu' do
+    it 'has the menu stored' do
+      expect(test_menu.menu).to eq [{ :item_no => 1, :name => "Moluccan Margherita", :price => 6 },
+      { :item_no => 2, :name => "Conure Caramelised Onion and Goats Cheese", :price => 8 },
+      { :item_no => 3, :name => "Macaw Mushroom", :price => 7 },
+      { :item_no => 4, :name => "Fischer's Four Cheese", :price => 8 },
+      { :item_no => 5, :name => "Blue Fronted Cheese and Roasted Potato", :price => 8 },
+      { :item_no => 6, :name => "Chattering Cheesy Dough Balls", :price => 3 },
+      { :item_no => 7, :name => "Ducorps Dough Balls", :price => 2.5 }]
+    end
+  end
+
+  describe 'it returns the price of a pizza' do
+    it 'the price of a conure caramelised onion and goats cheese pizza is £8' do
+      expect(test_menu.menu[1][:price]).to eq 8
+    end
+  end
+end
