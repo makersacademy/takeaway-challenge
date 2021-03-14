@@ -12,6 +12,7 @@ class Order
 
   def remove_from_order(item_number, quantity)
     return "Cannot edit order by a negative number." if quantity < 1
+    return "Please select item number from order to remove" if item_number > @current_order.length
 
     name = find_order_item_by_number(item_number)
     @current_order.each_with_index do |item, index|

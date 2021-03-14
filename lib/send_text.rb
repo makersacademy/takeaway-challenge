@@ -21,6 +21,8 @@ class SendText
     @to = ENV['TWILIO_TO']
   end
 
+  attr_reader :account_sid, :auth_token, :client, :from, :to
+
   def send_confirmation(time, to = @to)
     message = "Thank you! Your order was placed and will be delivered by #{time}"
 
@@ -35,7 +37,3 @@ class SendText
     end
   end
 end
-
-send = SendText.new
-
-send.send_confirmation('19:15')

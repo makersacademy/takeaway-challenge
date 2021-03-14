@@ -1,5 +1,6 @@
 Takeaway Challenge
 ==================
+
 ```
                             _________
               r==           |       |
@@ -13,6 +14,105 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+
+Introduction
+---------
+
+Solution to the Makers Week 2 Weekend Challenge - takeaway challenge by Jack McCarthy (jackmcc08).
+
+The program was developed largely through TDD (the TWILIO integration required some actual coding before test writing :) ).
+
+I developed the 4 user stories into 5 classes - takeaway, order, menu, customer & send_text. See [google doc](https://docs.google.com/document/d/119-FgcFIqvIv14avQnq6bQnjIslTz9yxshp36d3w1Xo/edit?usp=sharing) for initial pre-work to frame progam and domain model.
+
+On completion:
+- all user stories were delivered
+- all RSPEC tests passed
+- there was 100% test coverage
+- there were no Rubocop errors
+- did not implement the ability to order meals via text
+
+Concerns:
+- Implemented Environment variables for security to ensure TWILIO information was not made public. However could not set up a project specific environment section correctly - future improvement.
+- Could do some more extraction to enhance srp & polymorphism e.g. gbp_format into a module.
+- Did not fully explore edge cases so potential for some errors.
+- not sure if I implemented constants properly in setting up the program.
+
+Future Improvements:
+- Implement user inputted number to be texted (would require Twilio upgraded account)
+- refactor and test edge cases more
+- custom menus
+- allow user to remove items from menu which aren't available
+
+Have fun!
+
+Instructions for use
+----------
+#### RSPEC Testing
+In the project folder run rspec to show test demonstration, it will give you an overview of the functionality of the program.
+
+#### TWILIO functionality
+Without setting up .zshenv with the TWILIO constants the program will not send you a text message on completion of the order.
+
+In order to implement TWILIO:
+1. create a .zshenv file in your root directory (if using zsh shell)
+2. add the following constants to the .zshenv file:
+- export TWILIO_ACCOUNT_SID='your TWILIO SID'
+- export TWILIO_AUTH_TOKN='your TWILIO TOKEN'
+- export TWILIO_FROM='your TWILIO Number'
+- export TWILIO_TO='your receiving Number'
+
+If you don't add this setup the program will still run and should not error out.
+
+#### Classes and Methods
+
+You only need to set up two classes to run the program fully, neither need arguments:
+- Class: Takeaway
+  - Create with Takeaway.new
+  - Methods:
+    - .display_menu
+    - .display_current_order
+    - .add_to_order(menu item number, quantity)
+    - .remove_from_order(order item number, quantity)
+    - .checkout(customer class instance)
+    - .place_order(customer class instance)
+
+- Class: Customer
+  - Create with Customer.new
+  - no methods needed for use at this stage
+
+#### IRB
+
+To operate the program in IRB, open with below commands. Create a takeaway instances and a customer instance to enable manipulation of program.
+
+All classes and methods listed below this section.
+
+```ruby
+2.6.5 :001 > require './lib/takeaway.rb'
+ => true
+2.6.5 :002 > test = Takeaway.new
+ => #<Takeaway:0x00007f878d0a6290 ... @to="+447985636884">>
+2.6.5 :003 > jack = Customer.new
+ => #<Customer:0x00007f878d0acb18 @number="08008888888", @address={:address=>"72 Reunification Avenue, New Tokyo, UNC", :post_code=>"12NE XS9"}, @payment={:type=>"credit_card", :number=>78385283584, :expiry_date=>"12/77", :ccc=>888}>
+2.6.5 :004 > test.display_menu
+ => "MENU\n1. Spicy Edamame  Price: £4.20\n2. Salt and Chilli Vat Chicken Strips  Price: £5.20\n3. Tempura Seaweed Fish  Price: £8.00\n4. Space Whale Sashimi  Price: £16.00\n5. Venerable Dragon Roll  Price: £9.80"
+2.6.5 :006 > test.display_current_order
+ => "You have not selected any items."
+2.6.5 :007 > test.add_to_order(4,2)
+ => {"Space Whale Sashimi"=>2}
+2.6.5 :008 > test.remove_from_order(1,1)
+ => "Removed 1 Space Whale Sashimi from order."
+2.6.5 :009 > test.display_current_order
+ => "YOUR ORDER\n\n1. Space Whale Sashimi  Price: £16.00  Qty: 1  Sub: £16.00\n\nTOTAL: £16.00"
+2.6.5 :010 > test.checkout(jack)
+ => "Your order is £16.00.\nYour address is: 72 Reunification Avenue, New Tokyo, UNC, 12NE XS9\nYour number is: 08008888888\n\nPlease press PLACE ORDER to confirm."
+2.6.5 :011 > test.place_order(jack)
+ => "<Twilio.Api.V2010.MessageInstance ...json}>"
+ 
+ ```
+
+HAVE FUN!
+
+## Original Instructions
 
 Instructions
 -------
