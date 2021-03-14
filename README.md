@@ -1,20 +1,39 @@
-# Chinese Takeaway - HeDiLao Hotpot
+# Takeaway - HeDiLao Hotpot
 
+*A basic command line app to manage online orders for HeDiLao Hotpot*
+
+![app](docs/HeDiLao_App.png)
+
+---------
 ### Functions
 
-- [ ] Menu
-- [ ] Choose dishes
-- [ ] Check Order
-- [ ] Order and receive message
+1. **View Menu**: show menu sectioned by category
+2. **View Basket**: show items and quantity in basket plus total price
+3. **Add To Basket**: add a dish to basket (can add the same dish multiple times to increase the quantity)
+4. **Delete from Basket**: remove a dish from basket (1 quantity at a time)
+5. **Check Out**: clear basket and receive a text message with delivery expectation
 
-Setup
-open ~/.zshrc or ~/.profile
+---------
+### How to use
 
-add in the file (replace contents with [] with your Twilio account details, Twilio mobile number and your own mobile number)
-export TWILIO_ACCOUNT_SID="[ACCOUNT SID]"
-export TWILIO_AUTH_TOKEN="[AUTH TOKEN]"
-export TWILIO_NUMBER="[PHONE NUMBER]"
-export USER_MOBILE="[Verified Caller]"
+1. [Setup](docs/setup.md)
+2. Run "ruby hedilao.rb" in command line
+3. Follow menu
 
-run source ~/.zshrc or source ~/.profile
+---------
+### UML Diagram
+
+![diagram](docs/diagram.png)
+
+---------
+### Issues
+
+- rspec 98.10% coverage due to 45.45% coverage on Order.rb. However, if run rspec on the individual file, it gives 100% coverage.
+
+
+---------
+### Future Scopes
+
+- Order using text messages
+- Multiple Restaurants with multiple menus
 
