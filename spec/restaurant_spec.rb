@@ -54,4 +54,12 @@ describe Restaurant do
       expect(restaurant.display_order).to eq("Pizza: 5\nTotal: 5\n")
     end
   end
+
+  describe 'order_complete' do
+    it 'returns a message to confirm an order before a maximum wait time' do
+      # stubs time at 20:17
+      allow(Time).to receive(:now) { Time.new(2002, 10, 31, 20, 17) }
+      expect(restaurant.order_complete).to eq("Thank you! Your order was placed and will be delivered before 21:17")
+    end
+  end
 end

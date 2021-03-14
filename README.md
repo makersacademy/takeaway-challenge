@@ -101,3 +101,4 @@ Notes
 - add implementation for extra menus (drinks)
 - subclasses starter, main, desert, drinks and polymorphic
   functions
+- add prep time instance variable for dishes, create a function which calculates wait time.

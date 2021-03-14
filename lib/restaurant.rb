@@ -3,6 +3,9 @@ require 'menu'
 class Restaurant
   attr_reader :order
 
+  # in seconds
+  MAXIMUM_WAIT_TIME = 3600
+
   def initialize(menu = Menu.new)
     @menu = menu
     @order = []
@@ -35,6 +38,12 @@ class Restaurant
     return "No dish found" if selection.empty?
 
     selection.first.not_available
+  end
+
+  def order_complete
+    time = Time.now + MAXIMUM_WAIT_TIME
+    "Thank you! Your order was placed and " +
+    "will be delivered before #{time.hour}:#{time.min}"
   end
 
   private
