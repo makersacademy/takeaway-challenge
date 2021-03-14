@@ -1,19 +1,23 @@
+require 'dotenv'
+require 'twilio-ruby'
 require 'message'
 
-describe Message do
-  context "initialize" do
-    it "has an account_sid with a length of 34" do
-      expect(subject.account_sid.size).to be(34)
+describe Message do  
+  VCR.use_cassette('message') do
+    let(:twilio) { double(:twilio) }
+    let(:customer_number) { double(:customer_number) }
+    let(:twilio_number) { double(:twilio_number) }
+    let(:twilio_message) do
+      VCR.use_cassette("message") { subject.sms(customer_number) }
     end
-    it "has an auth_token with a length of 32" do
-      expect(subject.auth_token.size).to be(32)
+    it "sends a message to the customer confirming their order with a delivery time" do
+      allow(Time).to receive(:new).and_return(Time.parse('13:37'))
+      allow(twilio).to receive(:messages).and_return(twilio)
+      expect(twilio.messages).to receive(:create).with( {
+        body: "Your order is being processed you can expect delivery at 13:37", 
+        to: customer_number,
+        from: twilio_number } )
+      twilio_message        
     end
-    it "has a twilio REST client" do
-      expect(subject.client).to be_a(Twilio::REST::Client)
-    end
-  end
-  
-  describe "message" do
-    it ""
   end
 end

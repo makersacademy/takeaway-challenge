@@ -3,9 +3,19 @@
 ## Instructions
 
 
-twilio template .env dotenv 
+twilio template 
+
+.env dotenv 
 
 terminal table
  
+webmock 
+
+vcr
+
+test-unit
+
+
+https://www.rubyguides.com/2018/12/ruby-vcr-gem/
 
 Passes Rubocop with no warnings. 
