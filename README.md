@@ -12,22 +12,9 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
- ```
 
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+```
+#### User stories
 
 ```
 As a customer
@@ -46,38 +33,68 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+----
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+#### Domain Model
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+| Class      | Properties                 | Methods              |
+|------------|---------------------------|-----------------------|
+| Restaurant | @name                     | view_menu             |
+|            | @menu = []                | choose_dish(dish_num) |
+|            | @order = Order.new        | add_to_order(dish)    |
+| Order      | @order number             | view_basket           |
+|            | @basket = []              | calculate_total       |
+|            | @total = 0                | total_correct?        |
+|            | @history = []             | complete_order        |
+|            | @text = Text.new          | add_to_basket(dish)   |
+|            |                           | reset_basket          |
+|            |                           | reset_total           |
+|            |                           | reset_order           |
+|            |                           | order_history         |
+| Text       | @client (using twilio)    | send_text             |
 
 
-In code review we'll be hoping to see:
+Optional extras:  
+add_to_menu  
+take_off_menu  
+dish_not_available  
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+additional notes:  
+* menu is currently hardcoded to one menu list that initializes with every new restaurant instance  
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
 
-Notes on Test Coverage
-------------------
+#### Things that could be added:  
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+[ ] ensure an order can't be completed if nothing in the basket  
+[ ] minimum total of £15 for each order  
+[ ] A customer can delete from the order  
+
+----
+#### IRB testing
+
+require './lib/restaurant.rb'
+
+##### create a restaurant instance:  
+sparkleBurgers = Restaurant.new("Sparkle Burgers LTD")
+
+##### view restaurants menu:  
+sparkleBurgers.menu  
+      => [{:"Cheese burger"=>10}, {:"Cheese and bacon burger"=>12}, {:"Pulled pork burger"=>15}, {:Fries=>6}, {:"Chilli fries"=>8}, {:"Onion rings"=>7}, {:"Coke 330ml"=>2},{:"Fanta 330ml"=>2}, {:"Brew Dog Vegabond 4.5%"=>5}]
+
+sparkleBurgers.view_menu  
+      => "Sparkle Burgers LTD's Menu:\n, 1: Cheese burger, £10\n, 2: Cheese and bacon burger, £12\n, 3: Pulled pork burger, £15\n, 4: Fries, £6\n, 5: Chilli fries, £8\n, 6: Onion rings, £7\n, 7: Coke 330ml, £2\n, 8: Fanta 330ml,£2\n, 9: Brew Dog Vegabond 4.5%, £5"
+
+
+#####  add to order:  
+sparkleBurgers.choose_dish(2)  
+        => "Cheese and bacon burger has been added to your basket"
+sparkleBurgers.choose_dish(4)  
+        => "Fries has been added to your basket"
+sparkleBurgers.order.view_basket  
+         => "Viewing basket for order number 1:\n, Cheese and bacon burger £12\n, Fries £6\n, Total cost of order: £18"
+
+##### complete_order:  
+sparkleBurgers.order.complete_order  
+          => "Thank you! Your order was placed and will be delivered before 2021-03-13 18:58:17 +0000"
+          => sends text
+
