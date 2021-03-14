@@ -7,6 +7,7 @@ class Order
   end
 
   def select_dishes
+    puts "Enter item off menu, when done type end order"
     until @order == "end order"
       @order = gets.chomp
       push_order_and_total_to_array

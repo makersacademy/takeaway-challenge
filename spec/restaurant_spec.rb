@@ -26,4 +26,12 @@ describe Restaurant do
       expect(new_restaurant.bill).to eq ["MexiCali Beef Burger ---> 12", 12]
     end
   end
+  describe '#send_text' do
+    it 'send a message when order is completed' do
+      message_double = double(:text, client: "Fake client")
+      allow(message_double).to receive(:send_message).and_return "Hi"
+      restaurant = Restaurant.new(Order.new, message_double)
+      expect(restaurant.send_text).to eq "Hi"
+    end
+  end
 end
