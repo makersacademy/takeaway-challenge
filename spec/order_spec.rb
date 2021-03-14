@@ -53,7 +53,7 @@ describe Order do
         { :name => "Chattering Cheesy Dough Balls", :price => 3, :quantity => 2 },
         { :name => "Ducorps Dough Balls", :price => 2.5, :quantity => 1 }]
         )
-      order.instance_variable_set(:@total, 54)
+
       expect { order.delete_item(1) }.to change { order.order }.from(
         [{ :name => "Moluccan Margherita", :price => 6, :quantity => 1 },
         { :name => "Conure Caramelised Onion and Goats Cheese", :price => 8, :quantity => 0 },

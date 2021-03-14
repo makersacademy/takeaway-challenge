@@ -1,10 +1,10 @@
-require 'time'
-require 'menu'
-require 'twilio-ruby'
-require 'message_sender'
+#require 'time'
+#require 'menu'
+#require 'twilio-ruby'
+#require 'message_sender'
 
 class Order
-  attr_accessor :order, :total, :delivery_time
+  attr_accessor :order, :delivery_time
   def initialize(message_sender = MessageSender.new, menu = Menu.new)
     puts "Welcome to Parrot Pizza Parlour!"
     @order = [{ :item_no => 1, :quantity => 0 },
@@ -89,4 +89,15 @@ class Order
   def help
     "HELP\nview_menu - Display the menu\nadd_item_(Item No.) - Add an item to your order.\nview_order - View your order\ndelete_item_(Item No.) - Delete an item from your order.\nview_total - View the total cost of your order\nplace_order(phone_no.) - Place your order."
   end
+
+  def total
+    @total
+  end
+
+  private
+
+  def total=(total)
+    @total = total
+  end
+
 end
