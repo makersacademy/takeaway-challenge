@@ -3,6 +3,7 @@ require 'simplecov'
 require 'simplecov-console'
 require 'rubygems'
 # require 'test/unit'
+require 'webmock/rspec'
 require 'vcr'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
