@@ -48,14 +48,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 2.6.5 :005 > maxs_mexican_shack = Restaurant.new
  => #<Restaurant:0x00007f83f4a8a708 @dishes=#<Dishes:0x00007f83f4a8a438 @menu=nil>, @order=#<Order:0x00007f83f4a8a6e0 @whole_order=[], @
 total=[], @dishes=#<Dishes:0x00007f83f4a8a668 @menu=nil>>, @text=#<Text:0x00007f83f4a8a640 @client=#<Twilio::REST::Client:0x00007f83f4a8
-a5c8 @username="ACeb1afeaa145764290dd295ca81c7d9f0", @password="79e40e410358ccc57e321fda389ee3b0", @region=nil, @edge=nil, @account_sid=
-"ACeb1afeaa145764290dd295ca81c7d9f0", @auth_token="79e40e410358ccc57e321fda389ee3b0", @auth=["ACeb1afeaa145764290dd295ca81c7d9f0", "79e4
-0e410358ccc57e321fda389ee3b0"], @http_client=#<Twilio::HTTP::Client:0x00007f83f4a8a4d8 @proxy_prot=nil, @ssl_ca_file=nil, @timeout=nil,
-@adapter=:net_http>, @logger=nil, @accounts=nil, @api=nil, @autopilot=nil, @chat=nil, @conversations=nil, @events=nil, @fax=nil, @flex_a
-pi=nil, @insights=nil, @ip_messaging=nil, @lookups=nil, @messaging=nil, @monitor=nil, @notify=nil, @numbers=nil, @preview=nil, @pricing=
-nil, @proxy=nil, @serverless=nil, @studio=nil, @sync=nil, @taskrouter=nil, @trunking=nil, @trusthub=nil, @verify=nil, @video=nil, @voice
-=nil, @wireless=nil, @supersim=nil, @bulkexports=nil>, @account_sid="ACeb1afeaa145764290dd295ca81c7d9f0", @auth_token="79e40e410358ccc57
-e321fda389ee3b0">>
+a5c8 @username="ACeb1afeaa145764290dd295ca81c7d9f0", @password="79e40e410358ccc57e321fda389ee3b0"
 
 2.6.5 :006 > maxs_mexican_shack.list_dishes
 Item: MexiCali Beef Burger -----> Price: 12
@@ -66,8 +59,7 @@ Item: Magic Bean Burger -----> Price: 11
 Item: Mexican Chik'n Burger -----> Price: 15
 Item: Stanky Fries -----> Price: 7
 Item: Nachos Libres -----> Price: 9
- => {"MexiCali Beef Burger"=>12, "The Burrito Burger"=>15, "El No Beef Burger"=>15, "Los' Tres Bean Burger"=>11, "Magic Bean Burger"=>11
-, "Mexican Chik'n Burger"=>15, "Stanky Fries"=>7, "Nachos Libres"=>9}
+
 2.6.5 :007 > maxs_mexican_shack.place_order
 Enter item off menu, when done type end order
 The Burrito Burger
@@ -81,15 +73,10 @@ end order
                Stanky Fries ---> 7
                    ------------
                         37
- => nil
+                        
 2.6.5 :009 > maxs_mexican_shack.send_text
  => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order has been placed
-      and will be delivered before 04:08 PM num_segments: 1 direction: outbound-api from: +18186415489 to: +447753410267 date_updated: 2
-021-03-14 15:08:37 +0000 price:  error_message:  uri: /2010-04-01/Accounts/ACeb1afeaa145764290dd295ca81c7d9f0/Messages/SMa3bc738775c94cf
-19a870a9e8fdc0774.json account_sid: ACeb1afeaa145764290dd295ca81c7d9f0 num_media: 0 status: queued messaging_service_sid:  sid: SMa3bc73
-8775c94cf19a870a9e8fdc0774 date_sent:  date_created: 2021-03-14 15:08:37 +0000 error_code:  price_unit: USD api_version: 2010-04-01 subr
-esource_uris: {"media"=>"/2010-04-01/Accounts/ACeb1afeaa145764290dd295ca81c7d9f0/Messages/SMa3bc738775c94cf19a870a9e8fdc0774/Media.json"
-}>
+      and will be delivered before 04:08 PM}>
 
 **RSpec**
 
