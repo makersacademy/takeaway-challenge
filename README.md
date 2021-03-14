@@ -33,6 +33,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+----
 
 #### Domain Model
 
@@ -68,7 +69,7 @@ additional notes:
 [ ] minimum total of £15 for each order  
 [ ] A customer can delete from the order  
 
-
+----
 #### IRB testing
 
 require './lib/restaurant.rb'
@@ -96,3 +97,4 @@ sparkleBurgers.order.view_basket
 sparkleBurgers.order.complete_order  
           => "Thank you! Your order was placed and will be delivered before 2021-03-13 18:58:17 +0000"
           => sends text
+
