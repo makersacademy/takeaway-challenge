@@ -9,7 +9,3 @@ I would like to see a list of dishes with prices
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
-
-*I created an Oder class that initialized with an empty basket*
-
-*I added an add_item method that accepts arguments of dish and the quantity. It then adds that to the empty basket*

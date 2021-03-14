@@ -12,9 +12,9 @@ describe Takeaway do
     end
   end
 
-  describe '#list_menu' do
+  describe '#list_dishes' do
     it 'prints list of dishes and their prices' do
-      expect(subject.list_menu).to include Takeaway::TAKEAWAY_MENU
+      expect(subject.list_dishes).to include Takeaway::TAKEAWAY_MENU
     end
   end
 end
