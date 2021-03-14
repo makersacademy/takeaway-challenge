@@ -34,6 +34,8 @@
 ### Future Scopes
 
 - Order using text messages
-- Multiple Restaurants with multiple menus
 - Currently, use menu.csv to hold a fixed menu, can use database instead
+- Add extra functions for user: login, payment, cancel order
+- Add admin functions for restaurant: manage menu and orders
+- Handle multiple restaurants and users
 
