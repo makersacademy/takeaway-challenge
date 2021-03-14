@@ -30,10 +30,10 @@
 
 - rspec 98.10% coverage due to 45.45% coverage on Order.rb. However, if run rspec on the individual file, it gives 100% coverage.
 
-
 ---------
 ### Future Scopes
 
 - Order using text messages
 - Multiple Restaurants with multiple menus
+- Currently, use menu.csv to hold a fixed menu, can use database instead
 
