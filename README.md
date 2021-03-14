@@ -11,7 +11,7 @@
 2. **View Basket**: show items and quantity in basket plus total price
 3. **Add To Basket**: add a dish to basket (can add the same dish multiple times to increase the quantity)
 4. **Delete from Basket**: remove a dish from basket (1 quantity at a time)
-5. **Check Out**: clear basket and receive a text message with delivery expectation
+5. **Check Out**: clear basket and send a text message with delivery expectation
 
 ---------
 ### How to use
