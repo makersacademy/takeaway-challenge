@@ -1,18 +1,17 @@
 class Menu
-  attr_reader :items
+  attr_reader :dishes
 
   def initialize
-    @items = [{ dish: "Hamburger", price: 10 },
-    { dish: "Chips", price: 4 },
-    { dish: "Orange Juice", price: 2 }
+    @dishes = [{ name: "Hamburger", price: 10 },
+    { name: "Chips", price: 4 },
+    { name: "Orange Juice", price: 2 }
     ]
   end
 
   def display
-    # puts @items.join("\n")
-    menu_display = ""
-    @items.each.with_index do |item, i|
-      menu_display += "#{i + 1}. #{item[:dish]}: #{item[:price]} GBP\n"
+    menu_display = "Menu:\n-----\n"
+    @dishes.each.with_index do |dish, i|
+      menu_display += "#{i + 1}. #{dish[:name]}: #{dish[:price]} GBP\n"
     end
     print menu_display
   end
