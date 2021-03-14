@@ -1,6 +1,3 @@
-require 'twilio-ruby'
-require 'time'
-
 class Restaurant
 
   attr_reader :restaurant_menu, :basket
@@ -57,11 +54,6 @@ class Restaurant
 
   def print_basket
     @basket.print_basket
-  end
-
-  def time
-    @now = Time.now
-    @delivery = now + 1.hour
   end
 
   def check_out(to)

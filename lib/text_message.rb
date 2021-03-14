@@ -1,3 +1,6 @@
+require 'twilio-ruby'
+require 'time'
+
 class TextMessage
 
   def initialize(client = Twilio::REST::Client)

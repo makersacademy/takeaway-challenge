@@ -85,6 +85,12 @@ describe Restaurant do
     end
   end
 
+  describe '#print_basket' do
+    it 'should print the basket' do
+      pret.print_basket
+    end
+  end
+
   describe '#check_out' do
     it 'should check out the order' do
       text = Restaurant.new('name', text_message )
