@@ -32,6 +32,8 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
+![image](https://user-images.githubusercontent.com/74908625/111074134-90615680-84d9-11eb-9f6e-83707bb2ba71.png)
+
 **irb output**
 
 2.6.5 :001 > require './lib/order'
