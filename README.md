@@ -46,9 +46,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |            | @total = 0                | total_correct?        |
 |            | @history = []             | complete_order        |
 |            | @text = Text.new          | add_to_basket(dish)   |
-|            |                           | reset_basket         |
-|            |                           | reset_total         |
-|            |                           | reset_order         |
+|            |                           | reset_basket          |
+|            |                           | reset_total           |
+|            |                           | reset_order           |
 |            |                           | order_history         |
 
 
@@ -59,6 +59,13 @@ dish_not_available
 
 additional notes:
 * menu is currently hardcoded to one menu list that initializes with every new restaurant instance
+
+
+#### Things that could be added:
+
+[ ] ensure an order can't be completed if nothing in the basket
+[ ] minimum total of £15 for each order
+[ ] A customer can delete from the order
 
 
 #### IRB testing
@@ -88,9 +95,4 @@ sparkleBurgers.order.view_basket
 sparkleBurgers.order.complete_order
           => "Thank you! Your order was placed and will be delivered before 2021-03-13 18:58:17 +0000"
 
-
-#### Things that could be added:
-
-[ ] ensure an order can't be completed if nothing in the basket
-[ ] minimum total of £15 for each order
-[ ] A customer can delete from the order
+          => sends text

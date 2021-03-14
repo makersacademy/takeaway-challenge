@@ -1,6 +1,5 @@
 require_relative 'text'
-# require 'twilio-ruby'
-# require 'dotenv/load'
+
 class Order
 
   attr_reader :number, :basket, :total, :history
@@ -18,6 +17,7 @@ class Order
     total_so_far
   end
 
+# viewing basket with the total cost of basket
   def view_basket
     @print = ["Viewing basket for order number #{@number}:\n"]
     num = 1
@@ -31,6 +31,8 @@ class Order
     @print.join(", ").chomp
   end
 
+  # order cannot be completed if the total is not correct
+  # completing order sends confirmation text
   def complete_order
     unless total_correct?
       fail "The total of this order is not correct!"
@@ -56,12 +58,14 @@ private
     @total = 0
   end
 
+# reseting after order completed
   def reset_order
     @number += 1
     reset_basket
     reset_total
   end
 
+# calculating and checking totals are correct
   def total_so_far
     @total += @basket[-1][1]
   end

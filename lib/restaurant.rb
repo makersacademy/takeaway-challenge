@@ -31,10 +31,12 @@ class Restaurant
     @print.join(", ").chomp
   end
 
+  # adds to the order instance's basket
   def add_to_order(dish)
     @order.add_to_basket(dish)
   end
 
+  # using view_menu format user can choose a dish by number
   def choose_dish(dish_num)
     dish = @menu.to_a
     add_to_order(dish[dish_num - 1])
