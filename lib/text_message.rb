@@ -4,10 +4,10 @@ require 'time'
 class TextMessage
 
   def initialize(client = Twilio::REST::Client)
-    @account_sid = 'ACe31e16fc905826f7652afa8c333*****'
-    @auth_token = '922cbf78f2d2433fe970a916ee3*****'
+    @account_sid = ENV['TWILIO_ACCOUNT_SID']
+    @auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @from = ENV['TWILIO_NUMBER']
     @client = client.new(@account_sid, @auth_token)
-    @from = '+18638771182'
   end
 
   def send_text_message(to)
