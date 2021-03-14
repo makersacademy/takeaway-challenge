@@ -9,7 +9,7 @@ class Takeaway
     @takeaway_menu = takeaway_menu
   end
 
-  def list_dishes
+  def list_menu
     @takeaway_menu
   end
 end
