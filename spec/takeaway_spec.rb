@@ -1,12 +1,6 @@
 require 'takeaway'
 
 describe Takeaway do
-  describe "initialize" do
-    it "create a menu object" do
-      expect(subject.menu).to be_a(OrderMenu)
-    end
-  end
-
   describe "ascii_render" do
     it "outputs the banner to the console" do
       expect { subject.ascii_render }.to output.to_stdout
