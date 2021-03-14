@@ -1,3 +1,6 @@
+require_relative 'text'
+# require 'twilio-ruby'
+# require 'dotenv/load'
 class Order
 
   attr_reader :number, :basket, :total, :history
@@ -7,6 +10,7 @@ class Order
     @basket = []
     @total = 0
     @history = []
+    @text = Text.new
   end
 
   def add_to_basket(dish)
@@ -32,12 +36,14 @@ class Order
       fail "The total of this order is not correct!"
     end
 
+    @text.send_text
     order_history
     reset_order
     "Thank you! Your order was placed and will be delivered before #{Time.now + 60 * 60}"
   end
 
 private
+
   def order_history
     @history << { "Order ##{@number}, completed on #{Time.now}:": @basket.flatten }
   end
@@ -51,9 +57,9 @@ private
   end
 
   def reset_order
+    @number += 1
     reset_basket
     reset_total
-    @number += 1
   end
 
   def total_so_far
