@@ -1,11 +1,15 @@
+require 'twilio-ruby'
+require 'time'
+
 class Restaurant
 
-  attr_reader :restaurant_menu
+  attr_reader :restaurant_menu, :basket
 
-  def initialize(name = 'name')
+  def initialize(name = 'name', text_message = TextMessage.new)
     @name = name
     @restaurant_menu = []
     @basket = Basket.new
+    @text = text_message
   end
 
   def create_menu(name)
@@ -55,9 +59,19 @@ class Restaurant
     @basket.print_basket
   end
 
-  def check_out
-    @backet.empty_basktet
-    
+  def time
+    @now = Time.now
+    @delivery = now + 1.hour
   end
 
+  def check_out(to)
+    send_text_message(to)
+    @basket.empty_basket
+  end
+
+  private
+
+  def send_text_message(to)
+    @text.send_text_message(to)
+  end
 end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'twilio-ruby', '~> 5.48.0'
+gem 'twilio-ruby'
 
 group :test do
   gem 'rspec'

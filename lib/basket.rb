@@ -17,21 +17,21 @@ class Basket
 
   def print_items
     @basket_items.map { |item|
-       "#{item.name} -- #{item.price}\n"}.join
+       "#{item.name} -- £#{item.price}\n"}.join
   end
 
   def total_price
     total = []
     @basket_items.each { |item|
        total << item.price }
-      "\n\nTotal: #{total.sum}"
+      "\n\nTotal: £#{total.sum}"
   end
 
   def print_basket
     [print_items, total_price].join
   end
 
-  def empty_basktet
+  def empty_basket
     @basket_items = []
   end
 

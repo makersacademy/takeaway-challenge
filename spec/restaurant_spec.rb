@@ -8,12 +8,16 @@ describe Restaurant do
   let(:other_name) { double :other_name }
   let(:price) { double :price }
   let(:description) { double :description }
+  let(:phone_number) { double :phone_number }
+  let(:client) { double :client }
+  let(:text_message) { double :text_message }
 
   it { is_expected.to respond_to :restaurant_menu }
 
   describe '#create_menu' do
     it 'should be able to create a new menu' do
-      pret.create_menu('hej')
+      pret.create_menu(name)
+      expect(pret.restaurant_menu).not_to be_empty
     end
   end
 
@@ -58,7 +62,7 @@ describe Restaurant do
       pret.create_menu('brekkie')
       pret.add_item_to_menu(0, name, price, description)
       pret.add_item_to_menu(0, name, price, description)
-      expect(pret.print_restaurant_menu)
+      expect(pret.print_restaurant_menu).not_to be_empty
     end
   end
 
@@ -76,16 +80,19 @@ describe Restaurant do
       pret.create_menu('brekkie')
       pret.add_item_to_menu(0, name, price, description)
       pret.select_item(0, 0)
-      expect(pret.remove_selected_item(0)).to eq []
+      pret.remove_selected_item(0)
+      expect(pret.basket.basket_items).to eq []
     end
   end
 
   describe '#check_out' do
     it 'should check out the order' do
-      pret.create_menu('brekkie')
-      pret.add_item_to_menu(0, name, price, description)
-      pret.select_item(0, 0)
-      expect(pret.check_out)
+      text = Restaurant.new('name', text_message )
+      allow(text_message).to receive(:send_text_message)
+      text.check_out(phone_number)
+      expect(text_message).to have_received(:send_text_message)
+      expect(pret.basket.basket_items).to be_empty
     end
   end
+
 end
