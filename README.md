@@ -42,7 +42,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Restaurant | @name                     | view_menu             |
 |            | @menu = []                | choose_dish(dish_num) |
 |            | @order = Order.new        | add_to_order(dish)    |
-|            |                           |                       |
 | Order      | @order number             | view_basket           |
 |            | @basket = []              | calculate_total       |
 |            | @total = 0                | total_correct?        |
@@ -52,6 +51,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |            |                           | reset_total           |
 |            |                           | reset_order           |
 |            |                           | order_history         |
+| Text       | @client (using twilio)    | send_text             |
 
 
 Optional extras:  
