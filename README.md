@@ -14,11 +14,11 @@
 
 ## Function
 
-* So upon start the user is met with a banner with ascii text and a mennu from which to choose. 
+* Upon start the user is met with a banner with ascii text and a mennu from which to choose options. 
 * Upon entering `1` the menu is printed and allows the user to see what is availiable and we're looped back around to the menu for the next input. 
-* `2` chooses to enter some order choices. These can be either as the `name` of the dish or the menu `number`, either will produce the right result within the order list. 
+* `2` allows the user to enter some order choices. These can be either as the `name` of the dish or the menu `number`, either will produce the right result within the order list. 
 * When the user has concluded selection, we're returned to the menu where the user can either go back and add more, view their chosen dishes as a printed table or continue to order. 
-* When choosing `4` the user is prompted to enter a phone number and the entry is propted back to the user to confirm, this also changes the number in to the international format so it can be set to the Twilio API to send the message. 
+* When choosing `4` the user is prompted to enter a phone number and the entry is propted back to the user to confirm, this also changes the number in to the international format so it can be sent to the Twilio API to send the message. 
 
 
 ## Planning 
