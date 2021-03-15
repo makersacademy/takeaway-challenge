@@ -111,6 +111,8 @@ All classes and methods listed below this section.
  => "<Twilio.Api.V2010.MessageInstance ...json}>"
 
  ```
+p.s. added rake gem and travisci gem
+
 
 HAVE FUN!
 
