@@ -82,6 +82,8 @@ You only need to set up two classes to run the program fully, neither need argum
 
 #### IRB
 
+Run 'bundle install'
+
 To operate the program in IRB, open with below commands. Create a takeaway instances and a customer instance to enable manipulation of program.
 
 All classes and methods listed below this section.
@@ -107,7 +109,7 @@ All classes and methods listed below this section.
  => "Your order is £16.00.\nYour address is: 72 Reunification Avenue, New Tokyo, UNC, 12NE XS9\nYour number is: 08008888888\n\nPlease press PLACE ORDER to confirm."
 2.6.5 :011 > test.place_order(jack)
  => "<Twilio.Api.V2010.MessageInstance ...json}>"
- 
+
  ```
 
 HAVE FUN!
