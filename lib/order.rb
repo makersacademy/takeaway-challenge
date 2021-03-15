@@ -10,7 +10,7 @@ class Order
     item_order
   end
 
-  def remove_from_order(item_number, quantity)
+  def remove_from_order(item_number, quantity) # refactoring opportunity
     return "Cannot edit order by a negative number." if quantity < 1
     return "Please select item number from order to remove" if item_number > @current_order.length
 

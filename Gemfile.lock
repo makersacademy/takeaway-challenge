@@ -17,11 +17,14 @@ GEM
     nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    nokogiri (1.11.2-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.19.1)
     parser (2.7.0.3)
       ast (~> 2.4.0)
     racc (1.5.2)
     rainbow (3.0.0)
+    rake (13.0.3)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -63,8 +66,10 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
+  rake
   rspec
   rubocop (= 0.79.0)
   simplecov
