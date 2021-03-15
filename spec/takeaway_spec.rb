@@ -1,5 +1,5 @@
 require 'takeaway'
-require 'Timecop'
+require 'timecop'
 
 describe Takeaway do
   let(:test_takeaway) { Takeaway.new }
