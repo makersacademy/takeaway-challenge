@@ -14,70 +14,61 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
 
 
-In code review we'll be hoping to see:
+User stories breakdown with relationships
+======================
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* customer > takeaway > menu > list of dishes
+* customer > takeaway > menu > select dishes > order(customer_selection)
+* customer > takeaway > order > verify total
+* customer > takeaway > complete order (I added this one by inference it would be needed)
+* customer > takeaway > delivery confirmation > twilio
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+Classes
+=======
+* Takeaway
+* Menu
+* Order
+* Dish
+* Twilio (dependency)
 
-Notes on Test Coverage
-------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Properties and Actions
+======================
+
+* Takeaway has
+  1. :x: an empty order :check:
+  2. :x: a default menu :check:
+* Takeaway can
+  1. :x: report order :check:
+  2. :x: select a dish to add to order :check:
+  3. :x: complete Order :check:
+  4. :x: delivery confirmation(order) :check:
+
+* Menu has
+  1. :x: an array of Dish-es :check:
+* Menu can
+  1. :x: list available dishes :check:
+
+* Order has
+  1. :x: an empty array of Dish-es :check:
+  2. :x: order completion time :check:
+* Order can
+  1. :x: report its dishes :check:
+  2. :x: verify total :check:
+  3. :x: define complete time :check:
+  4. :x: define the delivery time (actually provides 1 hour past completion time) :check:
+
+* Dish has
+  1. :x: a name :check:
+  2. :x: a price :check:
+* Dish can
+  1. :x: report its name :check:
+  2. :x: report its price :check:
+
+* Twilio REST Client messages create (API credentials in environmental variables)
+
+After passing all tests, I wrote the following user behaviour feature test under feature_spec.rb: 'looks at the menu, selects two dishes, looks at the total, completes the order, sends a confirmation text'
+
+There are still plenty of edge cases I didn't test for but I believe the fundamental relationships between objects work out and I was able to mock them up successfully in testing.
