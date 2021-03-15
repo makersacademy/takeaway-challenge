@@ -73,12 +73,61 @@ end order
                Stanky Fries ---> 7
                    ------------
                         37
-                        
+
 2.6.5 :009 > maxs_mexican_shack.send_text
  => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order has been placed
       and will be delivered before 04:08 PM}>
 
+**Classes and Methods**
+
+There are 4 active classes
+
+* Dishes
+
+This contain the information for all the dishes the restaurant serves. It has 2 methods:
+
+* dishes
+This contain a hash of all the dishes and their prices.
+
+* list_dishes
+This return a list of all the dishes and their prices.
+
+* Order
+
+This contains the methods for ordering:
+
+* select_dishes
+This prompts the user to type in the dishes they want to order. It then matches them against dishes on the menu and pushes the matching ones into an array. It also pushes the monetary total into an array.
+
+* summarised_bill
+This returns a formatted bill which shows the menu items ordered with their prices and the total price for the order at the bottom.
+
+* Text
+
+This contains the information for sending a text out:
+
+* send_message
+Sends a message to a mobile number notifying the customer their order has been placed and how long it will take.
+
+* Restaurant
+
+This brings together the other classes and runs their methods using instances initialized on creating of a restaurant instance.
+
+* list_dishes
+Calls list dishes on an instance of Dishes class
+
+* place_order
+Calls select_dishes on an instance of the Order class
+
+* bill
+Calls summarised bill on an instance of Order class
+
+* send_text
+Calls send_message on an instance of Text class
+
 **RSpec**
+
+run 'RSpec' from the command line
 
 Finished in 0.05758 seconds (files took 1.26 seconds to load)
 
@@ -104,6 +153,8 @@ If i had more time I would do the following:
 and descriptions
 - I would also like the customer to be able to select which part of the menu they would
 like to view (mains, sides, drinks etc)
+- I would have added a way for the restaurant owner to add more dishes onto the menu
+- I would also look at a way of storing the dishes so they weren't hard-coded.
 
 ## Maker's Instructions
 

@@ -5,12 +5,12 @@ class Restaurant
     @text = text
   end
 
-  def place_order
-    @order.select_dishes
-  end
-
   def list_dishes
     @dishes.list_menu
+  end
+
+  def place_order
+    @order.select_dishes
   end
 
   def bill

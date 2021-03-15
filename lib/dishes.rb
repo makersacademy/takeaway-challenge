@@ -4,12 +4,6 @@ class Dishes
     @menu = nil
   end
 
-  def list_menu
-    dishes.each do |key, value|
-      puts "Item: #{key} -----> Price: #{value}"
-    end
-  end
-
   def dishes
     @menu = { "MexiCali Beef Burger" => 12,
             "The Burrito Burger" => 15,
@@ -20,5 +14,11 @@ class Dishes
             "Stanky Fries" => 7,
             "Nachos Libres" => 9
           }
+  end
+
+  def list_menu
+    dishes.each do |key, value|
+      puts "Item: #{key} -----> Price: #{value}"
+    end
   end
 end
