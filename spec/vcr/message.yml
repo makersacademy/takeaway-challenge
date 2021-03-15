@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/ACdf51ea0b1303a0fa1a665463d067f14a/Messages.json
+    body:
+      encoding: UTF-8
+      string: Body=Your+order+is+being+processed+you+can+expect+delivery+at+14%3A37&From=%2B15623726094&To=%2B447850766566
+    headers:
+      User-Agent:
+      - twilio-ruby/5.48.0 (ruby/x64-mingw32 2.6.6-p146)
+      Accept-Charset:
+      - utf-8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Authorization:
+      - Basic QUNkZjUxZWEwYjEzMDNhMGZhMWE2NjU0NjNkMDY3ZjE0YTpmYWYyN2QxNWFiY2ZjNjcwZWNjNzE3ODQ5NjNkZDQ2Yw==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 14 Mar 2021 01:46:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '865'
+      Connection:
+      - keep-alive
+      Twilio-Concurrent-Requests:
+      - '1'
+      Twilio-Request-Id:
+      - RQ4fe1b8f1864f12534c7c70e09c190f11
+      Twilio-Request-Duration:
+      - '0.120'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      X-Home-Region:
+      - us1
+      X-Api-Domain:
+      - api.twilio.com
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SM10579274859a4f22ac2a2b6ac4d8e54f", "date_created": "Sun,
+        14 Mar 2021 01:46:20 +0000", "date_updated": "Sun, 14 Mar 2021 01:46:20 +0000",
+        "date_sent": null, "account_sid": "ACdf51ea0b1303a0fa1a665463d067f14a", "to":
+        "+447850766566", "from": "+15623726094", "messaging_service_sid": null, "body":
+        "Sent from your Twilio trial account - Your order is being processed you can
+        expect delivery at 14:37", "status": "queued", "num_segments": "1", "num_media":
+        "0", "direction": "outbound-api", "api_version": "2010-04-01", "price": null,
+        "price_unit": "USD", "error_code": null, "error_message": null, "uri": "/2010-04-01/Accounts/ACdf51ea0b1303a0fa1a665463d067f14a/Messages/SM10579274859a4f22ac2a2b6ac4d8e54f.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/ACdf51ea0b1303a0fa1a665463d067f14a/Messages/SM10579274859a4f22ac2a2b6ac4d8e54f/Media.json"}}'
+  recorded_at: Sun, 14 Mar 2021 01:46:20 GMT
+recorded_with: VCR 6.0.0

@@ -1,83 +1,52 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway! [![Build Status](https://travis-ci.com/StuBehan/takeaway-challenge.svg?branch=master)](https://travis-ci.com/StuBehan/takeaway-challenge)
 
- ```
+## Instructions
+<img align="right" width="399" height="452" src="./docs/running.gif">
 
-Instructions
--------
+1. clone to your system
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+2. run `bundle install` 
 
-Task
------
+3. you'll need to `touch .env` and set some variables following the `.env.template` to use the Twilio functionality.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+4. run `ruby ./lib/run.rb`
 
 
-In code review we'll be hoping to see:
+## Function
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* Upon start the user is met with a banner with ascii text and a mennu from which to choose options. 
+* Upon entering `1` the menu is printed and allows the user to see what is availiable and we're looped back around to the menu for the next input. 
+* `2` allows the user to enter some order choices. These can be either as the `name` of the dish or the menu `number`, either will produce the right result within the order list. 
+* When the user has concluded selection, we're returned to the menu where the user can either go back and add more, view their chosen dishes as a printed table or continue to order. 
+* When choosing `4` the user is prompted to enter a phone number and the entry is propted back to the user to confirm, this also changes the number in to the international format so it can be sent to the Twilio API to send the message. 
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
 
-Notes on Test Coverage
-------------------
+## Planning 
+------
+I made an effort to try and plan what I wanted to achieve with this challenge, using [star uml](https://staruml.io/) which is pretty cool and I recommend it as a decent free option for UML modeling.
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+<img align="center" width="675" height="408" src="./docs/takeaway_UML.png">
+
+## Gems Used
+
+### Terminal-table
+
+* An ascii or unicode table generator for ruby, details [here](https://github.com/tj/terminal-table).
+
+### Twilio-ruby
+
+* A messaging and call service gem for ruby, details [here](https://github.com/twilio/twilio-ruby).
+ 
+### Dotenv
+
+* Supports storing enviroment variables as a file, details [here](https://github.com/bkeepers/dotenv).
+
+### Webmock
+
+* A library with support for RSpec to mock and stub HTTP clients, details [here](https://github.com/bblimke/webmock).
+
+### VCR
+
+* Allows the recording of a tests HTTP interactions and then playing them back to create fast accurate tests, details [here](https://github.com/vcr/vcr).
+
+* Whilst trying to get somewhere with VCR I used this comprehensive guide from [rubyguides.com](https://www.rubyguides.com/2018/12/ruby-vcr-gem/).

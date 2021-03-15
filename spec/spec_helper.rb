@@ -1,5 +1,10 @@
+require 'dotenv/load'
 require 'simplecov'
 require 'simplecov-console'
+require 'rubygems'
+# require 'test/unit'
+require 'webmock/rspec'
+require 'vcr'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -8,10 +13,11 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 ])
 SimpleCov.start
 
-RSpec.configure do |config|
-  config.after(:suite) do
-    puts
-    puts "\e[33mHave you considered running rubocop? It will help you improve your code!\e[0m"
-    puts "\e[33mTry it now! Just run: rubocop\e[0m"
-  end
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/vcr"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.define_cassette_placeholder("account_sid", ENV["ACCOUNT_SID"])
+  config.define_cassette_placeholder("from", ENV["ACCOUNT_NUMBER"])
+  config.define_cassette_placeholder("to", ENV["CUSTOMER_NUMBER"])
 end
