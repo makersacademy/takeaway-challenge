@@ -1,9 +1,13 @@
+require './lib/menu.rb'
+require './lib/message_sender.rb'
+
 class TakeAway
   attr_reader :menu, :basket, :quantity, :dish
 
-  def initialize
-    @menu = { 'Shio Ramen' => 5.50, 'Shoyu Ramen' => 6, 'Miso Ramen' => 7, 'Spicy Ramen' => 8 }
+  def initialize(menu = Menu.new.menu, message_sender = MessageSender.new)
+    @menu = menu
     @basket = {}
+    @message_sender = message_sender
   end
 
   def read_menu
