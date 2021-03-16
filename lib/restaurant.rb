@@ -1,6 +1,6 @@
 class Restaurant
 
-  attr_reader :restaurant_menu, :basket
+  attr_reader :restaurant_menu, :menu, :basket
 
   def initialize(name = 'name', text_message = TextMessage.new)
     @name = name
@@ -23,9 +23,9 @@ class Restaurant
   end
 
   def change_item(menu_index, item_index, name: nil, price: nil, description: nil)
-    @restaurant_menu[menu_index].change_item_name(item_index, name) if name
-    @restaurant_menu[menu_index].change_item_price(item_index, price) if price
-    @restaurant_menu[menu_index].change_item_description(item_index, description) if description
+    @restaurant_menu[menu_index].change_item_name(item_index, name) if :name
+    @restaurant_menu[menu_index].change_item_price(item_index, price) if :price
+    @restaurant_menu[menu_index].change_item_description(item_index, description) if :description
   end
 
   def delete_item_from_menu(menu_index, item_index)

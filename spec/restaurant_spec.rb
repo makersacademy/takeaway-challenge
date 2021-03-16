@@ -30,7 +30,7 @@ describe Restaurant do
   describe '#add_item_to_menu' do
     it 'should be able to add items to the menu' do
       pret.create_menu(name)
-      expect(pret.add_item_to_menu(0, name, price, description))
+      expect(pret.add_item_to_menu(0, name, price, description)).not_to be_empty
     end
   end
 
@@ -71,7 +71,7 @@ describe Restaurant do
       pret.create_menu('brekkie')
       pret.add_item_to_menu(0, name, price, description)
       pret.add_item_to_menu(0, name, price, description)
-      expect(pret.select_item(0, 0))
+      expect(pret.select_item(0, 0)).not_to be_empty
     end
   end
 

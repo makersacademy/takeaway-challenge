@@ -13,6 +13,9 @@ describe TextMessage do
       allow(client).to receive(:messages) { message }
       allow(message).to receive(:create)
       text.send_text_message(to)
+      expect(client).to have_received(:new) { client }
+      expect(client).to have_received(:messages) { message }
+      expect(message).to have_received(:create)
     end
   end
 end

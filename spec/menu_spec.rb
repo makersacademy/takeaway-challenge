@@ -44,7 +44,7 @@ describe Menu do
   describe '#delete_item' do
     it 'should be able to delete items from the menu' do
       lunch.add_item(name, price, description)
-      expect(lunch.delete_item(0)).to eq []
+      expect(lunch.delete_item(0)).to be_empty
     end
   end
 

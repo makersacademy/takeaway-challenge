@@ -1,11 +1,14 @@
 require 'item'
 
 describe Item do
-  let(:item) { Item.new('name', 'price', 'description') }
+  let(:name) { double :name }
+  let(:price) { double :price }
+  let(:description) { double :description }
+  let(:item) { Item.new(name, price, description) }
 
   describe '#change_item' do
     it 'should be able to change our items' do
-      expect(item.change_name('Toast')).to eq 'Toast'
+      expect(item.change_name(name)).to eq name
     end
   end
 
@@ -17,7 +20,7 @@ describe Item do
 
   describe '#change_describtion' do
     it 'should be able to change the describtion' do
-      expect(item.change_description('Toast')).to eq 'Toast'
+      expect(item.change_description(description)).to eq description
     end
   end
 end
