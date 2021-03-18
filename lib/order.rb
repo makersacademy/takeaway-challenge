@@ -3,8 +3,8 @@ require 'rubygems'
 require 'twilio-ruby'
 
 # put your own credentials here
-account_sid = 'AC8987a086c237f27afe114b616e04d0eb'
-auth_token = 'd7ccfed6ac5e24e0d862d78a056b1092'
+account_sid = ''
+auth_token = ''
 
 # set up a client to talk to the Twilio REST API
 @client = Twilio::REST::Client.new account_sid, auth_token
@@ -16,8 +16,6 @@ class Order
     @dishes_ordered = dishes
     @order_total = total
   end
-
-  def add
 
   def total
     total = []

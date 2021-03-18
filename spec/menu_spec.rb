@@ -3,13 +3,11 @@ require 'menu'
 describe Menu do
   let(:dish1) { double :dish1, name: "Dish 1", price: 5 }
   let(:dish2) { double :dish2, name: "Dish 2", price: 10 }
-
-  it { is_expected.to respond_to(:menu_list) }
   
   it 'stores dishes to the menu' do
     subject.add_dish(dish1)
 
-    expect(subject.menu_list).to include(dish1)
+    expect(subject.dishes).to include(dish1)
   end
 
   context 'given a list of dishes' do
