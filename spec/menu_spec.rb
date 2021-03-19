@@ -15,6 +15,6 @@ describe Menu do
 
     it 'prints the entire menu' do
         menu.printed_menu
-        expect(menu.printed_menu).to eq ["chips", 2, "pizza", 10]
+        expect(menu.printed_menu).to eq menu.restaurant_menu
     end
 end

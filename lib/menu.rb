@@ -1,5 +1,5 @@
 class Menu
-    RESTAURANT_MENU = [{:name => 'chips', :price => 2}, {:name => 'pizza', :price => 10}]
+    RESTAURANT_MENU = {'chips' => 2, 'pizza'=> 10}
 
     attr_reader :restaurant_menu
 
@@ -8,12 +8,10 @@ class Menu
     end
 
     def price(item_name)
-        restaurant_menu.each {|item| return item[:price] if item[:name] == item_name}
+        restaurant_menu.each {|item, price| return price if item == item_name}
     end
 
     def printed_menu
-        menu = []
-        restaurant_menu.each {|item| item.each_value {|v | menu.append(v) }}
-        menu
+        restaurant_menu
     end
 end
