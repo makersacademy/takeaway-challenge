@@ -1,3 +1,5 @@
+require_relative 'order.rb'
+
 class Menu
   attr_reader :menu
   

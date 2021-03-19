@@ -1,7 +1,5 @@
 require 'rubygems'
 require 'twilio-ruby'
-require 'dotenv'
-Dotenv.load
 
 class Text
   
@@ -12,10 +10,10 @@ class Text
   end 
 
   def send_sms(total, number)
-    @client.messages.create(
+    @client.messages.create(3
       from: ENV["MY_TWILIO_NUMBER"],
-      to: number,
-      body: "Thank you! Your order was placed and will
+      to: "#{number}",
+      body: "Thank you! Your order of £#{total} was placed and will
       be delivered #{Time.now + 60 * 60}.")
   end 
 

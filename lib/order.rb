@@ -1,12 +1,12 @@
+require_relative 'menu.rb'
+require_relative 'text.rb'
+
 class Order
-
   attr_reader :menu, :order
-
-  def initialize(order = [], menu = Menu.new)
-    # I want to add text = Text.new in the brackets but everytime I do all my tests fail.
+  def initialize(order = [], menu = Menu.new, text = Text.new )
     @order = order
     @menu = menu
-    # @text = text
+    @text = text
   end
 
   def show_menu
@@ -30,6 +30,6 @@ class Order
   end 
 
   def text_confirmation(number)
-    # @text.send_sms(total, number)
+    @text.send_sms(total, number)
   end 
 end
