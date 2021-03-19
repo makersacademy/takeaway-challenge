@@ -102,3 +102,5 @@ Notes
 - subclasses starter, main, desert, drinks and polymorphic
   functions
 - add prep time instance variable for dishes, create a function which calculates wait time.
+- Makes user class which gets user input and calls Restaurant methods in loops.
+- might be better design to have an interface class above User and restaurant, which controls interactions between them.
