@@ -1,6 +1,6 @@
 class Order
 
-  attr_reader :order_list, :menu
+  attr_reader :order_list
 
   def initialize
     @order_list = {}
