@@ -31,10 +31,11 @@ This is how my code behaves in IRB
 
 ![image](https://user-images.githubusercontent.com/30720508/111869758-bb83f400-8978-11eb-9a3a-fd6bc5f024c2.png)
 
+Once text_confirmation is called, my phone receives a text with order total and time one hour from now. 
+
 Test coverage: 
 ![image](https://user-images.githubusercontent.com/30720508/111870050-45808c80-897a-11eb-954d-ef5d55bb0d3e.png)
 
 
-
-Credits to @jackmcc08 for the help with Twilio gem 
+Credit to @jackmcc08 for the help with Twilio gem 
 
