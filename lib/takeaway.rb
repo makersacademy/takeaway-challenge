@@ -17,7 +17,7 @@ class Takeaway
         fail 'Sorry, this item is not on the menu.' unless menu.restaurant_menu.include?(item)
         @order = Order.new if order_started? == false 
         @order.add(item, quantity)
-        puts "#{item} x#{quantity} added to your order"
+        "#{item} x#{quantity} added to your order"
     end
 
     def order_started?
@@ -26,12 +26,13 @@ class Takeaway
 
     def correct_amount?
         items_prices_total = 0
-        @order.order_summary {|k, v| items_prices_total = items_prices_total + (menu.price(k) * v)}
-        @order.total_amount == items_prices_total
+        @order.basket {|k, v| items_prices_total = items_prices_total + (menu.price(k) * v)}
+        @order.total_amount(menu) == items_prices_total
     end
 
     def complete_order
+        fail 'Your basket is empty' unless order_started?
         correct_amount?
-        puts "Total amount: £#{order.total_amount}"
+        "Total amount: £#{order.total_amount(menu)}"
     end
 end

@@ -44,13 +44,20 @@ describe Takeaway do
         end
     end
 
-    describe '#checkout' do
+    describe '#complete_order' do
+        it 'checks if the basket is empty' do
+            expect { takeaway.complete_order }.to raise_error 'Your basket is empty'
+        end
+
         it 'checks if the total amount is correct' do
             takeaway.add_to_order('chips', 5)
             allow(takeaway.order).to receive(:total_amount) { 1 }
             expect(takeaway.correct_amount?).to be false
         end
 
-        
+        it 'informs of the final amount' do
+            takeaway.add_to_order('chips', 5)
+            expect(takeaway.complete_order).to eq "Total amount: £10"
+        end
     end
 end

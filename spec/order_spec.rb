@@ -5,12 +5,12 @@ describe Order do
     let(:menu) { Menu.new }
 
     it { is_expected.to respond_to :order_list }
-    it { is_expected.to respond_to :order_summary }
+    it { is_expected.to respond_to :basket }
     it { is_expected.to respond_to :add}
 
-    describe '#order_summary' do
+    describe '#basket' do
         it 'prints the order' do
-            expect(order.order_summary).to eq order.order_list
+            expect(order.basket).to eq order.order_list
         end
     end
 
@@ -25,7 +25,7 @@ describe Order do
         it 'sums up the total amount of the order' do
             order.add('chips', 2)
             order.add('pizza', 1)
-            expect(order.total_amount).to eq 14
+            expect(order.total_amount(menu)).to eq 14
         end
     end
 end

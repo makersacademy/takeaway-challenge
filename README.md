@@ -1,35 +1,11 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway
 
- ```
+## Motivation
+This is the second individual challenge set by Makers Bootcamp for the module of OOD. I worked on this task on my own using resources from the course, the Ruby and rspec documentation and my own notes.
 
-Instructions
--------
+## The Task
+This is a program that simulates a takeaway service. The customers can read the menu, add items to their order and checkout, having confirmed that the total amount is correct. Here are the user stories:
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -45,39 +21,25 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Edge cases
+• Protect against items being ordered when they are not on the menu. • Protect against customers completing an order without having anything in their basket.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## Approach to solving the challenge
+I solved this challenge using TDD, as well as the BDD cycle as guidance. Below are the steps I took:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+1. I analysed the user stories and made a table representation of the objects and the messages they take (e.g. Object: Takeaway, Message: read_menu), as well as a few simple diagrams that show how the objects will use messages to communicate with one another.
+2. I created feature tests using irb for each of the user stories. I also created a short script to run in the terminal, printing the return values of various methods and variables. I used that throughout the development cycle.
+3. Using the failed feature tests, I wrote unit tests to reproduce the errors seen at the previous stage.
+4. Letting the errors from the unit tests guide me, I implemented features until the unit tests passed.
+5. I refactored my code.
+6. I finally checked that the feature that I implemented satisfied the user story, before moving on to the next story.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+## Assumptions
+I assumed that the menu of the takeaway is not changeable. I therefore used a constant with the value of a hash containing the dishes available. I made that decision to save time and appreciate that, had this been a real-world project, it would have been discussed with the client. This design could be changed by the introduction of a MenuItems class that is initialized with the name and price of a dish. Instances of that class can then be appended to a menu array in the Menu class to create the restaurant menu, instead of the constant that is currently used.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+## Progress
+• I implemented the first 3 out of 4 features outlined in the user stories. I did not have the time to implement the messaging feature, as that required setting up and learning how to use the Twilio API.
+• The tests passed.
+• Rubocop tests did not bring up any offences.
+• Test coverage of 100%.
