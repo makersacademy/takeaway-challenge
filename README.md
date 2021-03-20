@@ -66,18 +66,41 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+User class
+Owns menu variable 
 
+US1
+Dish owns price
+Menu class which creates and stores dishes?
+see_menu - lists out dishes with prices
 
-In code review we'll be hoping to see:
+US2
+select_dishes - select and store dishes
+getting user input - mock this
+Edge case - input does not match case
+dish owns available
+- restaurant method to say dish is out of stock.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+US3
+check_total - sum of prices of selected dishes
+Maybe provides a run through of the order (preview)
+Could get user input - ask if user is happy with order
+  if yes/true then process order and send_text
+  if not/false then could continue to ask to add/remove item.
+    Extra - add a remove dish option.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+US4
+send_text - sends a text message (string) "Thank you! Your order was placed and will be delivered before #{time.now + MAX_WAITING_TIME}"
+Menu owns MAX_WAITING_TIME
 
-Notes on Test Coverage
-------------------
+Twilio API
+  gem file
+  set phone number to environment variable
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+Notes
+- add implementation for extra menus (drinks)
+- subclasses starter, main, desert, drinks and polymorphic
+  functions
+- add prep time instance variable for dishes, create a function which calculates wait time.
+- Makes user class which gets user input and calls Restaurant methods in loops.
+- might be better design to have an interface class above User and restaurant, which controls interactions between them.
