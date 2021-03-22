@@ -7,6 +7,7 @@ class Order
         @order = Hash.new(0)
         @total = 0
         @dishes = Menu.new.dishes
+        @time = (Time.now + 1*60*60).strftime("%I:%M%p")
     end
 
     def add(dish, quantity)
@@ -24,4 +25,8 @@ class Order
         end
         return @total
     end
+    
+    def complete
+        return "Thank you! Your order has been placed and will be with you by #{@time}"
+    end 
 end

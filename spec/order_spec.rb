@@ -19,4 +19,8 @@ describe Order do
     it 'total of order matches the total expected' do
         expect(subject.total).to eq 7.5
     end
+
+    it 'sends a message after order has been made' do
+        expect(subject.complete).to end_with("#{(Time.now + 1*60*60).strftime("%I:%M%p")}")
+    end
 end
