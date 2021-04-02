@@ -26,7 +26,7 @@ class OrderManager
   def create_order
     print_dishes(menu.dishes_list)
     ask_what_user_wants_to_order
-    @orders << Order.new(@basket)
+    orders << Order.new(@basket)
     order_confirmation
     @basket = []
   end
@@ -78,8 +78,7 @@ class OrderManager
   end
 
   def send_sms
-    it_will_arrive_before = estimated_arrival_time(orders[-1])
-    TwilioManager.new.send_sms(it_will_arrive_before)
+    TwilioManager.new.send_sms(estimated_arrival_time(orders[-1]))
   end
 
   def estimated_arrival_time(order)
