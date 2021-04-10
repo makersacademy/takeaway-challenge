@@ -5,7 +5,7 @@ describe Menu do
   it { is_expected.to be_an_instance_of Menu }
 
   it "stores the menu as a hash" do
-    expect(subject.dish).to be_an_instance_of Hash
+    expect(subject.menu).to be_an_instance_of Hash
   end
 
   it "responds to the show menu method" do
