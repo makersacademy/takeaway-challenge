@@ -3,7 +3,7 @@
 ```
                             _________
               r==           |       |
-           _  //            |  <img src="https://media.giphy.com/media/22HZyXo5EocWA/giphy.gif" width="40" height="40" /> |   ))))
+           _  //            |  M.J. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
