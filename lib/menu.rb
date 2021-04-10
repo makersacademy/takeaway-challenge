@@ -8,6 +8,12 @@ class Menu
     format_output
   end
 
+  def check(ordered_dish)
+    @menu_list.each do |item|
+      return item.available if (item.name == ordered_dish)
+    end
+  end
+
   private 
 
   def initialize(dish_class = Dish)

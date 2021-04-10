@@ -12,6 +12,8 @@ describe Menu do
     available: true)
   }
 
+  let(:katsu_curry) { double(:katsu_curry) } 
+
   context 'initializing menu' do
     it 'contains a list of all dishes' do
       expect(subject.menu_list).to_not be_empty
@@ -25,6 +27,14 @@ describe Menu do
 
     it 'hides unavailable dishes' do
       expect { subject.display_menu }.to_not output(/Ramen/).to_stdout
+    end
+  end
+
+  describe '#check' do
+    context 'after ordering a dish' do
+      it 'checks availability of the dish' do
+        expect(subject.check('katsu_curry')).to be_truthy
+      end
     end
   end
 end
