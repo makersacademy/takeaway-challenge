@@ -36,3 +36,11 @@ describe Order do
   end
 
 end
+
+=begin
+todo
+place_order method
+sends text (and moves order where it needs to go (nowhere in this case))
+work out twilio
+env variables to save my number
+=end
