@@ -17,7 +17,7 @@ describe Order do
   it "can store more orders of more than one dish variety" do
     subject.add_to_basket("miso", 3)
     subject.add_to_basket("tonkotsu", 4)
-    expect(subject.order).to eq(["miso", "miso", "miso", "tonkotsu","tonkotsu","tonkotsu","tonkotsu"])
+    expect(subject.order).to eq(["miso", "miso", "miso", "tonkotsu", "tonkotsu", "tonkotsu", "tonkotsu"])
   end
 
 end
