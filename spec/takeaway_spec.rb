@@ -28,7 +28,14 @@ let (:subject) { Takeaway.new }
       subject.add("margarita")
       subject.add("water")
       subject.add("pepperoni")
-      expect(subject.shoppingcart.reduce(:+)).to eq(20.97)
+      subject.add("cheesecake")
+      expect(subject.shoppingcart.count).to eq(4)
+    end
+    it 'Checks that the total amount is equal to the price of items added' do 
+      subject.add("margarita")
+      subject.add("water")
+      subject.add("pepperoni")
+      expect(subject.total).to eq(20.97)
     end
   end
 end

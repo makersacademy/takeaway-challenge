@@ -11,4 +11,8 @@ class Takeaway
     @shoppingcart << @items[value.to_sym] #stuck trying to convert it over to being a symbol
   end
 
+  def total
+    @shoppingcart.reduce(:+)
+  end
+
 end
