@@ -2,7 +2,8 @@ require 'dish'
 
 describe Dish do
 
-  subject(:katsu_curry) { described_class.new(:katsu_curry, 10, false) }
+  subject(:katsu_curry) { described_class.new(:katsu_curry, 10, true) }
+  subject(:ramen) { described_class.new(:ramen, 12, false) }
   subject(:yaki_soba) { described_class.new(:yaki_soba, 9) }
 
   context 'initializing dish' do
@@ -15,7 +16,8 @@ describe Dish do
     end
 
     it 'has an availability' do
-      expect(katsu_curry.available).to eq(false)
+      expect(katsu_curry.available).to eq(true)
+      expect(ramen.available).to eq(false)
     end
 
     it 'is available by default' do
