@@ -24,6 +24,12 @@ let (:subject) { Takeaway.new }
       subject.add("margarita")
       expect(subject.shoppingcart).to eq([8.99])
     end
+    it 'Checks that the user can select several items on the list' do
+      subject.add("margarita")
+      subject.add("water")
+      subject.add("pepperoni")
+      expect(subject.shoppingcart.reduce(:+)).to eq(20.97)
+    end
   end
 end
 end

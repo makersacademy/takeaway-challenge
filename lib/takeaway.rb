@@ -8,7 +8,7 @@ class Takeaway
   end
 
   def add(value)
-    @shoppingcart << @items[value.to_sym]
+    @shoppingcart << @items[value.to_sym] #stuck trying to convert it over to being a symbol
   end
 
 end
