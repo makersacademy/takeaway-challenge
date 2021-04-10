@@ -86,3 +86,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | ---------- | ------------------------------------- |
 | Attributes | dishes, text                          |
 | Methods    | place_order, add_to_order, view_order |
+
+### Sequence Diagram
+
+![Diagram](/Users/jasonrowsell/downloads/Screenshot_2021-04-10 Diagram codes Instant Diagram Generation Tool.png)
