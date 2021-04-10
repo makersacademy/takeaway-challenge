@@ -1,3 +1,3 @@
-class Takeaway
+class Menu
 
 end

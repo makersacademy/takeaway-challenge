@@ -1,5 +1,5 @@
-require 'takeaway'
+require 'menu'
 
-describe Takeaway do
+describe Menu do
 
 end
