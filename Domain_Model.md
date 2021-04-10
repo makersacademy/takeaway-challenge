@@ -35,18 +35,18 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | text after ordered                | order          | 
 
 
-| Actions                           | Property it reads or changes                 |
-| --------------------------------- | ---------------------------------------------| 
-| list of dishes                    | @dish, show_menu                             | 
-| select number of avaible dishes   | @dish, available_dishes, show_menu           | 
-| total matches sum of order        | basket, @dish, @total,checkout, add_to_basket| 
-| receive text after ordered        | @time, text_confirmation                     |
+| Actions                           | Property it reads or changes    |
+| --------------------------------- | --------------------------------| 
+| list of dishes                    | @dish, show_menu                | 
+| select number of avaible dishes   | @dish, add_to_basket, show_menu | 
+| total matches sum of order        | basket, @dish, @total,checkout, | 
+| receive text after ordered        | @time, text_confirmation        |
 
 
-| Class                         | Menu                     | 
-| ------------------------------| ------------------------ | 
-| Properties(instance variables)| @dish                    | 
-| Actions(methods)              | avilable_dishes,show_menu| 
+| Class                         | Menu      | 
+| ------------------------------| --------- | 
+| Properties(instance variables)| @dish     | 
+| Actions(methods)              | show_menu | 
 
  
 | Class                             | Order                                              | 
