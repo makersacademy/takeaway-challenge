@@ -21,7 +21,8 @@ let (:subject) { Takeaway.new }
       expect(subject.shoppingcart).to eq([])
     end
     it 'Checks that an item can be added to the shopping cart' do
-      subject.add()
+      subject.add("margarita")
+      expect(subject.shoppingcart).to eq([8.99])
     end
   end
 end

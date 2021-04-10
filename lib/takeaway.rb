@@ -7,4 +7,8 @@ class Takeaway
     @shoppingcart = []
   end
 
+  def add(value)
+    @shoppingcart << @items[value.to_sym]
+  end
+
 end
