@@ -1,8 +1,7 @@
 require "order"
 
 describe Order do
-  #let(:menu) { [{ "Margherita pizza" => 9 }, { "Can of drink" => 1 }] }
-  let(:subject) { Order.new({ "Margherita pizza" => 9 , "Can of drink" => 1 }) }
+  let(:subject) { Order.new({ "Margherita pizza" => 9, "Can of drink" => 1 }) }
 
   describe "#order_list" do
     it "order_list is initally empty" do
@@ -13,18 +12,27 @@ describe Order do
   describe "#add_to_order" do
     it "add to order adds 1 dish to order_list" do
       subject.add_to_order("Margherita pizza")
-      expect(subject.order_list.last).to eq "Margherita pizza"
+      expect(subject.order_list).to eq({ "Margherita pizza" => 1 })
     end
 
     it "can add multiple of a dish to order_list" do
       subject.add_to_order("Margherita pizza", 2)
-      expect(subject.order_list.last(2)).to eq ["Margherita pizza", "Margherita pizza"]
+      expect(subject.order_list).to eq({ "Margherita pizza" => 2 })
     end
   end
 
   describe "#total" do
     it "add to order adds price to total cost of order" do
-      expect{ subject.add_to_order("Margherita pizza") }.to change{ subject.total }.by 9
+      expect { subject.add_to_order("Margherita pizza", 2) }.to change { subject.total }.by 18
     end
   end
+
+  describe "#check_total" do
+    it "produces a receipt and compares with total" do
+      subject.add_to_order("Margherita pizza", 2)
+      subject.add_to_order("Can of drink", 3)
+      expect(subject.check_total).to eq "You have ordered: 2 x Margherita pizza (£9 each) 3 x Can of drink (£1 each). The total is £21."
+    end
+  end
+
 end
