@@ -89,4 +89,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ### Sequence Diagram
 
-![Diagram](/Users/jasonrowsell/downloads/Screenshot_2021-04-10 Diagram codes Instant Diagram Generation Tool.png)
+![Diagram](./images/diagram.png)
