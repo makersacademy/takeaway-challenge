@@ -89,4 +89,28 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ### Sequence Diagram
 
+```
+alias user="Customer"
+alias menu="Menu"
+alias dish="Dish "
+alias text="Text Messenger"
+alias calc="Calculator"
+alias ord="Order"
+
+
+user->menu:"view menu"
+user->menu:"filter menu by availability"
+menu-->user:"display available dishes"
+user->order:"create new order"
+user->order:"add dish/dishes to order"
+order->menu:"check availability of ordered dishes"
+menu-->order:"confirms availability, return dish info"
+order->calculator:"list of ordered dishes"
+calculator-->order:"calculates total price"
+order-->user:"displays ordered dishes and total price"
+user->order:"confirm order"
+order->text:"request text to confirm order"
+text-->user:"confirmation text"
+```
+
 ![Diagram](./images/diagram.png)
