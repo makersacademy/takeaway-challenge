@@ -1,19 +1,20 @@
 require_relative 'dish'
 
 class Menu
-  attr_reader :list
 
-  def initialize(dish_class = Dish)
-    @dish_class = dish_class
-    @list = []
-    load_menu
-  end
+  attr_reader :menu_list
 
   def display_menu
     format_output
   end
 
   private 
+
+  def initialize(dish_class = Dish)
+    @dish_class = dish_class
+    @menu_list = []
+    load_menu
+  end
 
   def load_menu
     file = File.open("./lib/menu.csv", "r")
@@ -25,7 +26,7 @@ class Menu
     file.readlines.each do |line|
       name, price, available = line.chomp.split(',')
       dish = @dish_class.new(name, price, available)
-      @list << dish
+      @menu_list << dish
     end
   end
 
@@ -38,7 +39,7 @@ class Menu
   end
 
   def format_output
-    @list.each do |dish|
+    @menu_list.each do |dish|
       next if dish.available == "false"
 
       puts "#{render_name(dish)}: £#{dish.price}" 

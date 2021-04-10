@@ -14,7 +14,7 @@ describe Menu do
 
   context 'initializing menu' do
     it 'contains a list of all dishes' do
-      expect(subject.list).to_not be_empty
+      expect(subject.menu_list).to_not be_empty
     end
   end
 
