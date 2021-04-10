@@ -60,3 +60,29 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Nouns        | Verbs      |
 | ------------ | ---------- |
 | text message | to receive |
+
+### Class Diagrams
+
+| Class      | menu                                   |
+| ---------- | -------------------------------------- |
+| Attributes | list, dish                             |
+| Methods    | print_menu, check_available, load_menu |
+
+| Class      | dish                   |
+| ---------- | ---------------------- |
+| Attributes | name, price, available |
+
+| Class      | text_messenger         |
+| ---------- | ---------------------- |
+| Attributes | account_id, auth_token |
+| Methods    | send                   |
+
+| Class      | calculator |
+| ---------- | ---------- |
+| Attributes |            |
+| Methods    | total      |
+
+| Class      | order                                 |
+| ---------- | ------------------------------------- |
+| Attributes | dishes, text                          |
+| Methods    | place_order, add_to_order, view_order |
