@@ -4,8 +4,10 @@ require_relative 'menu'
 class Order 
   attr_reader :basket, :menu, :total
 
-  def initialize(menu)
+  def initialize(menu, number, twilio_api)
     @menu = menu
+    @number = number
+    @twilio_api = twilio_api
     @basket = []
     @total = 0
   end

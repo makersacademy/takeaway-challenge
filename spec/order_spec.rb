@@ -8,7 +8,9 @@ describe Order do
   let(:menu) { double(:menu, :dishes => [dish_double_1, dish_double_2] ) }
   let(:menu) { double(:menu, :dishes => [dish_double_1, dish_double_2], :pick_dish => dish_double_3) }
 
-  subject { described_class.new(menu) }
+  let(:twilio_api) { double(:twilio_api, :message => "sends a message") }
+
+  subject { described_class.new(menu, 12345678910, twilio_api) }
 
   context '#initialize' do
     let(:empty_menu) { double(:menu, :dishes => [] ) }
@@ -18,7 +20,7 @@ describe Order do
     end
 
     it 'starts with an empty basket'do
-      order = Order.new(empty_menu)
+      order = Order.new(empty_menu, 12345678910, twilio_api)
       expect(order.basket).to be_empty
     end
 
@@ -38,6 +40,11 @@ describe Order do
     it 'can add a dish to the basket' do
       subject.add_dish(dish_double_3)
       expect(subject.basket[-1]).to be(dish_double_3)
+    end
+
+    it 'can add a dish by name' do
+      subject.add_dish("burger")
+      expect(subject.basket[-1] ).to eq(dish_double_3)
     end
 
     it 'adds the price to the total' do
