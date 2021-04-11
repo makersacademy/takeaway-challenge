@@ -12,7 +12,7 @@ describe Menu do
 
   context '#dish?' do
     it 'checks if a dish is on the menu' do
-      expect(subject.dish?("Pizza")).to eq nil 
+      expect(subject.dish?("Pizza")).to eq false
     end 
   end 
 

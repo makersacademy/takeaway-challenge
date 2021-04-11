@@ -15,7 +15,7 @@ class Menu
   end 
 
   def dish?(item)
-    @menu_items[item.to_sym]
+    !@menu_items[item.to_sym].nil?
   end 
 
   def price(item)
