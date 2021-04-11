@@ -81,3 +81,29 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+Kerri's Notes
+------------------
+* All RSpec tests passing while correctly stubbing the text function
+* `irb` working as intended, successfully sending the text message to my phone
+* Fairly low test coverage at 92.47%, this is something I intend to fix
+* I also intend to move the text send function (lines 38 - 46) into its own class but need to figure out adequate tests for that 
+* Example `irb` output:
+2.6.5 :001 > require './lib/order.rb'
+ => true 
+2.6.5 :002 > order = Order.new
+2.6.5 :003 > order.see_menu
+Lasagne  --£12
+Risotto  --£8
+Carbonara  --£10
+ => {:Lasagne=>12, :Risotto=>8, :Carbonara=>10} 
+2.6.5 :004 > order.place_order("Carbonara", 3)
+ => "3x Carbonara(s) added to basket = £30" 
+2.6.5 :005 > order.place_order("Risotto", 2)
+ => "2x Risotto(s) added to basket = £16" 
+2.6.5 :006 > order.total
+ => "Your order total is: £46" 
+2.6.5 :007 > order.confirm_order
+ => "A confirmation text should be with you shortly" 
+
+
