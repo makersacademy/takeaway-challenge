@@ -5,19 +5,7 @@ During the COVID-19 pandemic, restaurants have had to adapt to online deliveries
 The features built in this project are based on [user stories.](user_stories.md)
 The features built in this project are structured on a [domain model.](plan.md)
 
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
-```
+![Twilio](./images/twilio.jpg)
 
 This project focuses on Pair Programming and TDD.
 
