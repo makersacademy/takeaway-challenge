@@ -10,6 +10,6 @@ describe Menu do
   end 
 
   it 'checks if a dish is on the menu' do
-    expect(subject.has_dish?("Pizza")).to eq false 
+    expect(subject.has_dish?("Pizza")).to eq nil 
   end 
 end 

@@ -15,6 +15,6 @@ class Menu
   end 
 
   def has_dish?(item)
-    !@menu_items[item.to_sym].nil?
+    @menu_items[item.to_sym]
   end 
 end 
