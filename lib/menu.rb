@@ -65,6 +65,6 @@ class Menu
     @basket.map { |item|
       to_pay += item.price
     }
-    puts "THE TOTAL IS: $#{to_pay.truncate(2)}."
+    puts "THE TOTAL IS: $#{to_pay.truncate(2)}"
   end
 end

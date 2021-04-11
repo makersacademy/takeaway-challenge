@@ -46,7 +46,7 @@ describe Menu do
       subject.select_dish(3)
       subject.select_dish(6)
       subject.select_dish(6)
-      expect { subject.view_basket }.to output("This your selection of dishes so far:\n3 x jerk_chicken: $35.97\n1 x Burger: $7.99\n2 x pizza: $19.98\nTHE TOTAL IS: $63.94.\n").to_stdout
+      expect { subject.view_basket }.to output("This your selection of dishes so far:\n3 x jerk_chicken: $35.97\n1 x Burger: $7.99\n2 x pizza: $19.98\nTHE TOTAL IS: $63.94\n").to_stdout
     end
   end
 end
