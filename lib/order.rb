@@ -7,6 +7,7 @@ class Order
     @order_list = Hash.new(0)
     @total = 0
     @menu = menu
+    @eta = (Time.new + 3600).strftime("%H:%M")
   end
 
   def add_to_order(item, number = 1)
@@ -34,22 +35,12 @@ class Order
   end
 
   def send_sms
-    account_sid = ENV["TWILIO_SID"]
-    auth_token = ENV["TWILIO_TOKEN"]
-    client = Twilio::REST::Client.new(account_sid, auth_token)
+    client = Twilio::REST::Client.new(ENV["TWILIO_SID"], ENV["TWILIO_TOKEN"])
   
-    from = ENV["TWILIO_NUM"]
-    to = ENV["MYNUMBER"] 
-
     client.messages.create(
-    from: from,
-    to: to,
-    body: "Thank you! Your order was placed and will be delivered before #{eta}"
+    from: ENV["TWILIO_NUM"],
+    to: ENV["MYNUMBER"] ,
+    body: "Thank you! Your order was placed and will be delivered before #{@eta}"
     )
-  end
-
-  def eta
-    unformated = Time.new + 3600
-    @eta = unformated.strftime("%H:%M")
   end
 end
