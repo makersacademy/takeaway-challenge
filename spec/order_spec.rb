@@ -6,7 +6,7 @@ describe Order do
                           { dish: 'chicken', price: 15, available?: true },
                           { dish: 'lamb', price: 20, available?: false },
                           { dish: 'duck', price: 25, available?: false },
-                          ] 
+                         ]
                         }
   let(:menu)           { double :menu, menu_list: menu_list }
   let(:subject)        { described_class.new(menu) }
@@ -46,6 +46,5 @@ describe Order do
     end
   end
 
-
-
+  it { is_expected.to respond_to(:complete_order).with(1).argument }
 end

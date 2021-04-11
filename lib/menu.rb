@@ -6,7 +6,7 @@ class Menu
   end
 
   def update_menu_list(menu, price, availability = true)
-    @menu_list << {dish: menu, price: price, available?: availability}
+    @menu_list << { dish: menu, price: price, available?: availability }
   end
 
   def update_availibility(dish, is_available)

@@ -7,7 +7,7 @@ describe Menu do
   describe '#update_menu_list' do
     it 'is expected to update the menu list' do
       subject.update_menu_list('biryani', 10)
-      expect(subject.menu_list).to include({dish: 'biryani', price: 10, available?: true})
+      expect(subject.menu_list).to include({ dish: 'biryani', price: 10, available?: true })
     end
 
     it 'should default the menu availibility to true' do
@@ -21,7 +21,7 @@ describe Menu do
     expect(subject.menu_list[0][:dish]).to eq('biryani')
   end
 
-  describe'#update_availibility' do
+  describe '#update_availibility' do
     it 'updates the availibility of a dish' do
       subject.update_menu_list('biryani', 10)
       subject.update_availibility('biryani', false)
