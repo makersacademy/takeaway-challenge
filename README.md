@@ -1,6 +1,6 @@
 # Takeaway Challenge
 
-During the COVID-19 pandemic, restaurants have had to adapt to online deliveries and services. Deliverooby, an online takeaway service, requires a program to be built, allowing customers to order food from the comfort of their own home.
+During the COVID-19 pandemic, restaurants have had to adapt to online deliveries and services. Deliverooby, an online takeaway service, requires a program to be built, allowing customers to order food from the comfort of their own home. Twilio was used in this program to send a confirmation text to the customer once an order has been placed. 
 
 The features built in this project are based on [user stories.](user_stories.md)
 The features built in this project are structured on a [domain model.](plan.md)
