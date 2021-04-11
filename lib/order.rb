@@ -1,4 +1,7 @@
 class Order
+
+  attr_reader :order_list
+  
   def initialize(dish_class = Dish, calc_class = Calculator)
     @order_list = []
     @dish_class = dish_class
@@ -16,8 +19,10 @@ class Order
 
   def view_order
     puts "Dishes: "
-    @order_list
-    # puts "Total: #{total_price}"
+    @order_list.each do |item|
+      puts "#{item.name.capitalize.gsub('_', ' ')}: £#{item.price}"
+    end
+    puts "Total: £#{total_price}"
   end
 
   private 

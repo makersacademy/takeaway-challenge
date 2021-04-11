@@ -21,11 +21,16 @@ describe Order do
   let(:menu) { double(:menu, check: dish) }
 
   describe '#add_dish' do
+    context 'before adding dishes' do
+      it 'displays an empty list' do
+        expect(subject.order_list).to be_empty
+      end
+    end
     context 'selecting an available dish' do
       it 'adds dish to order list' do
         allow(menu).to receive(:check).with(dish.name).and_return(dish)
         subject.add_dish(menu, dish.name)
-        expect(subject.view_order).to include(dish)
+        expect { subject.view_order }.to output(/Katsu curry/).to_stdout
       end
     end
     context 'selecting an unavailable dish' do
@@ -37,23 +42,15 @@ describe Order do
   end
 
   describe '#view_order' do
-    context 'before adding dishes' do
-      it 'displays an empty list' do
-        expect(subject.view_order).to be_empty
-      end
-    end
     context 'after adding dishes' do
       before do 
-        allow(menu).to receive(:check).with(dish.name).and_return('true')
+        allow(menu).to receive(:check).with(dish.name).and_return(dish)
         3.times {
           subject.add_dish(menu, dish.name)
         }
       end
-      it 'displays the list of ordered dishes' do
-        expect(subject.view_order).to_not be_empty
-      end
       it 'displays the total price' do
-        expect(subject.view_order).to output(/30/).to_stdout
+        expect { subject.view_order }.to output(/30/).to_stdout
       end
     end
   end

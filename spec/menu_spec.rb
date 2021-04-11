@@ -29,9 +29,14 @@ describe Menu do
   end
 
   describe '#check' do
-    context 'after ordering a dish' do
-      it 'returns availability of the dish' do
+    context 'after ordering an available dish' do
+      it 'returns the dish' do
         expect(subject.check('katsu_curry')).to eq(dish)
+      end
+    end
+    context 'after ordering an unavailable dish' do
+      it 'returns nil' do
+        expect(subject.check('ramen')).to eq nil
       end
     end
   end
