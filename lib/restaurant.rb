@@ -1,5 +1,7 @@
+# require 'secrettwilio'
 class Restaurant
   attr_reader :menu
+
   def initialize
     @menu = {
       "antipasti" =>  7,
@@ -22,8 +24,9 @@ class Restaurant
     total
   end
 
-  def send_text(cost)
-
+  def send_text
+    # an_hour_from_now = Time.???
+    # "Thank you! Your order was placed and will be delivered before #{an_hour_from_now}"
   end
 
 end

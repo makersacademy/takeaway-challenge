@@ -24,6 +24,7 @@ describe Customer do
       expect(subject.view_menu).to eq(diner.format_menu)
     end
   end
+  
   describe '#validate_bill' do
     it 'customer math matches restuarant bill' do
       subject.make_order({"antipasti" => 3})
@@ -33,6 +34,7 @@ describe Customer do
     it 'raises error if restaurant bill wrong' do
       dinerdouble = double("dinerdouble")
       subject.make_order({"antipasti" => 3})
+      # ugh I sorta hate doubles, they feel sneaky and confusing.
       allow(dinerdouble).to receive(:calculate_bill).and_return(1)
       expect { subject.validate_bill(dinerdouble.calculate_bill(subject.order)) }.to raise_error('bill incorrect')
     end

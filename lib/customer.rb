@@ -2,7 +2,8 @@ require_relative 'restaurant'
 
 class Customer
 
-  attr_reader :order, :bill_conflict
+  attr_reader :order
+
   def initialize
     @order = nil
   end
@@ -24,14 +25,5 @@ class Customer
     fail('bill incorrect') if my_total != bill_total
     my_total
   end
-
-  # def check_for_objection(my_t, bill_t)
-  #   if my_t != bill_t
-  #     @bill_conflict = true
-  #     raise_error('bill incorrect')
-  #   else
-  #     @bill_conflict = false
-  #   end
-  # end
 
 end
