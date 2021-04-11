@@ -81,3 +81,23 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+Implementation 
+--------------
+
+* `Takeaway` class is created to manage and create orders (`create order`) as well as manage your menu(not yet implemented).
+* `Order` class contains functionality to add items to your order (`add_to_order`), record your total and check the total of the order (`check_total`) and place your order (`place_order`).
+  * `add_to_order` allows the user to select items from the menu and add it a specified number of times to your order.
+  * `check_total` will produce a list of items in your order with their prices and the total price recorded.
+  * `place_order` sends a text message via twilio API as a confirmation as well as give an eta (within 1 hour of ordering).
+* Twilio API was set up using environmental variables which will need to be replaced in order for this functionailty to work.
+
+Further improvements
+--------------------
+* Raising errors to prevent items not on the menu from being ordered.
+* Allowing items to be removed from the order once they have been added.
+* Creating a history of orders placed.
+* Allowing users to place their orders via sms.
+* Learn how to test the twilio API is working apart from with IRB.
+* Find a way to test the ETA is working as intended.
+* Allow management of the menu through the Takeaway class (add and remove items / change prices)
