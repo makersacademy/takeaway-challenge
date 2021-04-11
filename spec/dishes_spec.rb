@@ -30,7 +30,7 @@ describe Dishes do
 
   describe '#list_available_dishes' do
     it 'stores a list of available dishes' do
-      expect(subject.list_available_dishes).to include(:name => price) if subject.available?("yes")
+      expect(subject.list_available_dishes).to include(name => price) if subject.available?("yes")
     end
   end
 end

@@ -1,4 +1,4 @@
-require 'dishes'
+require_relative 'dishes'
 class Takeaway 
   attr_reader :available_dishes
 
@@ -6,10 +6,8 @@ class Takeaway
     @available_dishes = {}
   end
 
-  # def menu
-  #   p @available
-  #   p $available
-  #   p @available_dishes = {$name => $price} if $available
-  # end
+  def menu
+    p @available_dishes = {$name => $price} if Dishes.new($name, $price, @available = true)
+  end
 
 end

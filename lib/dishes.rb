@@ -1,9 +1,9 @@
 class Dishes
   attr_reader :name, :price, :available, :list_available_dishes
 
-  def initialize(name = "", price = 1, available = true)
-    @name = name
-    @price = price
+  def initialize(name, price, available = true)
+    $name = name
+    $price = price
     @available = available
     @available_dishes = {}
   end
@@ -19,7 +19,7 @@ class Dishes
   end
 
   def list_available_dishes
-    p @available_dishes = {:@name => @price} if available?("yes")
+    p @available_dishes = {$name => $price} if available?("yes")
     p @available_dishes
   end
 end

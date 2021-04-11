@@ -22,7 +22,7 @@ describe 'Order' do
 
   describe '#add_to_order' do
     it 'selects from takeaway.menu' do
-      expect(subject.add_to_order(add)).to include({:name => price})
+      expect(subject.add_to_order(add)).to include({name => price})
     end
   end
 end
