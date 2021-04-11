@@ -5,7 +5,7 @@ class TakeAway
     @menu = menu
   end
 
-  def display_menu
-    menu.display
+  def show_menu
+    @menu.display
   end
 end

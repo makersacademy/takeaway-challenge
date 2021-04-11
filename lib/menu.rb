@@ -1,10 +1,11 @@
 class Menu
-  attr_reader :items
-  def initialize(items)
-    @items = items
+  attr_reader :meal
+
+  def initialize(meal)
+    @meal = meal
   end
 
   def display
-    @items.map { |name, price| "#{name}: £#{price}" }.join(", ")
+    @meal.map { |name, price| "#{name}: £#{price}"}.join(", ")
   end
 end

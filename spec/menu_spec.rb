@@ -1,17 +1,15 @@
 require 'menu'
 
 describe Menu do
-  subject(:menu) { described_class.new(items) }
-  let(:items) { { :"Chicken Katsu" => 10, Chips: 2 } }
+  subject(:menu) { described_class.new(meal) }
+  let(:meal) { { :"Chicken Katsu" => 20, :"Spring rolls" => 10 }}
 
-  context '#display_menu' do
+  it 'allows to store a menu' do
+    expect(menu.meal).to eq(meal)
+  end
 
-    it 'should store a menu' do
-      expect(menu.items).to eq(items)
-    end
-
-    it 'should display a menu' do
-      expect(menu.display).to eq("Chicken Katsu: £10, Chips: £2")
-    end
+  it 'allows to display a menu' do
+    menu_list = "Chicken Katsu: £20, Spring rolls: £10"
+    expect(menu.display).to eq(menu_list)
   end
 end
