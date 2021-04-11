@@ -12,4 +12,5 @@ class Menu
     @menu_list.map { |item| item[:available?] = rand(1..5) < 5 }
     @menu_list
   end
-end  
+end
+ 

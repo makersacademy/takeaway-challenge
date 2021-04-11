@@ -36,4 +36,5 @@ class Order
     number = gets.chomp
     @text.send_message(number)
   end  
-end  
+end
+  

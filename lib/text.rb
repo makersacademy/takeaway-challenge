@@ -11,7 +11,7 @@ class Text
   def send_message(number)
     @client.messages.create(
       from: @from,
-      to: number ,
+      to: number,
       body: "Thankyou for your order. it will be delivered by #{time}"
       )
   end
@@ -21,11 +21,4 @@ class Text
     time = Time.now + (60 * 60)
     time.strftime("%H:%M")
   end
-end  
-
-
-
-
-
-
-  
+end
