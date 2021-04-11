@@ -13,23 +13,7 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
-
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
+ ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -47,37 +31,34 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Usage
+-------
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* Dishes are created with two arguments, one for name (either a string or a symbol is acceptable) and a price.
+* A Menu is created by feeding an optional number of dishes in as arguments to be stored on the object, more can be manually added later in the terminal
+* An Order is created by supplying the following 
+    * A Menu (to show it is flexible, real use case can set a default, but allow changes for seasonal menus)
+    * A TwilioApi, separated to cater to SRP
+    * A customer number, which must currently be supplied as a string with the correct dialing formats (I.E '+44123456789' for UK numbers)
+    * This currentky uses manual dependency injection in cases to allow optional creation, but this can easily be set to a default for ease of use
+* Once your objects are initialized you can use the add_dish method on the Order object to take menu items into the basket
+* The Menu has functionality to return errors if non existent items are selected
+* Once the customer is satisfied with the order they can use the check_total method to see the price, and the complete_order method to receive a confirmation text
 
 
-In code review we'll be hoping to see:
+Successes
+-----
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+* Successful usage of complex doubles with stubbed attributes and methods
+* Multiple uses of dependency injection to create a flow of functionality from dependent to controlling objects
+* A successful use of the Twilio gem to send a text
+* Debugged Twilio API using their documentation
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
 ------------------
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+To improve
+-----
+* Test coverage is incomplete as I was unsure how to test for the output of the text messages timer function without complex REGEX
+* Current iteration satisfies User story but is not particularly user friendly and would make for a poor product
+* Improper usage of environment variables meant that the Twilio IRB test had to be hard coded with real info, requires further study
+* Testing for Twilio API is inadequate, but using stubbed methods to check for results is not an adequate test as it can pass with no text being sent
