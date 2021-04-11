@@ -23,7 +23,7 @@ describe Order do
 
     it 'adds an item to basket' do
       subject.add_to_basket(menu_dbl.item[2])
-      expect(subject.basket).to include(menu_dbl.item[2])
+      expect(subject.basket).to include({ dish: menu_dbl.item[2][:dish], portions: 1 })
     end
 
     it { is_expected.to respond_to(:total) }

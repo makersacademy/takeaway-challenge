@@ -17,7 +17,7 @@ class Order
 
   def add_to_basket(item, portions = 1)
     fail "Sorry, #{item[:dish]} is out stock" unless item[:available?]
-    portions.times { @basket << item }
+    portions.times { @basket << { dish: item[:dish], portions: portions } }
     @total += item[:price] * portions
   end  
 end  
