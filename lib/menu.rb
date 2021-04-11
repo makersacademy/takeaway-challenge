@@ -8,7 +8,7 @@ class Menu
       Fizzer: 1,
       Chops: 9,
       Boerewors: 7,
-      Bobotie: 8,
+      Bobotie: 8
     }
   end
 
@@ -16,5 +16,9 @@ class Menu
     @menu.each do |food, price|
       "#{food} is £#{price}"
     end
+  end
+
+  def on_menu?(food)
+    !@menu[food.to_sym].nil?
   end
 end
