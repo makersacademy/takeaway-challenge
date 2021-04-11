@@ -16,6 +16,10 @@ describe Dishes do
     it 'is available by default' do
       expect(subject.available).to be true
     end
+
+    it 'responds to #list_available_dishes' do
+      expect(subject).to respond_to(:list_available_dishes)
+    end
   end
 
   describe '#available?' do
@@ -24,9 +28,9 @@ describe Dishes do
     it { expect(subject.available?("no")).to be false }
   end
 
-  # describe '#price' do
-  #   it 'has a price' do
-  #     expect(subject.price).to eq(price)
-  #   end
-  # end
+  describe '#list_available_dishes' do
+    it 'stores a list of available dishes' do
+      expect(subject.list_available_dishes).to include(:name => price) if subject.available?("yes")
+    end
+  end
 end

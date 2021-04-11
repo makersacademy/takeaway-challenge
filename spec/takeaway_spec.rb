@@ -8,9 +8,9 @@ describe Takeaway do
   describe 'an instance of Takeaway' do
     it { expect(subject).to be_an_instance_of(Takeaway) }
 
-    it 'responds to #available_dishes' do
-      expect(subject).to respond_to(:available_dishes)
-    end
+    # it 'responds to #available_dishes' do
+    #   expect(subject).to respond_to(:available_dishes)
+    # end
 
     it 'responds to #menu' do
       expect(subject).to respond_to(:menu)
