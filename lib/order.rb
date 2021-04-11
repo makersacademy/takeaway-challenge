@@ -8,8 +8,13 @@ class Order
     @cart = []
   end 
 
+  def see_menu
+    @menu.read_menu
+  end 
+
   def place_order(item, amount)
-    raise "#{item} is not on the menu today" unless @menu.has_dish?(item)
+    raise "#{item} is not on the menu today" unless @menu.dish?(item)
+
     @selection = { item.to_sym => amount }
     add_to_cart
     return "#{amount}x #{item}(s) added to basket"

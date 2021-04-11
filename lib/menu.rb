@@ -14,7 +14,7 @@ class Menu
     end 
   end 
 
-  def has_dish?(item)
+  def dish?(item)
     @menu_items[item.to_sym]
   end 
 end 
