@@ -12,8 +12,6 @@ describe Menu do
     available: true)
   }
 
-  let(:katsu_curry) { double(:katsu_curry) } 
-
   context 'initializing menu' do
     it 'contains a list of all dishes' do
       expect(subject.menu_list).to_not be_empty
