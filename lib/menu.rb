@@ -14,11 +14,16 @@ class Menu
 
   def menu
     @menu.each do |food, price|
-      "#{food} is £#{price}"
+      puts "#{food} is £#{price}"
     end
   end
 
   def on_menu?(food)
     !@menu[food.to_sym].nil?
   end
+
+  def cost(food)
+    @menu[food.to_sym]
+  end
+
 end

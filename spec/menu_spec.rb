@@ -10,4 +10,9 @@ describe Menu do
   it 'passes through the method on_menu?' do
     expect(subject.on_menu?("Bunnychow")).to eq false
   end
+
+  it 'gets the name and price of one item' do
+    expect(subject.cost("Biltong")).to eq 5
+  end
+
 end

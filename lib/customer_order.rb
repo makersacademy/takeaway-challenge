@@ -6,28 +6,24 @@ class CustomerOrder
   def initialize(menu = Menu.new)
     @menu = menu
     @order = {}
-    @basket = []
   end
 
   def add(food, quantity)
     raise "#{food} is not available" unless @menu.on_menu?(food)
-    @order = { food.to_sym => quantity }
-    add_to_basket
+
+    @order[food.to_sym] = quantity
     return "#{quantity} x #{food}(s) added to your basket"
+  end
+
+  def total_price
+    "£#{add_to_basket.inject(:+)}"
   end
 
   private 
 
   def add_to_basket
-    @basket << @order
+    @order.map do |food, quantity|
+      @menu.cost(food) * quantity
+    end
   end
 end
-
-
-
-
-
-
-
-
-# './lib/customer_order.rb'
