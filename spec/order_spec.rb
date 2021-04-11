@@ -30,7 +30,7 @@ describe Order do
       it 'adds dish to order list' do
         allow(menu).to receive(:check).with(dish.name).and_return(dish)
         subject.add_dish(menu, dish.name)
-        expect { subject.view_order }.to output(/Katsu curry/).to_stdout
+        expect { subject.basket_summary }.to output(/Katsu curry/).to_stdout
       end
     end
     context 'selecting an unavailable dish' do
@@ -41,7 +41,7 @@ describe Order do
     end
   end
 
-  describe '#view_order' do
+  describe '#basket_summar' do
     context 'after adding dishes' do
       before do 
         allow(menu).to receive(:check).with(dish.name).and_return(dish)
@@ -50,7 +50,7 @@ describe Order do
         }
       end
       it 'displays the total price' do
-        expect { subject.view_order }.to output(/30/).to_stdout
+        expect { subject.basket_summary }.to output(/30/).to_stdout
       end
     end
   end
