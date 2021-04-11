@@ -20,7 +20,7 @@ describe Menu do
 
   describe '#display' do
     it 'displays a list of available dishes' do
-      expect { subject.display_menu }.to output(/Katsu curry/).to_stdout
+      expect { subject.display_menu }.to output(/Katsu Curry/).to_stdout
     end
 
     it 'hides unavailable dishes' do

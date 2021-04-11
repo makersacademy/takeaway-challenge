@@ -1,8 +1,8 @@
-require 'order'
+require 'restaurant'
 require 'errors'
 require 'sms'
 
-describe Order do
+describe Restaurant do
 
   let(:dish_class) do class_double(
     Dish, :dish_class,

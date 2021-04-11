@@ -1,4 +1,4 @@
-class Order
+class Restaurant
 
   attr_reader :order_list, :menu, :sms, :calc
 
@@ -18,14 +18,13 @@ class Order
     raise AvailabilityError unless item.available == 'true'
 
     @order_list << item
-    puts "#{render_name(item.name)} added to your basket"
+    puts "#{render(item.name)} added to your basket"
   end
 
   def view_basket
-    puts "Basket Summary: "
     puts "Dishes: "
     order_list.each do |item|
-      puts "#{render_name(item.name)}: £#{item.price}"
+      puts "#{render(item.name)}: £#{item.price}"
     end
     puts "Total: £#{total_price}"
   end
@@ -43,8 +42,8 @@ class Order
     calc.total(prices)
   end
 
-  def render_name(name)
-    name.capitalize.gsub('_', ' ')
+  def render(name)
+    name.gsub('_', ' ').split.map(&:capitalize).join(' ')
   end
 
 end

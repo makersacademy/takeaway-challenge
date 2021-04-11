@@ -42,16 +42,15 @@ class Menu
     file.close
   end
 
-  def render_name(dish)
-    dish.name.capitalize.gsub('_', ' ')
-  end
-
   def format_output
     @menu_list.each do |dish|
       next if dish.available == "false"
 
-      puts "#{render_name(dish)}: £#{dish.price}" 
+      puts "#{render(dish)}: £#{dish.price}" 
     end
   end
 
+  def render(dish)
+    dish.name.gsub('_', ' ').split.map(&:capitalize).join(' ')
+  end
 end
