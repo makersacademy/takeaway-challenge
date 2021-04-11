@@ -2,19 +2,19 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let (:items) { double :items }
-  let (:subject) { Takeaway.new }
+  let(:items) { double :items }
+  let(:subject) { Takeaway.new }
   
-    context "View items" do 
-      it 'Displays the dishes along with prices' do
-        expect(subject.items).to eq({ "Margarita" => 8.99, "Vegetarian" => 9.99, "Pepperoni" => 10.99, "Cheesecake" => 3.99, "Water" => 0.99})
-      end
-      it 'Has an item that has a price for the user to select' do
-        expect(subject.items["Margarita"]).to be > 0
-      end
-      it 'Allows the user to read the menu' do 
-        expect(subject.read_menu).to eq(subject.items)
-      end
+  context "View items" do 
+    it 'Displays the dishes along with prices' do
+      expect(subject.items).to eq({ "Margarita" => 8.99, "Vegetarian" => 9.99, "Pepperoni" => 10.99, "Cheesecake" => 3.99, "Water" => 0.99 })
+    end
+    it 'Has an item that has a price for the user to select' do
+      expect(subject.items["Margarita"]).to be > 0
+    end
+    it 'Allows the user to read the menu' do 
+      expect(subject.read_menu).to eq(subject.items)
+    end
 
     context "Select items" do
       it 'Allows the user to use the add command' do
@@ -58,5 +58,5 @@ describe Takeaway do
         subject.sendtext
       end
     end
-    end
+  end
 end

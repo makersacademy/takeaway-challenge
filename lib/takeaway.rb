@@ -5,7 +5,9 @@ class Takeaway
   attr_reader :items, :shoppingcart
 
   def initialize
-    @items = { "Margarita" => 8.99, "Vegetarian" => 9.99, "Pepperoni" => 10.99, "Cheesecake" => 3.99, "Water" => 0.99 }
+    @items = 
+    { "Margarita" => 8.99, "Vegetarian" => 9.99, "Pepperoni" => 10.99, 
+    "Cheesecake" => 3.99, "Water" => 0.99 }
     @shoppingcart = []
   end
 
@@ -15,12 +17,14 @@ class Takeaway
   end
 
   def add(item)
-    @shoppingcart << @items[item.capitalize] # stuck trying to convert it over to being a symbol, this wasn't needed actually. hash was the wrong values.
+    @shoppingcart << @items[item.capitalize] 
+    # stuck trying to convert it over to being a symbol, 
+    # this wasn't needed actually. hash was the wrong values.
     "#{item.capitalize} added to your basket"
   end
 
   def total
-    @shoppingcart.reduce(:+)
+    @shoppingcart.reduce(:+).round(2)
   end
 
   def time
@@ -28,8 +32,15 @@ class Takeaway
     time.strftime("%k:%M")
   end
 
+  def checkout  
+    p "The total was: £#{total}"
+    sendtext
+  end
+
   def sendtext
    
+    # removed my sid/auth/mobile numbers for upload
+
     client = Twilio::REST::Client.new(account_sid, auth_token)
     
     from = '' # Your Twilio number
@@ -38,7 +49,7 @@ class Takeaway
     client.messages.create(
     from: from,
     to: to,
-    body: "Thank you! The total was #{total} Your order was placed 
+    body: "Thank you! The total was £#{total} Your order was placed 
     and will be delivered before #{time}"
     )
   end 
