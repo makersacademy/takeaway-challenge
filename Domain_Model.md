@@ -25,14 +25,14 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Menu/Dishes                  | Owner                          | 
 | Prices                       | property                       | 
 | Order                        | Owner                          | 
-
+| Text                         | Owner                          | 
 
 | Actions                           | Owend by?      |
 | --------------------------------- | -------------- | 
 | list of dishes                    | menu           | 
 | select number of available dishes | order          | 
 | total matches sum of order        | order          | 
-| text after ordered                | order          | 
+| text after ordered                | text           | 
 
 
 | Actions                           | Property it reads or changes    |
@@ -49,7 +49,12 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Actions(methods)              | show_menu | 
 
  
-| Class                             | Order                                              | 
-| --------------------------------- | ---------------------------------------            |
-| Properties(instance variables)    | @total, @time                                      | 
-| Actions(methods)                  | basket, text_confirmation, add_to_basket, checkout | 
+| Class                             | Order                           | 
+| --------------------------------- | --------------------            |
+| Properties(instance variables)    | @total                          | 
+| Actions(methods)                  | basket, add_to_basket, checkout | 
+
+| Class                         | Text              | 
+| ------------------------------| ---------         | 
+| Properties(instance variables)| @time             | 
+| Actions(methods)              | text_confirmation | 
