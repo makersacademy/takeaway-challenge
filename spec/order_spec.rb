@@ -26,18 +26,24 @@ describe Order do
 
     it 'adds an item to basket' do
       subject.add_to_basket(menu_dbl.item[2])
-      expect(subject.basket).to include({ dish: menu_dbl.item[2][:dish], portions: 1 })
+      expect(subject.basket).to include({ dish: menu_dbl.item[2][:dish], price: menu_dbl.item[2][:price], portions: 1 })
     end
 
-    it { is_expected.to respond_to(:total) }
 
     it 'adds the price to total' do
-      expect{ subject.add_to_basket(menu_dbl.item[2]) }.to change{ subject.total }.by(menu_dbl.item[2][:price])
+      expect{ subject.add_to_basket(menu_dbl.item[2]) }.to change{ subject.calculator.total }.by(menu_dbl.item[2][:price])
     end
 
     it 'tells if the item is unavailable' do
       expect{ subject.add_to_basket(menu_dbl.item[1]) }.to raise_error("Sorry, #{menu_dbl.item[1][:dish]} is out stock")
     end
+  end 
+  
+  it 'shows the summary of the order' do
+    message = "2x turkey 20 pounds\nTotal = 20 pounds\n"
+    subject.add_to_basket(menu_dbl.item[2], 2)
+    expect{ subject.order_summary }.to output(message).to_stdout
   end  
+
 
 end
