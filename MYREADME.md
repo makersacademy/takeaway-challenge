@@ -1,0 +1,1 @@
+The program allows the user to select food from a menu and decide on the quantity. Once the user has select all the food they want they can view their basket total. They can send order when they are finished adding items from the menu and will recieve a text message confirming that their order is on the way. 
