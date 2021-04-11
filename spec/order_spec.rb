@@ -15,4 +15,9 @@ describe Order do
     subject.add_to_basket(item)
     expect(subject.basket).to include(item)
   end
+
+  it { is_expected.to respond_to(:total) }
+  it 'adds the price to total' do
+    expect{ subject.add_to_basket(item) }.to change{ subject.total }.by(item[:price])
+  end
 end
