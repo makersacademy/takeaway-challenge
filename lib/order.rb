@@ -1,14 +1,15 @@
-require_relative 'takeaway'
+require_relative 'menu'
 class Order
   attr_reader :menu, :selection, :cart
 
-  def initialize(menu = Takeaway.new)
+  def initialize(menu = Menu.new)
     @menu = menu
     @selection = {}
     @cart = []
   end 
 
   def place_order(item, amount)
+    raise "#{item} is not on the menu today" unless @menu.has_dish?(item)
     @selection = { item.to_sym => amount }
     add_to_cart
     return "#{amount}x #{item}(s) added to basket"

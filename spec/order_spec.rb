@@ -1,22 +1,23 @@
 require 'order'
+require 'menu'
 describe Order do
   subject(:order) { described_class.new }
-  let(:takeaway) { double(:takeaway) }
-
-  before do
-    order.place_order("Risotto", 1)
-  end 
+  let(:menu) { double(:menu) }
 
   it 'allows the customer to select dishes off the menu' do
-    expect(order.selection).to eq({ :Risotto => 1 })
+    allow(menu).to receive(:has_dish?) { true }
+    order.place_order("Carbonara", 1)
+    expect(order.selection).to eq({ :Carbonara => 1 })
   end
 
-  it 'adds these orders into a shopping cart' do
-    expect(order.cart).to eq([{ :Risotto => 1 }])
+  it 'adds orders into a shopping cart' do
+    allow(menu).to receive(:has_dish?) { true }
+    order.place_order("Carbonara", 2)
+    expect(order.cart).to eq([{ :Carbonara => 2 }])
   end 
 
-  # it 'only allows selection of available dishes' do
-
-  # end 
-
+  it 'only allows selection of available menu dishes' do
+    allow(menu).to receive(:has_dish?).with(:Arancini) { false }
+    expect { order.place_order(:Arancini, 3) }.to raise_error "Arancini is not on the menu today"
+  end 
 end 
