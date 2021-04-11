@@ -12,8 +12,13 @@ class TwilioApi
     @client.messages.create(
       from: ENV["TWILIO_PHONE_NUMBER"],
       to: number,
-      body: "Hi there! Your order is on its' way!"
+      body: "Hi there! Your order is on its' way and will be there by #{timer}"
     )
   end
 
+  private 
+  def timer
+    time = Time.now + (60 * 60)
+    time.strftime("%H:%M")
+  end
 end

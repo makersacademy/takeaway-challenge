@@ -1,5 +1,3 @@
-require_relative 'dish'
-
 class Menu
   attr_reader :dishes
 
@@ -18,16 +16,13 @@ class Menu
     find_dish(choice)
   end
 
-
   private
 
   def find_dish(choice)
-    @dishes.select { |dish| dish.name == choice }
+    @dishes.select { |dish| dish.name == choice }[-1]
   end
 
   def on_menu?(choice)
-    fail "they don't serve this" if find_dish(choice) == []
+    fail "they don't serve this" if find_dish(choice).nil?
   end
-
-
 end

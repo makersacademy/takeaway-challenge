@@ -5,22 +5,22 @@ describe Order do
   let(:dish_double_2) { double(:dish, :name => "fries", :price => 2) }
   let(:dish_double_3) { double(:dish, :name => "burger", :price => 5) }
 
-  let(:menu) { double(:menu, :dishes => [dish_double_1, dish_double_2] ) }
+  let(:menu) { double(:menu, :dishes => [dish_double_1, dish_double_2]) }
   let(:menu) { double(:menu, :dishes => [dish_double_1, dish_double_2], :pick_dish => dish_double_3) }
 
   let(:twilio_api) { double(:twilio_api, :message => "sends a message") }
 
-  subject { described_class.new(menu, 12345678910, twilio_api) }
+  subject { described_class.new(menu, twilio_api, 123_456_789_10) }
 
   context '#initialize' do
-    let(:empty_menu) { double(:menu, :dishes => [] ) }
+    let(:empty_menu) { double(:menu, :dishes => []) }
 
-    it 'starts with a menu attribute'do
+    it 'starts with a menu attribute' do
       expect(subject.menu).to be(menu)
     end
 
-    it 'starts with an empty basket'do
-      order = Order.new(empty_menu, 12345678910, twilio_api)
+    it 'starts with an empty basket' do
+      order = Order.new(empty_menu, twilio_api, 123_456_789_10)
       expect(order.basket).to be_empty
     end
 
@@ -29,7 +29,6 @@ describe Order do
       expect(subject.basket).to eq [dish_double_1]
     end 
   end
-
 
   context '#add_dish' do
 
@@ -44,7 +43,7 @@ describe Order do
 
     it 'can add a dish by name' do
       subject.add_dish("burger")
-      expect(subject.basket[-1] ).to eq(dish_double_3)
+      expect(subject.basket[-1]).to eq(dish_double_3)
     end
 
     it 'adds the price to the total' do
