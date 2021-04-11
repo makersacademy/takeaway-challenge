@@ -2,6 +2,7 @@ require "order"
 
 describe Order do
   let(:subject) { Order.new({ "Margherita pizza" => 9, "Can of drink" => 1 }) }
+  
 
   describe "#order_list" do
     it "order_list is initally empty" do
@@ -35,6 +36,13 @@ describe Order do
     end
   end
 
+  describe "#place_order" do
+    before(:each) { allow(subject).to receive(:send_sms).and_return("Text sent") }
+    it "place order sends a text with eta" do
+      subject.add_to_order("Margherita pizza", 2)
+      expect(subject.place_order).to eq("Text sent")
+    end
+  end
 end
 
 =begin
