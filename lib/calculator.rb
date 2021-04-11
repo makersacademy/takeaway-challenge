@@ -10,7 +10,6 @@ class Calculator
   end  
   
   def summary(basket)
-    
     basket.each do |item|
       portions, dish_name, price = [item[:portions], item[:dish], item[:price]]
       puts "#{portions}x #{dish_name} #{portions * price} pounds"
