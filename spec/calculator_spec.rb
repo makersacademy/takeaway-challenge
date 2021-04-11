@@ -1,11 +1,11 @@
 require 'calculator'
 
 describe Calculator do
-  let(:menu_array)      { [{ dish: 'chiken', price: 5, available?: true },
-                           { dish: 'beef', price: 5, available?: false },
-                           { dish: 'turkey', price: 10, available?: true }
-                          ]
-                        }
+  let(:menu_array)     { [{ dish: 'chiken', price: 5, available?: true },
+                          { dish: 'beef', price: 5, available?: false },
+                          { dish: 'turkey', price: 10, available?: true }
+                        ]
+                       }
   let(:menu_dbl)        { double("Menu", menu_list: menu_array) }    
   let(:order_dbl)       { double("Order", basket_item: { dish: 'chiken', price: 5, portions: 2 }) }
 
