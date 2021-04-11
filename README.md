@@ -1,4 +1,5 @@
-User stories met:
+User stories currently met (3/4)
+-------------------------------------------------------
 
 As a customer
 So that I can check if I want to order something
@@ -14,19 +15,26 @@ I would like to check that the total I have been given matches the sum of the va
 
 
 Structure thus far:
+-------------------------------------------------------
 
-| Class         | Customer                            |
-| Properties    | @my_order                           |
-| Actions       | view_menu, make_order, validate_bill|
+| Class 1    |                                        |
+| ---------- | ---------------------------------------|
+| Class      | Customer                               |
+| Properties | @my_order                              | 
+| Actions    | view_menu, make_order, validate_bill   |
 
-| Class         | Restaurant                            |
-| Properties    | @menu                                 |
-| Actions       | format_menu, calculate_bill, send_text|
+
+| Class 2    |                                        |
+| ---------- | ---------------------------------------|
+| Class      | Restaurant                             |
+| Properties | @menu                                  | 
+| Actions    | format_menu, calculate_bill, send_text |
 
 User story to meet:
+-------------------------------------------------------
 
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered.
 
-Barriers: figuring out how to integrate twilio properly.
+Barriers: figuring out how to integrate twilio properly. Finishing testing.
