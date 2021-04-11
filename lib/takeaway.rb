@@ -29,7 +29,7 @@ class Takeaway
     client.messages.create(
     from: from,
     to: to,
-    body: "Thank you! Your order was placed and will be delivered before #{time}"
+    body: "Thank you! Your order was placed and will be delivered before #{time.strftime("%k:%M")}"
     )
   end 
 
