@@ -7,8 +7,6 @@ The features built in this project are structured on a [domain model.](plan.md)
 
 ![Twilio](./images/twilio.jpg)
 
-This project focuses on Pair Programming and TDD.
-
 ## Technical skills
 
 - Environment Variables
