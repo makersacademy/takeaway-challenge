@@ -1,6 +1,6 @@
 require_relative 'dish'
 require_relative 'menu'
-require_relative 'order'
+require_relative 'restaurant'
 require_relative 'errors'
 require_relative 'calculator'
 require_relative 'sms'
