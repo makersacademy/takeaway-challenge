@@ -32,25 +32,20 @@ class Takeaway
     time.strftime("%k:%M")
   end
 
-  def checkout  
-    p "The total was: £#{total}"
-    sendtext
-  end
-
   def sendtext
    
     # removed my sid/auth/mobile numbers for upload
 
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-    
-    from = '' # Your Twilio number
-    to = '' # Your mobile phone number
-    
     client.messages.create(
     from: from,
     to: to,
     body: "Thank you! The total was £#{total} Your order was placed 
     and will be delivered before #{time}"
     )
-  end 
+  end
+  
+  def checkout  
+    sendtext
+    return "The total was: £#{total}"
+  end
 end

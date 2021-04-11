@@ -57,6 +57,11 @@ describe Takeaway do
         expect(subject).to receive(:sendtext)
         subject.sendtext
       end
+      it 'Can checkout the items' do 
+        subject.add("Water")
+        expect(subject).to receive(:sendtext)
+        expect(subject.checkout).to eq("The total was: £0.99")
+      end
     end
   end
 end
