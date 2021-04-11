@@ -5,22 +5,33 @@ require 'sms'
 describe Order do
 
   let(:dish_class) { class_double(Dish, :dish_class, new: dish) }
-  let(:dish) { instance_double(
+  let(:dish) do instance_double(
     Dish, :dish,
     name: 'katsu_curry',
     price: 10,
     available: true)
-  }
+  end
   
-  let(:calc_class) { class_double(
+  let(:calc_class) do class_double(
     Calculator, :calc_class, 
     new: calc) 
-  }
+  end
   let(:calc) { double(:calc, total: 30) }
 
   let(:menu) { double(:menu, check: dish) }
 
-  let(:subject) { described_class.new(dish_class, calc_class) }
+  subject do described_class.new(
+    menu: menu,
+    dish: dish,
+    sms: sms
+  )
+  end
+
+  let(:sms) do instance_double(
+    Messenger, :sms,
+    send_text: 'text sent'
+  )
+  end
 
   describe '#order' do
     context 'before adding dishes' do
@@ -30,15 +41,14 @@ describe Order do
     end
     context 'selecting an available dish' do
       it 'adds dish to order list' do
-        allow(menu).to receive(:check).with(dish.name).and_return(dish)
-        subject.order(menu, dish.name)
+        subject.order(dish.name)
         expect { subject.basket_summary }.to output(/Katsu curry/).to_stdout
       end
     end
     context 'selecting an unavailable dish' do
       it 'raises an error' do
         allow(menu).to receive(:check).with('ramen').and_return(nil)
-        expect { subject.order(menu, 'ramen') }.to raise_error AvailabilityError
+        expect { subject.order('ramen') }.to raise_error AvailabilityError
       end
     end
   end
@@ -48,7 +58,7 @@ describe Order do
       before do 
         allow(menu).to receive(:check).with(dish.name).and_return(dish)
         3.times {
-          subject.order(menu, dish.name)
+          subject.order(dish.name)
         }
       end
       it 'displays the total price' do
@@ -56,4 +66,5 @@ describe Order do
       end
     end
   end
+
 end

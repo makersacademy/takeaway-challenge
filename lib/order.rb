@@ -2,14 +2,14 @@ class Order
 
   attr_reader :order_list
 
-  def initialize(dish_class = Dish, calc_class = Calculator, sms_class = Messenger)
-    @order_list = []
-    @dish_class = dish_class
-    @calc_class = calc_class
-    @sms_class = sms_class
+  def initialize(args = {})
+    @sms              = args[:sms]              || Messenger.new
+    @menu             = args[:menu]             || Menu.new
+    @calc             = args[:calc]             || Calculator.new
+    @order_list       = []
   end
 
-  def order(menu, dish)
+  def order(dish)
     item = menu.check(dish)
     if item != nil
       @order_list << item
@@ -21,7 +21,7 @@ class Order
 
   def basket_summary
     puts "Dishes: "
-    @order_list.each do |item|
+    order_list.each do |item|
       puts "#{render_name(item.name)}: £#{item.price}"
     end
     puts "Total: £#{total_price}"
@@ -36,13 +36,16 @@ class Order
   private 
 
   def total_price
-    prices = @order_list.map { |dish| dish.price }
-    calc = @calc_class.new
+    prices = order_list.map { |dish| dish.price }
     calc.total(prices)
   end
 
   def render_name(name)
     name.capitalize.gsub('_', ' ')
   end
+
+  private
+
+  attr_reader :menu, :sms, :calc
 
 end

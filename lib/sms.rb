@@ -12,7 +12,7 @@ class Messenger
   end
 
   def send_text
-    client.messages.create(
+    @client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
       to:   ENV['MOBILE_PHONE_NUMBER'],
       body: ["Thanks, we're preparing your order! ",
