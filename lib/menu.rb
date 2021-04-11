@@ -12,6 +12,7 @@ class Menu
       { 5 => "flakey teeth", :price => 8.0 }
     ])
     @menu = menu
+    $menu_size = @menu.length
   end
 
 end
