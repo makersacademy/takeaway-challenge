@@ -1,21 +1,23 @@
 require_relative 'menu.rb'
 
 class Order
-  attr_reader :basket, :total
-  def initialize
+  attr_reader :menu, :basket, :total
+  def initialize(menu = Menu.new.availability)
     @basket = []
     @total = 0
+    @menu = menu
   end
 
   def show_menu
-    Menu.new.menu_list.each do |item|
+    @menu.each do |item|
       puts "#{item[:dish]}:  #{item[:price]} pounds"
     end 
     return 
   end  
 
-  def add_to_basket(item)
-    @basket << item
-    @total += item[:price]
+  def add_to_basket(item, portions = 1)
+    fail "Sorry, #{item[:dish]} is out stock" unless item[:available?]
+    portions.times { @basket << item }
+    @total += item[:price] * portions
   end  
 end  
