@@ -39,7 +39,7 @@ class Order
   
     client.messages.create(
     from: ENV["TWILIO_NUM"],
-    to: ENV["MYNUMBER"] ,
+    to: ENV["MYNUMBER"],
     body: "Thank you! Your order was placed and will be delivered before #{@eta}"
     )
   end

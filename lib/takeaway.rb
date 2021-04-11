@@ -19,7 +19,7 @@ class Takeaway
     @menu
   end
 
-  def create_order
-    @current_order = Order.new(@menu)
+  def create_order(order = Order)
+    @current_order = order.new(@menu)
   end
 end
