@@ -1,4 +1,4 @@
-class Takeaway
+class Menu
 
   def initialize
     @menu = {
@@ -14,7 +14,7 @@ class Takeaway
 
   def menu
     @menu.each do |food, price|
-      puts "The #{food} costs £#{price}"
+      "#{food} is £#{price}"
     end
   end
 end
