@@ -66,5 +66,7 @@ class TakeAway
   private
 
   def text
+    puts "Thanks for ordering! We've sent you a text to confirm your order :)"
+  end
 
 end
