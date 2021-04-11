@@ -6,6 +6,6 @@ class Menu
   end
 
   def display
-    @meal.map { |name, price| "#{name}: £#{price}"}.join(", ")
+    @meal.map { |name, price| "#{name}: £#{price}" }.join(", ")
   end
 end
