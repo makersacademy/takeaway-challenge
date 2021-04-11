@@ -11,6 +11,7 @@ class Menu
   def check(ordered_dish)
     menu_list.each do |item|
       next if item.name != ordered_dish 
+      
       return item
     end
   end

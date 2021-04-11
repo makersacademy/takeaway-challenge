@@ -9,18 +9,16 @@ class Order
     @order_list       = []
   end
 
-  def see_menu
+  def view_menu
     menu.display_menu
   end
 
   def order(dish)
     item = menu.check(dish)
-    if item.available == 'true'
-      @order_list << item
-      puts "#{render_name(item.name)} added to your basket"
-    else
-      raise AvailabilityError
-    end
+    raise AvailabilityError unless item.available == 'true'
+
+    @order_list << item
+    puts "#{render_name(item.name)} added to your basket"
   end
 
   def view_basket
