@@ -18,7 +18,7 @@ class Order
     @order.map do |food|
       @total += @menu.dish[food] 
     end
-    @total
+    "Your order comes to £#{@total}"
   end
 
 end

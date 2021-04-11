@@ -26,13 +26,13 @@ describe Order do
 
   it "can show user's order total" do
     subject.add_to_basket("miso", 3)
-    expect(subject.checkout).to eq(24)
+    expect(subject.checkout).to eq("Your order comes to £24")
   end
 
   it "can show the basket total when more than one variety of dish is added" do
     subject.add_to_basket("miso", 3)
     subject.add_to_basket("tonkotsu", 4)
-    expect(subject.checkout).to eq(56)
+    expect(subject.checkout).to eq("Your order comes to £56")
   end
   
 end
