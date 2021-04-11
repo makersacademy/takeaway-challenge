@@ -1,13 +1,11 @@
-require_relative 'menu'
-
 class TakeAway
   attr_reader :menu
 
-  def initialize(menu = Menu.new)
+  def initialize(menu)
     @menu = menu
   end
 
-  def show_menu
+  def display_menu
     menu.display
   end
 end
