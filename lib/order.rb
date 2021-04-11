@@ -19,7 +19,7 @@ class Order
   end 
 
   def total
-    "£#{item_totals.inject(:+)}"
+    "Your order total is: £#{item_totals.inject(:+)}"
   end
 
   private 

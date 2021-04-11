@@ -36,7 +36,7 @@ describe Order do
       order.place_order("Lasagne", 1)
       order.place_order("Risotto", 2)
       total = 28
-      expect(order.total).to eq("£#{total}")
+      expect(order.total).to eq("Your order total is: £#{total}")
     end 
   end 
 end 
