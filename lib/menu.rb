@@ -10,7 +10,13 @@ class Menu
 
   def check(ordered_dish)
     @menu_list.each do |item|
-      return item.available if (item.name == ordered_dish)
+      if item.name == ordered_dish
+        if item.available == 'true'
+          return item
+        else
+          return nil
+        end
+      end
     end
   end
 

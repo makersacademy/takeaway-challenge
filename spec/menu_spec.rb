@@ -9,7 +9,7 @@ describe Menu do
     Dish, :dish,
     name: 'katsu_curry',
     price: 10,
-    available: true)
+    available: 'true')
   }
 
   context 'initializing menu' do
@@ -31,7 +31,7 @@ describe Menu do
   describe '#check' do
     context 'after ordering a dish' do
       it 'returns availability of the dish' do
-        expect(subject.check('katsu_curry')).to be_truthy
+        expect(subject.check('katsu_curry')).to eq(dish)
       end
     end
   end
