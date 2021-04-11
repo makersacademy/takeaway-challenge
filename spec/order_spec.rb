@@ -2,7 +2,8 @@ require 'order'
 require 'menu'
 describe Order do
   subject(:order) { described_class.new }
-  let(:menu) { double(:menu) }
+  let(:menu) { double :menu }
+  let(:send) { double :send }
 
   let(:menu_items) do
     {
@@ -37,6 +38,13 @@ describe Order do
       order.place_order("Risotto", 2)
       total = 28
       expect(order.total).to eq("Your order total is: £#{total}")
+    end 
+  end 
+
+  context '#confirm_order' do
+    it 'places the order and sends a confirmation SMS' do
+      allow(order).to receive(:send).and_return("A confirmation text should be with you shortly")
+      expect(order.confirm_order).to eq "A confirmation text should be with you shortly"
     end 
   end 
 end 
