@@ -1,11 +1,13 @@
 require_relative 'menu'
+require_relative 'message'
 
 class CustomerOrder  
   attr_reader :order, :menu, :basket
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, message = Message.new)
     @menu = menu
     @order = {}
+    @message = message
   end
 
   def add(food, quantity)
@@ -17,6 +19,10 @@ class CustomerOrder
 
   def total_price
     "£#{add_to_basket.inject(:+)}"
+  end
+
+  def place_order
+    @message.text
   end
 
   private 

@@ -33,4 +33,7 @@ describe CustomerOrder do
     total_price = 19
     expect(subject.total_price).to eq("£#{total_price}")
   end
+
+  it { is_expected.to respond_to :place_order}
+
 end
