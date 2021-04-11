@@ -86,8 +86,7 @@ Kerri's Notes
 ------------------
 * All RSpec tests passing while correctly stubbing the text function
 * `irb` working as intended, successfully sending the text message to my phone
-* Fairly low test coverage at 92.47%, this is something I intend to fix
-* I also intend to move the text send function (lines 38 - 46) of `order.rb` into its own class but need to figure out adequate tests for that 
+* Sought help referring to: https://github.com/makersacademy/takeaway-exemplar 
 * Example `irb` output:
 ```ruby
 2.6.5 :001 > require './lib/order.rb'
@@ -107,5 +106,10 @@ Carbonara  --£10
 2.6.5 :007 > order.confirm_order
  => "A confirmation text should be with you shortly" 
  ```
+To improve: 
+* Fairly low test coverage at 92.47%, this is something I intend to fix
+* I also intend to move the text send function (lines 38 - 46) of `order.rb` into its own class but need to figure out adequate tests for that 
+* At this point, I've gitignored the file which contains the Twilio API information like my phone number etc. meaning others won't be able to run the program
+
 
 
