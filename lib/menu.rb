@@ -1,8 +1,6 @@
 class Menu
-
-
+  attr_reader :available_dishes
   def initialize
-
     @available_dishes = {
       "fish & chips" => "£5.20", 
       "sandwhich" => "£3.20", 
@@ -11,7 +9,6 @@ class Menu
       "macaroni and cheese" => "£4.75"
     }
   end 
-
 
   def see_menu
     @available_dishes.each do |dish, price|
