@@ -1,4 +1,5 @@
 require_relative 'menu.rb'
+require_relative 'calculator'
 
 class Order
   attr_reader :menu, :basket, :total

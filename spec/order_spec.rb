@@ -1,9 +1,12 @@
 require 'order'
 
 describe Order do
-  let(:menu_array)      { [{ dish: 'chiken', price: 5, available?: true },{ dish: 'beef', price: 5, available?: false },{ dish: 'turkey', price: 10, available?: true }] }
+  let(:menu_array)      { [{ dish: 'chiken', price: 5, available?: true },
+                           { dish: 'beef', price: 5, available?: false },
+                           { dish: 'turkey', price: 10, available?: true }
+                           ] }
   let(:visual_menu)     { "chiken:  5 pounds\nbeef:  5 pounds\nturkey:  10 pounds\n"}
-  let(:menu_dbl)            { double("Menu", item: [{ dish: 'chiken', price: 5, available?: true },{ dish: 'beef', price: 5, available?: false },{ dish: 'turkey', price: 10, available?: true }]) }
+  let(:menu_dbl)            { double("Menu", item: menu_array) }
   let(:subject)         { described_class.new(menu_dbl) }
 
   
