@@ -1,4 +1,5 @@
 require 'order'
+require 'errors'
 
 describe Order do
   let(:subject) { described_class.new(dish_class) }
@@ -13,11 +14,18 @@ describe Order do
   let(:menu) { double(:menu, check: dish) }
 
   describe '#add_dish' do
-
-    it 'adds dish to order list' do
-      allow(menu).to receive(:check).with(dish.name).and_return('true')
-      subject.add_dish(menu, dish.name)
-      expect(subject.view_order).to include(dish.name)
+    context 'selecting an available dish' do
+      it 'adds dish to order list' do
+        allow(menu).to receive(:check).with(dish.name).and_return('true')
+        subject.add_dish(menu, dish.name)
+        expect(subject.view_order).to include(dish.name)
+      end
+    end
+    context 'selecting an unavailable dish' do
+      it 'raises an error' do
+        allow(menu).to receive(:check).with('ramen').and_return('false')
+        expect{ subject.add_dish(menu, 'ramen') }.to raise_error AvailabilityError
+      end
     end
   end
 end

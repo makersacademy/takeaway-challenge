@@ -1,4 +1,4 @@
-require_relative 'menu'
+
 
 class Order
   def initialize(dish_class = Dish)
@@ -9,6 +9,7 @@ class Order
   def add_dish(menu, dish)
     availability = menu.check(dish)
     @order_list << dish if availability == 'true'
+    raise AvailabilityError if availability == 'false'
   end
 
   def view_order

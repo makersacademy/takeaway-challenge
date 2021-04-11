@@ -30,7 +30,7 @@ describe Menu do
 
   describe '#check' do
     context 'after ordering a dish' do
-      it 'checks availability of the dish' do
+      it 'returns availability of the dish' do
         expect(subject.check('katsu_curry')).to be_truthy
       end
     end
