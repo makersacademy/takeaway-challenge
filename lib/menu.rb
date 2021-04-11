@@ -17,4 +17,9 @@ class Menu
   def dish?(item)
     @menu_items[item.to_sym]
   end 
+
+  def price(item)
+    @menu_items[item.to_sym]
+  end 
 end 
+ 

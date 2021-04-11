@@ -30,15 +30,13 @@ describe Order do
     end 
   end 
 
-  context '#add_to_cart' do
-    it 'adds orders into a shopping cart' do
+  context '#total' do
+    it 'calculates the order total' do
       allow(menu).to receive(:dish?) { true }
-      order.place_order("Carbonara", 2)
-      expect(order.cart).to eq([{ :Carbonara => 2 }])
+      order.place_order("Lasagne", 1)
+      order.place_order("Risotto", 2)
+      total = 28
+      expect(order.total).to eq("£#{total}")
     end 
   end 
-
-  # it 'calculates the total of the order' do
-
-  # end 
 end 

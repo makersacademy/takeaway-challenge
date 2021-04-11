@@ -12,4 +12,8 @@ describe Menu do
   it 'checks if a dish is on the menu' do
     expect(subject.dish?("Pizza")).to eq nil 
   end 
+
+  it 'returns the price of the item' do
+    expect(subject.price("Lasagne")).to eq 12
+  end 
 end 

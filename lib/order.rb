@@ -1,11 +1,10 @@
 require_relative 'menu'
 class Order
-  attr_reader :menu, :selection, :cart
+  attr_reader :menu, :selection
 
   def initialize(menu = Menu.new)
     @menu = menu
     @selection = {}
-    @cart = []
   end 
 
   def see_menu
@@ -15,14 +14,18 @@ class Order
   def place_order(item, amount)
     raise "#{item} is not on the menu today" unless @menu.dish?(item)
 
-    @selection = { item.to_sym => amount }
-    add_to_cart
-    return "#{amount}x #{item}(s) added to basket"
+    @selection[item.to_sym] = amount
+    return "#{amount}x #{item}(s) added to basket = £#{@menu.price(item) * amount}"
   end 
 
-  private 
+  def total
+    "£#{item_totals.inject(:+)}"
+  end
 
-  def add_to_cart
-    @cart << @selection
+  private 
+  def item_totals
+    @selection.map do |item, amount|
+      @menu.price(item) * amount
+    end 
   end 
 end 
