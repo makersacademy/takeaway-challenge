@@ -10,7 +10,7 @@ describe Order do
 
   let(:twilio_api) { double(:twilio_api, :message => "sends a message") }
 
-  subject { described_class.new(menu, twilio_api, 123_456_789_10) }
+  subject { described_class.new(menu, 123_456_789_10) }
 
   context '#initialize' do
     let(:empty_menu) { double(:menu, :dishes => []) }
@@ -20,7 +20,7 @@ describe Order do
     end
 
     it 'starts with an empty basket' do
-      order = Order.new(empty_menu, twilio_api, 123_456_789_10)
+      order = Order.new(empty_menu, 123_456_789_10)
       expect(order.basket).to be_empty
     end
 

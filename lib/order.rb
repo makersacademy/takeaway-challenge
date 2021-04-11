@@ -1,7 +1,7 @@
 class Order 
   attr_reader :basket, :menu, :total, :twilio_api
 
-  def initialize(menu, twilio_api, number)
+  def initialize(menu, number, twilio_api: TwilioApi.new)
     @menu = menu
     @number = number
     @twilio_api = twilio_api
@@ -19,7 +19,8 @@ class Order
     puts "Added together is #{@total}"
   end
 
-  def complete_order(number) #rubocop says this in an error but it should be required by message method in TwilioApi
+  def complete_order(number) 
+    # rubocop says this in an argument error but it should be required by message in TwilioApi
     @twilio_api.message
   end
 end
