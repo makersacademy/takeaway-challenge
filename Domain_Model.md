@@ -38,8 +38,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Actions                           | Property it reads or changes    |
 | --------------------------------- | --------------------------------| 
 | list of dishes                    | @dish, show_menu                | 
-| select number of avaible dishes   | @dish, add_to_basket, show_menu | 
-| total matches sum of order        | basket, @dish, @total,checkout, | 
+| select number of avaible dishes   | @dish, add_to_basket            | 
+| total matches sum of order        | basket, @dish, @total, checkout | 
 | receive text after ordered        | @time, text_confirmation        |
 
 
