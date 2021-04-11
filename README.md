@@ -89,6 +89,7 @@ Kerri's Notes
 * Fairly low test coverage at 92.47%, this is something I intend to fix
 * I also intend to move the text send function (lines 38 - 46) into its own class but need to figure out adequate tests for that 
 * Example `irb` output:
+```ruby
 2.6.5 :001 > require './lib/order.rb'
  => true 
 2.6.5 :002 > order = Order.new
@@ -105,5 +106,6 @@ Carbonara  --£10
  => "Your order total is: £46" 
 2.6.5 :007 > order.confirm_order
  => "A confirmation text should be with you shortly" 
+ ```
 
 
