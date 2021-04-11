@@ -87,7 +87,7 @@ Kerri's Notes
 * All RSpec tests passing while correctly stubbing the text function
 * `irb` working as intended, successfully sending the text message to my phone
 * Fairly low test coverage at 92.47%, this is something I intend to fix
-* I also intend to move the text send function (lines 38 - 46) into its own class but need to figure out adequate tests for that 
+* I also intend to move the text send function (lines 38 - 46) of `order.rb` into its own class but need to figure out adequate tests for that 
 * Example `irb` output:
 ```ruby
 2.6.5 :001 > require './lib/order.rb'
