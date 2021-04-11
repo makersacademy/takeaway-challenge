@@ -19,9 +19,5 @@ describe Dish do
       expect(katsu_curry.available).to eq(true)
       expect(ramen.available).to eq(false)
     end
-
-    it 'is available by default' do
-      expect(yaki_soba.available).to eq(true)
-    end
   end
 end
