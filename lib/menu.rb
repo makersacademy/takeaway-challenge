@@ -11,25 +11,12 @@ class Menu
 
   def initialize(list = DEFAUT_MENU)
     @dish_list = list
-    @basket = []
   end
 
   def view_menu
     greeter
     menu_formatter(@dish_list)
     selection_instruction
-  end
-
-  def select_dish(num)
-    fail "This dish is not in the menu" unless in_menu?(num)
-
-    @basket << @dish_list[num - 1]
-  end
-
-  def view_basket
-    puts "This your selection of dishes so far:"
-    checkout_view
-    total
   end
 
   private
@@ -44,27 +31,7 @@ class Menu
     }
   end
 
-  def in_menu?(num)
-    [*1..@dish_list.length].include?(num)
-  end
-
   def selection_instruction
     puts "To add dishes to your basket, please enter the item's number."
-  end
-
-  def checkout_view
-    the_list = []
-    @basket.map { |item|
-      the_list << "#{@basket.count(item)} x #{item.name}: $#{@basket.count(item) * item.price}"
-    }
-    puts the_list.uniq
-  end
-
-  def total
-    to_pay = 0
-    @basket.map { |item|
-      to_pay += item.price
-    }
-    puts "THE TOTAL IS: $#{to_pay.truncate(2)}"
   end
 end
