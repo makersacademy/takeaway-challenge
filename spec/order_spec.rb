@@ -14,9 +14,14 @@ describe Order do
       }
     end
 
+  context '#add_to_order' do  
     it "adds dishes selected from the menu to an order" do
       order.add_to_order(:margherita, 2)
       order.add_to_order(:hawaiian, 4)
       expect(order.selection).to eq(selection)
     end
+  end
+
+
+
 end

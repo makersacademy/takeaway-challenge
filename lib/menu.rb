@@ -18,4 +18,7 @@ class Menu
     !@menu[dish.to_sym].nil?
   end
 
+  def price(dish)
+    @menu[dish.to_sym]
+  end
 end

@@ -15,4 +15,11 @@ describe Menu do
       expect(subject.available?("nduja")).to eq false
     end 
   end
+
+  context '#price' do
+    it 'returns the price of the dish' do
+      expect(subject.price(:Margherita)).to eq 8.99
+    end 
+  end 
+
 end
