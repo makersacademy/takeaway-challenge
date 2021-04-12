@@ -1,10 +1,7 @@
 require 'menu'
 describe Menu do
 
-  subject(:menu) { described_class.new }
-
-  let(:dish) { double(:dish, Margherita: 8) }
-    
+  subject(:menu) { described_class.new } 
 
   context "#show_menu" do
     it "displays a list of dishes and their price" do
@@ -13,4 +10,9 @@ describe Menu do
     end
   end
 
+  context "#available" do
+    it 'checks if a dish is available for order' do
+      expect(subject.available?("nduja")).to eq false
+    end 
+  end
 end

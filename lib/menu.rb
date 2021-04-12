@@ -14,4 +14,8 @@ class Menu
     @menu
   end
 
+  def available?(dish)
+    !@menu[dish.to_sym].nil?
+  end
+
 end
