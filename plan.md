@@ -82,9 +82,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 | Attributes |            |
 | Methods    | total      |
 
-| Class      | order                                 |
+| Class      | restaurant                            |
 | ---------- | ------------------------------------- |
-| Attributes | dishes, text                          |
+| Attributes | dishes, text, menu                    |
 | Methods    | place_order, add_to_order, view_order |
 
 ### Sequence Diagram
@@ -95,21 +95,21 @@ alias menu="Menu"
 alias dish="Dish "
 alias text="Text Messenger"
 alias calc="Calculator"
-alias ord="Order"
+alias rest="Restaurant"
 
 
 user->menu:"view menu"
 user->menu:"filter menu by availability"
 menu-->user:"display available dishes"
-user->order:"create new order"
-user->order:"add dish/dishes to order"
-order->menu:"check availability of ordered dishes"
-menu-->order:"confirms availability, return dish info"
-order->calculator:"list of ordered dishes"
-calculator-->order:"calculates total price"
-order-->user:"displays ordered dishes and total price"
-user->order:"confirm order"
-order->text:"request text to confirm order"
+user->rest:"create new order"
+user->rest:"add dish/dishes to order"
+rest->menu:"check availability of ordered dishes"
+menu-->rest:"confirms availability, return dish info"
+rest->calculator:"list of ordered dishes"
+calculator-->rest:"calculates total price"
+rest-->user:"displays ordered dishes and total price"
+user->rest:"confirm order"
+rest->text:"request text to confirm order"
 text-->user:"confirmation text"
 ```
 
