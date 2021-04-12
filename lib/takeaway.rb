@@ -1,6 +1,6 @@
 class TakeAway
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :dish_number, :valid_number, :answer, :total
 
   def initialize
     @menu = Menu.new
