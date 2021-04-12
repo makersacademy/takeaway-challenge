@@ -81,3 +81,36 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+APPROACH: [WIP]
+----------------
+
+## Reflections:
+Learning Objectives: 
+* TDD implementation (improving test writing in RSpec)
+* Extracting classes
+* Stubbing
+* Integrating Twilio API (custom gem file)
+* Using environment variables
+
+### Plans to extend functionality: 
+This project is a WIP - currently blocked on a failing unit test for order total. I plan to spend time adding the remaining features to fulfil the user stories (including the Twilio integration). Below are my plans for the project.
+
+### Features to complete:
+- Dish availability method
+- Order total function
+- Check for correct total
+- Order confirmation via SMS
+
+### Hardcoded Menu Items
+At present the menu is hardcoded when a menu instance is initialised. I would like to change this so that items can be changed and added flexibly. I would like to build in the option to preload the menu with a list stored in a csv file. 
+
+### Ruby Methods
+* Figure out a way to have both digits print after the float for numbers ending in 0 e.g. 8.50 printed as 8.5 etc)
+* Raise error for items not available on the menu (currently WIP) - method for availability check currently not being called in program. 
+
+### Distinct Classes
+I had intended to break the challenge down into four classes (Takeaway/Restaurant as a wrapper class, Menu, Order, and SMS) however due to the volume of research required for me to progress in this challenge I didn’t manage to render the code to the quality I had intended, using only the Menu, Order, and SMS (in progress) classes and I would like to extend the distinct functionality of my classes by adding in a Takeaway class to be responsible for the customer facing interactions which can be run from the command line (showing the menu, selecting items for the order (the functionality of which would be dealt with within the order class), and confirming the order - triggering the confirmation text. 
+
+TBC.
