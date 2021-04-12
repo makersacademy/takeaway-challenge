@@ -12,6 +12,5 @@ class TakeAway
 
   def take_order(meal)
     meal.each { |name, quantity| order.add(name, quantity) }
-    order.total
   end
 end
