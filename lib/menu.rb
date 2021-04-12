@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Menu
 
   attr_reader :menu
@@ -19,6 +21,6 @@ class Menu
   end
 
   def price(dish)
-    @menu[dish.to_sym]
+    @menu[dish]
   end
 end

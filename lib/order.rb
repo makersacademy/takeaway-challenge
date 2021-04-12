@@ -13,5 +13,11 @@ class Order
   def add_to_order(dish, quantity)
     @selection[dish.to_sym] = quantity
   end
- 
+
+  def order_total
+    @selection.each do |dish, quantity|
+      @total += (quantity * @selection.price(dish))
+    end
+    "Your bill: £#{@total}"
+  end
 end
