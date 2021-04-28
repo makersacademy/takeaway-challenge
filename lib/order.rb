@@ -7,13 +7,13 @@ class Order
   end
 
   def add(dish, quantity)
-    fail NoItemError, "#{dish.capitalize} is not on the menu!" unless menu.has_dish?(dish)
+    fail NoItemError,  "#{dish.capitalize} is not on the menu!" unless menu.has_dish?(dish)
     dishes[dish] = quantity
   end
 
-  private
+private
 
-   attr_reader :menu
+attr_reader :menu
 
 end
 
