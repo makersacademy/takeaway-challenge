@@ -11,9 +11,20 @@ class Order
     dishes[dish] = quantity
   end
 
+  def total
+    item_totals
+  end
+
 private
 
 attr_reader :menu
+
+  def item_totals
+    dishes.map.sum  do |dish, quantity|
+  menu.price(dish) * quantity
+  end
+end
+
 
 end
 
