@@ -12,7 +12,7 @@ class Order
   end
 
   def total
-    item_totals
+    item_totals.sum # or .inject(:+)
   end
 
 private
@@ -20,10 +20,10 @@ private
 attr_reader :menu
 
   def item_totals
-    dishes.map.sum  do |dish, quantity|
+    dishes.map  do |dish, quantity|
   menu.price(dish) * quantity
   end
-end
+  end
 
 
 end
