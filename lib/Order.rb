@@ -13,6 +13,7 @@ class Order
   def add_dish(name, amount)
     @name = name
     @amount = amount
+    fail "This disnt isn't available, please run menu.list_dishes to see the dishes" unless available?
     @dishes << { :name => name, :amount => amount }
   end
 end
