@@ -17,8 +17,5 @@ describe Menu do
         { name: 'Curry', price: 5 }, 
         { name: 'Roast_Dinner', price: 9 }) 
     end
-
-     
-      
   end
 end
