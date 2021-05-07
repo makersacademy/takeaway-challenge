@@ -45,7 +45,10 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
 ```
+
+Strategy : setup a Order class which allows a person to order the dishes, create a total and receive a text. I will also create numerous dish classes which contain meals 
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
