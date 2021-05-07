@@ -17,9 +17,6 @@ describe Order do
   end
 
   context '#total_price' do
-      # As a customer
-      # So that I can verify that my order is correct
-      # I would like to check that the total I have been given matches the sum of the various dishes in my order
     it 'checks the total matches the sum of the dishes in an order' do
       order.add_dish("Pizza", 2)
       order.add_dish("Curry", 1)
@@ -35,7 +32,6 @@ describe Order do
       expect { order.message }.not_to raise_error
     end
   
-
     it 'throws an error up if complete isnt done' do
       order.add_dish("Pizza", 2)
       order.add_dish("Curry", 1)
