@@ -1,4 +1,4 @@
-require 'Order.rb'
+require 'order.rb'
 
 describe Order do
   subject(:order) { described_class.new }
@@ -31,8 +31,15 @@ describe Order do
     it 'checks that a confirmation message is sent out after completing the order total' do
       order.add_dish("Pizza", 2)
       order.add_dish("Curry", 1)
-      order.complete?
+      order.complete
       expect { order.message }.not_to raise_error
+    end
+  
+
+    it 'throws an error up if complete isnt done' do
+      order.add_dish("Pizza", 2)
+      order.add_dish("Curry", 1)
+      expect { order.message }.to raise_error "Sorry your order isn't complete"
     end
   end
 end

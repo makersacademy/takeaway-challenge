@@ -1,4 +1,4 @@
-require_relative 'Menu.rb'
+require_relative 'menu.rb'
 
 # This new class is going to create an order
 class Order
@@ -8,13 +8,14 @@ class Order
   def initialize
     @dishes = []
     @menu = Menu.new
-    @total = 0
+    @complete = false
   end
 
   def add_dish(name, amount = 1)
     @name = name
     @amount = amount
     fail "This dish isn't available, please run menu.list_dishes to see the dishes" unless available
+
     @dishes << { :name => name, :amount => amount }
   end
 
@@ -28,15 +29,18 @@ class Order
     }.sum 
   end
 
-  def complete?
+  def complete
     puts "Your total order today is £#{total_price}"
-    return true
+    @complete = true
+    message
   end
 
   def message
+    raise "Sorry your order isn't complete" unless @complete == true
+    
     current_time = Time.new
     one_hour_later = current_time + 3600
-    fail "Sorry your order isn't complete" unless complete? == true
-    "Thank you for your order! The delivery should arrive in one hour at #{one_hour_later.strftime("%I:%M%p")} "
+    "Thank you for your order! The delivery should arrive in one hour at 
+    #{one_hour_later.strftime("%I:%M%p")} "
   end
 end
