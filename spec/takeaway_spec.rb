@@ -5,16 +5,13 @@ describe Takeaway do
     # As a customer
     # So that I can check if I want to order something
     # I would like to see a list of dishes with prices
-    # ? - Create a Menu class Done 
-    # ? - List of dishes with prices
-    # ? - Print dishes with prices one per line from takeaway
     let(:dishes) {[
-        {dish1: 'Lasagne', price: 4.99},
-        {dish2: 'Chicken', price: 5.99},
-        {dish3: 'Steak', price: 8.99},
-        {dish4: 'Burger', price: 7.99},
-        {dish5: 'Borritto', price: 7.99},
-        {dish6: 'Omelette', price: 4.99}
+        {dish: 'Lasagne', price: 4.99},
+        {dish: 'Chicken', price: 5.99},
+        {dish: 'Steak', price: 8.99},
+        {dish: 'Burger', price: 7.99},
+        {dish: 'Borritto', price: 7.99},
+        {dish: 'Omelette', price: 4.99}
     ]}
 
     describe '#print_dishes' do
@@ -29,9 +26,40 @@ describe Takeaway do
     # I would like to be able to select some number of several available dishes
     describe '#selection' do
         it 'lets the user select items' do
-            subject.selection(1)
-            expect(subject.order).to eq([{dish: 'Lasagne', price: 4.99}])
+            subject.selection(3)
+            subject.selection(4)
+            subject.selection(6)
+            expect(subject.orders).to eq([{dish: 'Steak', price: 8.99}, {dish: 'Burger', price: 7.99}, {dish: 'Omelette', price: 4.99}])
         end
     end
 
+    # As a customer
+    # So that I can verify that my order is correct
+    # I would like to check that the total I have been given matches the sum of the various dishes in my order
+    describe '#total' do
+        it 'will calculate and display the total items' do
+            subject.selection(3)
+            subject.selection(4)
+            subject.selection(6)
+            expect(subject.total).to eq(21.97)
+        end
+    end
+
+    describe '#receipt' do
+        it 'will remove order items after receipt is printed' do
+            subject.selection(3)
+            subject.selection(4)
+            subject.selection(6)
+            subject.total
+            subject.receipt
+            expect(subject.orders).to eq([])
+        end
+
+    # As a customer
+    # So that I am reassured that my order will be delivered on time
+    # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+        it 'informs the customer of the delivery time'do
+            
+        end
+    end
 end
