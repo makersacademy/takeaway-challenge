@@ -12,8 +12,13 @@ describe Menu do
       # ** So that I can check if I want to order something
       # ** I would like to see a list of dishes with prices
       it 'checks if a list of dishes is returned rather then nil' do
-        expect(menu.list_dishes).to include({ Pizza: 4, Curry: 5, Roast_Dinner: 9 }) 
+        expect(menu.list_dishes).to include({name: 'Pizza', price: 4}, 
+          {name: 'Curry', price: 5}, 
+          {name: 'Roast_Dinner', price: 9}) 
       end
+
+     
+      
     end
 end
 
