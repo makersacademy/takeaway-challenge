@@ -16,7 +16,8 @@ Setup
 * Run the command 'bundle' in the project directory to ensure you have all the gems
 * `irb -r './lib/restaurant.rb'`
 * `2.6.5 :001 > kfc = Restaurant.new`
- `=> #<Restaurant:0x00007fe984874888> `
+ `=> #<Restaurant:0x00007fe984874888>`
+ 
  Hooray! Now you have a restaurant instance called `kfc` in your irb to play with. See commands below to run the user stories.
 
 
