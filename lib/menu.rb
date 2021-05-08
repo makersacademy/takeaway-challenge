@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :items
+  attr_reader :dishes
 
   DEFAULT_MENU = {
     pita: 2.50,
@@ -9,12 +9,16 @@ class Menu
     zazzikki: 4.99
   }
 
-  def initialize(items = DEFAULT_MENU)
-    @items = items
+  def initialize(dishes = DEFAULT_MENU)
+    @dishes = dishes
   end 
 
   def view_menu
-    @items.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}"}.join(',')
+    @dishes.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}"}.join(',')
   end
+
+  def price(dish)
+    @dishes[dish]
+  end 
 
 end 

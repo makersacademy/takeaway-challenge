@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   let(:menu) { double :menu }
-  let(:order) { double :order }
+  let(:order) { instance_double('Order', add_to_basket: nil, total: 23.48) }
   subject(:takeaway) { described_class.new(menu, order) }
   let(:dishes) { { pita: 3, musaka: 2 } }
   
@@ -19,6 +19,10 @@ describe Takeaway do
     it 'can select some number of several available dishes' do
       expect(order).to receive(:add_to_basket).twice
       takeaway.place_order(dishes)
-    end 
+    end
+
+    it 'shows the order total' do
+      expect(takeaway.place_order(dishes)).to eq(23.48)
+    end
   end 
 end

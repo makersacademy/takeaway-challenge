@@ -14,6 +14,7 @@ class Takeaway
   def place_order(dishes)
     dishes.each do |dish, quantity| @order.add_to_basket(dish, quantity)
     end 
+     @order.total
   end
 
 end 
