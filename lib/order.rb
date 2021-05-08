@@ -18,6 +18,8 @@ class Order
   end
 
   def submit_order
+    raise 'Order has already been submitted.' if @submitted
+
     @submitted = true
   end
 
