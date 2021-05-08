@@ -4,8 +4,8 @@ class Restaurant
   attr_reader :menu
   attr_reader :basket
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu)
+    @menu = menu
     @basket = {}
   end
 
