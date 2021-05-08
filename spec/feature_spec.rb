@@ -14,7 +14,7 @@ describe 'takeaway features' do
     expect(menu.list_dishes).to eq("1. Vegan Mixed Grill - £5.50\n2. Sweet Potato Fries - £6.50\n3. Vegan Burger - £7.50") 
   end
 
-  it 'can add items to order' do
+  it 'can add dishes to order' do
   end
 
   it 'can check the price of the order' do
