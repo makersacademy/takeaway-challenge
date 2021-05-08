@@ -5,7 +5,7 @@ class Menu
 
   def list_dishes
     all_dishes.each_with_index.map { |dish, index|
-      "#{index + 1}. #{dish.to_string}"
+      "#{index + 1}. #{dish}"
     }.join("\n")
   end
 

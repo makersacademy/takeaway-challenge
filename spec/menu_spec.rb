@@ -2,17 +2,18 @@ require 'menu'
 
 describe Menu do
   let(:dishes) { [
-    double('dish', to_string: "Vegan Mixed Grill - £5.50"),
-    double('dish', to_string: "Sweet Potato Fries - £6.50"),
-    double('dish', to_string: "Vegan Burger - £7.50"),
-    double('dish', to_string: "Chickpea Tagine - £5.50"),
-    double('dish', to_string: "Vegan Nut Roast - £6.50"),
-    double('dish', to_string: "Vegetable Curry - £5.50"),
-    double('dish', to_string: "Fruit Salad - £4.50"),
-    double('dish', to_string: "Vegan Hot Dog - £4.50"),
-    double('dish', to_string: "Vegan Pizza - £8.50"),
-    double('dish', to_string: "Vegetable Soup - £4.50"),
-  ] }
+    double('dish', to_s: "Vegan Mixed Grill - £5.50"),
+    double('dish', to_s: "Sweet Potato Fries - £6.50"),
+    double('dish', to_s: "Vegan Burger - £7.50"),
+    double('dish', to_s: "Chickpea Tagine - £5.50"),
+    double('dish', to_s: "Vegan Nut Roast - £6.50"),
+    double('dish', to_s: "Vegetable Curry - £5.50"),
+    double('dish', to_s: "Fruit Salad - £4.50"),
+    double('dish', to_s: "Vegan Hot Dog - £4.50"),
+    double('dish', to_s: "Vegan Pizza - £8.50"),
+    double('dish', to_s: "Vegetable Soup - £4.50"),
+  ]
+  }
   let(:menu) { Menu.new(dishes) }
 
   describe '#list_dishes' do
