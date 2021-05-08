@@ -45,7 +45,13 @@ You should get an output like: `=> 2 portions of chips added to your basket`
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+1. First order some items (see above), then do this in irb: `kfc.basket_summary` to see subtotals of the various dishes you've ordered.
+     `=> "5 portions of chips @ £1.50 each = £7.50, 5 portions of chicken @ £2.00 each = £10.00"`
+2. Use that output to explain the output of `kfc.total`
+      `=> "Total owing: £17.50"`
+      
+```  
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
