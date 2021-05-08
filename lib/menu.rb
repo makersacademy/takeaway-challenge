@@ -9,6 +9,10 @@ class Menu
     }.join("\n")
   end
 
+  def get_dish(dish_number)
+    all_dishes[dish_number - 1]
+  end
+
   private
 
   def all_dishes
