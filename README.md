@@ -7,7 +7,15 @@ Emulates a system for ordering takeaway from a restaurant.
 
 Credits
 -----------
-I refered to https://github.com/makersacademy/takeaway-challenge/blob/master/docs/review.md during my build and testing.
+I refered to https://github.com/makersacademy/takeaway-challenge/blob/master/docs/review.md during my build and testing. I also talked through stubbing and injections dependency with two other devs with reference to my code.
+
+
+
+Partial/Complete solution?
+-------------------------
+This code aims to cover all the user stories (see below) and some edgecases (e.g. customers ordering things that aren't on the menu, and preventing customers being able to chekout without passing at lesast the full total owing as an argument.)
+
+HOWEVER, I have not yet been able to solve the stubbing for SMS and delivery time correctly. I've left some commented out code with my attempts so I can pursue this further in week 3 of Makers.
 
 
 Domain model
@@ -70,9 +78,4 @@ However, I promise I got it working :)
 
 
 
-
-Edgecases
----------
-
-This code aims to guard against customers ordering things that aren't on the menu, and also against customers being able to chekout without passing at lesast the full total owing as an argument.
 
