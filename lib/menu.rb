@@ -1,10 +1,12 @@
 class Menu
 
+  attr_reader :items
+
   DEFAULT_MENU = {
-    Pita: 2.50,
-    Dolmades: 6.50,
-    Musaka: 7.99,
-    Zazzikki: 4.99
+    pita: 2.50,
+    dolmades: 6.50,
+    musaka: 7.99,
+    zazzikki: 4.99
   }
 
 
