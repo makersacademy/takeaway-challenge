@@ -18,12 +18,16 @@ class Restaurant
       @basket[dish] += portions
     else @basket.store(dish, portions)
     end
+    return "#{portions} portion/s of #{dish} added to your basket"
   end
 
   def basket_summary
-    #loop over the k,v pairs in the hash
-    "#{@basket[0]} portions of #{@basket.keys[0]}"
-    #code to calculate subtotal for each dish/portion pair in basket
+    # code to calculate subtotal for each dish/portion pair in basket
+    arr = []
+    basket.each do |dish, portions|
+      arr << "#{portions} portions of #{dish}: £#{"%.2f" % (portions * menu.list[dish])}, "
+    end
+    arr.join.chomp(", ")
   end
 
 end
