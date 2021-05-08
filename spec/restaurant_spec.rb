@@ -17,6 +17,7 @@ describe Restaurant do
       expect(subject.show_menu).to eq ({ "fries" => 1.50, "burger" => 2.00 })
     end
   end
+
   describe '#order' do
     it 'stores a customer order in a basket' do
       subject.order("fries", 3)
@@ -73,5 +74,19 @@ describe Restaurant do
       expect(subject.show_total).to eq "Total owing: £17.50"
     end
   end
-  
+
+  describe '#checkout' do
+
+    it 'fails with insufficient payment' do
+      subject.order("fries", 5)
+      subject.order("burger", 5)
+      expect { subject.checkout(10.00) }.to raise_error("Insufficient payment")
+    end
+
+    it 'thanks the customer' do
+      subject.order("fries", 5)
+      subject.order("burger", 5)
+      expect(subject.checkout(17.50)).to include "Thanks, you'll get an SMS confirmation"
+    end
+  end
 end
