@@ -28,7 +28,11 @@ User stories and example irb interactions
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
-
+```
+Do this in irb: ` kfc.show_menu` 
+You should get an output like: `=> {"chips"=>1.5, "chicken"=>2.0}`
+ 
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
