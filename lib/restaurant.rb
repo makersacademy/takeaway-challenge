@@ -19,4 +19,11 @@ class Restaurant
     else @basket.store(dish, portions)
     end
   end
+
+  def basket_summary
+    #loop over the k,v pairs in the hash
+    "#{@basket[0]} portions of #{@basket.keys[0]}"
+    #code to calculate subtotal for each dish/portion pair in basket
+  end
+
 end
