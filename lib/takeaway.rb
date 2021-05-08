@@ -8,7 +8,7 @@ class Takeaway
   end 
 
   def show_menu
-    @menu.display
+    @menu.view_menu
   end
 
   def place_order(dishes)

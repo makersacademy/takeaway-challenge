@@ -9,6 +9,6 @@ describe Menu do
   subject(:menu) { described_class.new } 
 
   it 'prints a menu with dishes and prices' do
-    expect(menu.display).to eq(items)
+    expect(menu.view_menu).to eq(items)
   end
 end

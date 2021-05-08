@@ -9,12 +9,11 @@ class Menu
     zazzikki: 4.99
   }
 
-
   def initialize(items = DEFAULT_MENU)
     @items = items
   end 
 
-  def display
+  def view_menu
     @items.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}"}.join(',')
   end
 

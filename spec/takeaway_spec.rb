@@ -7,7 +7,7 @@ describe Takeaway do
   let(:dishes) { { pita: 3, musaka: 2 } }
   
   it 'shows the list of dishes and prices' do 
-    allow(menu).to receive(:display).and_return ("Garlic bread: £1.99")
+    allow(menu).to receive(:view_menu).and_return ("Garlic bread: £1.99")
     expect(takeaway.show_menu).to eq("Garlic bread: £1.99")
   end
 
@@ -19,7 +19,6 @@ describe Takeaway do
     it 'can select some number of several available dishes' do
       expect(order).to receive(:add_to_basket).twice
       takeaway.place_order(dishes)
-    end
-
+    end 
   end 
 end
