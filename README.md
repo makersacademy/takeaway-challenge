@@ -66,7 +66,7 @@ You should get an output like: `=> Thanks, you'll get an SMS confirmation.`
 
 Unless you have my environment variables (or configure the Twilio Api with your count account details, this code will **not** send you an SMS.
 However, I promise I got it working :)
-<img src="./File.jpg">
+<img src="./screenshot.jpg">
 
 
 
