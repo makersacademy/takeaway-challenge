@@ -1,29 +1,21 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
+    @order = order
   end 
 
   def show_menu
     @menu.display
   end
 
-  def select_dish(dish)
-    # fail 'The dish is not in the menu' unless in_menu?(dish)
+  def place_order(dishes)
+    dishes.each do |dish, quantity| @order.add_to_basket(dish, quantity)
+    end 
   end
 
-  # def in_menu?(item)
-  #   p @menu.items
-  #   @menu.items.include?(item)
-  # end
+end 
 
-end
 
-# takeaway = Takeaway.new()
-
-# p takeaway
-
-# p takeaway.select_dish(:pita)
-
-# p takeaway.in_menu?(:pita)
