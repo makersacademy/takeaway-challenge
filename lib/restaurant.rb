@@ -1,11 +1,13 @@
 require_relative 'menu.rb'
+require_relative 'send_sms.rb'
 
 class Restaurant
   attr_reader :menu
   attr_reader :basket
 
-  def initialize(menu)
+  def initialize(menu, sender)
     @menu = menu
+    @sender = sender
     @basket = {}
   end
 
@@ -15,7 +17,7 @@ class Restaurant
 
   def order(dish, portions = 1)
     fail "Sorry, #{dish} aren't on the menu" unless menu.list.include?(dish)
-    
+
     if @basket.include? dish
       @basket[dish] += portions
     else @basket.store(dish, portions)
@@ -39,4 +41,17 @@ class Restaurant
     "Total owing: £#{"%.2f" % count}"
   end
 
+  def checkout
+  # In real life, this some code here to collect the customer's mobile number 
+    # so we can pass it to confirmation
+
+  end
+
+  def delivery_time
+    Time.new + 3600
+  end
+
+  def confirmation(to)
+    @sender.send(to, "Thank you! Your order for #{basket_summary} #{total} was placed and will be delivered before #{delivery_time}")
+  end
 end

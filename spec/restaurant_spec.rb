@@ -6,7 +6,10 @@ describe Restaurant do
     menu = double(Menu.new)
     allow(menu).to receive(:list) { { "fries" => 1.50, "burger" => 2.00 } }
     
-    Restaurant.new(menu) 
+    sender = double(SendSMS.new)
+    #allow(sender).to receive(:send).with("to", "message").and_return("Twilio screen test confirmed")
+
+    Restaurant.new(menu, sender) 
   }
  
   describe '#show_menu' do
@@ -20,6 +23,7 @@ describe Restaurant do
       expect(subject.basket).to include "fries" => 3
     end
 
+  
     it 'increases the portions in basket when a dish is ordered again' do
       subject.order("fries")
       subject.order("fries")
@@ -37,18 +41,29 @@ describe Restaurant do
       subject.order("burger", 5)
       expect(subject.basket_summary).to eq "5 portions of fries @ £1.50 each = £7.50, 5 portions of burger @ £2.00 each = £10.00"
     end
+  end
+
   # describe '#delivery_time' do
   #   it 'outputs a time 1 hour from now' do
-  #     allow(Time).to recieve(:new) { 2021-05-08 16:05:51 +0100 }
-  #     expect(subject.delivery_time).to eq 2021-05-08 17:05:51 +0100
+  #     moment = 2021-05-08 16:05:51 +0100
+  #     allow(Time).to receive(:new) { moment }
+  #     expect(subject.delivery_time).to eq "2021-05-08 17:05:51 +0100"
   #   end
   # end
-    describe '#total' do
-      it 'outputs the total amount owing' do
-        subject.order("fries", 5)
-        subject.order("burger", 5)
-        expect(subject.total).to eq "Total owing: £17.50"
-      end
+
+  describe '#confirmation' do
+    it 'asks the Twilio API to send a text' do
+      expect(subject.confirmation("fakemobnum")).to eq "Twilio screen test confirmed"
     end
   end
+
+  describe '#total' do
+    it 'outputs the total amount owing' do
+      subject.order("fries", 5)
+      subject.order("burger", 5)
+      expect(subject.total).to eq "Total owing: £17.50"
+    end
+  end
+
+  
 end
