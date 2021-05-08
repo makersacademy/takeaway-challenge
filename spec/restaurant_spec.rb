@@ -18,6 +18,10 @@ describe Restaurant do
       subject.order("chips")
       expect(subject.basket).to include "chips" => 2
     end
+
+    it 'fails if dish unknown' do
+      expect { subject.order("fries") }.to raise_error "Sorry, fries aren't on the menu"
+    end
   end
 
   describe '#basket_summary' do

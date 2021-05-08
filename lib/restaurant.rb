@@ -14,6 +14,8 @@ class Restaurant
   end
 
   def order(dish, portions = 1)
+    fail "Sorry, #{dish} aren't on the menu" unless menu.list.include?(dish)
+    
     if @basket.include? dish
       @basket[dish] += portions
     else @basket.store(dish, portions)
