@@ -36,7 +36,12 @@ You should get an output like: `=> {"chips"=>1.5, "chicken"=>2.0}`
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
+Do this in irb: `kfc.order("chips")`  to order one portion. Or `kfc.order("chips", 2)` to specify the number of portions.
 
+You should get an output like: `=> 2 portions of chips added to your basket`
+
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
