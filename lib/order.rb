@@ -27,7 +27,7 @@ class Order
   
   def total_price
     dishes.reduce(0) { |sum, dish|
-      sum += dish.price
+      sum + dish.price
     }
   end
 
@@ -37,4 +37,3 @@ class Order
     }.join("\n")
   end
 end
-
