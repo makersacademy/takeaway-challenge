@@ -25,7 +25,11 @@ describe Order do
     describe '#submit_order' do
       it 'submits the order so that it can no longer be changed' do
         order.submit_order
-        expect {order.add_dishes_to_order(menu, 1)}.to raise_error('Order has already been submitted.')
+        expect { order.add_dishes_to_order(menu, 1) }.to raise_error('Order has already been submitted.')
+      end
+
+      it 'send a confirmation text through Twilio' do
+        expect(order.submit_order).to eq('API response?')
       end
     end
   end
