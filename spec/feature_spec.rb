@@ -3,9 +3,9 @@ require 'dish'
 
 describe 'takeaway features' do
   let(:dishes) { [
-    Dish.new(name: 'Vegan Mixed Grill', price: '£5.50'),
-    Dish.new(name: 'Sweet Potato Fries', price: '£6.50'),
-    Dish.new(name: 'Vegan Burger', price: '£7.50')
+    Dish.new(name: 'Vegan Mixed Grill', price: 5.5),
+    Dish.new(name: 'Sweet Potato Fries', price: 6.50),
+    Dish.new(name: 'Vegan Burger', price: 7.50)
   ]
   }
   let(:menu) { Menu.new(dishes) }

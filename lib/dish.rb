@@ -5,6 +5,10 @@ class Dish
   end
 
   def to_s
-    "#{@name} - #{@price}"
+    "#{@name} - £#{format("%<num>0.2f", num: @price)}"
+  end
+
+  def price
+    @price
   end
 end
