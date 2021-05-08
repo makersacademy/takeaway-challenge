@@ -52,7 +52,7 @@ I would like to check that the total I have been given matches the sum of the va
 ```
 1. First order some items (see above), then do this in irb: `kfc.basket_summary` to see subtotals of the various dishes you've ordered.
      `=> "5 portions of chips @ £1.50 each = £7.50, 5 portions of chicken @ £2.00 each = £10.00"`
-2. Use that output to explain the output of `kfc.total`
+2. Use that output to explain the output of `kfc.show_total`
       `=> "Total owing: £17.50"`
       
 ```  
@@ -60,5 +60,19 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+When you're happy with your order, do this in irb: `kfc.chekout(17.50)`
 
+You should get an output like: `=> Thanks, you'll get an SMS confirmation.` 
+
+Unless you have my environment variables (or configure the Twilio Api with your count account details, this code will **not** send you an SMS.
+However, I promise I got it working :)
+<img src="./File.jpg">
+
+
+
+
+Edgecases
+---------
+
+This code aims to guard against customers ordering things that aren't on the menu, and also against customers being able to chekout without passing at lesast the full total owing as an argument.
 
