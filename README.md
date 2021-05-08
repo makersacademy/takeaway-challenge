@@ -12,9 +12,11 @@ Domain model
 
 Setup
 -----
-* Fork this repo +++CLONE?+++
+* Clone this repo to your local machine
 * Run the command 'bundle' in the project directory to ensure you have all the gems
-* in irb, +++which files to require+++
+* `irb -r './lib/restaurant.rb'`
+* `2.6.5 :001 > kfc = Restaurant.new`
+ `=> #<Restaurant:0x00007fe984874888> `
 
 
 User stories and example irb interactions
