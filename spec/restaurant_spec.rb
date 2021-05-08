@@ -7,7 +7,7 @@ describe Restaurant do
     allow(menu).to receive(:list) { { "fries" => 1.50, "burger" => 2.00 } }
     
     sender = double(SendSMS.new)
-    #allow(sender).to receive(:send).with("to", "message").and_return("Twilio screen test confirmed")
+    # allow(sender).to receive(:send).with("to", "message").and_return("Twilio screen test confirmed")
 
     Restaurant.new(menu, sender) 
   }
@@ -51,19 +51,27 @@ describe Restaurant do
   #   end
   # end
 
-  describe '#confirmation' do
-    it 'asks the Twilio API to send a text' do
-      expect(subject.confirmation("fakemobnum")).to eq "Twilio screen test confirmed"
-    end
-  end
+  # describe '#confirmation' do
+  #   it 'asks the Twilio API to send a text' do
+  #     subject.confirmation("fakemobnum")
+  #     expect().to eq "Twilio screen test confirmed"
+  #   end
+  # end
 
   describe '#total' do
-    it 'outputs the total amount owing' do
+    it 'calculates the total amount owing' do
       subject.order("fries", 5)
       subject.order("burger", 5)
-      expect(subject.total).to eq "Total owing: £17.50"
+      expect(subject.total).to eq 17.5
     end
   end
 
+  describe '#show_total' do
+    it 'gives friendly string including total amount owing' do
+      subject.order("fries", 5)
+      subject.order("burger", 5)
+      expect(subject.show_total).to eq "Total owing: £17.50"
+    end
+  end
   
 end

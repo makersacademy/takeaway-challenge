@@ -38,12 +38,19 @@ class Restaurant
     basket.each do |dish, portions|
       count += (portions * menu.list[dish])
     end
-    "Total owing: £#{"%.2f" % count}"
+    count
   end
 
-  def checkout
-  # In real life, this some code here to collect the customer's mobile number 
+  def show_total
+    "Total owing: £#{"%.2f" % total}"
+  end
+
+  def checkout(payment)
+    fail 'Please pay the full amount' if payment < total
+
+  # In real life, some code here to collect the customer's mobile number 
     # so we can pass it to confirmation
+    confirmation("fakemobnum")
 
   end
 
@@ -51,6 +58,7 @@ class Restaurant
     Time.new + 3600
   end
 
+  private
   def confirmation(to)
     @sender.send(to, "Thank you! Your order for #{basket_summary} #{total} was placed and will be delivered before #{delivery_time}")
   end
