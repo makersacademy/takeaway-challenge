@@ -21,6 +21,12 @@ describe Order do
         expect(order.check_order).to eq("Vegan Mixed Grill - £5.50\nVegan Mixed Grill - £5.50\nVegan Mixed Grill - £5.50\nTOTAL: £16.50")
       end
     end
-  end
 
+    describe '#submit_order' do
+      it 'submits the order so that it can no longer be changed' do
+        order.submit_order
+        expect {order.add_dishes_to_order(menu, 1)}.to raise_error('Order has already been submitted.')
+      end
+    end
+  end
 end

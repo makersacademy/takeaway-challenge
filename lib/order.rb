@@ -4,30 +4,35 @@ class Order
   end
 
   def check_order
-    return nil if all_dishes.empty?
+    return nil if dishes.empty?
+
     cost_summary + "\nTOTAL: £#{format("%<num>0.2f", num: total_price)}"
   end
 
   def add_dishes_to_order(menu, *dish_numbers)
+    raise 'Order has already been submitted.' if @submitted
+
     dish_numbers.each { |dish_number|
-      @dishes << menu.get_dish(dish_number)
+      dishes << menu.get_dish(dish_number)
     }
+  end
+
+  def submit_order
+    @submitted = true
   end
 
   private
   
-  def all_dishes
-    @dishes
-  end
-
+  attr_reader :dishes
+  
   def total_price
-    all_dishes.reduce(0) { |sum, dish|
+    dishes.reduce(0) { |sum, dish|
       sum += dish.price
     }
   end
 
   def cost_summary
-    all_dishes.map { |dish|
+    dishes.map { |dish|
       dish.to_s
     }.join("\n")
   end
