@@ -5,6 +5,10 @@ What does the code do?
 -----------
 Emulates a system for ordering takeaway from a restaurant.
 
+Credits
+-----------
+I refered to https://github.com/makersacademy/takeaway-challenge/blob/master/docs/review.md during my build and testing.
+
 
 Domain model
 -----------
