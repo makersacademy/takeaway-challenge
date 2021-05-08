@@ -22,12 +22,19 @@ class Restaurant
   end
 
   def basket_summary
-    # code to calculate subtotal for each dish/portion pair in basket
     arr = []
     basket.each do |dish, portions|
-      arr << "#{portions} portions of #{dish}: £#{"%.2f" % (portions * menu.list[dish])}, "
+      arr << "#{portions} portions of #{dish} @ £#{"%.2f" % menu.list[dish]} each = £#{"%.2f" % (portions * menu.list[dish])}, "
     end
     arr.join.chomp(", ")
+  end
+
+  def total
+    count = 0
+    basket.each do |dish, portions|
+      count += (portions * menu.list[dish])
+    end
+    "Total owing: £#{"%.2f" % count}"
   end
 
 end

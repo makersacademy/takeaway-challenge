@@ -24,8 +24,14 @@ describe Restaurant do
     it 'outputs subtotals for each of the dishes ordered' do
       subject.order("chips", 5)
       subject.order("chicken", 5)
-      expect(subject.basket_summary).to eq "5 portions of chips: £7.50, 5 portions of chicken: £10.00"
+      expect(subject.basket_summary).to eq "5 portions of chips @ £1.50 each = £7.50, 5 portions of chicken @ £2.00 each = £10.00"
     end
-      
+    describe '#total' do
+      it 'outputs the total amount owing' do
+        subject.order("chips", 5)
+        subject.order("chicken", 5)
+        expect(subject.total).to eq "Total owing: £17.50"
+      end
+    end
   end
 end
