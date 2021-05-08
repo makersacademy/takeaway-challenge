@@ -1,7 +1,12 @@
+
+
 class Takeaway
 
-  def display_menu
-    "1. Fish £5.00"
+  def initialize(menu)
+    @menu = menu
   end
 
+  def display_menu
+    @menu.display_menu
+  end
 end
