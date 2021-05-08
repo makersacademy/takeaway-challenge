@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
 
   let(:items) do
-    described_class::DEFAULT_MENU.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}" }
+    described_class::DEFAULT_MENU.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}" }.join(',')
   end
 
   subject(:menu) { described_class.new } 

@@ -13,7 +13,7 @@ class Menu
   end 
 
   def display
-    @items.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}"}
+    @items.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}"}.join(',')
   end
 
 end 
