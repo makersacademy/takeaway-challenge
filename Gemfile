@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
   gem 'rspec'
@@ -6,3 +7,5 @@ group :test do
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
 end
+gem 'twilio-ruby'
+gem 'dotenv'

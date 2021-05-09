@@ -28,6 +28,5 @@ class Order
       @dishes.map do |dish, quantity|
       @menu[dish] * quantity
       end 
-    end 
-
+    end
 end 

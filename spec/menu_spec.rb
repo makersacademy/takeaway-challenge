@@ -14,5 +14,5 @@ describe Menu do
 
   it 'returns the price of the dish' do
     expect(menu.price(:pita)).to eq described_class::DEFAULT_MENU[:pita]
-  end 
+  end  
 end

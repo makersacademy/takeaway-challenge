@@ -3,7 +3,9 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) { double :menu }
   let(:order) { instance_double('Order', add_to_basket: nil, total: 23.48) }
-  subject(:takeaway) { described_class.new(menu, order) }
+  let(:message) { instance_double('Message', send: nil)  }
+
+  subject(:takeaway) { described_class.new(menu, order, message) }
   let(:dishes) { { pita: 3, musaka: 2 } }
   
   it 'shows the list of dishes and prices' do 
@@ -24,5 +26,11 @@ describe Takeaway do
     it 'shows the order total' do
       expect(takeaway.place_order(dishes)).to eq(23.48)
     end
-  end 
+
+    it 'sends an SMS message to confirm the order' do
+
+      expect(message).to receive(:send)
+      takeaway.place_order(dishes)
+    end
+  end
 end
