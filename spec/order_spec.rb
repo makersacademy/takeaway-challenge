@@ -6,6 +6,6 @@ describe Order do
   end
 
   it 'displays the order' do
-    expect(subject.display).to eq("Current order")
+    expect(subject.display).to eq("Empty order")
   end
 end

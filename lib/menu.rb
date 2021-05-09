@@ -6,6 +6,6 @@ class Menu
   end
   
   def display
-    @items ? "#{@items}" : "Empty Menu"
+    @items.empty? ? "Empty Menu" : "#{@items}"
   end
 end

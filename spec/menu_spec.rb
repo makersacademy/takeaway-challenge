@@ -5,6 +5,6 @@ describe Menu do
     expect(subject.items).to eq([])
   end
   it 'displays the menu' do
-    expect(subject.display).to eq("[]")
+    expect(subject.display).to eq("Empty Menu")
   end
 end

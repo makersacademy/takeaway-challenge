@@ -6,6 +6,6 @@ class Order
   end
 
   def display 
-    "Current order"
+    @current.empty? ? "Empty order" : "#{@current}"
   end
 end
