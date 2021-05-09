@@ -8,7 +8,7 @@ class Menu
   def display
     available_items = []
     @items.each do |item| 
-      available_items << "#{item[:name]}: #{item[:price]}" if item[:quantity] > 0 
+      available_items << "#{item[:name]}: #{item[:price]}" if item[:quantity].positive? 
     end
     @items.empty? ? "Empty Menu" : available_items.join(", ")
   end
