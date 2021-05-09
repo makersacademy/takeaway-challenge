@@ -1,6 +1,13 @@
+require 'dotenv/load'
+
 class Order
-  def initialize
+  def initialize(text_message_client_class:)
     @dishes = []
+
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
+
+    @text_message_client = text_message_client_class.new(account_sid, auth_token)
   end
 
   def check_order
@@ -17,10 +24,15 @@ class Order
     }
   end
 
-  def submit_order
+  def submit_order(mobile_phone_number)
     raise 'Order has already been submitted.' if @submitted
-
-    @submitted = true
+    
+    response = send_confirmation_text(mobile_phone_number)
+    if response.error_code.nil?
+      @submitted = true
+    else
+      raise "Error sending text: error code #{response.error_code}"
+    end
   end
 
   private
@@ -37,5 +49,18 @@ class Order
     dishes.map { |dish|
       dish.to_s
     }.join("\n")
+  end
+
+  def send_confirmation_text(mobile_phone_number)
+    message = @text_message_client.messages
+      .create(
+        body: "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}",
+        from: '+19729146011',
+        to: mobile_phone_number
+      )
+  end
+
+  def one_hour_from_now
+    (Time.now + 3600).strftime(format='%R')
   end
 end

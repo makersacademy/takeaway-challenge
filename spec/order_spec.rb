@@ -1,7 +1,11 @@
 require 'order'
 
 describe Order do
-  let(:order) { Order.new }
+  let(:message_response_double) { double(:response, error_code: nil) }
+  let(:message_double) { double(:message, create: message_response_double) }
+  let(:text_message_client_double) { double(:client, messages: message_double) }
+  let(:text_message_client_class_double) { double(:client, new: text_message_client_double) }
+  let(:order) { Order.new(text_message_client_class: text_message_client_class_double) }
   let(:dish) { double(:dish, to_s: 'Vegan Mixed Grill - £5.50', price: 5.5) }
   let(:menu) { double(:menu, get_dish: dish) }
 
@@ -24,12 +28,12 @@ describe Order do
 
     describe '#submit_order' do
       it 'submits the order so that it can no longer be changed' do
-        order.submit_order
+        order.submit_order('555-555-5555')
         expect { order.add_dishes_to_order(menu, 1) }.to raise_error('Order has already been submitted.')
       end
 
       it 'send a confirmation text through Twilio' do
-        expect(order.submit_order).to eq('API response?')
+        expect(order.submit_order('555-555-5555')).to be_truthy
       end
     end
   end
