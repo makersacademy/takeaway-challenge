@@ -1,6 +1,9 @@
+require 'sms'
+
 class Takeaway
-  def initialize(items)
+  def initialize(items, sms = Sms.new)
     @items = items
+    @sms = sms
   end
 
   def list_items
@@ -8,6 +11,7 @@ class Takeaway
   end    
 
   def place_order(order)
+    @sms.send
     total_price(order)
   end
 

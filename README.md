@@ -25,4 +25,4 @@ I would like to receive a text such as "Thank you
 
 ## How to use
 
-I have designed this app in such a way that it should be reusable for any takeaway - as such there is no hard-coded menu. This means that as is, the user interface is irb and so the takeaway must be set up as follows:
+I have designed this app in such a way that it should be reusable for any takeaway, assuming a user interface will be set up later - as such there is no hard-coded menu. This means that as is, the user interface is irb and so the takeaway must be set up as follows (note: this is an example menu and any chould be used in this format):
