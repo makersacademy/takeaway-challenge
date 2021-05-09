@@ -6,7 +6,7 @@ describe Order do
   it 'has an empty order by default' do
     expect(subject.current).to eq([])
   end
-  
+
   context 'after adding items' do
     before(:each) do
       subject.add(selected_item, 1)
@@ -36,6 +36,15 @@ describe Order do
     it 'displays the total' do
       expect(subject.total).to eq("£5.0")
     end
+
+    it 'completes the order and confirms the total' do
+      expect(subject.complete).to eq("Order has been placed for £5.0")
+    end
+  end
+
+  it 'returns the time in 1 hour' do
+    time_in_an_hour = "#{Time.now.hour + 1}:#{Time.now.min}"
+    expect(subject.delivery_time).to eq(time_in_an_hour)
   end
 end
   

@@ -24,4 +24,12 @@ class Order
     @current.each { |item| total += (item[:price] * item[:quantity]) }
     "£#{total}"
   end
+
+  def complete
+    "Order has been placed for #{total}"
+  end
+
+  def delivery_time
+    "#{Time.now.hour + 1}:#{Time.now.min}"
+  end
 end
