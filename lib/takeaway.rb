@@ -10,9 +10,12 @@ class Takeaway
   def add_to_order(name, quantity)
     selected_item = @menu.items.find { |item| item[:name] == name} 
     # if seleceted quanity < quantity throw error and say available amount
-    @order.current << { name: selected_item[:name], price: selected_item[:price], quantity: 1 }
-    # some check to see if already in order
+    if @order.current.include?(selected_item)
+      @order.current.each { |item| item[:quantity] += quantity if item[:name] == selected_item[:name]}
+    else
+      selected_item[:quantity] = quantity
+      @order.current << selected_item
+    end
     p @order.current
-    # need to update quantity
   end
 end
