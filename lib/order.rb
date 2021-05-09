@@ -8,8 +8,7 @@ class Order
     @totalOrderPrice = 0
     @totalItemsOrdered = []
     @checkoutTime = NIL
-    @messageTransport = TwilioService.new("AC5e3606c871bb6dfcab08aa2b2eb74aaf",
-                                          "12be4a68c70c889d1d6dc99531a4b6f7", "+12052089154", "+44 7584 212200")
+    @messageTransport = TwilioService.new()
   end
 
   def get_menu
