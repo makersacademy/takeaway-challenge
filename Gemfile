@@ -8,4 +8,4 @@ group :test do
 end
 
 gem 'twilio-ruby'
-
+gem 'dotenv'
