@@ -3,13 +3,13 @@ require 'order'
 describe Order do
   it 'lets you select one dish' do
     subject.order_item('Fish')
-    expect(subject.order_list).to eq [{dish: "Fish", price: 9}]
+    expect(subject.order_list).to include(Dish)
   end
 
   it 'lets you select multiple dishes' do
     subject.order_item('Fish')
     subject.order_item('Squirrel')
-    expect(subject.order_list).to eq [{dish: "Fish", price: 9}, {dish: 'Squirrel', price: 100}]
+    expect(subject.order_list.length).to eq 2
   end
 
   it 'adds up the price of your order' do

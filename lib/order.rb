@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'dish'
 
 class Order 
   attr_reader :order_list, :menu
@@ -9,19 +10,20 @@ class Order
   end
 
   def order_item(item)
-
-    menu.menu.each { |element| order_list << element if element[:dish] == item }
+    name, price = '', 0
+    menu.menu.each { |element| name, price = element[:dish], element[:price] if element[:dish] == item }
+    order_list << Dish.new(name, price)
   end
 
   def items_in_order
     string = ''
-    order_list.each { |element| string += "#{element[:dish]}, "}
+    order_list.each { |element| string += "#{element.name}, "}
     string.chomp(', ')
   end
 
   def total_price
     total = 0
-    order_list.each { |element| total += element[:price] }
+    order_list.each { |element| total += element.price }
     total
   end
 end
