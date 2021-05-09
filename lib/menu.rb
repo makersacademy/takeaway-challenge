@@ -6,7 +6,11 @@ class Menu
   end
   
   def display
-    @items.empty? ? "Empty Menu" : "#{@items}"
+    available_items = []
+    @items.each do |item| 
+      available_items << "#{item[:name]}: #{item[:price]}" if item[:quantity] > 0 
+    end
+    @items.empty? ? "Empty Menu" : available_items.join(", ")
   end
 
   def update(name, quantity)
