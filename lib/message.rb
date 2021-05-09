@@ -8,23 +8,18 @@ class Message
 
   attr_reader :client
 
-  def initialize(client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']), phone = ENV['TWILIO_PHONE'])
+  def initialize(client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']))
     @client = client
-       p @client
-    @phone = phone
+    @phone = ENV['TWILIO_PHONE']
   end
 
   def send
     confirmation_message = "Thank you for your order. Your order has been placed and will be delivered before #{DELIVERY_TIME}."
-
     twilio_message_body = { 
       from: ENV['TWILIO_PHONE'], 
       to: ENV['TWILIO_DESTINATION_PHONE'], body: confirmation_message }
-  
     @client.messages.create(twilio_message_body)
-  end  
+  end 
 end
-
-message = Message.new
 
 

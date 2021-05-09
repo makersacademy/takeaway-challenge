@@ -9,8 +9,8 @@ describe Takeaway do
   let(:dishes) { { pita: 3, musaka: 2 } }
   
   it 'shows the list of dishes and prices' do 
-    allow(menu).to receive(:view_menu).and_return ("Garlic bread: £1.99")
-    expect(takeaway.show_menu).to eq("Garlic bread: £1.99")
+    allow(menu).to receive(:view_menu).and_return('Garlic bread: £1.99')
+    expect(takeaway.show_menu).to eq 'Garlic bread: £1.99'
   end
 
   context '#place_order' do
