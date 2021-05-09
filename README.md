@@ -12,7 +12,7 @@ The Menu, Dish and Order class (along with the Twilio::REST::Client class) inter
 git clone https://github.com/rdupplaw/takeaway-challenge.git
 ```
 
-Use .env.template to create your own .env file, containing your Twilio account SID and auth token.
+Use .env.template to create your own .env file, containing your Twilio account SID, auth token and number.
 
 # Usage
 
