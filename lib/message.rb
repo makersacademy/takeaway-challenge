@@ -1,5 +1,6 @@
 require 'twilio-ruby'
-require 'dotenv/load'
+require 'dotenv'
+Dotenv.load
 
 class Message
 
@@ -7,12 +8,10 @@ class Message
 
   attr_reader :client
 
-  account_sid = ENV['TWILIO_ACCOUNT_SID']
-  auth_token =  ENV['TWILIO_AUTH_TOKEN']
-
-  def initialize(client = Twilio::REST::Client.new(account_sid, auth_token), phone = ENV['TWILIO_PHONE'])
+  def initialize(client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']), phone = ENV['TWILIO_PHONE'])
     @client = client
-    @phone = phone 
+       p @client
+    @phone = phone
   end
 
   def send
@@ -24,4 +23,8 @@ class Message
   
     @client.messages.create(twilio_message_body)
   end  
-end 
+end
+
+message = Message.new
+
+
