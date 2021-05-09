@@ -19,10 +19,19 @@ describe Order do
   describe '#select food' do
     it 'creates an array with of your selected food' do
       order = Order.new
-      order.select_food("Chai")
-      expect(order.order).to eq(["Chai"])
+      order.select_food("chai")
+      expect(order.order).to eq(["chai"])
     end
   end
+
+  describe '#total' do
+  it 'returns the total of the order' do
+      order = Order.new 
+      order.select_food("chai")
+      expect(order.total).to eq(2)
+    end
+  end
+
 
 
 end

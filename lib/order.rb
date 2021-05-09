@@ -6,7 +6,8 @@ require_relative 'naan'
 require_relative 'chai'
 
 class Order  
-  attr_reader :order, :bhaji, :rice, :korma, :jalfrezi, :naan, :chai
+  attr_reader :order, :bhaji, :rice, :korma, :jalfrezi, :naan, :chai 
+  attr_accessor :sum
 
   def initialize(bhaji = Bhaji.new, rice = Rice.new, korma = Korma.new, jalfrezi = Jalfrezi.new,
      naan = Naan.new, chai = Chai.new)
@@ -29,15 +30,22 @@ class Order
     @order << dish
   end
 
-
-
-
-
-=begin
   def total
-    total = 0
-    @order.each { |dish| total += :dish.price "#{:dish.name} - £#{:dish.price}"  }
-    "Your total is £#{total}."
+    sum = 0
+    order.each { |dish| 
+    if dish == "chai" 
+      sum += 2
+    elsif dish == "naan"
+      sum += 4
+    elsif dish == "korma"
+      sum += 8
+    elsif dish == "jalfrezi"
+      sum += 10
+    elsif dish == "rice"
+      sum += 2
+    elsif dish == "bhaji"
+      sum += 4
+    end
+  }
   end
-=end
 end
