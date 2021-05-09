@@ -23,14 +23,18 @@ describe Takeaway do
 
   describe '#add_to_order' do
     context 'when items are available' do
-      context 'when item not in order already' do
+      it 'updates the quantity in menu items' do
+        subject.add_to_order("item_one", 1)
+        expect(menu.items[0][:quantity]).to eq(0)
+      end
+      context 'and not in order already' do
         it 'adds item to order' do
           subject.add_to_order("item_two", 1)
           selected_item = {name: "item_two", price: 5.0, quantity: 1}
           expect(subject.order.current.last).to eq(selected_item)
         end
       end
-      context 'when item in order already' do
+      context 'and in order already' do
         it 'updates the quantity' do
           subject.add_to_order("item_one", 1)
           expect(subject.order.current.first[:quantity]).to eq(2)

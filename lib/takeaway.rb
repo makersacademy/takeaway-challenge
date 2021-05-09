@@ -11,11 +11,10 @@ class Takeaway
     selected_item = @menu.items.find { |item| item[:name] == name} 
     # if seleceted quanity < quantity throw error and say available amount
     if @order.current.include?(selected_item)
-      @order.current.each { |item| item[:quantity] += quantity if item[:name] == selected_item[:name]}
+      @order.current.each { |item| item[:quantity] += quantity if item[:name] == name }
     else
-      selected_item[:quantity] = quantity
-      @order.current << selected_item
+      @order.current << {name: name, price: selected_item[:price], quantity: quantity}
     end
-    p @order.current
+    @menu.items.each { |item| item[:quantity] -= quantity if item[:name] == name } 
   end
 end
