@@ -1,0 +1,31 @@
+@startuml
+participant "a User" as user
+participant "a Menu" as menu
+participant "a Dish" as dish
+participant "an Order" as order
+participant "a Twilio::REST::Client" as twilio
+user -> menu : .list_dishes
+menu -> menu : .dishes
+    loop for each dish
+        menu -> dish : .to_s
+        dish ---> menu
+    end
+menu ---> user
+user -> order : .add_dishes_to_order(menu, *dish_number)
+    loop for each dish_number
+        order -> menu : .get_dish(dish_number)
+        menu ---> order : dish
+    end
+user -> order: .check_order
+order -> order : .dishes
+    loop for each dish
+        order -> dish : .to_s
+        dish ---> order
+        order -> dish : .price
+        dish ---> order
+    end
+order ---> user
+user -> order: .submit_order
+order -> twilio : .messages.create
+twilio ---> user
+@enduml
