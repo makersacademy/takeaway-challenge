@@ -28,11 +28,9 @@ class Order
     raise 'Order has already been submitted.' if @submitted
     
     response = send_confirmation_text(mobile_phone_number)
-    if response.error_code.nil?
-      @submitted = true
-    else
-      raise "Error sending text: error code #{response.error_code}"
-    end
+    raise "Error sending text: error code #{response.error_code}" unless response.error_code.nil?
+
+    @submitted = true
   end
 
   private
@@ -52,7 +50,7 @@ class Order
   end
 
   def send_confirmation_text(mobile_phone_number)
-    message = @text_message_client.messages
+    @text_message_client.messages
       .create(
         body: "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}",
         from: '+19729146011',
@@ -61,6 +59,6 @@ class Order
   end
 
   def one_hour_from_now
-    (Time.now + 3600).strftime(format='%R')
+    (Time.now + 3600).strftime('%R')
   end
 end
