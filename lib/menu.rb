@@ -12,10 +12,7 @@ class Menu
     @order = []
   end
 
-  def add_to_order(dish)
+  def select(dish)
     order_dish = @list.find { |meal| meal[:name] == dish }
-    fail "I'm sorry we don't have that dish" if order_dish.nil?
-
-    @order << order_dish
   end
 end
