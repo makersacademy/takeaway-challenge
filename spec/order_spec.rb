@@ -16,27 +16,13 @@ describe Order do
     end
   end
 
-  describe '#select_food' do 
-    it "should return Naan" do
+  describe '#select food' do
+    it 'creates an array with of your selected food' do
       order = Order.new
-      order.select_food
-      expect(@order).to eq("Naan")
+      order.select_food("Chai")
+      expect(order.order).to eq(["Chai"])
     end
-=begin
-    it 'should tell you to try again if user input is empty' do
-      let (:user_input) { "dshbfdjhsb" }
-      order = Order.new
-      order.select_food
-      expect(@order).to eq([])
-    end
-=end
-  end 
-  # in order to be able to select dishes we need the menu to be printed, then user input which loops 
-  # asking for dishes, which ocnsequently pushes the chosen dish into an array. the result
-  # is an array of dishes 
-  # it 'selects multiple dishes to create a new order' do 
-    # order = order.new
-  #  order.select_food
-   # expect(order).to eq(dummy_order)
+  end
+
 
 end

@@ -6,7 +6,7 @@ require_relative 'naan'
 require_relative 'chai'
 
 class Order  
-  attr_reader :order
+  attr_reader :order, :bhaji, :rice, :korma, :jalfrezi, :naan, :chai
 
   def initialize(bhaji = Bhaji.new, rice = Rice.new, korma = Korma.new, jalfrezi = Jalfrezi.new,
      naan = Naan.new, chai = Chai.new)
@@ -25,19 +25,19 @@ class Order
     " #{@naan.name} £#{@naan.price}, #{@chai.name} £#{@chai.price}"
   end 
 
-  def select_food
-    while true do 
-      puts "What would you like to order? When complete enter 'done'" 
-      user_input = gets.chomp 
-      @order.push(@bhaji.name) if user_input.downcase == "bhaji"
-      @order.push(@rice.name) if user_input.downcase == "rice"
-      @order.push(@korma.name) if user_input.downcase == "korma"
-      @order.push(@jalfrezi.name) if user_input.downcase == "jalfrezi"
-      @order.push(@naan.name) if user_input.downcase == "naan"
-      @order.push(@chai.name) if user_input.downcase == "chai"
-      break if user_input.downcase == "done"
-    end
-    @order
+  def select_food(dish)
+    @order << dish
   end
 
+
+
+
+
+=begin
+  def total
+    total = 0
+    @order.each { |dish| total += :dish.price "#{:dish.name} - £#{:dish.price}"  }
+    "Your total is £#{total}."
+  end
+=end
 end
