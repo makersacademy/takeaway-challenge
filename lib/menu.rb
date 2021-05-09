@@ -5,7 +5,7 @@ class Menu
   end
 
   def generate_menu
-    @menu = [
+    @menu = {
       "Dumplings" => 4.99,
       "Seaweed Soup" => 7.99,
       "Bone Marrow Soup" => 6.99,
@@ -16,14 +16,17 @@ class Menu
       "Jjampong with Noodles" => 13.99,
       "Yangnum Chicken" => 12.99,
       "Ganjang Chicken" => 12.99,
-      "Beef Bulgogi Bibimbap" => 11.99]
+      "Beef Bulgogi Bibimbap" => 11.99}
   end
 
   def display_menu
-    @menu.dish.each do |dish|
-      puts "#{dish.dish}:  GBP #{dish.price}"
+    #puts @menu
+    @menu.each do |key, value|
+      puts "#{key}:  GBP #{value}"
     end
   end
 end
 
 menu = Menu.new
+menu.display_menu
+
