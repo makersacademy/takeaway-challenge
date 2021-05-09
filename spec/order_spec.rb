@@ -4,7 +4,7 @@ describe Order do
 
   subject(:order) { described_class.new(menu)}
 
-  let(:menu) {double :menu }
+  let(:menu) { double :menu }
 
   let(:dishes) do
     {
@@ -18,8 +18,8 @@ describe Order do
   before do
     allow(menu).to receive(:include?).with(:pita).and_return(true)
     allow(menu).to receive(:include?).with(:musaka).and_return(true)
-    allow(menu).to receive(:price).with(:pita).and_return(2.50)
-    allow(menu).to receive(:price).with(:musaka).and_return(7.99)
+    allow(menu).to receive(:[]).with(:pita).and_return(2.50)
+    allow(menu).to receive(:[]).with(:musaka).and_return(7.99)
   end
 
     context '#add to basket' do 

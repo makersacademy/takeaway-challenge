@@ -16,7 +16,7 @@ describe Takeaway do
 
     it { is_expected.to respond_to(:place_order).with(1).argument }
 
-    it 'can select some number of several available dishes' do
+    it 'can select several available dishes' do
       expect(order).to receive(:add_to_basket).twice
       takeaway.place_order(dishes)
     end

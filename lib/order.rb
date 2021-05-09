@@ -1,9 +1,10 @@
+require_relative 'menu' 
 class Order
   attr_reader :dishes
 
-  def initialize(menu = Menu.new)
+  def initialize(menu)
     @menu = menu
-    @dishes = Hash.new(0)
+    @dishes = {}
   end 
 
     def add_to_basket(item, quantity=1)
@@ -15,7 +16,7 @@ class Order
       total_price_per_item.inject {|sum, item| sum + item }
     end 
 
-    # private
+    private
 
     attr_reader :menu
 
@@ -25,13 +26,8 @@ class Order
 
     def total_price_per_item
       @dishes.map do |dish, quantity|
-        @menu.price(dish) * quantity
+      @menu[dish] * quantity
       end 
     end 
 
 end 
-
-order = Order.new({pita: 4, musaka: 5})
-order.add_to_basket(:pita, 3)
-order.add_to_basket(:musaka, 2)
-p order.total_price_per_item
