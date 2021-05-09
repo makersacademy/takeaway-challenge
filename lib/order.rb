@@ -15,7 +15,7 @@ class Order
     order_list << Dish.new(name, price)
   end
 
-  def items_in_order
+  def print_basket
     string = ''
     order_list.each { |element| string += "#{element.name}, "}
     string.chomp(', ')

@@ -23,6 +23,6 @@ describe Order do
     subject.order_item('Fish')
     subject.order_item('Curry')
     subject.order_item('Steak')
-    expect(subject.items_in_order).to eq('Fish, Curry, Steak')
+    expect(subject.print_basket).to eq('Fish, Curry, Steak')
   end
 end

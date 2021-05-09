@@ -13,10 +13,16 @@ class Menu
   ]
 
   def display
-    MENU.each { |element| puts "#{element[:dish]}, #{element[:price]}" }
+    display_menu
   end
 
   def menu
     MENU
+  end
+
+  private 
+
+  def display_menu
+    MENU.each { |element| puts "#{element[:dish]}, #{element[:price]}" }
   end
 end
