@@ -1,7 +1,9 @@
 class Menu
+  attr_reader :menu
 
   def initialize
     generate_menu
+
   end
 
   def generate_menu
@@ -20,7 +22,8 @@ class Menu
   end
 
   def display_menu
-    #puts @menu
+    puts "M E N U"
+    puts "-------"
     @menu.each do |key, value|
       puts "#{key}:  GBP #{value}"
     end
@@ -29,4 +32,3 @@ end
 
 menu = Menu.new
 menu.display_menu
-
