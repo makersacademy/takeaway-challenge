@@ -1,5 +1,5 @@
-require 'menu'
-require 'order'
+require './lib/menu.rb'
+require './lib/order.rb'
 class Takeaway 
   attr_reader :menu, :order
   def initialize(menu = Menu.new, order = Order.new)
@@ -7,6 +7,14 @@ class Takeaway
     @order = order
   end
 
+  def display_menu
+    @menu.display
+  end
+
+  def display_order
+    @order.display
+  end
+  
   def add_to_order(name, quantity)
     selected_item = @menu.items.find { |item| item[:name] == name} 
     # if seleceted quanity < quantity throw error and say available amount

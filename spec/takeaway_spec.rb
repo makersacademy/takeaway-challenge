@@ -5,19 +5,18 @@ describe Takeaway do
     {name: "item_one", price: 2.50, quantity: 1}, 
     {name: "item_two", price: 5.00, quantity: 1}
     ]}
-  let (:menu) { double(:menu, items: menu_items)}
-  let (:order) {double(:order, current: [{name: "item_one", price: 2.50, quantity: 1}])}
+  let (:menu) { double(:menu, items: menu_items, display: "Test Menu")}
+  let (:order) {double(:order, current: [{name: "item_one", price: 2.50, quantity: 1}], display: "Test Order")}
   subject {described_class.new(menu, order)}
 
-  describe '#menu' do
-    it 'displays all items on menu' do
-      expect(subject.menu.items).to eq(menu_items) 
+  describe '#display_menu' do
+    it 'displays the menu' do
+      expect(subject.display_menu).to eq("Test Menu")
     end
   end
-
-  describe '#order' do
+  describe '#display_order' do
     it 'displays the current order' do
-      expect(subject.order.current).to eq(order.current)
+      expect(subject.display_order).to eq("Test Order")
     end
   end
 

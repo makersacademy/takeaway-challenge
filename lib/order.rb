@@ -4,4 +4,8 @@ class Order
   def initialize
     @current = []
   end
+
+  def display 
+    "Current order"
+  end
 end

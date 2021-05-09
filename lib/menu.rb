@@ -4,4 +4,8 @@ class Menu
   def initialize
     @items = []
   end
+  
+  def display
+    @items ? "#{@items}" : "Empty Menu"
+  end
 end
