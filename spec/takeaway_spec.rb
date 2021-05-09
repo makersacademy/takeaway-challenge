@@ -15,6 +15,13 @@ describe TakeAway do
     end
   end
 
+  describe "#basket_summary" do 
+    it "shows the total price of the dishes selected" do
+      subject.select("Chicken", 2)
+      subject.select("Pizza", 1)
+      expect(subject.basket_summary).to eq @order
+    end
+  end
 
 end
 

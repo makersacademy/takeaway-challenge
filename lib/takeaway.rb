@@ -20,4 +20,8 @@ attr_reader :order
     order << item.transform_values { |v| quantity * v.to_f } 
   end
 
+  def basket_summary
+    print order
+  end
+
 end
