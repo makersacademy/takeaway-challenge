@@ -23,5 +23,12 @@ describe TakeAway do
     end
   end
 
+  describe "#total_amount" do 
+    it "it shows the price of the completed order" do 
+      subject.select("Chicken", 2)
+      subject.select("Pizza", 1)
+      expect(subject.total_amount).to eq @order_total
+    end
+  end
 end
 
