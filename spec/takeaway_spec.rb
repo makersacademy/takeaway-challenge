@@ -45,21 +45,17 @@ describe Takeaway do
         end
     end
 
-    describe '#receipt' do
-        it 'will remove order items after receipt is printed' do
-            subject.selection(3)
-            subject.selection(4)
-            subject.selection(6)
-            subject.total
-            subject.receipt
-            expect(subject.orders).to eq([])
-        end
-
     # As a customer
     # So that I am reassured that my order will be delivered on time
     # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-        it 'informs the customer of the delivery time'do
-            
-        end
-    end
+    # describe '#receipt' do
+    #     it 'informs the customer of the delivery time'do
+    #         subject.selection(3)
+    #         subject.selection(4)
+    #         subject.selection(6)
+    #         subject.total
+    #         subject.stub(:receipt).and_return('')
+    #         expect(subject.orders).to eq([])
+    #     end 
+    #end
 end
