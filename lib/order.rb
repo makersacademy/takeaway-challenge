@@ -6,6 +6,7 @@ class Order
 
     account_sid = ENV['ACCOUNT_SID']
     auth_token = ENV['AUTH_TOKEN']
+    sending_number = ENV['TWILIO_NUMBER']
 
     @text_message_client = text_message_client_class.new(account_sid, auth_token)
   end
@@ -53,7 +54,7 @@ class Order
     @text_message_client.messages
       .create(
         body: "Thank you! Your order was placed and will be delivered before #{one_hour_from_now}",
-        from: '+19729146011',
+        from: sending_number
         to: mobile_phone_number
       )
   end
