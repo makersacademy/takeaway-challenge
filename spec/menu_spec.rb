@@ -24,7 +24,16 @@ describe Menu do
     expect(menu.items.first[:quantity]).to eq(0)
   end
 
-  it 'finds an item from the name' do
-    expect(menu.find_item("item_one")).to eq({ name: "item_one", price: 2.50, quantity: 1 })
+  describe '#find_item' do
+    context 'when the item is on the menu' do
+      it 'returns the item' do
+        expect(menu.find_item("item_one")).to eq({ name: "item_one", price: 2.50, quantity: 1 })
+      end
+    end
+    # context 'when the item is not on the menu' do
+    #   it 'raises an error' do
+    #     expect { menu.find_item("item_three") }.to raise_error("Item not on menu")
+    #   end
+    # end
   end
 end

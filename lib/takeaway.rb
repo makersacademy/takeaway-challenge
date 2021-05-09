@@ -1,6 +1,6 @@
 require './lib/menu.rb'
 require './lib/order.rb'
-require './send_sms.rb'
+# require './send_sms.rb'
 class Takeaway 
   attr_reader :menu, :order
 
@@ -28,12 +28,12 @@ class Takeaway
     @order.total
   end
 
-  # def complete
-  #   @order.complete
-  # end
+  def complete
+    @order.complete
+    # send_text(delivery_time)
+  end
 
   # def send_text(delivery_time)
   #   send_sms(@orders.delivery_time)
   # end
-
 end

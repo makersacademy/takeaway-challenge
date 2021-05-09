@@ -6,9 +6,9 @@ class Order
   end
 
   def display 
-    current_order = ""
-    @current.each { |item| current_order << "#{item[:quantity]} x #{item[:name]} = #{total}" }
-    @current.empty? ? "Empty order" : current_order
+    current_order = []
+    @current.each { |item| current_order << "#{item[:quantity]} x #{item[:name]} = £#{item[:quantity] * item[:price]}" }
+    @current.empty? ? "Empty order" : current_order.join(" ")
   end
 
   def add(selected_item, quantity)
