@@ -7,7 +7,7 @@ class Order
     @basket = {}
   end 
 
-  def add_to_basket(item, quantity = 1)
+  def select(item, quantity = 1)
     fail "#{item.to_s.capitalize} is not on the menu." unless in_menu?(item)
 
     @basket[item] = quantity

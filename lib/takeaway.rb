@@ -20,7 +20,7 @@ class Takeaway
   end
 
   def add_to_basket(dishes)
-    dishes.each do |dish, quantity| @order.add_to_basket(dish, quantity)
+    dishes.each do |dish, quantity| @order.select(dish, quantity)
     end
   end
 

@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   let(:menu) { double :menu }
-  let(:order) { instance_double('Order', add_to_basket: nil, total: 23.48) }
+  let(:order) { instance_double('Order', select: nil, total: 23.48) }
   let(:message) { instance_double('Message', send: nil)  }
 
   subject(:takeaway) { described_class.new(menu, order, message) }
@@ -19,7 +19,7 @@ describe Takeaway do
     it { is_expected.to respond_to(:place_order).with(1).argument }
 
     it 'can select several available dishes' do
-      expect(order).to receive(:add_to_basket).twice
+      expect(order).to receive(:select).twice
       takeaway.place_order(dishes)
     end
 
