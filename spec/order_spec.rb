@@ -7,7 +7,7 @@ describe Order do
     { name: "Fiorentina", price: 3 },
     { name: "La Reine", price: 4 }
   ]) 
-}
+  }
 
   describe "#add" do
     it "keeps a list of ordered meals" do

@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require_relative 'menu'
 
 class Order
   attr_reader :meal, :total_price, :menu
@@ -7,8 +8,8 @@ class Order
     @meal = []
     @total_price = 0
     @menu = menu
-    account_sid = ####
-    auth_token = ####
+    account_sid = #####
+    auth_token = #####
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
@@ -28,13 +29,14 @@ class Order
 
   private
   def text
-    message = "Thank you for your order, your total comes to £#{@total_price}, and your food will be delivered to you within 1 hour"
-    if @phone_number.is_a? String
-      @client.messages.create(
-        from: '+447723429947',
-        to: @phone_number,
-        body: message
-      )
-    end
+    message = "Thank you for your order, your total comes to £#{@total_price}, 
+    and your food will be delivered to you within 1 hour"
+    return unless @phone_number.is_a? String
+
+    @client.messages.create(
+      from: '+447723429947',
+      to: @phone_number,
+      body: message
+    )
   end
 end
