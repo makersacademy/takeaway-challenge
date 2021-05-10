@@ -9,6 +9,7 @@ Credits
 -----------
 I refered to https://github.com/makersacademy/takeaway-challenge/blob/master/docs/review.md during my build and testing. I also talked through stubbing and injections dependency with two other devs with reference to my code.
 
+I refered to https://www.twilio.com/docs/usage/api to make the Twilio class code.
 
 
 Partial/Complete solution?
