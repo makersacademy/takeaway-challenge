@@ -7,7 +7,7 @@ This will be written in Ruby and implemented using test driven development using
 
 ## Progress report
 
-  - SMS sample test working with environment variables but not currenlty functioning in app in IRB - blocked atm
+  - Text and time working! Time not yet tested
   - Disclaimer - I had some help writing my Rspec test for sms
   - Still to do - create order class and split takeaway/order
   - Still to do - use Timecop to add time +1hr to sms message
