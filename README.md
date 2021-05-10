@@ -91,3 +91,9 @@ $ irb
 ```
 $ rspec
 ```
+
+### Future Scope
+
+- Extract order into a seperate Basket class
+- Use a csv file or a database to store data
+- Add extra functionalities: login, payment, security, cancel order
