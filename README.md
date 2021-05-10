@@ -5,6 +5,14 @@ This challenge is to create a takeaway app that integrates with Twilio to send S
 
 This will be written in Ruby and implemented using test driven development using the Rspec framework.
 
+## Progress report
+
+  - SMS sample test working with environment variables but not currenlty functioning in app in IRB - blocked atm
+  - Disclaimer - I had some help writing my Rspec test for sms
+  - Still to do - create order class and split takeaway/order
+  - Still to do - use Timecop to add time +1hr to sms message
+  - Still to do - deal with edge cases eg negative quantities in orders
+
 ## User stories
 
 > As a customer
@@ -25,4 +33,4 @@ I would like to receive a text such as "Thank you
 
 ## How to use
 
-I have designed this app in such a way that it should be reusable for any takeaway, assuming a user interface will be set up later - as such there is no hard-coded menu. This means that as is, the user interface is irb and so the takeaway must be set up as follows (note: this is an example menu and any chould be used in this format):
+I have designed this app in such a way that it should be reusable for any takeaway, assuming a user interface will be set up later - as such there is no hard-coded menu. This means that as is, the user interface is irb and so the takeaway must be set up as follows (note: this is an example menu and any chould be used in this format): ...... TBC

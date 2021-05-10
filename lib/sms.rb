@@ -1,9 +1,10 @@
 require 'twilio-ruby'
 require 'dotenv'
-Dotenv.load('twilio_keys.env')
+
 
 
 class Sms
+ Dotenv.load('twilio_keys.env')
   account_sid = ENV["TWILIO_SID"]
   auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
@@ -17,7 +18,7 @@ class Sms
     @client.messages.create(
       from: from,
       to: to,
-      body: "Hey friend!"
+      body: "Your order has been placed and will be delivered within one hour "
       )
   end
 end

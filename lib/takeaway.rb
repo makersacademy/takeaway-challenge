@@ -1,4 +1,4 @@
-require 'sms'
+require './lib/sms.rb'
 
 class Takeaway
   def initialize(items, sms = Sms.new)
