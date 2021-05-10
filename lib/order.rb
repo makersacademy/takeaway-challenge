@@ -7,8 +7,8 @@ class Order
     @meal = []
     @total_price = 0
     @menu = menu
-    account_sid = 'ACf8a316836455815bbd78c3da1c655883'
-    auth_token = 'bdd4694daec09d1b45372368da42e658'
+    account_sid = ####
+    auth_token = ####
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
