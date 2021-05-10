@@ -14,7 +14,7 @@ class Menu
   end 
 
   def view_menu
-    @dishes.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}"}.join(',')
+    @dishes.map { |dish, price| "#{dish.to_s.capitalize}: £#{'%.2f' % price}"}.join("\n")
   end
 
   def price(dish)
