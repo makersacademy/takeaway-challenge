@@ -5,7 +5,7 @@ class Restaurant
   attr_reader :menu
   attr_reader :basket
 
-  def initialize(menu, sender)
+  def initialize(menu = Menu.new, sender = SendSMS.new)
     @menu = menu
     @sender = sender
     @basket = {}
