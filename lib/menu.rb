@@ -13,6 +13,6 @@ class Menu
   end
 
   def select(dish)
-    order_dish = @list.find { |meal| meal[:name] == dish }
+    @list.find { |meal| meal[:name] == dish }
   end
 end
