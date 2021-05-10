@@ -15,24 +15,22 @@ class Takeaway
 
   def place_order(dishes)
     add_to_basket(dishes)
-    complete_order
+    submit_order
     print_total
   end
-
-private
 
   def add_to_basket(dishes)
     dishes.each do |dish, quantity| @order.add_to_basket(dish, quantity)
     end
   end
 
-  def complete_order
-    @message.send
-  end
-
   def print_total
     @order.total
   end 
+
+  def submit_order
+    @message.send
+  end
   
 end 
 
