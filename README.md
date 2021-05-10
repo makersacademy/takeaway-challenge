@@ -64,17 +64,16 @@ How to use
 
 #### Environment Variables
 
-1. Open ~/.zshrc or ~/.profile depend on your Mac OS version
+1. Add `gem 'dotenv'` to your Gemfile and run `bundle` from your command line
+2. Create .env file in the root directory of your project
 
-2. Append in the file:
-   export TWILIO*ACCOUNT_SID="ACCOUNT SID"
-   export TWILIO_AUTH_TOKEN="AUTH TOKEN"
-   export TWILIO_NUMBER="PHONE NUMBER"
-   export USER_MOBILE="Verified Caller"
+3. Add the following in the .env file:
+   TWILIO*ACCOUNT_SID="ACCOUNT SID"
+   TWILIO_AUTH_TOKEN="AUTH TOKEN"
+   TWILIO_NUMBER="PHONE NUMBER"
+   USER_MOBILE="Verified Caller"
    \_Replace contents within the quotes with your Twilio account details, Twilio mobile number and your own mobile number*
-   _Make sure USER_MOBILE is shortlisted as verified caller in Twilio_
-
-3. run source ~/.zshrc or source ~/.profile
+   \_Make sure USER_MOBILE is shortlisted as verified caller in your Twilio account
 
 ## To Run
 
