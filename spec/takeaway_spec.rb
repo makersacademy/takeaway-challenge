@@ -7,7 +7,7 @@ describe Takeaway do
   let(:order) { { martini: 3, mojito: 2 } }
   let(:wrong_order) { { martini: 3, sausage: 1 } }
   let(:subject) { Takeaway.new(items, sms) }
-  let(:sms) {double('Sms', :send => nil) }
+  let(:sms) { double('Sms', :send => nil) }
 
   describe '#list_items' do
     it 'returns a hash of items and prices' do
@@ -27,9 +27,9 @@ describe Takeaway do
     end
     it 
   end
-    it 'sends a confirmation text message' do
-      expect(sms).to receive(:send)
-      subject.place_order(order)
+  it 'sends a confirmation text message' do
+    expect(sms).to receive(:send)
+    subject.place_order(order)
   end
 
 end

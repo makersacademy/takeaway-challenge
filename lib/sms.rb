@@ -1,24 +1,26 @@
 require 'twilio-ruby'
 require 'dotenv'
-
-
+Dotenv.load('twilio_keys.env')
 
 class Sms
- Dotenv.load('twilio_keys.env')
-  account_sid = ENV["TWILIO_SID"]
-  auth_token = ENV["TWILIO_AUTH_TOKEN"]
+  
+  def initialize(client = nil)
 
-  def initialize(client=Twilio::REST::Client.new(account_sid, auth_token))
-    @client = client 
-  end
+    @account_sid = ENV["TWILIO_SID"]
+    puts @account_sid
+    @auth_token = ENV["TWILIO_AUTH_TOKEN"]
+    @client = client || Twilio::REST::Client.new(@account_sid, @auth_token)
+    end
 
   def send
-    from = ENV["TWILIO_PHONE_NUMBER"] # Your Twilio number
-    to = ENV["MY_PHONE_NUMBER"] # Your mobile phone number
     @client.messages.create(
-      from: from,
-      to: to,
+      from: ENV["TWILIO_PHONE_NUMBER"],
+      to: ENV["MY_PHONE_NUMBER"],
       body: "Your order has been placed and will be delivered within one hour "
-      )
+    )
   end
+
+  private
+
+
 end
