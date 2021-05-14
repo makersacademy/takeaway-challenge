@@ -56,11 +56,11 @@ class Restaurant
   end
 
   def delivery_time
-    Time.new + 3600
+    (Time.new + 3600).strftime("%H:%M")
   end
 
   private
   def confirmation(to)
-    @sender.send(to, "Thank you! Your order for #{basket_summary} #{total} was placed and will be delivered before #{delivery_time}")
+    @sender.send(to, "Thank you! Your order for #{basket_summary} TOTAL: £#{"%.2f" % total} was placed and will be delivered before #{delivery_time}")
   end
 end
