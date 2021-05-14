@@ -1,13 +1,14 @@
 require 'restaurant.rb'
 require 'menu.rb'
 
+
 describe Restaurant do
   subject { 
     menu = double(Menu.new)
     allow(menu).to receive(:list) { { "fries" => 1.50, "burger" => 2.00 } }
     
-    sender = double(SendSMS.new)
-    # allow(sender).to receive(:send).with("to", "message").and_return("Twilio screen test confirmed")
+    sender = "FAKE"
+    allow(sender).to receive(:send).and_return("Twilio screen test confirmed")
 
     Restaurant.new(menu, sender) 
   }
@@ -44,21 +45,6 @@ describe Restaurant do
     end
   end
 
-  # describe '#delivery_time' do
-  #   it 'outputs a time 1 hour from now' do
-  #     moment = 2021-05-08 16:05:51 +0100
-  #     allow(Time).to receive(:new) { moment }
-  #     expect(subject.delivery_time).to eq "2021-05-08 17:05:51 +0100"
-  #   end
-  # end
-
-  # describe '#confirmation' do
-  #   it 'asks the Twilio API to send a text' do
-  #     subject.confirmation("fakemobnum")
-  #     expect().to eq "Twilio screen test confirmed"
-  #   end
-  # end
-
   describe '#total' do
     it 'calculates the total amount owing' do
       subject.order("fries", 5)
@@ -83,10 +69,10 @@ describe Restaurant do
       expect { subject.checkout(10.00) }.to raise_error("Insufficient payment")
     end
 
-    it 'thanks the customer' do
+    it 'asks Twilio to send a confirmation' do
       subject.order("fries", 5)
       subject.order("burger", 5)
-      expect(subject.checkout(17.50)).to include "Thanks, you'll get an SMS confirmation"
+      expect(subject.checkout(17.50)).to eq "Twilio screen test confirmed"
     end
   end
 end

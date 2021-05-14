@@ -8,5 +8,5 @@ group :test do
   gem 'simplecov-console', require: false, group: :test
 end
 
-gem "twilio-ruby", "~> 5.53"
 gem 'dotenv'
+gem "twilio-ruby", "~> 5.53"

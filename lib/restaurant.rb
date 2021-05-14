@@ -48,13 +48,13 @@ class Restaurant
   end
 
   def checkout(payment)
-    fail "Insufficient payment" if payment < self.total
+    fail "Insufficient payment" if payment < total
 
   # In real life, some code here to collect the customer's mobile number 
     # so we can pass it to confirmation
-    "Thanks, you'll get an SMS confirmation"
+   
     confirmation(ENV['MOB_NUM']) 
-
+    
   end
 
   def delivery_time
