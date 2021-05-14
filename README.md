@@ -7,9 +7,11 @@ Emulates a system for ordering takeaway from a restaurant.
 
 Credits
 -----------
-I refered to https://github.com/makersacademy/takeaway-challenge/blob/master/docs/review.md during my build and testing. I also talked through stubbing and injections dependency with two other devs with reference to my code.
+I refered to [the code review rubric for this challenge](https://github.com/makersacademy/takeaway-challenge/blob/master/docs/review.md) during my build and testing. I also talked through stubbing and injections dependency with two other devs with reference to my code.
 
-I refered to https://www.twilio.com/docs/usage/api to make the Twilio class code.
+I refered to [Twilio's docs](https://www.twilio.com/docs/usage/api) to help construct my Twilio class code.
+
+I refered to [@GunelMC's solution](https://github.com/GunelMC/takeaway-challenge) for an example of using dotenv to make envrionment variable persist.
 
 
 Partial/Complete solution?
@@ -25,8 +27,18 @@ Domain model
 
 Setup
 -----
-* Clone this repo to your local machine
-* Run the command 'bundle' in the project directory to ensure you have all the gems
+- Clone this repo to your local machine
+- Run the command 'bundle' in the project directory to ensure you have all the gems
+- Set Twilio environment variables. You need a [Twilio account](https://www.twilio.com/try-twilio)), then:
+  - Create `.env` file in the root directory of your clone
+  - Add the following in the `.env` file:
+    
+    - TWILIO_NUM="[Insert your Twilio details]"
+    - TWILIO_TOKEN="[Insert your Twilio details]"
+    - TWILIO_SID="[Insert your Twilio details]"
+    - MOB_NUM="[Insert your own]" 
+    > Make sure MOB_NUM is the verified phone number you can send TO if you have a trial Twilio account
+
 * `irb -r './lib/restaurant.rb'`
 * `2.6.5 :001 > kfc = Restaurant.new`
  `=> #<Restaurant:0x00007fe984874888>`
