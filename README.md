@@ -33,13 +33,13 @@ Setup
   - Create `.env` file in the root directory of your clone
   - Add the following in the `.env` file:
     
-    - TWILIO_NUM="[Insert your Twilio details]"
-    - TWILIO_TOKEN="[Insert your Twilio details]"
-    - TWILIO_SID="[Insert your Twilio details]"
-    - MOB_NUM="[Insert your own]" 
+    - TWILIO_NUM=*your Twilio details*
+    - TWILIO_TOKEN=*your Twilio details*
+    - TWILIO_SID=*your Twilio details*
+    - MOB_NUM=*your mobile number*
     > Make sure MOB_NUM is the verified phone number you can send TO if you have a trial Twilio account
 
-* `irb -r './lib/restaurant.rb'`
+* Now back to your terminal, require the restaurant code in irb: `irb -r './lib/restaurant.rb'`
 * `2.6.5 :001 > kfc = Restaurant.new`
  `=> #<Restaurant:0x00007fe984874888>`
  
