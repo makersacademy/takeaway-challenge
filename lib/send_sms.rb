@@ -1,5 +1,7 @@
 # Download the twilio-ruby library from twilio.com/docs/libraries/ruby
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class SendSMS
   def initialize

@@ -1,5 +1,7 @@
 require_relative 'menu.rb'
 require_relative 'send_sms.rb'
+require 'dotenv'
+Dotenv.load
 
 class Restaurant
   attr_reader :menu
@@ -50,8 +52,8 @@ class Restaurant
 
   # In real life, some code here to collect the customer's mobile number 
     # so we can pass it to confirmation
-    p "Thanks, you'll get an SMS confirmation"
-    # confirmation("fakemobnum")
+    "Thanks, you'll get an SMS confirmation"
+    confirmation(ENV['MOB_NUM']) 
 
   end
 
@@ -61,6 +63,6 @@ class Restaurant
 
   private
   def confirmation(to)
-    @sender.send(to, "Thank you! Your order for #{basket_summary} TOTAL: £#{"%.2f" % total} was placed and will be delivered before #{delivery_time}")
+    @sender.send(to, "Thank you! Your order for #{basket_summary}, (TOTAL ORDER VALUE: £#{"%.2f" % total}) was placed and will be delivered before #{delivery_time}")
   end
 end

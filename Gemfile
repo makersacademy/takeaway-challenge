@@ -9,3 +9,4 @@ group :test do
 end
 
 gem "twilio-ruby", "~> 5.53"
+gem 'dotenv'
