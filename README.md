@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
@@ -12,22 +12,13 @@ Takeaway Challenge
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
 
- ```
+```
 
-Instructions
--------
+## Task
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+- Fork this repo
+- Run the command 'bundle' in the project directory to ensure you have all the gems
+- Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -47,37 +38,61 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+- Advanced! (have a go if you're feeling adventurous):
+  - Implement the ability to place orders via text message.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## Objectives
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+To understand the single responsibilty principle and how gems can be used to add functionality to a program.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+## Technology
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+- Ruby
+- Twilio
+- Rspec
 
+How to use
 
-In code review we'll be hoping to see:
+# Setup
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+#### App
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+1. Install Ruby (version 2.6.5 or above)
+2. Clone this depository
+3. Run the command `gem install bundle` (if you don't have bundle already)
+4. When the installation completes, run `bundle`
 
-Notes on Test Coverage
-------------------
+#### Environment Variables
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+1. Add `gem 'dotenv'` to your Gemfile and run `bundle` from your command line
+2. Create .env file in the root directory of your project
+
+3. Add the following in the .env file:
+   TWILIO*ACCOUNT_SID="ACCOUNT SID"
+   TWILIO_AUTH_TOKEN="AUTH TOKEN"
+   TWILIO_NUMBER="PHONE NUMBER"
+   USER_MOBILE="Verified Caller"
+   \_Replace contents within the quotes with your Twilio account details, Twilio mobile number and your own mobile number*
+   \_Make sure USER_MOBILE is shortlisted as verified caller in your Twilio account
+
+## To Run
+
+```
+$ git clone https://github.com/katebeavis/takeaway-challenge.git
+$ cd takeway-challenge
+$ bundle install
+$ irb
+    > Dir['./lib/*.rb'].each {|file| require file }
+```
+
+## To Run Tests
+
+```
+$ rspec
+```
+
+### Future Scope
+
+- Extract order into a seperate Basket class
+- Use a csv file or a database to store data
+- Add extra functionalities: login, payment, security, cancel order
