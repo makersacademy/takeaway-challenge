@@ -17,8 +17,7 @@ Successes
 * Multiple uses of dependency injection to create a flow of functionality from dependent to controlling objects
 * A successful use of the Twilio gem to send a text
 * Debugged Twilio API using their documentation
-
-------------------
+------
 
 To improve
 -----
