@@ -1,3 +1,35 @@
+# Maker's Week 2: Weekend challenge
+This challenge was the second of my Maker's weekend challenge, intended to be done alone to reinforce the week's learning and concepts.
+This was the first time in Maker's I came across actual difficulty and had to go away to strategise. 
+Upon realising this was essentially a challenge of RSpec doubles and dependency injection I soon figured it out.
+
+The necessary skills covered in this challenge were:
+
+* TDD and RSpec
+* Knowing when to split a class and how to add functionality
+* Basic class structure and attributes
+
+
+Successes
+-----
+
+* Successful usage of complex doubles with stubbed attributes and methods
+* Multiple uses of dependency injection to create a flow of functionality from dependent to controlling objects
+* A successful use of the Twilio gem to send a text
+* Debugged Twilio API using their documentation
+
+------------------
+
+To improve
+-----
+* Test coverage is incomplete as I was unsure how to test for the output of the text messages timer function without complex REGEX
+* Current iteration satisfies User story but is not particularly user friendly and would make for a poor product due to it being REPL only
+* Improper usage of environment variables meant that the Twilio IRB test had to be hard coded with real info, requires further study
+* Testing for Twilio API is inadequate, but using stubbed methods to check for results is not an adequate test as it can pass with no text being sent
+
+
+
+
 Takeaway Challenge
 ==================
 ```
@@ -46,19 +78,3 @@ Usage
 * Once the customer is satisfied with the order they can use the check_total method to see the price, and the complete_order method to receive a confirmation text
 
 
-Successes
------
-
-* Successful usage of complex doubles with stubbed attributes and methods
-* Multiple uses of dependency injection to create a flow of functionality from dependent to controlling objects
-* A successful use of the Twilio gem to send a text
-* Debugged Twilio API using their documentation
-
-------------------
-
-To improve
------
-* Test coverage is incomplete as I was unsure how to test for the output of the text messages timer function without complex REGEX
-* Current iteration satisfies User story but is not particularly user friendly and would make for a poor product
-* Improper usage of environment variables meant that the Twilio IRB test had to be hard coded with real info, requires further study
-* Testing for Twilio API is inadequate, but using stubbed methods to check for results is not an adequate test as it can pass with no text being sent
