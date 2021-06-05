@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   
-  let(:the_menu) { {fish: 6, chips: 2, sausage: 2.50, mushy_peas: 2} }
+  let(:the_menu) { { fish: 6, chips: 2, sausage: 2.50, mushy_peas: 2 } }
 
   it 'has a menu when initiated' do
     expect(subject.menu).to include the_menu

@@ -1,13 +1,15 @@
 require_relative 'menu'
+require_relative 'send_sms'
 
 class Order
 
   attr_reader :order, :basket, :total_cost
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sms = SendSMS.new)
     @menu = menu
     @basket = Hash.new(0)
     @total_cost = 0
+    @sms = sms
   end
 
   def read_menu
@@ -30,7 +32,8 @@ class Order
   end
 
   def confirm
-  
+    puts 'Thank you for your order, a text is on its way'
+    @sms.send_sms
   end
 
   private
@@ -40,4 +43,5 @@ class Order
       @total_cost += @menu.price(item) * quantity
     end
   end
+
 end
