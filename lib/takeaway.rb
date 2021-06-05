@@ -23,6 +23,8 @@ class TakeAway
   end
 
   def order
+    puts "That will be £#{total} please."
+    @customer_order = []
     puts 'Thanks for your order!'
   end
 

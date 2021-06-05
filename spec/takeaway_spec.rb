@@ -38,23 +38,31 @@ describe TakeAway do
     end
 
     context '#total' do
+      before do
+        allow(menu).to receive(:find_price).and_return(price1, price2, price3)
+      end
+
       it { is_expected.to respond_to(:total) }
       
       it 'can calculate the grand total' do
-        allow(menu).to receive(:find_price).and_return(price1, price2, price3)
         expect(subject.total).to eq total
       end
+
     end
 
     context '#order' do
+      before do
+        allow(menu).to receive(:find_price).and_return(price1, price2, price3)
+      end
+
       it { is_expected.to respond_to(:order) }
 
       it 'responds with a friendly message' do
-        expect {subject.order}.to output("Thanks for your order!\n").to_stdout
+        expect {subject.order}.to output("That will be £#{total} please.\nThanks for your order!\n").to_stdout
       end
 
-      xit 'it clears the customer_order list' do
-        
+      it 'it clears the customer_order list' do
+        expect { subject.order }.to change{ subject.customer_order.length }.to(0)
       end
     end
   end
