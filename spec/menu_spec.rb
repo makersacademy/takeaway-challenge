@@ -11,10 +11,6 @@ let(:subject) { Menu.new('Rodriguez')}
     expect(subject.name).to eq('Rodriguez')
   end
 
-  it 'welcomes the user to the restaurant app' do 
-    expect(subject.welcome).to eq("Welcome to Rodriguez! Would you like to view our menu?")
-  end
-
   it 'can view the menu' do 
     expect(subject.view).to include('Spaghetti', 'Pizza')
   end
