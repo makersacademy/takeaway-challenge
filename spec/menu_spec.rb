@@ -11,7 +11,8 @@ describe Menu do
 
   context '#add_dish' do
     let(:price) { 3.00 }
-    let(:dish) { instance_double(Dish, name: 'Fries') }
+    let(:name) { 'Fries' }
+    let(:dish) { instance_double(Dish, name: name) }
 
     it { is_expected.to respond_to(:add_dish).with(2).argument }
 
@@ -25,6 +26,18 @@ describe Menu do
       10.times { subject.add_dish(dish, price); dishes << { dish: dish, price: price } }
 
       expect(subject.list_of_dishes).to eq dishes
+    end
+    
+    context '#print_menu' do
+      before do
+        subject.add_dish(dish, price)
+      end
+
+      it { is_expected.to respond_to(:print_menu) }
+      
+      it 'prints the menu in a nice format' do
+        expect { subject.print_menu }.to output("MENU\n#{name}, £#{'%.2f' % price}\n").to_stdout
+      end
     end
   end
 end

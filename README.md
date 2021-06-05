@@ -163,8 +163,9 @@ To run feature tests in `irb`:
 **Test drive `Menu` class**
 * The `Menu` class would have an instance variable containing an Array of dishes (instances of the `Dish` class). Since the `Menu` class has dependencies on the `Dish` class, I need to create Dish doubles in order to unit test `Menu` in isolation.
 * Since we do not know how many dishes might be added to a menu, I TDD'd a new method to add dishes to a menu `add_dish`, using dependency injection. 
-* I imagine the `list_of_dishes` instance variable would be an array containing hashes representing the dishes and their prices. * The prices would be determined when you add the dish to the menu.
-
+* I imagine the `list_of_dishes` instance variable would be an array containing hashes representing the dishes and their prices. 
+* The prices would be determined when you add the dish to the menu.
+* The menu class could easily be extended to remove_dishes as well. 
 
 **Test drive `TakeAway` class**
 * Next I imagined how we would run the takeaway in IRB in a feature test. Perhaps it is initialized with a default menu if one is not given in advance:
@@ -172,9 +173,15 @@ To run feature tests in `irb`:
 ```irb
 require './lib/menu.rb'
 require './lib/takeaway.rb'
-dish_1 = Dish.new( "McNuggets", 3.19 )
-dish_2 = Dish.new( "Big Mac", 3.19 )
-dish_3 = Dish.new ( " ", )
+dish_1 = Dish.new( "McNuggets" )
+dish_2 = Dish.new( "Big Mac" )
+dish_3 = Dish.new( "Chicken Legend" )
+menu = Menu.new
+menu.add_dish(dish_1, 3.19)
+menu.add_dish(dish_2, 3.19)
+menu.add_dish(dish_3, 3.89)
+takeaway = TakeAway.new(menu)
+takeaway.see_menu
 ```
 
 
@@ -191,4 +198,5 @@ dish_3 = Dish.new ( " ", )
 ## TODO
 
 * What if someone tries to add a non-dish to the Menu? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
-* What if the price was Owned by the `Menu`?
+* Refactor RSpec tests
+* 
