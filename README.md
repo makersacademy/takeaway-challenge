@@ -166,6 +166,7 @@ To run feature tests in `irb`:
 * I imagine the `list_of_dishes` instance variable would be an array containing hashes representing the dishes and their prices. 
 * The prices would be determined when you add the dish to the menu.
 * The menu class could easily be extended to remove_dishes as well. 
+* Moved print_menu responsibility into Menu class. 
 
 **Test drive `TakeAway` class**
 * Next I imagined how we would run the takeaway in IRB in a feature test. Perhaps it is initialized with a default menu if one is not given in advance:
@@ -181,7 +182,12 @@ menu.add_dish(dish_1, 3.19)
 menu.add_dish(dish_2, 3.19)
 menu.add_dish(dish_3, 3.89)
 takeaway = TakeAway.new(menu)
-takeaway.see_menu
+takeaway.print_menu # => gives us the menu
+takeaway.select_dish(dish_1)
+takeaway.select_dish(dish_1)
+takeaway.select_dish(dish_2) 
+takeaway.customer_order # => should give the list of dish objects
+
 ```
 
 
@@ -199,4 +205,8 @@ takeaway.see_menu
 
 * What if someone tries to add a non-dish to the Menu? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
 * Refactor RSpec tests
-* 
+* What if the customer selects a dish that is not on the menu?
+* test coverage on TakeAway print_menu class is not 100%, is it necessary to ensure test coverage as the responsibility should depend on Menu class? Not sure what matchers we can use here. 
+* RSpec context block naming & structure
+
+
