@@ -1,3 +1,5 @@
+This weekend’s challenge was creating a very basic app that functions as a like a takeaway restaurant. There is a menu, you place an order, you calculate the total price, and confirm the order with a text message.
+
 ```
                             _________
               r==           |       |
