@@ -30,6 +30,10 @@ class TakeAway
     puts 'Thanks for your order!'
   end
 
+  def delivery_time
+    Time.now + 60 * 60
+  end
+
   private
 
   def ask_menu_for_price(name)

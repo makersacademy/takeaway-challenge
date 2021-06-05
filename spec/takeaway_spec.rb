@@ -1,4 +1,5 @@
 require 'takeaway'
+require 'timecop'
 
 describe TakeAway do
   let(:price1) { 3.19 }
@@ -52,6 +53,11 @@ describe TakeAway do
     context '#order' do
       before do
         allow(menu).to receive(:find_price).and_return(price1, price2, price3)
+        Timecop.freeze(Time.local(2021, 1, 1, 13, 0,0))
+      end
+
+      after do
+        Timecop.return
       end
 
       it { is_expected.to respond_to(:order) }
@@ -67,6 +73,10 @@ describe TakeAway do
       xit 'sends a text to the customer' do
         
       end
+
+      it 'can calculate the estimated delivery time' do
+        expect(subject.delivery_time).to eq Time.local(2021,1,1,14,0,0)
+      end
     end
   end
 
@@ -79,4 +89,5 @@ describe TakeAway do
       expect { subject.order }.to raise_error "You haven't added any dishes"
     end
   end
+
 end
