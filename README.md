@@ -17,6 +17,7 @@ Takeaway Challenge
 How To Use (IRB) --
 -----
 
+```
 2.6.5 :001 > require './lib/order.rb'
  => true 
 
@@ -30,11 +31,8 @@ How To Use (IRB) --
 £2 mushy_peas
 
 2.6.5 :003 > order.add_item(:fish, 2)
- => 2 
 2.6.5 :004 > order.add_item(:chips, 2)
- => 2 
 2.6.5 :005 > order.add_item(:mushy_peas, 1)
- => 1 
 
 2.6.5 :006 > order.show_basket
 You have fish x 2 in your basket
@@ -46,6 +44,7 @@ You have mushy_peas x 1 in your basket
 
 2.6.5 :008 > order.confirm
 Thank you for your order, a text is on its way
+```
 
 
 Task -- 
