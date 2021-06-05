@@ -97,6 +97,7 @@ A Makers Week 2 solo weekend challenge.
 * testing the right thing
 * consider edge cases
 * practise more TDD using RED-GREEN-REFACTOR
+* remember to refactor and use SRP!
 
 ## Functional Representation of User Stories
 
@@ -105,7 +106,7 @@ A Makers Week 2 solo weekend challenge.
 | TakeAway | Owner |
 | Dish | Owner |
 | name | Property owned by Dish |
-| price | Property owned by Dish |
+| price | Property owned by Menu |
 | Menu | Owner |
 | list_of_dishes | Property owned by Menu |
 | customer_order | Property owned by TakeAway |
@@ -117,28 +118,29 @@ A Makers Week 2 solo weekend challenge.
 | total | TakeAway | customer_order (reads) | TakeAway |
 | order | TakeAway | customer_order (reads) | TakeAway |
 | send_text | TakeAway (private) | n/a | n/a |
+| add_dish | Menu | list_of_dishes(changes) | Menu |
 
-### Domain Model
+## Domain Model
 
 | Class | TakeAway |
 | --- | --- |
-| **Properties (instance variables):** | @customer_order : Array of Dishes |
+| **Properties (instance variables):** | @customer_order : Array |
 | **Actions (methods):** | see_menu, select_dishes, total, order, send_text (perhaps private method) |
 * depends on menu, and also depends on dishes
 
 | Class | Dish |
 | --- | --- |
-| **Properties (instance variables):** | @name, @price |
+| **Properties (instance variables):** | @name|
 | **Actions (methods):** | N/A |
 * has no dependencies
 
 | Class | Menu |
 | --- | --- |
-| **Properties (instance variables):** | @list_of_dishes |
-| **Actions (methods):** | N/A |
+| **Properties (instance variables):** | @list_of_dishes : Array of Hashes |
+| **Actions (methods):** | add_dish() |
 * depends on dishes
 
-### Additional set up
+## Additional set up
 
 ```
 bundle install
@@ -150,16 +152,34 @@ To run feature tests in `irb`:
 
 ```
 
-### Approach
+## Approach
+**Domain Modelling using Class Diagrams**
 * Intense investigation on user stories and Domain Modelling. (please see diagrams above).
 * I wanted to determine what classes may be needed in order for the domain to be as cohesive as possible with minimal coupling. It was clear that I needed to create 3 classes: `TakeAway`, `Menu`, and `Dish`.
-* The `Dish` class has no dependencies on other classes. It was easy to implement this with a name and a price. 
-* The `Menu` class would have an instance variable containing an Array of dishes (instances of the `Dish` class). Since the `Menu` class has dependencies on the `Dish` class, I need to create Dish doubles in order to unit test `Menu`.
+
+**Test drive `Dish` class**
+* The `Dish` class has no dependencies on other classes. It was easy to implement this with just a name.
+
+**Test drive `Menu` class**
+* The `Menu` class would have an instance variable containing an Array of dishes (instances of the `Dish` class). Since the `Menu` class has dependencies on the `Dish` class, I need to create Dish doubles in order to unit test `Menu` in isolation.
 * Since we do not know how many dishes might be added to a menu, I TDD'd a new method to add dishes to a menu `add_dish`, using dependency injection. 
+* I imagine the `list_of_dishes` instance variable would be an array containing hashes representing the dishes and their prices. * The prices would be determined when you add the dish to the menu.
+
+
+**Test drive `TakeAway` class**
+* Next I imagined how we would run the takeaway in IRB in a feature test. Perhaps it is initialized with a default menu if one is not given in advance:
+
+```irb
+require './lib/menu.rb'
+require './lib/takeaway.rb'
+dish_1 = Dish.new( "McNuggets", 3.19 )
+dish_2 = Dish.new( "Big Mac", 3.19 )
+dish_3 = Dish.new ( " ", )
+```
 
 
 
-### Files
+## Files
 | File    | Description |
 | ----------- | ----------- |
 | README.md  | this readme page :) |
@@ -168,6 +188,7 @@ To run feature tests in `irb`:
 |  |  |
 | **all other files** | **as forked from original repo** |
 
-### TODO
+## TODO
 
 * What if someone tries to add a non-dish to the Menu? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
+* What if the price was Owned by the `Menu`?

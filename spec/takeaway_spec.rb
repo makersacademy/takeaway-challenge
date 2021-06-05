@@ -1,16 +1,14 @@
 require 'takeaway'
 
 describe TakeAway do
-  let(:name) { "McNuggets" }
-  let(:price) { 3.00 }
-  let(:dish) { double('dish', name: name, price: price) }
+  let(:dish) { double('dish', name: "McNuggets", price: 3.00) }
+  let(:menu) { instance_double(Menu, list_of_dishes: [dish1, dish2, dish3]) }
 
   context '#see_menu' do
     it { is_expected.to respond_to(:see_menu) }
     
-    xit 'has a menu that can be read' do
-      takeaway = Takeaway.new
-      expect(takeaway.see_menu).to eq
+    it 'has a menu that can be read' do
+
     end
 
   end
