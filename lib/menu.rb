@@ -13,9 +13,15 @@ class Menu
     "Welcome to #{@name}! Would you like to view our menu?"
   end
 
-  def view_menu
+  def view
    "Tonight's menu is:
       1. #{@dishes[:spaghetti][0]}
       2. #{@dishes[:pizza][0]}"
   end
+
+  def select(dish)
+    @dishes[dish.to_sym]
+  end
 end
+
+

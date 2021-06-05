@@ -16,6 +16,10 @@ let(:subject) { Menu.new('Rodriguez')}
   end
 
   it 'can view the menu' do 
-    expect(subject.view_menu).to include('Spaghetti', 'Pizza')
+    expect(subject.view).to include('Spaghetti', 'Pizza')
+  end
+
+  it 'can select an item' do
+    expect(subject.select("pizza").length).to eq(2)
   end
 end
