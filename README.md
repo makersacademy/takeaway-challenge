@@ -85,9 +85,9 @@ I was unable to find a way to write a test for the send_sms message as I did not
 
 Criteria Met -- 
 -----
-97.7% test coverage
-0 offenses on Rubocop
-All user stories met
-A working send_sms message
-Hidden details using environment variables
+* 97.7% test coverage 
+* 0 offenses on Rubocop
+* All user stories met 
+* A working send_sms message
+* Hidden details using environment variables
 
