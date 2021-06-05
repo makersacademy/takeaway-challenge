@@ -120,6 +120,7 @@ A Makers Week 2 solo weekend challenge.
 | --- | --- |
 | **Properties (instance variables):** | @name, @price |
 | **Actions (methods):** | N/A |
+* has no dependencies
 
 | Class | Menu |
 | --- | --- |
