@@ -173,7 +173,8 @@ _has no dependencies_ <br>
 bundle install
 ```
 
-To run feature tests in `irb`:
+### To run feature tests in `irb`
+To set up the take away with 3 sample items on the menu:
 ```irb
 require './lib/menu.rb'
 require './lib/takeaway.rb'
@@ -185,6 +186,9 @@ menu.add_dish(dish_1, 3.19)
 menu.add_dish(dish_2, 3.19)
 menu.add_dish(dish_3, 3.89)
 takeaway = TakeAway.new(menu)
+```
+Some demos here:
+```
 takeaway.print_menu # => gives us the menu
 takeaway.select_dish(dish_1)
 takeaway.select_dish(dish_1)

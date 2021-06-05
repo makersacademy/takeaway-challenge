@@ -44,8 +44,18 @@ describe TakeAway do
         allow(menu).to receive(:find_price).and_return(price1, price2, price3)
         expect(subject.total).to eq total
       end
-
     end
-  
+
+    context '#order' do
+      it { is_expected.to respond_to(:order) }
+
+      xit 'responds with a friendly message' do
+        expect(subject.order).to output('Thanks for your order!').to_stdout
+      end
+
+      xit 'it clears the customer_order list' do
+        
+      end
+    end
   end
 end

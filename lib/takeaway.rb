@@ -22,6 +22,10 @@ class TakeAway
     @customer_order.map { |name| ask_menu_for_price(name) }.inject(:+)
   end
 
+  def order
+  
+  end
+
   private
 
   def ask_menu_for_price(name)
