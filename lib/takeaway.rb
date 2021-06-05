@@ -1,4 +1,3 @@
-
 class TakeAway
   def see_menu
 

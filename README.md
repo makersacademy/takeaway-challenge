@@ -90,7 +90,15 @@ A Makers Week 2 solo weekend challenge.
 * **Languages used**: Ruby
 * **Testing frameworks**: RSpec
 
-### Functional Representation of User Stories
+## Personal goals of this project
+* practise Domain Modelling
+* maintain isolation when unit testing using dependency injections
+* high cohesion, low coupling
+* testing the right thing
+* consider edge cases
+* practise more TDD using RED-GREEN-REFACTOR
+
+## Functional Representation of User Stories
 
 | Nouns | Property or Owner of property? |
 | --- | --- |
@@ -98,23 +106,25 @@ A Makers Week 2 solo weekend challenge.
 | Dish | Owner |
 | name | Property owned by Dish |
 | price | Property owned by Dish |
-| menu (aka list of dishes) | Property owned by TakeAway |
+| Menu | Owner |
+| list_of_dishes | Property owned by Menu |
 | customer_order | Property owned by TakeAway |
 
 | Actions | Action owned by? | Property it reads or changes | Property owned by? |
 | --- | --- | --- | --- |
-| see_menu | TakeAway | menu (reads) | TakeAway |
-| select_dishes | TakeAway | menu (reads), customer_order (changes) | TakeAway |
+| see_menu | TakeAway | list_of_dishes (reads) | Menu |
+| select_dishes | TakeAway | list_of_dishes (reads), customer_order (changes) | Menu, TakeAway |
 | total | TakeAway | customer_order (reads) | TakeAway |
-| order | TakeAway | customer_order (reads)ß | TakeAway |
+| order | TakeAway | customer_order (reads) | TakeAway |
 | send_text | TakeAway (private) | n/a | n/a |
 
 ### Domain Model
 
 | Class | TakeAway |
 | --- | --- |
-| **Properties (instance variables):** | @menu : Array of Dishes, @customer_order : Array of Dishes |
+| **Properties (instance variables):** | @customer_order : Array of Dishes |
 | **Actions (methods):** | see_menu, select_dishes, total, order, send_text (perhaps private method) |
+* depends on menu, and also depends on dishes
 
 | Class | Dish |
 | --- | --- |
@@ -124,8 +134,9 @@ A Makers Week 2 solo weekend challenge.
 
 | Class | Menu |
 | --- | --- |
-| **Properties (instance variables):** | N/A |
+| **Properties (instance variables):** | @list_of_dishes |
 | **Actions (methods):** | N/A |
+* depends on dishes
 
 ### Additional set up
 
@@ -140,6 +151,12 @@ To run feature tests in `irb`:
 ```
 
 ### Approach
+* Intense investigation on user stories and Domain Modelling. (please see diagrams above).
+* I wanted to determine what classes may be needed in order for the domain to be as cohesive as possible with minimal coupling. It was clear that I needed to create 3 classes: `TakeAway`, `Menu`, and `Dish`.
+* The `Dish` class has no dependencies on other classes. It was easy to implement this with a name and a price. 
+* The `Menu` class would have an instance variable containing an Array of dishes (instances of the `Dish` class). Since the `Menu` class has dependencies on the `Dish` class, I need to create Dish doubles in order to unit test `Menu`.
+* Since we do not know how many dishes might be added to a menu, I TDD'd a new method to add dishes to a menu `add_dish`, using dependency injection. 
+
 
 
 ### Files
@@ -153,5 +170,4 @@ To run feature tests in `irb`:
 
 ### TODO
 
-* Consider Menu class, or Order class to increase cohesion. 
-* 
+* What if someone tries to add a non-dish to the Menu? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
