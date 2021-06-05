@@ -81,3 +81,76 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+My Solution
+-----
+A Makers Week 2 solo weekend challenge. 
+
+* **Languages used**: Ruby
+* **Testing frameworks**: RSpec
+
+### Functional Representation of User Stories
+
+| Nouns | Property or Owner of property? |
+| --- | --- |
+| TakeAway | Owner |
+| Dish | Owner |
+| name | Property owned by Dish |
+| price | Property owned by Dish |
+| menu (aka list of dishes) | Property owned by TakeAway |
+| customer_order | Property owned by TakeAway |
+
+| Actions | Action owned by? | Property it reads or changes | Property owned by? |
+| --- | --- | --- | --- |
+| see_menu | TakeAway | menu (reads) | TakeAway |
+| select_dishes | TakeAway | menu (reads), customer_order (changes) | TakeAway |
+| total | TakeAway | customer_order (reads) | TakeAway |
+| order | TakeAway | customer_order (reads)ß | TakeAway |
+| send_text | TakeAway (private) | n/a | n/a |
+
+### Domain Model
+
+| Class | TakeAway |
+| --- | --- |
+| **Properties (instance variables):** | @menu : Array of Dishes, @customer_order : Array of Dishes |
+| **Actions (methods):** | see_menu, select_dishes, total, order, send_text (perhaps private method) |
+
+| Class | Dish |
+| --- | --- |
+| **Properties (instance variables):** | @name, @price |
+| **Actions (methods):** | N/A |
+
+| Class | Menu |
+| --- | --- |
+| **Properties (instance variables):** | N/A |
+| **Actions (methods):** | N/A |
+
+### Additional set up
+
+```
+bundle install
+```
+
+To run feature tests in `irb`:
+```irb
+<!-- SOME STUFF HERE -->
+
+```
+
+### Approach
+
+
+### Files
+| File    | Description |
+| ----------- | ----------- |
+| README.md  | this readme page :) |
+|  |  |
+|  |  |
+|  |  |
+| **all other files** | **as forked from original repo** |
+
+### TODO
+
+* Consider Menu class, or Order class to increase cohesion. 
+* 
