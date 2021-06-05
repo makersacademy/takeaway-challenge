@@ -218,6 +218,7 @@ takeaway.customer_order # => should give the list of dish objects
 * As I implemented the client requirements, I forwarded methods to other classes and test drove those methods first.
 * Edge cases considered:
   * trying to order a dish that's not on the menu
+  * customer_order list is cleared after placing an order
 
 
 ## Files

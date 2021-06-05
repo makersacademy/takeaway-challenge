@@ -58,11 +58,11 @@ describe TakeAway do
       it { is_expected.to respond_to(:order) }
 
       it 'responds with a friendly message' do
-        expect {subject.order}.to output("That will be £#{total} please.\nThanks for your order!\n").to_stdout
+        expect { subject.order }.to output("That will be £#{total} please.\nThanks for your order!\n").to_stdout
       end
 
       it 'it clears the customer_order list' do
-        expect { subject.order }.to change{ subject.customer_order.length }.to(0)
+        expect { subject.order }.to change { subject.customer_order.length }.to(0)
       end
     end
   end

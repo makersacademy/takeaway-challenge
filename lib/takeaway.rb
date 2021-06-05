@@ -24,7 +24,7 @@ class TakeAway
 
   def order
     puts "That will be £#{total} please."
-    @customer_order = []
+    clear_customer_orders
     puts 'Thanks for your order!'
   end
 
@@ -36,6 +36,10 @@ class TakeAway
 
   def on_the_menu?(name)
     @menu.available?(name)
+  end
+
+  def clear_customer_orders
+    @customer_order = []
   end
 
 end
