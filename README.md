@@ -24,4 +24,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Domain Modelling
 
-![Sequence Diagram] ( https://raw.githubusercontent.com/frodri13/takeaway-challenge/master/pic/Sequence%20Diagram.png)
+![Sequence Diagram](https://raw.githubusercontent.com/frodri13/takeaway-challenge/master/pic/Sequence%20Diagram.png)
