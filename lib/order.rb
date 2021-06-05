@@ -5,11 +5,10 @@ class Order
 
   attr_reader :order, :basket, :total_cost
 
-  def initialize(menu = Menu.new, sms = SendSMS.new)
+  def initialize(menu = Menu.new)
     @menu = menu
     @basket = Hash.new(0)
     @total_cost = 0
-    @sms = sms
   end
 
   def read_menu
@@ -31,9 +30,9 @@ class Order
     "Your total is £#{@total_cost}"
   end
 
-  def confirm
+  def confirm(sms = SendSMS.new)
     puts 'Thank you for your order, a text is on its way'
-    @sms.send_sms
+    sms.send_sms
   end
 
   private

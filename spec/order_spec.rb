@@ -32,14 +32,14 @@ describe Order do
   end
        
   context 'when an order has already been added to the basket' do
-    subject(:order) { described_class.new(menu_double, sms_double) }
+    subject(:order) { described_class.new(menu_double) }
     before(:each) { order.add_item(:fish, 5) }
     before(:each) { order.add_item(:chips, 2) }
     it 'displays the basket' do
       expect(order.show_basket).to include basket
     end
     it 'tells sms to send a message' do
-      expect(order.confirm).to eq 'Thank you for your order'
+      expect(order.confirm(sms_double)).to eq 'Thank you for your order'
     end
   end
 end
