@@ -19,6 +19,8 @@ class TakeAway
   end
 
   def total
+    raise "You haven't added any dishes" unless ordered?
+
     @customer_order.map { |name| ask_menu_for_price(name) }.inject(:+)
   end
 
@@ -40,6 +42,10 @@ class TakeAway
 
   def clear_customer_orders
     @customer_order = []
+  end
+
+  def ordered?
+    !@customer_order.empty?
   end
 
 end

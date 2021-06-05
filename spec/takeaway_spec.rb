@@ -47,7 +47,6 @@ describe TakeAway do
       it 'can calculate the grand total' do
         expect(subject.total).to eq total
       end
-
     end
 
     context '#order' do
@@ -64,6 +63,20 @@ describe TakeAway do
       it 'it clears the customer_order list' do
         expect { subject.order }.to change { subject.customer_order.length }.to(0)
       end
+
+      xit 'sends a text to the customer' do
+        
+      end
+    end
+  end
+
+  context 'no items selected' do
+    it 'raises an error if there is nothing selected when asking for total' do
+      expect { subject.total }.to raise_error "You haven't added any dishes"
+    end
+
+    it 'raises an error if there is nothing selected when asking to order' do
+      expect { subject.order }.to raise_error "You haven't added any dishes"
     end
   end
 end

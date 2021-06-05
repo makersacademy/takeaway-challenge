@@ -148,7 +148,7 @@ A Makers Week 2 solo weekend challenge.
 | **Actions (methods):** | print_menu() : forwarded to Menu class|
 | | select_dish(name) | 
 | | total() : Float | 
-| | order() : list of dishes and total | 
+| | order() : msg to stdout | 
 | | send_text() : perhaps private| 
 _depends on Menu_ <br>
 
@@ -156,7 +156,7 @@ _depends on Menu_ <br>
 | --- | --- |
 | **Properties (instance variables):** | @list_of_dishes : Array of Hashes (name and price of a dish) |
 | **Actions (methods):** | add_dish(dish, price) |
-| | print() : output to STDOUT | 
+| | print() : msg to stdout | 
 | | find_price(name) : Float | 
 | | available?(name) : Boolean | 
 _depends on Dish_ <br>
@@ -167,10 +167,22 @@ _depends on Dish_ <br>
 | **Actions (methods):** | N/A |
 _has no dependencies_ <br>
 
-## Additional set up
+![](classdiagram.jpeg)
 
+## Additional set up
+```
+gem install bundler
+```
 ```
 bundle install
+```
+
+### .env variables
+Create a .env file at the root of the project folder, then include the following with replaced with your personal details:
+```
+TWILIO_ACCOUNT_SID=your_twilio_account_sid_here
+TWILIO_AUTH_TOKEN=your_twilio_auth_token_here
+MOBILE_NUMBER=your_number_here
 ```
 
 ### To run feature tests in `irb`
@@ -198,28 +210,35 @@ takeaway.customer_order # => should give the list of dish objects
 
 ## Approach
 **Domain Modelling using Class Diagrams**
-* Intense investigation on user stories and Domain Modelling. (please see diagrams above).
+* Intense investigation on user stories and Domain Modelling (please see diagrams above).
 * I wanted to determine what classes may be needed in order for the domain to be as cohesive as possible with minimal coupling. It was clear that I needed to create 3 classes: `TakeAway`, `Menu`, and `Dish`.
 
 **Test drive `Dish` class**
 * The `Dish` class has no dependencies on other classes. It was easy to implement this with just a name.
 
 **Test drive `Menu` class**
-* The `Menu` class would have an instance variable containing an Array of dishes (instances of the `Dish` class). Since the `Menu` class has dependencies on the `Dish` class, I need to create Dish doubles in order to unit test `Menu` in isolation.
+* The `Menu` class is expected to have an instance variable containing an Array which includes the dishes in some way.
+* Since the `Menu` class has dependencies on the `Dish` class, I need to create Dish doubles in order to unit test `Menu` in isolation.
 * Since we do not know how many dishes might be added to a menu, I TDD'd a new method to add dishes to a menu `add_dish`, using dependency injection. 
 * I imagine the `list_of_dishes` instance variable would be an array containing hashes representing the dishes and their prices. 
 * The prices would be determined when you add the dish to the menu.
-* The menu class could easily be extended to remove_dishes as well. 
+* The menu class could easily be extended to `remove_dishes` as well, if required. 
 * Moved print_menu responsibility into Menu class. 
 
 **Test drive `TakeAway` class**
 * Next I imagined how we would run the takeaway in IRB in a feature test. 
-* The TakeAway class is initialized with a menu. In the unit tests I isolated the Menu class using dependency injection. 
+* The `TakeAway` class is initialized with a `menu`. 
+* In the unit tests I isolated the Menu class using dependency injection. 
 * As I implemented the client requirements, I forwarded methods to other classes and test drove those methods first.
 * Edge cases considered:
   * trying to order a dish that's not on the menu
   * customer_order list is cleared after placing an order
+  * trying to get the total when no dishes selected
+  * trying to make an order when no dishes selected
 
+**Final checks**
+* feature test
+* check that RSpec unit tests work on each class in isolation
 
 ## Files
 | File    | Description |
@@ -233,7 +252,8 @@ takeaway.customer_order # => should give the list of dish objects
 ## TODO
 
 * What if someone tries to add a non-dish to an instance of `Menu`? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
-* Test coverage on TakeAway print_menu class is not 100%, is it necessary to ensure test coverage as the responsibility should depend on Menu class? Not sure what matchers we can use here. 
+* Test coverage on `TakeAway` `print_menu` method is not 100%, is it necessary to ensure test coverage as the responsibility should depend on `Menu` class? Not sure what matchers we can use here. 
 * Review RSpec context block naming & structure, improvements to refactor RSpec tests using DRY principle.
-* commit more often and at sensible points
-* Check that the tests work in isolation.
+* Commit more often and at sensible points
+* Update description on files in the repo
+* Update demos for usage in IRB
