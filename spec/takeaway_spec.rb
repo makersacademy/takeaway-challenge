@@ -6,6 +6,10 @@ describe Takeaway do
 
   it 'shows the food menu with prices' do
     takeaway
-    expect(takeaway.menu.show_menu).to eq(menu)
+    expect(takeaway.show_menu).to eq(menu)
+  end
+
+  it 'lets the user order food' do
+
   end
 end
