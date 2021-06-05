@@ -12,12 +12,24 @@ class TakeAway
     @menu.print
   end
 
-  def select_dish(dish)
-    # an array of names
-    @customer_order << dish
+  def select_dish(name)
+    raise "We don't have that, sorry" unless on_the_menu?(name)
+    
+    @customer_order << name
   end
 
   def total
-    @customer_order.each { |item| @menu.dish_price(item) }.inject(:+)
+    @customer_order.map { |name| ask_menu_for_price(name) }.inject(:+)
   end
+
+  private
+
+  def ask_menu_for_price(name)
+    @menu.find_price(name)
+  end
+
+  def on_the_menu?(name)
+    @menu.available?(name)
+  end
+
 end

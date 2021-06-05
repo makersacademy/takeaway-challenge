@@ -48,6 +48,18 @@ describe Menu do
           expect(subject.find_price(name)).to eq price
         end
       end
+
+      context '#available?' do
+        it { is_expected.to respond_to(:available?).with(1).argument }
+
+        it 'returns false if dish is unavailable' do
+          expect(subject.available?('Hotdog')).to be false
+        end
+
+        it 'returns true if dish is available' do
+          expect(subject.available?(name)).to be true
+        end
+      end
     end
   end
 

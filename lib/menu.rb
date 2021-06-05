@@ -20,6 +20,10 @@ class Menu
     find_item(name)[0][:price]
   end
 
+  def available?(name)
+    !!@list_of_dishes.find { |item| dish_name(item) == name }
+  end
+
   private
 
   def dish_name(item)
@@ -32,5 +36,6 @@ class Menu
 
   def find_item(name)
     @list_of_dishes.select { |item| dish_name(item) == name }
-  end  
+  end
+
 end

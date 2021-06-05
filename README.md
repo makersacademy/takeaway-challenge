@@ -82,6 +82,19 @@ Notes on Test Coverage
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
 
+```
+                            _________
+              r==           |       |
+           _  //            |  M.A. |   ))))
+          |_)//(''''':      |       |
+            //  \_____:_____.-------D     )))))
+           //   | ===  |   /        \
+       .:'//.   \ \=|   \ /  .:'':./    )))))
+      :' // ':   \ \ ''..'--:'-.. ':
+      '. '' .'    \:.....:--'.-'' .'
+       ':..:'                ':..:'
+
+ ```
 
 My Solution
 -----
@@ -92,53 +105,67 @@ A Makers Week 2 solo weekend challenge.
 
 ## Personal goals of this project
 * practise Domain Modelling
-* maintain isolation when unit testing using dependency injections
+* maintain isolation when unit testing using dependency injections, and doubles/mocking.
 * high cohesion, low coupling
-* testing the right thing
+* testing the right thing (i.e. behaviour not state)
 * consider edge cases
 * practise more TDD using RED-GREEN-REFACTOR
 * remember to refactor and use SRP!
 
 ## Functional Representation of User Stories
 
+**Nouns**
 | Nouns | Property or Owner of property? |
-| --- | --- |
+| ----- | ------------------------------ |
 | TakeAway | Owner |
 | Dish | Owner |
 | name | Property owned by Dish |
-| price | Property owned by Menu |
+| price | Property owned by Menu inside list_of_dishes |
 | Menu | Owner |
-| list_of_dishes | Property owned by Menu |
+| list_of_dishes | Property owned by Menu, contains dishes |
 | customer_order | Property owned by TakeAway |
 
+**Verbs**
 | Actions | Action owned by? | Property it reads or changes | Property owned by? |
-| --- | --- | --- | --- |
-| see_menu | TakeAway | list_of_dishes (reads) | Menu |
-| select_dishes | TakeAway | list_of_dishes (reads), customer_order (changes) | Menu, TakeAway |
+| ------- | ---------------- | ---------------------------- | ------------------ |
+| print_menu | TakeAway | menu.print (reads) | Menu |
+| select_dishes | TakeAway | customer_order (changes) | TakeAway |
 | total | TakeAway | customer_order (reads) | TakeAway |
-| order | TakeAway | customer_order (reads) | TakeAway |
-| send_text | TakeAway (private) | n/a | n/a |
-| add_dish | Menu | list_of_dishes(changes) | Menu |
+| send_text (perhaps private) | TakeAway | N/A | N/A |
+| order | TakeAway | customer_order(reads & changes) | TakeAway |
+| print | Menu | list_of_dishes (reads) | Menu |
+| add_dish | Menu | list_of_dishes (changes) | Menu |
+| find_price | Menu | list_of_dishes (reads) | Menu |
+| available? | Menu | list_of_dishes (reads) | Menu |
+
 
 ## Domain Model
 
 | Class | TakeAway |
 | --- | --- |
-| **Properties (instance variables):** | @customer_order : Array |
-| **Actions (methods):** | see_menu, select_dishes, total, order, send_text (perhaps private method) |
-* depends on menu, and also depends on dishes
+| **Properties (instance variables):** | @customer_order : Array (of dish names) |
+| | @menu : an instance of Menu |
+| **Actions (methods):** | print_menu() : forwarded to Menu class|
+| | select_dish(name) | 
+| | total() : Float | 
+| | order() : list of dishes and total | 
+| | send_text() : perhaps private| 
+_depends on Menu_ <br>
+
+| Class | Menu |
+| --- | --- |
+| **Properties (instance variables):** | @list_of_dishes : Array of Hashes (name and price of a dish) |
+| **Actions (methods):** | add_dish(dish, price) |
+| | print() : output to STDOUT | 
+| | find_price(name) : Float | 
+| | available?(name) : Boolean | 
+_depends on Dish_ <br>
 
 | Class | Dish |
 | --- | --- |
 | **Properties (instance variables):** | @name|
 | **Actions (methods):** | N/A |
-* has no dependencies
-
-| Class | Menu |
-| --- | --- |
-| **Properties (instance variables):** | @list_of_dishes : Array of Hashes |
-| **Actions (methods):** | add_dish() |
-* depends on dishes
+_has no dependencies_ <br>
 
 ## Additional set up
 
@@ -148,8 +175,21 @@ bundle install
 
 To run feature tests in `irb`:
 ```irb
-<!-- SOME STUFF HERE -->
-
+require './lib/menu.rb'
+require './lib/takeaway.rb'
+dish_1 = Dish.new( "McNuggets" )
+dish_2 = Dish.new( "Big Mac" )
+dish_3 = Dish.new( "Chicken Legend" )
+menu = Menu.new
+menu.add_dish(dish_1, 3.19)
+menu.add_dish(dish_2, 3.19)
+menu.add_dish(dish_3, 3.89)
+takeaway = TakeAway.new(menu)
+takeaway.print_menu # => gives us the menu
+takeaway.select_dish(dish_1)
+takeaway.select_dish(dish_1)
+takeaway.select_dish(dish_2) 
+takeaway.customer_order # => should give the list of dish objects
 ```
 
 ## Approach
@@ -169,27 +209,11 @@ To run feature tests in `irb`:
 * Moved print_menu responsibility into Menu class. 
 
 **Test drive `TakeAway` class**
-* Next I imagined how we would run the takeaway in IRB in a feature test. Perhaps it is initialized with a default menu if one is not given in advance:
-
-```irb
-require './lib/menu.rb'
-require './lib/takeaway.rb'
-dish_1 = Dish.new( "McNuggets" )
-dish_2 = Dish.new( "Big Mac" )
-dish_3 = Dish.new( "Chicken Legend" )
-menu = Menu.new
-menu.add_dish(dish_1, 3.19)
-menu.add_dish(dish_2, 3.19)
-menu.add_dish(dish_3, 3.89)
-takeaway = TakeAway.new(menu)
-takeaway.print_menu # => gives us the menu
-takeaway.select_dish(dish_1)
-takeaway.select_dish(dish_1)
-takeaway.select_dish(dish_2) 
-takeaway.customer_order # => should give the list of dish objects
-
-```
-
+* Next I imagined how we would run the takeaway in IRB in a feature test. 
+* The TakeAway class is initialized with a menu. In the unit tests I isolated the Menu class using dependency injection. 
+* As I implemented the client requirements, I forwarded methods to other classes and test drove those methods first.
+* Edge cases considered:
+  * trying to order a dish that's not on the menu
 
 
 ## Files
@@ -203,10 +227,9 @@ takeaway.customer_order # => should give the list of dish objects
 
 ## TODO
 
-* What if someone tries to add a non-dish to the Menu? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
-* Refactor RSpec tests
-* What if the customer selects a dish that is not on the menu?
-* test coverage on TakeAway print_menu class is not 100%, is it necessary to ensure test coverage as the responsibility should depend on Menu class? Not sure what matchers we can use here. 
-* RSpec context block naming & structure
+* What if someone tries to add a non-dish to an instance of `Menu`? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
+* Test coverage on TakeAway print_menu class is not 100%, is it necessary to ensure test coverage as the responsibility should depend on Menu class? Not sure what matchers we can use here. 
+* Review RSpec context block naming & structure, improvements to refactor RSpec tests using DRY principle.
+* commit more often and at sensible points
 
 
