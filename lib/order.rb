@@ -10,21 +10,34 @@ class Order
     @total_cost = 0
   end
 
-  def read_menu(menu = @menu)
-    menu.show_menu
+  def read_menu
+    @menu.show_menu
   end
 
   def add_item(dish, quantity = 1)
-    @basket[dish] += quantity
+    @basket[dish] += quantity 
   end
 
   def show_basket
-    @basket.each do |item, price|
-      puts "£#{price} #{item}"
+    @basket.each do |item, quantity|
+      puts "You have #{item} x #{quantity} in your basket"
     end
   end
 
+  def verify
+    calculate_total
+    "Your total is £#{@total_cost}"
+  end
 
+  def confirm
+  
+  end
 
+  private
 
+  def calculate_total
+    @basket.each do |item, quantity| 
+      @total_cost += @menu.price(item) * quantity
+    end
+  end
 end

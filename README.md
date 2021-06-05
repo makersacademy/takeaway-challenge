@@ -14,6 +14,12 @@ Takeaway Challenge
 
  ```
 
+
+Edge cases
+
+if show_basket is called twice
+
+
 Instructions
 -------
 

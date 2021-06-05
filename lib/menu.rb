@@ -3,7 +3,7 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = {:fish => 6, :chips => 2, :sausage => 2.50, :mushy_peas => 2}
+    @menu = {fish: 6, chips: 2, sausage: 2.50, mushy_peas: 2}
   end
 
   def show_menu
@@ -11,4 +11,9 @@ class Menu
       puts "£#{price} #{item}"
     end
   end
+
+  def price(item)
+    @menu[item.to_sym]
+  end 
+
 end
