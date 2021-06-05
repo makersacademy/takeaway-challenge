@@ -17,12 +17,12 @@ describe Menu do
 
     it 'can add a dish that can be read in list of dishes' do
       subject.add_dish(dish, price)
-      expect(subject.list_of_dishes).to eq [{dish: dish, price: price}]
+      expect(subject.list_of_dishes).to eq [{ dish: dish, price: price }]
     end
 
-    xit 'can have more than one dish in the list of dishes' do
+    it 'can have more than one dish in the list of dishes' do
       dishes = []
-      10.times { subject.add_dish(dish, price); dishes << dish }
+      10.times { subject.add_dish(dish, price); dishes << { dish: dish, price: price } }
 
       expect(subject.list_of_dishes).to eq dishes
     end
