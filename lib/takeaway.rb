@@ -23,7 +23,7 @@ class TakeAway
   end
 
   def order
-  
+    puts 'Thanks for your order!'
   end
 
   private

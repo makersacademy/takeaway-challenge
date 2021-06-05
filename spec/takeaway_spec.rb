@@ -49,8 +49,8 @@ describe TakeAway do
     context '#order' do
       it { is_expected.to respond_to(:order) }
 
-      xit 'responds with a friendly message' do
-        expect(subject.order).to output('Thanks for your order!').to_stdout
+      it 'responds with a friendly message' do
+        expect {subject.order}.to output("Thanks for your order!\n").to_stdout
       end
 
       xit 'it clears the customer_order list' do

@@ -235,5 +235,4 @@ takeaway.customer_order # => should give the list of dish objects
 * Test coverage on TakeAway print_menu class is not 100%, is it necessary to ensure test coverage as the responsibility should depend on Menu class? Not sure what matchers we can use here. 
 * Review RSpec context block naming & structure, improvements to refactor RSpec tests using DRY principle.
 * commit more often and at sensible points
-
-
+* Check that the tests work in isolation.
