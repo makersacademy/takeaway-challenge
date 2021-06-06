@@ -25,6 +25,7 @@ class Takeaway
   end
 
   def total
+    @total_cost = 0
     calculate_total
     return "Your meal total comes to £#{@total_cost.round(3)}"
   end
