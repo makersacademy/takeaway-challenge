@@ -1,17 +1,13 @@
-#require 'order'
-#require 'menu'
+
 class Takeaway
 
-    #takeaway first attribute: menu
     attr_reader :menu, :order
     
-    #menu set as our_menu
     def initialize(our_menu, the_order)
        @menu = our_menu
-       @order = the_order #|| Order.new
+       @order = the_order 
     end
     
-    #print out our_menu(@menu)
     def print_menu
      @menu.print
     end
