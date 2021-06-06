@@ -1,83 +1,94 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+BecaLParker's solution to Takeaway Challenge
+============================================
 
- ```
+What does the code do?
+-----------
+Emulates a system for ordering takeaway from a restaurant.
 
-Instructions
--------
+Credits
+-----------
+I refered to [the code review rubric for this challenge](https://github.com/makersacademy/takeaway-challenge/blob/master/docs/review.md) during my build and testing. I also talked through stubbing and injections dependency with two other devs with reference to my code.
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+I refered to [Twilio's docs](https://www.twilio.com/docs/usage/api) to help construct my Twilio class code.
 
-Task
+I refered to [@GunelMC's solution](https://github.com/GunelMC/takeaway-challenge) for an example of using dotenv to make envrionment variable persist.
+
+
+Partial/Complete solution?
+-------------------------
+This code aims to cover all the user stories (see below) and some edgecases (e.g. customers ordering things that aren't on the menu, and preventing customers being able to chekout without passing at lesast the full total owing as an argument.)
+
+HOWEVER, I have not yet been able to solve the stubbing for SMS and delivery time correctly. I've left some commented out code with my attempts so I can pursue this further in week 3 of Makers.
+
+
+Domain model
+-----------
+<img src="./domain_model.svg">
+
+Setup
 -----
+- Clone this repo to your local machine
+- Run the command 'bundle' in the project directory to ensure you have all the gems
+- Set Twilio environment variables. You need a [Twilio account](https://www.twilio.com/try-twilio)), then:
+  - Create `.env` file in the root directory of your clone
+  - Add the following in the `.env` file:
+    
+    - TWILIO_NUM=*your Twilio details*
+    - TWILIO_TOKEN=*your Twilio details*
+    - TWILIO_SID=*your Twilio details*
+    - MOB_NUM=*your mobile number*
+    > Make sure MOB_NUM is the verified phone number you can send TO if you have a trial Twilio account
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Now back to your terminal, require the restaurant code in irb: `irb -r './lib/restaurant.rb'`
+* `2.6.5 :001 > kfc = Restaurant.new`
+ `=> #<Restaurant:0x00007fe984874888>`
+ 
+ Hooray! Now you have a restaurant instance called `kfc` in your irb to play with. See commands below to run the user stories.
+
+
+User stories and example irb interactions
+-----------------------------------------
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
-
+```
+Do this in irb: ` kfc.show_menu` 
+You should get an output like: `=> {"chips"=>1.5, "chicken"=>2.0}`
+ 
+```
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
+Do this in irb: `kfc.order("chips")`  to order one portion. Or `kfc.order("chips", 2)` to specify the number of portions.
 
+You should get an output like: `=> 2 portions of chips added to your basket`
+
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
+```
+1. First order some items (see above), then do this in irb: `kfc.basket_summary` to see subtotals of the various dishes you've ordered.
+     `=> "5 portions of chips @ £1.50 each = £7.50, 5 portions of chicken @ £2.00 each = £10.00"`
+2. Use that output to explain the output of `kfc.show_total`
+      `=> "Total owing: £17.50"`
+      
+```  
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+When you're happy with your order, do this in irb: `kfc.chekout(17.50)`
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+You should get an output like: `=> Thanks, you'll get an SMS confirmation.` 
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Unless you have my environment variables (or configure the Twilio Api with your count account details, this code will **not** send you an SMS.
+However, I promise I got it working :)
+<img src="./screenshot.jpg">
 
 
-In code review we'll be hoping to see:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
