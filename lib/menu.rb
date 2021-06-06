@@ -1,15 +1,19 @@
 class Menu
-    attr_reader :dishes
+  attr_reader :dishes
   
-    def initialize(dishes)
-      @dishes = dishes
-    end
+  def initialize(dishes)
+    @dishes = dishes
+  end
   
-    def print
+  def print
       dishes.map do |title, price|
        # "%s £%.2f" % [title.to_s.capitalize, price]
       #end.join(", ")
       "#{title.capitalize}".concat(" £#{price.to_s.capitalize}")
     end
+  end
+
+  def has_dish?(dish)
+    !dishes[dish].nil?
   end
 end
