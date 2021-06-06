@@ -6,7 +6,7 @@ describe Order do
   end
 
   it 'displays the menu' do
-    expect(subject.menu).to eq Menu
+    expect(subject.menu).to eq MENU
   end
 
   it 'pushes ordered items into the array' do

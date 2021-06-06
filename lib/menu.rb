@@ -1,4 +1,4 @@
-Menu = {
+MENU = {
   burger: 9,
   tacos: 8.5,
   halloumi_fries: 5,
