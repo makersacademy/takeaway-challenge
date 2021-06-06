@@ -2,8 +2,15 @@ require "chinese.rb"
 
 describe Chinese do
   subject(:takeaway) { described_class.new }
-  let(:order1) { double :order }
-  let(:order2) { double :order }
+  let(:order1) { double :order1 }
+  let(:order2) { double :order2 }
+
+  before(:each) do
+    allow(order1).to receive_message_chain(:order, :size).and_return(1)
+    allow(order1).to receive_message_chain(:order, :each)
+    allow(order2).to receive_message_chain(:order, :size).and_return(1)
+    allow(order2).to receive_message_chain(:order, :each)
+  end
 
   it { is_expected.to respond_to :menu }
 
@@ -15,14 +22,16 @@ describe Chinese do
 
   describe "check the inheritance from Takeaway class" do
 
-    context "#take_orders" do
-
-      it { is_expected.to respond_to(:take_orders).with(1).argument }
+    it { is_expected.to respond_to(:take_order).with(1).argument }
       
-      it "take orders" do
-        takeaway.take_orders(order1)
-        expect(takeaway.take_orders(order2)).to eq [order1, order2]
-      end
+    it "take several orders" do
+      takeaway.take_order(order1)
+      takeaway.take_order(order2)
+      expect(takeaway.orders).to eq [order1, order2]
+    end
+
+    it "should return message" do
+      expect(takeaway.take_order(order1)).to be_kind_of(String)
     end
   end
 end

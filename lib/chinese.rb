@@ -1,4 +1,5 @@
-require_relative 'takeaway'
+require_relative 'takeaway.rb'
+require_relative 'order.rb'
 
 class Chinese < Takeaway
 
