@@ -19,4 +19,11 @@ describe Order do
     expect(subject.order).to eq [:tacos, :tacos, :tacos]
   end
 
+  it 'calculates the total of the order' do
+    subject.add_item(:burger, 2)
+    subject.add_item(:fries, 4)
+    subject.add_item(:ice_cream, 2)
+    expect(subject.total).to eq 40
+  end
+
 end
