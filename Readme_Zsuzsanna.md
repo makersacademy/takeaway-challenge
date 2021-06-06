@@ -69,3 +69,5 @@ $ gem install bundle
 $ bundle
 ```
 
+I followed this video to solve this challange: https://www.youtube.com/watch?v=mgiJKdH9x8c
+
