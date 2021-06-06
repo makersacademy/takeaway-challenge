@@ -1,7 +1,9 @@
+require 'order'
+
 class Takeaway
   def initialize(menu:, order: nil)
     @menu = menu
-    @order = order
+    @order = order || Oder.new(menu)
   end
 
   def print_menu
