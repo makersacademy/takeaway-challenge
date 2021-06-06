@@ -23,7 +23,7 @@ RSpec.describe Order do
   it 'returns a message' do 
     allow(subject).to receive(:order_ok?) { true }
 
-    expect(subject.message).to eq("Thank you! Your order was placed and will be delivered before 18:52")
+    expect(subject.message).to eq("Thank you! Your order was placed and will be delivered before #{Time.now + 3600}")
   end
 
 end

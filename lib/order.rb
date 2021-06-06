@@ -25,6 +25,6 @@ class Order
   end
 
   def message
-    "Thank you! Your order was placed and will be delivered before 18:52" if order_ok?
+    "Thank you! Your order was placed and will be delivered before #{Time.now + 3600}" if order_ok?
   end
 end
