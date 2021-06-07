@@ -11,7 +11,7 @@ class Order
     @menu = { "burger"=> 1, "fries"=> 2, "drink"=> 3, "side"=> 4 }
   end
 
-  hash_test ={ :key_1=> "value 1", :key_2=> "value_2" }
+  # hash_test ={ :key_1=> "value 1", :key_2=> "value_2" }
 
   def order_item(item, quantity)
     # @order = []
@@ -23,11 +23,11 @@ class Order
       item_and_quantity.each do | key1, item, key2, quantity |
         # I need to get the key value from @menu
         # so I can use the price to colculate the total
-        p key1
-        p key2
-        p item
-        p quantity
-        puts "#{item} x#{quantity.to_i}: #{quantity.to_i * @order[1]}"
+        # p key1
+        # p key2
+        # p item
+        # p quantity
+        puts "#{item} x#{quantity.to_i}: #{quantity.to_i * @menu[item]}"
       end
     end
   end
