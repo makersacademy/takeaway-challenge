@@ -149,6 +149,7 @@ A Makers Week 2 solo weekend challenge.
 | | select_dish(name) | 
 | | total() : Float | 
 | | order() : msg to stdout | 
+| | delivery_time() : Time |
 | | send_text() : perhaps private| 
 _depends on Menu_ <br>
 
@@ -178,11 +179,12 @@ bundle install
 ```
 
 ### .env variables
-Create a .env file at the root of the project folder, then include the following with replaced with your personal details:
+Create a .env file at the root of the project folder, then include the following with replaced with your personal details (please use +44 format in UK):
 ```
 TWILIO_ACCOUNT_SID=your_twilio_account_sid_here
 TWILIO_AUTH_TOKEN=your_twilio_auth_token_here
 MOBILE_NUMBER=your_number_here
+TWILIO_NUMBER=your_twilio_number_here
 ```
 
 ### To run feature tests in `irb`
@@ -199,13 +201,32 @@ menu.add_dish(dish_2, 3.19)
 menu.add_dish(dish_3, 3.89)
 takeaway = TakeAway.new(menu)
 ```
-Some demos here:
+
+See a list of dishes on the menu
 ```
-takeaway.print_menu # => gives us the menu
-takeaway.select_dish(dish_1)
-takeaway.select_dish(dish_1)
-takeaway.select_dish(dish_2) 
+takeaway.print_menu
+```
+
+select dishes on the menu
+```
+takeaway.select_dish("McNuggets")
+takeaway.select_dish("Big Mac")
+takeaway.select_dish("Big Mac") 
+```
+
+check order
+```
 takeaway.customer_order # => should give the list of dish objects
+```
+
+check total
+```
+takeaway.total
+```
+
+place order
+```
+takeaway.order
 ```
 
 ## Approach
@@ -236,9 +257,16 @@ takeaway.customer_order # => should give the list of dish objects
   * trying to get the total when no dishes selected
   * trying to make an order when no dishes selected
 
+**Twilio text confirmation**
+* I implemented a `TwilioAdapter` class that is responsible for sending the SMS. It instantiates the Twilio Client when `send_sms` is called.
+* When a takeaway is asked to make an order, it creates a new instance of `TwilioAdapter` and tells it to `send_sms` with the message "Thank you! Your order was placed and will be delivered before #{delivery_time}" (thus forwarding the responsibility). 
+* I am not sure how to unit test this functionality, but it seems to work in feature test.
+* In order to prevent real SMS messages from being sent during the RSpec tests, I added a stub to the `spec_helper` to replace `Twilio::REST::Client` with a mocked version of it called `FakeSMS`.
+
 **Final checks**
-* feature test
-* check that RSpec unit tests work on each class in isolation
+* Feature tested
+* Checked that RSpec unit tests work on each class in isolation
+* Linted with rubocop, 2 offences for unannotated tokens ignored. 
 
 ## Files
 | File    | Description |
@@ -246,14 +274,24 @@ takeaway.customer_order # => should give the list of dish objects
 | README.md  | this readme page :) |
 |  |  |
 |  |  |
-|  |  |
+| ./spec/support/fakesms.rb | Mocked Twilio client |
 | **all other files** | **as forked from original repo** |
 
 ## TODO
 
 * What if someone tries to add a non-dish to an instance of `Menu`? How would we TDD this in RSpec given that instance_doubles (a verifying double) of `Dish` does not return true when asking it if it `is_a? Dish`
 * Test coverage on `TakeAway` `print_menu` method is not 100%, is it necessary to ensure test coverage as the responsibility should depend on `Menu` class? Not sure what matchers we can use here. 
+* Should the `delivery_time` method be public or private? - I kept as public so that it could also be tested for the correct time, but think it should be a private method.
+* How to test the `TwilioAdapter` class (Twilio API)? Is it necessary? How to test that the program sends out a message in text format in RSpec? Is it necessary to unit test `send_text` private method in `TakeAway` class? How can we be confident that we are meeting the needs of the user story?
+* Investigate why unannotated tokens are unpreferable, for example:
+```
+def dish_price(item)
+    '%.2f' % item[:price]
+  end
+```
+* (Future) commit more often (after each unit test pass/refactor) and better naming. 
+
+
 * Review RSpec context block naming & structure, improvements to refactor RSpec tests using DRY principle.
-* Commit more often and at sensible points
 * Update description on files in the repo
-* Update demos for usage in IRB
+

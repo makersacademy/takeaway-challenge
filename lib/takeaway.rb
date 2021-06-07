@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'twilioadapter'
 
 class TakeAway
   attr_reader :customer_order
@@ -28,6 +29,7 @@ class TakeAway
     puts "That will be £#{total} please."
     clear_customer_orders
     puts 'Thanks for your order!'
+    send_text
   end
 
   def delivery_time
@@ -52,4 +54,9 @@ class TakeAway
     !@customer_order.empty?
   end
 
+  def send_text
+    message = "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    twilio = TwilioAdapter.new
+    twilio.send_sms(message)
+  end
 end

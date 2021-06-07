@@ -53,7 +53,7 @@ describe TakeAway do
     context '#order' do
       before do
         allow(menu).to receive(:find_price).and_return(price1, price2, price3)
-        Timecop.freeze(Time.local(2021, 1, 1, 13, 0,0))
+        Timecop.freeze(Time.local(2021, 1, 1, 13, 0, 0))
       end
 
       after do
@@ -70,12 +70,13 @@ describe TakeAway do
         expect { subject.order }.to change { subject.customer_order.length }.to(0)
       end
 
-      xit 'sends a text to the customer' do
-        
-      end
+      # it 'sends a text to the customer' do
+      #   not sure how to test this, send_sms changed to private.
+      #   expect(subject).to respond_to :send_sms
+      # end
 
       it 'can calculate the estimated delivery time' do
-        expect(subject.delivery_time).to eq Time.local(2021,1,1,14,0,0)
+        expect(subject.delivery_time).to eq Time.local(2021, 1, 1, 14, 0, 0)
       end
     end
   end
