@@ -8,7 +8,7 @@ RSpec.describe Order do
   end
 
   it 'can add an item to @meals' do 
-    expect{ subject.add(menu.select) }.to change {subject.meals.length}.by(1)
+    expect{ subject.add(menu.select) }.to change { subject.meals.length }.by(1)
   end
 
   it 'verifies an order' do 

@@ -12,8 +12,9 @@ class Order
   end
 
   def place_order
-    "Would you like to place your order?"
+    puts "Would you like to place your order?"
     @answer = gets.chomp
+    message
   end
 
   def verify
