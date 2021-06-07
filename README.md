@@ -170,7 +170,7 @@ _has no dependencies_ <br>
 
 ![](classdiagram.jpeg)
 
-## Additional set up
+## Usage
 ```
 gem install bundler
 ```
@@ -202,37 +202,17 @@ menu.add_dish(dish_3, 3.89)
 takeaway = TakeAway.new(menu)
 ```
 
-See a list of dishes on the menu
-```
-takeaway.print_menu
-```
+To interact with the takeaway: 
+* See a list of dishes on the menu (`takeaway.print_menu`)
+* Select dishes on the menu (`takeaway.select_dish("McNuggets")`) or use any other name as listed in the menu
+* Check order (`takeaway.customer_order`) gives the list of dish names
+* Check total (`takeaway.total`) gives the total cost of the dishes
+* Place order (`takeaway.order`) confirms the amount, clears the customer_order list, and sends a text to you. 
 
-select dishes on the menu
-```
-takeaway.select_dish("McNuggets")
-takeaway.select_dish("Big Mac")
-takeaway.select_dish("Big Mac") 
-```
-
-check order
-```
-takeaway.customer_order # => should give the list of dish objects
-```
-
-check total
-```
-takeaway.total
-```
-
-place order
-```
-takeaway.order
-```
-
-## Approach
+## My Approach
 **Domain Modelling using Class Diagrams**
-* Intense investigation on user stories and Domain Modelling (please see diagrams above).
-* I wanted to determine what classes may be needed in order for the domain to be as cohesive as possible with minimal coupling. It was clear that I needed to create 3 classes: `TakeAway`, `Menu`, and `Dish`.
+* Intensely investigated user stories and used _Domain Modelling_ to create class diagrams (please see diagrams above).
+* I wanted to determine what classes may be needed in order for the domain to be as cohesive as possible with minimal coupling. I decided to create 3 classes: `TakeAway`, `Menu`, and `Dish`.
 
 **Test drive `Dish` class**
 * The `Dish` class has no dependencies on other classes. It was easy to implement this with just a name.
@@ -243,14 +223,14 @@ takeaway.order
 * Since we do not know how many dishes might be added to a menu, I TDD'd a new method to add dishes to a menu `add_dish`, using dependency injection. 
 * I imagine the `list_of_dishes` instance variable would be an array containing hashes representing the dishes and their prices. 
 * The prices would be determined when you add the dish to the menu.
-* The menu class could easily be extended to `remove_dishes` as well, if required. 
-* Moved print_menu responsibility into Menu class. 
+* The menu class could easily be extended to `remove_dishes` as well, if required. Or if you wanted to `update_price` to match the rate of inflation! 
+* During the test driving provess, I realised perhaps some `TakeAway` methods should belong in `Menu`, it was easy to move these. One example of this is the `print_menu` method which was forwarded to `Menu` class and I amended my class diagrams accordingly.  
 
 **Test drive `TakeAway` class**
-* Next I imagined how we would run the takeaway in IRB in a feature test. 
-* The `TakeAway` class is initialized with a `menu`. 
-* In the unit tests I isolated the Menu class using dependency injection. 
-* As I implemented the client requirements, I forwarded methods to other classes and test drove those methods first.
+* I imagined how we would run the takeaway in IRB in a feature test. 
+* The `TakeAway` class is initialized with a `menu` (instance of `Menu`). 
+* In the unit tests I isolated the `Menu` class using dependency injection. 
+* As I implemented the user story requirements, I forwarded methods to other classes and test drove those methods first.
 * Edge cases considered:
   * trying to order a dish that's not on the menu
   * customer_order list is cleared after placing an order
@@ -258,8 +238,9 @@ takeaway.order
   * trying to make an order when no dishes selected
 
 **Twilio text confirmation**
-* I implemented a `TwilioAdapter` class that is responsible for sending the SMS. It instantiates the Twilio Client when `send_sms` is called.
-* When a takeaway is asked to make an order, it creates a new instance of `TwilioAdapter` and tells it to `send_sms` with the message "Thank you! Your order was placed and will be delivered before #{delivery_time}" (thus forwarding the responsibility). 
+* I used the twilio-ruby gem to handle SMS messaging. 
+* I implemented a `TwilioAdapter` class that is responsible for sending the SMS. It instantiates the Twilio client when `send_sms` is called.
+* When a takeaway is asked to make an order, it creates a new instance of `TwilioAdapter` and tells it to `send_sms` with the message "Thank you! Your order was placed and will be delivered before #{delivery_time}" (thus forwarding the responsibility to TwilioAdapter). 
 * I am not sure how to unit test this functionality, but it seems to work in feature test.
 * In order to prevent real SMS messages from being sent during the RSpec tests, I added a stub to the `spec_helper` to replace `Twilio::REST::Client` with a mocked version of it called `FakeSMS`.
 
@@ -272,9 +253,18 @@ takeaway.order
 | File    | Description |
 | ----------- | ----------- |
 | README.md  | this readme page :) |
-|  |  |
-|  |  |
+| dish.rb | code for Dish class |
+| menu.rb | code for Menu class |
+| takeaway.rb | code for TakeAway class |
+| twilioadapter.rb | code for TwilioAdapter class |
+| ./spec/dish_spec.rb | Unit tests for Dish class |
+| ./spec/menu_spec.rb | Unit tests for Menu class |
+| ./spec/takeaway_spec.rb | Unit tests for TakeAway class |
 | ./spec/support/fakesms.rb | Mocked Twilio client |
+| ./spec/spec_helper.rb | Added stub for Twilio client |
+| .gitignore | added .env to protect secret keys |
+| Gemfile | list of Gems required |
+| classdiagram.jpeg | Class diagram image for README |
 | **all other files** | **as forked from original repo** |
 
 ## TODO
@@ -289,9 +279,9 @@ def dish_price(item)
     '%.2f' % item[:price]
   end
 ```
-* (Future) commit more often (after each unit test pass/refactor) and better naming. 
+* In future, commit more often (after each unit test pass/refactor) and better naming. 
+* Investigate whether TwilioAdapter should be in class diagram.
+* Refactor RSpec tests using DRY principle.
 
-
-* Review RSpec context block naming & structure, improvements to refactor RSpec tests using DRY principle.
 * Update description on files in the repo
 

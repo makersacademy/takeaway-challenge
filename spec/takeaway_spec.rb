@@ -71,8 +71,8 @@ describe TakeAway do
       end
 
       # it 'sends a text to the customer' do
-      #   not sure how to test this, send_sms changed to private.
-      #   expect(subject).to respond_to :send_sms
+      #   not sure how to test this, send_text changed to private.
+      #   expect(subject).to respond_to :send_text
       # end
 
       it 'can calculate the estimated delivery time' do
