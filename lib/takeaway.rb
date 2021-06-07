@@ -1,8 +1,9 @@
 class Takeaway
-  attr_reader :food
-  
+  attr_reader :food, :basket
+
   def initialize
     @food = food
+    @basket = []
   end
 
   def food_prices
@@ -19,4 +20,17 @@ class Takeaway
   
   end
 
+  def choose_menu
+    puts "Choose food: "
+    user = gets.chomp
+
+    if user == "chips"
+      @basket << 5.50
+    elsif user == "wings"
+      @basket << 7.20
+    elsif user == "burger"
+      @basket << 8.50
+    end
+  end
+  
 end

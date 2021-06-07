@@ -15,4 +15,14 @@ chips: £5.5
 wings: £7.2
 burger: £8.5
  => {"chips"=>5.5, "wings"=>7.2, "burger"=>8.5}
+2.6.5 :005 > t.choose_menu
+Choose food: 
+chips
+ => [5.5]
+2.6.5 :006 > t.choose_menu
+Choose food: 
+wings
+ => [5.5, 7.2] 
+2.6.5 :007 > t
+ => #<Takeaway:0x00007fa3048ba070 @food=nil, @basket=[5.5, 7.2]>
 ```
