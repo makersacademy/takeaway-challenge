@@ -3,6 +3,10 @@ Takeaway Challenge - Chuka Okoye
 
 Currently stuck on the second user story, for how to create a test for the inputs. Still researching but I want the next method to display a prompt for the user to "choose" from the previously stated menu, which would take the input and be transferred into the users empty basket array.
 
+My sequence diagram: https://playground.diagram.codes/d/sequence
+
+I need to split my choose_menu method into a seperate class, and create a spec file for that and link it with 'require_relative'.
+
 How to run in irb:
 
 ```
