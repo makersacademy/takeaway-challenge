@@ -81,3 +81,16 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+MERRYN'S NOTES ON CHALLENGE
+____________________________
+
+Sadly I only had time to complete the first 3 user stories. You can see my domain model diagram below, showing my classes and their interactions. 
+
+<img width="552" alt="Screenshot 2021-06-07 at 12 02 23" src="https://user-images.githubusercontent.com/73797541/121006911-57a7e500-c789-11eb-80d1-b26a5eeec325.png">
+
+.................................................................................................................................................................
+
+Resources:
+https://www.youtube.com/watch?v=mgiJKdH9x8c
+
