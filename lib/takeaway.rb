@@ -1,7 +1,8 @@
 require_relative './menu.rb'
+require_relative './order.rb'
 
 class Takeaway
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize(menu)
     @menu = Menu.new(menu)
@@ -11,7 +12,9 @@ class Takeaway
     @menu.show_menu
   end
 
-  def order_food
-    
+  def place_order(dishes)
+    food.each do |dish, quantity|
+      order.add(dish, quantity)
+    end
   end
 end
