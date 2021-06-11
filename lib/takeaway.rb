@@ -14,4 +14,9 @@ class Takeaway
     @order << dish
   end
 
+  def total
+    @order.map { |dish |
+    @@menu.dishes[dish] }.sum
+  end
+
 end
