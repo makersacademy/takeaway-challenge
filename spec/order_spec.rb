@@ -9,10 +9,10 @@ describe Order do
   end
 
   it "can select dishes" do
-    menu = double('menu', :dishes => ["Soft drink" ,
+    menu = double('menu', :dishes => ["Soft Drink" ,
 "Sandwich (Cold)", "Sandwich (Hot)", "Fresh Juices", "Pastries"])
     order.see_menu
-    expect(order.select_dishes("Pastries")).to include(menu.dishes)
+    expect(order.select_dishes("Soft Drink")).to eq(true)
   end
 
   # it "can calculate the total" do

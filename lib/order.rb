@@ -24,12 +24,9 @@ def select_dishes(dish)
   dishes = @list.menu
 
   dishes.each do |hash|
-    hash.each do |key, value|
-      if dish == key[:dish]
-      selection << dish
-      end
-    end
+    selection << dish if hash.value?(dish)
   end
+  selection.length > 0
 end
 
 end
