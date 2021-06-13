@@ -2,31 +2,49 @@ require_relative "list"
 
 class Order
 
+  attr_reader :selection
+
   def initialize(list = List.new)
     @list = list
   end
 
-  # @menu = [
-  #     {:dish => "Coffee", :price => 2.50},
-  #     {:dish => "Soft Drink", :price => 1.50},
-  #     {:dish => "Sandwich (Cold)", :price => 5.90},
-  #     {:dish => "Sandwich (Hot)", :price => 8.90},
-  #     {:dish => "Fresh Juices", :price => 4.70},
-  #     {:dish => "Pastries", :price => 1.80}
-  #   ]
+  # @menu = {
+  #    "Coffee" => 2.50
+  #     "Soft Drink" => 1.50,
+  #     "Sandwich (Cold)" =>  5.90,
+  #     "Sandwich (Hot)" =>  8.90,
+  #     "Fresh Juices" => 4.70,
+  #     "Pastries" => 1.80
+  #   }
 
-def see_menu
-  @list.menu
-end
-
-def select_dishes(dish)
-  selection = []
-  dishes = @list.menu
-
-  dishes.each do |hash|
-    selection << dish if hash.value?(dish)
+  def see_menu
+    @list.menu
   end
-  selection.length > 0
-end
+
+  def select_dishes(dish)
+    @selection = []
+    dishes = @list.menu
+
+    dishes.each do |key, value|
+      selection << dish if key == dish
+    end
+    selection.length > 0
+  end
+
+  # def total
+  #   dishes = ["Soft Drink" => 1.50, "Fresh Juices" => 4.70]
+  #   selection = ["Soft Drink", "Fresh Juices"]
+  #   total = []
+
+  #   selection.each do |dish|
+  #     total << dish 
+  #     if dishes.key?(dish)
+  #       total << dishes[dish].to_f
+
+  #   end
+  #   @selection.select do |dish|
+  #     dishes.
+  #   end
+  # end
 
 end
