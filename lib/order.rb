@@ -2,10 +2,12 @@ require_relative "list"
 
 class Order
 
-  attr_reader :selection
+  attr_reader :selection, :list, :total
 
   def initialize(list = List.new)
     @list = list
+    @selection = []
+    @total = []
   end
 
   # @menu = {
@@ -22,29 +24,23 @@ class Order
   end
 
   def select_dishes(dish)
-    @selection = []
+
     dishes = @list.menu
 
     dishes.each do |key, value|
-      selection << dish if key == dish
+      @selection << dish if key == dish
     end
-    selection.length > 0
+    @selection if @selection.length > 0
+
+
   end
 
-  # def total
-  #   dishes = ["Soft Drink" => 1.50, "Fresh Juices" => 4.70]
-  #   selection = ["Soft Drink", "Fresh Juices"]
-  #   total = []
+  def total
 
-  #   selection.each do |dish|
-  #     total << dish 
-  #     if dishes.key?(dish)
-  #       total << dishes[dish].to_f
-
-  #   end
-  #   @selection.select do |dish|
-  #     dishes.
-  #   end
-  # end
+    @selection.each do |item|
+      @total << (@list.menu).fetch(item)
+    end
+    "Your order total is #{@total.sum}"
+  end
 
 end
