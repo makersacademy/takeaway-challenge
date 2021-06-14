@@ -18,7 +18,7 @@ describe Order do
   it "can calculate the total" do
     order.see_menu
     order.select_dishes("Soft Drink")
-    expect(order.total).to eq(1.50 + 4.70)
+    expect(order.total).to eq("Your order total is #{1.50 + 4.70}")
   end
 
   # it "can diplay the total with the selected dishes" do
