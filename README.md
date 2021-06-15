@@ -1,3 +1,7 @@
+Flowchart here for how it will work:
+
+https://app.diagrams.net/?src=about#G1FtIJUF2rpGLKAm57BtuVWSxCXUqID4v7
+
 Takeaway Challenge
 ==================
 ```
