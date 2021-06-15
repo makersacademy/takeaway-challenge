@@ -47,6 +47,8 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+- -------> Story Breakdown <-----
+
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
@@ -81,3 +83,14 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) when you run your tests.
+
+
+
+
+OOD DIAGRAM LOGIC:
+---------------------
+
+Takeaway challenge
+
+
+
