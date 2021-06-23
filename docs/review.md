@@ -15,7 +15,7 @@ Please do include all the gems you use in your Gemfile. This is an important cou
 
 ## README updated
 
-Every good code base will have its README updated following the [contribution notes](https://github.com/makersacademy/takeaway-challenge/blob/master/CONTRIBUTING.md), i.e.
+Every good code base will have its README updated following the [contribution notes](https://github.com/makersacademy/takeaway-challenge/blob/main/CONTRIBUTING.md), i.e.
 
 * Make sure you have written your own README that briefly explains your approach to solving the challenge.
 * If your code isn't finished it's not ideal but acceptable as long as you explain in your README where you got to and how you would plan to finish the challenge.
@@ -52,7 +52,7 @@ The README is a great place to show the full story of how your app is used (from
 
 ## Tests should test real behaviours not stubs
 
-You may have read about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#avoid-vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
+You may have read about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/main/docs/review.md#avoid-vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
 
 ```ruby
 it 'sends a payment confirmation text message' do
@@ -63,9 +63,9 @@ end
 
 In the above the `expect(subject).to receive(:send_sms)` command "stubs" out any existing method called `send_sms` on the subject.  Using `expect` instead of `allow` means that at the end of the it block, RSpec checks that subject did receive the message `send_sms`, which we have ensured by calling `subject.send_sms`, so this test passes without ever touching the application code.
 
-You can confirm this test is 'vacuous' by checking that the [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) doesn't change when you remove it.
+You can confirm this test is 'vacuous' by checking that the [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) doesn't change when you remove it.
 
-In general you shouldn't be stubbing out behaviour on the object under test.  The two key exceptions are when you have randomness or a 3rd party API.  We saw how to [stub random behaviour](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#handling-randomness-in-tests) in the airport challenge code review, but how do we stub a 3rd party API?  See the next section.
+In general you shouldn't be stubbing out behaviour on the object under test.  The two key exceptions are when you have randomness or a 3rd party API.  We saw how to [stub random behaviour](https://github.com/makersacademy/airport_challenge/blob/main/docs/review.md#handling-randomness-in-tests) in the airport challenge code review, but how do we stub a 3rd party API?  See the next section.
 
 ## Stubbing the Twilio API
 
@@ -105,7 +105,7 @@ describe Takeaway
 end
 ```
 
-This ensures that Takeaway#complete_order gets some test coverage and that no SMS will be sent by our tests.  This is acceptable, but we still don't have very good test coverage.  See the pill on [levels of stubbing 3rd party services](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md) for some alternatives.
+This ensures that Takeaway#complete_order gets some test coverage and that no SMS will be sent by our tests.  This is acceptable, but we still don't have very good test coverage.  See the pill on [levels of stubbing 3rd party services](https://github.com/makersacademy/course/blob/main/pills/levels_of_stubbing.md) for some alternatives.
 
 ## Unit vs Integration tests
 
