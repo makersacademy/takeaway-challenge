@@ -1,3 +1,65 @@
+## Project title
+* Takeaway Challenge
+
+## Motivation
+
+Client request for a program that can perform the following functions.
+* Print a list of dishes with prices.
+* Select dishes from the list using numbers.
+* Check the number of dishes and the cost.
+* Receive a thank you message with the delivery time.
+* Bonus: Send a text message with the thank you message and the deliveery time.
+
+## Build status
+* Initial files being created and dependencies installed
+* Wrote the menu_spec.rb file that contained a tests.
+* Created the menu.rb file with the menu class that holds the dishes. 
+* Wrote the takeaway_spec.rb file that contained the tests. This also has a double for the dishes.
+* Created the takeaway.rb file that has the functionality to print the menu, select dishes with a number and confirm the order with a text.
+* This code passes all the allocated tests and the text message system worked. Howeverv, I do not know how to write a test for the send_text method.
+* My account details for the send_text method have been removed.
+
+## Code style
+* Test-driven development
+* Pair programming (Navigator/Driver)
+
+## Tech/framework used
+* VS Code (Live Share)
+* Twilio API
+* GitHub
+* Rspec
+* Bundler
+* Zoom
+
+## Built with
+* Ruby
+* Twilio API
+* Rspec
+
+## Installation
+* Run bundle
+* Create and and sign into your Twilio account
+* Follow the steps Twilio provide you with
+* Replace the require details as per the comments in the code.
+* Test in irb
+* You should receive a text message 
+
+## Tests
+* Initially ran the test in irb as I thought the program should run.
+* Wrote the spec tests for each file.
+* Ran tests to respond to the 2 classes.
+* Ran tests on methods.
+* All errors were fixed as the tests and the code was developed.
+
+## How to use?
+* Create a new takeaway order - takeaway = Takeaway
+* Select your dishes - takeaway.select(3); takeaway.select(4)
+* Send a text message confirming the order - takeaway.send_text
+
+## Credits
+* JP Ferreira
+* Dewald Viljoen
+
 Takeaway Challenge
 ==================
 ```
