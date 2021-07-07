@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Usage: tdd.test [object-name]
+
+USAGE='usage:\ttdd.test [object-name]'
+
+# TODO Logic needs to add case to print USAGE
+
+if [[ "$1" ]] ; then
+  OBJECT_NAME=$1
+fi
+
+clear
+echo -e "\n-- Running tdd.feature-test $OBJECT_NAME --\n"
+./tdd.feature-test $OBJECT_NAME
+echo -e "\n-- Running tdd.unit-test $OBJECT_NAME --\n"
+./tdd.unit-test $OBJECT_NAME
+echo -e "\n-- Finished --\n"

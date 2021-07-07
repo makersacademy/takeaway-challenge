@@ -1,0 +1,102 @@
+# Run feature-test.irb
+require './lib/menu.rb'
+require './lib/dish.rb'
+require './lib/order.rb'
+require './lib/textmessage.rb'
+
+# Set up world
+
+dish_1 = Dish.new(1, 2.00, "Plain rice")
+dish_2 = Dish.new(2, 3.00, "Special rice")
+dish_3 = Dish.new(3, 113.00, "Very Special rice")
+dish_4 = Dish.new(4, 0.01, "Unspecial rice")
+
+# Environment setup, ready to test User Stories
+
+# Begin Story 1:
+# As a customer
+# So that I can check if I want to order something
+# I would like to see a list of dishes with prices
+
+loop do
+# Press Control-C to continue
+end
+
+menu_1 = Menu.new
+menu_1.add(dish_1)
+menu_1.add(dish_2)
+menu_1.add(dish_3)
+
+# Should return all dishes added as array
+menu_1.dishes
+
+# End Story 1:
+
+loop do
+# Press Control-C to continue
+end
+
+# Begin Story 2:
+# As a customer
+# So that I can order the meal I want
+# I would like to be able to select some number of several available dishes
+
+loop do
+# Press Control-C to continue
+end
+
+order_1 = Order.new 
+
+order_1.add(1, menu_1)
+order_1.add(1, menu_1)
+order_1.add(2, menu_1)
+
+#Should fail, dish not on menu
+order_1.add(5, menu_1)
+
+# Should return array of dish numbers added to order
+order_1.order
+
+# End Story 2:
+
+loop do
+# Press Control-C to continue
+end
+
+# Begin Story 3:
+# As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+menu_1.dishes
+
+order_1.order
+
+# Should return total cost of order: 7.0
+order_1.total(menu_1)
+
+# End Story 3:
+
+loop do
+# Press Control-C to continue
+end
+
+# Begin Story 4:
+# As a customer
+# So that I am reassured that my order will be delivered on time
+# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+text_message = TextMessage.new
+
+order_1.time
+
+# Should print confirmation message with delivery time 1 hour after order last update time
+text_message.send_message(order_1)
+
+# End Story 4:
+
+
+# End of feature-test.irb
+loop do
+# Press Control-C to continue
+end
