@@ -1,3 +1,34 @@
+# Takeaway Challenge
+
+A programme to allow a user to view a restaurant menu, create & place an order, and receive delivery time notification via text message.
+
+## Getting started
+
+`git clone https://github.com/tristanlangford/takeaway-challenge`
+`bundle`
+`bundle install`
+
+## Usage
+
+`irb -r ./lib/restaurant` (e.g. `rackup` or `rails s`)
+Navigate to `http://localhost:4567/`
+
+
+## Running tests
+
+`rspec`
+
+## Approach
+
+Followed TDD and had a specific focus on Cohesion, learning to breakdown classes into a number of classes, and SRP on methods & classes.
+Started with the two elements of viewing menu & creating an order. Had them in the restaurant class, then created the menu & order classes by breaking the restaurant class down. Then created the delivery & text message class to implement the text message notification element of the programme.
+Included a small element of user input on confirming the order, however apart from that assumed the user would know how to use the code via irb.
+
+Assumptions:
+- No need to test Twilio API(TextMessage class)
+
+## The Challenge
+
 Takeaway Challenge
 ==================
 ```
