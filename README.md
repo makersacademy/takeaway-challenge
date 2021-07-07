@@ -1,5 +1,8 @@
 Takeaway Challenge
 ==================
+I had very limited time to complete this challenge. I plan on completing it tonight
+when I have a little more time.
+
 ```
                             _________
               r==           |       |
@@ -13,6 +16,9 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+
+I had very limited time to complete this challenge. I plan on completing it tonight
+when I have a little more time.
 
 Instructions
 -------
