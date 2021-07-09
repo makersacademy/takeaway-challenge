@@ -76,4 +76,31 @@ describe("Takeaway", () => {
     });
   });
 
+  // As a customer
+  // So that I am reassured that my order will be delivered on time
+  // I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  describe('.order()', () => {
+    it('sends a text such as "Thank you! Your order was placed and will be delivered before 18:52" after an order', () => {
+      ggDelicatessen.addToMenu(pizza);
+      ggDelicatessen.addToMenu(burger);
+      ggDelicatessen.addToMenu(chocolateFugdeCake);
+      ggDelicatessen.addToCart(1);
+      ggDelicatessen.addToCart(2);
+      expect(ggDelicatessen.order()).toEqual(`Thank you! Your order was placed and will be delivered before ${ggDelicatessen._getDeliveryTime(new Date())}h`);
+    });
+  });
+
+  describe('._getDeliveryTime()', () => {
+    it('provides the correct delivery time when it\'s 23h', () => {
+      let orderDateTime = new Date();
+      orderDateTime.setHours(23);      
+      expect(ggDelicatessen._getDeliveryTime(orderDateTime)).toEqual(`00:${orderDateTime.getMinutes()}`);
+    });
+
+    it('provides the correct delivery time when it\'s not 23h', () => {
+      let orderDateTime = new Date();
+      orderDateTime.setHours(12);      
+      expect(ggDelicatessen._getDeliveryTime(orderDateTime)).toEqual(`13:${orderDateTime.getMinutes()}`);
+    });
+  });
 });

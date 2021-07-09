@@ -25,4 +25,16 @@ class Takeaway {
       return dish.getPrice() + total;
     }, 0);
   }
+
+  order() {
+    return `Thank you! Your order was placed and will be delivered before ${this._getDeliveryTime(new Date())}h`;
+  }
+
+  _getDeliveryTime(orderTime) {
+    let deliveryTime = (orderTime.getHours() === 23) 
+        ? `00:${orderTime.getMinutes()}` 
+        : `${orderTime.getHours() + 1}:${orderTime.getMinutes()}`;
+        
+    return deliveryTime;
+  }
 }
