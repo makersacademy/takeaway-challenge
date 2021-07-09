@@ -23,6 +23,10 @@ describe("Takeaway", () => {
   // I would like to see a list of dishes with prices
   describe('.getMenu()', () => {
     it('returns a list of dishes with prices', () => {
+      spyOn(pizza, "getPrice").and.returnValue(12);
+      spyOn(burger, "getPrice").and.returnValue(8.5);
+      spyOn(chocolateFugdeCake, "getPrice").and.returnValue(7);
+
       ggDelicatessen.addToMenu(pizza);
       ggDelicatessen.addToMenu(burger);
       ggDelicatessen.addToMenu(chocolateFugdeCake);
@@ -67,6 +71,10 @@ describe("Takeaway", () => {
   // I would like to check that the total I have been given matches the sum of the various dishes in my order
   describe('.getBill()', () => {
     it('returns the total bill that matches the sum of the various dishes in an order', () => {
+      spyOn(pizza, "getPrice").and.returnValue(12);
+      spyOn(burger, "getPrice").and.returnValue(8.5);
+      spyOn(chocolateFugdeCake, "getPrice").and.returnValue(7);
+      
       ggDelicatessen.addToMenu(pizza);
       ggDelicatessen.addToMenu(burger);
       ggDelicatessen.addToMenu(chocolateFugdeCake);
