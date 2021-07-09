@@ -19,4 +19,10 @@ class Takeaway {
   getCart() {
     return this.cart;
   }
+
+  getBill() {
+    return this.cart.reduce((total, dish) => {
+      return dish.getPrice() + total;
+    }, 0);
+  }
 }

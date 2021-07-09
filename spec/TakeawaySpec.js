@@ -61,4 +61,19 @@ describe("Takeaway", () => {
       expect(ggDelicatessen.getCart()).toEqual([burger, chocolateFugdeCake]);
     });
   });
+
+  // As a customer
+  // So that I can verify that my order is correct
+  // I would like to check that the total I have been given matches the sum of the various dishes in my order
+  describe('.getBill()', () => {
+    it('returns the total bill that matches the sum of the various dishes in an order', () => {
+      ggDelicatessen.addToMenu(pizza);
+      ggDelicatessen.addToMenu(burger);
+      ggDelicatessen.addToMenu(chocolateFugdeCake);
+      ggDelicatessen.addToCart(1);
+      ggDelicatessen.addToCart(2);
+      expect(ggDelicatessen.getBill()).toEqual(15.5);
+    });
+  });
+
 });
