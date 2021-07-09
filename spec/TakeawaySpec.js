@@ -39,4 +39,26 @@ describe("Takeaway", () => {
       expect(menu[2] instanceof Dish).toBe(true);
     });
   });
+
+  // As a customer
+  // So that I can order the meal I want
+  // I would like to be able to select some number of several available dishes
+  describe('.addToCart()', () => {
+    it('adds a Dish that was selected to the cart', () => {
+      ggDelicatessen.addToMenu(pizza);
+      ggDelicatessen.addToCart(0);
+      expect(ggDelicatessen.getCart()).toContain(pizza);
+    });
+  });
+
+  describe('.getCart()', () => {
+    it('returns some number of selected dishes among several available ones', () => {
+      ggDelicatessen.addToMenu(pizza);
+      ggDelicatessen.addToMenu(burger);
+      ggDelicatessen.addToMenu(chocolateFugdeCake);
+      ggDelicatessen.addToCart(1);
+      ggDelicatessen.addToCart(2);
+      expect(ggDelicatessen.getCart()).toEqual([burger, chocolateFugdeCake]);
+    });
+  });
 });
