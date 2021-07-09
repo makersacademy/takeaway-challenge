@@ -1,0 +1,14 @@
+body {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5%;
+  background-color: orangered;
+  color: white;
+  font-weight: bold;
+}
