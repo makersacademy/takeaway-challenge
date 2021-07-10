@@ -1,15 +1,18 @@
 require 'menu'
 
 describe Menu do
+  let(:one_salmon_output) { "Our tasty menu:\nSalmon : £10.00\n" }
+  let(:order) {double :order}
+  let(:testmenu) { Menu.new({ salmon: 10 }) }
   it { is_expected.to respond_to(:print_dishes) }
+  it { is_expected.to respond_to(:view_order)}
   it 'Has a hash of dishes' do
     expect(subject.menu).to be_instance_of(Hash)
   end
 
   describe '#print_dishes' do
     it 'prints a list of dishes and prices' do
-      testmenu = Menu.new({ salmon: 10 })
-      expect { testmenu.print_dishes }.to output("Our tasty menu:\nSalmon : £10.00\n").to_stdout
+      expect { testmenu.print_dishes }.to output(one_salmon_output).to_stdout
     end
   end
 
@@ -21,5 +24,4 @@ describe Menu do
       expect(subject.order.basket).to include(salmon: 5)
     end
   end
-
 end

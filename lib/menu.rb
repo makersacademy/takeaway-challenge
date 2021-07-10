@@ -34,4 +34,13 @@ class Menu
   def existing_order
     @order ||= Order.new
   end
+
+  def view_order
+    @order.verify
+  end
+
+  def confirm_order
+    view_order
+    @order.confirm
+  end
 end

@@ -1,3 +1,5 @@
+require 'sms_confirmation'
+
 class Order
   attr_reader :basket
   def initialize
@@ -32,5 +34,10 @@ class Order
     sum = 0
     @basket.each { |hash| sum += hash.values.sum }
     sum
+  end
+
+  def confirm
+    text = Text.new
+    text.send
   end
 end

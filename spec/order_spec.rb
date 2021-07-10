@@ -32,4 +32,12 @@ describe Order do
       expect { subject.verify }.to output("Your current basket:\nSalmon : £10.00\nSalmon : £10.00\nSalmon : £10.00\nTotal: £30.00\n").to_stdout
     end
   end
+
+  describe 'confirm' do
+    it ' returns a text confirmation' do
+      allow(subject).to receive(:confirm).and_return('Foo')
+      expect(subject.confirm).to eq('Foo')
+    end
+  end
+
 end
