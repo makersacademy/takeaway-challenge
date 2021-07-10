@@ -15,6 +15,11 @@ attr_reader :selected_items
   end
 
   def select(item)
-      @selected_items << { item => @options[item] }
-  end 
+    @selected_items << { item => @options[item] }
+  end
+  
+  def total
+    selected_items.reduce( {}, :merge).values.sum
+  end
+
 end
