@@ -5,7 +5,7 @@ class Order
   end
 
   def add_item(dish, quantity = 1)
-    quantity.times { @basket << dish}
+    quantity.times { @basket << dish }
   end
 
   def verify
@@ -15,13 +15,14 @@ class Order
 
   def order_print
     puts 'Your current basket:'
-    @basket.map { |item| dish_print(item)}
+    @basket.map { |item| dish_print(item) }
   end
 
   def dish_print(item)
-    item.map { |dish, price| puts "#{dish.to_s.gsub(/_/, ' ').capitalize } : £#{sprintf "%.2f", price}" }
+    item.map { |dish, price| 
+      puts "#{dish.to_s.gsub(/_/, ' ').capitalize} : £#{sprintf "%.2f", price}" 
+    }
   end
-
 
   def total_print
     puts "Total: £#{sprintf "%.2f", total_calculate}"
@@ -29,7 +30,7 @@ class Order
 
   def total_calculate
     sum = 0
-    @basket.each { |hash| sum += hash.values.sum}
+    @basket.each { |hash| sum += hash.values.sum }
     sum
   end
 end

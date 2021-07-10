@@ -1,7 +1,7 @@
 require 'order'
 
 class Menu
-  attr_reader :menu
+  attr_reader :menu, :order
   NORMAL_MENU = {
     salmon_set: 10,
     tuna_set: 10,
@@ -16,15 +16,19 @@ class Menu
   }
   def initialize(menu = NORMAL_MENU)
     @menu = menu
+    @order
   end
 
   def print_dishes
     puts 'Our tasty menu:'
-    @menu.map { |dish, price| puts "#{dish.to_s.gsub(/_/, ' ').capitalize } : £#{sprintf "%.2f", price}" }
+    @menu.map { |dish, price| 
+      puts "#{dish.to_s.gsub(/_/, ' ').capitalize} : £#{sprintf "%.2f", price}" 
+    }
   end
 
   def select_dishes(dish, quantity)
-    existing_order 
+    existing_order
+    @order.add_item(dish, quantity)
   end
 
   def existing_order
