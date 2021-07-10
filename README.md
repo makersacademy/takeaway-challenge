@@ -23,7 +23,7 @@ Takeaway Challenge
  4. Create lib dir with Menu and Order files, and respective spec files
  5. Feature/unit tested existence of a menu class. Created menu class to pass.
  6. Feature/unit test for checking menu has a hash, and responded to print_dishes. Fulfilled by creating instance var menu equal to a constant hash, and empty print_dishes meth
- 5. Feature/unit test that print_dishes outputs dishes. Created a constant menu that menu classes default to (but can take other menus as init argument), as failed to use allow rspec syntax to force menu to return a smaller hash of dishes for menu.
+ 5. Feature/unit test that print_dishes outputs dishes. Created a constant menu that menu classes default to (but can take other menus as init argument), as failed to use allow rspec syntax to force menu to return a smaller hash of dishes for menu. Used .map loop to produce output of dishes, with regex (gsub and sprintf) to format hash key and values for output. 
 
 Instructions
 -------

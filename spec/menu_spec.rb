@@ -11,7 +11,9 @@ describe Menu do
       testmenu = Menu.new({salmon: 10})
       expect{ testmenu.print_dishes }.to output("Our tasty menu:\nSalmon : £10.00\n").to_stdout
     end
+  end
 
-    
+  describe '#select_dishes' do
+    it { is_expected.to respond_to(:select_dishes).with(2).arguments }
   end
 end

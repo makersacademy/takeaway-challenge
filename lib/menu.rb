@@ -20,4 +20,8 @@ class Menu
     puts 'Our tasty menu:'
     @menu.map { |dish, price| puts "#{dish.to_s.gsub(/_/, ' ').capitalize } : £#{sprintf "%.2f", price}" }
   end
+
+  def select_dishes(dish, quantity)
+
+  end
 end
