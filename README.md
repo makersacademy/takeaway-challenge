@@ -36,7 +36,7 @@ I would like to see a list of dishes with prices
 
 * Class Diagram:
  
- |     takeaway        |
+ |     Takeaway        |
  | :-------------------: |
  |   + menu: hash        |
  |   + display_menu()     |
@@ -46,7 +46,23 @@ I would like to see a list of dishes with prices
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
 
+|   Objects |   Messages|   
+| :-------: | :-------: |
+| customer   |            |
+ | menu  | select basket  |
+
+ * Interactions:  menu <-- customer --> basket
+
+* Class Diagram:
+
+ |     Menu       |
+ | :-------------------: |
+ |   + dishes: hash        |
+ |   + select_basket()     |
+ 
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
