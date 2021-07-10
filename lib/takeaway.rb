@@ -5,9 +5,7 @@ class Takeaway
 
   def initialize
     @menu = Menu.new
-    @dishes = Menu::MENU
-    p @menu
-    p @dishes
+    @dishes = {}
   end
 
   def read_menu
