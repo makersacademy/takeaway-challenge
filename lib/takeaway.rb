@@ -1,4 +1,4 @@
-
+require 'order'
 
 class Takeaway
 	
@@ -24,4 +24,3 @@ class Takeaway
 
 
 end
-
