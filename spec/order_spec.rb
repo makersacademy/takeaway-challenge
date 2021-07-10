@@ -6,9 +6,14 @@ describe Order do
   end
 
   describe '#add_item' do
-    it 'pushes item into basket' do
+    it 'pushes single item into basket' do
       subject.add_item({:salmon => 5}, 1)
       expect(subject.basket).to eq([{salmon: 5}])
+    end
+
+    it 'pushes multiple items into basket' do
+      subject.add_item({:salmon => 5}, 3)
+      expect(subject.basket).to eq([{salmon: 5}, {salmon: 5}, {salmon: 5}])
     end
   end
 end
