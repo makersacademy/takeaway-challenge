@@ -1,5 +1,4 @@
 require 'sms_confirmation'
-require 'dotenv/load'
 require 'timecop'
 
 describe Text do
@@ -11,13 +10,20 @@ describe Text do
   end
 
   describe '#generate_message' do
-    let(:client) { double(messages: 'foo')}
+    let(:client) { double(:client, messages: messages)}
     let(:subject) { described_class.new(client)}
-    let(:messages) { double(:messages)}
-    
-    xit 'does a thing' do
-      allow(subject).to receive(:generate_message) { foo }
-      expect(subject.messages).to have_received(:create).with('foo')
+
+    it 'is passed correctly to send' do
+      allow(subject).to receive(:generate_message) { 'foo' }
+      subject.send
+      expect(messages).to have_received(:create).with('foo')
+      expect(subject.generate_message).to eq('foo')
+    end
+
+    it 'correctly pulls env vars' do
+      ENV['SENDING_NUM'] = '+1234567890'
+      ENV['RECEIVING_NUM'] = '+0987654321'
+      expect(subject.generate_message).to include(from:"+1234567890")
     end
   end
 

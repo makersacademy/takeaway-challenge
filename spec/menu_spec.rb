@@ -24,4 +24,11 @@ describe Menu do
       expect(subject.order.basket).to include(salmon: 5)
     end
   end
+
+  describe '#view_order' do
+    it 'prints a list of orders' do
+      subject.select_dishes({salmon: 10}, 1)
+      expect{ subject.view_order }.to output("Your current basket:\nSalmon : £10.00\nTotal: £10.00\n").to_stdout
+    end
+  end
 end
