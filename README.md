@@ -23,7 +23,10 @@ Takeaway Challenge
  4. Create lib dir with Menu and Order files, and respective spec files
  5. Feature/unit tested existence of a menu class. Created menu class to pass.
  6. Feature/unit test for checking menu has a hash, and responded to print_dishes. Fulfilled by creating instance var menu equal to a constant hash, and empty print_dishes meth
- 5. Feature/unit test that print_dishes outputs dishes. Created a constant menu that menu classes default to (but can take other menus as init argument), as failed to use allow rspec syntax to force menu to return a smaller hash of dishes for menu. Used .map loop to produce output of dishes, with regex (gsub and sprintf) to format hash key and values for output. 
+ 7. Feature/unit test that print_dishes outputs dishes. Created a constant menu that menu classes default to (but can take other menus as init argument), as failed to use allow rspec syntax to force menu to return a smaller hash of dishes for menu. Used .map loop to produce output of dishes, with regex (gsub and sprintf) to format hash key and values for output.
+ 8. Feature/unit tested select dish method. Create method to pass tests. Also tested that the method takes two arguments, as need to pass these into order.
+ 9. Feature/unit tested the creation of an order class, and made sure it was initialised to empty array. Then tested + created a feature that allowed it to take dishes passed onto it from the Menu class and store in basket. 
+ 10. Feature/unit tested a verify method for the Order class, that would print a list of items in the basket including prices, and print the total price. Decided to split these responsibilities into two more methods; dish_print (for dishes and their prices) and total_print (for working out and printing the total). 
 
 Instructions
 -------

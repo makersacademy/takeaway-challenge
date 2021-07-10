@@ -22,12 +22,14 @@ describe Order do
   describe '#verify' do
     it 'prints current basket contents in a readable format' do
       add_3_salmons
-      expect{ subject.verify }.to output("Your current basket:\nSalmon : £10.00\nSalmon : £10.00\nSalmon : £10.00\n").to_stdout
+      expect{ subject.verify }.to output("Your current basket:\nSalmon : £10.00\nSalmon : £10.00\nSalmon : £10.00\nTotal: £30.00\n").to_stdout
     end
   end
 
   describe '#total' do
-    it 'returns the total cost of items in the basket' do
+    xit 'returns the total cost of items in the basket' do
+      add_3_salmons
+      expect{ subject}
     end
   end
 end

@@ -24,5 +24,12 @@ class Order
 
 
   def total_print
+    puts "Total: £#{sprintf "%.2f", total_calculate}"
+  end
+
+  def total_calculate
+    sum = 0
+    @basket.each { |hash| sum += hash.values.sum}
+    sum
   end
 end
