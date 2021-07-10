@@ -1,6 +1,7 @@
 require "menu"
 require "dish"
 
+
 describe "Menu" do 
     describe "#initialize" do
         it "Creates a Menu Object with a name" do
@@ -10,7 +11,7 @@ describe "Menu" do
 
         it "Creates an empty array for the Menu" do
             menu = Menu.new("Menu_July")
-            expect(menu.current).to eq []
+            expect(menu.current_menu).to eq []
         end
     end
 
@@ -19,7 +20,7 @@ describe "Menu" do
             dish = Dish.new("Pasta", 2)
             menu = Menu.new("Menu_July")
             menu.add(dish)
-            expect(menu.current).to eq [dish]
+            expect(menu.current_menu).to eq [dish]
         end
 
         it "raises an error when dish already on the menu" do
@@ -36,7 +37,7 @@ describe "Menu" do
             menu = Menu.new("Menu_July")
             menu.add(dish)
             menu.remove(dish)
-            expect(menu.current).to eq []
+            expect(menu.current_menu).to eq []
         end
     
         it "raises an error which the dish is not on the menu" do
@@ -51,7 +52,7 @@ describe "Menu" do
             dish = Dish.new("Pasta", 2)
             menu = Menu.new("Menu_July")
             menu.add(dish)
-            expect { menu.view }.to output("Name: #{dish.name}, Price: #{dish.price}$\n").to_stdout
+            expect { menu.view }.to output("1. Name: #{dish.name}, Price: #{dish.price}$\n").to_stdout
         end
     end
 
