@@ -15,5 +15,11 @@ describe Menu do
 
   describe '#select_dishes' do
     it { is_expected.to respond_to(:select_dishes).with(2).arguments }
+
+    it 'returns an order object when selected' do
+      allow(Order).to receive(:new).and_return('foo')
+      expect(subject.select_dishes('food', 2)).to eq('foo')
+    end
   end
+
 end

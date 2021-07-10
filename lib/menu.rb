@@ -1,3 +1,5 @@
+require 'order'
+
 class Menu
   attr_reader :menu
   NORMAL_MENU = {
@@ -22,6 +24,10 @@ class Menu
   end
 
   def select_dishes(dish, quantity)
+    existing_order 
+  end
 
+  def existing_order
+    @order ||= Order.new
   end
 end
