@@ -1,14 +1,38 @@
-class Takeaway
-attr_reader :menu
-    def initialize        
-        @menu = [{item: 'chicken', price: 4}, 
-            {item: 'beef', price: 6}, 
-            {item: 'pork', price: 5}, 
-            {item: 'vegetable', price: 3}]
-    end
+require_relative 'menu'
 
-    def view_menu
-        return @menu
+class Takeaway
+  attr_reader :menu
+  def initialize(menu)        
+    @menu = menu
+  end
+
+  def welcome_output
+    puts 'Welcome to the Takeaway, what would you like to do?'
+  end
+
+  def option_output
+    puts 'Enter 1 to view menu, 2 to order food.'
+  end
+
+  def receive_choice
+    return gets.chomp.to_i
+  end
+
+  def select_choice(choice)
+    case choice
+    when 1 
+      puts view_menu
+    when 2
+        # order food
     end
+  end
+
+  def view_menu
+    return @menu.menu_items
+  end
 
 end
+
+# welcome_output
+# option_output
+# select_choice(receive_choice)
