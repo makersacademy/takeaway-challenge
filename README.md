@@ -27,7 +27,19 @@ Takeaway Challenge
  8. Feature/unit tested select dish method. Create method to pass tests. Also tested that the method takes two arguments, as need to pass these into order.
  9. Feature/unit tested the creation of an order class, and made sure it was initialised to empty array. Then tested + created a feature that allowed it to take dishes passed onto it from the Menu class and store in basket. 
  10. Feature/unit tested a verify method for the Order class, that would print a list of items in the basket including prices, and print the total price. Decided to split these responsibilities into two more methods; dish_print (for dishes and their prices) and total_print (for working out and printing the total). 
-
+11. Created code for price summary.
+12. Created test for text method in order.
+13. Created text object to satisfy text method. New class that utilises twilio API
+14. Created twilio trial account, and gained access to twilio trial number based in the USA
+15. Added twilio gem to gemfile and installed using bundle
+16. Modified Text class init to utilise twilio client
+17. Created ignored local project environment variable (ignored by git) to store twilio credentials
+18. Modified text tests now I understood what final class would look like. Modified tests using mocks to ensure that RSpec runs would not fire off live texts and consume twilio trial balance
+19. With fixed tests, created a method that generated a text message based on texts and current time
+20. Noticed that time test was testing state (i.e local computer time), not method. Installed gem Timecop and used its functionality to freeze time, ensuring I could use Text's time function (used within message generator) within my test without referencing logic used in actual method.
+21. Fixed message tests by stubbing environmental variables
+22. 2 lines of test missing on Menu (.view_order). Testing is mostly covered in the order_spec tests, but wrote equivalent tests anyway.
+23. Noticed that program was only 97% test coverage. Earmarked final two tests for attention the next day.
 Instructions
 -------
 
