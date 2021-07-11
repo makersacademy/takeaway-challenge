@@ -32,6 +32,10 @@ class Order
     print_total
   end
 
+  def text_confirmation
+    Text.new.text_confirmation
+  end
+
   private 
 
   def not_on_menu?(item)

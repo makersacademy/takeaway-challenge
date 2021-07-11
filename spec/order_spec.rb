@@ -57,5 +57,12 @@ describe Order do
     end
   end
 
+  describe '#text_confirmation' do
+      it 'is an instance of Text class' do
+        allow(order).to receive(:text_confirmation) { 'Message' }
+        expect(order.text_confirmation).to eq 'Message'
+      end
+  end   
+
  
 end
