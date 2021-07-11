@@ -34,18 +34,26 @@ describe Order do
     end
   end
 
-  describe '#calculate_total' do
+  describe '#print_total' do
     it 'calculates the total of all dishes' do
       order.add_item('Bruschetta', 3)
-      expect(order.calculate_total).to eq 15
+      expect { order.print_total }.to output("Your total is: £15\n").to_stdout
     end
   end 
 
   describe '#print_order' do
+    it 'prints the order' do
+        order.add_item('Bruschetta')
+        order.add_item('Garlic Bread')
+        expect { order.print_order }.to output("Your order:\nBruschetta: £5\nGarlic Bread: £4\n").to_stdout
+      end
+    end
+
+  describe '#verify_order' do
     it 'prints order and the total' do
       order.add_item('Bruschetta')
       order.add_item('Garlic Bread')
-      expect { order.print_order }.to output("Your order:\nBruschetta: £5\nGarlic Bread: £4\nYour total is: £9\n").to_stdout
+      expect { order.verify_order }.to output("Your order:\nBruschetta: £5\nGarlic Bread: £4\nYour total is: £9\n").to_stdout
     end
   end
 

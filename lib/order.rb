@@ -18,19 +18,17 @@ class Order
     quantity.times { @order << find_item(item) }
   end
 
-  def calculate_total
-    total = 0
-    @order.each { |h| total += h.values.sum }
-    total
-  end
-
   def print_total
     puts "Your total is: £#{calculate_total}"
   end
 
   def print_order
     puts 'Your order:'
-    @order.map { |hash| hash.map { |dish, price| puts "#{dish}: £#{price}" } }
+    @order.map { |items| print_items(items) }
+  end
+
+  def verify_order
+    print_order
     print_total
   end
 
@@ -42,6 +40,16 @@ class Order
 
   def find_item(item)
     @menu.menu.select { |dish, price| dish == item }
+  end
+
+  def calculate_total
+    total = 0
+    @order.each { |h| total += h.values.sum }
+    total
+  end
+
+  def print_items(items)
+    items.map { |dish, price| puts "#{dish}: £#{price}" }
   end
 
 end
