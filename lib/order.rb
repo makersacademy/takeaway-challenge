@@ -15,6 +15,7 @@ class Order
 
   def add_item(item, quantity = 1)
     raise 'This item is not on the menu' if not_on_menu?(item)
+
     quantity.times { @order << find_item(item) }
   end
 
@@ -39,11 +40,11 @@ class Order
   private 
 
   def not_on_menu?(item)
-    @menu.menu.select { |dish, price| dish == item }.length < 1
+    find_item(item).length < 1
   end
 
   def find_item(item)
-    @menu.menu.select { |dish, price| dish == item }
+    @menu.menu.select { |dish, _| dish == item }
   end
 
   def calculate_total

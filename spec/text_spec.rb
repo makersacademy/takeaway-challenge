@@ -15,9 +15,9 @@ describe Text do
   # let messages double receive .create('Message')
     let(:messages) { double(create: 'Message') }
   # let client double receive messages method (with messages double)
-    let(:client) { double(:client, messages: messages)}
+    let(:client) { double(:client, messages: messages) }
    # let the subject equal a new instance with @client = client
-    let(:subject) { described_class.new(client)}
+    let(:subject) { described_class.new(client) }
 
     it 'it holds a message' do
       allow(subject).to receive(:message) { 'Message' }
@@ -27,7 +27,7 @@ describe Text do
     it 'reads environmental variables' do
       ENV['INCOMING'] = '1111111'
       ENV['OUTGOING'] = '2222222'
-      expect(subject.message).to include(from:"2222222")
+      expect(subject.message).to include(from: "2222222")
     end
 
     it 'interacts with text_confirmation' do

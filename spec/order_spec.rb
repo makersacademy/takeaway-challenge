@@ -3,7 +3,7 @@ require 'menu'
 
 describe Order do
 
-  let(:order) {Order.new({'Bruschetta' => 5, 'Garlic Bread' => 4})}
+  let(:order) { Order.new({ 'Bruschetta' => 5, 'Garlic Bread' => 4 }) }
   
   describe '#initialize' do
     it 'initializes with instance of Menu' do
@@ -14,11 +14,11 @@ describe Order do
     end
   end
 
-   describe '#display_menu' do
-     it 'displays given menu' do
-       expect { order.display_menu }.to output("Menu:\nBruschetta: £5\nGarlic Bread: £4\n").to_stdout
-     end
+  describe '#display_menu' do
+    it 'displays given menu' do
+      expect { order.display_menu }.to output("Menu:\nBruschetta: £5\nGarlic Bread: £4\n").to_stdout
     end
+  end
 
   describe '#add_item' do
     it 'raises an error if the item is not on the menu' do
@@ -26,11 +26,11 @@ describe Order do
     end
     it 'adds an item to the order' do
       order.add_item('Bruschetta')
-      expect(order.order).to eq([{'Bruschetta' => 5}])
+      expect(order.order).to eq([{ 'Bruschetta' => 5 }])
     end
     it 'adds a given number of dishes' do
       order.add_item('Bruschetta', 3)
-      expect(order.order).to eq([{'Bruschetta' => 5}, {'Bruschetta' => 5}, {'Bruschetta' => 5}])
+      expect(order.order).to eq([{ 'Bruschetta' => 5 }, { 'Bruschetta' => 5 }, { 'Bruschetta' => 5 }])
     end
   end
 
@@ -43,11 +43,11 @@ describe Order do
 
   describe '#print_order' do
     it 'prints the order' do
-        order.add_item('Bruschetta')
-        order.add_item('Garlic Bread')
-        expect { order.print_order }.to output("Your order:\nBruschetta: £5\nGarlic Bread: £4\n").to_stdout
-      end
+      order.add_item('Bruschetta')
+      order.add_item('Garlic Bread')
+      expect { order.print_order }.to output("Your order:\nBruschetta: £5\nGarlic Bread: £4\n").to_stdout
     end
+  end
 
   describe '#verify_order' do
     it 'prints order and the total' do
@@ -58,10 +58,11 @@ describe Order do
   end
 
   describe '#text_confirmation' do
-      it 'is an instance of Text class' do
-        allow(order).to receive(:text_confirmation) { 'Message' }
-        expect(order.text_confirmation).to eq 'Message'
-      end
+    let(:client) { double(:client) }
+    it 'is an instance of Text class' do
+      allow(order).to receive(:text_confirmation) { Text.new(client) }
+      expect(order.text_confirmation).to be_an_instance_of Text
+    end
   end   
 
  

@@ -1,4 +1,3 @@
-
 class Menu
 
   MENU = {
@@ -16,7 +15,7 @@ class Menu
     'Raspberry Sorbet' => 6
    }
 
-   attr_reader :menu
+  attr_reader :menu
   
   def initialize(menu)
     @menu = menu
@@ -24,7 +23,7 @@ class Menu
   end
 
   def load_menu
-    @menu = MENU if @menu == nil
+    @menu = MENU if @menu.nil?
   end
 
   def display
