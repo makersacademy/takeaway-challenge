@@ -1,12 +1,21 @@
+
 class Order 
 
 	attr_reader :dishes
 
-	def initialize
+	def initialize(menu)
 		@dishes = {}
+		@menu = menu
 	end
 
 	def add(dish, quantity)
+		fail NoItemError, "#{dish.capitalize} ain't on the menu, brother!" unless menu.has_dish?(dish)
 		dishes[dish] = quantity
 	end
+	
+	private
+
+	attr_reader :menu
 end
+
+class NoItemError < StandardError; end
