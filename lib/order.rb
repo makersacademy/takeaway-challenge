@@ -1,21 +1,34 @@
-
 class Order 
 
-	attr_reader :dishes
+	 attr_reader :dishes
 
-	def initialize(menu)
-		@dishes = {}
-		@menu = menu
-	end
+	 def initialize(menu)
+ 		 @dishes = {}
+ 		 @menu = menu
+ 	end
 
-	def add(dish, quantity)
-		fail NoItemError, "#{dish.capitalize} ain't on the menu, brother!" unless menu.has_dish?(dish)
-		dishes[dish] = quantity
-	end
-	
+	 def add(dish, quantity)
+ 		 fail NoItemError, "Sorry, we removed #{dish.capitalize} from the menu due to unpopular demand!" unless menu.has_dish?(dish)
+
+ 		 dishes[dish] = quantity
+ 	end
+
+	 def total
+ 		 items_totals.inject(:+)
+ 	end
+
 	private
 
-	attr_reader :menu
+	 def items_totals
+ 		 dishes.map do |dish, quantity|
+  		  menu.price(dish) * quantity
+  		end
+ 	end
+	
+	
+
+	 attr_reader :menu
+
 end
 
 class NoItemError < StandardError; end
