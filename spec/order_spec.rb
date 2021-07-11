@@ -34,5 +34,11 @@ describe Order do
     end
   end
 
+  # describe '#print_total' do
+  #   it 'prints the total of your order' do
+  #     order.add_dish('Chicken Tacos', 1)
+  #     expect{ order.print_total }.to output("The total for your order is £6\n").to_stdout
+  #   end
+  # end
 
 end
