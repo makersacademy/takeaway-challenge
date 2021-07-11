@@ -13,7 +13,7 @@ describe Text do
 
   describe '#message' do
   # let messages double receive .create('Message')
-    let(:messages) { double(create: 'Message') }
+    let(:messages) { double(:messages, create: 'Message') }
   # let client double receive messages method (with messages double)
     let(:client) { double(:client, messages: messages) }
    # let the subject equal a new instance with @client = client
