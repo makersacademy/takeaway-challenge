@@ -32,7 +32,3 @@ class Takeaway
   end
 
 end
-
-# welcome_output
-# option_output
-# select_choice(receive_choice)
