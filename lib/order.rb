@@ -18,6 +18,10 @@ class Order
     quantity.times { @order << find_dish(dish) }
   end
 
+  def print_total
+    puts "The total for your order is £#{total_cost}"
+  end
+  
   private
 
   def on_menu?(item)
@@ -26,6 +30,12 @@ class Order
 
   def find_dish(item)
     @menu.menu.select { |dish, price| dish == item }
+  end
+
+  def total_cost
+    total = 0
+    @order.each { |price| total += price.values.sum }
+    total
   end
 
 end
