@@ -20,12 +20,12 @@ class Order
 
   private
 
-  def on_menu?(dish)
-    @menu.menu.select { |dish, price| dish == price }.length < 1
+  def on_menu?(item)
+    @menu.menu.select { |dish, price| dish == item }.length < 1
   end
 
-  def find_dish(dish)
-    @menu.menu.select { |dish, price| dish == price }
+  def find_dish(item)
+    @menu.menu.select { |dish, price| dish == item }
   end
 
 end

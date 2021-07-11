@@ -15,4 +15,5 @@ describe Menu do
       expect(subject.menu).to eq Menu::THE_MENU
     end
   end
+
 end
