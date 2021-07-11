@@ -27,6 +27,11 @@ class Order
     @order.map { |dishes| print_dishes(dishes) }
   end
 
+  def checks_order
+    print_order
+    print_total
+  end
+
   private
 
   def on_menu?(item)
