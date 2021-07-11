@@ -13,9 +13,23 @@ class Menu
     'Prawn Crackers' => 1
   }
 
-  def initialize
+  def initialize(dish_class: Dish)
+    @dish_class = dish_class
+    @dishes = []
+    create_dishes
   end
 
   def show
+    display = ""
+    @dishes.each_with_index do |dish, i|
+      display += "#{i + 1}. #{dish.name}  £#{dish.price}\n"
+    end
+    print display
+  end
+
+  private
+
+  def create_dishes
+    DISHES.each { |name, price| @dishes << @dish_class.new(name, price) }
   end
 end
