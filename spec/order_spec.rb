@@ -41,4 +41,11 @@ describe Order do
     end
   end
 
+  describe '#print_order' do
+    it 'prints the order' do
+        order.add_dish('Chicken Tacos')
+        expect { order.print_order }.to output("Your order is:\nChicken Tacos: £6\n").to_stdout
+      end
+    end
+
 end
