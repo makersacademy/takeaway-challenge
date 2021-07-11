@@ -20,11 +20,9 @@ class Menu
   end
 
   def show
-    display = ""
     @dishes.each_with_index do |dish, i|
-      display += "#{i + 1}. #{dish.name}  £#{dish.price}\n"
+      puts "#{i + 1}. #{dish.name}  £#{dish.price}"
     end
-    print display
   end
 
   private
