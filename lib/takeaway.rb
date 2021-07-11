@@ -22,14 +22,16 @@ class Takeaway
   def select_choice(choice)
     case choice
     when 1 
-      puts view_menu
+       view_menu
     when 2
         # order food
     end
   end
 
   def view_menu
-    return @menu.menu_items
+    @menu.menu_items.each { |item| 
+        puts "#{item.name} £#{item.price}"
+    }
   end
 
 end
