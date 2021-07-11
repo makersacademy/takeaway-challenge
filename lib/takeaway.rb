@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'menu_item'
 
 class Takeaway
   attr_reader :menu
@@ -31,4 +32,8 @@ class Takeaway
     return @menu.menu_items
   end
 
+end
+
+def create_my_takeaway
+  return Takeaway.new(Menu.new(MenuItem.new('Item1', 5), MenuItem.new('Item2', 10)))
 end

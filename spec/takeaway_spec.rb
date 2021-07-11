@@ -1,7 +1,9 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:menu) { Menu.new }
+  let(:item1) { MenuItem.new('Item1', 5) }
+  let(:item2) { MenuItem.new('Item2', 10) }
+  let(:menu) { Menu.new(:item1, :item2) }
   let(:takeaway) { Takeaway.new(menu) }
     
   it 'given ... when ... then the user is welcomed' do
