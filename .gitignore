@@ -1,5 +1,10 @@
+.env
+
 /**/.DS_Store
 /coverage
+.gitignore
 
-# Local cache of Rubocop remote config
+# Local cache  of Rubocop remote config
 .rubocop-*
+
+# Environment vars for twilio
