@@ -42,4 +42,16 @@ describe Order do
       expect { subject.review_selection }.to output.to_stdout
     end
   end
+
+  describe '#complete' do
+    let(:text_message) { double :text_message }
+    let(:text_message_class) { double :text_message_class, new: text_message }
+
+    it { is_expected.to respond_to(:complete) }
+
+    it "is expected to send a text message" do
+      expect(text_message_class).to receive(:new)
+      subject.complete(text_message_class: text_message_class)
+    end
+  end
 end

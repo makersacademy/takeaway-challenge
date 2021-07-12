@@ -1,3 +1,5 @@
+require_relative 'text_message'
+
 class Order
   attr_reader :selection
   attr_reader :total
@@ -10,6 +12,7 @@ class Order
 
   def select_dish(name)
     fail 'That dish does not exist.' unless dish_exists?(name)
+
     selected_dish = @menu.dishes.find { |dish| dish.name == name }
     update_total(selected_dish)
     @selection << selected_dish
@@ -19,6 +22,10 @@ class Order
     display = ""
     @selection.each { |dish| display += "#{dish.name} - £#{dish.price}\n" }
     print display + "Your total is £#{@total}\n"
+  end
+
+  def complete(text_message_class: TextMessage)
+    text_message_class.new
   end
 
   private
