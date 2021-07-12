@@ -22,4 +22,12 @@ class Takeaway
     basket.sum_order
   end
 
+  def complete_order(price)
+    send_text("Thanks for your order! Total is £#{price}")
+  end
+
+  def send_text(message)
+    
+  end
+
 end

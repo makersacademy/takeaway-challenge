@@ -26,4 +26,16 @@ RSpec.describe Takeaway do
       expect(subject.read_menu).to eq(Menu::MENU)
     end
   end
+
+  describe '#complete_order' do
+    subject { described_class.new }
+    before do
+      allow(subject).to receive(:send_text)
+    end
+  
+    it 'sends a payment confirmation text message' do
+      expect(subject).to receive(:send_text).with("Thanks for your order! Total is £15.95")
+      subject.complete_order(15.95)
+    end
+  end
 end
