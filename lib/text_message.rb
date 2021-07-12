@@ -3,6 +3,7 @@ require 'twilio-ruby'
 class TextMessage
   ACCOUNT_SID = ENV["TWILIO_ACCOUNT_SID"]
   AUTH_TOKEN = ENV["TWILIO_AUTH_TOKEN"]
+  @message = "Thank you! Your order was placed and will be delivered before #{@time}"
 
   def initialize(client: Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN))
     from = '+447401130560'
@@ -11,7 +12,7 @@ class TextMessage
     client.messages.create(
       from: from,
       to: to,
-      body: "Thank you! Your order was placed and will be delivered before #{@time}"
+      body: @message
     )
   end
 end
