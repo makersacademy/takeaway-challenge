@@ -13,6 +13,7 @@ class Takeaway
 
   def option_output
     puts 'Enter 1 to view menu, 2 to order food.'
+    select_choice(receive_choice)
   end
 
   def receive_choice
@@ -22,15 +23,42 @@ class Takeaway
   def select_choice(choice)
     case choice
     when 1 
-       view_menu
+      view_menu
     when 2
-        # order food
+      puts "Please enter the number of the dishes you would like to select, separated by a comma."
     end
   end
 
+  def input_order
+    return gets.chomp.downcase.split(",")
+  end
+
+  def create_order(order)
+    return order.map { |entry|
+      entry.to_i - 1
+    }
+  end
+
+  def total(order)
+    total = 0
+    order.each { |item_n|
+      total += @menu.menu_items[item_n].price
+    }
+    return total
+  end
+
+  def receipt(order, total)
+    puts "Receipt"
+    order.each { |item_n|
+      puts "#{@menu.menu_items[item_n].name} £#{@menu.menu_items[item_n].price}"
+    }
+    puts "----------------------------"
+    puts "Your order total is £#{total}"
+  end
+
   def view_menu
-    @menu.menu_items.each { |item| 
-        puts "#{item.name} £#{item.price}"
+    @menu.menu_items.each_with_index { |item, index| 
+      puts "#{index + 1}. #{item.name} £#{item.price}"
     }
   end
 
