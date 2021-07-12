@@ -81,6 +81,20 @@ I would like to check that the total I have been given matches the sum of the va
  | :-------------------: |
  |   + dishes: hash        |
  |   + sum()     |
+ 
+ * Feature testing:
+```
+Please select an item from the menu.
+burger
+How many would you like?
+1
+1 burger(s) added to your basket
+{"curry"=>"2", "burger"=>"1"}
+ => {"curry"=>"2", "burger"=>"1"} 
+2.6.5 :005 > t.total
+"Your total for this order is £8.09"
+ => "Your total for this order is £8.09" 
+ ```
 
 ```
 As a customer
