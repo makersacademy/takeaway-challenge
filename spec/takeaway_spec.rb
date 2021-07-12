@@ -23,4 +23,11 @@ describe Takeaway do
  	  total = takeaway.place_order(dishes)
  	  expect(total).to eq(11.00)
  	end
+# 
+	# it "calls place_order on itself invoking deliver method, expecting it to be received by instance variable sms" do
+		# expect(sms).to receive(:deliver)
+		# takeaway.place_order(dishes)
+		# 
+	# end
 end
+
