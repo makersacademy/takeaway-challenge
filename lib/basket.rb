@@ -2,11 +2,11 @@ require_relative 'menu'
 
 class Basket
 
-  attr_reader :dishes
+  attr_reader :dishes, :total
 
   def initialize
     @menu = Menu::MENU
-    @dishes = []
+    @dishes = {}
   end
 
   def place_order
@@ -14,9 +14,14 @@ class Basket
     @item = gets.chomp
     puts "How many would you like?"
     @quantity = gets.chomp
-    hash = { @item => @quantity }
-    @dishes << hash
+    @dishes[@item] = @quantity
     puts "#{@quantity} #{@item}(s) added to your basket"
-    puts @dishes
+    p @dishes
+  end
+
+  def sum_order
+    arr = @dishes.map { |k, v| @menu[k.to_sym] * v.to_f }
+    @total = arr.sum
+    p "Your total for this order is £#{@total}"
   end
 end
