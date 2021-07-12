@@ -8,7 +8,7 @@ class Order
  	end
 
 	 def add(dish, quantity)
- 		 fail NoItemError, "Sorry, we removed #{dish.capitalize} from the menu due to unpopular demand!" unless menu.has_dish?(dish)
+ 		 fail NoItemError, "We're out of #{dish.capitalize}" unless menu.dish?(dish)
 
  		 dishes[dish] = quantity
  	end
@@ -17,18 +17,16 @@ class Order
  		 items_totals.inject(:+)
  	end
 
-	private
+	# private
 
+	
 	 def items_totals
  		 dishes.map do |dish, quantity|
   		  menu.price(dish) * quantity
   		end
  	end
 	
-	
-
 	 attr_reader :menu
-
 end
 
 class NoItemError < StandardError; end

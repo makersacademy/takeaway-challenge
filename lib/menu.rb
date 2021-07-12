@@ -1,9 +1,9 @@
 class Menu
 	 attr_reader :dishes
 
- 	            def initialize(dishes)
-             		 @dishes = dishes
-             	end
+ 	def initialize(dishes)
+ 		 @dishes = dishes
+ 	end
 
 	 def print
  		 dishes.map do |title, price| 
@@ -11,7 +11,7 @@ class Menu
   		end.join(", ")
  	end
 
-	 def has_dish?(dish)
+	 def dish?(dish)
  		 !dishes[dish].nil?
  	end
 
