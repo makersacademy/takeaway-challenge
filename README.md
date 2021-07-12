@@ -14,34 +14,89 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+```
+
+
+|   Objects |   Messages|   
+| :-------: | :-------: |
+| customer   |            |
+| takeaway  |  display menu |
+ | menu  |             |
+ 
+ * Interactions:  takeaway <-- customer --> menu
+
+* Class Diagram:
+ 
+ |     Takeaway        |
+ | :-------------------: |
+ |   + menu: hash        |
+ |   + display_menu()     |
+ 
+```
 
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+```
 
+|   Objects |   Messages|   
+| :-------: | :-------: |
+| customer   |            |
+ | menu  | select basket  |
+
+ * Interactions:  menu <-- customer --> basket
+
+* Class Diagram:
+
+ |     Menu       |
+ | :-------------------: |
+ |   + dishes: hash        |
+ |   + select_basket()     |
+ 
+```
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+|   Objects |   Messages|   
+| :-------: | :-------: |
+| customer   |            |
+ | basket  | basket total  |
 
+ * Interactions:  basket <-- customer --> total
+
+
+* Class diagram:
+
+ |     Basket     |
+ | :-------------------: |
+ |   + dishes: hash        |
+ |   + sum()     |
+ 
+ * Feature testing:
+```
+Please select an item from the menu.
+burger
+How many would you like?
+1
+1 burger(s) added to your basket
+{"curry"=>"2", "burger"=>"1"}
+ => {"curry"=>"2", "burger"=>"1"} 
+2.6.5 :005 > t.total
+"Your total for this order is £8.09"
+ => "Your total for this order is £8.09" 
+ ```
+
+```
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
