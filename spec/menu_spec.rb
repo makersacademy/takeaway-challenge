@@ -1,5 +1,6 @@
 require "menu"
 require "dish"
+require "cart"
 
 
 describe "Menu" do 
@@ -55,5 +56,8 @@ describe "Menu" do
             expect { menu.view }.to output("1. Name: #{dish.name}, Price: #{dish.price}$\n").to_stdout
         end
     end
+
+
+
 
 end

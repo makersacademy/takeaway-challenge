@@ -1,7 +1,7 @@
 
 
 class Menu
-    attr_reader :menu_name, :current_menu 
+    attr_reader :menu_name, :current_menu, :menu_count
     
 
     def initialize(name)
@@ -24,6 +24,11 @@ class Menu
             puts "#{index+1}. Name: #{item.name}, Price: #{item.price}$"
         end
     end
+
+    def menu_count
+        @menu_count = @current_menu.count
+    end
+
 
    
     
