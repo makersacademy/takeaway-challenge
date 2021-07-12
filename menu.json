@@ -1,0 +1,62 @@
+[
+    {
+        "ID": "1",
+        "Name": "Vegetable Spring Rolls",
+        "Category": "Starter",
+        "Price": "3.50"
+    },
+    {
+        "ID": "2",
+        "Name": "Spare Ribs",
+        "Category": "Starter",
+        "Price": "5.50"
+    },
+    {
+        "ID": "3",
+        "Name": "Dim Sum",
+        "Category": "Starter",
+        "Price": "4.50"
+    },
+    {
+        "ID": "4",
+        "Name": "Chicken Chow Mein",
+        "Category": "Main",
+        "Price": "5.99"
+    },
+    {
+        "ID": "5",
+        "Name": "Duck in Plum Sauce",
+        "Category": "Main",
+        "Price": "6.99"
+    },
+    {
+        "ID": "6",
+        "Name": "Beef in Black Bean Sauce",
+        "Category": "Main",
+        "Price": "6.49"
+    },
+    {
+        "ID": "7",
+        "Name": "Char Siu Pork",
+        "Category": "Main",
+        "Price": "5.99"
+    },
+    {
+        "ID": "8",
+        "Name": "Half Peking Duck",
+        "Category": "Main",
+        "Price": "13.50"
+    },
+    {
+        "ID": "9",
+        "Name": "Large Egg Fried Rice",
+        "Category": "Side",
+        "Price": "2.99"
+    },
+    {
+        "ID": "10",
+        "Name": "Plain Egg Noodles",
+        "Category": "Main",
+        "Price": "2.69"
+    }
+]
