@@ -16,8 +16,6 @@ class Takeaway
 
   def order
     basket.place_order
-    #basket.sum_order
- 
   end
 
   def total
