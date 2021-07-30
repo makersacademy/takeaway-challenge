@@ -27,7 +27,12 @@ describe TakeAway do
 
   it 'should allow someone to order more than 1 item' do
     expect(takeaway).to respond_to(:order).with(2).arguments
-    expect(takeaway.order(ITEM,2)).to eq([{"Vanilla Milkshake" => 3.99}, {"Vanilla Milkshake" => 3.99}])
+    expect(takeaway.order(ITEM,2)).to eq("2x Vanilla Milkshake(s) has been added to your basket 🧺✔️")
+  end
+
+  it 'should allow someone to view total' do
+    takeaway.order(ITEM,2)
+    expect(takeaway.total).to eq(7.98)
   end
 
 end

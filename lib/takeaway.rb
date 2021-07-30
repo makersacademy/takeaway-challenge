@@ -1,7 +1,8 @@
 class TakeAway
-  attr_accessor :basket
+  attr_accessor :basket, :total
   def initialize()
     @basket = []
+    @total = 0
   end
 
   def read_menu
@@ -12,10 +13,15 @@ class TakeAway
   def order(item, amount=1)
     #read_menu.has_key?(item)
     chosen_item = read_menu.select { |k,v| k == item }
-    amount.times{  @basket.push(chosen_item) }
-    p @basket
+
+    amount.times{@basket.push(chosen_item)}
+    amount.times{@total += chosen_item.values[0]}
+
+    #amount.times{@total += chosen_item}
+    p "#{amount}x #{item}(s) has been added to your basket 🧺✔️"
   end
 end
 
 t = TakeAway.new
-t.order("Salted Caramel Shake")
+t.order("Salted Caramel Shake", 2)
+p t.total
