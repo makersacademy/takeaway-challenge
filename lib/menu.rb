@@ -11,6 +11,6 @@ class Takeaway
     return @menu
   end
 
-  def select_meal
+  def select_meal(choice)
   end
 end
