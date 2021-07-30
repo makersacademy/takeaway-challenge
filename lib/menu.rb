@@ -10,4 +10,7 @@ class Takeaway
   def show_menu
     return @menu
   end
+
+  def select_meal
+  end
 end
