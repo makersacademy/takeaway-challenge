@@ -1,16 +1,19 @@
 class Takeaway
-  attr_reader :menu
+  attr_reader :menu, :order
+
+  def initialize
+    @order = []
+  end
   
-  @menu = {
+  def show_menu
+    @menu = {
       "curry" => 12, 
       "burger" => 14, 
       "pizza" => 10
     }
-
-  def show_menu
-    return @menu
   end
 
   def select_meal(choice)
+    @order.push(choice)
   end
 end
