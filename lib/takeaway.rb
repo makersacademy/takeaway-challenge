@@ -10,6 +10,8 @@ class Takeaway
     {:code => "LC", :dish => "Lamb Curry", :price => 5}
   ]
 
+  CODES = ["CTM", "PPD", "PM", "CK", "LC"]
+
 
   def initialize
     @order_arr = []
@@ -28,13 +30,19 @@ class Takeaway
   end
 
   def order(code, quantity = 1)
-    @order_arr.each {
-      |hash|
-      if hash.key?(code)
-        hash[code] = hash.delete(code) + quantity
-        return @order_arr
-      end
-    }
-    @order_arr << {code => quantity}
+
+    if CODES.include?(code)
+      @order_arr.each {
+        |hash|
+        if hash.key?(code)
+          hash[code] = hash.delete(code) + quantity
+          return @order_arr
+        end
+      }
+      @order_arr << {code => quantity}
+    else
+      puts "Please enter a valid item code from the menu"
+      puts CODES
+    end
   end
 end
