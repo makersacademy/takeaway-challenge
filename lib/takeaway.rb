@@ -1,27 +1,26 @@
+require "./lib/order"
+
 class TakeAway
-  attr_accessor :basket, :total
-  def initialize()
-    @basket = []
-    @total = 0
+  def initialize(order=Order.new,menu=Menu.new)
+    @order = order
+    @menu = menu
   end
 
-  def read_menu
-    { "Salted Caramel Shake" => 5.99, "Red Velvet Shake" => 5.99, "Cookie Dough Sandwich" => 4.99,
-       "Choc-zilla Freak Shake" => 8.50, "Vanilla Milkshake" => 3.99 }
+  def print_menu
+    @menu.print
   end
 
-  def order(item, amount=1)
-    #read_menu.has_key?(item)
-    chosen_item = read_menu.select { |k,v| k == item }
+  def order(item,amount=1)
+    fail 'Item is not in menu!' unless @menu.has_item?(item)
+    @order.order(item,amount)
+  end
 
-    amount.times{@basket.push(chosen_item)}
-    amount.times{@total += chosen_item.values[0]}
-
-    #amount.times{@total += chosen_item}
-    p "#{amount}x #{item}(s) has been added to your basket 🧺✔️"
+  def basket
+    @order.basket
   end
 end
 
 t = TakeAway.new
-t.order("Salted Caramel Shake", 2)
-p t.total
+t.print_menu
+t.order("Vanilla Milkshake",2)
+t.basket
