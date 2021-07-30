@@ -1,9 +1,11 @@
+require "./lib/send_sms"
 require "./lib/order"
 
 class TakeAway
-  def initialize(order=Order.new,menu=Menu.new)
+  def initialize(order=Order.new,menu=Menu.new,sms=Messenger.new)
     @order = order
     @menu = menu
+    @sms = sms
   end
 
   def print_menu
@@ -18,9 +20,10 @@ class TakeAway
   def basket
     @order.basket
   end
-end
 
-t = TakeAway.new
-t.print_menu
-t.order("Vanilla Milkshake",2)
-t.basket
+
+  def place_order
+    @order.total
+    @sms.send
+  end
+end
