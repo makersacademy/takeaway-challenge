@@ -1,3 +1,16 @@
+
+### What went well?
+- I felt confident installing Twilio and updating the gem file. 
+- I was able to practise TDD methods of writing the test before the code (only got ahead of myself by writing code first a couple of times)
+-Got the chance to experience with classes working together. Although I'm still not confident with it, each bit of learning is great. 
+- Regular git commits. 
+- I recognised that I needed to separare my code into separate classes.
+
+### Where is it at...
+I seperated my code into three classes: order, menu and takeaway. I got stuck with takeaway calling menu and using doubles/injecting dependencies.
+RSpec tests and rubocop were running well. The order class is not finished and I did not get round to using the Twilio API.
+
+### Makers Instructions Below
 Takeaway Challenge
 ==================
 ```

@@ -3,14 +3,14 @@
 class Takeaway
   attr_reader :order, :total
 
-  def initialize(x:)
+  def initialize(meals:)
     @order = []
     @total = 0
-    @menu = x
+    @menu = meals
   end
   
   def show_menu
-    x.display_menu
+    menu.display_menu
   end
 
   def select_meal(choice)
