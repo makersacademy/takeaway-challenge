@@ -1,3 +1,9 @@
+require 'twilio-ruby'
+
+account_sid = 'AC0522146dd16846e604a5a9444f405b90'
+auth_token = '4e5e6f02b7b04e36010a62d3fc0e2cd9'
+@client = Twilio::REST::Client.new api_key_sid, api_key_secret, account_sid
+
 class Takeaway
 
   attr_reader :MENU, :order
@@ -29,4 +35,9 @@ class Takeaway
     "Your order was #{@order}. Your total was #{@order_total}."
   end
 
+  @client.messages.create(
+  from: phone_number,
+  to: user_number,
+  body: 'Thank you! Your order was placed and will be delivered before '
+)
 end
