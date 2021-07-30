@@ -8,7 +8,7 @@ class Menu
   end
 
   def print
-    array = @dishes.map do |dish, price|
+    @dishes.map do |dish, price|
       "#{dish}: £#{price}"
 
     end.join(", ")
