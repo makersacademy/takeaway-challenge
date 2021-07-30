@@ -1,5 +1,7 @@
 class Takeaway
 
+  attr_reader :order_arr
+
   MENU = [
     {:code => "CTM", :dish => "Chicken Tikka Masala", :price => 5}, 
     {:code => "PPD", :dish => "Popadoms", :price => 1}, 
@@ -26,8 +28,13 @@ class Takeaway
   end
 
   def order(code, quantity = 1)
+    @order_arr.each {
+      |hash|
+      if hash.key?(code)
+        hash[code] = hash.delete(code) + quantity
+        return @order_arr
+      end
+    }
     @order_arr << {code => quantity}
   end
-
-
 end
