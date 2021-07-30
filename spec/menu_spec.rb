@@ -1,9 +1,13 @@
 require 'menu'
 
 describe Menu do
-  let(:menu) do
-    {"Salted Caramel Shake" => 5.99, "Red Velvet Shake" => 5.99}
+  let :menu do
+    {"Salted Caramel Shake" => 5.99,
+      "Red Velvet Shake" => 5.99}
   end
+
+  subject{Menu.new}
+  it { is_expected.to respond_to(:menu) }
 
   it "tells if a item is on the menu" do
     expect(subject.has_item?("Vanilla Milkshake")).to be true

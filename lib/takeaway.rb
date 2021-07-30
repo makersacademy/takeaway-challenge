@@ -2,10 +2,10 @@ require "./lib/send_sms"
 require "./lib/order"
 
 class TakeAway
-  def initialize(order=Order.new,menu=Menu.new,sms=Messenger.new)
+  def initialize(order=Order.new,menu=Menu.new)
     @order = order
     @menu = menu
-    @sms = sms
+    @sms = Messenger.new
   end
 
   def print_menu

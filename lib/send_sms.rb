@@ -2,11 +2,11 @@ require 'twilio-ruby'
 require 'time'
 class Messenger
   def initialize()
-    @account_sid = ''
+    @account_sid =
     @auth_token = ''
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
     @from = '+447445034137' # Your Twilio number
-    @to = '+' # Your mobile phone number
+    @to = '' # Your mobile phone number
   end
 
   def send

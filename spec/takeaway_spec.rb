@@ -7,10 +7,6 @@ describe TakeAway do
 
   ITEM = "Vanilla Milkshake"
 
-  # it 'should create a takeaway' do
-  #   expect(takeaway).to respond_to(:read_menu)
-  # end
-
   it 'should have an empty basket' do
     expect(takeaway.basket).to be_empty
   end
