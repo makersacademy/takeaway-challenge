@@ -11,4 +11,12 @@ describe Order do
     end
   end
 
+  describe "#calculate_total" do
+    it "gives me a total for my order" do
+      order = Order.new
+      order.order_meal("fries")
+      expect(order.calculate_total).to eq 0.7
+    end
+  end
+
 end
