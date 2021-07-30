@@ -1,8 +1,9 @@
 class Takeaway
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :total
 
   def initialize
     @order = []
+    @total = 0
   end
   
   def show_menu
@@ -16,4 +17,18 @@ class Takeaway
   def select_meal(choice)
     @order.push(choice)
   end
+
+  def order_total
+    @total
+  end
+
+  def calculate_fee
+    @menu.each do |key, value| 
+      if key.include? @order
+      @total = value.sum
+      else 
+      end
+    end
+  end
+
 end

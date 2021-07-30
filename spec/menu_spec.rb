@@ -16,4 +16,17 @@ describe Takeaway do
       expect(subject.select_meal(choice)).to eq subject.order
     end
   end
+
+  describe '#order_total' do
+    let(:total) { double :total}
+    
+    it 'shows the total order cost' do
+      expect(subject.order_total).to eq :total #expected double, got nil
+    end
+  end
+
+  describe '#calculate_fee' do
+    it 'calculates a fee' do
+    end
+  end
 end
