@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
   # describe '#show_menu' do
-  #   # let(:menu) { double :menu }
+  #   # subject(:menu) { Menu.}
   #   # it 'return the menu with prices' do
   #   #   expect(subject.show_menu).to eq :menu
   #   # end
