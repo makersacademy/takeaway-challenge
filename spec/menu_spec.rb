@@ -28,4 +28,9 @@ describe Menu do
     expect(menu1.print). to eq (printed_menu)
    
   end
+
+  it "tells us if the menu has the dish" do
+    expect(menu1.has_dish?(:pork)).to eq false
+    expect(menu1.has_dish?(:chicken)).to eq true
+  end
 end

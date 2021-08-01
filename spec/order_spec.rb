@@ -1,7 +1,6 @@
 require 'order'
 
 describe Order do
-
   let(:order1) {Order.new(menu)}
   let(:menu) {double("menu")}
 
@@ -25,7 +24,7 @@ describe Order do
   end
 
   it "doesn't allow dishes that aren't on the menu" do #needs knowledge of the menu, need to inject inside order a menu object
-    expect(order1.add(:pork, 4)).to raise_error("pork is not on the menu.")
+    expect{order1.add(:pork, 4)}.to raise_error("pork is not on the menu.")
     
   end
 end
