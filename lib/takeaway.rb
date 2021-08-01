@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 class Takeaway
 
   attr_reader :order_arr
@@ -45,4 +46,46 @@ class Takeaway
       puts CODES
     end
   end
+
+  def total
+    grand_total = 0
+    subtotals = []
+    @order_arr.each {
+      |order|
+      order.each_key {
+        |key|
+        MENU.each {
+          |item|
+          if key == item[:code]
+            subtotals << {key => order[key] * item[:price]}
+          end
+        }
+      }
+    }
+    subtotals.each {
+      |hash|
+      hash.each_key {
+        |key|
+        grand_total += hash[key]
+        puts "#{key} = £#{hash[key]}"
+      }
+    }
+    puts "Total = £#{grand_total}"
+  end
+
+  def checkout
+  
+    account_sid = ENV["TWILIO_ACCOUNT_SID"] 
+    auth_token = ENV["AUTH_TOKEN"]  
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+      body: "Your order has been placed and will be with you within one hour",
+      to: ENV["MOBILE_NUM"],    
+      from: ENV["SENDER_NUM"])  
+
+    puts "Your order has been placed!"
+    
+  end
+
 end
