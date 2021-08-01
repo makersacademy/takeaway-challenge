@@ -19,6 +19,10 @@ class Menu
     @dishes.include?(dish)
   end
 
+  def price(dish)
+    @dishes[dish]
+  end
+
     
 
 

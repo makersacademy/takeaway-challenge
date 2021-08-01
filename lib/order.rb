@@ -6,6 +6,7 @@ class Order
   def initialize(menu)
     @menu = menu
     @ordered_dishes = {}
+    @separate_totals = []
   end
 
     
@@ -16,6 +17,25 @@ class Order
     ordered_dishes[dish] = quantity
    
   end
+
+  def total
+    item_totals.inject(:+) #adds the array up
+  end
+
+
+  private
+
+  def item_totals
+    ordered_dishes.map do |dish,quantity|
+      separate_totals = menu.price(dish) * quantity
+      
+
+    end
+  end
+
+
+
+
 
 
   

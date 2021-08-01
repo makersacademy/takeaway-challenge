@@ -4,7 +4,7 @@ describe Takeaway do
 
   let(:takeaway){Takeaway.new(menu: menu1, order: order1)} #takeaway doesn't need to know about the menu, so can inject menu as a dependency as an argument of initialize and it can then be stored as an instance variable
   let(:menu1) {double("fake menu", print: printed_menu)} #menu double so it isn't dependent on the menu argument, also need to add print method and it needs to return printed_menu
-  let(:order1) {double ("fake order")} #need a double for an order class
+  let(:order1) {double("fake order", total: 43.94)} #need a double for an order class
   
   let(:printed_menu) {"Chicken: £3.50"}
   
@@ -27,9 +27,16 @@ describe Takeaway do
   end
 
   it "allows you to select some number of multiple dishes" do
+    
     expect(order1).to receive(:add).thrice
     (takeaway.place_order(ordered_dishes))
    
+  end
+
+  it "knows the total" do
+    allow(order1).to receive(:add)
+    total = takeaway.place_order(ordered_dishes)
+    expect(total).to eq(43.94)
   end
   
 end
