@@ -10,8 +10,6 @@ class Order
   end
 
     
-  
-
   def add(dish, quantity)
     raise "#{dish} is not on the menu." unless menu.has_dish?(dish)
     ordered_dishes[dish] = quantity
