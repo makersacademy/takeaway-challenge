@@ -15,5 +15,8 @@ class Takeaway
       list += " #{dish[:dish]} - £#{dish[:price]} **"
     end
     list
+  end
+  
+  def order(dish, number)
   end  
 end  
