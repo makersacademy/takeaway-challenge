@@ -14,7 +14,6 @@ class Takeaway
     @menu.dish_list.each do|dish|
       list += " #{dish[:dish]} - £#{dish[:price]} **"
     end
-    p list  
     list
   end  
 end  
