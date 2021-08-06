@@ -6,7 +6,7 @@ describe Order do
   let(:selection) { [{ dish: "Sushi", price: 7.50 }] }
 
   describe '#initialize' do
-    it 'is initialized with dish selection' do
+    it 'is initialized with customers\' dish selection' do
       expect(order.selection).to eq [{ dish: "Sushi", price: 7.50 }]
     end
   end
@@ -18,5 +18,9 @@ describe Order do
     end
   end
 
-  it 'calculates the total cost of dish selection' 
+  describe '#cost_calculator' do
+    it 'calculates the total cost of dish selection' do
+      expect(order.cost_calculator).to eq 7.50
+    end
+  end
 end
