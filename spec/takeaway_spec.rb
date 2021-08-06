@@ -17,8 +17,8 @@ describe Takeaway do
   end
 
   it 'allows selecting a number of dishes' do
-    (1..2).each { |i| takeaway.add_to_cart(i) }
+    (1..2).each { |i| takeaway.add_to_cart(i, i) }
 
-    expect(customer.cart).to include(menu.items[1], menu.items[2])
+    expect(customer.cart).to eq([menu.items[1], [menu.items[2]] * 2].flatten)
   end
 end
