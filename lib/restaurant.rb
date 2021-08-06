@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Restaurant
   attr_reader :dishes
 
@@ -15,11 +17,19 @@ class Restaurant
   def select_dishes(*args)
     # error if no arguments given
 
-    selection = []
+    @selection = []
     @dishes.each_with_index do |dish, i|
       menu_num = i + 1
       selection << dish if args.include? menu_num
     end
     selection
   end
+
+  def place_order
+    order = Order.new(@selection)
+  end
+
+  private
+
+  attr_reader :selection
 end
