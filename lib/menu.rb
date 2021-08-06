@@ -6,8 +6,16 @@ class Menu
     "Cheeseburger" => 5.49
   }
   SPACING = 16
+  
+  def initialize
+    @menu = MENU
+  end
 
-  def view
+  def menu_hash
+    @menu
+  end
+
+  def view_menu
     MENU.map { |dish, price| printf "%-#{SPACING}s %s\n", dish, price }.join
   end
 
