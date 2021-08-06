@@ -23,5 +23,8 @@ describe Restaurant do
     it 'allows the user to place an order' do
       expect(subject).to respond_to(:place_order)
     end
+    it 'creates a new order' do
+      expect(subject.place_order).to be_an(Order)
+    end
   end
 end

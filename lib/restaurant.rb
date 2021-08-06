@@ -4,7 +4,6 @@ class Restaurant
   attr_reader :dishes, :selection
 
   def initialize
-    @name = "New Restaurant"
     @dishes = [
       { dish: "Sushi", price: 7.50 }, 
       { dish: "Burger", price: 6.10 }, 
