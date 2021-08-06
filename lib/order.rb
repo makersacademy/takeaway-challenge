@@ -7,9 +7,9 @@ class Order
   end
 
   def cost_calculator
-    @selection.each do |dish|
-      @total_cost += dish[:price]
-    end
+    total = 0
+    @selection.each { |dish| total += dish[:price] }
+    @total_cost = total
   end
 
   def add_to_order(selection)
