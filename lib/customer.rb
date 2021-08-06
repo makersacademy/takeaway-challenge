@@ -1,8 +1,8 @@
 class Customer
-  attr_accessor :cart, :phone_number
+  attr_accessor :order, :phone_number
   
   def initialize(phone_number)
-    @cart = []
+    @order = { items: [], cost: 0 }
     @phone_number = phone_number
   end
 end

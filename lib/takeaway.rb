@@ -12,7 +12,9 @@ class Takeaway
     puts
   end
 
-  def add_to_cart(item_number, quantity)
-    quantity.times { @customer.cart << @menu.items[item_number] }
+  def add_to_order(item_number, quantity)
+    quantity.times do
+      @customer.order[:items] << @menu.items[item_number]
+    end
   end
 end
