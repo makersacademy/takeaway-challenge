@@ -15,7 +15,9 @@ describe Restaurant do
     end
   end
 
-  # allows the user to see the dishes and prices
+  it 'it allows the user to see the dishes' do
+    expect(subject.dishes).to include( {dish: "Sushi", price: 7.50}, {dish: "Burger", price: 6.10}, )
+  end
 
   describe '#select_dishes' do
     it 'lets the user select dishes' do
