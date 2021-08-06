@@ -15,7 +15,7 @@ describe Restaurant do
     it 'lets the user select dishes' do
       subject.select_dish(3)
       subject.select_dish(4)
-      expect(subject.selection).to eq [{ dish: "Fries", price: 3.00 }, { dish: "Noodle Soup", price: 10.00 }]
+      expect(subject.customer_selection).to eq [{ dish: "Fries", price: 3.00 }, { dish: "Noodle Soup", price: 10.00 }]
     end
   end
 
