@@ -3,15 +3,15 @@ require 'takeaway'
 describe Takeaway do
   let(:menu) do 
     double 'Menu', items: {
-      1 => { name: 'Flat White', price: 2 },
-      2 => { name: 'Rainbow Bagel', price: 1 }
+      1 => { name: 'Flat White', cost: 2 },
+      2 => { name: 'Rainbow Bagel', cost: 1 }
     }
   end
 
   let(:customer) do
     double Customer, order: {
       items: [],
-      cost: 0
+      total_cost: 0
     },
     phone: '07700900000' 
   end
@@ -28,5 +28,12 @@ describe Takeaway do
     (1..2).each { |i| takeaway.add_to_order(i, i) }
 
     expect(customer.order[:items]).to eq([menu.items[1], [menu.items[2]] * 2].flatten)
+  end
+
+  it 'keeps track of the order cost' do
+    (1..2).each { |i| takeaway.add_to_order(i, i) }
+
+    puts customer.order
+    expect(customer.order[:total_cost]).to eq(4)
   end
 end
