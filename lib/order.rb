@@ -1,3 +1,5 @@
+# Responsible for collating the order and cost
+
 class Order
   attr_reader :total_cost, :selection
 
