@@ -12,14 +12,16 @@ describe Restaurant do
   end
 
   describe '#select_dish' do
-    it 'lets the user select a dish' do
-      expect(subject.select_dish(3)).to eq [{ dish: "Fries", price: 3.00 }]
-      expect(subject.selection).to eq [{ dish: "Fries", price: 3.00 }]
+    it 'lets the user select dishes' do
+      subject.select_dish(3)
+      subject.select_dish(4)
+      expect(subject.selection).to eq [{ dish: "Fries", price: 3.00 }, { dish: "Noodle Soup", price: 10.00 }]
     end
   end
 
   describe '#place_order' do
     it 'allows the user to place an order' do
+      expect(subject).to respond_to(:place_order)
     end
   end
 end
