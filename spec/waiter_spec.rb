@@ -1,7 +1,7 @@
 require 'waiter'
 
 describe Waiter do
-  context 'should greet a new customer' do
-    expect(subject.greet).to include("Hello")
+  it 'should greet a new customer' do
+    expect{ subject.greet }.to output("Hello\n").to_stdout
   end
 end
