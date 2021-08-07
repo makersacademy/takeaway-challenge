@@ -15,6 +15,10 @@ describe Restaurant do
   end
 
   describe '#select_dish' do
+    it 'raises an error if number given is not on the menu' do
+      expect{ subject.select_dish(10) }.to raise_error(RuntimeError, "Sorry, that's not on the menu")
+    end
+
     it 'lets the user select dishes' do
       subject.select_dish(3)
       subject.select_dish(4)
