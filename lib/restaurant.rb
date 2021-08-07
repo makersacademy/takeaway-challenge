@@ -23,6 +23,6 @@ class Restaurant
   end
 
   def place_order
-    Order.new(@customer_selection) #save to variable so I can access again
+    Order.new(@customer_selection) # save to variable so I can access again
   end
 end
