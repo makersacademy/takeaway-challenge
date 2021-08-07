@@ -5,7 +5,6 @@ class Confirmation
 
   def intitialize 
     # initialize with customer_number
-    @sms_sent = false
   end
 
   def expected_delivery_time 
@@ -25,7 +24,5 @@ class Confirmation
     from = '+447588713559' # magic number for tetsing +15005550006#
     to = '+447538172050' # customer_number (my number)
     client.messages.create(from: from, to: to, body: "#{construct_body}")
-  
-    @sms_sent = true
   end
 end
