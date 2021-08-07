@@ -1,2 +1,1 @@
-require "dotenv"
-Dotenv.load('.env')
+require "./lib/messager.rb"
