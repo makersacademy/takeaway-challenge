@@ -11,26 +11,28 @@ describe Takeaway do
     "Chips" => 2.49, 
     "Pasta" => 5.99
   }
+
+  menu_symbol = :"Noodles: 2.99, Chips: 2.49, Pasta: 5.99" 
       
   before(:each) do
     allow(order).to receive(:inventory) { menu_hash }
-    allow(order).to receive(:order) { Array.new }
+    allow(order).to receive(:order) { [{"Noodles" => 2.99,}, {"Chips" => 2.49}, {"Pasta" => 5.99}] }
   end
 
   it { is_expected.to be_a Takeaway }
 
   describe "#menu" do
 
-    it "returns the menu hash" do
-      expect(subject.menu).to eq menu_hash
+    it "can view the menu as uneditable symbol" do
+      expect(subject.menu).to eq menu_symbol
     end
   
   end
   
   describe "#current_order" do
     
-    it "returns an array" do
-      expect(subject.current_order).to be_a Array
+    it "can view current order as uneditable symbol" do
+      expect(subject.current_order).to eq menu_symbol
     end
 
   end

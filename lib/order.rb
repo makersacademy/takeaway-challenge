@@ -3,14 +3,14 @@ class Order
   attr_reader :order, 
               :inventory
 
-  def initialize(inventory = Menu.new.menu)
+  def initialize(inventory)
     @order = Array.new
     @inventory = inventory
   end
   
   def add(item)
     # could raise error, or break with message, here if not available? would need test
-    @order << item if available?(item) 
+    @order << {item => (inventory[item])} if available?(item) 
   end
 
 private

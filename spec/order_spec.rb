@@ -18,7 +18,7 @@ describe Order do
   
   it "allows user to select available item which is added to order" do
     subject.add("Item 1")
-    expect(subject.order).to include("Item 1")
+    expect(subject.order).to include({"Item 1" => 0.99})
   end
 
   it "prevents user from selecting unavailable dishes" do
