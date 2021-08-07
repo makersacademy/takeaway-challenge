@@ -23,6 +23,20 @@ class Order
     value
   end
 
+  def verify_order_value
+    @items_ordered.each do |item|
+      item.each do |k,v|
+        puts "#{k}: £#{v}"
+      end
+    end
+  end
+
+  def order_confirmation
+    verify_order_value
+    puts "--------"
+    puts "£#{order_value}"
+  end
+
   def place_order
     Time.new
   end
@@ -49,6 +63,7 @@ my_order.add_item(item)
 my_order.add_item(item2)
 # my_order.show_order
 my_order.order_value
+my_order.order_confirmation
 my_order.place_order
 
 
