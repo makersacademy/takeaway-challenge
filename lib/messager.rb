@@ -2,9 +2,9 @@ require 'twilio-ruby'
 require "dotenv"
 Dotenv.load('.env')
 
-class Mesagger
+class Messager
 
-  def initialize(message)
+  def initialize
     account_sid = ENV["TWILIO_APP_SID"]
     auth_token = ENV["TWILIO_APP_KEY"]
     @from = ENV["TWILIO_PHONE_FROM"]
@@ -12,11 +12,11 @@ class Mesagger
   end
 
   def send_sms(message, to = ENV["TWILIO_PHONE_TO"])
-    message = @client.messages.create(
+    @client.messages.create(
       body: message,
-      to: , to
+      to: to,
       from: @from)
+    # puts message.sid message = 
   end
 
 end
-# puts message.sid
