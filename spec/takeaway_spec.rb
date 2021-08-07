@@ -16,11 +16,12 @@ describe Takeaway do
 
   it "shows the total" do
     subject.add_item("Samosa")
-    expect(subject.total).to eq(1.70)
+    expect { subject.total }.to output("1.70").to_stdout
   end
 
   it "displays a summary of the current order" do
-    
+    subject.add_item("Samosa", 2)
+    expect { subject.summary }.to output("2x Samosa £3.40 ").to_stdout
   end
 
 end

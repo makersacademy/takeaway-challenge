@@ -21,6 +21,11 @@ class Takeaway
   end
 
   def total
-    @order.total
+    print '%.2f' % @order.total
   end
+
+  def summary
+    @order.summary
+  end
+
 end

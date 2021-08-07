@@ -16,14 +16,18 @@ class Order
     @basket
   end
 
-
-
   def total
     total = 0.00
     @basket.each do |item, quantity|
       total += quantity * @menu[item]
     end
     total
+  end
+
+  def summary
+    @basket.each do |item, quantity|
+      print "#{quantity}x #{item} £#{'%.2f' % (quantity * @menu[item])} "
+    end
   end
 
 end
