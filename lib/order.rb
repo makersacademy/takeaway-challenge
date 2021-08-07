@@ -5,7 +5,7 @@ class Order
 
   def initialize(selection)
     @selection = selection
-    @total_cost = 0
+    @total_cost = cost_calculator
     # @placed = false
   end
 
