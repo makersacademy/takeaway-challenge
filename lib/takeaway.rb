@@ -1,10 +1,11 @@
 require_relative 'menu'
 require_relative 'order'
+require_relative 'check_total'
 
 class Takeaway
 
-  def initialize(order = Order.new(Menu.new.menu))
-    @order = order
+  def initialize(order_class = Order.new(Menu.new.menu))
+    @order = order_class
   end
 
   def menu
@@ -17,6 +18,10 @@ class Takeaway
   
   def add(dish)
     @order.add(dish)
+  end
+
+  def check_total(checker = CheckTotal.new)
+    checker.check_total(@order.order)
   end
 
   private

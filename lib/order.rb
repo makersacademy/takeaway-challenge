@@ -10,7 +10,7 @@ class Order
   
   def add(item)
     # could raise error, or break with message, here if not available? would need test
-    @order << {item => (inventory[item])} if available?(item) 
+    @order << { item => inventory[item] } if available?(item) 
   end
 
 private

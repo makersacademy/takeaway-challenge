@@ -16,14 +16,14 @@ describe Takeaway do
       
   before(:each) do
     allow(order).to receive(:inventory) { menu_hash }
-    allow(order).to receive(:order) { [{"Noodles" => 2.99,}, {"Chips" => 2.49}, {"Pasta" => 5.99}] }
+    allow(order).to receive(:order) { [{ "Noodles" => 2.99 }, { "Chips" => 2.49 }, { "Pasta" => 5.99 }] }
   end
 
   it { is_expected.to be_a Takeaway }
 
   describe "#menu" do
 
-    it "can view the menu as uneditable symbol" do
+    it "can view the menu as immutable symbol" do
       expect(subject.menu).to eq menu_symbol
     end
   
@@ -31,7 +31,7 @@ describe Takeaway do
   
   describe "#current_order" do
     
-    it "can view current order as uneditable symbol" do
+    it "can view current order as immutable symbol" do
       expect(subject.current_order).to eq menu_symbol
     end
 
@@ -39,9 +39,21 @@ describe Takeaway do
 
   describe "#add" do
 
-    it "responds to method call (logic in Order class)" do
-      allow(order).to receive(:add)
-      expect(subject).to respond_to(:add).with(1).argument
+    it "adds a dish to order (logic in Order class)" do
+      dish = double
+      allow(order).to receive(:add).with(dish) { [{ "Hot Dog" => 4.49 }] }
+      expect(subject.add(dish)).to eq([{ "Hot Dog" => 4.49 }])
+    end
+
+  end
+
+  describe "#check_total" do
+
+    it "uses CheckTotal logic to return sum & total of order" do
+      checker = double
+      output = :"Noodles: 2.99 + Chips: 2.49 = 5.48 TOTAL"
+      allow(checker).to receive(:check_total) { output }
+      expect(subject.check_total(checker)). to eq output
     end
 
   end

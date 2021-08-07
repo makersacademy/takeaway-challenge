@@ -16,9 +16,15 @@ describe Order do
     expect(subject.order).to be_empty
   end
   
-  it "allows user to select available item which is added to order" do
+  it "allows user to select available item which is added to order as a hash" do
     subject.add("Item 1")
-    expect(subject.order).to include({"Item 1" => 0.99})
+    expect(subject.order).to include({ "Item 1" => 0.99 })
+  end
+
+  it "allows user to select multiple items" do
+    2.times { subject.add("Item 1") }
+    expect(subject.order).to contain_exactly({ "Item 1" => 0.99 }, { "Item 1" => 0.99 })
+
   end
 
   it "prevents user from selecting unavailable dishes" do
