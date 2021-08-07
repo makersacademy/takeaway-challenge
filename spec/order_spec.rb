@@ -1,32 +1,28 @@
 require 'order'
 
 describe Order do
-  
-  let(:dishes) { double :dishes }
+    
+  let(:inventory) { double :inventory }
 
-  menu_hash = {
-    "Noodles" => 2.99, 
-    "Chips" => 2.49, 
-    "Pasta" => 5.99
+  mock_inventory = {
+    "Item 1" => 0.99, 
+    "Item 2" => 1.49, 
+    "Item 3" => 1.99
   }
   
-  subject { described_class.new(dishes) }
-  
-  before(:each) do
-    allow(dishes).to receive(:menu) { menu_hash }
-  end
-  
+  subject { described_class.new(mock_inventory) }
+
   it "creates an empty array for the order" do
     expect(subject.order).to be_empty
   end
   
-  it "allows user to select available dish which is added to order" do
-    subject.add_dish("Pasta")
-    expect(subject.order).to include("Pasta")
+  it "allows user to select available item which is added to order" do
+    subject.add("Item 1")
+    expect(subject.order).to include("Item 1")
   end
 
   it "prevents user from selecting unavailable dishes" do
-    subject.add_dish("Chop Suey")
+    subject.add("Chop Suey")
     expect(subject.order).to_not include("Chop Suey")
   end
 

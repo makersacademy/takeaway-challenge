@@ -1,22 +1,20 @@
-require_relative 'menu'
-
 class Order
 
-  attr_reader :order, :menu
+  attr_reader :order
 
-  def initialize(dishes = Menu.new)
+  def initialize(inventory = Hash.new)
     @order = Array.new
-    @menu = dishes.menu
+    @inventory = inventory
   end
   
-  def add_dish(dish)
-    @order << dish if available?(dish) 
+  def add(item)
+    @order << item if available?(item) 
   end
 
-  private
+private
 
-  def available?(dish)
-    @menu.key?(dish)
+  def available?(item)
+    @inventory.key?(item)
   end
 
 end
