@@ -2,10 +2,10 @@
 require_relative 'order'
 
 class Restaurant
-  attr_reader :dishes, :customer_selection
+  attr_reader :menu, :customer_selection
 
   def initialize
-    @dishes = [
+    @menu = [
       { dish: "Sushi", price: 7 }, 
       { dish: "Burger", price: 6 }, 
       { dish: "Fries", price: 3 }, 
@@ -17,7 +17,7 @@ class Restaurant
 
   def see_menu
     puts "MENU"
-    @dishes.each_with_index do |dish, index|
+    @menu.each_with_index do |dish, index|
       menu_num = index + 1
       puts "#{menu_num}. #{dish[:dish]} £#{dish[:price]}"
     end
@@ -25,11 +25,13 @@ class Restaurant
 
   def select_dish(menu_num)
     # error if no arguments given
-    # error if menu_num not on menu
-    @customer_selection << dishes[menu_num - 1]
+    raise "Sorry, that's not on the menu" if menu_num > menu.length
+
+    @customer_selection << menu[menu_num - 1]
   end
 
   def place_order
+    puts "Choose a menu number to add to your order"
     Order.new(@customer_selection) # save to variable so I can access again
   end
 end

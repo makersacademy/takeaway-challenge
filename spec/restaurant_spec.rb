@@ -3,7 +3,7 @@ require 'restaurant'
 describe Restaurant do
   describe '#initialize' do
     it 'has a list of dishes with prices' do
-      expect(subject.dishes).to_not be_nil
+      expect(subject.menu).to_not be_nil
     end
   end
 
@@ -27,6 +27,14 @@ describe Restaurant do
   end
 
   describe '#place_order' do
+    it 'asks the user to select a dish' do
+      expect{ subject.place_order }.to output("Choose a menu number to add to your order\n").to_stdout
+    end
+
+    it "let's the user select dishes until they're satisfied with their selection" do
+      expect{ subject.place_order }.to change{ subject.customer_selection }
+    end
+
     it 'creates a new order' do
       expect(subject.place_order).to be_an(Order)
     end
