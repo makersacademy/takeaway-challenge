@@ -10,4 +10,5 @@ class Confirmation
     time = Time.now + 3600
     time.strftime("%k:%M")    
   end
+
 end
