@@ -25,9 +25,11 @@ class Order
   end
 
   def summary
+    summary = ""
     @basket.each do |item, quantity|
-      print "#{quantity}x #{item} £#{'%.2f' % (quantity * @menu[item])} "
+      summary += "#{quantity}x #{item} £#{'%.2f' % (quantity * @menu[item])} "
     end
+    summary
   end
 
 end
