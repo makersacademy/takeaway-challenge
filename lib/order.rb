@@ -6,6 +6,7 @@ class Order
   def initialize(selection)
     @selection = selection
     @total_cost = 0
+    # @placed = false
   end
 
   def cost_calculator
@@ -19,4 +20,6 @@ class Order
       @selection << dish
     end
   end
+
+  # complete and confirm - send confirmation.
 end
