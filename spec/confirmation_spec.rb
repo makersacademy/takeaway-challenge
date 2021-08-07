@@ -16,5 +16,7 @@ describe Confirmation do
       allow(test_subject).to receive(:send_sms).and_return(true)
       expect(test_subject.send_sms).to eq true
     end
+
+    it ''
   end
 end
