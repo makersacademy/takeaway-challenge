@@ -22,5 +22,5 @@ describe Menu do
       it "returns correct value for given key" do
         expect(menu.items["Chicken burger"]).to eq 10
       end
-    end 
+    end
 end
