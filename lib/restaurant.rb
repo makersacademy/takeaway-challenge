@@ -1,5 +1,4 @@
 # Responsible for letting customer choose dishes
-
 require_relative 'order'
 
 class Restaurant

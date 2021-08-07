@@ -7,6 +7,18 @@ describe Restaurant do
     end
   end
 
+  describe '#enter_restaurant' do
+    it 'shows the menu to the customer' do
+      menu = "MENU
+      1. Sushi £7.50
+      2. Burger £6.10
+      3. Fries £3.00
+      4. Noodle Soup £10.00
+      5. Bahn Mi £9.25"
+      expect(subject.enter_restaurant).to output(menu).to_stdout
+    end
+  end
+
   it 'it allows the user to see the dishes' do
     expect(subject.dishes).to include({ dish: "Sushi", price: 7.50 }, { dish: "Burger", price: 6.10 })
   end
