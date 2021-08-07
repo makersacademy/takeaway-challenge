@@ -1,13 +1,15 @@
 class Order
 
-  attr_reader :order
+  attr_reader :order, 
+              :inventory
 
-  def initialize(inventory = Hash.new)
+  def initialize(inventory = Menu.new.menu)
     @order = Array.new
     @inventory = inventory
   end
   
   def add(item)
+    # could raise error, or break with message, here if not available? would need test
     @order << item if available?(item) 
   end
 
