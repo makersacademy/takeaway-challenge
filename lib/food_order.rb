@@ -12,12 +12,9 @@ class FoodOrder
   def add_item(food, number)
     raise "This menu item does not exist" if @menu.menu[food].nil?
 
-    menu_item = @menu.menu.select do |key, _value|
-      key == food
-    end
+    menu_item = @menu.menu.select { |key, _value| key == food }
     number.times { @food_order << menu_item }
+    @food_order
   end
-
-  # deny access to their total amount 
 
 end
