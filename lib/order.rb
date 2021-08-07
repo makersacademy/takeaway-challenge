@@ -1,10 +1,12 @@
+require_relative 'send_text'
 require_relative 'menu'
 
 class Order
 
-  attr :items_ordered, :menu
+  attr :items_ordered, :menu, :send_text
   
   def initialize(menu)
+    @send_text
     @menu = menu
     @items_ordered = []
   end
@@ -37,8 +39,8 @@ class Order
     puts "£#{order_value}"
   end
 
-  def place_order
-    Time.new
+  def place_order(send_text = SendText.new)
+    send_text.tester("boyo")
   end
 
 end
@@ -55,6 +57,7 @@ item = {
 item2 = {
   "Vegan Soup" => 5,
 }
+
 
 menu = Menu.new(items)
 my_order = Order.new(menu)
