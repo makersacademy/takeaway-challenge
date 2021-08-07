@@ -22,6 +22,16 @@ class Restaurant
       menu_num = index + 1
       puts "#{menu_num}. #{dish[:dish]} £#{dish[:price]}"
     end
+    # select_from_menu(STDIN.gets.chomp)
+  end
+
+  def select_from_menu(menu_num)
+    puts "You have selected #{menu_num}"
+  case menu_num
+  when "exit" then @customer_selection = []; see_menu
+  else
+    puts "I don't know what you meant, please try again"
+  end
   end
 
   # def ask_user_for_order
