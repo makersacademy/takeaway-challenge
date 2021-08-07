@@ -20,13 +20,11 @@ describe Order do
       allow(menu).to receive(:items).and_return(menu_items)
     end
     it "adds item to items_ordered" do
-      
       expect{ subject.add_item(menu, customer_selection) }.to change {subject.items_ordered.length}.by(1)
     end
 
     it "adds correct price to the order" do
       subject.add_item(menu, customer_selection)
-      print subject.items_ordered
       expect(subject.items_ordered.first["Chang Beer"]).to eq (3)
     end
   end
@@ -36,7 +34,7 @@ describe Order do
       allow(menu).to receive(:items).and_return(menu_items)
       subject.add_item(menu, customer_selection)
       subject.add_item(menu, customer_selection_2)
-      expect(subject.order_value).to eq 8
+      expect(subject.order_value).to eq "£8"
     end
   end
 
