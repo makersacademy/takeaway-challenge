@@ -4,6 +4,8 @@ describe Order do
   let(:order) { described_class.new }
   let(:test_basket) { Order.new({ :pizza => 1, :chips => 2 }) }
   
+
+
   describe '#add_to_basket' do 
     it "Adds multiple items to basket with quantity" do 
       expect(test_basket.basket).to eq({ :pizza => 1, :chips => 2 })
@@ -22,7 +24,7 @@ describe Order do
         expect(test_basket.remove_item("chips", 1)).to eq({ :pizza => 1, :chips => 1 })
       end 
     end
-    context 'When passed item and no quanitity information' do 
+    context 'When passed item and nil quanitity' do 
       it "Clears item from basket" do 
         expect(test_basket.remove_item("pizza")).to eq({ :chips => 2 })
       end 
@@ -34,7 +36,7 @@ describe Order do
       expect(test_basket.complete_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.new + 3600}")
     end 
     it "returns error if basket is empty" do 
-      expect { order.complete_order}.to raise_error "Nothing in basket"
+      expect { order.complete_order }.to raise_error "Nothing in basket"
     end 
   end 
 end

@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
+# https://wireframe.cc/hNUOJz << Domain model
 
 class Takeaway
 
