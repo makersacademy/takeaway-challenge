@@ -10,6 +10,6 @@ class Takeaway
 
   def new_order
     Order.new
-  end 
+  end
 
 end 

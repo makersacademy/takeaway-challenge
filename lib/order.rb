@@ -31,8 +31,8 @@ class Order
 
   def complete_order
     fail "Nothing in basket" if @basket == {}
-    # use number to send text confirming order is placed 
-    "Thank you! Your order was placed and will be delivered before #{Time.new + 3600}"
+    # use number to send text confirming order is placed
+    Text.new
   end
 
 end
