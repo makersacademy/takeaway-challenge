@@ -4,9 +4,8 @@ describe Takeaway do
   let(:takeaway) { described_class.new }
   let(:menu) { Menu.new }
 
-
   describe '#display_menu' do 
-   it "Shows menu hash with list of foods/prices" do 
+    it "Shows menu hash with list of foods/prices" do 
       expect(takeaway.display_menu).to eq(menu.list)
     end 
   end 
