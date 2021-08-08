@@ -2,17 +2,17 @@ require 'menu'
 
 describe Menu do
 
-  let(:pepperoni) { double({ dish: "Pepperoni", price: 12 } )}
-  let(:cheese) { double({ dish: "4 Cheeses", price: 11 } )}
-  let(:bbq) { double({ dish: "BBQ Meat Feast", price: 13 } )}
-  let(:magherita) { double({ dish: "Magherita", price: 10 } )}
+  let(:pepperoni) { double({ dish: "Pepperoni", price: 12, selected: 0 } )}
+  let(:cheese) { double({ dish: "4 Cheeses", price: 11, selected: 0 } )}
+  let(:bbq) { double({ dish: "BBQ Meat Feast", price: 13, selected: 0 } )}
+  let(:magherita) { double({ dish: "Magherita", price: 10, selected: 0 } )}
 
   let(:menu_config) do
     [
-      { dish: "Pepperoni", price: 12 },
-      { dish: "4 Cheeses", price: 11 },
-      { dish: "BBQ Meat Feast", price: 13 },
-      { dish: "Magherita", price: 10 }
+      { dish: "Pepperoni", price: 12, selected: 0 },
+      { dish: "4 Cheeses", price: 11, selected: 0 },
+      { dish: "BBQ Meat Feast", price: 13, selected: 0 },
+      { dish: "Magherita", price: 10, selected: 0 }
   ]
   end
 
