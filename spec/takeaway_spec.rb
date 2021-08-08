@@ -2,47 +2,63 @@ require 'takeaway'
 
 describe Takeaway do
 
-context 'checking that methods exist' do
+context 'checking that methods and variable exist' do
     
-   it 'responds to view_menu' do
-       expect(subject).to respond_to(:view_menu)
-   end
+    it 'responds to menu' do
+        expect(subject).to respond_to(:menu)
+    end
 
-   it 'responds to create_order' do
-       expect(subject).to respond_to(:create_order)
-   end
+
+    it 'responds to menu' do
+        expect(subject).to respond_to(:print_menu)
+    end
+
+    it 'responds to menu' do
+        expect(subject).to respond_to(:create_order)
+    end
+   #it 'responds to view_menu' do
+   #    expect(subject).to respond_to(:view_menu)
+   #end
+#
+   #it 'responds to create_order' do
+   #    expect(subject).to respond_to(:create_order)
+   #end
+#
+   #it 'responds to print_menu' do
+   # expect(subject).to respond_to(:print_menu)
+   #end
+#
+   #it 'responds to print_menu' do
+   # expect(subject).to respond_to(:interactive_menu)
+   #end
+#
+   #it 'responds to print_menu' do
+   # expect(subject).to respond_to(:your_options)
+   #end
+#
+   #it 'responds to print_menu' do
+   # expect(subject).to respond_to(:process)
+   #end
+#
+   #it 'responds to view_total' do
+   # expect(subject).to respond_to(:view_total)
+   #end
+end
+
+
 
 end
 
-# context 'checking that methods function as required' do 
-# 
-#     let(:new_array) { new_array = [{item: "Chilli", price: 6}, {item: "Hot dog", price: 3}] }
-# 
-# 
-#     #subject.new_array.create!(item:"Cheese", price: 3)
-#       
-#     puts :new_array
-# 
-# 
-#     before(:each)(:new_array = new_array) end
-#       #before do
-#       #  assign(:new_array, new_array)
-#       #end
-# 
-#     it 'prints out the faked menu' do
-#         expect(subject.print_menu).to eq("1. Chilli, 6\n2. Hot dog, 3")
-#     end
-# 
-# end
 
-end
-
-#   before(:each){subject.new_array :new_array, [
-#        {item: "cheese",
-#        price: 6}
-#    ]}
-
-    #before(:each)(new_array = new_array)
-#    let(:new_array){[{item: "cheese",
-#        price: 6}
-#    ]}
+#it 'prints off the user options' do
+    #        expect{subject.your_options}.to output(
+    #            "1. View Menu\n2. Create Order\n3. View Total\n").to_stdout
+    #    end
+    #
+    #    it 'menu returns the correct response from user input' do
+    #        expect{subject.process(5)}.to output(
+    #            "I don't understand. Please try again.\n"
+    #        ).to_stdout
+    #    end
+    #
+    #  end
