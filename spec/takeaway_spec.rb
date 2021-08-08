@@ -29,6 +29,12 @@ context 'checking to see that input results in the desired output' do
     #expect{subject.choose_item}.to_return(subject.get_item(item))
     #end
 
+   it 'expects to append item to array' do
+    item = double
+    
+
+   end
+
 end 
 
 end

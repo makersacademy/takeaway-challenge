@@ -21,5 +21,16 @@ class Order
         else puts "No items added yet"
         end
     end
+
+    def current_total
+        total_array = []
+        if current_order.length > 0
+            @current_order.each do |subhash|
+                total_array.append(subhash[:price])
+            end
+        puts "The current total is #{total_array.sum}"
+        else puts "No items added yet"
+        end
+    end
 end
 
