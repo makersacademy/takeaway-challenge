@@ -15,4 +15,17 @@ describe Order do
       expect(test_basket.total_price).to eq(16.97)
     end 
   end  
+
+  describe '#remove_item' do 
+    context 'When passed and item and quantity' do 
+      it "removes item from basket" do 
+        expect(test_basket.remove_item("chips", 1)).to eq({ :pizza => 1, :chips => 1 })
+      end 
+    end
+    context 'When passed item and no quanitity information' do 
+      it "Clears item from basket" do 
+        expect(test_basket.remove_item("pizza")).to eq({ :chips => 2 })
+      end 
+    end 
+  end
 end

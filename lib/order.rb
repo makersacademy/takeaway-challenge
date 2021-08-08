@@ -15,6 +15,12 @@ class Order
     @basket
   end 
 
+  def remove_item(item, quantity = nil)
+    @basket.delete(item.to_sym) if quantity.nil? 
+    @basket[item.to_sym] -= quantity unless quantity.nil?
+    @basket
+  end 
+
   def total_price
     @basket.each do |item, quantity|
       @total += (@menu[item] * quantity)
