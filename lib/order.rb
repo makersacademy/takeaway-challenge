@@ -26,6 +26,11 @@ class Order
       @total += (@menu[item] * quantity)
     end 
     @total
-  end 
+  end
+
+  def complete_order
+    fail "Nothing in basket" if @basket == {}
+    p "Thank you! Your order was placed and will be delivered before #{Time.new + 3600}"
+  end
 
 end
