@@ -6,7 +6,7 @@ describe Order do
   let(:faulty_messager) { double :messager, send_sms: false }
 
   t = Time.now.to_i + 3600
-  time_then = "Thank you! Your order was placed and will be delivered before " << Time.at(t).strftime('%H:%M')
+  time_then = "Thank you! Your order will be delivered before " << Time.at(t).strftime('%H:%M')
 
   it "expects the order to be empty" do
     expect(subject.items).to be_empty
@@ -21,8 +21,7 @@ describe Order do
 
   it "raise error if messager is faulty" do 
     subject = described_class.new(faulty_messager)
-    expect{ subject.checkout }.to raise_error("failed to send sms to customer")
+    expect { subject.checkout }.to raise_error("failed to send sms to customer")
   end
-
 
 end

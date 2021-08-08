@@ -12,11 +12,13 @@ class Messager
   end
 
   def send_sms(message, to = ENV["TWILIO_PHONE_TO"])
-    sent = @client.messages.create(
-      body: message,
-      to: to,
-      from: @from)
+    phone_number(to)
+    sent = @client.messages.create(body: message, to: to, from: @from)
     sent.sid.nil? ? false : true
+  end
+
+  def phone_number(number)
+    raise "invalid phone number" unless number.to_s.gsub(/\D/, '').length.between?(7,14)
   end
 
 end

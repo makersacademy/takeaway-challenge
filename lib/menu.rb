@@ -16,7 +16,7 @@ class Menu
 
   def get_dish(dish)
     @dish = dish
-    @dish = @dishes.select{ |obj| obj.name == @dish }
+    @dish = @dishes.select { |obj| obj.name == @dish }
     @dish.empty? ? nil : @dish[0]
   end
 

@@ -13,18 +13,12 @@ class Takeaway
   end
 
   def order(dish, many = 1, order_now = Order.new)
-    add_to_order(dish, many, order_now)
+    @order_now = order_now
+    @order_now.add_to_order(dish, many, @menu)
   end
 
   def add(dish, many = 1)
-    add_to_order(dish, many, @order_now)
-  end
-
-  def add_to_order(dish, many, order_now)
-    @order_now, @dish, got_dish = order_now, dish, @menu.get_dish(dish)
-    many.times { @order_now.items << got_dish } unless got_dish.nil?
-    raise "#{dish} dish is not in the menu" if got_dish.nil?
-    "#{many}x #{dish}(s) added to your basket"
+    @order_now.add_to_order(dish, many, @menu)
   end
 
   def total 
@@ -34,14 +28,15 @@ class Takeaway
   end
 
   def basket_summary
-    summary = @order_now.items.sort { |a,b| a.name <=> b.name }
-    chunk_dishes(summary).join(", ")
+    summary = @order_now.items.sort { |a, b| a.name <=> b.name }
+    @order_now.chunk_dishes(summary).join(", ")
   end
 
-  def chunk_dishes(summary)
-    summary.chunk_while { |a, b| a.name == b.name }.to_a.map do |dishes|
-        "#{dishes[0].name} x#{dishes.count} = £" << ('%.2f' % (dishes.count * dishes[0].price))
-    end
+  def checkout
+    raise "your basket is empty" if (@order_now.nil? || @order_now.items.empty?)
+
+    @order_now.checkout 
+    @order_now.items = Array.new
   end
 
 end

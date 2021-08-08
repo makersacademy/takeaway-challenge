@@ -33,7 +33,7 @@ describe Takeaway do
   
   context "when dish added to order is not part of the menu" do
     it "raises error" do
-      expect{ subject.order("chips") }.to raise_error "chips dish is not in the menu" 
+      expect { subject.order("chips") }.to raise_error "chips dish is not in the menu" 
     end
   end
 
@@ -59,6 +59,10 @@ describe Takeaway do
     end
   end
 
-  
+  it { is_expected.to respond_to(:checkout).with(0).argument }
+
+  it "raises error on checkout if basket is empty" do
+    expect { subject.checkout }.to raise_error("your basket is empty")
+  end
 
 end
