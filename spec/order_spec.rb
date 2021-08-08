@@ -35,6 +35,6 @@ describe Order do
     end 
     it "completes order and gives latest delivery time" do 
        expect(test_basket.complete_order.confirm_order).to eq("Thank you! Your order was placed and will be delivered before #{Time.new + 3600}")
-     end 
+    end 
   end 
 end

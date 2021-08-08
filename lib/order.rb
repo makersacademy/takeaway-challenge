@@ -1,5 +1,3 @@
-require_relative 'menu'
-
 class Order 
   attr_reader :basket, :menu, :total, :phone_number 
 
@@ -31,7 +29,6 @@ class Order
 
   def complete_order
     fail "Nothing in basket" if @basket == {}
-    # use number to send text confirming order is placed
     Text.new
   end
 
