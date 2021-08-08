@@ -65,12 +65,12 @@ Offenses:
 
 lib/order.rb:30:44: C: Style/FormatStringToken: Prefer annotated tokens (like %<foo>s) over unannotated tokens (like %s).
       summary += "#{quantity}x #{item} £#{'%.2f' % (quantity * @menu[item])} "
-                                           ^^^^
-lib/takeaway.rb:26:15: C: Style/FormatStringToken: Prefer annotated tokens (like %<foo>s) over unannotated tokens (like %s).
-    puts "£#{'%.2f' % @order.total}"
-              ^^^^
-lib/takeaway.rb:44:5: W: Lint/UselessAssignment: Useless assignment to variable - message.
-    message = @client.messages
+                                           ^^^^ 
+lib/takeaway.rb:26:15: C: Style/FormatStringToken: Prefer annotated tokens (like %<foo>s) over unannotated tokens (like %s). 
+    puts "£#{'%.2f' % @order.total}" 
+              ^^^^ 
+lib/takeaway.rb:44:5: W: Lint/UselessAssignment: Useless assignment to variable - message. 
+    message = @client.messages 
     ^^^^^^^
 
-8 files inspected, 3 offenses detected
+8 files inspected, 3 offenses detected 
