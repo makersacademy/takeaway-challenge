@@ -1,23 +1,15 @@
 require_relative 'sandcream'
+# require_relative 'customer_sms'
 
 DELIVERY_FEE = 3.5
-ORDER_TOTAL = 0
 
-class Happiness_Delivered
+class HappinessDelivered
   attr_accessor :basket, :order_total, :menu
 
   def initialize(basket = [])
     @menu = Sandcream.new
     @basket = basket
-    @order_total = ORDER_TOTAL
-  end
-
-  def print_menu_options
-    puts '1. View Sand Creams menu'
-    puts '2. Select your order'
-    puts '3. Review your order'
-    puts '4. Complete your order'
-    puts '5. Exit menu'
+    @order_total = []
   end
 
   def interactive_menu
@@ -51,28 +43,70 @@ class Happiness_Delivered
   end
 
   def select_order
-    puts 'magic content'
+    order
+    lines
+    puts 'Your current order:'
+    @basket.map { |dish| puts "• #{dish[:sando]}#{dish[:icecream]}" }
   end
 
   def review_order
-    puts 'magic content'
+    lines
+    puts 'Your current order total:'
+    @basket.map { |price| puts "£ #{price[:price]}0" }
+    puts '-------'
+    @basket.map { |price| (@order_total << price[:price]) } 
+    puts "£ #{@order_total.sum}0"
   end
 
   def complete_order
-    puts 'magic content'
+    # send message
+    # OrderConfirmation.new
+    # bundle exec ruby customer_sms.rb
+    puts 'magic message'
   end
 
   private
 
-  def welcome_note
-    puts "-" * 60
-    puts 'Welcome to Happiness Delivered! Please select from' 
-    puts 'the following menu options to place your order.'
-    puts "-" * 60
-    
+  def lines
+    puts '-' * 60
   end
 
+  def print_menu_options
+    lines
+    puts '1. View SandCreams menu'
+    puts '2. Select your order'
+    puts '3. Review your order'
+    puts '4. Complete your order'
+    puts '5. Exit menu'
+  end
+
+  def welcome_note
+    lines
+    puts 'Welcome to Happiness Delivered! Please select from' 
+    puts 'the following menu options to place your order.'
+    lines
+  end
+
+  def order
+    puts 'Please enter the menu item number you wish'
+    puts 'to add to your basket or enter 999 to exit.'
+    x = $stdin.gets.chomp.to_i
+   
+    while x != 999 do
+      if x.between?(1, 7)
+        index = (x - 1)
+        @basket << @menu.sando_menu[index]
+      elsif x.between?(8, 14)
+        index = (x - 8)
+        @basket << @menu.icecream_menu[index]
+      else
+        puts 'Plese select a valid menu option'
+      end
+      puts 'Add another dish or 999 to finish your order'
+      x = $stdin.gets.chomp.to_i
+    end 
+  end
 end
 
-hd = Happiness_Delivered.new
-hd.print_menu
+# hd = HappinessDelivered.new
+# hd.interactive_menu
