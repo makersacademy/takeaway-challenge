@@ -11,7 +11,7 @@ module SMS
 
   # :nocov:
 
-  def self.send(body, from: @restaurant, to: @customer)
+  def self.send(body, from = @restaurant, to = @customer)
     begin
       @client.messages.create(from: from, to: to, body: body)
       "SMS sent: #{body}"

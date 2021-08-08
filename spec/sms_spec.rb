@@ -1,6 +1,6 @@
 require 'sms'
 
-# Basically I have no idea how to test this class so TODO I guess
+# Basically I have no idea how to test this module so TODO, I guess
 # The following tests do nothing but return exactly what I just told them to!
 # I wrapped the only method in SMS in a :nocov: block for now.
 

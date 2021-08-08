@@ -8,16 +8,8 @@ describe Takeaway do
     }
   end
 
-  let(:customer) do
-    double Customer, order: {
-      items: [],
-      total_cost: 0
-    },
-    phone: '07700900000' 
-  end
-
+  let(:customer) { double Customer, order: { items: [], total_cost: 0 } }
   let(:test_menu_string) { "1. Flat White: £2\n2. Rainbow Bagel: £1\n" }
-
   let(:takeaway) { Takeaway.new(menu, customer) }
 
   before do
