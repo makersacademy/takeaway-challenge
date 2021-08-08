@@ -14,8 +14,4 @@ class Menu
     @dishes = dishes unless dishes.nil?
   end
 
-  def read_menu 
-    @dishes.empty? ? "the menu is empty" : @dishes
-  end
-
 end
