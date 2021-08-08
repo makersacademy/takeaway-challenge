@@ -27,15 +27,15 @@ describe Order do
 
   context 'checking to see if values being apssed returns the expected output (manual values)' do
     menu_items = Order.new
-    menu_items.add_items("item: Pork, price: 10.0")
-    menu_items.add_items("item: Salad, price: 8.5")
 
     it 'adds an item to the current order' do
+        menu_items.add_items({item: 'Pork', price: 10.0})
+        menu_items.add_items({item: 'Salad', price: 8.5})
         expect(menu_items.current_order.length).to eq(2)
       end   
   
     it 'returns the content of the current order' do
-        expect{menu_items.print_order}.to output("1. Pork, 10.0\n2. Salad, 8.5\n").to_stdout
+       expect{menu_items.print_order}.to output("1. Pork, 10.0\n2. Salad, 8.5\n").to_stdout
     end
   end
 
