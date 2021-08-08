@@ -1,14 +1,10 @@
-require "./lib/messager.rb"
 require "./lib/menu.rb"
 require "./lib/order.rb"
-
-
 
 class Takeaway
   attr_accessor :order_now
 
   def initialize(menu = Menu.new)
-    @messager = Messager.new
     @menu = menu  
   end
 

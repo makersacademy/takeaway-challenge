@@ -1,10 +1,11 @@
 require "./lib/takeaway.rb"
 
 describe Takeaway do
+
   let(:empty_menu) { double :menu, dishes: Array.new }
-  let(:dish){ double :dish, name: "pizza", price: 0.99, nil?: false }
-  let(:second_dish){ double :dish, name: "garlic bread", price: 0.50, nil?: false }
-  let(:menu){ double :menu, dishes: [dish], get_dish: dish }
+  let(:dish) { double :dish, name: "pizza", price: 0.99, nil?: false }
+  let(:second_dish) { double :dish, name: "garlic bread", price: 0.50, nil?: false }
+  let(:menu) { double :menu, dishes: [dish], get_dish: dish }
 #   before do
 #     allow(menu.get_dish).to receive("pizza").and_return("pizza")
 #   end
@@ -47,7 +48,7 @@ describe Takeaway do
     expect(subject.total).to eq("Total: £2.97")
   end
 
-  it { is_expected.to respond_to(:basket_summary).with(0).argument}
+  it { is_expected.to respond_to(:basket_summary).with(0).argument }
 
   context "after ordering 2 pizza" do
     it "the basket_summary should return 'pizza x2 = £1.98'" do
@@ -57,5 +58,7 @@ describe Takeaway do
       expect(subject.basket_summary).to eq("pizza x2 = £1.98")
     end
   end
+
+  
 
 end

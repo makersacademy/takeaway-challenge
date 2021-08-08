@@ -12,11 +12,11 @@ class Messager
   end
 
   def send_sms(message, to = ENV["TWILIO_PHONE_TO"])
-    @client.messages.create(
+    sent = @client.messages.create(
       body: message,
       to: to,
       from: @from)
-    # puts message.sid message = 
+    sent.sid.nil? ? false : true
   end
 
 end
