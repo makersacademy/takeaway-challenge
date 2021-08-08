@@ -18,16 +18,3 @@ describe Takeaway do
   end 
    
 end 
-
-
-describe Order do 
-  let(:order) { described_class.new }
-
-  describe '#add_to_basket' do 
-    it "Adds multiple items to basket" do 
-      order.add_to_basket("pizza", "8.99")
-      order.add_to_basket("chips", "3.99")
-      expect(order.basket).to eq({ :pizza => "8.99", :chips => "3.99" })
-    end
-  end 
-end
