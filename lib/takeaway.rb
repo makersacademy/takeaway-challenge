@@ -36,7 +36,6 @@ class Takeaway
     raise "your basket is empty" if (@order_now.nil? || @order_now.items.empty?)
 
     @order_now.checkout 
-    @order_now.items = Array.new
   end
 
 end
