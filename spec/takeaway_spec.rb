@@ -20,6 +20,11 @@ describe Takeaway do
 
   let(:takeaway) { Takeaway.new(menu, customer) }
 
+  before do
+    allow(SMS).to receive(:send).and_return('SMS sent')
+    allow_any_instance_of(SMS).to receive(:send).and_return('SMS sent')
+  end
+
   it 'can display a list of dishes with prices' do
     expect { takeaway.show_menu }.to output("#{test_menu_string}\n").to_stdout
   end
@@ -33,7 +38,10 @@ describe Takeaway do
   it 'keeps track of the order cost' do
     (1..2).each { |i| takeaway.add_to_order(i, i) }
 
-    puts customer.order
     expect(customer.order[:total_cost]).to eq(4)
+  end
+
+  it 'sends an order confirmation text' do
+    expect(takeaway.send_confirmation).to match(/[sent]/)
   end
 end

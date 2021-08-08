@@ -9,7 +9,16 @@ module SMS
   @restaurant = ENV['twilio_mobile_number']
   @customer = ENV['my_mobile_number']
 
-  def self.send(body)
-    @client.messages.create(from: @restaurant, to: @customer, body: body)
+  # :nocov:
+
+  def self.send(body, from: @restaurant, to: @customer)
+    begin
+      @client.messages.create(from: from, to: to, body: body)
+      "SMS sent: #{body}"
+    rescue Twilio::REST::TwilioError => e
+      "Failed to send SMS:\n#{e.message}"
+    end
   end
+
+  # :nocov:
 end
