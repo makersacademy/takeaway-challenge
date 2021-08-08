@@ -11,8 +11,8 @@ describe Order do
     expect(subject.total).to eq 1.70
   end
 
-  # it "displays a summary of the current order" do
-  #   subject.add_to_basket("Samosa", 2)
-  #   expect { subject.summary }.to output("2x Samosa £3.40 ").to_stdout
-  # end
+  it "displays a summary of the current order" do
+    subject.add_to_basket("Samosa", 2)
+    expect(subject.summary).to eq("2x Samosa £3.40 ")
+  end
 end

@@ -24,4 +24,10 @@ describe Takeaway do
     expect { subject.summary }.to output("2x Samosa £3.40 \n").to_stdout
   end
 
+  it "sends a confirmation sms" do
+    message = "Thank you! Order was placed and will be delivered by 18:52"
+    allow(subject).to receive(:send_sms).and_return(message)
+    expect(subject.confirmation).to eq message
+  end
+
 end

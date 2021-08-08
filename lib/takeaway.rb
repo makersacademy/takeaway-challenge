@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 class Takeaway
 
   attr_reader :menu
@@ -26,6 +27,24 @@ class Takeaway
 
   def summary
     puts @order.summary
+  end
+
+  def confirmation
+    time = Time.now + 3600 
+    message = "Thank you! Order was placed and will be delivered by #{time.hour}:" '%.2f' % "#{time.min}"
+    send_sms(message)
+  end
+
+  def send_sms(message)
+    account_sid = ENV['TWILIO_ACC_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    message = @client.messages
+      .create(
+        body: message,
+        from: ENV['TWILIO_PHONE_NUMBER'],
+        to: ENV['PHONE_NUMBER']
+      )
   end
 
 end
