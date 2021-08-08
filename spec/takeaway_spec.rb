@@ -9,11 +9,11 @@ context 'checking that methods and variable exist' do
     end
 
 
-    it 'responds to menu' do
+    it 'responds to print menu' do
         expect(subject).to respond_to(:print_menu)
     end
 
-    it 'responds to menu' do
+    it 'responds to create_order' do
         expect(subject).to respond_to(:create_order)
     end
    #it 'responds to view_menu' do
