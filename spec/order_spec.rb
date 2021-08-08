@@ -16,7 +16,7 @@ describe Order do
     "1\n",
     "3\n",
     "5\n",
-    "stop\n"
+    "confirm\n"
   ] }
 
   describe "#select_order" do

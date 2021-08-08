@@ -1,5 +1,7 @@
 class Order
 
+  # requires "menu" to be an array of hashes
+
   def initialize(menu)
     @menu = menu
     @order = []
@@ -14,16 +16,23 @@ class Order
     @order.map { |item| item.values[0] }.sum
   end
 
+
+
+
   private
 
   def get_user_input
     input = gets.chomp
     selections = []
-    until input == "stop"
+    until input.upcase == "CONFIRM"
       selections.push(input.to_i)
       input = gets.chomp
     end
     selections
   end
+
+  # def confirmation_text
+  #   @confirmation_text_class.new.send_order_confirmation
+  # end
 
 end
