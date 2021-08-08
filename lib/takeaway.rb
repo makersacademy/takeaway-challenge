@@ -1,11 +1,14 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'check_total'
+require_relative 'text_message'
 
 class Takeaway
 
-  def initialize(order_class = Order.new(Menu.new.menu))
-    @order = order_class
+  DELIVERY_TIME = 3600
+
+  def initialize(order_instance = Order.new(Menu.new.menu))
+    @order = order_instance
   end
 
   def menu
@@ -24,6 +27,10 @@ class Takeaway
     checker.check_total(@order.order)
   end
 
+  def place_order(texter = TextMessage.new)
+    texter.sms_send(create_message)
+  end
+
   private
 
   def hash_formatter(hash)
@@ -32,6 +39,11 @@ class Takeaway
 
   def make_symbol(input)
     input.join(", ").to_sym
+  end
+
+  def create_message(time = Time.now + DELIVERY_TIME)
+    "Thank you! Your order was placed and "\
+    "will be delivered before #{time.strftime("%k:%M")}"
   end
 
 end

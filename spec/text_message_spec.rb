@@ -7,7 +7,7 @@ describe TextMessage do
   subject { described_class.new(mock_client) }
 
   before(:each) do
-    allow(mock_client).to receive_message_chain(:account, :sms, :messages, :create) { "test" }
+    allow(mock_client).to receive_message_chain(:messages, :create) { "test" }
   end
 
   it "calls sms_send method with a message" do

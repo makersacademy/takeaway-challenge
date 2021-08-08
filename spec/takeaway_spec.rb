@@ -49,11 +49,22 @@ describe Takeaway do
 
   describe "#check_total" do
 
-    it "uses CheckTotal logic to return sum & total of order" do
+    it "uses CheckTotal logic (mocked here) to return sum & total of order" do
       checker = double
       output = :"Noodles: 2.99 + Chips: 2.49 = 5.48 TOTAL"
       allow(checker).to receive(:check_total) { output }
       expect(subject.check_total(checker)). to eq output
+    end
+
+  end
+
+  describe "#place_order" do
+
+    it "uses TextMessage logic (mocked here) to send text message" do  
+      texter = double
+      output = "<A Twilio text message>"
+      allow(texter).to receive(:sms_send) { output }
+      expect(subject.place_order(texter)).to eq output
     end
 
   end

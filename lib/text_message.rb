@@ -10,7 +10,7 @@ class TextMessage
     @client.messages.create(
       :from => ENV['TWILIO_NUMBER'],
       :to => ENV['PHONE_NUMBER'],
-      :body => message )
+      :body => message)
   end
 
 end
