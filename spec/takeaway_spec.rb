@@ -2,8 +2,8 @@ require "./lib/takeaway.rb"
 
 describe Takeaway do
   let(:empty_menu) { double :menu, dishes: Array.new }
-  let(:dish){ double :dish, name: "pizza", price: 0.99 }
-  let(:menu){ double :menu, dishes: [dish] }
+  let(:dish){ double :dish, name: "pizza", price: 0.99, nil?: false }
+  let(:menu){ double :menu, dishes: [dish], get_dish: dish }
 
   it "shows the Menu class to have a method read_menu" do
     expect(subject).to respond_to :read_menu
@@ -24,6 +24,12 @@ describe Takeaway do
     subject = described_class.new(menu)
     subject.order("pizza", 3)
     expect(subject.order_now.items.count).to eq(3)
+  end
+  
+  context "when dish added to order is not part of the menu" do
+    it "raises error" do
+      expect{ subject.order("chips") }.to raise_error "chips dish is not in the menu" 
+    end
   end
 
 end
