@@ -1,7 +1,8 @@
 require './lib/order'
 
 describe Order do
-  let(:menu) { [
+  let(:menu) { double :menu }
+  let (:items) { [
     {"soup" => 3},
     {"bread" => 2},
     {"pizza" => 10},
@@ -21,7 +22,8 @@ describe Order do
 
   describe "#select_order" do
     
-    it "takes order from user input" do 
+    it "takes order from user input" do
+      allow(menu).to receive(:items).and_return(items)
       allow(order).to receive(:gets).and_return(*user_input)
       expect(order.select_order).to eq [{"soup"=>3}, {"pizza"=>10}, {"chips"=>3}]
     end
@@ -29,10 +31,9 @@ describe Order do
   end
 
   describe "#cost" do
-    # need to add functionality to the menu instance variable so that its a dictionary that stores price of meal as well
-    # maybe make an interface class as well that prints stuff? sends texts?
 
     it "returns total cost of items ordered" do
+      allow(menu).to receive(:items).and_return(items)
       allow(order).to receive(:gets).and_return(*user_input)
       order.select_order
       expect(order.cost).to eq 16

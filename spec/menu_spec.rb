@@ -3,22 +3,23 @@ require './lib/menu'
 describe Menu do
   let(:expected) { [
     "Starters",
-    "Soup of the day £3",
-    "Garlic bread £3",
+    "(1) Soup of the day £3",
+    "(2) Garlic bread £3",
     "",
     "Mains",
-    "Pizza £11",
-    "Fish and chips £15",
-    "Burger £12",
-    "Seabass £16",
+    "(3) Pizza £11",
+    "(4) Fish and chips £15",
+    "(5) Burger £12",
+    "(6) Seabass £16",
     "",
     "Desserts",
-    "Chips £4",
-    "Salad £3",
+    "(7) Chips £4",
+    "(8) Salad £3",
     "",
     "Sides",
-    "Tiramisu £6",
-    "Chocolate fudge cake £7"
+    "(9) Tiramisu £6",
+    "(10) Chocoate fudge cake £7",
+    ""
     ].join("\n") }
 
   describe '#print_menu' do
