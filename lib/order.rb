@@ -1,10 +1,11 @@
 class Order
   attr_reader :menu, :basket, :total
 
-  def initialize(menu_class:)
+  def initialize(sms = SMS.new, menu_class:)
     @menu = menu_class
     @basket = []
     @total = 0
+    @sms = sms
   end
 
   def list_menu
@@ -28,12 +29,12 @@ class Order
     puts "#{total}"
   end
 
-  # def remove_from_basket
-    
-  # end
-
   def verify_basket
     @basket.each { |item| puts "#{item[:selected]} - #{item[:dish]} selected" }
+  end
+
+  def complete_order
+    sms.send
   end
 
   private

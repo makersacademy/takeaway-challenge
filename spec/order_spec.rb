@@ -34,7 +34,8 @@ describe Order do
     it 'can select a dish' do
       expect { order.choose("Pepperoni") }.to change { order.basket.length }.by (1)
     end
-
+    
+    # this is not testing what I want and am not sure how to do it correctly
     it 'can select a multiple dishes' do
       order.choose("Pepperoni")
       expect { order.choose("4 Cheeses", 3) }.to change { order.basket.length }.by (2)
@@ -55,6 +56,11 @@ describe Order do
     it 'outputs the contents of the basket' do
       order.choose("Pepperoni", 4)
       expect { order.verify_basket }.to output.to_stdout
+    end
+
+    it 'shows the content of the basket' do
+      order.choose("Pepperoni", 4)
+      expect { order.verify_basket }.to output { "4 - Pepperoni selected" }.to_stdout
     end
 
   end
