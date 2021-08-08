@@ -18,6 +18,4 @@ describe SMS do
 
     expect(subject.send('Hello!')).to eq('Failed to send SMS')
   end
-
-
 end

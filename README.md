@@ -1,3 +1,21 @@
+I wrote a program in response to the specification below.
+
+## Succeeded:
+
+- Customer can display a list of menu items
+- Customer can add  any number of menu items to their order
+- Customer receives a confirmation text with a delivery estimate
+- Style is rubocop compliant
+- All methods have 100% test coverage **except** SMS (see below)
+- Used mocking to avoid sending real sms messages from rspec tests
+
+## Failed:
+
+- Didn't test SMS method due to begin/rescue block - TOLEARN
+- Didn't fulfill the stretch goal of implementing SMS ordering - TODO
+
+#
+
 Takeaway Challenge
 ==================
 ```
