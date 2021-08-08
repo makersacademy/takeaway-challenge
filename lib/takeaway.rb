@@ -20,12 +20,15 @@ def print_menu
     menu.print_menu
 end
 
-def create_order
-    my_order.current_order.append("Hello")
-    # In order I should be able to:
-    # Select items
-    # Add them to an array
-    # Perform calculations on that array
+def choose_item
+    puts "Please choose an item"
+    item = gets.chomp().to_i
+    get_item(item)
+end
+
+def get_item(item)
+    user_selection = menu.menu[item]
+    my_order.current_order.append(user_selection)
 end
 
 end

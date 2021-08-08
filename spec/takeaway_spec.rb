@@ -8,57 +8,29 @@ context 'checking that methods and variable exist' do
         expect(subject).to respond_to(:menu)
     end
 
-
     it 'responds to print menu' do
         expect(subject).to respond_to(:print_menu)
     end
 
     it 'responds to create_order' do
-        expect(subject).to respond_to(:create_order)
+        expect(subject).to respond_to(:choose_item)
     end
-   #it 'responds to view_menu' do
-   #    expect(subject).to respond_to(:view_menu)
-   #end
-#
-   #it 'responds to create_order' do
-   #    expect(subject).to respond_to(:create_order)
-   #end
-#
-   #it 'responds to print_menu' do
-   # expect(subject).to respond_to(:print_menu)
-   #end
-#
-   #it 'responds to print_menu' do
-   # expect(subject).to respond_to(:interactive_menu)
-   #end
-#
-   #it 'responds to print_menu' do
-   # expect(subject).to respond_to(:your_options)
-   #end
-#
-   #it 'responds to print_menu' do
-   # expect(subject).to respond_to(:process)
-   #end
-#
-   #it 'responds to view_total' do
-   # expect(subject).to respond_to(:view_total)
-   #end
+
+   it 'responds to get_item' do
+       expect(subject).to respond_to(:get_item)
+   end
 end
 
+context 'checking to see that input results in the desired output' do
 
+    #it 'expects choose item to receive a user input' do
+    #item = double
+    #allow(subject.choose_item).to receive(:gets).and_return(item)
+    #expect{subject.choose_item}.to_return(subject.get_item(item))
+    #end
+
+end 
 
 end
 
-
-#it 'prints off the user options' do
-    #        expect{subject.your_options}.to output(
-    #            "1. View Menu\n2. Create Order\n3. View Total\n").to_stdout
-    #    end
-    #
-    #    it 'menu returns the correct response from user input' do
-    #        expect{subject.process(5)}.to output(
-    #            "I don't understand. Please try again.\n"
-    #        ).to_stdout
-    #    end
-    #
-    #  end
+#end
