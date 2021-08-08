@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
@@ -14,20 +14,58 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+## Introduction
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Takeaway Challenge is a simple Ruby program that simulates a takeaway restaurant user experience via irb and meets the requirements of four user stories ([outlined below](#user-stories))
 
-Task
------
+This is my second weekend challenge on the Makers Academy coding bootcamp: I felt more comfortable writing tests in RSpec this week (although I was still perplexed on a number of occasions, I found it much easier to find solutions or ideas in the documentation or via Stack Overflow etc.) I was also trying to implement what I had learned about encapsulation, testing behaviour not state, and other OOP principles. I think, in this regard, the program is a work-in-progress!
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+Near the end of this project I merged my Takeaway class with my Order class (the Order class no longer exists) - while I liked the idea of having a separate Order class, there was significant overlap with Takeaway and it was causing me some difficulty in tests. The Takeaway class could probably do with some paring down: the private methods for formatting strings could be extracted to their own class, for example, which would also facilitate testing them. Where the user receives information, such as the menu or the current order status, I have used symbols, so that the user cannot manipulate string, arrays, hashes etc. through irb.
+
+If I had more time on the project, I'd like to go beyond the user stories and implement more features - for example, at the moment a customer cannot delete a dish once it is added to the order. The only way to remove anything is to start over with a new instance of the Takeaway class.
+
+I enjoyed this challenge, especially getting Twilio to work: it was a really encouraging moment when I hit return on my terminal and my smartphone buzzed with a message.
+
+## Installation
+
+```
+git clone https://github.com/edpackard/airport_challenge.git
+gem install bundler
+bundle
+```
+You will also need to save four environment variables into your `~/.zshrc` or `~/.bash_profile` files. In zsh, my variables looked like this, with the required information in the quotation marks.
+```
+export PHONE_NUMBER=""
+export TWILIO_NUMBER=""
+export TWILIO_AUTH=""
+export TWILIO_SID=""
+```
+Register for a free [Twilio](https://www.twilio.com/) account and obtain a phone number, authorisation token, and SID. These go in the relevant fields above, the `PHONE_NUMBER` variable should be your own smartphone number.
+
+## How to use this program
+
+Open `irb` from the command line and `require` the `takeaway.rb` file. If you are in the `takeaway-challenge` directory, `require './lib/takeaway'` will open the program.
+
+* To create a restaurant to order from: `takeaway = Takeaway.new`
+* To see the menu: `takeaway.view_menu`
+* To add a dish: `takeaway.add("<dish name>")`
+* The dish name must be on the menu, and must be entered exactly (a future feature could be case insensitivity)
+* To check what you have added, and see the total cost: `takeaway.check_order`
+* To place your order: `takeaway.place_order`
+* You will receive a text message with your delivery time!
+* You can still check what you ordered after placing an order, until you add another order
+* If you add another order after placing your order, you will begin a new order
+* You cannot place an order if you haven't added any dishes
+
+## How to run the tests
+
+To run the RSpec tests, run `rspec` from the `takeaway-challenge` directory. This will run all the unit tests and the feature test. To run individual test files, put the file path after `rspec`, such as `rspec ./spec/takeaway_spec.rb`.
+
+The feature test goes through a series of commands such as `add`, `view_menu`, and `check_order`. It does not use `place_order`, to prevent excessive text messaging. To run the feature test with the `rspec` command, you will need to un-comment out the file.
+
+This program has 100% RSpec test coverage (even with the feature_test_spec.rb file commented out), although it is perhaps 'over-tested' in some regards, and I am not sure about the quality/clarity of some of my mocks.
+
+## User Stories
 
 ```
 As a customer
@@ -46,38 +84,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
