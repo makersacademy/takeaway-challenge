@@ -42,6 +42,23 @@ describe Order do
 
   end
 
+  # describe '#remove_from_basket' do
+
+  #   it 'removes the selected item from the basket' do
+
+  #   end
+
+  # end
+
+  describe '#verify_basket' do
+
+    it 'outputs the contents of the basket' do
+      order.choose("Pepperoni", 4)
+      expect { order.verify_basket }.to output.to_stdout
+    end
+
+  end
+
   describe '#total_price' do
 
     it 'outputs the sum total of the basket' do

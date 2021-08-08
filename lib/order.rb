@@ -24,10 +24,16 @@ class Order
   end
 
   def total_price
-    @basket.each do |item|
-      @total += item[:price] * item[:selected]
-    end
+    @basket.each { |item| @total += item[:price] * item[:selected] }
     puts "#{total}"
+  end
+
+  # def remove_from_basket
+    
+  # end
+
+  def verify_basket
+    @basket.each { |item| puts "#{item[:selected]} - #{item[:dish]} selected" }
   end
 
   private
