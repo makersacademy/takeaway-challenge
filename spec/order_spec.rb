@@ -8,9 +8,9 @@ describe Order do
     end
   end
 
-  # describe "#select_meal method" do
-  #   it "should let us select multiple dishes" do
-  #     expect(subject.see_menu).to 
-  #   end
-  # end
+  describe "#select_meal method" do
+    it "should let us select multiple dishes" do
+      expect(subject.select_meal([1, 3])).to eq(subject.main_menu.values_at(0, 2))
+    end
+  end
 end
