@@ -1,14 +1,13 @@
-# class will contain a menu in which we can adjust what is availble using instance variables ?
 class Menu 
-  attr_reader :menu
+  attr_reader :list
   
   def initialize 
-    list = {
+    @list = {
       :pizza => "8.99",
       :noodles => "6.99",
-      :chips => "3.99"
+      :chips => "3.99",
+      :curry => "7.99"
     }
-    @menu = list
   end
 end
 
