@@ -12,4 +12,12 @@ class Order
   def add_order(dish, quantity)
     @selection[dish] += quantity
   end
+
+  def total
+    order_total = 0
+    @selection.each do |dish, quantity|
+      order_total += (quantity * @menu.dishes[dish])
+    end
+    "Total cost: #{order_total}"
+  end
 end

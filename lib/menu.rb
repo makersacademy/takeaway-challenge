@@ -4,11 +4,11 @@ class Menu
 
   def initialize
     @dishes = {
-      "Tacos" => 5,
-      "Burrito" => 5,
-      "Quesadilla" => 7,
-      "Enchiladas" => 7
-    }
+      "tacos" => 5,
+      "burrito" => 5,
+      "quesadilla" => 7,
+      "enchiladas" => 7
+      }
   end
 
   def print_menu
