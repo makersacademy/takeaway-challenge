@@ -38,9 +38,12 @@ describe Order do
     end
   end
 
-  describe "#place_order" do
-    # it "returns correct time" do
-    #   expect(order.place_order).to eq Time.new
-    # end
+  describe "#items_ordered" do
+    it "includes items that have been ordered" do
+      allow(menu).to receive(:items).and_return(menu_items)
+      subject.add_item(menu, customer_selection)
+      subject.add_item(menu, customer_selection_2)
+      expect(subject.items_ordered).to include({"Chang Beer"=>3}, {"Vegan Soup"=>5})
+    end
   end
 end

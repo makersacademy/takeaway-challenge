@@ -46,7 +46,7 @@ end
 # order = Order.new
 # order.add_item(menu, 2)
 # order.add_item(menu, 1)
-# puts order.order_value
+# puts order.items_ordered
 # puts order.confirmation
 # order.place_order
 # puts ENV['ACCOUNT_SID']
