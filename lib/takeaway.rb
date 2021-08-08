@@ -3,7 +3,7 @@ require './lib/sms.rb'
 class Takeaway
   include SMS
 
-  def initialize(menu, customer)
+  def initialize(menu = Menu.new, customer = Customer.new)
     @menu = menu
     @customer = customer
   end
@@ -45,6 +45,10 @@ class Takeaway
   end
 
   def check_total
+    item_sum = @customer.order[:items].reduce(0) do |sum, item|
+      sum + @menu.items[item][:cost]
+    end
 
+    raise 'Accounting error' unless item_sum == @customer.order[:total_cost]
   end
 end

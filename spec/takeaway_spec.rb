@@ -35,7 +35,20 @@ describe Takeaway do
   end
 
   context 'on checkout' do
+    it 'checks the bill is correct' do
+      allow(customer)
+      .to receive(:order) {
+        { items: [1, 2],
+          total_cost: 10_000
+        }
+      }
+
+      expect { takeaway.checkout }.to raise_error('Accounting error')
+    end
+
     it "clears the customer's order" do
+      takeaway.checkout
+
       expect(customer.order[:items]).to be_empty
     end
 

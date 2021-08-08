@@ -7,15 +7,15 @@ require 'sms'
 describe SMS do
   it { is_expected.to respond_to :send }
 
-  it 'should return a confirmation if an sms sent succesfully' do
-    allow(subject).to receive(:send).and_return('SMS sent: Hello!')
+  # it 'should return a confirmation if an sms sent succesfully' do
+  #   allow(subject).to receive(:send).and_return('SMS sent: Hello!')
 
-    expect(subject.send('Hello!')).to match(/Hello!/)
-  end
+  #   expect(subject.send('Hello!')).to match(/Hello!/)
+  # end
 
-  it 'should return an informative error if an sms failed to send' do
-    allow(subject).to receive(:send).and_return('Failed to send SMS')
+  # it 'should return an informative error if an sms failed to send' do
+  #   allow(subject).to receive(:send).and_return('Failed to send SMS')
 
-    expect(subject.send('Hello!')).to eq('Failed to send SMS')
-  end
+  #   expect(subject.send('Hello!')).to eq('Failed to send SMS')
+  # end
 end
