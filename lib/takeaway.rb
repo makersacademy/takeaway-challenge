@@ -17,26 +17,20 @@ class Takeaway
 
   def add(dish)
     raise "Item not available" unless available?(dish)
-
-    @order = Array.new if @order_placed
-    @order_placed = false
+    
+    order_status_update
     @order << { dish => @menu[dish] }
   end
-
-  def current_order
-    make_symbol(@order.map { |item| hash_to_string(item) })
-  end
   
-  def check_total(checker = CheckTotal.new)
+  def check_order(checker = CheckTotal.new)
     checker.check_total(@order)
-    # add an order placed message if order_placed = true
   end
 
   def place_order(texter = TextMessage.new)
-    raise "Nothing ordered!" if current_order.empty?
-    
-    # need to raise error if order_placed = true
+    raise "Nothing ordered!" if @order.empty?
 
+    raise "Already ordered!" if @order_placed
+    
     @order_placed = true
     texter.sms_send(create_message)
   end
@@ -45,6 +39,11 @@ class Takeaway
 
   def available?(item)
     @menu.key?(item)
+  end
+
+  def order_status_update
+    @order = Array.new if @order_placed
+    @order_placed = false
   end
 
   def hash_to_string(hash)
