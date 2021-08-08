@@ -13,6 +13,7 @@ describe Takeaway do
   let(:takeaway) { Takeaway.new(menu, customer) }
 
   before do
+    allow(customer).to receive(:clear_order) { { items: [], total_cost: 0 } }
     allow(SMS).to receive(:send).and_return('SMS sent')
     allow_any_instance_of(SMS).to receive(:send).and_return('SMS sent')
   end
@@ -33,7 +34,13 @@ describe Takeaway do
     expect(customer.order[:total_cost]).to eq(4)
   end
 
-  it 'sends an order confirmation text' do
-    expect(takeaway.send_confirmation).to match(/[sent]/)
+  context 'on checkout' do
+    it "clears the customer's order" do
+      expect(customer.order[:items]).to be_empty
+    end
+
+    it 'sends a text message confirmation' do
+      expect(takeaway.checkout).to match(/[sent]/)
+    end
   end
 end
