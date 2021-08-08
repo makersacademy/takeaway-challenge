@@ -1,3 +1,14 @@
+William's frustrating and miserable attempt at the weekend challenge on a weekend with very limited time due to family commitments. I had set aside a few hours on Saturday and another few on Sunday to try and get this done, but wasn't optimistic due to how long the previous weekend's took. I was still using AWS on my windows PC for my coding, but for some reason it had ran out of space and wouldn't install the bundle. I wasted a lot of time trying to fix this problem, and despite every single file being deleted in there bar the minimum, I could not for the life of me get it to update it's disk space. Help online was not helpful at all, and I guessed that clearly it wasn't properly deleting files and they were still on there.
+
+None the less I did make a start and managed to get a basic interactive menu working for the program, despite the instructions being extremely vague on how exactly the user is supposed to run the program (is it in IRB, is there a menu process, or is it none of the above?), I did push this to Github, but it wasn't anything special, since the main challenge here was obviously the text message part which I couldn't do.
+
+The few hours I had to spare on Sunday evening were only met with similar frustrations. I gave up completely on AWS and swapped to the Macbook that Makers had been generous enough to lend me, which despite not using until now, I had left set up and ready to go should I need it...or so I thought. Once again I could not, for the life of me, get the gem bundler to install. It was just one problem after the next, and error message upon error message. After much toil and perseverance, I finally seemed to get everything working and ready to go, at which point it is now 10 minutes past midnight on Monday morning. And I can barely keep my eyes open, let alone think straight.
+
+I had also deleted and re forked and cloned my initial repo in a desperate attempt to get the bundler to finally start working, which meant I had lost what little work I had even in the first place (not that it was a lot), and thus have absolutely nothing to show for this challenge.
+
+Real shame because it looked quite interesting, but a combination of barely any free time and a bombardment of technical difficulties meant I never got to properly try. I have more commitments next weekend also, and am dreading the challenge then too, and will have no choice but to get a headstart in an already quite packed week no doubt.
+
+
 Takeaway Challenge
 ==================
 ```
