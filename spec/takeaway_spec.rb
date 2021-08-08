@@ -16,7 +16,7 @@ describe Takeaway do
 
   it "shows the total" do
     subject.add_item("Samosa")
-    expect { subject.total }.to output("1.70\n").to_stdout
+    expect { subject.total }.to output("£1.70\n").to_stdout
   end
 
   it "displays a summary of the current order" do
@@ -25,7 +25,7 @@ describe Takeaway do
   end
 
   it "sends a confirmation sms" do
-    message = "Thank you! Order was placed and will be delivered by 18:52"
+    message = "Thank you! You order was placed and will be delivered by 18:52"
     allow(subject).to receive(:send_sms).and_return(message)
     expect(subject.confirmation).to eq message
   end

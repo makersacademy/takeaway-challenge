@@ -9,6 +9,7 @@ class Takeaway
   end
 
   def show_menu
+    puts @menu
     @menu
   end
 
@@ -22,7 +23,7 @@ class Takeaway
   end
 
   def total
-    puts '%.2f' % @order.total
+    puts "£#{'%.2f' % @order.total}"
   end
 
   def summary
@@ -31,7 +32,8 @@ class Takeaway
 
   def confirmation
     time = Time.now + 3600 
-    message = "Thank you! Order was placed and will be delivered by #{time.hour}:" '%.2f' % "#{time.min}"
+    time = time.strftime("%k:%M")
+    message = "Thank you! Your order was placed and will be delivered by #{time}"
     send_sms(message)
   end
 
