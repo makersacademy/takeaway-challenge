@@ -41,16 +41,16 @@ end
 
 # items = [{"Chicken burger" => 10}, {"Vegan Soup" => 5}, { "Chang Beer" => 3}]
 
-# # menu = Menu.new(items)
-# # puts menu.show_menu
-# # order = Order.new
-# # order.add_item(menu, 2)
-# # order.add_item(menu, 1)
-# # puts order.order_value
-# # puts order.confirmation
-# # # # order.place_order
-# # # # puts ENV['ACCOUNT_SID']
-# # # # puts ENV['AUTH_TOKEN']
+# menu = Menu.new(items)
+# puts menu.show_menu
+# order = Order.new
+# order.add_item(menu, 2)
+# order.add_item(menu, 1)
+# puts order.order_value
+# puts order.confirmation
+# order.place_order
+# puts ENV['ACCOUNT_SID']
+# puts ENV['AUTH_TOKEN']
 
 
 
