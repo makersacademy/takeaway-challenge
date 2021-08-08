@@ -1,18 +1,14 @@
 class Menu
+  attr_reader :dishes
   
-  def initialize
-  
-    @menu = [{ :item => "Chicken Karahi", :price => 16 },
-      { :item => "Lamb Karahi", :price => 20 },
-      { :item => "Seekh Kebab", :price => 5 },
-      { :item => "Naan", :price => 1 },
-      ]
+  def initialize(dishes)
+    @dishes = dishes
   end
-  
-  def display_menu
-  
-    @menu
-    
-  end
-  
+
+  def print
+    dishes.map do |dish, price|
+      "#{dish.to_s.capitalize} £#{price}"
+    end.join(", ")
+  end  
+
 end

@@ -2,16 +2,23 @@ require 'menu'
 
 describe Menu do
   
-  it 'should respond to Menu' do
-    expect(subject).to respond_to(:display_menu)
-  end
+  subject(:menu) { described_class.new(dishes) }
   
-  it 'the menu should not be empty' do
-    expect(subject.display_menu).not_to be_empty
+  let(:dishes) do
+    {
+    karahi: 6,
+    nan: 1
+    }
   end  
-    
   
+  
+  it 'has a list of dishes with the prices displayed' do
+    expect(menu.dishes).to eq(dishes)
+  end  
+  
+  it 'prints dishes with prices' do
+    printed_menu = "Karahi £6, Nan £1"
+    expect(menu.print).to eq(printed_menu)
+  end  
   
 end
- 
-# I would like to see a list of dishes with prices
