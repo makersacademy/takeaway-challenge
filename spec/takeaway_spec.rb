@@ -24,7 +24,8 @@ describe Takeaway do
   it 'can display the current order' do
     allow(customer)
     .to receive(:order) {
-      { items: [1, 1, 2],
+      {
+        items: [1, 1, 2],
         total_cost: 5
       }
     }
@@ -49,7 +50,8 @@ describe Takeaway do
     it 'checks the bill is correct' do
       allow(customer)
       .to receive(:order) {
-        { items: [1, 2],
+        {
+          items: [1, 2],
           total_cost: 10_000
         }
       }
@@ -65,8 +67,25 @@ describe Takeaway do
 
     it 'sends a text message confirmation' do
       allow(customer).to receive(:order=).with(anything)
+      allow(customer).to receive(:order) {
+        {
+          items: [1, 1, 2],
+          total_cost: 5
+        }
+      }
 
       expect(takeaway.checkout).to match(/[sent]/)
+    end
+
+    it 'prevents checking out an empty order' do
+      allow(customer).to receive(:order) {
+        {
+          items: [],
+          total_cost: 0
+        }
+      }
+
+      expect { takeaway.checkout } .to output("Order is empty\n").to_stdout
     end
   end
 end

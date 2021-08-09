@@ -10,6 +10,25 @@ class Takeaway
     @customer = customer
   end
 
+  def add_to_order(item_number, quantity)
+    quantity.times do
+      @customer.order[:items] << item_number
+      @customer.order[:total_cost] += @menu.items[item_number][:cost]
+    end
+  end
+
+  def checkout
+    if @customer.order[:items].empty?
+      puts "Order is empty"
+      
+      return
+    end
+
+    check_total
+    clear_order
+    send_confirmation
+  end
+
   def show_menu
     @menu.items.each_pair do |item_number, item|
       puts "#{item_number}. #{item[:name]}: £#{item[:cost]}\n"
@@ -24,19 +43,6 @@ class Takeaway
     end
     
     print_order_total
-  end
-
-  def add_to_order(item_number, quantity)
-    quantity.times do
-      @customer.order[:items] << item_number
-      @customer.order[:total_cost] += @menu.items[item_number][:cost]
-    end
-  end
-
-  def checkout
-    check_total
-    clear_order
-    send_confirmation
   end
 
   private
