@@ -19,7 +19,7 @@ Takeaway Challenge
 
 ## Implementation
 
-[Check out my workflow mindmap]()
+[Check out my workflow mindmap](https://github.com/CorinneBosch/takeaway-challenge/blob/main/workflow/screenshot.png)
 
 ## Setup
 
