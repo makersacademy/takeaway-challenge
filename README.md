@@ -1,4 +1,23 @@
 Takeaway Challenge
+This project is unfinished. To see some functionality;
+Run irb
+`irb`
+Require the main class file
+`require './lib/restaurant.rb'`
+Create a restaurant
+`taste_makers = Restaurant.new`
+Start constructing an order
+`taste_makers.select_from_menu`
+Here is where things may start going awry. I haven't yet connected completing an order to the confirmation/SMS functionality. But you can always make a confirmation by just creating a confirmation on it's own 
+`confirmation = Confirmation.new`
+
+What would I do next? 
+* complete_order to trigger a confirmation
+* Have some concept of a Person/Customer, with phone number and pass this to a new Confirmation
+* Some serious refactoring of the select_from_menu, how can this functionality be divided up?
+* Revert to menu using hashes of the form {dish: dish_name, price: price_amount} as it seems much cleaner to gather all the 'prices' compared to gathering all the menu items' index 1s.
+* Testing! How to test the twilio confirmation.rb:19-27? How to acheive full code coverage with meaningful tests?
+
 ==================
 ```
                             _________
