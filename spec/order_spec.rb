@@ -43,14 +43,6 @@ describe Order do
 
   end
 
-  # describe '#remove_from_basket' do
-
-  #   it 'removes the selected item from the basket' do
-
-  #   end
-
-  # end
-
   describe '#verify_basket' do
 
     it 'outputs the contents of the basket' do
