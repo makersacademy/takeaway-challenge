@@ -1,8 +1,10 @@
 require "order"
 
 describe Order do
+  let(:number) { double("Phone number") }
   let(:menu) { double(Menu, main_menu: [{ Pasta: 9 }, { Risotto: 10 }, { Salad: 8 }]) }
-  let(:subject) { Order.new(menu) }
+  let(:subject) { Order.new(number, menu) }
+  let(:sms) { class_double(SMS).as_stubbed_const }
 
   describe "#see_menu method" do
     it "should let us see a list of dishes with prices" do
@@ -21,6 +23,13 @@ describe Order do
     it "should let us check the total price of the selected dishes" do
       subject.select_meals([1, 3])
       expect { subject.check_total }.to output("Order total = £17\n").to_stdout
+    end
+  end
+
+  describe "#check_out method" do
+    it "should send a text confirmation message" do
+      allow(sms).to receive(:send).and_return("sent")
+      expect(subject.check_out).to eq("sent")
     end
   end
 end

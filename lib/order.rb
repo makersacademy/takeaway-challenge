@@ -1,9 +1,11 @@
 require_relative "menu"
+require_relative "sms"
 
 class Order
-  attr_reader :main_menu, :selected_meals
+  attr_reader :main_menu, :number, :selected_meals
   
-  def initialize(menu = Menu.new)
+  def initialize(number, menu = Menu.new)
+    @number = number
     @main_menu = menu.main_menu
     @selected_meals = nil
     @order_total = 0
@@ -23,5 +25,9 @@ class Order
   def check_total
     @selected_meals.each { |meal| meal.each { |_, v| @order_total += v } }
     puts "Order total = £#{@order_total}"
+  end
+
+  def check_out
+    SMS.send(@number)
   end
 end
