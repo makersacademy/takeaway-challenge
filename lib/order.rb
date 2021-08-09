@@ -2,11 +2,11 @@
 class Order
   attr_reader :menu, :basket, :total
 
-  def initialize(menu_class:)
+  def initialize(menu_class:, sms_class:)
     @menu = menu_class
     @basket = []
     @total = 0
-    # @sms = SMS.new
+    @sms = sms_class
   end
 
   def list_menu

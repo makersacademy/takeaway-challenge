@@ -9,7 +9,9 @@ describe Order do
     { dish: "Magherita", price: 10, selected: 0 } ] 
   )}
 
-  subject(:order)       { described_class.new(menu_class: full_menu) }
+  let(:sms) { double(send: "Thank you! Your order was placed and will be delivered before #{@time_in_1_h}") }
+
+  subject(:order)       { described_class.new(menu_class: full_menu, sms_class: sms) }
 
   describe '#list_menu' do
 
@@ -65,6 +67,14 @@ describe Order do
     end
 
   end
+
+  # describe '#complete_order' do
+
+  #   it 'is expected to send message to users phone' do
+  #     expect{ order.complete_order }.to user
+  #   end
+
+  # end
 
 
 end
