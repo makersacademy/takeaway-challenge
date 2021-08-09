@@ -1,3 +1,4 @@
+require 'dishes'
 class Order
 
   def initialize 
