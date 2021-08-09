@@ -14,7 +14,16 @@ class FoodOrder
 
     menu_item = @menu.menu.select { |key, _value| key == food }
     number.times { @food_order << menu_item }
-    @food_order
+  end
+
+  def order_sum
+    order_total = 0
+    @food_order.each do |order_item|
+      order_item.each do |_key, value|
+        order_total += value
+      end
+    end
+    puts "The cost of your order is £#{order_total}"
   end
 
 end
