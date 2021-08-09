@@ -41,6 +41,27 @@ class Takeaway
 
   private
 
+  def check_total
+    item_sum = @customer.order[:items].reduce(0) do |sum, item|
+      sum + @menu.items[item][:cost]
+    end
+
+    raise 'Accounting error' unless item_sum == @customer.order[:total_cost]
+  end
+
+  def clear_order
+    @customer.order = { items: [], total_cost: 0 }
+  end
+
+  def confirmation_string
+    "Thanks for ordering! Your meal will be delivered by #{hour_hence}"
+  end
+
+  def hour_hence
+    now = DateTime.now
+    "%<hr>02d:%<mn>02d" % { hr: now.hour.next, mn: now.minute.next }
+  end
+
   def print_order_item(num)
     print "\n#{@customer.order[:items].count(num)} x "
     print "#{@menu.items[num][:name]}"
@@ -52,26 +73,5 @@ class Takeaway
 
   def send_confirmation
     SMS.send(confirmation_string)
-  end
-
-  def hour_hence
-    now = DateTime.now
-    "%<hr>02d:%<mn>02d" % { hr: now.hour.next, mn: now.minute.next }
-  end
-
-  def confirmation_string
-    "Thanks for ordering! Your meal will be delivered by #{hour_hence}"
-  end
-
-  def check_total
-    item_sum = @customer.order[:items].reduce(0) do |sum, item|
-      sum + @menu.items[item][:cost]
-    end
-
-    raise 'Accounting error' unless item_sum == @customer.order[:total_cost]
-  end
-
-  def clear_order
-    @customer.order = { items: [], total_cost: 0 }
   end
 end
