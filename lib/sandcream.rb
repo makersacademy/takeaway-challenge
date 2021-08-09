@@ -30,7 +30,7 @@ class Sandcream
     puts 'SANDO SELECTION'
     lines
     @sando_menu.each do |dish| 
-      puts "• #{dish[:sando]} - #{dish[:price]}0" 
+      puts "• #{dish[:sando]} - #{'%.2f' % dish[:price]}" 
     end
   end
 
@@ -39,7 +39,7 @@ class Sandcream
     puts 'ICE CREAM SELECTION'
     lines
     @icecream_menu.each do |dish| 
-      puts "• #{dish[:icecream]} - #{dish[:price]}0" 
+      puts "• #{dish[:icecream]} - #{'%.2f' % dish[:price]}" 
     end
   end
 

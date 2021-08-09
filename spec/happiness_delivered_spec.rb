@@ -28,6 +28,21 @@ describe HappinessDelivered do
     end
   end
 
+  describe '#interactive_menu' do
+    
+  end
+
+  describe '#interface' do
+    
+    it 'does stuff' do
+      expect(subject.interface()).to respond_to(:select_order)
+    end
+  end
+
+  describe '#print_menu' do
+    
+  end
+  
   # describe '#select_order' do
   #   before(:each) { $stdin = '1'}  
 
@@ -54,9 +69,8 @@ describe HappinessDelivered do
   end
 
   describe '#complete_order' do
-    it 'sends sms to customer'
-
+    it 'sends sms to customer' do
+      expect(subject.complete_order).to eq 'magic message'
+    end
   end
-
-  
 end

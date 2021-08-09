@@ -17,6 +17,10 @@ describe Sandcream do
         { sando: '7. Egg Slut Sando - Egg Salad', price: 8.50 }])
     end
 
+    it 'checks length is correct' do
+      expect(subject.sando_menu.length).to eq 7
+    end
+
     it 'icecream_menu array' do
       expect(subject.icecream_menu).to eq([
         { icecream: '8. Black & Gold - Tahini & Kharoub', price: 6.00 },
@@ -27,21 +31,21 @@ describe Sandcream do
         { icecream: '13. Banana Pancakes - Banana & Peanut Butter', price: 5.50 }, 
         { icecream: '14. Lemon Tree - Amalfi Lemon Limoncello', price: 7.50 }])
     end
+
+    it 'checks length is correct' do
+      expect(subject.icecream_menu.length).to eq 7
+    end
   end
 
   describe '#print_sando' do
-    it 'prints sando selection' do 
-      
+    it 'prints sando selection' do
       expect(subject.print_sando).to eq(subject.sando_menu)
-      # p subject.print_sando
-      # p subject.sando_menu
     end
   end
 
   describe '#print_icecream' do
-    it 'prints ice cream selection' do 
+    it 'prints ice cream selection' do
       expect(subject.print_icecream).to eq(subject.icecream_menu)
     end
   end
-
 end

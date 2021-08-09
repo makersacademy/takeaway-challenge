@@ -1,9 +1,9 @@
+# require 'customer_sms'
 require_relative 'sandcream'
-# require_relative 'customer_sms'
-
-DELIVERY_FEE = 3.5
 
 class HappinessDelivered
+  # include OrderConfirmation
+
   attr_accessor :basket, :order_total, :menu
 
   def initialize(basket = [])
@@ -19,8 +19,8 @@ class HappinessDelivered
     end
   end
   
-  def interface(customer_order)
-    case customer_order
+  def interface(customers_order)
+    case customers_order
     when '1'
       print_menu
     when '2'
@@ -52,17 +52,16 @@ class HappinessDelivered
   def review_order
     lines
     puts 'Your current order total:'
-    @basket.map { |price| puts "£ #{price[:price]}0" }
+    @basket.map { |price| puts "£ #{'%.2f' % price[:price]}" }
     puts '-------'
     @basket.map { |price| (@order_total << price[:price]) } 
-    puts "£ #{@order_total.sum}0"
+    puts "£ #{'%.2f' % @order_total.sum}"
   end
 
   def complete_order
-    # send message
-    # OrderConfirmation.new
+    # OrderConfirmation.send_sms
     # bundle exec ruby customer_sms.rb
-    puts 'magic message'
+    'magic message'
   end
 
   private
