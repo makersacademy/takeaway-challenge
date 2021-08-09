@@ -29,7 +29,7 @@ I enjoyed this challenge, especially getting Twilio to work: it was a really enc
 ## Installation
 
 ```
-git clone https://github.com/edpackard/airport_challenge.git
+git clone https://github.com/edpackard/takeaway-challenge.git
 gem install bundler
 bundle
 ```
