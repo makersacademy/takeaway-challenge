@@ -81,3 +81,20 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+<!-- Write a Description
+Your description is an extremely important aspect of your project. A well-crafted description allows you to show off your work to other developers as well as potential employers.
+
+This is an important component of your project that many new developers often overlook.
+
+The quality of a README desccription often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase:
+
+What your application does,
+Why you used the technologies you used,
+Some of the challenges you faced and features you hope to implement in the future.
+A good README helps you stand out among the large crowd of developers who put their work on GitHub. -->
+
+My program is one where a customer orders a Takeaway from a Menu list that I created which are made up of some of my favourite items.
+
+I created a Takeaway spec file and started with my tests which failed. Then I made the test pass by going to my takeaway.rb file and wrote the code that made it pass.
+

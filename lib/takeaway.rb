@@ -17,5 +17,5 @@ class Menu
     }
   end
 end
-food = Menu.new
-puts food.list_dishes
+# food = Menu.new
+# puts food.list_dishes
