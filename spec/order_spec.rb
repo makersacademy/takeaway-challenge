@@ -14,11 +14,16 @@ describe Order do
 
   it ' allows customer to add new dishes to the order in the cart' do
     order.add_dish_to_order('Fried Rice', 3)
-    order.my_choices
     order.add_to_cart
     expect(order.cart).to eq([{ 'Fried Rice' => 3 }]) 
   end 
 
+  it 'allows customer to get the total cost of their dishes in the cart' do
+    order.add_dish_to_order('Fried Rice', 3)
+    order.add_to_cart
+    order.cart
+    expect(order.total_cost).to eq "Your total is £45"
+  end
 end
 
 #   it 'should select dishes' do
