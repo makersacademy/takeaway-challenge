@@ -14,6 +14,7 @@ class FoodOrder
 
     menu_item = @menu.menu.select { |key, _value| key == food }
     number.times { @food_order << menu_item }
+    order_sum
   end
 
   def order_sum
@@ -23,7 +24,7 @@ class FoodOrder
         order_total += value
       end
     end
-    puts "The cost of your order is £#{order_total}"
+    puts "The cost of your order is £%.2f" % order_total
   end
 
 end

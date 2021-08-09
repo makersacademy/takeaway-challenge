@@ -27,9 +27,9 @@ describe FoodOrder do
   describe '#sum_order' do
     it 'checks price sum of take away order' do
       subject.add_item("meat feast pizza", 2)
-      subject.add_item("vegetarian_pizza", 3)
-      subject.add_item("pepperoni_pizza", 6)
-      subject.add_item("bbq_chicken_pizza", 4)
+      subject.add_item("vegetarian pizza", 3)
+      subject.add_item("pepperoni pizza", 6)
+      subject.add_item("bbq chicken pizza", 4)
       expect { subject.order_sum }.to output { "The cost of your order is £124.00" }.to_stdout
     end
   end
