@@ -1,3 +1,35 @@
+I wrote a program in response to the specification below.
+
+## Succeeded:
+
+- Customer can display a list of menu items
+- Customer can add any number of menu items to their order
+- Customer can view their current order
+- Customer receives a confirmation text with a delivery estimate
+- Checkout checks for empty orders
+- Checkout method double-checks the total
+- Checkout clears the current order
+- Style is rubocop compliant
+- All methods are short and - I think - sensible
+- All files have 100% test coverage **except** SMS (see below)
+- Used mocking to avoid sending real sms messages from rspec tests
+
+## Failed:
+
+- Didn't test SMS method due to begin/rescue block - TOLEARN
+- Didn't test Takeaway#clear which relied on Customer#order= - TOLEARN
+- Didn't fulfill the stretch goal of implementing SMS ordering - TODO
+
+## TODO:
+
+- Everything I failed above, plus -
+- Implement a loop to prompt user for input
+- Create a single entry-point for app which requires all and loops Takeaway
+- Make add method more user-friendly
+- Implement loading menus from file
+
+#
+
 Takeaway Challenge
 ==================
 ```
