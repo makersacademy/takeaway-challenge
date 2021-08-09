@@ -20,6 +20,14 @@ I wrote a program in response to the specification below.
 - Didn't test Takeaway#clear which relied on Customer#order= - TOLEARN
 - Didn't fulfill the stretch goal of implementing SMS ordering - TODO
 
+## TODO:
+
+- Everything I failed above, plus -
+- Implement a loop to prompt user for input
+- Create a single entry-point for app which requires all and loops Takeaway
+- Make add method more user-friendly
+- Implement loading menus from file
+
 #
 
 Takeaway Challenge
