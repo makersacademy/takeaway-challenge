@@ -3,8 +3,11 @@ I wrote a program in response to the specification below.
 ## Succeeded:
 
 - Customer can display a list of menu items
-- Customer can add  any number of menu items to their order
+- Customer can add any number of menu items to their order
+- Customer can view their current order
 - Customer receives a confirmation text with a delivery estimate
+- Checkout method double checks the total
+- Checkout clears the current order
 - Style is rubocop compliant
 - All methods have 100% test coverage **except** SMS (see below)
 - Used mocking to avoid sending real sms messages from rspec tests

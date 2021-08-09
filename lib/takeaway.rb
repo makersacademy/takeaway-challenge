@@ -1,3 +1,5 @@
+require './lib/customer.rb'
+require './lib/menu.rb'
 require './lib/sms.rb'
 
 class Takeaway
@@ -16,20 +18,37 @@ class Takeaway
     puts
   end
 
+  def show_order
+    @menu.items.keys.each do |k|
+      print_order_item(k) if @customer.order[:items].include?(k)
+    end
+    
+    print_order_total
+  end
+
   def add_to_order(item_number, quantity)
     quantity.times do
-      @customer.order[:items] << @menu.items[item_number]
+      @customer.order[:items] << item_number
       @customer.order[:total_cost] += @menu.items[item_number][:cost]
     end
   end
 
   def checkout
     check_total
-    @customer.clear_order
+    clear_order
     send_confirmation
   end
 
   private
+
+  def print_order_item(num)
+    print "\n#{@customer.order[:items].count(num)} x "
+    print "#{@menu.items[num][:name]}"
+  end
+
+  def print_order_total
+    puts "\n£#{@customer.order[:total_cost]}\n\n"
+  end
 
   def send_confirmation
     SMS.send(confirmation_string)
@@ -50,5 +69,9 @@ class Takeaway
     end
 
     raise 'Accounting error' unless item_sum == @customer.order[:total_cost]
+  end
+
+  def clear_order
+    @customer.order = { items: [], total_cost: 0 }
   end
 end
