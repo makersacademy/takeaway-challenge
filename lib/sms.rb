@@ -8,8 +8,6 @@ class SMS
   end
 
   def send
-    # Had to remove the create method @client.messages.create as I kept getting and error
-    # 'create': [HTTP 404] 20404 : Unable to create record (Twilio::REST::RestError)
     @client.messages.create(
     from: ENV['TWILIO_NUM'],
     to: ENV['PHONE_NUM'],
