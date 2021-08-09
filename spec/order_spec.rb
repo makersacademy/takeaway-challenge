@@ -27,9 +27,16 @@ describe Order do
   end
 
   describe "#check_out method" do
-    it "should send a text confirmation message" do
+    it "should send a text confirmation message when meals chosen" do
+      subject.select_meals([1, 3])
       allow(sms).to receive(:send).and_return("sent")
       expect(subject.check_out).to eq("sent")
+    end
+
+    it "should raise error if basket empty" do
+      p subject.selected_meals
+      allow(sms).to receive(:send).and_return("sent")
+      expect { subject.check_out }.to raise_error "Basket is empty"
     end
   end
 end

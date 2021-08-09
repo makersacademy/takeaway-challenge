@@ -2,8 +2,12 @@ require "sms"
 
 describe SMS do
   context "#send method" do
-    it "should send a text" do
-      # expect(SMS.send(000000)).to raise_error
+    it "should return success message if SMS sends" do
+
+    end
+
+    it "should return error message if SMS fails to send" do
+
     end
   end
 end

@@ -18,6 +18,7 @@ class Order
   end
 
   def select_meals(array)
+    # need to refactor to allow same meal multiple times
     @selected_meals = @main_menu.select.with_index { |_, i| array.include?(i + 1) }
     @selected_meals.each { |meal| meal.each { |k, v| puts "#{k}, £#{v}" } }
   end
@@ -28,6 +29,8 @@ class Order
   end
 
   def check_out
+    raise "Basket is empty" if @selected_meals.nil?
+
     SMS.send(@number)
   end
 end
