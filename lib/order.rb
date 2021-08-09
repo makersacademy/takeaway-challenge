@@ -9,7 +9,7 @@ class Order
 
   def add_dish_to_order(dish, quantity)
     @my_choices = { dish => quantity }
-    @add_to_cart
+    add_to_cart
   end
 
   def add_to_cart
@@ -22,11 +22,10 @@ class Order
       each_dish.each { |dish, quantity| 
         total += (quantity * @menu.dishes[dish])
       }
-     
     }
     "Your total is £#{total}"
   end
- 
+ # cart = [ {'Fried Rice', 3}, { 'Jollof Rice', 2 }, {'Yam and egg', 2}]
 end
 
   # order = Order.new
