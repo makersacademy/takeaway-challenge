@@ -3,14 +3,16 @@ require_relative "menu"
 class Order
   attr_reader :main_menu, :selected_meals
   
-  def initialize
-    @main_menu = Menu.new.main_menu
+  def initialize(menu = Menu.new)
+    @main_menu = menu.main_menu
     @selected_meals = nil
     @order_total = 0
   end
 
   def see_menu
-    @main_menu.each_with_index { |meal, i| meal.each { |k, v| puts "#{i + 1}. #{k}, £#{v}" } }
+    @main_menu.each_with_index do 
+      |meal, i| meal.each { |k, v| puts "#{i + 1}. #{k}, £#{v}" }
+    end
   end
 
   def select_meals(array)

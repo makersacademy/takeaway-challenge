@@ -1,10 +1,12 @@
 require "order"
-require "menu"
 
 describe Order do
+  let(:menu) { double(Menu, main_menu: [{ Pasta: 9 }, { Risotto: 10 }, { Salad: 8 }]) }
+  let(:subject) { Order.new(menu) }
+
   describe "#see_menu method" do
     it "should let us see a list of dishes with prices" do
-      expect { subject.see_menu }.to output(include("Pasta", "9", "Rice")).to_stdout # refactor with double menu
+      expect { subject.see_menu }.to output(include("Pasta", "9", "Risotto")).to_stdout
     end
   end
 
