@@ -1,8 +1,8 @@
-# require 'customer_sms'
+require_relative './customer_sms.rb'
 require_relative 'sandcream'
 
 class HappinessDelivered
-  # include OrderConfirmation
+  include OrderConfirmation
 
   attr_accessor :basket, :order_total, :menu
 
@@ -59,9 +59,9 @@ class HappinessDelivered
   end
 
   def complete_order
-    # OrderConfirmation.send_sms
+    OrderConfirmation.send_sms
     # bundle exec ruby customer_sms.rb
-    'magic message'
+    # 'magic message'
   end
 
   private
@@ -107,5 +107,5 @@ class HappinessDelivered
   end
 end
 
-# hd = HappinessDelivered.new
-# hd.interactive_menu
+hd = HappinessDelivered.new
+hd.interactive_menu
