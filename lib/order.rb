@@ -10,45 +10,39 @@ class Order
   end
 
   def add_item(menu, order)
-    @items_ordered << menu.items[order]
+    @items_ordered << menu.items[order-1]
   end
-  
-  def order_value
+
+  def items
+    puts "Items ordered"
+    puts "-------------"
+    @items_ordered.each { |item| puts "#{item.keys.first}: £#{item[item.keys.first]}"}
+  end
+
+  def value
+    items_ordered
     value = 0
     @items_ordered.each { |item| value += item[item.keys.first] }
-    "£#{value}"
+    puts "--------------"
+    puts "Total: £#{value}"
   end
 
-  def items_ordered
-    @items_ordered.each do |item|
-      item.each do |k,v|
-        "#{k}: £#{v}"
-      end
-    end
-  end
-
-  def confirmation
-    items_ordered
-    "--------"
-    "#{order_value}"
-  end
-
-  def place_order(send_text = SendText)
-    send_text.new.tester
+  def place_order(send_text = SendText.new)
+    send_text.tester
   end
 
 end
 
-# items = [{"Chicken burger" => 10}, {"Vegan Soup" => 5}, { "Chang Beer" => 3}]
+items = [{"Chicken burger" => 10}, {"Vegan Soup" => 5}, { "Chang Beer" => 3}]
 
-# menu = Menu.new(items)
-# puts menu.show_menu
-# order = Order.new
-# order.add_item(menu, 2)
-# order.add_item(menu, 1)
-# puts order.items_ordered
-# puts order.confirmation
-# order.place_order
+menu = Menu.new(items)
+print menu.show_menu
+order = Order.new
+order.add_item(menu, 2)
+order.add_item(menu, 1)
+# order.items
+# order.value
+order.place_order
 # puts ENV['ACCOUNT_SID']
 # puts ENV['AUTH_TOKEN']
 

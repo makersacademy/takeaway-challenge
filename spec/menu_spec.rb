@@ -6,16 +6,17 @@ describe Menu do
   let(:menu) { described_class.new(items) }
 
     describe "#initialize" do
-      it "returns correct length of menu" do
-        expect(menu.show_menu.length).to eq 3
+      it "includes 'Chang' string" do
+        expect {menu.show_menu}.to output(/#{Regexp.quote("Chang")}/).to_stdout
+
       end
 
-      it "returns correct first item" do
-        expect(menu.show_menu.last.keys.first).to eq "Chang Beer"
+      it "includes price of chicken burger" do
+        expect {menu.show_menu}.to output(/#{Regexp.quote("10")}/).to_stdout
       end
 
-      it "returns correct value for given key" do
-        expect(menu.show_menu.first["Chicken burger"]).to eq 10
+      it "includes 'vegan' item" do
+        expect {menu.show_menu}.to output(/#{Regexp.quote("Vegan")}/).to_stdout
       end
     end
 end

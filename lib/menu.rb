@@ -6,10 +6,12 @@ class Menu
   end
 
   def show_menu
-    @items.each do |item|
-      item.each do |k, v|
-        "#{k}: £#{v}"
+    i=0
+    while i < @items.length
+      @items[i].each do |k, v|
+        puts "#{i+1}. #{k}: £#{v}"
       end
+      i += 1
     end
   end
 end
