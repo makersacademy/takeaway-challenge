@@ -1,14 +1,14 @@
 require("bundler")
 Bundler.require()
 
-
 class SendText
 
-  def tester
-
+  def delivery_time
     time = Time.new
-    delivery_time = "#{time.hour + 1} #{time.min}"
+    "#{time.hour + 1} #{time.min}"
+  end
 
+  def tester
     account_sid = ENV['ACCOUNT_SID']
     auth_token = ENV['AUTH_TOKEN']
     mobile_number = ENV['MOB_NUMBER']

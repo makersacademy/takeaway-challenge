@@ -10,13 +10,13 @@ class Order
   end
 
   def add_item(menu, order)
-    @items_ordered << menu.items[order-1]
+    @items_ordered << menu.items[order - 1]
   end
 
   def items
     puts "Items ordered"
     puts "-------------"
-    @items_ordered.each { |item| puts "#{item.keys.first}: £#{item[item.keys.first]}"}
+    @items_ordered.each { |item| puts "#{item.keys.first}: £#{item[item.keys.first]}" }
   end
 
   def value
@@ -33,7 +33,7 @@ class Order
 
 end
 
-items = [{"Chicken burger" => 10}, {"Vegan Soup" => 5}, { "Chang Beer" => 3}]
+items = [{ "Chicken burger" => 10 }, { "Vegan Soup" => 5 }, { "Chang Beer" => 3 }]
 
 menu = Menu.new(items)
 print menu.show_menu
@@ -45,9 +45,3 @@ order.add_item(menu, 1)
 order.place_order
 # puts ENV['ACCOUNT_SID']
 # puts ENV['AUTH_TOKEN']
-
-
-
-
-
-
