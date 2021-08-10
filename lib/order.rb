@@ -40,8 +40,6 @@ print menu.show_menu
 order = Order.new
 order.add_item(menu, 2)
 order.add_item(menu, 1)
-# order.items
-# order.value
+order.items
+order.value
 order.place_order
-# puts ENV['ACCOUNT_SID']
-# puts ENV['AUTH_TOKEN']
