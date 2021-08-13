@@ -1,6 +1,6 @@
-class CheckTotal
+class OrderTotal
 
-  def check_total(order) 
+  def make_receipt(order) 
     return :"Nothing ordered!" if order.size.zero?
 
     "#{items_string(order)}= #{total(order)} TOTAL".to_sym

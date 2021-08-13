@@ -1,5 +1,5 @@
 require_relative 'menu'
-require_relative 'check_total'
+require_relative 'order_total'
 require_relative 'text_message'
 
 class Takeaway
@@ -22,8 +22,8 @@ class Takeaway
     @order << { dish => @menu[dish] }
   end
   
-  def check_order(checker = CheckTotal.new)
-    checker.check_total(@order)
+  def show_order(receipt_maker = OrderTotal.new)
+    receipt_maker.make_receipt(@order)
   end
 
   def place_order(texter = TextMessage.new)

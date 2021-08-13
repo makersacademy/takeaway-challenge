@@ -50,7 +50,7 @@ Open `irb` from the command line and `require` the `takeaway.rb` file. If you ar
 * To see the menu: `takeaway.view_menu`
 * To add a dish: `takeaway.add("<dish name>")`
 * The dish name must be on the menu, and must be entered exactly (a future feature could be case insensitivity)
-* To check what you have added, and see the total cost: `takeaway.check_order`
+* To see what you have added, and the total cost: `takeaway.show_order`
 * To place your order: `takeaway.place_order`
 * You will receive a text message with your delivery time!
 * You can still check what you ordered after placing an order, until you add another order

@@ -2,7 +2,7 @@ require 'takeaway'
 
 describe Takeaway do
 
-  let(:checker) { double :checker }
+  let(:receipt_maker) { double :receipt_maker }
   let(:texter) { double :texter }
 
   menu_hash = {
@@ -25,7 +25,7 @@ describe Takeaway do
   describe "#check_order" do
     
     it "can view current order as immutable symbol" do
-      expect(subject.check_order).to eq(:"Nothing ordered!")
+      expect(subject.show_order).to eq(:"Nothing ordered!")
     end
 
   end
@@ -43,33 +43,33 @@ describe Takeaway do
     context "when valid item entered" do
 
       before(:each) do
-        allow(checker).to receive(:check_total) { |order| order.size }
+        allow(receipt_maker).to receive(:make_receipt) { |order| order.size }
       end
 
-      it "adds to order (test mocks check_order to extract size of order array)" do
-        expect { subject.add("Noodles") }.to change { subject.check_order(checker) }.from(0).to(1)
+      it "adds to order (test mocks show_order to extract size of order array)" do
+        expect { subject.add("Noodles") }.to change { subject.show_order(receipt_maker) }.from(0).to(1)
       end
 
-      it "add several items - (test mocks check_order to extract size of order array)" do
-        expect { 2.times { subject.add("Chips") } }.to change { subject.check_order(checker) }.from(0).to(2)
+      it "add several items - (test mocks show_order to extract size of order array)" do
+        expect { 2.times { subject.add("Chips") } }.to change { subject.show_order(receipt_maker) }.from(0).to(2)
       end
 
-      it "reset order array if item added after order placed (test mocks check_order to extract size of order array)" do
+      it "reset order array if item added after order placed (test mocks show_order to extract size of order array)" do
         2.times { subject.add("Noodles") }
         allow(texter).to receive(:sms_send)
         subject.place_order(texter)
-        expect { subject.add("Noodles") }.to change { subject.check_order(checker) }.from(2).to(1)
+        expect { subject.add("Noodles") }.to change { subject.show_order(receipt_maker) }.from(2).to(1)
       end
 
     end   
   end
 
-  describe "#check_order" do
+  describe "#show_order" do
 
-    it "uses CheckTotal logic to return sum & total of order" do
+    it "calls a receipt maker to return string receipt" do
       output = :"Noodles: 2.99 + Chips: 2.49 = 5.48 TOTAL"
-      allow(checker).to receive(:check_total) { output }
-      expect(subject.check_order(checker)).to eq(output)
+      allow(receipt_maker).to receive(:make_receipt) { output }
+      expect(subject.show_order(receipt_maker)).to eq(output)
     end
 
   end
