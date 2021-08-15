@@ -30,14 +30,18 @@ How to install
 
 Building the program
 -------
-**complete**
-
+- Before beginning the challenge, I took the time to research concepts such as abstract vs concrete classes to ensure the program was built in line with best practices.
+- I then used Jam Board to map out the whole story of the order sytem, menu and text message.
+- Once I was happy with the key concepts and model, I coded the program using TDD. First I wrote a failing unit test and then wrote the method to pass the test. I followed the red, green, refactor process.
+- I made sure my methodss/tests covered all of the user stories plus the edge cases.
+- I also ensured that I got 100% test coverage.
 
 How to use this program
 -------
-**complete**
-
-
+- Create an instance of the 'Menu' object and call the 'show_menu' method on this instance. This will show you the menu (with prices) in the terminal.
+- Create an instance of the 'Order' object and then call the 'add_item' method, passing in menu and your selection as arguments.
+- You can then call the 'items' and 'value' methods on your order instance to see what you have ordered as well as the order value.
+- Finally, you can call the 'place_order' method on you order, to receive a text message confirming delivery time.
 -------
 Below is an example of how to use the program:
 ```
