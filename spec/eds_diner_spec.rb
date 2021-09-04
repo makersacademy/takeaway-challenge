@@ -18,7 +18,6 @@ describe EdsDiner do
 
 
     let(:order_one) { { "1" => 1, "2" => 1 } }
-
     let(:order_two) { { "1" => 2, "2" => 1 } }
     
     it 'shows menu + selection instructions when selecting dishes' do
@@ -46,10 +45,10 @@ describe EdsDiner do
 
   context 'I would like to check that the total I have been given matches the sum of the various dishes in my order' do
 
-    xit 'Shows full order with total' do
-      allow(subject).to receive(:gets).and_return("1","1","2","quit")
-      subject.select_dishes
-      expect { subject.order_summary }.to output(include("2 x Tomato Soup = £10", "1x Avocado On Toast = £7", "Total: £17")).to_stdout
+    it 'Shows full order with total' do
+      allow(subject).to receive(:gets).and_return("2","1","1","2","quit","quit")
+      subject.order
+      expect { subject.order_summary }.to output(include("2x Tomato Soup @ £5 = £10", "1x Avocado On Toast @ £7 = £7", "Total = £17")).to_stdout
     end
 
   end
@@ -72,11 +71,6 @@ describe EdsDiner do
     it 'checks for invalid menu selection' do
       allow(subject).to receive(:gets).and_return("44", "quit")
       expect { subject.order }.to output(include("Invalid Selection")).to_stdout
-    end
-
-    xit 'starts order' do
-      allow(subject).to receive(:gets).and_return(" ", "quit")
-      expect { subject.order }.to output(include("Welcome to EdsDiner!", "How can we help today? (choose number (e.g. 1) or type 'quit' to leave")).to_stdout
     end
 
   end

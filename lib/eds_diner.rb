@@ -6,7 +6,7 @@ class EdsDiner
     @order_options = {
       "1" => {:name => "Show Menu", :method => method(:show_menu)}, 
       "2" => {:name => "Add To Order", :method => method(:select_dishes)},
-      "3" => {:name => "Show Current Order", :method => ""},
+      "3" => {:name => "Show Current Order", :method => method(:order_summary)},
       "4" => {:name => "Order", :method =>""}
     }
   end
@@ -26,6 +26,7 @@ class EdsDiner
     @dishes.each do |number, dish| 
       puts "#{number}. #{dish[:name]}  £#{dish[:price]}"
     end
+    puts " "
   end
 
   def select_dishes
@@ -33,13 +34,18 @@ class EdsDiner
     title("Select item by number (e.g. 1) or 'quit'")
     while true do
       break if handle_select(get_input) == "quit"
-      puts "Select Again:"
     end
   end
 
-  # def order_summary
-  #   title("Your Order:")
-  # end
+  def order_summary
+    title("Your Order Summary:")
+    total = 0
+    @current_order.each do |dish,quantity|
+      puts "#{quantity}x #{@dishes[dish][:name]} @ £#{@dishes[dish][:price]} = £#{@dishes[dish][:price] * quantity}"
+      total += @dishes[dish][:price] * quantity
+    end
+    puts "Total = £#{total}"
+  end
 
   private
 
