@@ -6,8 +6,8 @@ describe Order do
   before do
     file = File.open('./lib/dishes.csv', "r")
     file.readlines.each do |line| 
-      dish, cost = line.chomp.split(",")
-      list << { dish => cost.to_i }
+      dish_number, dish, cost = line.chomp.split(",")
+      list << { dish_number: dish_number.to_i, dish: dish, cost: cost.to_i }
     end
     file.close
   end
@@ -16,15 +16,21 @@ describe Order do
     expect(subject.view_menu).to eq list
   end
 
-  it 'is able to add to order' do
+  it 'is able to add to :current_order' do
     dish_number = 1
     subject.add_to_order(dish_number)
     expect(subject.current_order).to include list[dish_number - 1]
+  end
+
+  it 'is able to remove from :current_order' do
+    dish_number = 1
+    subject.add_to_order(dish_number)
+    expect(subject.remove_from_order(dish_number)).to eq []
   end
   
   it 'is able to view total price' do
     subject.add_to_order(1)
     subject.add_to_order(2)
-    expect(subject.total).to eq [list[0].values,list[1].values].flatten.sum
+    expect(subject.total).to eq [list[0][:cost],list[1][:cost]].flatten.sum
   end
 end

@@ -9,8 +9,8 @@ class Menu
   def load_dishes(filename = "./lib/dishes.csv")
     file = File.open(filename, "r")
     file.readlines.each do |line| 
-      dish, cost = line.chomp.split(",")
-      @list << { dish => cost.to_i }
+      dish_number, dish, cost = line.chomp.split(",")
+      @list << { dish_number: dish_number.to_i, dish: dish, cost: cost.to_i }
     end
     file.close
   end
