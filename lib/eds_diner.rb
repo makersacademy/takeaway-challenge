@@ -15,8 +15,9 @@ class EdsDiner
 
   def select_dishes
     show_menu
+    title("Select item by number (e.g. 1) or 'quit'")
     # while true do
-
+      
     # end
   end
 
@@ -24,6 +25,7 @@ class EdsDiner
   private
 
   def title(text)
+    puts " "
     puts text
     ((text.length) - 1).times { print "~" }
     puts "~"

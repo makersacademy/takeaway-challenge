@@ -17,8 +17,10 @@ describe EdsDiner do
   context 'I would like to be able to select some number of several available dishes' do
     
     it 'shows menu + selection instructions when selecting dishes' do
-      expect { subject.select_dishes }.to output(include("EdsDiner Menu:")).to_stdout
+      expect { subject.select_dishes }.to output(include("EdsDiner Menu:","Select item by number (e.g. 1) or 'quit'")).to_stdout
     end
+
+
 
   end
 
