@@ -71,7 +71,7 @@ class EdsDiner
 
   def hour_from_now
     time = Time.now + (10 * 60) * 6
-    "#{time.hour}:#{time.sec}"
+    "#{time.hour}:#{time.min}"
   end
 
   def no_items
