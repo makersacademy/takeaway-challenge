@@ -1,4 +1,3 @@
-require 'order'
 
 class Takeaway_menu
 

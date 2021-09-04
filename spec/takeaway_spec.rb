@@ -1,4 +1,4 @@
-require 'takeaway.rb'
+require 'takeaway'
 
 describe Takeaway_menu do 
   context 'I want to order something' do

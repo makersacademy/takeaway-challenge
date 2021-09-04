@@ -1,15 +1,26 @@
 require 'order'
 
 describe Order do
-  # change the order file as did not feel relevant to test
-  context 'select avaliable items' do 
+  
+  subject(:order) {described_class.new }
+
+  context 'selected items' do 
     it 'initializes with an empty array' do 
-      expect(subject.select_item).to eq []
+      expect(order.selected_items).to eq []
     end 
 
-    it 'adds items to the select_item empty array' do
-      subject.add_selected_item('name')
-      expect(subject.select_item)
-      end 
+    it 'adds items to the selected_items empty array' do
+      pizza = double(:name => "pizza", :price => 9)
+      order.add_selected_item(pizza)
+      expect(order.selected_items).to include pizza
+    end 
+  end
+     
+
+    context 'check total price matches sum of items ordered' do
+      it 'should return total price of items selected' do
+        pizza = double(:name => "pizza", :price => 9)
+        order.add_selected_item(pizza)
+      end
     end 
 end 
