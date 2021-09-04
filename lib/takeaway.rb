@@ -1,11 +1,19 @@
+require 'order'
+
 class Takeaway_menu
+
+  attr_reader :menu
 
   def initialize
     @menu = []
   end 
 
   def menu
-    @menu
+    'pizza'
   end 
 
-end 
+  def create_order(order = Order.new)
+    @order = order
+  end 
+
+end

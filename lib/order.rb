@@ -1,16 +1,15 @@
 class Order
 
-  def initialize(name,price)
-    @name = name
-    @price = price
-  end
-
-  def name
-    @name
+  def initialize
+    @select_item
   end 
 
-  def price
-    @price
+  def select_item
+    @select_item = []
   end 
-  
+
+  def add_selected_item(name)
+    @select_item 
+  end 
+
 end 

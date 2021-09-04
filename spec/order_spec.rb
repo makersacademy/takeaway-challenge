@@ -1,15 +1,15 @@
 require 'order'
 
 describe Order do
-  context 'Show name and price' do
-    it 'item initialized with a name' do
-      order = Order.new('name', 0)
-      expect(order.name).to eq 'name'
+  # change the order file as did not feel relevant to test
+  context 'select avaliable items' do 
+    it 'initializes with an empty array' do 
+      expect(subject.select_item).to eq []
     end 
 
-    it 'item initialized with a price' do 
-      order = Order.new('name', 0)
-      expect(order.price).to eq 0
+    it 'adds items to the select_item empty array' do
+      subject.add_selected_item('name')
+      expect(subject.select_item)
+      end 
     end 
-  end 
 end 
