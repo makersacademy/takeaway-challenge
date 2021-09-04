@@ -1,10 +1,9 @@
 class Menu
-  MENU = [{ dish: "Red Curry", price: 6 },
-          { dish: "Pad Thai", price: 5 },
-          { dish: "Vegetable Spring Roll", price: 1 }]
+  MENU = [{ name: "Red Curry", price: 6 },
+          { name: "Pad Thai", price: 5 },
+          { name: "Vegetable Spring Roll", price: 1 }].freeze
 
   def list_of_dishes
-    MENU.each_with_index { |dish, ind| 
-    puts "#{ind+1}- #{dish[:dish]}: £#{dish[:price]}" }
+    MENU.each { |dish| puts "#{dish[:name]}: £#{dish[:price]}" }
   end
 end
