@@ -49,7 +49,12 @@ class EdsDiner
   private
 
   def submit_order
-    
+    puts "Thank you! Your order was placed and will be delivered before #{hour_from_now}"
+  end
+
+  def hour_from_now
+    time = Time.now + (10 * 60) * 6
+    "#{time.hour}:#{time.sec}"
   end
 
   def no_items
