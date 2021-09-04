@@ -45,9 +45,13 @@ class EdsDiner
 
   def handle_instruction
     show_instructions
-    input =get_input
+    input = get_input
     return "quit" if input == "quit"
-    
+    @order_options[input] ? perform_selection(input) : (puts "Invalid Selection")
+  end
+
+  def perform_selection(input)
+    @order_options[input][:method].call
   end
 
   def show_instructions

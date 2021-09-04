@@ -57,11 +57,21 @@ describe EdsDiner do
 
   context 'Edge, added a "new order" function' do
     
-    let(:instructions) { " \nWelcome to EdsDiner!\n~~~~~~~~~~~~~~~~~~~~\nHow can we help today? (choose number (e.g. 1) or type 'quit' to leave\n1. Show Menu\n2. Add To Order\n3. Show Current Order\n4. Order\n" }
+    let(:instructions) { "1. Show Menu\n2. Add To Order\n3. Show Current Order\n4. Order\n" }
 
     it 'shows instructions' do
       allow(subject).to receive(:gets).and_return("quit")
-      expect { subject.order }.to output(instructions).to_stdout
+      expect { subject.order }.to output(include(instructions)).to_stdout
+    end
+
+    it 'selects option 1 to show menu' do
+      allow(subject).to receive(:gets).and_return("1", "quit")
+      expect { subject.order }.to output(include("EdsDiner Menu:")).to_stdout
+    end
+
+    it 'checks for invalid menu selection' do
+      allow(subject).to receive(:gets).and_return("44", "quit")
+      expect { subject.order }.to output(include("Invalid Selection")).to_stdout
     end
 
     xit 'starts order' do
