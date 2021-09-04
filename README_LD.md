@@ -16,7 +16,7 @@ Takeaway Challenge
 
 Summary
 -----
-Prices are input in pence and converted to £
+Prices are input in pence as an Integer and converted to £ in a String
 
 Break down of User Stories
 -----
