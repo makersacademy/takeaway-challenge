@@ -17,7 +17,9 @@ describe EdsDiner do
   context 'I would like to be able to select some number of several available dishes' do
 
 
-    let(:order) { { "1" => 1, "2" => 1 } }
+    let(:order_one) { { "1" => 1, "2" => 1 } }
+
+    let(:order_two) { { "1" => 2, "2" => 1 } }
     
     it 'shows menu + selection instructions when selecting dishes' do
       allow(subject).to receive(:gets).and_return("1","2","quit")
@@ -27,7 +29,13 @@ describe EdsDiner do
     it 'Checks that the order is successfully added' do
       allow(subject).to receive(:gets).and_return("1","2","quit")
       subject.select_dishes
-      expect(subject.current_order).to eq order
+      expect(subject.current_order).to eq order_one
+    end
+
+    it 'Checks if adding two items adds 2 to the hash' do
+      allow(subject).to receive(:gets).and_return("1","1","2","quit")
+      subject.select_dishes
+      expect(subject.current_order).to eq order_two
     end
 
     it "Checks if user output warning message if input is valid" do

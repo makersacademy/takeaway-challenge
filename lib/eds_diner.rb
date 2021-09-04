@@ -30,10 +30,14 @@ class EdsDiner
     return "quit" if item == "quit"
     if @dishes[item]
       add_to_current_order(item)
-      # confirm_item_added(item)
+      confirm_item_added(item)
     else
       puts "Invalid Selection"
     end
+  end
+
+  def confirm_item_added(item)
+    puts "You have added 1x #{dishes[item][:name]} to your order"
   end
 
   def add_to_current_order(item)
