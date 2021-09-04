@@ -6,6 +6,7 @@ group :test do
   gem 'rspec'
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
+  gem 'twilio-ruby', '~> 5.58.1'
 end
 
 group :development, :test do
