@@ -51,6 +51,13 @@ describe EdsDiner do
       expect { subject.order_summary }.to output(include("2x Tomato Soup @ £5 = £10", "1x Avocado On Toast @ £7 = £7", "Total = £17")).to_stdout
     end
 
+    it 'Checks that warning when display empty order' do
+      allow(subject).to receive(:gets).and_return("3","quit")
+      subject.order
+      expect { subject.order_summary }.to output(include("There are no items in your current order")).to_stdout
+    end
+
+
   end
 
 
@@ -72,6 +79,7 @@ describe EdsDiner do
       allow(subject).to receive(:gets).and_return("44", "quit")
       expect { subject.order }.to output(include("Invalid Selection")).to_stdout
     end
+
 
   end
 

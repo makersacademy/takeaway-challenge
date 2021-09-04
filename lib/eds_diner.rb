@@ -39,6 +39,12 @@ class EdsDiner
 
   def order_summary
     title("Your Order Summary:")
+    @current_order == {} ? (puts 'There are no items in your current order') : print_current_order
+  end
+
+  private
+
+  def print_current_order
     total = 0
     @current_order.each do |dish,quantity|
       puts "#{quantity}x #{@dishes[dish][:name]} @ £#{@dishes[dish][:price]} = £#{@dishes[dish][:price] * quantity}"
@@ -46,8 +52,6 @@ class EdsDiner
     end
     puts "Total = £#{total}"
   end
-
-  private
 
   def handle_instruction
     show_instructions
