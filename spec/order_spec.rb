@@ -1,7 +1,8 @@
 require 'order'
 
 describe Order do
-  subject { described_class.new }
+  let(:restaurant) { double :restaurant, order: nil }
+  subject { described_class.new(restaurant) }
   let(:list) { [] }
   before do
     file = File.open('./lib/dishes.csv', "r")
@@ -31,6 +32,11 @@ describe Order do
   it 'is able to view total price' do
     subject.add_to_order(1)
     subject.add_to_order(2)
-    expect(subject.total).to eq [list[0][:cost],list[1][:cost]].flatten.sum
+    expect(subject.total).to eq list[0][:cost] + list[1][:cost]
+  end
+
+  it 'is able to send an order to restaurant' do
+    subject.add_to_order(1)
+    expect(subject.send_order_to_restaurant).to_return 'Order has been sent to restaurant'
   end
 end
