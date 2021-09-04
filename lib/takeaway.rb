@@ -8,4 +8,7 @@ Calabrese: 10,
 Funghi: 8,
 Napoletana: 9
 }
+
+menu_hash.each { |item, price| puts "#{item} #{price}" }
+
 end 
