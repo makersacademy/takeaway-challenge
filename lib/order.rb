@@ -2,12 +2,14 @@ require_relative('Menu')
 
 class Order
 
-    attr_reader :order_list, :item_count, :menu
+    attr_reader :order_list, :item_count, :menu, :total_order_sum, :total_item_count
 
     def initialize()
         @order_list = []
         @item_count = 0
         @menu = Menu.new
+        @total_order_sum = 0
+        @total_item_count = 0
     end
 
     def pick_item(selection)
@@ -22,6 +24,24 @@ class Order
 
     def list_order
         @order_list
-    end    
+    end
+
+    def generate_total_order_sum
+        @total_order_sum = @order_list.sum { |x| x[:price] }
+    end 
     
+    def total_order_text
+        generate_total_order_sum    
+        puts "-------"
+        "Total Order #{@item_count} items = £#{@total_order_sum}"
+    end
+    
+    def order_confirmation
+        item_sub_total = @order_list.group_by(&:itself).map{|k, v| k.merge(count: v.length)} 
+        item_sub_total.each do |x|
+            sub_total = x[:price].to_i * x[:count].to_i
+            "#{x[:count]} x #{x[:name]} £#{sub_total}"
+        end
+    end
+
 end
