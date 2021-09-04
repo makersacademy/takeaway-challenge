@@ -15,11 +15,20 @@ describe EdsDiner do
   end
 
   context 'I would like to be able to select some number of several available dishes' do
+    before do
+      allow(subject).to receive(:gets).and_return("1","2","quit")
+    end
+
+    let(:order) { { "1" => 1, "2" => 1 } }
     
     it 'shows menu + selection instructions when selecting dishes' do
       expect { subject.select_dishes }.to output(include("EdsDiner Menu:","Select item by number (e.g. 1) or 'quit'")).to_stdout
     end
 
+    it 'Checks that the order is successfully added' do
+      subject.select_dishes
+      expect(subject.current_order).to eq order
+    end
 
 
   end
