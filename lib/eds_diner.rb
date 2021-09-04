@@ -17,6 +17,7 @@ class EdsDiner
   attr_reader :dishes, :current_order
 
   def order
+    clear_terminal
     title("Welcome to EdsDiner!")
     while true do
       puts "\nHow can we help today? (choose number (e.g. 1) or type 'quit' to leave"
@@ -25,6 +26,7 @@ class EdsDiner
   end
 
   def show_menu 
+    clear_terminal
     title("EdsDiner Menu:")
     @dishes.each do |number, dish| 
       puts "#{number}. #{dish[:name]}  £#{dish[:price]}"
@@ -41,12 +43,14 @@ class EdsDiner
   end
 
   def order_summary
+    clear_terminal
     title("Your Order Summary:")
     @current_order == {} ? no_items : print_current_order
   end
 
   def place_order
-     @current_order == {} ? no_items : submit_order
+    clear_terminal
+    @current_order == {} ? no_items : submit_order
   end
 
 
@@ -105,21 +109,19 @@ class EdsDiner
   end
 
   def handle_select(item)
-    return "quit" if item == "quit"
-    if @dishes[item]
-      add_to_current_order(item)
-      confirm_item_added(item)
-    else
-      puts "Invalid Selection"
+
+    if item == "quit"
+      clear_terminal
+      return "quit"
     end
+     @dishes[item] ? confirm_item_added(item) : (puts "Invalid Selection")
+
   end
+
 
   def confirm_item_added(item)
-    puts "You have added 1x #{dishes[item][:name]} to your order"
-  end
-
-  def add_to_current_order(item)
     @current_order[item] ? @current_order[item] += 1 : @current_order[item] = 1
+    puts "You have added 1x #{dishes[item][:name]} to your order"
   end
 
 
@@ -132,5 +134,9 @@ class EdsDiner
     puts text
     ((text.length) - 1).times { print "~" }
     puts "~"
+  end
+
+  def clear_terminal
+    puts `clear`
   end
 end
