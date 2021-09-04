@@ -6,16 +6,15 @@ class Order
 
   def initialize(restaurant)
     @restaurant = restaurant
-    @menu = Menu.new
     @current_order = []
   end
 
   def view_menu
-    @menu.list.each { |d| puts "#{d[:dish_number]}: #{d[:dish]}" + d[:cost].to_s.rjust(5) }
+    @restaurant.menu
   end
 
   def add_to_order(dish_number)
-    @current_order << @menu.list[dish_number-1]
+    @current_order << @restaurant.menu[dish_number-1]
   end
 
   def remove_from_order(dish_number)
@@ -28,7 +27,7 @@ class Order
   end
 
   def send_order_to_restaurant
-    @restaurant.order = @current_order
+    @restaurant.receive_order(@current_order)
     "Order has been sent to restaurant"
   end
 end

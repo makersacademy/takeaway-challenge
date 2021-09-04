@@ -9,4 +9,6 @@ describe Restaurant do
   it 'raises error when confirming order without receiving one' do
     expect { subject.confirm_order }.to raise_error 'Restaurant has not received any orders'
   end
+
+
 end

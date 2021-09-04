@@ -1,9 +1,9 @@
 require 'order'
 
 describe Order do
-  let(:restaurant) { double :restaurant, order: nil }
-  subject { described_class.new(restaurant) }
   let(:list) { [] }
+  let(:restaurant) { double :restaurant, order: nil, menu: list }
+  subject { described_class.new(restaurant) }
   before do
     file = File.open('./lib/dishes.csv', "r")
     file.readlines.each do |line| 
@@ -36,7 +36,8 @@ describe Order do
   end
 
   it 'is able to send an order to restaurant' do
+    allow(restaurant).to receive(:receive_order)
     subject.add_to_order(1)
-    expect(subject.send_order_to_restaurant).to_return 'Order has been sent to restaurant'
+    expect(subject.send_order_to_restaurant).to eq "Order has been sent to restaurant"
   end
 end
