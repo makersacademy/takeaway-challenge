@@ -7,7 +7,7 @@ class EdsDiner
       "1" => {:name => "Show Menu", :method => method(:show_menu)}, 
       "2" => {:name => "Add To Order", :method => method(:select_dishes)},
       "3" => {:name => "Show Current Order", :method => method(:order_summary)},
-      "4" => {:name => "Order", :method =>""}
+      "4" => {:name => "Order", :method => method(:place_order)}
     }
   end
 
@@ -39,10 +39,22 @@ class EdsDiner
 
   def order_summary
     title("Your Order Summary:")
-    @current_order == {} ? (puts 'There are no items in your current order') : print_current_order
+    @current_order == {} ? no_items : print_current_order
+  end
+
+  def place_order
+     @current_order == {} ? no_items : submit_order
   end
 
   private
+
+  def submit_order
+    
+  end
+
+  def no_items
+    puts 'There are no items in your current order'
+  end
 
   def print_current_order
     total = 0

@@ -60,7 +60,6 @@ describe EdsDiner do
 
   end
 
-
   context 'Edge, added a "new order" function' do
     
     let(:instructions) { "1. Show Menu\n2. Add To Order\n3. Show Current Order\n4. Order\n" }
@@ -80,7 +79,21 @@ describe EdsDiner do
       expect { subject.order }.to output(include("Invalid Selection")).to_stdout
     end
 
-
   end
+
+  context 'I would like to receive a text' do
+
+    # it 'returns "order will arrive in 1 hour from now' do
+    #   allow(subject).to receive(:gets).and_return("44", "quit")
+    # end
+
+    it 'displays warning if user tries to order with no items' do
+      allow(subject).to receive(:gets).and_return("4", "quit")
+      subject.order
+      expect { subject.order_summary }.to output(include("There are no items in your current order")).to_stdout
+    end
+  end
+
+
 
 end
