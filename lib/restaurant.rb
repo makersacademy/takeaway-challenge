@@ -6,7 +6,7 @@ class Restaurant
 
   def initialize
     @order = nil
-    @menu = Menu.new
+    @menu = Menu.new.list
   end
 
   def receive_order(order)
@@ -14,8 +14,9 @@ class Restaurant
   end
 
   def confirm_order
-    raise 'Restaurant has not received any orders' if !@order
+    raise 'Restaurant has not received any orders' unless @order
 
-
+    require './twilio'
+    'Order submitted, confirmation text has been sent'
   end
 end

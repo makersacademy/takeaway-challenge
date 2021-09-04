@@ -10,5 +10,9 @@ describe Restaurant do
     expect { subject.confirm_order }.to raise_error 'Restaurant has not received any orders'
   end
 
-
+  it 'notifies when order has been submitted' do
+    allow(subject).to receive(:require)
+    subject.receive_order(order)
+    expect(subject.confirm_order).to eq 'Order submitted, confirmation text has been sent'
+  end
 end

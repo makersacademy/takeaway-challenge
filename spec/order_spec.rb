@@ -28,6 +28,10 @@ describe Order do
     subject.add_to_order(dish_number)
     expect(subject.remove_from_order(dish_number)).to eq []
   end
+
+  it 'notifies if specified dish is not in :current_order' do
+    expect(subject.remove_from_order(1)).to eq 'Order does not contain specified dish'
+  end
   
   it 'is able to view total price' do
     subject.add_to_order(1)

@@ -14,11 +14,15 @@ class Order
   end
 
   def add_to_order(dish_number)
-    @current_order << @restaurant.menu[dish_number-1]
+    @current_order << @restaurant.menu[dish_number - 1]
   end
 
   def remove_from_order(dish_number)
-    @current_order.delete_if { |d| d[:dish_number] == dish_number }
+    if @current_order.any? { |d| d[:dish_number] == dish_number }
+      @current_order.delete_if { |d| d[:dish_number] == dish_number }
+    else 
+      'Order does not contain specified dish'
+    end
   end
 
   def total
