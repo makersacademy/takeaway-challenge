@@ -1,14 +1,16 @@
 
 class Menu
     
-  MENU = { :dish => 'Chicken burger', :price => 10 },
-    { :dish => 'Beef burger', :price => 12 },
-    { :dish => 'Fish dog', :price => 11 },
-    { :dish => 'Hallumi fritter burger', :price => 8 },
-    { :dish => 'Sloppy Joe dog', :price => 9 },
-    { :dish => 'Truffle fries', :price => 4 },
-    { :dish => 'Mac & Cheese', :price => 5 },
-    { :dish => 'Corn ribs', :price => 4 }
+  MENU = { 
+    'Chicken burger' => 10,
+    'Beef burger' => 12,
+    'Fish dog' => 11,
+    'Hallumi fritter burger' => 8,
+    'Sloppy Joe dog' => 9,
+    'Truffle fries' => 4,
+    'Mac & Cheese' => 5,
+    'Corn ribs' => 4 
+    }
   
   attr_reader :menu
 
@@ -17,8 +19,8 @@ class Menu
   end  
   
   def display_menu
-    MENU.each do |dish,price|
-      puts "#{dish}, £#{price}"
+    MENU.map do |dish,price|
+      puts "#{dish}: £#{price}"
     end      
   end
 

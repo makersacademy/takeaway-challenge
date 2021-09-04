@@ -3,4 +3,5 @@ require 'menu'
 
 class Restaurant
 
+  
 end
