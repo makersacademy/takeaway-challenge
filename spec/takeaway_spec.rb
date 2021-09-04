@@ -1,7 +1,9 @@
 require 'takeaway.rb'
 
 describe Takeaway_menu do 
-  it 'has a list of items avaliable' do
-  expect{subject.to respond_to(menu_hash)}
-  end 
+  context 'I want to order something' do
+    it 'shows a list of items avalible with prices' do
+      expect(subject.menu).to be_an Array
+    end
+  end
 end 

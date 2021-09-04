@@ -1,14 +1,11 @@
 class Takeaway_menu
 
-menu_hash = {
-Napoli: 9,
-Marinara: 7,
-Pepperoni: 10,
-Calabrese: 10,
-Funghi: 8,
-Napoletana: 9
-}
+  def initialize
+    @menu = []
+  end 
 
-menu_hash.each { |item, price| puts "#{item} #{price}" }
+  def menu
+    @menu
+  end 
 
 end 
