@@ -84,7 +84,7 @@ describe EdsDiner do
   context 'I would like to receive a text' do
     let(:time) { "11:30" }
 
-    it 'returns "order will arrive in 1 hour from now' do
+    xit 'returns "order will arrive in 1 hour from now' do
       allow(subject).to receive(:gets).and_return("2", "1", "quit", "4", "quit")
       allow(subject).to receive(:hour_from_now).and_return(time)
       subject.order
@@ -96,6 +96,9 @@ describe EdsDiner do
       subject.order
       expect { subject.order_summary }.to output(include("There are no items in your current order")).to_stdout
     end
+
+     
+
   end
 
 

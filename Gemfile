@@ -5,6 +5,7 @@ ruby '3.0.2'
 # Gems
 
 gem 'twilio-ruby'
+gem 'dotenv'
 
 group :test do
   gem 'rspec'

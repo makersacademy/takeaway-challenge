@@ -5,6 +5,7 @@ GEM
     ast (2.4.2)
     diff-lcs (1.4.4)
     docile (1.4.0)
+    dotenv (2.7.6)
     faraday (1.7.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -85,6 +86,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   rspec
   rubocop (= 1.20)
   simplecov

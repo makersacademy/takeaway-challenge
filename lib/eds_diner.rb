@@ -1,3 +1,6 @@
+require 'dotenv/load'
+require 'twilio-ruby'
+
 class EdsDiner
 
   def initialize 
@@ -16,7 +19,7 @@ class EdsDiner
   def order
     title("Welcome to EdsDiner!")
     while true do
-      puts "How can we help today? (choose number (e.g. 1) or type 'quit' to leave"
+      puts "\nHow can we help today? (choose number (e.g. 1) or type 'quit' to leave"
       break if handle_instruction == "quit"
     end
   end
@@ -46,10 +49,24 @@ class EdsDiner
      @current_order == {} ? no_items : submit_order
   end
 
+
   private
 
+  def text(message)
+    client = Twilio::REST::Client.new ENV['SID'], ENV['TOKEN']
+    message = client.messages.create( 
+                             body: message,  
+                             messaging_service_sid: ENV['MESSAGEID'],      
+                             to: ENV['MYNUM'],
+                           ) 
+    message.sid
+  end
+
   def submit_order
-    puts "Thank you! Your order was placed and will be delivered before #{hour_from_now}"
+    random = rand(100000)
+    puts "Order Confirmation: #{random}\n\n\n\n\n\n\n"
+    text("Thank you! order #{random} was placed and will be delivered before #{hour_from_now}")
+    exit
   end
 
   def hour_from_now
