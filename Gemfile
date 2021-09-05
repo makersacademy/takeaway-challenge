@@ -6,6 +6,7 @@ ruby '3.0.2'
 
 gem 'twilio-ruby'
 gem 'dotenv'
+gem 'google_drive'
 
 group :test do
   gem 'rspec'

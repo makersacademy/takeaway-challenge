@@ -4,3 +4,4 @@
 # Local cache of Rubocop remote config
 .rubocop-*
 .env
+google_creds.json

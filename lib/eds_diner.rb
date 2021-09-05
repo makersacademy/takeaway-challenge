@@ -1,10 +1,9 @@
 require_relative 'text.rb'
-
+require_relative 'google_sheet.rb'
 class EdsDiner
 
-
   def initialize 
-    @dishes = { "1"=> { :name => "Tomato Soup", :price => 5 }, "2" =>{ :name => "Avocado On Toast", :price => 7 }, "3" => { :name => "Spaghetti Bolognese", :price => 12 }, "4" => { :name => "Mushroom Surprise", :price => 9 }, "5" => { :name => "Pizza", :price => 10 }, "6" => { :name => "Ice Cream", :price => 4}, "7" =>{ :name => "Cake", :price => 4 }} 
+    @dishes = {}
     @current_order = {}
     @order_options = {
       "1" => {:name => "Show Menu", :method => method(:show_menu)}, 
@@ -15,9 +14,10 @@ class EdsDiner
     @text = Text.new
   end
 
-  attr_reader :dishes, :current_order
+  attr_accessor :dishes, :current_order
 
   def order
+    load_menu if @dishes == {}
     clear_terminal
     title("Welcome to EdsDiner!")
     while true do
@@ -56,6 +56,16 @@ class EdsDiner
 
 
   private
+
+  # I had a look at Mabons code: https://github.com/Maby0/takeaway-challenge
+  # Liked the use of CSV
+  # Decided to try and do the same but for google sheets. 
+
+  def load_menu
+    menu = Menu.new
+    menu.get_dishes
+    @dishes = menu.dishes
+  end
 
   def submit_order
     random = rand(100000)

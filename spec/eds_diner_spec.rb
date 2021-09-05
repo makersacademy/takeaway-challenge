@@ -2,6 +2,11 @@ require 'eds_diner'
 
 describe EdsDiner do 
 
+  before do
+    allow(subject).to receive(:load_menu).and_return(true)
+    subject.dishes = { "1"=> { :name => "Tomato Soup", :price => 5 }, "2" =>{ :name => "Avocado On Toast", :price => 7 }, "3" => { :name => "Spaghetti Bolognese", :price => 12 }, "4" => { :name => "Mushroom Surprise", :price => 9 }, "5" => { :name => "Pizza", :price => 10 }, "6" => { :name => "Ice Cream", :price => 4}, "7" =>{ :name => "Cake", :price => 4 }}
+  end
+
   context 'I would like to see a list of dishes with prices' do
     
     it 'stores meals in a hash' do
@@ -15,6 +20,7 @@ describe EdsDiner do
   end
 
   context 'I would like to be able to select some number of several available dishes' do
+
 
 
     let(:order_one) { { "1" => 1, "2" => 1 } }
@@ -89,7 +95,17 @@ describe EdsDiner do
       expect { subject.order_summary }.to output(include("There are no items in your current order")).to_stdout
     end
 
-    
+  end
+
+
+  context 'dynamic menu on google sheets' do
+
+    let(:correct_data) { { "1"=> { :name => "Tomato Soup", :price => 5 }, "2" =>{ :name => "Avocado On Toast", :price => 7 }, "3" => { :name => "Spaghetti Bolognese", :price => 12 }, "4" => { :name => "Mushroom Surprise", :price => 9 }, "5" => { :name => "Pizza", :price => 10 }, "6" => { :name => "Ice Cream", :price => 4}, "7" =>{ :name => "Cake", :price => 4 }}  }
+
+    it 'Checks if loading the menu will initialize our class corrently' do
+      subject.show_menu
+      expect(subject.dishes).to eq correct_data
+    end
   end
 
   # Delete Item
