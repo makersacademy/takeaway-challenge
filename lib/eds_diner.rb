@@ -69,9 +69,20 @@ class EdsDiner
 
   def submit_order
     random = rand(100000)
-    puts "Order Confirmation: #{random}\n\n\n\n\n\n\n"
+    handle_text_response(send_text(random), random)
+  end
+
+  def handle_text_response(response, random)
+    if ["4","5"].include?(response[:code][0])
+      puts response[:error]
+    else
+      puts "Order Confirmation: #{random}\n\n\n\n\n\n\n"
+      exit
+    end
+  end
+
+  def send_text(random)
     @text.send("Thank you! order #{random} was placed and will be delivered before #{hour_from_now}")
-    exit
   end
 
   def hour_from_now

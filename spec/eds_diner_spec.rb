@@ -108,6 +108,26 @@ describe EdsDiner do
     end
   end
 
+
+  context 'text messages' do
+
+    let(:error_one) { {:code=>"400", :error=>"some message"} }
+    let(:error_two) { {:code=>"500", :error=>"some message"} }
+
+
+    it 'handles a failed response' do
+      allow(subject).to receive(:gets).and_return("2","2","quit", "4", "quit")
+      allow(subject).to receive(:send_text).and_return(error_one)
+      expect { subject.order }.to output(include("some message")).to_stdout
+    end
+
+    it 'handles a failed response' do
+      allow(subject).to receive(:gets).and_return("2","2","quit", "4", "quit")
+      allow(subject).to receive(:send_text).and_return(error_two)
+      expect { subject.order }.to output(include("some message")).to_stdout
+    end
+
+  end
   # Delete Item
   # test response
 
