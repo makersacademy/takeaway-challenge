@@ -22,7 +22,7 @@ describe Menu do
     end
 
     it 'default menu available if no dishes added' do
-      subject.activate_default_menu
+      subject.access_menu
       expect(subject.list_of_dishes).to eq(described_class::DEFAULT_MENU)
     end
   end

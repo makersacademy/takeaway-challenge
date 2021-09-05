@@ -9,12 +9,12 @@ class Menu
     @list_of_dishes.push(dish.itemise)
   end
 
-  def activate_default_menu
+  def access_menu
     @list_of_dishes = DEFAULT_MENU
   end
 
   def view_menu
-    activate_default_menu if @list_of_dishes.empty?
+    access_menu if @list_of_dishes.empty?
     banner_display
     menu_display
   end
@@ -24,8 +24,7 @@ class Menu
   def menu_display
     format = []
     @list_of_dishes.each do |item| 
-      item.each do |dish, price| format << "TD-Dish: #{dish} // Price: £#{price}"
-      end
+      item.each { |dish, price| format << "TD-Dish: #{dish} // Price: £#{price}" }
     end
     format.join("\n")
   end
