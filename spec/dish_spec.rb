@@ -1,21 +1,14 @@
-require "dish.rb"
+require "dish"
 
 describe Dish do
-  
-  new_dish = (:dish_name => "Mock Dish", :dish_price => 6, :is_available => true)
-
-  it "has a name" do
-    new_dish = Dish.new
-    expect(new_dish.dish_name).to eq(new_dish.dish_name)
-  end
-
-  it "has a price" do
-    new_dish = Dish.new
-    expect(new_dish.dish_price).to eq(new_dish.dish_price)
-  end
-
-  it "has a default availability status of true" do
-    new_dish = Dish.new
-    expect(new_dish.is_available).to eq(true)
+  context "#initialize" do
+    it "has a name" do
+      dish = Dish.new
+      expect(dish.name).to eq(dish.name)
+    end
+    it "has a price" do
+      dish = Dish.new
+      expect(dish.price).to eq(dish.price)
+    end
   end
 end

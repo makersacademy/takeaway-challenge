@@ -22,21 +22,27 @@ Class name:
   Dish
 Variables
   dish_name: String
-  price: Integer
-  available?: Boolean
+  price: Float
+Methods
 
 Class name:
   Menu
 Variables
+  dish_list
+  basket
 Methods
-  list_available_dishes()
+  view_menu
 
 Class name:
-  Order
+  Takeaway
 Variables
-  telephone_number
-  dish_name
-  quantity
+  menu
+  basket
+  message
 Methods
-  order_total_correct?
-  send_confirmation_text
+  select_dish
+  view_cart
+  place_order
+  in_menu?
+  checkout_view
+  total
