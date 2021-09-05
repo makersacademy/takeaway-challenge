@@ -68,7 +68,7 @@ describe EdsDiner do
 
   context 'Edge, added a "new order" function' do
     
-    let(:instructions) { "1. Show Menu\n2. Add To Order\n3. Show Current Order\n4. Order\n" }
+    let(:instructions) { "1. Show Menu\n2. Add To Order\n3. Show Current Order\n4. Remove Item From Order\n5. Order\n" }
 
     it 'shows instructions' do
       allow(subject).to receive(:gets).and_return("quit")
@@ -90,7 +90,7 @@ describe EdsDiner do
   context 'I would like to receive a text' do
 
     it 'displays warning if user tries to order with no items' do
-      allow(subject).to receive(:gets).and_return("4", "quit")
+      allow(subject).to receive(:gets).and_return("5", "quit")
       subject.order
       expect { subject.order_summary }.to output(include("There are no items in your current order")).to_stdout
     end
@@ -116,20 +116,36 @@ describe EdsDiner do
 
 
     it 'handles a failed response' do
-      allow(subject).to receive(:gets).and_return("2","2","quit", "4", "quit")
+      allow(subject).to receive(:gets).and_return("2","2","quit", "5", "quit")
       allow(subject).to receive(:send_text).and_return(error_one)
       expect { subject.order }.to output(include("some message")).to_stdout
     end
 
     it 'handles a failed response' do
-      allow(subject).to receive(:gets).and_return("2","2","quit", "4", "quit")
+      allow(subject).to receive(:gets).and_return("2","2","quit", "5", "quit")
       allow(subject).to receive(:send_text).and_return(error_two)
       expect { subject.order }.to output(include("some message")).to_stdout
     end
 
   end
-  # Delete Item
-  # test response
 
+  context 'remove items from selected' do
+
+    let(:before_state)  { {"2"=>2, "3"=>1} }
+    let(:after_state) { {"2"=>1, "3"=>1} }
+
+    it 'raises error if current order is empty' do 
+      allow(subject).to receive(:gets).and_return("4", "quit")
+      subject.order
+      expect { subject.order_summary }.to output(include("There are no items in your current order")).to_stdout
+    end
+    
+    it 'removes an item from the current selected menu' do
+      allow(subject).to receive(:gets).and_return("2", "1", "quit")
+      subject.current_order = before_state
+      subject.remove_items
+      expect(subject.current_order).to eq after_state
+    end
+  end
 
 end

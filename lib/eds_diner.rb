@@ -1,6 +1,9 @@
 require_relative 'text.rb'
 require_relative 'google_sheet.rb'
+require_relative 'formatting.rb'
 class EdsDiner
+  
+  include Formatting
 
   def initialize 
     @dishes = {}
@@ -9,7 +12,8 @@ class EdsDiner
       "1" => {:name => "Show Menu", :method => method(:show_menu)}, 
       "2" => {:name => "Add To Order", :method => method(:select_dishes)},
       "3" => {:name => "Show Current Order", :method => method(:order_summary)},
-      "4" => {:name => "Order", :method => method(:place_order)}
+      "4" => {:name => "Remove Item From Order", :method => method(:remove_items)},
+      "5" => {:name => "Order", :method => method(:place_order)}
     }
     @text = Text.new
   end
@@ -21,7 +25,7 @@ class EdsDiner
     clear_terminal
     title("Welcome to EdsDiner!")
     while true do
-      puts "\nHow can we help today? (choose number (e.g. 1) or type 'quit' to leave"
+      puts yellow("\nHow can we help today? (choose number (e.g. 1) or type 'quit' to leave")
       break if handle_instruction == "quit"
     end
   end
@@ -37,7 +41,7 @@ class EdsDiner
 
   def select_dishes
     show_menu
-    title("Select item by number (e.g. 1) or 'quit'")
+    title("Select item by number (e.g. 1) or 'quit' to return to menu")
     while true do
       break if handle_select(get_input) == "quit"
     end
@@ -45,7 +49,7 @@ class EdsDiner
 
   def order_summary
     clear_terminal
-    title("Your Order Summary:")
+    
     @current_order == {} ? no_items : print_current_order
   end
 
@@ -54,8 +58,39 @@ class EdsDiner
     @current_order == {} ? no_items : submit_order
   end
 
+  def remove_items
+    @current_order == {} ? no_items : handle_delete
+  end
 
   private
+
+  def handle_delete
+    show_menu
+    print_current_order
+    puts yellow("\nTo delete an item from your order, find its number from the menu and enter the quantity to delete")
+    item , quantity = get_item, get_quantity
+    return if delete(item,quantity) == "not there"
+  end
+
+  def get_item
+    puts "Item Number:"
+    gets.chomp
+  end
+
+  def get_quantity
+    puts "Quantity To Remove"
+    gets.chomp.to_i
+  end
+
+  def delete(item,quantity)
+   if @current_order[item] 
+    quantity >= @current_order[item] ? @current_order.delete(item) : @current_order[item] -= quantity
+    puts green("You have successfully #{red("removed")} #{green(quantity)} x #{@dishes[item][:name]}")
+   else
+    puts red("You don't have that #{@dishes[item][:name]} on your order.")
+    return "not there"
+   end
+  end
 
   # I had a look at Mabons code: https://github.com/Maby0/takeaway-challenge
   # Liked the use of CSV
@@ -91,10 +126,11 @@ class EdsDiner
   end
 
   def no_items
-    puts 'There are no items in your current order'
+    puts red('There are no items in your current order')
   end
 
   def print_current_order
+    title("Your Order Summary:")
     total = 0
     @current_order.each do |dish,quantity|
       puts "#{quantity}x #{@dishes[dish][:name]} @ £#{@dishes[dish][:price]} = £#{@dishes[dish][:price] * quantity}"
@@ -107,7 +143,7 @@ class EdsDiner
     show_instructions
     input = get_input
     return "quit" if input == "quit"
-    @order_options[input] ? perform_selection(input) : (puts "Invalid Selection")
+    @order_options[input] ? perform_selection(input) : invalid_selection
   end
 
   def perform_selection(input)
@@ -125,13 +161,16 @@ class EdsDiner
       clear_terminal
       return "quit"
     end
-    @dishes[item] ? confirm_item_added(item) : (puts "Invalid Selection")
+    @dishes[item] ? confirm_item_added(item) : invalid_selection
   end
 
+  def invalid_selection
+    puts red("Invalid Selection")
+  end
 
   def confirm_item_added(item)
     @current_order[item] ? @current_order[item] += 1 : @current_order[item] = 1
-    puts "You have added 1x #{dishes[item][:name]} to your order"
+    puts green("You have added 1x #{dishes[item][:name]} to your order")
   end
 
 
@@ -141,9 +180,9 @@ class EdsDiner
 
   def title(text)
     puts " "
-    puts text
-    ((text.length) - 1).times { print "~" }
-    puts "~"
+    puts blue(text)
+    ((text.length) - 1).times { print blue("~") }
+    puts blue("~")
   end
 
   def clear_terminal
