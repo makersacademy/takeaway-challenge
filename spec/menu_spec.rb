@@ -12,10 +12,9 @@ describe Menu do
     file.close
   end
 
-  it { is_expected.to respond_to(:list) }
-
   it 'loads 10 dishes on initialization' do
-    expect(subject.list.count).to eq 10
+    current_number_of_dishes = list.count
+    expect(subject.list.count).to eq current_number_of_dishes
   end
 
   it ':list returns menu items' do
