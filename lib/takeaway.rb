@@ -30,9 +30,9 @@ class Takeaway
     @order.add_selected_item(pizza)
   end 
 
-  def place_order(order = @order)
-    @order.confirm_order
-  end 
+  # def place_order(order = @order)
+  #   @order.confirm_order
+  # end 
 
   def confirm_order
     @order.confirm_order
@@ -43,4 +43,8 @@ class Takeaway
     puts "Order Total = £#{@order.total_price}"
   end
 
+  def place_order(order = @order)
+    # order.confirm_order
+    puts "Order successfully placed!"
+  end
 end
