@@ -35,7 +35,7 @@ describe Order do
     it 'can output cost of order' do
       subject.add_dish_to_order(name1, quantity1)
       subject.add_dish_to_order(name2, quantity2)
-      expect(subject.price).to eq("Customer to pay £#{subject.order_total}")
+      expect(subject.how_much).to eq("Customer to pay £#{subject.order_total}")
     end
   end
 end

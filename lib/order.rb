@@ -28,7 +28,7 @@ class Order
     sum
   end
 
-  def price
+  def how_much
     "Customer to pay £#{order_total}"
   end
 
