@@ -1,7 +1,7 @@
-require 'dotenv/load'
-require 'twilio-ruby'
+require_relative 'text.rb'
 
 class EdsDiner
+
 
   def initialize 
     @dishes = { "1"=> { :name => "Tomato Soup", :price => 5 }, "2" =>{ :name => "Avocado On Toast", :price => 7 }, "3" => { :name => "Spaghetti Bolognese", :price => 12 }, "4" => { :name => "Mushroom Surprise", :price => 9 }, "5" => { :name => "Pizza", :price => 10 }, "6" => { :name => "Ice Cream", :price => 4}, "7" =>{ :name => "Cake", :price => 4 }} 
@@ -12,6 +12,7 @@ class EdsDiner
       "3" => {:name => "Show Current Order", :method => method(:order_summary)},
       "4" => {:name => "Order", :method => method(:place_order)}
     }
+    @text = Text.new
   end
 
   attr_reader :dishes, :current_order
@@ -56,26 +57,16 @@ class EdsDiner
 
   private
 
-  def text(message)
-    client = Twilio::REST::Client.new ENV['SID'], ENV['TOKEN']
-    message = client.messages.create( 
-                             body: message,  
-                             messaging_service_sid: ENV['MESSAGEID'],      
-                             to: ENV['MYNUM'],
-                           ) 
-    message.sid
-  end
-
   def submit_order
     random = rand(100000)
     puts "Order Confirmation: #{random}\n\n\n\n\n\n\n"
-    text("Thank you! order #{random} was placed and will be delivered before #{hour_from_now}")
+    @text.send("Thank you! order #{random} was placed and will be delivered before #{hour_from_now}")
     exit
   end
 
   def hour_from_now
     time = Time.now + (10 * 60) * 6
-    "#{time.hour}:#{time.min}"
+    "#{time.hour}:#{time.min < 10 ? "0#{time.min}" : time.min}"
   end
 
   def no_items
@@ -109,13 +100,11 @@ class EdsDiner
   end
 
   def handle_select(item)
-
     if item == "quit"
       clear_terminal
       return "quit"
     end
-     @dishes[item] ? confirm_item_added(item) : (puts "Invalid Selection")
-
+    @dishes[item] ? confirm_item_added(item) : (puts "Invalid Selection")
   end
 
 
