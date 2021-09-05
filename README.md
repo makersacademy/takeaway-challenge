@@ -1,3 +1,14 @@
+# Mabon ap Gwyn's submission of Week 2's Takeaway Challenge
+
+I decided to tackle the user stories using a TDD approach. A total of 11 RSpec tests were written which successfully covered 100% of the codebase. A Rubocop inspection was also ran on the code with zero offenses detected.
+
+Orders are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. 
+
+A Twilio script was implemented to send confirmation texts once a Restaurant object confirmed an order that was passed to it. 
+
+Challenge details are outlined below.
+
+
 Takeaway Challenge
 ==================
 ```
