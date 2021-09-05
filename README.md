@@ -2,7 +2,43 @@
 
 I decided to tackle the user stories using a TDD approach. A total of 11 RSpec tests were written which successfully covered 100% of the codebase. A Rubocop inspection was also ran on the code with zero offenses detected.
 
-Orders are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. 
+```
+Student@MA123 takeaway-challenge % rspec
+
+Menu
+  loads 10 dishes on initialization
+  :list returns menu items
+
+Order
+  is able to view the menu
+  is able to add to :current_order
+  is able to remove from :current_order
+  notifies if specified dish is not in :current_order
+  is able to view total price
+  is able to send an order to restaurant
+
+Restaurant
+  is able to be passed an order
+  raises error when confirming order without receiving one
+  notifies when order has been submitted
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.03888 seconds (files took 0.2133 seconds to load)
+11 examples, 0 failures
+
+
+COVERAGE: 100.00% -- 101/101 lines in 6 files
+
+Student@MA123 takeaway-challenge % rubocop
+Inspecting 9 files
+.........
+
+9 files inspected, no offenses detected
+```
+
+Orders are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. Menu instantiation is linked to a Restaurant's. When initializing an Order instance, it is passed the Restaurant object as an argument, allowing the finalised order to be passed to the Restaurant object.
 
 A Twilio script was implemented to send confirmation texts once a Restaurant object confirmed an order that was passed to it. 
 
