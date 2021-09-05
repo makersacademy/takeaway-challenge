@@ -31,7 +31,12 @@ class Takeaway
   end 
 
   def place_order(order = @order)
-   
+    @order.confirm_order
+  end 
+
+  def confirm_order
+    @order.confirm_order
+  
   end 
 
 end

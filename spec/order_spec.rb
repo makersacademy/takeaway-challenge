@@ -16,5 +16,20 @@ describe Order do
       expect(order.selected_items).to include pizza
     end 
   end
+     
+  context 'check total price matches sum of items ordered' do
+    it 'return total price of items selected' do
+      # pizza = double(:name => "pizza", :price => 9)
+      order.add_selected_item(pizza)
+      expect(order.total_price).to eq 9
+    end
 
-end
+  context 'confirm order has been successfull' do
+    it 'return true' do
+      subject.confirm_order
+      expect(subject.confirm_order?).to be true
+    end 
+
+    end
+   end 
+  end

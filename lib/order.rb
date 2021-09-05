@@ -10,6 +10,23 @@ class Order
 
   def add_selected_item(name)
     @selected_items << (name)
+    calculate_price
   end 
-  
+
+  def confirm_order?
+    @successful
+  end 
+
+  def confirm_order
+    @successful = true
+  end
+
+  private
+
+  def calculate_price
+    @total_price = 0
+    @selected_items.each do |pizza|
+    @total_price += pizza[:price]
+    end 
+  end 
 end 
