@@ -26,14 +26,8 @@ Summary
 * Menu
   * Dishes (itemised as a hash) can be added to the menu (add_to_menu(dish) method)
   * Menu can be viewed (view_menu method)
-  * DEFAULT_MENU constant suppled, access with activate_default_menu method
+  * DEFAULT_MENU constant supplied, access with access_menu method
   * Added a banner for the takeaway cafe: "*** TDD Greasy Spoon ***"
-
- # Noticed that puts looks better in irb for view_order and view_menu but breaks my tests as nil becomes output
-
-*TakeawayProcess
-  * Takeaway process gets user inpuut
-
 
 **The Customer**
 * Order
@@ -42,6 +36,18 @@ Summary
   * Cost of order calculated (order_total method)
   * Added view_order method for customer which includes cost of item 
   * Added how_much method to output total order cost
+
+
+Notes
+-----
+ > Disappointed I couldn't figure out Twilio. it was asking me to pay for the account. 
+ > Is there any recommended material I could look at? 
+ > Noticed that `puts` works better in irb for view_order and view_menu but breaks my tests as nil becomes output
+ > Also encountered problem with decimal points - should be limited 2dp throughout
+
+
+ ```
+  gem install twilio-ruby 
 
 User Stories
 -----

@@ -15,7 +15,7 @@ describe Menu do
   end 
 
   context 'viewing menu' do
-    it 'displays menu' do
+    it 'lists menu items' do
       subject.add_to_menu(dish1)
       subject.add_to_menu(dish2)
       expect(subject.view_menu).to eq("TD-Dish: #{dish1.name} // Price: £#{dish1.price}\nTD-Dish: #{dish2.name} // Price: £#{dish2.price}")

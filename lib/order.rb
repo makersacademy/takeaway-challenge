@@ -29,9 +29,15 @@ class Order
   end
 
   def how_much
-    "Customer to pay £#{order_total}"
+    return "Customer to pay £#{order_total}"
   end
 
+  def order_confirmation
+    time = Time.now
+    arrival = time.hour + 1
+    return "Thank you! Your order was placed and will be delivered before #{arrival}:#{time.min}"
+  end
+  
   private
 
   def order_display
@@ -47,5 +53,3 @@ class Order
     format.join("\n")
   end
 end
-
-# Noticed that puts looks better in irb for order_display and menu_display but breaks my tests as nil becomes output
