@@ -1,13 +1,13 @@
 class Dishes
 
-  attr_reader :show_menu
+  attr_reader :dish_list
 
-  def initialize(show_menu)
-    @show_menu = show_menu
+  def initialize(dish_list)
+    @dish_list = dish_list
   end
 
   def print_dishes
-    show_menu.map do |name, price|
+    dish_list.map do |name, price|
       '%s £%.2f' % [name.to_s, price]
     end.join ', ' 
   end

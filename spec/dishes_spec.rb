@@ -2,9 +2,9 @@ require '/Users/admin/Library/Mobile Documents/com~apple~CloudDocs/takeaway-chal
 
 describe Dishes do
 
-  subject(:dishes) { described_class.new(show_menu) }
+  subject(:dishes) { described_class.new(dish_list) }
 
-  let(:show_menu) do 
+  let(:dish_list) do 
     { 
       burger: 10.00, 
       chips: 2.00, 
@@ -12,7 +12,7 @@ describe Dishes do
   end
 
   it 'has a list of dishes and their prices' do
-    expect(dishes.show_menu).to eq(show_menu)
+    expect(dishes.dish_list).to eq(dish_list)
       
   end
 
