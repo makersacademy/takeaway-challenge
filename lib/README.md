@@ -16,7 +16,7 @@
 
 
 ## Diagram Modelling
-Restaurant
+
 ------------- | -------------
 Class Name | Restaurant
 Variables | Name = String
@@ -24,16 +24,12 @@ Methods  | select_available_dish()
 Methods  | view_food_list()
 Methods  | sum_order()
 
-
-
-Menu
 ------------- | -------------
  Class Name | Menu
 Variables  | {dishes => prices}
 Methods  | show()
 Methods | sum_dish_price()
 
-Customer
 ------------- | -------------
  Class Name | Customer
 Variables  | ......
