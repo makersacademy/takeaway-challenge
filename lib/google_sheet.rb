@@ -19,7 +19,6 @@ class Menu
   
   attr_reader :creds, :dishes
 
-
   def get_dishes
     get_current_sheet_contents.each { |row| 
       @dishes[row[0]] = {:name => "", :price =>""}
@@ -28,9 +27,6 @@ class Menu
     }
   
   end
-
-  #  { "1"=> { :name => "Tomato Soup", :price => 5 }, "2" =>{ :name => "Avocado On Toast", :price => 7 }, "3" => { :name => "Spaghetti Bolognese", :price => 12 }, "4" => { :name => "Mushroom Surprise", :price => 9 }, "5" => { :name => "Pizza", :price => 10 }, "6" => { :name => "Ice Cream", :price => 4}, "7" =>{ :name => "Cake", :price => 4 }} 
-
 
   private
 
@@ -42,17 +38,3 @@ class Menu
 
 end
 
-
-
-# require 'bundler'
-# Bundler.require
-
-# Authenticate a session with your Service Account
-# session = GoogleDrive::Session.from_service_account_key("client_secret.json")
-
-# Get the spreadsheet by its title
-# spreadsheet = session.spreadsheet_by_title("Copy of Legislators 2017")
-# Get the first worksheet
-# worksheet = spreadsheet.worksheets.first
-# Print out the first 6 columns of each row
-# worksheet.rows.each { |row| puts row.first(6).join(" | ") }

@@ -8,12 +8,11 @@ describe Menu do
 
 
     it 'returns "order will arrive in 1 hour from now' do
+      allow(subject).to receive(:get_current_sheet_contents).and_return([["1", "Tomato Soup", "5"], ["2", "Avocado On Toast", "7"], ["3", "Spaghetti Bolognese", "12"], ["4", "Mushroom Surprise", "9"], ["5", "Pizza", "10"], ["6", "Ice Cream", "4"], ["7", "Cake", "4"]])
       subject.get_dishes
       expect(subject.dishes).to eq data
     end
 
-
-    
   end
 
 end
