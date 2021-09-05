@@ -20,7 +20,8 @@ class Menu
   attr_reader :creds, :dishes
 
   def get_dishes
-    get_current_sheet_contents.each { |row| 
+    menu = get_current_sheet_contents
+    menu == [] ?  (raise "The Menu is empty") : menu.each { |row| 
       @dishes[row[0]] = {:name => "", :price =>""}
       @dishes[row[0]][:name] = row[1]
       @dishes[row[0]][:price] = row[2].to_i

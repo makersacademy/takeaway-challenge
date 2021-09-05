@@ -15,4 +15,13 @@ describe Menu do
 
   end
 
+  context 'handles errors' do
+    
+    it 'throws error if there are no rows in the menu' do
+      allow(subject).to receive(:get_current_sheet_contents).and_return([])
+      expect{ subject.get_dishes }.to raise_error "The Menu is empty"
+    end
+
+  end
+
 end
