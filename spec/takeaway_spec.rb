@@ -1,9 +1,12 @@
 require 'takeaway'
+require 'order'
 
-describe Takeaway_menu do 
-  context 'I want to order something' do
-    it 'shows a list of items avalible with prices' do
-      expect(subject.menu).to include 'pizza'
+describe Takeaway do 
+  context ' user wants to order something' do
+    it 'creates list of pizzas with prices' do
+      pizza = double(:name => "pizza", :price => 9)
+      allow(subject).to receive(:pizzas).and_return([pizza])
+      expect(subject.pizzas).to include pizza
     end
   end
 
@@ -11,5 +14,13 @@ describe Takeaway_menu do
     it 'creates a order list' do
       expect(subject.create_order).to be_a Order
     end 
+
+    it 'add pizza to create order' do
+      order = Order.new 
+      pizza = double(:name => "pizza", :price => 9)
+      allow(order).to receive(:pizzas) { [pizza] }
+      expect(order.pizzas).to include pizza
+    end 
+   
   end 
 end 

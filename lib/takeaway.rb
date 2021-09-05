@@ -1,18 +1,37 @@
 
-class Takeaway_menu
+class Takeaway
 
-  attr_reader :menu
+  attr_reader :pizzas, :order
 
   def initialize
-    @menu = []
+    @pizzas = [
+      { name: :Margherita, price: 9 },
+      { name: :Napoli, price: 9 },
+      { name: :Marinara, price: 7 },
+      { name: :Pepperoni, price:10 },
+      { name: :Calabrese, price: 10 },
+      { name: :Funghi, price: 8 },
+      { name: :Napoletana, price: 9 }
+    ]
   end 
 
   def menu
-    'pizza'
+    @pizzas.each do |pizza|
+      puts "#{pizza[:name]} (#{pizza[:price]})"
+    end 
   end 
 
   def create_order(order = Order.new)
     @order = order
+  end 
+
+  def add_order(user_order)
+    pizza = @pizzas[user_order -1]
+    @order.add_selected_item(pizza)
+  end 
+
+  def place_order(order = @order)
+   
   end 
 
 end
