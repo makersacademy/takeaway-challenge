@@ -25,7 +25,7 @@ class Order
         end
       end
     end
-    sum
+    sum.round(2)
   end
 
   def how_much
@@ -35,10 +35,17 @@ class Order
   private
 
   def order_display
+    menu = Menu.new.access_menu 
     format = ["You have ordered:"]
     @my_order.each do |item| 
-      item.each { |name, quantity| format << "#{quantity} x #{name}" }
+      item.each do |name, quantity| 
+        menu.each do |dish| 
+          dish.each { |item, price| format << "#{quantity} x #{name} = £#{(quantity * price).round(2)}" if name == item }
+        end
+      end
     end
     format.join("\n")
   end
 end
+
+# Noticed that puts looks better in irb for order_display and menu_display but breaks my tests as nil becomes output

@@ -16,6 +16,8 @@ Takeaway Challenge
 
 Summary
 -----
+
+**The Restaurant**
 * Dish
   * A dish is created with a name and a prince. 
   * Prices are input as a float with two decimal points.
@@ -27,8 +29,19 @@ Summary
   * DEFAULT_MENU constant suppled, access with activate_default_menu method
   * Added a banner for the takeaway cafe: "*** TDD Greasy Spoon ***"
 
-* Order
+ # Noticed that puts looks better in irb for view_order and view_menu but breaks my tests as nil becomes output
 
+*TakeawayProcess
+  * Takeaway process gets user inpuut
+
+
+**The Customer**
+* Order
+  * An order is initialized with an empty my_order array 
+  * Dishes can be added one by one to the order, receives name and quantity as arguments (add_dish_to_order(name, quantity) method)
+  * Cost of order calculated (order_total method)
+  * Added view_order method for customer which includes cost of item 
+  * Added how_much method to output total order cost
 
 User Stories
 -----

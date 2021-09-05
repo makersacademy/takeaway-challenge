@@ -30,7 +30,7 @@ class Menu
   end
 
   def banner_display
-    return "*** TDD Greasy Spoon ***".center(20)
+    puts "*** TDD Greasy Spoon ***"
   end
 
   DEFAULT_MENU = [
@@ -38,7 +38,7 @@ class Menu
     { "Egg roll" => 2.99 },
     { "Bacon bap" => 2.99 },
     { "Sausage sandwich" => 3.99 },
-    { "Full English" => 6.99 },
-    { "Veggie Breakfast" => 5.99 }
+    { "Full english" => 6.99 },
+    { "Veggie breakfast" => 5.99 }
   ].freeze
 end

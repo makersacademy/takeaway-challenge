@@ -17,10 +17,10 @@ describe Order do
       expect(subject.my_order).to eq([{ "Hash brown" => 3 }])
     end 
 
-    it 'can show you order on request' do
+    it 'can view order on request' do
       subject.add_dish_to_order(name1, quantity1)
       subject.add_dish_to_order(name2, quantity2)
-      expect(subject.view_order).to eq("You have ordered:\n#{quantity1} x #{name1}\n#{quantity2} x #{name2}")
+      expect(subject.view_order).to eq("You have ordered:\n#{quantity1} x #{name1} = £#{(quantity1 * 0.99).round(2)}\n#{quantity2} x #{name2} = £#{quantity2 * 3.99}")
     end
 
   end
