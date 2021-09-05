@@ -3,8 +3,6 @@ require 'menu'
 
 describe Restaurant do
 
-    # let(:restaurant) { Restaurant.new({ 'Chicken burger' => 10, 'Beef burger' => 12, }) }
-
   describe '#initialize' do
     it 'initializes with Menu' do
       expect(subject.menu).to be_an_instance_of Menu
@@ -16,7 +14,5 @@ describe Restaurant do
       expect { subject.view_menu }.to output(include("Chicken burger: £10\nBeef burger: £12\n")).to_stdout 
     end
   end  
-
-
 
 end
