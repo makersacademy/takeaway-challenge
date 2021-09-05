@@ -2,17 +2,16 @@ require "menu.rb"
 
 describe Menu do
   context "#initialize"
-    it "should list the names of dishes and their prices" do
-      expect(subject.dish_list).to be_an(Array)
-    end  
+  it "should list the names of dishes and their prices" do
+    expect(subject.dish_list).to be_an(Array)
+  end
 
-    it "should have a list of dishes" do
-      expect(subject.dish_list).to eq(::DEFAULT_MENU)
-    end
+  it "should have a list of dishes" do
+    expect(subject.dish_list).to eq(::AVAILABLE_DISHES)
+  end
 
-    it "should have a basket to hold the order" do
-      expect(subject.basket).to eq(subject.basket)
-    end
+  it "should have a basket to hold the order" do
+    expect(subject.basket).to eq(subject.basket)
   end
 
   context "#view_menu" do
