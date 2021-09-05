@@ -40,14 +40,17 @@ Summary
 
 Notes
 -----
- > Disappointed I couldn't figure out Twilio. it was asking me to pay for the account. 
- > Is there any recommended material I could look at? 
- > Noticed that `puts` works better in irb for view_order and view_menu but breaks my tests as nil becomes output
- > Also encountered problem with decimal points - should be limited 2dp throughout
+
+ * Disappointed I couldn't figure out Twilio. It was asking me to pay for the number?
+  * Is there any recommended material I could look at on Twilio? 
+ * Noticed that `puts` works better in irb for view_order and view_menu but breaks my tests as nil becomes output
+ * Also encountered problem with decimal points - should be limited 2dp throughout
 
 
- ```
-  gem install twilio-ruby 
+```
+gem install twilio-ruby 
+
+```
 
 User Stories
 -----
