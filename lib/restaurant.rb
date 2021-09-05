@@ -36,6 +36,10 @@ class Restaurant
     price_correct(price)
   end
 
+  def complete_order
+    "Thank you for your order, your total is £#{check_total}"
+  end
+
   private 
 
   def price_correct(price)

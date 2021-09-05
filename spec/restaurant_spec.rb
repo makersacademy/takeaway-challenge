@@ -28,8 +28,15 @@ describe Restaurant do
   end
 
   it "should be the correct price" do 
-  subject.select_dish(dish)
-  expect(subject).to be_finalised(10)
+    subject.select_dish(dish)
+    expect(subject).to be_finalised(10)
   end
 
+  describe "#confirmation" do 
+  it "should send confirmation text with price" do
+  subject.select_dish(dish)
+  subject.complete_order
+  expect(subject.complete_order).to eq("Thank you for your order, your total is £10")
+  end
+  end
 end
