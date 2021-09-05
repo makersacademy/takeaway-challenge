@@ -16,10 +16,17 @@ Takeaway Challenge
 
 Summary
 -----
-Prices are input in pence as an Integer and converted to £ in a String
+* Dish
+  * A dish is created with a name and a prince. 
+  * Prices are input as a float with two decimal points.
+  * Dishes can be itemised as a hash (itemise method).
 
-Break down of User Stories
------
+* Menu
+  * Dishes (itemised as a hash) can be added to the menu (add_to_menu(dish) method)
+  * Menu can be viewed (view_menu method)
+  * Added a banner for the takeaway cafe: "*** TDD Greasy Spoon ***"
+
+* Order
 
 
 User Stories

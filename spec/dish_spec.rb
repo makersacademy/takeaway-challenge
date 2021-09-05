@@ -1,3 +1,4 @@
+
 require 'dish'
 
 describe Dish do
@@ -7,13 +8,13 @@ describe Dish do
     end
 
     it 'has a #price' do 
-      expect(subject.price).to eq(99)
+      expect(subject.price).to eq(0.99)
     end
   end
 
   context 'menu format' do
     it 'combines name and price in a hash' do 
-      expect(subject.dish_hash).to eq({ :"Hash brown" => "0.99" })
+      expect(subject.itemise).to eq({ "Hash brown" => 0.99 })
     end
   end
 end
