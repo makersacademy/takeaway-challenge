@@ -14,6 +14,7 @@ class Menu
   end
 
   def view_menu
+    activate_default_menu if @list_of_dishes.empty?
     banner_display
     menu_display
   end
@@ -33,13 +34,14 @@ class Menu
     puts "*** TDD Greasy Spoon ***".center(20)
   end
 
+  DEFAULT_MENU = [
+    { "Hash brown" => 0.99 },
+    { "Egg roll" => 2.99 },
+    { "Bacon bap" => 2.99 },
+    { "Sausage sandwich" => 3.99 },
+    { "Full English" => 6.99 },
+    { "Veggie Breakfast" => 5.99 }
+  ].freeze
 end
 
-DEFAULT_MENU = [
-  { "Hash brown" => 0.99 },
-  { "Egg roll" => 2.99 },
-  { "Bacon bap" => 2.99 },
-  { "Sausage sandwich" => 3.99 },
-  { "Full English" => 6.99 },
-  { "Veggie Breakfast" => 5.99 },
-]
+

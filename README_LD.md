@@ -24,6 +24,7 @@ Summary
 * Menu
   * Dishes (itemised as a hash) can be added to the menu (add_to_menu(dish) method)
   * Menu can be viewed (view_menu method)
+  * DEFAULT_MENU constant suppled, access with activate_default_menu method
   * Added a banner for the takeaway cafe: "*** TDD Greasy Spoon ***"
 
 * Order

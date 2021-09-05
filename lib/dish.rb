@@ -12,7 +12,3 @@ class Dish
     @hash
   end
 end
-
-
-   
-   
