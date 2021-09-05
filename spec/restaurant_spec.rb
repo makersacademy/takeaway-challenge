@@ -1,6 +1,9 @@
-require './lib/restaurant'
+require 'restaurant'
+require 'menu'
 
 describe Restaurant do
+
+    # let(:restaurant) { Restaurant.new({ 'Chicken burger' => 10, 'Beef burger' => 12, }) }
 
   describe '#initialize' do
     it 'initializes with Menu' do
@@ -8,6 +11,11 @@ describe Restaurant do
     end
   end
 
+  describe '#view_menu' do
+    it 'displayes the menu' do
+      expect { subject.view_menu }.to output(include("Chicken burger: £10\nBeef burger: £12\n")).to_stdout 
+    end
+  end  
 
 
 
