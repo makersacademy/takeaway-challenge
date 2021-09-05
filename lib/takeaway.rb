@@ -36,7 +36,11 @@ class Takeaway
 
   def confirm_order
     @order.confirm_order
-  
   end 
+
+  def display_order(order = @order)
+    order.display_items
+    puts "Order Total = £#{@order.total_price}"
+  end
 
 end

@@ -26,6 +26,12 @@ describe Takeaway do
       subject.confirm_order
       expect(subject.order.confirm_order?).to eq true
     end
-
+    it 'should show the pizzas on the order' do
+      order = Order.new 
+      pizza = double(:name => "pizza", :price => 9)
+      allow(order).to receive(:pizzas).and_return([pizza])
+      allow(order).to receive(:display_items)
+      expect(order.pizzas).to include pizza
+    end
   end 
 end 

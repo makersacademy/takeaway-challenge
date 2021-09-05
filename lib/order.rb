@@ -21,6 +21,12 @@ class Order
     @successful = true
   end
 
+  def display_items
+    @selected_items.each do |pizza|
+      puts "Pizza: #{pizza[:name]} Price: #{pizza[:price]}"
+    end 
+  end 
+
   private
 
   def calculate_price
