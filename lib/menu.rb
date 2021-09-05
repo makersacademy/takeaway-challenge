@@ -10,14 +10,19 @@ class Menu
     'Truffle fries' => 4,
     'Mac & Cheese' => 5,
     'Corn ribs' => 4 
-    }
+  }
   
   attr_reader :menu
 
-  def initialize
-    @menu = MENU
-  end  
-  
+  def initialize(menu)
+    @menu = menu
+    list_dishes
+  end
+
+  def list_dishes
+    @menu = MENU if @menu == nil
+  end
+
   def display_menu
     MENU.map do |dish,price|
       puts "#{dish}: £#{price}"
