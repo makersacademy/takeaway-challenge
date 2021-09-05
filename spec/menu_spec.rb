@@ -17,3 +17,11 @@ describe Menu do
   end
 
 end
+
+# I needed help with this. Hash kept outputting nil. This really confussed me 
+# 1) Menu#dispaly_menu #displays menu
+# Failure/Error: expect(subject.display_menu).to include('Beef burger' => 12)
+
+#   expected [nil, nil, nil, nil, nil, nil, nil, nil] to include {"Beef burger" => 12}
+#   Diff:
+#   @@ -1 +1 @@
