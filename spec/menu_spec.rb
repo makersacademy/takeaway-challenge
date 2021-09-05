@@ -16,6 +16,5 @@ describe Menu do
 
     it 'lists all the items on the menu' do
         expect(menu).to respond_to :menu_items
-    end
-    
+    end    
 end

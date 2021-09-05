@@ -17,7 +17,6 @@ class Menu
 
     def list_menu
         @menu_items
-    end
-        
+    end        
 
 end

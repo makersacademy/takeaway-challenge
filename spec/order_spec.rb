@@ -3,12 +3,14 @@ require 'order'
 describe Order do
 
     subject(:order){described_class.new}
-    let(:item) {double :item, name: :name, price: 1, available: true}
+    let(:item) {double :item, name: "Food", price: 1, available: true}    
     let(:total_item_count) {double 10}
     let(:total_order_sum) {double 10}
+    let(:delivery_time) {double :delivery_time}
     let(:selection) {1}
-    
+        
     it 'can add an item to an order' do
+        #item = double("item", name: "Food", price: 1, available: true) 
         order.add_item(item)
         expect(order.list_order).to include(item)
     end
@@ -23,28 +25,15 @@ describe Order do
         expect(order.item_count).to eq 10 
     end
 
-    it 'can pick and item from the menu' do
+    it 'can pick item from the menu' do
         order.pick_item(selection)
         expect(order.order_list).to include({:available=>true, :name=>"Curry", :price=>2})
+    end  
+
+    it 'generates an order time message' do
+        t = Time.now + 1*60*60
+        delivery_time = t.strftime("%H:%M")
+        expect(order.delivery_message).to include(delivery_time)
     end
-
-    it 'generates total items calculation' do
-        order.add_item(2)
-        expect(order.item_count).to eq(1) 
-    end
-
-    # it 'generate_total_order_sum' do
-    #     order.add_item(item)
-    #     expect(order.total_order_sum).to eq(1) 
-    # end
-
-    # it 'provides an order confirmation summary' do
-    #     10.times {order.add_item(item)}
-    #     order.generate_sub_totals
-    #     expect(order.total_order_text).to eq("Total Order 10 items = £10")  
-    # end
-
-    # it 'stops an item being ordered if it is unavailable' do 
-    # end
 
 end
