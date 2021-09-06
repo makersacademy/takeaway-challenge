@@ -86,22 +86,22 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 ===================================
 
 
-| class       | Dish                   | Order          | Text           |
-|-------------|------------------------|----------------|----------------|
-| variable    | dish : String          | order : Array  | text : String  |
-| variable    | price : Integer        |                | order          |
-| variable    | list : Array           |                |                |
-|             |                        |                |                |
-| method      | see_list()             | check_total()  | send_text()    |
-| method      | select_dish()          | sum(order)     | place_order()  |
-|             |                        |                |                |
+| class       | Dish                   | List           | Order          | Text           |
+|-------------|------------------------|----------------|----------------|----------------|
+| variable    | dish : String          | list : Array   | order : Array  | text : String  |
+| variable    | price : Integer        |                |                | order          |
+| variable    |                        |                |                |                |
+|             |                        |                |                |                |
+| method      |                        | see_list()     | check_total()  | send_text()    |
+| method      |                        | select_dish()  | sum(order)     | place_order()  |
+|             |                        |                |                |                |
 
 Dish (1) Order (many dishes)
 
 Nouns // Verbs
 
 User Story 1
-dish, price // see_list
+dish, price. list // see_list
 
 User Story 2
 dish // select_dish

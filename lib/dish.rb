@@ -4,8 +4,8 @@ attr_reader :price
     @price
   end
 
-  def see_list
-  end
+  # def see_list
+  # end
 
   # def price
   #   @price
