@@ -1,13 +1,22 @@
 class Menu
-  attr_reader :dishes
+  attr_reader :menu
 
-  def initialize(dishes)
-    @dishes = dishes
+  def initialize
+    @menu = {
+      "Chicken burger" => 10,
+      "Beef burger" => 12,
+      "Fish dog" => 11,
+      "Hallumi fritter burger" => 8,
+      "Sloppy Joe dog" => 9,
+      "Truffle fries" => 4,
+      "Mac & Cheese" => 5,
+      "Corn ribs" => 4,
+    }
   end
 
-  def print
-    dishes.map do |title, price|
-      "%s £%.2f" % [title.to_s.capitalize, price]
-    end.join(", ")
+  def printed_menu
+    menu.each do |dish, price|
+      puts "#{dish}: £#{price}"
+    end
   end
 end
