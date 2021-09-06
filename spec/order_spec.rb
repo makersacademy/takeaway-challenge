@@ -24,16 +24,16 @@ describe Order do
       expect(order.total_price).to eq 9
     end
 
-  context 'confirm order has been successfull' do
+  context 'Order successfully placed!' do
     it 'return true' do
       subject.confirm_order
       expect(subject.confirm_order?).to be true
     end 
-    
-it 'shows list of items ordered' do
+
+    it 'shows list of items ordered' do
       subject.add_selected_item(pizza)
       expect(subject.display_items).to include pizza
     end 
-    end
-   end 
-  end
+   end
+  end 
+end

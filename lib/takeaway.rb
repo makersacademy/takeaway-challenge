@@ -16,8 +16,9 @@ class Takeaway
   end 
 
   def menu
+  index = 1
     @pizzas.each do |pizza|
-      puts "#{pizza[:name]} (#{pizza[:price]})"
+      puts "#{index}: #{pizza[:name]} (#{pizza[:price]})"
     end 
   end 
 
@@ -30,10 +31,6 @@ class Takeaway
     @order.add_selected_item(pizza)
   end 
 
-  # def place_order(order = @order)
-  #   @order.confirm_order
-  # end 
-
   def confirm_order
     @order.confirm_order
   end 
@@ -44,7 +41,8 @@ class Takeaway
   end
 
   def place_order(order = @order)
-    # order.confirm_order
+    order.confirm_order
     puts "Order successfully placed!"
   end
+
 end
