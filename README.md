@@ -90,7 +90,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 |-------------|------------------------|----------------|----------------|
 | variable    | dish : String          | order : Array  | text : String  |
 | variable    | price : Integer        |                | order          |
-| variable    | list_of_dishes : Array |                |                |
+| variable    | list : Array           |                |                |
 |             |                        |                |                |
 | method      | see_list()             | check_total()  | send_text()    |
 | method      | select_dish()          | sum(order)     | place_order()  |
