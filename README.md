@@ -1,3 +1,18 @@
+My Approach
+=================
+
+* I initially built the program around 2 classes (Menu and Order), with Menu main function showcasing the dishes and Order main functions choosing the dishes and calculating the price of the order.
+* Afterwards, I added the Dish class in order to add objects with name and price instead of just hashes to the order. I know this step was not necessary but I think it would be useful to scale up the program in the future.
+* This user story seemed very unclear to me so I had to make choices as to how to implement it:
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+* I wasn't sure if the second user story was refering to the user selecting a number associated with a dish or an amount of a particular dish, but in the end I opted for the latter as it seemed the most logical solution given the product. I also chose to consider that all dishes on the menu were available in infinite quantity as the opposite wasn't mentioned anywhere.
+* I made a SendText class and methods later on to facilitate the implementation of the texts sending feature, but I didn't have time to figure out how to cover those with my tests, meaning my test coverage isn't as good as it should be.
+* I added the dotenv gem to help hide my information into environment variables.
+
 Takeaway Challenge
 ==================
 ```
