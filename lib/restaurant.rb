@@ -16,7 +16,7 @@ class Restaurant
     end
   end
 
-  def add_meal(meal, quantity=1)
+  def add_meal(meal, quantity = 1)
     @order.push([meal, quantity])
   end
 
@@ -36,5 +36,4 @@ class Restaurant
     end
     puts "Order total: £#{total}"
   end
-
 end
