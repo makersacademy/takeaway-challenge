@@ -1,7 +1,8 @@
 require 'restaurant'
 
 describe Restaurant do
-  context "#add_meal" do
+  
+  context '#add_meal' do
     it 'can add a meal to the order' do
       subject.add_meal("Curry")
       expect(subject.order).to eq([["Curry", 1]])
@@ -11,6 +12,17 @@ describe Restaurant do
       subject.add_meal("Curry")
       subject.add_meal("Milkshake", 2)
       expect(subject.order).to eq([["Curry", 1], ["Milkshake", 2]])
+    end
+  end
+
+  context '#place_order' do
+    it 'can place order' do
+      subject.add_meal("Fries")
+      expect{ subject.place_order }.to output("Order, placed. You will receive a confirmation SMS.\n").to_stdout
+    end
+  
+    it 'will not place an empty order' do
+      expect{ subject.place_order }.to raise_error("Order empty, unable to place an empty order.")
     end
   end
 

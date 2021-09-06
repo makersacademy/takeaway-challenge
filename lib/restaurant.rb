@@ -1,6 +1,8 @@
+require_relative 'send_sms'
+
 class Restaurant
   attr_reader :order
-
+  @message = Message.new
   def initialize
     @menu = {
       "Fries" => 2,
@@ -35,5 +37,13 @@ class Restaurant
       total += price * quantity
     end
     puts "Order total: £#{total}"
+  end
+  
+  def place_order
+    if @order.empty?
+      raise("Order empty, unable to place an empty order.")
+    end
+    @message
+    puts "Order, placed. You will receive a confirmation SMS."
   end
 end
