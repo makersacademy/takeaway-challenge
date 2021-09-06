@@ -20,4 +20,21 @@ class Restaurant
     @order.push([meal, quantity])
   end
 
+  def display_order
+    @order.each do |meal, quantity|
+      price = @menu[meal]
+      puts "#{quantity}x #{meal} - £#{price}"
+    end
+    total()
+  end
+
+  def total
+    total = 0
+    order.each do |meal, quantity|
+      price = @menu[meal]
+      total += price * quantity
+    end
+    puts "Order total: £#{total}"
+  end
+
 end

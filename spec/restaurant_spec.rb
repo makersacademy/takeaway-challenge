@@ -15,6 +15,6 @@ describe Restaurant do
   it 'can print the order, plus the total cost' do
     subject.add_meal("Fries")
     subject.add_meal("Milkshake")
-    expect(subject.display_order).to eq ("1x Fries - £2\n1x Milkshake - £4")
+    expect { subject.display_order }.to output("1x Fries - £2\n1x Milkshake - £4\nOrder total: £6\n").to_stdout
   end
 end
