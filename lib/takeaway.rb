@@ -1,14 +1,20 @@
 class Takeaway
 
-  attr_reader :dishes
+  attr_reader :menu, :dishes
 
-  # def intialize 
-  #   @dishes = []
-  # end
+  def initialize 
+    @menu = menu
+    @dishes = []
+  end
 
   def menu
-    dishes = [{ :breadfruit => 8 }, { :macaroni => 3 }, 
-    { :plantain => 2 }, { :avocado => 4 }, 
-    { :salad => 5 }, { :jackfruit => 3 }]
+    menu = [
+      { dish: 'breadfruit', price: 8.00 },
+      { dish: 'macaroni', price: 3.00 },
+      { dish: 'plantain', price: 2.00 }, 
+      { dish: 'avocado', price: 4.00 }, 
+      { dish: 'salad', price: 5.00 }
+    ] 
+
   end 
 end 
