@@ -1,6 +1,6 @@
-require 'dish'
+require 'order'
 
-describe Dish do
+describe Order do
 
   context "should list dishes with prices" 
   it "responds to the list method" do
@@ -35,9 +35,25 @@ describe Dish do
     expect{ subject.check_total }.to output.to_stdout
   end
   #could make above test more specific
-  
+  context "receive a text after ordered"
+  it "responds to the checkout method" do
+    expect(subject).to respond_to :checkout
+  end
+  it "gives a confirmation of order" do
+    expect{ subject.checkout }.to output.to_stdout
+  end
+  # it 'sends a payment confirmation text message' do
+  #   expect(subject).to receive(:send_sms)
+  #   subject.send_sms
+  # end
+
 end
 
+# RSpec.configure. do |config|
+#   config.before(:each) do
+#     stub_const("Twilio::REST::Client", FakeSMS)
+#   end
+# end
 
 
 # it "select number of dishes" do
