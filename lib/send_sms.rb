@@ -4,11 +4,11 @@ class Message
   time = Time.new
 
   account_sid = 'AC7cfaa98f297b03019b9a2d164a8f9296'
-  auth_token = '221a75ef4120ab083940cd189495795d'
+  auth_token = ENV['TWILIO_KEY']
   client = Twilio::REST::Client.new(account_sid, auth_token)
 
   from = '+447883306480' # Your Twilio number
-  to = '+447949796911' # Your mobile phone number
+  to = ENV['PHONE_NUMBER'] # Your mobile phone number
 
   client.messages.create(
   from: from,
