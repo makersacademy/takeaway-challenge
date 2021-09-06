@@ -9,6 +9,6 @@ describe Restaurant do
 
   it 'can add a meal to the order' do
     subject.add_meal("Curry")
-    expect { subject.display_order }.to eq("Curry" => 1)
+    expect(subject.order).to eq([["Curry", 1]])
   end
 end
