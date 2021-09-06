@@ -11,4 +11,10 @@ describe Restaurant do
     subject.add_meal("Curry")
     expect(subject.order).to eq([["Curry", 1]])
   end
+
+  it 'can print the order, plus the total cost' do
+    subject.add_meal("Fries")
+    subject.add_meal("Milkshake")
+    expect(subject.display_order).to eq ("1x Fries - £2\n1x Milkshake - £4")
+  end
 end
