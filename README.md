@@ -2,8 +2,6 @@
 
 I decided to tackle the user stories using a TDD approach. Dishes are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. Menu object creation is linked to a Restaurant's instantiation. When initializing an Order instance, it is passed the Restaurant object as an argument allowing the menu to be viewed via calling on one of the Restaurant's attibutes within the Order class. A finalised order is then passed to the Restaurant object for confirmation.
 
-A Twilio script was implemented to send confirmation texts once a Restaurant object confirmed an order that was passed to it. 
-
 ## How to run
 
 * clone the repository `git clone https://github.com/Maby0/takeaway-challenge.git`
@@ -14,6 +12,7 @@ A Twilio script was implemented to send confirmation texts once a Restaurant obj
 * pass the final order to your restaurant `order.send_order_to_restaurant`
 * restaurant can then view the order and finalise it `your_restaurant.order` `your_restaurant.confirm_order`
 * once you have configured your own environment variables in the twilio.rb, calling the method #confirm_order on the Restaurant object will trigger a confirmation text message to be sent using Twilio API.
+
 
 
 A total of 11 RSpec tests were written which successfully covered 100% of the codebase. A Rubocop inspection was also ran on the code with zero offenses detected.
