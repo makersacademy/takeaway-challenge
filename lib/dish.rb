@@ -1,11 +1,8 @@
 class Dish
-attr_reader :price
-  def initialize
-    @price
+  attr_reader :price
+  def initialize # (price)
+    @price # = price
   end
-
-  # def see_list
-  # end
 
   # def price
   #   @price
