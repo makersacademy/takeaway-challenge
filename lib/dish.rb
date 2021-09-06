@@ -1,11 +1,11 @@
 class Dish
   def initialize
     @dishes = {
-      pizza: '£6.99',
-      spaghetti: '£7.20',
-      lasagne: '£7.80',
-      chips: '£2.40',
-      tiramisu: '£4.20'
+      pizza: 7,
+      spaghetti: 8,
+      lasagne: 9,
+      chips: 2,
+      tiramisu: 4
     }
     @selection = {}
   end
@@ -19,6 +19,28 @@ class Dish
     @selection
   end
 
+  def check_total
+    puts "Your total amount due is £#{total}."
+    puts "Please find a summary of your order below:"
+    view_order
+  end
+  
+  private
+
+  def view_order
+    @selection.each do |dish, quantity|
+      puts "#{quantity} x #{dish} at £#{@dishes[dish]} each."
+    end
+  end
+
+  def total
+    total_price = 0
+    @selection.each do |dish, quantity|
+      price = @dishes[dish]
+      total_price += (price * quantity)
+    end
+    total_price
+  end
 end
 
 # dish_names = dish_name

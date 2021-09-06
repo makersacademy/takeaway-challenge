@@ -14,7 +14,7 @@ describe Dish do
     expect(subject.list_items).to include :pizza
   end
   it "includes prices" do
-    expect(subject.list_items).to include :tiramisu => '£4.20'
+    expect(subject.list_items).to include :tiramisu => 4
   end
 
   context "should select some number of dishes"
@@ -24,6 +24,18 @@ describe Dish do
   it "should allow user to select certain number of dishes" do
     expect(subject.select_dishes(:lasagne, 4)).to eq({ :lasagne => 4 })
   end
+
+  context "total given should match sum of dishes in order"
+  it "responds to the check_total method" do
+    expect(subject).to respond_to :check_total
+  end
+  it "shows total price and sum of dishes" do
+    subject.select_dishes(:pizza, 6)
+    subject.select_dishes(:tiramisu, 3)
+    expect{ subject.check_total }.to output.to_stdout
+  end
+  #could make above test more specific
+  
 end
 
 
