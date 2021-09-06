@@ -19,7 +19,7 @@ Summary
 
 **The Restaurant**
 * Dish
-  * A dish is created with a name and a prince. 
+  * A dish is created with a name and a price. 
   * Prices are input as a float with two decimal points.
   * Dishes can be itemised as a hash (itemise method).
 
@@ -36,16 +36,16 @@ Summary
   * Cost of order calculated (order_total method)
   * Added view_order method for customer which includes cost of item 
   * Added how_much method to output total order cost
-
+  
 
 Notes
 -----
 
- * Disappointed I couldn't figure out Twilio. It was asking me to pay for the number?
-  * Is there any recommended material I could look at on Twilio? 
- * Noticed that `puts` works better in irb for view_order and view_menu but breaks my tests as nil becomes output
- * Also encountered problem with decimal points - should be limited 2dp throughout
-
+ * Disappointed I couldn't figure out Twilio. I added too many extras and ran out of time (- should have kept to the brief!)
+ * Would have liked to load an external CSV file for the menu, and output that in the terminal.
+ * Now realise my rspec tests all evaluate state not behaviour! 
+ * Noticed that `puts` works better in irb for view_order and view_menu but breaks my tests as nil becomes output (now learned I could have used: change .to output.to_stdout)
+ * Also encountered problem with decimal points - should be limited 2dp throughout 
 
 ```
 gem install twilio-ruby 
