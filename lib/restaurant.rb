@@ -1,6 +1,8 @@
+require_relative "message"
+
 class Restaurant
 
-  attr_reader :menu, :basket
+  attr_reader :menu, :basket, :message
 
   def initialize
     @menu = {
@@ -12,6 +14,7 @@ class Restaurant
       "Coke" => 2
     }
     @basket = Hash.new(0)
+    @message = Message.new
   end
   
   def show_menu
@@ -24,14 +27,17 @@ class Restaurant
 
   def order_summary
     @basket.each { |dish, quantity| puts "#{quantity}X #{dish} = £#{@menu[dish] * quantity}" }
-    total_cost
+    puts "Total: £#{total_cost}"
   end
 
+  def confirm_order
+    @message.send_message
+  end
   private
 
   def total_cost
     total = 0
     @basket.each { |dish, quantity| total += @menu[dish] * quantity }
-    puts "Total: £#{total}"
+    total
   end
 end

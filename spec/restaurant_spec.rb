@@ -10,6 +10,9 @@ describe Restaurant do
 
   it { is_expected.to respond_to(:order_summary) }
 
+  it { is_expected.to respond_to(:confirm_order) }
+
+
   it "shows the menu" do
     menu = "Chicken Souvlaki Wrap - £8\nHaloumi Souvlaki Wrap - £7\nFalafel Souvlaki Wrap - £7\nChips - £4\nWater - £1\nCoke - £2\n"
     expect { subject.show_menu }.to output(menu).to_stdout
