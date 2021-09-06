@@ -1,6 +1,22 @@
 # Mabon ap Gwyn's submission of Week 2's Takeaway Challenge
 
-I decided to tackle the user stories using a TDD approach. A total of 11 RSpec tests were written which successfully covered 100% of the codebase. A Rubocop inspection was also ran on the code with zero offenses detected.
+I decided to tackle the user stories using a TDD approach. Dishes are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. Menu object creation is linked to a Restaurant's instantiation. When initializing an Order instance, it is passed the Restaurant object as an argument allowing the menu to be viewed via calling on one of the Restaurant's attibutes within the Order class. A finalised order is then passed to the Restaurant object for confirmation.
+
+A Twilio script was implemented to send confirmation texts once a Restaurant object confirmed an order that was passed to it. 
+
+## How to run
+
+* clone the repository `git clone https://github.com/Maby0/takeaway-challenge.git`
+* launch IRB from the cloned directory, passing the order.rb file `irb -r './lib/order'`
+* instantiate a new Restaurant object and assign it a variable `your_restaurant = Restaurant.new`
+* instantiate a new Order object, pass it your previously created Restaurant as an argument and assign it a variable `order = Order.new(your_restaurant)`
+* call methods #view_menu, #add_to_order(dish_number), #remove_from_order(dish_number), #total on your Order instance to build your desired order `order.add_to_order(2)`
+* pass the final order to your restaurant `order.send_order_to_restaurant`
+* restaurant can then view the order and finalise it `your_restaurant.order` `your_restaurant.confirm_order`
+* once you have configured your own environment variables in the twilio.rb, calling the method #confirm_order on the Restaurant object will trigger a confirmation text message to be sent using Twilio API.
+
+
+A total of 11 RSpec tests were written which successfully covered 100% of the codebase. A Rubocop inspection was also ran on the code with zero offenses detected.
 
 ```
 Student@MA123 takeaway-challenge % rspec
@@ -38,9 +54,6 @@ Inspecting 9 files
 9 files inspected, no offenses detected
 ```
 
-Orders are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. Menu object creation is linked to a Restaurant's instantiation. When initializing an Order instance, it is passed the Restaurant object as an argument allowing the menu to be viewed via calling on one of the Restaurant's attibutes within the Order class. A finalised order is then passed to the Restaurant object for confirmation.
-
-A Twilio script was implemented to send confirmation texts once a Restaurant object confirmed an order that was passed to it. 
 
 Challenge details are outlined below.
 
