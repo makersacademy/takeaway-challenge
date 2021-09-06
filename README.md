@@ -82,8 +82,33 @@ Notes on Test Coverage
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
 
-# Takeaway Challenge
+## Takeaway Challenge Domain Models
+===================================
 
-### Domain Models
-===============================
+
+| class       | Dish                   | Order          | Text           |
+|-------------|------------------------|----------------|----------------|
+| variable    | dish : String          | order : Array  | text : String  |
+| variable    | price : Integer        |                | order          |
+| variable    | list_of_dishes : Array |                |                |
+|             |                        |                |                |
+| method      | see_list()             | check_total()  | send_text()    |
+| method      | select_dish()          | sum(order)     | place_order()  |
+|             |                        |                |                |
+
+Dish (1) Order (many dishes)
+
+Nouns // Verbs
+
+User Story 1
+dish, price // see_list
+
+User Story 2
+dish // select_dish
+
+User Story 3
+order // check_total, sum_of_dishes( or sum)
+
+User Story 4
+text, order // send_text, place_order
 
