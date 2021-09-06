@@ -38,7 +38,7 @@ Inspecting 9 files
 9 files inspected, no offenses detected
 ```
 
-Orders are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. Menu instantiation is linked to a Restaurant's. When initializing an Order instance, it is passed the Restaurant object as an argument, allowing the finalised order to be passed to the Restaurant object.
+Orders are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. Menu object creation is linked to a Restaurant's instantiation. When initializing an Order instance, it is passed the Restaurant object as an argument allowing the menu to be viewed via calling on one of the Restaurant's attibutes within the Order class. A finalised order is then passed to the Restaurant object for confirmation.
 
 A Twilio script was implemented to send confirmation texts once a Restaurant object confirmed an order that was passed to it. 
 
