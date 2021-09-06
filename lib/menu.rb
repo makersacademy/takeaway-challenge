@@ -6,7 +6,7 @@ class Menu
       "Chicken burger" => 10,
       "Beef burger" => 12,
       "Fish dog" => 11,
-      "Hallumi fritter burger" => 8,
+      "Halloumi fritter burger" => 8,
       "Sloppy Joe dog" => 9,
       "Truffle fries" => 4,
       "Mac & Cheese" => 5,
