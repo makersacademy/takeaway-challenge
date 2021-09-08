@@ -16,7 +16,7 @@ class Menu
 
   def printed_menu
     menu.each do |dish, price|
-      puts "#{dish}: £#{price}"
+      "#{dish}: £#{price}"
     end
   end
 end
