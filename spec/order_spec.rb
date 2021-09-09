@@ -20,7 +20,7 @@ describe Order do
     it 'can view order on request' do
       subject.add_dish_to_order(name1, quantity1)
       subject.add_dish_to_order(name2, quantity2)
-      expect(subject.view_order).to eq("You have ordered:\n#{quantity1} x #{name1} = £#{(quantity1 * 0.99).round(2)}\n#{quantity2} x #{name2} = £#{quantity2 * 3.99}")
+      expect { subject.view_order }.to output.to_stdout
     end
 
   end
@@ -35,7 +35,7 @@ describe Order do
     it 'can output cost of order' do
       subject.add_dish_to_order(name1, quantity1)
       subject.add_dish_to_order(name2, quantity2)
-      expect(subject.how_much).to eq("Customer to pay £#{subject.order_total}")
+      expect { subject.how_much }.to output.to_stdout
     end
 
     it 'will return a delivery time' do

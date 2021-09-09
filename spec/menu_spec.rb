@@ -18,7 +18,7 @@ describe Menu do
     it 'lists menu items' do
       subject.add_to_menu(dish1)
       subject.add_to_menu(dish2)
-      expect(subject.view_menu).to eq("TD-Dish: #{dish1.name} // Price: £#{dish1.price}\nTD-Dish: #{dish2.name} // Price: £#{dish2.price}")
+      expect { subject.view_menu }.to output.to_stdout
     end
 
     it 'default menu available if no dishes added' do

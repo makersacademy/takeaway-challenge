@@ -29,7 +29,7 @@ class Order
   end
 
   def how_much
-    return "Customer to pay £#{order_total}"
+    puts "Customer to pay £#{order_total}"
   end
 
   def order_confirmation
@@ -50,6 +50,6 @@ class Order
         end
       end
     end
-    format.join("\n")
+   puts format.join("\n")
   end
 end

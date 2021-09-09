@@ -26,7 +26,7 @@ class Menu
     @list_of_dishes.each do |item| 
       item.each { |dish, price| format << "TD-Dish: #{dish} // Price: £#{price}" }
     end
-    format.join("\n")
+    puts format.join("\n")
   end
 
   def banner_display
