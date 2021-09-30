@@ -1,4 +1,4 @@
-require 'dish'
+require './lib/dish'
 
 class Menu
 
