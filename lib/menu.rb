@@ -12,7 +12,7 @@ class Menu
     print_list
   end
 
-  #private
+  private
 
   def load_list
     CSV.foreach("menu.csv", headers: true, header_converters: :symbol) do |row|
@@ -27,3 +27,6 @@ class Menu
     end
   end
 end
+
+lunch = Menu.new
+lunch.display_menu
