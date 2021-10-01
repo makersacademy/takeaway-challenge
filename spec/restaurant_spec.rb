@@ -3,7 +3,7 @@ describe Restaurant do
   describe "#initialize" do
     it "checks that our dish hash is initialized" do
       restaurant = Restaurant.new
-      expect(restaurant.dishes).to eq ({ 1 => ["Soup", "£3.50"], 2 => ["Chips", "£4"] })
+      expect(restaurant.dishes).to eq ({ 1 => ["Soup", 3.50], 2 => ["Chips", 4] })
     end
     it "checks that availability is set to false in the beginning" do
       restaurant = Restaurant.new

@@ -16,4 +16,8 @@ class Print
   def print_selection
     @order.select
   end
+
+  def print_total
+    "£#{@order.receipt[0]}"
+  end
 end

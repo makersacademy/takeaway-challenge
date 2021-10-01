@@ -1,14 +1,20 @@
 require_relative "restaurant"
 
 class Order
-  attr_reader :total, :restaurant, :select
+  attr_reader :total, :restaurant, :select, :receipt
 
   def initialize(restaurant = Restaurant.new)
     @restaurant = restaurant
-    @total = 0
+    @total = []
+    @select = []
   end
 
   def select_meal(meal)
-    @select = @restaurant.dishes[meal]
+    @select.push(@restaurant.dishes[meal])
+  end
+
+  def total_order
+    @select.each { |array| p total.push(array[1].round(2)) }
+    p receipt = total.sum
   end
 end
