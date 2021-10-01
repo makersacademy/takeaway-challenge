@@ -19,4 +19,11 @@ describe Menu do
       expect(subject.place_order(1, 2)).to eq 9
     end
   end
+
+  describe "#verify_order" do
+    it "shows the total alongside the dishes ordered" do
+      subject.place_order(1, 2)
+      expect(subject.verify_order).to eq "Your total is #{subject.total} for the following #{subject.order}"
+    end
+  end
 end

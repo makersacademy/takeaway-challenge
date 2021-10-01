@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :list, :order
+  attr_reader :list, :order, :total
 
   def initialize
     @list = {
@@ -16,6 +16,10 @@ class Menu
 
   def place_order(*item)
     @order = @list.slice(*item)
-    p total = @order.values.map{ |v| v.match(/\d/)[0].to_i}.sum
+    @total = @order.values.map{ |v| v.match(/\d/)[0].to_i}.sum
+  end
+
+  def verify_order
+    "Your total is #{@total} for the following #{@order}"
   end
 end
