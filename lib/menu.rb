@@ -1,5 +1,3 @@
-# Create a Menu class that can list, add and remove dishes.
-
 class Menu
   attr_accessor :dishes
 
@@ -12,9 +10,7 @@ class Menu
   end
 
   def list
-    @dishes.each do |dish|
-      p dish
-    end
+    "#{@dishes[0].name} | #{@dishes[0].price}"
   end
 
   def remove(dish)
