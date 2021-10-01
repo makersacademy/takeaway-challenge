@@ -1,4 +1,4 @@
-To start ordering on the command line, run:
+Run
 ```ruby
-$ ruby -r "./lib/start.rb" -e "Start.ordering"
+$ ruby -r "./lib/order"
 ```
