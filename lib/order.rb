@@ -13,5 +13,4 @@ class Order
       selection << item.merge({:quantity => quantity}) if item.value?(dish)
     end
   end
-  
 end  
