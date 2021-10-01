@@ -26,4 +26,13 @@ describe Menu do
       expect(subject.verify_order).to eq "Your total is #{subject.total} for the following #{subject.order}"
     end
   end
+
+  describe "#confirm_order" do
+    it "sends a message confimring delivery before 1 hours time" do
+      subject.place_order(1, 2)
+      t = Time.new
+      expect(subject.confirm_order).to eq "Thank you! Your order was placed and will be delivered before #{t.strftime("at %I:%M%p")}"
+      p t.strftime("at %I:%M%p")
+    end
+  end
 end

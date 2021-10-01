@@ -22,4 +22,9 @@ class Menu
   def verify_order
     "Your total is #{@total} for the following #{@order}"
   end
+
+  def confirm_order
+    t = Time.new
+    p "Thank you! Your order was placed and will be delivered before #{t.strftime("at %I:%M%p")}"
+  end
 end
