@@ -12,10 +12,9 @@ class Order
 
   def add_dish(dish) 
     dish.each do |dish| 
-      raise "This dish is not on the menu" if fact_checker(dish) == false
       dish = dish_creator(dish)
-      accumulator(dish)
-      @dishes << dish
+      accumulator(@dish)
+      @dishes << @dish
       @dish = nil
     end
   end
@@ -38,6 +37,7 @@ private
   end
 
   def dish_creator(food)
+    raise "This dish is not on the menu" if fact_checker(food) == false
     price = @menu.fetch(food.downcase.to_sym)
     @dish = @dish_class.new(food, price)
   end
