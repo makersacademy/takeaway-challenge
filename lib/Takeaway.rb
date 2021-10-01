@@ -1,6 +1,9 @@
+require 'twilio-ruby'
+require 'Menu'
 class Takeaway
   def initialize
     @items =[]
+    @number = ENV['mynumber'
   end
 
   def displayMenu
@@ -21,7 +24,21 @@ class Takeaway
   end
 
   def order
-    print "Thank you! Your order was placed and will be delivered before 18:52"
-    @items = []
+    text = "Thank you! Your order was placed and will be delivered before 18:52"
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    message = @client.messages.create(
+        :body => text,
+        :to => @number,	     # My PHONE number
+        :from => "+18482835735" 	# My TWILIO number
+        )  
+    puts message.sid
+  end
+
+  #requires verifiaction which isn't inplemented yet
+  def addNumber(number = ENV['mynumber'])
+    @number = number
   end
 end

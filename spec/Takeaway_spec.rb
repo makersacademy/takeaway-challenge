@@ -25,15 +25,13 @@ describe Takeaway do
     expect { subject.getReciept(items) }.to output(output).to_stdout
   end
 
-  it "displays 'oredered' when oredered" do
-    output = "Thank you! Your order was placed and will be delivered before 18:52"
-    expect { subject.order }.to output(output).to_stdout
+  it "allows user to add their number" do
+    subject.addNumber("+441111111111")
+    expect(subject.instance_variable_get(:@number)).to eq "+441111111111"
   end
 
-  it "clears array when ordered" do
-    subject.pickItem("spring roll")
-    subject.order
-    expect(subject.instance_variable_get(:@items)).to eq []
+  it "sends text message when ordered" do
+    subject.addNumber
+    subject.order #works if not errors thrown
   end
-
 end
