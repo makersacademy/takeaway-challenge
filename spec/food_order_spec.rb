@@ -6,13 +6,15 @@ require "food_order"
 
 describe FoodOrder do
   
-  subject { described_class.new }  
+  let(:dish_list) { {test_dish1: 6.00, test_dish2: 4.00} } 
+  let(:menu_double) { instance_double(Menu, menu: dish_list) }
+  subject { described_class.new(menu_double) }
 
   describe "#add_dish" do
     it "adds dishes to the customer's basket" do
-      subject.add_dish("curried_goat")
-      subject.add_dish("fried_plantain")
-      expect(subject.basket).to eq [{curried_goat: 7.50}, {fried_plantain: 2.00}]
+      subject.add_dish("test_dish1")
+      subject.add_dish("test_dish2")
+      expect(subject.basket).to eq [{test_dish1: 6.00}, {test_dish2: 4.00}]
     end
   end
 end
