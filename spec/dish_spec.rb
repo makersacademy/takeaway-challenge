@@ -1,6 +1,7 @@
 require './lib/dish'
 
 describe Dish do
+
   describe '#initialize' do
     it 'is initialised with a name' do
       d1 = Dish.new("Chicken Korma", 8.99)
@@ -11,4 +12,5 @@ describe Dish do
       expect(d1.price).to eq 8.99
     end
   end
+  
 end

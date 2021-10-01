@@ -3,7 +3,7 @@ class Menu
   def initialize
     @contents = {}
   end
-  def add_dish
-
+  def add_dish(dish)
+    @contents[dish.name] = dish.price
   end
 end
