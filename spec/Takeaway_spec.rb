@@ -18,4 +18,10 @@ describe Takeaway do
     subject.pickItem("spring roll")
     expect(subject.instance_variable_get(:@items)).to eq(["spring roll"])
   end
+
+  it 'displays correct reciept' do
+    items = ["spring roll", "pork dumpling", "char sui bun"]
+    output = Menu.getItemAndCost(items) + Menu.getCost(items).to_s + "\n"
+    expect { subject.getReciept(items) }.to output(output).to_stdout
+  end
 end

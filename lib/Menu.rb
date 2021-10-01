@@ -10,4 +10,17 @@ class Menu
   def self.containsItem(item)
     return @@MenuList[item] != nil
   end
+
+  def self.getItemAndCost(items)
+    list = ""
+
+    items.each{|item| list += "#{item}: #{@@MenuList[item]}\n"}
+    return list
+  end
+
+  def self.getCost(items)
+    sum = 0
+    items.each{|item| sum += @@MenuList[item]}
+    return sum
+  end
 end

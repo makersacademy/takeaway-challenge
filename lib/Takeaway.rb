@@ -14,4 +14,9 @@ class Takeaway
       fail "That item is not valid"
     end
   end
+
+  def getReciept(items)
+    puts Menu.getItemAndCost(items)
+    puts Menu.getCost(items).to_s
+  end
 end

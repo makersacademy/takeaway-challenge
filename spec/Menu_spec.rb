@@ -13,4 +13,13 @@ describe Menu do
     expect(Menu.containsItem("spring roll")).to eq true
   end
 
+  it 'returns all items in array' do
+    items = ["spring roll", "char sui bun"]
+    expect(Menu.getItemAndCost(items)).to eq "spring roll: 0.99\nchar sui bun: 3.99\n"
+  end
+
+  it 'returns sum of cost in array' do
+    items = ["spring roll", "char sui bun"]
+    expect(Menu.getCost(items)).to eq 4.98
+  end
 end
