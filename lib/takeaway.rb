@@ -39,14 +39,14 @@ class Takeaway
   end
 
   def send_message(message)
-    account_sid = "AC3bfdee3ab94e7eca1db5323e226f8fb3"
-    auth_token = "42deeab9730798ac4a6c3d497a785601"
+    account_sid = "****************************"
+    auth_token = "**************************"
 
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
       body: message,
-      to: "+447949473716",
-      from: "+13343784718",
+      to: "+************",
+      from: "+************",
     )
   end
 end
