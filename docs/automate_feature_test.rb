@@ -1,0 +1,5 @@
+d1 = Dish.new("Chicken Korma", 8.99)
+d2 = Dish.new("Pilau Rice", 2.99)
+d3 = Dish.new("Peshwari Naan", 1.99)
+d4 = Dish.new("4 Poppadoms", 1.99)
+d5 = Dish.new("Stella Artois", 3.99)
