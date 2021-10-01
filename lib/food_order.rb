@@ -24,6 +24,7 @@ class FoodOrder
   end
 
   def place_order
+    raise "You cannot place an order with an empty basket" if basket.empty?
     message.send_message
   end
 end
