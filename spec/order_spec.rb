@@ -9,11 +9,19 @@ RSpec.describe Order do
     end
   end
 
-  describe '#order_total' do
-    it 'confirms the total of the order' do
+  describe 'order_total' do
+    it 'totals price of items ordered' do
+      menu = Menu.new
+      subject.place_order(:chips, :lamb_shish, :soft_drink)
+      expect(subject.order_total).to eq 15
+    end
+  end
+
+  describe '#order_confirmation' do
+    it 'confirms the order' do
       menu = Menu.new
       subject.place_order(:chips, :lamb_shish, :nil)
-      expect(subject.order_total).to eq "Thank you for placing your order. You have ordered: [:chips, :lamb_shish]. Your total is £13."
+      expect(subject.order_confirmation).to eq "Thank you for placing your order at Aisha's Bistro. You have ordered: [:chips, :lamb_shish]. Your total is £13."
     end
   end
 
