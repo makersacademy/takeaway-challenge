@@ -3,7 +3,7 @@ require 'Menu'
 class Takeaway
   def initialize
     @items =[]
-    @number = ENV['mynumber'
+    @number = ENV['mynumber']
   end
 
   def displayMenu

@@ -23,7 +23,30 @@ To Implement
 
 Gems
 -----
-rspec
-Simplecov
-simplecov-console
-twilio-ruby
+* rspec
+
+* Simplecov
+
+* simplecov-console
+
+* twilio-ruby
+
+Example
+-----
+user = Takeaway.new
+
+user.displayMenu
+
+user.pickItem("spring roll")
+
+user.pickItem("pork dumpling")
+
+user.getReciept
+
+user.pickItem("peking duck")
+
+user.getReciept
+
+user.addNumber("YOUR NUMBER")
+
+user.order
