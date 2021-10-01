@@ -2,7 +2,7 @@ require "takeaway"
 require "menu"
 describe Takeaway do
   let(:menu) { double(:menu, list: dishes) }
-  let(:dishes) { { burger: 6.50 } }
+  let(:dishes) { { "burger" => 6.50 } }
   it "prints the menu with the dishes and prices" do
     takeaway = Takeaway.new(menu)
     expect(takeaway.list_menu).to eq(dishes)
