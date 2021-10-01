@@ -1,26 +1,21 @@
 require 'csv'
 
-class Menu
-  attr_reader :list
-
-  def initialize
-    @list = []
-  end
+class Menu < Array
 
   def display_menu
-    load_list
-    print_list
+    puts "\nToday's menu\n-------------"
+    load_menu
+    print_menu
   end
 
-  def load_list
+  def load_menu
     CSV.foreach("menu.csv", headers: true, header_converters: :symbol) do |row|
-      list << row.to_h
+      self << row.to_h
     end
   end  
 
-  def print_list
-    puts "\nToday's menu:"
-    list.each do |item|
+  def print_menu
+    self.each do |item|
       puts "#{item[:dish]} - £#{item[:price]}"
     end
   end

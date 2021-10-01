@@ -7,9 +7,7 @@ class Order
     @menu = menu
   end
 
+  def options
+    puts "\nWhat would you like to order?"
+  end
 end
-
-order = Order.new
-order.menu.display_menu
-
-puts "\nWhat would you like to order?"
