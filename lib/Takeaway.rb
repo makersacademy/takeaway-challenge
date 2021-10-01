@@ -15,8 +15,13 @@ class Takeaway
     end
   end
 
-  def getReciept(items)
+  def getReciept(items = @items)
     puts Menu.getItemAndCost(items)
     puts Menu.getCost(items).to_s
+  end
+
+  def order
+    print "Thank you! Your order was placed and will be delivered before 18:52"
+    @items = []
   end
 end

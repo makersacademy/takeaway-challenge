@@ -24,4 +24,16 @@ describe Takeaway do
     output = Menu.getItemAndCost(items) + Menu.getCost(items).to_s + "\n"
     expect { subject.getReciept(items) }.to output(output).to_stdout
   end
+
+  it "displays 'oredered' when oredered" do
+    output = "Thank you! Your order was placed and will be delivered before 18:52"
+    expect { subject.order }.to output(output).to_stdout
+  end
+
+  it "clears array when ordered" do
+    subject.pickItem("spring roll")
+    subject.order
+    expect(subject.instance_variable_get(:@items)).to eq []
+  end
+
 end
