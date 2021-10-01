@@ -14,8 +14,7 @@ class Menu
     @list
   end
 
-  def place_order(item)
-    @order = @list.slice(item)
-    # .each {|dish| dish.key = item ? @order.push(@list[dish]) : nil }
+  def place_order(*item)
+    @order = @list.slice(*item)
   end
 end

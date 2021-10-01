@@ -11,10 +11,8 @@ describe Menu do
   describe "#place_order" do
     # let (:dish) { double "dish", name: name, price: price }
     it "creates a list of selected dishes" do
-      p subject.list
-      subject.place_order(1)
-
-      expect(subject.order).to eq subject.list.slice(1)
+      subject.place_order(1, 2)
+      expect(subject.order).to eq subject.list.slice(1, 2)
     end
   end
 end
