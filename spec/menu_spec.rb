@@ -2,18 +2,18 @@ require 'menu'
 
 describe Menu do
   let(:menu) { described_class.new }
-  let(:item) { double :item }
+  let(:item_one) { double :item, :name => "name one", :price => "£0.01" }
+  let(:item_two) { double :item, :name => "name two", :price => "£0.02" }
 
-  describe '#add_item' do
+  it "displays a menu with item one" do
+    menu.add(item_one.name, item_one.price, item_one)
+    expect(menu.display).to include item_one
+  end
 
-    it "has an argument" do
-      expect(menu).to respond_to(:add_item).with(1).argument
-    end
-
-    it "allows an item to be added" do
-      expect(menu.add_item(item)).to eq item
-    end
-
+  it "displays a menu with item two" do
+    menu.add(item_one.name, item_one.price, item_one)
+    menu.add(item_two.name, item_two.price, item_two)
+    expect(menu.display).to include item_one
   end
 
 end

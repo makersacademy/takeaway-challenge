@@ -1,15 +1,16 @@
 require 'item'
 
 describe Item do
-  item_name = "name"
-  item_price = "£5.00"
-  let(:item) { described_class.new(item_name, item_price) }
+  item_one_name = "name"
+  item_one_price = "£5.00"
+  let(:item_one) { described_class.new(item_one_name, item_one_price) }
+
 
   it "has a name" do
-    expect(item.name).to eq item_name
+    expect(item_one.name).to eq item_one_name
   end
 
   it "has a price" do
-    expect(item.price).to eq item_price
+    expect(item_one.price).to eq item_one_price
   end
 end
