@@ -12,8 +12,6 @@ class Menu
     print_list
   end
 
-  private
-
   def load_list
     CSV.foreach("menu.csv", headers: true, header_converters: :symbol) do |row|
       list << row.to_h
@@ -21,12 +19,9 @@ class Menu
   end  
 
   def print_list
-    puts "Today's menu:"
+    puts "\nToday's menu:"
     list.each do |item|
       puts "#{item[:dish]} - £#{item[:price]}"
     end
   end
 end
-
-lunch = Menu.new
-lunch.display_menu
