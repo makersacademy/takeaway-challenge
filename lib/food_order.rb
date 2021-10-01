@@ -1,13 +1,15 @@
 class FoodOrder
   attr_accessor :basket, :takeaway_menu
+  attr_reader :message
 
-  def initialize(takeaway_menu = Menu.new)
+  def initialize(takeaway_menu = Menu.new, message = Message.new)
     @basket = []
     @takeaway_menu = takeaway_menu
+    @message = message
   end
 
   def add_dish(dish)
-    selection = takeaway_menu.menu.select { |key, _value| key == dish.to_sym }
+    selection = takeaway_menu.menu.select { |key, _value| key == dish }
     basket << selection
   end
 
@@ -19,5 +21,9 @@ class FoodOrder
 
   def correct_total?(price)
     total == price
+  end
+
+  def place_order
+    message.send_message
   end
 end
