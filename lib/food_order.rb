@@ -16,4 +16,8 @@ class FoodOrder
     basket.each { |item| item.each_value { |cost| sum += cost } }
     sum
   end
+
+  def correct_total?(price)
+    total == price
+  end
 end
