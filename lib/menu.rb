@@ -1,6 +1,8 @@
 class Menu
-  def menu
-    dishes = {
+  attr_reader :menu
+
+  def initialize
+    @menu = {
       curried_goat: 7.50,
       fried_chicken: 6.50,
       fried_snapper: 7.00,
@@ -10,5 +12,9 @@ class Menu
       rice_and_peas: 3.00,
       plain_rice: 2.50,
     }
+  end
+
+  def show_menu
+    menu
   end
 end
