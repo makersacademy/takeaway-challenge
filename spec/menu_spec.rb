@@ -14,5 +14,9 @@ describe Menu do
       subject.place_order(1, 2)
       expect(subject.order).to eq subject.list.slice(1, 2)
     end
+
+    it "returns a total cost for the meal" do
+      expect(subject.place_order(1, 2)).to eq 9
+    end
   end
 end
