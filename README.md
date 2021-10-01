@@ -14,6 +14,10 @@ Takeaway Challenge
 
  ```
 
+Introduction
+-------
+My attempt of the Takeaway Challenge at Makers.
+
 Instructions
 -------
 
@@ -25,8 +29,6 @@ Instructions
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -46,30 +48,32 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+Class Diagrams
+-----
 
 | Class     | Customer                    |
 | --------- | --------------------------- |
-| Variables | @name<br>@phone<br>@address |
+| Variables | @name = ""<br>@phone = 0<br>@address = {} |
 | Methods   |
 
 | Class     | Dish            |
 | --------- | --------------- |
-| Variables | @name<br>@price |
+| Variables | @name = ""<br>@price = 0 |
 | Methods   |
 
 | Class     | Menu    |
 | --------- | ------- |
-| Variables | @dishes |
+| Variables | @dishes = [Dish] |
 | Methods   | list()  |
 
 | Class     | Order            |
 | --------- | ---------------- |
-| Variables | @order           |
+| Variables | @order = [Dish]           |
 | Methods   | add()<br>total() |
 
 | Class     | Texter   |
 | --------- | -------- |
-| Variables | @message |
+| Variables | @message = "" |
 | Methods   | send()   |
 
 
@@ -91,9 +95,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 > :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
 
 In code review we'll be hoping to see:
 
