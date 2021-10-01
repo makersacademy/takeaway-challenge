@@ -21,10 +21,10 @@ class Menu
   end
 
   def list
+    count = 1
     @dishes.each do |dish|
-      puts "#{dish.name} -- £#{dish.price}"
+      puts "#{count}. #{dish.name} -- £#{dish.price}"
+      count += 1
     end
   end
-
-
 end

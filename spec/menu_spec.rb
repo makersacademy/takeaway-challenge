@@ -9,15 +9,15 @@ describe Menu do
   it 'can list all of the dishes' do
     expect{subject.list}.to output(
 <<-menu
-Mushroom Pizza -- £9
-American Hot Pizza -- £11.5
-Salsiaccia Pizza -- £10.5
-Truffle Pizza -- £11
-Chorizo Arancini -- £6.5
-Veg Arancini -- £5.5
-Tiramusi -- £5
-Peroni -- £3
-Nastro Azzuro -- £3
+1. Mushroom Pizza -- £9
+2. American Hot Pizza -- £11.5
+3. Salsiaccia Pizza -- £10.5
+4. Truffle Pizza -- £11
+5. Chorizo Arancini -- £6.5
+6. Veg Arancini -- £5.5
+7. Tiramusi -- £5
+8. Peroni -- £3
+9. Nastro Azzuro -- £3
 menu
     ).to_stdout
   end
