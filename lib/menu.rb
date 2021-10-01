@@ -1,4 +1,6 @@
 class Menu
+  attr_accessor :menu
+
   MENU = [
     { :item => "D1 - Rainbow Maki", :price => 8.8 },
     { :item => "D2 - Volcano", :price => 12.8 },
