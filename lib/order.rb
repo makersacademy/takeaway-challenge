@@ -1,20 +1,13 @@
 class Order
 
-  attr_reader :dishes, :total
+  attr_reader :dishes, :total, :calc, :menu
 
   def initialize(dish_class = Dish)
     @dish_class = dish_class
     @dishes = []
     @dish = nil
     @total = 0
-    @menu = {
-      fries: 2.99,
-      burger: 4.99,
-      coke: 1.99,
-      fanta: 1.49,
-      pizza: 10.49,
-      lasagne: 5.99,
-    }
+    @menu = MENU
   end 
 
   def add_dish(dish) 
@@ -23,13 +16,14 @@ class Order
       dish = dish_creator(dish)
       accumulator(dish)
       @dishes << dish
+      @dish = nil
     end
   end
 
-  def check_total
-    calc = 0
-    @dishes.each do |dish| calc += dish.price end
-    @total == calc
+  def menu_listing
+   puts "Menu listed below:" 
+   listing = MENU.collect do |key, value| "#{key}: £#{value}" end
+   listing.each do |item| puts item end 
   end
 
 private 
@@ -39,7 +33,7 @@ private
   end
 
   def fact_checker(food)
-    food = food.downcase.to_sym
+    food = food.strip.downcase.to_sym
     @menu.has_key?(food)
   end
 
@@ -47,5 +41,17 @@ private
     price = @menu.fetch(food.downcase.to_sym)
     @dish = @dish_class.new(food, price)
   end
+
+  MENU = {
+    fries: 2.99,
+      burger: 4.99,
+      coke: 1.99,
+      fanta: 1.49,
+      pizza: 10.49,
+      lasagna: 5.99,
+      sprite: 1.49,
+      nachos: 3.49,
+      popcorn: 1.49,
+  }.freeze
 
 end

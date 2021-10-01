@@ -1,15 +1,25 @@
 class Restaurant 
-  attr_reader :order_history, :order
+  attr_reader :order_history, :order, :text
+  attr_accessor :calc
 
-  def initialize(order_class = Order)
+  def initialize(order_class = Order, text_class = Text)
     @order_class = order_class
     @order_history = []
-    @order = nil
+    @order = @order_class.new
+    @calc = 0
+    @text_class = text_class
+    @text = nil
   end 
 
-  
+  def view_menu 
+    @order.menu_listing
+  end
 
   def start_order
+    @order = @order_class.new
+  end
+
+  def scrap_order
     @order = @order_class.new
   end
 
@@ -17,20 +27,23 @@ class Restaurant
     @order.add_dish(items)
   end
 
-  #I want a start order method that creates an order, 
-  
-  # Then restaurant. add_item and asks for user input
-  #this should then check whether the string input matches any of the items in our menu 
-  #if it doesn't raise an error and ask them to try again. 
-
-  def complete_order(order)
-    raise "There has been an issue with your order, please try again" if order.check_total == false
-    @order_history << order 
-    @order = order
+  def complete_order
+    raise "There has been an issue with your order, please try again later" if check_total == false
+    create_text(@order)
+    @order_history << @order 
   end 
 
 private 
 
+  def check_total
+    @order.dishes.each { |dish| @calc += dish.price }
+    @order.total == @calc
+  end
+
+  def create_text(order)
+    @text = @text_class.new
+    @text = @text.text(order)
+  end 
   
 
 end

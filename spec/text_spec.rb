@@ -10,7 +10,7 @@ describe Text do
     it "should calculate the delivery time as one hour after order was placed" do 
       order = double("order")
       subject.text(order)
-      expect(subject.time).to eq ((Time.new + 1*60*60).strftime("%H:%M"))
+      expect(subject.time).to eq ((Time.new + 1 * 60 * 60).strftime("%H:%M"))
     end
   end
 end

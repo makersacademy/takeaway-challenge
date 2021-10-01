@@ -15,7 +15,7 @@ describe Order do
     end
 
     it "should raise an error when trying to order something not on the menu" do 
-      expect{subject.add_dish(["muffin"])}.to raise_error("This dish is not on the menu")
+      expect { subject.add_dish(["muffin"]) }.to raise_error("This dish is not on the menu")
     end
   end
 
@@ -29,14 +29,13 @@ describe Order do
   describe ".accumulator" do 
     it "should keep a running total of the price of dishes added" do
       subject.add_dish(["pizza", "fries"])
-      expect(subject.total).to eql(2.99+10.49)
+      expect(subject.total).to eql(2.99 + 10.49)
     end
   end
 
-  describe ".check_total" do
-    it "should check the total against a sum of each dishes price" do
-      subject.add_dish(["pizza", "fries"])
-      expect(subject.check_total).to eql(true)
+  describe "menu_listing" do 
+    it "should list the menu hash" do 
+      expect(subject.menu_listing[0]).to eql("fries: £2.99")
     end
   end
 end 
