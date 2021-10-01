@@ -6,4 +6,8 @@ class Menu
     @@MenuList.each{|item, price| list += "#{item}: #{price}\n"}
     return list
   end
+
+  def self.containsItem(item)
+    return @@MenuList[item] != nil
+  end
 end
