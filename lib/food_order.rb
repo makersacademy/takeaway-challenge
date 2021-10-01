@@ -6,9 +6,14 @@ class FoodOrder
     @takeaway_menu = takeaway_menu
   end
 
-  #TODO return error if a dish on the menu is not selected
   def add_dish(dish)
-    selection = takeaway_menu.menu.select { |key, value| key == dish.to_sym }
+    selection = takeaway_menu.menu.select { |key, _value| key == dish.to_sym }
     basket << selection
+  end
+
+  def total
+    sum = 0
+    basket.each { |item| item.each_value { |cost| sum += cost } }
+    sum
   end
 end
