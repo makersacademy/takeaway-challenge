@@ -1,3 +1,4 @@
 class Takeaway
+  
 
 end

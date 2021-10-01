@@ -1,5 +1,5 @@
-require 'Take_away'
+require 'Takeaway'
 
 describe Takeaway do
-  
+
 end
