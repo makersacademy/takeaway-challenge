@@ -5,10 +5,11 @@ class Menu
 
   def initialize
     @dishes = {
-      "pizza"=>12.99, 
-      "burger"=>5.99, 
-      "party pack"=>19.99, 
+      "cheese pizza"=>12.99, 
+      "pepperoni pizza"=>13.99, 
+      "vegan pizza"=>14.99, 
       "12 wings"=>6.99, 
+      "16 wings"=>8.99, 
       "drink"=>1.09 
     }
   end

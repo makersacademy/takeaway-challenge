@@ -1,8 +1,8 @@
-require_relative 'menu'
+require_relative 'menu_pizza'
 
 class Takeaway
 
-  attr_accessor :items, :menu
+  attr_accessor :items, :menu, :balance
 
   def initialize(menu = Menu.new)
     @menu = menu
