@@ -1,6 +1,6 @@
-require "customer"
+require "takeaway"
 
-describe Customer do
+describe Takeaway do
   let(:chow_mein) { double("chow_mein", :price => 4.50) }
   let(:fried_rice) { double("fried_rice", :price => 3.50) }
   let(:ribs) { double("ribs", :price => 4.00)}
