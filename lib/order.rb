@@ -1,8 +1,14 @@
 require './lib/menu'
+require 'rubygems'
+require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 
 class Order
 
-  attr_reader :items
+  # include SendText
+
+  attr_reader :items, :total, :list
 
   def initialize
     @items = []
@@ -25,7 +31,7 @@ class Order
     @items.each do |item|
       puts "#{item[1]}x #{item[0]}"
     end
-      puts "Your total today is £#{@total}"
+    puts "Your total today is £#{@total}"
   end
 
   # Calculate subtotal of order
@@ -47,17 +53,31 @@ class Order
         check_count += 1
       end
     end
-    if check_count == 0
+    if check_count.zero?
+      false
       raise('We are unable to find that item.')
+    else
+      true
     end
   end
 
   def complete_order
-    sent_text("Thanks for your order: £#{@total}")
+    @items.empty? ? "There are no items in your basket." : send_text
   end
 
   def send_text
-    
+    @time = (Time.new + 3600).strftime("%k:%M")
+    Twilio::REST::Client.new(ENV['TWIL_ACC'], ENV['TWIL_AUTH'])
+      .messages.create(
+        from: ENV['FROM_NUM'],
+        to: ENV['TO_NUM'],
+        body: message
+      )
+    puts message
+  end
+
+  def message
+    "Thank you!\n\nYour order is £#{@total}.\n\nIt will be delivered before #{@time}!"
   end
 
 end
