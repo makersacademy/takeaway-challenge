@@ -1,4 +1,4 @@
-require_relative 'menu_item'
+require_relative "menu_item"
 
 module Menu
   ITEMS = [
@@ -11,9 +11,11 @@ module Menu
   ].freeze
 
   def self.view
-    puts "Pizza Takeaway\n=============="
-    ITEMS.each do |item|
-      puts item
+    puts "Pizza Takeaway"
+    puts "==============================="
+    ITEMS.each.with_index(1) do |item, i|
+      puts "#{i}. #{item}"
     end
+    puts "==============================="
   end
 end
