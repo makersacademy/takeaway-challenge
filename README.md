@@ -5,7 +5,7 @@ Introduction
 
 * My work on the Takeaway Challenge for Makers Academy week 2
 
-* This program lets the user 
+This program lets the user 
 - look at the menus of different restaurants
 - order food and drink items 
 - see their current balance
