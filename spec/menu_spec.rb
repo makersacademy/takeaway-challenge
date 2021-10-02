@@ -2,13 +2,13 @@ require 'menu'
 
 describe Menu do
 
- it 'it has a list of dishes' do
-   expect(subject.dishes).to be_a_kind_of(Array)
- end
+  it 'it has a list of dishes' do
+    expect(subject.dishes).to be_a_kind_of(Array)
+  end
 
   it 'can list all of the dishes' do
-    expect{subject.list}.to output(
-<<-menu
+    expect { subject.list }.to output(
+ <<-menu
 1. Mushroom Pizza -- £9
 2. American Hot Pizza -- £11.5
 3. Salsiaccia Pizza -- £10.5
@@ -21,5 +21,6 @@ describe Menu do
 menu
     ).to_stdout
   end
+  
 
 end
