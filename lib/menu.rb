@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :list
+  attr_reader :list, :range
 
   def initialize
     @list = {
@@ -10,11 +10,13 @@ class Menu
       "Pizza Capriciosa" => 12.00,
       "Lasagna" => 11.25,
     }
+    @range = {}
   end
 
   def see_menu
     @list.each_with_index do |(item, price), index|
-      puts "#{index + 1} #{item} = $#{price}"
+      @range[index + 1] = item
+     "#{index + 1} #{item} = £#{price}"
     end
   end
 end
