@@ -16,7 +16,7 @@ class Menu
   def see_menu
     @list.each_with_index do |(item, price), index|
       @range[index + 1] = item
-     "#{index + 1} #{item} = £#{price}"
+      puts "#{index + 1} #{item} = £#{price}"
     end
   end
 end
