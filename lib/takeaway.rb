@@ -12,6 +12,7 @@ class TakeAway
     end
 
     DISHLIST = [:burger, :pizza, :chips]
+
     # def num_of_item(quantity)
     #     quantity = rand(1..5)
     # end 

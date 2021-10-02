@@ -1,13 +1,18 @@
 class Menu
+    def initialize(item = select)
+        @item = item
+    end
 
     def select
-        @item = item_choice 
+        DISHLIST.sample
+    end
+
+    def print_item
+        @item
     end
 
     DISHLIST = [:burger, :pizza, :chips]
 
-    def item_choice 
-        DISHLIST.sample
-    end
+   
 
 end

@@ -15,5 +15,9 @@ describe TakeAway do
         expect(subject.see_dishes).to eq(TakeAway::DISHLIST)
     end
 
+    # it 'checks that an item can be chosen in tests' do 
+    #     t = TakeAway.new(:ramen)
+    #     expect(t).to eq(:ramen)
+    # end
     
 end
