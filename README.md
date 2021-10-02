@@ -17,7 +17,7 @@ Takeaway Challenge 🍕
 How to use
 -------
 
-* This code can be run in IRB with the following command: irb -r "./takeaway.rb"
+* Run IRB from the lib file with the following commands: `require "./takeaway.rb"` + `require "./menu.rb"` 
 
 Task
 -----
@@ -42,7 +42,7 @@ My process
 -------
 Class | Methods
 ------------ | -------------
-Takeaway | view_menu, select_dishes, check_total
-Menu | print, available?
-Order | add, calculate_total
+Takeaway | view_menu, add(dish), check_total
+Menu | print
+Order | calculate_total
 Message | send_message
