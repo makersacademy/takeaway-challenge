@@ -10,11 +10,12 @@ class Order
   end
 
   def select_meal(meal)
-    @select.push(@restaurant.dishes[meal])
+    @restaurant.available?(meal) ? @select.push(@restaurant.dishes[meal]) :
+      (raise "Meal does not exist, sorry!")
   end
 
   def total_order
-    @select.each { |array| p total.push(array[1].round(2)) }
-    p receipt = total.sum
+    @select.each { |array| total.push(array[1]) }
+    receipt = total.sum
   end
 end

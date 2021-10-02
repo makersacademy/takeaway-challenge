@@ -7,7 +7,7 @@ class Restaurant
     @availability = false
   end
 
-  def available?(*)
-    !availability
+  def available?(item)
+    !availability if dishes.has_key?(item)
   end
 end
