@@ -6,8 +6,8 @@ class Menu
   end
 
   def list
-    dishes.each do |item, value|
-      "#{item}: £#{value}"
-    end
+   dishes.map do |title, price|
+      "%s £%.2f" % [title, price]
+    end.join(", ")
   end
 end
