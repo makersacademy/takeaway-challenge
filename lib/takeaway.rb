@@ -23,7 +23,7 @@ class Takeaway
     print @menu.dishes
   end
 
-  def total_price
+  def show_order
     puts "***This is your current order***"
       @items.each do |item, price|
         puts "#{item} #{price}x = £#{@menu.dishes[item] * price}"
@@ -35,15 +35,15 @@ class Takeaway
     puts "*** Your total is £#{ @balance.round(2) } ***"
   end
 
-  def send_text(message)
-    # this method calls the Twilio API
+  def complete_order
+    puts "Your order is complete.  You will be texted with delivery information.  Thank you for ordering!"
+    show_balance
+    send_text
+  end
+
+  def send_text
+    require_relative 'messenger'
   end
 end
 
-t = Takeaway.new
-#  t.add 'soda', 1
-t.add 'pizza', 3
-t.add 'drink', 2
-
-t.total_price
 
