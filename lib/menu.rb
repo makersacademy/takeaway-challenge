@@ -1,17 +1,16 @@
 class Menu
 
-  attr_reader :menu, :dish
+  attr_reader :menu
 
   def initialize
     @menu = []
   end
 
-  def add_dish(name, price, dish_class = Dish)
-    @dish = dish_class.new(name, price)
-    @menu << @dish
+  def add_dish(name, price)
+    @menu << {name => price}
   end 
 
   # def remove_dish(name)
-  #   @menu.delete(@dish.name)
+  #   @menu.delete(name)
   # end
 end
