@@ -6,6 +6,15 @@ describe Menu do
   end
 
   it 'displays the menu' do 
-    expect{Menu.view.to output.to_stdout}
+    expect { Menu.view.to output.to_stdout }
+  end
+
+  it "displays the menu's title" do 
+    expect { Menu.view.to output.to_include ("Pizza Takeaway\n==============") }
+  end
+
+  it "tells the number of items in the menu" do
+    menu = Menu.view
+    expect(menu.count).to eq(6)
   end
 end

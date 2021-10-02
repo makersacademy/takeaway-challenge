@@ -11,11 +11,9 @@ module Menu
   ].freeze
 
   def self.view
-    puts "Pizza Takeaway"
-    puts "=============="
+    puts "Pizza Takeaway\n=============="
     ITEMS.each do |item|
       puts item
     end
-    puts "=============="
   end
 end
