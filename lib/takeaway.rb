@@ -26,9 +26,31 @@ class TakeAway
     @basket << menu.select { |key| key == dish.downcase }
   end
 
+  def check_order
+    print_basket_items
+    print_total
+  end
+
   private
 
   attr_reader :output, :menu
+
+  def print_total
+    total = 0
+    basket.each { |item| total += item.values.first }
+    output.puts "Total: £#{total}"
+  end
+
+  def print_basket_items
+    basket.uniq.each do |dish|
+      amount = count_repeated_items(dish)
+      output.puts "#{amount} x #{dish.keys.first}: £#{dish.values.first}"
+    end
+  end
+
+  def count_repeated_items(dish)
+    basket.count { |item| item == dish }
+  end
 
   def print_error_message
     output.puts 'item not on menu'

@@ -26,7 +26,7 @@ fu-king fried rice: £5.99")
     end
   end
 
-  describe 'add_dish' do
+  describe '#add_dish' do
     it { expect(takeaway).to respond_to(:add_dish).with(1).argument }
 
     it 'raises error unless passed a sting' do
@@ -71,6 +71,27 @@ fu-king fried rice: £5.99")
     end
   end
 
+  describe '#check_order' do
+    it 'prints items in basket with total' do
+      order_meal
+      takeaway.check_order
+
+      expect(output.string).to include(basket_items_with_total)
+    end
+
+    it 'repesents multiples of same item' do
+      takeaway.add_dish('peking duck')
+      takeaway.add_dish('spring roll')
+      takeaway.add_dish('spring roll')
+
+      takeaway.check_order
+
+      expect(output.string).to include(
+"1 x peking duck: £7.99\n2 x spring roll: £0.99\nTotal: £9.97\n"
+)
+    end
+  end
+
   def menu
     {
       'spring roll' => 0.99,
@@ -79,5 +100,20 @@ fu-king fried rice: £5.99")
       'peking duck' => 7.99,
       'fu-king fried rice' => 5.99
     }
+  end
+
+  def order_meal
+    takeaway.add_dish('peking duck')
+    takeaway.add_dish('pork dumpling')
+    takeaway.add_dish('spring roll')
+    takeaway.add_dish('fu-king fried rice')
+  end
+
+  def basket_items_with_total
+    "1 x peking duck: £7.99
+1 x pork dumpling: £2.99
+1 x spring roll: £0.99
+1 x fu-king fried rice: £5.99
+Total: £17.96"
   end
 end
