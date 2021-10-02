@@ -10,4 +10,8 @@ describe Dish do
   it "should show dish price" do
     expect(dish.price).to eq 5.00
   end
+
+  it "should have a default quantity of 1" do
+    expect(dish.quantity).to eq 1
+  end
 end

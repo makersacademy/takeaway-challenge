@@ -26,7 +26,7 @@ describe Menu do
       menu.add(dish2)
       
       expect(menu.release("Chicken Tikka", 1)).to eq [dish1] # Could be testing implemntation state here
-      expect(menu.release("Chicken Tikka", 2)).to eq [dish1, dish1] # another way?
+      expect(menu.release("Chicken Tikka", 2)).to eq [dish1, dish1] # another way? #possibly could have a quantitiy on the
       expect(menu.release("Jalfrezi", 1)).to eq [dish2]
     end
 
