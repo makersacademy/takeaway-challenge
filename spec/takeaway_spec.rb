@@ -42,6 +42,13 @@ fu-king fried rice: £5.99")
         expect(takeaway.basket.last).to eq spring_roll
       end
 
+      it 'adds same dish given to basket' do
+        takeaway.add_dish('spring roll')
+        takeaway.add_dish('spring roll')
+
+        expect(takeaway.basket).to eq [spring_roll, spring_roll]
+      end
+
       it 'adds dish using capital letters to basket' do
         takeaway.add_dish('Spring Roll')
 
