@@ -1,4 +1,4 @@
-require 'menu_item'
+require_relative 'menu_item'
 
 module Menu
   ITEMS = [
@@ -9,4 +9,13 @@ module Menu
     MenuItem.new("Capricciosa", 12),
     MenuItem.new("Marinara", 9),
   ].freeze
+
+  def self.view
+    puts "Pizza Takeaway"
+    puts "=============="
+    ITEMS.each do |item|
+      puts item
+    end
+    puts "=============="
+  end
 end
