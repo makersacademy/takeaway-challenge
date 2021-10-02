@@ -1,10 +1,7 @@
 class Takeaway 
-  attr_reader :menu
 
-  def initialize
-    @menu = [{:item => "Papaya Salad", :price => 5},
-             {:item => "Spring Rolls", :price => 5},
-             {:item => "Noodles with grilled meats", :price => 5}]
+  def initialize(menu)
+    @menu = menu
   end 
 
   def see_menu
