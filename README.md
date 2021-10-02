@@ -5,6 +5,12 @@ Introduction
 
 * My work on the Takeaway Challenge for Makers Academy week 2
 
+* This program lets the user 
+** look at the menus of different restaurants
+** order food and drink items 
+** see their current balance
+** get texted with a delivery time
+
 Approach
 -------
 1. I made four classes: TAKEAWAY, ORDER, MENU and MESSENGER.
@@ -27,7 +33,7 @@ To solve this I used the .round(2) method.
 export PATH="$PATH:$HOME/.rvm/bin"
 ```
 
-6. Suppressed outputs in Rspec so that it would't print out messages each time I ran a test.  
+6. Suppressed outputs in Rspec so that it wouldn't print out messages each time I ran a test.  
 [Rspec: Suppress Console Output ](https://stackoverflow.com/questions/15430551/suppress-console-output-during-rspec-tests)
 
 **Improvements that are possible**
