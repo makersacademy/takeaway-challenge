@@ -49,7 +49,7 @@ RSpec.describe Takeaway do
 
   describe "#check_total" do
     context "when customer wants to check their total is correct" do
-      it "checks their total against the takeaway's" do
+      it "checks their total against the calculated_total method" do
         menu = Menu.new
         subject.add("hawaiian")
         subject.add("veggie")

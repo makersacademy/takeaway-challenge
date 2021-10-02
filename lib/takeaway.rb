@@ -11,7 +11,7 @@ class Takeaway
   end
 
   def add(dish)
-    fail "#{dish} is not on the menu" if !@menu.dishes.key?(dish)
+    fail "#{dish} is not on the menu" unless @menu.dishes.key?(dish)
     @basket.push(dish)
   end
 
@@ -22,11 +22,6 @@ class Takeaway
   end
 
   def check_total(num)
-    num.to_i
-    if num == calculate_total
-      return true
-    else
-      return false
-    end
+    return true if num == calculate_total
   end
 end
