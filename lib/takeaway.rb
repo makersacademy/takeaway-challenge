@@ -1,17 +1,21 @@
 class TakeAway
 
-    def initialize 
-    
+    def initialize
+        
     end 
 
-    def select(selection, quantity)
-        
+    def select
+        item_choice
     end
 
     def see_dishes
         DISHLIST
     end
 
-    DISHLIST = {burger: 5, pizza: 4, chips: 3}
+    DISHLIST = [:burger, :pizza, :chips]
+
+    def item_choice 
+        DISHLIST.sample
+    end
 
 end 
