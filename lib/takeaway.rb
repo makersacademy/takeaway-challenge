@@ -1,21 +1,22 @@
+require 'menu'
+
 class TakeAway
 
-    def initialize
-        
+    def initialize(item = Menu.new)
+        @item = item
+        @order = []
     end 
-
-    def select
-        item_choice
-    end
 
     def see_dishes
         DISHLIST
     end
 
     DISHLIST = [:burger, :pizza, :chips]
+    # def num_of_item(quantity)
+    #     quantity = rand(1..5)
+    # end 
+    # # def add_to_order 
 
-    def item_choice 
-        DISHLIST.sample
-    end
+    # # end
 
 end 
