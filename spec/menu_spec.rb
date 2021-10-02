@@ -10,7 +10,7 @@ RSpec.describe Menu do
 
   describe "#print" do
     it "takes the menu hash and prints in a menu format" do
-        expect(subject.print). to eq("pepperoni: £8. veggie: £8. hawaiian: £9. bbq chicken: £10. ")
+      expect(subject.print). to eq("pepperoni: £8. veggie: £8. hawaiian: £9. bbq chicken: £10. ")
     end
   end
 end
