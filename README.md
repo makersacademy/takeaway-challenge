@@ -87,6 +87,16 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 
 1. Read all user stories
 2. Identify classes, states and behaviours using the black box model
+3. Write unit tests that fail
+4. Write methods to satisfy the requirements of the unit tests above, until they all pass
+5. Review code before submissions to ensure:
+- Is this code presentable? Am I proud to show it off to others?
+- Have I cleaned up things like whitespace, commented-out code, debugger       statements from my code?
+- Does the indentation look right?
+- Have I conformed my code to styleguide rules (Hound will help you out here)?
+- Is it clear to someone unfamiliar with my codebase what's going on?
+6. Submit a pull request
+
 
 ![Menu Class](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/faaf48fa-4bb8-452e-acb8-e6210c8e82d6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211002%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211002T114641Z&X-Amz-Expires=86400&X-Amz-Signature=18e0cfeb53895c77b1f0a76b8464ca12dc8bda0b81e74fbdc5ad761862e8587b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
@@ -94,16 +104,4 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 
 ![Takeaway Class](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8adde183-6f0b-4ead-a2e7-02c4a8a34b3b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211002%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211002T114812Z&X-Amz-Expires=86400&X-Amz-Signature=0be07018572d0acdf7e3e2e818b11846f37dbe4186afadaca57f021c8346ee23&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-![Black Box Model](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/40b030da-da00-492f-b68a-e9b3f566fdb9/Untitled.png)
-
-
-3. Write unit tests that fail
-4. Write methods to satisfy the requirements of the unit tests above, until they all pass
-5. Review code before submissions to ensure:
-- Is this code presentable? Am I proud to show it off to others?
-- Have I cleaned up things like whitespace, commented-out code, debugger statements from my code?
-- Does the indentation look right?
-- Have I conformed my code to styleguide rules (Hound will help you out here)?
-- Is it clear to someone unfamiliar with my codebase what's going on?
-1. Submit a pull request
-
+![Black Box Model](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40b030da-da00-492f-b68a-e9b3f566fdb9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211002%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211002T115025Z&X-Amz-Expires=86400&X-Amz-Signature=5bf28f5dca44a8dd4a2bf5ba404819e1d674789e3e65d20989d1e1672b746ed7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
