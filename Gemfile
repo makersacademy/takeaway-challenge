@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "twilio-ruby"
+
 ruby '3.0.2'
 
 group :test do

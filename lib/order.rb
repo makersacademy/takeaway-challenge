@@ -10,9 +10,10 @@ class Order
     @menu = MENU
   end 
 
-  def add_dish(dish) 
-    dish.each do |dish| 
-      dish = dish_creator(dish)
+  def add_dish(item, quantity = 1) 
+    
+    quantity.times do
+      @dish = dish_creator(item)
       accumulator(@dish)
       @dishes << @dish
       @dish = nil
@@ -20,9 +21,9 @@ class Order
   end
 
   def menu_listing
-   puts "Menu listed below:" 
-   listing = MENU.collect do |key, value| "#{key}: £#{value}" end
-   listing.each do |item| puts item end 
+    puts "Menu listed below:" 
+    listing = MENU.collect { |key, value| "#{key}: £#{value}" }
+    listing.each { |item| puts item } 
   end
 
 private 

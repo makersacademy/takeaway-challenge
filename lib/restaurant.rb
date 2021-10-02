@@ -2,13 +2,15 @@ class Restaurant
   attr_reader :order_history, :order, :text
   attr_accessor :calc
 
-  def initialize(order_class = Order, text_class = Text)
+  def initialize(order_class = Order, text_class = Text, sender_class = Sender)
     @order_class = order_class
     @order_history = []
     @order = @order_class.new
     @calc = 0
     @text_class = text_class
     @text = nil
+    @sender_class = sender_class
+    @sender = @sender_class.new
   end 
 
   def view_menu 
@@ -23,14 +25,15 @@ class Restaurant
     @order = @order_class.new
   end
 
-  def add_items(*items)
-    @order.add_dish(items)
+  def add_items(item, quantity = 1)
+    @order.add_dish(item, quantity)
   end
 
   def complete_order
     raise "There has been an issue with your order, please try again later" if check_total == false
     create_text(@order)
     @order_history << @order 
+    send_text(@text)
   end 
 
 private 
@@ -44,6 +47,10 @@ private
     @text = @text_class.new
     @text = @text.text(order)
   end 
+
+  def send_text(text)
+    @sender.send_text(@text)
+  end
   
 
 end
