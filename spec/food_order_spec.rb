@@ -28,13 +28,14 @@ describe FoodOrder do
 
     describe "#total" do
       it "returns the total sum of all orders in the basket" do
-        expect(subject.total).to eq 10
+        expect(subject.total).to eq "Your total order is £%0.2f" % [10]
       end
     end
 
     describe "#check_total" do
       it "returns true if #total matches the sum of the dishes in the basket" do
-        price = 10
+        price = 10.00
+        subject.total_order = 10.00
         expect(subject.correct_total?(price)).to be_truthy
       end
     end

@@ -17,5 +17,6 @@ class TextClient
       body: @message_formatter.format_message,
       to: ENV["TWILIO_TO_NUMBER"],
       from: ENV["TWILIO_FROM_NUMBER"])
+    "Order successfully placed!"
   end
 end
