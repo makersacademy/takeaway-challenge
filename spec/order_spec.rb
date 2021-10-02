@@ -7,10 +7,10 @@ describe Order do
 
   describe '#initialize' do
     it 'with an empty order' do
-      expect(subject.order).to be_empty
+      expect(order.order).to be_empty
     end
     it 'with zero as the total' do
-      expect(subject.total).to eq 0
+      expect(order.total).to eq 0
     end
   end
 
@@ -23,8 +23,9 @@ describe Order do
     it 'adds an item to the order' do
       item = "Cheese Burger"
       allow(menu).to receive(:item?).with(item).and_return(true)
-      expect(order.add(item)).to include item 
-    end
+      order.add(item)
+      expect(order.order).to include item 
+    end      
   end
   
 end
