@@ -2,7 +2,7 @@ class FoodOrder
   attr_accessor :basket, :takeaway_menu
   attr_reader :message
 
-  def initialize(takeaway_menu = Menu.new, message = Message.new)
+  def initialize(takeaway_menu = Menu.new, message = TextClient.new)
     @basket = []
     @takeaway_menu = takeaway_menu
     @message = message
@@ -25,6 +25,6 @@ class FoodOrder
 
   def place_order
     raise "You cannot place an order with an empty basket" if basket.empty?
-    message.send_message
+    message.send_text
   end
 end

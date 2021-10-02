@@ -1,23 +1,18 @@
-# As a customer
-# So that I can order the meal I want
-# I would like to be able to select some number of several available dishes
-
-# As a customer
-# So that I can verify that my order is correct
-# I would like to check that the total I have been given matches the sum of the various dishes in my order
-
 require "food_order"
+require "menu"
+require "text_client"
 
 describe FoodOrder do
 
   let(:dish_list) { { "test dish1" => 6.00, "test dish2" => 4.00, "test dish3" => 4.00 } } 
   let(:menu_double) { instance_double(Menu, menu: dish_list) }
 
-  let(:message_double) { instance_double(Message) }
   let(:formatted_time) { (Time.now + 3600).strftime("%k:%M") }
   let(:formatted_confirmation) { "Thank you! Your order was placed and will be delivered before #{formatted_time}" }
 
-  subject { described_class.new(menu_double, message_double) }
+  let(:text_client_double) { instance_double(TextClient) }
+
+  subject { described_class.new(menu_double, text_client_double) }
 
   context "placing an order" do
     before(:example) do
@@ -46,7 +41,7 @@ describe FoodOrder do
 
     describe "#place_order (normal basket)" do
       it "returns a message when an order has been placed" do
-        allow(message_double).to receive(:send_message).and_return(formatted_confirmation)
+        allow(text_client_double).to receive(:send_text).and_return(formatted_confirmation)
         expect(subject.place_order).to eq formatted_confirmation
       end
     end
