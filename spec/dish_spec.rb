@@ -3,7 +3,7 @@ require 'dish'
 describe Dish do
 
   describe ' has ' do
-    subject{ Dish.new('Pepperoni Pizza', 11.5) }
+    subject { Dish.new('Pepperoni Pizza', 11.5) }
     it 'a name' do
       expect(subject.name).to eq('Pepperoni Pizza')
     end
