@@ -2,23 +2,45 @@ require 'menu'
 
 describe Menu do
 
+  let(:menu_items) { { "Cheese Burger" => 9.00, "French Fries" => 3.50 } }
+  let(:menu) { described_class.new(menu_items)}
+
   describe '#initialize' do
     it 'is initialized with menu items' do
-      expect(subject.menu_items).not_to be_empty
+      expect(menu.menu_items).not_to be_empty
+    end
+    it 'has a list of menu items' do
+      expect(menu.menu_items).to eq menu_items
     end
   end
 
   describe '#show_menu' do
     it 'responds to show menu' do
-      expect(subject).to respond_to(:show_menu)
+      expect(menu).to respond_to(:show_menu)
     end
     it 'formats the menu correctly' do
-      test_menu = { "Item 1" => 1.00, "Item 2" => 1.00 }
-      expected_output = "Item 1:    £1.00\nItem 2:    £1.00\n"
+      expected_output = "Cheese Burger:    £9.00\nFrench Fries:    £3.50\n"
 
-      expect { subject.show_menu(test_menu) }.to output(expected_output).to_stdout
+      expect { menu.show_menu }.to output(expected_output).to_stdout
     end
+  end
 
+  describe '#has_item?' do
+    it 'returns true if an item is on the menu' do
+         expect(menu.has_item?("Cheese Burger")).to be true 
+    end
+    it 'returns false if an item is not on the menu' do
+      expect(menu.has_item?("Chicken Burger")).to be false 
+    end
+  end
+
+  describe '#price' do
+    it 'returns the items price' do
+      expect(menu.price("Cheese Burger")).to eq menu_items["Cheese Burger"]
+    end
+    it 'raises an error if the item is not on the menu' do
+      expect { menu.price("Chicken Burger") }.to raise_error("Item not on the menu")
+    end
   end
 
 end
