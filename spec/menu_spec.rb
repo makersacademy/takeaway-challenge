@@ -27,7 +27,7 @@ describe Menu do
 
   describe '#has_item?' do
     it 'true if an item is on the menu' do
-      expect(menu.has_item?("Cheese Burger")).to be true 
+      expect(menu.item?("Cheese Burger")).to be true 
     end
     it 'false if an item is not on the menu' do
       expect(menu.item?("Chicken Burger")).to be false 

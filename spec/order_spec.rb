@@ -1,6 +1,9 @@
 require 'order'
+require 'menu'
 
 describe Order do
+  let(:order) { described_class.new }
+  let(:menu) { double :menu }
 
   describe '#initialize' do
     it 'with an empty order' do
@@ -12,9 +15,15 @@ describe Order do
   end
 
   describe '#add' do
+    it 'prevents item from being added to order if not on menu' do
+      item = "Chicken Burger"
+      allow(menu).to receive(:item?).with(item).and_return(false)
+      expect { order.add(item) }.to raise_error(RuntimeError)
+    end
     it 'adds an item to the order' do
-      item = 'Item 1'
-      expect(subject.add(item)).to include item 
+      item = "Cheese Burger"
+      allow(menu).to receive(:item?).with(item).and_return(true)
+      expect(order.add(item)).to include item 
     end
   end
   

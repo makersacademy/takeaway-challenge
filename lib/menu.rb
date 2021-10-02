@@ -22,7 +22,7 @@ class Menu
   end
 
   def price(item)
-    raise "Item not on the menu" unless has_item?(item)
+    raise "Item not on the menu" unless item?(item)
     menu_items[item]
   end
 
