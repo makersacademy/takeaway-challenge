@@ -21,7 +21,7 @@ Approach
 
 4. Prices of items were coming out in very long decimals.  
 ```
-3.0.2 :006 > t.add 'party pack'
+3.0.2 :006 > takeaway.add 'party pack'
 * You added 1x party packs to the order *
 * Your balance is £25.979999999999997 *
 ```
