@@ -1,5 +1,6 @@
 /**/.DS_Store
 /coverage
+/ignored_files
 
 # Local cache of Rubocop remote config
 .rubocop-*
