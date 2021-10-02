@@ -1,7 +1,10 @@
 # frozen_literial_string: true
 
 class TakeAway
+  attr_reader :basket
+
   def initialize(output)
+    @basket = []
     @output = output
     @menu = {
       'spring roll' => 0.99,
@@ -13,6 +16,25 @@ class TakeAway
   end
 
   def read_menu
-    @menu.each { |key, value| @output.puts "#{key}: £#{value}" }
+    menu.each { |key, value| output.puts "#{key}: £#{value}" }
+  end
+
+  def add_dish(dish)
+    check_for_string(dish)
+    return print_error_message unless menu.keys.any?(dish.downcase)
+
+    @basket << menu.select { |key| key == dish.downcase }
+  end
+
+  private
+
+  attr_reader :output, :menu
+
+  def print_error_message
+    output.puts 'item not on menu'
+  end
+
+  def check_for_string(dish)
+    raise 'item off menu required' unless dish.kind_of?(String)
   end
 end
