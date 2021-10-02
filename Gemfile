@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.0.2'
 gem 'twilio-ruby', '~> 5.58', '>= 5.58.3'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
   gem 'rspec'
