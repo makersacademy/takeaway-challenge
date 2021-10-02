@@ -1,14 +1,13 @@
 class Order
+
+  attr_reader :menu
+
   def initialize
     @order = {}
   end
 
   def add_menu(menu)
     @menu = menu
-  end
-
-  def menu
-    @menu
   end
 
   def add_dish(dish)
@@ -22,7 +21,5 @@ class Order
   def total
     total = @order.values.sum
   end
-
-  
 
 end

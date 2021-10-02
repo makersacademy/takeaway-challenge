@@ -22,7 +22,7 @@ describe Menu do
       :price => 8.99
       )
       menu.add_dish(d1)
-      expect(menu.contents).to eq ({"Chicken Korma"=>8.99})
+      expect(menu.contents).to eq ({ "Chicken Korma" => 8.99 })
     end
   end
   
