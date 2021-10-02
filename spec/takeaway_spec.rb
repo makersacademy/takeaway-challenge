@@ -3,12 +3,6 @@ require 'takeaway'
 
 describe Takeaway do
 
-  def ignore_puts
-    before do
-       $stdout.stub(:write)
-    end
- end
-
   subject(:takeaway) { Takeaway.new }
   let(:secret_item) { "Chili Burger" }
 
@@ -30,9 +24,16 @@ describe Takeaway do
   expect{ takeaway.add('chese piza') }.to raise_error "This item is not available.  Please select another item."
   end
 
-  it 'adds price to balance' do
+  it 'adds items price to balance' do
     takeaway.add('cheese pizza')
   expect(takeaway.balance).to eq(12.99)
+  end
+
+  it 'shows current order in output console' do
+    takeaway.add('cheese pizza')
+    expect { takeaway.show_order }.to output(
+      "***This is your current order***\ncheese pizza 1x = £12.99\n"
+    ).to_stdout
   end
 
   it 'sends a payment confirmation text message' do

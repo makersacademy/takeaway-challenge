@@ -20,7 +20,7 @@ class Takeaway
   end
 
   def read_menu
-    print @menu.dishes
+    puts @menu.dishes
   end
 
   def show_order
@@ -28,7 +28,6 @@ class Takeaway
       @items.each do |item, price|
         puts "#{item} #{price}x = £#{@menu.dishes[item] * price}"
       end
-    show_balance
   end
 
   def show_balance
