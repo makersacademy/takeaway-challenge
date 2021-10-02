@@ -14,18 +14,22 @@ class ListofDishes
 
   def print_menu
     @list_of_dishes.each_with_index do |(dish, price),index|   
-      puts "#{index + 1} #{dish} : £#{price}" 
+      puts "#{index + 1} #{dish} : £#{price}"
+      p  "Select dish or type finish"
     end
   end
 
   def order
+    !order == "finish" ?
     print_menu
-    puts "Select dish or type end"
+    # puts 
     order = gets.chomp
-    @list_of_dishes.include?(order) ? @total_order[key] = value : @total_order
-  
-    # @total_order.push(@list_of_dishes[:dish])
-    # order == @list_of_dishes ?   : @total_order 
+    
+  end
+
+  def make_order(dish)
+
+    @list_of_dishes.include?(order) ? @total_order << @list_of_dishes.assoc(order) : @total_order
   end
 end
 

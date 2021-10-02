@@ -17,14 +17,12 @@ describe ListofDishes do
     end
 
 
-  let(subject.order).to receive(:order).and_return(2)
-
-    it "takes customer order" do
-      expect(subject).to eq(Choice)
-    end
-
-    it "populates total_order array with order" do
-      list.list_of_dishes
-      expect(@list_of_dishes.length).to eq(1)
-    end
+  it "takes user's order and returns it" do
+    subject.order
+    order = double
+    order.stub(:gets).and_return("Lassagna")
+    allow($stdin).to receive(:gets).and_return(order)
+    # expect(order).to receive(:chomp).and_return()
+    expect(subject.total_order.length).to eq(1)
   end
+end
