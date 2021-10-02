@@ -7,4 +7,8 @@ class Takeaway
   def see_menu
     @menu
   end 
+
+  def order(food)
+    true 
+  end 
 end 
