@@ -6,10 +6,10 @@ class Menu
   end
 
   def print
-    printed_menu = ""
+    @printed_menu = ""
     dishes.each do |item, value|
-      printed_menu += "#{item}: £#{value}. "
+      @printed_menu += "#{item}: £#{value}. "
     end
-      printed_menu
+    @printed_menu
   end
 end
