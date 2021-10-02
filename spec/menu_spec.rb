@@ -1,4 +1,5 @@
 require "menu"
+require "twilio-ruby"
 
 describe Menu do
   describe "#see_list" do
@@ -34,6 +35,8 @@ describe Menu do
       hour_plus1 = ((t.strftime("%H").to_i) + 1)
       expect(subject.confirm_order).to eq "Thank you! Your order was placed and will be delivered before #{t.strftime("at #{hour_plus1}:%M%p")}"
       p t.strftime("at %H:%M%p")
+      menu = menu.new
+      menu.confirm_order
     end
   end
 end
