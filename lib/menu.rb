@@ -25,6 +25,7 @@ class Menu
 
   def confirm_order
     t = Time.new
-    p "Thank you! Your order was placed and will be delivered before #{t.strftime("at %I:%M%p")}"
+    hour_plus1 = ((t.strftime("%H").to_i) + 1)
+    "Thank you! Your order was placed and will be delivered before #{t.strftime("at #{hour_plus1}:%M%p")}"
   end
 end

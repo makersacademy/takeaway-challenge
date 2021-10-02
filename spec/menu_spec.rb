@@ -28,11 +28,12 @@ describe Menu do
   end
 
   describe "#confirm_order" do
-    it "sends a message confimring delivery before 1 hours time" do
+    it "sends a message confirming delivery before 1 hours time" do
       subject.place_order(1, 2)
       t = Time.new
-      expect(subject.confirm_order).to eq "Thank you! Your order was placed and will be delivered before #{t.strftime("at %I:%M%p")}"
-      p t.strftime("at %I:%M%p")
+      hour_plus1 = ((t.strftime("%H").to_i) + 1)
+      expect(subject.confirm_order).to eq "Thank you! Your order was placed and will be delivered before #{t.strftime("at #{hour_plus1}:%M%p")}"
+      p t.strftime("at %H:%M%p")
     end
   end
 end
