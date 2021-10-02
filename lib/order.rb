@@ -1,11 +1,28 @@
 class Order
-  def menu
-    
+  def initialize
+    @order = {}
   end
-  # def initialize
-  #   @menu = nil # have to have a method to allow importing of a menu
-  # end
-  # def menu
-  #   @menu.contents
-  # end
+
+  def add_menu(menu)
+    @menu = menu
+  end
+
+  def menu
+    @menu
+  end
+
+  def add_dish(dish)
+    @order[dish.name] = dish.price
+  end
+
+  def contents
+    @order
+  end
+
+  def total
+    total = @order.values.sum
+  end
+
+  
+
 end
