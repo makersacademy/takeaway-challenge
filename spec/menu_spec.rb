@@ -25,8 +25,15 @@ describe Menu do
       menu.add(dish1)
       menu.add(dish2)
       
-      
+      expect(menu.release("Chicken Tikka", 1)).to eq [dish1] # Could be testing implemntation state here
+      expect(menu.release("Chicken Tikka", 2)).to eq [dish1, dish1] # another way?
+      expect(menu.release("Jalfrezi", 1)).to eq [dish2]
     end
+
+    it "should raise error if dish not on menu" do
+      expect { menu.release("Margharita", 1) }.to raise_error "Not on Menu" 
+    end
+    
 
   end
 
