@@ -1,29 +1,31 @@
 require_relative 'menu'
 require_relative 'messenger'
-require_relative 'order'
 
 class Takeaway
 
-  def initialize(menu = Menu.new, messenger = Messenger.new, order = Order)
-  @menu = menu
-  @messenger = messenger
-  @order = order
-  
-  @current_order = nil
-  @basket = {}
+  attr_accessor :items, :menu
+
+  def initialize(menu = Menu.new)
+    @menu = menu
+    @items = Hash.new(0)
+
+    @balance =0
+
+  end
+
+  def add(dish, quantity = 1)
+    @items[dish] += quantity
+    puts "we added #{quantity}x #{dish}s to your order"
+    @balance += @menu.dishes[dish] * quantity
+    puts "your balance is #{@balance}"
   end
 
   def read_menu
-  end
-
-  def order(item)
-    @current_order = @order.new(item)
-  end
-
-  def basket_summary
+    print @menu.dishes
   end
 
   def total_price
+    @items.reduce { |sum, item| sum + item }
   end
 
   def complete_order(price)
@@ -33,8 +35,12 @@ class Takeaway
   def send_text(message)
     # this method calls the Twilio API
   end
-
-
-
 end
+
+# t = Takeaway.new
+# t.add 'pizza', 4
+# t.add 'burger', 2
+# print t.menu.dishes
+# print t.items
+# print t.menu.dishes
 
