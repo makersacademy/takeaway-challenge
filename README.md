@@ -46,3 +46,8 @@ Takeaway | view_menu, add(dish), check_total
 Menu | print
 Order | calculate_total
 Message | send_message
+
+
+- I was able to complete the first three user stories with 100% coverage with 0 offenses on RuboCop
+- As seen in the table above, I intended to create an 'Order' class which would contain the calculate_total method. Unfortunately after trying several times to do this, I wasn't able to get all the classes communicating properly, so I need to spend more time learning about dependency injection and how to implement the core concepts of OOD in my code.
+
