@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
 
   let(:menu_items) { { "Cheese Burger" => 9.00, "French Fries" => 3.50 } }
-  let(:menu) { described_class.new(menu_items)}
+  let(:menu) { described_class.new(menu_items) }
 
   describe '#initialize' do
     it 'is initialized with menu items' do
@@ -26,11 +26,11 @@ describe Menu do
   end
 
   describe '#has_item?' do
-    it 'returns true if an item is on the menu' do
-         expect(menu.has_item?("Cheese Burger")).to be true 
+    it 'true if an item is on the menu' do
+      expect(menu.has_item?("Cheese Burger")).to be true 
     end
-    it 'returns false if an item is not on the menu' do
-      expect(menu.has_item?("Chicken Burger")).to be false 
+    it 'false if an item is not on the menu' do
+      expect(menu.item?("Chicken Burger")).to be false 
     end
   end
 

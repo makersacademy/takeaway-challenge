@@ -17,14 +17,13 @@ class Menu
     menu_items.each { |name,price| puts "#{name}:    £#{format("%.2f", price)}" }
   end
 
-  def has_item?(item)
+  def item?(item)
     menu_items.key?(item)
   end
 
   def price(item)
-    raise "Item not on the menu" if !has_item?(item)
+    raise "Item not on the menu" unless has_item?(item)
     menu_items[item]
   end
 
 end
-

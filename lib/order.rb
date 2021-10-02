@@ -12,7 +12,7 @@ class Order
 
   def calculate_total
     order.each do |entry|
-      entry.each do |name,price|
+      entry.each do |_name,price|
         @total += price
       end
     end
