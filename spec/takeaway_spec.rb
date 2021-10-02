@@ -5,12 +5,14 @@ describe Takeaway do
   let(:shop) { described_class.new(menu) }
   
   describe '#menu' do
-    it "produces a menu" do
+    it "shows a menu" do
       expect(shop).to respond_to(:menu)
     end
 
-    it "displays the menu" do
-      expect(shop.menu).to eq menu
+    it "displays a menu" do
+      expect(menu).to receive(:display)
+
+      shop.menu
     end
   end
 
