@@ -6,10 +6,10 @@ Introduction
 * My work on the Takeaway Challenge for Makers Academy week 2
 
 * This program lets the user 
-** look at the menus of different restaurants
-** order food and drink items 
-** see their current balance
-** get texted with a delivery time
+- look at the menus of different restaurants
+- order food and drink items 
+- see their current balance
+- get texted with a delivery time
 
 Approach
 -------
