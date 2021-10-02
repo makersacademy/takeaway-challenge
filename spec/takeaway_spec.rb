@@ -1,5 +1,4 @@
 require "takeaway"
-require "menu"
 
 RSpec.describe Takeaway do
 
@@ -32,14 +31,12 @@ RSpec.describe Takeaway do
   end
 
   it "raises an error when customer selects something not on the menu" do
-    menu = Menu.new
     expect { subject.add("cheese") }.to raise_error("cheese is not on the menu")
   end
 
   describe "#calculate_total" do
     context "when customer has selected their dishes" do
       it "calculates the total sum" do
-        menu = Menu.new
         subject.add("hawaiian")
         subject.add("veggie")
         expect(subject.calculate_total).to eq 17
@@ -50,7 +47,6 @@ RSpec.describe Takeaway do
   describe "#check_total" do
     context "when customer wants to check their total is correct" do
       it "checks their total against the calculated_total method" do
-        menu = Menu.new
         subject.add("hawaiian")
         subject.add("veggie")
         expect(subject.check_total(17)).to be_truthy
