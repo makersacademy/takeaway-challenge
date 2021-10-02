@@ -44,7 +44,7 @@ class TakeAway
   def print_basket_items
     basket.uniq.each do |dish|
       amount = count_repeated_items(dish)
-      output.puts "#{amount} x #{dish.keys.first}: £#{dish.values.first}"
+      output.puts "#{amount} x #{dish.keys.first}: £#{amount * dish.values.first}"
     end
   end
 

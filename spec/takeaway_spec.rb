@@ -87,7 +87,7 @@ fu-king fried rice: £5.99")
       takeaway.check_order
 
       expect(output.string).to include(
-"1 x peking duck: £7.99\n2 x spring roll: £0.99\nTotal: £9.97\n"
+"1 x peking duck: £7.99\n2 x spring roll: £1.98\nTotal: £9.97\n"
 )
     end
   end
