@@ -1,7 +1,7 @@
 
 class Menu 
 
-  attr_accessor :dishes, :select
+  attr_accessor :dishes 
 
   def initialize
     @dishes = {
@@ -9,6 +9,7 @@ class Menu
       "burger"=>5.99, 
       "party pack"=>19.99, 
       "12 wings"=>6.99, 
-      "drink"=>1.09 }
+      "drink"=>1.09 
+    }
   end
 end

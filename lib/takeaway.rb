@@ -1,5 +1,4 @@
 require_relative 'menu'
-require_relative 'messenger'
 
 class Takeaway
 
@@ -10,14 +9,14 @@ class Takeaway
     @items = Hash.new(0)
 
     @balance =0
-
   end
 
-  def add(dish, quantity = 1)
-    @items[dish] += quantity
-    puts "we added #{quantity}x #{dish}s to your order"
-    @balance += @menu.dishes[dish] * quantity
-    puts "your balance is #{@balance}"
+  def add(item, quantity = 1)
+    raise "This item is not available.  Please select another item." unless @menu.dishes.key?(item)
+    @items[item] += quantity
+    puts "* You added #{quantity}x #{item}s to the order *"
+    @balance += @menu.dishes[item] * quantity
+    show_balance
   end
 
   def read_menu
@@ -25,11 +24,15 @@ class Takeaway
   end
 
   def total_price
-    @items.reduce { |sum, item| sum + item }
+    puts "***This is your current order***"
+      @items.each do |item, price|
+        puts "#{item} #{price}x = £#{@menu.dishes[item] * price}"
+      end
+    show_balance
   end
 
-  def complete_order(price)
-    send_text("Thank you for your order: £#{total_price}")
+  def show_balance
+    puts "*** Your total is £#{ @balance.round(2) } ***"
   end
 
   def send_text(message)
@@ -37,10 +40,10 @@ class Takeaway
   end
 end
 
-# t = Takeaway.new
-# t.add 'pizza', 4
-# t.add 'burger', 2
-# print t.menu.dishes
-# print t.items
-# print t.menu.dishes
+t = Takeaway.new
+#  t.add 'soda', 1
+t.add 'pizza', 3
+t.add 'drink', 2
+
+t.total_price
 
