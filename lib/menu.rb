@@ -4,7 +4,7 @@ class Menu
 
   attr_reader :dishes
 
- DISHES = [
+  DISHES = [
     Dish.new('Mushroom Pizza', 9),
     Dish.new('American Hot Pizza', 11.5),
     Dish.new('Salsiaccia Pizza', 10.5),
