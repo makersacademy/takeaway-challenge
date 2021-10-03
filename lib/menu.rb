@@ -14,7 +14,6 @@ class Menu
       3 => "chips £3"
     }
     @order = []
-    @delivery_message = ""
   end
 
   def see_list
@@ -27,13 +26,14 @@ class Menu
   end
 
   def verify_order
-    "Your total is #{@total} for the following #{@order}"
+    p "Your total is £#{@total} for the following #{@order}"
   end
 
   def confirm_order
     t = Time.new
     hour_plus1 = ((t.strftime("%H").to_i) + 1)
     @delivery_message  = "Thank you! Your order was placed and will be delivered before #{t.strftime("at #{hour_plus1}:%M%p")}"
+    send_text("ACccb2dbca9aea7869f0ab7bbbdca1df82", "2bf2f033df709c2079d8ee1182a16315", "+15005550006")
   end
 
   def send_text(account_sid = "AC56a614c80c40b2d730f624b8f395bf10", auth_token = "b22114508794bdb02e7d2fe587e926c4", send_phone_num = "+19384440993")  
@@ -43,8 +43,8 @@ class Menu
       to: "+447947613279",    # Replace with your phone number
       from: send_phone_num)  # Use this Magic Number for creating SMS
   
-    message.sid
+    p message.sid
 
-    # POST /2010-04-01/Accounts/{AC56a614c80c40b2d730f624b8f395bf10}/Messages
+  #   # POST /2010-04-01/Accounts/{AC56a614c80c40b2d730f624b8f395bf10}/Messages
   end
 end
