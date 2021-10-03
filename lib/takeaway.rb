@@ -17,7 +17,7 @@ class Takeaway
 
   def pick(item)
     @choice << @menu_object.list.select do |menu_item|
-      menu_item.name == item
+      menu_item.name == item && menu_item.available?
     end[0]
   end
 
