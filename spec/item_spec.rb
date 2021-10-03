@@ -9,7 +9,7 @@ describe Item do
 
       it "creates an item with an auto-generated ID" do
         item = described_class.new(dish,price)
-        expect(item.id).to eq 1
+        expect(item.id).to eq 0
       end
 
       it "allows users to store a dish and its price" do

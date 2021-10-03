@@ -1,5 +1,5 @@
 class Item
-  @@curr_id = 0
+  @@curr_id = -1
   attr_reader :id, :dish, :price
   def initialize(dish=nil,price=nil)
     #throws error if dish or price are nil, (meaning they weren't passed in)
