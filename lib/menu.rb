@@ -13,7 +13,7 @@ class Menu
       { :name => "Steamed Vegetables", :price => 1.99 }]
   end
 
-  def display
+  def display_menu
     menu.each_with_index do |item, index|
       puts "#{index + 1}. #{item[:name]}, Price: £#{item[:price]}"
     end
@@ -25,6 +25,6 @@ class Menu
 
   def order_food
     puts "Enter the menu number"
-    display
+    # display_menu
   end
 end
