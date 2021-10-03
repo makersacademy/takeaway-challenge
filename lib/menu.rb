@@ -22,9 +22,13 @@ class Menu
   end
 
   def display_order
-    @new_order.orders.each_with_index do |index|
-      @menu[index]
+    order_total = 0
+    @new_order.orders.each do |item|
+      puts @menu[item-1][:name]
+      puts "£#{@menu[item-1][:price]}"
+      order_total += @menu[item-1][:price]
     end
+    puts "Your total is £#{order_total}"
   end
 
   def print_welcome
@@ -47,8 +51,8 @@ class Menu
     end
   end
   
-  def add_to_order(x)
-    @new_order.orders << x
+  def add_to_order(item)
+    @new_order.orders << item
   end
 
   def start_new_order
