@@ -1,10 +1,10 @@
 Upon initializing a instance of the Restaurant class, a user is able to create orders and receive a text message to their phone upon completing their order. 
 
-Users can also see view a menu, and there are internal checks taken when an order is completed to ensure the total was correctly calculated.
+Users can also view a menu, and there are internal checks taken when an order is completed to ensure the total was correctly calculated.
 
-I've included an exerpt of the code's functionality in irb below. In this script you can see the error message which arises when a user tries to order something not on the menu, and you can see how a user is able to add items to, and complete an order which then sends a Twilio text to their phone. 
+I've included an exerpt of the code's functionality in irb below. In this script you can see the error message which arises when a user tries to order something not on the menu, and you can see how a user is able to add items to an order and complete the order which then sends a Twilio text to their phone. 
 
-I was able to complete the functionality of the code to a good level, I had problems with the testing however and I need to look into how to 
+I was able to complete the functionality of the code to a good level, I had problems with the testing however and I need to look into how to properly test the SMS sending. I've added a fakesender which means that everytime Restaurant.complete_order is run on rspec you do not receive a text, however my testing is not extensive. 
 
 3.0.2 :007 > mcdonalds.add_items("sweets")
 /Users/emmanuel/Projects/takeaway-challenge/lib/order.rb:41:in `dish_creator': This dish is not on the menu (RuntimeError)

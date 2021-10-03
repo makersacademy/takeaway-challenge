@@ -15,6 +15,6 @@ RSpec.configure do |config|
     puts "\e[33mTry it now! Just run: rubocop\e[0m"
   end
   config.before(:each) do
-    stub_const("Twilio::REST::Client", Sender)
+    stub_const("Twilio::REST::Client", FakeSender)
   end
 end

@@ -1,4 +1,5 @@
 require "restaurant"
+require "fakesender"
 require "sender"
 
 describe Restaurant do 
@@ -10,14 +11,19 @@ describe Restaurant do
       subject.add_items("pizza", 1)
       expect { subject.complete_order }.to raise_error("There has been an issue with your order, please try again later")
     end
-=begin
+
     it "should store an order object in the orders array" do
-      order = double("order")
-      allow(order).to receive(:check_total) { true }
       subject.complete_order
       expect(subject.order_history[0]).to be_a Order 
-=end 
-  end
+    end
+=begin
+    it "should send a message to the users phone with a estimated delivery time" do
+      fake = FakeSender.new
+      subject.complete_order
+      expect(fake.messages[0]).to be_a FakeSender
+    end
+=end
+end
 
   describe ".start_order" do 
     it "should create a fresh instance of the order class" do 

@@ -14,8 +14,6 @@ class Sender
     twilio_text(text)
   end
 
-private 
-
   def twilio_text(text)
 
     message = @client.messages.create(
