@@ -2,18 +2,19 @@ require 'twilio-ruby'
 require 'date'
 
 class TwilioSMS
+  DELIVERY_TIME = 1
 
-  attr_reader :time
+  attr_reader :delivery_time
 
   def initialize(account_sid = ENV["TWILIO_ACCOUNT_SID"], auth_token = ENV["TWILIO_AUTH_TOKEN"])
     @account_sid = account_sid
     @auth_token = auth_token
 
-    @time = Time.now.strftime("%H:%M").split(":")
-    @time[0] = @time[0].to_i
-    @time[0] += 1
-    @time[0] = @time[0].to_s
-    @time = @time.join(":")
+    @delivery_time = Time.now.strftime("%H:%M").split(":")
+    @delivery_time[0] = @delivery_time[0].to_i
+    @delivery_time[0] += DELIVERY_TIME
+    @delivery_time[0] = @delivery_time[0].to_s
+    @delivery_time = @delivery_time.join(":")
   end
 
   def send_sms(from = ENV["TWILIO_MOBILE"])
@@ -24,7 +25,7 @@ class TwilioSMS
     client.messages.create(
     from: from,
     to: to,
-    body: "Thank you! Your order was placed and will be delivered before #{@time}"
+    body: "Thank you! Your order was placed and will be delivered before #{@delivery_time}"
     )
   end
 

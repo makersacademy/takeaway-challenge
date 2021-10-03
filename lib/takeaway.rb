@@ -2,6 +2,7 @@ require_relative 'menu'
 require_relative 'twiliosms'
 
 class Takeaway
+  INITIAL_COST = 0.00
 
   def initialize(menu_object = Menu.new)
     @menu_object = menu_object
@@ -27,7 +28,7 @@ class Takeaway
   end
 
   def sub_total
-    @cost = 0.00
+    @cost = INITIAL_COST
     add_prices
     "£#{@cost.round(2)}"
   end

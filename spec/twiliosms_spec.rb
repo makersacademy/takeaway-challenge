@@ -11,13 +11,13 @@ describe TwilioSMS do
     time = Time.now.strftime("%H:%M")
     time_plus_one = Time.now.strftime("%H:%M").split(":")
     time_plus_one[0] = time_plus_one[0].to_i
-    time_plus_one[0] += 1
+    time_plus_one[0] += TwilioSMS::DELIVERY_TIME
     time_plus_one[0] = time_plus_one[0].to_s
     time_plus_one = time_plus_one.join(":")
   end
 
   it 'calculates current time + 1 hours' do
-    expect(twilio.time).to eq time_plus_one
+    expect(twilio.delivery_time).to eq time_plus_one
   end
 
   describe '#send_sms' do
