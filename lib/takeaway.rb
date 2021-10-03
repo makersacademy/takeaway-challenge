@@ -16,16 +16,15 @@ class Takeaway
     end
   end
 
-  def add_to_order
-    puts "Please enter the number of the dish you would like to add: "
-    n = gets.chomp
-    n.to_i.between?(1, @menu.items.count + 1) ? @order.items << @menu.items[n.to_i - 1] : add_to_order
+  def add_to_order(n)
+    puts "Sorry, I didn't understand" && serve_customer unless valid_order_input(n)
+    @order.items << @menu.items[n.to_i - 1]
     puts "#{@menu.items[n.to_i - 1].name} added to the order"
   end
 
   def check_total
     puts "Your order is: "
-    @order.items.map { |dish| puts "- #{dish.name}, £#{dish.price}"}
+    @order.items.map { |dish| puts "- #{dish.name}, £#{dish.price}" }
     puts "Total cost: £#{@order.items.reduce(0) { |sum, item| sum + item.price }}"
   end
 
@@ -36,7 +35,6 @@ class Takeaway
   end
 
   def serve_customer
-    puts "Welcome to the takeaway!"
     loop do
       puts "Please enter the number of the option you would like to select from the following: "
       print_options
@@ -44,9 +42,9 @@ class Takeaway
     end
   end
 
-
-
-  private
+  def valid_order_input(input)
+    input.match(/^(\d)+$/) && input.to_i.between?(1, @menu.items.count + 1)
+  end
 
   def print_options 
     puts "1. See menu"
@@ -56,12 +54,15 @@ class Takeaway
     puts "5. Exit"
   end
 
+  private
+
   def interface(i)
     case i
       when '1'
         see_menu
       when '2'
-        add_to_order
+        puts "Please enter the number of the dish you would like to add: "
+        add_to_order(STDIN.gets.chomp)
       when '3'
         check_total
       when '4'
