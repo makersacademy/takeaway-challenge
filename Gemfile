@@ -12,4 +12,5 @@ group :development, :test do
   gem 'rubocop', '1.20'
 end
 
-gem 'twillio-ruby', '~ 5.58.3'
+gem 'twilio-ruby', '~ 5.58.3'
+gem 'twilio-mock'

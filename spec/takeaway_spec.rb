@@ -32,9 +32,8 @@ describe Takeaway do
   it "confirms orders with a text" do
     one_hour_from_now = (Time.now + 3600).strftime("%H:%M")
     takeaway.order(dish2)
-
-    expect(takeaway).to receive(:text)
-    .with("Thank you! Your order has been placed and will be delivered by #{one_hour_from_now}.")
+    
+    expect(takeaway.sms_client).to receive(:text)
     takeaway.confirm
   end
 end

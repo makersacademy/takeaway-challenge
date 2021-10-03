@@ -1,8 +1,10 @@
 require_relative 'order'
-require_relative '../sms'
+require_relative 'sms'
 
 class Takeaway
-  attr_reader :current_order
+  attr_reader :current_order, :sms_client
+  @@sms_client = SMS.new
+
   def initialize(dishes, order_class: Order)
     @dishes = dishes
     @order_class = Order
@@ -23,9 +25,10 @@ class Takeaway
   def order(item)
     @current_order ? @current_order.add(item) : @current_order = @order_class.new([item])
   end
-
+  
   def confirm
-    text("Thank you! Your order has been placed and will be delivered by #{@current_order.delivery_time}.")
+    @@sms_client.text("Thank you! Your order has been placed "\
+    "and will be delivered by #{@current_order.delivery_time}.")
     @current_order = nil
   end
 end
