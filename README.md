@@ -36,6 +36,17 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+Expected User Journey
+-----
+
+1) User presented with a displayed menu
+2) User can input number corresponding to item on the menu (if number entered doesn't match any items on the menu, prompt is redisplayed)
+3) Item selected is added to the order
+4) Output displays current order status (number of items, total price)
+5) User can add another item or finish their order
+6) Finishing order displays final summary of the order
+7) Once user confirms order, text message is sent
+
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".

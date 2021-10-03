@@ -1,3 +1,5 @@
+require_relative 'order'
+
 class Menu
 
   attr_reader :menu
@@ -24,7 +26,17 @@ class Menu
   end
 
   def order_food
-    puts "Enter the menu number"
-    # display_menu
+    puts "Enter the number of the menu item to add to your order: "
+    puts "To finish your order, hit return twice."
   end
+
+  def input_order
+    input = STDIN.gets.chomp
+
+    while !input.empty do
+       
+    end
+  end
+
 end
+
