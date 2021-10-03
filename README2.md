@@ -1,6 +1,9 @@
 Takeaway Challenge
 ==================
 ```
+
+Introduction
+
 I began by thinking about the user stories and the functionality they imply. 
 I summarised the nouns(objects) and verbs(methods) against suggested classes 
 on a piece of paper of first of all. This allowed me to make a quick start 
@@ -12,6 +15,8 @@ Once I had a rough sketch of the architecture, I formalised it on drawio
 To help me maintain functionality and enable unit and feature tests from the 
 start, it was important I started with the class that had no dependencies, 
 ie the dish class.
+
+Coding
 
 I TDD'd the Dish class, which produces dish objects, eg { "Chicken Korma", 8.99 }
 
@@ -31,6 +36,8 @@ this violated the red-green-refactor process of TDD, but I didn't know in
 advance what I was going to be testing. In particular, I took the sample code 
 provided by twilio and turned it into a regular ruby class with methods. This 
 standardised the formatting and made it easier to test. I wrote isolated tests.
+
+Notes
 
 The send_sms test for send_sms (line 21) is circular, becuase it only tests the
 output of something defined in the line above it. However, the test is not 
