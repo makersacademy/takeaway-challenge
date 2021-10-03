@@ -30,4 +30,6 @@ the way the functionality was implemented.
 
 Would like to have found a way to have the order listed as "Dish x3" as opposed to "dish, dish, dish" but didn't managed to get that
 done in the time, again, the blocker to progress is getting the propper TDD appraoch, this will improve with time and experience with
-rspec.
+rspec. I decided to omit currency changes to avoid too much complexity in the time available. 
+
+Would like to find away to keep prices to always show with two decimal places, no luck on couple google searches.
