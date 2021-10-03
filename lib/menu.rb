@@ -71,5 +71,5 @@ class Menu
   end
 end
 
-start = Menu.new
-start.app
+# start = Menu.new
+# start.app
