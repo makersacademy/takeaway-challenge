@@ -1,10 +1,12 @@
 require "dish_list"
+require "sms_notifier"
 
 class Order
-  attr_reader :current_order, :time
+  attr_reader :current_order
 
   def initialize
     @current_order = []
+    @sms_client = Sms_notifier.new
   end
 
   def choose_dish(dish_name)
@@ -22,7 +24,9 @@ class Order
 
   def confirm_order
     time = (Time.now + 60 * 60).strftime("%H:%M")
-    p "Thank you! Your order was placed and will be delivered before #{time}"
+    message = "Thank you! Your order was placed and will be delivered before #{time}"
+    # @sms_client.send_message(message)
+    p message
   end
 
   private
