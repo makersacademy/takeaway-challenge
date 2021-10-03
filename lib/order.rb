@@ -1,10 +1,8 @@
-require_relative 'menu'
-
 class Order
   attr_reader :current_order, :menu, :total
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu)
+    @menu = menu
     @current_order = []
     @total = 0
   end

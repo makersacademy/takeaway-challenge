@@ -8,11 +8,11 @@ class SMS
   attr_reader :config
 
   def initialize(config = {
-      account_sid: ENV['SID'],
+    account_sid: ENV['SID'],
       auth_token: ENV['TOKEN'],
       from: ENV['RESTAURANT_NUM'],
       to: ENV['CUSTOMER_NUM'],
-    })
+  })
     @config = config
     @client = Twilio::REST::Client.new(config[:account_sid], config[:auth_token])
   end

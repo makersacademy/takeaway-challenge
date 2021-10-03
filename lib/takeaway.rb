@@ -8,7 +8,7 @@ class Takeaway
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @order = Order.new  
+    @order = Order.new(@menu)
     app_menu
   end
 
