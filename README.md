@@ -54,8 +54,8 @@ CD into program directory
 ruby menu.rb
 ```
 
-![Start The Order](http://url/to/img.png)
-![Order Confirmation](http://url/to/img.png)
+![Start The Order](https://github.com/s-palmer/takeaway-challenge/blob/main/images/start_order.png)
+![Order Confirmation](https://github.com/s-palmer/takeaway-challenge/blob/main/images/order_confirmation.png)
 
 Current Functionality
 -----
