@@ -1,7 +1,7 @@
 require "dish_list"
 
 class Order
-  attr_reader :current_order
+  attr_reader :current_order, :time
 
   def initialize
     @current_order = []
@@ -18,6 +18,11 @@ class Order
       total += price
     end
     total
+  end
+
+  def confirm_order
+    time = (Time.now + 60 * 60).strftime("%H:%M")
+    p "Thank you! Your order was placed and will be delivered before #{time}"
   end
 
   private

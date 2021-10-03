@@ -7,24 +7,26 @@ describe Order do
     end
 
     it "user can add more dishes" do
-      new_order = Order.new()
-      new_order.choose_dish(:dish1)
-      new_order.choose_dish(:dish2)
-      expect(new_order.current_order.size).to eq 2
+      subject.choose_dish(:dish1)
+      subject.choose_dish(:dish2)
+      expect(subject.current_order.size).to eq 2
     end
 
     it "adds the dish to the current order list" do
-      new_order = Order.new()
-      new_order.choose_dish(:dish1)
-      expect(new_order.current_order).to eq [[:dish1, 10]]
+      subject.choose_dish(:dish1)
+      expect(subject.current_order).to eq [[:dish1, 10]]
     end
   end
-  describe "#confirm_order" do
+  describe "#confirm price" do
     it "calculates the total price" do
-      new_order = Order.new()
-      new_order.choose_dish(:dish1)
-      new_order.choose_dish(:dish2)
-      expect(new_order.calculate_price).to eq 24
+      subject.choose_dish(:dish1)
+      subject.choose_dish(:dish2)
+      expect(subject.calculate_price).to eq 24
+    end
+  end
+  describe "#order confirmation" do
+    it "send order confirmation" do
+      expect(subject.confirm_order).to start_with "Thank you! Your order was placed and will be delivered before"
     end
   end
 end
