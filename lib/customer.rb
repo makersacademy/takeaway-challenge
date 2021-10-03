@@ -6,11 +6,11 @@ class Customer
   attr_reader :basket
   attr_reader :total
   attr_reader :sms
-  def initialize 
+  def initialize (m_takeaway = Takeaway.new,sms = Sms.new)
     @basket = []
     @total = 0
-    @m_takeaway = Takeaway.new
-    @sms = Sms.new
+    @m_takeaway = m_takeaway
+    @sms = sms
     
   end
 

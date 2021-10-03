@@ -1,5 +1,6 @@
 require_relative "../lib/customer.rb"
 
+
 describe Takeaway do 
   before(:each) do
     take_away = Takeaway.new
@@ -41,7 +42,13 @@ describe Customer do
       subject.remove_item("chips")
       expect(subject.total).to eq 0
     end
-
-
+  end
+  describe 'SMS' do
+    it 'returns order message' do
+      sms_double = double :sms , send: "order placed. Basket: []. Cost: 0"
+      take_away_double = double :take_away , list_menu: "burger"
+      customer = Customer.new(take_away_double , sms_double)
+      expect(customer.place_order).to eq("order placed. Basket: []. Cost: 0")
+    end
   end
 end
