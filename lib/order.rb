@@ -1,10 +1,11 @@
 
 class Order
-  attr_accessor :total_order
+  attr_accessor :total_order, :confirmation
 
-  def initialize(list)
-    @list = ListofDishes.new
+  def initialize(list = ListofDishes.new)
+    @list = list
     @total_order = []
+    @confirmation
   end
 
   def order
@@ -41,7 +42,7 @@ class Order
 
   def confirm_order
     puts "If you happy with your order type Y to confirm or N to continue ordering"
-    confirmation = gets.chomp.capitalize
-    confirmation == "Y" ? confirmation : self.order
+    @confirmation = gets.chomp.capitalize
+    @confirmation == "Y" ? @confirmation : self.order
   end
 end
