@@ -1,4 +1,5 @@
 class Order
+  MENU = { dish1: 10, dish2: 14, dish3: 9 }
   attr_reader :current_order
 
   def initialize
@@ -8,9 +9,14 @@ class Order
   def choose_dish(dish_name)
     @dish_name = dish_name
     store_dish(@dish_name)
-    p "You can continue adding other dishes to your order"
-    # input = gets.chomp
-    # Order.new.choose_dish(dish_name) if input == "Yes"
+  end
+
+  def calculate_price
+    total = 0
+    @current_order.each do |item|
+      total += MENU[item]
+    end
+    total
   end
 
   private

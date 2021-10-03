@@ -1,8 +1,7 @@
 require "order"
 
 describe Order do
-  describe "#taking_order" do
-    # subject = Order.new.choose_dish("Salad")
+  describe "#take_order" do
     it "chooses dish from the dishlist" do
       expect(subject).to respond_to(:choose_dish).with(1).argument
     end
@@ -15,6 +14,14 @@ describe Order do
       new_order = Order.new()
       new_order.choose_dish("Salad")
       expect(new_order.current_order).to eq ["Salad"]
+    end
+  end
+  describe "#confirm_order" do
+    it "calculates the total price" do
+      new_order = Order.new()
+      new_order.choose_dish(:dish1)
+      new_order.choose_dish(:dish2)
+      expect(new_order.calculate_price).to eq 24
     end
   end
 end
