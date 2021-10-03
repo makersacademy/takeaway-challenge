@@ -13,9 +13,9 @@ This program lets the user:
 
 Approach
 -------
-1. I made four classes: TAKEAWAY, ORDER, MENU and MESSENGER.
+1. I made four Classes: Takeaway, Order, Menu and Messenger.
 
-2. After working on TAKEAWAY and ORDER, I decided to merge them into one class.  I know it is better to have them separate, but I found this easier.
+2. After working on Takeaway and Order, I decided to merge them into one class.  I know it is better to have them separate, but I found this easier.
 
 3. I needed to add items in my hash: [Add item to hash ](https://stackoverflow.com/questions/9571768/how-to-add-new-item-to-hash)
 
