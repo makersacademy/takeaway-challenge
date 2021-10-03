@@ -33,7 +33,7 @@ class Takeaway
 
 end
 
-mc_donalds = Takeaway.new
+
 
 #classes 
 # Customer : basket, add_item, remove_item, deliver
