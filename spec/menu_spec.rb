@@ -5,7 +5,8 @@ describe Menu do
 
   describe "#list" do
     it "lists menu with dishes and prices" do
-      expect(menu.list).to eq({ :Pizza => 8, :Chicken => 6 })
+      menu.add(:dish_name)
+      expect(menu.list).to eq([:dish_name])
     end
   end
   describe "#add" do

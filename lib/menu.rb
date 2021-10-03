@@ -10,6 +10,8 @@ class Menu
   end
 
   def list
-    { :Pizza => 8, :Chicken => 6 }
+    @dishes.each do |dish|
+      p dish
+    end
   end
 end
