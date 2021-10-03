@@ -31,6 +31,7 @@ class Takeaway
     when 3
       view_basket
     when 4
+      puts "Thank you for your order!"
       send_text
     when 5
       exit
@@ -58,7 +59,7 @@ class Takeaway
   end
 
   def send_text
-    puts "Thank you for your order!"
+    system("ruby send_sms.rb")
   end
 end
 
