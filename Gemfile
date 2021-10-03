@@ -13,4 +13,3 @@ group :development, :test do
 end
 
 gem 'twilio-ruby', '~ 5.58.3'
-gem 'twilio-mock'
