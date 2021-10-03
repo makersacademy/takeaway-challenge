@@ -3,7 +3,7 @@ require 'menu'
 describe Menu do
   describe "#display_menu" do
     it 'includes menu items' do
-      expect(subject.display_menu).to include ({:name=>"Risotto", :price=>7.99})
+      expect(subject.display_menu).to include ({ :name => "Risotto", :price => 7.99 })
     end
   end
 
