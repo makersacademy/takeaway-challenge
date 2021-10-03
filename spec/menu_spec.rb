@@ -14,6 +14,4 @@ RSpec.describe Menu do
       expect(subject.display_menu).to include(:rice => 2)
     end
   end
-  
-
 end
