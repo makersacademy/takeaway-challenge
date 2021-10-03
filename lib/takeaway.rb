@@ -1,5 +1,7 @@
 # frozen_literial_string: true
 
+require 'twilio_client'
+
 class TakeAway
   attr_reader :basket
 
@@ -29,6 +31,10 @@ class TakeAway
   def check_order
     print_basket_items
     print_total
+  end
+
+  def send_message
+    (TwilioClient.new).send_text('19:52')
   end
 
   private

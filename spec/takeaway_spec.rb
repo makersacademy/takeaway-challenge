@@ -92,6 +92,24 @@ fu-king fried rice: £5.99")
     end
   end
 
+  describe '#send_message' do
+    it 'calls the client' do
+      api_stub
+
+      takeaway.send_message
+
+      expect(api_stub).to have_been_requested
+    end
+
+    it 'returns confirmation text is send' do
+      api_stub
+
+      confirmation = takeaway.send_message
+
+      expect(confirmation).to eq ('accepted')
+    end
+  end
+
   def menu
     {
       'spring roll' => 0.99,
@@ -115,5 +133,13 @@ fu-king fried rice: £5.99")
 1 x spring roll: £0.99
 1 x fu-king fried rice: £5.99
 Total: £17.96"
+  end
+
+  def api_stub
+    message_info = File.open('fixtures/twilio_response.json').read
+    api_url = "https://api.twilio.com/2010-04-01/Accounts/account_sid/Messages.json"
+
+    stub = stub_request(:post, api_url)
+           .to_return(status: 201, body: message_info)
   end
 end

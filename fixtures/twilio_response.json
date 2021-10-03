@@ -1,0 +1,24 @@
+{
+    "sid": "sid",
+    "date_created": "Sun, 03 Oct 2021 16:43:00 +0000",
+    "date_updated": "Sun, 03 Oct 2021 16:43:00 +0000",
+    "date_sent": null,
+    "account_sid": "account_sid",
+    "to": "receiver_number",
+    "from": null,
+    "messaging_service_sid": "messaging_service_sid",
+    "body": "Thank you! Your order was placed and will be delivered before 18:52",
+    "status": "accepted",
+    "num_segments": "0",
+    "num_media": "0",
+    "direction": "outbound-api",
+    "api_version": "2010-04-01",
+    "price": null,
+    "price_unit": null,
+    "error_code": null,
+    "error_message": null,
+    "uri": "/2010-04-01/Accounts/account_sid/Messages/sid.json",
+    "subresource_uris": {
+        "media": "/2010-04-01/Accounts/account_sid/Messages/sid/Media.json"
+    }
+}
