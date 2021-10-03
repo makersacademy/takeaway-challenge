@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'twiliosms'
 
 class Takeaway
 
@@ -29,6 +30,10 @@ class Takeaway
     @cost = 0.00
     add_prices
     "£#{@cost.round(2)}"
+  end
+
+  def place_order(text = TwilioSMS.new)
+    text.send_sms
   end
 
   private

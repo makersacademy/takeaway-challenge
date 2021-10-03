@@ -80,4 +80,13 @@ describe Takeaway do
       expect(shop.sub_total).to eq first_sub_total
     end
   end
+
+  describe '#place_order' do
+    it 'texts confirmation on a placed order' do
+      mock = double("SMS sender")
+      expect(mock).to receive(:send_sms)
+
+      shop.place_order(mock)
+    end
+  end
 end
