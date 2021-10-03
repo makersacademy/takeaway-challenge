@@ -41,16 +41,16 @@ class Takeaway
   #   end
   # end
 
-  def remove_item(item)
-    if basket.include?(item) == false
-      return "this item is not in your basket"
-    else
-      cost = @menu.fetch(item)
-      @total -= cost
-      basket.delete_at(basket.find_index(item))
+  # def remove_item(item)
+  #   if basket.include?(item) == false
+  #     return "this item is not in your basket"
+  #   else
+  #     cost = @menu.fetch(item)
+  #     @total -= cost
+  #     basket.delete_at(basket.find_index(item))
 
-    end
-  end
+  #   end
+  # end
 end
 
 mc_donalds = Takeaway.new
