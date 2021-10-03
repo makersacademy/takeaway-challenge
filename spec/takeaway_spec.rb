@@ -5,7 +5,7 @@ describe Takeaway do
 
   let(:menu) { double(:menu, list: listed_menu) }
 
-  let(:listed_menu) { "Pizza: 8" }
+  let(:listed_menu) { "Pizza: 8.00" }
 
   describe "#list_menu" do
     it "lists menu with dishes and prices" do
