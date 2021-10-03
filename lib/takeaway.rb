@@ -1,7 +1,14 @@
+require 'sms'
+
 class Takeaway 
 
-  def initialize(menu)
-    @menu = menu
+  def initialize(takeaway_menu:, sms_class: nil)
+    #has to have the same name for it to be recognised and passed 
+    @sms = nil 
+    if sms_class
+      @sms = sms_class.new
+    end 
+    @menu = takeaway_menu
   end 
 
   def see_menu
@@ -26,5 +33,18 @@ class Takeaway
       total += price * element[:quantity]
     end 
     total
+  end 
+
+  def delivery_confirmation
+    in_one_hour = (Time.new +3600).strftime("%H:%M")
+    "Thank you. Your order was placed and will be delivered before #{in_one_hour}"
+  end 
+
+  def send_delivery_confirmation
+    if @sms
+      @sms.send_sms(delivery_confirmation, "09790790")
+    else
+      raise "The SMS service has not been initialised" 
+    end 
   end 
 end 
