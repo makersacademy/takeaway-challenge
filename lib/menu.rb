@@ -6,7 +6,7 @@ class Menu
   end
 
   def list
-   dishes.map do |title, price|
+    dishes.map do |title, price|
       "%s £%.2f" % [title, price]
     end.join(", ")
   end

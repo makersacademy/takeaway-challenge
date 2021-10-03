@@ -22,5 +22,6 @@ describe Takeaway do
   end
   it "lets you check your total matches the given total" do
     expect(takeaway.check_total(8.00)).to be_truthy
+    expect(takeaway.check_total(9.00)).to be_falsey
   end
 end

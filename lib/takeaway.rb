@@ -12,19 +12,17 @@ class Takeaway
   end
 
   def add(dish)
-    fail "#{dish} is not on the menu" if !@menu.dishes.key?(dish)
+    fail "#{dish} is not on the menu" unless @menu.dishes.key?(dish)
     @basket << dish
   end
 
   def total
-    @basket
-    basket.map { |key| @menu.dishes[key] }.sum
+    @basket.map { |key| @menu.dishes[key] }.sum
   end
 
   def check_total(num)
     num.to_i
-    if num == total
-      true
-    end
+    return true if num == total
+    return false if num != total
   end
 end
