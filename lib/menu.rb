@@ -1,22 +1,15 @@
 require_relative 'item'
+require 'csv'
 
 class Menu
 
+  attr_reader :list
+
   def initialize
-    @menu = []
-    add("salad", "£5.00")
-    add("sausages", "£10.00")
-    display
+    @list = []
   end
 
   def add(name, price, item = Item.new(name, price))
-    @menu << item
+    @list << item
   end
-
-  def display
-    @menu.each do |item|
-      puts "#{item.name}: #{item.price}"
-    end
-  end
-
 end
