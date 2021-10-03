@@ -2,6 +2,12 @@ Takeaway Challenge
 ==================
 ```
 
+How to use the code
+
+I have stored some simple irb commands in the file ./docs/automate_feature_test.rb.
+Acquire a local copy of the repo, start irb in your terminal, and paste the commands
+in this file. This will enable quick feature testing.
+
 Introduction
 
 I began by thinking about the user stories and the functionality they imply. 
