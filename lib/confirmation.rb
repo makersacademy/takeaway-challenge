@@ -1,4 +1,4 @@
-require_relative "dishes.rb"
+require_relative "takeaway.rb"
 
 class Confirmation 
   #Confirmation --> dishes_selected --> selected_dish_total --> confirmed 
