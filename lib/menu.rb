@@ -12,7 +12,7 @@ class Menu
       { :name => "Pasta", :price => 8.99 },
       { :name => "Vegetable Curry", :price => 6.99 },
       { :name => "Rice", :price => 1.99 },
-      { :name => "Steamed Vegetables", :price => 1.99 }
+      { :name => "Steamed Vegetables", :price => 1.99 },
       { :name => "Acai Bowl", :price => 3.99 }]
   end
 

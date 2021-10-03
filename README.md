@@ -54,6 +54,9 @@ CD into program directory
 ruby menu.rb
 ```
 
+![Start The Order](http://url/to/img.png)
+![Order Confirmation](http://url/to/img.png)
+
 Current Functionality
 -----
 * Users are able to select from a choice of 8 menu items by entering the number corresponding to the dish they want to add.
