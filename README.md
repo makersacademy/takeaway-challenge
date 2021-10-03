@@ -49,12 +49,12 @@ takeaway.confirm # sends a text confirming the order, and clears the order ready
 ```
 
 ## My Approach
-This challenge required a firm grasp of mocking, and tried to implemented mocks for everything except Ruby's Time class (this looked like it required a gem, and didn't have time to figure it out). Every class is tested in isolation, including my best attemps to mock Twilio. 
+This challenge required a firm grasp of mocking. I tried to implemented mocks for everything except Ruby's Time class (this looked like it required a gem as you can't freeze a time and stub it). Every class is tested in isolation, including my best attemps to mock Twilio. 
 
-There were many different approaches I found for this, one being another gem 'twilio_mock' which I couldn't quite grasp, another being creating an entire mock **SMS** class which accurately mimicked Twilio's behaviour and expectations, and then using stub_const in the Rspec spec_helper to replace the real Twilio client. 
+There were many different approaches I found for this, one being another gem 'twilio_mock' which I couldn't quite implement, another being creating an entire mock **SMS** class which accurately mimicked Twilio's behaviour and expectations, and then using stub_const in the Rspec spec_helper to replace the real Twilio client. 
 
-After struggling to get both to work, I tried to mock it as best as possible just with the existing methods. It currently tests that the string passed in with the **.text** method in Takeaway is successfully sent as the **:body** and received by a mock client. I'm not sure how effective this test is.
+After struggling to get both to work, I tried to mock it as best as possible with just the existing methods. It currently tests that the string passed in with the **.text** method in Takeaway is successfully sent as the **:body** and received by a mock client. I'm not sure how effective this test is.
 
-The other tests account for some edge cases but not all, as there were some I were not sure how to handle. The program supports functionality with multiple **Takeaway** objects, each with their own selection of **dishes**, however in theory you could pass the same **Dish** object into multiple takeaways (let's say takeaway1 and takeaway2), and then order this dish in takeaway1's instance from takeaway2.
+The other tests account for some edge cases but not all, as there were some I was not sure how to handle. The program supports functionality with multiple **Takeaway** objects, each with their own selection of **dishes**, however in theory you could pass the same **Dish** object into multiple takeaways (let's say takeaway1 and takeaway2), and then order this dish in takeaway1's instance from takeaway2.
 
-I wasn't sure how to solve this in the time allocated, and think it would probably need a new Class that stores all known takeaways to check if each set of Dishes is unique, perhaps using some sort of id number.
+I couldn't make an efficient in the time allocated. I think it would probably need a new Class that stores all known takeaways to check if each set of Dishes is unique, perhaps using some sort of id number.
