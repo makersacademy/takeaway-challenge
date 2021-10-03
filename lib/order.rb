@@ -1,16 +1,21 @@
 class Order
   def initialize(item)
-    @items = item
+    @basket = item
   end
 
-  def items
-    @items.dup
+  def basket
+    @basket.dup
+  end
+
+  def add(item)
+    @basket << item
   end
 
   def total
-    sum = 0
-    @items.each { |item| sum += item.price }
-    sum
+    @basket.sum(&:price)
   end
 
+  def delivery_time
+    (Time.now + 3600).strftime("%H:%M")
+  end
 end

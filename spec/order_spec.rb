@@ -7,7 +7,7 @@ describe Order do
 
   it "stores selected dishes" do
     order = Order.new([dish1, dish2])
-    expect(order.items).to eq([dish1, dish2])
+    expect(order.basket).to eq([dish1, dish2])
   end
 
   it "shows the total of the items" do

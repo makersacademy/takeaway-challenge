@@ -2,8 +2,8 @@ require_relative 'order'
 require_relative '../sms'
 
 class Takeaway
-  attr_reader :basket
-  def initialize(dishes = [], order_class: Order)
+  attr_reader :current_order
+  def initialize(dishes, order_class: Order)
     @dishes = dishes
     @order_class = Order
   end
@@ -11,7 +11,7 @@ class Takeaway
   def dishes
     @dishes.dup
   end
-  
+
   def menu
     puts dishes.map{ |dish| format(dish) }.join("\n\n")
   end
@@ -21,15 +21,11 @@ class Takeaway
   end
 
   def order(item)
-    @basket ? @basket.items << item : @basket = @order_class.new([item])
-  end
-  
-  def order_time
-    time = Time.now + 3600
-    time.strftime("%H:%M")
+    @current_order ? @current_order.add(item) : @current_order = @order_class.new([item])
   end
 
   def confirm
-    text("Thank you! Your order has been placed and will be delivered by #{order_time}.")
+    text("Thank you! Your order has been placed and will be delivered by #{@current_order.delivery_time}.")
+    @current_order = nil
   end
 end

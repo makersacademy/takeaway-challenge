@@ -20,6 +20,21 @@ describe Takeaway do
 
   it "lets you select dishes and add them to an order" do
     takeaway.order(dish1)
-    expect(takeaway.basket.items).to eq([dish1])
+    expect(takeaway.current_order.basket).to eq([dish1])
+  end
+
+  it "can add multple dishes" do
+    takeaway.order(dish1)
+    takeaway.order(dish2)
+    expect(takeaway.current_order.basket).to eq([dish1, dish2])
+  end
+
+  it "confirms orders with a text" do
+    one_hour_from_now = (Time.now + 3600).strftime("%H:%M")
+    takeaway.order(dish2)
+
+    expect(takeaway).to receive(:text)
+    .with("Thank you! Your order has been placed and will be delivered by #{one_hour_from_now}.")
+    takeaway.confirm
   end
 end
