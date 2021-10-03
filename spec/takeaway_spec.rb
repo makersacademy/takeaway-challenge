@@ -7,6 +7,7 @@ describe Takeaway do
   let(:order) { double("Order", :id => 123, :total => 10) }
   let(:order_class) { double("OrderClass", :new => order) }
   let(:takeaway) { Takeaway.new([dish1, dish2, dish3], order_class: order_class) }
+  one_hour_from_now = (Time.now + 3600).strftime("%H:%M")
 
   it "stores a list of dishes" do
     expect(takeaway.dishes).to eq([dish1, dish2, dish3])
@@ -21,40 +22,44 @@ describe Takeaway do
   end
 
   context 'choosing items:' do
-    before do
-      allow(order).to receive(:add)
-      takeaway.select(dish1)
-    end
+    before { add_1_order(dish1) }
+    after { expect(takeaway.current_order).to eq(order) } # checking there is still an order object
 
     it "lets you select a dish and create an order" do
-      expect(takeaway.current_order).to eq(order_class.new([dish1]))
+      # checking it makes an Order object
     end
 
-    it "lets you reset your current order" do
-      allow(order).to receive(:clear_basket)
-      takeaway.reset_order
-      allow(order).to receive(:basket).and_return([])
-      expect(takeaway.current_order.basket).to eq([])
-    end
-
-    it "lets you add another dishes" do
-      takeaway.select(dish2)
-      expect(takeaway.current_order).to eq(order_class.new([dish1, dish2]))
+    it "lets you add another dish" do
+      expect(order).to receive(:add).with(dish2)
+      takeaway.select_dish(dish2)
     end
   
     it "lets you add multiple of the same dish" do
-      takeaway.select(dish1, 3)
-      expect(takeaway.current_order).to eq(order_class.new([dish1, dish1, dish1]))
+      expect(order).to receive(:add).with(dish1).exactly(3).times
+      takeaway.select_dish(dish1, 3)
     end
 
+    it "lets you remove dishes from the order" do
+      expect(order).to receive(:remove).with(dish1)
+      takeaway.remove_dish(dish1)
+    end
+
+    it "lets you reset your current order" do
+      expect(order).to receive(:clear_basket)
+      takeaway.reset_order
+    end
+  end
+
+  context 'sending texts:' do
     it "confirms order with a text" do
-      one_hour_from_now = (Time.now + 3600).strftime("%H:%M")
+      add_1_order(dish1)
       allow(order).to receive(:delivery_time).and_return(one_hour_from_now)
-  
+    
       expect(takeaway.sms_client).to receive(:text)
       .with("Thank you! Your order ##{order.id} totalling £#{order.total} has been placed "\
-            "and will be delivered by #{one_hour_from_now}.")
+        "and will be delivered by #{one_hour_from_now}.")
       takeaway.confirm_order
+      expect(takeaway.current_order).to eq(nil)
     end
   end
 
@@ -65,7 +70,12 @@ describe Takeaway do
 
     it "doesn't let you select a dish not in the menu" do
       other_dish = double("Other Dish")
-      expect { takeaway.select(other_dish) }.to raise_error("Please select a dish from this takeaway.")
+      expect { takeaway.select_dish(other_dish) }.to raise_error("Please select a dish from this takeaway.")
     end
   end
+end
+
+def add_1_order(dish)
+  expect(order).to receive(:add).with(dish) # Dish class handles the actual adding and removing
+  takeaway.select_dish(dish)
 end

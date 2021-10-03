@@ -19,14 +19,18 @@ class Takeaway
     puts dishes.map { |dish| format(dish) }.join("\n\n")
   end
 
-  def select(dish, quantity = 1)
+  def select_dish(dish, quantity = 1)
     dish_check(dish)
     @current_order ||= @order_class.new
     quantity.times{ @current_order.add(dish) }
   end
+
+  def remove_dish(dish)
+    @current_order.remove(dish)
+  end
   
   def reset_order
-    @current_order&.clear_basket
+    @current_order.clear_basket
   end
 
   def sms_client

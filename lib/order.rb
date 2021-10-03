@@ -13,6 +13,10 @@ class Order
     @basket << item
   end
 
+  def remove(item)
+    @basket.delete(item)
+  end
+
   def total
     @basket.sum(&:price)
   end

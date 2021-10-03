@@ -17,7 +17,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 # Takeaway Challenge
-In this app, you can create **Takeaway** objects and pass dishes into them, which can then be displayed by that Takeaway in a menu format. The user can **.select** dishes from the menu and it will create an **Order**, storing them in a **basket**. You can then see the **.total** cost of the current items, and **confirm_order** to receive a text notification summarising the order, and estimating the delivery as 1 hour from when you confirmed it.
+In this app, you can create **Takeaway** objects and pass dishes into them, which can then be displayed by that Takeaway in a menu format. The user can select dishes from the menu and it will create an **Order**, storing them in a **basket**. You can then see the **.total** cost of the current items, and **confirm_order** to receive a text notification summarising the order, and estimating the delivery as 1 hour from when you confirmed it.
 
 ## Using the application in irb
 ```
@@ -38,8 +38,8 @@ takeaway = Takeaway.new([dish1, dish2])
 takeaway.menu
 # shows the menu
 
-takeaway.select(dish1, #optional quantity(integer))  # must be a dish object
-takeaway.select(dish2, #optional quantity(integer))
+takeaway.select_dish(dish1, #optional quantity(integer))  # must be a dish object
+takeaway.select_dish(dish2, #optional quantity(integer))
 
 takeaway.reset_order # if you changed your mind and want to start again
 
