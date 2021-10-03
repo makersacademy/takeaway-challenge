@@ -8,6 +8,10 @@ class Customer
     @m_takeaway = Takeaway.new
   end
 
+  def readmenu
+    m_takeaway.list_menu
+  end
+
   def add_item(item)
     if m_takeaway.menu.key?(item)
       @basket.push(item)
