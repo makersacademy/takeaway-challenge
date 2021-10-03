@@ -81,3 +81,60 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+README.md
+
+### Design 
+
+ TakeAway |  msg       |  Menu     | 
+--------  |---------|----------
+          |1 --->   |
+          |2 --->   |
+          |3 --->   | 
+          |4 --->   | 
+          |         ]
+
+messages
+1-List_of_dishes 
+2-select_dishes
+3-check the total 
+4-recieve a text
+
+Description
+-----------
+Example answers used fom Sam Morgan cooach exemplary answers. 
+
+USER STORY 1
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+---
+Notes 
+---
+
+USER STORY 2
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+---
+Notes 
+---
+
+USER STORY 3
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+---
+Notes 
+---
+
+USER STORY 4
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+---
+Notes 
+---
+
+Gems used add this to gemfile. 
