@@ -1,5 +1,6 @@
 require './lib/menu'
 require './lib/dish'
+require './lib/order'
 
 d1 = Dish.new("Chicken Korma", 8.99)
 d2 = Dish.new("Pilau Rice", 2.99)
@@ -14,3 +15,7 @@ menu.add_dish(d2)
 menu.add_dish(d3)
 menu.add_dish(d4)
 menu.add_dish(d5)
+
+order = Order.new
+
+order.add_menu(menu)

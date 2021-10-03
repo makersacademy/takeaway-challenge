@@ -1,6 +1,6 @@
 /**/.DS_Store
 /coverage
-/ignore.env
+/.env
 
 # Local cache of Rubocop remote config
 .rubocop-*

@@ -1,3 +1,5 @@
+require './lib/send_sms'
+
 class Order
 
   attr_reader :menu
@@ -20,6 +22,11 @@ class Order
 
   def total
     total = @order.values.sum
+  end
+
+  def place_order
+    sms = SMS.new
+    sms.send_sms
   end
 
 end

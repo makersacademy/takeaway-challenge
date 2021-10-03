@@ -44,4 +44,16 @@ describe Order do
       expect(subject.total).to eq 11.98
     end
   end
+  describe '#place_order' do
+    it 'main responds to place_order' do
+      expect(subject).to respond_to(:place_order)
+    end
+    it 'calls sms' do
+      SMS = double('SMS')
+      sms = double('sms')
+      allow(SMS).to receive_messages(:new => sms)
+      allow(sms).to receive_messages(:send_sms => "An order has been placed")
+      expect(subject.place_order).to eq "An order has been placed"
+    end
+  end
 end
