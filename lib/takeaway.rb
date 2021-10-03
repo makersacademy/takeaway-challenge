@@ -17,8 +17,13 @@ class Takeaway
   end
 
   def add_to_order(dish, num)
-    dish.to_i.between?(1, @menu.items.count) ? (num.to_i).times { (@order.items << @menu.items[dish.to_i - 1]) } : (puts "That is not a dish on the menu" && serve_customer)
-    puts "#{@menu.items[dish.to_i - 1].name} x #{num} added to the order"
+    if dish.to_i.between?(1, @menu.items.count)
+      (num.to_i).times { (@order.items << @menu.items[dish.to_i - 1]) }
+      puts "#{@menu.items[dish.to_i - 1].name} x #{num} added to the order"
+    else
+      puts "The dish number you entered is not on the menu"
+      serve_customer
+    end
   end
 
   def check_total
@@ -42,7 +47,12 @@ class Takeaway
   end
 
   def valid_input(input)
-    input.match(/^(\d)+$/) ? input : (puts "Sorry, that input wasn't recognised" && serve_customer)
+    if input.match(/^(\d)+$/)
+      input
+    else 
+      puts "Sorry, that input wasn't recognised" 
+      serve_customer
+    end
   end
 
   def print_options 
