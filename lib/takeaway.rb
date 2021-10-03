@@ -22,7 +22,7 @@ class Takeaway
   def select_dish(dish, quantity = 1)
     dish_check(dish)
     @current_order ||= @order_class.new
-    quantity.times{ @current_order.add(dish) }
+    quantity.times { @current_order.add(dish) }
   end
 
   def remove_dish(dish)
