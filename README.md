@@ -1,7 +1,7 @@
 Anthony's Takeaway Challenge
 =================
 [Readme adapted from here](https://github.com/makersacademy/takeaway-challenge)
-==================
+
 ```
                             _________
               r==           |       |
