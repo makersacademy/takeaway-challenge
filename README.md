@@ -38,8 +38,8 @@ takeaway = Takeaway.new([dish1, dish2])
 takeaway.menu
 # shows the menu
 
-takeaway.select(dish1)  # must be a dish object
-takeaway.select(dish2)
+takeaway.select(dish1, #optional quantity(integer))  # must be a dish object
+takeaway.select(dish2, #optional quantity(integer))
 
 takeaway.reset_order # if you changed your mind and want to start again
 

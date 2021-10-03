@@ -20,8 +20,11 @@ describe Takeaway do
     expect { takeaway.menu }.to output(output).to_stdout
   end
 
-  context 'selecting dishes:' do
-    before { takeaway.select(dish1) }
+  context 'choosing items:' do
+    before do
+      allow(order).to receive(:add)
+      takeaway.select(dish1)
+    end
 
     it "lets you select a dish and create an order" do
       expect(takeaway.current_order).to eq(order_class.new([dish1]))
@@ -34,10 +37,14 @@ describe Takeaway do
       expect(takeaway.current_order.basket).to eq([])
     end
 
-    it "lets you add another multiple dishes" do
-      allow(order).to receive(:add)
+    it "lets you add another dishes" do
       takeaway.select(dish2)
       expect(takeaway.current_order).to eq(order_class.new([dish1, dish2]))
+    end
+  
+    it "lets you add multiple of the same dish" do
+      takeaway.select(dish1, 3)
+      expect(takeaway.current_order).to eq(order_class.new([dish1, dish1, dish1]))
     end
 
     it "confirms order with a text" do

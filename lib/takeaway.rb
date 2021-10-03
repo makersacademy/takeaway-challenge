@@ -19,9 +19,10 @@ class Takeaway
     puts dishes.map { |dish| format(dish) }.join("\n\n")
   end
 
-  def select(dish)
+  def select(dish, quantity = 1)
     dish_check(dish)
-    @current_order ? @current_order.add(dish) : @current_order = @order_class.new([dish])
+    @current_order ||= @order_class.new
+    quantity.times{ @current_order.add(dish) }
   end
   
   def reset_order
