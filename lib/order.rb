@@ -8,7 +8,6 @@ class Order
     @dishes_ordered = {}
     @menu = menu
     @order_total = 0
-    @orders
   end
 
   def add_dish_to_order(name, quantity)
@@ -17,10 +16,10 @@ class Order
   end
 
   def list_order
-    orders = dishes_ordered.each do |dish, quantity|
+    dishes_ordered.each do |dish, quantity|
       "%s: %02d" % [dish, quantity]
     end
-    orders
+    
   end
 
   def calculate_total(menu)
