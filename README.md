@@ -17,8 +17,10 @@ I was able to complete the functionality of the code to a good level, I had prob
         from /Users/emmanuel/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
         from /Users/emmanuel/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
  => 1 
+
 3.0.2 :009 > mcdonalds.add_items("fries", 3)
  => 3 
+
 3.0.2 :010 > mcdonalds.order
  => 
 #<Order:0x0000000138ba79d8
@@ -31,5 +33,6 @@ I was able to complete the functionality of the code to a good level, I had prob
    #<Dish:0x0000000138e7c168 @name="fries", @price=2.99>],
  @menu={:fries=>2.99, :burger=>4.99, :coke=>1.99, :fanta=>1.49, :pizza=>10.49, :lasagna=>5.99, :sprite=>1.49, :nachos=>3.49, :popcorn=>1.49},
  @total=13.96> 
+ 
 3.0.2 :011 > mcdonalds.complete_order
  => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 22:45 num_segments: 1 direction: outbound-api from: +447897017954 to: +447956093846 date_updated: 2021-10-03 20:45:28 +0000 price:  error_message:  uri: /2010-04-01/Accounts/AC89329d06bcc6a8d0c85b99f198937bc1/Messages/SMb4925b496a194bad81422495d59490e8.json account_sid: AC89329d06bcc6a8d0c85b99f198937bc1 num_media: 0 status: queued messaging_service_sid:  sid: SMb4925b496a194bad81422495d59490e8 date_sent:  date_created: 2021-10-03 20:45:28 +0000 error_code:  price_unit: USD api_version: 2010-04-01 subresource_uris: {"media"=>"/2010-04-01/Accounts/AC89329d06bcc6a8d0c85b99f198937bc1/Messages/SMb4925b496a194bad81422495d59490e8/Media.json"}>
