@@ -102,16 +102,16 @@ Firstly within each user story the nouns and verbs were found and listed as obje
 > So that I can order the meal I want\
 > I would like to be able to select some number of several available dishes
 > - Objects:
->   - meal
+>   - order
 >   - dishes
 > - Messages:
->   - order
+>   - complete order
 
 > As a customer\
 > So that I can verify that my order is correct\
 > I would like to check that the total I have been given matches the sum of the various dishes in my order
 > - Objects:
->   - total meal price
+>   - total price
 > - Messages:
 >   - matches
 
@@ -130,5 +130,29 @@ Firstly within each user story the nouns and verbs were found and listed as obje
 The second step was to create a domain model using the objects and messages that I had found.
 
 Please see [draw.io](https://app.diagrams.net/) to view the domain model file [Domain Model - Takeaway](https://github.com/TTurvey/takeaway-challenge/domain_model_takeaway)
+
+
+## How to use the code in irb
+The menu class is responsible for creating and saving a menu.
+
+    require './docs/takeaway_menu'
+    menu = Menu.new
+    menu.load
+    menu.add("burger", 10)
+    menu.add("chips", 5)
+    menu.save
+    menu.print
+
+The order class can then load the pre-saved menu and complete an order.
+
+    require './docs/takeaway_menu'
+    order = Order.new
+    order.menu
+    order.add("burger")
+    order.add("chips")
+    order.pending
+    order.delete("burger")
+    order.total_price
+    order.complete
 
 
