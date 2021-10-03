@@ -1,7 +1,7 @@
 require 'takeaway_app'
 
 describe TakeawayApp do
-  it { is_expected.to respond_to(:basket) }
+ 
   let(:menu) { double(:menu, print: 'Menu List')}
   
   let(:dish1) { double(:dish, name: "Korma", price: 5.00) }
@@ -41,10 +41,10 @@ describe TakeawayApp do
 
   end
 
-  describe "#submit_order" do
+  describe "#confirm_order" do
     
     it "should send a text confirmation" do
-      expect
+      expect(app.confirm_order).to eq "text sent"
     end
 
   end

@@ -21,10 +21,19 @@ class TakeawayApp
   end
 
   def confirm_order
-    
+    puts "success, order sent"
+    @sender.send_text(
+      "Thanks for your order, it has been placed and will be delivered by #{time_an_hour_from_now}}"
+    )
   end
 
   private
+
+  def time_an_hour_from_now
+    
+    (Time.now + 1*60*60).to_s.split[1][0,5]
+    
+  end
 
   def total
     total = 0.00
@@ -32,3 +41,4 @@ class TakeawayApp
     total
   end
 end
+
