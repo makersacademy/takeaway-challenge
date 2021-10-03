@@ -16,4 +16,6 @@ describe SMS do
     sms.text(test_str)
   end
 
+  # I'm not sure if this is a good test, all it shows it that any client will get passed
+  # the :to :from and :body from the .text method
 end

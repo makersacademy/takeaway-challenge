@@ -1,5 +1,7 @@
 class Order
+  attr_reader :id
   def initialize(item)
+    @id = self.object_id
     @basket = item
   end
 

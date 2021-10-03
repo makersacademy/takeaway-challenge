@@ -7,7 +7,7 @@ class Takeaway
 
   def initialize(dishes, order_class: Order)
     @dishes = dishes
-    @order_class = Order
+    @order_class = order_class
   end
 
   def dishes
@@ -22,16 +22,16 @@ class Takeaway
     "Dish: #{dish.name}\nPrice: £#{dish.price}"
   end
 
-  def order(item)
+  def select(item)
     @current_order ? @current_order.add(item) : @current_order = @order_class.new([item])
   end
   
-  def confirm
-    @@sms_client.text("Thank you! Your order has been placed "\
-    "and will be delivered by #{@current_order.delivery_time}.")
+  def confirm_order
+    @@sms_client.text("Thank you! Your order ##{@current_order.id} totalling £#{@current_order.total} "\
+    "has been placed and will be delivered by #{@current_order.delivery_time}.")
     @current_order = nil
   end
-
+  
   def sms_client
     @@sms_client
   end
