@@ -1,13 +1,14 @@
 class TakeawayApp
   attr_accessor :basket
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, sender = TwilioSender.new)
     @basket = []
     @menu = menu
+    @sender = sender
   end
 
   def view_dishes
-    @menu.print
+    puts @menu.print
   end
 
   def add_dish(dish_name, quantity)
@@ -16,7 +17,11 @@ class TakeawayApp
 
   def view_basket
     basket_components = @basket.map { |dish| "#{dish.name}: £#{dish.price}" } << "Total: £#{total}"
-    basket_components.join(" \n")
+    puts basket_components.join(" \n")
+  end
+
+  def confirm_order
+    
   end
 
   private

@@ -3,14 +3,17 @@ require 'takeaway_app'
 describe TakeawayApp do
   it { is_expected.to respond_to(:basket) }
   let(:menu) { double(:menu, print: 'Menu List')}
-  let(:app) { TakeawayApp.new(menu) }
+  
   let(:dish1) { double(:dish, name: "Korma", price: 5.00) }
   let(:dish2) { double(:dish, name: "Jalfrezi", price: 6.99) }
-
+  let(:twilio) { double(:twilio_sender, send_text: "text sent") }
+  let(:app) { TakeawayApp.new(menu, twilio) }
   describe "#view_dishes" do
 
     it "is expected to show dishes on the menu" do #me
-      expect(app.view_dishes).to eq "Menu List"
+     
+      expect{ app.view_dishes }.to output("Menu List\n").to_stdout
+      
     end
 
   end
@@ -33,7 +36,15 @@ describe TakeawayApp do
       app.basket << dish1
       app.basket << dish2
 
-      expect(app.view_basket).to eq "Korma: £5.0 \nJalfrezi: £6.99 \nTotal: £11.99"
+      expect{ app.view_basket }.to output("Korma: £5.0 \nJalfrezi: £6.99 \nTotal: £11.99\n").to_stdout
+    end
+
+  end
+
+  describe "#submit_order" do
+    
+    it "should send a text confirmation" do
+      expect
     end
 
   end
