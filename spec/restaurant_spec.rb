@@ -16,14 +16,11 @@ describe Restaurant do
       subject.complete_order
       expect(subject.order_history[0]).to be_a Order 
     end
-=begin
+
     it "should send a message to the users phone with a estimated delivery time" do
-      fake = FakeSender.new
-      subject.complete_order
-      expect(fake.messages[0]).to be_a FakeSender
+      expect(subject.complete_order[0]).to be_a Struct
     end
-=end
-end
+  end
 
   describe ".start_order" do 
     it "should create a fresh instance of the order class" do 
