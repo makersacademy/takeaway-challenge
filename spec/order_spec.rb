@@ -1,9 +1,18 @@
-require "menu"
+require "order"
 
-describe Menu do
-  describe "#see_list" do
-    it "returns a list of dishes" do
-      expect(subject.see_list()).to eq subject.list
+describe Order do
+  
+      
+  describe "#see_menu" do
+    #   let(:menu) { double "menu", :list => {
+    #     1 => "cod £5",
+    #     2 => "fishcake £4",
+    #     3 => "chips £3"
+    #   }}
+    # before(:each) do order = Order.new(menu: menu)
+    # end
+    it "returns a menu of dishes" do
+      expect(subject.see_menu).to eq subject.menu
     end
   end
 
@@ -11,7 +20,7 @@ describe Menu do
     
     it "creates a list of selected dishes" do
       subject.place_order(1, 2)
-      expect(subject.order).to eq subject.list.slice(1, 2)
+      expect(subject.order).to eq subject.menu.slice(1, 2)
     end
 
     it "returns a total cost for the meal" do
@@ -27,7 +36,7 @@ describe Menu do
   end
 
   describe "#confirm_order" do
-    let(:sms_sender) { double SmsSender, :new => true, :send_text => true }
+    let(:fake_sms_sender) { double SmsSender, :new => true, :send_text => true }
     # it "creates a message confirming delivery before 1 hours time" do
     #   subject.place_order(1, 2)
     #   t = Time.new
@@ -37,8 +46,8 @@ describe Menu do
     # end
 
     it "uses the send_text method to send delivery_message" do
-      menu = Menu.new(sms_sender)
-      expect(menu.confirm_order).to be_truthy
+      order = Order.new(sms_sender: fake_sms_sender)
+      expect(order.confirm_order).to be_truthy
     end
   end
 

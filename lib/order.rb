@@ -1,24 +1,27 @@
 require 'twilio-ruby'
+require 'sms_sender'
+require 'menu'
 
-class Menu
-  attr_reader :list, :order, :total, :delivery_message
+class Order
+  attr_reader :menu, :order, :total, :delivery_message
 
-  def initialize(sms_sender = SmsSender)
+  def initialize(sms_sender: sms_sender = SmsSender, menu: menu = Menu.new)
     @list = {
       1 => "cod £5",
       2 => "fishcake £4",
       3 => "chips £3"
     }
+    @menu = menu.list
     @order = []
     @sms_sender = sms_sender
   end
 
-  def see_list
-    @list
+  def see_menu
+    @menu
   end
 
   def place_order(*item)
-    @order = @list.slice(*item)
+    @order = @menu.slice(*item)
     @total = @order.values.map { |v| v.match(/\d/)[0].to_i }.sum
   end
 
