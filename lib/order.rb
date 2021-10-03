@@ -5,7 +5,7 @@ require 'menu'
 class Order
   attr_reader :menu, :order, :total, :delivery_message
 
-  def initialize(sms_sender: sms_sender = SmsSender, menu: menu = Menu.new)
+  def initialize(sms_sender: sms_sender = SmsSender.new, menu: menu = Menu.new)
     @list = {
       1 => "cod £5",
       2 => "fishcake £4",
@@ -30,13 +30,8 @@ class Order
   end
 
   def confirm_order
-    @delivery_message = "Thank you! Your order was placed
-    and will be delivered before #{time_plus_1hour}"
-    sms_delivery_message(sms_sender = @sms_sender.new(@delivery_message))
-  end
-
-  def sms_delivery_message(sms_sender)
-    sms_sender.send_text
+    @delivery_message = "Thank you! Your order was placed and will be delivered before #{time_plus_1hour}"
+    @sms_sender.send_text(@delivery_message)
   end
 
   private
