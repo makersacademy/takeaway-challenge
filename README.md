@@ -65,7 +65,7 @@ Current Bugs
 - Crashing the app
 - Causing erroneous items to be added.
 
-* Hints on functionality to implement:
+## Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
