@@ -6,7 +6,7 @@ describe Takeaway do
   let(:dish3) { double("Dish3", :name => "Chicken", :price => 5) }
   let(:order) { double("Order", :id => 123, :total => 10) }
   let(:order_class) { double("OrderClass", :new => order) }
-  let(:takeaway) { Takeaway.new([dish1, dish2, dish3], order_class: order_class) }
+  let(:takeaway) { described_class.new([dish1, dish2, dish3], order_class: order_class) }
   one_hour_from_now = (Time.now + 3600).strftime("%H:%M")
 
   it "stores a list of dishes" do
@@ -58,7 +58,7 @@ describe Takeaway do
       .with("Thank you! Your order ##{order.id} totalling £#{order.total} has been placed "\
         "and will be delivered by #{one_hour_from_now}.")
     end
-    
+
     it "confirms order with a text" do
       takeaway.confirm_order
     end

@@ -19,6 +19,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 # Takeaway Challenge
 In this app, you can create **Takeaway** objects and pass dishes into them, which can then be displayed by that Takeaway in a menu format. The user can select dishes from the menu and it will create an **Order**, storing them in a **basket**. You can then see the **.total** cost of the current items, and **confirm_order** to receive a text notification summarising the order, and estimating the delivery as 1 hour from when you confirmed it.
 
+Includes 21/21 tests passing, 100% coverage across 158 lines in 8 files
+
 ## Using the application in irb
 ```
 irb
