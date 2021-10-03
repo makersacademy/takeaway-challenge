@@ -49,5 +49,8 @@ Message | send_message
 
 
 - I was able to complete the first three user stories with 100% coverage with 0 offenses on RuboCop
-- As seen in the table above, I intended to create an 'Order' class which would contain the calculate_total method. Unfortunately after trying several times to do this, I wasn't able to get all the classes communicating properly, so I need to spend more time learning about dependency injection and how to implement the core concepts of OOD in my code.
+
+**Blockers**
+- As seen in the table above, I intended to create an 'Order' class which would contain the calculate_total method. Unfortunately after trying several times to do this, I wasn't able to get all the classes communicating properly, so had to keep the majority of code in 'Takeaway'. I need to spend more time learning about dependency injection and how to implement the core concepts of OOD in my code.
+- Implementing doubles: I'm still not 100% sure when it's appropriate to use them and when not to, so I'll need to spend extra time researching this.
 
