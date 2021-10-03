@@ -3,14 +3,14 @@ class Menu
   attr_reader :menu
 
   def initialize
-    @menu = [{:name=>"Risotto", :price => 7.99},
-      {:name=>"Large Pizza", :price => 12.99},
-      {:name=>"Fried Chicken", :price => 6.99},
-      {:name=>"Green Salad", :price => 5.99},
-      {:name=>"Pasta", :price => 8.99},
-      {:name=>"Vegetable Curry", :price => 6.50},
-      {:name=>"Rice", :price => 1.99},
-      {:name=>"Steamed Vegetables", :price => 1.99}]
+    @menu = [{ :name => "Risotto", :price => 7.99 },
+      { :name => "Large Pizza", :price => 12.99 },
+      { :name => "Fried Chicken", :price => 6.99 },
+      { :name => "Green Salad", :price => 5.99 },
+      { :name => "Pasta", :price => 8.99 },
+      { :name => "Vegetable Curry", :price => 6.50 },
+      { :name => "Rice", :price => 1.99 },
+      { :name => "Steamed Vegetables", :price => 1.99 }]
   end
 
   def display
