@@ -7,7 +7,7 @@ class Text
     @time = nil
   end 
 
-  def text(order)
+  def text(_order)
     delivery_time
     "Thank you! Your order was placed and will be delivered before #{time}"
   end

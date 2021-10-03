@@ -48,7 +48,7 @@ private
     @text = @text.text(order)
   end 
 
-  def send_text(text)
+  def send_text(_text)
     @sender.send_text(@text)
   end
   

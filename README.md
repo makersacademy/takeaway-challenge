@@ -1,83 +1,35 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+Upon initializing a instance of the Restaurant class, a user is able to create orders and receive a text message to their phone upon completing their order. 
 
- ```
+Users can also see view a menu, and there are internal checks taken when an order is completed to ensure the total was correctly calculated.
 
-Instructions
--------
+I've included an exerpt of the code's functionality in irb below. In this script you can see the error message which arises when a user tries to order something not on the menu, and you can see how a user is able to add items to, and complete an order which then sends a Twilio text to their phone. 
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+I was able to complete the functionality of the code to a good level, I had problems with the testing however and I need to look into how to 
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
-
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+3.0.2 :007 > mcdonalds.add_items("sweets")
+/Users/emmanuel/Projects/takeaway-challenge/lib/order.rb:41:in `dish_creator': This dish is not on the menu (RuntimeError)
+        from /Users/emmanuel/Projects/takeaway-challenge/lib/order.rb:16:in `block in add_dish'
+        from /Users/emmanuel/Projects/takeaway-challenge/lib/order.rb:15:in `times'
+        from /Users/emmanuel/Projects/takeaway-challenge/lib/order.rb:15:in `add_dish'
+        from /Users/emmanuel/Projects/takeaway-challenge/lib/restaurant.rb:29:in `add_items'
+        from (irb):7:in `<main>'
+        from /Users/emmanuel/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/emmanuel/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/emmanuel/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+ => 1 
+3.0.2 :009 > mcdonalds.add_items("fries", 3)
+ => 3 
+3.0.2 :010 > mcdonalds.order
+ => 
+#<Order:0x0000000138ba79d8
+ @dish=nil,
+ @dish_class=Dish,
+ @dishes=
+  [#<Dish:0x000000011c82ea70 @name="burger", @price=4.99>,
+   #<Dish:0x0000000138e7c2a8 @name="fries", @price=2.99>,
+   #<Dish:0x0000000138e7c208 @name="fries", @price=2.99>,
+   #<Dish:0x0000000138e7c168 @name="fries", @price=2.99>],
+ @menu={:fries=>2.99, :burger=>4.99, :coke=>1.99, :fanta=>1.49, :pizza=>10.49, :lasagna=>5.99, :sprite=>1.49, :nachos=>3.49, :popcorn=>1.49},
+ @total=13.96> 
+3.0.2 :011 > mcdonalds.complete_order
+ => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 22:45 num_segments: 1 direction: outbound-api from: +447897017954 to: +447956093846 date_updated: 2021-10-03 20:45:28 +0000 price:  error_message:  uri: /2010-04-01/Accounts/AC89329d06bcc6a8d0c85b99f198937bc1/Messages/SMb4925b496a194bad81422495d59490e8.json account_sid: AC89329d06bcc6a8d0c85b99f198937bc1 num_media: 0 status: queued messaging_service_sid:  sid: SMb4925b496a194bad81422495d59490e8 date_sent:  date_created: 2021-10-03 20:45:28 +0000 error_code:  price_unit: USD api_version: 2010-04-01 subresource_uris: {"media"=>"/2010-04-01/Accounts/AC89329d06bcc6a8d0c85b99f198937bc1/Messages/SMb4925b496a194bad81422495d59490e8/Media.json"}>
