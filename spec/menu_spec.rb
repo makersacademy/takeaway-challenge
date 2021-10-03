@@ -9,15 +9,15 @@ describe Menu do
     end
   end
 
-  describe "#welcome" do
+  describe "#print_welcome" do
     it 'outputs a welcome message' do
-      expect { menu.welcome }.to output("Welcome to Sergei's takeaway\n").to_stdout
+      expect { menu.print_welcome }.to output("Welcome to Sergei's takeaway\n").to_stdout
     end
   end
 
   describe "#order_food" do
     it 'outputs a message' do
-      expect { menu.order_food }.to output("Enter the menu number\n").to_stdout
+      expect { menu.order_food }.to output("Enter the number of the menu item to add to your order: \n").to_stdout
     end
   end
 end
