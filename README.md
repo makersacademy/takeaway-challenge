@@ -32,7 +32,7 @@ My approach to this challenge was to work through each individual user story, br
 Task Acceptance Criteria
 -----
 
-* Create a takeaway application that allows users to create orders and receive an sms text message using Twilio API.
+* Create a takeaway application that allows users to create orders and receive an sms text message using the Twilio API.
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
 * The code is elegant: every class has a clear responsibility, methods are short etc.
@@ -127,9 +127,9 @@ order.add_dish_to_order('Steak', 2) => 2
 ```
 List orders
 ```
-order.calculate_total(menu) => "37.00"
+order.calculate_total(menu) => "£37.00"
 ```
-To send a confirmation text, set environment variable to the following:
+To send a confirmation text, set environment variables to the following:
 ```
 ACCOUNT_SID = Your Twilio account sid
 AUTH_TOKEN = Your Twilio authenication token
