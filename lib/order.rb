@@ -1,6 +1,6 @@
 class Order
   attr_reader :id
-  def initialize(item)
+  def initialize(item) # inside Order, dishes are referred to as items
     @id = self.object_id
     @basket = item
   end

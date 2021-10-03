@@ -23,15 +23,19 @@ class Takeaway
     "Dish: #{dish.name}\nPrice: £#{dish.price}"
   end
 
-  def select(item)
-    check(item)
-    @current_order ? @current_order.add(item) : @current_order = @order_class.new([item])
+  def select(dish)
+    dish_check(dish)
+    @current_order ? @current_order.add(dish) : @current_order = @order_class.new([dish])
   end
   
+  def order_summary
+    "Thank you! Your order ##{@current_order.id} totalling £#{@current_order.total} "\
+    "has been placed and will be delivered by #{@current_order.delivery_time}."
+  end
+
   def confirm_order
-    raise "Please make an order first" if @current_order.nil?
-    @@sms_client.text("Thank you! Your order ##{@current_order.id} totalling £#{@current_order.total} "\
-    "has been placed and will be delivered by #{@current_order.delivery_time}.")
+    order_check
+    @@sms_client.text(order_summary)
     @current_order = nil
   end
 
@@ -39,8 +43,12 @@ class Takeaway
     @current_order.clear_basket if @current_order
   end
 
-  def check(item)
-    raise "Please select a dish from this takeaway." if !@dishes.include?(item)
+  def dish_check(dish)
+    raise "Please select a dish from this takeaway." if !@dishes.include?(dish)
+  end
+
+  def order_check
+    raise "Please make an order first" if @current_order.nil?
   end
 
   def sms_client
