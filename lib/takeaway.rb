@@ -1,38 +1,28 @@
-require 'menu'
-
 class TakeAway
+MENU = [:burger, :pizza, :chips]
+PRICE = [5, 4, 3]
+    attr_accessor :item
+    attr_accessor :dishlist
 
-    def initialize(item = Menu.new.random_dish, quantity = rand(1..5))
-        @item = item
-        @quantity = quantity
-        @order = []
+    def initialize
+        @quantity = 0
+        @price = 0
+        @total_price = 0
+        @order_summary = []
+        @count = 0
     end 
 
-    def see_dishes
-        DISHLIST
+    def see_menu
+        MENU
     end
 
-    def select(item, quantity)
-        quantity.times do 
-            @order << item
-        end
+    def select(item, price, quantity)
+        fail "Selected item not available. Please see menu." if !MENU.include?(item)
+        @order_summary << "#{item} x#{quantity}"
+        @total_price += (price * quantity)
     end
 
     def total_order
-        @order
+        "Order Summary: #{@order_summary[0]} Price Total: £#{@total_price}"
     end
-
-    def print_item
-        @item
-    end
-
-    DISHLIST = [:burger, :pizza, :chips]
-
-    # def num_of_item(quantity)
-    #     quantity = rand(1..5)
-    # end 
-    # # def add_to_order 
-
-    # # end
-
 end 
