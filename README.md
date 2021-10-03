@@ -8,6 +8,7 @@ My work on the Takeaway Challenge for Makers Academy week 2
 This program lets the user:
 - look at the menus of different restaurants
 - order food and drink items 
+- remove items from the basket
 - see their current balance
 - get texted with a delivery time
 
@@ -39,7 +40,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 **Improvements that are possible**
 
 * Allow ability to order from multiple restaurants
-* Let customer subtract items from order
 * Put order information into text 
 * Implement the ability to place orders via text message
 * Improve stubbing in tests
