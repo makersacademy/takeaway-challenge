@@ -16,10 +16,10 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-## Takeaway Challenge
+# Takeaway Challenge
 In this app, you can create **Takeaway** objects and pass dishes into them, which can then be displayed by that Takeaway in a menu format. The user can **.select** dishes from the menu and it will create an **Order**, storing them in a **basket**. You can then see the **.total** cost of the current items, and **confirm_order** to receive a text notification summarising the order, and estimating the delivery as 1 hour from when you confirmed it.
 
-# Using the application in irb
+## Using the application in irb
 ```
 irb
 
@@ -48,7 +48,13 @@ takeaway.total # returns the total cost of the current order
 takeaway.confirm # sends a text confirming the order, and clears the order ready for a new one
 ```
 
-# My Approach
-This challenge required a firm grasp of mocking, and tried to implemented mocks for everything except Ruby's Time class (this looked like it required a gem, and didn't have time to figure it out). Every class is tested in isolation, including my best attemps to mock Twilio. There were many different approaches I found for this, one being another gem 'twilio_mock' which I couldn't quite grasp, another being creating an entire mock **SMS** class which accurately mimicked Twilio's behaviour and expectations, and then using stub_const in the Rspec spec_helper to replace the real Twilio client. After struggling to get both to work, I tried to mock it as best as possible just with the existing methods. It currently tests that the string passed in with the **.text** method in Takeaway is successfully sent as the **:body** and received by a mock client. I'm not sure how effective this test is.
+## My Approach
+This challenge required a firm grasp of mocking, and tried to implemented mocks for everything except Ruby's Time class (this looked like it required a gem, and didn't have time to figure it out). Every class is tested in isolation, including my best attemps to mock Twilio. 
 
-The other tests account for some edge cases but not all, as there were some I were not sure how to handle. The program supports functionality with multiple **Takeaway** objects, each with their own selection of **dishes**, however in theory you could pass the same **Dish** object into multiple takeaways (let's say takeaway1 and takeaway2), and then order this dish in takeaway1's instance from takeaway2. For all intents and purposes they are identical dishes, but of course you wouldn't be able to do this on a real takeaway service the basket would reset; the dishes are obviously unique to each restaurant. I wasn't sure how to solve this in the time allocated, and think it would probably need a new Class that stores all known takeaways to check if each set of Dishes is unique, perhaps using some sort of id number.
+There were many different approaches I found for this, one being another gem 'twilio_mock' which I couldn't quite grasp, another being creating an entire mock **SMS** class which accurately mimicked Twilio's behaviour and expectations, and then using stub_const in the Rspec spec_helper to replace the real Twilio client. 
+
+After struggling to get both to work, I tried to mock it as best as possible just with the existing methods. It currently tests that the string passed in with the **.text** method in Takeaway is successfully sent as the **:body** and received by a mock client. I'm not sure how effective this test is.
+
+The other tests account for some edge cases but not all, as there were some I were not sure how to handle. The program supports functionality with multiple **Takeaway** objects, each with their own selection of **dishes**, however in theory you could pass the same **Dish** object into multiple takeaways (let's say takeaway1 and takeaway2), and then order this dish in takeaway1's instance from takeaway2.
+
+I wasn't sure how to solve this in the time allocated, and think it would probably need a new Class that stores all known takeaways to check if each set of Dishes is unique, perhaps using some sort of id number.
