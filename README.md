@@ -13,6 +13,51 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Plan 
+
+Nouns and verbs 
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+Dishes --> see_price --> list_of_prices 
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+Dishes --> list_of_prices --> select_dish --> dishes_selected 
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+Confirmation --> dishes_selected --> selected_dish_total --> confirmed 
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Confirmation --> confirmed --> text_sent --> "Thank you! Your order was placed and will be delivered before 18:52"
+
+Steps in plain English 
+
+1. Make a class called Dishes 
+2. Make a hash with dish as key and price as values
+3. list the prices for each dish 
+4. Select number of dishes 
+5. Store selected number of dishes in a list 
+6. Make a class called Confirmation 
+7. Show sum of total dishes selected and if equal to dishes selected total return true 
+8. If total is true send text "Thank you! Your order was placed and will be delivered before 18:52"
+
+How steps 
+1. How do I make a class in ruby
+2. How do I make a Hash in ruby
+3. How do I puts a hash in ruby
+4. How do I store user input in a list in ruby 
+5. How do I sum values from a hash in ruby 
 
 Instructions
 -------
