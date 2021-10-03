@@ -6,9 +6,9 @@ class Takeaway
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @items = Hash.new(0)
+    @items = Hash.new(0) # basket with |item, quantity|
 
-    @balance =0
+    @balance = 0
   end
 
   def add(item, quantity = 1)
@@ -20,7 +20,7 @@ class Takeaway
   end
 
   def remove(item, quantity = 1)
-    raise "This item is not available.  Please select another item." unless @items.key?(item)
+    raise "This item is not in your basket.  Please select another item." unless @items.key?(item)
     @items[item] -= quantity
     puts "* You removed #{item}s from the order *"
     @balance -= @menu.dishes[item] * quantity
