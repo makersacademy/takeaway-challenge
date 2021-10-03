@@ -35,14 +35,36 @@ describe Takeaway do
   describe '#pick' do
     it 'returns item object when picked' do
       expect(menu).to receive(:list).and_return [item_one]
+
       shop.pick(name_one)
     end
+  end
 
+  describe '#display_basket' do
     it 'returns an array of items when multiple picked' do
       expect(menu).to receive(:list).twice.and_return [item_one, item_two]
       shop.pick(name_one)
       shop.pick(name_two)
-      expect(shop.display_picks).to include item_one, item_two
+
+      expect(shop.display_basket).to include item_one, item_two
+    end
+  end
+  
+  describe '#sub_total' do
+    before do
+      expect(menu).to receive(:list).twice.and_return [item_one, item_two]
+      shop.pick(name_one)
+      shop.pick(name_two)
+    end
+
+    it "adds together costs" do
+      cost = price_one.gsub("£","").to_f + price_two.gsub("£","").to_f 
+      expect(shop.sub_total).to eq "£#{cost}"
+    end
+
+    it "resets after checking" do
+      first_sub_total = shop.sub_total
+      expect(shop.sub_total).to eq first_sub_total
     end
   end
 end

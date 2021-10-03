@@ -21,8 +21,25 @@ class Takeaway
     end[0]
   end
 
-  def display_picks
+  def display_basket
     @choice
   end
 
+  def sub_total
+    @cost = 0.00
+    add_prices
+    "£#{@cost.round(2)}"
+  end
+
+  private
+
+  def add_prices
+    @choice.each do |item|
+      @cost += convert_price(item)
+    end
+  end
+
+  def convert_price(item)
+    item.price.gsub("£","").to_f
+  end
 end
