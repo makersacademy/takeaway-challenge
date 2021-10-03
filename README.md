@@ -54,6 +54,13 @@ CD into program directory
 ruby menu.rb
 ```
 
+When running RSpec, you need to comment out the following code in menu.rb:
+
+```
+start = Menu.new
+start.app
+```
+
 ![Start The Order](https://github.com/s-palmer/takeaway-challenge/blob/main/images/start_order.png)
 ![Order Confirmation](https://github.com/s-palmer/takeaway-challenge/blob/main/images/order_confirmation.png)
 
