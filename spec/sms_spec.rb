@@ -1,19 +1,18 @@
 require 'sms'
-require 'timecop'
 
 describe SMS do
+  let(:client) { double :client }
 
-
-  before(:each) do
-      Timecop.freeze(Time.local(2021, 10, 1, 12, 0, 0))
-  end
-
-  
-  
-  describe '#delivery_time' do
-
-    it 'gives the current time plus 1 hour' do
-      expect(subject.delivery_time).to eq("13:00")
+  describe '#send_sms' do
+    it 'should send an sms' do
+      sms_create_arguments = {
+        from: ENV["SENDING_NUMBER"],
+        to: 'mobile_number',
+        body: "Thank you! Your order was placed and will be delivered before #{Time.now.hour+1}:#{'%02d' % [Time.now.min]}"
+      }
+      expect(Twilio::REST::Client).to receive(:new).and_return(client)
+      expect(client).to receive_message_chain(:messages, :create).with(sms_create_arguments)
+      subject.send_sms('mobile_number')
     end
   end
 end
