@@ -27,9 +27,7 @@ class Takeaway
       return "this dish does not exist"
     end
   end
-  def basket_price
-    @total
-  end
+  
 
 end
 

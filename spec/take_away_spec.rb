@@ -18,6 +18,9 @@ describe Takeaway do
      subject.remove_dish("burger")
      expect(subject.menu.has_key?("burger")).to eq false
   end
+  it 'tries to remove a dish which doesnt exist' do
+    expect(subject.remove_dish("pepsi")).to eq("this dish does not exist")
+  end
 
 end
 describe Customer do
@@ -41,6 +44,9 @@ describe Customer do
       subject.add_item("chips")
       subject.remove_item("chips")
       expect(subject.total).to eq 0
+    end
+    it 'reads the menu (returns menu item)' do
+      expect(subject.readmenu).to eq({"burger" => 5.0, "chips" => 2.0, "coke" => 1.0})
     end
   end
   describe 'SMS' do
