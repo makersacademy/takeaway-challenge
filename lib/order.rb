@@ -16,7 +16,7 @@ class Order
   end
 
   def show_order
-    @current_order.each { |name| puts " - #{name}"}
+    @current_order.each { |name| puts " - #{name}" }
   end
 
   def show_total

@@ -27,6 +27,14 @@ describe Order do
     end      
   end
 
+  describe '#show_order' do
+    it 'formats and displays the order total' do
+      expected_output = " - #{menu_item}\n"
+      order.add(menu_item)
+      expect { order.show_order }.to output(expected_output).to_stdout
+    end
+  end
+
   describe '#show_total' do
     it 'formats and displays the order total' do
       expected_output = "Order Total: £9.00\n"

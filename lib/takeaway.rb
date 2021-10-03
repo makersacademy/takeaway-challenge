@@ -69,7 +69,7 @@ class Takeaway
   def place_order
     msg = "Thank you! Your order was placed and will be delivered before " + delivery_time
     sms = SMS.new
-    sms.send(msg)
+    sms.send_text(msg)
     puts msg
     exit
   end

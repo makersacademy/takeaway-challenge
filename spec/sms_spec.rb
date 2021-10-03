@@ -1,5 +1,7 @@
-require 'send_sms'
+require 'sms'
 
 describe SMS do
-  it { is_expected.to respond_to(:send) }
+
+  it { is_expected.to respond_to(:send_text) }
+
 end
