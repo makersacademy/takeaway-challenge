@@ -1,12 +1,30 @@
-# require 'menu'
+require 'menu'
 
-# describe Menu do 
-#     # it 'responds to random_dish method' do 
-#     #     expect(subject).to respond_to(:random_dish)
-#     # end
+describe Menu do 
+    subject(:menu) { described_class.new(dishes) }
 
-#     # it 'checks that select method returns a random item from DISHLIST' do 
-#     #     expect(subject.random_dish).to eq(:burger).or eq(:pizza).or eq(:chips)
-#     # end
+    let(:dishes) do 
+        {
+            burger: 5,
+            pizza: 4,
+            haggis: 3
+        }
+    end
 
-# end
+    it 'has a list of dishes with prices' do
+        expect(menu.dishes).to eq(dishes)
+    end
+
+    it 'prints a list of dishes with prices' do
+        printed_menu = "Burger: £5, Pizza: £4, Haggis: £3"
+        expect(menu.print).to eq(printed_menu)
+    end
+
+    it 'tells if a dish is on the menu' do 
+        expect(menu.has_dish?(:haggis)).to be true
+    end
+
+    it 'tells if a dish is not on the menu' do 
+        expect(menu.has_dish?(:ramen)).to be false
+    end
+end

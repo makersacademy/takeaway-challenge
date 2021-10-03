@@ -1,0 +1,160 @@
+
+
+
+!!!
+
+require 'order'
+
+class Takeaway
+    def initialize(menu:, order: nil)
+        @menu = menu
+        @order = order || Order.new
+    end
+
+    def print_menu
+        menu.print
+    end
+
+    def place_order(dishes)
+        dishes.each do |dish, quantity|
+            @order.add(dish, quantity)
+        end
+        @order.total
+    end
+
+    private 
+
+    attr_reader :menu
+end
+
+!!!
+require 'takeaway'
+
+describe Takeaway do
+    subject(:takeaway) { described_class.new(menu: menu, order: order) }
+
+    let(:menu) { double(:menu, print: printed_menu) }
+    let(:order) { double(:order, total: 12) }
+    let(:printed_menu) { "Pizza: £4"}
+
+    let(:dishes) { {haggis: 3, chips: 3} }
+
+    it 'shows menu items and prices' do 
+        expect(takeaway.print_menu).to eq(printed_menu)
+    end
+
+    it 'can order some number of several available dishes' do
+        expect(order).to receive(:add).twice
+        takeaway.place_order(dishes)
+    end
+
+    it 'knows the order total' do 
+        allow(order).to receive(:add)
+        total = takeaway.place_order(dishes)
+        expect(total).to eq(12)
+    end
+end
+!!!
+
+class Menu
+    attr_reader :dishes
+    
+    def initialize(dishes)
+        @dishes = dishes
+    end
+
+    def print
+        dishes.map do |item, price| 
+            "#{item.capitalize}: £#{price}"
+        end.join(", ")
+    end
+
+    def has_dish?(dish)
+        !dishes[dish].nil?
+    end
+end
+!!!
+require 'menu'
+
+describe Menu do 
+    subject(:menu) { described_class.new(dishes) }
+
+    let(:dishes) do 
+        {
+            burger: 5,
+            pizza: 4,
+            haggis: 3
+        }
+    end
+
+    it 'has a list of dishes with prices' do
+        expect(menu.dishes).to eq(dishes)
+    end
+
+    it 'prints a list of dishes with prices' do
+        printed_menu = "Burger: £5, Pizza: £4, Haggis: £3"
+        expect(menu.print).to eq(printed_menu)
+    end
+
+    it 'tells if a dish is on the menu' do 
+        expect(menu.has_dish?(:haggis)).to be true
+    end
+
+    it 'tells if a dish is not on the menu' do 
+        expect(menu.has_dish?(:ramen)).to be false
+    end
+end
+!!!
+
+class Order
+    attr_reader :dishes
+
+    def initialize(menu)
+        @dishes = {}
+        @menu = menu
+    end
+
+    def add(dish, quantity)
+        fail NoItemError, "#{dish.capitalize} is not on the menu." unless menu.has_dish?(dish)
+        dishes[dish] = quantity
+    end
+
+    private
+
+    attr_reader :menu
+end
+
+class NoItemError < StandardError; end
+
+!!!
+require 'order'
+require 'menu'
+
+describe Order do 
+    subject(:order) { described_class.new(menu) }
+
+    let(:menu) { instance_double("Menu") }
+
+    let(:dishes) do
+        {
+            pizza: 2,
+            haggis: 1
+        }
+    end
+
+    before do 
+        allow(menu).to receive(:has_dish?).with(:pizza).and_return(true)
+        allow(menu).to receive(:has_dish?).with(:haggis).and_return(true)
+    end
+ 
+    it "selects several dishes from the menu" do
+        order.add(:pizza, 2)
+        order.add(:haggis, 1)
+        expect(order.dishes).to eq(dishes)
+    end
+
+    it "doesn't allow items to be added that are not on the menu" do
+        allow(menu).to receive(:has_dish?).with(:ramen).and_return(false)
+        expect { order.add(:ramen, 1) }.to raise_error NoItemError, "Ramen is not on the menu."
+    end
+end
