@@ -3,7 +3,7 @@ require 'twilio-ruby'
 class SMS
   attr_accessor :client
   def initialize(client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'],
-ENV['TWILIO_AUTH_TOKEN']))
+    ENV['TWILIO_AUTH_TOKEN']))
     @client = client
   end
   

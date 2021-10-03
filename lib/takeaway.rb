@@ -19,18 +19,17 @@ class Takeaway
     puts dishes.map { |dish| format(dish) }.join("\n\n")
   end
 
-  def format(dish)
-    "Dish: #{dish.name}\nPrice: £#{dish.price}"
-  end
-
   def select(dish)
     dish_check(dish)
     @current_order ? @current_order.add(dish) : @current_order = @order_class.new([dish])
   end
   
-  def order_summary
-    "Thank you! Your order ##{@current_order.id} totalling £#{@current_order.total} "\
-    "has been placed and will be delivered by #{@current_order.delivery_time}."
+  def reset_order
+    @current_order&.clear_basket
+  end
+
+  def sms_client
+    @@sms_client
   end
 
   def confirm_order
@@ -39,8 +38,15 @@ class Takeaway
     @current_order = nil
   end
 
-  def reset_order
-    @current_order&.clear_basket
+  private
+
+  def format(dish)
+    "Dish: #{dish.name}\nPrice: £#{dish.price}"
+  end
+
+  def order_summary
+    "Thank you! Your order ##{@current_order.id} totalling £#{@current_order.total} "\
+    "has been placed and will be delivered by #{@current_order.delivery_time}."
   end
 
   def dish_check(dish)
@@ -49,9 +55,5 @@ class Takeaway
 
   def order_check
     raise "Please make an order first" if @current_order.nil?
-  end
-
-  def sms_client
-    @@sms_client
   end
 end
