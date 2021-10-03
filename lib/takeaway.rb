@@ -1,8 +1,10 @@
+
 class Takeaway
   attr_reader :order
 
   def initialize(menu, order_class = Order)
-    @order = order_class.new
+    @order_class = order_class
+    @order = @order_class.new
     @menu = menu
   end
   
@@ -15,24 +17,28 @@ class Takeaway
   end
 
   def add_to_order
-    puts "Please enter the number of the dish you would like to add "
+    puts "Please enter the number of the dish you would like to add: "
     n = gets.chomp
-    @order.items << @menu.items[n.to_i + 1]
-    puts "#{@menu.items[n.to_i + 1].name} added to the order"
+    n.to_i.between?(1, @menu.items.count + 1) ? @order.items << @menu.items[n.to_i - 1] : add_to_order
+    puts "#{@menu.items[n.to_i - 1].name} added to the order"
   end
 
   def check_total
-    total = @order.items.reduce { |sum, item| sum + item }
-    puts "Your order is #{@order.items} and the total is: £#{total}"
+    puts "Your order is: "
+    @order.items.map { |dish| puts "- #{dish.name}, £#{dish.price}"}
+    puts "Total cost: £#{@order.items.reduce(0) { |sum, item| sum + item.price }}"
   end
 
   def place_order
-    #OrderConfirmation.send_sms
+    @order.send_confirmation
+    @order = @order_class.new
+    puts "Thanks, you should receive a text confirmation, feel free to start another order"
   end
 
-  def interaction
-    puts "Welcome to the takeaway, please select from the following options"
+  def serve_customer
+    puts "Welcome to the takeaway!"
     loop do
+      puts "Please enter the number of the option you would like to select from the following: "
       print_options
       interface(STDIN.gets.chomp)
     end
@@ -47,7 +53,7 @@ class Takeaway
     puts "2. Add item to order"
     puts "3. Check order total"
     puts "4. Place order"
-    puts "5. exit"
+    puts "5. Exit"
   end
 
   def interface(i)
