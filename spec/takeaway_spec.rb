@@ -51,7 +51,6 @@ describe Takeaway do
     end
   end
 
-
   context 'edge cases:' do
     it "can't confirm a non existent order" do
       expect { takeaway.confirm_order }.to raise_error("Please make an order first")

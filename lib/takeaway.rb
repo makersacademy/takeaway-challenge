@@ -6,7 +6,7 @@ class Takeaway
   @@sms_client = SMS.new
 
   def initialize(dishes, order_class: Order)
-    dishes = [dishes] if !dishes.is_a? Array # can pass in 1 or more dishes
+    dishes = [dishes] unless dishes.is_a? Array # can pass in 1 or more dishes
     @dishes = dishes
     @order_class = order_class
   end
@@ -16,7 +16,7 @@ class Takeaway
   end
 
   def menu
-    puts dishes.map{ |dish| format(dish) }.join("\n\n")
+    puts dishes.map { |dish| format(dish) }.join("\n\n")
   end
 
   def format(dish)
@@ -40,11 +40,11 @@ class Takeaway
   end
 
   def reset_order
-    @current_order.clear_basket if @current_order
+    @current_order&.clear_basket
   end
 
   def dish_check(dish)
-    raise "Please select a dish from this takeaway." if !@dishes.include?(dish)
+    raise "Please select a dish from this takeaway." unless @dishes.include?(dish)
   end
 
   def order_check
