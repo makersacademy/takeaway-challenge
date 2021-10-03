@@ -15,6 +15,10 @@ class Order
     calculate_total(item)
   end
 
+  def show_order
+    @current_order.each { |name| puts " - #{name}"}
+  end
+
   def show_total
     puts "Order Total: £#{format("%.2f", total)}"
   end
