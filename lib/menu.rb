@@ -10,7 +10,7 @@ class Menu
       { :name => "Fried Chicken", :price => 6.99 },
       { :name => "Green Salad", :price => 5.99 },
       { :name => "Pasta", :price => 8.99 },
-      { :name => "Vegetable Curry", :price => 6.49 },
+      { :name => "Vegetable Curry", :price => 6.99 },
       { :name => "Rice", :price => 1.99 },
       { :name => "Steamed Vegetables", :price => 1.99 }]
   end
@@ -23,6 +23,7 @@ class Menu
 
   def display_order
     order_total = 0
+    puts "Order summary"
     @new_order.orders.each do |item|
       puts @menu[item-1][:name]
       puts "£#{@menu[item-1][:price]}"
@@ -52,7 +53,7 @@ class Menu
   end
   
   def add_to_order(item)
-    @new_order.orders << item
+    @new_order.orders << item.to_i
   end
 
   def start_new_order
@@ -64,8 +65,9 @@ class Menu
     display_menu
     order_food
     input_order
+    display_order
   end
 end
 
-# start = Menu.new
-# start.app
+start = Menu.new
+start.app

@@ -47,6 +47,24 @@ Expected User Journey
 6) Finishing order displays final summary of the order
 7) Once user confirms order, text message is sent
 
+How To Use The App
+-----
+CD into program directory
+```
+ruby menu.rb
+```
+
+Current Functionality
+-----
+* Users are able to select from a choice of 8 menu items by entering the number corresponding to the dish they want to add.
+* Once they have selected all dishes, they can complete their order and will be presented an order summary with a total price.
+
+Current Bugs
+-----
+* Entering non-numeric characters or characters outside of the menu range will raise issues, either:
+- Crashing the app
+- Causing erroneous items to be added.
+
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".

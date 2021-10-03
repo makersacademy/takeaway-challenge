@@ -1,15 +1,11 @@
-require 'twilio-ruby'
-require 'dotenv/load'
+# require 'twilio'
 
 class Order
   
-  attr_reader :orders, :menu
+  attr_reader :orders, :menu, :time
   
   def initialize
     @orders = []
-    @account_sid = ENV["TWILIO_ACCOUNT_SID"]
-    @auth_token = ENV["TWILIO_AUTH_TOKEN"]
-    @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
 
   def display_order
@@ -27,13 +23,5 @@ class Order
   def delivery_time
     @time = Time.new + 45*60
   end
-
-  # def send_sms
-  #   delivery_time
-  #   message = @client.messages.create(
-  #   body: "Thanks for your order! It will be delivered at approximately #{ @time.strftime("%H:%M") }.",
-  #   to: ENV["MY_PHONE_NUMBER"],
-  #   from: ENV["TWILIO_MAGIC_NUMBER"])
-  # end
 
 end
