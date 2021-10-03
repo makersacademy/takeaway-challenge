@@ -29,7 +29,7 @@ describe Order do
       allow(d1).to receive_messages(:name => "Chicken Korma", :price => 8.99)
       subject.add_dish(d1)
       expect(subject.contents).to eq (
-        { "Chicken Korma" => 8.99 }
+        [ "Chicken Korma" => 8.99 ]
       )
     end
   end

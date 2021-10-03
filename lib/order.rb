@@ -5,7 +5,7 @@ class Order
   attr_reader :menu
 
   def initialize
-    @order = {}
+    @order = []
   end
 
   def add_menu(menu)
@@ -13,7 +13,7 @@ class Order
   end
 
   def add_dish(dish)
-    @order[dish.name] = dish.price
+    @order.append(dish.name => dish.price)
   end
 
   def contents
@@ -21,7 +21,11 @@ class Order
   end
 
   def total
-    total = @order.values.sum
+    total = 0
+    @order.each do |x|
+      total += x.values.sum
+    end
+    total
   end
 
   def place_order
