@@ -2,6 +2,7 @@ require 'dish'
 
 describe Dish do
   dish = Dish.new("Burger", 5)
+  
   it "has a name" do
     expect(dish.name).to eq("Burger")
   end

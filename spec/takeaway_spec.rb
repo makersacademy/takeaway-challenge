@@ -1,13 +1,12 @@
 require 'takeaway'
 
 describe Takeaway do
-  let(:dish1) { double("Dish1", :name => "Burger", :price => 5) }
-  let(:dish2) { double("Dish2", :name => "Chips", :price => 6) }
-  let(:dish3) { double("Dish3", :name => "Chicken", :price => 7) }
+  let(:dish1) { double("Dish1", :name => "Burger", :price => 6) }
+  let(:dish2) { double("Dish2", :name => "Chips", :price => 2) }
+  let(:dish3) { double("Dish3", :name => "Chicken", :price => 5) }
   let(:order) { double("Order", :id => 123, :total => 10) }
   let(:order_class) { double("OrderClass", :new => order) }
   let(:takeaway) { Takeaway.new([dish1, dish2, dish3], order_class: order_class) }
-
 
   it "stores a list of dishes" do
     expect(takeaway.dishes).to eq([dish1, dish2, dish3])
@@ -21,30 +20,46 @@ describe Takeaway do
     expect { takeaway.menu }.to output(output).to_stdout
   end
 
-  it "lets you select dishes and add them to an order" do
-    takeaway.select(dish1)
-    allow(order_class).to receive(:new).with(dish1)
+  context 'selecting dishes:' do
+    before { takeaway.select(dish1) }
 
-    expect(takeaway.current_order).to eq(order_class.new([dish1]))
+    it "lets you select a dish and create an order" do
+      expect(takeaway.current_order).to eq(order_class.new([dish1]))
+    end
+
+    it "lets you reset your current order" do
+      allow(order).to receive(:clear_basket)
+      takeaway.reset_order
+      allow(order).to receive(:basket).and_return([])
+      expect(takeaway.current_order.basket).to eq([])
+    end
+
+    it "lets you add another multiple dishes" do
+      allow(order).to receive(:add)
+      takeaway.select(dish2)
+      expect(takeaway.current_order).to eq(order_class.new([dish1, dish2]))
+    end
+
+    it "confirms order with a text" do
+      one_hour_from_now = (Time.now + 3600).strftime("%H:%M")
+      allow(order).to receive(:delivery_time).and_return(one_hour_from_now)
+  
+      expect(takeaway.sms_client).to receive(:text)
+      .with("Thank you! Your order ##{order.id} totalling £#{order.total} has been placed "\
+            "and will be delivered by #{one_hour_from_now}.")
+      takeaway.confirm_order
+    end
   end
 
-  it "can add multple dishes" do
-    takeaway.select(dish1)
-    allow(order).to receive(:add).with(dish2)
-    takeaway.select(dish2)
-    allow(order).to receive(:basket).and_return([dish1, dish2])
-    expect(takeaway.current_order.basket).to eq([dish1, dish2])
-  end
 
-  it "confirms order with a text" do
-    one_hour_from_now = (Time.now + 3600).strftime("%H:%M")
-    allow(order).to receive(:delivery_time).and_return(one_hour_from_now)
+  context 'edge cases:' do
+    it "can't confirm a non existent order" do
+      expect { takeaway.confirm_order }.to raise_error("Please make an order first")
+    end
 
-    takeaway.select(dish1) # new mock order is created inside the takeaway instance
-
-    expect(takeaway.sms_client).to receive(:text)
-    .with("Thank you! Your order ##{order.id} totalling £#{order.total} has been placed "\
-          "and will be delivered by #{one_hour_from_now}.")
-    takeaway.confirm_order
+    it "doesn't let you select a dish not in the menu" do
+      other_dish = double("Other Dish")
+      expect { takeaway.select(other_dish) }.to raise_error("Please select a dish from this takeaway.")
+    end
   end
 end

@@ -17,6 +17,10 @@ class Order
     @basket.sum(&:price)
   end
 
+  def clear_basket
+    @basket = []
+  end
+
   def delivery_time
     (Time.now + 3600).strftime("%H:%M")
   end
