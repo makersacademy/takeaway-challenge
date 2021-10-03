@@ -5,7 +5,7 @@ describe Order do
   let(:menu) { Menu.new }
   subject(:order) { described_class.new(menu) }
 
-  describe '#initialise' do
+  describe '#initialize' do
     it 'should create an empty hash to store ordered dishes in' do
       expect(subject.dishes_ordered.is_a? Hash).to eq true
     end

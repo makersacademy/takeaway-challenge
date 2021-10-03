@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
   
-  describe '#initialise' do
+  describe '#initialize' do
     it 'should create an empty hash to store menu items in' do
       expect(subject.menu_items.is_a? Hash).to eq true
     end
@@ -22,7 +22,7 @@ describe Menu do
     end
   end
 
-  describe '#dish_available' do
+  describe '#dish_available?' do
     it 'should return true if dish is on the menu' do
       subject.add_item('Steak', 18.50)
       expect(subject.dish_available?('Steak')).to eq true

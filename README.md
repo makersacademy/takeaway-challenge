@@ -72,18 +72,18 @@ In your terminal, you should see the below:
 
 ```
 Menu
-  #initialise
+  #initialize
     should create an empty hash to store menu items in
   #add_item
     should add a dish to the items hash
   #list_dishes
     should show a list of dishes
-  #dish_available
+  #dish_available?
     should return true if dish is on the menu
     should return false if dish is on the menu
 
 Order
-  #initialise
+  #initialize
     should create an empty hash to store ordered dishes in
   #add_dish_to_order
     should add a dish to the ordered dishes hash
@@ -95,7 +95,7 @@ Order
 
 SMS
   #send_sms
-    should send an sms
+    should send an sms text
 
 Have you considered running rubocop? It will help you improve your code!
 Try it now! Just run: rubocop

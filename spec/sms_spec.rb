@@ -4,7 +4,7 @@ describe SMS do
   let(:client) { double :client }
 
   describe '#send_sms' do
-    it 'should send an sms' do
+    it 'should send an sms text' do
       sms_create_arguments = {
         from: ENV["SENDING_NUMBER"],
         to: 'mobile_number',
