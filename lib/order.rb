@@ -1,5 +1,6 @@
+require "dish_list"
+
 class Order
-  MENU = { dish1: 10, dish2: 14, dish3: 9 }
   attr_reader :current_order
 
   def initialize
@@ -7,21 +8,25 @@ class Order
   end
 
   def choose_dish(dish_name)
-    @dish_name = dish_name
-    store_dish(@dish_name)
+    dish_price = price(dish_name)
+    store_dish(dish_name, dish_price)
   end
 
   def calculate_price
     total = 0
-    @current_order.each do |item|
-      total += MENU[item]
+    @current_order.each do |_, price|
+      total += price
     end
     total
   end
 
   private
 
-  def store_dish(new_dish)
-    @current_order << new_dish
+  def price(dish_name)
+    return Restaurant::MENU[dish_name]
+  end
+
+  def store_dish(dish_name, dish_price)
+    @current_order << [dish_name, dish_price]
   end
 end
