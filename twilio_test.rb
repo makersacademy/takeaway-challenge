@@ -9,8 +9,9 @@ account_sid = ENV["TWILIO_ACCOUNT_SID"]
 auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
 @client = Twilio::REST::Client.new account_sid, auth_token
+
 message = @client.messages.create(
-    body: "Hello from my Ruby app",
+    body: "Your order is on its way.",
     to: ENV["MY_PHONE_NUMBER"],
     from: ENV["TWILIO_MAGIC_NUMBER"])
 
