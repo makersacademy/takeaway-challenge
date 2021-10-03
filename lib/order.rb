@@ -33,7 +33,7 @@ class Order
 
   def time_plus_1hour
     t = Time.new
-    hour_plus1 = ((t.strftime("%H").to_i) + 1)
+    hour_plus1 = (t.strftime("%H").to_i + 1)
     t.strftime("at #{hour_plus1}:%M%p")
   end
 

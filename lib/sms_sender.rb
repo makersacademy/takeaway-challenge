@@ -1,18 +1,14 @@
 require "twilio-ruby"
 
-# account_sid = "AC56a614c80c40b2d730f624b8f395bf10" # Your Test Account SID from www.twilio.com/console/settings
-# auth_token = "b22114508794bdb02e7d2fe587e926c4"   # Your Test Auth Token from www.twilio.com/console/settings
-# send_phone_num = "+19384440993"
-
 class SmsSender
   def initialize
-    @cust_phone_num = "+447947613279"
+    @cust_phone_num = "###########" # Enter your receiving phone number here
   end
 
   def send_text(delivery_message,
-                account_sid = "AC56a614c80c40b2d730f624b8f395bf10",
-                auth_token = "b22114508794bdb02e7d2fe587e926c4",
-                send_phone_num = "+19384440993")
+                account_sid = "###############################", # Enter account_sid here
+                auth_token = "################################", # Enter authorisation token here
+                send_phone_num = "############") # Enter your sending phone number here
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
       body: delivery_message,

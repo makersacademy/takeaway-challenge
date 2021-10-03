@@ -5,9 +5,11 @@ describe Order do
         1 => "cod £5",
         2 => "fishcake £4",
         3 => "chips £3"
-      }}
-    before(:each) do @order = Order.new(menu: menu)
-    end
+      }
+  }
+  before(:each) do
+    @order = Order.new(menu: menu)
+  end
       
   describe "#see_menu" do
       
@@ -41,7 +43,7 @@ describe Order do
       order = Order.new(sms_sender: fake_sms_sender)
       order.place_order(1, 2)
       t = Time.new
-      hour_plus1 = ((t.strftime("%H").to_i) + 1)
+      hour_plus1 = (t.strftime("%H").to_i + 1)
       order.confirm_order
       expect(order.delivery_message).to eq "Thank you! Your order was placed and will be delivered before #{t.strftime("at #{hour_plus1}:%M%p")}"
     end
@@ -51,12 +53,5 @@ describe Order do
       expect(order.confirm_order).to be_truthy
     end
   end
-
-  # describe "#sms_delivery_message" do
-  #   let(:fake_sms_sender) { double 'sms_sender', :send_text => true }
-  #   it "creates an instance of the SmsSender class with the argument 'delivery_message'" do
-  #     expect(subject.sms_delivery_message(fake_sms_sender)).to be_truthy
-  #   end
-  # end
 
 end
