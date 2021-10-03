@@ -15,4 +15,3 @@ message = @client.messages.create(
     to: ENV["MY_PHONE_NUMBER"],
     from: ENV["TWILIO_MAGIC_NUMBER"])
 
-puts message.sid
