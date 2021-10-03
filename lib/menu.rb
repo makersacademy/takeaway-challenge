@@ -10,8 +10,6 @@ class Menu
   end
 
   def list
-    @dishes.each do |dish|
-      p dish
-    end
+    "#{@dishes[0].name} | #{@dishes[0].price}"
   end
 end
