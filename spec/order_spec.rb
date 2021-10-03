@@ -4,6 +4,8 @@ require "stringio"
 require "pry"
 
 describe Order do
+  subject { Order.new(confirm) }
+  let(:confirm) { double("confirm", send_text: nil) }
   describe "#bill" do
     it "returns a bill" do
       expect(subject.bill).to be_an_instance_of(Bill)

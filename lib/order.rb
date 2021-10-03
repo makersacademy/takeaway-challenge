@@ -1,19 +1,22 @@
 require_relative "bill"
 require_relative "menu"
+require_relative "order_confirmation"
 
 class Order
   attr_reader :bill
   attr_reader :items
 
-  def initialize
+  def initialize(confirm = OrderConfirmation.new)
     @menu = Menu.new
     @bill = Bill.new
     @items = []
     @completed = false
+    @confirm = confirm
   end
 
   def create
     select_item until completed?
+    @confirm.send_text
   end
 
   def check_bill

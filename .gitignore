@@ -5,3 +5,4 @@
 .rubocop-*
 .notes.md
 ./spec/feature_spec.rb
+.env
