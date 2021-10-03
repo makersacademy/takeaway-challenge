@@ -19,6 +19,15 @@ class Takeaway
     show_balance
   end
 
+  def remove(item, quantity = 1)
+    raise "This item is not available.  Please select another item." unless @items.key?(item)
+    @items[item] -= quantity
+    puts "* You removed #{item}s from the order *"
+    @balance -= @menu.dishes[item] * quantity
+    show_balance
+  end
+
+
   def read_menu
     puts @menu.dishes
   end
