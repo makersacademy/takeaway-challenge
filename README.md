@@ -28,7 +28,7 @@ Approach
 ```
 To solve this I used the .round(2) method.
 
-5. On the Twilio class I masked my personal information using environment variables.  However Ruby was not accessing those variables, even though I could access them from my terminal.  I found that my .zshrc file was not updated with thos PATH:
+5. On the Twilio class I masked my personal information using environment variables.  However Ruby was not accessing those variables, even though I could access them from my terminal.  I found that my .zshrc file was not updated with this PATH:
 
 ```
 export PATH="$PATH:$HOME/.rvm/bin"
