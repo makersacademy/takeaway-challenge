@@ -28,8 +28,8 @@ require './lib/order'
 require './lib/sms'
 require './lib/takeaway'
 
-dish1 = Dish.new("Dish name here", #price(integer))
-dish2 = Dish.new("Dish name here", #price(integer))
+dish1 = Dish.new("Dish name here", -price(integer)-)
+dish2 = Dish.new("Dish name here", -price(integer)-)
 # add as many dishes as you want, the currency is £
 
 takeaway = Takeaway.new([dish1, dish2])
@@ -38,9 +38,10 @@ takeaway = Takeaway.new([dish1, dish2])
 takeaway.menu
 # shows the menu
 
-takeaway.select_dish(dish1, #optional quantity(integer))  # must be a dish object
-takeaway.select_dish(dish2, #optional quantity(integer))
+takeaway.select_dish(dish1, -optional quantity(integer)-)  # must be a dish object
+takeaway.select_dish(dish2, -optional quantity(integer)-)
 
+takeaway.remove_dish(dish) # must be a dish in the menu
 takeaway.reset_order # if you changed your mind and want to start again
 
 takeaway.total # returns the total cost of the current order
