@@ -7,8 +7,8 @@ class Menu < Array
   end
 
   def load_menu
-    CSV.foreach("menu.csv", headers: true, header_converters: :symbol) do |row|
-      self << row.to_h # is there a way of loading the prices as integers and not strings?
+    CSV.foreach("menu.csv", headers: true, header_converters: :symbol, converters: :numeric) do |row|
+      self << row.to_h 
     end
   end  
 

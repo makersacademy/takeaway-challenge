@@ -16,7 +16,15 @@ class Total
     sum.inject(:+)
   end
 
+  def receipt
+    puts "Your Receipt"
+    selection.each do |item|
+      puts "#{item[:dish]} - quantity:#{item[:quantity]} - £#{item[:price]}"
+     end 
+    puts "Total #{bill}"
+  end
+
   def pay
-    checkout.place_order
+    checkout.send_notification
   end
 end

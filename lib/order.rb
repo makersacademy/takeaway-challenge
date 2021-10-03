@@ -1,6 +1,7 @@
 require_relative 'menu'
 require_relative 'total'
 
+
 class Order
   attr_reader :menu, :total
 
@@ -19,3 +20,4 @@ class Order
     total.bill
   end
 end  
+
