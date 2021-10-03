@@ -1,6 +1,6 @@
 require 'twilio-ruby'
-require 'sms_sender'
-require 'menu'
+require_relative 'sms_sender'
+require_relative 'menu'
 
 class Order
   attr_reader :menu, :order, :total, :delivery_message
