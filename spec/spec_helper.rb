@@ -2,6 +2,11 @@ require 'simplecov'
 require 'simplecov-console'
 require 'pry'
 
+require 'dotenv'
+Dotenv.load('.env.test')
+
+require 'webmock/rspec'
+
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
   # Want a nice code coverage website? Uncomment this next line!
