@@ -1,5 +1,5 @@
 class ListofDishes
-  attr_accessor :list_of_dishes, :dish, :price, :total_order
+  attr_accessor :list_of_dishes, :dish, :price
   
   def initialize(hash = self.menu)
     @dish = @list_of_dishes[:dish]
@@ -17,33 +17,6 @@ class ListofDishes
       puts "#{index + 1} #{dish} : £#{price}"
     end
     p  "** Select dish or type finish **"
-  end
-
-  def order
-    loop do
-      print_menu
-      order = gets.chomp.capitalize
-      self.make_order(order)
-      if order == "finish" 
-        break
-      end
-    end
-  end
-
-  def make_order(dish)
-    if @list_of_dishes.include?(dish) 
-      @total_order << @list_of_dishes.assoc(dish) 
-    elsif 
-      dish == "finish"
-      return @total_order
-    elsif
-      !@list_of_dishes.include?(dish) 
-        raise("Dish not found!")
-    end
-  end
-
-  def print_total_order
-    total = concat(make_order.total_order)
   end
 end
 

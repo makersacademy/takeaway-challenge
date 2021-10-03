@@ -17,15 +17,6 @@ describe ListofDishes do
     end
 
 
-  it "takes user's order and returns it" do
-    subject.order
-    order = double
-    order.stub(:gets).and_return("Lassagna")
-    allow($stdin).to receive(:gets).and_return(order)
-    # expect(order).to receive(:chomp).and_return()
-    expect(subject.total_order.length).to eq(1)
-  end
-
   it "raise error when dish ordered is not found in the menu" do
     order = double("Fish")
     expect { subject.make_order(order) }.to raise_error("Dish not found!")
