@@ -6,22 +6,17 @@ class Order
   attr_reader :menu, :order, :total, :delivery_message
 
   def initialize(sms_sender: sms_sender = SmsSender.new, menu: menu = Menu.new)
-    @list = {
-      1 => "cod £5",
-      2 => "fishcake £4",
-      3 => "chips £3"
-    }
-    @menu = menu.list
+    @menu = menu
     @order = []
     @sms_sender = sms_sender
   end
 
   def see_menu
-    @menu
+    @menu.list
   end
 
   def place_order(*item)
-    @order = @menu.slice(*item)
+    @order = @menu.list.slice(*item)
     @total = @order.values.map { |v| v.match(/\d/)[0].to_i }.sum
   end
 

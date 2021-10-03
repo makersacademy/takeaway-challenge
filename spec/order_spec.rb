@@ -12,7 +12,7 @@ describe Order do
   describe "#see_menu" do
       
     it "returns a menu of dishes" do
-      expect(@order.see_menu).to eq @order.menu
+      expect(@order.see_menu).to eq @order.menu.list
     end
   end
 
@@ -20,7 +20,7 @@ describe Order do
     
     it "creates a list of selected dishes" do
       @order.place_order(1, 2)
-      expect(@order.order).to eq @order.menu.slice(1, 2)
+      expect(@order.order).to eq @order.menu.list.slice(1, 2)
     end
 
     it "returns a total cost for the meal" do
