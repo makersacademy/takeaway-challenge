@@ -66,6 +66,7 @@ class Menu
     order_food
     input_order
     display_order
+    @new_order.order_confirmation
   end
 end
 

@@ -16,7 +16,7 @@ class Order
 
   def order_confirmation
     delivery_time
-    puts "Thanks for your order! It will be delivered at approximately #{ @time.strftime("%H:%M") }."
+    puts "Thanks for your order! It will be delivered in around 45 minutes at approximately #{ @time.strftime("%H:%M") }."
     # send_sms
   end
 
