@@ -56,7 +56,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-Instructions
+Installation
 -----
 * Fork this repo
 * Run the command 'bundle' in the project directory to ensure you have all the gems
@@ -115,7 +115,7 @@ menu = Menu.new => #<Menu:0x000000012880f448 @menu_items={}>
 ```
 Create an Order
 ```
-#<Order:0x000000012980d9d0 @dishes_ordered={}, @menu=#<Menu:0x000000012880f448 @menu_items={}>, @order_total=0> 
+order = Order.new => #<Order:0x000000012980d9d0 @dishes_ordered={}, @menu=#<Menu:0x000000012880f448 @menu_items={}>, @order_total=0> 
 ```
 Add to Menu
 ```
@@ -127,7 +127,7 @@ order.add_dish_to_order('Steak', 2) => 2
 ```
 List orders
 ```
-order.calculate_total(menu) => 37.0
+order.calculate_total(menu) => "37.00"
 ```
 To send a confirmation text, set environment variable to the following:
 ```
@@ -141,7 +141,7 @@ sms = SMS.new => #<SMS:0x00000001401ec058
 ```
 Send an sms text
 ```
-sms.sned_sms('enter receiving mobile number as string')
+sms.send_sms('enter receiving mobile number as string')
 ```
 
 Built Using
