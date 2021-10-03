@@ -1,6 +1,7 @@
 class TakeAway
 MENU = {burger: 5, pizza: 4, chips: 3}
     attr_accessor :item
+    attr_accessor :price
 
     def initialize()
         @price = 0 #(price holds set price of food item)
@@ -28,14 +29,12 @@ MENU = {burger: 5, pizza: 4, chips: 3}
         end
     end
 
-    def total_order
-        "Order Summary: pizza x#{@pizza_quantity} Price Total: £#{@total_price}" #(total order returns )
+    def order_summary
+        "Order Summary: pizza x#{@pizza_quantity}, burger x#{@burger_quantity}, chips x#{@chips_quantity}. Price Total: £#{@total_price}" #(total order returns )
     end
 
-    # def full_summary 
-    #     @order_summary.each { |x|
-    #         puts x
-    #     }
-    # end
+    def complete_order
+        
+    end
 
 end 
