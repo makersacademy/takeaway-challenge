@@ -51,13 +51,19 @@ describe Takeaway do
   end
 
   context 'sending texts:' do
-    it "confirms order with a text" do
+    before do
       add_1_order(dish1)
       allow(order).to receive(:delivery_time).and_return(one_hour_from_now)
-    
       expect(takeaway.sms_client).to receive(:text)
       .with("Thank you! Your order ##{order.id} totalling £#{order.total} has been placed "\
         "and will be delivered by #{one_hour_from_now}.")
+    end
+    
+    it "confirms order with a text" do
+      takeaway.confirm_order
+    end
+
+    it "resets the current order after confirming" do
       takeaway.confirm_order
       expect(takeaway.current_order).to eq(nil)
     end
