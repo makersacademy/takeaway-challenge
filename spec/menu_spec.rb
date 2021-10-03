@@ -1,32 +1,27 @@
 require "menu"
 
 describe Menu do
-  it "includes an array of instances of MenuItem" do
-    expect(Menu::ITEMS[0]).to be_an_instance_of(MenuItem)
+  describe "#to_s" do
+    it "shows the entire menu" do
+      expect(subject.to_s).to eq(
+        "Pizza Takeaway\n" +
+        "===============================\n" +
+        "1. Margherita - £10.00\n" +
+        "2. Diavola - £11.00\n" +
+        "3. Boscaiola - £14.00\n" +
+        "4. Quattro Stagioni - £13.00\n" +
+        "5. Capricciosa - £12.00\n" +
+        "6. Marinara - £9.00\n" +
+        "===============================\n"
+      )
+    end
   end
 
-  describe "#view" do
-    it "displays the menu" do
-      expect { Menu.view }.to output.to_stdout
-    end
-
-    it "displays the menu's title" do
-      expect { Menu.view }.to output(/Pizza Takeaway/).to_stdout
-    end
-
-    it "shows the entire menu" do
-      expect { Menu.view }.to output(<<~EOF
-        Pizza Takeaway
-        ===============================
-        1. Margherita - £10.00
-        2. Diavola - £11.00
-        3. Boscaiola - £14.00
-        4. Quattro Stagioni - £13.00
-        5. Capricciosa - £12.00
-        6. Marinara - £9.00
-        ===============================
-      EOF
-      ).to_stdout
+  describe "#select" do
+    it "returns the corresponding menu item" do
+      item = subject.select(3)
+      expect(item.price).to eq(14)
+      expect(item.name).to eq("Boscaiola")
     end
   end
 end
