@@ -14,4 +14,3 @@ message = @client.messages.create(
     body: "Your order is on its way.",
     to: ENV["MY_PHONE_NUMBER"],
     from: ENV["TWILIO_MAGIC_NUMBER"])
-

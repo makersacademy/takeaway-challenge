@@ -26,9 +26,9 @@ class Menu
     order_total = 0
     puts "Order summary"
     @new_order.orders.each do |item|
-      puts @menu[item-1][:name]
-      puts "£#{@menu[item-1][:price]}"
-      order_total += @menu[item-1][:price]
+      puts @menu[item - 1][:name]
+      puts "£#{@menu[item - 1][:price]}"
+      order_total += @menu[item - 1][:price]
     end
     puts "Your total is £#{order_total}"
   end
@@ -46,7 +46,7 @@ class Menu
     start_new_order
     input = STDIN.gets.chomp
     # if input =~ /^-?[0-9]+$/
-    while !input.empty? do
+    until input.empty? do
       add_to_order(input)
       puts "#{@new_order.orders.count} items in order"
       input = STDIN.gets.chomp

@@ -50,6 +50,21 @@ Expected User Journey
 How To Use The App
 -----
 CD into program directory
+
+If you don't have bundler installed:
+
+```
+gem install bundler
+```
+
+Then run:
+
+```
+bundle install
+```
+
+You can then start the app using:
+
 ```
 ruby menu.rb
 ```
