@@ -31,26 +31,6 @@ class Takeaway
     @total
   end
 
-  # def add_item(item)
-  #   if menu.key?(item)
-  #     @basket.push(item)
-  #     cost = @menu.fetch(item)
-  #     @total += cost
-  #   else 
-  #     return "This is not a menu item"
-  #   end
-  # end
-
-  # def remove_item(item)
-  #   if basket.include?(item) == false
-  #     return "this item is not in your basket"
-  #   else
-  #     cost = @menu.fetch(item)
-  #     @total -= cost
-  #     basket.delete_at(basket.find_index(item))
-
-  #   end
-  # end
 end
 
 mc_donalds = Takeaway.new

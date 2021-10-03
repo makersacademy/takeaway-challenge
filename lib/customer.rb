@@ -1,11 +1,17 @@
 require_relative 'take_away'
+require_relative 'send-sms'
+
 class Customer
   attr_reader :m_takeaway
   attr_reader :basket
+  attr_reader :total
+  attr_reader :sms
   def initialize 
     @basket = []
     @total = 0
     @m_takeaway = Takeaway.new
+    @sms = Sms.new
+    
   end
 
   def readmenu
@@ -31,6 +37,11 @@ class Customer
       basket.delete_at(basket.find_index(item))
 
     end
+  end
+
+  def place_order
+    puts "You have ordered! basket: #{basket}: cost: £#{total}"
+    sms.send(basket,total)
   end
 
   # def pick_resturant
