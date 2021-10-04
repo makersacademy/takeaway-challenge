@@ -2,7 +2,7 @@
 
 Develop a food ordering program in Ruby to fulfill the specific user stories, testimg with RSpec.
 
-Please find the domain_modelling_takeaway_challenge.pdf in this folder to view my planning.
+Click [here](https://github.com/amin-newcastle/takeaway-challenge/blob/2fc2cbba04b98697bc79fd071c572a1a54659654/domain_modelling_takeaway_challenge.pdf) to view my domain modeling pdf
 
 ## Getting started
 
