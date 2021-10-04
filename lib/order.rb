@@ -36,7 +36,7 @@ class Order
     total = 0
     list_order.keep_if { |element| element.is_a?(Integer) }
     list_order.each { |num| total += num }
-    puts "Your order: #{list_order}" 
+    puts "Your order: #{@total_order}" 
     p "Total = #{total}"
   end
 

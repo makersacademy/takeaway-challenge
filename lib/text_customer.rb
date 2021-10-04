@@ -23,7 +23,7 @@ class TextCustomer
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = ENV['FROM'] # Your Twilio number
-    to = '+447577464477' # Your mobile phone number
+    to = ENV['TO'] # Your mobile phone number
 
     client.messages.create(
     from: from,
