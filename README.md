@@ -59,8 +59,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - [x] Plan & draw a diagram of my domain model
 - [ ] Use the twilio-ruby gem to access the API
 - [ ] Use the Gemfile to manage your gems
-- [ ]Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-- [ ]However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
+- [ ] Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
+- [ ] However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
 - [ ] All tests passing
 - [ ] > 95% Test Coverage
 - [ ] Make the code elegant: every class has a clear responsibility, methods are short etc.
