@@ -14,11 +14,5 @@ describe ListofDishes do
     "Veggie Lover" => 9,
     "Salami" => 10,
     "Chicken with Tomato" => 10)
-    end
-
-
-  it "raise error when dish ordered is not found in the menu" do
-    order = double("Fish")
-    expect { subject.make_order(order) }.to raise_error("Dish not found!")
   end
 end
