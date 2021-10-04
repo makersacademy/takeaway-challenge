@@ -71,4 +71,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## Domain Model Planning
 
 ![Planning](https://github.com/feedXia/takeaway-challenge/blob/b47a7a3e1e4eeace0e2ede5f4fb9f96560c9f419/Takeaway-planning.png.jpg)
+
+Modelling diagram:
 ![Takeaway Diagram](https://lucid.app/publicSegments/view/9031337c-71ab-401d-8859-b81a85d0cf8b/image.png)
