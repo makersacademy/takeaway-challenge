@@ -42,14 +42,24 @@ describe TakeAway do
   end
 
   describe "#submit_order" do
-    it "sends the useer a message saying when their order will arrive" do
+    number = ENV["TO_NUMBER"]
+    it "creates a Text instance and sends it" do
+      subject.new_order
+      subject.add_to_order(0,3)
+      expect(subject.submit_order(number).instance_variable_get(:@client).class).to be_an_instance_of Twilio::REST::Client
+
+    end    
+    it "confirms that a message has been sent" do
+      subject.new_order
+      subject.add_to_order(0,3)
+      expect(subject.submit_order(number)).to eq("a confirmation message has been sent to #{number}")
       
     end
 
     it "resets the order variable" do
       subject.new_order
       subject.add_to_order(0,2)
-      subject.submit_order
+      subject.submit_order(number)
       expect(subject.instance_variable_get(:@order)).to eq nil
       
     end

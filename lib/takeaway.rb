@@ -1,6 +1,7 @@
 require_relative "order"
 require_relative "item"
 class TakeAway
+  CONFIRMATION_MESSAGE = "your order has been placed, and will be delivered before "
   def initialize(item_class = Item)
     @menu = [item_class.new("fish and chips",6.99)]
     @order
@@ -28,5 +29,11 @@ class TakeAway
     @order.total
   end
 
+  def submit_order(number)
+    Text.new(CONFIRMATION_MESSAGE+"#{Time.now.hour}:#{Time.now.min+20}")
+    @order = nil
+    return "a confirmation message has been sent to #{number}"
+
+  end
 
 end
