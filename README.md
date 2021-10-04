@@ -52,22 +52,23 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - [x] Customers can check a list of dishes with prices
 - [x] Customers can select the meal they want by selecting some number of several available dishes
 - [x] Customers can verify their order is correct by checking that the total they have been given matches the sum of the various dishes in their order
-- [ ] Customer can receive a text stating that the order was placed successfully and that it will be delivered 1 hour from now such as _"Thank you! Your order was placed and will be delivered before 18:52"_ after order is placed
+- [x] Customer can receive a text stating that the order was placed successfully and that it will be delivered 1 hour from now such as _"Thank you! Your order was placed and will be delivered before 18:52"_ after order is placed
 
 ### Project Miscellaneous
 
 - [x] Plan & draw a diagram of my domain model
-- [ ] Use the twilio-ruby gem to access the API
-- [ ] Use the Gemfile to manage your gems
-- [ ] Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
+- [x] Use the twilio-ruby gem to access the API
+- [x] Use the Gemfile to manage your gems
+- [x] Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
 - [ ] However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-- [ ] All tests passing
-- [ ] > 95% Test Coverage
-- [ ] Make the code elegant: every class has a clear responsibility, methods are short etc.
+- [x] All tests passing
+- [x] > 95% Test Coverage
+- [x] Make the code elegant: every class has a clear responsibility, methods are short etc.
 - [ ] (Advanced) Implement the ability to place orders via text message.
-- [ ] Ensure private information such as **mobile number** or **Twilio API Key** is kept secret: e.g. use environment variables
+- [x] Ensure private information such as **mobile number** or **Twilio API Key** is kept secret: e.g. use environment variables
 - [ ] Submit pull request
 
 ## Domain Model Planning
 
+![Planning]
 ![Takeaway Diagram](https://lucid.app/publicSegments/view/9031337c-71ab-401d-8859-b81a85d0cf8b/image.png)
