@@ -2,12 +2,6 @@ require "order"
 describe Order do
   let(:dish) { instance_double(Restaurant, :dishes => { 1 => ["Soup", 3.50], 2 => ["Chips", 4] }) }
   let(:order) { Order.new(dish) }
-  # describe "#initialize" do
-  #   it "checks that we have a total that is set to 0" do
-  #     # order = Order.new
-  #     expect(order.total).to be_empty
-  #   end
-  # end
   describe "#select_meal" do
     it "checks select_meal functionality" do
       allow(dish).to receive(:available?).and_return(true)
