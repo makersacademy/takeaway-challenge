@@ -5,5 +5,5 @@
 .rubocop-*
 
 
-./key_value_pairs.env
-./quickstart.rb
+key_value_pairs.env
+quickstart.rb
