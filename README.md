@@ -60,4 +60,4 @@ After struggling to get both to work, I tried to mock it as best as possible wit
 
 The other tests account for some edge cases but not all, as there were some I was not sure how to handle. The program supports functionality with multiple **Takeaway** objects, each with their own selection of **dishes**, however in theory you could pass the same **Dish** object into multiple takeaways (let's say takeaway1 and takeaway2), and then order this dish in takeaway1's instance from takeaway2.
 
-I couldn't make an efficient in the time allocated. I think it would probably need a new Class that stores all known takeaways to check if each set of Dishes is unique, perhaps using some sort of id number.
+I couldn't make an efficient solution in the time allocated. I think it would probably need a new Class that stores all known takeaways to check if each set of Dishes is unique, perhaps using some sort of id number.
