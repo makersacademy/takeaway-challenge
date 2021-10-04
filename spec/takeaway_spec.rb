@@ -1,4 +1,12 @@
 require "takeaway"
+#note to peer reviewer- I've been using Doubles and stubs for the last couple of weeks,
+#I was curious when Katerina mentioned that there's a second school of thought that just uses the normal classes
+#I thought I'd give that a try for this project, so it's not that I don't know how to use doubles, I chose not to,
+#to see what it would be like.
+
+#my original idea was to have the Order class as just a dumb store for variables, which is why it has so much interaction with TakeAway
+#unfortunately, the order class evolved as I developed it and is now more complex.  A next step would be to decouple the order,
+#and TakeAway classes, as they are now more separate.
 
 describe TakeAway do
   dish = "fish and chips"
@@ -64,5 +72,4 @@ describe TakeAway do
       
     end
   end
-
 end
