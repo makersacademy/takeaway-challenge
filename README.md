@@ -109,7 +109,7 @@ As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 ---
-Notes 
+I added a function in Takeaway that prints a list of items and prices. 
 ---
 
 USER STORY 2

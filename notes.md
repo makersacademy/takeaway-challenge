@@ -10,3 +10,7 @@ I would like to see a list of dishes with prices
 
 list of dishes hash
 
+t = TakeAway.new
+t.print_menu
+t.order_item(chips)
+order << chips 
