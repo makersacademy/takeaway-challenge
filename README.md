@@ -22,8 +22,6 @@ I haven't fully completed the challenege yet.
 What I have done:
 - One class for Takeaway and two methods dish_price and select_dish 
 
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
-
 Plan 
 
 Nouns and verbs 
