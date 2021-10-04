@@ -14,7 +14,7 @@ describe Order do
       expect(order.select_meal(1)).to eq ([["Soup", 3.50]])
     end
     it "throws error if meal that is selected is not available" do
-      allow(dish).to receive(:available?).and_return(false)
+      allow(dish).to receive(:available?)
       expect { order.select_meal(3) }.to raise_error("Meal does not exist, sorry!")
     end
   end
@@ -24,6 +24,11 @@ describe Order do
       order.select_meal(1)
       order.select_meal(2)
       expect(order.total_order).to eq (7.50)
+    end
+  end
+  describe "#confirm" do
+    it "changes the send_order variable to true" do
+      expect(order.confirm).to eq true
     end
   end
 end
