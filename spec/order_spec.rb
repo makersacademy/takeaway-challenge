@@ -40,4 +40,8 @@ menu
     expect(subject).to receive(:send_text)
     subject.complete_order
   end
+
+  it 'does not complete order if items are empty' do
+    expect(subject.complete_order).to eq "There are no items in your basket."
+  end
 end

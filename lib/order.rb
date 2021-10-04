@@ -37,7 +37,7 @@ class Order
   # Calculate subtotal of order
   def calc_price
     @items.each do |item|
-      @dishes.each do |dish|
+     @dishes.each do |dish|
         if item[0] == dish.name
           @total += (dish.price * item[1])
         end
@@ -47,17 +47,15 @@ class Order
 
   # Checks if input is actually on the menu
   def check_item(item)
-    check_count = 0
+    dish_names = []
     @dishes.each do |dish|
-      if item == dish.name
-        check_count += 1
-      end
+      dish_names << dish.name
     end
-    if check_count.zero?
+    if dish_names.include? item
+      true
+    else
       false
       raise('We are unable to find that item.')
-    else
-      true
     end
   end
 
