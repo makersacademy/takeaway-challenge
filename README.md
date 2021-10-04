@@ -13,6 +13,17 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+
+I haven't fully completed the challenege yet. 
+- My next steps would be to create a seprate class for Menu and Order/Confirmation. 
+- To include doubles in my tests whilst I add more methods 
+- To include the Twilio API 
+
+What I have done:
+- One class for Takeaway and two methods dish_price and select_dish 
+
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+
 Plan 
 
 Nouns and verbs 
@@ -43,21 +54,14 @@ Confirmation --> confirmed --> text_sent --> "Thank you! Your order was placed a
 
 Steps in plain English 
 
-1. Make a class called Dishes 
-2. Make a hash with dish as key and price as values
-3. list the prices for each dish 
+1. Make a class called Takeaway 
+2. Make a hash - dish as key and price as values
+3. Show the prices for each dish 
 4. Select number of dishes 
 5. Store selected number of dishes in a list 
 6. Make a class called Confirmation 
 7. Show sum of total dishes selected and if equal to dishes selected total return true 
 8. If total is true send text "Thank you! Your order was placed and will be delivered before 18:52"
-
-How steps 
-1. How do I make a class in ruby
-2. How do I make a Hash in ruby
-3. How do I puts a hash in ruby
-4. How do I store user input in a list in ruby 
-5. How do I sum values from a hash in ruby 
 
 Instructions
 -------
