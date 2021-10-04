@@ -22,7 +22,7 @@ I haven't fully completed the challenege yet.
 What I have done:
 - One class for Takeaway and two methods dish_price and select_dish 
 
-![Alt text](Screenshot 2021-10-04 at 08.39.23.png?raw=true "Optional Title")
+![Alt text](/Users/maishachowdhury/Makers/takeaway-challenge/Screenshot 2021-10-04 at 08.39.23.png?raw=true "Optional Title")
 
 Plan 
 
