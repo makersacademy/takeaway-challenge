@@ -29,8 +29,4 @@ class Takeaway
     puts "Select dish please"
     @order.push(dish)
   end 
-
-  def total
-    puts @menu[@order]
-    end
 end 
