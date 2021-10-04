@@ -70,4 +70,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Domain Model Planning
 
-![Diagram](https://lucid.app/publicSegments/view/1e24ff8e-ad57-42b8-8c1a-24226be3e7b1/image.png)
+![Takeaway Diagram](https://lucid.app/publicSegments/view/549dcc6d-b3a7-4b9a-bf49-e0d2cf0aac6c/image.png)
