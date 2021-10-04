@@ -72,3 +72,7 @@ Links:
 
 # Class diagram
 ![class diagram 1](https://user-images.githubusercontent.com/80968551/135779216-353ef1af-f9c0-45a5-ba79-ff5f872f8921.JPG)
+
+# Coverage 
+
+![Image 04-10-2021 at 02 23](https://user-images.githubusercontent.com/80968551/135780975-97dc0459-917c-4e31-ac70-5ddeace102d4.jpg)
