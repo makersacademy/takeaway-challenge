@@ -50,8 +50,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ### User Stories
 
 - [x] Customers can check a list of dishes with prices
-- [ ] Customers can select the meal they want by selecting some number of several available dishes
-- [ ] Customers can verify their order is correct by checking that the total they have been given matches the sum of the various dishes in their order
+- [x] Customers can select the meal they want by selecting some number of several available dishes
+- [x] Customers can verify their order is correct by checking that the total they have been given matches the sum of the various dishes in their order
 - [ ] Customer can receive a text stating that the order was placed successfully and that it will be delivered 1 hour from now such as _"Thank you! Your order was placed and will be delivered before 18:52"_ after order is placed
 
 ### Project Miscellaneous
