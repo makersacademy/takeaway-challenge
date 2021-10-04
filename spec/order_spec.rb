@@ -10,4 +10,11 @@ describe Order do
       expect(order.dishes_ordered).to include(pizza)
     end
   end
+
+  describe "#basket_summary" do
+    it "displays a summary of dishes with total" do
+      order.add(pizza)
+      expect(order.basket_summary).to eq("Basket:\nPizza - 8.00\n\nTotal: £8.00")
+    end
+  end
 end
