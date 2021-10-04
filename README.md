@@ -66,7 +66,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - [x] Make the code elegant: every class has a clear responsibility, methods are short etc.
 - [ ] (Advanced) Implement the ability to place orders via text message.
 - [x] Ensure private information such as **mobile number** or **Twilio API Key** is kept secret: e.g. use environment variables
-- [ ] Submit pull request
+- [x] Submit pull request
 
 ## Domain Model Planning
 
