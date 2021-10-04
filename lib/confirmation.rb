@@ -1,4 +1,5 @@
 require "twilio-ruby"
+# Disclaimer: Makers examplar code used as template for construction
 
 class Confirmation
   attr_accessor :delivery_time
