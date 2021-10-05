@@ -45,12 +45,12 @@ class Order
 
   def send_sms
     fail 'Cannot send sms until order is placed' if !@completed = @pending
-    account_sid = 'AC15ecbee19235321da77ab240d55e183b'
-    auth_token = '6194352224829f0f5aa12dd281f2cda6'
+    account_sid = 'ACCOUNT SID'
+    auth_token = 'AUTH TOKEN'
     client = Twilio::REST::Client.new(account_sid, auth_token)
     
-    from = '+447897034894' # Your Twilio number
-    to = '+447833297790' # Your mobile phone number
+    from = '+44...' # Your Twilio number
+    to = '+44...' # Your mobile phone number
 
     client.messages.create(
     from: from,
