@@ -1,21 +1,17 @@
-#  require_relative 'menu'
-# class TakeAway
 
-# attr_reader :menu, :order
+class TakeAway
 
-#   def initialize(menu = Menu.new, order = nil)
-#     @menu = menu
+attr_reader :menu
+
+  def initialize
+    @menu = menu
+    @dishes = dishes
+    @selected_dishes = []
 #     @order = order
-#   end
+  end
 
-#   def print_menu
-#     menu.print_dishes
+#   def select_dishes(dish, quantity)
+#     fail "no dish" unless dish_available?
+#     @selected_dishes << dish[dish] = quantity
 #   end
-  
-#   # def order_items(dishes)
-#   #   dishes.each |item, quantity|
-#   #   order.add(item, quantity)
-#   #   end
-#   # end
-    
-# end
+end

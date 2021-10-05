@@ -1,15 +1,14 @@
 
-# require "take_away"
+require "take_away"
 
-# describe TakeAway do
-#   subject(:take_away) { described_class.new(menu: menu) }
-#   let(:menu) { double(:menu) }
+describe TakeAway do
+  subject(:take_away) { described_class.new(menu: menu) }
+  let(:menu) { double(:menu) }
 #   let(:order) { double(:order) }
-#   let(:dishes) { "Margherita: 8.99" }
+  let(:dishes) { double(:dishes) }
   
 
-#   it 'prints the menu' do
-#       expect(take_away.print_menu).to eq(dishes)
-#   end
+ 
 
-# end
+
+end
