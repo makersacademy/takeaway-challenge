@@ -135,7 +135,7 @@ Please see [draw.io](https://app.diagrams.net/) to view the domain model file [D
 ## How to use the code in irb
 The menu class is responsible for creating and saving a menu.
 
-    require './docs/takeaway_menu'
+    require './docs/menu'
     menu = Menu.new
     menu.load
     menu.add("burger", 10)
@@ -145,7 +145,8 @@ The menu class is responsible for creating and saving a menu.
 
 The order class can then load the pre-saved menu and complete an order.
 
-    require './docs/takeaway_menu'
+    require './docs/menu'
+    require './docs/order'
     order = Order.new
     order.menu
     order.add("burger")

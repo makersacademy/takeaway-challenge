@@ -15,6 +15,7 @@ class Menu
       @menu_list << { dish_name: dish_name, dish_price: dish_price.to_i }
     end
     file.close
+    @menu_list
   end
 
   def add(dish_name, dish_price)
@@ -32,6 +33,21 @@ class Menu
       file.puts csv_line
     end
     file.close
+  end
+
+  def add(dish_name, dish_price)
+    dish_entry = @dish_class.new(dish_name, dish_price).dish_entry
+    @menu_list << dish_entry
+  end
+  
+  def delete(dish_name)
+    delete_dish = dish_lookup(dish_name)
+    @menu_list.delete_if { |hash| hash == delete_dish }
+    @menu_list
+  end
+
+  def dish_lookup(dish_name)
+    @menu_list.find { |hash| hash[:dish_name] == dish_name }
   end
 
   def print
