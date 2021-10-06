@@ -19,5 +19,9 @@ class Order
   def request_bill
     total.bill
   end
+
+  def request_receipt
+    total.receipt
+  end
 end  
 

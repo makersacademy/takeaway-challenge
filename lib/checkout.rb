@@ -2,6 +2,8 @@ require 'dotenv/load'
 require 'twilio-ruby'
 
 class Checkout
+  # possibly unfortunate name for the class, but I would have expected it to also handle
+  # the payment and not just send an SMS
 
   def initialize
     @time = Time.now + 3600

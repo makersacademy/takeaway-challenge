@@ -17,11 +17,8 @@ class Total
   end
 
   def receipt
-    puts "Your Receipt"
-    selection.each do |item|
-      puts "#{item[:dish]} - quantity:#{item[:quantity]} - £#{item[:price]}"
-     end 
-    puts "Total #{bill}"
+    selection
+  # not entirely sure what the user story required
   end
 
   def pay
