@@ -1,8 +1,17 @@
 require_relative 'order'
 require_relative 'sms'
 
+module Menu
+  def print_menu(dishes)
+    puts dishes.map { |dish| format(dish) }.join("\n\n")
+  end
+end
+# following SRP
+
 class Takeaway
   attr_reader :current_order
+  include Menu
+  
   @@sms_client = SMS.new
 
   def initialize(dishes, order_class: Order)
@@ -16,7 +25,7 @@ class Takeaway
   end
 
   def menu
-    puts dishes.map { |dish| format(dish) }.join("\n\n")
+    print_menu(dishes)
   end
 
   def select_dish(dish, quantity = 1)
