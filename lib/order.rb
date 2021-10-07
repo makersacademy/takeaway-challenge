@@ -11,12 +11,14 @@ class Order
 
   def order_confirmation
     delivery_time
-    puts "Thanks for your order! It will be delivered in 45 minutes at #{@time}."
+    puts "Thanks for your order! It will be delivered in 45 minutes at #{@delivery_time}."
     # send_sms
   end 
 
+  private
+
   def delivery_time
-    @time = (Time.new + 45 * 60).strftime("%H:%M")
+    @delivery_time = (Time.new + 45 * 60).strftime("%H:%M")
   end
   
   def send_sms
@@ -25,7 +27,7 @@ class Order
     @client = Twilio::REST::Client.new account_sid, auth_token
 
     message = @client.messages.create(
-      body: "Thanks for your order! It will be delivered in 45 minutes at #{@time}.",
+      body: "Thanks for your order! It will be delivered in 45 minutes at #{@delivery_time}.",
       to: ENV["MY_PHONE_NUMBER"],
       from: ENV["TWILIO_MAGIC_NUMBER"])
   end

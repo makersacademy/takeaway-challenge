@@ -23,7 +23,7 @@ describe Menu do
   end
 
   describe "#display_order" do
-    it 'creates a new Order' do
+    it 'displays an order' do
     end
   end
 
