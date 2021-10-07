@@ -48,9 +48,13 @@ class Menu
     # if input =~ /^-?[0-9]+$/
     until input.empty? do
       add_to_order(input)
-      puts "#{@new_order.orders.count} items in order"
+      display_items_in_order
       input = STDIN.gets.chomp
     end
+  end
+
+  def display_items_in_order
+    puts "#{@new_order.orders.count} items in order"
   end
   
   def add_to_order(item)
@@ -71,5 +75,5 @@ class Menu
   end
 end
 
-start = Menu.new
-start.app
+# start = Menu.new
+# start.app
