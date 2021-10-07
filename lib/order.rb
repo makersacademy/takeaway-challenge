@@ -12,7 +12,7 @@ class Order
   def order_confirmation
     delivery_time
     puts "Thanks for your order! It will be delivered in 45 minutes at #{@delivery_time}."
-    # send_sms
+    send_sms
   end 
 
   private
