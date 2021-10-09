@@ -83,7 +83,7 @@ Notes on Test Coverage
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
 
 
-## Planning
+## Project Development
 
 1. Read all user stories
 2. Identify classes, states and behaviours using the black box model
@@ -105,3 +105,14 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 ![Takeaway Class](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8adde183-6f0b-4ead-a2e7-02c4a8a34b3b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211009%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211009T182046Z&X-Amz-Expires=86400&X-Amz-Signature=78440711fa030a032d79ef948a9380219987812597c08c0121e3e623248db068&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 ![Black Box Model](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40b030da-da00-492f-b68a-e9b3f566fdb9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211009%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211009T182030Z&X-Amz-Expires=86400&X-Amz-Signature=5b111162baddaad22d15c48523f5e9af5b73947a956656efaeda204ffd521064&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+
+## Demo
+
+![Irb testing menu](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47939732-dd3d-4f49-9822-69dfe12c9193/Screenshot_2021-10-02_at_10.55.40.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211009%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211009T182209Z&X-Amz-Expires=86400&X-Amz-Signature=99e62e4a0ba685e3e2db0ecf9f5ed018ba82b0b9e4490c935f0e41500747c64f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot%25202021-10-02%2520at%252010.55.40.png%22)
+
+![Irb testing order confirmation](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/df01b377-694d-438f-b9dd-489b47deb96c/Screenshot_2021-10-02_at_10.56.24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211009%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211009T182332Z&X-Amz-Expires=86400&X-Amz-Signature=c144da50a00d189621fa8bc2b36103fda01413556d2f8ce8a36b06bdcff34dc6&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot%25202021-10-02%2520at%252010.56.24.png%22)
+
+![Irb testing subtotal](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1ada81d2-e42a-47a7-bce0-c43177037c3c/Screenshot_2021-10-02_at_10.55.55.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211009%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211009T182415Z&X-Amz-Expires=86400&X-Amz-Signature=1c9070c29c0fd337fbe02fd6342543ab19b3b8197655e824a7c84d849a3e7af4&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot%25202021-10-02%2520at%252010.55.55.png%22)
+
+![Twilio functionality](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/30536f68-4d3f-43a3-9e23-4b5217ddf3aa/IMG_4210.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211009%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211009T182443Z&X-Amz-Expires=86400&X-Amz-Signature=5e056d6404d9db1e4582e5a1e7a9a3f169c4449559433fb6134b4e852c4bee86&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22IMG_4210.PNG.png%22)
