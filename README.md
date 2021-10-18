@@ -98,21 +98,21 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 6. Submit a pull request
 
 
-![Menu Class](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/faaf48fa-4bb8-452e-acb8-e6210c8e82d6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135538Z&X-Amz-Expires=86400&X-Amz-Signature=2bf6119e403cf1556d099269ddecde8605cb9ee58f85ed6afd92d99ca8824ea3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![Menu Class](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Menu%20Class.png)
 
-![Basket Class](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/75b5a5ba-ea43-4089-953a-01e26ae59f90/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135602Z&X-Amz-Expires=86400&X-Amz-Signature=5cae05fd8c159b74b08744a1820c2811f0ecacab23fd4ade605f3eefc9a74ac8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![Basket Class](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Basket%20Class.png)
 
-![Takeaway Class](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8adde183-6f0b-4ead-a2e7-02c4a8a34b3b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135554Z&X-Amz-Expires=86400&X-Amz-Signature=1eb71ffa6d84737a94947ec70fbbc4ba6ddfff9cf9acdbfdb2ce3ddd92b6135f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![Takeaway Class](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Takeaway%20Class.png)
 
-![Black Box Model](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40b030da-da00-492f-b68a-e9b3f566fdb9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135616Z&X-Amz-Expires=86400&X-Amz-Signature=979010035b70aadd515fcea6ae9a3fd8c61779738358feee93a9160cef8ce555&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![Black Box Model](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Black%20Box%20Model.png)
 
 
 ## Demo
 
-![Irb testing menu](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47939732-dd3d-4f49-9822-69dfe12c9193/Screenshot_2021-10-02_at_10.55.40.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135632Z&X-Amz-Expires=86400&X-Amz-Signature=14a289bd6d6635346de7086c275c6e3c15041d4bad207bbd6cf6343eeef2bd53&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot%25202021-10-02%2520at%252010.55.40.png%22)
+![Irb testing menu](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Irb%20testing%20menu.png)
 
-![Irb testing order confirmation](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/df01b377-694d-438f-b9dd-489b47deb96c/Screenshot_2021-10-02_at_10.56.24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135641Z&X-Amz-Expires=86400&X-Amz-Signature=00c6645d30ca810260af59269d90e74ae62072e00aab65b652276cf72b171c61&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot%25202021-10-02%2520at%252010.56.24.png%22)
+![Irb testing order confirmation](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Irb%20testing%20order%20confirmation.png)
 
-![Irb testing subtotal](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1ada81d2-e42a-47a7-bce0-c43177037c3c/Screenshot_2021-10-02_at_10.55.55.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135657Z&X-Amz-Expires=86400&X-Amz-Signature=f43e0e00b4ecf301fe4ea98a524f45e3779817e789a63e693480a1d8c761ba11&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot%25202021-10-02%2520at%252010.55.55.png%22)
+![Irb testing subtotal](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Irb%20testing%20subtotal.png)
 
-![Twilio functionality](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/30536f68-4d3f-43a3-9e23-4b5217ddf3aa/IMG_4210.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T135708Z&X-Amz-Expires=86400&X-Amz-Signature=0d7bcd5e9629b2f904bc6540ea4a95d334cfeb422ac4b4bb7b7edd81a6222b27&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22IMG_4210.PNG.png%22)
+![Twilio functionality](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Twilio%20Functionality.png)
