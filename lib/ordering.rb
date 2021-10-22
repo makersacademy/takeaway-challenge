@@ -4,7 +4,6 @@ class Ordering
 
   def initialize 
     @customers_order = []
-    @customers_order_total = 0.0
     @add_up = 0.0
     @menu = [
       { :dish => "Big mac", :price => 3.00},
@@ -44,17 +43,8 @@ class Ordering
   end 
 
 
-  # def add_up_dish_total
-  #   @customers_order.each do |customers_dish|
-  #     if @menu.any? {|a,b| a[:dish] == customers_dish}
-  #       add_up = b
-  #       @customers_order_total += add_up
-  #     end 
-  #   end 
-  # end 
-
-
   def add_up_dish_total
+    @customers_order_total = 0.0
     @customers_order.each do |customers_dish|
       menu.each do |dish|
         cus_dish = dish[:dish]
