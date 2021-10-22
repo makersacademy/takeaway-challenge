@@ -18,4 +18,8 @@ describe Takeaway do
 
     expect(takeaway.add_to_order("Beef curry: £12")).to eq takeaway.my_order
   end
+
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
 end
