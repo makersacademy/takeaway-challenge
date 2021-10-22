@@ -10,18 +10,6 @@ class Takeaway
     @my_order = []
   end
 
-  def dishes
-
-    menu_list = ""
-    @menu.each do |item|
-      item_name = item[:name]
-      item_price = item[:price]
-      menu_list += "#{item_name}: £#{item_price} "
-    end
-    # .strip is used to remove last trailing white space on printed string
-    return menu_list.strip
-  end
-
   def add_to_order(order)
     @menu.each do |item|
       if item.has_value?(order)
@@ -29,6 +17,9 @@ class Takeaway
       end
     end
 
-    return @my_order
+    p @my_order
   end
 end
+
+takeaway = Takeaway.new
+takeaway.add_to_order("Beef curry")

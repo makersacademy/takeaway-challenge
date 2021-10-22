@@ -15,11 +15,18 @@ describe Takeaway do
   # I would like to be able to select some number of several available dishes
   it 'selects several dishes and adds them to order' do
     takeaway = Takeaway.new
+    takeaway.add_to_order("Beef curry")
+    takeaway.add_to_order("Fish curry")
 
-    expect(takeaway.add_to_order("Beef curry: £12")).to eq takeaway.my_order
+    expect(takeaway.my_order).to eq [{:name=>"Beef curry", :price=>12}, {:name=>"Fish curry", :price=>14}]
   end
 
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  # it 'prints each item with the cost and the total price of all items in my order' do
+  #   takeaway = Takeaway.new
+  #   takeaway.add_to_order("Beef curry: £12")
+  #   takeaway.add_to_order("Fish curry: £12")
+  # end
 end
