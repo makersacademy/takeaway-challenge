@@ -1,14 +1,22 @@
 class Menu
 
-  attr_reader :foods
+  attr_accessor :food, :prices
 
   def initialize
-    @foods = { "chicken" => 7, "lamb" => 10, "beef" => 12 }
+    @food = ['chicken', 'lamb', 'beef']
+    @prices = { "chicken" => 7, "lamb" => 10, "beef" => 12 }
   end
 
-  def order
-    output = @foods.find {|item| item.include?("chicken")}
-    print output
+  def item_list(item)
+    @food = food [item]
   end
+
+
+  def price_finder(item)
+    @price = @prices[item]
+  end
+
+
+
 
 end
