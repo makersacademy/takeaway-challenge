@@ -20,4 +20,10 @@ describe Customer do
     expect(subject.current_order).to include "Cod"
   end
 
+  it 'can remove items from the current order' do
+    subject.add_item("Cod")
+    subject.remove_item("Cod")
+    expect(subject.current_order).to eq([])
+  end
+
 end

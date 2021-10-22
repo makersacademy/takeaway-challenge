@@ -24,6 +24,6 @@ class Customer
   end
 
   def remove_item(item)
-
+    @current_order.pop
   end
 end
