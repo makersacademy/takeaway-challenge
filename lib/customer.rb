@@ -10,9 +10,9 @@ class Customer
    @dishes
   end
 
-  # def select_dish(dish)
-  #  @selected_dish << dish 
-  # end 
+  def select_dish(dish)
+   @selected_dish << dish 
+  end 
 
   # def selection
   #   @dishes.map |dish| do
