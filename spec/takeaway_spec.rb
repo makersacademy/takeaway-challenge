@@ -4,6 +4,6 @@ describe Takeaway do
   it 'prints the dishes and their prices' do
     takeaway = Takeaway.new
 
-    expect(takeaway.dishes).to eq "Curry - £15"
+    expect(takeaway.dishes).to eq "beef_curry: £12"
   end
 end
