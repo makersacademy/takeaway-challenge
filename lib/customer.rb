@@ -8,7 +8,6 @@ class Customer
 
   def initialize(menu = Menu.new)
     @menu = menu
-    @current_order = {}
     @current_menu = current_menu
     @current_menu = []
     @current_order = []
@@ -26,6 +25,11 @@ class Customer
 
   def remove_item(item)
     @current_order.pop
+  end
+
+  def total_items
+    total = @current_order.map{|x| x.to_s.scan(/\d+/).last.to_i }
+    (total).sum
   end
 
 end

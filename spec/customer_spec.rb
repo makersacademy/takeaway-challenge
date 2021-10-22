@@ -31,9 +31,11 @@ describe Customer do
     expect(subject.quantity).to eq(2)
   end
 
-  # it 'counts the items in the order' do
-  #   subject.add_item("Cod",2)
-  #   subject.add_item("Chips",2)
-  # end
+  it 'counts the items in the order' do
+    subject.add_item("Cod",2)
+    subject.add_item("Chips",2)
+    subject.add_item("Haddock",2)
+    expect(subject.total_items).to eq(6)
+  end
 
 end
