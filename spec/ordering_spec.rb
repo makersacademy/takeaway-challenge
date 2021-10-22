@@ -36,6 +36,12 @@ describe Ordering do
       expect(my_order.checkout). to eq 5.50
     end 
 
+    it 'checks the order total is right if checkout is done twice by accident' do
+      my_order.order("Big mac")
+      my_order.order("Chicken Nuggets")
+      my_order.checkout
+      expect(my_order.checkout). to eq 5.50
+    end 
 
 puts "DONT FORGET TO GIT ADD AND COMMIT "
 end 
