@@ -4,7 +4,8 @@ class Ordering
 
   def initialize 
     @customers_order = []
-    @custmers_order_total = 0
+    @customers_order_total = 0.0
+    @add_up = 0.0
     @menu = [
       { :dish => "Big mac", :price => 3.00},
       { :dish => "Chicken Nuggets", :price => 2.50},
@@ -27,10 +28,12 @@ class Ordering
 
   def checkout
     add_up_dish_total
-    @custmers_order_total
+    @customers_order_total
   end 
 
   private
+
+  attr_reader :add_up
 
   def check_dish_is_on_menu
     if @menu.any? {|a| a[:dish]== @customers_dish}
@@ -40,20 +43,26 @@ class Ordering
     end
   end 
 
+
+  # def add_up_dish_total
+  #   @customers_order.each do |customers_dish|
+  #     if @menu.any? {|a,b| a[:dish] == customers_dish}
+  #       add_up = b
+  #       @customers_order_total += add_up
+  #     end 
+  #   end 
+  # end 
+
+
   def add_up_dish_total
-    @customers_order.each do |a|
-      @menu.each do |key, value|
-        if a == key
-          @custmers_order_total += value.to_i
+    @customers_order.each do |customers_dish|
+      menu.each do |dish|
+        cus_dish = dish[:dish]
+        price = dish[:price]
+        if cus_dish == customers_dish
+            @customers_order_total = @customers_order_total + price 
         end 
       end 
     end 
   end 
 end 
-
-
-    # add_up = @menu.fetch(a :dish)
-# 
-    # @custmers_order_total + add_up   
-  # if @menu.any? {|a| a[:dish] == customers_dish}
-  # menu
