@@ -4,4 +4,3 @@ describe Dish do
   end
 
 end
-
