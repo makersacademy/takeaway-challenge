@@ -16,4 +16,12 @@ class Customer
     @current_menu << @menu
     @current_menu
   end
+
+  def add_item(item)
+    #@order << item
+  end
+
+  def remove_item(item)
+
+  end
 end
