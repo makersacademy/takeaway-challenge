@@ -15,4 +15,9 @@ describe Customer do
     expect(subject.current_order).to eq([])
     end
 
+  it 'can add items to the current order' do
+    subject.add_item("Cod")
+    expect(subject.current_order).to include "Cod"
+  end
+
 end
