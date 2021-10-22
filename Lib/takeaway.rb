@@ -1,4 +1,4 @@
-
+require 'menu'
 
 class Takeaway
     
@@ -18,12 +18,12 @@ class Takeaway
 
     # end 
 
-    def initialize(menu:) # depedency injection in ruby 
+    def initialize(menu = Menu.new) # depedency injection menu = Menu.new 
         @menu = menu 
     end 
 
     def get_menu 
-        menu.print
+        menu.print_menu
     end 
 
     private 

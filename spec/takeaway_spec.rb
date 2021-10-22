@@ -1,4 +1,5 @@
 require 'takeaway' 
+require 'menu'
 
 
 describe Takeaway do 
@@ -16,14 +17,13 @@ describe Takeaway do
     #     end 
     # end 
 
-    subject(:takeaway) { described_class.new(menu: menu) } #Injecting menu into the takeaway, so need to create a menu double. : is a symbol/ constant and it has a unquiue value
-
-    #menu double 
-    let(:menu) { double(:menu, print: double_menu) }
-    let(:double_menu) { "topokki : £10 " }
     
+
+   
     it 'lists the dishes with prices' do 
-        expect(takeaway.get_menu).to eq(double_menu)
+        menu = double("menu double ", :print_menu => {"topokki" => 10} )
+        takeaway = Takeaway.new(menu)
+        expect(takeaway.get_menu).to eq({"topokki" => 10} )
 
     end 
 
