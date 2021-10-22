@@ -1,6 +1,7 @@
+require 'dish'
 describe Dish do
-  it "should " do
-
-  end
+  # it "should " do
+  #
+  # end
 
 end
