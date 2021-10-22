@@ -12,10 +12,14 @@ describe Order do
   end
   it "should send text" do
     subject = Order.new
-    # dish = Dish.new("spaghetti",12)
-    # item = Item.new(dish, 20)
-    subject.complete
+    subject.complete_order
     text = Text.new("Thank you! Your order was placed and will be delivered before", "18:52\"")
     expect(subject.text(text)).to eq(TEXT)
+  end
+  it "should prevent sending text if not complete" do
+    subject = Order.new
+    text = Text.new("Thank you! Your order was placed and will be delivered before", "18:52\"")
+    expect { subject.text(text) }.to raise_error 'invalid operation: text'
+
   end
 end

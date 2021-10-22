@@ -20,7 +20,11 @@ class Order
   end
 
   def text(text)
-    # raise 'invalid operation: text' unless complete
+    raise 'invalid operation: text' unless complete
     text.message
+  end
+
+  def complete_order
+    @complete = true
   end
 end
