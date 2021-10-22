@@ -14,6 +14,11 @@ class Customer
     @order_total << @restraunt.add_to_order(order_item)
   end 
 
+  def order_total
+    @restraunt.order_items 
+    @restraunt.order_price
+  end 
+
   def order_complete(phonenumber)
     @restraunt.complete_order(phonenumber)
   end 

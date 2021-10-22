@@ -28,6 +28,17 @@ describe Customer do
 
   end 
 
+  describe '#order_total' do 
+
+    it 'gets order total' do 
+      restraunt_double = double(:add_order, add_to_order: { Jalfreezi: 5 }, order_price: 5, order_items: { Jalfreezi: 5 }) 
+      customer = Customer.new(restraunt_double)
+      customer.order_selection(:Jalfreezi)
+      expect(customer.order_total).to eq 5
+    end 
+
+  end 
+
   describe '#order_complete' do 
 
     it 'checks we can complete a order' do 
