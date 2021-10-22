@@ -17,7 +17,7 @@ describe Customer do
 
   it 'can add items to the current order' do
     subject.add_item("Cod", 1)
-    expect(subject.current_order).to include "Cod"
+    expect(subject.current_order).to include(["Cod",1])
   end
 
   it 'can remove items from the current order' do
@@ -30,5 +30,10 @@ describe Customer do
     subject.add_item("Cod",2)
     expect(subject.quantity).to eq(2)
   end
+
+  # it 'counts the items in the order' do
+  #   subject.add_item("Cod",2)
+  #   subject.add_item("Chips",2)
+  # end
 
 end

@@ -20,7 +20,7 @@ class Customer
   end
 
   def add_item(item, quantity)
-    @current_order << item
+    @current_order.push([item, quantity])
     @quantity = quantity
   end
 
