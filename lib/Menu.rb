@@ -7,13 +7,13 @@ class Menu
     @prices = { "chicken" => 7, "lamb" => 10, "beef" => 12 }
   end
 
-  def item_list(item)
-    @food = food [item]
+  def item_list(food_array_number)
+    @food = food[food_array_number]
   end
 
 
-  def price_finder(item)
-    @price = @prices[item]
+  def price_finder(item_name)
+    @prices[item_name]
   end
 
 
