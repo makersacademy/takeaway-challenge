@@ -13,7 +13,7 @@ class Takeaway
   @prices
   end
 
-  def item_list(food_array_number)
+  def item_list(food_array_number) # pointless method atm,  Kept for later potential uses
     @food = food[food_array_number]
   end
 
@@ -21,8 +21,8 @@ class Takeaway
     @prices[item_name]
   end
 
-  def order
+  def order(food_name)
+    @basket << food_name
   end
-
 
 end

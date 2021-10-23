@@ -28,16 +28,23 @@ describe Takeaway do
   end
 
 
-  describe 'ordering processes' do
+  describe 'ordering processes / basket' do
 
-    it 'basket is an empty array when installised' do 
+    it 'basket is an empty array when initialised' do 
       expect(subject.basket).to contain_exactly 
     end
 
-    it 'create a user display to pick food items and move into an empty array' do 
+    it 'create a user display to pick food items and move into an empty array (basket)' do 
       subject.order("beef")
+      subject.order("chicken")
 
-      expect(subject.basket).to contain_exactly "beef"
+      expect(subject.basket).to contain_exactly "beef", "chicken"
+    end
+
+    it 'create an error message if user tries to input outside of the menu' do 
+      subject.order("duck")
+
+      expect(subject.basket).to raise "Not a valid input"
     end
 
   end
