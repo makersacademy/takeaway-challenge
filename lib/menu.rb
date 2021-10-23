@@ -11,14 +11,13 @@ class Menu
   def display_dishes
     raise "empty menu" if dishes == []
     response = ""
-    @dishes.each do |dish|
-      response += build_line(dish)
+    @dishes.each_index do |index|
+      response += build_line(index)
     end
-    puts response
     response
   end
 
-  private def build_line(dish)
-    "#{dish.description}:#{dish.price}\n"
+  private def build_line(index)
+    "#{index + 1} #{@dishes[index].description}:#{@dishes[index].price}\n"
   end
 end

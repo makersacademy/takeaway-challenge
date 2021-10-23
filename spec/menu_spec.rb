@@ -1,6 +1,6 @@
 require 'menu'
 require 'dish'
-PRINTED_LIST = "Spaghetti:12\nMaccaroni:9\n".freeze
+PRINTED_LIST = "1 Spaghetti:12\n2 Maccaroni:9\n".freeze
 describe Menu do
   it "should display dishes" do
     subject = Menu.new
