@@ -22,7 +22,7 @@ class Takeaway
     @prices[item_name]
   end
 
-  def order(food_name)
+  def order(food_name) # could be simplified by just pushing hash values containing two key pairs. Mistake made. Lesson learnt
     while true do
       if food_name == "chicken"
         @basket << food_name
