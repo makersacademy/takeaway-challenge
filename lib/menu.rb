@@ -2,9 +2,8 @@ require 'dish'
 
 class Menu
   attr_reader :dishes
-  DEFAULT_LIST = [Dish.new("Spaghetti", 12), Dish.new("Maccaroni", 9)].freeze
 
-  def initialize(dishes = DEFAULT_LIST)
+  def initialize(dishes = [])
     @dishes = dishes
   end
 
@@ -15,6 +14,10 @@ class Menu
       response += build_line(index)
     end
     response
+  end
+
+  def empty?
+    @dishes.empty?
   end
 
   private def build_line(index)
