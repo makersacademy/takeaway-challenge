@@ -1,5 +1,5 @@
 class Write
-  def set_write(message)
+  def write(message)
     puts message
   end
 end

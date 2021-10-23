@@ -9,7 +9,7 @@ describe Ui do
   it "should display menu" do
     $argument = ""
     menu_mock = double("menu", :display_dishes => PRINTED_LIST)
-    write_mock = double("write_mock", :set_write => PRINTED_LIST)
+    write_mock = double("write_mock", :write => PRINTED_LIST)
     subject = Ui.new(Menu.new(DISHES), menu_mock, write_mock)
     expect(subject.display_menu).to eq PRINTED_LIST
   end

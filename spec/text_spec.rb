@@ -1,4 +1,6 @@
 require 'text'
+require 'twilio'
+
 describe Text do
   subject = Text.new("body","8:30\"")
   it "should add body" do

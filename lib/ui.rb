@@ -13,7 +13,7 @@ class Ui
   def display_menu
     raise "empty menu" if @menu.empty?
     a = @menu.display_dishes
-    @write.set_write(a)
+    @write.write(a)
   end
 
   def select_dish
