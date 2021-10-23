@@ -16,4 +16,8 @@ describe Order do
   it 'should add the items to the order' do
     expect(order.order).to eq ([{ "jerk chicken" => 9 }])
   end
+
+  it 'should get the price of each item in the order' do
+    expect(order.get_price).to eq ([{ "jerk chicken" => 9 }])
+  end
 end
