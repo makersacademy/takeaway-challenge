@@ -20,4 +20,11 @@ describe Order do
   it 'should get the price of each item in the order' do
     expect(order.get_price).to eq ([{ "jerk chicken" => 9 }])
   end
+
+  describe 'should calculate the price' do
+    before do
+      order.get_price
+      order.calculate_total_price
+    end
+  end
 end
