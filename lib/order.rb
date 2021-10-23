@@ -1,3 +1,5 @@
+require 'menu'
+
 class Order
   attr_reader :selection, :menu
 
