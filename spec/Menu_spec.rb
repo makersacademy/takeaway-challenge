@@ -37,14 +37,22 @@ describe Takeaway do
     it 'create a user display to pick food items and move into an empty array (basket)' do 
       subject.order("beef")
       subject.order("chicken")
+      subject.order("lamb")
 
-      expect(subject.basket).to contain_exactly "beef", "chicken"
+      expect(subject.basket).to contain_exactly "beef", "chicken", "lamb"
     end
 
     it 'create an error message if user tries to input outside of the menu' do 
-      subject.order("duck")
 
-      expect(subject.basket).to raise "Not a valid input"
+      expect{ subject.order("duck") }.to raise_error("not a valid input")
+    end
+
+    it 'create an error message if user tries to input outside of the menu' do 
+      subject.order("beef")
+      subject.order("chicken")
+      subject.order("lamb")
+      
+      expect(subject.basket_cost).to eq 29
     end
 
   end

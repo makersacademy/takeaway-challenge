@@ -12,3 +12,5 @@ p takeaway.order("lamb")
 
 takeaway.order("chicken")
 p takeaway.basket
+
+p takeaway.order("duck")
