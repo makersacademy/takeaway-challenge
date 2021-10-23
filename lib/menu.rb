@@ -1,8 +1,8 @@
-class Takeaway
-  attr_reader :menu_items
+class Menu
+  attr_reader :dishes
 
   def initialize
-    @menu_items = {
+    @dishes = {
       "ackee and saltfish" => 10,
       "callaloo and saltfish" => 10,
       "jerk chicken" => 9,
@@ -20,7 +20,7 @@ class Takeaway
   end
 
   def show_menu
-    @menu_items.collect do |k,v|
+    @dishes.collect do |k,v|
       "#{k} £#{v}"
     end
   end

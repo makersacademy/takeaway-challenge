@@ -1,6 +1,8 @@
-require 'takeaway'
+require 'menu'
 
-describe Takeaway do
+describe Menu do
+
+  subject(:menu) { described_class.new }
 
   it 'should display a welcome message' do
     message = 'Welcome to Trelawny field, di baddest kitchen inna England!'
