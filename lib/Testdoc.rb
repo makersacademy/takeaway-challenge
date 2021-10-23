@@ -1,8 +1,11 @@
-require './lib/Menu'
+require './lib/menu'
 
-menu = Menu.new
+takeaway = Takeaway.new
 
-p menu.prices["chicken"]
-p menu.price_finder("chicken") # broken atm
-p menu.food[1]
-p menu.item_list(0)
+p takeaway.prices["chicken"]
+p takeaway.price_finder("chicken")
+p takeaway.food[1]
+p takeaway.item_list(0)
+p takeaway.menu
+
+p takeaway.order
