@@ -18,6 +18,6 @@ class Ui
 
   def select_dish
     puts "Select Dish (number)"
-    @read.get_read.to_i
+    @read.read_chomp.to_i
   end
 end

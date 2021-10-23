@@ -1,6 +1,10 @@
 class Read
-  def get_read
-    # read = gets.chomp
+  attr_reader :stdin
+  def initialize(_stdin)
+    @stdin = _stdin
+  end
 
+  def read_chomp
+    stdin.gets.chomp
   end
 end
