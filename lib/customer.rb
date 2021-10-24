@@ -1,24 +1,36 @@
+require 'resturant'
 class Customer
-
-
-  def initialize
-    @dishes = [{"Pasta" => 5}, {"Mac & Cheese" => 4}, {"Kimchi" => 3}, {"Pizza" => 5}, {"Burger" => 3.5}]
+  attr_reader :select_dish
+  def initialize(dishes = Resturant.new)
+    @dishes = dishes
     @selected_dish = []
+    @total = 0
   end 
 
-  def dishes
-   @dishes
+  def dish_list
+    @dishes
   end
 
   def select_dish(dish)
    @selected_dish << dish 
   end 
 
-  # def selection
-  #   @dishes.map |dish| do
-  #     if @dishes[0]
-  #       @selected_dish << dish
-  #     end 
-  #   end 
-  # end 
+  def amount
+   p list_of_dishes =  @dishes.dish
+   p @selected_dish
+   @selected_dish.each do |x|
+   if x == "Mac&Cheese"
+     p @total += 4
+   elsif x == "Pasta" || "Pizza"
+     p @total += 5
+    elsif x == "Kimchi"
+      p @total += 3
+    elsif x == "Burger"
+     p @total += 3.5
+    else 
+     p @total += 0
+    end 
+  end 
+ p @total
+end
 end 
