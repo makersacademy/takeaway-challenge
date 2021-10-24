@@ -1,6 +1,7 @@
 require 'resturant'
 class Customer
-  attr_reader :select_dish
+  attr_reader :selected_dish
+
   def initialize(dishes = Resturant.new)
     @dishes = dishes
     @selected_dish = []
@@ -16,21 +17,16 @@ class Customer
   end 
 
   def amount
-   p list_of_dishes =  @dishes.dish
-   p @selected_dish
+    list_of_dishes = @dishes.dish
+    list_of_dishes[0]
    @selected_dish.each do |x|
-   if x == "Mac&Cheese"
-     p @total += 4
-   elsif x == "Pasta" || "Pizza"
-     p @total += 5
-    elsif x == "Kimchi"
-      p @total += 3
-    elsif x == "Burger"
-     p @total += 3.5
-    else 
-     p @total += 0
+    list_of_dishes[0].each do |dish, price|
+      p dish
+      if x == dish
+        @total += price
+      end 
     end 
   end 
- p @total
+  @total
 end
 end 
