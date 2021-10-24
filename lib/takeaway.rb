@@ -1,13 +1,21 @@
-require "menu"
-
+require 'menu'
 class Takeaway
+    attr_reader :menu, :order
 
-    def menu 
-        Menu.new
+    def initialize ( menu = Menu.new)
+        @order = {}
+        @menu = menu
     end
+
 
     def dishes
-        menu.each { |item, price| puts "#{item}, price: #{price}£" }
+        menu.each { |item, price|  "#{item}, price: #{price}£" }
     end
+
+    def select (dish, quantity)
+        @order.store(dish, quantity)
+    end
+
+
     
 end
