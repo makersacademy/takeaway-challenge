@@ -1,8 +1,9 @@
 require 'text'
 require 'twilio'
 
+MESSAGE_RESPONSE = Twilio::TWILIO_200_RESPONSE
+
 describe Text do
-  MESSAGE_RESPONSE= Twilio::TWILIO_200_RESPONSE
   subject = Text.new("body", "8:30\"")
   it "should add body" do
     expect(subject.body).to eq "body"

@@ -6,7 +6,7 @@ TEXT = "Thank you! Your order was placed and will be delivered before 18:52".fre
 MESSAGE_RESPONSE = Twilio::TWILIO_200_RESPONSE
 
 describe Order do
-    it "add item should return total" do
+  it "add item should return total" do
     subject = Order.new
     dish = Dish.new("spaghetti", 12)
     item = Item.new(dish, 20)

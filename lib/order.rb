@@ -20,7 +20,7 @@ class Order
     item.dish.price * item.qty
   end
 
-  def text(text)
+  def text(_text)
     raise 'invalid operation: text' unless complete
     @text.send_message
   end
