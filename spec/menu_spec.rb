@@ -1,12 +1,12 @@
 require 'menu'
 require 'dish'
-PRINTED_LIST = "1 Spaghetti:12\n2 Macaroni:9\n".freeze
-DISHES = [Dish.new("Spaghetti", 12), Dish.new("Macaroni", 9)].freeze
 
 describe Menu do
+  LIST = "1 Spaghetti:12\n2 Macaroni:9\n".freeze
+  DISHES = [Dish.new("Spaghetti", 12), Dish.new("Macaroni", 9)].freeze
   it "should display dishes" do
     subject = Menu.new(DISHES)
-    expect(subject.display_dishes).to eq(PRINTED_LIST)
+    expect(subject.display_dishes).to eq(LIST)
   end
   it "should prevent display if empty menu" do
     subject = Menu.new([])

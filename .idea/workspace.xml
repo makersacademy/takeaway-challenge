@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="tidy up">
-      <change afterPath="$PROJECT_DIR$/lib/twilio.rb" afterDir="false" />
+    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="wip before twilio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/text.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/text.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/write.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/write.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/text_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/text_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/twilio.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/twilio.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/menu_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/menu_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/order_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/order_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/read_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/read_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/ui_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ui_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/write_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/write_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +245,7 @@
       <workItem from="1634584637542" duration="212000" />
       <workItem from="1634585041655" duration="1459000" />
       <workItem from="1634847506248" duration="28662000" />
-      <workItem from="1634999322050" duration="7641000" />
+      <workItem from="1634999322050" duration="9530000" />
     </task>
     <task id="LOCAL-00001" summary="Added skeleton with all classes and spec files">
       <created>1634900978213</created>
@@ -362,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634986425277</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="wip before twilio">
+      <created>1635008955935</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1635008955935</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +399,8 @@
     <MESSAGE value="read interface" />
     <MESSAGE value="write interface" />
     <MESSAGE value="tidy up" />
-    <option name="LAST_COMMIT_MESSAGE" value="tidy up" />
+    <MESSAGE value="wip before twilio" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip before twilio" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text.rcov" NAME="Text Coverage Results" MODIFIED="1635007672714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />

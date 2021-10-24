@@ -2,8 +2,8 @@ require 'order'
 require 'item'
 require 'text'
 
-TEXT = "Thank you! Your order was placed and will be delivered before 18:52\"".freeze
 describe Order do
+  TEXT = "Thank you! Your order was placed and will be delivered before 18:52\"".freeze
   it "add item should return total" do
     subject = Order.new
     dish = Dish.new("spaghetti", 12)
