@@ -1,9 +1,9 @@
 require 'order'
 require 'item'
 require 'text'
-require 'twilio'
+require 'twilio_interface'
 TEXT = "Thank you! Your order was placed and will be delivered before 18:52".freeze
-MESSAGE_RESPONSE = Twilio::TWILIO_200_RESPONSE
+MESSAGE_RESPONSE = TwilioInterface::TWILIO_200_RESPONSE
 
 describe Order do
   it "add item should return total" do

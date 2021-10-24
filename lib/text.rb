@@ -1,10 +1,10 @@
-require 'twilio'
+require 'twilio_interface'
 
 class Text
   attr_reader :body, :expected_time
   EMPTY_FIELDS = "cannot send, empty fields in message".freeze
 
-  def initialize(body = "test", expected_time = "9:30\"", twilio = Twilio.new)
+  def initialize(body = "test", expected_time = "9:30\"", twilio = TwilioInterface.new)
     @body = body
     @expected_time = expected_time
     @twilio = twilio
