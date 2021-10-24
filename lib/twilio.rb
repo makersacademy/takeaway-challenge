@@ -1,12 +1,12 @@
 # require 'twilio-ruby'
-# ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
-# AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
-# RESTAURANT_PHONE = ENV['TWILIO_PHONE']
 CUSTOMER_PHONE = ENV['MY_PHONE']
 
 class Twilio
   attr_reader :account_sid, :auth_token, :restaurant_phone, :customer_phone, :client
-
+  # ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
+  # AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
+  # RESTAURANT_PHONE = ENV['TWILIO_PHONE']
+  TWILIO_200_RESPONSE = "message_sent".freeze
   # def initialize(account_sid = ACCOUNT_SID, auth_token = AUTH_TOKEN, restaurant_phone = RESTAURANT_PHONE)
   #   @account_sid = account_sid
   #   @auth_token = auth_token

@@ -4,10 +4,11 @@ require 'text'
 class Order
   attr_reader :items, :complete
 
-  def initialize(items = [], total = 0, complete = false)
+  def initialize(items = [], complete = false, text = Text.new)
     @items = items
-    @total = total
+    @total = 0
     @complete = complete
+    @text = text
   end
 
   def order(item)
@@ -21,7 +22,7 @@ class Order
 
   def text(text)
     raise 'invalid operation: text' unless complete
-    text.send_message
+    @text.send_message
   end
 
   def complete_order
