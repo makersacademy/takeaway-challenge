@@ -21,7 +21,7 @@ class Order
 
   def text(text)
     raise 'invalid operation: text' unless complete
-    text.message
+    text.send_message
   end
 
   def complete_order

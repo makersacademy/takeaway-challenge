@@ -1,16 +1,16 @@
-# require 'twilio'
+require 'twilio'
 
 class Text
   attr_reader :body, :expected_time
 
-  def initialize(body = "test", expected_time = "9:30\"")#, twilio = Twilio.new)
+  def initialize(body = "test", expected_time = "9:30\"", twilio = Twilio.new)
     @body = body
     @expected_time = expected_time
-    #@twilio = twilio
+    @twilio = twilio
   end
 
-  def message
-    "#{body} #{expected_time}"
-    #@twilio.send_message("#{body} #{expected_time}")
+  def send_message
+    puts "#{body} #{expected_time}"
+    @twilio.send_message("#{body} #{expected_time}")
   end
 end
