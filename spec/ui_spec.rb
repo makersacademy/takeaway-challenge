@@ -2,6 +2,7 @@ require 'ui'
 require 'menu'
 require 'read'
 require 'write'
+require 'order'
 
 PRINTED_LIST = "1 Spaghetti:12\n2 Macaroni:9\n".freeze
 PRINT_DISHES = [Dish.new("Spaghetti", 12), Dish.new("Macaroni", 9)].freeze
@@ -26,4 +27,12 @@ describe Ui do
     subject.select_dish
     expect(subject.complete).to eq true
   end
+  it 'should complete update complete to order' do
+    mock_order = double("mock_order", :text => "hey hey")
+    mock_quit = double("mock_quit", :read_chomp => 'q')
+    subject = Ui.new(Menu.new(PRINT_DISHES), mock_quit, mock_order)
+    subject.select_dish
+    expect(subject.order.complete).to eq(true)
+  end
+
 end
