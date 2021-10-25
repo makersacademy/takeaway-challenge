@@ -29,4 +29,8 @@ class Order
       end
     end
   end
+
+  def calculate_total_price
+    @total = @prices.inject { |memo, sum| memo += sum }
+  end
 end
