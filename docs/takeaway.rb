@@ -31,4 +31,13 @@ class Takeaway
 
     return @my_order
   end
+
+  def basket_total
+    total_cost = 0
+    cost_array = []
+    @my_order.each do |item|
+      cost_array << item[:price]
+    end
+    return cost_array.sum
+  end
 end

@@ -24,9 +24,11 @@ describe Takeaway do
   # As a customer
   # So that I can verify that my order is correct
   # I would like to check that the total I have been given matches the sum of the various dishes in my order
-  # it 'prints each item with the cost and the total price of all items in my order' do
-  #   takeaway = Takeaway.new
-  #   takeaway.add_to_order("Beef curry: £12")
-  #   takeaway.add_to_order("Fish curry: £12")
-  # end
+  it 'prints each item with the cost and the total price of all items in my order' do
+    takeaway = Takeaway.new
+    takeaway.add_to_order("Beef curry")
+    takeaway.add_to_order("Fish curry")
+
+    expect(takeaway.basket_total).to eq 26
+  end
 end
