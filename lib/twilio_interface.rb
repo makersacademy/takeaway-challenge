@@ -1,29 +1,23 @@
+require 'rubygems'
 require 'twilio-ruby'
-CUSTOMER_PHONE = ENV['MY_PHONE']
 
 class TwilioInterface
-  attr_reader :account_sid, :auth_token, :restaurant_phone, :customer_phone, :client
+  attr_reader :account_sid, :auth_token, :restaurant_phone, :client, :twilio_phone
   ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
   AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
   TWILIO_PHONE = ENV['RESTAURANT_PHONE']
   TWILIO_200_RESPONSE = "message_sent".freeze
-  def initialize
-    @account_sid = ACCOUNT_SID
-    @auth_token = AUTH_TOKEN
+
+  def initialize(client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN))
     @twilio_phone = TWILIO_PHONE
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @client = client
   end
 
-  def send_message(body, *customer_phone)
-    client.messages.create(
-      from: twilio_phone,
-      to: customer_number(customer_phone),
-      body: body
+  def send_message(body, customer_phone)
+    @client.messages.create(
+      body: body,
+      messaging_service_sid: 'MG0188b82a4c6fa4ff856645c14266b417',
+      to: customer_phone
     )
-  end
-
-  def customer_number(customer_number)
-    return customer_phone if customer_number.nil?
-    customer_number
   end
 end
