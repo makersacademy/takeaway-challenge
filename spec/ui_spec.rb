@@ -17,7 +17,13 @@ describe Ui do
   end
   it "should read user selected dish" do
     mock_dish = double("mock_dish", :read_chomp => DISH_2)
-    subject = Ui.new(Menu.new(DISHES), mock_dish)
+    subject = Ui.new(Menu.new(PRINT_DISHES), mock_dish)
     expect(subject.select_dish).to eq DISH_2
+  end
+  it "should assert complete if read q" do
+    mock_quit = double("mock_quit", :read_chomp => 'q')
+    subject = Ui.new(Menu.new(PRINT_DISHES), mock_quit)
+    subject.select_dish
+    expect(subject.complete).to eq true
   end
 end
