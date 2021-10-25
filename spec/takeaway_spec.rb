@@ -25,5 +25,4 @@ describe Takeaway do
         expect(takeaway.order).to eq test_order
       end
 
-
 end
