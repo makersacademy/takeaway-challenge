@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="wip reworked twilio_interface_spec.rb">
-      <change beforePath="$PROJECT_DIR$/lib/ui.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/ui_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ui_spec.rb" afterDir="false" />
+    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="wip complete captured at ui">
+      <change beforePath="$PROJECT_DIR$/lib/text.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/text.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="RSpec.Ui">
+  <component name="RunManager" selected="RSpec.Text">
     <configuration name="Read" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="takeaway-challenge" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
@@ -83,7 +82,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="TwilioInterface send twilio message should receive http ok response 200" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="Text" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="takeaway-challenge" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -103,11 +102,11 @@
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/twilio_interface_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/text_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="TwilioInterface send twilio message should receive http ok response 200" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Text" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
@@ -225,11 +224,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="RSpec.Text" />
         <item itemvalue="RSpec.Ui" />
         <item itemvalue="RSpec.Ui should assert complete if read q" />
         <item itemvalue="RSpec.TwilioInterface" />
         <item itemvalue="RSpec.Read" />
-        <item itemvalue="RSpec.TwilioInterface send twilio message should receive http ok response 200" />
       </list>
     </recent_temporary>
   </component>
@@ -247,7 +246,7 @@
       <workItem from="1634847506248" duration="28662000" />
       <workItem from="1634999322050" duration="11952000" />
       <workItem from="1635070812905" duration="7574000" />
-      <workItem from="1635098287204" duration="13261000" />
+      <workItem from="1635098287204" duration="13698000" />
     </task>
     <task id="LOCAL-00001" summary="Added skeleton with all classes and spec files">
       <created>1634900978213</created>
@@ -403,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635145311140</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="wip complete captured at ui">
+      <created>1635146913165</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1635146913165</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,10 +448,11 @@
     <MESSAGE value="lint clean up" />
     <MESSAGE value="refactoring write" />
     <MESSAGE value="wip reworked twilio_interface_spec.rb" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip reworked twilio_interface_spec.rb" />
+    <MESSAGE value="wip complete captured at ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip complete captured at ui" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/takeaway_challenge@Text.rcov" NAME="Text Coverage Results" MODIFIED="1635075154975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
+    <SUITE FILE_PATH="coverage/takeaway_challenge@Text.rcov" NAME="Text Coverage Results" MODIFIED="1635147282838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text_should_report_error_if_empty_time.rcov" NAME="Text should report error if empty time Coverage Results" MODIFIED="1635072865981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Menu_should_display_dishes.rcov" NAME="Menu should display dishes Coverage Results" MODIFIED="1634933327354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Read.rcov" NAME="Read Coverage Results" MODIFIED="1635145053586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
