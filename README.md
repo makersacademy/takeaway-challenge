@@ -1,33 +1,22 @@
-Takeaway Challenge
+# Takeaway Challenge
 ==================
+
+Takewaway is a programme that allows customers to order dishes.
+
+Please see [below](add link) for my reflections on how I solved this problem.
+
+## Instructions for how to use this programme.
+
+Use `bundle` to install the required Ruby gems.
+*add more detail here*
+
 ```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
+add irb code here
 
-Instructions
--------
+```
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## User Stories
 
 ```
 As a customer
@@ -46,6 +35,10 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+## Domain model
+
+*domain model here*
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
@@ -81,3 +74,33 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+
+# How I solved this challenge
+
+*How to structure this section? What was most useful from last time?*
+
+## My plan
+
+
+## The reality
+
+
+## Reflections
+
+## Questions
+
+**Drawing on feedback from my last project**
+*Feedback summary here*
+structure of my example groups
+
+**How I plan to improve with this project**
+- [ ] To run `rubocop` before every commit I make
+- [ ] Aim for 100% test coverage
+- [ ] If I go off track, to use git to restore a previous working version
+- [ ] Structure my test example groups using `describe` blocks for behaviour and `context` blocks for state.
+- [ ] Add a simplecov test coverage badge to this README
+
+# Feedback from code review
+
+See also the PR comments.
