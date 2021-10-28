@@ -18,7 +18,7 @@ class Order():
         cost_so_far = 0
         for k, v in self.basket.items():
             cost_so_far += (Takeaway.menu[k] * v)
-        print("Total to pay so far: %s" % self.cost_so_far)
+        print("Total to pay so far: %s" % cost_so_far)
 
     def checkout(self):
         if not self.basket: raise Exception('Nothing in basket')
