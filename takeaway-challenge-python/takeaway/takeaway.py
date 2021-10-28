@@ -1,4 +1,4 @@
-class Shop:
+class Takeaway:
 
     menu = { 
         'chicken fried rice' : 3.50,
