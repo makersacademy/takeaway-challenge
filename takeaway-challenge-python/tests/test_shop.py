@@ -11,3 +11,11 @@ def test_order():
     order_1 = Order()
     order_1.add_to_basket('chicken fried rice', 1)
     assert 'chicken fried rice' in order_1.basket
+
+def test_checkout():
+    order_1 = Order()
+    order_1.add_to_basket('chicken fried rice', 1)
+    order_1.add_to_basket('sweet and sour chicken', 2)
+    order_1.checkout()
+    assert order_1.checkout_total == 13.9
+
