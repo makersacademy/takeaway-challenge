@@ -25,7 +25,17 @@ def test_checkout_fails_if_already_checked_out():
     order_1.add_to_basket('chicken fried rice', 1)
     order_1.checkout()
     #Is this a succinct way to test errors?
-    with pytest.raises(NameError, match='You have already checked out'):
+    with pytest.raises(Exception, match='You have already checked out'):
         obj = order_1.checkout() 
 
-    
+def test_cannot_add_to_basket_after_checkout():
+    order_1 = Order()
+    order_1.add_to_basket('chicken fried rice', 1)
+    order_1.checkout()
+    with pytest.raises(Exception, match='Order is complete'):
+        obj = order_1.add_to_basket('chicken fried rice', 1)
+
+def test_cannot_checkout_if_nothing_in_basket():
+    order_1 = Order()
+    with pytest.raises(Exception, match='Nothing in basket'):
+        obj = order_1.checkout()
