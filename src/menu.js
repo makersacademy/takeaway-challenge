@@ -2,49 +2,55 @@ class Menu {
   constructor(){
     this.items = {
       fries: {
-        name: 'fries', price: 1.99
+        name: 'Fries', price: 1.99, id: 1
       },
       cheeseburger: {
-        name: 'cheeseburger', price: 3.99
+        name: 'Cheeseburger', price: 3.99, id: 2
       },
       coke: {
-        name: 'coke', price: 0.99
+        name: 'Coke', price: 0.99, id: 3
       },
       fanta: {
-        name: 'fanta', price: 0.99
+        name: 'Fanta', price: 0.99, id: 4
       },
       nachos: {
-        name: 'nachos', price: 3.99
+        name: 'Nachos', price: 3.99, id: 5
       },
       burger_combo: {
-        name: 'burger_combo', price: 4.99
+        name: 'Burger Combo', price: 4.99, id: 6
       },
       pizza: {
-        name: 'pizza', price: 8.99
+        name: 'Pizza', price: 8.99, id: 7
       },
       chicken_burger: {
-        name: 'chicken_burger', price: 3.99
+        name: 'Chicken Burger', price: 3.99, id: 8
       },
       mozzarella_sticks: {
-        name: 'mozzarella_sticks', price: 2.99
+        name: 'Mozzarella Sticks', price: 2.99, id: 9
       },
       milkshake: {
-        name: 'milkshake', price: 1.99
+        name: 'Milkshake', price: 1.99, id: 10
       },
       garden_salad: {
-        name: 'garden_salad', price: 2.99
+        name: 'Garden Salad', price: 2.99, id: 11
       },
       quinoa_salad: {
-        name: 'quinoa_salad', price: 3.99
+        name: 'Quinoa Salad', price: 3.99, id: 12
       },
       ice_cream: {
-        name: 'ice_cream', price: 3.99
+        name: 'Ice Cream', price: 3.99, id: 13
       }
     }
   }
 
   listItems(){
     return this.items
+  }
+
+  findById(param){
+    let a = Object.values(this.items)
+    let result = a.find(x => x.id === param)
+    return result
   }
 /*
   addItem(item, cost, callBack = this.whiteSpace){

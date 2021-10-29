@@ -14,10 +14,7 @@ class Restaurant {
   }
 
   addItem(food) {
-    if (food in this.menu.items)
-      this.currentOrder.dishes.push(this.menu.items[food])
-    else 
-      return 'Unavailable item requested. Please try again.';
+    this.currentOrder.dishes.push(food)
   }
 
   completeOrder(){

@@ -30,9 +30,6 @@ describe('restaurant', ()=> {
       restaurant.addItem('fries')
       expect(restaurant.currentOrder.dishes.length).toBe(1)
     })
-    it('only adds items which are on the menu to the current order', () => {
-      expect(restaurant.addItem('cows')).toBe('Unavailable item requested. Please try again.')
-    })
   })
   describe('completeOrder', ()=> {
     it('returns the total price of the current order', ()=>{
@@ -43,7 +40,7 @@ describe('restaurant', ()=> {
       expect(restaurant.completeOrder()).toBe('Please add items to your order')
     })
     it('returns the correct price of the current order plus delivery', ()=> {
-      restaurant.addItem('fries')
+      restaurant.addItem(menu.items.fries)
       expect(restaurant.completeOrder()).toBe(1.99+2.99)
     })
   })

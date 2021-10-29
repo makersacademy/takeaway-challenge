@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/emanfolo/takeaway-challenge#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "jest": "^27.3.1"
   }
