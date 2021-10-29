@@ -13,10 +13,13 @@ class Menu
 
   def list_of_dishes
     count = 1
+    string = ""
       @dishes.each do |dish|
-      puts "#{count}. #{dish.name} - £#{dish.price}"
+      string += "#{count}. #{dish.name} - £#{dish.price}
+      "
       count += 1
       end
+      return string
   end
 
 end

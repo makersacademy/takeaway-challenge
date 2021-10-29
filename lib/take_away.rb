@@ -1,21 +1,19 @@
-# # class Order
+require './lib/menu'
 
-# class TakeAway
+class TakeAway
 
-#   attr_reader :menu, :dishes, :selected_dishes
+attr_reader :menu, :dishes, :basket
 
-#     def initialize
-#       @menu = menu
-#       @dishes = dishes
-#       @selected_dishes = []
+def initialize
+  @menu = menu
+  @dishes = dishes
+  @basket= []
+end
 
-
-#     end
-
-#     def select_dishes(dish, quantity)
+def order(dish, quantity = 1)
 #       # fail "no dish" unless dish_available?
-#      p  @selected_dishes << dish[dish] = quantity.to_i
-#     end
+ @basket << (dish, quantity)
+end
 
 
 #   end
@@ -23,4 +21,4 @@
 #     dishes.each do |dish, quantity|
 #       order.add(dish, quantity)
 #     end
-#   end
+end

@@ -1,14 +1,13 @@
-# require 'take_away'
+require 'take_away'
 
-# describe "Take_away" do
-#   it 'Creates a a new instances of takeaway' do
-#     take_away = Take_away.new
-#     expect(
-#        # same as expect(obj).to be_kind_of(type)
-
-
-#   end
-# end
+describe "TakeAway" do
+  it 'adds itms to order' do
+    take_away = TakeAway.new
+    basket = []
+    take_away.order("Margherita", 2)
+    expect(basket).to eq("Margherita")
+  end
+end
 
 
 
