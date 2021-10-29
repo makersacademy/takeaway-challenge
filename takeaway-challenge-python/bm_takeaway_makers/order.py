@@ -1,4 +1,5 @@
-from bm-takeaway-makers.takeaway import Takeaway
+from bm_takeaway_makers.takeaway import Takeaway
+from bm_takeaway_makers.text import Text
 
 class Order():
     
@@ -23,6 +24,14 @@ class Order():
     def checkout(self):
         if not self.basket: raise Exception('Nothing in basket')
         if self.order_finalised: raise Exception('You have already checked out')
+        if self.order_finalised: self.__text()
+        self.__final_cost()
+
+    def __final_cost(self):
         for k, v in self.basket.items():
             self.checkout_total += (Takeaway.menu[k] * v)
         self.order_finalised = True
+
+    def __text(self):
+        amount = str(self.checkout_total)
+        Text(amount).send_text()
