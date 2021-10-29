@@ -2,19 +2,22 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :menu
+  DEFAULT_MENU = Menu.new.import
 
-  def initialize
-    @menu = Menu.new.import
-  end
+  attr_reader :menu, :basket
 
-  def add_to_basket(i)
-    fail show_error(:wrong_number) unless valid_number?(i)
-    @menu[i.to_i - 1][:quant] += 1
+  def initialize(menu = DEFAULT_MENU)
+    @menu = menu
+    @basket = []
   end
 
   def review_menu
     show_message(format_menu_array.join("\n"))
+  end
+
+  def add_to_basket(item_i, quant = 1)
+    fail show_error(:wrong_number) unless valid_number?(item_i)
+    quant.times { @basket << @menu[item_i.to_i - 1] }
   end
 
   def review_order
@@ -50,7 +53,7 @@ class Order
   end
 
   def empty_basket?
-    (@menu.map { |h| h[:quant] }).sum.zero? 
+    @basket.count.zero? 
   end
 
   def valid_number?(n)
@@ -58,23 +61,21 @@ class Order
   end
 
   def format_menu_array
-    formatted_menu = @menu.map.with_index { |h, i| "#{i + 1}. #{h[:item]}, £#{h[:price]}" }
+    formatted_menu = @menu.map.with_index { |h, i| "#{i + 1}. #{h.name}, £#{h.price}" }
   end
 
   def format_review_array
-    formatted_menu = @menu.map.with_index do |_h, i|
-      if (quantity = @menu[i][:quant]) <= 0
-        ""
-      else
-        "x#{quantity} #{@menu[i][:item]}: £#{(@menu[i][:price].to_f * quantity).round(2)}"
-      end
-    end
-    formatted_menu.reject { |s| s == "" } << order_total
+    @basket.map { |h| count_and_format_basket(h) }.uniq << order_total
+  end
+
+  def count_and_format_basket(item)
+    item_count = @basket.count(item)
+    "x#{item_count} #{item.name}: £#{item_count.to_f * item.price}"
   end
 
   def order_total
-    order_sum = @menu.map { |h| (h[:quant].to_f * h[:price].to_f).round(2) }
-    "TOTAL: £#{order_sum.sum}"
+    order_prices = @basket.map { |h| h.price }
+    "TOTAL: £#{order_prices.sum}"
   end
 
 end

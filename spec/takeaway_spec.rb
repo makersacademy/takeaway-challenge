@@ -25,18 +25,18 @@ TOTAL: £35.91"
   end
 
   describe "#add_to_basket" do
-    it "adds an item to the basket" do
-      expect { subject.add_to_basket(1) }.to change { subject.menu[0][:quant] }.from(0).to(1)
-      expect { subject.add_to_basket(1) }.to change { subject.menu[0][:quant] }.from(1).to(2)
-      expect { subject.add_to_basket(2) }.to change { subject.menu[1][:quant] }.from(0).to(1)
+    it "adds items to the basket" do
+      expect { subject.add_to_basket(1) }.to change { subject.basket.count }.from(0).to(1)
+      expect { subject.add_to_basket(3, 2) }.to change { subject.basket.count }.from(1).to(3)
+      expect { subject.add_to_basket(2) }.to change { subject.basket.count }.from(3).to(4)
     end
 
     it "returns an error if the selected number is not on the menu" do
-      expect { subject.add_to_basket(0) }.to raise_error "Input error: number doesn't appear in list"
+      expect { subject.add_to_basket(0, 1) }.to raise_error "Input error: number doesn't appear in list"
     end
 
     it "returns an error if a number isn't passed as an argument" do
-      expect { subject.add_to_basket("ten") }.to raise_error "Input error: number doesn't appear in list"
+      expect { subject.add_to_basket("ten", 1) }.to raise_error "Input error: number doesn't appear in list"
     end
   end
 
