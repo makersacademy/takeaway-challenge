@@ -1,5 +1,5 @@
 #I'm unsure if this is the simplest way to import classes
-from takeaway.takeaway import Takeaway
+from bm-takeaway-makers.takeaway import Takeaway
 from takeaway.order import Order
 import pytest
 

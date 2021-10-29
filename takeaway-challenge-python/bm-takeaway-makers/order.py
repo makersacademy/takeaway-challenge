@@ -1,4 +1,4 @@
-from takeaway.takeaway import Takeaway
+from bm-takeaway-makers.takeaway import Takeaway
 
 class Order():
     
