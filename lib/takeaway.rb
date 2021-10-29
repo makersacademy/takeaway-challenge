@@ -17,7 +17,7 @@ class Order
 
   def add_to_basket(item_i, quant = 1)
     fail show_error(:wrong_number) unless valid_number?(item_i)
-    quant.times { @basket << @menu[item_i.to_i - 1] }
+    quant.times { @basket << @menu.fetch(item_i.to_i - 1) }
   end
 
   def review_order
@@ -60,8 +60,8 @@ class Order
     (1..@menu.length).include?(n.to_i)
   end
 
-  def format_menu_array
-    formatted_menu = @menu.map.with_index { |h, i| "#{i + 1}. #{h.name}, £#{h.price}" }
+  def format_menu_array(i = 0)
+    formatted_menu = @menu.map { |h| "#{i += 1}. #{h.name}, £#{h.price}" }
   end
 
   def format_review_array
@@ -70,12 +70,12 @@ class Order
 
   def count_and_format_basket(item)
     item_count = @basket.count(item)
-    "x#{item_count} #{item.name}: £#{item_count.to_f * item.price}"
+    "x#{item_count} #{item.name}: £#{(item_count.to_f * item.price).round(2)}"
   end
 
   def order_total
     order_prices = @basket.map { |h| h.price }
-    "TOTAL: £#{order_prices.sum}"
+    "TOTAL: £#{order_prices.sum.round(2)}"
   end
 
 end

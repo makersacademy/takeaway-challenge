@@ -1,3 +1,5 @@
+require_relative 'item'
+
 class Menu
   FULL_MENU = [
     Item.new("Egg fried rice", 4.99),
