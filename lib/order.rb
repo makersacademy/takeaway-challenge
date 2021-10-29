@@ -14,4 +14,15 @@ class Order
     dish = Menu::MENU.select { |dish| dish[:name] == name }.reduce(&:merge)
     amount.times { @order_list << @dish.new(name, dish.fetch(:price)) }
   end
+
+  def print_order
+    dishes = []
+    @order_list.each { |dish| dishes << dish.name }
+    dishes.uniq.map { |dish| "#{dishes.count(dish)} X #{dish}"}.reduce(&:merge)
+  end
 end
+
+# a = Order.new
+# a.add_order('Lasagna', 2)
+# a.add_order('Pizza Vesuvio', 3)
+#  a.print_order

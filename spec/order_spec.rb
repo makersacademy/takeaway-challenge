@@ -19,5 +19,12 @@ describe Order do
       expect { order.add_order("Lasagna", 2) }.to change { order.order_list.length }.by(2)
     end
   end
+
+  describe '#print_order' do
+    it 'should print order' do
+      order.add_order("Lasagna", 2)
+      expect(order.print_order).to eq("2 X Lasagna")
+    end
+  end
 end
 
