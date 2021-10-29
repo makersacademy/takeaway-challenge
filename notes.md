@@ -12,5 +12,8 @@ list of dishes hash
 
 t = TakeAway.new
 t.print_menu
-t.order_item(chips)
-order << chips 
+t.order_item(chips, 1)
+no_of_dish = chips * 1
+order << no_of dish
+
+
