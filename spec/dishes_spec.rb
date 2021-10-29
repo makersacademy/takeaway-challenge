@@ -1,3 +1,0 @@
-describe Dishes do
-  
-end
