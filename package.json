@@ -1,0 +1,23 @@
+{
+  "name": "takeaway-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emanfolo/takeaway-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emanfolo/takeaway-challenge/issues"
+  },
+  "homepage": "https://github.com/emanfolo/takeaway-challenge#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^27.3.1"
+  }
+}
