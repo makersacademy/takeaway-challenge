@@ -15,8 +15,8 @@ describe Order do
 
   describe "#review_order" do
     it "gives a summary of the order" do
-    [1,1,3,4,6].each { |o| subject.add_to_basket(o) }
-    expect(subject.review_order).to eq "x2 Egg fried rice: £9.98
+      [1,1,3,4,6].each { |o| subject.add_to_basket(o) }
+      expect(subject.review_order).to eq "x2 Egg fried rice: £9.98
 x1 Sesame prawn toast: £7.99
 x1 Salt & pepper pork ribs: £9.95
 x1 Lamb in black pepper sauce: £7.99
@@ -26,9 +26,9 @@ TOTAL: £35.91"
 
   describe "#add_to_basket" do
     it "adds an item to the basket" do
-      expect { subject.add_to_basket(1) }.to change{ subject.menu[0][:quant] }.from(0).to(1)
-      expect { subject.add_to_basket(1) }.to change{ subject.menu[0][:quant] }.from(1).to(2)
-      expect { subject.add_to_basket(2) }.to change{ subject.menu[1][:quant] }.from(0).to(1)
+      expect { subject.add_to_basket(1) }.to change { subject.menu[0][:quant] }.from(0).to(1)
+      expect { subject.add_to_basket(1) }.to change { subject.menu[0][:quant] }.from(1).to(2)
+      expect { subject.add_to_basket(2) }.to change { subject.menu[1][:quant] }.from(0).to(1)
     end
 
     it "returns an error if the selected number is not on the menu" do
