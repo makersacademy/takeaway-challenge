@@ -20,6 +20,10 @@ class Order
     @order_list.each { |dish| dishes << dish.name }
     dishes.uniq.map { |dish| "#{dishes.count(dish)} X #{dish}"}.reduce(&:merge)
   end
+
+  def total
+    @order_list.map { |dish| dish.price }.reduce(0, :+)
+  end
 end
 
 # a = Order.new

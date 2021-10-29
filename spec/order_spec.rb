@@ -26,5 +26,13 @@ describe Order do
       expect(order.print_order).to eq("2 X Lasagna")
     end
   end
+
+  describe '#total' do
+    it 'should count the total' do
+      order.add_order("Lasagna", 2)
+      order.add_order("Pizza Vesuvio", 3)
+      expect(order.total).to eq 43
+    end
+  end
 end
 
