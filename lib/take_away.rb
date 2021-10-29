@@ -7,12 +7,12 @@ attr_reader :menu, :dishes, :basket
 def initialize
   @menu = menu
   @dishes = dishes
-  @basket= []
+  @basket = []
 end
 
-def order(dish, quantity = 1)
-#       # fail "no dish" unless dish_available?
- @basket << (dish, quantity)
+def order(item, quantity = 1)
+  choice = [item] * quantity.to_i
+  @basket << choice
 end
 
 

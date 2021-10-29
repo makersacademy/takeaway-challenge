@@ -1,13 +1,13 @@
 require 'take_away'
 
 describe "TakeAway" do
-  it 'adds itms to order' do
+  it 'adds items to order' do
     take_away = TakeAway.new
-    basket = []
     take_away.order("Margherita", 2)
-    expect(basket).to eq("Margherita")
+    expect(take_away.basket).to include(["Margherita", "Margherita"])
   end
 end
+
 
 
 
