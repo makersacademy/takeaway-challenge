@@ -20,5 +20,13 @@ describe Order do
         order.select_item
         expect{order.selection_check}.to raise_error "Sorry your item is not on the menu"
     end
+
+    it 'checks that the correct quantity has been added to order' do
+        order = Order.new
+        order.select_item
+        order.select_quantity #this has been set to 2 in the order.rb but would use gets.chomp to get actual customer response.
+        order.add_item
+        expect(order.order.length).to eq 2
+    end
     
 end
