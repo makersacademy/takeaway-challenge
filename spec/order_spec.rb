@@ -12,7 +12,7 @@ describe Order do
 
   describe '#add_to_order' do
     it 'adds dish to the order' do
-      expect { subject.add_dish(dish) }.to change { subject.ordered_items.length }.by(1)
+      expect { subject.add_dish(dish, 1) }.to change { subject.ordered_items.length }.by(1)
     end
   end
 end

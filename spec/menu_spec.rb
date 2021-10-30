@@ -4,7 +4,7 @@ describe Menu do
   let(:dish) { { name:'Burger', price: 8 } }
   describe '#initialize' do
     it 'has a list of dishes upon initialization' do
-    p expect(subject.dishes).to_not eq nil
+      expect(subject.dishes).to_not eq nil
     end
   end
 

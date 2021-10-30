@@ -7,8 +7,8 @@ class Order
     @ordered_items = []
   end
 
-  def add_dish(dish)
-    @ordered_items << dish
+  def add_dish(dish, quantity)
+    quantity.times { @ordered_items << dish }
   end
   
 end
