@@ -12,9 +12,9 @@ class Menu
     end
     
     def view_menu
-        @dishes.each do | dish, price |
-            return "#{dish}: £#{price}"
-        end
+        @dishes.map { | dish, price |
+          "#{dish.capitalize}: £#{price}"
+        }.join(", ")
     end
  
 end
