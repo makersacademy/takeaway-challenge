@@ -1,6 +1,7 @@
+
 class Menu
   
-  attr_reader :dishes, :selected_dishes
+  attr_reader :dishes
 
   def initialize
     @dishes = [
@@ -10,8 +11,6 @@ class Menu
       {name: 'Salad', price: 6},
       {name: 'Paella', price: 12}
     ]
-
-    @selected_dishes = [] #unsure of I'll keep this... 
   end
 
   def view_menu

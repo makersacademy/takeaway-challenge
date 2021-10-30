@@ -2,16 +2,17 @@ require 'order'
 
 describe Order do
   let(:menu) { Menu.new }
+  let(:dish) { { name:'Burger', price: 8 } }
 
   describe '#initialize' do
     it 'order initializes as blank' do
-      expect(subject.current_order).to eq nil
+      expect(subject.ordered_items.length).to eq 0
     end
   end
 
-  describe '#create' do
-    it 'creates an order' do
-      
+  describe '#add_to_order' do
+    it 'adds dish to the order' do
+      expect { subject.add_dish(dish) }.to change { subject.ordered_items.length }.by(1)
     end
   end
 end

@@ -1,9 +1,14 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :current_order
+  attr_reader :ordered_items
 
   def initialize
-    @current_order = nil
+    @ordered_items = []
   end
+
+  def add_dish(dish)
+    @ordered_items << dish
+  end
+  
 end
