@@ -2,18 +2,19 @@
 require 'csv'
 
 class Order
-  attr_reader :available_dishes, :view_dishes, :selected_dishes, :entire_menu
+  attr_reader :available_dishes, :view_dishes, :selected_dishes, :ordered_items
 
   def initialize
     @available_dishes = []
     @selected_dishes = []
-    @entire_menu = []
+    @ordered_items = []
+    load_dishes
   end
 
   def load_dishes
     CSV.foreach("available_dishes.csv") do |line|
        dish, price, item_number = line
-       @available_dishes << { dish: dish, price: price, item_number: item_number }
+       @available_dishes << { item_number: item_number, dish: dish, price: price }
     end
   end
 
@@ -29,16 +30,21 @@ class Order
     puts "To proceed to your total, please press 'Enter' twice"
     puts "-----------Available Dishes-----------"
     @available_dishes.each do |menu|
-      # TODO: fix this so that it prints the selection item number
       puts "Item  #{menu[:item_number]}: #{menu[:dish]}  Price: £ #{menu[:price]}"
       end
       selection = STDIN.gets.chomp
       while !selection.empty? do
-        @selected_dishes << { selection: selection }#, menu:[:dish], price:[:price]}
+        selection = selection.to_i
+        @selected_dishes << @available_dishes[selection-1]
+        # select{
+        #   |item| item[:item_number].include?(selection)}.map #{
+        # #|item| item[:item_number], item[:dish], item[:price]}
+        # @selected_dishes << { selection: selection }#, menu:[:dish], price:[:price]}
         selection = STDIN.gets.chomp
       end
-
   end
 end
+
+
 
 
