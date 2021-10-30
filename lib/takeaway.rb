@@ -2,24 +2,27 @@ require 'menu'
 
 class Takeaway
   
-  attr_reader :menu
+  attr_reader :menu , :order
 
     def initialize(menu = Menu.new)
       @menu = menu
-      # @dishes = []
+      @order = []
     end 
 
     def print_menu
-      # p @menu.menu_items
       @menu.menu_items
     end
 
-    # def place_order(dish, num)
-    #   @menu.each do |key, value|
-    #     if dish == key 
-    #     puts "Dishes selected: #{key} x #{num}"
-    #     end 
-    #   end 
-    # end 
-
+    def place_order(dishes)
+      # @menu.menu_items.include?(dishes)
+    dishes.each do |dish|
+      @menu.menu_items.map do |key, value|
+        if key.include?(dish) 
+          @order.push(dish)
+        end 
+      end 
+      @order
+    end 
+  end
+  
   end 
