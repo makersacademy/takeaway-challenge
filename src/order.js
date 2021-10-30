@@ -23,6 +23,9 @@ class Order {
     return list
   }
 
+  //completeOrder which stores the order in DB 
+  //Find by user ID function for viewing order history
+
 }
 
 module.exports = Order
