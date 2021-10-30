@@ -69,8 +69,8 @@ public class Main {
       else if (order.equals(pay) && !customer.hasOrder()) { 
         System.out.println("Your basket is empty. Please enter dish ID or 'q' to exit. 🤦‍♂️");
       }
-      else if (order.equals(cancel)) { customer.cancelOrder(); }
       else if (order.equals(viewOrder)) { customer.viewOrder(); }
+      else if (order.equals(cancel)) { customer.cancelOrder(); }
       else if (order.equals("1")) { customer.placeOrder(fishAndChips); }
       else if (order.equals("2")) { customer.placeOrder(chickenTikka); }
       else if (order.equals("3")) { customer.placeOrder(eggFriedRice); }
