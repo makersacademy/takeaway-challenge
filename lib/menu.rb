@@ -4,17 +4,19 @@ class Menu
 
   def initialize
     @dishes = [
-      {name: 'pizza', price: 10},
-      {name: 'burger', price: 8},
-      {name: 'cake', price: 5},
-      {name: 'salad', price: 6},
-      {name: 'paella', price: 12}
+      {name: 'Pizza', price: 10},
+      {name: 'Burger', price: 8},
+      {name: 'Cake', price: 5},
+      {name: 'Salad', price: 6},
+      {name: 'Paella', price: 12}
     ]
 
     @selected_dishes = [] #unsure of I'll keep this... 
   end
 
-  # def select(dish)
-  #   @selected_dishes << dish
-  # end
+  def view_menu
+    @dishes.each { |dish, price|
+      puts "#{dish[:name]}: £#{dish[:price]}"
+    }
+  end
 end
