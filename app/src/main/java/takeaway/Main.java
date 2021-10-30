@@ -7,19 +7,20 @@ import java.util.Scanner;
 public class Main {
   
   public static void main(String[] args) {
+    // Instantiate dish objects
     Dish fishAndChips = new Dish(1, "Fish 'n' Chips", 5.99);
     Dish chickenTikka = new Dish(2, "Chicken Tikka", 5.99);
     Dish eggFriedRice = new Dish(3, "Egg Fried Rice", 1.99);
     Dish sausageRoll = new Dish(4, "Sausage Roll", 2);
     Dish veganSausageRoll = new Dish(5, "Vegan Sausage Roll", 2);
 
+    // Instantiate menu object and add dishes to it
     List<Dish> menu = new ArrayList<>();
-    menu.add(fishAndChips);
-    menu.add(chickenTikka);
-    menu.add(eggFriedRice);
-    menu.add(sausageRoll);
-
     Menu fastFoodHut = new Menu(menu);
+    fastFoodHut.addDish(fishAndChips);
+    fastFoodHut.addDish(chickenTikka);
+    fastFoodHut.addDish(eggFriedRice);
+    fastFoodHut.addDish(sausageRoll);
     fastFoodHut.addDish(veganSausageRoll);
 
     System.out.println(
@@ -30,8 +31,13 @@ public class Main {
     );
 
     // Print menu
-    for (int i = 0; i < menu.size(); i++) {
-      System.out.println(menu.get(i));
+    /* ---{ For Loop alternative }---
+      for (int i = 0; i < menu.size(); i++) {
+        System.out.println(menu.get(i));
+      }
+    */
+    for (Dish dish : menu) {
+      System.out.println(dish);
     }
 
     // Print instructions for customer
