@@ -81,3 +81,13 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+* Ginny's notes:
+* First commit took 2 hours.  this was because first test was around trying to test that the csv file had been loaded.
+* Ultimately there are 3 outcomes if the csv file creates an array:
+1) it fails and breaks something
+2) it file doesn't load (i.e. the empty array stays empty)
+3) the files loads and the array is filled in
+The better test was to test that the array was not empty, but doing this
+I can be satisfied the file loads.
+![img.png](img.png)
