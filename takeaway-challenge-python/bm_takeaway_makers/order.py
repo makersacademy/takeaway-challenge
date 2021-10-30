@@ -24,7 +24,7 @@ class Order():
     def checkout(self):
         if not self.basket: raise Exception('Nothing in basket')
         if self.order_finalised: raise Exception('You have already checked out')
-        if self.order_finalised: self.__text()
+        self.__text()
         self.__final_cost()
 
     def __final_cost(self):
