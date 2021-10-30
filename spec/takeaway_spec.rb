@@ -1,6 +1,8 @@
 require 'takeaway'
 
 describe Order do
+  let(:empty_basket) { double("empty basket", :empty? => true, :add_item => 2 ) }
+  let(:full_basket) { double("full basket", :empty? => false ) }
   let(:itemA) { double("itemA", :name => "Egg fried rice", :price => 4.99) }
   let(:itemB) { double("itemB", :name => "Steamed rice", :price => 4.49) }
   let(:itemC) { double("itemC", :name => "Sesame prawn toast", :price => 7.99) }
@@ -17,8 +19,12 @@ describe Order do
       "6. #{itemF.name}, £#{itemF.price}"
     ])
   }
-  let(:new_order) { Order.new(menu) }
-  
+  let(:new_order) { Order.new(menu, empty_basket) }
+  let(:full_order) { Order.new(menu, full_basket) }
+
+  it { is_expected.to respond_to(:review_order) }
+  it { is_expected.to respond_to(:review_menu) }
+
   describe "#review_menu" do
     it "shows a list of dishes with prices" do
       expect(new_order.review_menu).to eq "1. Egg fried rice, £4.99
@@ -31,12 +37,6 @@ describe Order do
   end
 
   describe "#add_to_basket" do
-    it "adds items to the basket" do
-      expect { new_order.add_to_basket(1) }.to change { new_order.basket.count }.from(0).to(1)
-      expect { new_order.add_to_basket(3, 2) }.to change { new_order.basket.count }.from(1).to(3)
-      expect { new_order.add_to_basket(2) }.to change { new_order.basket.count }.from(3).to(4)
-    end
-
     it "returns an error if the selected number is not on the menu" do
       expect { new_order.add_to_basket(0, 1) }.to raise_error "Input error: number doesn't appear in list"
     end
@@ -44,13 +44,9 @@ describe Order do
     it "returns an error if a number isn't passed as an argument" do
       expect { new_order.add_to_basket("ten", 1) }.to raise_error "Input error: number doesn't appear in list"
     end
-  end
 
-  describe "#review_order" do
-    it "gives a summary of the order" do
-      [1,1,3,4,6].each { |o| new_order.add_to_basket(o) }
-      expect(new_order.review_order).to eq "x5 Egg fried rice: £24.95
-TOTAL: £24.95"
+    it "can add multiple item to basket" do
+      expect(new_order.add_to_basket(1, 5)).to eq 5
     end
   end
 
@@ -60,14 +56,12 @@ TOTAL: £24.95"
     end
 
     it "does not return an error if a basket is full" do
-      new_order.add_to_basket(1)
-      expect { new_order.place_order }.to_not raise_error
+      expect { full_order.place_order }.to_not raise_error
     end
 
     it "prints a thank you message with the correct time on successful order" do
-      dum_time = instance_double("Time", :hour => 17, :min => 52)
-      new_order.add_to_basket(1)
-      expect(new_order.place_order(dum_time)).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+      dum_time = instance_double("time", :hour => 17, :min => 52)
+      expect(full_order.place_order(dum_time)).to eq "Thank you! Your order was placed and will be delivered before 18:52"
     end
 
   end

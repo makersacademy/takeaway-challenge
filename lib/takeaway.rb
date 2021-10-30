@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'basket'
 
 class Order
 
@@ -6,39 +7,39 @@ class Order
 
   attr_reader :menu, :basket
 
-  def initialize(menu = DEFAULT_MENU)
+  def initialize(menu = DEFAULT_MENU, basket = Basket.new)
     @menu = menu
-    @basket = []
+    @basket = basket
   end
 
   def review_menu
     show_message(format_menu_array.join("\n"))
   end
 
-  def add_to_basket(item_i, quant = 1)
-    fail show_error(:wrong_number) unless valid_number?(item_i)
-    quant.times { @basket << @menu.fetch(item_i.to_i - 1) }
+  def review_order
+    show_message(@basket.review_contents)
   end
 
-  def review_order
-    show_message(format_review_array.join("\n"))
+  def add_to_basket(item_i, quant = 1)
+    fail show_error(:wrong_number) unless valid_number?(item_i)
+    quant.times { @basket.add_item(@menu.fetch(item_i.to_i - 1)) }
   end
 
   def place_order(timestamp = Time.new)
-    fail show_error(:empty_basket) if empty_basket?
+    fail show_error(:empty_basket) if @basket.empty?
     send_text if timestamp.class == Time
     show_message(thank_you(timestamp))
   end
 
   def send_text
+
   end
 
   private
 
   def show_message(message)
-    formatted_menu = message
-    puts formatted_menu
-    formatted_menu
+    puts message
+    message
   end
 
   def thank_you(time)
@@ -52,30 +53,12 @@ class Order
     end
   end
 
-  def empty_basket?
-    @basket.count.zero? 
-  end
-
   def valid_number?(n)
     (1..@menu.length).include?(n.to_i)
   end
 
   def format_menu_array(i = 0)
     formatted_menu = @menu.map { |h| "#{i += 1}. #{h.name}, £#{h.price}" }
-  end
-
-  def format_review_array
-    @basket.map { |h| count_and_format_basket(h) }.uniq << order_total
-  end
-
-  def count_and_format_basket(item)
-    item_count = @basket.count(item)
-    "x#{item_count} #{item.name}: £#{(item_count.to_f * item.price).round(2)}"
-  end
-
-  def order_total
-    order_prices = @basket.map { |h| h.price }
-    "TOTAL: £#{order_prices.sum.round(2)}"
   end
 
 end
