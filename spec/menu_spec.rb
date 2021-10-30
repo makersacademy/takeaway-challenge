@@ -1,23 +1,15 @@
-# require 'menu'
-# # require 'takeaway'
+require 'menu'
 
-# describe Menu do 
+describe Menu do
+  subject(:menu) { described_class.new } 
 
-#   subject(:menu) { described_class.new(dishes) }
-#   let(:dishes) do { beansprouts: 3.20, 
-#       prawn_toast: 2.50,
-#       vegetable_stir_fry: 4.50}
+  it 'checks there are menu items available' do 
+    expect(menu.show_menu).to eq({"Prawn chow mein" => 4.50, "Egg fried rice" => 2.50})
+  end 
 
-#     context '#Menu' do 
-#       it 'has a list of dishes with prices' do
-#         p dishes
-#         expect(menu.dishes).to eq(dishes)
-#         end
+  it 'allows menu items to be changed' do
+    menu = Menu.new({"Sweet and sour chicken" => 5.50, "Vegetable fried rice" => 2.50, "Beansprouts" => 3.50})
+    expect(menu.show_menu).to eq({"Sweet and sour chicken" => 5.50, "Vegetable fried rice" => 2.50, "Beansprouts" => 3.50})
+  end 
 
-#       it 'prints dishes with prices' do
-#         printed_menu = "beansprouts £3.20", "prawn toast £2.50", "vegetable stir fry £4.50"
-#         expect(menu.print_menu).to eq(printed_menu)
-#     end 
-#   end
-# end 
-# end
+end 

@@ -1,25 +1,25 @@
+require 'menu'
+
 class Takeaway
   
-  attr_reader :menu, :order, :dishes
+  attr_reader :menu
 
-    def initialize(menu)
+    def initialize(menu = Menu.new)
       @menu = menu
-      @dishes = []
+      # @dishes = []
     end 
 
     def print_menu
-      @menu.map { |key, value|
-        "Dish: #{key} - Price: £#{value}"}.join(", ")
-      end
+      # p @menu.menu_items
+      @menu.menu_items
+    end
 
-    def place_order(dish, num)
-      @menu.each do |key, value|
-        if dish == key
-          puts "Dish selected: #{key} x #{num}"
-        end  
-      end 
-    end 
-    
+    # def place_order(dish, num)
+    #   @menu.each do |key, value|
+    #     if dish == key 
+    #     puts "Dishes selected: #{key} x #{num}"
+    #     end 
+    #   end 
+    # end 
 
   end 
-
