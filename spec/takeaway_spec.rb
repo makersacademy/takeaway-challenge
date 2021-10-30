@@ -1,8 +1,8 @@
 require 'takeaway'
 
 describe Order do
-  let(:empty_basket) { double("empty basket", :empty? => true, :add_item => 2 ) }
-  let(:full_basket) { double("full basket", :empty? => false ) }
+  let(:empty_basket) { double("empty basket", :empty? => true, :add_item => true, :review_contents => :none) }
+  let(:full_basket) { double("full basket", :empty? => false, :review_contents => :full) }
   let(:itemA) { double("itemA", :name => "Egg fried rice", :price => 4.99) }
   let(:itemB) { double("itemB", :name => "Steamed rice", :price => 4.49) }
   let(:itemC) { double("itemC", :name => "Sesame prawn toast", :price => 7.99) }
@@ -36,6 +36,12 @@ describe Order do
     end
   end
 
+  describe "#review_order" do
+    it "shows the contents of @basket" do
+      expect(new_order.review_order).to eq :none
+    end
+  end
+
   describe "#add_to_basket" do
     it "returns an error if the selected number is not on the menu" do
       expect { new_order.add_to_basket(0, 1) }.to raise_error "Input error: number doesn't appear in list"
@@ -46,7 +52,7 @@ describe Order do
     end
 
     it "can add multiple item to basket" do
-      expect(new_order.add_to_basket(1, 5)).to eq 5
+      expect(new_order.add_to_basket(2, 5)).to eq 5
     end
   end
 

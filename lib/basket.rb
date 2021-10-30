@@ -15,7 +15,7 @@ class Basket
   end
 
   def empty?
-    @contents.count == 0
+    @contents.count.zero?
   end
 
   private
