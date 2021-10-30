@@ -53,12 +53,16 @@ public class Customer {
     return (this.dishes.size() > 0);
   }
 
+  private String getTimeThirtyMinutesFromNow() {
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");  
+    LocalDateTime thirtyMinsFromNow = LocalDateTime.now().plus(Duration.of(30, ChronoUnit.MINUTES));
+    return dtf.format(thirtyMinsFromNow);
+  }
+
   // To pay
   public void pay() {
     updateTotal();
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");  
-    LocalDateTime thirtyMinsFromNow = LocalDateTime.now().plus(Duration.of(30, ChronoUnit.MINUTES));
-    String time = dtf.format(thirtyMinsFromNow);
+    String time = getTimeThirtyMinutesFromNow();
     System.out.printf("Payment of £%.2f received. Thanks for your purchase today. Your order will arrive by %s (within 30 minutes) and you'll receive a text update on %d - Enjoy! 😄%n", total, time, phoneNumber);
   }
 }
