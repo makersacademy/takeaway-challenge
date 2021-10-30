@@ -1,35 +1,13 @@
 require 'takeaway'
 
-RSpec.describe Takeaway do
-  before do
-    name = "Cod"
-    price = "6"
+describe Takeaway do
+  let(:takeaway) { Takeaway.new }
 
-    @takeaway = Takeaway.new name, price
+  it 'nothing in basket' do
+    expect(takeaway.order).to eq nil
   end
 
-  it 'should respond to name' do
-    expect(@takeaway).to respond_to(:name)
+  it 'has items on the menu' do
+    expect(takeaway.food).to eq food
   end
-
-  it 'should respond to price' do
-    expect(@takeaway).to respond_to(:price)
-  end
-
-  it 'should respond to order' do
-    expect(@takeaway).to respond_to(:order)
-  end
-
-  it 'should return a food for a name' do
-    expect(@takeaway.name).to eq ("Cod")
-  end
-
-  it 'should return £6 for a price' do
-    expect(@takeaway.price).to eq ("6")
-  end
-
-  it 'shout return true for order' do
-    expect(@takeaway.order).to eq(true)
-  end
-
 end
