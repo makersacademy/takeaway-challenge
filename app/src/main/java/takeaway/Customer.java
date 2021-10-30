@@ -8,31 +8,31 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Customer {
-  private List<Dish> dishes;
+  private List<Dish> orderedDishes;
   private int phoneNumber;
   private double totalSpend;
 
   public Customer() {
-    this.dishes = new ArrayList<>();
+    this.orderedDishes = new ArrayList<>();
     this.phoneNumber = 0;
     this.totalSpend = 0;
   }
 
   // Setter
   public void placeOrder(Dish dish) {
-    dishes.add(dish);
+    orderedDishes.add(dish);
   }
   public void setPhoneNumber(int phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
   public void cancelOrder() {
-    this.dishes = new ArrayList<>();
+    this.orderedDishes = new ArrayList<>();
     resetTotalSpend();
     System.out.println("Your order is cancelled. Please enter dish ID or 'q' to exit. 😩");
   }
   private void updateTotal() {
     resetTotalSpend();
-    for (Dish dish : this.dishes) {
+    for (Dish dish : this.orderedDishes) {
       this.totalSpend += dish.getPrice();
     }
   }
@@ -42,13 +42,13 @@ public class Customer {
 
   // Getter
   private void displayOrderedDishes() {
-    for (Dish dish : this.dishes) {
+    for (Dish dish : this.orderedDishes) {
       System.out.println(dish);
     }
   }
   public void viewOrder() {
     updateTotal();
-    
+
     if (!hasOrder())
       System.out.println("Your basket is empty. Please enter dish ID or 'q' to exit. 🤦‍♂️");
     else {
@@ -57,7 +57,7 @@ public class Customer {
     }
   }
   public boolean hasOrder() {
-    return (this.dishes.size() > 0);
+    return (this.orderedDishes.size() > 0);
   }
 
   private String getTimeThirtyMinutesFromNow() {
