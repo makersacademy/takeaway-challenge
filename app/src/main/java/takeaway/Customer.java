@@ -48,7 +48,9 @@ public class Customer {
   }
   public void viewOrder() {
     updateTotal();
-    if (this.dishes.size() == 0) { System.out.println("Your basket is empty. Please enter dish ID or 'q' to exit. 🤦‍♂️"); }
+    
+    if (!hasOrder())
+      System.out.println("Your basket is empty. Please enter dish ID or 'q' to exit. 🤦‍♂️");
     else {
       displayOrderedDishes();
       System.out.printf("Total: £%.2f ~~ Please continue to order or enter 'p' to pay, thank you 🌸%n", totalSpend);
