@@ -8,6 +8,13 @@ describe Order do
         expect(subject).to respond_to(:add_item)
     end
 
+    it 'expects order to respond to select_quantity' do
+      expect(subject).to respond_to(:select_quantity)
+    end
+    it 'expects order to respond to selction_check' do
+        expect(subject).to respond_to(:selection_check)
+    end
+
     it 'expects a message if customers item not on menu' do
         order = Order.new
         order.select_item
