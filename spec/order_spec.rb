@@ -35,10 +35,9 @@ describe Order do
 
   end
   # TODO once order.rb file working correctly to include the dish & price, add it back into the output - see line 41 & 42
-  # I originally wanted it to return selection, dish & price.  However, on the print, it is not printing
-  # a selection number and it errors when I attempt to include dish & price.  In order to have this work, I
-  # removed dish & price so that I can then look at ruby syntax and iteration with arrays of hashes to get
-  # the data I am looking for.
+  # I originally wanted it to return selection, dish & price.  However, on the print it errors when I attempt
+  # to include dish & price.  This is due to selection only returning the item number.  In order for the array to
+  # include the dish & price, I will have to push it into a new array.
  end
 # ({:selection=>1, :dish=>"Tikka Masala", :price=>11.0},
 #   {:selection=>2, :dish=>"Cheeseburger", :price=>11.5})
