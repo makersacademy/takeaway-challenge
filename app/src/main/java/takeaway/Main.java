@@ -54,17 +54,17 @@ public class Main {
     
     // Receive instructions from customer
     Scanner orderIn = new Scanner(System.in);
-    String viewOrder = "v";
-    String cancel = "c";
-    String exit = "q";
-    String pay = "p";
+    final String VIEW_ORDER = "v";
+    final String CANCEL = "c";
+    final String EXIT = "q";
+    final String PAY = "p";
     while (true) {
       String order = orderIn.nextLine();
-      if (order.equals(exit)) {
+      if (order.equals(EXIT)) {
         System.out.println("Bye Bye 👋");
         break;
       }
-      else if (order.equals(pay) && customer.hasOrder()) { 
+      else if (order.equals(PAY) && customer.hasOrder()) { 
         System.out.println("Please provide phone number for text updates on delivery 🤙");
         Scanner phoneNumberIn = new Scanner(System.in);
         int phoneNumber = phoneNumberIn.nextInt();
@@ -72,11 +72,11 @@ public class Main {
         customer.pay();
         break;
       }
-      else if (order.equals(pay) && !customer.hasOrder()) { 
+      else if (order.equals(PAY) && !customer.hasOrder()) { 
         System.out.println("Your basket is empty. Please enter dish ID or 'q' to exit. 🤦‍♂️");
       }
-      else if (order.equals(viewOrder)) { customer.viewOrder(); }
-      else if (order.equals(cancel)) { customer.cancelOrder(); }
+      else if (order.equals(VIEW_ORDER)) { customer.viewOrder(); }
+      else if (order.equals(CANCEL)) { customer.cancelOrder(); }
       else if (order.equals("1")) { customer.placeOrder(fishAndChips); }
       else if (order.equals("2")) { customer.placeOrder(chickenTikka); }
       else if (order.equals("3")) { customer.placeOrder(eggFriedRice); }
