@@ -3,7 +3,7 @@
 
 Takewaway is a programme that allows customers to order dishes. I have implemented the first user story that allows customers to view a list of dishes and prices.
 
-Please see below for my reflections on how I solved this problem.
+Please [see below](https://github.com/katemyoung/takeaway-challenge#reflections) for my reflections on how I solved this problem.
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop) `Test coverage: 100%`
 
@@ -20,13 +20,12 @@ Navigate to the local repo then run irb.
 Run `rspec` from the project directory to run the tests.
 
 **You can use this programme in irb to:**
-- Create a new menu by instatitaing a new instance of the Dishes class `menu = Dishes.new`, and passing it as an argument a hash of the form `{dish: 'Dish Name', price: price}` 
+- Create a new menu by instantiating a new instance of the Dishes class `menu = Dishes.new`, and passing it as an argument a hash of the form `{dish: 'Dish Name', price: price}` 
 - View the menu by calling the list method `menu.list`
 - Add to the menu using the add method `menu.add`
 
 **irb sample:**
 ```
-
 ➜  takeaway-challenge git:(main) irb -r ./lib/dishes.rb
 3.0.2 :001 > menu = Dishes.new({ dish: 'Pizza', price: 5 })
  => #<Dishes:0x00007fab579e7348 @dishes=[{:dish=>"Pizza", :price=>5}]> 
@@ -40,11 +39,9 @@ Pizza: £5
 Pasta: £3
  => [{:dish=>"Pizza", :price=>5}, {:dish=>"Pasta", :price=>3}] 
 3.0.2 :005 > 
-
 ```
 
 ## User Stories
-
 ```
 As a customer
 So that I can check if I want to order something
@@ -64,7 +61,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ```
 
 ## Domain model
-
 ![alt text](media/domain_model.png "Domain model for Takeaway Challenge")
 
 ## How I planned to solve this challenge
@@ -77,7 +73,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - [x] If I go off track, to use git to restore a previous working version. 
 - [ ] Add a SimpleCov test coverage badge to this README
 
-## What I learnt during this challenge
+# Reflections
+
+## What I learnt during this challenge:
 
 **Technical**
 - The RSpec `output` matcher and how to format a string with new lines using backslash instead of quotes.
