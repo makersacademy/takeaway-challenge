@@ -16,6 +16,8 @@ class Takeaway
         fail "That is not a menu item, you can not order it"
       end
     end
+
+    "Thank you! Your order was placed and will be delivered before 18:52"
   end
 
   def check_total

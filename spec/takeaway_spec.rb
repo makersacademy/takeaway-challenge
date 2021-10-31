@@ -19,4 +19,8 @@ describe Takeaway do
     expect(takeaway.check_total).to be(5)
   end
 
+  it 'confirms my order with a message' do
+    expect(subject.order(:soup)).to eq("Thank you! Your order was placed and will be delivered before 18:52")
+  end
+
 end
