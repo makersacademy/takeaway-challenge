@@ -50,7 +50,6 @@ dish2 = Dish.new("Onion rings", 1)
 
 Create a new menu and view it:
 ```
-require './lib/dish'
 require './lib/menu'
 menu = Menu.new
 menu.read_menu

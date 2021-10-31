@@ -1,9 +1,11 @@
+require './lib/dish'
+
 class Menu
 
-  attr_reader :menu_list
+  attr_reader :dishes
 
   def initialize
-    @menu_list = [
+    @dishes = [
       Dish.new("Chips", 2),
       Dish.new("Onion rings", 1),
       Dish.new("Cheese burger", 10),
@@ -12,10 +14,6 @@ class Menu
       Dish.new("Chicken kebab", 9),
       Dish.new("Mixed kebab", 12)
     ]
-  end
-
-  def read_menu
-    @menu_list.each { |dish| puts "#{dish.name} - £#{dish.price}" }
   end
 
 end
