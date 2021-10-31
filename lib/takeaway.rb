@@ -1,5 +1,6 @@
 require_relative 'menu'
 require_relative 'basket'
+require_relative 'send_sms'
 
 class Order
 
@@ -28,12 +29,8 @@ class Order
 
   def place_order(timestamp = Time.new)
     fail show_error(:empty_basket) if @basket.empty?
-    send_text if timestamp.class == Time
+    send_confirmation_text(thank_you(timestamp)) if timestamp.class == Time
     thank_you(timestamp)
-  end
-
-  def send_text
-
   end
 
   private
@@ -44,7 +41,11 @@ class Order
   end
 
   def thank_you(time)
-    "Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}"
+    "Thank you! Your order will be delivered before #{time.hour + 1}:#{format_min(time.min)}"
+  end
+
+  def format_min(min)
+    min < 10 ? "0#{min}" : min
   end
 
   def show_error(message)

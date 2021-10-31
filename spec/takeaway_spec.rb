@@ -11,14 +11,16 @@ describe Order do
   let(:new_order_invalid) { Order.new(menu_invalid, empty_basket) }
   let(:full_order) { Order.new(menu, full_basket) }
 
+  let(:timestamp) { double("time: 18:30", :hour => 18, :min => 30) }
+
   it { is_expected.to respond_to(:review_basket) }
   it { is_expected.to respond_to(:review_menu) }
 
-   describe "#review_menu" do
-     it "puts a message to the standard output" do
-       expect { new_order.review_menu("test menu") }.to output("test menu\n").to_stdout
-     end
-   end
+  describe "#review_menu" do
+    it "puts a message to the standard output" do
+      expect { new_order.review_menu("test menu") }.to output("test menu\n").to_stdout
+    end
+  end
 
   describe "#add_to_basket" do
     it "returns an error if the selected number is not on the menu" do
@@ -32,16 +34,15 @@ describe Order do
 
   describe "#place_order" do
     it "returns an error if a basket is empty" do
-      expect { new_order.place_order }.to raise_error "Basket is empty"
+      expect { new_order.place_order(timestamp) }.to raise_error "Basket is empty"
     end
 
     it "does not return an error if a basket is full" do
-      expect { full_order.place_order }.to_not raise_error
+      expect { full_order.place_order(timestamp) }.to_not raise_error
     end
 
     it "prints a thank you message with the correct time on successful order" do
-      dum_time = instance_double("time", :hour => 17, :min => 52)
-      expect(full_order.place_order(dum_time)).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+      expect(full_order.place_order(timestamp)).to eq "Thank you! Your order will be delivered before 19:30"
     end
 
   end
