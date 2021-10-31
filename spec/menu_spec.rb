@@ -1,15 +1,19 @@
 require './lib/menu'
 
 describe Menu do
-  
-  describe "#dishes" do
-    it "expects there to be a menu list on initialization" do
-      expect(subject.dishes).not_to be_empty
+
+  let(:dish) { { :name => "Chips", :price => 2 } }
+
+  describe '#initialize' do
+    it 'has a dishes attribute that has individual dishes with a name and price' do
+      expect(subject.dishes).to_not eq nil
     end
   end
+  
+  describe 'view_menu' do
 
-  describe '#read_menu' do
-    specify { expect { subject.read_menu }.to output.to_stdout }
+    it 'displays menu with dishes and their price' do
+      expect(subject.view_menu).to include dish
+    end
   end
-
 end
