@@ -16,4 +16,7 @@ class Menu
     ]
   end
 
+  def read_menu
+    @dishes.each { |dish| puts "#{dish.name} - £#{dish.price}" }
+  end
 end

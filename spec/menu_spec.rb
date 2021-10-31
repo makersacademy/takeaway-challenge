@@ -7,4 +7,9 @@ describe Menu do
       expect(subject.dishes).not_to be_empty
     end
   end
+
+  describe '#read_menu' do
+    specify { expect { subject.read_menu }.to output.to_stdout }
+  end
+
 end
