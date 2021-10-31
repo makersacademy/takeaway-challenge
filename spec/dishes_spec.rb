@@ -4,7 +4,7 @@ describe Dishes do
   describe '#list' do
     context 'given a menu with one dish' do
       it 'outputs a list of dish and price' do
-        expect { menu1.list }.to output('Pizza: £5').to_stdout
+        expect { menu1.list }.to output(/Pizza: £5\n/).to_stdout
       end   
     end
 
@@ -13,7 +13,7 @@ describe Dishes do
       menu1.add({dish: 'Pasta', price: 3})
     end
       it 'outputs a list of dishes and prices'do
-        expect { menu1.list }.to output('Pizza: £5\n Pasta: £3').to_stdout 
+        expect { menu1.list }.to output(/Pizza: £5\nPasta: £3\n/).to_stdout 
       end
     end
   end
