@@ -1,5 +1,7 @@
 # require_relative './dish.rb'
 require 'csv'
+require 'sms'
+
 
 class Order
   attr_reader :available_dishes, :view_dishes, :selected_dishes, :order_total
@@ -90,6 +92,8 @@ class Order
 
   def submit_order
     puts 'Order has been submitted, you will receive a text confirmation shortly'
+    sms = SMS.new
+    sms.send_sms
     exit
   end
 

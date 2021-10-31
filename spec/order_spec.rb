@@ -59,21 +59,13 @@ describe Order do
     selection = $stdin.gets.chomp
     expect(subject.process(selection)).to eq ('1')
    end
+
+  it 'sends a confirmation text message' do
+    expect(subject).to receive(:submit_order)
+    subject.submit_order
+  end
 end
 
+#ToDO the stub functionality does not seem to be working and a text message is sent each time rspec is run with either test active
 #
- #  pending it 'customer can choose to cancel' do
- #
- #  end
- # end
-#
-# let (:gets1) do
-#   double{("1")
-#   allow($stdin).to receive(:gets).and_return(:gets1)
-#   expect(:gets1).to receive(:chomp).and_return('1')}
-# end
-# let (:gets2) do
-#   double{("2")
-#   allow($stdin).to receive(:gets).and_return(:gets2)
-#   expect(:gets2).to receive(:chomp).and_return('2')}
-# end
+# TODO running in rspec is ugly because it calls the select_items method in 3 different tests.  This should be fixed at some point

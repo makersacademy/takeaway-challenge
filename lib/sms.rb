@@ -16,6 +16,5 @@ class SMS
       to: to,
       body: "Thank you! Your order was placed and will be delivered before order time + 1 hr"
     )
-    return true
   end
 end
