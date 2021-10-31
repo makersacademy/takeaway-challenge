@@ -54,6 +54,7 @@ require './lib/order.rb'
 order = Order.new
 order.add_dish("Chips", 3)
 order.add_dish("Cheese burger", 2)
+order.display_basket
 ```
 
 Test coverage
