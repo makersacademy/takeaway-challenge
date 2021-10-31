@@ -1,5 +1,4 @@
 # Takeaway Challenge
-==================
 
 Takewaway is a programme that allows customers to order dishes. I have implemented the first user story that allows customers to view a list of dishes and prices.
 
@@ -7,7 +6,7 @@ Please [see below](https://github.com/katemyoung/takeaway-challenge#reflections)
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop) `Test coverage: 100%`
 
-# How to explore this programme
+## How to explore this programme
 
 Use git clone to create a local repo. 
 `git clone https://github.com/katemyoung/airport_challenge.git` 
@@ -24,7 +23,7 @@ Run `rspec` from the project directory to run the tests.
 - View the menu by calling the list method `menu.list`
 - Add to the menu using the add method `menu.add`
 
-**irb sample:**
+**Here's an example of how to run this programme in irb:**
 ```
 ➜  takeaway-challenge git:(main) irb -r ./lib/dishes.rb
 3.0.2 :001 > menu = Dishes.new({ dish: 'Pizza', price: 5 })
@@ -94,3 +93,5 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## Feedback from code review
 
 *See also PR comments*
+
+## Next challenge I aim to:
