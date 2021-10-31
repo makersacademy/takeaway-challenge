@@ -8,10 +8,9 @@ class Dishes
   end
   
   def list
-    @dishes.each { |dish| 
+    @dishes.each do |dish| 
       puts dish.fetch(:dish) + ": £" +
       dish.fetch(:price).to_s
-    }
+    end
   end
 end
-
