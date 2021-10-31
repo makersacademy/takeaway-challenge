@@ -1,10 +1,21 @@
 require 'dishes'
 describe Dishes do
-  let(:menu) { Dishes.new ({dish: 'Pizza', price: 5}) }
+  let(:menu1) { Dishes.new ({dish: 'Pizza', price: 5}) }
   describe '#list' do
-    it 'shows a list of dishes and prices' do
-      expect { menu.list }.to output('Pizza: £5').to_stdout
-    end   
+    context 'given a menu with one dish' do
+      it 'outputs a list of dish and price' do
+        expect { menu1.list }.to output('Pizza: £5').to_stdout
+      end   
+    end
+
+    context 'given a menu with two dishes' do
+    before do
+      menu1.add({dish: 'Pasta', price: 3})
+    end
+      it 'outputs a list of dishes and prices'do
+        expect { menu1.list }.to output('Pizza: £5\n Pasta: £3').to_stdout 
+      end
+    end
   end
 end
 
