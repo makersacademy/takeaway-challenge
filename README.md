@@ -32,7 +32,7 @@ My approach
 User story 1:
 
 - created a dish class that is responsible for creating dish objects. On initialisation it takes the arguments name and price which are set as instance variables for each dish object.
-- created a menu dish class. It is responsible for creating the menu. On initialization it is given the attribute menu_list which is equal to an array of new dish objects. Each dish object is given a name and price attribute. The menu class is also responsible for showing the menu via the read_menu method. It outputs a readable list showing each dishes name and associated price.
+- created a menu class. It is responsible for creating the menu. On initialization it is given the attribute menu_list which is equal to an array of new dish objects. Each dish object is given a name and price attribute. The menu class is also responsible for showing the menu via the read_menu method. It outputs a readable list showing each dishes name and associated price.
 
 
 Example feature tests
@@ -55,3 +55,8 @@ require './lib/menu'
 menu = Menu.new
 menu.read_menu
 ```
+
+Test coverage
+-----
+
+ADD IN TEST COVERAGE AS A % HERE
