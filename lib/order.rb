@@ -11,10 +11,6 @@ class Order
 
   def selected_food(food)
     @current_selected_food = food
-  end
-
-  def add_food
     @ordered_food << { :selected_food => @current_selected_food }
   end
-
 end

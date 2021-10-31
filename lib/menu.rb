@@ -1,7 +1,7 @@
 require_relative 'order'
 
 class Menu
-  attr_reader :food, :see_menu
+  attr_reader :food
 
   def initialize
     @food = [
