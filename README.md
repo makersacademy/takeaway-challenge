@@ -81,7 +81,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 *How to structure this section? What was most useful from last time?*
 
 ## My plan
-
+- [ ] Parse user stories and extract verbs and nouns into UML class diagram domain model
 
 ## The reality
 
