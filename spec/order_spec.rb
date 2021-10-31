@@ -48,8 +48,3 @@ describe Order do
   end
 
  end
-# ({:selection=>1, :dish=>"Tikka Masala", :price=>11.0},
-#   {:selection=>2, :dish=>"Cheeseburger", :price=>11.5})
-#
-# :dish=>"Tikka Masala", :price=>"11.00"},
-#                                             {:item_number=>"2", :dish=>"Cheeseburger", :price=>"11.50"})
