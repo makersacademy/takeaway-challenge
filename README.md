@@ -1,20 +1,45 @@
 # Takeaway Challenge
 ==================
 
-Takewaway is a programme that allows customers to order dishes.
+Takewaway is a programme that allows customers to order dishes. I have implemented the first user story that allows customers to view a list of dishes and prices.
 
-Please see [below](add link) for my reflections on how I solved this problem.
+Please see below for my reflections on how I solved this problem.
 
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
-![Coverage](https://marcgrimme.github.io/simplecov-small-badge/badges/coverage_badge_total.png)
-## Instructions for how to use this programme.
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop) `Test coverage: 100%`
 
-Use `bundle` to install the required Ruby gems.
-*add more detail here*
+# How to use this programme
 
+Use git clone to create a local repo. 
+`git clone https://github.com/katemyoung/airport_challenge.git` 
+
+Use bundler to install the required gems by running the command `bundle` in the project directory.
+
+Navigate to the local repo then run irb.
+`irb -r './lib/dishes.rb'`
+
+Run `rspec` from the project directory to run the tests.
+
+**You can:**
+- Create a new menu by instatitaing a new instance of the Dishes class `menu = Dishes.new`, and passing it as an argument a hash of the form `{dish: 'Dish Name', price: price}` 
+- View the menu by calling the list method `menu.list`
+- Add to the menu using the add method `menu.add`
+
+**irb sample:**
 ```
 
-add irb code here
+➜  takeaway-challenge git:(main) irb -r ./lib/dishes.rb
+3.0.2 :001 > menu = Dishes.new({ dish: 'Pizza', price: 5 })
+ => #<Dishes:0x00007fab579e7348 @dishes=[{:dish=>"Pizza", :price=>5}]> 
+3.0.2 :002 > menu.list
+Pizza: £5
+ => [{:dish=>"Pizza", :price=>5}] 
+3.0.2 :003 > menu.add({ dish: 'Pasta', price: 3 })
+ => [{:dish=>"Pizza", :price=>5}, {:dish=>"Pasta", :price=>3}] 
+3.0.2 :004 > menu.list
+Pizza: £5
+Pasta: £3
+ => [{:dish=>"Pizza", :price=>5}, {:dish=>"Pasta", :price=>3}] 
+3.0.2 :005 > 
 
 ```
 
@@ -40,28 +65,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Domain model
 
-*domain model here*
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+![alt text](media/domain_model.png "Domain model for Takeaway Challenge")
 
 
 In code review we'll be hoping to see:
