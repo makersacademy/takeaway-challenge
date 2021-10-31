@@ -1,19 +1,19 @@
+require_relative 'order'
+
 class Menu
-  attr_reader :menu
+  attr_reader :food, :see_menu
 
   def initialize
-    @menu = [
-      { Cod: 6,
-      Haddock: 6, 
-      Plaice: 6, 
-      Chips: 2, 
-      Sausage: 3 }
+    @food = [
+      { name: "Cod", price: 6 },
+      { name: "Haddock", price: 6 }, 
+      { name: "Plaice", price: 6 }, 
+      { name: "Chips", price: 2 },
+      { name: "Sausage", price: 3 }
     ]
   end
 
   def see_menu
-    @menu.each do |food, price|
-      puts "#{food} £#{price}"
-    end
+    @food 
   end
 end
