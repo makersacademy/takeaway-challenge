@@ -1,24 +1,11 @@
 require 'takeaway'
 
 describe Order do
+  let(:item) { double("itemA", :name => "Egg fried rice", :price => 4.99) }
+  let(:menu) { double("menu", :length => 6, :review_menu => :full_menu, :fetch => item) }
   let(:empty_basket) { double("empty basket", :empty? => true, :add_item => true, :review_contents => :none) }
   let(:full_basket) { double("full basket", :empty? => false, :review_contents => :full) }
-  let(:itemA) { double("itemA", :name => "Egg fried rice", :price => 4.99) }
-  let(:itemB) { double("itemB", :name => "Steamed rice", :price => 4.49) }
-  let(:itemC) { double("itemC", :name => "Sesame prawn toast", :price => 7.99) }
-  let(:itemD) { double("itemD", :name => "Salt & pepper pork ribs", :price => 9.95) }
-  let(:itemE) { double("itemE", :name => "Cantonese lemon chicken", :price => 8.95) }
-  let(:itemF) { double("itemF", :name => "Lamb in black pepper sauce", :price => 7.99) }
-  let(:menu) { double("menu", :import => [itemA, itemB, itemC, itemD, itemE, itemF], 
-    :length => 6, :fetch => itemA, :map => [
-      "1. #{itemA.name}, £#{itemA.price}",
-      "2. #{itemB.name}, £#{itemB.price}",
-      "3. #{itemC.name}, £#{itemC.price}",
-      "4. #{itemD.name}, £#{itemD.price}",
-      "5. #{itemE.name}, £#{itemE.price}",
-      "6. #{itemF.name}, £#{itemF.price}"
-    ])
-  }
+
   let(:new_order) { Order.new(menu, empty_basket) }
   let(:full_order) { Order.new(menu, full_basket) }
 
@@ -28,6 +15,12 @@ describe Order do
   describe "#review_basket" do
     it "shows the contents of @basket" do
       expect(new_order.review_basket).to eq :none
+    end
+  end
+
+  describe "#review_menu" do
+    it "shows the contents of @menu" do
+      expect(new_order.review_menu).to eq :full_menu
     end
   end
 

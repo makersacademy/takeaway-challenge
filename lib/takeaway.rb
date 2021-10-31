@@ -13,11 +13,11 @@ class Order
   end
 
   def review_menu
-    show_message(@menu.review_menu)
+    @menu.review_menu
   end
 
   def review_basket
-    show_message(@basket.review_contents)
+    @basket.review_contents
   end
 
   def add_to_basket(item_i, quant = 1)
@@ -28,7 +28,7 @@ class Order
   def place_order(timestamp = Time.new)
     fail show_error(:empty_basket) if @basket.empty?
     send_text if timestamp.class == Time
-    show_message(thank_you(timestamp))
+    thank_you(timestamp)
   end
 
   def send_text
@@ -36,11 +36,6 @@ class Order
   end
 
   private
-
-  def show_message(message)
-    puts message
-    message
-  end
 
   def thank_you(time)
     "Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}"
