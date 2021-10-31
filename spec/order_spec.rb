@@ -35,10 +35,16 @@ describe Order do
                                       )
   end
 
-  it 'the customer can verify total is correct against the items ordered with price' do
+  it 'the customer can verify total' do
     subject.load_dishes
     subject.select_items
     expect(subject.order_sum).to eq("22.50")
+  end
+
+  it 'the customer can verify total is correct against the items ordered with price' do
+    subject.load_dishes
+    subject.select_items
+    expect(subject.show_order).to eq("22.50")
   end
 
  end

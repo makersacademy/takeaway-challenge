@@ -2,7 +2,7 @@
 require 'csv'
 
 class Order
-  attr_reader :available_dishes, :view_dishes, :selected_dishes, :ordered_items
+  attr_reader :available_dishes, :view_dishes, :selected_dishes, :ordered_items, :order_total
 
   def initialize
     @available_dishes = []
@@ -50,14 +50,19 @@ class Order
     sum = []
     sum = @selected_dishes.map{|price| price[:price]}
     a_total = sum.map!(&:to_f)
-    p total = a_total.sum
-    p sprintf '%.2f', total
+    total = a_total.sum
+    @order_total = sprintf ('%.2f'), total
+    #order_total = @order_total
+    p @order_total
   end
-  # def show_order
-  #   puts "Please confirm the following is correct before placing your order" "\n\n"
-  #   puts @selected_dishes
-  #
-  # end
+
+  def show_order
+    puts "Please confirm the following is correct before placing your order" "\n\n"
+    puts @selected_dishes
+    # TODO make @selected_dishes print out looking nicer later
+    puts "Your total is £ #{order_sum}"
+    return order_sum
+  end
 
 end
 
