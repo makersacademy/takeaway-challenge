@@ -13,10 +13,10 @@ class Order
   end
 
   def review_menu
-    show_message(format_menu_array.join("\n"))
+    show_message(@menu.review_menu)
   end
 
-  def review_order
+  def review_basket
     show_message(@basket.review_contents)
   end
 
@@ -55,10 +55,6 @@ class Order
 
   def valid_number?(n)
     (1..@menu.length).include?(n.to_i)
-  end
-
-  def format_menu_array(i = 0)
-    formatted_menu = @menu.map { |h| "#{i += 1}. #{h.name}, £#{h.price}" }
   end
 
 end

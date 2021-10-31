@@ -22,23 +22,12 @@ describe Order do
   let(:new_order) { Order.new(menu, empty_basket) }
   let(:full_order) { Order.new(menu, full_basket) }
 
-  it { is_expected.to respond_to(:review_order) }
+  it { is_expected.to respond_to(:review_basket) }
   it { is_expected.to respond_to(:review_menu) }
 
-  describe "#review_menu" do
-    it "shows a list of dishes with prices" do
-      expect(new_order.review_menu).to eq "1. Egg fried rice, £4.99
-2. Steamed rice, £4.49
-3. Sesame prawn toast, £7.99
-4. Salt & pepper pork ribs, £9.95
-5. Cantonese lemon chicken, £8.95
-6. Lamb in black pepper sauce, £7.99"
-    end
-  end
-
-  describe "#review_order" do
+  describe "#review_basket" do
     it "shows the contents of @basket" do
-      expect(new_order.review_order).to eq :none
+      expect(new_order.review_basket).to eq :none
     end
   end
 
