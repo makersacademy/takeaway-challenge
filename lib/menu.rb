@@ -1,13 +1,14 @@
+require_relative '../lib/order'
 class Menu
-  attr_reader :dishes 
+  attr_reader :dishes
 
   def initialize 
     @dishes = {
-      "calzone" => 5,
-      "pizza" => 8,
-      "mozzarella sticks" => 3,
-      "pasta" => 6,
-      "gelato" => 4
+      calzone: 5,
+      pizza: 8,
+      mozzarella: 3,
+      pasta: 6,
+      gelato: 4
       }
   end
     
@@ -16,5 +17,9 @@ class Menu
       "#{dish.capitalize}: £#{price}" } 
       .join(", ")
   end
- 
+
+  def price(dish)
+    @dishes[dish]
+  end 
+
 end
