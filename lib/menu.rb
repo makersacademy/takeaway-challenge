@@ -6,17 +6,17 @@ class Menu
 
   def initialize
     @dishes = [
-      Dish.new("Chips", 2),
-      Dish.new("Onion rings", 1),
-      Dish.new("Cheese burger", 10),
-      Dish.new("Chicken burger", 9),
-      Dish.new("Pizza", 8),
-      Dish.new("Chicken kebab", 9),
-      Dish.new("Mixed kebab", 12)
+      { :name => "Chips", :price => 2 },
+      { :name => "Onion rings", :price => 1 },
+      { :name => "Cheese burger", :price => 10 },
+      { :name => "Chicken burger", :price => 9 },
+      { :name => "Chicken kebab", :price => 8 },
+      { :name => "Chips", :price => 2 },
+      { :name => "Chips", :price => 2 }
     ]
   end
 
   def read_menu
-    @dishes.each { |dish| puts "#{dish.name} - £#{dish.price}" }
+    @dishes.each { |dish| puts "#{dish[:name]} - £#{dish[:price]}" }
   end
 end
