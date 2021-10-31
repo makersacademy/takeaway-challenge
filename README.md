@@ -33,6 +33,9 @@ User story 1:
 
 - created a menu class. It is responsible for creating the menu. On initialization it is given the attribute @dishes which is equal to an array hashes. Each hash represents a dish, with a key/value pair of name/price. The menu class is also responsible for showing the menu via the view_menu method. It outputs a readable list showing each dish name and it's price.
 
+User story 2:
+- created an order class. It is responsible for creating a basket, adding dishes to the basket and displaying the basket. On initialization it is given the attribute @basket which is an empty array. Adding a dishes adds the dishes to @basket. Displaying the basket shows the dishes in the basket and their prices.
+
 
 Example feature tests
 -----
