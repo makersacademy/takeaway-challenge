@@ -7,7 +7,6 @@ class Order
   def initialize
     @available_dishes = []
     @selected_dishes = []
-    @ordered_items = []
     load_dishes
   end
 
@@ -29,7 +28,7 @@ class Order
 
   def select_items
     puts "Please select your desired dishes based on Item number from the menu below"
-    puts "To proceed to your total, please press 'Enter' twice"
+    puts "To proceed to your total, please press 'Enter' twice" "\n"
     puts "------------Available Dishes------------"
     @available_dishes.each do |menu|
       puts "Item  #{menu[:item_number]}: #{menu[:dish]}  Price: £ #{menu[:price]}"
