@@ -29,9 +29,29 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 My approach
 -----
 
-ADD APPROACH HERE BEFORE SUBMITTING PULL REQUEST
+User story 1:
 
-Example feature test
+- created a dish class that is responsible for creating dish objects. On initialisation it takes the arguments name and price which are set as instance variables for each dish object.
+- created a menu dish class. It is responsible for creating the menu. On initialization it is given the attribute menu_list which is equal to an array of new dish objects. Each dish object is given a name and price attribute. The menu class is also responsible for showing the menu via the read_menu method. It outputs a readable list showing each dishes name and associated price.
+
+
+Example feature tests
 -----
 
-ADD A FEATURE TEST EXAMPLE FROM IRB BEFORED SUBMITTING PULL REQUEST
+User story 1:
+
+Create a new dish:
+
+```
+require './lib/dish'
+dish1 = Dish.new("Chips", 2)
+dish2 = Dish.new("Onion rings", 1)
+```
+
+Create a new menu and view it:
+```
+require './lib/dish'
+require './lib/menu'
+menu = Menu.new
+menu.read_menu
+```
