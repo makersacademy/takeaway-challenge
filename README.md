@@ -48,11 +48,10 @@ dish1 = Dish.new("Chips", 2)
 dish2 = Dish.new("Onion rings", 1)
 ```
 
-Create a new menu and view it:
+Create a new menu:
 ```
 require './lib/menu'
 menu = Menu.new
-menu.read_menu
 ```
 
 Test coverage
