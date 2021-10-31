@@ -8,8 +8,14 @@ const client = new Client({
 
 client.connect()
 
-module.exports = Client 
+module.exports = {
+  query: (text, params, callBack) => {
+    return client.query(text, params, callBack)
+  }
+}
 
+
+/*
 const query = 'INSERT INTO users(name, email) VALUES($1, $2) RETURNING *'
 const values = ['joe', '1234567@gmail.com']
 
@@ -20,3 +26,4 @@ client.query(query, values, (err, res) => {
     console.log(res.rows[0])
   }
 })
+*/

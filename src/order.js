@@ -1,6 +1,7 @@
 class Order {
   constructor(){
     this.dishes = []
+    //this.userId = userId
   }
 
   getTotal(){
