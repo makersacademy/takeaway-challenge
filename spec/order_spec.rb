@@ -4,7 +4,12 @@ RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
 
 describe Order do
   let(:order){Order.new}
-  #before(each)subject.load_dishes
+
+  let(:selected_dishes) do
+    [
+      double({:item_number=>"1", :dish=>"Tikka Masala", :price=>"11.00"},
+      {:item_number=>"2", :dish=>"Cheeseburger", :price=>"11.50"})
+    ]
 
   it 'loads available_dishes.csv' do
     subject.load_dishes
@@ -13,11 +18,7 @@ describe Order do
 
   #
   it 'customer can view a list of dishes with prices' do
-  # subject.load_dishes
-  #end
-    #expect(subject.available).to match_array(@available_dishes)
-
-    subject.load_dishes
+   #expect(subject.available).to match_array(@available_dishes)
     expect(subject.view_menu).to include({:item_number=>"1", :dish=>"Tikka Masala", :price=>"11.00"},
                                           {:item_number=>"2", :dish=>"Cheeseburger", :price=>"11.50"},
                                           {:item_number=>"3", :dish=>"Hamburger", :price=>"10.50"},
@@ -30,36 +31,36 @@ describe Order do
   end
 
   it 'the customer can select dishes for order' do
-    subject.load_dishes
     subject.select_items
-    expect(subject.selected_dishes).to include({:item_number=>"1", :dish=>"Tikka Masala", :price=>"11.00"},
-                                               {:item_number=>"2", :dish=>"Cheeseburger", :price=>"11.50"}
-                                      )
+    expect(subject.selected_dishes).to include :selected_dishes
+    # ({:item_number=>"1", :dish=>"Tikka Masala", :price=>"11.00"},
+    #                                            {:item_number=>"2", :dish=>"Cheeseburger", :price=>"11.50"}
+    #                                   )
   end
-
-  it 'the customer can verify total' do
-    subject.load_dishes
-    subject.select_items
-    expect(subject.order_sum).to eq("22.50")
   end
-
-  it 'the customer can verify total is correct against the items ordered with price' do
-    subject.load_dishes
-    subject.select_items
-    expect(subject.show_order).to eq("22.50")
   end
+  # it 'the customer can verify total' do
+  #   subject.select_items
+  #   expect(subject.order_sum).to eq("22.50")
+  # end
+  #
+  # it 'the customer can verify total is correct against the items ordered with price' do
+  #   subject.select_items
+  #   expect(subject.show_order).to eq("22.50")
+  # end
+  #
+  # it 'customer can choose to select dishes again' do
+  #   # allow($dtdin).to receive(:gets).and_return('2')
+  #   selection = $stdin.gets.chomp
+  #   expect(selection).to eq ('2')
+  # end
+  # end
 
-  it 'customer can choose to select dishes again' do
-    # allow($dtdin).to receive(:gets).and_return('2')
-    selection = $stdin.gets.chomp
-    expect(selection).to eq ('2')
-  end
-
-  pending it 'customer can choose to submit order' do
-
-  end
-
-  pending it 'customer can choose to cancel' do
-
-  end
- end
+ #  pending it 'customer can choose to submit order' do
+ #
+ #  end
+ #
+ #  pending it 'customer can choose to cancel' do
+ #
+ #  end
+ # end
