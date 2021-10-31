@@ -3,7 +3,7 @@ require_relative 'basket'
 
 class Order
 
-  DEFAULT_MENU = Menu.new.import
+  DEFAULT_MENU = Menu.new
 
   attr_reader :menu, :basket
 
@@ -13,16 +13,17 @@ class Order
   end
 
   def review_menu
-    @menu.review_menu
+    show_message(@menu.review_menu)
   end
 
   def review_basket
-    @basket.review_contents
+    show_message(@basket.review_contents)
   end
 
   def add_to_basket(item_i, quant = 1)
-    fail show_error(:wrong_number) unless valid_number?(item_i)
-    quant.times { @basket.add_item(@menu.fetch(item_i.to_i - 1)) }
+    fail show_error(:wrong_number) unless @menu.valid_choice?(item_i)
+    quant.times { @basket.add_item(@menu.fetch_item(item_i)) }
+    review_basket
   end
 
   def place_order(timestamp = Time.new)
@@ -37,6 +38,11 @@ class Order
 
   private
 
+  def show_message(message)
+    puts message
+    "Message complete"
+  end
+
   def thank_you(time)
     "Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}"
   end
@@ -46,10 +52,6 @@ class Order
       when :wrong_number then "Input error: number doesn't appear in list"
       when :empty_basket then "Basket is empty"
     end
-  end
-
-  def valid_number?(n)
-    (1..@menu.length).include?(n.to_i)
   end
 
 end
