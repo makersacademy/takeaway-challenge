@@ -6,7 +6,7 @@ Takewaway is a programme that allows customers to order dishes.
 Please see [below](add link) for my reflections on how I solved this problem.
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
-
+![Coverage](https://marcgrimme.github.io/simplecov-small-badge/badges/coverage_badge_total.png)
 ## Instructions for how to use this programme.
 
 Use `bundle` to install the required Ruby gems.

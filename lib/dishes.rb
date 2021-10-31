@@ -4,7 +4,10 @@ class Dishes
   end
   
   def list
-    {dish: 'Pizza', price: 5}
+    # list = @dishes.each { |dish| 
+    #   return 
+    # }
+   print 'Pizza: £5'
   end
 end
 
