@@ -10,11 +10,7 @@ $from = ""
 def send_confirmation_text(body)
   if $sms_allowed
     @client = Twilio::REST::Client.new($account_sid, $auth_token)
-    @client.messages.create(
-      to: $to,
-      from: $from,
-      body: body
-    )
+    @client.messages.create(to: $to, from: $from, body: body) if body.class == String
   end
   sms_incomplete_warning
 end
