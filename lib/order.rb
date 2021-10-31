@@ -15,7 +15,6 @@ class Order
        dish, price, item_number = line
        #"{imported_menu = []}"
        @available_dishes << { item_number: item_number, dish: dish, price: price }
-
     end
   end
 
@@ -28,7 +27,7 @@ class Order
 
   def select_items
     puts "Please select your desired dishes based on Item number from the menu below"
-    puts "To proceed to your total, please press 'Enter' twice" "\n"
+    puts "To proceed to your total, please press 'Enter' twice" "\n\n"
     puts "------------Available Dishes------------"
     @available_dishes.each do |menu|
       puts "Item  #{menu[:item_number]}: #{menu[:dish]}  Price: £ #{menu[:price]}"
@@ -39,15 +38,16 @@ class Order
         @selected_dishes << @available_dishes[selection-1]
         selection = STDIN.gets.chomp
       end
+
   end
 
   def order_sum
+    #TODO This is ugly and I would love to find another/better way to get the price to be total-able
     sum = []
     sum = @selected_dishes.map{|price| price[:price]}
     a_total = sum.map!(&:to_f)
     total = a_total.sum
     @order_total = sprintf ('%.2f'), total
-    @order_total
   end
 
   def show_order
@@ -87,7 +87,25 @@ class Order
     puts "2. Re-select dishes to order"
     puts "3. Cancel and leave"
   end
+
+  def submit_order
+    puts 'Order has been submitted, you will receive a text confirmation shortly'
+    exit
+  end
+
+  #And end process that puts all the pieces into running order would be a good implementation, however, for this
+  # project, if I do so, my testing coverage goes down to 73%
+  #
+  # def process_order
+  #   select_items
+  #   show_order
+  #   order_options
+  # end
 end
+
+
+
+
 
 
 
