@@ -12,5 +12,9 @@ class Order
     dish_name = menu.dishes.select { |dish| dish[:name] == dish_name }.reduce(&:merge)
     quantity.times { @ordered_items << dish_name }
   end
+
+  def total_cost
+    
+  end
   
 end
