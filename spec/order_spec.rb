@@ -1,5 +1,7 @@
 require_relative '../lib/order.rb'
 
+RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
+
 describe Order do
   let(:order){Order.new}
   #before(each)subject.load_dishes
@@ -47,4 +49,17 @@ describe Order do
     expect(subject.show_order).to eq("22.50")
   end
 
+  it 'customer can choose to select dishes again' do
+    # allow($dtdin).to receive(:gets).and_return('2')
+    selection = $stdin.gets.chomp
+    expect(selection).to eq ('2')
+  end
+
+  pending it 'customer can choose to submit order' do
+
+  end
+
+  pending it 'customer can choose to cancel' do
+
+  end
  end

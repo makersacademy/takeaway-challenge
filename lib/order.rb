@@ -56,10 +56,38 @@ class Order
     @selected_dishes.each do |menu|
       puts "Item  #{menu[:item_number]}: #{menu[:dish]}  Price: £ #{menu[:price]}"
     end
-    puts "Your total is £ #{order_sum}"
+    puts "Your total is £ #{order_sum}" "\n\n"
+    order_options
     return order_sum
   end
 
+  def order_options
+    print_menu
+    process(STDIN.gets.chomp)
+  end
+
+  def process(selection)
+    # 3. options to re-select items, submit order, or cancel
+    case selection
+    when "1"
+      submit_order
+    when "2"
+      @selected_dishes = []
+      select_items
+    when "3"
+      exit # this will cause the program to terminate
+    else
+      puts "I don't know what you meant, try again"
+    end
+  end
+
+  def print_menu
+    # print the menu and ask the user what to do
+    puts "Please select an option"
+    puts "1. Submit order"
+    puts "2. Re-select dishes to order"
+    puts "3. Cancel and leave"
+  end
 end
 
 
