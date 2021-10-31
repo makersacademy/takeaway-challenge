@@ -1,11 +1,20 @@
-require 'menu'
+require_relative '../lib/menu'
 
 describe Menu do
   subject(:menu) { described_class.new }
+  let(:dishes) { double :dishes}
+  let(:dishes) do {
+      "calzone" => 5,
+      "pizza" => 8,
+      "mozzarella sticks" => 3,
+      "pasta" => 6,
+      "gelato" => 4
+    }
+  end
   
   describe '#initialize' do
     it 'has a list of dishes with its prices' do
-      expect(menu.dishes).not_to be_empty
+      expect(menu.dishes).to eq(dishes)
     end
   end
 
