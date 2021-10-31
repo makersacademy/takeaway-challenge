@@ -85,7 +85,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - The importance of moving in baby steps and using the error messages to guide you.
 - Taking the time to feature test in irb before, during and after. 
 
-## Questions
+## Questions
+
 - I'm not sure I have initialized the dishes class in the most efficient way. How to initalize a hash automatically?
 - I wonder if a separate Dish class would be more SRP.
 - I created an 'add' method which was not specified in the user stories, which I feel is not very TDD. Could I have mocked this instead for my test set up?
