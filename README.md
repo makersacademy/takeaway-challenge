@@ -36,6 +36,12 @@ User story 1:
 User story 2:
 - created an order class. It is responsible for creating a basket, adding dishes to the basket and displaying the basket. On initialization it is given the attribute @basket which is an empty array. Adding a dishes adds the dishes to @basket. Displaying the basket shows the dishes in the basket and their prices.
 
+User story 3:
+- added responsibility for calculating and displaying the cost of the basket to the order class. The total cost method shows the sum of the price for each dish in the basket.
+
+User story 4:
+- I ran out of time
+
 
 Example feature tests
 -----
@@ -60,7 +66,23 @@ order.add_dish("Cheese burger", 2)
 order.display_basket
 ```
 
+User story 3:
+
+```
+require './lib/order.rb'
+order = Order.new
+order.add_dish("Chips", 3)
+order.add_dish("Cheese burger", 2)
+order.total_cost
+```
+
+
 Test coverage
 -----
 
-ADD IN TEST COVERAGE AS A % HERE
+100%
+
+
+Reference
+-----
+I referred to another student's challenge - https://github.com/RPGrimes/takeaway-challenge

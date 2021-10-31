@@ -1,14 +1,14 @@
-require './lib/order.rb'
+require './lib/order'
 
 describe Order do
   let(:menu) { Menu.new }
-  let(:dish) { { name: "Chips", price: 2} }
-  let(:dish2) { { name: "Cheese burger", price: 10} }
+  let(:dish) { { name: "Chips", price: 2 } }
+  let(:dish2) { { name: "Cheese burger", price: 10 } }
   let(:quantity) { 2 }
 
   describe '#intialize' do
     it 'initializes an empty order' do
-    expect(subject.basket).to be_empty
+      expect(subject.basket).to be_empty
     end
   end
 
@@ -24,10 +24,11 @@ describe Order do
       expect(subject.display_basket).to include dish
     end
   end
+
+  describe '#total_cost' do
+    it 'returns the total cost of the order' do
+      subject.add_dish(dish[:name], quantity)
+      expect(subject.total_cost).to eq "Total cost £#{dish[:price] * quantity}"
+    end
+  end
 end
-
-
-
-
-# Note I would like to be able to
-# select some number of several available dishes

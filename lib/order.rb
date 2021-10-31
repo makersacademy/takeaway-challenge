@@ -2,11 +2,12 @@ require './lib/menu'
 
 class Order
 
-  attr_reader :basket, :menu
+  attr_reader :basket, :menu, :total
 
   def initialize
     @basket = []
     @menu = Menu.new
+    @total = 0
   end
 
   def add_dish(dish_name, quantity)
@@ -18,6 +19,9 @@ class Order
     @basket.each { |dish| puts "#{dish[:name]} - £#{dish[:price]}" }.reduce(&:merge)
   end
 
+  def total_cost
+    @basket.each { |dish| @total += dish[:price] }
+    "Total cost £#{@total}"
+  end
+
 end
-
-
