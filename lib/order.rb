@@ -14,8 +14,8 @@ class Order
   end
 
   def add_item(item, amount = 1)
-    @order << "#{amount}x #{item} ordered (£#{@menu.menu_items[item] * amount})"
     calculate_total(item, amount)
+    @order << "#{amount}x #{item} ordered (£#{@menu.menu_items[item] * amount})"
   end
 
   def calculate_total(item, amount)
