@@ -14,7 +14,9 @@ class Order
   def load_dishes
     CSV.foreach("available_dishes.csv") do |line|
        dish, price, item_number = line
+       #"{imported_menu = []}"
        @available_dishes << { item_number: item_number, dish: dish, price: price }
+
     end
   end
 
@@ -43,6 +45,20 @@ class Order
         selection = STDIN.gets.chomp
       end
   end
+
+  def order_sum
+    sum = []
+    sum = @selected_dishes.map{|price| price[:price]}
+    a_total = sum.map!(&:to_f)
+    p total = a_total.sum
+    p sprintf '%.2f', total
+  end
+  # def show_order
+  #   puts "Please confirm the following is correct before placing your order" "\n\n"
+  #   puts @selected_dishes
+  #
+  # end
+
 end
 
 

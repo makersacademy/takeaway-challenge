@@ -90,4 +90,6 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 3) the files loads and the array is filled in
 The better test was to test that the array was not empty, but doing this
 I can be satisfied the file loads.
+4) It took me a while to figure it out, but you cannot push a user input to the array and still expect other portions of the original array to also push
+
 ![img.png](img.png)

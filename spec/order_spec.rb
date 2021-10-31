@@ -33,7 +33,13 @@ describe Order do
     expect(subject.selected_dishes).to include({:item_number=>"1", :dish=>"Tikka Masala", :price=>"11.00"},
                                                {:item_number=>"2", :dish=>"Cheeseburger", :price=>"11.50"}
                                       )
-    end
+  end
+
+  it 'the customer can verify total is correct against the items ordered with price' do
+    subject.load_dishes
+    subject.select_items
+    expect(subject.order_sum).to eq("22.50")
+  end
 
  end
 # ({:selection=>1, :dish=>"Tikka Masala", :price=>11.0},
