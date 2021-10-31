@@ -12,12 +12,12 @@ class Order
     @basket = basket
   end
 
-  def review_menu
-    show_message(@menu.review_menu)
+  def review_menu(message = @menu.review_menu)
+    show_message(message)
   end
 
-  def review_basket
-    show_message(@basket.review_contents)
+  def review_basket(message = @basket.review_contents)
+    show_message(message)
   end
 
   def add_to_basket(item_i, quant = 1)
@@ -40,7 +40,7 @@ class Order
 
   def show_message(message)
     puts message
-    "Message complete"
+    true
   end
 
   def thank_you(time)

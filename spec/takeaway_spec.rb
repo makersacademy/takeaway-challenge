@@ -3,7 +3,7 @@ require 'takeaway'
 describe Order do
   let(:menu) { double("menu", :review_menu => :full_menu, :fetch_item => true, :valid_choice? => true) }
   let(:menu_invalid) { double("invalid choice", :valid_choice? => false) }
-  
+
   let(:empty_basket) { double("empty basket", :empty? => true, :add_item => true, :review_contents => :none) }
   let(:full_basket) { double("full basket", :empty? => false, :review_contents => :full) }
 
@@ -14,17 +14,11 @@ describe Order do
   it { is_expected.to respond_to(:review_basket) }
   it { is_expected.to respond_to(:review_menu) }
 
-  describe "#review_basket" do
-    it "shows a message" do
-      expect(new_order.review_basket).to eq "Message complete"
-    end
-  end
-
-  describe "#review_menu" do
-    it "shows a message" do
-      expect(new_order.review_menu).to eq "Message complete"
-    end
-  end
+   describe "#review_menu" do
+     it "puts a message to the standard output" do
+       expect { new_order.review_menu("test menu") }.to output("test menu\n").to_stdout
+     end
+   end
 
   describe "#add_to_basket" do
     it "returns an error if the selected number is not on the menu" do
