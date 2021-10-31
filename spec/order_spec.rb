@@ -19,14 +19,14 @@ describe Order do
   describe '#display_order' do
     it 'expects the ordered items to be returned' do
       subject.add_dish(dish[:name])
-      expect(subject.display_order).to eq dish[dish]
+      expect(subject.display_order).to eq dish
     end
   end
 
   describe '#total_cost' do
     it 'returns the total cost of the order' do
       subject.add_dish(dish[:name])
-      expect(subject.total_cost).to eq 8
+      expect(subject.total_cost).to eq "Total cost £#{dish[:price]}"
     end
   end
 end
