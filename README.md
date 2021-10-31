@@ -82,14 +82,29 @@ Notes on Test Coverage
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
 
+Below is my initial think through/mapping of the tasks
+
+![img.png](img.png)
+
+I then as another software developer to look at my idea and give feedback.
+He wrote up the following diagrams and plans based on my outline and asking additional questions.
+
+![](Page1.jpg)
+![](Page2.jpg)
+![](Page3.jpg)
+![](Page4.jpg)
+
 * Ginny's notes:
 * First commit took 2 hours.  this was because first test was around trying to test that the csv file had been loaded.
 * Ultimately there are 3 outcomes if the csv file creates an array:
 1) it fails and breaks something
 2) it file doesn't load (i.e. the empty array stays empty)
 3) the files loads and the array is filled in
-The better test was to test that the array was not empty, but doing this
-I can be satisfied the file loads.
+   The better test was to test that the array was not empty, but doing this
+   I can be satisfied the file loads.
 4) It took me a while to figure it out, but you cannot push a user input to the array and still expect other portions of the original array to also push
-
-![img.png](img.png)
+5) It took me a while to get the total to work out because I had to push it from a string to a float, then sum it, then use sprintf to get 2 decimal points
+6) I worked for a while on the process selection and user input section because the way the tests are written, if you try to satisfy 1 you fail another
+7) I looked through the rubric file for confirmation I was writing my spec tests correctly to bypass it sending a test - the tests pass, however, a text message is sent.
+8) If I had more time I would work to reduce how many times the tests ask for select_items to make the rspec easier to go through
+9) I would also separate out classes
