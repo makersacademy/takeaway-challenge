@@ -1,15 +1,16 @@
 require './lib/order.rb'
 
-# describe Order do
-#   subject(:order) { described_class.new }
+describe Order do
+  let(:menu) { Menu.new }
+  let(:dish) { { name: "Chips", price: 2} }
 
-#   describe '#basket' do
-#     it 'is an empty array when initialised' do
-#       expect(order.basket).to be_empty
-#     end
-#   end
+  describe 'intialize' do
+    it 'initializes an empty order' do
+    expect(subject.basket).to be_empty
+    end
+  end
+end
 
-# end
 
 
 

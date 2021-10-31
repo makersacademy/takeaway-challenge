@@ -1,13 +1,13 @@
 require './lib/menu'
 
-# class Order
+class Order
 
-#   attr_reader :basket
+  attr_reader :basket
 
-#   def initialize
-#     @basket = []
-#   end
+  def initialize
+    @basket = []
+  end
 
-# end
+end
 
 
