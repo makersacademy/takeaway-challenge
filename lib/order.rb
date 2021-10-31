@@ -1,5 +1,4 @@
 require './lib/menu'
-require './lib/dish'
 
 # class Order
 
