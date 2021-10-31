@@ -46,6 +46,16 @@ menu = Menu.new
 menu.view_menu
 ```
 
+User story 2:
+
+Add dishes to order:
+```
+require './lib/order.rb'
+order = Order.new
+order.add_dish("Chips", 3)
+order.add_dish("Cheese burger", 2)
+```
+
 Test coverage
 -----
 
