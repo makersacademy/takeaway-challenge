@@ -62,6 +62,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## Domain model
 ![alt text](media/domain_model.png "Domain model for Takeaway Challenge")
 
+# Reflections
+
 ## How I planned to solve this challenge
 *I drew on feedback from peer review and self-reflection on my [Airport Challenge programme](https://github.com/katemyoung/airport_challenge) to set goals for process improvement in this challenge.*
 - [x] Parse user stories and extract verbs and nouns into class diagram domain model
@@ -71,8 +73,6 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 - [x] Use rubocop for code quality.
 - [x] If I go off track, to use git to restore a previous working version. 
 - [ ] Add a SimpleCov test coverage badge to this README
-
-# Reflections
 
 ## What I learnt during this challenge:
 
@@ -95,3 +95,4 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 *See also PR comments*
 
 ## Next challenge I aim to:
+- [ ] Add a SimpleCov test coverage badge to the README
