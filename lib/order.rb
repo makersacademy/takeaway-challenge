@@ -1,6 +1,6 @@
 require_relative 'menu'
 class Order
-    attr_reader :order
+    attr_reader :order, :quantity
     
     def initialize
     @order = []
@@ -10,7 +10,7 @@ class Order
 
     def select_item
       puts "please make a selection from the menu"
-      @selection = "hawiian" #gets.chomp
+      @selection = {"hawiian" => 6.99} #gets.chomp
     end
 
     def select_quantity
@@ -27,6 +27,18 @@ class Order
         @quantity.times do
         @order << @selection
         end
+    end
+
+    def confirm_order
+      puts "Please confirm your order is correct:"
+      puts "#{@order}"
+      order_sum = []
+      @order.each{|item|
+        item.each{|key,value|
+        order_sum << value
+        }
+      }
+      puts "The total of your order is #{order_sum.sum}"
     end
 
     
