@@ -30,7 +30,7 @@ public class Customer {
     resetTotalSpend();
     System.out.println("Your order is cancelled. Please enter dish ID or 'q' to exit. 😩");
   }
-  private void updateTotal() {
+  private void updateTotalSpend() {
     resetTotalSpend();
     for (Dish dish : this.orderedDishes) {
       this.totalSpend += dish.getPrice();
@@ -47,7 +47,7 @@ public class Customer {
     }
   }
   public void viewOrder() {
-    updateTotal();
+    updateTotalSpend();
 
     if (!hasOrder())
       System.out.println("Your basket is empty. Please enter dish ID or 'q' to exit. 🤦‍♂️");
