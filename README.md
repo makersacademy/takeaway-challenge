@@ -14,21 +14,14 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+ The aim of this programme was to be able to allow several functions which were:
+* allow the user to read the menu
+* to be able to add dishes to their order
+* to be able to geta final print of the users order
+* to finally be able to get the total amount 
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+User Stories
+==================
 ```
 As a customer
 So that I can check if I want to order something
@@ -81,3 +74,8 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+
+**References Used**
+
+* Sam Morgans Youtube Exemplar https://www.youtube.com/watch?v=mgiJKdH9x8c
