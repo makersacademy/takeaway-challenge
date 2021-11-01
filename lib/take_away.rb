@@ -2,23 +2,32 @@ require './lib/menu'
 
 class TakeAway
 
-attr_reader :menu, :dishes, :basket
+attr_accessor :menu, :basket
 
 def initialize
-  @menu = menu
-  @dishes = dishes
+  @menu = Menu.new
+  #
+
   @basket = []
 end
 
-def order(item, quantity = 1)
-  choice = [item] * quantity.to_i
-  @basket << choice
-end
 
+def add_item_to_basket(item, quantity = 1)
+  #check the item exists
+  @menu.dishes.each do |dish| #is a dish obj
+    if item == dish.name
+      quantity.to_i.times do
+      @basket << dish
+      end
+    end
+  end
 
-#   end
-#   def add_dishes(dishes)
-#     dishes.each do |dish, quantity|
-#       order.add(dish, quantity)
-#     end
+    def check_basket_sub_total
+      total = 0
+        @basket.each do |dish|
+        total += dish.price
+        end
+        return total
+    end
+  end
 end
