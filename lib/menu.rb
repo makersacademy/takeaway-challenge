@@ -5,7 +5,8 @@ class Menu
   @menu_items = {
     "Chicken": 7,
     "Tuna": 10,
-    "Beef": 5
+    "Beef": 5,
+    "Salad": 15
  }
  end 
 
