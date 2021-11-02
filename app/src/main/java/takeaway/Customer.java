@@ -67,7 +67,7 @@ public class Customer {
   }
 
   public void pay() {
-    updateTotal();
+    updateTotalSpend();
     String time = getTimeThirtyMinutesFromNow();
     System.out.printf("Payment of £%.2f received. Thanks for your purchase today. Your order will arrive by %s (within 30 minutes) and you'll receive a text update on %d - Enjoy! 😄%n", totalSpend, time, phoneNumber);
   }
