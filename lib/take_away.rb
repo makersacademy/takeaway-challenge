@@ -2,11 +2,12 @@ require './lib/menu'
 
 class TakeAway
 
-attr_accessor :menu, :basket
+attr_accessor :menu, :basket, :total
 
   def initialize
     @menu = Menu.new
     @basket = []
+    @total = 0
   end
 
 
@@ -23,21 +24,25 @@ attr_accessor :menu, :basket
   end
 
   def check_basket_sub_total
-    total = 0
-      @basket.each do |dish|
-        total += dish.price
-      end
-      return "The total is £#{total}."
+    @basket.each do |dish|
+      @total += dish.price
+    end
+    return "The total is £#{@total}."
   end
 
   def empty_basket
     @basket = []
   end
 
+  def order_checkout
+    return "Thank you for your order. The total is £#{total}."
+  end
+
   private
+
   def basket_summary
     @basket.each do |dish|
-      puts "you have ordered #{dish.name}  = £#{dish.price}"
+      return "you have ordered #{dish.name}  = £#{dish.price}"
     end
   end
 end

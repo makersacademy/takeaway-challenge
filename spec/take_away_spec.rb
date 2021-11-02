@@ -26,7 +26,12 @@ describe "TakeAway" do
     expect(take_away.empty_basket).to be_empty
   end
 
-
+  it "gives the total order" do
+    take_away = TakeAway.new
+    take_away.add_item_to_basket("Margherita", 2)
+    take_away.check_basket_sub_total
+    expect(take_away.order_checkout).to eq ("Thank you for your order. The total is £16.")
+  end
 
 
  end
