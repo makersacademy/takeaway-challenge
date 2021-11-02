@@ -6,5 +6,4 @@ attr_reader :name, :price
     @price = price
   end
 
-
 end

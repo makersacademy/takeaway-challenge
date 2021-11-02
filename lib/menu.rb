@@ -23,14 +23,3 @@ class Menu
   end
 
 end
-
-
-#   def dish_available?(dish)
-#     dishes.include?(dish)
-#   end
-
-#    def print_menu
-#      dishes.map do |title, price|
-#      "%s £%.2f" % [title.to_s.capitalize, price]
-#      end.join(", ")
-#     end

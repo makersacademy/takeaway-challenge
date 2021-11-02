@@ -1,18 +1,35 @@
 require 'take_away'
 
+
 describe "TakeAway" do
-  it 'adds items to order' do
+  it 'is initailised with an empty basket' do
     take_away = TakeAway.new
-    take_away.order("Margherita", 2)
-    expect(take_away.basket).to include(["Margherita", "Margherita"])
+    expect(take_away.basket).to be_empty
   end
-end
+
+  it 'adds items to the basket' do
+    take_away = TakeAway.new
+    take_away.add_item_to_basket("Margherita", 2)
+    expect(take_away.basket.length).to be(2)
+  end
+
+  it 'checks the basket sub total' do
+    take_away = TakeAway.new
+    take_away.add_item_to_basket("Margherita", 2)
+    take_away.add_item_to_basket("Salami", 1)
+    expect(take_away.check_basket_sub_total).to eq ("The total is £25.")
+  end
+
+  it "clears the basket" do
+    take_away = TakeAway.new
+    take_away.add_item_to_basket("Margherita", 2)
+    expect(take_away.empty_basket).to be_empty
+  end
 
 
 
 
-
-
+ end
 
 # require 'menu'
 
