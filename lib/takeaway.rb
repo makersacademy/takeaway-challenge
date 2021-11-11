@@ -7,6 +7,7 @@ class Takeaway
     def initialize(menu = Menu.new)
       @menu = menu
       @order = []
+      @total = []
     end 
 
     def print_menu
@@ -14,15 +15,25 @@ class Takeaway
     end
 
     def place_order(dishes)
-      # @menu.menu_items.include?(dishes)
-    dishes.each do |dish|
+     dishes.each do |dish|
       @menu.menu_items.map do |key, value|
         if key.include?(dish) 
           @order.push(dish)
         end 
       end 
+    end
       @order
     end 
-  end
-  
+
+    def order_total
+      @menu.menu_items.map do |key, value|
+        @order.each do |order|
+          if key.include?(order)
+          @total.push(value)
+        end
+      end
+    end 
+    @total.sum
+    end
+
   end 
