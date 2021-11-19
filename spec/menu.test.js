@@ -5,7 +5,7 @@ describe('Menu', () => {
 
   const mockDish1 = {
     getDishName() { return 'Risotto' },
-    getDishPrice() { return }
+    getDishPrice() { return 13.50 }
   }
   const mockDish2 = {
     getDishName() { return 'Paella' },

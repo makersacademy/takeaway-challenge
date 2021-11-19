@@ -1,23 +1,24 @@
 'use strict';
 
-interface Item {
+interface Dish {
   name: string,
   price: number
 }
 
 interface Menu {
-  dishes: Item[]
+  dishes: Dish[]
 }
 
 class Menu {
-  constructor(...dishes:Item[]) {
+  constructor(...dishes:Dish[]) {
     this.dishes = dishes;
   }
   listDishes() {
-    return Object.entries(this)
+    return this.dishes;
   }
-  addDish(dish: Item) {
+  addDish(dish: Dish) {
     this.dishes.push(dish)
   }
 }
-export = Menu;
+// Make sure we only execute that in Node, i. e. our unit tests
+if(typeof process === 'object') module.exports = Menu;

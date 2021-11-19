@@ -15,4 +15,6 @@ class Dish {
     return this.price
   }
 }
-export = Dish;
+// Make sure we only execute that in Node, i. e. our unit tests
+if(typeof process === 'object') module.exports = Dish;
+

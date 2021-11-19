@@ -4,10 +4,12 @@ class Menu {
         this.dishes = dishes;
     }
     listDishes() {
-        return Object.entries(this);
+        return this.dishes;
     }
     addDish(dish) {
         this.dishes.push(dish);
     }
 }
-module.exports = Menu;
+// Make sure we only execute that in Node, i. e. our unit tests
+if (typeof process === 'object')
+    module.exports = Menu;

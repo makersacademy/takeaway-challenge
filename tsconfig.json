@@ -1,7 +1,8 @@
 {
   "files": [
     "src/dish.ts",
-    "src/menu.ts"
+    "src/menu.ts",
+    "src/interface.ts"
   ],
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
