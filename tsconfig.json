@@ -1,6 +1,7 @@
 {
   "files": [
-    "src/dish.ts"
+    "src/dish.ts",
+    "src/menu.ts"
   ],
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
@@ -14,4 +15,3 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Recommended"
 }
-

@@ -3,6 +3,8 @@ class Dish {
     constructor(name, price) {
         this.name = name;
         this.price = price;
+        this.name = name;
+        this.price = price;
     }
     getDishName() {
         return this.name;
@@ -11,5 +13,4 @@ class Dish {
         return this.price;
     }
 }
-
 module.exports = Dish;

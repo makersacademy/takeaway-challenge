@@ -1,10 +1,5 @@
 'use strict';
 
-interface Item {
-  name: string,
-  price: number
-}
-
 class Dish {
   constructor(
     public name: string,
@@ -20,3 +15,4 @@ class Dish {
     return this.price
   }
 }
+export = Dish;
