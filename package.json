@@ -1,0 +1,28 @@
+{
+  "name": "takeaway-challenge",
+  "version": "1.0.0",
+  "description": "The Makers Takeaway Challenge - in JavaScript",
+  "main": "takeaway.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatrickBarsch/takeaway-challenge.git"
+  },
+  "keywords": [
+    "Makers",
+    "-",
+    "Individual",
+    "Challenge"
+  ],
+  "author": "Patrick Barsch",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/PatrickBarsch/takeaway-challenge/issues"
+  },
+  "homepage": "https://github.com/PatrickBarsch/takeaway-challenge#readme"
+}
