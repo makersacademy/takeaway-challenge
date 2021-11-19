@@ -1,5 +1,8 @@
 /**/.DS_Store
 /coverage
+/src/sum.js
+/spec/sum.test.js
+/node_modules
 
 # Local cache of Rubocop remote config
 .rubocop-*

@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,11 @@
   "bugs": {
     "url": "https://github.com/PatrickBarsch/takeaway-challenge/issues"
   },
-  "homepage": "https://github.com/PatrickBarsch/takeaway-challenge#readme"
+  "homepage": "https://github.com/PatrickBarsch/takeaway-challenge#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "cypress": "^9.0.0",
+    "eslint": "^8.2.0"
+  }
 }
