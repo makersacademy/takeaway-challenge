@@ -5,3 +5,43 @@ h1 {
 h3 {
   text-align: center
 }
+
+ul#nav-bar {
+  list-style-type: none;
+  border: #111;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+li.basket {
+  display: inline;
+  padding: 8px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 750px;
+  margin: auto
+}
+
+.dish {
+  border-style: solid;
+  border-width: thin;
+  margin: 5px;
+  padding: 2px;
+}
+
+.dish-name {
+  margin: 1px
+}
+
+p.dish-description {
+  font-style: italic
+}
+
+p.dish-price {
+  text-align: right
+}
