@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/PatrickBarsch/takeaway-challenge#readme",
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "cypress": "^9.0.0",
