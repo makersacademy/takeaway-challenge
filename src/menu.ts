@@ -1,6 +1,6 @@
 'use strict';
 
-interface Item {
+interface Item {
   name: string,
   price: number
 }
@@ -15,6 +15,9 @@ class Menu {
   }
   listDishes() {
     return Object.entries(this)
+  }
+  addDish(dish: Item) {
+    this.dishes.push(dish)
   }
 }
 export = Menu;

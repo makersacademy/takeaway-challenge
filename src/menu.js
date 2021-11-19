@@ -6,5 +6,8 @@ class Menu {
     listDishes() {
         return Object.entries(this);
     }
+    addDish(dish) {
+        this.dishes.push(dish);
+    }
 }
 module.exports = Menu;

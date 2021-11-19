@@ -18,7 +18,13 @@ describe('Menu', () => {
 
   test('.listDishes() returns a list of dishes and prices', () => {
     const test_menu = new Menu(mockDish1, mockDish2, mockDish3)
-    console.log(Menu)
+    const whatsOnTheMenu = test_menu.listDishes()
+    expect(whatsOnTheMenu).toBe[mockDish1, mockDish2, mockDish3]
+  });
+
+  test('.addDish adds a dish to the menu', () => {
+    const test_menu = new Menu(mockDish1, mockDish2)
+    test_menu.addDish(mockDish3)
     const whatsOnTheMenu = test_menu.listDishes()
     expect(whatsOnTheMenu).toBe[mockDish1, mockDish2, mockDish3]
   });
