@@ -32,8 +32,12 @@ window.addEventListener('DOMContentLoaded', () => {
             const NEW_DISH_PRICE = document.createElement("p");
             NEW_DISH_PRICE.innerHTML = `${dish.price.toFixed(2)}\u{20AC}`;
             NEW_DISH_PRICE.className = "dish-price";
+            const ADD_TO_CARD = document.createElement("button");
+            ADD_TO_CARD.innerHTML = "Add to Cart";
+            ADD_TO_CARD.className = "add-to-cart";
             const NEW_DISH_ENTRY = document.createElement("div");
             NEW_DISH_ENTRY.appendChild(NEW_DISH_NAME);
+            NEW_DISH_ENTRY.appendChild(ADD_TO_CARD);
             NEW_DISH_ENTRY.appendChild(NEW_DISH_DESCRIPTION);
             NEW_DISH_ENTRY.appendChild(NEW_DISH_PRICE);
             NEW_DISH_ENTRY.className = "dish";

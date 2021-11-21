@@ -1,9 +1,20 @@
-h1 {
-  text-align: center
+html {
+  background-color: black;
+  color: aliceblue;
 }
 
+h1 {
+  text-align: center;
+}
 h3 {
-  text-align: center
+  text-align: center;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: black;
+  width: 100%;
 }
 
 ul#nav-bar {
@@ -12,6 +23,7 @@ ul#nav-bar {
   margin: 0;
   padding: 0;
   float: right;
+  font-size: x-large;
 }
 
 li.basket {
@@ -28,14 +40,15 @@ li.basket {
 }
 
 .dish {
-  border-style: solid;
+  border-bottom: solid;
   border-width: thin;
-  margin: 5px;
+  margin: 10px;
   padding: 2px;
 }
 
 .dish-name {
-  margin: 1px
+  margin: 1px;
+  display: inline-block
 }
 
 p.dish-description {
@@ -44,4 +57,10 @@ p.dish-description {
 
 p.dish-price {
   text-align: right
+}
+
+button.add-to-cart {
+  background-color: black;
+  color: white;
+  float: right;
 }
