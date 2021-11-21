@@ -8,6 +8,7 @@ gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false, group: :test
 gem 'twilio-ruby'
 gem 'sinatra'
+gem 'shotgun'
 # end
 
 # group :development, :test do

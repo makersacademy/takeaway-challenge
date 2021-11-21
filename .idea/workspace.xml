@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="fixed test for twilio_interface_spec.rb">
-      <change afterPath="$PROJECT_DIR$/views/user_interface.erb" afterDir="false" />
+    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="added gems">
+      <change afterPath="$PROJECT_DIR$/app.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.ru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/takeaway-challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/takeaway-challenge.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
@@ -17,8 +19,8 @@
       <list>
         <option value="RBS Class" />
         <option value="Ruby Class" />
-        <option value="Ruby File" />
         <option value="ERB File" />
+        <option value="Ruby File" />
       </list>
     </option>
   </component>
@@ -259,7 +261,7 @@
       <workItem from="1636047308865" duration="570000" />
       <workItem from="1636270607525" duration="122000" />
       <workItem from="1637442179618" duration="60000" />
-      <workItem from="1637480429323" duration="694000" />
+      <workItem from="1637480429323" duration="1545000" />
     </task>
     <task id="LOCAL-00001" summary="Added skeleton with all classes and spec files">
       <created>1634900978213</created>
@@ -450,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635185953394</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added gems">
+      <created>1637481652447</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1637481652447</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +502,8 @@
     <MESSAGE value="added customer phone to text" />
     <MESSAGE value="added complete logic to ui" />
     <MESSAGE value="fixed test for twilio_interface_spec.rb" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed test for twilio_interface_spec.rb" />
+    <MESSAGE value="added gems" />
+    <option name="LAST_COMMIT_MESSAGE" value="added gems" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text.rcov" NAME="Text Coverage Results" MODIFIED="1635147282838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />

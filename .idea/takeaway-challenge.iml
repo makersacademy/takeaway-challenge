@@ -46,6 +46,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.13.0, rbenv: 2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.11.0, rbenv: 2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby2_keywords (v0.0.5, rbenv: 2.7.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="shotgun (v0.9.2, rbenv: 2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.21.2, rbenv: 2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov-console (v0.9.1, rbenv: 2.7.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.12.3, rbenv: 2.7.2) [gem]" level="application" />
