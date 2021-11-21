@@ -8,6 +8,11 @@ class TakeAwayApp < Sinatra::Base
 
   get '/' do
     'Welcome to Take Away App'
+    redirect '/ui'
+  end
+
+  get '/ui' do
+    erb :user_interface
   end
 
   # start the server if ruby file executed directly
