@@ -10,6 +10,8 @@ gem 'twilio-ruby'
 gem 'sinatra'
 gem 'shotgun'
 gem 'capybara'
+gem 'pg'
+
 # end
 
 # group :development, :test do

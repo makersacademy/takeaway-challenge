@@ -16,9 +16,7 @@ RSpec.configure do |config|
   end
 end
 
-# add this to spec/spec_helper.rb
-
-# ENV['RACK_ENV'] = 'test'
+ ENV['RACK_ENV'] = 'test'
 
 # require our Sinatra app file
 require File.join(File.dirname(__FILE__), '..', 'app.rb')

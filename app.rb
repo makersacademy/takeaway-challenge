@@ -1,17 +1,19 @@
 require 'sinatra/base'
 # require 'sinatra/reloader'
+require_relative './lib/menu_data'
+require_relative './lib/setup_database'
 
 class TakeAwayApp < Sinatra::Base
   # configure :development do
   #   register Sinatra::Reloader
   # end
-
+  setup_env_database
   get '/' do
     'Welcome to Take Away App'
-    redirect '/ui'
   end
 
   get '/ui' do
+    @menu = MenuData.fetch_menu
     erb :user_interface
   end
 
