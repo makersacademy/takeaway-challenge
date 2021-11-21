@@ -13,7 +13,7 @@ class Menu {
   constructor(...dishes:Dish[]) {
     this.dishes = dishes;
   }
-  listDishes() {
+  listDishes(): Dish[] {
     return this.dishes;
   }
   addDish(dish: Dish) {

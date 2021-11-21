@@ -2,6 +2,7 @@
   "files": [
     "src/dish.ts",
     "src/menu.ts",
+    "src/cart.ts",
     "src/interface.ts"
   ],
   "extends": "@tsconfig/recommended/tsconfig.json",
