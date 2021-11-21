@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="added complete logic to ui">
+    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="fixed test for twilio_interface_spec.rb">
+      <change afterPath="$PROJECT_DIR$/views/user_interface.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,13 +18,14 @@
         <option value="RBS Class" />
         <option value="Ruby Class" />
         <option value="Ruby File" />
+        <option value="ERB File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="f67f3416ea37ab974dbe3e162cf9b1d63d430511" />
+        <entry key="$PROJECT_DIR$" value="order_creation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,7 +50,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="RSpec.Ui should complete update complete to order">
+  <component name="RunManager" selected="RSpec.TwilioInterface">
     <configuration name="Text" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="takeaway-challenge" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
@@ -224,11 +228,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="RSpec.TwilioInterface" />
         <item itemvalue="RSpec.Ui should complete update complete to order" />
         <item itemvalue="RSpec.Text" />
         <item itemvalue="RSpec.Ui" />
         <item itemvalue="RSpec.Ui should assert complete if read q" />
-        <item itemvalue="RSpec.TwilioInterface" />
       </list>
     </recent_temporary>
   </component>
@@ -248,6 +252,14 @@
       <workItem from="1635070812905" duration="7574000" />
       <workItem from="1635098287204" duration="15067000" />
       <workItem from="1635153460810" duration="491000" />
+      <workItem from="1635185034583" duration="1348000" />
+      <workItem from="1635359042612" duration="67000" />
+      <workItem from="1635513329696" duration="60000" />
+      <workItem from="1635513449441" duration="668000" />
+      <workItem from="1636047308865" duration="570000" />
+      <workItem from="1636270607525" duration="122000" />
+      <workItem from="1637442179618" duration="60000" />
+      <workItem from="1637480429323" duration="694000" />
     </task>
     <task id="LOCAL-00001" summary="Added skeleton with all classes and spec files">
       <created>1634900978213</created>
@@ -431,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635148491697</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="fixed test for twilio_interface_spec.rb">
+      <created>1635185953394</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1635185953394</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,7 +492,8 @@
     <MESSAGE value="wip complete captured at ui" />
     <MESSAGE value="added customer phone to text" />
     <MESSAGE value="added complete logic to ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="added complete logic to ui" />
+    <MESSAGE value="fixed test for twilio_interface_spec.rb" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed test for twilio_interface_spec.rb" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text.rcov" NAME="Text Coverage Results" MODIFIED="1635147282838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
@@ -499,8 +519,8 @@
     <SUITE FILE_PATH="coverage/takeaway_challenge@Item.rcov" NAME="Item Coverage Results" MODIFIED="1634936542067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@TwilioInterface_send_twilio_message_should_receive_http_ok_response_200.rcov" NAME="TwilioInterface send twilio message should receive http ok response 200 Coverage Results" MODIFIED="1635143622836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Read_should_read_stdio_gets.rcov" NAME="Read should read stdio-gets Coverage Results" MODIFIED="1634985500375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
-    <SUITE FILE_PATH="coverage/takeaway_challenge@TwilioInterface.rcov" NAME="TwilioInterface Coverage Results" MODIFIED="1635145206556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Ui.rcov" NAME="Ui Coverage Results" MODIFIED="1635146639668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
+    <SUITE FILE_PATH="coverage/takeaway_challenge@TwilioInterface.rcov" NAME="TwilioInterface Coverage Results" MODIFIED="1635185873114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Dish.rcov" NAME="Dish Coverage Results" MODIFIED="1634936134370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text_should_send_message.rcov" NAME="Text should send message Coverage Results" MODIFIED="1635072358364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@TwilioInterface_should_.rcov" NAME="TwilioInterface should  Coverage Results" MODIFIED="1635106535936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
