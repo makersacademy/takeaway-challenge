@@ -9,6 +9,7 @@ gem 'simplecov-console', require: false, group: :test
 gem 'twilio-ruby'
 gem 'sinatra'
 gem 'shotgun'
+gem 'capybara'
 # end
 
 # group :development, :test do
