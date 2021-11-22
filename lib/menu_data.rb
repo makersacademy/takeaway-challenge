@@ -12,7 +12,7 @@ class MenuData
   end
 
   def self.add(dish)
-    DatabaseConnection.query("INSERT INTO menu (description,price) VALUES('#{dish.description}',#{dish.price})")
+    DatabaseConnection.query("INSERT INTO menu (description,price) VALUES('#{dish.description}',#{dish.price});")
   end
 
   def self.fetch_menu

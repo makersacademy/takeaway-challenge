@@ -8,16 +8,15 @@
 <body>
 <label for="menu">Choose a dish:</label>
 <select name="menu" id="menu">
-
   <% @menu.each do |dish| %>
-      <option value="
+    <option value="
         <% dish.description %>">
-        <%= dish.description %>: £<%= dish.price %>
-      </option>
+      <%= dish.description %>: £<%= dish.price %>
+    </option>
     </select>
   <% end %>
   <script>
 
   </script>
-</body>
+  </body>
 </html>

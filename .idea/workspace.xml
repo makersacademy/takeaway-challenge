@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="executing script in erb file">
-      <change afterPath="$PROJECT_DIR$/lib/database_connection.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/menu_data.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/setup_database.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/menu_data_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/takeaway-challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/takeaway-challenge.iml" afterDir="false" />
+    <list default="true" id="cc11f133-b904-45c2-a5bc-988a9348cc4f" name="Changes" comment="displaying menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Take-Away Cahllenge.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Take-Away Cahllenge.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ru" beforeDir="false" afterPath="$PROJECT_DIR$/config.ru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/menu_data.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/menu_data.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/setup_database.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/setup_database.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/features/testing_infrastructure_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/features/testing_infrastructure_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/spec_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/user_interface.erb" beforeDir="false" afterPath="$PROJECT_DIR$/views/user_interface.erb" afterDir="false" />
     </list>
@@ -43,9 +38,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_HOME_DIR$/plugins/ruby/rubystubs/rubystubs27/array.rb" root0="SKIP_INSPECTION" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
   <component name="ProjectId" id="1zgzhCB0ooSaZhBIAPjUON32d9H" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -65,7 +57,7 @@
       <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
-  <component name="RunManager" selected="RSpec.MenuData Can list dish">
+  <component name="RunManager" selected="RSpec.MenuData">
     <configuration name="MenuData Can list dish" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="takeaway-challenge" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
@@ -243,8 +235,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="RSpec.MenuData Can list dish" />
         <item itemvalue="RSpec.MenuData" />
+        <item itemvalue="RSpec.MenuData Can list dish" />
         <item itemvalue="RSpec.Testing infrastructure" />
         <item itemvalue="RSpec.Testing infrastructure Can run app and check page content" />
         <item itemvalue="RSpec.TwilioInterface" />
@@ -275,7 +267,8 @@
       <workItem from="1636270607525" duration="122000" />
       <workItem from="1637442179618" duration="60000" />
       <workItem from="1637480429323" duration="23529000" />
-      <workItem from="1637527803332" duration="1607000" />
+      <workItem from="1637527803332" duration="2428000" />
+      <workItem from="1637565547547" duration="4757000" />
     </task>
     <task id="LOCAL-00001" summary="Added skeleton with all classes and spec files">
       <created>1634900978213</created>
@@ -494,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637495604409</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="displaying menu">
+      <created>1637529444176</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1637529444176</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +513,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="lint tidy up" />
     <MESSAGE value="prevent sending if not complete order" />
     <MESSAGE value="prevent listing empty array" />
     <MESSAGE value="text item and dish deployed" />
@@ -538,12 +537,35 @@
     <MESSAGE value="local page opening" />
     <MESSAGE value="test feature test passed" />
     <MESSAGE value="executing script in erb file" />
-    <option name="LAST_COMMIT_MESSAGE" value="executing script in erb file" />
+    <MESSAGE value="displaying menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="displaying menu" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/spec/features/menu_data_spec.rb</url>
+          <line>7</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/lib/menu_data.rb</url>
+          <line>18</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text.rcov" NAME="Text Coverage Results" MODIFIED="1635147282838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text_should_report_error_if_empty_time.rcov" NAME="Text should report error if empty time Coverage Results" MODIFIED="1635072865981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
-    <SUITE FILE_PATH="coverage/takeaway_challenge@MenuData.rcov" NAME="MenuData Coverage Results" MODIFIED="1637529219667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
+    <SUITE FILE_PATH="coverage/takeaway_challenge@MenuData.rcov" NAME="MenuData Coverage Results" MODIFIED="1637567164841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Menu_should_display_dishes.rcov" NAME="Menu should display dishes Coverage Results" MODIFIED="1634933327354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Read.rcov" NAME="Read Coverage Results" MODIFIED="1635145053586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Order_should_prevent_sending_text_if_not_complete.rcov" NAME="Order should prevent sending text if not complete Coverage Results" MODIFIED="1634930768961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
@@ -552,7 +574,7 @@
     <SUITE FILE_PATH="coverage/takeaway_challenge@Ui_should_complete_update_complete_to_order.rcov" NAME="Ui should complete update complete to order Coverage Results" MODIFIED="1635148474746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Ui_should_read_user_selected_dish.rcov" NAME="Ui should read user selected dish Coverage Results" MODIFIED="1634974887170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Twilio.rcov" NAME="Twilio Coverage Results" MODIFIED="1635077330490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
-    <SUITE FILE_PATH="coverage/takeaway_challenge@MenuData_Can_list_dish.rcov" NAME="MenuData Can list dish Coverage Results" MODIFIED="1637529313616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
+    <SUITE FILE_PATH="coverage/takeaway_challenge@MenuData_Can_list_dish.rcov" NAME="MenuData Can list dish Coverage Results" MODIFIED="1637566484647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Text_should_report_error_if_unable_to_send.rcov" NAME="Text should report error if unable to send Coverage Results" MODIFIED="1635072797265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Write_should_writ_message.rcov" NAME="Write should writ message Coverage Results" MODIFIED="1635069924151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />
     <SUITE FILE_PATH="coverage/takeaway_challenge@Ui_should_assert_complete_if_read_q.rcov" NAME="Ui should assert complete if read q Coverage Results" MODIFIED="1635146634203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="takeaway-challenge" />

@@ -1,10 +1,15 @@
 require_relative './database_connection'
 
 def setup_env_database
+  p'env:'
+  p ENV['ENVIRONMENT']
+
   if ENV['ENVIRONMENT'] == 'test'
+    p 'into test'
     setup_test_database
   else
     DatabaseConnection.setup('takeaway')
+    p 'not into test'
   end
 end
 

@@ -7,9 +7,12 @@ class TakeAwayApp < Sinatra::Base
   # configure :development do
   #   register Sinatra::Reloader
   # end
+  #
+  p 'in App'
   setup_env_database
   get '/' do
     'Welcome to Take Away App'
+    redirect '/ui'
   end
 
   get '/ui' do
