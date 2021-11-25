@@ -36,4 +36,11 @@ class Takeaway
     return total
   end
 
+  def check_order
+    receipt = {}
+    @final_order.each do |dish|
+      receipt[dish] = @menu[dish]
+    end
+    return [receipt, final_sum] 
+  end
 end

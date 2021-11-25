@@ -24,4 +24,10 @@ describe Takeaway do
     expect(subject.final_sum).to eq 12
   end
 
+  it 'should show the final order and the total sum' do
+    subject.add_dish("fish", 5)
+    subject.add_dish("chips", 3)
+    subject.selected_dishes("fish", "chips")
+    expect(subject.check_order).to eq([{"fish"=>5, "chips"=>3}, 8])
+  end
 end
