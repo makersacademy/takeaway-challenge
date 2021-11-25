@@ -1,4 +1,6 @@
 require 'takeaway'
+require 'twilio-ruby'
+
 
 describe Takeaway do
   it 'should display dishes and prices' do
@@ -29,5 +31,17 @@ describe Takeaway do
     subject.add_dish("chips", 3)
     subject.selected_dishes("fish", "chips")
     expect(subject.check_order).to eq([{"fish"=>5, "chips"=>3}, 8])
+  end
+
+  it 'should respond to text' do
+    expect(subject).respond_to? :text
+  end
+
+  it 'should respond to place order' do
+    subject.add_dish("fish", 5)
+    subject.add_dish("chips", 3)
+    subject.selected_dishes("fish", "chips")
+    subject.place_order
+    expect(subject).respond_to? :place_order
   end
 end

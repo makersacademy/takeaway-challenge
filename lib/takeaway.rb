@@ -1,8 +1,11 @@
 require_relative 'dish.rb'
+require_relative 'text.rb'
+require 'twilio-ruby'
 
 class Takeaway 
-  attr_reader :menu, :final_order
+  attr_reader :menu, :final_order, :texter
   def initialize
+    @texter = Text.new
     @menu = {
       "dish 1" => 5,
       "dish 2" => 7,
@@ -42,5 +45,14 @@ class Takeaway
       receipt[dish] = @menu[dish]
     end
     return [receipt, final_sum] 
+  end
+
+  def text
+    @texter.send_text
+  end
+
+  def place_order
+    puts check_order
+    text
   end
 end
