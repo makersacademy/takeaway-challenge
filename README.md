@@ -1,4 +1,4 @@
-Takeaway Challenge
+Takeaway Challenge - SandCream Delivery Service
 ==================
 
 ```
@@ -14,14 +14,15 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+______
 
-## SandCream Delivery Service
+[Set up](#Setup) | [Interact](#Interact) | [Run Tests](#Tests) | [User Stories](#User-Stories) 
 
-## Implementation
+## Planning
 
 [Check out my workflow mindmap](https://github.com/CorinneBosch/takeaway-challenge/blob/main/workflow/screenshot.png)
 
-## Setup
+## <a name="Setup">Set up</a>
 
 1. **Fork** this [takeaway challenge repository](https://github.com/CorinneBosch/takeaway-challenge) 
 2. Then clone **your** fork to your computer.
@@ -29,11 +30,11 @@ Takeaway Challenge
 4. Run `gem install bundler` if you dont have bundler.
 5. Once installed, run `bundle`.
 
-## How to run
+## <a name="Interact">Interact with the programme</a>
 
 You can frature test and run this airport program in any `code editor` or `IRB`. 
 
-## Run test 
+## <a name="Tests">Run tests</a>
 
 To test specific features in your terminal.
 ```
@@ -46,7 +47,7 @@ $ cd takeaway-challenge
 $ rspec
 ```
 
-## The takeaway challenge is built upon the following user stories:
+## <a name="User-Stories">The takeaway challenge is built upon the following user stories:</a>
 
 ```
 As a customer
