@@ -2,8 +2,8 @@ require "menu"
 
 describe Menu do
 
-  let(:curry) { double :curry, :name => "Curry", :price => 8.5 }
-  let(:naan) { double :naan, :name => "Naan", :price => 3 }
+  let(:curry) { double :curry, :name => "curry", :price => 8.5 }
+  let(:naan) { double :naan, :name => "naan", :price => 3 }
 
   it "should be able to add a dish" do
     subject.add(curry)
@@ -24,7 +24,7 @@ describe Menu do
     end
 
     it "should be able to show a list of dishes and prices" do
-      expect { subject.show_menu }.to output("Curry, £8.5\nNaan, £3\n").to_stdout
+      expect { subject.show }.to output("curry, £8.5\nnaan, £3\n").to_stdout
     end
 
   end

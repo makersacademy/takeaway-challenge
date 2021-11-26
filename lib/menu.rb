@@ -10,8 +10,8 @@ class Menu
     @dishes << dish
   end
 
-  def show_menu
-    @dishes.each { |dish| puts "#{dish.name}, £#{dish.price}" }
+  def show
+    return @dishes.each { |dish| "#{dish.name}, £#{dish.price}\n" }
   end
 
 end
