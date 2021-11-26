@@ -11,7 +11,7 @@ class Menu
   end
 
   def show
-    return @dishes.each { |dish| "#{dish.name}, £#{dish.price}\n" }
+    @dishes.each { |dish| puts "#{dish.name}, £#{dish.price}\n" }
   end
 
 end

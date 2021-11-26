@@ -1,7 +1,7 @@
 class Takeaway
 
-  def initialize (menu = Menu)
-    @menu = menu.new
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
   def show_menu

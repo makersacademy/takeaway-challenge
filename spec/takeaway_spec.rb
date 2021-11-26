@@ -1,4 +1,5 @@
 require "takeaway"
+require "menu"
 
 describe Takeaway do
 
@@ -7,8 +8,12 @@ describe Takeaway do
   let(:menu) { double :menu, :dishes => [curry, naan] }
 
   it "should be able to show the menu" do
-    allow(menu).to receive(:show).and_return("curry, £8.5\nnaan, £3\n")
-    expect(subject.show_menu).to eq("curry, £8.5\nnaan, £3\n")
+    actual_menu = Menu.new
+    actual_menu.add(curry)
+    actual_menu.add(naan)
+    actual_takeaway = Takeaway.new(actual_menu)
+    # struggled using doubles in above test
+    expect { actual_takeaway.show_menu }.to output("curry, £8.5\nnaan, £3\n").to_stdout
   end
 
 end
