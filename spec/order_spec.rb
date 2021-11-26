@@ -13,8 +13,8 @@ describe Order do
     end
 
     it "#list_dishes will diplay the menu's available dishes and prices" do
-      allow(@menu_class).to receive(:dishes).and_return({"Fries" => 3.0,"Coca Cola" => 1.5})
-      expect(@order.list_dishes).to eq({"Fries" => 3.0,"Coca Cola" => 1.5})
+      allow(@menu_class).to receive(:dishes).and_return({ "Fries" => 3.0,"Coca Cola" => 1.5 })
+      expect(@order.list_dishes).to eq({ "Fries" => 3.0,"Coca Cola" => 1.5 })
     end
   end
 
