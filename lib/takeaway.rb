@@ -1,10 +1,13 @@
+require_relative "menu"
+require_relative "order"
+
 class Takeaway
 
   attr_reader :order
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
-    @order = []
+    @order = order
   end
 
   def show_menu
@@ -12,7 +15,7 @@ class Takeaway
   end
 
   def add_to_order(item)
-    @menu.dishes.each { |food| order.push(food) if food.name == item }
+    @menu.dishes.each { |dish| order.add(dish) if dish.name == item }
   end
 
 end

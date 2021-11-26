@@ -23,7 +23,7 @@ describe Takeaway do
     actual_takeaway = Takeaway.new(actual_menu)
     actual_takeaway.add_to_order("curry")
     actual_takeaway.add_to_order("naan")
-    expect(actual_takeaway.order).to match_array([curry, naan])
+    expect(actual_takeaway.order.show).to match_array([curry, naan])
   end
 
 end
