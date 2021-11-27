@@ -3,6 +3,7 @@ describe Takeaway do
   subject { Takeaway.new }
   let(:dish) { double("Chicken") }
   let(:price) { double("£4") }
+  let(:choice) { double(:choice)}
 
   describe "#initialize" do
     it "menu array" do
@@ -30,5 +31,15 @@ describe Takeaway do
     it { is_expected.to respond_to(:add_orders).with(1).argument } 
   end
 
-  
+  it "add choice to orders array" do
+    subject.add_orders(choice)
+    expect(subject.orders).to include(choice)
+  end
+
+  it "sum of the order" do
+    subject.add_orders("rice")
+    subject.add_orders("beans")
+    subject.add_orders("yam")
+    expect(subject.orders_total).to eq 8
+  end 
 end
