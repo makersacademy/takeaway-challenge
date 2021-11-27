@@ -10,4 +10,8 @@ class Menu
       dish.each { |name, price| puts "#{dishes.index(dish) + 1}. #{name} - £#{price}" }
     end
   end
+
+  def add_item(order, item_number)
+    order.items << dishes[item_number - 1]
+  end
 end

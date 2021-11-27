@@ -1,8 +1,8 @@
 require 'menu'
+require 'order'
 
 describe Menu do
   TEST_PRICE = 8
-  let(:dishes) { double :dishes }
   subject { described_class.new }
   dish = { "Fried Chicken": TEST_PRICE}
   
@@ -27,9 +27,9 @@ describe Menu do
   describe '#add_item' do
     it 'adds items to an order' do
       subject.dishes << dish
-      order = []
+      order =  Order.new
       subject.add_item(order, 1)
-      expect(order.include?(dish)).to be_truthy
+      expect(order.items.include?(dish)).to be_truthy
     end
   end
 end
