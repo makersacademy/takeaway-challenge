@@ -21,8 +21,13 @@ describe Menu do
     end
 
     it 'raises an error if user inputs a restaurant that is not listed in the restaurants global hash' do
+      expect { non_existent_menu = Menu.new('made up restaurant') }.to raise_error('made up restaurant is not listed. Please choose from the restaurants list')
+    end
+  end
 
-      expect { non_existent_menu = Menu.new('made up restaurant') }.to raise_error('made up restaurant is not listed. Please choose from the list (menu.options)')
+  describe '#list' do
+    it 'returns a list of the menu dishes and prices' do
+      expect(menu.list).to eq "FIVE GIRLS MENU\n**************\nhamburger - £8.00\ncheeseburger - £8.00\nseitan burger - £8.00\nfries - £5.00\nmilkshake - £5.00\nsoda - £3.00\n**************\n"
     end
   end
 end

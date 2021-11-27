@@ -34,8 +34,15 @@ class Menu
 
   def initialize(restaurant)
     unless @@restaurants.has_key?(restaurant)
-      raise "#{restaurant} is not listed. Please choose from the list (menu.options)" 
+      raise "#{restaurant} is not listed. Please choose from the restaurants list" 
     end
+    @restaurant = restaurant
     @dishes = @@restaurants[restaurant]
+  end
+
+  def list
+    menu_list = "#{@restaurant.upcase} MENU\n**************\n"
+    @dishes.each { |dish, price| menu_list += "#{dish} - £#{"%.2f" % price}\n" }
+    menu_list += "**************\n"
   end
 end
