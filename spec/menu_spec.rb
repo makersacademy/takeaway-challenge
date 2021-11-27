@@ -8,5 +8,11 @@ describe Menu do
     it 'shows a list of dishes' do
       expect(subject.show).to eq(subject.dishes)
     end
+
+    specify 'dishes have a price' do
+      dish = double("Fried Chicken", :price => 8)
+      subject.dishes << dish
+      expect(subject.show.last.price).to be(8)
+    end
   end
 end
