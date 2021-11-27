@@ -1,0 +1,43 @@
+Order 
+@menu = [<dish object>, <dish object>]
+@basket = [dish object>]
+
+def add(dish)
+	raise error if dish 
+	@basket << dish || or increase Qty
+def remove(dish)
+	raise error if dish is not in basket
+	@basket -= dish || or decrease Qty
+def get_summary
+>>
+	Your order so far: 
+	-----------------
+		Chicken (2) - £3
+		Asparagus (1) - £5
+		Rice (1) - £3
+	--------------------------
+	Subtotal = £11
+	--------------------------
+
+Def Submit order
+
+>>
+Thank you for your order: 
+	-----------------
+		Chicken (2) - £3
+		Asparagus (1) - £5
+		Rice (1) - £3
+	--------------------------
+	Subtotal = £11
+	--------------------------
+
+
+def get_confirmation_text
+>> TWILIO
+Thank you! Your order #493829 was placed and will be delivered before 18:52"
+
+
+Dish
+@name = ‘’
+@price = ‘’
+@Qty = ‘’
