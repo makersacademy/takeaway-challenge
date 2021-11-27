@@ -11,5 +11,3 @@ class Takeaway
     @menu_list
   end
 end
-
-
