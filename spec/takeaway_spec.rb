@@ -5,9 +5,14 @@ describe Takeaway do
   let(:price) { double("£4") }
 
   describe "#initialize" do
-    it "empty menu array" do
-      expect(subject.menu).to eq []#truthy
+    it "menu array" do
+      expect(subject.menu).to be_truthy
     end
+
+    it "empty orders array" do
+      expect(subject.orders).to eq []
+    end
+    
   end
 
   describe "#add_dishes" do
@@ -16,8 +21,8 @@ describe Takeaway do
   
   describe "#print_menu" do
     it "displays menu" do
-      menu_list = subject.add_dishes(dish, price)
-      expect(subject.print_menu).to eq(menu_list)
+      list_of_dishes = subject.print_menu
+      expect(subject.print_menu).to eq(list_of_dishes)
     end
   end
 
