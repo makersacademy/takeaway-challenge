@@ -1,7 +1,13 @@
 require 'takeaway'
 
 describe Takeaway do
+  subject(:takeaway) {described_class.new}
+  describe '#menu' do
+
+    it { is_expected.to respond_to(:read_menu) }
   
+    
+  end
 end
 
 # As a customer
