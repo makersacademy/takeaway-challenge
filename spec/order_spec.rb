@@ -17,4 +17,12 @@ describe Order do
       expect { subject.show }.to output("1. Fried Chicken - £8\n").to_stdout
     end
   end
+
+  describe '#total' do
+    it 'calculates the total of the order' do
+      subject.items << item
+      expect(subject.total).to be(TEST_PRICE)
+    end
+
+  end
 end
