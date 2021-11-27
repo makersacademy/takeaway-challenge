@@ -27,6 +27,7 @@ describe Order do
 
   describe '#complete' do
     it 'sends a confirmation text' do
+      order.items << item
       allow(order).to receive(:send_text)
       expect(order).to receive(:send_text).with("Thank you for your order: £#{TEST_PRICE}")
       order.complete
