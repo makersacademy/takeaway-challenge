@@ -3,6 +3,7 @@ require 'order'
 describe MyOrder do 
   let(:bad_item) { 'DEFINITELY NOT AN ITEM ON THE MENU' }
   let(:good_item) { :'Spring Rolls' }
+  let(:good_item_price) { 2.99 }
   context 'When initialized' do 
     it 'has an empty order basket' do 
       expect(subject.basket).to be_empty
@@ -23,5 +24,19 @@ describe MyOrder do
       end
     end
 
+  end
+
+  describe '#total' do 
+    context 'nothing in the basket' do 
+      it 'returns 0' do 
+        expect(subject.total).to eq 0
+      end
+    end
+    context 'items are in the basket' do 
+      it 'returns the total cost of the order' do 
+        subject.order(good_item)
+        expect(subject.total).to eq good_item_price
+      end
+    end
   end
 end

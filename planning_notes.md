@@ -70,6 +70,15 @@ I would like to check that the total I have been given matches the sum of the va
 
 # Plan 3
 
+- IRB 
+
+Create an instance of order. 
+
+Add items to the basket 
+
+run the method total to see what the cost is.
+
+check if matches the sum of the various dishes.
 
 # User Story 4
 

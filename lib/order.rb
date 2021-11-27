@@ -13,4 +13,14 @@ class MyOrder
     @basket << { item => @takeaway.menu[item] }
   end
 
+  def total 
+    sum = 0
+    @basket.each do |menu_item|
+      menu_item.each do |item, price|
+        sum += price
+      end
+    end
+    sum
+  end
+
 end
