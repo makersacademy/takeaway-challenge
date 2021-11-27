@@ -13,18 +13,24 @@
 }
 
 class Menu
+
+  attr_reader :basket, :receipt
+
+# method is meant for feature tests
+# it automatically print the menu and awaits user input
   def initialize
     @basket = []
     @receipt = []
-    interactive_menu
+    # interactive_menu
   end
 
+# interactive menu is tested in irb only
   def interactive_menu
     loop do
       print_menu
-    #   meal_number = STDIN.gets.chomp.to_i
+      meal_number = STDIN.gets.chomp.to_i
       meal_number = gets.chomp.to_i
-      process(meal_number)
+    #   process(meal_number)
     end
   end
 
