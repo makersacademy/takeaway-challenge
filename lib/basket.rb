@@ -20,6 +20,7 @@ class Basket
     # => str: formatted total
   end
 
+  ## Need to think about how best to implement this
   def goto_checkout(basket = self, checkout=Checkout)
     # @checkout = checkout.new(basket)
   end
