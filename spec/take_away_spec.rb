@@ -10,4 +10,12 @@ describe TakeAway do
     take_away = TakeAway.new(menu: menu)
     expect(take_away.menu).to eq (menu.list_dishes)
   end
+
+  it "add a selected dish to the cart" do
+    dish = double("dish")
+    menu = double("menu", select_dish: dish)
+    take_away = TakeAway.new(menu: menu)
+    take_away.add_to_cart(double(), double())
+    expect(take_away.cart).to include(dish)
+  end
 end
