@@ -1,5 +1,8 @@
 require_relative "menu"
 require_relative "order"
+require 'dotenv'
+require 'twilio-ruby'
+Dotenv.load("variables.env")
 
 class Takeaway
 
@@ -8,6 +11,7 @@ class Takeaway
   def initialize(menu = Menu.new, order = Order.new)
     @menu = menu
     @order = order
+    @client = Twilio::REST::Client.new(ENV["TWILIO_ID"], ENV["TWILIO_TOKEN"])
   end
 
   def show_menu
@@ -21,6 +25,10 @@ class Takeaway
 
   def place_order
     fail "Please select some items before placing an order" if @order.show.empty?
+    message = @client.messages.create(
+    body: @order.message,
+    to: ENV["MY_NUMBER"],
+    from: ENV["TWILIO_NUMBER"])
   end
 
 end

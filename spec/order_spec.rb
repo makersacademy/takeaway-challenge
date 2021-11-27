@@ -23,4 +23,10 @@ describe Order do
     expect(subject.check_total).to be true
   end
 
+  it "should be able to generate an order message" do
+    subject.add(curry)
+    subject.add(naan)
+    expect(subject.message).to eq "Your order has been received and will be delivered by #{(Time.now + (60*30)).strftime("%k:%M")}\nOrder details:\ncurry, £8.5\nnaan, £3\nTotal: £11.5"
+  end
+
 end
