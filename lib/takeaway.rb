@@ -1,13 +1,15 @@
 
 class Takeaway
   
-  attr_reader :menu
+  attr_reader :menu, :menu_list
 
   def initialize
-    @menu = menu    
+    @menu = menu
   end
 
-  def read_menu
-    "Rice: £3.00"
+  def print_menu
+    @menu_list
   end
 end
+
+
