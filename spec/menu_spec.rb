@@ -19,5 +19,10 @@ describe Menu do
 
       expect(alternative_menu.dishes).to include('halloumi wrap' => 6.50, 'black bean box' => 6.50, 'matcha latte' => 3.00)
     end
+
+    it 'raises an error if user inputs a restaurant that is not listed in the restaurants global hash' do
+
+      expect { non_existent_menu = Menu.new('made up restaurant') }.to raise_error('made up restaurant is not listed. Please choose from the list (menu.options)')
+    end
   end
 end

@@ -33,7 +33,9 @@ class Menu
   }
 
   def initialize(restaurant)
-    return unless @@restaurants.has_key?(restaurant)
+    unless @@restaurants.has_key?(restaurant)
+      raise "#{restaurant} is not listed. Please choose from the list (menu.options)" 
+    end
     @dishes = @@restaurants[restaurant]
   end
 end
