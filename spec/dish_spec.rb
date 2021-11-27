@@ -15,6 +15,14 @@ describe Dish do
     end
   end
 
+  context '#read_quantity' do
+    it 'can read quanatity of the dish' do
+      quantity = rand(1..5)
+      dish.amount(quantity)
+      expect(dish.read_quantity).to eq(quantity)      
+    end
+  end
+
   context '#amount' do
     it 'can set the quantity of the dish ordered' do
       quantity = rand(1..5)
