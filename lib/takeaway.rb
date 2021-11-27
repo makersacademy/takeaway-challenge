@@ -1,13 +1,14 @@
+require_relative 'menu'
 
 class Takeaway
   
-  attr_reader :menu, :menu_list
+  attr_reader :menu, :dishes
 
   def initialize
-    @menu = menu
+    @print_menu = print_menu
   end
 
   def print_menu
-    @menu_list
+    @dishes
   end
 end
