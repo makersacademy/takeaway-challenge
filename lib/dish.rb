@@ -15,7 +15,7 @@ class Dish
     @qty -= 1
   end
 
-  def set_qty_to_0
+  def set_qty_to_zero
     @qty = 0
   end
 

@@ -13,8 +13,9 @@ module Text
     client.api.account.messages.create(
       from: from,
       to: to,
-      body: "Thank you! Your order was placed and will be delivered before #{(Time.now+3600).strftime("%k:%M")}."
+      body: "Thank you! Your order was placed and will
+       be delivered before
+        #{(Time.now + 3600).strftime("%k:%M")}."
     )
   end
 end
-

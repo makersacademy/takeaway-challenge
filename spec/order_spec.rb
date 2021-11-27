@@ -2,7 +2,7 @@ require 'order'
 
 describe Order do
   it { should be_an_instance_of Order }
-  it { should have_attributes(:menu => [], :basket => [])}
+  it { should have_attributes(:menu => [], :basket => []) }
   
   let (:order) { described_class.new } 
 
@@ -28,11 +28,11 @@ describe Order do
     end
 
     it "increases the quantity attribute of dish each time it is added" do
-      expect{ 3.times { order.add_item('chicken') } }.to change { @chicken.qty }.from(0).to(3)
+      expect { 3.times { order.add_item('chicken') } }.to change { @chicken.qty }.from(0).to(3)
     end
 
     it "raises an error if user tries to add a dish not on the menu" do
-      expect{ order.add_item('lamb') }.to raise_error "Cannot add lamb. Item not on menu!"
+      expect { order.add_item('lamb') }.to raise_error "Cannot add lamb. Item not on menu!"
     end
 
   end
@@ -45,12 +45,12 @@ describe Order do
 
     it "removes the dish from basket" do
       order.add_item('chicken')
-      expect{ order.remove_item('chicken') }.to change{ order.basket.include?(@chicken) }.from(true).to(false)
+      expect { order.remove_item('chicken') }.to change { order.basket.include?(@chicken) }.from(true).to(false)
     end
 
     it "does not remove the dish from basket if its qty is more than 1" do
       3.times { order.add_item('chicken') } 
-      expect{ 2.times { order.remove_item('chicken') } }.not_to change{ order.basket.count(@chicken) }.from(1)
+      expect { 2.times { order.remove_item('chicken') } }.not_to change { order.basket.count(@chicken) }.from(1)
     end
 
     it "decreases the qty of dish each time it is removed" do
@@ -80,11 +80,11 @@ describe Order do
       2.times { order.add_item('rice') }
     end
     
-    describe "#get_summary and  #submit_order" do
+    describe "#print_summary and  #submit_order" do
 
       it "prints an order summary to stdout" do
        
-        expect{ order.get_summary }.to output{ "
+        expect { order.print_summary }.to output { "
           Your order so far: 
           -------------------
           chicken(2): £10
@@ -93,17 +93,17 @@ describe Order do
           rice(2): £6
           -------------------
           subtotal: £31.5
-          -------------------" }.to_stdout
+          -------------------"
+                                          }.to_stdout
       end
       
     end
 
     describe "#submit_order" do
 
-
       it "prints an order confirmation to stdout" do
     
-        expect { order.submit_order}.to output { "
+        expect { order.submit_order }.to output { "
           Thank you for your order: 
           -------------------
           chicken(2): £10
@@ -112,7 +112,8 @@ describe Order do
           rice(2): £6
           -------------------
           subtotal: £31.5
-          -------------------" }.to_stdout
+          -------------------"
+                                         }.to_stdout
       end
 
       it "allows user to send text" do
