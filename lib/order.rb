@@ -28,7 +28,7 @@ class Order
 
   def send_text(message)
     account_sid = 'AC4bce300a46726464d43d6ef4c4051cf5' 
-    auth_token = ENV'[AuthToken]' 
+    auth_token = ENV['AuthToken'] 
     @client = Twilio::REST::Client.new(account_sid, auth_token) 
 
     message = @client.messages.create(   
