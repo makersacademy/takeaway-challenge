@@ -5,22 +5,22 @@ class Order
   ORDER_TIME = 30
 
   def initialize
-    @order = []
+    @items = []
     @total = 0
   end
 
   def add(item)
-    @order.push(item)
+    @items.push(item)
     @total += item.price
   end
 
   def show
-    @order.dup
+    @items.dup
   end
 
   def check_total
     total = 0
-    @order.each { |dish| total += dish.price }
+    @items.each { |dish| total += dish.price }
     @total == total
   end
 

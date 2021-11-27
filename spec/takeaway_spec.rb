@@ -34,4 +34,8 @@ describe Takeaway do
     expect { actual_takeaway.add_to_order("soup") }. to raise_error "Item not on menu, please choose something else"
   end
 
+  it "should not allow users to place an empty order" do
+    expect { subject.place_order }.to raise_error "Please select some items before placing an order"
+  end
+
 end
