@@ -3,19 +3,20 @@ class Menu
 
   attr_reader :basket, :receipt_list, :meals_list
 
-   MEALS_LIST = {
-    1 => [ "Kimbab", 8 ],
-    2 => [ "KFC", 6 ],
-    3 => [ "Bibimbab_beef" , 12.50 ] ,
-    4 => [ "Bibimba_chicken" , 10 ] ,
-    5 => [ "Pork_bulgogi" , 10 ] ,
-    6 => [ "Kimchi" , 4 ] ,
-    7 => [ "Patato_salad" , 5 ] ,
-    8 => [ "Kimchi_pancake" , 5 ] ,
-    9 => [ "Rice" , 3 ],
-    10 => [ "Exit menu" ],
-    11 => [ "Checkout" ]
-}
+  MEALS_LIST =
+  {
+    1 => ["Kimbab", 8],
+    2 => ["KFC", 6],
+    3 => ["Bibimbab_beef", 12.50],
+    4 => ["Bibimba_chicken", 10],
+    5 => ["Pork_bulgogi", 10],
+    6 => ["Kimchi", 4],
+    7 => ["Patato_salad", 5],
+    8 => ["Kimchi_pancake", 5],
+    9 => ["Rice", 3],
+    10 => ["Exit menu"],
+    11 => ["Checkout"]
+  }
 
 # method is meant for feature tests
 # it automatically print the menu and awaits user input
@@ -49,14 +50,15 @@ class Menu
   end
 
   def process(meal_number)
+    # TODO : Has too many lines
     @meal_number = meal_number
-    if @meal_number.nil? || @meal_number < MEALS_LIST.keys[0] || @meal_number >  MEALS_LIST.keys[-1]
+    if @meal_number.nil? || @meal_number < MEALS_LIST.keys[0] || @meal_number > MEALS_LIST.keys[-1]
       "sorry we don't have this item. Pick a meal from the menu, please"
       interactive_menu
     elsif @meal_number == MEALS_LIST.keys[-2]
-        exit
+      exit
     elsif @meal_number == MEALS_LIST.keys[-1]
-        checkout
+      checkout
     else
       add_to_basket
       add_to_receipt
@@ -68,7 +70,7 @@ class Menu
   end
 
   def add_to_receipt
-     @receipt_list << MEALS_LIST[@meal_number][1]
+    @receipt_list << MEALS_LIST[@meal_number][1]
   end
 end
 
