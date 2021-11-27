@@ -26,4 +26,9 @@ describe Takeaway do
     end
   end
 
+  describe "#add_orders" do
+    it { is_expected.to respond_to(:add_orders).with(1).argument } 
+  end
+
+  
 end

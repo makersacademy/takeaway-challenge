@@ -11,6 +11,9 @@ class Takeaway
     @menu << { dish => price }    
   end
 
+  def add_orders(choice)
+      
+  end
   def print_menu
     @menu.each { |dishes| puts dishes }
   end
