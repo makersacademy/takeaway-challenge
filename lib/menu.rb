@@ -12,7 +12,7 @@ class Menu
   end
   
   def print_menu
-    menu_list.each { |dish, price| puts "#{dish}: £#{price}" }
+    @menu_list.each { |dish, price| puts "#{dish}: £#{price}" }
   end
 end
 
