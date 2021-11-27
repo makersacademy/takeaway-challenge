@@ -7,7 +7,7 @@ class Menu
 
   def show
     @dishes.each do |dish|
-      dish.each { |name, price| puts "#{name} - £#{price}" }
+      dish.each { |name, price| puts "#{dishes.index(dish) + 1}. #{name} - £#{price}" }
     end
   end
 end

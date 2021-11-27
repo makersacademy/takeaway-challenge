@@ -5,7 +5,7 @@ class Order
     @items = []
   end
 
-  def add(item)
-    @items << item
+  def add(item_number)
+    @items << menu.dishes[item_number - 1]
   end
 end
