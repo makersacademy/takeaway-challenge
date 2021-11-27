@@ -23,7 +23,7 @@ class Order
 
   def complete
     calculate_total
-    send_text("Thank you for your order: £#{@total}")
+    send_text("Thank you! Your order was placed and will be delivered before #{(Time.now + (60 * 60)).strftime("%k:%M")}.")
   end
 
   def send_text(message)
