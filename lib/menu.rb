@@ -49,12 +49,15 @@ class Menu
     # puts "__________________________________________________________"
   end
 
-  def process(meal_number)
+  def choose_meal(meal_number)
     # TODO : Has too many lines
     @meal_number = meal_number
-    if @meal_number.nil? || @meal_number < MEALS_LIST.keys[0] || @meal_number > MEALS_LIST.keys[-1]
-      "sorry we don't have this item. Pick a meal from the menu, please"
-      interactive_menu
+    # raise "Please, input the meal number" unless @meal_number.is_a?(Integer)
+    if !(@meal_number.is_a?(Integer)) || @meal_number.nil?
+      raise "Please, input the meal number"
+    elsif @meal_number < MEALS_LIST.keys[0] || @meal_number > MEALS_LIST.keys[-1]
+      raise "sorry we don't have this item. Pick a meal from the menu, please"
+      #interactive_menu
     elsif @meal_number == MEALS_LIST.keys[-2]
       exit
     elsif @meal_number == MEALS_LIST.keys[-1]
@@ -64,6 +67,7 @@ class Menu
       add_to_receipt
     end
   end
+  
 
   def add_to_basket
     @basket << MEALS_LIST[@meal_number][0]
