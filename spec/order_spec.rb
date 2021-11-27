@@ -7,7 +7,7 @@ describe Order do
   describe '#add' do
     it 'adds items to order' do
       subject.add(item)
-      expect(subject.items.include(item)).to be_truthy
+      expect(subject.items.include?(item)).to be_truthy
     end
   end
 end
