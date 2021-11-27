@@ -5,7 +5,6 @@ class Dish
     @name = name
     @price = price
     @qty = 0
-  
   end
 
   def increase_qty
@@ -16,6 +15,10 @@ class Dish
     @qty -= 1
   end
 
+  def set_qty_to_0
+    @qty = 0
+  end
+
   def none_selected?
     @qty <= 0
   end
@@ -23,5 +26,5 @@ class Dish
   def last_one?
     @qty == 1
   end
-
+  
 end

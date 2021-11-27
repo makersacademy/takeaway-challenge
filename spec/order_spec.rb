@@ -66,9 +66,11 @@ describe Order do
 
   end
 
-  describe "#get_summary" do
+  context "finalising order" do 
 
-    it "prints an order summary to stdout" do
+    before do
+      allow(order).to receive(:send_text).and_return(true)
+
       3.times { order.add_item('chicken') }
       order.remove_item('chicken')
       3.times { order.add_item('veggies') }
@@ -76,18 +78,58 @@ describe Order do
       order.add_item('fish')
       order.remove_item('fish')
       2.times { order.add_item('rice') }
-      expect{order.get_summary}.to output{"
-        Your order so far: 
-        -------------------
-        chicken(2): £10
-        veggies(3): £12
-        pie(1): £3.5
-        rice(2): £6
-        -------------------
-        subtotal: £31.5
-        -------------------"}.to_stdout
     end
     
+    describe "#get_summary and  #submit_order" do
+
+      it "prints an order summary to stdout" do
+       
+        expect{ order.get_summary }.to output{ "
+          Your order so far: 
+          -------------------
+          chicken(2): £10
+          veggies(3): £12
+          pie(1): £3.5
+          rice(2): £6
+          -------------------
+          subtotal: £31.5
+          -------------------" }.to_stdout
+      end
+      
+    end
+
+    describe "#submit_order" do
+
+
+      it "prints an order confirmation to stdout" do
+    
+        expect { order.submit_order}.to output { "
+          Thank you for your order: 
+          -------------------
+          chicken(2): £10
+          veggies(3): £12
+          pie(1): £3.5
+          rice(2): £6
+          -------------------
+          subtotal: £31.5
+          -------------------" }.to_stdout
+      end
+
+      it "allows user to send text" do
+        expect(order).to respond_to(:send_text)
+        expect(order.send_text).to eq true
+      end
+
+      it "returns qty of all menu items to 0" do
+        expect { order.submit_order }.to change { order.menu.all? { |dish| dish.qty == 0 } }.from(false).to(true)
+      end
+
+      it "empties the basket after submitting order" do
+        expect { order.submit_order }.to change { order.basket.empty? }.from(false).to(true)
+      end
+      
+    end
+
   end
   
 end

@@ -1,5 +1,9 @@
 require_relative 'dish'
+require_relative 'text'
+
 class Order 
+  include Text
+  
   attr_reader :menu, :basket
 
   def initialize
@@ -22,8 +26,27 @@ class Order
   end
 
   def get_summary
-    puts
-    puts "Your order so far: "
+    puts "\nYour order so far: \n#{print_order_msg}"
+  end
+
+  def submit_order
+    puts "\nThank you for your order: \n#{print_order_msg}"
+    qtys_to_0
+    empty_basket
+    send_text
+  end
+
+  private 
+
+  def on_menu?(dish)
+    @menu.any? { |item| item.name == dish }
+  end
+
+  def in_basket?(dish)
+    @basket.any? { |item| item.name == dish }
+  end
+
+  def print_order_msg
     puts "-------------------"
     subtotal = 0
     @basket.each { |dish| 
@@ -35,14 +58,12 @@ class Order
     puts "-------------------"
   end
 
-  private 
-
-  def on_menu?(dish)
-    @menu.any? { |item| item.name == dish }
+  def qtys_to_0
+    @menu.each { |dish| dish.set_qty_to_0 }
   end
 
-  def in_basket?(dish)
-    @basket.any? { |item| item.name == dish }
+  def empty_basket
+    @basket.clear
   end
 
 end
