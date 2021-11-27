@@ -1,11 +1,14 @@
 require_relative 'takeaway'
+require_relative 'text'
+
 class MyOrder
 
   attr_accessor :basket
 
-  def initialize(takeaway = Takeaway.new)
+  def initialize(takeaway = Takeaway.new, text = Text.new)
     @basket = []
     @takeaway = takeaway
+    @text = text
   end
 
   def order(item)
@@ -25,6 +28,7 @@ class MyOrder
 
   def confirm_order
     raise 'Basket is empty, cannot confirm order' if basket_empty?
+    @text.send_text
   end
 
   private
