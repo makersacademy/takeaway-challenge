@@ -1,10 +1,10 @@
 require_relative 'dishes'
 
 class Menu
-  attr_reader :dishes, :order
+  attr_reader :dishes_list, :order
 
-  def initialize
-    @dishes_list = Dishes.new
+  def initialize(dishes_list = Dishes.new)
+    @dishes_list = dishes_list
     @order = []
   end
 
@@ -19,6 +19,7 @@ class Menu
       @dishes_list.dishes.each do |dish|
         if dish[:id] == dish_id
           @order << dish[:name]
+          dish[:available] = dish[:available] - 1
         end
       end
     end
