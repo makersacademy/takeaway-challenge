@@ -23,4 +23,13 @@ describe Menu do
       expect { subject.show }.to output("1. Fried Chicken - £8\n").to_stdout
     end
   end
+
+  describe '#add_item' do
+    it 'adds items to an order' do
+      subject.dishes << dish
+      order = []
+      subject.add_item(order, 1)
+      expect(order.include?(dish)).to be_truthy
+    end
+  end
 end
