@@ -267,3 +267,32 @@ I am planning to use theses element to build a check_out function
 #Saturday 27th of November '21
 I will now check everything passes in rspec and make sure I have edge cases where needed
 
+! struggle with testing the user input (meal_number = gets.chomp) !
+a) I try to test it by creating a fake / double of the user input
+but it didn't work as the print method print the menu on the screen and then nothing would happend
+
+b) I try to simulate 'gets' with a Inquisitor class like suggested on stack overflow : https://stackoverflow.com/questions/68838737/how-to-simulate-multiple-gets-user-input-with-rspec
+this didn't work, I don't know why ... maybe because the user is prompted again and again until he chooses to checkout or exit
+I didn't manage to set a specific test : user orders one meal, then another one, then checks out
+
+c) I remove the user input. and passed the meal_number (which should be given by the user) as an argurment so I could create some specific tests.
+
+
+straight forward testing for add_to_basket and add_to_receipt once I remove the user input
+
+
+! struggle with the print method test!
+in irb , I like to have the menu nicely formated but I try to set test to check print multiple "puts + string"
+
+in the end I managed to have the print method to just print the MEAL_List
+and the test can be written in a few lines (note, the .to_s to make it a string)
+    it "prints the MEAL_LIST" do
+      expect { menu.print_menu }.to output(Menu::MEALS_LIST.to_s).to_stdout
+    end
+
+
+TODO: my process(meal_number) method is too long.
+I don't know what this message mean
+rubocop = lib/menu.rb:6:17: C: [Correctable] Style/MutableConstant: Freeze mutable objects assigned to constants.
+   MEALS_LIST = { ...
+                ^
