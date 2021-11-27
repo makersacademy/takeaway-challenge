@@ -23,6 +23,9 @@ describe Order do
       subject.items << item
       expect(subject.total).to be(TEST_PRICE)
     end
+  end
 
+  describe '#complete' do
+    it 'completes the order'
   end
 end

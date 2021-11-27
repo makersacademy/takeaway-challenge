@@ -1,5 +1,4 @@
 require 'menu'
-require 'order'
 
 describe Menu do
   TEST_PRICE = 8
@@ -26,8 +25,8 @@ describe Menu do
 
   describe '#add_item' do
     it 'adds items to an order' do
+      order = double("Order", :items => [] )
       subject.dishes << dish
-      order =  Order.new
       subject.add_item(order, 1)
       expect(order.items.include?(dish)).to be_truthy
     end
