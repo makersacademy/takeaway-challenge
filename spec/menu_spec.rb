@@ -11,17 +11,17 @@ describe Menu do
   end
 
   describe '#show' do
-    let(:dish) { double :dish, :fried_chicken => 8 }
+    dish = { "Fried Chicken": 8}
 
     it 'shows a formatted list of dishes' do
-      expect(subject.show).to eq("Fried Chicken - £8")
       subject.dishes << dish
+      expect { subject.show }.to output("Fried Chicken - £8\n").to_stdout
     end
 
     specify 'dishes have a price' do
       subject.dishes << dish
       p subject.show.last
-      expect(subject.show.last.fried_chicken).to be(8)
+      expect(subject.show.last["Fried Chicken"]).to be(8)
     end
   end
 end
