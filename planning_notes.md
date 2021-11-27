@@ -87,3 +87,13 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
 # Plan 4
+
+- IRB 
+
+Create an instance of order 
+
+Add items to the basket 
+
+Checkout the order when im done
+
+Get a message confirming the order through text.

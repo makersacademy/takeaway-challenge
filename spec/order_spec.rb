@@ -39,4 +39,19 @@ describe MyOrder do
       end
     end
   end
+
+  describe '#confirm_order' do 
+    context 'basket is empty' do 
+      it 'raises an error' do 
+        expect { subject.confirm_order }.to raise_error 'Basket is empty, cannot confirm order'
+      end
+    end
+    context 'basket is not empty' do 
+      
+      it 'confirms order' do 
+        subject.order(good_item)
+        # INPUT TEST HERE
+      end
+    end
+  end
 end
