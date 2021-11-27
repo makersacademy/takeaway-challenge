@@ -13,6 +13,10 @@ class Dish
     @price.dup
   end
 
+  def read_quantity
+    @quantity.dup
+  end
+
   def amount(quantity)
     @quantity = quantity
   end
