@@ -81,3 +81,189 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+------------------
+
+*Thoughts & Notes*
+------------------
+#Friday 26th of november '21
+I created a interactive menu based on the student directory we created a few weeks ago.
+this should implement basic funtions for the user story 1 and 2
+the user can :
+- check the menu (list of prices and dishes)
+- can order a meal (add to basket several dishes)
+
+here is the diagram for the application I am trying to build : https://wireframe.cc/7hfxO2
+
+based on the following user stories
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+#Feature test in irb
+works well until I want to check out:
+
+```
+Swa@Swas-MacBook-Pro takeaway-challenge % irb -r ./lib/menu.rb
+3.0.2 :001 > menu = Menu.new
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+       11 to select Checkout : £        
+Swa@Swas-MacBook-Pro takeaway-challenge % irb -r ./lib/menu.rb
+3.0.2 :001 > menu = Menu.new
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+       10 to select Exit menu : £       
+       11 to select Checkout : £        
+__________________________________________________________
+1
+["Kimbab"]
+["Kimbab"]
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+       10 to select Exit menu : £       
+       11 to select Checkout : £        
+__________________________________________________________
+exit
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+Swa@Swas-MacBook-Pro takeaway-challenge % irb -r ./lib/menu.rb
+3.0.2 :001 > menu = Menu.new
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+       10 to select Exit menu : £       
+       11 to select Checkout : £        
+__________________________________________________________
+1
+["Kimbab"]
+[8]
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+       10 to select Exit menu : £       
+       11 to select Checkout : £        
+__________________________________________________________
+7
+["Kimbab", "Patato_salad"]
+[8, 5]
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+       10 to select Exit menu : £       
+       11 to select Checkout : £        
+__________________________________________________________
+8
+["Kimbab", "Patato_salad", "Kimchi_pancake"]
+[8, 5, 5]
+       Welcome, this is our menu        
+Please enter the number of the meal you would like to add to the basket
+___________________________________________________________
+        1 to select Kimbab : £8         
+          2 to select KFC : £6          
+   3 to select Bibimbab_beef : £12.5    
+   4 to select Bibimba_chicken : £10    
+     5 to select Pork_bulgogi : £10     
+        6 to select Kimchi : £4         
+     7 to select Patato_salad : £5      
+    8 to select Kimchi_pancake : £5     
+         9 to select Rice : £3          
+       10 to select Exit menu : £       
+       11 to select Checkout : £        
+__________________________________________________________
+11
+/Users/Swa/Desktop/Projects/solo-challenges/takeaway-challenge/lib/menu.rb:50:in `process': undefined local variable or method `checkout' for #<Menu:0x00007fcadb028a98 @basket=["Kimbab", "Patato_salad", "Kimchi_pancake"], @receipt=[8, 5, 5], @meal_number=11> (NameError)
+```
+we can see that the items are added to the @basket and the prices to the @receipt
+I am planning to use theses element to build a check_out function
+
+#Saturday 27th of November '21
+I will now check everything passes in rspec and make sure I have edge cases where needed
+
