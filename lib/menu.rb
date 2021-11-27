@@ -38,13 +38,13 @@ class Menu
 
   def print_menu
     print MEALS_LIST
-    # puts "Welcome, this is our menu".center(40)
+    # puts "Welcome, this is our menu".center(50)
     # puts "Please enter the number of the meal you would like to add to the basket"
     # # puts "Press enter twice when you're done"
     # puts "___________________________________________________________"
     # puts
     # MEALS.each do |key , value|
-    #   puts "#{key} to select #{value[0]} : £#{value[1]}".center(40)
+    #   puts "#{key} to select #{value[0]} : £#{value[1]}".center(50)
     # end
     # puts "__________________________________________________________"
   end
