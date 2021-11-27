@@ -5,7 +5,9 @@ class Order
     @items = []
   end
 
-  def add(item_number)
-    @items << menu.dishes[item_number - 1]
+  def show
+    @items.each do |item|
+      item.each { |name, price| puts "#{items.index(item) + 1}. #{name} - £#{price}" }
+    end
   end
 end
