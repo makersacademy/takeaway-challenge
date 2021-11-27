@@ -15,7 +15,10 @@ class Takeaway
   end
 
   def add_to_order(item)
+    fail "Item not on menu, please choose something else" unless @menu.dishes.map{ |dish| dish.name }.include?(item)
     @menu.dishes.each { |dish| order.add(dish) if dish.name == item }
   end
+
+
 
 end

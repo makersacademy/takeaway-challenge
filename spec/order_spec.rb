@@ -11,4 +11,16 @@ describe Order do
     expect(subject.show).to match_array([curry, naan])
   end
 
+  it "should be able to calculate the total" do
+    subject.add(curry)
+    subject.add(naan)
+    expect(subject.total).to eq 11.5
+  end
+
+  it "should be able to check if the given total is the sum of all the dishes" do
+    subject.add(curry)
+    subject.add(naan)
+    expect(subject.check_total).to be true
+  end
+
 end

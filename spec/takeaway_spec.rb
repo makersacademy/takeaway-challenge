@@ -26,4 +26,12 @@ describe Takeaway do
     expect(actual_takeaway.order.show).to match_array([curry, naan])
   end
 
+  it "users should not be able to add an item not on the menu" do
+    actual_menu = Menu.new
+    actual_menu.add(curry)
+    actual_menu.add(naan)
+    actual_takeaway = Takeaway.new(actual_menu)
+    expect { actual_takeaway.add_to_order("soup") }. to raise_error "Item not on menu, please choose something else"
+  end
+
 end
