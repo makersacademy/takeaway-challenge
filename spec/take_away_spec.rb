@@ -18,4 +18,5 @@ describe TakeAway do
     take_away.add_to_cart(double(), double())
     expect(take_away.cart).to include(dish)
   end
+
 end

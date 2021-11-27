@@ -10,12 +10,12 @@ class Menu
   end
 
   def list_dishes
-    @dishes.each do |dish|
-      puts "#{dish[:dish]} #{dish[:price]}"
+    @dishes.map do |dish|
+      "#{dish[:dish]} #{dish[:price]}"
     end
   end
 
-  def select_dish(name, quantity)
+  def select_dish(name, quantity = 1)
     @dishes.each do |dish| 
       if dish[:dish] == name
         choice = dish.dup
@@ -23,6 +23,7 @@ class Menu
         return choice
       end
     end
+    raise "dish not available"
   end
 
 end

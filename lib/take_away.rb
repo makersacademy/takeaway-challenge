@@ -10,8 +10,8 @@ class TakeAway
     @menu.list_dishes
   end
 
-  def add_to_cart(name, number)
-    @cart << @menu.select_dish(name, number)
+  def add_to_cart(name, quantity)
+    @cart << @menu.select_dish(name, quantity)
   end
 
   def cart
