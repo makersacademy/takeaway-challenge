@@ -1,20 +1,20 @@
-Takeaway 
+# Takeaway 
 * A Takeaway program that allows you to look at a menu, add items to your order, and have a text sent to you on order completion.
 
 Usage:
 
-# Start
+## Start
 ```
 irb -r './lib/menu' -r './lib/order'
 menu = Menu.new
 order = Order.new
 ```
-# Showing menu items and adding to order
+## Showing menu items and adding to order
 ```
 menu.show
 menu.add_to_order(order, item)
 ```
-# Viewing order summary and completing an order
+## Viewing order summary and completing an order
 ```
 order.total
 order.summary
