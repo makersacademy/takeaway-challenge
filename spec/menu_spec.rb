@@ -1,9 +1,11 @@
 require 'menu'
+  
+TEST_PRICE = 8
 
 describe Menu do
-  TEST_PRICE = 8
+
   subject { described_class.new }
-  dish = { "Fried Chicken": TEST_PRICE}
+  dish = { "Fried Chicken": TEST_PRICE }
   
   describe '#initialize' do
     it 'has a list of dishes' do
@@ -25,7 +27,7 @@ describe Menu do
 
   describe '#add_to_order' do
     it 'adds items to an order' do
-      order = double("Order", :items => [] )
+      order = double("Order", :items => [])
       subject.dishes << dish
       subject.add_to_order(order, 1)
       expect(order.items.include?(dish)).to be_truthy

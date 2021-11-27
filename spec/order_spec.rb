@@ -1,9 +1,10 @@
 require 'order'
 
+TEST_PRICE = 8
+
 describe Order do
-  TEST_PRICE = 8
   subject(:order) { described_class.new }
-  item = { "Fried Chicken": TEST_PRICE}
+  item = { "Fried Chicken": TEST_PRICE }
 
   describe '#initialize' do
     it 'contains list of items' do
@@ -21,7 +22,7 @@ describe Order do
   describe '#total' do
     it 'calculates the total of the order' do
       2.times { order.items << item }
-      expect(order.total).to eq("Total: #{TEST_PRICE*2}")
+      expect(order.total).to eq("Total: #{TEST_PRICE * 2}")
     end
   end
 

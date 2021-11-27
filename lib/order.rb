@@ -6,7 +6,7 @@ class Order
 
   def initialize
     @items = []
-    @total
+    @total = 0
   end
 
   def summary
@@ -41,7 +41,8 @@ class Order
   end
 
   private
+
   def calculate_total
-    @total = @items.reduce(0) { |total, item| total + item.values.last}
+    @total = @items.reduce(0) { |total, item| total + item.values.last }
   end
 end
