@@ -13,7 +13,7 @@ class Order
     @items.each do |item|
       item.each { |name, price| puts "#{name} - £#{price}" }
     end
-    true
+    total
   end
 
   def total

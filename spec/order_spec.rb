@@ -30,7 +30,7 @@ describe Order do
     it 'sends a confirmation text' do
       order.items << item
       allow(order).to receive(:send_text)
-      expect(order).to receive(:send_text).with("Thank you for your order: £#{TEST_PRICE}")
+      expect(order).to receive(:send_text).with("Thank you! Your order was placed and will be delivered before #{(Time.now + (60 * 60)).strftime("%k:%M")}.")
       order.complete
     end
   end
