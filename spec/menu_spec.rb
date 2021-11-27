@@ -22,7 +22,7 @@ describe Menu do
       it "stores several meals in the basket" do
         menu.choose_meal(2)
         menu.choose_meal(4)
-        expect(menu.basket).to eq(["KFC", "Bibimba_chicken", ])
+        expect(menu.basket).to eq(["KFC", "Bibimba_chicken"])
       end
     end
   end
@@ -31,12 +31,12 @@ describe Menu do
     let!(:menu)  { Menu.new }
 
     context "user adds item(s) to the basket" do
-      it "stores the price on the receipt_list" do
+      it "stores one price on the receipt_list" do
         menu.choose_meal(4)
         expect(menu.receipt_list).to eq([10])
       end
     
-      it "stores the prices on the receipt_list" do
+      it "stores multiple prices on the receipt_list" do
         menu.choose_meal(3)
         menu.choose_meal(6)
         expect(menu.receipt_list).to eq([12.50, 4])
@@ -48,16 +48,16 @@ describe Menu do
     let!(:menu)  { Menu.new }
 
     it "raises an error if user don't input an Integer to select a meal" do
-      expect{ menu.choose_meal("kimbab") }.to raise_error "Please, input the meal number"
+      expect { menu.choose_meal("kimbab") }.to raise_error "Please, input the meal number"
     end
 
     it "raises an error if user don't input anything to select a meal" do
-      expect{menu.choose_meal(nil)}.to raise_error "Please, input the meal number"
+      expect { menu.choose_meal(nil) }.to raise_error "Please, input the meal number"
     end
 
     it "raises an error if user chooses number that doesn't correspond to a meal" do
-      expect{ menu.choose_meal(0 - Menu::MEALS_LIST.size) }.to raise_error "sorry we don't have this item. Pick a meal from the menu, please"
-      expect{menu.choose_meal(Menu::MEALS_LIST.size + 2)}.to raise_error "sorry we don't have this item. Pick a meal from the menu, please"
+      expect { menu.choose_meal(0 - Menu::MEALS_LIST.size) }.to raise_error "sorry we don't have this item"
+      expect { menu.choose_meal(Menu::MEALS_LIST.size + 2) }.to raise_error "sorry we don't have this item"
     end
   end
 end

@@ -18,23 +18,10 @@ class Menu
     11 => ["Checkout"]
   }
 
-# method is meant for feature tests
-# it automatically print the menu and awaits user input
   def initialize
     @basket = []
     @receipt_list = []
-    # interactive_menu
   end
-
-# # interactive menu and print_menu can be tested in irb only
-#   def interactive_menu
-#     loop do
-#       print_menu
-#       meal_number = STDIN.gets.chomp.to_i
-#       meal_number = gets.chomp.to_i
-#     #   process(meal_number)
-#     end
-#   end
 
   def print_menu
     print MEALS_LIST
@@ -49,26 +36,26 @@ class Menu
     # puts "__________________________________________________________"
   end
 
-  def choose_meal(meal_number)
-    # TODO : Has too many lines
+  def choose_meal(meal_number) # TODO : Has too many lines
     @meal_number = meal_number
-    # raise "Please, input the meal number" unless @meal_number.is_a?(Integer)
-    if !(@meal_number.is_a?(Integer)) || @meal_number.nil?
-      raise "Please, input the meal number"
-    elsif @meal_number < MEALS_LIST.keys[0] || @meal_number > MEALS_LIST.keys[-1]
-      raise "sorry we don't have this item. Pick a meal from the menu, please"
-      #interactive_menu
-    elsif @meal_number == MEALS_LIST.keys[-2]
+    raise "Please, input the meal number" if @meal_number.class != Integer || @meal_number.nil?
+    first_item = MEALS_LIST.keys[0]
+    last_item = MEALS_LIST.keys[-1]
+    raise "sorry we don't have this item" if @meal_number < first_item || @meal_number > last_item
+    if @meal_number == MEALS_LIST.keys[-2]
       exit
     elsif @meal_number == MEALS_LIST.keys[-1]
       checkout
     else
-      add_to_basket
-      add_to_receipt
+      order_meal
     end
   end
-  
 
+  def order_meal
+    add_to_basket
+    add_to_receipt
+  end
+  
   def add_to_basket
     @basket << MEALS_LIST[@meal_number][0]
   end
@@ -77,5 +64,3 @@ class Menu
     @receipt_list << MEALS_LIST[@meal_number][1]
   end
 end
-
-# interactive_menu
