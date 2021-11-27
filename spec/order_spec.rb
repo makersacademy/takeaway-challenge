@@ -3,7 +3,7 @@ require 'order'
 describe Order do
   before do
     @menu_class = double("MenuClass")
-    allow(@menu_class).to receive(:dishes).and_return({ "Fries" => 3.0,"Coca Cola" => 1.5 })
+    allow(@menu_class).to receive(:dishes).and_return({ "Fries" => 3.0, "Coca Cola" => 1.5 })
     @order = Order.new(menu: @menu_class)
   end
   
@@ -19,9 +19,9 @@ describe Order do
   end
 
   context "Selecting available dishes" do
-    # Stubbing stdout to not have tests write lines into the terminal
     before do
-      allow($stdout).to receive(:write).and_return(nil)
+      # Stubbing stdout to not have tests write lines into the terminal
+     allow($stdout).to receive(:write).and_return(nil)
     end
 
     it "Responds to #select_dishes" do
@@ -50,6 +50,22 @@ describe Order do
       allow(@order).to receive(:gets).and_return("", "Fries", "3", "exit")
       @order.select_dishes 
       expect(@order.selected_dishes).to eq({ "Fries" => 5 })
+    end
+
+  end
+
+  context "Checking total" do
+    
+    before do
+     allow($stdout).to receive(:write).and_return(nil)
+    end
+
+    it "Returns the price of a selected dishes from the menu" do
+      allow(@order).to receive(:gets).and_return("", "Fries", "2", "exit")
+      @order.select_dishes 
+      allow(@order).to receive(:gets).and_return("", "Coca Cola", "2", "exit")
+      @order.select_dishes 
+      expect(@order.send(:order_total)).to eq 9
     end
   end
 

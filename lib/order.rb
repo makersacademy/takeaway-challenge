@@ -15,19 +15,19 @@ class Order
   def select_dishes
     while true
       puts "hit enter to continue or type 'exit' to exit."
-      input = gets.chomp.capitalize
-      break if input == "Exit"
+      input = gets.chomp
+      break if input == "exit"
 
       dish, quantity = user_input
       @selected_dishes[dish].nil? ? @selected_dishes[dish] = quantity : @selected_dishes[dish] += quantity
     end
-  end
+  end 
 
   private
 
   def user_input
     puts "Dish:"
-    dish = gets.chomp.capitalize
+    p dish = gets.chomp
     raise "Dish not in menu" unless in_menu?(dish)
     puts "Quantity:"
     quantity = gets.to_i
@@ -36,6 +36,14 @@ class Order
 
   def in_menu?(dish)
     @menu_class.dishes.has_key?(dish)
+  end
+
+  def order_total
+    total = 0
+    for key,value in @selected_dishes do 
+      total += @menu_class.dishes[key] * value
+    end
+    total
   end
   
 end
