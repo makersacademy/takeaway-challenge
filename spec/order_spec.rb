@@ -21,50 +21,42 @@ describe Order do
   context "Selecting available dishes" do
     before do
       # Stubbing stdout to not have tests write lines into the terminal
-     allow($stdout).to receive(:write).and_return(nil)
+      allow($stdout).to receive(:write).and_return(nil)
     end
 
     it "Responds to #select_dishes" do
       expect(@order).to respond_to(:select_dishes)
     end
 
-    it "When user types exit loop ends" do
-      allow(@order).to receive(:gets).and_return('exit')
+    it "When user types 99 loop ends" do
+      allow(@order).to receive(:gets).and_return('99')
       expect(@order.select_dishes).to eq nil
     end
 
-    it "Raises an error if dish typed by user not in menu" do
-      allow(@order).to receive(:gets).and_return("", "Burger", "2'", "exit")
-      expect { @order.select_dishes }.to raise_error "Dish not in menu"
-    end
-
     it "Adds dish and correct quantity to @selected_dishes hash" do
-      allow(@order).to receive(:gets).and_return("", "Fries", "2'", "exit")
+      allow(@order).to receive(:gets).and_return("1","1", "99")
       @order.select_dishes
       expect(@order.selected_dishes).to eq({ "Fries" => 2 })
     end
-
-    it "If dish already selected previously by user it updates the value" do
-      allow(@order).to receive(:gets).and_return("", "Fries", "2", "exit")
-      @order.select_dishes 
-      allow(@order).to receive(:gets).and_return("", "Fries", "3", "exit")
-      @order.select_dishes 
-      expect(@order.selected_dishes).to eq({ "Fries" => 5 })
-    end
-
   end
 
   context "Checking total" do
-    
     before do
-     allow($stdout).to receive(:write).and_return(nil)
+      allow($stdout).to receive(:write).and_return(nil)
+      allow(@order).to receive(:gets).and_return("1","1","2","2","99")
+    end
+
+    it "Responds to #check_total" do
+      expect(@order).to respond_to(:check_total)
+    end
+
+    it "Shows user how much everything in order costs" do
+      @order.select_dishes     
+      expect(@order.check_total).to eq "Fries 2 - £6.0\nCoca Cola 2 - £3.0\nTotal - £9.0"
     end
 
     it "Returns the price of a selected dishes from the menu" do
-      allow(@order).to receive(:gets).and_return("", "Fries", "2", "exit")
-      @order.select_dishes 
-      allow(@order).to receive(:gets).and_return("", "Coca Cola", "2", "exit")
-      @order.select_dishes 
+      @order.select_dishes     
       expect(@order.send(:order_total)).to eq 9
     end
   end

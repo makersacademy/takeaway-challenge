@@ -14,33 +14,42 @@ class Order
 
   def select_dishes
     while true
-      puts "hit enter to continue or type 'exit' to exit."
-      input = gets.chomp
-      break if input == "exit"
-
-      dish, quantity = user_input
-      @selected_dishes[dish].nil? ? @selected_dishes[dish] = quantity : @selected_dishes[dish] += quantity
+      numbered_list_dishes
+      input = user_input
+      break if input == 99
+      dish = @menu_class.dishes.keys[input - 1]
+      @selected_dishes[dish].nil? ? @selected_dishes[dish] = 1 : @selected_dishes[dish] += 1
     end
-  end 
+  end
+
+  def check_total
+    array = []
+    @selected_dishes.each do |key,value|
+      array << "#{key} #{value} - £#{@menu_class.dishes[key] * value}"
+    end
+    array << "Total - £#{order_total}"
+    array.join("\n")
+  end
 
   private
 
-  def user_input
-    puts "Dish:"
-    p dish = gets.chomp
-    raise "Dish not in menu" unless in_menu?(dish)
-    puts "Quantity:"
-    quantity = gets.to_i
-    return dish, quantity
+  def numbered_list_dishes
+    counter = 0
+    @menu_class.dishes.each do |key,value|
+      puts "#{counter + 1}. #{key} - £#{value}"
+      counter += 1
+    end
+    puts "99. Exit"
   end
 
-  def in_menu?(dish)
-    @menu_class.dishes.has_key?(dish)
+  def user_input
+    puts "Select from above"
+    input = gets.to_i
   end
 
   def order_total
     total = 0
-    for key,value in @selected_dishes do 
+    @selected_dishes.each do |key,value|
       total += @menu_class.dishes[key] * value
     end
     total
