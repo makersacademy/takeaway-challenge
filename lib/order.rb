@@ -1,5 +1,3 @@
-
-
 class Order
   attr_reader :items
 
@@ -7,13 +5,14 @@ class Order
     @items = []
   end
 
-  def show
+  def summary
     @items.each do |item|
-      item.each { |name, price| puts "#{items.index(item) + 1}. #{name} - £#{price}" }
+      item.each { |name, price| puts "#{name} - £#{price}" }
     end
+    true
   end
 
   def total
-    @items.reduce(0) { |total, item| total + item.values.last}
+    "Total: #{@items.reduce(0) { |total, item| total + item.values.last}}"
   end
 end

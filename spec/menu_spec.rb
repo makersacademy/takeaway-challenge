@@ -23,11 +23,11 @@ describe Menu do
     end
   end
 
-  describe '#add_item' do
+  describe '#add_to_order' do
     it 'adds items to an order' do
       order = double("Order", :items => [] )
       subject.dishes << dish
-      subject.add_item(order, 1)
+      subject.add_to_order(order, 1)
       expect(order.items.include?(dish)).to be_truthy
     end
   end

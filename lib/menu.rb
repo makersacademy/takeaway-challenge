@@ -11,7 +11,7 @@ class Menu
     end
   end
 
-  def add_item(order, item_number)
+  def add_to_order(order, item_number)
     order.items << dishes[item_number - 1]
   end
 end
