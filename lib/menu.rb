@@ -1,4 +1,9 @@
- MEALS = {
+
+class Menu
+
+  attr_reader :basket, :receipt_list, :meals_list
+
+   MEALS_LIST = {
     1 => [ "Kimbab", 8 ],
     2 => [ "KFC", 6 ],
     3 => [ "Bibimbab_beef" , 12.50 ] ,
@@ -11,10 +16,6 @@
     10 => [ "Exit menu" ],
     11 => [ "Checkout" ]
 }
-
-class Menu
-
-  attr_reader :basket, :receipt_list
 
 # method is meant for feature tests
 # it automatically print the menu and awaits user input
@@ -34,26 +35,27 @@ class Menu
 #     end
 #   end
 
-#   def print_menu
-#     puts "Welcome, this is our menu".center(40)
-#     puts "Please enter the number of the meal you would like to add to the basket"
-#     # puts "Press enter twice when you're done"
-#     puts "___________________________________________________________"
-#     puts
-#     MEALS.each do |key , value|
-#       puts "#{key} to select #{value[0]} : £#{value[1]}".center(40)
-#     end
-#     puts "__________________________________________________________"
-#   end
+  def print_menu
+    print MEALS_LIST
+    # puts "Welcome, this is our menu".center(40)
+    # puts "Please enter the number of the meal you would like to add to the basket"
+    # # puts "Press enter twice when you're done"
+    # puts "___________________________________________________________"
+    # puts
+    # MEALS.each do |key , value|
+    #   puts "#{key} to select #{value[0]} : £#{value[1]}".center(40)
+    # end
+    # puts "__________________________________________________________"
+  end
 
   def process(meal_number)
     @meal_number = meal_number
-    if @meal_number.nil? || @meal_number < MEALS.keys[0] || @meal_number > MEALS.keys[-1]
+    if @meal_number.nil? || @meal_number < MEALS_LIST.keys[0] || @meal_number >  MEALS_LIST.keys[-1]
       "sorry we don't have this item. Pick a meal from the menu, please"
       interactive_menu
-    elsif @meal_number == MEALS.keys[-2]
+    elsif @meal_number == MEALS_LIST.keys[-2]
         exit
-    elsif @meal_number == MEALS.keys[-1]
+    elsif @meal_number == MEALS_LIST.keys[-1]
         checkout
     else
       add_to_basket
@@ -62,16 +64,12 @@ class Menu
   end
 
   def add_to_basket
-    # p chosen_meal = MEALS[@meal_number][0]
-    @basket << MEALS[@meal_number][0]
-    # p @basket
+    @basket << MEALS_LIST[@meal_number][0]
   end
 
   def add_to_receipt
-    # p price = MEALS[@meal_number][1]
-     @receipt_list << MEALS[@meal_number][1]
-    # p @receipt_list
+     @receipt_list << MEALS_LIST[@meal_number][1]
   end
 end
 
-#interactive_menu
+# interactive_menu

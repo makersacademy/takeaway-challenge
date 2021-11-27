@@ -2,11 +2,19 @@ require 'menu'
 
 describe Menu do
 
-  it "can print the menu" do
-    expect(:print_menu).to be
+#   it "can print the menu" do
+#     expect(:print_menu).to be_a_kind_of(String)
+#   end
+
+  describe "test print_menu" do
+    let!(:menu)  { Menu.new }
+
+    it "should print the menu when ran" do        
+      expect { menu.print_menu }.to output(Menu::MEALS_LIST.to_s).to_stdout
+    end
   end
 
-  describe "#add_to_basket" do
+  describe "test add_to_basket method" do
     let!(:menu)  { Menu.new }
 
     context "user adds item(s) to the basket" do
@@ -23,7 +31,7 @@ describe Menu do
     end
   end
 
-  describe "#add_to_receipt" do
+  describe "test add_to_receipt method" do
     let!(:menu)  { Menu.new }
 
     context "user adds item(s) to the basket" do
