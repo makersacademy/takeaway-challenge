@@ -22,7 +22,8 @@ class Menu
   def interactive_menu
     loop do
       print_menu
-      meal_number = STDIN.gets.chomp.to_i
+    #   meal_number = STDIN.gets.chomp.to_i
+      meal_number = gets.chomp.to_i
       process(meal_number)
     end
   end
