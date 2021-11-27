@@ -10,12 +10,24 @@ class TakeAway
     @menu.list_dishes
   end
 
-  def add_to_cart(name, quantity)
-    @cart << @menu.select_dish(name, quantity)
+  def add_to_cart(name, quantity = 1)
+    new_dish = @menu.select_dish(name, quantity)
+    update_dish_quantity(new_dish) || @cart << new_dish
   end
 
   def cart
     @cart
+  end
+
+  def update_dish_quantity(new_dish)
+    edit = false
+    @cart.each do |item|
+      if item[:dish] == new_dish[:dish]
+        item[:quantity] += new_dish[:quantity]
+        edit = true
+      end
+    end
+    edit
   end
 
 end
