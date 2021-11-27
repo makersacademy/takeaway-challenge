@@ -11,7 +11,7 @@ describe Menu do
 
     specify 'dishes have a price' do
       dish = double("Fried Chicken", :price => 8)
-      subject.dishes["Fried Chicken"] => 8
+      subject.dishes << dish
       expect(subject.show.last.price).to be(8)
     end
   end
