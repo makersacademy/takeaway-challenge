@@ -14,37 +14,37 @@
 
 class Menu
 
-  attr_reader :basket, :receipt
+  attr_reader :basket, :receipt_list
 
 # method is meant for feature tests
 # it automatically print the menu and awaits user input
   def initialize
     @basket = []
-    @receipt = []
+    @receipt_list = []
     # interactive_menu
   end
 
-# interactive menu is tested in irb only
-  def interactive_menu
-    loop do
-      print_menu
-      meal_number = STDIN.gets.chomp.to_i
-      meal_number = gets.chomp.to_i
-    #   process(meal_number)
-    end
-  end
+# # interactive menu and print_menu can be tested in irb only
+#   def interactive_menu
+#     loop do
+#       print_menu
+#       meal_number = STDIN.gets.chomp.to_i
+#       meal_number = gets.chomp.to_i
+#     #   process(meal_number)
+#     end
+#   end
 
-  def print_menu
-    puts "Welcome, this is our menu".center(40)
-    puts "Please enter the number of the meal you would like to add to the basket"
-    # puts "Press enter twice when you're done"
-    puts "___________________________________________________________"
-    puts
-    MEALS.each do |key , value|
-      puts "#{key} to select #{value[0]} : £#{value[1]}".center(40)
-    end
-    puts "__________________________________________________________"
-  end
+#   def print_menu
+#     puts "Welcome, this is our menu".center(40)
+#     puts "Please enter the number of the meal you would like to add to the basket"
+#     # puts "Press enter twice when you're done"
+#     puts "___________________________________________________________"
+#     puts
+#     MEALS.each do |key , value|
+#       puts "#{key} to select #{value[0]} : £#{value[1]}".center(40)
+#     end
+#     puts "__________________________________________________________"
+#   end
 
   def process(meal_number)
     @meal_number = meal_number
@@ -64,13 +64,13 @@ class Menu
   def add_to_basket
     # p chosen_meal = MEALS[@meal_number][0]
     @basket << MEALS[@meal_number][0]
-    p @basket
+    # p @basket
   end
 
   def add_to_receipt
     # p price = MEALS[@meal_number][1]
-     @receipt << MEALS[@meal_number][1]
-    p @receipt
+     @receipt_list << MEALS[@meal_number][1]
+    # p @receipt_list
   end
 end
 

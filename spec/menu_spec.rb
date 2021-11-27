@@ -23,4 +23,21 @@ describe Menu do
     end
   end
 
+  describe "#add_to_receipt" do
+    let!(:menu)  { Menu.new }
+
+    context "user adds item(s) to the basket" do
+      # let!(:user_input) { double("user") } 
+      it "stores the price on the receipt_list" do
+        menu.process(4)
+        expect(menu.receipt_list).to eq([10])
+      end
+    
+      it "stores the prices on the receipt_list" do
+        menu.process(3)
+        menu.process(6)
+        expect(menu.receipt_list).to eq([12.50, 4])
+      end
+    end
+  end
 end
