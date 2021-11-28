@@ -10,6 +10,11 @@ class Order
 
   def add(dish, quantity)
     price = @menu.dishes[dish].to_f * quantity
-    @summary[dish] = { quantity: quantity, price: price }
+    if @summary.has_key?(dish)
+      @summary[dish][:quantity] += quantity
+      @summary[dish][:price] += price
+    else
+      @summary[dish] = { quantity: quantity, price: price }
+    end
   end
 end

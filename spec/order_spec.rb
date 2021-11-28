@@ -18,9 +18,17 @@ describe Order do
       expect(order.summary).to eq({ 'iced tea' => { :quantity => 2, :price => 7.00 } })
     end
 
-    # takes a dish 
-    # takes a quantity
-    # if dish already in summary, quantity is accumulated
+    it 'sums quantity if dish is already in the order summary' do
+      order.add('halloumi wrap', 1)
+
+      expect { order.add('halloumi wrap', 1) }.to change { order.summary['halloumi wrap'][:quantity] }.from(1).to(2)
+    end
+
+    it 'sums price if dish is already in the order summary' do
+      order.add('halloumi wrap', 1)
+
+      expect { order.add('halloumi wrap', 1) }.to change { order.summary['halloumi wrap'][:price] }.from(6.50).to(13.00)
+    end   
     # it calculates the cost of dish times quantity
     # returns the current order list
   end
