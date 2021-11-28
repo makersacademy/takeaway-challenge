@@ -37,13 +37,22 @@ describe Order do
     end
   end
 
-  describe '#print' do
+  describe '#print_summary' do
     it 'prints the current order list to standard output' do
       order.add('iced tea', 2)
       order.add('halloumi wrap', 2)
 
-      expect { order.print }.to output("2 - iced tea - £7.00\n2 - halloumi wrap - £13.00\n").to_stdout
+      expect { order.print_summary }.to output("2 - iced tea - £7.00\n2 - halloumi wrap - £13.00\n").to_stdout
     end
   end
-  # checkout method takes users name, phone number, address, sends a confirmation text, and returns the checkout summary including cost breakdown
+
+  describe '#checkout' do
+    it 'prints the checkout summary' do
+      order.add('iced tea', 2)
+      order.add('halloumi wrap', 2)
+      
+      expect { order.checkout('name', '01234567891', 'postal address') }.to output("name, postal address, 01234567891\nLEONA\n****\n2 - iced tea - £7.00\n2 - halloumi wrap - £13.00\nTOTAL: £20.00\n****\n").to_stdout
+    end
+    # sends a confirmation text, and returns the checkout summary including cost breakdown
+  end
 end

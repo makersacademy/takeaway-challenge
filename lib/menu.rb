@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :dishes
+  attr_reader :dishes, :restaurant
 
   @@restaurants = {
     'Five Girls' => {

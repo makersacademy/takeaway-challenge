@@ -14,8 +14,15 @@ class Order
     @summary
   end
 
-  def print
+  def print_summary
     @summary.each { |dish, hash| puts "#{hash[:quantity]} - #{dish} - £#{"%.2f" % hash[:price]}" }
+  end
+
+  def checkout(name, number, address)
+    puts "#{name}, #{address}, #{number}\n#{@menu.restaurant}\n****"
+    print_summary
+    total = @summary.map { |_, hash| hash[:price] }.sum
+    puts "TOTAL: £#{"%.2f" % total}\n****"
   end
 
   private
