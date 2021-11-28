@@ -27,11 +27,3 @@ class Menu
   end
 
 end
-
-# @dishes = {
-#       marinara: "£5.50",
-#       margherita: "£6.50",
-#       pepperoni: "£8",
-#       capricciosa: "£10",
-#       bufala: "£11"
-#     }

@@ -18,10 +18,9 @@ describe Menu do
     end
 
     it "raise an error if dish not in the menu" do
-      expect{ menu.select_dish("pineapple") }.to raise_error("dish not available")
+      expect { menu.select_dish("pineapple") }.to raise_error("dish not available")
     end
 
   end
-
 
 end

@@ -23,7 +23,7 @@ describe TakeAway do
 
     # bug in the test to resolve
     it "update existing dish quantity if already in the cart" do
-      menu = double("menu", select_dish: {dish: "margherita", quantity: 1})
+      menu = double("menu", select_dish: { dish: "margherita", quantity: 1 })
       take_away = TakeAway.new(menu: menu)
       2.times { take_away.add_to_cart(double(), double()) }
       expect(take_away.cart.last[:quantity]).to eq 2
@@ -40,7 +40,7 @@ describe TakeAway do
   end
 
   it "return the total price" do
-    menu = double("menu", select_dish: {dish: "margherita", price: "6.50", quantity: 5})
+    menu = double("menu", select_dish: { dish: "margherita", price: "6.50", quantity: 5 })
     take_away = TakeAway.new(menu: menu)
     take_away.add_to_cart(double())
     total = 6.50 * 5
@@ -51,7 +51,7 @@ describe TakeAway do
     
     it "raise an error if shopping cart is empty" do
       take_away = TakeAway.new
-      expect{ take_away.place_order }.to raise_error("The cart is empty, add some items before placing an order!")
+      expect { take_away.place_order }.to raise_error("The cart is empty, add some items before placing an order!")
     end
 
     it "send a sms message confirming the order was placed" do
