@@ -2,7 +2,7 @@ require_relative 'menu'
 
 class Order
 
-  attr_reader :order, :total
+  attr_reader :order, :total, :menu
 
   def initialize
     @menu = Menu.new.print_menu
@@ -22,5 +22,11 @@ class Order
       end
     end
     puts "Total: £#{@total}"
+  end
+
+  def submit_and_confirm
+    raise "Your order is empty" if @order.empty?
+    time = Time.new
+    puts "Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}"
   end
 end 
