@@ -1,10 +1,10 @@
 
 class Order
 
-    attr_reader :basket
+    attr_reader :my_dishes
 
     def initialize
-        @basket = []
+        @my_dishes = []
     end 
 
 end 
