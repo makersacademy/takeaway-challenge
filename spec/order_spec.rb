@@ -36,7 +36,14 @@ describe Order do
       expect(order.add('halloumi wrap', 2)).to eq order.summary
     end
   end
+
+  describe '#print' do
+    it 'prints the current order list to standard output' do
+      order.add('iced tea', 2)
+      order.add('halloumi wrap', 2)
+
+      expect { order.print }.to output("2 - iced tea - £7.00\n2 - halloumi wrap - £13.00\n").to_stdout
+    end
+  end
   # checkout method takes users name, phone number, address, sends a confirmation text, and returns the checkout summary including cost breakdown
-  # order method prints current order list
-  # specify { expect { print('foo') }.to output('foo').to_stdout }
 end

@@ -14,6 +14,10 @@ class Order
     @summary
   end
 
+  def print
+    @summary.each { |dish, hash| puts "#{hash[:quantity]} - #{dish} - £#{"%.2f" % hash[:price]}" }
+  end
+
   private
 
   def add_to_summary(dish, quantity, price)
