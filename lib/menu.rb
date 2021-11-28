@@ -26,7 +26,7 @@ class Menu
 
   def cost_specific_dish(dish)
     @menu_hash.each{ |food, price|
-      if dish(&to_sym) == food
+      if dish.to_sym == food
         puts "£#{price}"
       end}
     end

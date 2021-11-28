@@ -12,6 +12,13 @@ describe Menu do
     expect(subject.menu_hash).to eq :pizza => 4
   end
 
+  
+  #it 'should be able to print the menu, showing the dish and price' do
+   # subject.add_to_menu("pizza", 4)
+    #expect(subject.show_menu).to eq('1. pizza = £4')
+  #end
+
+ #need help with this
 
 
 
