@@ -55,11 +55,6 @@ describe Takeaway do
       @takeaway.order     
       expect(@takeaway.check_order).to eq "Fries x2 - £6.0\nCoca Cola x2 - £3.0\nTotal - £9.0"
     end
-
-    it "Returns the price of a selected dishes from the menu" do
-      @takeaway.order     
-      expect(@takeaway.send(:order_total)).to eq 9
-    end
   end
 
   context "Confirms customer order" do
