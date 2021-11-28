@@ -86,11 +86,11 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 *Thoughts & Notes*
 ------------------
 #Friday 26th of november '21
-I created a interactive menu based on the student directory we created a few weeks ago.
+I create a interactive menu based on the student directory we created a few weeks ago.
 this should implement basic funtions for the user story 1 and 2
-the user can :
-- check the menu (list of prices and dishes)
-- can order a meal (add to basket several dishes)
+the user can 
+check the menu (list of prices and dishes)
+can order a meal (add to basket several dishes)
 
 here is the diagram for the application I am trying to build : https://wireframe.cc/7hfxO2
 
@@ -261,6 +261,7 @@ __________________________________________________________
 11
 /Users/Swa/Desktop/Projects/solo-challenges/takeaway-challenge/lib/menu.rb:50:in `process': undefined local variable or method `checkout' for #<Menu:0x00007fcadb028a98 @basket=["Kimbab", "Patato_salad", "Kimchi_pancake"], @receipt=[8, 5, 5], @meal_number=11> (NameError)
 ```
+
 we can see that the items are added to the @basket and the prices to the @receipt
 I am planning to use theses element to build a check_out function
 
@@ -296,7 +297,7 @@ I don't know what this message mean
 rubocop = lib/menu.rb:6:17: C: [Correctable] Style/MutableConstant: Freeze mutable objects assigned to constants.
    MEALS_LIST = { ...
                 ^
-                
+
 #Sunday 28th of november '21
 
 I have created a checkout class which will be in charge of processing the order (place_order from menu)
@@ -305,6 +306,7 @@ I struggled to create proper mock and subs for the test...
 
 #Feature test in irb for menu.rb
 works well until I want to check out:
+```
 3.0.2 :001 > menu = Menu.new
  => #<Menu:0x00007fd940104ef8 @basket=[], @receipt_list=[]> 
 3.0.2 :002 > menu.print_menu
@@ -321,12 +323,54 @@ works well until I want to check out:
  => [12.5, 4, 5] 
 3.0.2 :008 > menu.choose_meal(11)
 /Users/Swa/Desktop/Projects/solo-challenges/takeaway-challenge/lib/menu.rb:48:in `choose_meal': undefined local variable or method `place_order' for #<Menu:0x00007fd940104ef8 @basket=[["Bibimbab_beef", 12.5], ["Kimchi", 4], ["Patato_salad", 5]], @receipt_list=[12.5, 4, 5], @meal_number=11> (NameError)
-        from (irb):8:in `<main>'
-        from /Users/Swa/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
-        from /Users/Swa/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
-        from /Users/Swa/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+```
 
 
 in Menu.rb I added "Checkout" to be instantiated with @basket and @receipt list as argument to be passed to the Checkout.rb
 this makes its easier to test as I can create custorm argument to behave like @basket and @receipt_list
 (unsuccessful Mocking of @basket @receipt_list)
+
+
+following step by step to test twilio:
+https://www.twilio.com/blog/2016/09/how-to-send-an-sms-with-ruby-using-twilio.html
+
+I also watched this set up video :
+https://www.youtube.com/watch?v=8SLdV8dn7_I
+
+how to set up the environment variable first: hhttps://medium.com/@soni.dumitru/keeping-your-api-keys-secret-with-dotenv-b66aa05fdf71
+
+no result get error message back : [HTTP 400] 21604 : Unable to create record (Twilio::REST::RestError)
+A 'To' phone number is required.
+https://www.twilio.com/docs/errors/21604
+
+I must have stored my phone number (to which I want to sent the sms to) in the wrong way...
+
+- added an edge case on menu_spec.rb in case a user checks out with an empty basket
+- I am very suprised I managed to match the sms String in rspec. I thought I would have to mock the Time class but apparently not...
+
+
+#COVERAGE:  95.76% -- 113/118 lines in 4 files
+I am a bit stuck, I have all the methods but I struggle to make them work together properly
+there are those methods calling other methods that I struggle to test.
+and the irb test failed too...
+
+## Feature test
+```
+3.0.2 :001 > menu = Menu.new
+ => #<Menu:0x00007f82aa263a48 @basket=[], @checkout_class=Checkout, @receipt_list=[]> 
+3.0.2 :002 > menu.choose_meal(1)
+ => [8] 
+3.0.2 :003 > menu.choose_meal(8)
+ => [8, 5] 
+3.0.2 :004 > menu.basket
+ => [["Kimbab", 8], ["Kimchi_pancake", 5]] 
+3.0.2 :005 > menu.receipt_list
+ => [8, 5] 
+3.0.2 :006 > menu.choose_meal(11)
+ => #<Checkout:0x00007f82aa343ad0 @basket=[["Kimbab", 8], ["Kimchi_pancake", 5]], @receipt_list=[8, 5]> 
+3.0.2 :007 > menu.calculate_total
+(irb):7:in `<main>': undefined method `calculate_total' for #<Menu:0x00007f82aa263a48 @checkout_class=Checkout, @basket=[["Kimbab", 8], ["Kimchi_pancake", 5]], @receipt_list=[8, 5], @meal_number=11, @checkout=#<Checkout:0x00007f82aa343ad0 @basket=[["Kimbab", 8], ["Kimchi_pancake", 5]], @receipt_list=[8, 5]>> (NoMethodError)
+        from /Users/Swa/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/Swa/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/Swa/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+```
