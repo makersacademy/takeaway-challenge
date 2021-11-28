@@ -24,6 +24,8 @@ I would like to **receive a text** such as **"Thank you! Your order was placed a
 # Initialial Plan
 
 3 classes = class Menu, class Dish, class Order
-1 or 2 methods per class
+1 to 3 methods per class
 
-[attack image of first plan]
+[attach image of first plan]
+
+[attach image of completed challenge]

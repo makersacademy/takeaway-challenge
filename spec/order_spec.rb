@@ -33,4 +33,12 @@ Total:             £7
       ).to_stdout
     end
   end
+
+  describe "#confirm_order?" do
+    it "confirms the order" do
+      my_order = [{ "Pepperoni Pizza" => 4, "Onion Rings" => 3 }]
+      allow(new_order).to receive(:new_order).and_return(my_order)
+      expect { order.confirm_order?("yes") }.to change { order.confirm_order }.to be true
+    end
+  end
 end

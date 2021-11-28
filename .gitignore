@@ -4,3 +4,4 @@ MY_README.md
 
 # Local cache of Rubocop remote config
 .rubocop-*
+config/env.yml

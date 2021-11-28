@@ -14,9 +14,9 @@ describe Dishes do
     end
   end
 
-  describe "#available?" do
-    it "returns true if 2 portions of fries are available" do
-      expect(dishes.available?(5, 2)).to eq true
+  describe "#is_available?" do
+    it "raises error if dish is not available" do
+      expect { dishes.is_available?(1, 11) }.to raise_error "Not enough available dishes, select a lower amount or a different dish please"
     end
   end
 end
