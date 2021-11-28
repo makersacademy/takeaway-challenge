@@ -8,6 +8,6 @@ describe Menu do
   subject(:menu) { described_class.new }
   let(:print_menu) { "Margherita Pizza: £8" }
   it "can print menu" do
-     expect(menu.print_menu).to eq(menu.menu)
+    expect(menu.print_menu).to eq(menu.menu)
   end
 end
