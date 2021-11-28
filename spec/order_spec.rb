@@ -1,6 +1,11 @@
 require 'order'
 
 describe MyOrder do 
+  
+  before do
+    allow(subject).to receive(:send_text)
+  end
+
   let(:bad_item) { 'DEFINITELY NOT AN ITEM ON THE MENU' }
   let(:good_item) { :'Spring Rolls' }
   let(:good_item_price) { 2.99 }
