@@ -22,4 +22,13 @@ class Restaurant
 		@orders = []
 	end
 
+	def add_to_cart(item)
+		@pizza_menu.each do |hash|
+			if hash.has_key?(item.downcase.to_sym)
+				@orders.push(hash)
+			end
+		end
+		"#{item} successfully submitted!"
+	end
+
 end
