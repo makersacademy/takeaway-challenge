@@ -1,8 +1,10 @@
 require_relative './menu'
+require_relative './send_sms'
 
 class TakeAway
-  def initialize(menu: Menu.new)
+  def initialize(menu: Menu.new, sender: SmsSender.new)
     @menu = menu
+    @sender = sender
     @cart = []
   end
 
@@ -36,6 +38,13 @@ class TakeAway
       memo + (price * item[:quantity])
     }
     "total price: £#{total}"
+  end
+
+  def place_order
+    raise "The cart is empty, add some items before placing an order!" unless !@cart.empty?
+    message = @sender.send_sms
+    @cart = []
+    message.body
   end
 
 end
