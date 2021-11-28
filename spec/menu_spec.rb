@@ -59,5 +59,9 @@ describe Menu do
       expect { menu.choose_meal(0 - Menu::MEALS_LIST.size) }.to raise_error "sorry we don't have this item"
       expect { menu.choose_meal(Menu::MEALS_LIST.size + 2) }.to raise_error "sorry we don't have this item"
     end
+
+    # TODO : Edge case user have nothing in his basket
+    # context "user has nothing in his basket and tries to place_order"
+    # end
   end
 end

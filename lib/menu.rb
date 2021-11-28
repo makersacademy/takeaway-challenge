@@ -1,7 +1,7 @@
 
 class Menu
 
-  attr_accessor :basket, :receipt_list
+  attr_reader :basket, :receipt_list
 
   MEALS_LIST =
   {
@@ -18,14 +18,15 @@ class Menu
     11 => ["Checkout"]
   }
 
-  def initialize
+  def initialize(checkout_class = Checkout)
+    @checkout_class = checkout_class
     @basket = []
     @receipt_list = []
   end
 
   def print_menu
     print MEALS_LIST
-    # puts "Welcome, this is our menu".center(50)
+    # _puts "Welcome, this is our menu".center(50)
     # puts "Please enter the number of the meal you would like to add to the basket"
     # # puts "Press enter twice when you're done"
     # puts "___________________________________________________________"
@@ -45,7 +46,8 @@ class Menu
     if @meal_number == MEALS_LIST.keys[-2]
       exit
     elsif @meal_number == MEALS_LIST.keys[-1]
-      checkout
+    #    raise "sorry but your basket is empty"
+      @checkout_class.new(@basket, @receipt_list)
     else
       add_to_basket
       add_to_receipt
