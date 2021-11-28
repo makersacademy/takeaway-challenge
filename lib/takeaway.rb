@@ -7,10 +7,6 @@ class Takeaway
     @sum = 0
   end
 
-  def add_dishes(dish, price)
-    @menu << { dish => price }    
-  end
-
   def add_orders(choice)
     @orders.push(choice)  
   end
@@ -20,9 +16,7 @@ class Takeaway
   end
 
   def orders_total
-    @orders.each do |choice|  
-       @sum += @menu[choice.to_sym].to_i 
-      end
-      @sum
+    @orders.each { |choice| @sum += @menu[choice.to_sym].to_i }
+    return @sum
     end 
 end

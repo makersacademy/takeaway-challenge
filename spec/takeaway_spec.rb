@@ -13,11 +13,7 @@ describe Takeaway do
     it "empty orders array" do
       expect(subject.orders).to eq []
     end
-    
-  end
-
-  describe "#add_dishes" do
-    it { is_expected.to respond_to(:add_dishes).with(2).argument }
+ 
   end
   
   describe "#print_menu" do
@@ -37,9 +33,9 @@ describe Takeaway do
   end
 
   it "sum of the order" do
-    subject.add_orders("rice")
-    subject.add_orders("beans")
-    subject.add_orders("yam")
+    subject.add_orders(:rice)
+    subject.add_orders(:beans)
+    subject.add_orders(:yam)
     expect(subject.orders_total).to eq 8
   end 
 end
