@@ -13,10 +13,17 @@ describe Takeaway do
   end
 
   describe '#add_to_basket' do
-    let(:dish) {double :food_item}
-        it 'adds food items into my basket' do
-        subject.add_to_basket(dish)
-        expect(subject.basket).to include (dish)
-        end 
+        it 'adds the food item and its price into my basket' do
+        subject.add_to_basket("Eggs Benedict")
+        expect(subject.basket).to include (["Eggs Benedict", 8.5])
+        end    
+
   end
+
+  describe '#show_cost' do
+    it 'displays the total cost of the order' do
+        subject.add_to_basket("Eggs Benedict")
+      expect(subject.show_cost).not_to eq 0
+    end
+  end 
 end 
