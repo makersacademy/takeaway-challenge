@@ -16,5 +16,6 @@ class Order
     else
       @summary[dish] = { quantity: quantity, price: price }
     end
+    @summary
   end
 end

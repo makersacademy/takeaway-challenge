@@ -12,7 +12,7 @@ describe Order do
   end
 
   describe '#add' do
-    it 'takes a dish and quantity as arguments and adds them to the order summary' do
+    it 'takes a dish and quantity, calculates the price, and adds them to the order summary' do
       order.add('iced tea', 2)
 
       expect(order.summary).to eq({ 'iced tea' => { :quantity => 2, :price => 7.00 } })
@@ -29,9 +29,14 @@ describe Order do
 
       expect { order.add('halloumi wrap', 1) }.to change { order.summary['halloumi wrap'][:price] }.from(6.50).to(13.00)
     end   
-    # it calculates the cost of dish times quantity
-    # returns the current order list
+    
+    it 'returns the current order list' do
+      order.add('iced tea', 2)
+
+      expect(order.add('halloumi wrap', 2)).to eq order.summary
+    end
   end
-# checkout method takes users name, phone number, address, sends a confirmation text, and returns the checkout summary including cost breakdown
-# order method prints current order list
+  # checkout method takes users name, phone number, address, sends a confirmation text, and returns the checkout summary including cost breakdown
+  # order method prints current order list
+  # specify { expect { print('foo') }.to output('foo').to_stdout }
 end
