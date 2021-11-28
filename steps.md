@@ -25,3 +25,7 @@ you can do gets.chomp with rspec? So I will just go back and change the class di
 
 # input new class diagram
 
+
+# TODO:
+- I am relying on the menu class at the order initialise to get the @menu info - does this need to change for testing?
+
