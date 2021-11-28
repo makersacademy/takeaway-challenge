@@ -12,18 +12,10 @@ describe Takeaway do
     end 
   end
 
-  describe '#add_to_basket' do
-        it 'adds the food item and its price into my basket' do
-        subject.add_to_basket("Eggs Benedict")
-        expect(subject.basket).to include (["Eggs Benedict", 8.5])
-        end    
-
-  end
-
-  describe '#show_cost' do
+  describe '#show_total' do
     it 'displays the total cost of the order' do
-        subject.add_to_basket("Eggs Benedict")
-      expect(subject.show_cost).not_to eq 0
+        subject.add_to_order("Eggs Benedict")
+      expect(subject.show_total).not_to eq 0
     end
   end 
 end 

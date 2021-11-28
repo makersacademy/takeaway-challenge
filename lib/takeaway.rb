@@ -1,14 +1,15 @@
+require_relative('./order.rb')
 class Takeaway
-  attr_reader :menu, :basket, :total
+  attr_reader :menu, :total, :order
 
-    def initialize
+    def initialize(order = Order.new)
       @menu = {
         "Eggs Benedict" => 8.50, 
          "Full English" => 9, 
          "Waffles" => 6
         }
-      @basket = []
       @total = 0
+      @order = order
     end 
 
     def print_menu
@@ -17,12 +18,12 @@ class Takeaway
       end 
     end
 
-    def add_to_basket(dish)
-       @basket << @menu.assoc(dish)
+    def add_to_order(dish)
+       @order.basket << @menu.assoc(dish)
     end 
 
-    def show_cost
-      @basket.each do |item, price| 
+    def show_total
+      @order.basket.each do |item, price| 
       @total += price
       end 
       puts total
