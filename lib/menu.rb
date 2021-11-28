@@ -1,7 +1,7 @@
 
 class Menu
 
-  attr_reader :basket, :receipt_list
+  attr_accessor :basket, :receipt_list
 
   MEALS_LIST =
   {
