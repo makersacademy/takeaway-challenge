@@ -1,4 +1,6 @@
 require_relative 'dish'
+require_relative 'twilioruby'
+require 'env'
 
 class Takeaway
 
@@ -6,8 +8,9 @@ class Takeaway
 
   def initialize
     @menu_object = []
-    @menu = {"Bryani" => 7, "Curry" => 9, "Beef" => 10, "Shrimp" => 11, "Korma" => 4}
+    @menu = { "Bryani" => 7, "Curry" => 9, "Beef" => 10, "Shrimp" => 11, "Korma" => 4 }
     @my_choices = []
+    @texter = SendMeAText.new
   end
 
   def add_item(name,price)
@@ -23,12 +26,12 @@ class Takeaway
   end
 
   def choose_dish(name)
-    unless @menu[name].nil?
-      puts "You've chosen #{name}!"
-      @my_choices << name
-    else
+    if @menu[name].nil?
       puts "That's not a menu option! We don't sell that"
       @my_choices
+    else
+      puts "You've chosen #{name}!"
+      @my_choices << name
     end
   end
 
@@ -50,6 +53,7 @@ class Takeaway
     return @final_order
   end
 
-  def send_text
+  def send_text(texter = @texter)
+    texter.send_text
   end
 end

@@ -8,7 +8,7 @@ describe Dish do
     expect(dish_name).to eq("Curry")
   end
 
-  it "Knows its own price"  do
+  it "Knows its own price" do
     dish = Dish.new
     expect(dish.price).to eq 5
   end

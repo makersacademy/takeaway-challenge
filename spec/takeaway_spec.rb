@@ -28,7 +28,6 @@ describe Takeaway do
     expect(subject.my_choices).not_to include("Chicken")
   end
 
-
   it "Can calculate the total of a number of dishes" do
     subject.choose_dish("Bryani")
   end
@@ -40,7 +39,10 @@ describe Takeaway do
   end
 
   it "Sends a message to Twilio to send a text" do
+    texter = double()
+    allow(texter).to receive(:send_text).and_return(true)
     expect(subject).to respond_to(:send_text)
+    expect(subject.send_text(texter)).to eq true
   end
 
 end
