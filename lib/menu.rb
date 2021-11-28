@@ -1,11 +1,12 @@
 require_relative 'dishes'
+require_relative 'order'
 
 class Menu
-  attr_reader :dishes_list, :order
+  attr_reader :dishes_list, :new_order
 
   def initialize(dishes_list = Dishes.new)
     @dishes_list = dishes_list
-    @order = []
+    @new_order = []
   end
 
   def print_available_dishes
@@ -18,7 +19,7 @@ class Menu
     amount.times do
       @dishes_list.dishes.each do |dish|
         if dish[:id] == dish_id
-          @order << dish[:name]
+          @new_order << { dish[:name] => dish[:price] }
           dish[:available] = dish[:available] - 1
         end
       end

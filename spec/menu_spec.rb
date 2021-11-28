@@ -24,12 +24,4 @@ describe Menu do
       expect(menu.select_dish(2,2)).to be 2
     end
   end
-
-  context "order" do
-    it "contains the selected dishes" do
-      menu.select_dish(2, 1)
-      menu.select_dish(6, 1)
-      expect(menu.order).to include("Pepperoni Pizza", "Onion Rings")
-    end
-  end
 end
