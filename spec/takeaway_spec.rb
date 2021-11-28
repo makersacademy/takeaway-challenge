@@ -23,10 +23,10 @@ describe Takeaway do
 
   context 'choosing items:' do
     before { add_1_order(dish1) }
-    after { expect(takeaway.current_order).to eq(order) } # checking there is still an order object
 
     it "lets you select a dish and create an order" do
-      # checking it makes an Order object
+      # expect(order).to receive(:add).with(dish) 
+      # takeaway.select_dish(dish) - tested with before block
     end
 
     it "lets you add another dish" do
@@ -51,21 +51,13 @@ describe Takeaway do
   end
 
   context 'sending texts:' do
-    before do
+    it "confirms order with a text" do
       add_1_order(dish1)
       allow(order).to receive(:delivery_time).and_return(one_hour_from_now)
       expect(takeaway.sms_client).to receive(:text)
       .with("Thank you! Your order ##{order.id} totalling £#{order.total} has been placed "\
         "and will be delivered by #{one_hour_from_now}.")
-    end
-
-    it "confirms order with a text" do
       takeaway.confirm_order
-    end
-
-    it "resets the current order after confirming" do
-      takeaway.confirm_order
-      expect(takeaway.current_order).to eq(nil)
     end
   end
 
@@ -82,6 +74,7 @@ describe Takeaway do
 end
 
 def add_1_order(dish)
+  # expect(order_class).to receive(:new) - implicitly tested
   expect(order).to receive(:add).with(dish) # Dish class handles the actual adding and removing
   takeaway.select_dish(dish)
 end
