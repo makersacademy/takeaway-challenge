@@ -3,7 +3,7 @@ require_relative "sms"
 
 class Takeaway
 
-  def initialize(menu:,sms: SMS.new)
+  def initialize(menu: Menu.new,sms: SMS.new)
     @menu_class = menu
     @sms = sms
     @selected_dishes = Hash.new(0)
