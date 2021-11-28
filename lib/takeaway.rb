@@ -2,37 +2,34 @@ require_relative 'dish'
 
 class Takeaway
 
-  attr_reader :menu
+  attr_reader :menu, :my_choices
 
   def initialize
-    create_menu
-    @menu = {}
+    @menu_object = []
+    @menu = {"Bryani" => 7, "Curry" => 9, "Beef" => 10, "Shrimp" => 11, "Korma" => 4}
     @my_choices = []
-  end
-
-  def create_menu
-    5.times do 
-      price = rand(1..10)
-      number = rand(1..52)
-      name = "Curry #{number}"
-      @menu[name] = price
-      @menu << Dish.new(name,price)
-    end
   end
 
   def add_item(name,price)
     @menu[name] = price
-    @menu_objects << Dish.new(name,price)
+    @menu_object << Dish.new(name,price)
   end
 
   def see_menu
     @menu.each do |name, price|
       puts "#{name},#{price}"
+    end
+    return @menu
   end
 
   def choose_dish(name)
-    puts "You've chosen #{name!}"
-    @my_choices << name
+    unless @menu[name].nil?
+      puts "You've chosen #{name}!"
+      @my_choices << name
+    else
+      puts "That's not a menu option! We don't sell that"
+      @my_choices
+    end
   end
 
   def calculate_total
@@ -43,11 +40,14 @@ class Takeaway
   end
 
   def make_order
+    final = []
     calculate_total
     @my_choices.each do |name|
-      final << name + @menu[name].to_s
+      final << name + "," + @menu[name].to_s
     end
-    @final_order = final.join(",")
+    @final_order = final.join(":")
+    puts @final_order
+    return @final_order
   end
 
   def send_text
