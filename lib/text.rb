@@ -1,20 +1,23 @@
 require 'twilio-ruby'
+require 'dotenv/load'
+
+# Dotenv.load
 class Text 
 
   
   def send_text
-    account_sid = "AC27c508d75d73ae4073b862e04ac74d74" # Your Test Account SID from www.twilio.com/console/settings
-    auth_token = "ed6bec170f914ed9fdb8bdc7159291f9"   # Your Test Auth Token from www.twilio.com/console/settings
+    account_sid = ENV['TWILIO_ACCOUNT_NUMBER'] # Your Test Account SID from www.twilio.com/console/settings
+    auth_token = ENV['TWILIO_TOKEN']  # Your Test Auth Token from www.twilio.com/console/settings
   
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_NUMBER'], ENV['TWILIO_TOKEN'] 
     message = @client.messages.create(
       body: "Thank you! Your order was placed and will be delivered before #{delivery_time}",
-      to: "+447946180718",    # Replace with your phone number
-      from: "+44 7782 503067")  # Use this Magic Number for creating SMS
+      to: ENV['CUSTOMER_PHONE_NUMBER'],    # Replace with your phone number
+      from: ENV['TWILIO_PHONE_NUMBER'])  # Use this Magic Number for creating SMS
     message.sid
   end
 
- # private
+  private
 
   def delivery_time
     time = Time.now + 60 * 60
