@@ -296,3 +296,37 @@ I don't know what this message mean
 rubocop = lib/menu.rb:6:17: C: [Correctable] Style/MutableConstant: Freeze mutable objects assigned to constants.
    MEALS_LIST = { ...
                 ^
+                
+#Sunday 28th of november '21
+
+I have created a checkout class which will be in charge of processing the order (place_order from menu)
+
+I struggled to create proper mock and subs for the test...
+
+#Feature test in irb for menu.rb
+works well until I want to check out:
+3.0.2 :001 > menu = Menu.new
+ => #<Menu:0x00007fd940104ef8 @basket=[], @receipt_list=[]> 
+3.0.2 :002 > menu.print_menu
+{1=>["Kimbab", 8], 2=>["KFC", 6], 3=>["Bibimbab_beef", 12.5], 4=>["Bibimba_chicken", 10], 5=>["Pork_bulgogi", 10], 6=>["Kimchi", 4], 7=>["Patato_salad", 5], 8=>["Kimchi_pancake", 5], 9=>["Rice", 3], 10=>["Exit menu"], 11=>["Checkout"]} => nil 
+3.0.2 :003 > menu.choose_meal(3)
+ => [12.5] 
+3.0.2 :004 > menu.choose_meal(6)
+ => [12.5, 4] 
+3.0.2 :005 > menu.choose_meal(7)
+ => [12.5, 4, 5] 
+3.0.2 :006 > menu.basket
+ => [["Bibimbab_beef", 12.5], ["Kimchi", 4], ["Patato_salad", 5]] 
+3.0.2 :007 > menu.receipt_list
+ => [12.5, 4, 5] 
+3.0.2 :008 > menu.choose_meal(11)
+/Users/Swa/Desktop/Projects/solo-challenges/takeaway-challenge/lib/menu.rb:48:in `choose_meal': undefined local variable or method `place_order' for #<Menu:0x00007fd940104ef8 @basket=[["Bibimbab_beef", 12.5], ["Kimchi", 4], ["Patato_salad", 5]], @receipt_list=[12.5, 4, 5], @meal_number=11> (NameError)
+        from (irb):8:in `<main>'
+        from /Users/Swa/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/Swa/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/Swa/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+
+
+in Menu.rb I added "Checkout" to be instantiated with @basket and @receipt list as argument to be passed to the Checkout.rb
+this makes its easier to test as I can create custorm argument to behave like @basket and @receipt_list
+(unsuccessful Mocking of @basket @receipt_list)
