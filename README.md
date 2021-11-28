@@ -19,10 +19,10 @@ Instructions
 
 Please note that you will have to set the following information in a .env for the program to work: 
 
-CUSTOMER_PHONE_NUMBER
-TWILIO_PHONE_NUMBER
-TWILIO_ACCOUNT_NUMBER
-TWILIO_TOKEN 
+- CUSTOMER_PHONE_NUMBER
+- TWILIO_PHONE_NUMBER
+- TWILIO_ACCOUNT_NUMBER
+- TWILIO_TOKEN 
 
 -------
 * Feel free to use google, your notes, books, etc. but work on your own
