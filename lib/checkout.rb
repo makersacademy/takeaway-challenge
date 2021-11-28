@@ -13,14 +13,15 @@ class CheckOut
     @total
   end
 
-  def view_basket
-    puts "Your order:" 
-    @basket.each do | dish_price |
-      dish_price.each do | dish, price |
-        puts "#{dish} : £#{price}"
-      end
-    end
-    puts "your total is £#{@total}"
+  def view_basket(basket = @basket )
+    print @basket
+    # puts "Your order:" 
+    # @basket.each do | dish_price |
+    #   dish_price.each do | dish, price |
+    #     puts "#{dish} : £#{price}"
+    #   end
+    # end
+    # puts "your total is £#{@total}"
   end
 
 #   def place_order_sms
