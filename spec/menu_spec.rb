@@ -48,14 +48,14 @@ describe Menu do
     let!(:menu)  { Menu.new }
 
     it "raises an error if user doesn't input an Integer to select a meal" do
-      expect { menu.choose_meal("kimbab") }.to raise_error "Please, input the meal number"
+      expect { menu.choose_meal("kimbab") }.to raise_error "Please, input a number"
     end
 
     it "raises an error if user doen't input anything to select a meal" do
-      expect { menu.choose_meal(nil) }.to raise_error "Please, input the meal number"
+      expect { menu.choose_meal(nil) }.to raise_error "Please, input a number"
     end
 
-    it "raises an error if user chooses as number that doesn't correspond to a meal" do
+    it "raises an error if user chooses as number that doesn't correspond to an option" do
       expect { menu.choose_meal(0 - Menu::MEALS_LIST.size) }.to raise_error "sorry we don't have this item"
       expect { menu.choose_meal(Menu::MEALS_LIST.size + 2) }.to raise_error "sorry we don't have this item"
     end

@@ -1,7 +1,7 @@
 require 'menu'
 
 class Checkout
-  # attr_reader :total, :basket, :receipt_list
+  attr_reader :total, :basket, :receipt_list
 
   def initialize(basket = @basket, receipt_list = @receipt_list )
     @basket = basket

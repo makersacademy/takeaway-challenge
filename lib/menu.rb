@@ -26,20 +26,12 @@ class Menu
 
   def print_menu
     print MEALS_LIST
-    # _puts "Welcome, this is our menu".center(50)
-    # puts "Please enter the number of the meal you would like to add to the basket"
-    # # puts "Press enter twice when you're done"
-    # puts "___________________________________________________________"
-    # puts
-    # MEALS.each do |key , value|
-    #   puts "#{key} to select #{value[0]} : £#{value[1]}".center(50)
-    # end
-    # puts "__________________________________________________________"
   end
 
-  def choose_meal(meal_number) # TODO : Has too many lines
+  
+  def choose_meal(meal_number) # TODO : Has too many lines && NEEDS TESTING
     @meal_number = meal_number
-    raise "Please, input the meal number" if @meal_number.class != Integer || @meal_number.nil?
+    raise "Please, input a number" if @meal_number.class != Integer || @meal_number.nil?
     first_item = MEALS_LIST.keys[0]
     last_item = MEALS_LIST.keys[-1]
     raise "sorry we don't have this item" if @meal_number < first_item || @meal_number > last_item
