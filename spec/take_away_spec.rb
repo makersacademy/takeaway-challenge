@@ -21,6 +21,7 @@ describe TakeAway do
       expect(take_away.cart).to include(dish)
     end
 
+    # bug in the test to resolve
     it "update existing dish quantity if already in the cart" do
       menu = double("menu", select_dish: {dish: "margherita", quantity: 1})
       take_away = TakeAway.new(menu: menu)
@@ -36,6 +37,14 @@ describe TakeAway do
     take_away = TakeAway.new(menu: menu)
     take_away.add_to_cart(double())
     expect(take_away.cart).not_to be_empty
+  end
+
+  it "return the total price" do
+    menu = double("menu", select_dish: {dish: "margherita", price: "6.50", quantity: 5})
+    take_away = TakeAway.new(menu: menu)
+    take_away.add_to_cart(double())
+    total = 6.50 * 5
+    expect(take_away.total_price).to eq("total price: £#{total}")
   end
 
 end

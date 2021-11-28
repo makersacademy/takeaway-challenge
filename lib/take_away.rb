@@ -30,4 +30,12 @@ class TakeAway
     edit
   end
 
+  def total_price
+    total = @cart.reduce(0) { |memo, item|
+      price = item[:price].scan(/\d+[.]\d+/).join('').to_f
+      memo + (price * item[:quantity])
+    }
+    "total price: £#{total}"
+  end
+
 end
