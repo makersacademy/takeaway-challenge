@@ -39,5 +39,15 @@ describe Order do
       order = Order.new
       expect { order.submit_and_confirm }.to raise_error("Your order is empty")
     end
+
+  xit "send a message when order is confirmed" do
+      twilio_client = instance_double(Twilio::REST::Client)
+      allow(Twilio::REST::Client).to receive(:new).and_return twilio_client
+      fake_messages = double('Messages')
+      allow(twilio_client).to receive(:messages).and_return fake_messages
+      expect(fake_messages).to receive(:create).with(from: '+16516152835', to: '+447413342817', body: "Thank you! Your order was placed and will be delivered before #{(time + 3600).strftime('%H:%M')}")
+
+      order.submit_and_confirm
+    end
   end
 end
