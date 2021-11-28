@@ -71,11 +71,11 @@ describe Takeaway do
     end
 
     it "Responds to #confirm_order" do
-      expect(@takeaway).to respond_to(:confirm_order)
+      expect(@takeaway).to respond_to(:complete_order)
     end
 
     it "Sends an sms" do
-      @takeaway.confirm_order
+      @takeaway.complete_order
     end
   end
 

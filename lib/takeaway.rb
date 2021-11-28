@@ -32,7 +32,7 @@ class Takeaway
     array.join("\n")
   end
 
-  def confirm_order
+  def complete_order
     @sms.confirmation_text(confirmation_message)
   end
 
