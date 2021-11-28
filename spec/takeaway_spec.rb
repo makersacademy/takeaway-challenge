@@ -1,14 +1,14 @@
 require 'takeaway'
 
 describe Takeaway do
+subject(:takeaway) {Takeaway.new(menu: menu)}
+let(:menu) { double (:menu), print: example_menu}
+let(:example_menu) {{ pizza: 8, ramen: 6} }
 
-  it 'stores a menu' do
-    expect(subject.menu).not_to be_empty
-  end
 
   describe '#show_menu' do
-    it 'shows the menu items' do
-    expect { subject.print_menu }.to output.to_stdout
+    it 'shows the menu with dishes and their prices' do
+    expect(subject.print_menu).to eq ({pizza: 8, ramen: 6})
     end 
   end
 
