@@ -12,6 +12,12 @@ group :development, :test do
   gem 'rubocop', '1.20'
 end
 
+group :test do
+  gem "webmock"
+end
+    
 gem "twilio-ruby", "~> 5.61"
 
 gem "dotenv", "~> 2.7"
+
+gem "vcr", "~> 6.0"

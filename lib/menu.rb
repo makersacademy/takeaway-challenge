@@ -6,7 +6,7 @@ class Menu
     @dishes = {
       Fries: 3.0,
       Burger: 8.0,
-      CocaCola: 1.5}
+      CocaCola: 1.5 }
   end
 
   def dishes

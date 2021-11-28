@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages.json
+    body:
+      encoding: UTF-8
+      string: Body=Thank+you%21+Your+order+was+placed+and+will+be+delivered+before+15%3A08&From=%2B447380309457&To=%2B41795843354
+    headers:
+      User-Agent:
+      - twilio-ruby/5.61.1 (ruby/x86_64-darwin21 3.0.2-p107)
+      Accept-Charset:
+      - utf-8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Authorization:
+      - Basic QUMyZTNkMzBiZTRlNmZlNWQ0ZmRiNjQ4YmYwNjdmMWE5NDo4NDMzODc3Y2Q4OTNlNGNkYTZmNTNkZTMwNDNlYWYxMw==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 28 Nov 2021 14:08:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '870'
+      Connection:
+      - keep-alive
+      Twilio-Concurrent-Requests:
+      - '1'
+      Twilio-Request-Id:
+      - RQ74837b74767ad869375aea0125f45c68
+      Twilio-Request-Duration:
+      - '0.103'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      X-Home-Region:
+      - us1
+      X-Api-Domain:
+      - api.twilio.com
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SM6a946e44f64c4d99a0473c383d6e337b", "date_created": "Sun,
+        28 Nov 2021 14:08:22 +0000", "date_updated": "Sun, 28 Nov 2021 14:08:22 +0000",
+        "date_sent": null, "account_sid": "<TWILIO_ACCOUNT_SID>", "to": "<TWILIO_DESTINATION_PHONE>",
+        "from": "<TWILIO_PHONE>", "messaging_service_sid": null, "body": "Sent from
+        your Twilio trial account - Thank you! Your order was placed and will be delivered
+        before 15:08", "status": "queued", "num_segments": "1", "num_media": "0",
+        "direction": "outbound-api", "api_version": "2010-04-01", "price": null, "price_unit":
+        "USD", "error_code": null, "error_message": null, "uri": "/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages/SM6a946e44f64c4d99a0473c383d6e337b.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages/SM6a946e44f64c4d99a0473c383d6e337b/Media.json"}}'
+  recorded_at: Sun, 28 Nov 2021 14:08:20 GMT
+recorded_with: VCR 6.0.0

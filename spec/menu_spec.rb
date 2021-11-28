@@ -15,7 +15,7 @@ describe Menu do
       expect(subject.dishes).to eq({
         Fries: 3.0,
         Burger: 8.0,
-        CocaCola: 1.5})
+        CocaCola: 1.5 })
     end
   end
   
