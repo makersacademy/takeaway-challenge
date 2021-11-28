@@ -1,10 +1,11 @@
 require_relative "menu"
+require_relative "sms"
 
-class Order
-  attr_reader :selected_dishes
+class Takeaway
 
-  def initialize(menu:)
+  def initialize(menu:,sms:SMS.new)
     @menu_class = menu
+    @sms = sms
     @selected_dishes = {}
   end
 
@@ -12,7 +13,7 @@ class Order
     @menu_class.dishes
   end
 
-  def select_dishes
+  def order
     while true
       numbered_list_dishes
       input = user_input
@@ -22,13 +23,17 @@ class Order
     end
   end
 
-  def check_total
+  def check_order
     array = []
     @selected_dishes.each do |key,value|
-      array << "#{key} #{value} - £#{@menu_class.dishes[key] * value}"
+      array << "#{key} x#{value} - £#{@menu_class.dishes[key] * value}"
     end
     array << "Total - £#{order_total}"
     array.join("\n")
+  end
+
+  def confirm_order
+    @sms.confirmation_text(confirmation_message)
   end
 
   private
@@ -54,5 +59,9 @@ class Order
     end
     total
   end
-  
+
+  def confirmation_message
+    time = Time.new + 3600
+    "Thank you! Your order was placed and will be delivered before #{time.strftime("%H:%M")}"
+  end
 end

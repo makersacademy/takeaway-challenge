@@ -2,13 +2,11 @@ require_relative 'dish'
 
 class Menu
   def initialize(dish_class = Dish)
-    @dishes = {}
     @dish_class = dish_class
-  end
- 
-  def add_dish(name:,price:)
-    dish = @dish_class.new(name,price)
-    @dishes[dish.name] = dish.price
+    @dishes = {
+      Fries: 3.0,
+      Burger: 8.0,
+      CocaCola: 1.5}
   end
 
   def dishes
