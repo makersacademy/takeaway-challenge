@@ -16,13 +16,13 @@ class Checkout
     @total = @receipt_list.inject(0) { |sum, price| sum += price }
   end
 
-  def confirm_sms
-    @sms = "Thank you ! your order was place and will be delivered at #{(Time.now + 1*60*60).strftime("%k:%M %p")} "
+  def send_sms
+    @sms = "Thank you ! your order was place and will be delivered at #{(Time.now + 1*60*60).strftime("%k:%M %p")}"
   end
 
-  # def place_order
-  #   print @total
-  #   print view_basket
-  #   confirm_sms
-  # end
+  def place_order
+    print @total
+    view_basket
+    send_sms
+  end
 end

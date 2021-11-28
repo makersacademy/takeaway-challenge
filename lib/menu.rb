@@ -1,7 +1,7 @@
 
 class Menu
 
-  attr_reader :basket, :receipt_list
+  attr_reader :basket, :receipt_list, :checkout
 
   MEALS_LIST =
   {
@@ -14,7 +14,7 @@ class Menu
     7 => ["Patato_salad", 5],
     8 => ["Kimchi_pancake", 5],
     9 => ["Rice", 3],
-    10 => ["Exit menu"],
+    # 10 => ["Exit menu"],
     11 => ["Checkout"]
   }
 
@@ -33,13 +33,17 @@ class Menu
     @meal_number = meal_number
     raise "Please, input a number" if @meal_number.class != Integer || @meal_number.nil?
     first_item = MEALS_LIST.keys[0]
-    last_item = MEALS_LIST.keys[-1]
-    raise "sorry we don't have this item" if @meal_number < first_item || @meal_number > last_item
+    select_checkout = MEALS_LIST.keys[-1]
+    raise "sorry we don't have this item" if @meal_number < first_item || @meal_number > select_checkout
     if @meal_number == MEALS_LIST.keys[-2]
       exit
     elsif @meal_number == MEALS_LIST.keys[-1]
-    #    raise "sorry but your basket is empty"
-      @checkout_class.new(@basket, @receipt_list)
+      if @basket.nil?
+        raise "sorry but your basket is empty"
+      else
+        @checkout = @checkout_class.new(@basket, @receipt_list)
+        # place_order
+      end
     else
       add_to_basket
       add_to_receipt

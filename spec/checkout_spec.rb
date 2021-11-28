@@ -58,4 +58,12 @@ describe Checkout do
       end
     end
   end
+
+  #TODO : Split up method to remove and isolate the Time class as it changes everytime it is like having a random factor?
+  describe "test send_sms" do
+    it "return the sms template" do
+      checkout = Checkout.new
+      expect(checkout.send_sms).to be == "Thank you ! your order was place and will be delivered at #{(Time.now + 1*60*60).strftime("%k:%M %p")}"
+    end
+  end
 end
