@@ -8,18 +8,19 @@ class Menu
 
 
   def add_to_menu(dish, price)
+    @menu_hash.map {|food, price| fail 'already on menu' if dish.to_sym == food }
     @menu_hash[dish.to_sym] = price
   end
 
   def delete_from_menu(dish, price)
     @menu_hash.each{ |dish, price|
       delete(dish) && delete(price)}
-      turn_keys_to_symbols
+
   end
 
-  def display_whole_menu
-    @menu_hash.each_with_index{|dish, price, index|
-    puts "#{index + 1}. #{dish} = £#{price}"}
+  def show_menu
+    @menu_hash.each_with_index{|(dish, price), index|
+    puts "#{index+1}. #{dish} = £#{price}"}
   end
 
 
@@ -28,6 +29,7 @@ class Menu
       if dish(&to_sym) == food
         puts "£#{price}"
       end}
+    end
 
   def generate_example_menu
     @menu_hash[:pizza] = 10
