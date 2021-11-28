@@ -4,7 +4,7 @@ describe Menu do
 
     describe '#show_menu' do
       it { is_expected.to respond_to(:show_menu) }
-      it { is_expected.to respond_to(:list_of_dishes_with_prices)}
+      it { is_expected.to respond_to(:menu)}
     end
 
     describe '#order' do

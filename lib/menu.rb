@@ -1,10 +1,10 @@
 class Menu
 
-attr_reader :list_of_dishes_with_prices, :selection_of_dishes
+attr_reader :menu, :selection_of_dishes
     
     def initialize
-        @list_of_dishes_with_prices = {
-            "lasagne" => 12, #I need to include a number for order method.
+        @menu = {
+            "lasagne" => 12,
             "oysters" => 14,
             "fries" => 4,
             "green_salad" => 9,
@@ -15,7 +15,7 @@ attr_reader :list_of_dishes_with_prices, :selection_of_dishes
     end
 
     def show_menu
-        puts list_of_dishes_with_prices
+        puts @menu
     end
 
     def order(dish, quantity = 1) #
@@ -23,7 +23,7 @@ attr_reader :list_of_dishes_with_prices, :selection_of_dishes
         # puts "Which dish(es) would you like to order?"
         # selection = gets.chomp
         puts "#{quantity} x #{dish}(s) added to order."
-        @selection_of_dishes << @list_of_dishes_with_prices.fetch(dish) * quantity
+        @selection_of_dishes << @menu.fetch(dish) * quantity
     end
 
     def total
