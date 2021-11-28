@@ -26,31 +26,18 @@ class Menu
     @menulist << dish
   end
 
-  # def display_order_total
-  #   @order.display_total
-  # end
-
-  # def display_order
-  #   @order.display
-  # end
-
-  # private
-
-  # def read_dish(dish)
-  #   @last_selected_dish_name = dish.read_name
-  #   @last_selected_dish_price = dish.read_price
-  # end
-
-  # def add_dish_to_order(quantity)
-  #   @last_selected_ordered_dish = @dish_class.new(@last_selected_dish_name, 
-  #     @last_selected_dish_price)
-  #   @last_selected_ordered_dish.amount(quantity)
-  #   update_total
-  #   @order << @last_selected_ordered_dish
-  # end
-
-  # def update_total
-  #   @total += @last_selected_ordered_dish.dish_total
-  # end
+  def order_checkout
+    @order.checkout
+  end
 
 end
+
+# def main
+#   menu = Menu.new
+#   chips = Dish.new("chips",2)
+#   menu.add_dish_to_menulist(chips)
+#   menu.choose(chips,1)
+#   menu.order_checkout
+# end
+
+# main

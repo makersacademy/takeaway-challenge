@@ -1,4 +1,5 @@
 require_relative "./dish"
+require_relative "./sms"
 
 class Order 
 
@@ -36,6 +37,10 @@ class Order
 
   def display
     @order_list.dup
+  end
+
+  def checkout
+    SMS.instance.send_message
   end
   
   private 
