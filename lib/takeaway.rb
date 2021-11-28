@@ -6,7 +6,7 @@ class Takeaway
   def initialize(menu:,sms: SMS.new)
     @menu_class = menu
     @sms = sms
-    @selected_dishes = {}
+    @selected_dishes = Hash.new(0)
   end
 
   def list_dishes
@@ -19,7 +19,7 @@ class Takeaway
       input = user_input
       break if input == 99
       dish = @menu_class.dishes.keys[input - 1]
-      @selected_dishes[dish].nil? ? @selected_dishes[dish] = 1 : @selected_dishes[dish] += 1
+      @selected_dishes[dish] += 1
     end
   end
 
