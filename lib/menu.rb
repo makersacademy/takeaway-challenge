@@ -1,7 +1,7 @@
 
 class Menu
 
-  attr_reader :basket, :receipt_list, :meals_list
+  attr_reader :basket, :receipt_list
 
   MEALS_LIST =
   {
@@ -47,17 +47,13 @@ class Menu
     elsif @meal_number == MEALS_LIST.keys[-1]
       checkout
     else
-      order_meal
+      add_to_basket
+      add_to_receipt
     end
   end
 
-  def order_meal
-    add_to_basket
-    add_to_receipt
-  end
-  
   def add_to_basket
-    @basket << MEALS_LIST[@meal_number][0]
+    @basket << MEALS_LIST[@meal_number]
   end
 
   def add_to_receipt

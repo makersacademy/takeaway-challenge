@@ -16,13 +16,13 @@ describe Menu do
     context "user adds item(s) to the basket" do
       it "stores one meal in the basket" do
         menu.choose_meal(2)
-        expect(menu.basket).to eq(["KFC"])
+        expect(menu.basket).to eq([["KFC", 6]])
       end
     
       it "stores several meals in the basket" do
         menu.choose_meal(2)
         menu.choose_meal(4)
-        expect(menu.basket).to eq(["KFC", "Bibimba_chicken"])
+        expect(menu.basket).to eq([["KFC", 6], ["Bibimba_chicken", 10]])
       end
     end
   end
@@ -47,15 +47,15 @@ describe Menu do
   describe "Edge cases" do
     let!(:menu)  { Menu.new }
 
-    it "raises an error if user don't input an Integer to select a meal" do
+    it "raises an error if user doesn't input an Integer to select a meal" do
       expect { menu.choose_meal("kimbab") }.to raise_error "Please, input the meal number"
     end
 
-    it "raises an error if user don't input anything to select a meal" do
+    it "raises an error if user doen't input anything to select a meal" do
       expect { menu.choose_meal(nil) }.to raise_error "Please, input the meal number"
     end
 
-    it "raises an error if user chooses number that doesn't correspond to a meal" do
+    it "raises an error if user chooses as number that doesn't correspond to a meal" do
       expect { menu.choose_meal(0 - Menu::MEALS_LIST.size) }.to raise_error "sorry we don't have this item"
       expect { menu.choose_meal(Menu::MEALS_LIST.size + 2) }.to raise_error "sorry we don't have this item"
     end
