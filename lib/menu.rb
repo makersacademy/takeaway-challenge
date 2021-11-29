@@ -32,12 +32,12 @@ class Menu
 
 end
 
-# def main
-#   menu = Menu.new
-#   chips = Dish.new("chips",2)
-#   menu.add_dish_to_menulist(chips)
-#   menu.choose(chips,1)
-#   menu.order_checkout
-# end
+def main
+  menu = Menu.new
+  chips = Dish.new("chips",2)
+  menu.add_dish_to_menulist(chips)
+  menu.choose(chips,1)
+  menu.order_checkout
+end
 
-# main
+main
