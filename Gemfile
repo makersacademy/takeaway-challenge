@@ -10,4 +10,6 @@ end
 
 group :development, :test do
   gem 'rubocop', '1.20'
+  gem 'dotenv-rails'
+  gem 'twilio-ruby', '~> 5.61.1'
 end
