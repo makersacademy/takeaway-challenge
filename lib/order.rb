@@ -25,8 +25,8 @@ class Order
   end
 
   def message
-    message = "Your order has been received and will be delivered by #{(Time.now + (60*ORDER_TIME)).strftime("%k:%M")}\nOrder details:\n"
-    @items.each { |dish| message += "#{dish.name}, £#{dish.price}\n"}
+    message = "Your order has been received and will be delivered by #{(Time.now + (60 * ORDER_TIME)).strftime("%k:%M")}\nOrder details:\n"
+    @items.each { |dish| message += "#{dish.name}, £#{dish.price}\n" }
     message += "Total: £#{@total}"
   end
 

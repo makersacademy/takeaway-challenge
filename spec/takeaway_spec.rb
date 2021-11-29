@@ -31,7 +31,7 @@ describe Takeaway do
     actual_menu.add(curry)
     actual_menu.add(naan)
     actual_takeaway = Takeaway.new(actual_menu)
-    expect { actual_takeaway.add_to_order("soup") }. to raise_error "Item not on menu, please choose something else"
+    expect { actual_takeaway.add_to_order("soup") }.to raise_error "Item not on menu, please choose something else"
   end
 
   it "should not allow users to place an empty order" do
