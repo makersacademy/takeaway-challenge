@@ -14,9 +14,9 @@ describe Dishes do
     end
   end
 
-  describe "#is_available?" do
-    it "raises error if dish is not available" do
-      expect { dishes.is_available?(1, 11) }.to raise_error "Not enough available dishes, select a lower amount or a different dish please"
+  describe "#available?" do
+    it "raises an error if the amount of the dish requested is not available" do
+      expect { dishes.available?(1, 11) }.to raise_error "Select a lower amount or a different dish please"
     end
   end
 end

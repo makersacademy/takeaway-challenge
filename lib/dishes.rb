@@ -14,7 +14,7 @@ class Dishes
     ]
   end
 
-  def is_available?(dish_id, amount)
-    raise "Not enough available dishes, select a lower amount or a different dish please" if @dishes[dish_id - 1][:available] < amount
+  def available?(dish_id, amount)
+    raise "Select a lower amount or a different dish please" if @dishes[dish_id - 1][:available] < amount
   end
 end

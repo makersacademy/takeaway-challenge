@@ -4,7 +4,7 @@ require 'envyable'
 Envyable.load('./config/env.yml', 'development')
 require 'twilio-ruby'
 
-class Menu
+class Takeaway
   attr_reader :dishes_list, :new_order
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_AUTH_TOKEN']
@@ -23,13 +23,17 @@ class Menu
   end
 
   def select_dish(dish_id, amount)
-    @dishes_list.is_available?(dish_id, amount)
+    @dishes_list.available?(dish_id, amount)
     amount.times do
-      @dishes_list.dishes.each do |dish|
-        if dish[:id] == dish_id
-          @new_order << { dish[:name] => dish[:price] }
-          dish[:available] = dish[:available] - 1
-        end
+      add_dish_to_order(dish_id)
+    end
+  end
+
+  def add_dish_to_order(dish_id)
+    @dishes_list.dishes.each do |dish|
+      if dish[:id] == dish_id
+        @new_order << { dish[:name] => dish[:price] }
+        dish[:available] = dish[:available] - 1
       end
     end
   end
