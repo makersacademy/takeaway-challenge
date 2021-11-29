@@ -1,7 +1,7 @@
 require 'order'
 
 describe Order do
-  let(:dish_class) { double(:new => dish)}
+  let(:dish_class) { double(:new => dish) }
   let(:dish_price) { rand(1..5) }
   let(:dish_quantity) { rand(1..10) }
   let(:dish_total) { dish_price * dish_quantity }
@@ -47,6 +47,12 @@ describe Order do
     it 'can verify the order total to match the sum of the dishes ordered' do
       order.add_dish_to_order(dish_quantity)
       expect(order.verify_total).to eq(true)
+    end
+  end
+
+  context '#checkout' do
+    it 'can send a message to the user' do
+      
     end
   end
 

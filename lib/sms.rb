@@ -2,11 +2,9 @@ require 'singleton'
 require 'dotenv/load'
 require 'twilio-ruby'
 
-
 class SMS
   include Singleton
 
-  
   def initialize
     account_sid = 'AC693a56507999f1a8dc74704465548cfb'
     auth_token = ENV["AUTH_TOKEN"]
@@ -19,6 +17,5 @@ class SMS
     to: ENV["PHONE_NUMBER"], 
     from: "+18705444072")
   end
-
 
 end

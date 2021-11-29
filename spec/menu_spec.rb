@@ -26,10 +26,10 @@ describe Menu do
   end
 
   context '#choose' do
-    it {is_expected.to respond_to(:choose).with(2).arguments}
+    it { is_expected.to respond_to(:choose).with(2).arguments }
     
     it 'raises an error if chosen dish is not in menu' do
-      expect{menu.choose(dish2,quantity)}.to raise_error("Dish not in menu")
+      expect { menu.choose(dish2,quantity) }.to raise_error("Dish not in menu")
     end
   end
 

@@ -44,6 +44,7 @@ class Order
   end
   
   private 
+
   def update_total
     @total += @ordered_dish.dish_total
   end
