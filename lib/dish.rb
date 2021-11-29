@@ -1,6 +1,8 @@
 class Dish
-  def initialize
+  attr_reader :name, :price
+
+  def initialize(name, price)
     @name = name 
-    @price = float
+    @price = price.to_f
   end
 end
