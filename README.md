@@ -14,9 +14,9 @@ Takeaway Challenge
 
  ```
 
-# Steps I took to complete the challenge
+## Steps I took to complete the challenge
 
-# Review user stories and highlight nouns and verbs
+## Review user stories and highlight nouns and verbs
 
 ![highlighted_text](./images/takeaway_highlighted_text.png)
 ![class_diagram_1](./images/takeaway_class_diagram1.png)
@@ -53,6 +53,6 @@ you can do gets.chomp with rspec? So I will just go back and change the class di
 
 [x] irb feature test working as expected
 
-# QUESTIONS:
+## QUESTIONS:
 - I am relying on the menu class at the order initialise to get the @menu info - does this need to change for testing?
 - how do you test for the text message? only as a feature test?
