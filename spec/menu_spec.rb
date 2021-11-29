@@ -20,6 +20,7 @@ describe Menu do
 
   describe '#show' do
     it 'shows a formatted list of dishes' do
+      subject.dishes.clear
       subject.dishes << dish
       expect { subject.show }.to output("1. Fried Chicken - £8\n").to_stdout
     end

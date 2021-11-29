@@ -2,7 +2,7 @@ class Menu
   attr_reader :dishes
 
   def initialize
-    @dishes = []
+    @dishes = [ { "Fried Chicken": 8 }, {"Chips": 3}]
   end
 
   def show
