@@ -16,11 +16,16 @@ class Basket
   end
 
   def view_basket()
-    # => str: formatted list
+    output_str = ""
+    @in_basket.each{ |dish|
+      output_str << "#{dish.name}: £#{sprintf('%.2f', dish.price)}\n"
+    }
+    output_str << get_format_total
+    return output_str
   end
 
-  def get_total()
-    # => str: formatted total
+  def get_format_total()
+    return "Total: £#{sprintf('%.2f', @total)}" 
   end
 
   ## Need to think about how best to implement this

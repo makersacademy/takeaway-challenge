@@ -12,7 +12,7 @@ describe Basket do
     end
 
     it 'adds the dish price to running total' do
-      expect {subject.add_to_basket(dish1) }.to change { subject.total }.by(4.00)
+      expect { subject.add_to_basket(dish1) }.to change { subject.total }.by(4.00)
     end
   end
 
@@ -25,7 +25,27 @@ describe Basket do
     end
 
     it 'deducts the price from the running total' do
-      expect {subject.remove_from_basket(dish1) }.to change { subject.total }.by(-4.00)
+      expect { subject.remove_from_basket(dish1) }.to change { subject.total }.by(-4.00)
+    end
+  end
+
+  describe '#view_basket' do
+    it 'displays all current items in basket and current total.' do
+      subject.add_to_basket(dish1)
+      subject.add_to_basket(dish2)
+      subject.add_to_basket(dish3)
+      
+      expect(subject.view_basket).to eq "burger: £4.00\nchips: £2.50\npepsi: £1.00\nTotal: £7.50"
+    end
+  end
+
+  describe '#get_format_total' do
+    it 'returns the total as a formatted string: £xx.xx' do
+      subject.add_to_basket(dish1)
+      subject.add_to_basket(dish2)
+      subject.add_to_basket(dish3)
+      
+      expect(subject.get_format_total).to eq "Total: £7.50"
     end
   end
 end
