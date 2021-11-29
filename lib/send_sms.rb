@@ -1,12 +1,12 @@
-# Download the twilio-ruby library from twilio.com/docs/libraries/ruby
+#I need to make this into a class and set up a method to send the text. Currently, it sends the sms when IRB boots up.
 require 'twilio-ruby'
 
 account_sid = 'ACeb57b6f70b6a75bc1ac05158bdd48d9c'
-auth_token = '6b657378df120dc9651efafc0372c846'
+auth_token = ''
 client = Twilio::REST::Client.new(account_sid, auth_token)
 
-from = '+447782338793' # Your Twilio number
-to = '+44' # Your mobile phone number
+from = '+447782338793'
+to = '+44' 
 
 client.messages.create(
 from: from,

@@ -1,6 +1,8 @@
+require_relative 'send_sms'
+
 class Menu
 
-attr_reader :menu, :selection_of_dishes
+attr_reader :menu, :selection_of_dishes, :message
     
     def initialize
         @menu = {
@@ -12,6 +14,7 @@ attr_reader :menu, :selection_of_dishes
             "tiramisu" => 25
         }
         @selection_of_dishes = []
+        #@texter = SendText.new
     end
 
     def show_menu
@@ -19,9 +22,9 @@ attr_reader :menu, :selection_of_dishes
     end
 
     def order(dish, quantity = 1) #
-        # puts @list_of_dishes_with_prices
+        # For more interactivity, I could:
         # puts "Which dish(es) would you like to order?"
-        # selection = gets.chomp
+        # @selection_of_dishes = gets.chomp
         puts "#{quantity} x #{dish}(s) added to order."
         @selection_of_dishes << @menu.fetch(dish) * quantity
     end
@@ -30,5 +33,13 @@ attr_reader :menu, :selection_of_dishes
         puts "The total of your order is £#{@selection_of_dishes.sum}."
     end
 
+    def complete_order
+        puts "Thank you for your order. You will receive message confirmation shortly."
+        # return @send_message
+    end
+
+    # def send_sms(texter = @texter)
+    #     texter.send_sms
+    #   end
 
 end

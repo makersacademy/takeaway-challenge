@@ -1,3 +1,20 @@
+The project is currently incomplete.
+
+There main areas to address are:
+
+1. TESTING. So far, I've only used a few basic tests. I recognise that I did not use a TDD approach: I found it easier to write the code instead.
+I will go back and write the tests accordingly.
+
+2. CLASSES. I began with creating the 'menu.rb', which is a mistake I intend to rectify in order to adhere to the principle that dictates classes should be split up.
+I intend to separate menu.rb from takeaway.rb (in which the actual ordering will take place) and the send_sms.rb. I would also like to make the takeaway.rb more interactive (use gets.chomp etc.).
+
+3. SEND_SMS.RB. I need to implement this properly. Right now, whenever IRB is booted up, it sends a text. I need to create a method and link it to the takeaway.rb.
+
+4. PRIVACY. I need to set up environment variables that will protect my Twilio credentials.
+
+
+
+
 Takeaway Challenge
 ==================
 ```
