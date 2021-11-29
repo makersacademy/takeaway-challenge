@@ -20,14 +20,14 @@ class TakeAway
   end
 
   def update_dish_quantity(new_dish)
-    edit = false
+    update_existing_dish = false
     @cart.each do |item|
       if item[:dish] == new_dish[:dish]
         item[:quantity] += new_dish[:quantity]
-        edit = true
+        update_existing_dish = true
       end
     end
-    edit
+    update_existing_dish
   end
 
   def total_price
