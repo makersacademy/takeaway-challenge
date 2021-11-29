@@ -1,15 +1,9 @@
 require_relative 'dishes'
 require_relative 'order'
-require 'envyable'
-Envyable.load('./config/env.yml', 'development')
-require 'twilio-ruby'
+require_relative 'twilio_provider'
 
 class Takeaway
   attr_reader :dishes_list, :new_order
-  account_sid = ENV['TWILIO_ACCOUNT_SID']
-  auth_token = ENV['TWILIO_AUTH_TOKEN']
-  @@client = Twilio::REST::Client.new(account_sid, auth_token)
-  @@from = '+12396884386'
 
   def initialize(dishes_list = Dishes.new)
     @dishes_list = dishes_list
@@ -38,11 +32,8 @@ class Takeaway
     end
   end
 
-  def send_text(customer_number = '+447588526828')
-    @@client.messages.create(
-    from: @@from,
-    to: customer_number,
-    body: "Thank you! Your order was placed and will be delivered before 18:52"
-    )
+  def send_confirmation_text
+    twilio = TwilioProvider.new
+    twilio.send_text
   end
 end
