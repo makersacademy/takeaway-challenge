@@ -22,7 +22,7 @@ describe Menu do
   it 'will check that the total price of the bill is equivalent to the food ordered' do
     menu.add_food(food, price)
     menu.add_order(food)
-    expect(menu.total_order).to eq(:price)
+    expect(menu.total_order).to eq(price)
   end
 
 end
