@@ -5,7 +5,8 @@ class Order
 
   attr_reader :order_list
 
-  def initialize(dish_class = Dish)
+  def initialize(dish_class = Dish, sms_class = SMS)
+    @sms_class = sms_class
     @dish_class = dish_class
     @order_list = []
     @total = 0
@@ -39,8 +40,8 @@ class Order
     @order_list.dup
   end
 
-  def checkout
-    SMS.instance.send_message
+  def checkout(text_sender = @sms_class)
+    text_sender.instance.send_message
   end
   
   private 

@@ -6,8 +6,10 @@ describe Order do
   let(:dish_quantity) { rand(1..10) }
   let(:dish_total) { dish_price * dish_quantity }
   let(:dish) { double("dish", :read_name => "dish", :read_price => dish_price, :amount => dish_quantity, :dish_total => dish_total) }
-  # let(:dish2) { double("dish2", :read_name => "dish2", :read_price => dish_price, :amount => dish_quantity, :dish_total => dish_total) }
   let(:order) { described_class.new(dish_class) }
+  
+  let(:sms) { double("sms", :send_message => "Twilio text") }
+  let(:sms_class) { double("sms_class", instance: sms) }
 
   context '#add_dish_to_order' do
     it 'can add a single dish to an order' do
@@ -51,8 +53,9 @@ describe Order do
   end
 
   context '#checkout' do
-    it 'can send a message to the user' do
-      
+    it 'can call send_message method on SMS object' do
+      expect(sms).to receive(:send_message)
+      order.checkout(sms_class)
     end
   end
 
