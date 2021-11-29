@@ -28,7 +28,7 @@ describe Takeaway do
       it "contains Pepperoni Pizza and Coca Cola" do
         takeaway.select_dish(2,1)
         takeaway.select_dish(7,1)
-        expect(takeaway.new_order).to include({"Pepperoni Pizza" => 4}, {"Coca-Cola" => 2})
+        expect(takeaway.new_order).to include({ "Pepperoni Pizza" => 4 }, { "Coca-Cola" => 2 })
       end
     end
   end
