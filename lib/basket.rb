@@ -1,3 +1,5 @@
+require_relative './checkout.rb'
+
 class Basket
   attr_reader :in_basket, :total
   def initialize
@@ -28,9 +30,8 @@ class Basket
     return "Total: £#{sprintf('%.2f', @total)}" 
   end
 
-  ## Need to think about how best to implement this
-  def goto_checkout(basket = self, checkout=Checkout)
-    # @checkout = checkout.new(basket)
+  def goto_checkout(basket = self, checkout_class=Checkout)
+    @checkout = checkout_class.new(basket)
   end
 
   private

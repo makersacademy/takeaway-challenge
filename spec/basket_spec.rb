@@ -48,4 +48,15 @@ describe Basket do
       expect(subject.get_format_total).to eq "Total: £7.50"
     end
   end
+
+  describe '#go_to_checkout' do
+    it 'returns a checkout object' do
+      subject.add_to_basket(dish1)
+      subject.add_to_basket(dish2)
+      subject.add_to_basket(dish3)
+
+      checkout = subject.goto_checkout()
+      expect(checkout).to be_instance_of(Checkout)
+    end
+  end
 end

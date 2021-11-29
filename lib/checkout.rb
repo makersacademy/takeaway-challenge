@@ -4,7 +4,7 @@ class Checkout
   end
 
   def pay()
-    # send_tex()
+    # send_text()
   end
 
   private
