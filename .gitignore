@@ -3,3 +3,6 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+required.env
+send_sms.rb
