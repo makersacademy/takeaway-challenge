@@ -1,15 +1,16 @@
 class Basket
+  attr_reader :in_basket
   def initialize
     @in_basket = []
     @total = 0.0
   end
 
   def add_to_basket(dish)
-    # @inbasket << dish
+    @in_basket << dish
   end
 
   def remove_from_basket(dish)
-    # @inbasket.delete(dish)
+    @in_basket.delete(dish)
   end
 
   def view_basket()
