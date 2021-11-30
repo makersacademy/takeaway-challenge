@@ -1,30 +1,17 @@
-class Customerorder
-
+class Takeaway
+  attr_accessor :menu, :food, :price, :view_menu
+    
   def initialize
-    @order_selection = []
-    @total_price = []
-    @sum = 0
+    @menu = Hash.new
   end
 
-  def add_order(menu,food)
-    food.downcase!
-    if menu.menu.include?(food) == false
-      raise "the order is not in the menu"
-    end
-    @order_selection.push(food)
-    @order_selection.each do |food| @total_price << menu.menu[food]
-    end
-  
+  def add_food(food, price)
+    @menu[food] = price
   end
+  #use this to add menu
 
-  def order_selected
-    @order_selection
+  def view_menu
+    @menu
   end
-
-  
-  def total_order
-    @sum = 0
-    @total_price.each { |bill| @sum += bill }
-    return @sum
-  end
+  #use this to view menu
 end
