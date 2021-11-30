@@ -7,7 +7,7 @@ class Customerorder
   end
 
   def add_order(food)
-    if @view_menu.include?(food) == false
+    if @menu.include?(food) == false
       raise "the order is not in the menu"
     end
     @order_selection.push(food)
