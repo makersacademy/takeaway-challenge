@@ -8,10 +8,10 @@ class Takeaway
   def add_food(food, price)
     @menu[food] = price
   end
-  #use this to add menu
+  #use this to add food to takeaway menu
 
   def view_menu
     @menu
   end
-  #use this to view menu
+  #use this to view takeaway menu
 end
