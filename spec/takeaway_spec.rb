@@ -28,21 +28,22 @@ describe Takeaway do
   end
 
   it "add choice to orders array" do
-    subject.add_orders(choice)
-    expect(subject.orders).to include(choice)
+    subject.add_orders("chicken")
+    expect(subject.orders).to include("chicken")
   end
 
   it "sum of the order" do
-    subject.add_orders(:rice)
-    subject.add_orders(:beans)
-    subject.add_orders(:yam)
+    subject.add_orders("rice")
+    subject.add_orders("beans")
+    subject.add_orders("yam")
     expect(subject.orders_total).to eq("£8")
   end 
 
   describe "prints orders with price" do
     it "prints order" do
-      subject.add_orders(choice)
-      expect(subject.print_orders).to eq("You ordered #{dish}: £#{price}")
+      subject = Takeaway.new
+      subject.add_orders("chicken")
+      expect(subject.print_orders).to eq("You ordered chicken: £2")
     end
   end
 end

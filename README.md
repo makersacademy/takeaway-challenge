@@ -17,8 +17,9 @@ Takeaway Challenge
 Comments
 -------
 
-I attempted the first three user stories. However my attempt is incomplete. My print_orders spec is failing. I'm not to sure how to resolve it.
+I attempted the first three user stories. However my attempt is incomplete. although my spec is passing my feature test is not producing my intended result. it only prints the first order. 
 
+how can I go about improving the code? for a week 2 student is this the level of coding I should be at? 
 Task
 -----
 

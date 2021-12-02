@@ -19,7 +19,7 @@ class Takeaway
     @menu.each do |key, value|
       @orders.each do |choice|
         if choice.to_sym == key 
-          puts "You ordered #{key}: £#{value}"
+          return "You ordered #{key}: £#{value}"
         end
       end
     end
