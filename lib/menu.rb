@@ -2,15 +2,16 @@ class Menu
 
   attr_reader :menu
 
-  def initialize(menu_file='./lib/test.txt')
+  def initialize(menu_file = './lib/test.txt')
     @menu_file = menu_file
     @menu = []
   end
 
-  def get_menu
+  def parse_file
     File.foreach(@menu_file) do |line|
       key, value = line.chomp.split(',')
-      @menu << { item: key, cost: value.to_f }
+      @menu << { name: key, cost: value.to_f }
     end
+    @menu
   end
 end

@@ -6,11 +6,10 @@ class Takeaway
   end
 
   def fetch_menu
-    @menu.get_menu
+    @menu.parse_file
   end
 
-  def show_menu
-    fetch_menu
-    menu.each do |item|
-
+  def display_menu
+    fetch_menu.each { |item| puts "* #{item[:name]} - £#{item[:cost]}" }
+  end
 end
