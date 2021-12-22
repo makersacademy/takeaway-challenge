@@ -1,15 +1,12 @@
 require 'takeaway'
+require 'menu'
 describe Takeaway do
   subject { Takeaway.new }
-  let(:dish) { double("Chicken") }
-  let(:price) { double("£4") }
+  let(:dish) { "Chicken" }
+  let(:price) { "£4" }
   let(:choice) { double(:choice) } 
 
   describe "#initialize" do
-    it "menu array" do
-      expect(subject.menu).to be_truthy
-    end
-
     it "empty orders array" do
       expect(subject.orders).to eq []
     end

@@ -1,8 +1,9 @@
+require_relative 'menu'
 class Takeaway
   attr_reader :menu, :orders
 
   def initialize
-    @menu = { rice: 3, chicken: 2, beans: 3, yam: 2, fish: 4, noodles: 2 }
+    @menu = Menu.new
     @orders = []
     @sum = 0
   end
@@ -12,11 +13,11 @@ class Takeaway
   end
 
   def print_menu
-    @menu.each { |key,value| puts "#{key} => £#{value}" }
+    @menu.print_dishes
   end
 
   def print_orders
-    @menu.each do |key, value|
+    @menu.dishes.each do |key, value|
       @orders.each do |choice|
         if choice.to_sym == key 
           return "You ordered #{key}: £#{value}"
@@ -26,7 +27,7 @@ class Takeaway
   end
 
   def orders_total
-    @orders.each { |choice| @sum += @menu[choice.to_sym].to_i }
+    @orders.each { |choice| @sum += @menu.dishes[choice.to_sym].to_i }
     return "£#{@sum}"
   end 
 end
