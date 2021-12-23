@@ -1,15 +1,12 @@
-require_relative 'takeaway'
-
 class Order
   
-  attr_reader :order
+  attr_reader :order_pad
 
-  def initialize(takeaway = Takeaway.new)
-    @takeaway = takeaway
-    @order = []
+  def initialize
+    @order_pad = []
   end
 
-  def select(item_number)
-    order << @takeaway.fetch_menu[item_number - 1]
+  def select(index, menu)
+    @order_pad << menu[index]
   end
 end
