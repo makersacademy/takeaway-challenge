@@ -17,7 +17,7 @@ describe Menu do
     it { is_expected.to respond_to(:add) }
 
     it 'adds an item to the order_list' do
-      expect{subject.add("Kim Chi")}.to change{subject.order_list.count}.by(2) 
+      expect{subject.add("Kim Chi")}.to change{subject.order_list.count}.by(1) 
     end 
     #build a test which increases the 
     #order_list by 1 after add

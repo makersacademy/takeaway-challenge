@@ -15,6 +15,6 @@ class Menu
   end 
 
   def add(item)
-    @order_list.append(item, list[item])
+    @order_list.append(item => list[item])
   end 
 end 
