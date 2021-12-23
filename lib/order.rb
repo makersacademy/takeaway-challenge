@@ -13,10 +13,10 @@ class Order
    
     @menu.menu_list.each do |dish| 
       if dish[:dish] == dish_name
-        @my_order.push(dish)
+        @my_order << dish
         return "You've added #{dish[:dish]} to your order!" 
       end  
     end
     
-    end
   end
+end

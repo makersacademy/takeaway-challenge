@@ -23,9 +23,9 @@ describe Order do
       order.add(dish)
       expect(order.my_order).not_to be_nil
     end
-
-      # it 'raises an error' do 
-      #   expect { order.add("Beef") }.to raise_error "Item is not on the menu"
-      # end
+    
+    # it 'does not allow unavailable dishes to be added to the order' do 
+    #   expect { order.add("Beef") }.to raise_error "Item is not on the menu"
+    # end
   end
 end
