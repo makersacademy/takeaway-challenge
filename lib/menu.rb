@@ -1,6 +1,6 @@
 class Menu
 
-  attr_reader :menu
+  attr_reader :menu_array
 
   def initialize(menu_file = './lib/test.txt')
     @menu_file = menu_file
