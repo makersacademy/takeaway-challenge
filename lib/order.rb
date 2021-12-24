@@ -15,7 +15,7 @@ class Order
 
   def basket_items_total 
     @basket.map do |dish, quantity|
-      menu.price(dish) * quantity
+      @menu.price(dish) * quantity
     end
   end
 
