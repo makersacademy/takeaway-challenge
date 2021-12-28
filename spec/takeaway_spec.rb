@@ -10,6 +10,13 @@ describe Takeaway do
       expect{takeaway.display_menu}.to output("Soup ~ £2.00 | Bread ~ £1.00\n").to_stdout
     end
   end
+
+  describe "#order" do
+    it 'places an order' do
+      order = "2 x Soup, 1 x Bread"
+      expect(takeaway.order).to eq(order)
+    end
+  end
 end
 
 
