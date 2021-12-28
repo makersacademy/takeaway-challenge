@@ -3,7 +3,7 @@ require 'menu'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
-  let(:menu) { Menu.new({Soup: 2, Bread: 1}) }
+  let(:menu) { Menu.new({"Soup"=>2, "Bread"=>1}) }
 
   describe "#display_menu" do
     it "displays the menu" do
@@ -13,10 +13,7 @@ describe Takeaway do
 
   describe "#order" do
     it 'places an order' do
-      order = "2 x Soup, 1 x Bread"
-      expect(takeaway.order).to eq(order)
+      expect(takeaway.order("Soup", 3)).to eq({"Soup"=>3})
     end
   end
 end
-
-

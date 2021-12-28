@@ -1,21 +1,21 @@
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
-  attr_reader :menu
+  attr_reader :menu, :order
 
   def initialize(menu)
     @menu = menu
+    @order = Order.new(menu)
   end
 
   def display_menu
     puts @menu.print_menu
   end
 
-  def order
-    "2 x Soup, 1 x Bread"
+  def order(item, quantity)
+    @order.add_item(item, quantity)
+    @order.basket
   end
 
 end
-
-# x = Takeaway.new(Menu.new({Soup: 2, Bread: 1}))
-# x.display_menu

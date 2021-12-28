@@ -8,7 +8,7 @@ class Order
     @basket = {}
   end
 
-  def add_item(item, quantity) #1) find way to add quantity ? or not.. ?
+  def add_item(item, quantity) 
     raise "INVALID SELECTION" unless valid_selection(item)
     @basket[item.capitalize] = quantity 
   end
@@ -18,8 +18,4 @@ class Order
   def valid_selection(item)
     @menu[item.capitalize] != nil
   end
-
 end
-
-# ord = Order.new(Menu.new({"Soup" => 2, "Bread" => 1}))
-# puts ord.add_item("pizza", 3)

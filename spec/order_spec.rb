@@ -16,7 +16,6 @@ describe Order do
 
     context 'when an item not on the menu is added' do
       it 'raises an error' do
-
         expect{ order.add_item("Pizza", 1) }.to raise_error("INVALID SELECTION") 
       end
     end
