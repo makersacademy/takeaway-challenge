@@ -13,6 +13,14 @@ class Order
     @basket[item.capitalize] = quantity 
   end
 
+  def calculate_total
+    total = 0
+    @basket.each do |item, quantity|
+      total += (quantity * @menu[item])
+    end
+    total
+  end
+
   private 
 
   def valid_selection(item)

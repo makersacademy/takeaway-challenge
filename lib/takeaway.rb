@@ -18,4 +18,8 @@ class Takeaway
     @order.basket
   end
 
+  def display_total
+    puts "* Total ..... £#{sprintf('%.2f', @order.calculate_total)} *"
+  end
+
 end

@@ -20,4 +20,12 @@ describe Order do
       end
     end
   end
+
+  describe "#calculate_total" do
+    it "returns the total of the basket" do
+      order.add_item("Soup", 2)
+      order.add_item("Bread", 1)
+      expect(order.calculate_total).to eq(5)
+    end
+  end
 end
