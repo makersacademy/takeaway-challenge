@@ -1,13 +1,14 @@
+require 'menu'
+
 class Takeaway
 
   attr_reader :menu
-  def initialize
-    @menu = {Soup: 2, Bread: 1}
+  def initialize(menu)
+    @menu = menu
   end
 
-
   def display_menu
-    @menu
+    puts @menu.print_menu
   end
 
 end
