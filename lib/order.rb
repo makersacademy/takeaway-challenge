@@ -6,7 +6,7 @@ class Order
     @pad = []
   end
 
-  def select(index, menu)
-    @pad << menu[index]
+  def select(index, menu, quantity)
+    quantity.times { @pad << menu[index] }
   end
 end

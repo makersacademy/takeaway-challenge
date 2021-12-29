@@ -8,7 +8,7 @@ describe Takeaway do
   end
 
   it '#order_food adds food to pad' do
-    test.order_food(1)
-    expect { test.display_order }.to output("1. item1 - £1.0\nTotal cost: £1.0").to_stdout
+    test.order_food(1, 1)
+    expect { test.display_order }.to output("1. item1 - £1.0\nTotal cost: £1.0\n").to_stdout
   end
 end
