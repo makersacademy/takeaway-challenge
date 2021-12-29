@@ -12,6 +12,6 @@ describe Order do
     menu = menu_raw.parse_file
     subject.select(0, menu)
     subject.select(1, menu)
-    expect(subject.order_pad).to eq([{name: 'item1', cost: 1.0}, {name: 'item2', cost: 2.0}])
+    expect(subject.pad).to eq([{name: 'item1', cost: 1.0}, {name: 'item2', cost: 2.0}])
   end
 end

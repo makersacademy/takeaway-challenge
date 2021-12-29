@@ -14,7 +14,7 @@ class Takeaway
   def order_food(item_number)
     item_number -= 1
     @order.select(item_number, @menu)
-    @total += @order.order_pad[-1][:cost]
+    @total += @order.pad[-1][:cost]
   end
 
   def display_menu
@@ -22,7 +22,7 @@ class Takeaway
   end
 
   def display_order
-    @order.order_pad.each_with_index { |item, index| puts "#{index + 1}. #{item[:name]} - £#{item[:cost]}" }
-    puts "Total cost: £#{@total}"
+    @order.pad.each_with_index { |item, index| puts "#{index + 1}. #{item[:name]} - £#{item[:cost]}" }
+    print "Total cost: £#{@total}"
   end
 end

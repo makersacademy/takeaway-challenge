@@ -1,12 +1,12 @@
 class Order
   
-  attr_reader :order_pad
+  attr_reader :pad
 
   def initialize
-    @order_pad = []
+    @pad = []
   end
 
   def select(index, menu)
-    @order_pad << menu[index]
+    @pad << menu[index]
   end
 end
