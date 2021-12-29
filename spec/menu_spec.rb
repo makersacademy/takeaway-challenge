@@ -13,5 +13,4 @@ describe Menu do
       expect(menu.print_menu).to eq ("Soup ~ £2.00 | Bread ~ £1.00")
     end
   end
-
 end

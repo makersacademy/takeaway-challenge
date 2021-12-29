@@ -1,5 +1,4 @@
 require 'takeaway'
-require 'menu'
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
@@ -11,16 +10,20 @@ describe Takeaway do
     end
   end
 
-  describe "#order" do
+  describe "#build_order" do
     it 'places an order' do
-      expect(takeaway.order("Soup", 3)).to eq({"Soup"=>3})
+      expect(takeaway.build_order("Soup", 3)).to eq({"Soup"=>3})
     end
   end
 
-  describe "display_total" do
-    it "shows the customer the current total" do
-      takeaway.order("Soup", 5)
-      expect{takeaway.display_total}.to output("* Total ..... £10.00 *\n").to_stdout
+  describe "display_order" do
+    it "displays the current order" do
+      
+      output = "* 1 x Soup .. £2.00\n* 3 x Bread .. £3.00\n* Total ..... £5.00\n"
+
+      takeaway.build_order("soup", 1)
+      takeaway.build_order("bread", 3)
+      expect{takeaway.display_order}.to output(output).to_stdout
     end
   end
 end

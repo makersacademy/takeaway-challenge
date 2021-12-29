@@ -1,7 +1,8 @@
 require_relative 'menu'
+require_relative 'takeaway_errors'
 
 class Order
-  attr_reader :basket, :menu, :item
+  attr_reader :basket, :menu
 
   def initialize(menu)
     @menu = menu.items
@@ -9,7 +10,9 @@ class Order
   end
 
   def add_item(item, quantity) 
-    raise "INVALID SELECTION" unless valid_selection(item)
+    raise InvalidSelectionError if invalid_selection?(item) 
+    raise ZeroQuantityError if zero_quantity?(quantity)
+    
     @basket[item.capitalize] = quantity 
   end
 
@@ -23,7 +26,11 @@ class Order
 
   private 
 
-  def valid_selection(item)
-    @menu[item.capitalize] != nil
+  def invalid_selection?(item)
+    @menu[item.capitalize] == nil
+  end
+
+  def zero_quantity?(quantity)
+    quantity == 0
   end
 end

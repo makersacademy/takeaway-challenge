@@ -16,13 +16,20 @@ describe Order do
 
     context 'when an item not on the menu is added' do
       it 'raises an error' do
-        expect{ order.add_item("Pizza", 1) }.to raise_error("INVALID SELECTION") 
+        expect{ order.add_item("Pizza", 1) }.to raise_error(InvalidSelectionError) 
+      end
+    end
+
+    context 'when a quantity <= 0 is provided' do
+      it 'raises an error' do
+        expect{ order.add_item("Bread", 0) }.to raise_error(ZeroQuantityError) 
       end
     end
   end
 
   describe "#calculate_total" do
     it "returns the total of the basket" do
+      
       order.add_item("Soup", 2)
       order.add_item("Bread", 1)
       expect(order.calculate_total).to eq(5)
