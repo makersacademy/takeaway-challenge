@@ -23,8 +23,12 @@ class Takeaway
 
   def display_order
     @order.pad.each do |item|
-      puts "#{item[:amount]} x #{item[:name]} - £#{item[:cost]*item[:amount]}"
+      puts "#{item[:amount]} x #{item[:name]} - £#{item[:cost] * item[:amount]}"
     end    
     puts "Total cost: £#{@total}"
+  end
+
+  def verify_order
+    @total == @order.total
   end
 end
