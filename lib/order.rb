@@ -7,6 +7,6 @@ class Order
   end
 
   def select(index, menu, quantity)
-    quantity.times { @pad << menu[index] }
+    @pad << menu[index].merge(amount: quantity)
   end
 end
