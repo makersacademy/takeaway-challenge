@@ -1,8 +1,22 @@
+require './lib/dish'
+
 class Takeaway
-  attr_reader :menu
+  attr_reader :menu_list
   
   def initialize
-    @menu
+    @menu_list = [
+      # Dish.new('Pizza', 10),
+      # Dish.new('Steak', 50),
+      # Dish.new('Olives', 3)
+    ]
+  end
+
+  def show_menu
+    menu = []
+    @menu_list.each { |dish|
+      menu << "#{dish.name} - #{dish.price}"
+    }
+    menu.join(', ')
   end
 
 end
