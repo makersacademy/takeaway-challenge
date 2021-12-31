@@ -1,16 +1,24 @@
 require "takeaway"
 
 describe Takeaway do
-
-  let(:menu) { double(:menu) }
+  let(:menu) { double(:menu, :list => "Breakfast, £2") }
   subject { Takeaway.new(menu) }
 
-  it "has a menu" do
-    expect(subject).to have_attributes(:menu => menu)
+  context "menu functionalities" do
+    
+   it "has a menu" do
+     expect(subject).to have_attributes(:menu => menu)
+   end
+
+   it "shows the menu" do
+     expect { subject.show_menu }.to output("Breakfast, £2").to_stdout 
+    end
   end
 
-  it "shows the menu" do
-    allow(menu).to receive(:list).and_return("Breakfast, £2")
-    expect { subject.show_menu }.to output("Breakfast, £2").to_stdout 
+  context "order functionalities" do
+    it "starts an order" do
+      subject.add_to_order("Breakfast")
+      expect(subject.instance_variable_get(:@order)).to be_truthy
+    end
   end
 end 
