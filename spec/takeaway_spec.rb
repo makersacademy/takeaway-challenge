@@ -7,5 +7,4 @@ describe Takeaway do
   it 'has a menu' do
     expect(takeaway).to respond_to(:menu)
   end
-  
 end
