@@ -1,3 +1,15 @@
+MENU = [{name: "dal", price: 6.50}, 
+          {name: "korma", price: 3}, 
+          {name: "rice", price: 2.50}]
+
+problems: 
+when i try to run the message file, I get loaderror message. I get this message with both require 'twilio-ruby' and require 'dotenv' depending on which appears first in the code. 
+
+Running] ruby "/Users/katbrooks/Projects/takeaway/lib/message.rb"
+<internal:/Users/katbrooks/.rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0/rubygems/core_ext/kernel_require.rb>:85:in `require': cannot load such file -- twilio-ruby (LoadError)
+	from <internal:/Users/katbrooks/.rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from /Users/katbrooks/Projects/takeaway/lib/message.rb:2:in `<main>'
+
 Takeaway Challenge
 ==================
 ```
@@ -14,20 +26,11 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Manual Feature Testing in IRB
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+t = Takeaway.new
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
 
 ```
 As a customer

@@ -14,7 +14,7 @@ class Menu
   end 
 
   def display
-    puts "Curry House menu"
+    puts "Curry House Menu"
     @dishes.each do |name, price|
       puts "#{name}: £#{price}" #could create a Dish class and then call"#{dish.name}: £#{dish.price}" 
     end 
@@ -24,3 +24,4 @@ end
 
 p m = Menu.new
 p m.dishes
+m.display

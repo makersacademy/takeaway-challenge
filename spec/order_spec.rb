@@ -25,20 +25,19 @@ describe Order do
 
   it 'displays order' do 
     subject.add(dish, quantity)
-    expect{ subject.display_order }.to output("Your order contains:\n2x dal = £13.0\nOrder total = £13.0\n").to_stdout 
+    expect{ subject.display }.to output("Your order contains:\n2x dal = £13.0\nOrder total = £13.0\n").to_stdout 
   end
 
   it 'checks basket total' do 
     subject.add(dish, quantity)
     expect(subject.check_total?).to be(true)
   end  
-  describe 'basket total check' do
-    before do 
-      allow(subject).to receive(:basket_total) { 1000 } #can't make this test pass... 
-    end
-    it 'is false when basket total has been calculated incorrectly' do
+
+  it 'is false when basket total has been calculated incorrectly' do #can't make this test pass - subject.basket_total is printing as 1000. But within the expect... , basket_total is 0, not 1000 and therefore returning true not false
+    allow(subject).to receive(:basket_total).and_return(1000) 
+    p subject.basket_total
+    p "here"
     expect(subject.check_total?).to be(false)
-    end
   end
 
 end
