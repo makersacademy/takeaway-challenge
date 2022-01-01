@@ -11,7 +11,7 @@ describe Takeaway do
 
   describe '#show_menu' do
     
-  it 'shows a list of dishes with prices' do
+    it 'shows a list of dishes with prices' do
       3.times { takeaway.menu_list << dish }
       expect(takeaway.show_menu).to eq 'name - price, name - price, name - price'
     end

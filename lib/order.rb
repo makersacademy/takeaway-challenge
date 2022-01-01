@@ -11,13 +11,23 @@ class Order
     @order_list << item
   end
 
-  def total()
+  def total
     total = 0
-    order_list.each { |item|
-      item.each { |dish, quantity| 
+    order_list.each do |item|
+      item.each do |dish, quantity| 
         total += dish.price * quantity
-      }
-    }
+      end
+    end
     total
+  end
+
+  def summary
+    output = []
+    @order_list.each do |item|
+      item.each do |dish, quantity|
+        output << "#{dish.name}: #{dish.price} x #{quantity} = #{dish.price * quantity}"
+      end
+    end
+    output.join(", ")
   end
 end
