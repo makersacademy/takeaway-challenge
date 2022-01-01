@@ -11,4 +11,13 @@ class Order
     @order_list << item
   end
 
+  def total()
+    total = 0
+    order_list.each { |item|
+      item.each { |dish, quantity| 
+        total += dish.price * quantity
+      }
+    }
+    total
+  end
 end
