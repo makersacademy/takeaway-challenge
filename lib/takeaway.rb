@@ -1,26 +1,26 @@
 require './lib/dish'
+require './lib/order'
 
 class Takeaway
   attr_reader :menu_list
   
   def initialize
-    @menu_list = [
-      # Dish.new('Pizza', 10),
-      # Dish.new('Steak', 50),
-      # Dish.new('Olives', 3)
-    ]
+    @menu_list = []
   end
 
   def show_menu
-    menu = []
+    dishes = []
     @menu_list.each { |dish|
-      menu << "#{dish.name} - #{dish.price}"
+      dishes << "#{dish.name} - #{dish.price}"
     }
-    menu.join(', ')
+    dishes.join(', ')
   end
 
+  def make_order
+    Order.new
+  end
 end
 
 # As a customer
-# So that I can check if I want to order something
-# I would like to see a **list** of **dishes** with **prices**
+# So that I can order the meal I want
+# I would like to be able to select some number of several available **dishes**
