@@ -2,10 +2,10 @@ require 'menu'
 
 describe Menu do
   subject(:menu) { described_class.new(items) }
-  let(:items) { {Soup: 2, Bread: 1} } 
+  let(:items) { { "Soup" => 2, "Bread" => 1 } } 
 
   it 'takes a list of menu items and their prices' do
-    expect(menu.items).to eq ( { Soup: 2, Bread: 1 } )
+    expect(menu.items).to eq ({ "Soup" => 2, "Bread" => 1 })
   end
 
   describe '#print_menu' do
