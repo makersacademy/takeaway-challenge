@@ -9,7 +9,7 @@ describe Takeaway do
 
   describe '#show_menu' do
     it 'displays a list of dishes and prices' do
-      expect(takeaway.show_menu).to eq menu_double
+      expect(takeaway.show_menu).to eq menu_double.dish
     end
   end 
 
@@ -18,5 +18,19 @@ describe Takeaway do
       takeaway.add_item("Steak", 2)
       expect(takeaway.basket).to eq({ "Steak" => 2 })
     end
+
+    context 'when item not on menu added' do
+      it 'raises an error' do
+        expect { takeaway.add_item("Noodles", 1) }.to raise_error('Item not on menu. Please pick something else')
+      end 
+    end 
+  end
+
+  describe '#total_bill' do
+    it 'shows the total of items in basket' do
+      takeaway.add_item("Steak", 2)
+      takeaway.add_item("Fries", 3)
+      expect(takeaway.total_bill).to eq 45
+    end 
   end 
 end 
