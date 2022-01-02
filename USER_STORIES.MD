@@ -38,9 +38,20 @@ list     | see
 dish     | 
 price    |
 
-takeaway ---> .menu ---> dishes & prices 
+takeaway ---> .menu ---> { dishes & prices }
 
 # User story 2:
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
+
+____________________
+noun     |   verb
+---------|----------
+customer | check
+order    | want 
+meal     | select
+number   | 
+dishes   |
+
+takeaway ---> .select_item ---> .select_quantity ---> Completed_order
