@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+git_source(:github) {|takeaway-challenge| "https://github.com/ElliottZaki/takeaway-challenge.git" }
+
 ruby '3.0.2'
 
 group :test do
