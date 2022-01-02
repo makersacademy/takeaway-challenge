@@ -1,3 +1,4 @@
+require 'takeaway'
 
 describe Takeaway do
   subject (:takeaway) { Takeaway.new }
