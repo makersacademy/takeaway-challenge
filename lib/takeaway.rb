@@ -1,8 +1,13 @@
+require_relative 'menu'
+
 class Takeaway
 
-  def menu 
-    {
-      Nigiri: "£3.00"
-    }
+  def initialize(menu = Menu.new)
+    @menu = menu
   end 
-end
+
+  def show_menu
+    @menu
+  end 
+  
+end 
