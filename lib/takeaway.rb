@@ -7,14 +7,21 @@ class Menu
 
   def list 
     list = {
-      'Sushi' => 5.90,
-      'Kim Chi' => 4.90,
-      'Crispy Pork Belly' => 11.90,
-      'Lobster and Egg Noodles' => 40.00
+      'Sushi' => 5,
+      'Kim Chi' => 4,
+      'Crispy Pork Belly' => 11,
+      'Lobster and Egg Noodles' => 40
     }
   end 
 
   def add(item)
-    @order_list.append(item => list[item])
+    @order_list << { item => list[item] }
   end 
+
+  def total
+    @order_list.inject(0){|sum, hash| sum+= hash.values.join.to_i}
+    #find the right way to add hash values in arrayz``
+  end 
+
+
 end 
