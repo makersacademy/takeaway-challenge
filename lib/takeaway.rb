@@ -29,11 +29,10 @@ class Takeaway
 
 end
 
-# sample = "Beef Burger, 5, Chicken Burger, 4, Slice of Pizza, 4, Chips, 2.50"
-
-# takeaway = Takeaway.new
-
-# takeaway.add_to_menu(sample)
-# takeaway.add_to_order("Beef Burger")
-
-# p takeaway.current_order.order
+sample = "Beef Burger, 5, Chicken Burger, 4, Slice of Pizza, 4, Chips, 2.50"
+takeaway = Takeaway.new
+takeaway.add_to_menu(sample)
+takeaway.add_to_order("Beef Burger")
+takeaway.add_to_order("Chicken Burger")
+takeaway.add_to_order("Chips")
+takeaway.current_order.show_order

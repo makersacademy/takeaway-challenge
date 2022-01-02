@@ -21,5 +21,10 @@ describe Order do
     it "increases total by dish price" do
       expect { subject.add({ "Burger" => 2 }) }.to change { subject.total }.by(2)
     end
+
+    it "shows current order & total" do
+      subject.add({ "Burger" => 2 }) 
+      expect { subject.show_order }.to output("Burger £2\nTOTAL = £2\n").to_stdout
+    end
   end
 end

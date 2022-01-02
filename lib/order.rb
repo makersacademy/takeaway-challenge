@@ -12,4 +12,9 @@ class Order
     @order << dish
     @total += dish.values[0]
   end
+
+  def show_order
+    @order.each { |dish| puts "#{dish.keys[0]} £#{dish.values[0]}" }
+    puts "TOTAL = £#{@total}"
+  end
 end
