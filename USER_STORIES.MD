@@ -38,7 +38,7 @@ list     | see
 dish     | 
 price    |
 
-menu ---> .list ---> dishes & prices 
+takeaway ---> .menu ---> dishes & prices 
 
 # User story 2:
 As a customer
