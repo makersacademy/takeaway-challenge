@@ -5,12 +5,12 @@ describe Menu do
   
   let (:dishes) do
     <<~MENU
-      Beef burger: 14
-      Chicken burger: 12
-      Hot dog: 11
-      Fries: 4
-      Soft drink: 3
-      Milkshake: 5
+      1. Beef burger: 14
+      2. Chicken burger: 12
+      3. Hot dog: 11
+      4. Fries: 4
+      5. Soft drink: 3
+      6. Milkshake: 5
     MENU
   end
 
@@ -23,5 +23,25 @@ describe Menu do
     end
 
     specify { expect { menu.view }.to output(dishes).to_stdout }
+  end
+
+  describe '#select' do
+    it { is_expected.to respond_to(:select).with_unlimited_arguments }
+
+    let (:order) do 
+      [{ name: "Beef burger", price: 14 },
+      { name: "Fries", price: 4 },
+      { name: "Milkshake", price: 5 }]
+    end
+
+    it 'adds a dish to the order' do
+      menu.select(1)
+      expect(menu.order).to eq([{ name: "Beef burger", price: 14 }])
+    end
+
+    it 'adds multiple dishes to the order' do
+      menu.select(1, 4, 6)
+      expect(menu.order).to eq(order)
+    end
   end
 end
