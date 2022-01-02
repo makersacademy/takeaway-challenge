@@ -1,5 +1,5 @@
 class Menu
-  attr_reader :dishes
+  attr_accessor :dishes
   
   def initialize
     @dishes = {}
@@ -11,13 +11,8 @@ class Menu
   end
 
   def list
-    @dishes.map do |key, value|
-      puts "#{key} £#{value}"
+    @dishes.each_with_index do |(key, value), index|
+      puts "#{index + 1}- #{key} £#{value}"
     end
   end
 end
-
-# sample = "Beef Burger, 5, Chicken Burger, 4, Slice of Pizza, 4, Chips, 2.50, 
-# menu = Menu.new
-# menu.add(sample)
-# p menu.menu

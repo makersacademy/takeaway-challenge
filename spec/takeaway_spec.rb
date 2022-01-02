@@ -13,9 +13,14 @@ describe Takeaway do
     it "shows the menu" do
       expect { subject.show_menu }.to output("Breakfast £2").to_stdout 
     end
+
+    it "adds dishes to the menu" do
+      expect(subject).to respond_to(:add_to_menu)
+    end
   end
 
   context "order functionalities" do
+
     it "starts an order" do
       subject.add_to_order("Breakfast")
       expect(subject.instance_variable_get(:@order)).to be_truthy

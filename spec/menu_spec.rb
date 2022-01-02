@@ -14,7 +14,7 @@ describe Menu do
     sample = "Beef Burger, 5, Chicken Burger, 4, Slice of Pizza, 4"
     subject.add(sample)
     expect { subject.list }.to output(
-      "Beef Burger £5\nChicken Burger £4\nSlice of Pizza £4\n"
+      "1- Beef Burger £5\n2- Chicken Burger £4\n3- Slice of Pizza £4\n"
     ).to_stdout
   end
 end
