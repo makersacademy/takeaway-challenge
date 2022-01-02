@@ -14,6 +14,11 @@ class Takeaway
 
   def add_to_order(dish)
     (@order = Order.new) unless @order
+    fail "Sorry, this dish is not available" unless dish_exists?(dish)
     @order.add(dish)
+  end
+
+  def dish_exists?(dish)
+    @menu.dishes.has_key?(dish.capitalize)
   end
 end

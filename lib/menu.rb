@@ -1,17 +1,17 @@
 class Menu
-  attr_reader :menu
+  attr_reader :dishes
   
   def initialize
-    @menu = {}
+    @dishes = {}
   end
 
   def add(dishes)
     arr = dishes.split(", ")
-    @menu.merge!(Hash[arr.each_slice(2).to_a])
+    @dishes.merge!(Hash[arr.each_slice(2).to_a])
   end
 
   def list
-    @menu.map do |key, value|
+    @dishes.map do |key, value|
       puts "#{key} £#{value}"
     end
   end
