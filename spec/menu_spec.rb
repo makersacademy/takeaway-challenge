@@ -36,12 +36,12 @@ describe Menu do
 
     it 'adds a dish to the order' do
       menu.select(1)
-      expect(menu.order).to eq([{ name: "Beef burger", price: 14 }])
+      expect(menu.order.order).to eq([{ name: "Beef burger", price: 14 }])
     end
 
     it 'adds multiple dishes to the order' do
       menu.select(1, 4, 6)
-      expect(menu.order).to eq(order)
+      expect(menu.order.order).to eq(order)
     end
   end
 end

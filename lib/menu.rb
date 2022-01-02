@@ -1,3 +1,4 @@
+require_relative './order'
 
 class Menu
   attr_reader :order
@@ -12,18 +13,16 @@ class Menu
       { name: "Milkshake", price: 5 }
     ]
 
-    @order = []
+    @order = Order.new
   end
 
   def view
-    @menu.each.with_index do |item, index|
+    @menu.each_with_index do |item, index|
       puts "#{index + 1}. #{item[:name]}: #{item[:price]}"
     end
   end
 
   def select(*dishes)
-    dishes.each do |dish|
-      @order << @menu[dish - 1]
-    end
+    @order.add(@menu, dishes)
   end
 end
