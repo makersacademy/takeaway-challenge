@@ -1,4 +1,4 @@
-require './send_sms.rb'
+require './lib/send_sms.rb'
 
 class ConfirmOrder
   attr_reader :contact_number, :ordered_time, :ordered_list, :total
