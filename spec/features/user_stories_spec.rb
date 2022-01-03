@@ -19,13 +19,12 @@ end
 # As a customer
 # So that I can order the meal I want
 # I would like to be able to select some number of several available dishes
-bobs_burritos = Takeaway.new
 bobs_burritos.order(1, 2)
 bobs_burritos.order(3, 4)
 describe Takeaway do
   describe '#basket' do
     it 'shows a log of items that have been ordered' do
-      expect { bobs_burritos.basket }.to output("2 x  Beef Burrito - £20.00\n4 x  Veggie Burrito - £32.00\n").to_stdout
+      expect { bobs_burritos.basket }.to output("2 x  Beef Burrito - £20.00\n4 x  Veggie Burrito - £32.00\nTotal: £52.00\n").to_stdout
     end
   end
 end
@@ -34,6 +33,7 @@ end
 # As a customer
 # So that I can verify that my order is correct
 # I would like to check that the total I have been given matches the sum of the various dishes in my order
+# This is fulfilled as the total displays with #basket
 
 # 4
 # As a customer
