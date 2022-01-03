@@ -6,7 +6,7 @@ I created a takeaway program to meet these user story requirements:
 * customer can order a meal they want, selecting some number of available dishes
 * customer can verify order is correct by checking that the total they've been given matches the sum of various dishes in their order
 * customer can be reassured that order will be delivered on time, therefore customer should receive a confirmation text after completing order (I used the Twilio API)
-
+``` 
                             _________
               r==           |       |
            _  //            |  M.A. |   ))))
@@ -17,16 +17,16 @@ I created a takeaway program to meet these user story requirements:
       :' // ':   \ \ ''..'--:'-.. ':
       '. '' .'    \:.....:--'.-'' .'
        ':..:'                ':..:'
-
+``` 
 
 ### My Approach
 My program has five classes: 
 
-**Takeaway**: customer interacts with this class only. It calls on methods of other classes
-**Order**: stores a record of dishes the customer has added to order (i.e. in @basket) and any other methods relating to the customer's order
-**Menu**: stores a list of dishes. Dishes can be added to the menu. If there were Takeaway staff, they would interact with this class to update their menu.
-**Dish**: stores name and price of each dish
-**Message**: class to call on Twilio API and send text 
+**Takeaway**: customer interacts with this class only. It calls on methods of other classes\
+**Order**: stores a record of dishes the customer has added to order (i.e. in @basket) and any other methods relating to the customer's order\
+**Menu**: stores a list of dishes. Dishes can be added to the menu. If there were Takeaway staff, they would interact with this class to update their menu.\
+**Dish**: stores name and price of each dish\
+**Message**: class to call on Twilio API and send text
 
 #### Takeaway
 * Used dependency injection to initialize this class with Menu.new and Order.new as default parameters. This means a previously produced menu or saved order could be injected into Takeaway.new.
