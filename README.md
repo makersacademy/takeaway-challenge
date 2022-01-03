@@ -1,4 +1,15 @@
-# README.md
+# Takeaway-challenge
+
+### Functionality:
+- user can create a Takeaway (it needs a corresponding csv file with a menu)
+- user can make an order at a specific Takeaway
+- user receives an sms confirmation after completing an order
+
+### Unresolved problems:
+- do we need to test (how?) for sending the message
+- the code could be refactored further
+- needs to be accomoddated for unintended usage
+
 
 ## Demo:
 
