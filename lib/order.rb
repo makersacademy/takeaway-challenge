@@ -11,10 +11,11 @@ class Order
   def add(dish)
     @order << dish
     @total += dish.values[0]
+    "Current total is #{@total}"
   end
 
   def show_order
     @order.each { |dish| puts "#{dish.keys[0]} £#{dish.values[0]}" }
-    puts "TOTAL = £#{@total}"
+    "Current total is #{@total}"
   end
 end

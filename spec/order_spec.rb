@@ -24,7 +24,7 @@ describe Order do
 
     it "shows current order & total" do
       subject.add({ "Burger" => 2 }) 
-      expect { subject.show_order }.to output("Burger £2\nTOTAL = £2\n").to_stdout
+      expect { subject.show_order }.to output("Burger £2\n").to_stdout
     end
   end
 end

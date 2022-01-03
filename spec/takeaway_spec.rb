@@ -1,7 +1,7 @@
 require "takeaway"
 
 describe Takeaway do
-  let(:menu) { double(:menu, :list => "Breakfast £2", :dishes => { "Breakfast" => "2" }) }
+  let(:menu) { double(:menu, :list => "Breakfast £2", :dishes => { "Breakfast" => 2 }) }
   let(:sms) { double(:sms) }
   subject { Takeaway.new(menu) }
 

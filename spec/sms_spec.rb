@@ -8,6 +8,6 @@ describe SMS do
   end
 
   it "has the current time + 1 hour stamped on the text" do
-    expect(subject.send(:in_an_hour)).to eq (Time.now + 3600).strftime("%I:%M %p")
+    expect(subject.__send__(:in_an_hour)).to eq (Time.now + 3600).strftime("%I:%M %p")
   end
 end

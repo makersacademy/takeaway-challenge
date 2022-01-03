@@ -18,7 +18,7 @@ class Takeaway
   def add_to_order(dish)
     (@current_order = @order.new) unless @current_order
     fail "Sorry, this dish is not available" unless dish_exists?(dish)
-    @current_order.add({ dish => @menu.dishes[dish].to_i })
+    @current_order.add({ dish => @menu.dishes[dish] })
   end
 
   def finalize_order(sms = @sms.new)
