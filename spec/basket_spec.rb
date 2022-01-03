@@ -32,9 +32,13 @@ describe Basket do
     end
     describe '#print_order' do
       it 'prints the basket and the total' do
-        expect(subject.print_order).to include("Total: £18.50")
+        expect { subject.print_order }.to output("[#<Double :bibimbap>, \"£10.50\", #<Double :naengmyeon>, \"£8.00\"]. Total: £18.50\n").to_stdout
       end
     end
+  end
+  
+  context "#place_order" do
+    it 'sends a text confirming the order and the total'
   end
 
 end

@@ -1,6 +1,10 @@
 require_relative 'basket'
+require_relative 'send_text'
+
 
 class Restaurant
+  include Text
+  
   attr_reader :menu
 
   def initialize
@@ -23,6 +27,10 @@ class Restaurant
   def select_item(selection) 
     choice = @menu.select { |food_hash| food_hash.include?(selection) }
     choice[0]
+  end
+
+  def place_order(total)
+    send_text(total)
   end
 
 end

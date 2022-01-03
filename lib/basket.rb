@@ -21,10 +21,8 @@ class Basket
   end
 
   def print_order
-    p "#{show_basket}\nTotal: #{total}"
+    puts "#{show_basket.flatten}. Total: #{total}"
   end
-
-  private
 
   def total
     total = 0
