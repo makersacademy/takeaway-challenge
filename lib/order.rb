@@ -10,9 +10,8 @@ class Order
   end
   
   def add(dish, quantity = 1)
-    at_index = find_dish(dish)
     item = {}
-    item[@available_dishes[at_index]] = quantity
+    item[find_dish(dish)] = quantity
     @order_list << item
   end
 
@@ -50,6 +49,6 @@ class Order
       end
     }
     raise 'Not on the menu.' unless availability == true
-    at_index
+    @available_dishes[at_index]
   end
 end
