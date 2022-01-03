@@ -42,6 +42,10 @@ class Takeaway
   end
 
   def complete_order
+    @order.delete_empty_items
+
+    raise 'Your order is empty!' if @order.pad.empty?
+
     @order.clear_pad
     confirmation_text
   end

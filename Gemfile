@@ -14,3 +14,7 @@ end
 
 gem 'twilio-ruby'
 gem 'dotenv'
+
+group :test do
+  gem "webmock"
+end

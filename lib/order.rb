@@ -13,7 +13,12 @@ class Order
   def remove(item_name, quantity)
     @pad.map do |item| 
       item[:amount] -= quantity if item[:name] == item_name
+      delete_empty_items
     end
+  end
+
+  def delete_empty_items
+    @pad.delete_if { |item| (item[:amount]).zero? }
   end
 
   def total

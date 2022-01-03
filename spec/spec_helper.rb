@@ -1,5 +1,8 @@
 require 'simplecov'
 require 'simplecov-console'
+require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
