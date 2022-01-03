@@ -3,7 +3,7 @@ require "menu"
 describe Menu do
 
   it "starts with DEFAULT_DISHES stored" do
-    expect(subject).to have_attributes(:dishes => {
+    expect(subject.dishes).to eq({
       "Beef Burger" => 6,
       "Chicken Burger" => 5,
       "Chips" => 2.50,

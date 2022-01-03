@@ -5,7 +5,7 @@ require_relative "sms"
 class Takeaway
   attr_accessor :menu, :order, :current_order
 
-  def initialize(menu = Menu.new, order = Order, sms = SMS.new)
+  def initialize(menu = Menu.new, order = Order, sms = SMS)
     @menu = menu
     @order = order
     @sms = sms
@@ -21,9 +21,9 @@ class Takeaway
     @current_order.add({ dish => @menu.dishes[dish].to_i })
   end
 
-  def finalize_order
+  def finalize_order(sms = @sms.new)
     @current_order = nil
-    @sms.send
+    sms.send_sms
   end
 
   def dish_exists?(dish)

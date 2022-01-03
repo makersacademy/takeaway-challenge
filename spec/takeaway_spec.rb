@@ -17,7 +17,7 @@ describe Takeaway do
   end
 
   context "order functionalities" do
-
+    
     it "starts an order" do
       subject.add_to_order("Breakfast")
       expect(subject.instance_variable_get(:@current_order)).to be_truthy
@@ -27,11 +27,11 @@ describe Takeaway do
       expect { subject.add_to_order("Toast") }.to raise_error("Sorry, this dish is not available")
     end
 
-    it "finalizes order" do
-      allow(sms).to receive(:send)
+    it "send sms message" do
+      allow(sms).to receive(:send_sms)
       subject.add_to_order("Breakfast")
-      subject.finalize_order
-      expect(subject.current_order).to be_falsy
+      expect(sms).to receive(:send_sms)
+      subject.finalize_order(sms)
     end
   end
 end 
