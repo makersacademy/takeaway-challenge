@@ -1,8 +1,18 @@
+require 'csv'
+
 class Menu
   attr_reader :items
-  
-  def initialize 
-    @items = [{ dish: "Beef Burrito", price: 10.00 }, { dish: "Chicken Burrito", price: 9.00 }, { dish: "Veggie Burrito", price: 8.00}]
+
+  def initialize(items = "./lib/menu.csv") 
+    @items = []
+    load_menu(items)
+  end
+
+  def load_menu(items)
+    CSV.foreach(items) do |item|
+      dish, price = item
+      @items << { dish: dish, price: price.to_f }
+    end
   end
 
   def to_s
