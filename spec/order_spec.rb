@@ -1,37 +1,45 @@
 require 'order'
-require 'menu'
+
+ORDER_SUMMARY = <<~ORDER.freeze
+  Your current order:
+
+  Beef burger: 14
+  Fries: 4
+  Milkshake: 5
+
+  Order total: 23
+ORDER
 
 describe Order do
   subject (:order) { Order.new }
 
+  let (:actual_order) do 
+    [{ name: "Beef burger", price: 14 },
+      { name: "Fries", price: 4 },
+      { name: "Milkshake", price: 5 }]
+  end
+    
   it 'is an order' do
     expect(order).to be_an Order
   end
 
-  order_summary = <<~ORDER
-    Your current order:
-
-    Beef burger: 14
-    Fries: 4
-    Milkshake: 5
-
-    Order total: 23
-  ORDER
-
   describe '#summary' do
     it { is_expected.to respond_to(:summary) }
 
-    it 'does not show if order is empty' do
-      expect { order.summary }.to raise_error "Your order is empty"
+    context 'when the order is empty' do
+      it 'is not given' do
+        expect { order.summary }.to raise_error "Your order is empty"
+      end
     end
 
-    it 'shows the current order' do
-      allow(order).to receive(:summary) { "Order summary" }
-      expect(order.summary).to eq "Order summary"
-    end
+    context 'when there is an order' do
+      before do
+        actual_order.each do |item|
+          order.add(item)
+        end
+      end
 
-    menu = Menu.new
-    menu.select(1, 4, 6)
-    specify { expect { menu.order.summary }.to output(order_summary).to_stdout }
+      specify { expect { order.summary }.to output(ORDER_SUMMARY).to_stdout }
+    end
   end
 end
