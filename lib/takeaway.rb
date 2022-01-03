@@ -23,5 +23,4 @@ class Menu
     #find the right way to add hash values in arrayz``
   end 
 
-
 end 
