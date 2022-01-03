@@ -2,6 +2,7 @@ require "takeaway"
 
 describe Takeaway do
   let(:menu) { double(:menu, :list => "Breakfast £2", :dishes => { "Breakfast" => "2" }) }
+  let(:sms) { double(:sms) }
   subject { Takeaway.new(menu) }
 
   context "menu functionalities" do
@@ -13,21 +14,24 @@ describe Takeaway do
     it "shows the menu" do
       expect { subject.show_menu }.to output("Breakfast £2").to_stdout 
     end
-
-    it "adds dishes to the menu" do
-      expect(subject).to respond_to(:add_to_menu)
-    end
   end
 
   context "order functionalities" do
 
     it "starts an order" do
       subject.add_to_order("Breakfast")
-      expect(subject.instance_variable_get(:@order)).to be_truthy
+      expect(subject.instance_variable_get(:@current_order)).to be_truthy
     end
 
     it "gives error if non existent dish is ordered" do
       expect { subject.add_to_order("Toast") }.to raise_error("Sorry, this dish is not available")
+    end
+
+    it "finalizes order" do
+      allow(sms).to receive(:send)
+      subject.add_to_order("Breakfast")
+      subject.finalize_order
+      expect(subject.current_order).to be_falsy
     end
   end
 end 

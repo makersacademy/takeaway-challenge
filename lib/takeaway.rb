@@ -1,20 +1,18 @@
 require_relative "menu"
 require_relative "order"
+require_relative "sms"
 
 class Takeaway
   attr_accessor :menu, :order, :current_order
 
-  def initialize(menu = Menu.new, order = Order)
+  def initialize(menu = Menu.new, order = Order, sms = SMS.new)
     @menu = menu
     @order = order
+    @sms = sms
   end
 
   def show_menu
     print @menu.list
-  end
-
-  def add_to_menu(dishes)
-    @menu.add(dishes)
   end
 
   def add_to_order(dish)
@@ -23,16 +21,21 @@ class Takeaway
     @current_order.add({ dish => @menu.dishes[dish].to_i })
   end
 
+  def finalize_order
+    @current_order = nil
+    @sms.send
+  end
+
   def dish_exists?(dish)
     @menu.dishes.has_key?(dish)
   end
-
 end
 
-sample = "Beef Burger, 5, Chicken Burger, 4, Slice of Pizza, 4, Chips, 2.50"
-takeaway = Takeaway.new
-takeaway.add_to_menu(sample)
-takeaway.add_to_order("Beef Burger")
-takeaway.add_to_order("Chicken Burger")
-takeaway.add_to_order("Chips")
-takeaway.current_order.show_order
+# sample = "Beef Burger, 5, Chicken Burger, 4, Slice of Pizza, 4, Chips, 2.50"
+# takeaway = Takeaway.new
+# takeaway.add_to_menu(sample)
+# takeaway.show_menu
+# takeaway.add_to_order("Beef Burger")
+# takeaway.add_to_order("Chicken Burger")
+# takeaway.add_to_order("Chips")
+# takeaway.current_order.show_order
