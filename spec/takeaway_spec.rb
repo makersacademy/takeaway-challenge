@@ -11,4 +11,8 @@ describe Takeaway do
     test.order_food(1, 1)
     expect { test.display_order }.to output("1 x item1 - £1.0\nTotal cost: £1.0\n").to_stdout
   end
+
+  it '#order_correct? returns true if #total matches #sum' do
+    expect(test.order_correct?).to be_truthy
+  end
 end
