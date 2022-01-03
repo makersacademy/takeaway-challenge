@@ -10,7 +10,7 @@ auth_token = ENV['TWILIO_AUTH_TOKEN']
 
 message = @client.messages
   .create(
-     body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+     body: 'Thank you! Your order was placed and will be delivered before 18:52',
      from: '+16308127552',
      to: '+447729415402'
    )
