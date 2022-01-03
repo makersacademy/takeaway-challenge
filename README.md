@@ -20,38 +20,36 @@ I created a takeaway program to meet these user story requirements:
 
 
 ### My Approach
-==================
-###### Summary of my 5 classes: 
+My program has five classes: 
 **Takeaway**: customer interacts with this class only. It calls on methods of other classes
 **Order**: stores a record of dishes the customer has added to order (i.e. in @basket) and any other methods relating to the customer's order
 **Menu**: stores a list of dishes. Dishes can be added to the menu. If there were Takeaway staff, they would interact with this class to update their menu.
 **Dish**: stores name and price of each dish
 **Message**: class to call on Twilio API and send text 
 
-###### Takeaway
-Used dependency injection to initialize this class with Menu.new and Order.new as default parameters. This means a previously produced menu or saved order could be injected into Takeaway.new.
-Via this class, the customer can view menu, add an item to their order, view their order and check the total has been added correctly for the items in their basket.
-When the customer completes their order via this class, complete_order method will call on the Message class, which, in turn,  handles the Twilio API messaging service, to send a confirmation text and display a confirmation message on screen.
-Complete_order method passes the order's basket_total as a parameter to Message class' send method
+##### Takeaway
+* Used dependency injection to initialize this class with Menu.new and Order.new as default parameters. This means a previously produced menu or saved order could be injected into Takeaway.new.
+* Via this class, the customer can view menu, add an item to their order, view their order and check the total has been added correctly for the items in their basket.
+* When the customer completes their order via this class, complete_order method will call on the Message class, which, in turn,  handles the Twilio API messaging service, to send a confirmation text and display a confirmation message on screen.
+* Complete_order method passes the order's basket_total as a parameter to Message class' send method
 
-###### Order
-This class is responsible for any methods relating to the customer's order i.e. adding dishes to order, displaying the order, checking the basket total
-nb: I'm not sure if there's a better way of doing check_total because I'm not sure my method is really doing much of a check
+##### Order
+* This class is responsible for any methods relating to the customer's order i.e. adding dishes to order, displaying the order, checking the basket total
+* nb: I'm not sure if there's a better way of doing check_total because I'm not sure my method is really doing much of a check
 
-###### Menu
-Stores a list of dishes as a hash. Hash keys are the names of dishes. Hash values are the associated prices.
-@dishes is an accessor so that dishes can be added to @dishes. 
+##### Menu
+* Stores a list of dishes as a hash. Hash keys are the names of dishes. Hash values are the associated prices.
+* @dishes is an accessor so that dishes can be added to @dishes. 
 
-###### Dish
-An instance of Dish class has name and price attributes that can be read by other classes, namely Menu
+##### Dish
+* An instance of Dish class has name and price attributes that can be read by other classes, namely Menu
 
-###### Message
-An instance of Message class is initialized by the Takeaway's complete_order method, which also calls Message's send method
-Send will invoke the Twilio API. It also calculates the arrival time by adding 60 minutes to the current time (Time.now) and formats it correctly to 24hr clock
-Used I've used environment variables to protect confidential data needed for Twilio API (nb: I also created a twilio.env.template as an example of my twilio.env file which is not uploaded to github)
+##### Message
+* An instance of Message class is initialized by the Takeaway's complete_order method, which also calls Message's send method
+* Send will invoke the Twilio API. It also calculates the arrival time by adding 60 minutes to the current time (Time.now) and formats it correctly to 24hr clock
+* Used I've used environment variables to protect confidential data needed for Twilio API (nb: I also created a twilio.env.template as an example of my twilio.env file which is not uploaded to github)
 
 ### Manual feature testing in irb | Example of a customer interaction with my Takeaway program 
-==================
 ```
 katbrooks@Kats-Air takeaway % irb -r ./lib/takeaway.rb
  => 
