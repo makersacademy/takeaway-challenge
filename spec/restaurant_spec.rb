@@ -14,5 +14,11 @@ describe Restaurant do
         'bulgogi'=>"£10.00",
         'naengmyeon'=>"£8.00")
     end
+    describe "#select_item" do
+      it 'returns an item and its price as array' do
+        # select bibimbap
+        # return 'bibimbap' and price
+      end
+    end
   end
 end

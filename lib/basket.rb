@@ -2,11 +2,11 @@ class Basket
   attr_reader :basket
 
   def initialize
-    @basket = {}
+    @basket = []
   end
   
-  def add_item(item, price)
-    @basket[item] = price
+  def add_item(item)
+    @basket << item
   end
 
 end

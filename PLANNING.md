@@ -1,3 +1,9 @@
+# Domains (potential classes)
+* Restaurant
+* Menu
+* Basket
+
+
 # What messages will this app be sending? (Behaviour)
 | Message                             | To Object?
 --------------------------------------|------------------
@@ -9,14 +15,5 @@
 | * .confirm_order(basket)            | restaurant
 | * .send_text (private method?)      | restaurant OR confirmation class??
 
-
-
-
-
-
-
-
-# Domains (potential classes)
-* Restaurant
-* Menu
-* Basket
+# Possible similar behaviour 
+* .see_menu may be similar to show or print_basket. Could this be modular behaviour?
