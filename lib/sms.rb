@@ -8,8 +8,7 @@ class SMS
     @client = client || Twilio::REST::Client.new(account_sid, auth_token)
     @account_sid = account_sid
     @auth_token = auth_token
-    @from = from
-    @to = to
+    @from, @to = from, to
   end
 
   def send_text

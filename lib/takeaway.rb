@@ -5,7 +5,7 @@ require_relative 'sms'
 class Takeaway
   attr_reader :menu, :order, :sms
 
-  def initialize(menu, sms)
+  def initialize(menu, sms = nil)
     @menu = menu
     @order = Order.new(menu)
     @sms = sms
@@ -26,7 +26,7 @@ class Takeaway
   end
 
   def confirm_order
-    @sms.send_text
+    @sms.send_text unless sms_not_provided?
     thank_you_msg
   end
 
@@ -40,6 +40,10 @@ class Takeaway
 
   def display_total
     puts "* Total ..... £#{sprintf('%.2f', @order.calculate_total)}"
+  end
+
+  def sms_not_provided?
+    @sms.nil?
   end
 
   def thank_you_msg

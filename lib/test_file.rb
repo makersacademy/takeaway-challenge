@@ -10,19 +10,19 @@ SAMPLE_MENU = {
   Coffee: 2.5
 }.freeze
 
-client = Twilio::REST::Client.new(account_sid, auth_token),
 account_sid = "YOUR ACCOUNT_SID HERE"
 auth_token = "YOUR AUTH_TOKEN HERE"
+client = Twilio::REST::Client.new(account_sid, auth_token)
 
 text_args = {
 
   from: "YOUR TWILIO NUMBER HERE",
-  to: "YOUR MONILE NUMBER HERE"
+  to: "YOUR MOBILE NUMBER HERE"
 }
 
-text = SMS.new(client, account_sid, auth_token, text_args[:from], text_args[:to])
+text = SMS.new(client, account_sid, auth_token, text_args[:from], text_args[:to]) 
 menu = Menu.new(SAMPLE_MENU)
-take_away = Takeaway.new(menu, text)
+take_away = Takeaway.new(menu, text) 
 
 take_away.build_order(:Soup, 2)
 take_away.build_order(:Pizza, 1)
