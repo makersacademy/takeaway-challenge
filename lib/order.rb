@@ -4,7 +4,7 @@ require_relative './checkout'
 class Order 
   attr_accessor :order_list
   
-  def initialize()
+  def initialize
     @order_list = []
     @list = Menu.new.list
   end 
@@ -18,7 +18,7 @@ class Order
   end
 
   def confirm
-    Checkout.new.message
+    @message = Checkout.new.message
   end 
 
 end
