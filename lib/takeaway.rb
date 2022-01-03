@@ -4,8 +4,10 @@ require './lib/order'
 class Takeaway
   attr_reader :menu_list
   
-  def initialize
+  def initialize(name)
+    @name = name
     @menu_list = []
+    load_menu(name)
   end
 
   def show_menu
@@ -15,12 +17,19 @@ class Takeaway
   end
 
   def make_order
-    Order.new
+    Order.new(@menu_list)
+  end
+  
+  private
+
+  def load_menu(name)
+    path = "./lib/menus/#{name}.csv"
+    raise 'No menu to load' unless File.exist?(path)
+    csv_lines = File.open(path, 'r') { |file| file.readlines }
+    csv_lines.each { |csv_lines| name, price = csv_lines.split(','); add_dish(Dish.new(name, price.strip.to_i))  }
+  end
+  
+  def add_dish(dish)
+    @menu_list << dish
   end
 end
-
-# As a customer
-# So that I am reassured that my order will be delivered on time
-# I would like to receive a text such as 
-# "Thank you! Your order was placed and will be delivered before 18:52"
-#  after I have ordered
