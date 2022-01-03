@@ -3,16 +3,14 @@ require 'menu'
 describe Menu do
   subject (:menu) { Menu.new }
   
-  let (:dishes) do
-    <<~MENU
-      1. Beef burger: 14
-      2. Chicken burger: 12
-      3. Hot dog: 11
-      4. Fries: 4
-      5. Soft drink: 3
-      6. Milkshake: 5
-    MENU
-  end
+  menu_items = <<~MENU
+    1. Beef burger: 14
+    2. Chicken burger: 12
+    3. Hot dog: 11
+    4. Fries: 4
+    5. Soft drink: 3
+    6. Milkshake: 5
+  MENU
 
   describe '#view' do
     it { is_expected.to respond_to(:view) }
@@ -22,7 +20,7 @@ describe Menu do
       expect(menu.view).to eq "Menu"
     end
 
-    specify { expect { menu.view }.to output(dishes).to_stdout }
+    specify { expect { menu.view }.to output(menu_items).to_stdout }
   end
 
   describe '#select' do
