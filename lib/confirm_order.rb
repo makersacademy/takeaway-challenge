@@ -1,3 +1,5 @@
+require './send_sms.rb'
+
 class ConfirmOrder
   attr_reader :contact_number, :ordered_time, :ordered_list, :total
 
@@ -5,13 +7,12 @@ class ConfirmOrder
     @ordered_time = ordered_time
     @ordered_list = ordered_list
     @total = total
+    send_confirmation
   end
   
   def send_confirmation
-    puts @ordered_time
-    puts @ordered_list
-    puts @total
-    
+    delivery_time = @ordered_time + (60*60)
+    message = Send_sms.new(delivery_time, @ordered_list, @total)
   end
 
 end

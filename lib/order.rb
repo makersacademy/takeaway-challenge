@@ -32,7 +32,7 @@ class Order
   def another_dish?
     puts "Do you want to select another dish? (y/n)"
     selection = gets.chomp
-    selection == "y" ? order_item : nil
+    selection == "y" ? order_item : sum_total
   end
 
   def order_item
