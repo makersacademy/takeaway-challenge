@@ -33,4 +33,4 @@ Summary
 -------
 
 * All tests passing with 5 passes, 0 failures
-* High Test coverage at 96.72%
+* Med Test coverage at 84.09%
