@@ -25,8 +25,7 @@ Instructions
 ```sh
 3.0.2 :001 > require "./lib/takeaway.rb"
  => true 
- => 
-... 
+ 
 3.0.2 :003 > burger_place.show_menu
 1- Beef Burger £6.0
 2- Chicken Burger £5.0
@@ -47,7 +46,7 @@ Chicken Burger £5.0
 Chips £2.5
 Soft Drink £1.5
  => "Current total is 9.0" 
- 
+
 3.0.2 :010 > burger_place.finalize_order
 ```
 
