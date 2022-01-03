@@ -1,3 +1,5 @@
+require_relative 'basket'
+
 class Restaurant
   attr_reader :menu
 
