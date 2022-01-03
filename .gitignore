@@ -5,4 +5,4 @@
 .rubocop-*
 
 # twilio api sms send
-./lib/send_sms.rb
+**/send_sms.rb
