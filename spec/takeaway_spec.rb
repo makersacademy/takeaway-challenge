@@ -1,4 +1,4 @@
-require 'takeaway'
+require "takeaway"
 
 describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu, order: order) }
@@ -9,7 +9,7 @@ describe Takeaway do
 
   let(:dishes) { {noodles: 2, squid: 1} }
 
-  it 'shows menu with dishes and there prices' do
+  it "shows menu with dishes and there prices" do
     expect(takeaway.print_menu).to eq(printed_menu)
   end
 
