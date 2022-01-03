@@ -12,4 +12,8 @@ class Menu
       # above syntex taken from online source - stackoverflow
     end.join(", ")
   end
+
+  def price(dish)
+    
+  end
 end
