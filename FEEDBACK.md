@@ -4,6 +4,10 @@
 
 * Are they loosely coupled?
 
+* Could I have further broken down my classes? Do they have a single responsibility? I feel they might be getting a bit large!
+
+* How is my mocking? 
+
 * Could I have used keyword arguments better to make my code more changeable later?
 
 * How would these classes work together as a program if they are so loosely coupled. Do I need a customer ordering interface to implement the public methods of my classes? Or should one of my classes be doing this already e.g. restaurant?
@@ -15,3 +19,5 @@
 * In my tests, I have hard coded the costs of the menu. Is this reasonable or should I be using my doubles to do this? 
 
 * I have two almost identical methods in my restaurant and basket classes – would I abstract this method out to a module here?
+
+* How could I increase my test coverage?
