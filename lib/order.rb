@@ -1,7 +1,10 @@
+require_relative './menu'
+require_relative './checkout'
+
 class Order 
-attr_accessor :order_list
+  attr_accessor :order_list
   
-  def initialize
+  def initialize()
     @order_list = []
     @list = Menu.new.list
   end 
@@ -11,8 +14,11 @@ attr_accessor :order_list
   end 
 
   def total
-    @order_list.inject(0){|sum, hash| sum+= hash.values.join.to_i}
-    #find the right way to add hash values in arrayz``
+    @order_list.inject(0) { |sum, hash| sum += hash.values.join.to_i }
+  end
+
+  def confirm
+    Checkout.new.message
   end 
 
-end 
+end
