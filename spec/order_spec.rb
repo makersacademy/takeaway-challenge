@@ -1,5 +1,8 @@
 require 'order' 
 describe Order do
+  default_menu = Menu::MENU
+  let(:menu) { instance_double(Menu, dishes: default_menu) }
+  subject {described_class.new(menu)}
   let(:dish) {"dal"}
   let(:quantity) {2}
   let(:price) {6.50}
@@ -17,10 +20,6 @@ describe Order do
     expect(subject.basket_total).to eq(quantity * price)
     end
 
-    it 'raises error if user tries to add a dish not on the menu' do
-      expect{ subject.add("pizza") }.to raise_error("That dish is not on our menu, please choose a dish from our menu.")
-    end
-
   end
 
   it 'displays order' do 
@@ -35,8 +34,6 @@ describe Order do
 
   it 'is false when basket total has been calculated incorrectly' do #can't make this test pass - subject.basket_total is printing as 1000. But within the expect... , basket_total is 0, not 1000 and therefore returning true not false
     allow(subject).to receive(:basket_total).and_return(1000) 
-    p subject.basket_total
-    p "here"
     expect(subject.check_total?).to be(false)
   end
 
