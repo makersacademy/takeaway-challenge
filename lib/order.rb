@@ -9,4 +9,10 @@ class Order
     fail "#{dish.capitalize} is not availabe" unless menu.availabe?(dish)
     dishes[dish] = quantity
   end
+
+  def total
+    dishes.map do |dish, quantity|
+      menu.price(dish) * quantity
+    end.inject(:+)
+  end
 end
