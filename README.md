@@ -51,3 +51,48 @@ This project is to be implemented using a TDD process with a particular focus on
     1. Refactor
     1. Repeat until all software requirements are met.
 
+The aim is to build a program with easy-to-use commands. The user stories will be used a base to try to achieve an efficient process of ordering a takeaway.
+
+## Getting started
+
+```irb
+3.0.2 :001 > require './lib/takeaway'
+ => true 
+3.0.2 :002 > takeaway = Takeaway.new
+ => 
+#<Takeaway:0x00007f8c4695d538
+... 
+```
+
+### How to use
+
+After creating a new instance of a takeaway, the following commands can be used:
+
+```
+takeaway = Takeaway.new
+```
+`takeaway`
+
+- `.view_menu`
+- `.select()`
+  - One or more numbers corresponding to dishes on the menu can be passed as arguments to `select` e.g. `select(2, 4, 5)`
+- `.view_order `
+  - to see a summary of your current order.
+- '.order' (not yet available)
+  - will place the order and send you a text comfirming your order.
+
+
+## IMPROVEMENTS
+
+A feature to allow a customer to chose the quantity of an item would make the program more user friendly.
+
+More consideration should be given to make the structure of the tests and implementation code more efficient - aiming for low coupling and high cohesion.
+
+#### Addtional features
+
+An additional feature could be to allow a customer to change or remove items from their order.
+
+
+#### Completion
+
+To address the last user story, an 'order' feature would be implemented by following the documented process for using the Twilio API.
