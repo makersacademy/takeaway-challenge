@@ -26,6 +26,8 @@ class Takeaway
     sms.send_sms
   end
 
+private
+
   def dish_exists?(dish)
     @menu.dishes.has_key?(dish)
   end

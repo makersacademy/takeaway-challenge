@@ -5,7 +5,7 @@ describe Takeaway do
   let(:sms) { double(:sms) }
   subject(:takeaway) { Takeaway.new(menu) }
 
-  it { is_expected.to respond_to(:show_menu, :add_to_order, :finalize_order, :dish_exists?) }
+  it { is_expected.to respond_to(:show_menu, :add_to_order, :finalize_order) }
 
     it "has a menu" do
         expect(takeaway).to have_attributes(:menu => menu)
