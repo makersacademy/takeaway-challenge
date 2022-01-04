@@ -36,6 +36,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
+```
 How to use
 -----
 Create a new instance of a takeaway, then following commands can be used:
@@ -55,7 +56,7 @@ Allows you to see your current order.
 .finalize_order
 Will place the order and send you a text comfirming your order.
 
-```
+
 Improvements
 -----
 Improve data storage of dish items
