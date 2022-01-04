@@ -100,6 +100,6 @@ You@YourComputer takeaway-challenge % irb
 
                         Total:    £74.00
  => "Order some more items, or if all looks good type: bobs.checkout('+yournumber')" 
-3.0.2 :010 > bobs.checkout('+447931352505')
+3.0.2 :010 > bobs.checkout('+4475551342')
  => "Thank you! Your order was placed and will be delivered before 13:42"
 ```
