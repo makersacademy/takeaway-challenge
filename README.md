@@ -87,7 +87,9 @@ Total cost: £13.0
  ### Things I'd like to improve
 
  - I don't think the code is very elegant, particularly the relationship between Order and Takeaway
- - I've tried to account for edge cases but don't feel like I've caught them all
+ - I think some refactoring needs to be done to make it DRYer
+ - I haven't spent enough time on catching edge cases
  - I haven't managed 100% test coverage
  - I didn't get around to having a go at implementing the ability to order via text
  - I tried to use Webmock to stub out Twilio and failed
+ - There are some private methods at the end of the Takeaway class that I think should be extracted to the Text class

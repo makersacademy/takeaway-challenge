@@ -7,6 +7,8 @@ class Order
   end
 
   def select(index, menu, quantity = 1)
+    raise 'That\'s not on the menu I\'m afraid' if invalid_selection?(index, menu)
+
     @pad << menu[index].merge(amount: quantity)
   end
 
@@ -27,5 +29,11 @@ class Order
 
   def clear_pad
     @pad = []
+  end
+
+  private 
+
+  def invalid_selection?(index, menu)
+    menu[index].nil?
   end
 end
