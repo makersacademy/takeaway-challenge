@@ -43,10 +43,6 @@ class Takeaway
     end
   end    
 
-#  def save_dish(name, price)
-#    dishes[name] = price
-#  end
-
 def print_menu
   @menu.print
 end

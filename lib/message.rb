@@ -19,7 +19,7 @@ class Message
     message = @client.messages.create( 
       body: "Thank you! Your order will be delivered before #{@t.strftime("%R")}.",
       from: 'whatsapp:+14155238886',       
-      to: 'whatsapp:+549226251xxxx' 
+      to: ENV['TWILIO_PHONE_NUMBER']
     ) 
 
   end
