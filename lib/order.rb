@@ -1,3 +1,4 @@
+require_relative 'send_text'
 class Order
     attr_reader :order_list
     def initialize
@@ -31,5 +32,7 @@ class Order
        
     end
 
-    
+    def place_order(send_text = SendText.new)
+        send_text.send
+      end
 end

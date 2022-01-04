@@ -3,8 +3,8 @@ describe Order do
     let(:hamburger) {double(name: 'Hamburger', price: 5)}
     let(:chips) {double(name: 'Chips', price: 2)}
 
-    it {is_expected.to respond_to(:add, :total_price, :print_order)}
-    
+    it {is_expected.to respond_to(:add, :total_price, :print_order, :place_order)}
+
     it 'starts with empty order list' do
         expect(subject.order_list).to be_empty
     end

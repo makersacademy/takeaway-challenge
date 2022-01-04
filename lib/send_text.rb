@@ -13,10 +13,10 @@ class SendText
     end
 
     def message
-        from = '+12256214813'
+        from = 'MG2c39a918e238329baed752ecbc048529'
         to = ENV['MY_PHONE_NUMBER']
 
-        @client.messages.create(
+            @client.messages.create(
             from: from,
             to: to,
             body: "Thank you! Your order was placed and will be delivered before #{@time.strftime("%k:%M")}"
