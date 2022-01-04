@@ -36,6 +36,7 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
+```
 How to use
 -----
 Create a new instance of a takeaway, then following commands can be used:
@@ -50,22 +51,25 @@ Shows the menu
 Selects dishes on the menu. They can be passed as arguments e.g. add_to_order(:"Soft Drink)
 
 .current_order.view_order
-Allows you to see  your current order.
+Allows you to see your current order.
 
-'.finalize_order
+.finalize_order
 Will place the order and send you a text comfirming your order.
 
-```
+
 Improvements
 -----
 Improve data storage of dish items
 
-Consideration of using more private methods
+Consideration of encapsulation and the usage of more private methods 
 
-Improve readability. DRY
+Improve readability while keeping code dry.
+
+How to view the current order implementation could be cleaner
+
+Finalize order- Would ideallly like to actually recieve a text message- this may require a paid twilio account.
 
 Additional Features
 -----
 Allow a customer to edit their order.
 
-Recieve a text message- may require a paid twilio account
