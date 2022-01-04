@@ -1,19 +1,22 @@
 require 'csv'
 
 class Menu
-  attr_reader :items
-
   def initialize(items = "./lib/menu.csv") 
     @items = []
     load_menu(items)
   end
 
   def to_s
-    menu = ""
+    menu = "#{"Welcome to Bob's Burritos!".rjust(57)}\n"
     @items.each_with_index do |item, index| 
-      menu << "#{index + 1}. #{item[:dish]} - £#{'%.2f' % item[:price]}\n"
+      menu << "\n#{item[:dish].rjust(40)} - dish: #{index + 1} -" \
+      + "£#{'%.2f' % item[:price]}".rjust(8)
     end
     menu
+  end
+
+  def dish_info(index)
+    [@items[index][:dish], @items[index][:price]]
   end
 
   private
