@@ -9,8 +9,8 @@ class Message
 
   def initialize
     @t = Time.now + 3600
-    account_sid = 'ACf61231921b2a41d935956d471dacf821' 
-    auth_token = 'c197c39a8544c160281175cd2dcaf037' 
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
