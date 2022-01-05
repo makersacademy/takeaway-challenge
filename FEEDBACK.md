@@ -21,3 +21,28 @@
 * I have two almost identical methods in my restaurant and basket classes – would I abstract this method out to a module here?
 
 * How could I increase my test coverage?
+
+
+*See pull request for feedback from peer and coach*
+###Further coach feedback re: mocking the text message
+
+Re; stubbing the text message, actually the only kind of test I would write for this would be something like this...
+in your Restaurant class, or wherever you're calling the text sending code
+```
+def confirm_order 
+	@message_class.send_text 
+end
+```
+in your Restaurant tests...
+```
+it 'sends the user a text message once the order is confirmed' do 
+	expect(message_class).to receive(send_text) 
+	restaurant_instance = Restaurant.new(# any arguments)
+
+	# anything else you need to do to set up a new order / basket
+
+	restaurant_instance.confirm_order 
+end
+```
+The idea behind this test is only testing the restaurant's behaviour: all it does is checks that that method to the text sending code is called, as that's all the restaurant is responsible for in relation to the message being sent. We don't actually test the text sending code here, as we might just manually test that once or twice while we're building it.
+
