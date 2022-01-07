@@ -17,7 +17,7 @@ class Restaurant
   end
 
   def show_order
-    show = @current_order.order
+    show = @current_order.order.clone
     show << { 'Sum' => @current_order.calc_sum }
     return show
   end
