@@ -6,5 +6,4 @@ describe Menu do
     expect(subject.print_menu).not_to be_empty
   end
 
-
 end

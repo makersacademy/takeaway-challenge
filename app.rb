@@ -1,5 +1,27 @@
-# require "./lib/menu.rb"
+require './lib/takeaway'
 
-# menu = Menu.new
+takeaway = TakeAway.new
 
-# menu.print_menu
+takeaway.show_menu
+
+# p takeaway.add("blahh")
+
+takeaway.add("pizza")
+
+# p takeaway.add("pasta")
+
+# p takeaway.add("pasta")
+
+# p takeaway.add("ramen")
+
+# p takeaway.add("soup")
+
+takeaway.complete
+
+# p takeaway.add("soup")
+
+
+
+
+
+
