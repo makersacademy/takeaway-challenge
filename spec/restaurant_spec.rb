@@ -4,7 +4,7 @@ RSpec.describe Restaurant do
   
   describe '#show_menu' do
     it 'shows the menu of the restaurant' do
-      example_menu = get_example_menu
+      example_menu = create_example_menu
       expect(subject.show_menu).to eq(example_menu)
     end
   end
@@ -20,15 +20,26 @@ RSpec.describe Restaurant do
       subject.create_order()
       subject.add_dish_to_order('Chips')
       subject.add_dish_to_order('Chips')
-      subject.add_dish_to_order('I am not the the menu')
+      subject.add_dish_to_order('I am not in the the menu')
       subject.add_dish_to_order('Beer')
-      expect(subject.show_order).to eq(get_example_order)
+      expect(subject.show_order).to eq(create_example_order)
+    end
+  end
+
+  describe '#submit_order' do
+    it 'sends a confirmation that the order has been placed' do
+      subject.create_order()
+      subject.add_dish_to_order('Chips')
+      subject.add_dish_to_order('Beer')
+      t = Time.now
+      expect(subject.submit_order).to eq(
+        "Order has been submitted and will arrive #{t.hour + 1}:#{t.min}! To be paid: 9.60€")
     end
   end
 
 end
 
-def get_example_menu
+def create_example_menu
   {
     'Chips' => 6.40,
     'Fish' => 8.0,
@@ -37,11 +48,11 @@ def get_example_menu
   }
 end
 
-def get_example_order
+def create_example_order
   [
-    {'Chips' => 6.40},
-    {'Chips' => 6.40},
-    {'Beer' => 3.20},
-    {'Sum' => 16}
+    { 'Chips' => 6.40 },
+    { 'Chips' => 6.40 },
+    { 'Beer' => 3.20 },
+    { 'Sum' => 16 }
   ]
 end

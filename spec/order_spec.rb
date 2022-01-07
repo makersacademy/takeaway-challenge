@@ -13,7 +13,7 @@ RSpec.describe Order do
     context 'when dish is in menu' do
       it 'adds the dish and price to the order' do
         menu = double('Menu', :dish_in_menu? => true)
-        allow(menu).to receive(:menu).and_return({'Beer' => 5})
+        allow(menu).to receive(:menu).and_return({ 'Beer' => 5 })
         subject = Order.new(menu)
         subject.add_dish('Beer')
         expect(subject.order.last['Beer']).to eq(5)
@@ -40,7 +40,7 @@ RSpec.describe Order do
   describe '#calc_sum' do
     it 'returns the sum of what is currently in the order' do
       menu = double('Menu', :dish_in_menu? => true)
-      allow(menu).to receive(:menu).and_return({'Beer' => 5})
+      allow(menu).to receive(:menu).and_return({ 'Beer' => 5 })
       subject = Order.new(menu)
       3.times { subject.add_dish('Beer') }
       expect(subject.calc_sum).to eq (15)
