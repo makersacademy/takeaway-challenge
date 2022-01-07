@@ -8,7 +8,11 @@ class CustomerInterface
   end
 
   def print_menu
-    puts @menu
+    puts "----------------------- MENU -------------------------"
+    @menu.each do |menu_line|
+      puts "#{menu_line[:dish]} ----------- £#{menu_line[:price]}"
+    end
+    puts "---------------------END OF MENU----------------------"
   end
 
   def select_dish(dish)
@@ -31,7 +35,7 @@ class CustomerInterface
 
   def print_order
     @order.dishes.each do |dish|
-      puts "#{dish} ----------- #{@order.prices[@order.dishes.index(dish)]}"
+      puts "#{dish} ----------- £#{@order.prices[@order.dishes.index(dish)]}"
     end
   
     puts "Order total: £#{@order.total_cost.round(2)}"
