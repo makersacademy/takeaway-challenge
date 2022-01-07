@@ -1,3 +1,5 @@
+require_relative "messager"
+
 class Takeaway
   attr_reader :menu, :basket
 

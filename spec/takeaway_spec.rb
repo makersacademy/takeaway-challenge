@@ -19,6 +19,10 @@ describe Takeaway do
     it "responds to the method" do
       expect(subject).to respond_to(:display_menu)
     end
+
+    it "returns the menu" do
+      expect(subject.display_menu).to eq(menu)
+    end
   end
 
   describe "#add" do
