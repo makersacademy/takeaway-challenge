@@ -16,5 +16,10 @@ describe Restaurant do
     it 'returns the menu given on creation' do
       expect(subject.menu).to eq(@menu)
     end
+    it 'returns a copy of the menu' do
+      menu_copy = subject.menu
+      menu_copy[:taco] = 0
+      expect(subject.menu[:taco]).not_to eq(0)
+    end
   end
 end
