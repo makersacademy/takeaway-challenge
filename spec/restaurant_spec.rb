@@ -6,9 +6,10 @@ describe Restaurant do
     @menu = { taco: 5, pasta: 10, pizza: 15, burger: 3, golden_taco: 999 }
   end
   before :each do
-    @order = double('order', items: [:taco, :pasta, :pizza, :pasta, :pasta])
-    @empty_order = double('empty_order', items: [])
-    @invalid_order = double('invalid_order', items: [:taco, :glue, :scissors, :boa_constrictor])
+    mobile = '555-12345'
+    @order = double('order', items: [:taco, :pasta, :pizza, :pasta, :pasta], mobile: @mobile)
+    @empty_order = double('empty_order', items: [], mobile: @mobile)
+    @invalid_order = double('invalid_order', items: [:taco, :glue, :scissors, :boa_constrictor], mobile: @mobile)
   end
   subject { described_class.new(@menu) }
 
@@ -51,11 +52,21 @@ describe Restaurant do
   end
 
   describe '#place_order' do
+    before :each do
+      allow(subject).to receive(:send_text)
+    end
+
     it 'raises an error if an item is not on the menu' do
       expect { subject.place_order(@invalid_order) }.to raise_error RuntimeError
     end
     it 'raises an error if the order is empty' do
       expect { subject.place_order(@empty_order) }.to raise_error 'Order must contain at least one item'
     end
+    it 'sends a text to confirm delivery time' do
+      expect(subject).to receive(:send_text).with(@order.mobile)
+      subject.place_order(@order)
+    end
   end
+
+  it { is_expected.to respond_to(:send_text).with(1).argument }
 end

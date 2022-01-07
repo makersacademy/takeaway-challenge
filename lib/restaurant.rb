@@ -1,8 +1,11 @@
+require 'twilio-ruby'
 require_relative 'order'
 
 class Restaurant
   def initialize(menu)
     @menu = menu
+
+    @twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
   end
 
   def menu
@@ -21,6 +24,17 @@ class Restaurant
   def place_order(order)
     raise 'Order must contain at least one item' if order.items.empty?
     check_items_available(order)
+    send_text(order.mobile)
+  end
+
+  def send_text(mobile)
+    @twilio_client.messages.create(
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: mobile,
+      body: delivery_time.strftime(
+        'Thank you! Your order was placed and will be delivered before %H:%M'
+      )
+    )
   end
 
   private
