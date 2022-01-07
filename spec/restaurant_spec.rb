@@ -37,7 +37,7 @@ RSpec.describe Restaurant do
     end
     it 'closes the order' do
       subject.create_order()
-      order = double('Order', :finish_order => nil, :calc_sum => 10 )
+      order = double('Order', :finish_order => nil, :calc_sum => 10)
       subject.submit_order(order)
       expect(order).to have_received(:finish_order)
     end
