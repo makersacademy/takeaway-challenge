@@ -18,4 +18,8 @@ class Takeaway
     fail "Your choice is not on the menu" unless menu.include?(item)
     @basket[item] = price
   end
+
+  def total_price
+    @basket.reduce(0) {|total, (key, val)| total += @menu[key] * val}
+  end
 end

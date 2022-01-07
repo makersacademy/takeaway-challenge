@@ -41,4 +41,22 @@ describe Takeaway do
       expect { subject.add("Vegan Sausage Roll", 2) }.to raise_error "Your choice is not on the menu"
     end
   end
+
+  describe "#total_price" do
+    it "can caculate the price when ordering a single item" do
+      subject.add("Chicken Curry", 1)
+      expect(subject.total_price).to eq 4
+    end
+
+    it "can calculate the price when ordering multiple of a single item" do
+      subject.add("Chicken Curry", 2)
+      expect(subject.total_price).to eq 8
+    end
+
+    it "can calculate the price when ordering multiple items" do
+      subject.add("Chicken Curry", 2)
+      subject.add("Samosa", 4)
+      expect(subject.total_price).to eq 16
+    end
+  end
 end
