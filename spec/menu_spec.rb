@@ -25,7 +25,7 @@ RSpec.describe Menu do
       it { expect(chips_menu.dish_in_menu?('Chips')).to be true }
     end
     context 'when dish is not in menu' do
-      it { expect(subject.dish_in_menu?('Fish')).to be false}
+      it { expect(subject.dish_in_menu?('Fish')).to be false }
     end 
   end
 
