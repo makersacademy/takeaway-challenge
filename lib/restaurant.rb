@@ -18,7 +18,14 @@ class Restaurant
     order.items.map { |item| @menu[item] }.sum
   end
 
+  def delivery_time
+    Time.now + COOKING_TIME + TRAVEL_TIME
+  end
+
   private
+
+  COOKING_TIME  = 50 * 60
+  TRAVEL_TIME   = 10 * 60
 
   def items_not_on_menu(order)
     order.items.uniq - @menu.keys

@@ -46,4 +46,13 @@ describe Restaurant do
       expect { subject.order_total(invalid_order) }.to raise_error RuntimeError
     end
   end
+
+  describe '#delivery_time' do
+    it 'returns an instance of Time' do
+      expect(subject.delivery_time).to be_an_instance_of(Time)
+    end
+    it 'returns a time in the future' do
+      expect(subject.delivery_time).to be > Time.now
+    end
+  end
 end
