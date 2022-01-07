@@ -43,6 +43,12 @@ RSpec.describe Restaurant do
     end
   end
 
+  describe '#show_order' do
+    it 'returns a message if no order created yet' do
+      expect(subject.show_order).to eq('Nothing to show')
+    end
+  end
+
 end
 
 def create_example_menu
