@@ -7,7 +7,6 @@ describe Restaurant do
     wait_time = time_now + Restaurant::WAIT_TIME
     ready = Time.at(wait_time)
   end
-  let(:ready) { double() }
   let(:message) { "Thank you! Your order was placed and will be delivered before #{wait.strftime('%H:%M')}" }
 
   it 'receives order and responds with a message' do
