@@ -13,4 +13,9 @@ class Takeaway
       "#{item.ljust(20)} £#{price}"
     end
   end
+
+  def add(item, price)
+    fail "Your choice is not on the menu" unless menu.include?(item)
+    @basket[item] = price
+  end
 end
