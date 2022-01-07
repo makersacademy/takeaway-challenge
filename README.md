@@ -40,7 +40,7 @@ The fourth user story was the most complex for me as it involved testing that th
 
 ![Testing SMS on IRB](https://github.com/alicegray33/takeaway-challenge/blob/main/docs/testing_sms_irb.png?raw=true)
 
-![SMS received](https://github.com/alicegray33/takeaway-challenge/blob/main/docs/sms_received.png?raw=true)
+![SMS received](https://github.com/alicegray33/takeaway-challenge/blob/main/docs/sms_received.jpg?raw=true)
 
 The rspec tests all pass with 100% coverage and rubocop is happy.
 
