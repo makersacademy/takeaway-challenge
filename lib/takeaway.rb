@@ -7,4 +7,10 @@ class Takeaway
     @basket = {}
     @total = 0
   end
+
+  def display_menu
+    @menu.each do |item, price|
+      "#{item.ljust(20)} £#{price}"
+    end
+  end
 end
