@@ -1,0 +1,11 @@
+Restaurant
+  -> new_order ->
+  -> order_total ->
+  -> delivery_time ->
+  -> place_order -> (send_text)
+  menu ->
+
+Order
+  -> add
+  -> remove
+  items ->
