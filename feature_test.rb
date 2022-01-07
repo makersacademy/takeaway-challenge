@@ -1,6 +1,5 @@
-require 'restaurant'
+require './lib/restaurant'
 
-scenario 
 restaurant = Restaurant.new({ taco: 5, pasta: 10, pizza: 15, burger: 3, golden_taco: 999 })
 order = restaurant.new_order
 order.add(:taco, :pasta, :pasta)
