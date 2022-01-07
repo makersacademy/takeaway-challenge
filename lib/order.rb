@@ -13,7 +13,8 @@ class Order
   end
 
   def add_dish(name)
-    @order.push({ name => @menu[name] }) if @menu.dish_in_menu?
+    raise 'Order is already finished' if @closed
+    @order << { name => @menu.menu[name] } if @menu.dish_in_menu?(name)
   end
 
   def calc_sum
