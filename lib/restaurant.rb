@@ -10,7 +10,7 @@ class Restaurant
   end
 
   def order_total(order)
-    raise "Invalid order - #{items_not_on_menu(order)} are not on the menu" unless items_not_on_menu(order).empty?
+    check_items_available(order)
     order.items.map { |item| @menu[item] }.sum
   end
 
@@ -22,6 +22,11 @@ class Restaurant
 
   COOKING_TIME  = 50 * 60
   TRAVEL_TIME   = 10 * 60
+
+  def check_items_available(order)
+    error_msg = "Invalid order - #{items_not_on_menu(order)} are not on the menu"
+    raise error_msg unless items_not_on_menu(order).empty?
+  end
 
   def items_not_on_menu(order)
     order.items.uniq - @menu.keys
