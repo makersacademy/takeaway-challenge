@@ -1,6 +1,6 @@
 /**/.DS_Store
 /coverage
-/lib/twilio.env
+/lib/twilio_credentials.rb
 
 # Local cache of Rubocop remote config
 .rubocop-*
