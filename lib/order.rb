@@ -10,4 +10,12 @@ class Order
     @meal << dish
   end
 
+  def total
+    @total = 0
+    @meal.each do |dish|
+      @total += dish.price
+    end
+    @total
+  end
+
 end
