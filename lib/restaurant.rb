@@ -22,9 +22,10 @@ class Restaurant
     return show
   end
 
-  def submit_order
+  def submit_order(order = @current_order)
     t = Time.now
-    sum = @current_order.calc_sum
+    order.finish_order
+    sum = order.calc_sum
     send_confirmation(t, sum)
   end
   

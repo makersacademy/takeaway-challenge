@@ -35,6 +35,12 @@ RSpec.describe Restaurant do
       expect(subject.submit_order).to eq(
         "Order has been submitted and will arrive #{t.hour + 1}:#{t.min}! To be paid: 9.60€")
     end
+    it 'closes the order' do
+      subject.create_order()
+      order = double('Order', :finish_order => nil, :calc_sum => 10 )
+      subject.submit_order(order)
+      expect(order).to have_received(:finish_order)
+    end
   end
 
 end
