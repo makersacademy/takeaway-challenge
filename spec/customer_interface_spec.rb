@@ -25,9 +25,9 @@ describe CustomerInterface do
     it { should respond_to(:select_dish).with(1).argument }
 
     it "should add the selected dish to the order" do
-      dish = "Katsu Chicken Curry"
-      subject.select_dish(dish)
-      expect(subject.order).to include(dish)
+      selected_dish = Dish.new("Katsu Chicken Curry", 7.99, 20)
+      subject.select_dish(selected_dish)
+      expect(subject.order.dishes).to include(selected_dish.name)
     end
 
   end
@@ -37,9 +37,9 @@ describe CustomerInterface do
     it { should respond_to(:remove_dish).with(1).argument }
 
     it "should remove the dish from the order" do
-      dish = "Katsu Chicken Curry"
-      subject.select_dish(dish)
-      expect{ subject.remove_dish(dish) }.to change{ subject.order.length }.by -1 
+      removed_dish = Dish.new("Katsu Chicken Curry", 7.99, 20)
+      subject.select_dish(removed_dish)
+      expect{ subject.remove_dish(removed_dish) }.to change{ subject.order.dishes.length }.by -1
     end
 
   end
@@ -48,10 +48,34 @@ describe CustomerInterface do
 
     it { should respond_to(:check_order) }
 
-    it "should print the current order to the customer" do
-      dish = "Katsu Chicken Curry"
-      subject.select_dish(dish)
-      expect{ subject.check_order }.to output{ subject.order }.to_stdout
+    it "should print the list of dishes to the customer" do
+      selected_dish = Dish.new("Katsu Chicken Curry", 7.99, 20)
+      another_dish = Dish.new("Sushi Platter", 21.99, 30)
+      subject.select_dish(selected_dish)
+      subject.select_dish(another_dish)
+      expect{ subject.check_order }.to output{ subject.order.dishes }.to_stdout
+    end
+
+    it "should print the total price to the customer" do
+      selected_dish = Dish.new("Katsu Chicken Curry", 7.99, 20)
+      another_dish = Dish.new("Sushi Platter", 21.99, 30)
+      subject.select_dish(selected_dish)
+      subject.select_dish(another_dish)
+      expect{ subject.check_order }.to output{ subject.order.total_cost }.to_stdout
+    end
+
+    it "should print the current list of prices to the customer" do
+      # selected_dish = Dish.new("Katsu Chicken Curry", 7.99, 20)
+      # subject.select_dish(selected_dish)
+      # expect{ subject.check_order }.to output{ selected_dish.price }.to_stdout
+    end
+
+    it "should print the total preparation time to the customer" do
+      selected_dish = Dish.new("Katsu Chicken Curry", 7.99, 20)
+      another_dish = Dish.new("Sushi Platter", 21.99, 30)
+      subject.select_dish(selected_dish)
+      subject.select_dish(another_dish)
+      expect{ subject.check_order }.to output{ subject.order.prep_time }.to_stdout
     end
 
   end
@@ -63,13 +87,6 @@ describe CustomerInterface do
     it "should confirm the order has been placed" do
       confirmation = "Thank you, your order has been placed"
       expect{ subject.checkout }.to output{ confirmation }.to_stdout
-    end
-
-    it "should clear the order" do
-      dish = "Katsu Chicken Curry"
-      subject.select_dish(dish)
-      subject.checkout
-      expect(subject.order).to be_empty
     end
 
   end
