@@ -22,4 +22,13 @@ class Takeaway
   def total_price
     @basket.reduce(0) {|total, (key, val)| total += @menu[key] * val}
   end
+
+  def place_order
+    send_sms
+    @basket, @total = {}, 0
+  end
+
+  def send_sms
+    Messager.new(total_price).send
+  end
 end

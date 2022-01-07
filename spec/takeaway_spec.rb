@@ -59,4 +59,35 @@ describe Takeaway do
       expect(subject.total_price).to eq 16
     end
   end
+
+  describe "#place_order" do
+    it "places an order" do
+      subject.stub(:send_sms).and_return("Order placed! Total: £16")
+      subject.add("Chicken Curry", 2)
+      subject.add("Samosa", 4)
+      expect(subject.place_order).to eq([{}, 0])
+    end
+
+    it "resets the basket after placing the order" do
+      subject.stub(:send_sms).and_return([{}, 0])
+      subject.add("Chicken Curry", 2)
+      subject.add("Samosa", 4)
+      subject.place_order
+      expect(subject.basket).to eq({})
+    end
+
+    it "sends an sms after placing order" do
+      subject.stub(:send_sms).and_return([{}, 0])
+      expect(subject).to receive(:send_sms)
+      subject.add("Chicken Curry", 2)
+      subject.add("Samosa", 4)
+      subject.place_order
+    end
+  end
+
+  describe '#send_sms' do
+    it "responds to the method" do
+      expect(subject).to respond_to(:send_sms)
+    end
+  end
 end
