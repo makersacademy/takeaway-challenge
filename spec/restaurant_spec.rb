@@ -7,6 +7,8 @@ describe Restaurant do
   end
   before :each do
     @order = double('order', items: [:taco, :pasta, :pizza, :pasta, :pasta])
+    @empty_order = double('empty_order', items: [])
+    @invalid_order = double('invalid_order', items: [:taco, :glue, :scissors, :boa_constrictor])
   end
   subject { described_class.new(@menu) }
 
@@ -29,15 +31,13 @@ describe Restaurant do
 
   describe '#order_total' do
     it 'returns 0 for an empty order' do
-      empty_order = double('empty_order', items: [])
-      expect(subject.order_total(empty_order)).to eq(0)
+      expect(subject.order_total(@empty_order)).to eq(0)
     end
     it 'returns the total cost of an order' do
       expect(subject.order_total(@order)).to eq(50)
     end
     it 'raises an error if an item is not on the menu' do
-      invalid_order = double('invalid_order', items: [:taco, :glue, :scissors, :boa_constrictor])
-      expect { subject.order_total(invalid_order) }.to raise_error RuntimeError
+      expect { subject.order_total(@invalid_order) }.to raise_error RuntimeError
     end
   end
 
@@ -47,6 +47,15 @@ describe Restaurant do
     end
     it 'returns a time in the future' do
       expect(subject.delivery_time).to be > Time.now
+    end
+  end
+
+  describe '#place_order' do
+    it 'raises an error if an item is not on the menu' do
+      expect { subject.place_order(@invalid_order) }.to raise_error RuntimeError
+    end
+    it 'raises an error if the order is empty' do
+      expect { subject.place_order(@empty_order) }.to raise_error 'Order must contain at least one item'
     end
   end
 end

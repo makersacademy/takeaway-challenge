@@ -18,6 +18,11 @@ class Restaurant
     Time.now + COOKING_TIME + TRAVEL_TIME
   end
 
+  def place_order(order)
+    raise 'Order must contain at least one item' if order.items.empty?
+    check_items_available(order)
+  end
+
   private
 
   COOKING_TIME  = 50 * 60
