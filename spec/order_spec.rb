@@ -12,4 +12,10 @@ describe Order do
     expect(subject.meal).to be_empty
   end
 
+  it 'can select several dishes' do
+    subject.select(dish_two)
+    subject.select(dish_three)
+    expect(subject.meal).to include(dish_two, dish_three) 
+  end
+
 end
