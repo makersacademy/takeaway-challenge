@@ -3,7 +3,7 @@ class CustomerInterface
   attr_reader :menu, :order
 
   def initialize
-    @menu = [{dish: "Katsu Chicken Curry", price: 7.99}, {dish: "Sushi Platter", price: 21.99}]
+    @menu = [{ dish: "Katsu Chicken Curry", price: 7.99 }, { dish: "Sushi Platter", price: 21.99 }]
     @order = Order.new
   end
 
@@ -20,13 +20,22 @@ class CustomerInterface
   end
 
   def check_order
-    puts @order.dishes
-    puts @order.total_cost
-    puts @order.total_prep_time
+    print_order
   end
 
   def checkout
     puts "Thank you, your order has been placed"
+  end
+
+  private
+
+  def print_order
+    @order.dishes.each do |dish|
+      puts "#{dish} ----------- #{@order.prices[@order.dishes.index(dish)]}"
+    end
+  
+    puts "Order total: £#{@order.total_cost.round(2)}"
+    puts "Estimated time to make your order: #{@order.total_prep_time} minutes"
   end
 
 end
