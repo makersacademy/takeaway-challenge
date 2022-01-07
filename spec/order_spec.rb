@@ -1,9 +1,17 @@
 require 'order'
 
 describe Order do
-  it { is_expected.to respond_to(:add) }
-  it { is_expected.to respond_to(:remove) }
-  it { is_expected.to respond_to(:items) }
+  subject { described_class.new('555-12345') }
+  
+  it 'knows its mobile number' do
+    expect(subject.mobile).to eq('555-12345')
+  end
+
+  describe '.new' do
+    it 'requires a mobile number as an argument' do
+      expect(described_class).to respond_to(:new).with(1).argument
+    end
+  end
 
   describe '#add' do
     it 'adds its arguments to #items' do
@@ -11,6 +19,7 @@ describe Order do
       expect(subject.items).to include(:pie, :gravy, :mash)
     end
   end
+
   describe '#remove' do
     it 'removes its arguments from #items' do
       subject.add(:pie, :chocolate_sauce, :sprinkles, :mash)
@@ -23,6 +32,7 @@ describe Order do
       expect(subject.items.count(:mash)).to eq(2)
     end
   end
+
   describe '#items' do
     it 'returns an empty list on initialization' do
       expect(subject.items).to be_empty

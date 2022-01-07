@@ -1,8 +1,9 @@
 class Order
-  attr_reader :items
+  attr_reader :items, :mobile
   
-  def initialize
+  def initialize(mobile)
     @items = []
+    @mobile = mobile
   end
 
   def add(*to_add)

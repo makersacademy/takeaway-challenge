@@ -27,12 +27,6 @@ describe Restaurant do
     end
   end
 
-  describe '#new_order' do
-    it 'returns an instance of Order' do
-      expect(subject.new_order.class).to eq(Order)
-    end
-  end
-
   describe '#order_total' do
     it 'returns 0 for an empty order' do
       empty_order = double('empty_order', items: [])
