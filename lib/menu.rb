@@ -1,10 +1,9 @@
-
 class Menu
 
-  def inizialize(dish)
+  def initialize(dish)
     @dish = dish
     @price = price 
-  end 
+  end
 
   def dish
     "chicken"

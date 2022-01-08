@@ -1,3 +1,0 @@
-# describe Order do
-
-# end
