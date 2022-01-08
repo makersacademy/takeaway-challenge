@@ -19,9 +19,3 @@ takeaway.add("pizza")
 takeaway.complete
 
 # p takeaway.add("soup")
-
-
-
-
-
-

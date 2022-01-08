@@ -3,7 +3,7 @@ require_relative 'order'
 
 class TakeAway 
 
-  attr_reader :complete
+  
 
   def initialize 
     @menu = Menu.new
@@ -27,9 +27,8 @@ class TakeAway
   end
 
   def update_total(input)
-     @order.total += @menu.items[input.to_sym]
+    @order.total += @menu.items[input.to_sym]
   end
-
 
   def add_order(input, qua)
     @order.selection[input] += qua
@@ -37,7 +36,7 @@ class TakeAway
   end
 
   def no_items? 
-    @order.total == 0
+    @order.total.zero?
   end
 
   def finish?

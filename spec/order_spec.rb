@@ -12,7 +12,7 @@ describe Order do
   end
 
   it "checks total not selection for cost " do
-    subject.selection = {:pasta => 6}
+    subject.selection = { :pasta => 6 }
     expect(subject.confirm).to eq ("Order complete, your total is £0")
   end
 

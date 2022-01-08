@@ -11,7 +11,7 @@ class Sms
     @from = ENV['TO']
   end
 
-  def send(text)
+  def __send__(text)
     @client = Twilio::REST::Client.new @account_sid, @auth_token
 
     message = @client.messages.create(
@@ -19,8 +19,7 @@ class Sms
       to: @to,    
       from: @from).sid
 
-      puts "SMS Sent!"
+    puts "SMS Sent!"
   end
 
 end
-

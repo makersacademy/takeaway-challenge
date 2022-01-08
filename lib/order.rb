@@ -16,11 +16,10 @@ class Order
   end
 
   def send_sms
-    time = Time.new + 1*60*60 
+    time = Time.new + 1 * 60 * 60 
     text = "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
-    @sms.send(text)
+    @sms.__send__(text)
   end 
-
 
   def items_ordered
     @selection.each do |k, v|
