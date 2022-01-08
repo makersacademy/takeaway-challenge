@@ -1,13 +1,9 @@
-# require "menu"
+require "Menu"
+describe Menu do
+  it "allow you to read dishes and prices" do
+    menu = double("menu", dish: "Chicken", price: 4.99)
+    expect(menu.dish).to eq("Chicken")
+    expect(menu.price).to eq(4.99)
+  end 
+end
 
-# describe Menu do
-#   subject(:menu) { describe_class.new(meal) }
-#   let(:meal) do
-#     { paella: 9.99, calamares: 4.99, pinchitos: 3.99, jamon: 9.99 }
-#   end 
-
-#   it "show the menu and prices" do
-#     expect(menu.read).to eq(read_menu)
-#   end 
-
-# end

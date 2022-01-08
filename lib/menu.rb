@@ -1,9 +1,17 @@
 
-# class Menu
+class Menu
 
-#   attr_reader :meal
+  def inizialize(dish)
+    @dish = dish
+    @price = price 
+  end 
 
-#   def initialize(meal)
-#     @meal = meal
-#   end
-# end 
+  def dish
+    "chicken"
+  end
+
+  def price
+    "4.99"
+  end 
+
+end
