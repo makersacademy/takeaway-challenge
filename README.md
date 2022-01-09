@@ -13,8 +13,11 @@ Clone the repository to your local maschine and install GEMs with bundle from to
 Create a `.env` file and store your TWILIO Information in there:
 
 `TWILIO_ACCOUNT_SID='XXXX...'
+
 TWILIO_AUTH_TOKEN='XXXX...'
+
 MY_PRIVATE_NUMBER='+4917...'
+
 MY_TWILIO_NUMBER='+185...'`
 
 ## Usage
