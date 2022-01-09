@@ -24,9 +24,8 @@ class Restaurant
   end
 
   def submit_order(order = @current_order)
-    t = Time.now
     order.finish_order
-    send_confirmation(t, order.calc_sum)
+    send_confirmation(Time.now, order.calc_sum)
   end
   
   private
