@@ -1,3 +1,7 @@
+require 'twilio-ruby'
+require_relative './order'
+require_relative './menu'
+
 class Restaurant
 
   def initialize(new_menu = write_menu())
@@ -12,18 +16,20 @@ class Restaurant
     @current_order = Order.new(@menu)
   end
 
-  def add_dish_to_order(dish)
-    @current_order.add_dish(dish)
+  def add_dish_to_order(dish, order = @current_order)
+    return 'No order created yet, you cannot add a dish' if order.nil?
+    order.add_dish(dish)
   end
 
   def show_order(order = @current_order)
-    return 'Nothing to show' if @current_order.nil?
+    return 'No order created yet, cannot show anything' if order.nil?
     show = order.basket.clone
     show << { 'Sum' => order.calc_sum }
     return show
   end
 
   def submit_order(order = @current_order)
+    return 'No order created yet, cannot submit it' if order.nil?
     order.finish_order
     send_sms(create_confirmation_string(Time.now, order.calc_sum))
   end
@@ -50,7 +56,18 @@ class Restaurant
   end
 
   def send_sms(body)
-    return body
+    account_sid = 'tbd'
+    auth_token = 'tbd'
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = '+18507907704' # Your Twilio number
+    to = '+4917695717872' # Your mobile phone number
+
+    client.messages.create(
+      from: from,
+      to: to,
+      body: body
+      )
   end
 
 end

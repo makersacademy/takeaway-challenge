@@ -23,6 +23,9 @@ RSpec.describe Restaurant do
       subject.add_dish_to_order('Beer')
       expect(subject.show_order).to eq(create_example_order)
     end
+    it 'send a note if no order created yet' do
+      expect(subject.add_dish_to_order('Chips')).to eq('No order created yet, you cannot add a dish')
+    end
   end
 
   describe '#submit_order' do
@@ -45,11 +48,14 @@ RSpec.describe Restaurant do
       subject.submit_order(order)
       expect(order).to have_received(:finish_order)
     end
+    it 'sends a note if no order has been created yet' do
+      expect(subject.submit_order).to eq('No order created yet, cannot submit it')
+    end
   end
 
   describe '#show_order' do
     it 'returns a message if no order created yet' do
-      expect(subject.show_order).to eq('Nothing to show')
+      expect(subject.show_order).to eq('No order created yet, cannot show anything')
     end
   end
 
