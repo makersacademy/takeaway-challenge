@@ -16,16 +16,16 @@ class Restaurant
     @current_order.add_dish(dish)
   end
 
-  def show_order
+  def show_order(order = @current_order)
     return 'Nothing to show' if @current_order.nil?
-    show = @current_order.basket.clone
-    show << { 'Sum' => @current_order.calc_sum }
+    show = order.basket.clone
+    show << { 'Sum' => order.calc_sum }
     return show
   end
 
   def submit_order(order = @current_order)
     order.finish_order
-    send_confirmation(Time.now, order.calc_sum)
+    send_sms(create_confirmation_string(Time.now, order.calc_sum))
   end
   
   private
@@ -40,13 +40,17 @@ class Restaurant
     return menu
   end
 
-  def send_confirmation(time, sum)
+  def create_confirmation_string(time, sum)
     hour = time.hour + 1
     hour = 0 if hour == 24
     min = time.min
     time_string = "#{hour}:#{min}"
     sum_string = sprintf("%#.2f", sum)
     return "Order has been submitted and will arrive #{time_string}! To be paid: #{sum_string}€" 
+  end
+
+  def send_sms(body)
+    return body
   end
 
 end

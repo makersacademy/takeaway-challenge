@@ -27,6 +27,9 @@ RSpec.describe Restaurant do
 
   describe '#submit_order' do
     it 'sends a confirmation that the order has been placed' do
+      allow(subject).to receive(:send_sms).with(anything) do |arg|
+        arg
+      end
       subject.create_order()
       subject.add_dish_to_order('Chips')
       subject.add_dish_to_order('Beer')
@@ -35,6 +38,9 @@ RSpec.describe Restaurant do
         "Order has been submitted and will arrive #{t.hour + 1}:#{t.min}! To be paid: 9.60€")
     end
     it 'closes the order' do
+      allow(subject).to receive(:send_sms).with(anything) do |arg|
+        arg
+      end
       order = double('Order', :finish_order => nil, :calc_sum => 10)
       subject.submit_order(order)
       expect(order).to have_received(:finish_order)
