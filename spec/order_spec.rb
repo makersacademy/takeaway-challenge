@@ -15,14 +15,14 @@ RSpec.describe Order do
     context 'when dish is in menu' do
       it 'adds the dish and price to the order' do
         subject.add_dish('Beer')
-        expect(subject.order.last['Beer']).to eq(5)
+        expect(subject.basket.last['Beer']).to eq(5)
       end
     end
     context 'when dish is not in menu' do
       it 'does nothing' do
         allow(menu).to receive(:dish_in_menu?).and_return(false)
         subject.add_dish('Chips')
-        expect(subject.order).to be_empty
+        expect(subject.basket).to be_empty
       end
     end
     context 'when order is closed' do

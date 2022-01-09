@@ -18,7 +18,7 @@ class Restaurant
 
   def show_order
     return 'Nothing to show' if @current_order.nil?
-    show = @current_order.order.clone
+    show = @current_order.basket.clone
     show << { 'Sum' => @current_order.calc_sum }
     return show
   end
