@@ -4,8 +4,7 @@ RSpec.describe Restaurant do
   
   describe '#show_menu' do
     it 'shows the menu of the restaurant' do
-      example_menu = create_example_menu
-      expect(subject.show_menu).to eq(example_menu)
+      expect(subject.show_menu).to eq(create_example_menu)
     end
   end
 
@@ -36,7 +35,6 @@ RSpec.describe Restaurant do
         "Order has been submitted and will arrive #{t.hour + 1}:#{t.min}! To be paid: 9.60€")
     end
     it 'closes the order' do
-      subject.create_order()
       order = double('Order', :finish_order => nil, :calc_sum => 10)
       subject.submit_order(order)
       expect(order).to have_received(:finish_order)

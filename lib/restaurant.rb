@@ -1,7 +1,7 @@
 class Restaurant
 
-  def initialize
-    @menu = write_menu()
+  def initialize(new_menu = write_menu())
+    @menu = new_menu
   end
 
   def show_menu
