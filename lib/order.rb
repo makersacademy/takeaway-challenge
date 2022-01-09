@@ -8,7 +8,7 @@ class Order
     @closed = false
   end
 
-  def finish_order
+  def finish_order 
     @closed = true
   end
 
