@@ -1,4 +1,6 @@
 require 'twilio-ruby'
+require 'dotenv'
+Dotenv.load
 require_relative './order'
 require_relative './menu'
 
@@ -30,6 +32,7 @@ class Restaurant
 
   def submit_order(order = @current_order)
     return 'No order created yet, cannot submit it' if order.nil?
+    return 'No dishes in order yet, cannot submit' if order.basket.empty?
     order.finish_order
     send_sms(create_confirmation_string(Time.now, order.calc_sum))
   end
@@ -56,12 +59,12 @@ class Restaurant
   end
 
   def send_sms(body)
-    account_sid = 'tbd'
-    auth_token = 'tbd'
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = '+18507907704' # Your Twilio number
-    to = '+4917695717872' # Your mobile phone number
+    to = ENV['MY_PRIVATE_NUMBER'] # Your mobile phone number
 
     client.messages.create(
       from: from,

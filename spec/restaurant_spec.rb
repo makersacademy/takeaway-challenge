@@ -44,12 +44,16 @@ RSpec.describe Restaurant do
       allow(subject).to receive(:send_sms).with(anything) do |arg|
         arg
       end
-      order = double('Order', :finish_order => nil, :calc_sum => 10)
+      order = double('Order', :finish_order => nil, :calc_sum => 10, :basket => [{ 'Test' => 5 }])
       subject.submit_order(order)
       expect(order).to have_received(:finish_order)
     end
     it 'sends a note if no order has been created yet' do
       expect(subject.submit_order).to eq('No order created yet, cannot submit it')
+    end
+    it 'sends a note if no order are in the basket yet' do
+      subject.create_order
+      expect(subject.submit_order).to eq('No dishes in order yet, cannot submit')
     end
   end
 
