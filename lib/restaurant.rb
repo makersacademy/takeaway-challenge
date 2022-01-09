@@ -63,7 +63,7 @@ class Restaurant
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    from = '+18507907704' # Your Twilio number
+    from = ENV['MY_TWILIO_NUMBER'] # Your Twilio number
     to = ENV['MY_PRIVATE_NUMBER'] # Your mobile phone number
 
     client.messages.create(
