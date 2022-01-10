@@ -116,7 +116,7 @@ And finally the customer can place that order and receive a text message to say 
  => 
 #<Restaurant:0x00007fb7a2928478
 ... 
-3.0.2 :022 > restaurant.place(order, "+447875402736")
+3.0.2 :022 > restaurant.place(order, "<my_number>")
  => "Thank you! Your order was placed and will be delivered before 09:21" 
 3.0.2 :023 > 
 ```
