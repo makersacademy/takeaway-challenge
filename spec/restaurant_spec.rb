@@ -57,7 +57,7 @@ describe Restaurant do
     end
 
     it 'raises an error if an item is not on the menu' do
-      expect { subject.place_order(@invalid_order) }.to raise_error RuntimeError
+      expect { subject.place_order(@invalid_order) }.to raise_error "Invalid order - [:glue, :scissors, :boa_constrictor] are not on the menu"
     end
     it 'raises an error if the order is empty' do
       expect { subject.place_order(@empty_order) }.to raise_error 'Order must contain at least one item'
