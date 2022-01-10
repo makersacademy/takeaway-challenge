@@ -46,9 +46,80 @@ The rspec tests all pass with 100% coverage and rubocop is happy.
 
 ## Example In Use
 
-Below is an explanation of how this project can be used in irb:
+Below is an explanation of how this project can be used in irb.
 
-(To come)
+First, create some dishes using the Dish class:
+```
+3.0.2 :006 > burger = Dish.new("Burger",3)
+ => #<Dish:0x00007fb7a12f4a58 @name="Burger", @price=3> 
+3.0.2 :008 > pizza = Dish.new("Pizza",5)
+ => #<Dish:0x00007fb7a293a4c0 @name="Pizza", @price=5> 
+3.0.2 :009 > salad = Dish.new("Salad",2)
+ => #<Dish:0x00007fb7a134d1a8 @name="Salad", @price=2> 
+3.0.2 :010 > dip = Dish.new("Dip",1)
+ => #<Dish:0x00007fb7a204eca8 @name="Dip", @price=1> 
+```
+
+Then we can create a list object and load those dishes into it:
+```
+3.0.2 :011 > list = List.new
+ => #<List:0x00007fb7a1346948 @list=[]> 
+3.0.2 :012 > list.add_dish(burger)
+ => [#<Dish:0x00007fb7a12f4a58 @name="Burger", @price=3>] 
+3.0.2 :013 > list.add_dish(pizza)
+ => 
+[#<Dish:0x00007fb7a12f4a58 @name="Burger", @price=3>,
+ #<Dish:0x00007fb7a293a4c0 @name="Pizza", @price=5>] 
+3.0.2 :014 > list.add_dish(salad)
+ => 
+[#<Dish:0x00007fb7a12f4a58 @name="Burger", @price=3>,
+ #<Dish:0x00007fb7a293a4c0 @name="Pizza", @price=5>,
+ #<Dish:0x00007fb7a134d1a8 @name="Salad", @price=2>] 
+3.0.2 :015 > list.add_dish(dip)
+ => 
+[#<Dish:0x00007fb7a12f4a58 @name="Burger", @price=3>,
+ #<Dish:0x00007fb7a293a4c0 @name="Pizza", @price=5>,
+ #<Dish:0x00007fb7a134d1a8 @name="Salad", @price=2>,
+ #<Dish:0x00007fb7a204eca8 @name="Dip", @price=1>] 
+```
+
+Now, when a customer comes along, as per the user story, they can view a list of dishes with prices:
+```
+3.0.2 :016 > list.view
+ => 
+[{:name=>"Burger", :price=>3},
+ {:name=>"Pizza", :price=>5},
+ {:name=>"Salad", :price=>2},
+ {:name=>"Dip", :price=>1}] 
+```
+
+Next, the customer can select a number of dishes they wish to order:
+```
+3.0.2 :017 > order = Order.new
+ => #<Order:0x00007fb7a13bed30 @meal=[]> 
+3.0.2 :018 > order.select(burger)
+ => [#<Dish:0x00007fb7a12f4a58 @name="Burger", @price=3>] 
+3.0.2 :019 > order.select(salad)
+ => 
+[#<Dish:0x00007fb7a12f4a58 @name="Burger", @price=3>,
+ #<Dish:0x00007fb7a134d1a8 @name="Salad", @price=2>] 
+```
+Thirdly, the customer can check the total of their order:
+```
+3.0.2 :020 > order.total
+ => 5 
+```
+
+And finally the customer can place that order and receive a text message to say that their order will be delivered within an hour:
+```
+3.0.2 :021 > restaurant = Restaurant.new
+ => 
+#<Restaurant:0x00007fb7a2928478
+... 
+3.0.2 :022 > restaurant.place(order, "+447875402736")
+ => "Thank you! Your order was placed and will be delivered before 09:21" 
+3.0.2 :023 > 
+```
 
 ## Further Thoughts
 
