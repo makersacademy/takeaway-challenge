@@ -2,7 +2,8 @@
 
 To run this app you will first need to setup an account with [Twillio](www.twilio.com). After you have setup a number to text to and from you will need to put the following information into a `.env` file in the route of this project:
 
-```ACCOUNT_SID=account_sid
+```
+ACCOUNT_SID=account_sid
 AUTH_TOKEN=auth_token
 MESSAGING_SERVICE_SID=messaging_service_sid
 RECEIVER_NUMBER=receiver_number
