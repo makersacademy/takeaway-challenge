@@ -19,7 +19,7 @@ class Takeaway
     total = 0.0
     @order.each { |item, price| total += price }
     puts "The order total is £#{total}"
-    total
-   end
+    total.round(2)
+  end
   
 end
