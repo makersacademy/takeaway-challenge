@@ -17,7 +17,7 @@ class Takeaway
 
   def view_order
     total = 0.0
-    order.each { |item, price| total += price }
+    @order.each { |item, price| total += price }
     puts "The order total is £#{total}"
     total
    end
