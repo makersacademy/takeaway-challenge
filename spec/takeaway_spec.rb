@@ -14,7 +14,8 @@ describe Takeaway do
   end
 
   it 'can order some number of dishes' do
-    expect(subject.place_order("Chicken Fried Rice", "Salt & Pepper Chicken")).to eq ({"Chicken Fried Rice" => 6.80, "Salt & Pepper Chicken" => 6.30})
+    subject.place_order("Chicken Fried Rice", "Salt & Pepper Chicken")
+    expect(subject.order).to eq ({"Chicken Fried Rice" => 6.80, "Salt & Pepper Chicken" => 6.30})
   end
 
   it 'returns a total value of order' do

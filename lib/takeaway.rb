@@ -13,15 +13,11 @@ class Takeaway
 
   def place_order(*order)
     order.each { |item| @order[item] = Float(@menu.values_at(item).join) } 
-    @order
   end
 
   def view_order
     total = 0.0
-    order.each { |item, price| 
-    puts "#{item}: £#{price}"
-    total += price
-    }
+    order.each { |item, price| total += price }
     puts "The order total is £#{total}"
     total
    end
