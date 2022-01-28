@@ -9,11 +9,12 @@ class Menu
     Tzatziki:           3.50,
     Feta_sauce:         1.00,
 }
-
   
-
   def menu_dishes # defined method
   MENU_LIST # calls items from CONSTANT above
+  end
+
+  def order
   end
 
 end
