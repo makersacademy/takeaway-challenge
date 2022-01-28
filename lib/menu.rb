@@ -15,7 +15,7 @@ class Menu
 
   def order(*choices)
     choices.select do |choices|  
-      dishes.select { |food, price| food == choices }
+      dishes.select { |food, _price| food == choices }
     end
-end
+  end
 end
