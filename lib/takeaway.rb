@@ -7,11 +7,11 @@ class Takeaway
   end
 
   def view_menu
-    @menu 
+    @menu.each { |item, price| puts "#{item}: £#{price}" } 
   end
 
-  # def print_menu
-  #   @menu.each { |item, price| puts "#{item}: £#{price}" }
-  # end
+  def place_order(order)
+  order 
+  end
 
 end
