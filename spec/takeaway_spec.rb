@@ -9,4 +9,10 @@ describe Takeaway do
     subject.choose("fish", "chips")
     expect(subject.order).to eq(["fish","chips"])
   end
+
+  it 'calculates total of order' do 
+    subject.choose("fish", "chips")
+    expect(subject.total).to eq(600)
+  end
+
 end
