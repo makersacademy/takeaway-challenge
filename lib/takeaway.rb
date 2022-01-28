@@ -22,21 +22,41 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 class Takeaway
 
-  attr_reader :dishes
+  attr_reader :dishes, :choice, :order
 
   def initialize
     @dishes = [curry = Dish.new("curry", 7.5), fish = Dish.new("fish", 5),
        chicken = Dish.new("chicken", 6), peas = Dish.new("peas", 35)]
+
+    @order = []
   end 
 
 
   def list
     return @dishes.map {|i| i.info}
   end 
+
+
+
+
+  def select
+    continue_order = 'Y'
+    while continue_order == 'Y'
+      list()
+      puts "Choose an item"
+      choice = gets.chomp
+
+      @dishes.each do |i|
+        if i.name == choice
+          @order << i
+
+          puts "#{i.name} has been added to your order!"
+        end
+      end
+
+      puts 'Would you like to order anything else? Y/N'
+      continue_order = gets.chomp.upcase
+    end
+  end
 end
-
-
-takeaway = Takeaway.new
-
-takeaway.list
  
