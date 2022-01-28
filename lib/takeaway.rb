@@ -25,8 +25,8 @@ class Takeaway
   attr_reader :dishes, :choice, :order
 
   def initialize
-    @dishes = [curry = Dish.new("curry", 7.5), fish = Dish.new("fish", 5),
-       chicken = Dish.new("chicken", 6), peas = Dish.new("peas", 35)]
+    @dishes = [yaki = Dish.new("Chicken Chow Origin Mein", 7) ,soup = Dish.new("Bool of soup", 7), rice = Dish.new("RSPECial Fried Rice", 5),
+       eggs = Dish.new("DEViled Eggs", 6), drink = Dish.new("Rubycon", 2)]
 
     @order = []
   end 
@@ -58,5 +58,16 @@ class Takeaway
       continue_order = gets.chomp.upcase
     end
   end
+
+  def total
+    total = 0
+    puts "You have ordered #{@order.map {|i| i.info}}"
+
+    @order.each do |i|
+      total += i.price
+    end
+
+    time = Time.new
+    return "Your total is £#{total}. Your order will be delivered by #{time.hour + 1}:#{time.min}"
+  end
 end
- 
