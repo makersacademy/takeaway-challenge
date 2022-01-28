@@ -18,8 +18,8 @@ class Confirmation
 
   def sms(body)
     #CONVERT TO ENVIRONMENT VARIABLES BEFORE PUSHING
-    account_sid = "AC54c7aebff523ce37146dd6702940bf9d"
-    auth_token = "9a3f84c749048ec8d17a60103b292eca"
+    account_sid = ""
+    auth_token = ""
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
