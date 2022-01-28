@@ -1,7 +1,11 @@
 class Menu
 
+  MENU_LIST = {}
+
+  
+
   def menu_dishes
-  'food'
+  MENU_LIST
   end
 
 end

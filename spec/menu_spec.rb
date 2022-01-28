@@ -2,7 +2,9 @@ require 'menu'
 
 describe Menu do
 
+  subject(:menu){described_class.new}
+
   it 'should give user a list of menu dishes' do
-    expect(subject.menu_dishes).to eq('food')
+    expect(subject.menu_dishes).to eq Menu::MENU_LIST
   end
 end
