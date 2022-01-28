@@ -9,5 +9,8 @@ describe Menu do
   end
 
   it 'should add selected items to selected list' do
+    order_choice = {:food => 6}
+    subject.order(:food, 6)
+    expect(subject.order_choice).to eq order_choice
   end
 end
