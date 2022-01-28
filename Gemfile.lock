@@ -3,8 +3,13 @@ GEM
   specs:
     ansi (1.5.0)
     ast (2.4.2)
+    concurrent-ruby (1.1.9)
     diff-lcs (1.4.4)
     docile (1.4.0)
+    i18n (1.9.1)
+      concurrent-ruby (~> 1.0)
+    money (6.16.0)
+      i18n (>= 0.6.4, <= 2)
     parallel (1.20.1)
     parser (3.0.2.0)
       ast (~> 2.4.1)
@@ -54,6 +59,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  money
   rspec
   rubocop (= 1.20)
   simplecov
