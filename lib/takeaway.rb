@@ -8,7 +8,7 @@ class Takeaway
   attr_accessor :order
     
   def initialize
-    @menu = [Dish.new("Pizza", 10), Dish.new("Kebab", 5), Dish.new("Chips", 2)]
+    @menu = []
   end
 
   def add(dish)
