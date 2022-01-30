@@ -10,23 +10,19 @@ MENU_LIST = {
     Feta_sauce:         1.00,
 }
 
-attr_reader :order_choice
+attr_reader :order_choice, :stock
 
 def initialize
+  @stock = stock
   @order_choice = Hash.new
 end
 
   def menu_dishes # defined method
   MENU_LIST # calls items from CONSTANT above
   end
-
-  def order(item, price) # order method defined, arguments must have an item and a price
-    order_choice[item] = price
-  end
-
 end
 
-order = Menu.new
-p order.menu_dishes
-p order.order_choice
+# order = Menu.new
+# p order.menu_dishes
+# p order.order_choice
 
