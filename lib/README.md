@@ -45,3 +45,4 @@ The order total is £13.1
  => 13.1 
 3.0.2 :006 > 
 ```
+COVERAGE: 100.00% -- 27/27 lines in 2 files
