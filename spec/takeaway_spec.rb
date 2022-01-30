@@ -30,6 +30,30 @@ describe Takeaway do
     subject.order << testdish1
     subject.order << testdish2
 
-    expect(subject.total).to eq("Your total is £7. Your order will be delivered by #{time.hour + 1}:#{time.min}")
+    expect(subject.total).to eq("Thanks for using just.each!\n    \nYou ordered [\"chips £2\", \"kebab £5\"]\n\nYour total is £7. Your order will be delivered by #{time.hour + 1}:#{time.min}")
   end
+
+  it 'can read orders placed by text' do
+    text = "hello i would love to buy chicken chow origin mein and a can of rubycon please"
+    subject.read_text_order(text)
+    subject.order
+
+    expect(subject.order.map { |i| i.name }).to eq (["Chicken Chow Origin Mein", "Rubycon"])
+  end
+
+  it 'can select order' do
+
+    subject.select()
+
+    expect(subject.continue_order).to eq ('N')
+  end
+
+  it 'can add to order' do
+
+    subject.order << 'example food'
+
+    expect(subject.order).to eq(["example food"])
+
+  end
+
 end

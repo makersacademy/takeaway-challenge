@@ -2,8 +2,17 @@ source 'https://rubygems.org'
 
 ruby '3.0.2'
 
+gem "celluloid-fsm"
+gem "celluloid"
+gem "faye-websocket"
+gem "sinatra"
 gem "twilio-ruby"
 gem "rack"
+gem "thin"
+gem "puma"
+gem "reel"
+gem "http"
+gem "webrick"
 
 group :test do
   gem 'rspec'

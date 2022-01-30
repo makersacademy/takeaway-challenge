@@ -17,9 +17,8 @@ class Confirmation
   end
 
   def sms(body)
-    #CONVERT TO ENVIRONMENT VARIABLES BEFORE PUSHING
-    account_sid = "AC54c7aebff523ce37146dd6702940bf9d"
-    auth_token = "9a3f84c749048ec8d17a60103b292eca"
+    account_sid = "it is a secret ;)"
+    auth_token = "this too is a secret ;)"
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
@@ -38,6 +37,3 @@ puts takeaway.list
 takeaway.select
 
 confirm_order.sms(takeaway.total)
-
-
-
