@@ -1,7 +1,9 @@
 class Dishes
 
-  def list
-    [
+  attr_reader :list
+
+  def initialize
+    @list = [
       { name: 'Tuna', price: 7.99 }, 
       { name: 'Spanish Mackerel', price: 6.54 }, 
       { name: 'Sweet Shrimp', price: 12.49 }, 
@@ -17,5 +19,6 @@ class Dishes
       { name: 'Surf Clam', price: 8.44 }
     ]
   end
+
 
 end
