@@ -1,4 +1,5 @@
 require 'money'
+require_relative 'messenger'
 
 class Takeaway
 
@@ -13,6 +14,7 @@ class Takeaway
                      "scampi" => 200
     }
     @order = []
+    @messenger = Messenger.new
   end
 
   def list_dishes
@@ -24,7 +26,11 @@ class Takeaway
   end
 
   def total
-    (@order.map &get_prices).reduce(:+)
+    (@order.map &fetch_prices).reduce(:+)
+  end
+
+  def send_message
+    @messenger.send_message
   end
 
   private 
@@ -33,7 +39,7 @@ class Takeaway
     Money.from_cents(amount, "GBP").format
   end
 
-  def get_prices
+  def fetch_prices
     Proc.new { |x| @list_dishes[x] }
   end
 end
