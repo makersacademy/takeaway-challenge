@@ -17,14 +17,8 @@ class Confirmation
   end
 
   def sms(body)
-<<<<<<< HEAD:lib/outbound.rb
     account_sid = "it is a secret ;)"
     auth_token = "this too is a secret ;)"
-=======
-    #CONVERT TO ENVIRONMENT VARIABLES BEFORE PUSHING
-    account_sid = ""
-    auth_token = ""
->>>>>>> 06c6a0b253cf7719afb698cc278dba3d1d1d91c4:lib/twilio.rb
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
