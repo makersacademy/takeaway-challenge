@@ -17,12 +17,17 @@ describe Dishes do
     expect(subject).to respond_to(:list)
   end
 
-  it 'has a list of dishes and prices' do
+  it 'check that list of dishes in program matches list in test' do
     expect(subject.list).to eq list_of_dishes
   end
 
   it 'can read the menu and check prices for items on menu' do
     expect(subject.list.fetch_values('Tuna').join().to_f).to eq(7.99)
+  end
+
+  it 'use the check0 method to return the users chosen food list item price.' do
+    expect(subject.check('Tuna')).to eq(7.99)
+    expect(subject.check('Sweet Shrimp')).to eq(12.49)
   end
 
 end

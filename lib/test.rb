@@ -1,4 +1,4 @@
-require './lib/dishes.rb'
+require './lib/dishes'
 
 test = Dishes.new
 # p test
@@ -10,4 +10,6 @@ test = Dishes.new
 # puts test.list.values
 # puts test.list.keys
 
-p test.list.fetch_values("Tuna").join()
+# p test.list.fetch_values("Tuna").join()
+
+p test.check('Tuna')

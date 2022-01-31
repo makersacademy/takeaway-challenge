@@ -13,6 +13,10 @@ class Dishes
         'Yellow Tail' =>  11.88 }
   end
 
-  
+  def check(item)
+    price = list.fetch_values(item).join().to_f
+    puts "Your chosen food item is #{item} and it costs #{price}."
+    price
+  end
 
 end
