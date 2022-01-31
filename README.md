@@ -14,6 +14,30 @@ Takeaway Challenge
 
  ```
 
+-------------------------------------------------------------
+
+Author Notes
+-------
+
+This is program which mimics a take away service. There is a menu for the customer to peruse. The customer can then choose the dishes they wish to order and get the total price for the order. On order confirmation a text will be sent to the customer saying when they will recieve the order
+
+## Installation
+
+-------------------------------------------------------------
+To install using [bundler](https://bundler.io/ "bundler") 
+~~~~
+bundle install 
+~~~~
+To install code from the latest source
+~~~~
+git clone git@github.com:nyahehnagi/takeaway-challenge.git
+~~~~
+
+
+
+
+----------------------------------
+
 Instructions
 -------
 

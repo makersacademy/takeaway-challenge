@@ -1,0 +1,13 @@
+Noun                  Messages (Verbs)
+
+Customer              
+
+Menu                  show_menu
+
+Dish                  price
+
+Order                 add_dish
+                      total_price
+                      confirm_order
+
+Communication         send
