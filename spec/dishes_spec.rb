@@ -22,7 +22,7 @@ describe Dishes do
   end
 
   it 'can read the menu and check prices for items on menu' do
-    expect(subject.list[5][1]).to eq { 1 }
+    expect(subject.list.fetch_values('Tuna').join().to_f).to eq(7.99)
   end
 
 end
