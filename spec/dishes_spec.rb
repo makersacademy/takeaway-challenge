@@ -25,7 +25,7 @@ describe Dishes do
     expect(subject.list.fetch_values('Tuna').join().to_f).to eq(7.99)
   end
 
-  it 'use the check0 method to return the users chosen food list item price.' do
+  it 'use the check method to return the users chosen food list item price.' do
     expect(subject.check('Tuna')).to eq(7.99)
     expect(subject.check('Sweet Shrimp')).to eq(12.49)
   end
