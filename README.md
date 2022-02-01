@@ -19,12 +19,14 @@ Takeaway Challenge
 Author Notes
 -------
 
-This is program which mimics a take away service. There is a menu for the customer to peruse. The customer can then choose the dishes they wish to order and get the total price for the order. On order confirmation a text will be sent to the customer saying when they will recieve the order
+This is a program which mimics a take away service. 
+
+There is a menu for the customer to peruse. The customer can choose the dishes they wish to order, once satisfied with their selection they get the total price for the order. When the customer confirms their order a confirmation text will be sent to the customer informing when it will be delivered.
 
 ## Installation
 
 -------------------------------------------------------------
-To install using [bundler](https://bundler.io/ "bundler") 
+Install gems with [bundler](https://bundler.io/ "bundler") 
 ~~~~
 bundle install 
 ~~~~
@@ -32,9 +34,15 @@ To install code from the latest source
 ~~~~
 git clone git@github.com:nyahehnagi/takeaway-challenge.git
 ~~~~
+----------------------------------
 
+## Project Structure
+All spec test files reside in the `./spec` directory
+Please note that the `feature_spec.rb` file resides in the `./spec/features` directory
 
+All code files reside in the `./lib` diecrtory
 
+All documentation files reside in the `./doc` directory
 
 ----------------------------------
 

@@ -1,13 +1,16 @@
-Noun                  Messages (Verbs)
+Noun                  Messages (Verbs)            attributes
 
 Customer              
 
 Menu                  show_menu
+                      select_dish
+                      add_menu_item
 
-Dish                  price
+Dish                  
 
 Order                 add_dish
                       total_price
                       confirm_order
 
-Communication         send
+SMSClient             send
+         
