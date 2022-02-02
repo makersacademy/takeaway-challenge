@@ -1,7 +1,6 @@
 from https://github.com/makersacademy/skills-workshops/blob/main/practicals/object_oriented_design/dependency_injection.md
 
-Intermezzo: Of Classes
-class Menu (dish = Dish,) formatter
+class Menu (dishes, formatter) maybe?
   @menu_items = []
   @dish = Dish
   @formatter = formatter
