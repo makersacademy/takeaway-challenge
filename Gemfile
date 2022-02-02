@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
+# using Ruby 3.0.3 as twilio is only supported to Ruby 3.0
 ruby '3.0.3'
 
 group :test do
   gem 'rspec'
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
+  # gem 'should_clean'
 end
 
 group :development, :test do

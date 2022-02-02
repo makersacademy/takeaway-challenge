@@ -4,7 +4,7 @@ Customer
 
 Menu                  show_menu
                       select_dish
-                      add_menu_item
+                      add_menu_item - idea to add better functionality 
 
 Dish                  
 
