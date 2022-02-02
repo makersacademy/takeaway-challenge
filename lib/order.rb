@@ -4,13 +4,9 @@ class Order
     @ordered_dishes = {}
   end
 
-  def add_dish(dish, quantity)
+  def order_dish(dish, quantity)
     raise "Quantity ordered needs to be greater than zero" if quantity < 1
-    if @ordered_dishes.key?(dish)
-      @ordered_dishes[dish] += quantity
-    else
-      @ordered_dishes[dish] = quantity
-    end
+    dish_in_order?(dish) ? update_dish(dish, quantity) : add_dish(dish, quantity)
   end
 
   def show_order
@@ -23,8 +19,22 @@ class Order
 
   private 
 
+  def add_dish(dish, quantity)
+    @ordered_dishes[dish] = quantity
+  end
+
+  def update_dish(dish, quantity)
+    @ordered_dishes[dish] += quantity
+  end
+
+  def dish_in_order?(dish)
+    @ordered_dishes.key?(dish)
+  end
+
   def calculate_total_price
-    @ordered_dishes.inject(0) { |order_total, (dish, quantity)| order_total + (dish.price * quantity) }
+    @ordered_dishes.inject(0) do |order_total, (dish, quantity)|
+      order_total + (dish.price * quantity)
+    end    
   end
 
   def format_order

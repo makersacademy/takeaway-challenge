@@ -6,8 +6,8 @@ require_relative '../../lib/dish'
 describe "feature tests" do 
 
   let(:dish_one) { Dish.new("Curry", 6.5) }
-  let(:dish_two) { Dish.new("Spagbol", 7.5 ) }
-  let(:dish_three) { Dish.new("Cottage Pie", 8 ) }
+  let(:dish_two) { Dish.new("Spagbol", 7.5) }
+  let(:dish_three) { Dish.new("Cottage Pie", 8) }
   
   let(:menu_input) { [dish_one, dish_two, dish_three] }
   let(:menu_output) { "Curry, Price: £6.50\nSpagbol, Price: £7.50\nCottage Pie, Price: £8.00" }
@@ -52,7 +52,7 @@ describe "feature tests" do
       menu = Menu.new(menu_input)
       dish_selected = menu.select_dish("Cottage Pie")
       order = Order.new
-      order.add_dish(dish_selected, 2)
+      order.order_dish(dish_selected, 2)
       expect(order.show_order).to eq "Dish: Cottage Pie, Qty: 2\nTotal Price: £16.00"
     end
   end
@@ -66,7 +66,7 @@ describe "feature tests" do
       menu = Menu.new(menu_input)
       dish_selected = menu.select_dish("Cottage Pie")
       order = Order.new
-      order.add_dish(dish_selected, 2)
+      order.order_dish(dish_selected, 2)
       expect(order.total_price).to eq 16
     end
 
@@ -74,9 +74,23 @@ describe "feature tests" do
       menu = Menu.new(menu_input)
       dish_selected = menu.select_dish("Cottage Pie")
       order = Order.new
-      order.add_dish(dish_selected, 2)
+      order.order_dish(dish_selected, 2)
       expect(order.show_order).to eq "Dish: Cottage Pie, Qty: 2\nTotal Price: £16.00"
     end
   end
 
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  describe "User Story 4" do
+    it "sends a text on order confirmation" do
+      menu = Menu.new(menu_input)
+      dish_selected = menu.select_dish("Cottage Pie")
+      order = Order.new
+      order.order_dish(dish_selected, 2)
+      # order.confirm_order
+    end
+  end
+
+  
 end
