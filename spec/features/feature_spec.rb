@@ -4,9 +4,13 @@ require_relative '../../lib/dish'
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices
 describe "feature tests" do 
-  let(:menu_input) { "Curry,6.50\nSpagbol,7.50\nCottage Pie,8" }
-  let(:menu_output) { "Curry, Price: £6.50\nSpagbol, Price: £7.50\nCottage Pie, Price: £8.00" }
 
+  let(:dish_one) { Dish.new("Curry", 6.5) }
+  let(:dish_two) { Dish.new("Spagbol", 7.5 ) }
+  let(:dish_three) { Dish.new("Cottage Pie", 8 ) }
+  
+  let(:menu_input) { [dish_one, dish_two, dish_three] }
+  let(:menu_output) { "Curry, Price: £6.50\nSpagbol, Price: £7.50\nCottage Pie, Price: £8.00" }
 
   describe "user story 1" do
     
@@ -49,7 +53,30 @@ describe "feature tests" do
       dish_selected = menu.select_dish("Cottage Pie")
       order = Order.new
       order.add_dish(dish_selected, 2)
-      expect(order.show_order).to eq "Dish: Cottage Pie, Qty: 2"
+      expect(order.show_order).to eq "Dish: Cottage Pie, Qty: 2\nTotal Price: £16.00"
     end
   end
+
+  #  As a customer
+  #  So that I can verify that my order is correct
+  #  I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+  describe "User Story 3" do
+    it "shows the overall price of an order" do
+      menu = Menu.new(menu_input)
+      dish_selected = menu.select_dish("Cottage Pie")
+      order = Order.new
+      order.add_dish(dish_selected, 2)
+      expect(order.total_price).to eq 16
+    end
+
+    it "shows the overall order with total price" do
+      menu = Menu.new(menu_input)
+      dish_selected = menu.select_dish("Cottage Pie")
+      order = Order.new
+      order.add_dish(dish_selected, 2)
+      expect(order.show_order).to eq "Dish: Cottage Pie, Qty: 2\nTotal Price: £16.00"
+    end
+  end
+
 end

@@ -1,13 +1,9 @@
-#require 'dish' 
-require 'csv'
 
 class Menu
 
-  # I am using intermezzo: Of Classes here and injecting the class Dish into class Menu
-  def initialize(dishes, dish = Dish)
-    @dish = dish
+  def initialize(dishes)
     @menu = []
-    build_menu(dishes)
+    @menu = dishes
   end
 
   def show_menu 
@@ -26,10 +22,4 @@ class Menu
     @menu.map { |dish| "#{dish.name}, Price: £#{'%.2f' % dish.price}" }.join("\n")
   end
 
-  def build_menu(dishes)
-    CSV.parse(dishes) do |row|
-      name, price = row
-      @menu << @dish.new(name, price)
-    end
-  end
 end

@@ -2,11 +2,17 @@ require_relative '../lib/menu'
 
 describe Menu do
 
-  let(:menu_input) { "Curry,6.50\nSpagbol,7.50\nCottage Pie,8" }
+  let(:dish_one) { double(:dish_one, :name => "Curry", :price => 6.5 ) }
+  let(:dish_two) { double(:dish_two, :name => "Spagbol", :price => 7.5 ) }
+  let(:dish_three) { double(:dish_three, :name => "Cottage Pie", :price => 8 ) }
+  
+  let(:menu_input) { [dish_one, dish_two, dish_three] }
+
   subject(:menu) { described_class.new (menu_input) }
 
   let(:formatted_menu) { "Curry, Price: £6.50\nSpagbol, Price: £7.50\nCottage Pie, Price: £8.00" }
 
+  
   describe "#show_menu" do
     it "shows what is on the menu" do
       expect(menu.show_menu).to eq formatted_menu
