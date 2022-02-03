@@ -10,6 +10,7 @@ describe Order do
   let(:quantity_minus_one) { -1 }
   let(:quantity_zero) { 0 }
   let(:quantity_two) { 2 }
+  let(:sms) { double(:sms, :send => 999) }
 
   describe "#add_dish" do
     # TODO add test/code for negative quantities
@@ -55,8 +56,8 @@ describe Order do
   end
 
   describe "#confirm_order" do
-    it "sends a text to confirm order" do
-      
+    it "sends a message to confirm order" do
+      expect { order.confirm_order(sms) }.not_to raise_error
     end
   end
 

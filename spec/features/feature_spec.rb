@@ -1,4 +1,5 @@
 require_relative '../../lib/dish'
+require 'dotenv/load'
 
 # As a customer
 # So that I can check if I want to order something
@@ -82,13 +83,23 @@ describe "feature tests" do
   # As a customer
   # So that I am reassured that my order will be delivered on time
   # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-  describe "User Story 4" do
+
+  # DO NOT FORGET TO SET YOUR ENVIRONMENT VARIABLES IN YOUR
+  # .env file which should be sitting in the project root
+  describe "User Story 4 - Send a real text" do
+    pending ("Commment this line out if you want to actually send a text")
     it "sends a text on order confirmation" do
-      menu = Menu.new(menu_input)
-      dish_selected = menu.select_dish("Cottage Pie")
       order = Order.new
-      order.order_dish(dish_selected, 2)
-      # order.confirm_order
+
+      twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+
+      sms_provider = TwilioSMS.new(twilio_client)
+      from_phone_number = ENV['FROM_TELEPHONE_NO']
+      to_phone_number = ENV['TO_TELEPHONE_NO']
+      message = "Thank you! Your order was placed and will be delivered before 18:52"
+
+      sms = SMS.new(sms_provider, from_phone_number, to_phone_number, message)
+      expect { order.confirm_order(sms) }.not_to raise_error
     end
   end
 

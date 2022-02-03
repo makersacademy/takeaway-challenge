@@ -17,6 +17,10 @@ class Order
     calculate_total_price
   end
 
+  def confirm_order(preferred_comms)
+    preferred_comms.send
+  end
+
   private 
 
   def add_dish(dish, quantity)
@@ -53,4 +57,5 @@ class Order
   def format_price
     "Total Price: £#{'%.2f' % total_price}"
   end
+
 end
