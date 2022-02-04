@@ -1,8 +1,9 @@
 # Download the twilio-ruby library from twilio.com/docs/libraries/ruby
 require 'twilio-ruby'
+require 'dotenv/load'
 
-account_sid = 'AC1fee0d7161fce8e11efc68476c4bf67c'
-auth_token = 'd48b5274912f2be52e0e22d616246cf1'
+account_sid = ENV['TWILIO_ACCOUNT_SID']
+auth_token = ENV['TWILIO_AUTH_TOKEN']
 client = Twilio::REST::Client.new(account_sid, auth_token)
 
 from = '+19035013515' # My Twilio number
