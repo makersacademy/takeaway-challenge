@@ -12,6 +12,7 @@ describe Order do
   let(:quantity_two) { 2 }
   let(:sms) { double(:sms, :send => 999) }
 
+
   describe "#add_dish" do
     it "adds to an order" do
       expect { order.order_dish(dish, 2) }.not_to raise_error

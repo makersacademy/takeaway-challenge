@@ -1,4 +1,9 @@
 require_relative '../../lib/dish'
+require_relative '../../lib/order_server'
+require_relative '../../lib/order_manager'
+require_relative '../../lib/order'
+require_relative '../../lib/menu'
+require 'sinatra'
 require 'dotenv/load'
 
 # As a customer
@@ -79,8 +84,7 @@ describe "feature tests" do
   # DO NOT FORGET TO SET YOUR ENVIRONMENT VARIABLES IN YOUR
   # .env file which should be sitting in the project root
   describe "User Story 4 - Send a real text" do
-    pending ("Commment this line out if you want to actually send a text")
-    it "sends a text on order confirmation" do
+    xit "sends a text on order confirmation" do
       order = Order.new
 
       twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
@@ -95,5 +99,25 @@ describe "feature tests" do
     end
   end
 
-  
+  # As a customer
+  # I want to order my meal from my phone
+  # I would like place an order via SMS
+  describe "User Story 5 - Place order by text" do
+    it "starts an order server" do
+      order_server = OrderServer.new
+      expect{  order_server = OrderServer.new }.not_to raise_error
+    end
+
+    xit "Takeaway creates an order from an incoming message" do
+      menu = Menu.new(menu_input)
+      order_manager = OrderManager.new(menu, Order)
+      order_server = OrderServer.new(order_manager)
+      p order_manager.show_order
+      # Add tests to show that the order manager works in real life
+      # currently tested in isolotion as proof of concept
+
+      # Add SMS client etc
+    end
+  end
+
 end

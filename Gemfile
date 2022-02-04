@@ -13,4 +13,5 @@ group :development, :test do
   gem 'rubocop', '1.25'
   gem 'twilio-ruby', '5.63.1'
   gem 'dotenv'
+  gem 'sinatra'
 end
