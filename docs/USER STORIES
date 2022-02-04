@@ -1,0 +1,27 @@
+USER STORY 1
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+<!-- As a CUSTOMER I would like to view a menu from which to place my_order. I would like to SEE
+a LIST of dishes with PRICES (ARRAY of HASHES with (k) dishes and (v) prices) What menu would they like???-->
+
+USER STORY 2
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+<!-- As a customer i would like to SELECT "multiple" dishes to ADD to MY_ORDER. Store choices into an ARRAY called MY_ORDER. need USER_INPUT to select option and how many? -->
+USER STORY 3
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+<!-- Return a total and Would like to VIEW MY_ORDER to make sure this matches total. TOTAL = SUM of ARRAY VALUES. A method to VIEW MY_ORDER (my_order.view)(my_order.total)  -->
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+<!-- once confirmation of order is applied. SEND TEXT MESSAGE to confirm time of delivery. -->

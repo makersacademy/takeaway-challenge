@@ -1,3 +1,22 @@
+# TAKEAWAY CHALLENGE
+
+This is a simple program that allows a user to place an order of food items from a list and sends them a message to confirm their delivery once they place the order.
+
+# Requirments
+
+Ruby '3.0.0'
+
+# How to use
+
+please install Bundler 
+see here for more details https://bundler.io/
+
+run `bundle install`
+
+run `ruby my_order.rb`
+
+
+
 Takeaway Challenge
 ==================
 ```
