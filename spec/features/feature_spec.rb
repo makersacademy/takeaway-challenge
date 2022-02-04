@@ -105,7 +105,7 @@ describe "feature tests" do
   describe "User Story 5 - Place order by text" do
     it "starts an order server" do
       order_server = OrderServer.new
-      expect{  order_server = OrderServer.new }.not_to raise_error
+      expect { order_server = OrderServer.new }.not_to raise_error
     end
 
     xit "Takeaway creates an order from an incoming message" do

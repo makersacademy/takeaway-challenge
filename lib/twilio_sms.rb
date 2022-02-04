@@ -22,7 +22,3 @@ class TwilioSMS
   end
 
 end
-
-def this_changed_my_Slack_life 
-  puts "Wow, this is so cool"
-end

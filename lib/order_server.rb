@@ -4,7 +4,7 @@ require 'sinatra'
 
 class OrderServer < Sinatra::Base
 
-  def initialise(order_manager)
+  def initialise(_order_manager)
     @order_class = order_class
   end
 
@@ -20,7 +20,6 @@ class OrderServer < Sinatra::Base
 
   # Only start a server if this file has been executed directly
   run! if __FILE__ == $0
-
 
 # RUN THIS IN CLI TO OPEN A TUNNEL FROM LOCAL MACHINE
 # twilio phone-numbers:update "phone Number here" --sms-url="http://localhost:4567/receive_order"
