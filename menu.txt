@@ -1,0 +1,6 @@
+noodles, 9
+rice, 6.5
+seaweed, 5
+squid, 7.5
+sweet_and_sour_chicken, 9.5
+spring_roll, 8
