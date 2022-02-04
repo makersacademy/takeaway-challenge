@@ -40,6 +40,7 @@ All unit tests are fully stubbed to prohibit actual calls to the Twilio service.
 
 If you wish to run the SMS service for real and test the send process in the feature tests, do the following:
 
+* Ensure Twilio is configured on your machine - There is a guide here https://www.twilio.com/docs/sms/quickstart/ruby
 * Create a `.env` file in the project root. This project uses the dotenv gem which will have been installed via bundler
 * Add the `.env` file to your `.gitignore` file. **You do not want to be commiting this file to github! It will contain real information about your Twilio account/phone numbers used**
 * Add the following lines to the .env file
