@@ -16,9 +16,4 @@ class TwilioSMS
     raise "Failed to send SMS" unless message.error_code.nil?
   end
 
-  def receive_sms
-    messages = @twilio_client.messages.list(limit: 20)
-
-  end
-
 end
