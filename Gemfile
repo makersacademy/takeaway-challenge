@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '3.0.0'
 
-
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
@@ -16,6 +15,4 @@ group :development, :test do
   gem 'twilio-ruby', '~> 5.63.1'
   gem 'sinatra'
   
- 
-
 end
