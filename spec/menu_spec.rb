@@ -12,7 +12,6 @@ describe Menu do
 
   let(:formatted_menu) { "Curry, Price: £6.50\nSpagbol, Price: £7.50\nCottage Pie, Price: £8.00" }
 
-  
   describe "#show_menu" do
     it "shows what is on the menu" do
       expect(menu.show_menu).to eq formatted_menu

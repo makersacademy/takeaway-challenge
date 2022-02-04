@@ -13,9 +13,6 @@ describe Order do
   let(:sms) { double(:sms, :send => 999) }
 
   describe "#add_dish" do
-    # TODO add test/code for negative quantities
-    # TODO add tests/code to remove items from the order
-
     it "adds to an order" do
       expect { order.order_dish(dish, 2) }.not_to raise_error
     end
@@ -45,13 +42,6 @@ describe Order do
     it "returns the current order details" do
       order.order_dish(dish, quantity_two)
       expect(order.show_order).to eq "Dish: Spagbol, Qty: 2\nTotal Price: £15.00"
-    end
-  end
-
-  describe "#total_price" do
-    it "totals the price for the order" do
-      order.order_dish(dish, quantity_two)
-      expect(order.total_price).to eq 15
     end
   end
 

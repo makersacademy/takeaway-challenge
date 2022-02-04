@@ -63,14 +63,6 @@ describe "feature tests" do
   #  I would like to check that the total I have been given matches the sum of the various dishes in my order
 
   describe "User Story 3" do
-    it "shows the overall price of an order" do
-      menu = Menu.new(menu_input)
-      dish_selected = menu.select_dish("Cottage Pie")
-      order = Order.new
-      order.order_dish(dish_selected, 2)
-      expect(order.total_price).to eq 16
-    end
-
     it "shows the overall order with total price" do
       menu = Menu.new(menu_input)
       dish_selected = menu.select_dish("Cottage Pie")
