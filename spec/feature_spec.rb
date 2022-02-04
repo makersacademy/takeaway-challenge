@@ -1,5 +1,6 @@
 require './lib/menu.rb'
 require "./lib/dish.rb"
+require "./lib/order.rb"
 
 menu = Menu.new
 puts "Menu Created."
@@ -13,5 +14,18 @@ menu.add_dish(dish1)
 menu.add_dish(dish2)
 puts "Dish 1 and 2 added to the menu"
 
-puts "-----Show Menu------"
+puts "------Show Menu------"
 menu.display_dishes
+
+
+order = Order.new(menu)
+
+puts "Start New Order:"
+puts "------Add Seleciton------"
+order.add_selection(dish1)
+order.add_selection(dish2)
+order.add_selection(dish1)
+order.add_selection(dish2)
+
+puts "------Checkout------"
+order.checkout

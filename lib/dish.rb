@@ -1,5 +1,3 @@
-require "./lib/menu.rb"
-
 class Dish
 
     attr_reader :name, :price
