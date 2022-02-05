@@ -11,8 +11,15 @@ describe Menu do
 
   describe '#select_dish' do
     it 'should allow selection of a specific dish' do
-      allow_any_instance_of(Menu).to receive(:gets).and_return(1)
+      allow_any_instance_of(Menu).to receive(:gets).and_return("1\n")
       expect(subject.select_dish).to eq "1. noodles, 9"
+    end
+  end
+
+  describe '#select_quantity' do
+    it 'should allow selection of a quantity' do
+        allow_any_instance_of(Menu).to receive(:gets).and_return("1\n")
+        expect(subject.select_quantity).to eq 1
     end
   end
 
