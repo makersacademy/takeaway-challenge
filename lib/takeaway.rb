@@ -8,7 +8,7 @@ class Takeaway
   end
 
   def add_dish_to_menu(dish, price)
-    @menu[:dish] = price
+    @menu[dish] = price
   end
 
   def display_menu
