@@ -1,6 +1,7 @@
 class OrderManager
 
   attr_reader :order_history, :menu
+  
   # Turn dependancies into a config class
   def initialize(menu_class = Menu, order_class = Order, dish_class = Dish)
     @order_class = order_class

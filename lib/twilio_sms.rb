@@ -6,7 +6,7 @@ class TwilioSMS
     @twilio_client = set_client(credentials)
   end
 
-  def send_sms(from, to, body)
+  def send(from, to, body)
     
     message = @twilio_client.messages.create(
       body: body,

@@ -20,13 +20,13 @@ describe TwilioSMS do
   it "raises an error when not successful in sending an SMS" do
     allow(Twilio::REST::Client).to receive(:new).and_return(failed_twilio_client)
     twilio_sms = described_class.new(credentials) 
-    expect { twilio_sms.send_sms(from, to, body) }.to raise_error "Failed to send SMS"
+    expect { twilio_sms.send(from, to, body) }.to raise_error "Failed to send SMS"
   end
 
   it "sends an sms message" do
     allow(Twilio::REST::Client).to receive(:new).and_return(succesful_twilio_client)
     twilio_sms = described_class.new(credentials) 
-    expect { twilio_sms.send_sms(from, to, body) }.not_to raise_error
+    expect { twilio_sms.send(from, to, body) }.not_to raise_error
   end
   
 end
