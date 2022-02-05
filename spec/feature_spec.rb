@@ -1,3 +1,6 @@
+require_relative '../lib/takeaway'
+require_relative '../lib/dish'
+
 # As a customer
 # So that I can check if I want to order something
 # I would like to see a list of dishes with prices 
