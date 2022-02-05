@@ -1,6 +1,8 @@
 require 'takeaway'
+require 'order'
 
 describe 'Feature-tests' do
+  dishes = [{pizza: '£9'}, {pasta: '£7'}]
   describe "I would like to see a list of dishes with prices" do
     # As a customer
     # So that I can check if I want to order something
@@ -16,13 +18,15 @@ describe 'Feature-tests' do
     # As a customer
     # So that I can order the meal I want
     # I would like to be able to select some number of several available dishes
+    # let(:order) { Order.new(dishes) }
       it 'allows multiple dishes to be added to an order' do
         dishes = [{pizza: '£9'}, {pasta: '£7'}]
         takeaway = Takeaway.new(dishes)
+        takeaway.new_order
         takeaway.add_to_order("pasta")
         takeaway.add_to_order("pizza")
-        expect(takeaway.order).to include pasta: "£7"
-        expect(takeaway.order).to include pizza: "£9"
+        expect(takeaway.order.list).to include pasta: "£7"
+        expect(takeaway.order.list).to include pizza: "£9"
       end
   end
 
@@ -33,11 +37,22 @@ describe 'Feature-tests' do
       it 'correctly calculates the total sum of the dishes in an order' do
         dishes = [{pizza: '£9'}, {pasta: '£7'}]
         takeaway = Takeaway.new(dishes)
+        takeaway.new_order
         takeaway.add_to_order("pasta")
         takeaway.add_to_order("pizza")
-        expect(takeaway.total).to eq 16
+        expect(takeaway.order.total).to eq 16
       end
+  end
 
-
+  describe "I would like to receive a confirming my order and approx. delivery time after I have ordered" do
+    # As a customer
+    # So that I am reassured that my order will be delivered on time
+    # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+      it 'sends a confirmation text message, with estimated delivery time, after ordering' do
+        dishes = [{pizza: '£9'}, {pasta: '£7'}]
+        takeaway = Takeaway.new(dishes)
+        takeaway.new_order
+        takeaway.add_to_order("pasta")
+      end
   end
 end

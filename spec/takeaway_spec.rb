@@ -8,22 +8,21 @@ describe Takeaway do
 
   describe '#menu' do
     it 'shows a list of all the dishes and their prices' do 
-      expect(subject.menu).to eq dishes
+      expect(takeaway.menu).to eq dishes
     end
   end
 
   describe '#add_to_order' do
     it 'adds the given dish to the cuurrent order' do
-      subject.add_to_order("pizza")
-      expect(subject.order).to include pizza: "£9"
+      takeaway.new_order
+      takeaway.add_to_order("pizza")
+      expect(takeaway.order.list).to include pizza: "£9"
     end
   end
 
-  describe '#total' do
-    it 'calculates the total sum of the dishes in an order' do
-      subject.add_to_order("pizza")
-      subject.add_to_order("pasta")
-      expect(takeaway.total).to eq 16
+  describe '#new_order' do
+    it 'creates a new instance of the Order class' do
+      expect(takeaway.new_order.class).to eq (Order)
     end
   end
 
