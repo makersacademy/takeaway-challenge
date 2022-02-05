@@ -1,28 +1,39 @@
 
 require 'twilio-ruby'
 require 'sinatra'
+require_relative '../lib/order_manager'
+require_relative '../lib/order'
+require_relative '../lib/dish'
+require_relative '../lib/menu'
 
-class OrderServer < Sinatra::Base
+# module OrderServerModule
 
-  def initialise(order_manager)
-    @order_manager = order_manager
-  end
+#   class OrderServer < Sinatra::Base
 
-  post '/receive_order' do
-    body = params['Body']
-    order = @order_manager.generate_order
-    # Could use a response here and send an SMS back or use my SMS send 
-    # Will look at this 
-    # order.confirm_order(sms_client, "Order accepted via SMS")
+#     def initialize(order_manager_class = OrderManager)
+#       @order_manager_class = order_manager_class
+#     end
 
-  end
+    post '/receive_order' do
+      body = params['Body']
+      p "SMS Received"
+      order_manager = OrderManager.new(Menu, Order, Dish)
+      order_manager.generate_order(body)
+      p order_manager.order_history
+      p "Order Created"
+      # Could use a response here and send an SMS back or use my SMS send 
+      # Will look at this 
+      # order.confirm_order(sms_client, "Order accepted via SMS")
+    end
 
-  # Only start a server if this file has been executed directly
-  run! if __FILE__ == $0
+    # Only start a server if this file has been executed directly
+    #run! if __FILE__ == $0
 
-# RUN THIS IN CLI TO OPEN A TUNNEL FROM LOCAL MACHINE
-# twilio phone-numbers:update "your phone number" --sms-url="http://localhost:4567/receive_order"
+  # RUN THIS IN CLI TO OPEN A TUNNEL FROM LOCAL MACHINE
+  # twilio phone-numbers:update "your phone number" --sms-url="http://localhost:4567/receive_order"
 
-# https://www.twilio.com/docs/sms/tutorials/how-to-receive-and-reply-ruby
-# https://www.oreilly.com/library/view/sinatra-up-and/9781449306847/ch04.html
-end
+  # https://www.twilio.com/docs/sms/tutorials/how-to-receive-and-reply-ruby
+  # https://www.oreilly.com/library/view/sinatra-up-and/9781449306847/ch04.html
+ # end
+
+#end

@@ -1,21 +1,32 @@
 class OrderManager
 
-  def initialize(menu, order_class = Order)
+  attr_reader :order_history, :menu
+  # Turn dependancies into a config class
+  def initialize(menu_class = Menu, order_class = Order, dish_class = Dish)
     @order_class = order_class
-    @menu = menu
-    @order = nil
+    @menu_class = menu_class
+    @dish_class = dish_class
+    @order_history = []
+    @menu = nil
+    initialise_menu
   end
 
   def generate_order(ordered_dishes)
     return nil if ordered_dishes.empty?
     parsed_order = parse_order(ordered_dishes)
-    @order = add_dishes_to_order(parsed_order)
-    @order
+    @order_history << add_dishes_to_order(parsed_order)
+    @order_history.last
   end
 
-  # added this for test for my feature tests.. need a better way
-  def show_order
-    @order.show_order
+  def initialise_menu
+    # Add support for loading a menu from file.
+    # hard coded for time being
+    dish_one = @dish_class.new("Curry", 6.5)
+    dish_two = @dish_class.new("Spagbol", 7.5)
+    dish_three = @dish_class.new("Cottage Pie", 8)
+    
+    @menu = @menu_class.new([dish_one, dish_two, dish_three])
+
   end
 
   private
@@ -28,7 +39,7 @@ class OrderManager
   def add_dishes_to_order(parsed_order)
     order = @order_class.new
     parsed_order.each do |dish, qty|
-      order.add_dish(@menu.select_dish(dish), qty)
+      order.order_dish(@menu.select_dish(dish), qty)
     end
     order
   end
