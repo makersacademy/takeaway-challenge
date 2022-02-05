@@ -45,10 +45,12 @@ describe Order do
   end
 
   describe "#send_SMS_confirmation" do
+    
     it { is_expected.to respond_to(:send_sms_confirmation) }
 
-    # it "sends the user a text to confirm order and delivery time" do
-    #   expect {order.send_sms_confirmation}. to
+    xit "sends the user a text to confirm order and delivery time" do
+      # expect {order.send_sms_confirmation}.to 
+    end
 
   end
 
