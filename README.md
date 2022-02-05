@@ -111,6 +111,6 @@ All documentation files reside in the `./doc` directory
 
 All data files reside in the `./data` directory
 
-As mentioned environment data is stored in the root in a `.env file`
+As mentioned environment data is stored in the root in a `.env` file
 
 ----------------------------------
