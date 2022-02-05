@@ -13,8 +13,8 @@ class Order
     format_order
   end
 
-  def confirm_order(preferred_comms)
-    preferred_comms.send
+  def confirm_order(messaging)
+    messaging.send
   end
 
   private 

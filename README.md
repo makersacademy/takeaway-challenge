@@ -19,9 +19,11 @@ Takeaway Challenge
 Author Notes
 -------
 
-This is a program which mimics a take away service. 
+This is a suite of classes which can be used to mimic a take away service. 
 
-There is a menu for the customer to peruse. The customer can choose the dishes they wish to order, once satisfied with their selection they get view of the ordered items including total price. When the customer confirms their order a confirmation text will be sent to the customer informing when it will be delivered.
+There is a menu class for the customer to peruse what's on offer. The customer can choose the dishes they want and add them to an order, once satisfied with their selection they can get a view of the ordered items including total price. When the customer confirms their order a confirmation text will be sent to the customer.
+
+There is also unfinished functionality regarding a listening SMS server (OrderServer), this server on receiving a text with order details will then generate an order via the OrderManager
 
 ## Installation
 
@@ -89,6 +91,12 @@ Use Ctrl-C to stop
 ~~~~
 
 Now all you have to do is send a text to your Twilio number. 
+
+text format is a comma seperate string of menu_item,quantity_to_order e.g Spagbol,1,Cottage Pie,2
+
+I have not put any checking on this to see if the format is correct!
+
+
 
 
 ----------------------------------
