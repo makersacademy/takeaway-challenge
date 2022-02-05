@@ -1,50 +1,54 @@
-require_relative './ubereatz_without_raise_errors'
+require_relative './ubereatz'
 require 'colorize'
 
-puts "\n\nWelcome to Nonna's. Please choose your dishes from the menu below\n\n".center(20)
-the_order = UberEatz.new
-the_order.view_menu
+puts "\n\nWelcome to Nonna's.
+      \nPlease choose your dishes from the menu below\n\n".center(100).colorize(:green)
+new_order = UberEatz.new
+new_order.view_menu
 
-  while true do
-  puts "\n\n What would you like to do?\n\n1. Add to your order?\n\n2. View your order\n\n3. See the menu\n\n4. Exit app".center(30)
+while true do
+  puts  "\nWhat would you like to do?
+        \n1. Add to your order
+        \n2. View your order
+        \n3. See the menu
+        \n4. Place your order and get a confirmation text
+        \n5. Exit app".center(30).colorize(:green)
   choice = gets.chomp
-    case choice
-    when "1"
-      puts "Please specify a dish and how many you would like (e.g Salami, 3)"
-      dish = gets.chomp
-      split_choice = dish.split(",")
-      if UberEatz::ITALIAN.include? split_choice[0] 
-        the_order.add_dish(split_choice[0], split_choice[1].to_i)
-      else
-        puts "We haven't got that on the menu"
-      end
-    when "2"
-      the_order.view_my_order
-      puts "To place your order and recieve a text confirmation press 1\nOr to go back press 2"
-      decision = gets.chomp
-      if decision == 1
-        the_order.send_SMS_confirmation
-        break
-      elsif decision == 2
-        puts "Please specify a dish and how many you would like (e.g Salami, 3)"
-      else
-        puts "Choose and option 1 or 2"
-        self
-      end
-    when "3"
-      
-      the_order.view_menu
-    when "4"
-      exit
+  case choice
+  when "1"
+    puts "Please specify a dish and how many you would like (e.g Salami, 3)".colorize(:light_yellow)
+    dish = gets.chomp
+    split_choice = dish.split(",")
+
+    if UberEatz::ITALIAN.include? split_choice[0] 
+      new_order.add_dish(split_choice[0], split_choice[1].to_i)
     else
-     puts "\nChoose an option, 1, 2, 3 or 4".center(50)
+      puts "We haven't got that on the menu.".colorize(:light_yellow)
     end
+
+  when "2"
+    new_order.view_my_order
+  when "3"
+    new_order.view_menu
+  when "4"
+    puts "To place your order and recieve a text confirmation press 1
+            \nOr to go back press 2".colorize(:light_yellow)
+    decision = gets.chomp
+
+    if decision == "1" && new_order.total.zero?
+      puts "You need to add some dishes to you order".colorize(:light_yellow)
+    elsif decision == "1" && new_order.total != 0
+      new_order.send_sms_confirmation
+      puts "A confirmation text is on its way to you :)".colorize(:light_yellow)
+      exit
+    elsif decision == "2"
+    else
+      puts "That wasn't an option. Try again".colorize(:light_yellow)
+    end
+  
+  when "5"
+    exit
+  else
+    puts "\nChoose an option, 1, 2, 3 or 4".center(50).colorize(:light_yellow)
   end
-
-
-  ITALIAN = {
-    "Focaccia" => 4, 'Burrata' => 8, 'Salad' => 5, 'Brusscetta' => 5, 'Salami' => 6,
-    'Lasagne' => 5, 'Pizza Margherita' => 10,'Arrabiata' => 10, 'Penne a la Vodka' => 12, 
-    'Canelloni' => 15, 'Pumpkin Ravioli' => 12, 'Eggplant Parmigiana' => 13, 'Spaghetti Puttanesca' => 10,
-    'Penne Pomodoro' => 9, 'Tiramisu' => 6, 'Afogato' => 7
-  }.freeze 
+end

@@ -12,5 +12,6 @@ to = '+447929875411' # My mobile phone number
 client.messages.create(
 from: from,
 to: to,
-body: 'Hungry Man! Thanks so much for your order its on its way!'
+body: 'Fear not Hungry Man! 
+        Your order is confirmed and will be delivered in the next 30 minutes'
 )
