@@ -1,18 +1,20 @@
 class Menu
 
-  attr_accessor :menu_import
+  attr_accessor :menu_import, :menu
 
   def initialize
     @menu_import
+    @menu = File.open('./menu.txt').read.split("\n")
   end
 
   def view_menu
-    puts import_menu
+    puts @menu
   end
 
-  def import_menu
-    file = File.open('./menu.txt')
-    @menu_import = file.read
+  def select_dish
+     puts @menu
+     puts "please select a dish number:"
+     number = gets
+     @menu[number.to_i - 1]
   end
-
 end

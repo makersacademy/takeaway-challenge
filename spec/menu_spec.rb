@@ -1,18 +1,19 @@
 require 'menu'
-require 'order'
 
 describe Menu do
 
   describe '#view_menu' do
     it 'should show the items on the menu' do
-      allow(subject).to receive(:view_menu) { "noodles, 9"}
-      expect(subject.view_menu).to eq "noodles, 9"
+      allow(subject).to receive(:view_menu) { "1. noodles, 9"}
+      expect(subject.view_menu).to eq "1. noodles, 9"
     end
   end
 
-  describe '#import_menu' do
-    it 'should import the contents of the file into menu_import object' do
-      expect { subject.import_menu }.to change { subject.menu_import }
+  describe '#select_dish' do
+    it 'should allow selection of a specific dish' do
+      allow_any_instance_of(Menu).to receive(:gets).and_return(1)
+      expect(subject.select_dish).to eq "1. noodles, 9"
     end
   end
+
 end
