@@ -11,8 +11,9 @@ describe 'User Story 1' do
     dish1 = Dish.new("Chicken", 1.5)
     dish2 = Dish.new("Chips", 0.5)
     dish3 = Dish.new("Coke", 0.8)
+    str = "Chicken: £1.50\nChips: £0.50\nCoke: £0.80"
     menu = [dish1, dish2, dish3]
-    expect(takeaway.view_menu(menu)).to include(dish1,dish2,dish3)
+    expect(takeaway.view_menu(menu)).to eq(str)
   end
 
 end
