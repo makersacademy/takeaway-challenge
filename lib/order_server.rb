@@ -11,7 +11,6 @@ class OrderServer < Sinatra::Base
   post '/receive_order' do
     body = params['Body']
     order = order_manager.generate_order
-    p order.show_order
     # Could use a response here and send an SMS back or use my SMS send 
     # Will look at this 
     # order.confirm_order(sms_client, "Order accepted via SMS")
@@ -22,7 +21,7 @@ class OrderServer < Sinatra::Base
   run! if __FILE__ == $0
 
 # RUN THIS IN CLI TO OPEN A TUNNEL FROM LOCAL MACHINE
-# twilio phone-numbers:update "phone Number here" --sms-url="http://localhost:4567/receive_order"
+# twilio phone-numbers:update "your phone number" --sms-url="http://localhost:4567/receive_order"
 
 # https://www.twilio.com/docs/sms/tutorials/how-to-receive-and-reply-ruby
 # https://www.oreilly.com/library/view/sinatra-up-and/9781449306847/ch04.html

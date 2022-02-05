@@ -7,12 +7,13 @@ class OrderManager
   end
 
   def generate_order(ordered_dishes)
+    return nil if ordered_dishes.empty?
     parsed_order = parse_order(ordered_dishes)
     @order = add_dishes_to_order(parsed_order)
     @order
   end
 
-  # added this for a quick quick test for my feature tests
+  # added this for test for my feature tests.. need a better way
   def show_order
     @order.show_order
   end
