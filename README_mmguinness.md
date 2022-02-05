@@ -44,6 +44,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 admin@Maries-MacBook-Pro takeaway-challenge % irb
  => true 
+ 3.0.2 :002 > require './lib/takeaway'
+ => true 
 3.0.2 :003 > takeaway = Takeaway.new
  => #<Takeaway:0x00007ff482880a58 @menu={}> 
 3.0.2 :005 > takeaway.add_dish_to_menu("Dish 1", 10)
@@ -53,4 +55,12 @@ admin@Maries-MacBook-Pro takeaway-challenge % irb
 3.0.2 :006 > takeaway.add_dish_to_menu("Dish 3", 14)
  => 14 
 3.0.2 :008 > takeaway.display_menu
+ => {"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14} 
+3.0.2 :006 > takeaway.receive_order("Dish 1, Dish 2")
+"Thank you! Your order was placed and will be delivered before 11:11"
+3.0.2 :008 > 
+
+3.0.2 :003 > order = Order.new
+3.0.2 :011 > order.view_menu(takeaway)
+{"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14}
  => {"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14} 
