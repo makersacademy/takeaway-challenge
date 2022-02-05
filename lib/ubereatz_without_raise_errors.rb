@@ -1,14 +1,16 @@
-puts "Welcome to Nonna's. Please choose your dishes from the menu below"
+
+require 'colorize'
 
 class UberEatz
  
   ITALIAN = {
     "Focaccia" => 4, 'Burrata' => 8, 'Salad' => 5, 'Brusscetta' => 5, 'Salami' => 6,
-    'Lasagne' => 5, 'Pizza Margheritta' => 10,'Arrabiata' => 10, 'Penne a la Vodka' => 12, 
+    'Lasagne' => 5, 'Pizza Margherita' => 10,'Arrabiata' => 10, 'Penne a la Vodka' => 12, 
     'Canelloni' => 15, 'Pumpkin Ravioli' => 12, 'Eggplant Parmigiana' => 13, 'Spaghetti Puttanesca' => 10,
     'Penne Pomodoro' => 9, 'Tiramisu' => 6, 'Afogato' => 7
   }.freeze
-  attr_reader :my_order, :italian
+
+  attr_reader :my_order
 
   def initialize
     @my_order = []
@@ -16,23 +18,23 @@ class UberEatz
 
   def view_menu
     ITALIAN.each do |key, value|
-      puts "#{key},  £#{value}"
+      puts "#{key},  £#{value}".colorize(:yellow)
     end
   end
 
   def add_dish(dish, quantity)
-    raise "You need to specify how many you want. Write a number between 1-10" unless quantity.is_a?(Integer)
-    raise "You can only order 10 of the same dish" if quantity > 10
-    raise "Sorry, thats not on the menu" unless ITALIAN.include? dish
     quantity.times do
       @my_order << ITALIAN.select { |k,_v| k == dish }
     end
   end 
 
   def view_my_order
-    raise "You haven't chosen anything yet" if order_is_empty?
     print_out_my_order
     total
+  end
+
+  def send_SMS_confirmation
+
   end
 
   private

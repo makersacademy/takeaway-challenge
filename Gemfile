@@ -14,5 +14,6 @@ group :development, :test do
   gem 'rubocop', '1.20'
   gem 'twilio-ruby', '~> 5.63.1'
   gem 'sinatra'
+  gem 'colorize'
   
 end
