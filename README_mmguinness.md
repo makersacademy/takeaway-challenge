@@ -64,3 +64,13 @@ admin@Maries-MacBook-Pro takeaway-challenge % irb
 3.0.2 :011 > order.view_menu(takeaway)
 {"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14}
  => {"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14} 
+
+
+ 3.0.2 :011 > order.add_dish(takeaway, "Dish 2")
+ => #<Order:0x00007fc5aa95eff8 @order_cost=[12], @order_dishes=[nil]> 
+ 3.0.2 :012 > order.add_dish(takeaway, "Dish 3")
+ => [12, 14] 
+ 3.0.2 :013 > order
+ => #<Order:0x00007fc5aa95eff8 @order_cost=[12, 14], @order_dishes=[nil, nil]> 
+ 3.0.2 :016 > order.order_cost.sum
+ => 26  

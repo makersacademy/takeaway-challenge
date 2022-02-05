@@ -3,7 +3,7 @@ require_relative 'order'
 
 class Takeaway
   attr_reader :menu
-  attr_reader :display_menu
+
   def initialize
     @menu = {}
   end
