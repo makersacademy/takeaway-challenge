@@ -1,5 +1,5 @@
 # require 'twilio-ruby'
-require_relative 'order.rb'
+require_relative 'order'
 
 class Takeaway
   attr_reader :menu
@@ -15,5 +15,7 @@ class Takeaway
     @menu
   end
 
+  def receive_order(*)
+    p "Thank you! Your order was placed and will be delivered before #{Time.now.strftime("%I:%H")}"
+  end
 end
-

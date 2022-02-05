@@ -9,7 +9,7 @@ describe Takeaway do
 
   describe '#add_dish_to_menu' do
     it 'should add one dish to the menu' do
-      subject.add_dish_to_menu(:dish_1, 10)
+      subject.add_dish_to_menu("Dish 1", 10)
       expect(subject.menu.size).to eq 1
     end
   end
@@ -24,10 +24,10 @@ describe Takeaway do
     end
   end
 
-  let (:order) { double :order }
+  let (:Order) { double :Order }
   describe '#recieve_order' do
     it 'should recieve an order with 1 argument' do
-      subject.receive_order(:order)
+      subject.receive_order(:Order)
       expect(subject).to respond_to(:receive_order).with(1).argument
     end
   end
