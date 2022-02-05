@@ -14,8 +14,26 @@ Takeaway Challenge
 
  ```
 
-Instructions
+ In this challenge my 'client' has instructed me to create a program that allows a user to view and order dishes as well as receive a text message from the restaurant letting them know that their order will be with them in one hours time.
+
+Approaching the challenge
 -------
+User story one:
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
+From reading this user story and focusing on the last line in particular I can see the nouns are 'dishes' and 'prices' and the sole verb used is 'list'. After drawing a UML class diagram in my notes I have decided that my class will be called 'Restaurant' and I will need the variable 'dishes_with_prices' and the method 'list'. 'Dishes_with_prices' is hash that holds key => value pairs of each dish and price.
+
+
+
+
+
+
+
+
+
 
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
