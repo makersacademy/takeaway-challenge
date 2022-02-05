@@ -1,5 +1,6 @@
 require_relative '../lib/takeaway'
 require_relative '../lib/dish'
+require_relative '../lib/menu'
 
 # As a customer
 # So that I can check if I want to order something
@@ -7,13 +8,16 @@ require_relative '../lib/dish'
 
 describe 'User Story 1' do
   it 'prints a list of available dishes with prices' do
-    takeaway = Takeaway.new()
+    menu = Menu.new()
+    takeaway = Takeaway.new(menu)
     dish1 = Dish.new("Chicken", 1.5)
     dish2 = Dish.new("Chips", 0.5)
     dish3 = Dish.new("Coke", 0.8)
+    menu.add(dish1)
+    menu.add(dish2)
+    menu.add(dish3)
     str = "Chicken: £1.50\nChips: £0.50\nCoke: £0.80"
-    menu = [dish1, dish2, dish3]
-    expect(takeaway.view_menu(menu)).to eq(str)
+    expect(takeaway.menu.view).to eq(str)
   end
 
 end
