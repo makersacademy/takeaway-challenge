@@ -12,8 +12,9 @@ describe Order do
   end
 
   describe '#add_dish' do
-    it 'should add accept a takeaway, dish and quantity' do
+    it 'should accept a takeaway, dish and quantity' do
       takeaway_double = double(:takeaway)
+      allow(takeaway_double).to receive(:menu).and_return( {"Dish 1": 10} )
       subject.add_dish(takeaway_double, "Dish 1", 1)
       expect(subject).to respond_to(:add_dish).with(3).argument
     end
