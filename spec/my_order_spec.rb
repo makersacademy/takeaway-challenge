@@ -48,6 +48,14 @@ describe UberEatz do
     it "doesn't let you order things that aren't on the menu" do
       expect { ubereatz.add_dish("Ben and Jerrys", 1) }.to raise_error "Sorry, thats not on the menu"
     end
+
+    it "doesn't let you order more than 10 dishes" do
+      expect { ubereatz.add_dish('Salad', 11) }.to raise_error "You can only order 10 of the same dish"
+    end
+
+    it "only lets you add a number to amount of dishes" do
+      expect { ubereatz.add_dish('Salad', "one") }.to raise_error "You need to specify how many you want. Write a number between 1-10"
+    end
   end
 
   describe '#view_my_order' do
@@ -63,8 +71,6 @@ describe UberEatz do
     it "will raise an error if my_order is empty" do
       expect { ubereatz.view_my_order }.to raise_error "You haven't chosen anything yet"
     end
-
-
   end
 end
 
@@ -80,4 +86,3 @@ end
 #       expect(ubereatz.total).to eq((2*15) + (3*10))
 #     end
 #   end
-
