@@ -5,7 +5,7 @@ So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
 <!-- As a CUSTOMER I would like to view a menu from which to place my_order. I would like to SEE
-a LIST of dishes with PRICES (ARRAY of HASHES with (k) dishes and (v) prices) What menu would they like???-->
+a LIST of dishes with PRICES (HASH with (k) dishes and (v) prices) What menu would they like??? DONE-->
 
 USER STORY 2
 
