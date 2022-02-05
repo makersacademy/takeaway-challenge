@@ -40,7 +40,7 @@ describe 'Feature-tests' do
         takeaway.new_order
         takeaway.add_to_order("pasta")
         takeaway.add_to_order("pizza")
-        expect(takeaway.order.total).to eq 16
+        expect(takeaway.order.total).to eq "Total for order is: £16."
       end
   end
 

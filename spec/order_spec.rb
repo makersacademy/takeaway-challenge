@@ -9,8 +9,8 @@ describe Order do
     it 'calculates the total sum of the dishes in an order' do
       order.add_to_order("pizza")
       order.add_to_order("pasta")
-      expect(order.total).to eq 16
+      expect(order.total).to eq "Total for order is: £16."
     end
   end
-  
+
 end

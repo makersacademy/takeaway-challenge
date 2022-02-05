@@ -18,7 +18,7 @@ class Order
     @list.each do
       |dish| @total += dish.values[0][-1].to_i
     end
-    @total
+    "Total for order is: £#{@total}."
   end
 
 end
