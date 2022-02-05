@@ -1,11 +1,14 @@
+require_relative './order'
+
 class Menu
 
-  attr_accessor :menu_import, :menu, :quantity
+  attr_accessor :menu_import, :menu, :quantity, :order
 
   def initialize
     @menu_import
     @menu = File.open('./menu.txt').read.split("\n")
     @quanity
+    @order = []
   end
 
   def view_menu
@@ -17,7 +20,7 @@ class Menu
     puts "please select a dish number:"
     number = gets.chomp
     select_quantity
-    @menu[number.to_i - 1]
+    @order = @menu[number.to_i - 1]
   end
 
   def select_quantity
@@ -25,4 +28,7 @@ class Menu
     @quantity = gets.chomp.to_i
   end
 
+  def place_order
+    new_order = Order.new(order, quantity)
+  end
 end
