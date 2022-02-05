@@ -25,4 +25,19 @@ describe 'Feature-tests' do
         expect(takeaway.order).to include pizza: "£9"
       end
   end
+
+  describe "I would like to check that the total I have been given matches the sum of the various dishes in my order" do
+    # As a customer
+    # So that I can verify that my order is correct
+    # I would like to check that the total I have been given matches the sum of the various dishes in my order
+      it 'correctly calculates the total sum of the dishes in an order' do
+        dishes = [{pizza: '£9'}, {pasta: '£7'}]
+        takeaway = Takeaway.new(dishes)
+        takeaway.add_to_order("pasta")
+        takeaway.add_to_order("pizza")
+        expect(takeaway.total).to eq 16
+      end
+
+
+  end
 end
