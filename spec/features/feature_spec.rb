@@ -21,12 +21,19 @@ describe "feature tests" do
   describe "user story 1" do
     
     it "creates a menu" do
-      menu = Menu.new(menu_input)
+      menu = Menu.new(Dish)
       expect(menu).to be_instance_of(Menu)
+    end
+    
+    it "can load a menu from file" do
+      menu = Menu.new
+      menu.load_menu('./data/menu.csv')
+      expect(menu.show_menu).to eq menu_output
     end
 
     it "shows what is on the menu" do
-      menu = Menu.new(menu_input)
+      menu = Menu.new(Dish)
+      menu.load_menu('./data/menu.csv')
       expect(menu.show_menu).to eq menu_output
     end
     
@@ -44,7 +51,8 @@ describe "feature tests" do
 
   describe "User Story 2" do
     it "selects a dish from the menu" do
-      menu = Menu.new(menu_input)
+      menu = Menu.new
+      menu.load_menu('./data/menu.csv')
       dish_selected = menu.select_dish("Cottage Pie")
       expect(dish_selected.name).to eq "Cottage Pie"
     end
@@ -55,7 +63,8 @@ describe "feature tests" do
     end
 
     it "adds a dish to an order" do
-      menu = Menu.new(menu_input)
+      menu = Menu.new
+      menu.load_menu('./data/menu.csv')
       dish_selected = menu.select_dish("Cottage Pie")
       order = Order.new
       order.order_dish(dish_selected, 2)
@@ -69,7 +78,8 @@ describe "feature tests" do
 
   describe "User Story 3" do
     it "shows the overall order with total price" do
-      menu = Menu.new(menu_input)
+      menu = Menu.new
+      menu.load_menu('./data/menu.csv')
       dish_selected = menu.select_dish("Cottage Pie")
       order = Order.new
       order.order_dish(dish_selected, 2)
@@ -123,6 +133,6 @@ describe "feature tests" do
   #     expect(order_manager.order_history.last.show_order).to eq"Dish: Spagbol, Qty: 2\nDish: Cottage Pie, Qty: 1\nTotal Price: £23.00"
 
   #   end
-  #end
+  # end
 
 end

@@ -5,13 +5,13 @@ describe TwilioSMS do
   let(:failed_code) { double(:message, :error_code => 1) }
   let(:failed_messages) { double(:messages, :create => failed_code) }
   let(:failed_twilio_client) { double(:twilio_client, :messages => failed_messages) }
-  let(:twilio_client) { double(:client_class, :new => failed_twilio_client)} 
+  let(:twilio_client) { double(:client_class, :new => failed_twilio_client) } 
 
   let(:error_code) { double(:message, :error_code => nil) }
   let(:messages) { double(:messages, :create => error_code) }
   let(:succesful_twilio_client) { double(:twilio_client, :messages => messages) }
 
-  let(:credentials) { double(:credentials, :account_id => "", :auth_token => "" )}
+  let(:credentials) { double(:credentials, :account_id => "", :auth_token => "") }
 
   let(:from) { "2" }
   let(:to) { "1" }

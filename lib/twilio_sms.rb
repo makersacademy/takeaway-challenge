@@ -3,7 +3,7 @@ require 'twilio-ruby'
 class TwilioSMS
 
   def initialize(credentials)
-    @twilio_client = set_client(credentials)
+    @twilio_client = client(credentials)
   end
 
   def send(from, to, body)
@@ -18,7 +18,7 @@ class TwilioSMS
 
   private
 
-  def set_client(credentials)
+  def client(credentials)
     twilio_client = Twilio::REST::Client.new(credentials.account_id, credentials.auth_token)
   end
 
