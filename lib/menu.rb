@@ -8,7 +8,7 @@ class Menu
     @menu_import
     @menu = File.open('./menu.txt').read.split("\n")
     @quanity
-    @order = []
+    @dish = []
   end
 
   def view_menu
@@ -20,7 +20,7 @@ class Menu
     puts "please select a dish number:"
     number = gets.chomp
     select_quantity
-    @order = @menu[number.to_i - 1]
+    @dish = @menu[number.to_i - 1]
   end
 
   def select_quantity
@@ -29,6 +29,6 @@ class Menu
   end
 
   def place_order
-    new_order = Order.new(order, quantity)
+    new_order = Order.new(@dish, @quantity)
   end
 end
