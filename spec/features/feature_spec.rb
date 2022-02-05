@@ -86,10 +86,9 @@ describe "feature tests" do
   describe "User Story 4 - Send a real text" do
     xit "sends a text on order confirmation" do
       order = Order.new
-
-      twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-
-      sms_provider = TwilioSMS.new(twilio_client)
+      credentials = Credentials.new
+      sms_provider = TwilioSMS.new(credentials)
+      
       from_phone_number = ENV['FROM_TELEPHONE_NO']
       to_phone_number = ENV['TO_TELEPHONE_NO']
       message = "Thank you! Your order was placed and will be delivered before 18:52"

@@ -56,7 +56,7 @@ TO_TELEPHONE_NO=<your send number>
 * Activate the pending feature test - User Story 4 - Send a real text in the `./spec/features/feature_spec.rb` file
 
 ## Receiving a Text
-The order server is very much a work in progress. How if you wish to send a text this can be achieved manually by doing the following:
+The order server is very much a work in progress. However if you wish to send a text this can be achieved manually by doing the following:
 
 In a new terminal run 
 ~~~~
