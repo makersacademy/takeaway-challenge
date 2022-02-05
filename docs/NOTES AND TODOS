@@ -1,6 +1,6 @@
 CENTER THE MENU AT THE END  .center(100)
 
-Errors need to be raised in command line interface file not the ubereatz one
+Errors need to be raised in command line interface file not the order one
 This has now been done but and is working but not built through TDD
 There may be multiple edgecase errors
 

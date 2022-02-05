@@ -15,6 +15,10 @@ run `bundle install`
 
 run `ruby my_order.rb`
 
+# Issues I have faced
+
+The main priblem I had with this challenge was implementing test for the commandline part of the program. I didn't implement any. 
+
 
 
 Takeaway Challenge

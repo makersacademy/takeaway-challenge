@@ -1,7 +1,7 @@
 
 require 'colorize'
 
-class UberEatz
+class Order
  
   ITALIAN = {
     "Focaccia" => 4, 'Burrata' => 8, 'Salad' => 5, 'Brusscetta' => 5,

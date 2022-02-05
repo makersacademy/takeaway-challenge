@@ -1,9 +1,9 @@
-require_relative './ubereatz'
+require_relative './order'
 require 'colorize'
 
 puts "\n\nWelcome to Nonna's.
       \nPlease choose your dishes from the menu below\n\n".center(100).colorize(:green)
-new_order = UberEatz.new
+new_order = Order.new
 new_order.view_menu
 
 while true do
@@ -20,7 +20,7 @@ while true do
     dish = gets.chomp
     split_choice = dish.split(",")
 
-    if UberEatz::ITALIAN.include? split_choice[0] 
+    if Order::ITALIAN.include? split_choice[0] 
       new_order.add_dish(split_choice[0], split_choice[1].to_i)
     else
       puts "We haven't got that on the menu.".colorize(:light_yellow)
