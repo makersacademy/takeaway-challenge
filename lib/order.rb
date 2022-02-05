@@ -1,18 +1,14 @@
 require_relative '../lib/menu.rb'
 
 class Order
-  attr_reader :order, :total
+  attr_reader :order, :total, :dishes
 
   def initialize
-    @order = []
+    @dishes = {}
     @total = []
   end
 
-#   def view_order
-#     dish_count = Hash.new(0)
-#     @order.each { |dish| dish_count[dish] += 1 }
-#     dish_count.each { |d,c| puts "#{d}x #{c}"}
-#     puts "Your total is: £#{@total.inject(0, :+)}"
-#   end
-
+  def add(dish, quantity)
+    dishes[dish] = quantity
+  end
 end

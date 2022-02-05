@@ -14,5 +14,4 @@ class Menu
     def dish_list
       @dishes.each { |d,c| puts "#{d}:   £#{c.to_f}" }
     end
-  
   end
