@@ -4,13 +4,13 @@ require 'sinatra'
 
 class OrderServer < Sinatra::Base
 
-  def initialise(_order_manager)
-    @order_class = order_class
+  def initialise(order_manager)
+    @order_manager = order_manager
   end
 
   post '/receive_order' do
     body = params['Body']
-    order = order_manager.generate_order
+    order = @order_manager.generate_order
     # Could use a response here and send an SMS back or use my SMS send 
     # Will look at this 
     # order.confirm_order(sms_client, "Order accepted via SMS")

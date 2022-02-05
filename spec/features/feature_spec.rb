@@ -111,10 +111,11 @@ describe "feature tests" do
     xit "Takeaway creates an order from an incoming message" do
       menu = Menu.new(menu_input)
       order_manager = OrderManager.new(menu, Order)
+      p "Order Manager: #{order_manager}"
       loop do
         order_server = OrderServer.new(order_manager)
         p "we are here"
-        break if order_server  != nil
+        break if order_manager.show_order != nil
       end
       p "exit loop"
       p order_manager.show_order
