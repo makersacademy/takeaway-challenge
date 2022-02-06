@@ -15,7 +15,7 @@ describe Takeaway do
       expect(takeaway.start_new(order)).to eq order
     end
     it "raises an error if no order started" do
-      expect {takeaway.confirm }.to raise_error "No current order."
+      expect { takeaway.confirm }.to raise_error "No current order."
     end
     it "confirms an order" do
       allow(order).to receive(:complete?) { true }
