@@ -1,3 +1,26 @@
+## How to use:
+3.0.0 :001 > require './lib/menu'
+ => true 
+3.0.0 :002 > require './lib/takeaway'
+ => true 
+3.0.0 :003 > t =  Takeaway.new
+ => #<Takeaway:0x000000015395d400 @order_dishes=[], @menu_dishes=nil> 
+3.0.0 :004 > t.retrieve_menu
+ => {"Chicken Tikka"=>8.45, "Butter Chicken"=>7.25, "Lamb Korma"=>9.45, "Beef Kebab"=>9.25, "Egg Fried Rice"=>4.45, "Steamed Rice"=>4.45, "Crispy Broccoli"=>5.45, "Creamy Spinach"=>2.45, "Naan"=>8.45, "Papadom"=>1.45, "Cola"=>345} 
+3.0.0 :005 > t.add_order_item "Beef Kebab"
+ => [{:dish=>"Beef Kebab", :price=>9.25, :quantity=>1}] 
+3.0.0 :006 > t.add_order_item "Butter Chicken" , 5
+ => [{:dish=>"Beef Kebab", :price=>9.25, :quantity=>1}, {:dish=>"Butter Chicken", :price=>7.25, :quantity=>5}] 
+3.0.0 :007 > t.order_total
+ => 45.5 
+3.0.0 :008 > t.checkout
+ => "Thank you! Your order was placed and will be delivered before 17:45" 
+3.0.0 :009 > t.add_order_item "Chicken Tikka" , 2
+ => [{:dish=>"Chicken Tikka", :price=>8.45, :quantity=>2}] 
+3.0.0 :010 > 
+
+
+
 Takeaway Challenge
 ==================
 ```
