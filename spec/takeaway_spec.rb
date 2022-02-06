@@ -1,4 +1,4 @@
-require_relative '../lib/takeaway' # requiring takeaway class file 
+require "takeaway" # requiring takeaway class file 
 
 describe Takeaway do # expecting a takeaway class 
 
@@ -6,7 +6,7 @@ describe Takeaway do # expecting a takeaway class
 
   let(:menu) { double(:menu, print: print_menu) } # creating a double 
   let(:print_menu) { "Korma: €8" }
-  let(:order) { double(:order) }
+  let(:order) { double(:order, total: 17.00) }
   let(:dishes) {  { korma: 2, balti: 1 } }
 
   it 'should have a menu with a list of dishes and their prices' do 
@@ -16,6 +16,12 @@ describe Takeaway do # expecting a takeaway class
   it 'should be able to order a number of several dishes' do 
     expect(order).to receive(:add).twice 
     takeaway.user_order(dishes)
+  end 
+
+  it 'calculates the user order total price' do 
+    allow(order).to receive(:add) # stub 
+    total = takeaway.user_order(dishes)
+    expect(total).to eq(17.00)
   end 
 
 end   # ending takeaway class 

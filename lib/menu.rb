@@ -11,4 +11,8 @@ class Menu  # creating a menu class
       "%s €%.2f" % [title.to_s.capitalize, price] # prints array with capitalization
     end.join(", ") # ends print method and joins string 
   end 
+
+  def price(dish)
+    dishes[dish]
+  end 
 end  # ending the menu class 

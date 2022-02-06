@@ -1,11 +1,14 @@
 require "menu"
+require "takeaway"
+require "order"
 
 describe Menu do 
 
   subject(:menu) { described_class.new(dishes) }
 
   let(:dishes) do 
-    { korma: 8.00,
+    { 
+      korma: 8.00,
       balti: 9.00
     }
   end 
@@ -17,5 +20,9 @@ describe Menu do
   it 'should print a list of dishes and their prices' do 
     printed_menu = "Korma €8.00, Balti €9.00"
     expect(menu.print).to eq(printed_menu)
+  end 
+
+  it 'can calculate the total price' do 
+    expect(menu.price(:korma)).to eq(dishes[:korma])
   end 
 end
