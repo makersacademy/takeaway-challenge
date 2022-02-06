@@ -98,7 +98,9 @@ true
 3.0.2 :014 > 
 
 
-
+Twilio link:
+https://www.twilio.com/docs/sms/quickstart/ruby
+Trial number : +18596483961
 
 Reference for double/ mocking = 
 https://stackoverflow.com/questions/28519261/rspec-stub-to-allow-hash-key-to-be-passed
