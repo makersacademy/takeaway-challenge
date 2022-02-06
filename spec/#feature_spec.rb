@@ -42,22 +42,26 @@ context "User Stories" do
 
   end
 
-end
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
 
-# As a customer
-# So that I can verify that my order is correct
-# I would like to check that the total I have been given matches the sum of the various dishes in my order
+  describe 'User Story 3' do
+    it 'prints a list of orders with prices' do
+      @takeaway.start_new(order = Order.new(@takeaway.menu))
+      str = "Chicken: £1.50\nChips: £0.50\nChicken: £1.50"
+      str += "\n--------------------\n\nCurrent total = £3.50"
+      order.select(@dish1)
+      order.select(@dish2)
+      order.select(@dish1)
+      expect(@takeaway.current_order.view).to eq(str)
+    end
 
-describe 'User Story 3' do
-  xit 'prints a list of orders with prices' do
-    #
   end
 
-  xit 'prints the total cost of the order' do
-    #
-  end
-
 end
+
+
 
 # As a customer
 # So that I am reassured that my order will be delivered on time
