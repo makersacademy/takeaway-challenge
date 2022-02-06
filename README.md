@@ -23,7 +23,7 @@ This is a suite of classes which can be used to mimic a take away service.
 
 There is a menu class for the customer to peruse what's on offer. The customer can choose the dishes they want and add them to an order, once satisfied with their selection they can get a view of the ordered items including total price. When the customer confirms their order a confirmation text will be sent to the customer.
 
-There is also unfinished functionality regarding a listening SMS server (OrderServer), this server on receiving a text with order details will then generate an order via the OrderManager
+There is also functionality regarding a listening SMS server (OrderServer), this server on receiving a text with order details will save to a file so the OrderManager can process later to generate an order
 
 ## Installation
 
