@@ -7,7 +7,6 @@ class Order
   def initialize(available_dishes)
     @list = []
     @available_dishes = available_dishes
-    @total = 0
   end
 
   def add_to_order(choice, quantity = 1)
@@ -16,6 +15,7 @@ class Order
   end
 
   def total
+    @total = 0
     @list.each do
       |dish| @total += dish.values[0][-1].to_i
     end
