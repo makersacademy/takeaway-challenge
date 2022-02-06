@@ -29,7 +29,8 @@ class Order
     check_arr.sum == total 
   end
 
-  def place_order
+  def place_order(takeaway)
+    takeaway.receive_order(self)
     # send @dishes to takeaway 
     @dishes.clear
     @order_cost.clear

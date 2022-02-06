@@ -45,12 +45,16 @@ describe Order do
   
   describe '#place_order' do
     it 'should pass the order to the takeaway' do
-      subject.place_order
-      expect(subject).to respond_to(:place_order)
+      takeaway_double = double(:takeaway)
+      allow(takeaway_double).to receive(:receive_order)
+      subject.place_order(takeaway_double)
+      expect(subject).to respond_to(:place_order).with(1).argument
     end
 
     it 'should clear the order contents' do
-      subject.place_order
+      takeaway_double = double(:takeaway)
+      allow(takeaway_double).to receive(:receive_order)
+      subject.place_order(takeaway_double)
       expect(subject.dishes).to be_empty
     end
   end

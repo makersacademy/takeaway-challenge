@@ -1,25 +1,18 @@
 Takeaway Challenge
 ==================
   
-* User stories:
+* How to use
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+Fork this repo.
+Run the command 'bundle' in the project directory to ensure you have all the gems.
+Run tests with RSpec.
+Run program in IRB.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+* Description
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+This is a Takeaway program.
+You can create a Takeaway, add dishes with prices and receive orders
+You can create orders, add dishes from the takeaway, check the price total and place your order.
 
 * Domain Model
 
@@ -51,8 +44,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 
 * IRB Testing
-
-admin@Maries-MacBook-Pro takeaway-challenge % irb
+- create a takeaway
+ % irb
  => true 
  3.0.2 :002 > require './lib/takeaway'
  => true 
@@ -64,12 +57,16 @@ admin@Maries-MacBook-Pro takeaway-challenge % irb
  => 12 
 3.0.2 :006 > takeaway.add_dish_to_menu("Dish 3", 14)
  => 14 
+
+- display menu
 3.0.2 :008 > takeaway.display_menu
  => {"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14} 
-3.0.2 :006 > takeaway.receive_order("Dish 1, Dish 2")
-"Thank you! Your order was placed and will be delivered before 11:11"
-3.0.2 :008 > 
 
+- receive an order
+3.0.0 :003 > takeaway.receive_order("order")
+ => "Thank you! Your order was placed and will be delivered before 10:51 PM" 
+
+- create an order
 3.0.2 :002 > require './lib/order'
  => true 
 3.0.2 :003 > order = Order.new
@@ -77,6 +74,7 @@ admin@Maries-MacBook-Pro takeaway-challenge % irb
 {"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14}
  => {"Dish 1"=>10, "Dish 2"=>12, "Dish 3"=>14} 
 
+- add dishes to order
 3.0.2 :007 > order.add_dish(takeaway, "Dish 2", 2)
  => 2 
 3.0.2 :008 > order.add_dish(takeaway, "Dish 1", 1)
@@ -86,16 +84,18 @@ admin@Maries-MacBook-Pro takeaway-challenge % irb
 3.0.2 :010 > order
  => #<Order:0x00007f8a1a0a1580 @dishes=["Dish 2", "Dish 2", "Dish 1"], @order_cost=[12, 12, 10]> 
 
+- verify your order
 3.0.2 :011 > order.verify_order(takeaway)
 "check_arr equals : [12, 12, 10]"
 "total equals : 34"
 true
  => true 
+
+- place your order & clear history
 3.0.2 :012 > order.place_order(takeaway)
  => [] 
 3.0.2 :013 > order
  => #<Order:0x00007f8a1a0a1580 @dishes=[], @order_cost=[]> 
-3.0.2 :014 > 
 
 
 Twilio link:
