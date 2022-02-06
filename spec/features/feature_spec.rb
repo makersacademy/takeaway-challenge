@@ -101,7 +101,6 @@ describe "feature tests" do
 
       from_phone_number = ENV['FROM_TELEPHONE_NO']
       to_phone_number = ENV['TO_TELEPHONE_NO']
-      message = "Thank you! Your order was placed and will be delivered before 18:52"
 
       sms = Messaging.new(sms_provider, from_phone_number, to_phone_number, message)
       expect { order.confirm_order(sms) }.not_to raise_error
