@@ -8,7 +8,7 @@ class Menu
     @menu_import
     @menu = File.open('./menu.txt').read.split("\n")
     @quanity
-    @dish = []
+    @dishes = []
   end
 
   def view_menu
@@ -18,17 +18,24 @@ class Menu
   def select_dish
     view_menu
     puts "please select a dish number:"
-    number = gets.chomp
-    select_quantity
-    @dish = @menu[number.to_i - 1]
+    puts "when finished hit enter twice"
+    @number = gets.chomp
+    while !@number.empty? do
+      select_quantity
+      @dishes << @dish_with_qty
+      view_menu
+      puts "please select another dish"
+      @number = gets.chomp
+    end
   end
 
   def select_quantity
     puts "enter a quantity"
     @quantity = gets.chomp.to_i
+    @dish_with_qty = @menu[@number.to_i - 1] + ", #{@quantity}"
   end
 
   def place_order
-    new_order = Order.new(@dish, @quantity)
+    new_order = Order.new(@dishes)
   end
 end
