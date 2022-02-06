@@ -66,7 +66,7 @@ twilio phone-numbers:update "<Twilio phone number here>" --sms-url="http://local
 ~~~~
 This will create a tunnel to an external site and effectively mimic your local machine as an external server accepting POST requests from Twilio
 
-You will see this in your terminal if it's woking 
+You will see something like this in your terminal if it's woking 
 ~~~~
 SID                                 Result   SMS URL                                          
 PN7a51b877ef42145566170283b95dff81  Success  https://a5bd-88-110-42-114.ngrok.io/receive_order
@@ -77,7 +77,7 @@ Press CTRL-C to exit.
 
 Run `./lib/order_server.rb` as a stand alone application.. I use VS Code and right click the file and choose run code as the option. You could call directly from another terminal with `ruby './lib/order_server.rb'`
 
-This will start the Sinatra server. You will see this if it works ok
+This will start the Sinatra server. You will see something like this if it works ok
 ~~~~
 Puma starting in single mode...
 * Puma version: 5.5.2 (ruby 3.0.0-p0) ("Zawgyi")
@@ -90,12 +90,13 @@ Puma starting in single mode...
 Use Ctrl-C to stop
 ~~~~
 
-Now all you have to do is send a text to your Twilio number. 
+Now all you have to do is send a text to your Twilio number.
 
 text format is a comma seperate string of menu_item,quantity_to_order e.g Spagbol,1,Cottage Pie,2
 
 I have not put any checking on this to see if the format is correct!
 
+You can test this through the feature tests by un-pending the test "Order Manager creates an order from an incoming message"
 
 
 

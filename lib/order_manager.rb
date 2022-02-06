@@ -3,7 +3,7 @@ class OrderManager
   attr_reader :order_history, :menu
 
   # Turn dependancies into a config class perhaps?
-  def initialize(menu_file = "", menu_class = Menu, order_class = Order, dish_class = Dish)
+  def initialize(menu_file = "", menu_class = Menu, order_class = FoodOrder, dish_class = Dish)
     @order_class = order_class
     @menu_class = menu_class
     @dish_class = dish_class
@@ -24,10 +24,14 @@ class OrderManager
     @menu.load_menu(menu_file)
   end
 
+  def load_remote_orders(remote_order_file)
+    File.read(remote_order_file)
+  end
+
   private
 
   def parse_order(ordered_dishes)
-    dishes_hash = ordered_dishes.split(",").each_slice(2).to_a.to_h
+    dishes_hash = ordered_dishes.chomp.split(",").each_slice(2).to_a.to_h
     dishes_hash.each { |dish, qty| dishes_hash[dish] = qty.to_i }
   end
 

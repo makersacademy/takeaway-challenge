@@ -112,27 +112,19 @@ describe "feature tests" do
   # I want to order my meal from my phone
   # I would like place an order via SMS
   # describe "User Story 5 - Place order by text" do
-  #   xit "starts an order server" do
-  #     order_manager = OrderManager.new(Menu, Order, Dish)
-  
-  #     expect { order_server = OrderServerModule::OrderServer.new }.not_to raise_error
-  #   end
+  xit "starts an order server" do
 
-  #   # CANNOT GET THIS TO WORK YET!
-  #   xit "Takeaway creates an order from an incoming message" do
-  #     #MyModule::Server.run!
-  #     order_manager = OrderManager.new(Menu, Order, Dish)
-  #     order_server = OrderServer.new
-  #     OrderServerModule::OrderServer.run!
- 
-  #     p "Order Manager: #{order_manager}"
-  #     loop do
-  #       break unless order_manager.order_history.empty?
-  #     end
+  end
 
-  #     expect(order_manager.order_history.last.show_order).to eq"Dish: Spagbol, Qty: 2\nDish: Cottage Pie, Qty: 1\nTotal Price: £23.00"
+  xit "Order Manager creates an order from an incoming message" do
+    # OrderServer needs to be running. Make sure it is
+    # Send a text
+    order_manager = OrderManager.new('./data/menu.csv', Menu, FoodOrder, Dish)
+    remote_order_file_location = File.join(File.dirname(__FILE__), '../../data/order.txt')
+    order_file = order_manager.load_remote_orders(remote_order_file_location)
+    order_manager.generate_order(order_file)
+    expect(order_manager.order_history.last.show_order).to eq"Dish: Spagbol, Qty: 2\nDish: Cottage Pie, Qty: 1\nTotal Price: £23.00"
 
-  #   end
-  # end
+  end 
 
 end

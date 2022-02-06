@@ -42,4 +42,12 @@ describe OrderManager do
       expect(order_manager.menu).to eq menu
     end
   end
+
+  describe "#load_remote_orders" do
+    it "gets orders from database" do
+      remote_order_file = "remote_orders.txt"
+      allow(File).to receive(:read).and_return("Spagbol,2,Cottage Pie,1")
+      expect(order_manager.load_remote_orders(remote_order_file)).to eq "Spagbol,2,Cottage Pie,1"
+    end
+  end
 end
