@@ -1,3 +1,4 @@
+
 class Phone
   attr_reader :text
   def initialize(restaurant = Restaurant.new)
@@ -11,3 +12,5 @@ class Phone
   end
 
 end
+
+
