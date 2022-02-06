@@ -31,22 +31,26 @@ How to run the code
 
 The following is an example of how the code is run in IRB and how each method should be called.
 
-Upon creating a new order with the #new_order method, a new instance of the Order class is made, assigned to '@order'.
+For the sake of this example I have only included two items on the menu (Assigned in the Menu class initialize),
+but many more can be added if desired.
+
+We created a new instance of the Order class by setting a variable order = takeaway.new_order. 
+We can then call the specific methods used by the Order class to amend our order.
 
 ```sh
 3.0.0 :001 > takeaway = Takeaway.new
- => #<Takeaway:0x000000011d278800 @dishes=[{:pizza=>"£9"}, {:pasta=>"£7"}]>
+ => #<Takeaway:0x000000015155f738 @dishes=#<Menu:0x000000015155f6e8 @items...
 3.0.0 :002 > takeaway.menu
  => [{:pizza=>"£9"}, {:pasta=>"£7"}]
-3.0.0 :003 > takeaway.new_order
- => #<Order:0x000000011d243060 @list=[], @available_dishes=[{:pizza=>"£9"}, {:pasta=>"£7"}], @total=0>
-3.0.0 :004 > takeaway.add_to_order("pizza")
- => "Pizza was added to your order"
-3.0.0 :005 > takeaway.add_to_order("pasta")
- => "Pasta was added to your order"
-3.0.0 :006 > takeaway.order.list
+3.0.0 :003 > order = takeaway.new_order
+ => #<Order:0x000000015152dd50 @list=[], @available_dishes=[{:pizza=>"£9"}...
+3.0.0 :004 > order.add_to_order("pizza")
+ => "Pizza was added to your order."
+3.0.0 :005 > order.add_to_order("pasta")
+ => "Pasta was added to your order."
+3.0.0 :006 > order.list
  => [{:pizza=>"£9"}, {:pasta=>"£7"}]
-3.0.0 :007 > takeaway.order.total
+3.0.0 :007 > order.total
  => "Total for order is: £16."
 ```
 
