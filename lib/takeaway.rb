@@ -1,19 +1,20 @@
 require_relative './order'
+require_relative './menu'
 
 class Takeaway
 
-  attr_reader :order, :dishes
+  attr_reader :order
 
-  def initialize(dishes = [{ pizza: '£9' }, { pasta: '£7' }])
+  def initialize(dishes = Menu.new)
     @dishes = dishes
   end
 
   def menu
-    @dishes
+    @dishes.items
   end
 
   def new_order
-    Order.new(@dishes)
+    Order.new(@dishes.items)
   end
 
 end

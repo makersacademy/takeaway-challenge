@@ -4,7 +4,7 @@ require 'order'
 describe Takeaway do
 
   dishes = [{ pizza: '£9' }, { pasta: '£7' }]
-  subject(:takeaway) { described_class.new(dishes) }
+  subject(:takeaway) { described_class.new }
 
   describe '#menu' do
     it 'shows a list of all the dishes and their prices' do 

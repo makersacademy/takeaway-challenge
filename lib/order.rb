@@ -10,8 +10,9 @@ class Order
     @total = 0
   end
 
-  def add_to_order(choice)
+  def add_to_order(choice, quantity = 1)
     @available_dishes.each { |dish| @list << dish if dish.include?(choice.to_sym) }
+    "#{choice.capitalize} was added to your order."
   end
 
   def total
