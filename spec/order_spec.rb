@@ -5,7 +5,7 @@ describe Order do
 
   subject(:order) { described_class.new(menu) } 
 
-  let(:menu) { double(:menu) } 
+  let(:menu) { instance_double("Menu") } 
 
   let(:dishes) do 
     { 
@@ -32,20 +32,11 @@ describe Order do
     expect { order.add(:curry, 3) }.to raise_error("Curry is not available")
   end 
 
-  it 'says whether a dish is available from the menu' do
-    expect(menu.dish_available?(:korma)).to be true 
-  end 
-
-  it 'says whether a dish is not available from the menu' do
-    allow(menu).to receive(:dish_available?).with(:curry).and_return(false) # stub
-    expect(menu.dish_available?(:curry)).to be false 
-  end 
-
   it 'calculates the total for the order' do 
     allow(menu).to receive(:dish_available?).with(:curry).and_return(false)
     order.add(:korma, 2)
     order.add(:balti, 1)
     total = 17.00
-    expect(order.total).to eq(total)
+    expect(order.total).to eq total 
   end 
 end

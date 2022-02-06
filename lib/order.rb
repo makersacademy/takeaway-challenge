@@ -12,12 +12,8 @@ class Order
     dishes[dish] = number
   end 
 
-  def dish_available?(dish)
-    !dishes[dish].nil? 
-  end 
-
   def total 
-    dish_total.inject(:+)
+    dish_total.inject(:+) # passing a symbol to call method to add 
   end 
 
   def dish_total 

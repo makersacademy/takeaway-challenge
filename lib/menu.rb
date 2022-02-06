@@ -12,6 +12,10 @@ class Menu  # creating a menu class
     end.join(", ") # ends print method and joins string 
   end 
 
+  def dish_available?(dish)
+    !dishes[dish].nil? 
+  end 
+
   def price(dish)
     dishes[dish]
   end 

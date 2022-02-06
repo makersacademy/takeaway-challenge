@@ -22,7 +22,17 @@ describe Menu do
     expect(menu.print).to eq(printed_menu)
   end 
 
+  it 'says whether a dish is available from the menu' do
+    expect(menu.dish_available?(:korma)).to be true 
+  end 
+
+  it 'says whether a dish is not available from the menu' do
+    allow(menu).to receive(:dish_available?).with(:curry).and_return(false) # stub
+    expect(menu.dish_available?(:curry)).to be false 
+  end 
+
   it 'can calculate the total price' do 
     expect(menu.price(:korma)).to eq(dishes[:korma])
+    expect(menu.price(:balti)).to eq(dishes[:balti])
   end 
 end
