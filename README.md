@@ -32,7 +32,7 @@ As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
-In this user story the nouns are dishes and the verbs are select. To accomplish the user story I', going to create a method called list that when called should enable the user to list the dishes they want to order.
+In this user story the nouns are 'dishes' and the verbs are 'select'. To accomplish the user story I'm, going to create a method called 'select' that, when called, should enable the user to list the dishes they want to order.
 
 User story three:
 ```
@@ -40,7 +40,7 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ```
-For this user story I am placing 'sum' as my variable and 'total' as my method. The user will be able to call 'total' and get the amount their order has come to.
+For this user story I am placing 'sum' as my variable and 'total' as my method. The user will be able to call the method 'total' and get the amount their order has come to. Each time the user adds a dish to their order my variable, 'sum', will keep track of the order amount and output it to the screen.
 
 
 
