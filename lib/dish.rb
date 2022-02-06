@@ -1,10 +1,19 @@
 class Dish
-    def initialize(name, price)
-      @name = name
-      @price = price
-    end
+
+  attr_reader :price
+
+  def initialize(name, quantity, price)
+    @name = name
+    @quantity = quantity
+    @price = price
+  end
   
-    def view
-      {@name => @price}
-    end
+  def view_price
+    { @name => @price }
+  end
+
+  def view_qty_available
+    { @name => @quantity }
+  end
+
 end

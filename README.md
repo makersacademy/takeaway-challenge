@@ -6,8 +6,41 @@ Takeaway Challenge
 #### Break down the requirements using tables and Excalidraw following techniques learnt in Intro to TDD workshop and Domain Modelling workshop
 
 - Capture the nouns in the user stories as objects and verbs in user stories as messages. Use the techniques learnt in the first week of Makers to create [object model tables](https://github.com/nelsonclaire/takeaway-challenge/blob/master/task_stories/user_stories.md) which should assist with how to create the tests, classes and methods for the four user stories worked out with the client.
-- Draw a diagram using [Excalidraw](https://github.com/nelsonclaire/takeaway-challenge/blob/master/task_stories/excalidraw.png) to outline how these interact which each other.
+- Draw a diagram using [Excalidraw](https://github.com/nelsonclaire/takeaway-challenge/blob/master/task_stories/excalidraw.png) to outline how these interact which each other and also create a class diagram.
 
+#### Load a CSV file of available dishes as learnt on the pre-requisite Villain Academy challenge
+
+```
+<!-- def load_dishes
+  file = File.open("dishes.csv", "r")
+  file.readlines.each do |line|
+  name, cohort = line.chomp.split(',')
+    @students << {name: name, cohort: cohort.to_sym}
+  end
+  file.close
+end -->
+
+def load_menu(filename = "dishes_file.csv")
+    #open the file
+    if File.exists?(filename)
+      dishes_file = CSV.read(filename)
+      identifier = 1
+      dishes_file.each do |line|
+        name, qty, price = line
+        add_item(identifier_count,
+          Dish.new(identifier, description, qty.to_i, price))
+        identifier += 1
+      end
+      file.close
+    else
+      raise "#{filename} doesn't exist."
+    end
+  end
+```
+
+#### Investigate and use Twilio App to send SMS confirmation messages
+
+- Details on how to use Twilio with Ruby are [here](https://www.twilio.com/docs/libraries/ruby)
 
 #### Write the most basic first test using techniques learnt in Intro to TDD workshop
 
