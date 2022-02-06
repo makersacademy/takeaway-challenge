@@ -1,11 +1,11 @@
 require_relative '../lib/order'
 
 describe Order do
-  subject(:order){described_class.new(menu)}
-  let(:menu){ double("menu", :dishes => [chicken, pizza]) }
-  let(:chicken){ double("dish1") }
-  let(:pizza){ double("dish2") }
-  let(:coke_not_on_menu){ double("dish3") }
+  subject(:order) { described_class.new(menu) }
+  let(:menu) { double("menu", :dishes => [chicken, pizza]) }
+  let(:chicken) { double("dish1") }
+  let(:pizza) { double("dish2") }
+  let(:coke_not_on_menu) { double("dish3") }
 
   describe '#select' do
 
@@ -22,17 +22,17 @@ describe Order do
     end
 
     it "cannot select a dish not on the menu" do
-      expect{order.select(coke_not_on_menu)}.to raise_error "Dish not on menu."
+      expect { order.select(coke_not_on_menu) }.to raise_error "Dish not on menu."
     end
 
   end
 
   describe "#view" do
     before do
-      allow(chicken).to receive(:price){2.0}
-      allow(chicken).to receive(:name){"Chicken"}
-      allow(pizza).to receive(:price){5.50}
-      allow(pizza).to receive(:name){"Pizza"}
+      allow(chicken).to receive(:price) { 2.0 }
+      allow(chicken).to receive(:name) { "Chicken" }
+      allow(pizza).to receive(:price) { 5.50 }
+      allow(pizza).to receive(:name) { "Pizza" }
       order.select(chicken)
       order.select(pizza)
     end
@@ -46,6 +46,18 @@ describe Order do
       str = "Chicken: £2.00\nPizza: £5.50\nChicken: £2.00"
       str += "\n--------------------\n\nCurrent total = £9.50"
       expect(order.view).to eq(str)
+    end
+
+  end
+
+  describe "#complete" do
+    it "completes an order" do
+      order.select(chicken)
+      expect(order).to be_complete
+    end
+    
+    it "raises an error if order is empty" do
+      expect { order.complete? }.to raise_error "Order is empty."
     end
 
   end

@@ -1,7 +1,7 @@
 require_relative '../lib/dish'
 
 describe Dish do
-  subject(:dish){described_class.new("Fish", 2.0)}
+  subject(:dish) { described_class.new("Fish", 2.0) }
 
   it "has a name" do
     expect(dish.name).to eq "Fish"

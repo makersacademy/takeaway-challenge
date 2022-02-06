@@ -11,4 +11,9 @@ class Takeaway
     @current_order = order
   end
 
+  def confirm
+    raise "No current order." if @current_order.nil?
+    @current_order.complete?
+  end
+
 end

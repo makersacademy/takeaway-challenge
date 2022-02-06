@@ -2,7 +2,6 @@ require_relative '../lib/takeaway'
 require_relative '../lib/dish'
 require_relative '../lib/menu'
 
-
 context "User Stories" do
 
   before do
@@ -59,22 +58,26 @@ context "User Stories" do
 
   end
 
-end
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 
+  describe 'User Story 4' do
+    before do
+      @takeaway.start_new(order = Order.new(@takeaway.menu))
+      order.select(@dish1)
+      order.select(@dish2)
+      order.select(@dish1)
+    end
 
+    it 'confirms an order' do
+      expect { @takeaway.confirm }.not_to raise_error
+    end
 
-# As a customer
-# So that I am reassured that my order will be delivered on time
-# I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+    it 'sends an sms message with delivery time' do
+      expect(@takeaway.send_delivery).to eq "Sent"
+    end
 
-describe 'User Story 4' do
-  xit 'confirms an order' do
-    
   end
-  xit 'returns a message 30 minutes in the future' do
-    
-  end
-  xit 'sends a text message' do
-    
-  end
+
 end

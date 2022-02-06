@@ -22,7 +22,7 @@ class Menu
   private
 
   def format(dish)
-     "#{dish.name}: #{price(dish.price)}"
+    "#{dish.name}: #{price(dish.price)}"
   end
 
   def price(stored_price)

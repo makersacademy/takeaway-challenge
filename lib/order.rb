@@ -4,6 +4,7 @@ class Order
   def initialize(menu)
     @dishes = []
     @current_menu = menu
+    @complete = false
   end
 
   def select(dish)
@@ -24,6 +25,11 @@ class Order
 
   end
 
+  def complete?
+    raise "Order is empty." if @dishes.empty?
+    !@complete
+  end
+
   def total
     @dishes.map(&:price).sum
   end
@@ -31,7 +37,7 @@ class Order
   private
 
   def format(dish)
-     "#{dish.name}: #{price(dish.price)}"
+    "#{dish.name}: #{price(dish.price)}"
   end
 
   def price(number)
