@@ -81,3 +81,7 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+Code created with reference to Takeaway walkthrough on Youtube by Sam Morgan
+https://www.youtube.com/watch?v=mgiJKdH9x8c
+
