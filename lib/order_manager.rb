@@ -31,9 +31,9 @@ class OrderManager
     dishes_hash.each { |dish, qty| dishes_hash[dish] = qty.to_i }
   end
 
-  def order_dishes(parsed_order)
+  def order_dishes(ordered_items)
     order = @order_class.new
-    parsed_order.each do |dish, qty|
+    ordered_items.each do |dish, qty|
       order.order_dish(@menu.select_dish(dish), qty)
     end
     order

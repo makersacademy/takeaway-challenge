@@ -1,4 +1,4 @@
-class Order
+class FoodOrder
 
   def initialize
     @ordered_dishes = {}

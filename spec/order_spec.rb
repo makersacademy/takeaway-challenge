@@ -1,6 +1,6 @@
 require_relative '../lib/order'
 
-describe Order do
+describe FoodOrder do
 
   subject(:order) { described_class.new }
 

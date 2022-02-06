@@ -58,15 +58,15 @@ describe "feature tests" do
     end
 
     it "open an order" do
-      order = Order.new()
-      expect(order).to be_instance_of(Order)
+      order = FoodOrder.new()
+      expect(order).to be_instance_of(FoodOrder)
     end
 
     it "adds a dish to an order" do
       menu = Menu.new
       menu.load_menu('./data/menu.csv')
       dish_selected = menu.select_dish("Cottage Pie")
-      order = Order.new
+      order = FoodOrder.new
       order.order_dish(dish_selected, 2)
       expect(order.show_order).to eq "Dish: Cottage Pie, Qty: 2\nTotal Price: £16.00"
     end
@@ -81,7 +81,7 @@ describe "feature tests" do
       menu = Menu.new
       menu.load_menu('./data/menu.csv')
       dish_selected = menu.select_dish("Cottage Pie")
-      order = Order.new
+      order = FoodOrder.new
       order.order_dish(dish_selected, 2)
       expect(order.show_order).to eq "Dish: Cottage Pie, Qty: 2\nTotal Price: £16.00"
     end
@@ -95,7 +95,7 @@ describe "feature tests" do
   # .env file which should be sitting in the project root
   describe "User Story 4 - Send a real text" do
     xit "sends a text on order confirmation" do
-      order = Order.new
+      order = FoodOrder.new
       credentials = Credentials.new
       sms_provider = TwilioSMS.new(credentials)
 
