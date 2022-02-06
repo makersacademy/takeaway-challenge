@@ -3,7 +3,7 @@ require 'order'
 
 describe Order do
 
-  subject(:order) { described_class.new([{pizza: '£9'}, {pasta: '£7'}]) }
+  subject(:order) { described_class.new([{ pizza: '£9' }, { pasta: '£7' }]) }
 
   describe '#total' do
     it 'calculates the total sum of the dishes in an order' do

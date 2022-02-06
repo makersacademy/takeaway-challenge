@@ -12,4 +12,4 @@ message = @client.messages
     to:   '+44 7722 236999'
   )
 
-  puts message.sid
+puts message.sid

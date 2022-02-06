@@ -1,10 +1,10 @@
-require_relative './order.rb'
+require_relative './order'
 
 class Takeaway
 
   attr_reader :order, :dishes
 
-  def initialize(dishes = [{pizza: '£9'}, {pasta: '£7'}])
+  def initialize(dishes = [{ pizza: '£9' }, { pasta: '£7' }])
     @dishes = dishes
   end
 

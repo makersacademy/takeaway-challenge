@@ -1,8 +1,8 @@
-require_relative './takeaway.rb'
+require_relative './takeaway'
 
 class Order
 
-  attr_reader :list, :total
+  attr_reader :list
 
   def initialize(available_dishes)
     @list = []
@@ -11,7 +11,7 @@ class Order
   end
 
   def add_to_order(choice)
-    @available_dishes.each { |dish| @list << dish if dish.include?(choice.to_sym)}
+    @available_dishes.each { |dish| @list << dish if dish.include?(choice.to_sym) }
   end
 
   def total
