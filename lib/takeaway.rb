@@ -12,13 +12,8 @@ class Takeaway
     @dishes
   end
 
-  def add_to_order(choice)
-    @order.add_to_order(choice)
-    "#{choice.capitalize} was added to your order"
-  end
-
   def new_order
-    @order = Order.new(@dishes)
+    Order.new(@dishes)
   end
 
 end

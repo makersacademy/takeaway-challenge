@@ -22,11 +22,11 @@ describe 'Feature-tests' do
     it 'allows multiple dishes to be added to an order' do
       dishes = [{ pizza: '£9' }, { pasta: '£7' }]
       takeaway = Takeaway.new(dishes)
-      takeaway.new_order
-      takeaway.add_to_order("pasta")
-      takeaway.add_to_order("pizza")
-      expect(takeaway.order.list).to include pasta: "£7"
-      expect(takeaway.order.list).to include pizza: "£9"
+      order = takeaway.new_order
+      order.add_to_order("pasta")
+      order.add_to_order("pizza")
+      expect(order.list).to include pasta: "£7"
+      expect(order.list).to include pizza: "£9"
     end
   end
 
@@ -37,10 +37,10 @@ describe 'Feature-tests' do
     it 'correctly calculates the total sum of the dishes in an order' do
       dishes = [{ pizza: '£9' }, { pasta: '£7' }]
       takeaway = Takeaway.new(dishes)
-      takeaway.new_order
-      takeaway.add_to_order("pasta")
-      takeaway.add_to_order("pizza")
-      expect(takeaway.order.total).to eq "Total for order is: £16."
+      order = takeaway.new_order
+      order.add_to_order("pasta")
+      order.add_to_order("pizza")
+      expect(order.total).to eq "Total for order is: £16."
     end
   end
 
@@ -51,8 +51,8 @@ describe 'Feature-tests' do
     it 'sends a confirmation text message, with estimated delivery time, after ordering' do
       dishes = [{ pizza: '£9' }, { pasta: '£7' }]
       takeaway = Takeaway.new(dishes)
-      takeaway.new_order
-      takeaway.add_to_order("pasta")
+      order = takeaway.new_order
+      order.add_to_order("pasta")
     end
   end
 end

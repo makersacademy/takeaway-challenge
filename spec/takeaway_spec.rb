@@ -14,9 +14,9 @@ describe Takeaway do
 
   describe '#add_to_order' do
     it 'adds the given dish to the cuurrent order' do
-      takeaway.new_order
-      takeaway.add_to_order("pizza")
-      expect(takeaway.order.list).to include pizza: "£9"
+      order = takeaway.new_order
+      order.add_to_order("pizza")
+      expect(order.list).to include pizza: "£9"
     end
   end
 
