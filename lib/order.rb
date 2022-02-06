@@ -20,6 +20,8 @@ class FoodOrder
 
   private 
 
+  # There is a bug here where if the minute is < 10, then the it will show 
+  # something like 12:4 when it really is 12:04. To late to fix now!
   def delivery_time 
     time_plus_hour = Time.now + 1*60*60 
     "#{time_plus_hour.hour}:#{time_plus_hour.min}"
