@@ -27,6 +27,7 @@ class Takeaway
 
     if availability == 1
       (quantity).times{@basket << item}
+      return "Great! #{quantity} portions of #{item} have been added to your order"
     else
       return 'Sorry, this is unavailable' 
     end
