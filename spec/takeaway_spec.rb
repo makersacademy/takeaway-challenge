@@ -17,7 +17,6 @@ describe Restaurant do
     let(:key){ "Green Tea "}
     let(:value) { 2 }
     it 'tracks the sum of the order' do
-      #expect{subject.touch_out(exit_station)}.to change{subject.balance}.by(-Oystercard::MINIMUM_BALANCE)
       expect{subject.select(dishes{key})}.to change{subject.sum}.by value
     end 
   end
@@ -27,6 +26,19 @@ describe Restaurant do
       expect(subject).to respond_to(:total)
     end
   end
+
+  describe '#ordered' do
+    it 'creates an order' do
+      expect(subject).to respond_to(:ordered) 
+    end   
+    let(:order) { { :key => :value} }
+    it 'stores an order' do
+      # subject.ordered
+      expect(subject.ordered).to include {order}
+    end
+  end
 end
+
+
 
 
