@@ -22,6 +22,30 @@ class DishesList
     dishes_available
   end
 
+  def display_dishes
+    return_dishes = ""
+    dishes_available.each do |dish|
+      return_dishes += dish.details + "\n"
+    end
+    return_dishes
+  end
+
+  def return_dish(number)
+    return_dish = nil
+    dishes_available.each do |dish|
+      return_dish = dish if dish.identifier == number
+    end
+    return_dish
+  end
+
+  def calculate_total(dishes)
+    running_total = 0
+    dishes.each do |dish|
+      running_total += dish.price.to_f
+    end
+    running_total
+  end
+
   def load_menu(filename = "dishes_file.csv")
     # open the file
     if File.exists?(filename)

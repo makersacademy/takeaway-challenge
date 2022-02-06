@@ -31,7 +31,33 @@ def load_menu(filename = "dishes_file.csv")
 
 #### Investigate and use Twilio App to send SMS confirmation messages
 
-- Details on how to use Twilio with Ruby are [here](https://www.twilio.com/docs/libraries/ruby)
+- Details on how to use Twilio with Ruby are:
+[Twilio](https://www.twilio.com/docs/libraries/ruby)
+[Youtube](https://www.youtube.com/watch?v=ASmCvopXy_A)
+
+let's pretend we want to send a text message from our Ruby program. Text messages can be sent by Twilio, a communications provider that developer its own gem called twilio-ruby for us to use.
+
+First, we'll need to install it. In your command line type
+
+$ gem install twilio-ruby
+This will download it from the internet (from RubyGems.org, to be exact) and install into your system. Gem installations are specific to your ruby version, so if you install a gem for ruby-2.0.0 and then switch to ruby-1.9.3, you'll need to install it for that version as well.
+
+require 'twilio-ruby' # we're telling ruby to load the gem
+# put your own credentials here, get them at twilio.com
+account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
+
+# set up a client to talk to the Twilio REST API
+client = Twilio::REST::Client.new account_sid, auth_token
+
+# send an sms
+client.account.sms.messages.create(
+  :from => '+14159341234',
+  :to => '+16105557069',
+  :body => 'Hey there!')
+Provided that you have the credentials (account ID and authentication token) from Twilio, this code is everything you need to send a text message from your Ruby code.
+
+The first line is necessary to load the gem into memory. This makes the classes defined inside the gem available to our program. In particular, after the gem has loaded, we get access to Twilio::REST::Client class that we instantiate on line 8 and use on line 11.
 
 #### Write the most basic first test using techniques learnt in Intro to TDD workshop
 
