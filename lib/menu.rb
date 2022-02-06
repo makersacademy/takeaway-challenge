@@ -2,7 +2,7 @@ require_relative './order'
 
 class Menu
 
-  attr_accessor :menu_import, :menu, :quantity, :order
+  attr_accessor :menu_import, :menu, :quantity, :order, :dishes
 
   def initialize
     @menu_import

@@ -11,23 +11,25 @@ describe Menu do
 
   describe '#select_dish' do
     xit 'should allow selection of a specific dish' do
-      allow(subject).to receive(:gets).and_return("1\n")
-      expect(subject.select_dish).to eq "1. noodles,9"
+      allow(subject).to receive(:gets).twice.and_return("1\n")
+      allow(subject).to receive(:gets).and_return("\n")
+      subject.select_dish
+      expect(subject.dishes).to eq("1. noodles,9")
     end
   end
 
   describe '#place_order' do
-    xit 'should pass selected dish to an order' do
-      allow(subject).to receive(:gets).and_return("1\n")
+    it 'should pass selected dish to an order' do
+      allow(subject).to receive(:gets).and_return("\n")      
       subject.select_dish
       expect(subject.place_order).to be_an(Order)
     end
   end
 
   describe '#select_quantity' do
-    xit 'should allow selection of a quantity' do
+    it 'should allow selection of a quantity' do
         allow(subject).to receive(:gets).and_return("1\n")
-        expect(subject.select_quantity).to eq 1
+        expect { subject.select_quantity }.to change { subject.quantity }.to(1)
     end
   end
 
