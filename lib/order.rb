@@ -1,9 +1,11 @@
 class Order
-  attr_accessor :dishes, :combined_order
+  attr_accessor :dishes, :combined_order, :order_total
 
   def initialize(dishes)
     @dishes = dishes
     @combined_order = {}
+    @order_total = 0
+    add_to_order
   end
 
   def add_to_order
@@ -13,6 +15,10 @@ class Order
       @combined_order[:"price_#{i + 1}"] = @price_add.to_i
       @combined_order[:"quantity_#{i + 1}"] = @quantity.to_i
     end
+  end
+
+  def calculate_order(price, quantity)
+    @order_total += price * quantity
   end
 
   private

@@ -22,7 +22,6 @@ class Menu
     @number = gets.chomp
     while !@number.empty? do
       select_quantity
-      @dishes << @dish_with_qty
       view_menu
       puts "please select another dish"
       @number = gets.chomp
@@ -32,7 +31,8 @@ class Menu
   def select_quantity
     puts "enter a quantity"
     @quantity = gets.chomp.to_i
-    @dish_with_qty = @menu[@number.to_i - 1] + ", #{@quantity}"
+    dish_with_qty = @menu[@number.to_i - 1] + ", #{@quantity}"
+    @dishes << dish_with_qty
   end
 
   def place_order
