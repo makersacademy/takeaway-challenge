@@ -37,6 +37,13 @@ describe Restaurant do
       expect(subject.ordered).to include {order}
     end
   end
+
+  describe '#text' do 
+    it 'sends a text message' do
+      expect(subject.text). to include ""
+    end
+  end
+  
 end
 
 

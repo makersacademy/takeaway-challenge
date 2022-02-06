@@ -1,6 +1,6 @@
 class Restaurant
   
-    attr_reader :dishes_with_prices, :sum, :order
+    attr_reader :dishes_with_prices, :sum, :order, :text
   
   def initialize
     @dishes_with_prices = {
@@ -16,6 +16,7 @@ class Restaurant
     'Carrot cake' => 1 }
     @sum = 0
     @order = []
+    @text
   end
 
   def list
@@ -36,5 +37,8 @@ class Restaurant
   def ordered
     @order 
   end
-
+  
+  def text
+    @text = "Thank you! Your order was placed and will be delivered before 18:00"
+  end
 end
