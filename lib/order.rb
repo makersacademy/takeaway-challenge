@@ -14,9 +14,24 @@ class Order
   end
 
   def add_dish(takeaway, dish, quantity)
-    @dishes << dish
+    quantity.times { @dishes << dish }
     cost = takeaway.menu[dish]
-    (@order_cost << cost) * quantity
+    quantity.times { @order_cost << cost }
+  end
+
+  def total
+    @order_cost.sum
+  end
+
+  def verify_order(takeaway)
+    check_arr = []
+    @dishes.each { check_arr << takeaway.menu[i] }
+    check_arr.sum == total 
+  end
+
+  def place_order
+    # send @dishes to takeaway 
+    @dishes.clear
+    @order_cost.clear
   end
 end
-
