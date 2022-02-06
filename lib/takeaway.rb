@@ -1,3 +1,5 @@
+# require_relative 'send_sms'
+
 class Takeaway
 
   attr_reader :menu
@@ -31,6 +33,7 @@ class Takeaway
   end
 
   def place_order
+    @order.clear
     "Thank you! Your order was placed and will be delivered before 18:52"
   end
 
