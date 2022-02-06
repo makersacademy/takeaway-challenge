@@ -14,10 +14,20 @@ class FoodOrder
   end
 
   def confirm_order(messaging)
+    messaging.message = confirmation_message
     messaging.send
   end
 
   private 
+
+  def delivery_time 
+    time_plus_hour = Time.now + 1*60*60 
+    "#{time_plus_hour.hour}:#{time_plus_hour.min}"
+  end
+
+  def confirmation_message
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+  end
 
   def add_dish(dish, quantity)
     @ordered_dishes[dish] = quantity

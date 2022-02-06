@@ -1,4 +1,5 @@
 require_relative '../lib/order_manager'
+require 'time'
 
 describe OrderManager do
 

@@ -1,6 +1,6 @@
 class Messaging
   # repeating myself, consider a class for from/to perhaps?
-  attr_reader :to, :from, :message
+  attr_accessor :to, :from, :message
 
   def initialize(message_type, from, to, message)
     @message_type = message_type

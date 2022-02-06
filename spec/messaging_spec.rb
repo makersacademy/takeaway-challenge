@@ -22,6 +22,12 @@ describe Messaging do
     expect(messaging.message).to eq message
   end
 
+  it "updates the message" do
+    message = "new message"
+    messaging.message = message
+    expect(messaging.message).to eq message
+  end
+
   it "sends an SMS message" do
     expect { messaging.send }.not_to raise_error
   end

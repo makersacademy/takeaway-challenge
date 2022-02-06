@@ -7,10 +7,9 @@ describe Menu do
   let(:dish_three) { double(:dish_three, :name => "Cottage Pie", :price => 8) }
   
   let(:dish_class) { double(:dish_class) }
+  let(:formatted_menu) { "Curry, Price: £6.50\nSpagbol, Price: £7.50\nCottage Pie, Price: £8.00" }
 
   subject(:menu) { described_class.new }
-
-  let(:formatted_menu) { "Curry, Price: £6.50\nSpagbol, Price: £7.50\nCottage Pie, Price: £8.00" }
 
   before(:each) do
     allow(File).to receive(:read).and_return("Curry,6.5\nSpagbol,7.5\nCottage Pie,8")

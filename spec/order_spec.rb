@@ -1,5 +1,8 @@
 require_relative '../lib/order'
 
+# Not testing confirm_order - if I did I would be stubbing everything and not testing anything.
+# the Messaging class does have tests to cover the methods used in confirm_order
+
 describe FoodOrder do
 
   subject(:order) { described_class.new }
@@ -10,7 +13,8 @@ describe FoodOrder do
   let(:quantity_minus_one) { -1 }
   let(:quantity_zero) { 0 }
   let(:quantity_two) { 2 }
-  let(:sms) { double(:sms, :send => 999) }
+
+  let(:messaging) { double(:sms, :send => nil) }
 
   describe "#order_dish" do
     it "adds to an order" do
@@ -45,10 +49,12 @@ describe FoodOrder do
     end
   end
 
-  describe "#confirm_order" do
-    it "sends a message to confirm order" do
-      expect { order.confirm_order(sms) }.not_to raise_error
+  # I moved this method to be private but keeping this test for my own reference
+  describe "#delivery_time" do
+    xit "#confirms when an order will arrive an hour later than now" do
+      time = Time.parse("11:47")
+      allow(Time).to receive(:now).and_return(time)
+      expect(order.delivery_time).to eq "12:47"
     end
   end
-
 end
