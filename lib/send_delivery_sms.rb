@@ -1,6 +1,7 @@
 # Download the twilio-ruby library from twilio.com/docs/libraries/ruby
 require 'twilio-ruby'
 require 'dotenv/load'
+TIME = (Time.new + (60 * 30)).strftime("at %I:%M %p")
 
 account_sid = ENV['TWILIO_ACCOUNT_SID']
 auth_token = ENV['TWILIO_AUTH_TOKEN']
@@ -12,6 +13,6 @@ to = '+447929875411' # My mobile phone number
 client.messages.create(
 from: from,
 to: to,
-body: 'Fear not Hungry Man! 
-        Your order is confirmed and will be delivered in the next 30 minutes'
+body: "Fear not Hungry Man! 
+        Your order is confirmed and will be delivered #{TIME}"
 )
