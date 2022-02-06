@@ -9,9 +9,9 @@ class Order
   def add_to_order
     (0...@dishes.length).each do | i |
       clean_order(i)
-      @combined_order[:"dish_#{i}"] = @dish_add
-      @combined_order[:"price_#{i}"] = @price_add.to_i
-      @combined_order[:"quantity_#{i}"] = @quantity.to_i
+      @combined_order[:"dish_#{i + 1}"] = @dish_add
+      @combined_order[:"price_#{i + 1}"] = @price_add.to_i
+      @combined_order[:"quantity_#{i + 1}"] = @quantity.to_i
     end
   end
 
