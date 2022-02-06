@@ -38,16 +38,15 @@ describe OrderManager do
 
   describe "#initialise_menu" do
     it "creates the menu" do
-      order_manager.initialise_menu("test")
-      expect(order_manager.menu).to eq menu
+      expect{ order_manager.initialise_menu("test") }.to_not raise_error
     end
   end
 
   describe "#load_remote_orders" do
     it "gets orders from database" do
       remote_order_file = "remote_orders.txt"
-      allow(File).to receive(:read).and_return("Spagbol,2,Cottage Pie,1")
-      expect(order_manager.load_remote_orders(remote_order_file)).to eq "Spagbol,2,Cottage Pie,1"
+      allow(File).to receive(:read).and_return("Spagbol,2,Cottage Pie,1\n")
+      expect(order_manager.load_remote_orders(remote_order_file)).to eq "Spagbol,2,Cottage Pie,1\n"
     end
   end
 end

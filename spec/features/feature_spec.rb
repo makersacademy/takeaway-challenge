@@ -123,7 +123,7 @@ describe "feature tests" do
     remote_order_file_location = File.join(File.dirname(__FILE__), '../../data/order.txt')
     order_file = order_manager.load_remote_orders(remote_order_file_location)
     order_manager.generate_order(order_file)
-    expect(order_manager.order_history.last.show_order).to eq"Dish: Spagbol, Qty: 2\nDish: Cottage Pie, Qty: 1\nTotal Price: £23.00"
+    expect(order_manager.order_history.last.show_order).to eq "Dish: Spagbol, Qty: 2\nDish: Cottage Pie, Qty: 1\nTotal Price: £23.00"
 
   end 
 

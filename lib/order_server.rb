@@ -2,7 +2,7 @@ require 'twilio-ruby'
 require 'sinatra'
 
 post '/receive_order' do
-  body = params['Body'] + '\n'
+  body = params['Body'] + "\n"
   p "SMS Received"
   # hard coded.. run out of time to fix
   order_file = File.join(File.dirname(__FILE__), '../data/order.txt')
@@ -15,5 +15,4 @@ post '/receive_order' do
 
   # https://www.twilio.com/docs/sms/tutorials/how-to-receive-and-reply-ruby
   # https://www.oreilly.com/library/view/sinatra-up-and/9781449306847/ch04.html
-  end
-
+end

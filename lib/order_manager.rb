@@ -1,6 +1,6 @@
 class OrderManager
 
-  attr_reader :order_history, :menu
+  attr_reader :order_history
 
   # Turn dependancies into a config class perhaps?
   def initialize(menu_file = "", menu_class = Menu, order_class = FoodOrder, dish_class = Dish)
@@ -31,7 +31,7 @@ class OrderManager
   private
 
   def parse_order(ordered_dishes)
-    dishes_hash = ordered_dishes.chomp.split(",").each_slice(2).to_a.to_h
+    dishes_hash = ordered_dishes.strip.split(",").each_slice(2).to_a.to_h
     dishes_hash.each { |dish, qty| dishes_hash[dish] = qty.to_i }
   end
 
