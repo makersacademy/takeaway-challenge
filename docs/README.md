@@ -5,3 +5,7 @@
 # In order to use this program, please type "bundle" in your terminal to install required gems. 
 
 # Created using assistance from stack overflow and the Makers Academy Take away challenge walk through examplar. 
+
+# User stories 1 - 4 completed.  Total price of takeaway not returning correct price when tested in rspec.  A work in progress, to be completed.  
+
+# Unable to be feature tested as there is an issue with requiring the takeaway.rb file to be resolved. 
