@@ -9,29 +9,20 @@ Takeaway Challenge
 - Draw a diagram using [Excalidraw](https://github.com/nelsonclaire/takeaway-challenge/blob/master/task_stories/excalidraw.png) to outline how these interact which each other and also create a class diagram.
 
 #### Load a CSV file of available dishes as learnt on the pre-requisite Villain Academy challenge
+#### Need to add an identifier for each row along with the dish, quantity that is available and the 
+#### price
 
 ```
-<!-- def load_dishes
-  file = File.open("dishes.csv", "r")
-  file.readlines.each do |line|
-  name, cohort = line.chomp.split(',')
-    @students << {name: name, cohort: cohort.to_sym}
-  end
-  file.close
-end -->
-
 def load_menu(filename = "dishes_file.csv")
-    #open the file
+    # open the file
     if File.exists?(filename)
       dishes_file = CSV.read(filename)
       identifier = 1
       dishes_file.each do |line|
-        name, qty, price = line
-        add_item(identifier_count,
-          Dish.new(identifier, description, qty.to_i, price))
+        name, quantity, price = line
+        add_item(Dish.new(identifier, name, quantity.to_i, price))
         identifier += 1
       end
-      file.close
     else
       raise "#{filename} doesn't exist."
     end

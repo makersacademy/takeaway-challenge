@@ -12,7 +12,7 @@ describe DishesList do
     end
 
     it "will add a single dish to the menu" do
-      subject.add_item(dish)
+      subject.add_dish(dish)
       expect(subject.dishes).to eq([dish])
     end
 
