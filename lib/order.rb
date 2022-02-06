@@ -25,7 +25,7 @@ class Order
 
   def verify_order(takeaway)
     check_arr = []
-    @dishes.each { check_arr << takeaway.menu[i] }
+    @dishes.each { |i| check_arr << takeaway.menu[i] }
     check_arr.sum == total 
   end
 
