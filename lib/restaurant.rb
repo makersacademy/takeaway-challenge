@@ -1,5 +1,11 @@
 class Restaurant
-    def show_menu 
-      "Tiramisu: 3.65"
-    end
+  attr_reader :menu
+
+  def initialize(menu:)
+    @menu = menu
+  end
+
+  def show_menu 
+    menu.print
+  end
 end
