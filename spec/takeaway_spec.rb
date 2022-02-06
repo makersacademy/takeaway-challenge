@@ -1,4 +1,4 @@
-require './lib/takeaway.rb'
+require './lib/takeaway'
 
 describe Restaurant do
   describe '#list' do
@@ -14,10 +14,10 @@ describe Restaurant do
       expect(subject).to respond_to(:select)
     end
     let(:dishes) { "Green Tea" }
-    let(:key){ "Green Tea "}
+    let(:key) { "Green Tea " }
     let(:value) { 2 }
     it 'tracks the sum of the order' do
-      expect{subject.select(dishes{key})}.to change{subject.sum}.by value
+      expect { subject.select(dishes { key }) }.to change { subject.sum }.by value
     end 
   end
   
@@ -31,21 +31,16 @@ describe Restaurant do
     it 'creates an order' do
       expect(subject).to respond_to(:ordered) 
     end   
-    let(:order) { { :key => :value} }
-    it 'stores an order' do
-      # subject.ordered
-      expect(subject.ordered).to include {order}
+    let(:order) { { :key => :value } }
+    it 'stores an order' do     
+      expect(subject.ordered).to include { order }
     end
   end
 
   describe '#text' do 
     it 'sends a text message' do
-      expect(subject.text). to include ""
+      expect(subject.text).to include ""
     end
   end
   
 end
-
-
-
-

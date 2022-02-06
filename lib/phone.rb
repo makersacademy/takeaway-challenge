@@ -4,13 +4,10 @@ class Phone
   def initialize(restaurant = Restaurant.new)
     @restaurant = restaurant
     @text = text
-  end
-  
+  end  
   
   def receive
-   "#{@restaurant.text}"
+    @restaurant.text.to_s
   end
 
 end
-
-

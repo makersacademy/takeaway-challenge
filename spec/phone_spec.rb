@@ -1,5 +1,5 @@
-require 'phone.rb'
-require 'takeaway.rb'
+require 'phone'
+require 'takeaway'
 
 describe Phone do
   describe '#receive' do

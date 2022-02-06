@@ -1,10 +1,10 @@
 class Restaurant
   
-    attr_reader :dishes_with_prices, :sum, :order, :text
+  attr_reader :dishes_with_prices, :sum, :order
   
   def initialize
     @dishes_with_prices = {
-    'Green Tea' => 2,
+      'Green Tea' => 2,
     'Earl Grey' => 2,
     'Oat milk latte' => 3,
     'Cappucino' => 3,
@@ -16,7 +16,7 @@ class Restaurant
     'Carrot cake' => 1 }
     @sum = 0
     @order = []
-    @text
+    
   end
 
   def list
@@ -24,10 +24,8 @@ class Restaurant
   end
 
   def select(dishes)
-    @order << @dishes_with_prices.select {|k, v| k == dishes }
+    @order << @dishes_with_prices.select { |k, _v| k == dishes }
     @sum += @dishes_with_prices.fetch(dishes)
-    #@order << @dishes_with_prices.fetch(dishes)
-    #@order = @dishes_with_prices.each_key {|key,value| puts "#{key}: #{value}"}
   end
 
   def total
