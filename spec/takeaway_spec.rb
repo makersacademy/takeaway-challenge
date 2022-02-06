@@ -31,14 +31,24 @@ describe Takeaway do
       it 'give a message confirming order has been added to basket' do
         expect(subject.order('Fish', 4)).to eq "Great! 4 portions of Fish have been added to your order"
       end
-      
+
     end
 
-    # describe '#avlaible?' do
-    
-    #  it 'returns true when the selected item is avalibale' do
-    #     expect
-        
+    describe '#review_order' do
+      
+      it 'displays basket quanities and totals in a formatted way' do
+        subject.order('Fish')
+        expect(subject.review_order).to eq('In your basket you have 1 Fish totalling £1. Your order comes to £1.')
+      end
+
+      it 'displays basket when there are multiple items and totals' do
+        subject.order('Fish', 3)
+        subject.order('Pizza', 1)
+        subject.order('Fish', 2)
+        expect(subject.review_order).to eq('In your basket you have 5 Fish totalling £5. In your basket you have 1 Pizza totalling £8. Your order comes to £13.')
+      end
+
+    end
 
 end
 

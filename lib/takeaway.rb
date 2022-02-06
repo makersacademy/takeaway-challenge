@@ -24,7 +24,28 @@ class Takeaway
       "Great! #{quantity} portions of #{item} have been added to your order"
   end
 
+
+  def review_order
+    order_collation
+    display_message = ""
+    # basket_total = 0
+    @order_summary.each do |dish, quantity|
+      dish_total = quantity * (@menu[dish])
+      display_message << "In your basket you have #{quantity} #{dish} totalling £#{dish_total}. "
+    #   basket_total += dish_total
+    end
+    display_message << "Your order comes to £#{basket_total}."
+  end
+
   private
+
+  def basket_total
+    total = 0
+    @order_summary.each do |dish, quantity|
+      total += quantity * (@menu[dish])
+    end
+    total
+  end
 
   def item_available?
     available = false
@@ -32,6 +53,17 @@ class Takeaway
       available = true if dish == @item
     end
     available == true
+  end
+
+  def order_collation
+    @order_summary = {}
+    @menu.each do |dish, price|
+      quantity = 0
+        @basket.each do |item|
+            quantity += 1 if dish == item
+            @order_summary[dish] = (quantity) if quantity != 0
+        end
+    end
   end
 
 end
