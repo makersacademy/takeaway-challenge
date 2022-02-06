@@ -74,9 +74,11 @@ context "User Stories" do
       expect { @takeaway.confirm }.not_to raise_error
     end
 
-    it 'sends an sms message with delivery time' do
-      expect(@takeaway.send_delivery).to eq "Sent"
-    end
+    # Uncomment to actually send a message
+    # it 'sends an sms message with delivery time' do
+    #   messager = Message.new
+    #   expect(@takeaway.send_delivery(messager)).to eq "Sent"
+    # end
 
   end
 

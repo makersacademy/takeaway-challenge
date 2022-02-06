@@ -4,6 +4,7 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu) }
   let(:menu) { double("menu") }
   let(:order) { double("order") }
+  let(:message) { double("message") }
 
   it "has a menu" do
     expect(takeaway.menu).to eq menu
@@ -26,8 +27,10 @@ describe Takeaway do
   context "delivery" do
     it "sends a message" do
       takeaway.start_new(order)
+      allow(order).to receive(:complete?) { true }
       takeaway.confirm
-      expect(takeaway.send_delivery).to eq
+      allow(message).to receive(:send) { "Sent" }
+      expect(takeaway.send_delivery(message)).to eq "Sent"
     end
 
   end

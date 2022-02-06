@@ -16,4 +16,9 @@ class Takeaway
     @current_order.complete?
   end
 
+  def send_delivery(message)
+    @current_order = nil
+    message.send
+  end
+
 end
