@@ -8,7 +8,6 @@ describe TwilioSMS do
   let(:failed_messages) { double(:messages, :create => failed_code) }
   let(:failed_twilio_client) { double(:twilio_client, :messages => failed_messages) }
  
-
   let(:success_code) { double(:message, :error_code => nil) }
   let(:succesful_messages) { double(:messages, :create => success_code) }
   let(:succesful_twilio_client) { double(:twilio_client, :messages => succesful_messages) }

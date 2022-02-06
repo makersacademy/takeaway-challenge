@@ -6,7 +6,6 @@ describe Menu do
   let(:dish_two) { double(:dish_two, :name => "Spagbol", :price => 7.5) }
   let(:dish_three) { double(:dish_three, :name => "Cottage Pie", :price => 8) }
   
-  let(:menu_input) { [dish_one, dish_two, dish_three] }
   let(:dish_class) { double(:dish_class) }
 
   subject(:menu) { described_class.new }
