@@ -1,4 +1,4 @@
-require 'menu'
+require 'takeaway_menu'
 describe Menu do
   describe '#display_menu' do
     it "Responds to display menu" do
