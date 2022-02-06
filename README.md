@@ -6,7 +6,6 @@ Takeaway Challenge
 #### Break down the requirements using tables and Excalidraw following techniques learnt in Intro to TDD workshop and Domain Modelling workshop
 
 - Capture the nouns in the user stories as objects and verbs in user stories as messages. Use the techniques learnt in the first week of Makers to create [object model tables](https://github.com/nelsonclaire/takeaway-challenge/blob/master/task_stories/user_stories.md) which should assist with how to create the tests, classes and methods for the four user stories worked out with the client.
-- Draw a diagram using [Excalidraw](https://github.com/nelsonclaire/takeaway-challenge/blob/master/task_stories/excalidraw.png) to outline how these interact which each other and also create a class diagram.
 
 #### Load a CSV file of available dishes as learnt on the pre-requisite Villain Academy challenge
 #### Need to add an identifier for each row along with the dish, quantity that is available and the 
@@ -85,7 +84,8 @@ The first line is necessary to load the gem into memory. This makes the classes 
 ```
 
 #### What I know I need to work on
-- 
+- Add further diagrams for Domain Modelling
+- Allow to receive SMS messages
 
 
 
