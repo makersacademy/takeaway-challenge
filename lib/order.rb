@@ -1,21 +1,22 @@
-require 'takeaway_menu'
+require_relative 'takeaway_menu'
 class Order
 
-attr_reader :ordered_items
+attr_reader :ordered_items, :menu
 
 def initialize
   @ordered_items = []
   @total = 0
+  @menu = Menu.new
 end
 
 def display_items
-  menu = Menu.new
+  @menu 
   menu.display_menu
 end
 
 
 def choose_dish(name)
-    menu = Menu.new
+    
   if menu.display_menu[name].nil?
     puts "Not in Menu, Please select from menu"
   else
@@ -24,10 +25,13 @@ def choose_dish(name)
 end
 
 def final_total
-  menu = Menu.new
+  # menu = Menu.new
   @ordered_items.each do |name|
-    @total += menu.display_menu[name]
+   
+    @total += @menu.display_menu[name]
+    
   end
+  return @total
 end
   
 
