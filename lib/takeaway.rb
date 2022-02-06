@@ -18,22 +18,21 @@ class Takeaway
   end
 
   def order(item, quantity = DEFAULT)
-    availability = 0
-    @menu.each do |dish, price|
-      if dish == item
-        availability += 1
-      end
-    end
-
-    if availability == 1
+    @item = item
+    return 'Sorry, this is unavailable' unless item_available?
       (quantity).times{@basket << item}
-      return "Great! #{quantity} portions of #{item} have been added to your order"
-    else
-      return 'Sorry, this is unavailable' 
-    end
-
+      "Great! #{quantity} portions of #{item} have been added to your order"
   end
 
+  private
+
+  def item_available?
+    available = false
+    @menu.each do |dish, price|
+      available = true if dish == @item
+    end
+    available == true
+  end
 
 end
 

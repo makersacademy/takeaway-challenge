@@ -27,7 +27,11 @@ describe Takeaway do
       it 'gives message if selected item is not avalible' do
         expect(subject.order('Pie', 3)).to eq 'Sorry, this is unavailable'
       end
-    
+
+      it 'give a message confirming order has been added to basket' do
+        expect(subject.order('Fish', 4)).to eq "Great! 4 portions of Fish have been added to your order"
+      end
+      
     end
 
     # describe '#avlaible?' do
