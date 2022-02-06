@@ -6,12 +6,27 @@ describe Restaurant do
       restaurant = Restaurant.new
       expect(subject).to respond_to(:list)
     end
+  end     
+  describe '#select' do  
+    it 'selects a dish from the menu' do
+      restaurant = Restaurant.new
+      subject.list
+      expect(subject).to respond_to(:select)
+    end
+    let(:dishes) { "Green Tea" }
+    let(:key){ "Green Tea "}
+    let(:value) { 2 }
+    it 'tracks the sum of the order' do
+      #expect{subject.touch_out(exit_station)}.to change{subject.balance}.by(-Oystercard::MINIMUM_BALANCE)
+      expect{subject.select(dishes{key})}.to change{subject.sum}.by value
+    end 
+  end
   
-    it 'stores a list of dishes with prices' do
-        expect(subject.dishes_with_prices).to be_empty
+  describe '#total' do
+    it 'gives the total amount for the order' do
+      expect(subject).to respond_to(:total)
     end
   end
-
 end
 
 

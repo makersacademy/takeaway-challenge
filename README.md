@@ -26,8 +26,21 @@ I would like to see a list of dishes with prices
 ```
 From reading this user story and focusing on the last line in particular I can see the nouns are 'dishes' and 'prices' and the sole verb used is 'list'. After drawing a UML class diagram in my notes I have decided that my class will be called 'Restaurant' and I will need the variable 'dishes_with_prices' and the method 'list'. 'Dishes_with_prices' is hash that holds key => value pairs of each dish and price.
 
+User story two:
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+In this user story the nouns are dishes and the verbs are select. To accomplish the user story I', going to create a method called list that when called should enable the user to list the dishes they want to order.
 
-
+User story three:
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+For this user story I am placing 'sum' as my variable and 'total' as my method. The user will be able to call 'total' and get the amount their order has come to.
 
 
 
