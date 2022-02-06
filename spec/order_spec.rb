@@ -2,38 +2,38 @@ require_relative '../lib/order.rb'
 require_relative '../lib/menu.rb'
 
 describe Order do
-  let(:dish) {double :dish}
 
-  let(:dishes) do
-    {
-      Drink: 5,
-      Small_fries: 4,
-      Large_fries: 3,
-      Chicken_burger: 2,
-      Cheeseburger: 1
-    }
+  let(:cheeseburger) {double(name: 'Cheeseburger', price: 2.99)}
+  let(:large_fries) {double(name: 'Large fries', price: 1.99)}
+
+  describe '#create_order' do
+    it 'should start with an empty order' do
+      expect(subject.new_order).to be_empty
+    end
+
+    it 'should create a new order' do
+      expect(subject.new_order).to eq([])
+    end
+
+    it 'allows a user to select desired number of dishes from menu' do
+      subject.add_dish(cheeseburger, 2)
+      subject.add_dish(large_fries, 3)
+      expect(subject.new_order).to include({cheeseburger => 2}, {large_fries => 3})
+    end
   end
 
-  it 'should start with an empty order' do
-    expect(subject.dishes).to be_empty
+  describe '#order_total' do
+    it 'should calculate the total cost of an order' do
+      subject.add_dish(cheeseburger, 2)
+      subject.add_dish(large_fries, 3)
+      expect(subject.order_total).to eq 11.95
+    end
   end
 
-  it 'allows a user to select desired number of dishes from menu' do
-    new_order
-    expect(subject.dishes).to eq(dishes)
-  end
-
-  it 'should calculate the total price of an order' do
-    expect(subject.total).to eq([])
-  end
-
-  def new_order
-    subject.add(:Drink, 5)
-    subject.add(:Small_fries, 4)
-    subject.add(:Large_fries, 3)
-    subject.add(:Chicken_burger, 2)
-    subject.add(:Cheeseburger, 1)
+  describe '#place_order' do
+    it 'sends confirmation to a user that the order has been placed' do
+      expect(subject.place_order).to eq "Thank you! Your order was placed and will be delivered before 18:52"
+    end
   end
 end
-
    
