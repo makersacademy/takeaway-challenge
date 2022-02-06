@@ -25,6 +25,25 @@ describe Takeaway do
     takeaway.retrieve_menu
     expect(takeaway.add_order_item("Chicken Tikka")).to match_array(array_data)
   # allow(takeaway).to receive(:add_order_item).and_return ({"Chicken Tikka"=>8.45, "Butter Chicken"=>7.25})
+  end
+
+  it 'expects to create a total of all the items in an order ' do
+    takeaway.retrieve_menu
+    takeaway.add_order_item("Chicken Tikka", 5)
+    takeaway.add_order_item("Butter Chicken")
+    expect(takeaway.order_total).to eq 49.50
+  end
+
+  it 'expects to create a total of all the items in an order ' do
+    takeaway.retrieve_menu
+    takeaway.add_order_item("Chicken Tikka", 5)
+    takeaway.add_order_item("Butter Chicken")
+    expect(takeaway.order_total).to eq 49.50
   end 
 
+  it 'to receive a text with the order confirmation ' do 
+    data = Time.now + 1 * 60 * 60
+    data.strftime("%k:%M")
+    expect(takeaway.checkout).to eq "Thank you! Your order was placed and will be delivered before #{data.strftime("%k:%M")}"
+  end 
 end 
