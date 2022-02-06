@@ -4,4 +4,4 @@
 
 # In order to use this program, please type "bundle" in your terminal to install required gems. 
 
-
+# Created using assistance from stack overflow and the Makers Academy Take away challenge walk through examplar. 

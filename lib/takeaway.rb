@@ -1,10 +1,11 @@
 require "./lib/order"
+require "./lib/menu"
 
 class Takeaway # Takeaway class 
 
   attr_reader :menu, :order # providing read accessibility to menu 
 
-  def initialize(menu:, order: nil) # initializing menu
+  def initialize(menu:, order:) # initializing menu
     @menu = menu # setting instance variable 
     @order = order || Order.new(menu) 
   end 
