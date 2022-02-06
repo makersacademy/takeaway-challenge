@@ -18,14 +18,6 @@ describe Menu do
     end
   end
 
-  describe '#place_order' do
-    it 'should pass selected dish to an order' do
-      allow(subject).to receive(:gets).and_return("\n")      
-      subject.select_dish
-      expect(subject.place_order).to be_an(Order)
-    end
-  end
-
   describe '#select_quantity' do
     it 'should allow selection of a quantity' do
         allow(subject).to receive(:gets).and_return("1\n")

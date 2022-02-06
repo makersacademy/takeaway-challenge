@@ -35,7 +35,4 @@ class Menu
     @dishes << dish_with_qty
   end
 
-  def place_order
-    new_order = Order.new(@dishes)
-  end
 end
