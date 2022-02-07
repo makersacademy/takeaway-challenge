@@ -3,15 +3,16 @@ require_relative 'Menu'
 
 class Order 
 
-    def initialize
+    def initialize(menu)
+      @menu = menu
       @order =  []
       @sum_of_order
       @total = 0
     end
 
     def order_items(name,quantity)
-        menu = Menu.new
-        a = menu.get_menu
+        #menu = Menu.new
+        a = menu.display_menu
         a.each_pair{  |k, v| puts "Meal: #{k}, Price: £#{v}. How many of this meal do you want?" }
         order[name] = quantity
 
@@ -24,8 +25,8 @@ class Order
     end
 
     def select_dish(input)
-        menu = Menu.new
-      if menu.display_menu[input].nil?
+        #menu = Menu.new
+      if !menu.menu.has_key? (input)
         puts "We do not serve that item."
       else
         puts "You have selected #{input}"
@@ -35,10 +36,10 @@ class Order
     end
 
     def total
-        menu = Menu.new
+        #menu = Menu.new
         
         @order.each do |name|
-            @total += menu.display_menu[name]
+            @total += menu.menu[name]
          
         end
         return @total 
