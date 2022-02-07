@@ -1,11 +1,16 @@
 require_relative '../lib/restaurant'
 
 describe Restaurant do
-  subject(:restaurant) { described_class.new(menu: menu) }
+  describe "#show_menu" do
+    it "lists the dishes and their prices" do
+      expect(subject.show_menu).to eq{menu}
+    end
+  end
 
-  let(:menu) { double(:menu, print: show_menu) }
-  let(:show_menu) { "Tiramisu: £3.65" }
-  it 'shows the menu' do 
-    expect(subject.show_menu).to eq(show_menu)
+  describe "#select_dish" do
+    it "allows the customer to select a dish from the menu" do
+      subject.show_menu
+      expect(subject).to respond_to :select_dish
+    end
   end
 end
