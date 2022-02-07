@@ -8,5 +8,8 @@ Ruby 3.?.?
 ## Author
 Jane Parsons
 
+### Progress
+* I had to look at the code review rubric for a steer on this challenge
+
 ### TODO
-* Just starting - so all of it!!! :-(
+* Need to select dishes for the order
