@@ -58,6 +58,11 @@ Provided that you have the credentials (account ID and authentication token) fro
 
 The first line is necessary to load the gem into memory. This makes the classes defined inside the gem available to our program. In particular, after the gem has loaded, we get access to Twilio::REST::Client class that we instantiate on line 8 and use on line 11.
 
+#### Show using Twilio App correctly to send SMS confirmation messages
+
+[Confirmation text](https://github.com/nelsonclaire/takeaway-challenge/blob/master/task_stories/twilio.jpeg)
+
+
 #### Write the most basic first test using techniques learnt in Intro to TDD workshop
 
 - Set up first spec file for dish.rb.
