@@ -3,7 +3,7 @@
 This is the Takeaway Challenge project.
 
 ## Ruby version
-Ruby 3.?.?
+Ruby 3.0.2
 
 ## Author
 Jane Parsons
@@ -12,4 +12,4 @@ Jane Parsons
 * I had to look at the code review rubric for a steer on this challenge
 
 ### TODO
-* Need to select dishes for the order
+* This solution does not include the Twilio api and connection

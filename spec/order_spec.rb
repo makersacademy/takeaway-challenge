@@ -23,9 +23,9 @@ describe Order do
       order.show_menu
       order.open_order
       order.add_dish("Sweetcorn Patties", 2)
-      expect(order.order_items["Sweetcorn Patties".to_sym]).to eq 2
-      order.add_dish("Singapore Noodles (Vegetable)".to_sym)
-      expect(order.order_items["Singapore Noodles (Vegetable)".to_sym]).to eq 1
+      expect(order.order_items[:"Sweetcorn Patties"]).to eq 2  # rubocop doesn't like "Swe..".to_sym
+      order.add_dish("Singapore Noodles (Vegetable)")
+      expect(order.order_items[:"Singapore Noodles (Vegetable)"]).to eq 1
     end
   end
 
@@ -34,10 +34,9 @@ describe Order do
       order.show_menu
       order.open_order
       order.add_dish("Sweetcorn Patties", 2)
-      order.add_dish("Singapore Noodles (Vegetable)".to_sym)
+      order.add_dish("Singapore Noodles (Vegetable)")
       order.check_order
       expect(order.total).to eq 12.97
-
     end
   end
 

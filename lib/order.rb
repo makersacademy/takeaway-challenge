@@ -13,14 +13,14 @@ class Order
   def show_menu
     @mymenu = mymenu.load
     @mymenu.each do |dish, price|
-      puts "#{dish.to_s} #{price}"
+      puts "#{dish} #{price}"
     end
     @mymenu  
   end  
 
   def open_order
     @order_items = {} 
-    @mymenu.each do |dish, price|
+    @mymenu.each do |dish, _price|  # use _price because price isn't used
       @order_items[dish.to_sym] = 0
     end  
     puts @order_items
@@ -35,12 +35,14 @@ class Order
 
   def check_order
     @order_items.each do |dish, qty|
-      if qty > 0
+      if qty.positive?   # rubocop doesn't like qty > 0
         price = mymenu[dish.to_sym]
         sub_total = qty * price
-        @total = @total + sub_total
+        puts "You have ordered #{dish} x#{qty} at £#{price} each"
+        @total += sub_total
       end  
     end 
+    puts "The total cosr of your order is £#{@total}"
   end   
 
 end 
