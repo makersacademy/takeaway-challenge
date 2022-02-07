@@ -11,10 +11,21 @@ describe Order do
   end
 
   describe "#open_order" do
-    it 'loads the menu with HARDCODED dishes for now' do
+    it 'opens the order with the menu item quantities all intialised to 0' do
       order.show_menu
       order.open_order
       expect(order.order_items.length).to eq 5
+    end
+  end
+
+  describe "#add_dish" do
+    it 'this increases the quantity of the dish by the given amount, or 1 by default' do
+      order.show_menu
+      order.open_order
+      order.add_dish("Sweetcorn Patties", 2)
+      expect(order.order_items["Sweetcorn Patties".to_sym]).to eq 2
+      order.add_dish("Singapore Noodles (Vegetable)".to_sym)
+      expect(order.order_items["Singapore Noodles (Vegetable)".to_sym]).to eq 1
     end
   end
 

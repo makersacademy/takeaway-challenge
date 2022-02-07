@@ -1,5 +1,4 @@
 require_relative 'menu'
-# require_relative 'dish'
 
 class Order
 
@@ -18,18 +17,9 @@ class Order
     end
     @mymenu  
   end  
-  
-  #def show_menu
-  #  @mymenu = Menu.new
-  #  @mymenu = mymenu.load
-  #  puts "we got here"
-  #  puts @mymenu
-  #  @mymenu = mymenu.show_menu2
-  #  puts @mymenu
-  #end  
 
   def open_order
-    @order_items = {}
+    @order_items = {} 
     @mymenu.each do |dish, price|
       @order_items[dish.to_sym] = 0
     end  
@@ -39,7 +29,9 @@ class Order
 
   
   def add_dish(dish, qty = 1)
-
+    q = @order_items[dish.to_sym]
+    q += qty
+    @order_items[dish.to_sym] = q
   end  
 
 end 
