@@ -66,4 +66,4 @@ Dish | view
 Order | view_selected
 Order | view_total
 Order |confirm_order
-ConfirmedOrder | send_confirmation
+Text | send_text

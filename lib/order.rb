@@ -4,23 +4,18 @@ require_relative './send_sms.rb'
 class Order
 
   def initialize
-    @menulist = DishesList.new
+    @disheslist = DishesList.new
     @sms = Text.new
     @dishes_ordered = []
     @total = 0
   end
 
   def load_menu
-    @menulist.load_menu
+    @disheslist.load_menu
   end
 
   def show_menu
-    @menulist.display_dishes
-  end
-
-  def check_total
-    @total = @menulist.calculate_total(@dishes_ordered)
-    @total
+    @disheslist.display_dishes
   end
 
   # I do not know how long the order might be so use args and * is the 'splat' operator, 
@@ -29,12 +24,20 @@ class Order
 
   def order(*args)
     @dishes_ordered = []
-    args.each do |number|
-      return_dish = @menulist.return_dish(number)
+    p args
+    args.each do |num|
+      p num
+      return_dish = @disheslist.return_dish(num)
+      p return_dish
       @dishes_ordered << return_dish if return_dish
     end
     check_total
     @dishes_ordered
+  end
+
+  def check_total
+    @total = @disheslist.calculate_total(@dishes_ordered)
+    @total
   end
 
   def send_text
@@ -43,5 +46,5 @@ class Order
     message = "Thank you! Your order was placed and will be delivered before #{time}."
     @sms.send_text(message)
   end
-  
+
 end

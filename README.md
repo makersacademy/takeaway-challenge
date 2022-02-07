@@ -79,12 +79,41 @@ The first line is necessary to load the gem into memory. This makes the classes 
 #### Run irb features tests to confirm that the expected behaviour is being demonstrated
 
 ```
-
-
+3.0.0 :001 > require "./lib/dish.rb"
+3.0.0 :002 > require "./lib/dishes_list.rb"
+ => true 
+3.0.0 :003 > require "./lib/order.rb"
+ => true 
+3.0.0 :004 > dishes = DishesList.new
+ => #<DishesList:0x000000011f0d7940 @dishes=[]> 
+3.0.0 :005 > order = Order.new
+ => #<Order:0x000000010e086c68 @disheslist=#<DishesList:0x000000010e086c40 @dishes=[]>, @sms=#<Text:0x000000010e086bc8 @auth_token="668ddb824dc10d966200896d10040464", @acc... 
+3.0.0 :006 > order.load_menu
+ => [["Pizza", "30", "10"], ["Sushi", "15", "8.99"], ["Curry", "12", "11"], ["Chinese", "18", "7"], ["Noodles", "4", "5"], ["Burger", "18", "8"], ["Cheeseburger", "6", "8.50"], ["Chips", "15", "3"], ["Dessert", "15", "4"]] 
+3.0.0 :007 > order.order(1,1,3,4,8)
+[1, 1, 3, 4, 8]
+1
+#<Dish:0x000000011cb5ab18 @identifier=1, @name="Pizza", @quantity_available=30, @price=10.0>
+1
+#<Dish:0x000000011cb5ab18 @identifier=1, @name="Pizza", @quantity_available=30, @price=10.0>
+3
+#<Dish:0x000000011cb5aa78 @identifier=3, @name="Curry", @quantity_available=12, @price=11.0>
+4
+#<Dish:0x000000011cb5aa50 @identifier=4, @name="Chinese", @quantity_available=18, @price=7.0>
+8
+#<Dish:0x000000011cb5a9b0 @identifier=8, @name="Chips", @quantity_available=15, @price=3.0>
+ => [#<Dish:0x000000011cb5ab18 @identifier=1, @name="Pizza", @quantity_available=30, @price=10.0>, #<Dish:0x000000011cb5ab18 @identifier=1, @name="Pizza", @quantity_available=30, @price=10.0>, #<Dish:0x000000011cb5aa78 @identifier=3, @name="Curry", @quantity_available=12, @price=11.0>, #<Dish:0x000000011cb5aa50 @identifier=4, @name="Chinese", @quantity_available=18, @price=7.0>, #<Dish:0x000000011cb5a9b0 @identifier=8, @name="Chips", @quantity_available=15, @price=3.0>] 
+3.0.0 :008 > order.check_total
+ => 41.0 
+3.0.0 :009 > order.send_text
+ => true 
 ```
 
 #### What I know I need to work on
 - Add further diagrams for Domain Modelling
+- Show order confirmed in a better way and allow to update an order
+- Look to make improvements on code coverage
+- Review review.md and then look again at stubbing and refactor to use described_class
 - Allow to receive SMS messages
 
 
