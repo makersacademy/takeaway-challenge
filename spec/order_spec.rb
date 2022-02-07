@@ -29,4 +29,16 @@ describe Order do
     end
   end
 
+  describe "#check_order" do
+    it 'check that the order items, amounts and overall price is what the customer is expecting' do
+      order.show_menu
+      order.open_order
+      order.add_dish("Sweetcorn Patties", 2)
+      order.add_dish("Singapore Noodles (Vegetable)".to_sym)
+      order.check_order
+      expect(order.total).to eq 12.97
+
+    end
+  end
+
 end

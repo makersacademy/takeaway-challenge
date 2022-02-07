@@ -27,11 +27,20 @@ class Order
     return @order_items
   end  
 
-  
   def add_dish(dish, qty = 1)
     q = @order_items[dish.to_sym]
     q += qty
     @order_items[dish.to_sym] = q
-  end  
+  end 
+
+  def check_order
+    @order_items.each do |dish, qty|
+      if qty > 0
+        price = mymenu[dish.to_sym]
+        sub_total = qty * price
+        @total = @total + sub_total
+      end  
+    end 
+  end   
 
 end 
