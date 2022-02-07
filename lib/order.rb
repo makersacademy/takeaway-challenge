@@ -34,15 +34,16 @@ class Order
   end 
 
   def check_order
+    puts "You have ordered:"
     @order_items.each do |dish, qty|
       if qty.positive?   # rubocop doesn't like qty > 0
         price = mymenu[dish.to_sym]
         sub_total = qty * price
-        puts "You have ordered #{dish} x#{qty} at £#{price} each"
+        puts "#{dish} x#{qty} at £#{price} each"
         @total += sub_total
       end  
     end 
-    puts "The total cosr of your order is £#{@total}"
+    puts "The total cost of your order is £#{@total}"
   end   
 
 end 
