@@ -1,6 +1,7 @@
 require './lib/menu.rb'
 require "./lib/dish.rb"
 require "./lib/order.rb"
+require "./lib/send_sms.rb"
 
 menu = Menu.new
 puts "Menu Created."
