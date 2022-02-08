@@ -36,3 +36,4 @@ class Menu
   end
 
 end
+

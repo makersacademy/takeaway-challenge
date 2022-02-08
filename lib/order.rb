@@ -1,3 +1,5 @@
+require_relative './send_sms'
+
 class Order
   attr_accessor :dishes, :combined_order, :order_total, :order_confirmed
 
@@ -28,6 +30,7 @@ class Order
     response = gets.chomp
     if response.to_i == 1
       @order_confirmed = true
+      SendSMS.new
     elsif response.to_i == 2
       puts "Order cancelled"
       @order_confirmed = false
