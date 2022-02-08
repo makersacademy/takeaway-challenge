@@ -1,3 +1,5 @@
+NEED TO ADD RSPEC TEST FRO TWILIO
+
 For Info: I couldn't get the 'send_sms.rb' to work, I got the following error message:
 require': cannot load such file -- twilio-ruby (LoadError)
 

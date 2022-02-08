@@ -1,8 +1,12 @@
- 
+
+ require_relative './menu.rb'
+ require_relative './send_sms.rb'
+
  class Takeaway
   def initialize
     @order_dishes = []
     @menu_dishes = nil
+    @sms = Text.new
   end
     
   def retrieve_menu(class_of_menu = Menu)
@@ -26,7 +30,8 @@
 
   def checkout
     @order_dishes = []
-    one_hour_from_now = Time.now + 1 * 60 * 60
-    "Thank you! Your order was placed and will be delivered before #{one_hour_from_now.strftime("%k:%M")}"
+    one_hour_from_now = Time.now + 3600
+    message = "Thank you! Your order was placed and will be delivered before #{one_hour_from_now.strftime("%H:%M")}"
+    @sms.send_text(message)
   end
 end

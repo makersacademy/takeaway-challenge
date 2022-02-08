@@ -42,8 +42,8 @@ describe Takeaway do
   end 
 
   it 'to receive a text with the order confirmation ' do 
-    data = Time.now + 1 * 60 * 60
-    data.strftime("%k:%M")
-    expect(takeaway.checkout).to eq "Thank you! Your order was placed and will be delivered before #{data.strftime("%k:%M")}"
+    data = Time.now + 3600
+    data.strftime("%H:%M")
+    expect(takeaway.checkout).to eq "Thank you! Your order was placed and will be delivered before #{data.strftime("%H:%M")}"
   end 
 end 
