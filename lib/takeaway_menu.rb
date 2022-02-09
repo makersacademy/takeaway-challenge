@@ -1,0 +1,2 @@
+class TakeawayMenu
+end
