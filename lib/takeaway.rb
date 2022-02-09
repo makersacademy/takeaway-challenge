@@ -4,7 +4,7 @@ class Takeaway
 
   def initialize
     @menu = { "Sweet & Sour Chicken Balls" => 6.30, "Salt & Pepper Chicken" => 6.30, "Chicken Fried Rice" => 6.80, "Prawn Crackers" => 2.80 }
-    @order = {}
+  #  @order = {}
   end
 
   def view_menu
