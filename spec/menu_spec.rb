@@ -1,14 +1,12 @@
-require 'menu'
+require 'Menu'
 
 describe Menu do
 
-  let(:menu){ Menu.new }
+  let(:dishes) { double :dishes }
 
-  it 'can can display a list of items available' do
-    expect()
-  end
-
-  it   do
+  it 'initializes with a menu' do
+    subject = Menu.new(dishes)
+    expect(subject.dishes).to eq dishes
   end
 
 end
