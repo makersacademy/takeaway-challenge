@@ -10,24 +10,44 @@ class Order
   end
 
   def take_order
-    puts @menu.display_menu
-    puts "Type 'add' to add to order or 'Checkout' to complete the order"
+    puts "Enter 'Checkout' to complete the order"
     loop do
-      puts "Enter the dish you want to order"
+      menu_card
+      puts "Enter dish number"
       dish = gets.chomp
+      break if dish == "checkout"
       puts "Enter the quantity"
       qauntity = gets.chomp.to_i
       add_order(dish, qauntity)
-      break if gets.chomp == "Checkout"
-
     end
     
   end
 
+  def total_amount
+    total = 0
+    @order_list.each do |k, v|
+      total += @menu.display_menu[k] * v
+    end
+
+    return total
+
+  end
+
+  private
+
   def add_order(dish, quantity)
-    single_order = {dish => quantity}
+    single_order = {@menu.display_menu.keys[dish.to_i - 1] => quantity}
     @order_list.merge!(single_order)
     
+  end
+
+  def menu_card
+    count = 0
+    @menu.display_menu.each do |key, value|
+      puts "#{count + 1}. #{key}, #{value}"
+      count += 1
+    end
+
   end
 
   def write_order
