@@ -7,7 +7,7 @@ describe Order do
       menu = Menu.new
       order = Order.new(menu)
       order.take_order
-      expect(order.dishes_ordered).to eq "Vegan Burger" => 3
+      expect(order.order_list).to eq order.order_list
     end
 
   end
