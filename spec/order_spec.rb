@@ -54,4 +54,18 @@ output
       expect(my_order.confirm?).to be true
     end
   end
+
+  describe '#place_order' do
+    it 'confirms the order was successful if the payment equals the total' do
+      my_order.add_dish('Pizza')
+      my_order.add_dish('Pizza')
+      expect(my_order.place_order(20)).to eq "Thank you for your order!"
+    end
+
+    it 'raises an error if payment is not equal to the total' do
+      my_order.add_dish('Pizza')
+      msg = "Please enter the correct payment amount."
+      expect { my_order.place_order(2) }.to raise_error msg
+    end
+  end
 end
