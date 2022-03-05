@@ -8,9 +8,11 @@ class Order
     @basket = []
   end
 
-  def select_dish(item, quantity)
+  def select_dish(item, quantity = 1)
     quantity.times { @basket << [item, @menu.dishes[item]] }
   end
 
-  
+  def calculate_total
+    @basket.map { |item| item[1] }.reduce(:+)
+  end
 end

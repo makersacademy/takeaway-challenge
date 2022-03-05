@@ -40,20 +40,20 @@ So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 ```
 
-test drove creation of select method (with 2 args - 'number of dishes' in US) and basket
+Test-drove Order class initializing with empty array as basket, injecting menu into it, made select_dish method with 2 parameters (quantity defaulting to 1)
 
 ```
-jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/menu.rb'
-3.0.2 :001 > menu = Menu.new
+jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
+3.0.2 :001 > order = Order.new
  => 
-#<Menu:0x0000000139041fe8
+#<Order:0x00000001563709b8
 ... 
-3.0.2 :002 > menu.select('tteokbokki', 2)
+3.0.2 :002 > order.select_dish('bolognese', 2)
  => 2 
-3.0.2 :003 > menu.select('kimchi pancake', 1)
+3.0.2 :003 > order.select_dish('puttanesca')
  => 1 
-3.0.2 :004 > menu.basket
- => ["tteokbokki", "tteokbokki", "kimchi pancake"] 
+3.0.2 :004 > order.basket
+ => [["bolognese", 7.5], ["bolognese", 7.5], ["puttanesca", 5.5]] 
 ```
 
 3rd user story:
@@ -63,6 +63,39 @@ As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 ```
+
+made calculate total method
+
+```
+jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
+3.0.2 :001 > order = Order.new
+ => 
+#<Order:0x000000013a0f01f0
+... 
+3.0.2 :002 > order.select_dish('arrabiata', 3)
+3.0.2 :003 > order.select_dish('bolognese')
+ => 1 
+3.0.2 :004 > order.select_dish('puttanesca', 2)
+ => 2 
+3.0.2 :005 > order.select_dish('carbonara')
+ => 1 
+3.0.2 :006 > order.basket
+ => 
+[["arrabiata", 4.5],
+ ["arrabiata", 4.5],
+ ["arrabiata", 4.5],
+ ["bolognese", 7.5],
+ ["puttanesca", 5.5],
+ ["puttanesca", 5.5],
+ ["carbonara", 6.5]] 
+3.0.2 :007 > order.calculate_total
+ => 38.5 
+```
+
+By [Jonny Abrams](https://github.com/jonnyabrams)
+
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+
 
 
 Takeaway Challenge
