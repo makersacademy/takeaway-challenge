@@ -34,21 +34,13 @@ describe Order do
     end
   end
 
-  describe '#checkout_total' do
-    it 'returns the total for the order' do
-      my_order.add_dish('Olives')
-      my_order.add_dish('Steak')
-      expect(my_order.checkout_total).to eq 22.5
-    end
-  end
-
   describe '#view_basket' do
-    it 'prints the items in the basket and the total' do
+    it 'prints the items in the basket with quantities and prices and the total' do
       my_order.add_dish('Olives')
       my_order.add_dish('Steak')
       expect { my_order.view_basket }.to output(<<-output
-Olives £2.5
-Steak £20
+1x Olives £2.5
+1x Steak £20
 ----------------
 Order Total £22.5
 output
