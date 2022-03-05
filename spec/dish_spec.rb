@@ -20,4 +20,21 @@ describe Dish do
       expect(dish.available?).to be true
     end
   end
+  
+  describe '#set_unavailable' do
+    it 'causes available? to return false' do
+      dish.set_unavailable
+      expect(dish.available?).to be false
+    end
+  end
+
+  describe '#set_available' do
+    context 'after having been set to set_unavailable' do
+      it 'causes available? to return true' do
+        dish.set_unavailable
+        dish.set_available
+        expect(dish.available?).to be true
+      end
+    end
+  end
 end

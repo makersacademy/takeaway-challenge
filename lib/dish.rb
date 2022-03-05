@@ -10,4 +10,12 @@ class Dish
   def available?
     @available
   end
+
+  def set_unavailable
+    @available = false
+  end
+
+  def set_available
+    @available = true
+  end
 end
