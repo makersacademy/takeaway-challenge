@@ -24,10 +24,6 @@ class Order
     print_total
   end
 
-  def confirm?
-    true
-  end
-
   def place_order(payment)
     review_payment(payment)
     thank_you(payment)
@@ -60,10 +56,10 @@ class Order
 
   def review_payment(payment)
     msg = "Please enter the correct payment amount."
-    raise msg if confirm? && payment != checkout_total
+    raise msg if payment != checkout_total
   end
 
   def thank_you(payment)
-    "Thank you for your order!" if confirm? && payment == checkout_total
+    "Thank you for your order!" if payment == checkout_total
   end
 end

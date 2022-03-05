@@ -15,10 +15,6 @@ class Menu
     }
   end
 
-  def meals
-    @dishes.clone
-  end
-
   def list_dishes
     @dishes.each { |item, price| puts "#{item} £#{price}" }
   end

@@ -49,12 +49,6 @@ output
     end
   end
 
-  describe '#confirm?' do
-    it 'returns true if order is confirmed' do
-      expect(my_order.confirm?).to be true
-    end
-  end
-
   describe '#place_order' do
     it 'confirms the order was successful if the payment equals the total' do
       my_order.add_dish('Pizza')

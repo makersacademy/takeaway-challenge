@@ -7,12 +7,6 @@ describe Menu do
     expect(menu).to be_a_kind_of(Menu)
   end
 
-  describe '#meals' do
-    it 'returns a hash of dishes with prices' do
-      expect(menu.meals).to be_a_kind_of(Hash)
-    end
-  end
-
   describe '#list_dishes' do
     it 'prints a list of dishes with prices' do
       expect { menu.list_dishes }.to output(<<-output
