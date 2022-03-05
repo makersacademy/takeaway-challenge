@@ -9,7 +9,7 @@ describe Menu do
 
   describe '#browse' do
     it 'outputs each item with price on separate lines' do
-      expect { menu.see }.to output("bolognese: 7.50\ncarbonara: 6.50\nputtanesca: 5.50\narrabiata: 4.50\n").to_stdout
+      expect { menu.browse }.to output("bolognese: 7.5\ncarbonara: 6.5\nputtanesca: 5.5\narrabiata: 4.5\n").to_stdout
     end
   end
 
