@@ -20,7 +20,7 @@ class Order
   end
 
   def view_basket
-    print_basket
+    print_subtotals
     print_total
   end
 
@@ -35,10 +35,11 @@ class Order
     raise msg if @basket[item] <= 0 
   end
 
-  def print_basket
+  def print_subtotals
     @basket.each do |item, price| 
       if price.positive?
-        puts "#{(@basket[item] / @menu.dishes[item]).round}x #{item} £#{price}"
+        qty = (@basket[item] / @menu.dishes[item]).round
+        puts "#{qty}x #{item} £#{price}"
       end
     end
   end

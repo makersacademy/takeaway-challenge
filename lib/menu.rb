@@ -24,6 +24,7 @@ class Menu
   end
 
   def check_availability(item)
-    raise "Dish not available. Please make a new selection." if @dishes[item].nil?
+    msg = "Dish not available. Please make a new selection."
+    raise msg if @dishes[item].nil?
   end
 end
