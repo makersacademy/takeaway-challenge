@@ -1,15 +1,13 @@
+require_relative 'menu'
+
 class TakeAway
-  def initialize
+  def initialize(menu = Menu)
+    @menu = menu.new.list
     @order = []
   end
 
   def menu
-    menu = [ 
-      { dish: "Pizza", price: 7.49 }, 
-      { dish: "Pasta", price: 5.89 }, 
-      { dish: "Burger", price: 2.29 }, 
-      { dish: "Salad", price: 11.99 },
-    ]
+    @menu
   end
 
   def order(dish)
@@ -33,6 +31,6 @@ class TakeAway
   end
 
   def confirmation_text
-    
+
   end
 end

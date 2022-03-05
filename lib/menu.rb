@@ -1,5 +1,6 @@
 class Menu
   attr_reader :list
+  
   def initialize
     @list = [ 
       { dish: "Pizza", price: 7.49 }, 
