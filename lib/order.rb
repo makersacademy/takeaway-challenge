@@ -19,6 +19,11 @@ class Order
     @basket[item] -= @menu.dishes[item]
   end
 
+  def view_basket
+    @basket.each { |item, price| puts "#{item} £#{price}" if price.positive? }
+    print_total
+  end
+
   def checkout_total
     @basket.select { |_, price| price.positive? }.values.reduce(:+)
   end
@@ -28,5 +33,10 @@ class Order
   def check_basket(item)
     msg = "Item not in the basket!"
     raise msg if @basket[item] <= 0 
+  end
+
+  def print_total
+    puts "----------------"
+    puts "Order Total £#{checkout_total}"
   end
 end
