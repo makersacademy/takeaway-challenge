@@ -9,8 +9,12 @@ class Order
     @menu = menu
   end
 
-  def add_dish(pasta)
-    @menu.check_availability(pasta)
-    @order[pasta] += @menu.dishes[pasta]
+  def add_dish(dish)
+    @menu.check_availability(dish)
+    @order[dish] += @menu.dishes[dish]
+  end
+
+  def remove_dish(dish)
+    @order[dish] -= @menu.dishes[dish]
   end
 end

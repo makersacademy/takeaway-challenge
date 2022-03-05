@@ -19,4 +19,9 @@ describe Order do
     my_order.add_dish('Pizza')
     expect(my_order.order).to include('Pizza')
   end
+
+  it 'removed a dish from the order' do
+    my_order.add_dish('Burger')
+    expect { my_order.remove_dish('Burger') }.to change { my_order.order['Burger'] }.from(13).to(0)
+  end
 end
