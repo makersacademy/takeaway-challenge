@@ -4,16 +4,14 @@ class Menu
 
   def initialize
     @dishes = {
-       "Olives" => 2.5,
-       "Bruschetta" => 5,
-       "Pizza" => 10,
-       "Pasta" => 12,
-       "Risotto" => 18,
-       "Burger" => 13,
-       "Steak" => 20,
-       "Sole" => 23,
-       "Tiramisu" => 7.5,
-       "Panna cotta" => 6.5
+      "Olives" => 2.5,
+      "Pizza" => 10,
+      "Pasta" => 12,
+      "Risotto" => 18,
+      "Burger" => 13,
+      "Steak" => 20,
+      "Tiramisu" => 7.5,
+      "Panna cotta" => 6.5
     }
   end
 
