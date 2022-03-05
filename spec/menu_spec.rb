@@ -7,20 +7,27 @@ describe Menu do
     expect(menu).to be_a_kind_of(Menu)
   end
 
-  it 'shows a list of dishes with prices' do
-    expect(menu.list_dishes).to eq [
-      { olives: 2.5 },
-      { bruschetta: 5 },
-      { pizza: 10 },
-      { pasta: 12 },
-      { risotto: 18 },
-      { burger: 13 },
-      { steak: 20 },
-      { sole: 23 },
-    ]
+  it 'returns a hash of dishes with prices' do
+    expect(menu.meals).to be_a_kind_of(Hash)
   end
 
-  it 'prints a lits of dishes with prices' do
-    expect { menu.list_dishes }.to output("olives £2.5\nbruschetta £5\npizza £10\npasta £12\nrisotto £18\nburger £13\nsteak £20\nsole £23\n").to_stdout
+  it 'prints a list of dishes with prices' do
+    expect { menu.list_dishes }.to output(<<-output
+Olives £2.5
+Bruschetta £5
+Pizza £10
+Pasta £12
+Risotto £18
+Burger £13
+Steak £20
+Sole £23
+Tiramisu £7.5
+Panna cotta £6.5
+output
+    ).to_stdout
+  end
+
+  it 'raises an error when checking for the wrong item' do
+    expect { menu.check_availability('Tortilla') }.to raise_error 'Dish not available. Please make a new selection.'
   end
 end
