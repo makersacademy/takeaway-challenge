@@ -3,7 +3,7 @@ class Menu
   def initialize
     @dishes = [
       { olives: 2.5 },
-      { brushetta: 5 },
+      { bruschetta: 5 },
       { pizza: 10 },
       { pasta: 12 },
       { risotto: 18 },
@@ -14,6 +14,10 @@ class Menu
   end
 
   def list_dishes
-    @dishes.clone
+    @dishes.each do |dish| 
+      dish.each do |dish, price|
+        puts "#{dish} £#{price}" 
+      end
+    end
   end
 end
