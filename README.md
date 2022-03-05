@@ -49,6 +49,16 @@ kimchi-jjigae: 12.99
  {:dish=>"kimchi-jjigae", :price=>12.99}] 
 ```
 
+2nd user story:
+
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+
+test drove creation of select method (with 2 args - 'number of dishes' in US) and basket
+
 
 Takeaway Challenge
 ==================
