@@ -1,4 +1,6 @@
 require 'time'
+require_relative 'confirmation_text'
+
 class Order
   
   attr_reader :list
@@ -6,6 +8,7 @@ class Order
   def initialize(menu)
     @menu = menu
     @list = []
+    @confirmation_text = ConfirmationText.new
   end
   
   def select(dish, quantity)
@@ -18,7 +21,7 @@ class Order
 
   def confirm
     delivery_time = (Time.now + (60*60)).strftime("%k:%M")
-    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    @confirmation_text.send_confirmation_text(delivery_time)
   end
 
 end
