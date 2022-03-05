@@ -30,7 +30,8 @@ describe Order do
 
     it 'raises an error if dish not in the basket' do
       my_order.add_dish('Burger')
-      expect { my_order.remove_dish('Paella') }.to raise_error "Item not in the basket!"
+      msg = 'Item not in the basket!'
+      expect { my_order.remove_dish('Paella') }.to raise_error msg
     end
   end
 
