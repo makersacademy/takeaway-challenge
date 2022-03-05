@@ -1,5 +1,8 @@
+require 'menu'
+
 describe Menu do
-  it 'creates an instance of the class Menu' do
-    expect(Menu.new).to be_an_instance_of(Menu)
+  it 'can create a Menu' do
+    expect(Menu.new).to be_a_kind_of(Menu)
   end
+
 end
