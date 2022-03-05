@@ -19,6 +19,10 @@ class Order
     @basket[item] -= @menu.dishes[item]
   end
 
+  def checkout_total
+    @basket.select { |_, price| price.positive? }.values.reduce(:+)
+  end
+
   private
 
   def check_basket(item)

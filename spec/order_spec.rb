@@ -33,4 +33,12 @@ describe Order do
       expect { my_order.remove_dish('Paella') }.to raise_error "Item not in the basket!"
     end
   end
+
+  describe '#checkout_total' do
+    it 'returns the total for the order' do
+      my_order.add_dish('Olives')
+      my_order.add_dish('Steak')
+      expect(my_order.checkout_total).to eq 22.5
+    end
+  end
 end
