@@ -24,6 +24,10 @@ class Order
     print_total
   end
 
+  def confirm?
+    true
+  end
+
   private
 
   def check_basket(item)

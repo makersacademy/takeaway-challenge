@@ -47,4 +47,10 @@ output
       ).to_stdout
     end
   end
+
+  describe '#confirm?' do
+    it 'returns true if order is confirmed' do
+      expect(my_order.confirm?).to be true
+    end
+  end
 end
