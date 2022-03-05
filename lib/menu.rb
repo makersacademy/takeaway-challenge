@@ -20,10 +20,10 @@ class Menu
   end
 
   def list_dishes
-    @dishes.each { |dish, price| puts "#{dish} £#{price}" }
+    @dishes.each { |item, price| puts "#{item} £#{price}" }
   end
 
-  def check_availability(dish)
-    raise "Dish not available. Please make a new selection." if @dishes[dish].nil?
+  def check_availability(item)
+    raise "Dish not available. Please make a new selection." if @dishes[item].nil?
   end
 end
