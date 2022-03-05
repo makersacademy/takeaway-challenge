@@ -15,6 +15,14 @@ class Order
   end
 
   def remove_dish(item)
+    check_basket(item)
     @basket[item] -= @menu.dishes[item]
+  end
+
+  private
+
+  def check_basket(item)
+    msg = "Item not in the basket!"
+    raise msg if @basket[item] <= 0 
   end
 end

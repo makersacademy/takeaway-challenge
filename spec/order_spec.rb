@@ -23,9 +23,14 @@ describe Order do
   end
 
   describe '#remove_dish' do
-    it 'removed a dish from the order' do
+    it 'removes a dish from the order' do
       my_order.add_dish('Burger')
       expect { my_order.remove_dish('Burger') }.to change { my_order.basket['Burger'] }.from(13).to(0)
+    end
+
+    it 'raises an error if dish not in the basket' do
+      my_order.add_dish('Burger')
+      expect { my_order.remove_dish('Paella') }.to raise_error "Item not in the basket!"
     end
   end
 end
