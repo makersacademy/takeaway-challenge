@@ -1,3 +1,17 @@
+Create a new meal with Meal.new(name, price)
+Create a new Menu with Menu.new
+
+my_menu = Menu.new
+sausages = Meal.new("sausages", 7)
+
+create a new order with Order.new
+my_order = Order.new
+Add a meal to the order with my_order.add_to_order(meal)
+See the items you've ordered and the total price with my_order.see_order
+Submit the order with my_order.submit_order
+You will receive a text message confirming the order and the time it will be delivered. 
+
+
 Takeaway Challenge
 ==================
 ```
