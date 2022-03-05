@@ -14,13 +14,11 @@ describe Menu do
   it 'prints a list of dishes with prices' do
     expect { menu.list_dishes }.to output(<<-output
 Olives £2.5
-Bruschetta £5
 Pizza £10
 Pasta £12
 Risotto £18
 Burger £13
 Steak £20
-Sole £23
 Tiramisu £7.5
 Panna cotta £6.5
 output
