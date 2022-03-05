@@ -19,34 +19,17 @@ I would like to see a list of dishes with prices
 first step - made spec file but no class defined
 
 ```
-An error occurred while loading ./spec/menu_spec.rb.
-Failure/Error:
-  describe Menu do
-  
-  end
-
-NameError:
-  uninitialized constant Menu
-```
-
-it lets you see menu - expect to respond to see - menu.see returns nil in IRB so need to create a menu, array of hashes seems best bet, make it a constant and initialize with it
-
-can now see menu:
-
-```
-jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/menu.rb'
+jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/menu'
 3.0.2 :001 > menu = Menu.new
  => 
-#<Menu:0x000000014f9aa1f0
+#<Menu:0x0000000142857058
 ... 
-3.0.2 :002 > menu.see
-kimchi pancake: 5.99
-tteokbokki: 7.99
-kimchi-jjigae: 12.99
- => 
-[{:dish=>"kimchi pancake", :price=>5.99},
- {:dish=>"tteokbokki", :price=>7.99},
- {:dish=>"kimchi-jjigae", :price=>12.99}] 
+3.0.2 :002 > menu.browse
+bolognese: 7.5
+carbonara: 6.5
+puttanesca: 5.5
+arrabiata: 4.5
+ => {"bolognese"=>7.5, "carbonara"=>6.5, "puttanesca"=>5.5, "arrabiata"=>4.5} 
 ```
 
 2nd user story:
@@ -58,6 +41,28 @@ I would like to be able to select some number of several available dishes
 ```
 
 test drove creation of select method (with 2 args - 'number of dishes' in US) and basket
+
+```
+jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/menu.rb'
+3.0.2 :001 > menu = Menu.new
+ => 
+#<Menu:0x0000000139041fe8
+... 
+3.0.2 :002 > menu.select('tteokbokki', 2)
+ => 2 
+3.0.2 :003 > menu.select('kimchi pancake', 1)
+ => 1 
+3.0.2 :004 > menu.basket
+ => ["tteokbokki", "tteokbokki", "kimchi pancake"] 
+```
+
+3rd user story:
+
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
 
 
 Takeaway Challenge
