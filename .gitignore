@@ -1,5 +1,8 @@
 /**/.DS_Store
 /coverage
 
+# Notes file for creation of final README
+notes-pk-README.md
+
 # Local cache of Rubocop remote config
 .rubocop-*
