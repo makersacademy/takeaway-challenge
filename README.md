@@ -1,3 +1,55 @@
+set environment variable: https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html
+
+list of dishes with prices - see, select(number)
+
+checkout total - is_correct? (matches total of dishes ordered)
+
+text - receive (and presumably sendir)
+
+MENU - CHECKOUT/ORDER - MESSAGER
+
+first user story:
+
+```
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+```
+
+first step - made spec file but no class defined
+
+```
+An error occurred while loading ./spec/menu_spec.rb.
+Failure/Error:
+  describe Menu do
+  
+  end
+
+NameError:
+  uninitialized constant Menu
+```
+
+it lets you see menu - expect to respond to see - menu.see returns nil in IRB so need to create a menu, array of hashes seems best bet, make it a constant and initialize with it
+
+can now see menu:
+
+```
+jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/menu.rb'
+3.0.2 :001 > menu = Menu.new
+ => 
+#<Menu:0x000000014f9aa1f0
+... 
+3.0.2 :002 > menu.see
+kimchi pancake: 5.99
+tteokbokki: 7.99
+kimchi-jjigae: 12.99
+ => 
+[{:dish=>"kimchi pancake", :price=>5.99},
+ {:dish=>"tteokbokki", :price=>7.99},
+ {:dish=>"kimchi-jjigae", :price=>12.99}] 
+```
+
+
 Takeaway Challenge
 ==================
 ```
