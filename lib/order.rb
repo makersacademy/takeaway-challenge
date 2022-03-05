@@ -1,3 +1,4 @@
+require 'time'
 class Order
   
   attr_reader :list
@@ -15,9 +16,9 @@ class Order
     @list.flatten.select{|i|i.is_a? Float}.sum
   end
 
-  def print_receipt
-    p @list
-    p total: total
+  def confirm
+    delivery_time = (Time.now + (60*60)).strftime("%k:%M")
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
   end
 
 end
