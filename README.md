@@ -1,6 +1,7 @@
 # Takeaway Challenge
 _This is the challenge to create a takeaway application. It can be used to view the menu, make an order, view the amount of items ordered and the total. The app also sends out a confirmation text message. For security reasons, the last part is not in a complete working order._
-[Source](https://github.com/makersacademy/takeaway-challenge)
+
+_[Source](https://github.com/makersacademy/takeaway-challenge)_
 
 ### How to Install
 1. Fork the repository
