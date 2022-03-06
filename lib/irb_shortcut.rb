@@ -13,14 +13,20 @@ available_dishes = AvailableDishes.new([margherita, pepperoni, ham_and_mushroom]
 # puts available_dishes.show_dishes
 
 cart = ShoppingCart.new(available_dishes)
-p cart.cart_contents
-p cart.available_dishes
+# p cart.cart_contents
+# p cart.available_dishes
 
-selected_dish = available_dishes.array_of_dishes.find { |dish| dish.name == "Non-dish" }
-p selected_dish.nil?
+cart.add_dish("Margherita")
+cart.add_dish("Pepperoni")
+# p cart.cart_contents
 
-cart.add_dish("Non-dish")
+# sum = 0
+# cart.cart_contents.each do |dish|
+#   dish.price
+#   sum += dish.price
+# end
+# p sum
 
-selected_dish = available_dishes.array_of_dishes.find { |dish| dish.name == "Margherita" }
-p selected_dish
+p cart.total
+
 

@@ -3,17 +3,27 @@ require_relative 'dish'
 
 class ShoppingCart
 
-  attr_accessor :cart_contents
+  attr_accessor :cart_contents, :array_object
   attr_reader :available_dishes
 
   def initialize(available_dishes, cart_contents = [])
     @cart_contents = cart_contents
     @available_dishes = available_dishes
+    @array_object = nil
   end
 
   def add_dish(dish_user_input)
-    array_object = find_user_input_in_available_dishes(dish_user_input)
+    @array_object = find_user_input_in_available_dishes(dish_user_input)
     raise "Sorry, #{dish_user_input} is not available" if array_object.nil?
+    @cart_contents << @array_object
+  end
+
+  def total
+    sum = 0
+    @cart_contents.each do |dish|
+      sum += dish.price
+    end
+    sum
   end
 
   # private 

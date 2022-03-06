@@ -14,9 +14,15 @@ describe ShoppingCart do
     expect { cart.add_dish(unavailable_dish) }.to raise_error(error_message) 
   end
 
-  # it 'shows the dishes in cart with price and total' do
-  #   cart = ShoppingCart.new
-  #   cart.add_dish(dish)
+  it 'totals the cost of the cart' do
+    cart.add_dish("Margherita")
+    cart.add_dish("Pepperoni")
+    expect(cart.total).to eq 15
+  end
+
+  # it 'shows the dishes in the cart with price and total' do
+  #   cart.add_dish("Margherita")
+  #   cart.add_dish("Ham_and_mushroom")
   # end
 
 
