@@ -12,9 +12,7 @@ def take_order
   run_loop(menu, order)
   bill = Bill.new(order, menu)
   puts bill.generate_bill
-  puts "Your order has been accepted"
-  TwilioClient.send_message("+44" + ten_digit_mobile_number)
-
+  continue_with_the_order?(ten_digit_mobile_number)
 end
 
 def run_loop(menu, order)
@@ -28,4 +26,15 @@ def run_loop(menu, order)
     order.add_order(dish, quantity)
   end
 
+end
+
+def continue_with_the_order?(ten_digit_mobile_number)
+  puts "Do you want to continue with your order?"
+  input = $stdin.gets.chomp
+  if input == "yes"
+    puts "Your order has been accepted"
+    # TwilioClient.send_message("+44" + ten_digit_mobile_number) # uncomment tomorrow
+  else
+    puts "Your order was not placed. See you soon!"
+  end
 end

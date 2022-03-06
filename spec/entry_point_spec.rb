@@ -11,11 +11,17 @@ describe ".take_order" do
     $stdout = original_stdout
   end
 
-  it "should ask for the order" do
-    allow($stdin).to receive(:gets).and_return("7404785572", "1", "2", "2", "1", "checkout")
+  it "should test successful order placing" do
+    allow($stdin).to receive(:gets).and_return("7404785572", "1", "2", "2", "1", "done", "yes")
     str = with_captured_stdout { take_order }
     expect(str).to include "total = 45"
     expect(str).to include "Your order has been accepted"
+  end
+
+  it "should test unsuccessful order placing" do
+    allow($stdin).to receive(:gets).and_return("7404785572", "1", "2", "2", "1", "done", "no")
+    str = with_captured_stdout { take_order }
+    expect(str).to include "Your order was not placed. See you soon!"
   end
   
 end
