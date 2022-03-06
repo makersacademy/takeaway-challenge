@@ -144,15 +144,29 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 1. **Menu**
     * Properties
+        * `[dishes]` a hash which contains all menu items with prices.
+
     * Methods
+        * `[view_dishes]` allows the user to view formatted list of items and prices.
+        * `[check_availability]` raises an error if the item entered in not in the menu.
 
 2. **Order**
     * Properties
+        * `[basket]` a default empty hash which will store the selected items.
+        * `[menu]` a new instance of the Menu class which can be called to view the menu.
+
     * Methods
+        * `[add_dish]` allows the user to add the item to the order. Raises an error if an item not available is added.
+        * `[remove_dish]` allows the user to remove the item from the order. Raises an error if the item not in the basket.
+        * `[view_basket]` allows the user to view the basket with the items, their prices and quantities and the total of the order. Raises an error if the basket is empty.
+        * `[place_order]` allows the user to pay for the order. Raises an error if the wrong payment amount if entered. Triggers delivery of confirmation text SMS if payment is successful.
 
 3. **TextMessage**
     * Properties
+        * `[client]` contains the Twilio credential.
+
     * Methods
+        * `[send_message]` sends the text message from the Twilio API to the user.
 
 Technologies used
 -----
