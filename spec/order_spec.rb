@@ -3,10 +3,6 @@ require 'order'
 describe Order do
   subject(:order) { described_class.new }
 
-  it 'responds to select_dish method with two arguments' do
-    expect(order).to respond_to(:select_dish).with(2).arguments
-  end
-
   it 'initializes with an empty hash as a basket' do
     expect(order.basket).to be_a_kind_of(Hash)
   end
@@ -32,11 +28,10 @@ describe Order do
     end
   end
 
-  # describe '#calculate_total' do
-  #   it 'adds up the total of the items in the basket' do
-  #     order.select_dish('puttanesca', 2)
-  #     order.select_dish('bolognese')
-  #     expect(order.calculate_total).to eq(18.50)
-  #   end
-  # end
+  describe '#checkout' do
+    it 'shows you your bill and total' do
+      order.select_dish('carbonara')
+      expect { order.checkout }.to output("carbonara: 6.5\n*************\nYour total is 6.5\n").to_stdout
+    end
+  end
 end

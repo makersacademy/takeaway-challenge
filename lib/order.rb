@@ -1,9 +1,9 @@
 require_relative 'menu'
+require_relative 'send_sms'
 require 'twilio-ruby'
 
 class Order
-NOT_ON_MENU_ERROR = 'This is not on the menu'
-
+  NOT_ON_MENU_ERROR = 'This is not on the menu'.freeze
   attr_reader :basket
 
   def initialize(menu = Menu.new)
@@ -21,17 +21,18 @@ NOT_ON_MENU_ERROR = 'This is not on the menu'
     quantity.times { @basket[item] -= @menu.dishes[item] }
   end
 
-  def checkout
+  def checkout(sms = SMS.new)
+    @sms = sms
     bill
     puts '*************'
     puts "Your total is #{calculate_total}"
-    send_sms
+    @sms.send_sms
   end
 
   private
 
   def bill
-    @basket.each { |dish, price| puts "#{dish}: #{price}"}
+    @basket.each { |dish, price| puts "#{dish}: #{price}" }
   end
 
   def calculate_total
@@ -40,22 +41,5 @@ NOT_ON_MENU_ERROR = 'This is not on the menu'
 
   def available?(item)
     @menu.dishes.has_key?(item)
-  end
-
-  def client
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-  end
-
-  def send_sms
-    arrival_time = (Time.now + 60*60).strftime("%H:%M")
-
-    client.messages.create(
-      from: +16626678674,
-      to: ENV["PHONE"],
-      body: "Thank you! Your order was placed and will arrive by #{arrival_time}"
-    )
-    # puts message.sid
   end
 end
