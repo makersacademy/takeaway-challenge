@@ -1,22 +1,73 @@
-set environment variable: https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html
+# Takeaway Challenge
+==================
+```
+                            _________
+              r==           |       |
+           _  //            |  M.A. |   ))))
+          |_)//(''''':      |       |
+            //  \_____:_____.-------D     )))))
+           //   | ===  |   /        \
+       .:'//.   \ \=|   \ /  .:'':./    )))))
+      :' // ':   \ \ ''..'--:'-.. ':
+      '. '' .'    \:.....:--'.-'' .'
+       ':..:'                ':..:'
 
-list of dishes with prices - see, select(number)
+ ```
 
-checkout total - is_correct? (matches total of dishes ordered)
+## Description
+-------
 
-text - receive (and presumably sendir)
+Our weekend challenge for week 2 of the Makers Academy coding boot camp in London was to build a basic food delivery program using the Twilio API to send delivery confirmation texts.
 
-MENU - CHECKOUT/ORDER - MESSAGER
+## Instructions for use
+-------
 
-first user story:
+1. This program can be run from the Terminal/Command Line using IRB
+2. It requires Ruby 3.0.2, which can be installed with the following command:
+
+```
+rvm install 'ruby-3.0.2'
+```
+
+3. It also uses the Twilio API for sending SMS messages
+
+```
+gem install twilio-ruby
+```
+
+## User Stories
+-------
+
+The following user stories were supplied:
 
 ```
 As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
 ```
 
-first step - made spec file but no class defined
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+
+```
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+```
+
+## My Approach
+-------
+
+To start with, I created a menu_spec and test drove the functionality for browsing a menu as per the first user story:
 
 ```
 jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/menu'
@@ -32,15 +83,9 @@ arrabiata: 4.5
  => {"bolognese"=>7.5, "carbonara"=>6.5, "puttanesca"=>5.5, "arrabiata"=>4.5} 
 ```
 
-2nd user story:
+Then I test-drove an Order class as my primary interface, initializing it at first with an empty array as a basket to add orders to. I later changed this to a hash to facilitate my remove_dish method, which was growing cumbersome with the array.
 
-```
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
-```
-
-Test-drove Order class initializing with empty array as basket, injecting menu into it, made select_dish method with 2 parameters (quantity defaulting to 1)
+Following the second user story, I gave my select_dish method two parameters: one for the dish itself, one for the quantity:
 
 ```
 jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
@@ -56,15 +101,7 @@ jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
  => [["bolognese", 7.5], ["bolognese", 7.5], ["puttanesca", 5.5]] 
 ```
 
-3rd user story:
-
-```
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
-```
-
-made calculate total method
+The third user story was as simple as creating the private method calculate_total:
 
 ```
 jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
@@ -72,29 +109,6 @@ jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
  => 
 #<Order:0x000000013a0f01f0
 ... 
-3.0.2 :002 > order.select_dish('arrabiata', 3)
-3.0.2 :003 > order.select_dish('bolognese')
- => 1 
-3.0.2 :004 > order.select_dish('puttanesca', 2)
- => 2 
-3.0.2 :005 > order.select_dish('carbonara')
- => 1 
-3.0.2 :006 > order.basket
- => 
-[["arrabiata", 4.5],
- ["arrabiata", 4.5],
- ["arrabiata", 4.5],
- ["bolognese", 7.5],
- ["puttanesca", 5.5],
- ["puttanesca", 5.5],
- ["carbonara", 6.5]] 
-3.0.2 :007 > order.calculate_total
- => 38.5 
-```
-
-made remove order method after changing array to a hash to make it easier
-
-```
 jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
 3.0.2 :001 > order = Order.new
  => 
@@ -115,7 +129,8 @@ jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
 3.0.2 :008 > order.calculate_total
  => 12.0 
 ```
-Fail method in action
+
+I also added a 'fail' guard clause in case of unavailable dishes:
 
 ```
 jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
@@ -131,7 +146,7 @@ jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
         from /Users/jonnyabrams/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
 ```
 
-implemented checkout sending confirmation SMS with Twilio API
+Then it was time to implement a checkout method sending a confirmation text via the Twilio API:
 
 ```
 jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
@@ -154,30 +169,20 @@ Your total is 38.0
  => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order was placed and will arrive by 11:50 num_segments: 1 direction: outbound-api from: +16626678674 to: +447867513304 date_updated: 2022-03-06 10:51:00 +0000 price:  error_message:  uri: /2010-04-01/Accounts/ACadafd609098a3ba714c6f6e1917a6ce4/Messages/SM3bd3c82ea0f54256898ed9e9b6e47948.json account_sid: ACadafd609098a3ba714c6f6e1917a6ce4 num_media: 0 status: queued messaging_service_sid:  sid: SM3bd3c82ea0f54256898ed9e9b6e47948 date_sent:  date_created: 2022-03-06 10:51:00 +0000 error_code:  price_unit: USD api_version: 2010-04-01 subresource_uris: {"media"=>"/2010-04-01/Accounts/ACadafd609098a3ba714c6f6e1917a6ce4/Messages/SM3bd3c82ea0f54256898ed9e9b6e47948/Media.json"}> 
 ```
 
+![image](files/Users/jonnyabrams/Desktop/twilio-conf.jpeg)
+
+## Improvements Needed
+-------
+
+With a basket in the form of a hash, the bill cannot separate multiple orders of the same dish (although it does charge the correct amount).
+
 By [Jonny Abrams](https://github.com/jonnyabrams)
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
 
 
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
-
-Instructions
--------
 
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
