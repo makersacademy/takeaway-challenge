@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'text_message'
 
 class Order
 
@@ -25,10 +26,10 @@ class Order
     print_total
   end
 
-  def place_order(payment)
+  def place_order(payment, confirmation = TextMessage.new)
     check_empty_basket
     review_payment(payment)
-    thank_you(payment)
+    thank_you(payment, confirmation)
   end
 
   private
@@ -70,7 +71,7 @@ class Order
     raise msg if payment != checkout_total
   end
 
-  def thank_you(payment)
-    "Thank you for your order!" if payment == checkout_total
+  def thank_you(payment, confirmation)
+    confirmation.send_message if payment == checkout_total
   end
 end

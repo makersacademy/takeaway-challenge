@@ -55,10 +55,13 @@ output
   end
 
   describe '#place_order' do
+    
+    let(:text) { double :text, send_message: "Thank you for your order!" }
+
     it 'confirms the order was successful if the payment equals the total' do
       my_order.add_dish('Pizza')
-      my_order.add_dish('Pizza')
-      expect(my_order.place_order(20)).to eq "Thank you for your order!"
+      my_order.add_dish('Steak')
+      expect(my_order.place_order(30, text)).to eq "Thank you for your order!"
     end
 
     it 'raises an error if basket is empty' do

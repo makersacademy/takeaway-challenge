@@ -22,8 +22,8 @@ class TextMessage
   end
 
   private
-  
+
   def delivery_time
-    time = (Time.now + 1*60*60).strftime("%R")
+    time = (Time.now + 1 * 60 * 60).strftime("%R")
   end
 end
