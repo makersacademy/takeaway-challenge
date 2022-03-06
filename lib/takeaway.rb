@@ -47,7 +47,7 @@ class Takeaway
 
   def quit_program
     puts "Exiting program..."
-    exit
+    exit # Needs to be commented out for running tests
   end
 
   def current_order

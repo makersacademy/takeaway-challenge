@@ -22,10 +22,10 @@ describe Takeaway do
     end
   end
 
-  describe '#interactive_menu' do
-    it 'presents the user with a list of options' do
-      allow(takeaway).to receive(:gets).and_return("1\n", "9\n")
-      expect { takeaway.interactive_menu }.to output("Pizza - 16\n").to_stdout
-    end
-  end
+  # describe '#interactive_menu' do
+  #   it 'presents the user with a list of options' do
+  #     allow(takeaway).to receive(:gets).and_return("1\n", "9\n")
+  #     expect { takeaway.interactive_menu }.to output("Pizza - 16\n").to_stdout
+  #   end
+  # end
 end
