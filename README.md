@@ -92,6 +92,45 @@ jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
  => 38.5 
 ```
 
+made remove order method after changing array to a hash to make it easier
+
+```
+jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
+3.0.2 :001 > order = Order.new
+ => 
+#<Order:0x000000013f84fe78
+... 
+3.0.2 :002 > order.select_dish('carbonara')
+ => 1 
+3.0.2 :003 > order.select_dish('arrabiata', 3)
+ => 3 
+3.0.2 :004 > order.remove_dish('carbonara')
+ => 1 
+3.0.2 :005 > order.remove_dish('arrabiata', 2)
+ => 2 
+3.0.2 :006 > order.select_dish('bolognese')
+ => 1 
+3.0.2 :007 > order.basket
+ => {"carbonara"=>0.0, "arrabiata"=>4.5, "bolognese"=>7.5} 
+3.0.2 :008 > order.calculate_total
+ => 12.0 
+```
+Fail method in action
+
+```
+jonnyabrams@JONNYs-MacBook-Pro takeaway-challenge % irb -r './lib/order'
+3.0.2 :001 > order = Order.new
+ => 
+#<Order:0x0000000149a940d0
+... 
+3.0.2 :002 > order.select_dish('gnocchi')
+/Users/jonnyabrams/Projects/Makers/takeaway/takeaway-challenge/lib/order.rb:14:in `select_dish': This is not on the menu (RuntimeError)
+        from (irb):2:in `<main>'
+        from /Users/jonnyabrams/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/jonnyabrams/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/jonnyabrams/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+```
+
 By [Jonny Abrams](https://github.com/jonnyabrams)
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
