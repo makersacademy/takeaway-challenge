@@ -19,4 +19,12 @@ describe Menu do
     
   end
 
+  describe ".menu" do
+    it "should return the menu_hash" do
+      menu = Menu.new
+      expect(menu.menu).to eq "Vegan Burger" => 15, "Ealing + Chips" => 15, "Honest + Chips" => 14, "Tribute + Chips" => 14, "Guinness Fondue + Chips" => 15, "Beef + Mature Cheddar + Chips" => 13, "Chicken + Chips" => 13
+    end
+
+  end
+
 end
