@@ -38,6 +38,7 @@ GEM
     parser (3.0.2.0)
       ast (~> 2.4.1)
     racc (1.6.0)
+    rack (2.2.3)
     rainbow (3.0.0)
     regexp_parser (2.1.1)
     rexml (3.2.5)
@@ -89,6 +90,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack
   rspec
   rubocop (= 1.20)
   simplecov
