@@ -11,8 +11,17 @@ class Menu
     {:dish => "Fanta", :price => 1.75}
   ]
 
+  def initialize
+    # print view_formatted_menu
+  end
+
   def view_menu
     MENU
+  end
+
+  def find_price_for(item)
+    item.capitalize
+    find_item_hash(item)[:price]
   end
 
   def view_formatted_menu(menu = MENU)
@@ -20,8 +29,7 @@ class Menu
   end
 
   def contains?(item)
-    item.downcase.to_sym
-    MENU.detect { |food| food[:dish] == item } != nil
+     find_item_hash(item) != nil
   end
 
   private
@@ -32,6 +40,8 @@ class Menu
     formatted_menu.join("\n")
   end
 
-end
+  def find_item_hash(item)
+    MENU.detect { |food| food[:dish] == item }
+  end
 
-puts Menu.new.view_formatted_menu
+end
