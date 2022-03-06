@@ -45,5 +45,25 @@ describe Bill do
     end
   end
 
+  describe ".customer_phone_number" do
+    it "shoudl return the customer number with country code +44" do
+      menu = Menu.new
+      order = Order.new(menu)
+      bill = Bill.new(order, menu)
+      bill.customer_phone_number
+      expect(bill.my_number).to eq "+447404785572"
+    end
+
+  end
+
+  describe ".order_accepted" do
+    it "should send a message to the customer saying the order will be delivered before 8:52" do
+      menu = Menu.new
+      order = Order.new(menu)
+      bill = Bill.new(order, menu)
+      bill.order_accepted
+    end
+
+  end
 
 end
