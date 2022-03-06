@@ -12,12 +12,4 @@ describe Order do
 
   end
 
-  # describe ".order_accepted" do
-  #   it "should call sen_message"
-  #   allow(TwilioClient).to receive(:customer_phone_number).and_return "+447404785572"
-  #   menu = Menu.new
-  #   order = Order.new(menu)
-  #   order.order_accepted
-  # end
-
 end
