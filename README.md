@@ -14,20 +14,100 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Description
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This software is a simulation of a takeaway order. The customer can view the menu, add items to the order, remove items from the order, view the basket and place the order. A confirmation text message is sent to the customer via Twilio API after the order is placed.
 
-Task
+How to download the program
+-----
+* Clone this repo
+* Run the command 'bundle install' to ensure you have all the relevant gems installed
+* Update .env.template with your Twilio credentials and rename it as .env
+* Run the program in IRB by requiring 'order.rb'
+
+Output example
+-----
+```shell
+| => irb -r './lib/order.rb'
+3.0.1 :001 > order = Order.new
+ =>
+#<Order:0x00007ffe0d213d48
+...
+3.0.2 :002 > order.menu.view_dishes
+Olives £2.5
+Pizza £10
+Risotto £18
+Steak £20
+Tiramisu £7.5
+Panna cotta £6.5
+ => {"Olives"=>2.5, "Pizza"=>10, "Pasta"=>12, "Risotto"=>18, "Burger"=>13, "Steak"=>20, "Tiramisu"=>7.5, "Panna cotta"=>6.5}
+3.0.2 :003 > order.add_dish("Pizza")
+ => 10
+3.0.2 :004 > order.add_dish("Paella")
+/Users/Valentina/Projects/makers_projects/takeaway-challenge/lib/menu.rb:24:in `check_availability': Dish not available. Please make a new selection. (RuntimeError)
+        from (irb):5:in `<main>'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+3.0.2 :005 > order.add_dish("Steak")
+ => 20
+3.0.2 :006 > order.view_basket
+1x Pizza £10
+1x Steak £20
+----------------
+Order Total £30
+ => nil
+3.0.2 :007 > order.remove_dish("Paella")
+/Users/Valentina/Projects/makers_projects/takeaway-challenge/lib/order.rb:39:in `check_basket': Item not in the basket! (RuntimeError)
+        from /Users/Valentina/Projects/makers_projects/takeaway-challenge/lib/order.rb:19:in `remove_dish'
+        from (irb):9:in `<main>'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+3.0.2 :008 > order.place_order(2)
+/Users/Valentina/Projects/makers_projects/takeaway-challenge/lib/order.rb:71:in `review_payment': Please enter the correct payment amount. (RuntimeError)
+        from /Users/Valentina/Projects/makers_projects/takeaway-challenge/lib/order.rb:31:in `place_order'
+        from (irb):10:in `<main>'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/Valentina/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+3.0.2 :009 > order.place_order(10)
+ => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order was placed and will be delivered before 17:34 num_segments: 1 direction: outbound-api from: +************* to: +************* date_updated: 2022-03-06 16:34:03 +0000>
+```
+
+Commands explained
+-----
+1. Create a new order:
+```shell
+order = Order.new
+```
+2. View menu (dishes and prices):
+```shel
+order.menu.view_dishes
+```
+3. Add item to the order (use the same command to add the item as many times as you wish):
+```shell
+order.add_dish("Pizza")
+```
+4. Remove item from the order:
+```shell
+order.remove_dish("Pasta")
+```
+5. View the order to check items, prices and total:
+```shell
+order.view_basket
+```
+6. Pay for the order:
+```shell
+order.place_order(20)
+```
+7. Receive the confirmation SMS via Twilio
+
+Info about software construction
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+### User Stories used to design the software
 
 ```
 As a customer
@@ -47,37 +127,24 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+### Steps taken to build the software
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+1. Domain modelling and diagramming to design the software implementation
+2. Installation of the relevant gems (Twilio, etc.)
+3. Built Menu class following TDD approach
+4. Built Order class following TDD approach
+5. Built Order class following TDD approach
+5. Edge cases taken into account: wrong item added to the order; wrong item removed from the order; view basket when empty; place order when basket empty; wrong payment amount entered.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+Technologies used
+-----
+* Ruby
+* Simplecov for testing coverage (test coverage: 100%)
+* Rubocop for code style check
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Future implementations to consider
+-----
+Implement the ability to place orders via text message.
 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
