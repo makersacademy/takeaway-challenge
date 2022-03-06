@@ -22,9 +22,9 @@ This software is a simulation of a takeaway order. The customer can view the men
 How to download the program
 -----
 * Clone this repo
-* Run the command 'bundle install' to ensure you have all the relevant gems installed
+* Run the command `bundle install` to ensure you have all the relevant gems installed
 * Update .env.template with your Twilio credentials and rename it as .env
-* Run the program in IRB by requiring 'order.rb'
+* Run the program in IRB by requiring `order.rb`
 
 Output example
 -----
@@ -79,29 +79,17 @@ Order Total £30
 Commands explained
 -----
 1. Create a new order:
-```shell
-order = Order.new
-```
+`order = Order.new`
 2. View menu (dishes and prices):
-```shel
-order.menu.view_dishes
-```
+`order.menu.view_dishes`
 3. Add item to the order (use the same command to add the item as many times as you wish):
-```shell
-order.add_dish("Pizza")
-```
+`order.add_dish("Pizza")`
 4. Remove item from the order:
-```shell
-order.remove_dish("Pasta")
-```
+`order.remove_dish("Pasta")`
 5. View the order to check items, prices and total:
-```shell
-order.view_basket
-```
+`order.view_basket`
 6. Pay for the order:
-```shell
-order.place_order(20)
-```
+`order.place_order(20)`
 7. Receive the confirmation SMS via Twilio
 
 Info about software construction
@@ -130,40 +118,41 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ### Steps taken to build the software
 
 1. Domain modelling and diagramming to design the software implementation
-2. Installation of the relevant gems (Twilio, etc.)
+2. Installation of the relevant gems (Twilio, Dotenv, etc.)
 3. Built Menu class following TDD approach
 4. Built Order class following TDD approach
-5. Built Order class following TDD approach
+5. Built TextMessage class following TDD approach
 5. Edge cases taken into account:
     * wrong item added to the order;
     * wrong item removed from the order;
     * view basket when empty;
-    * place order when basket empty; wrong payment amount entered.
+    * place order when basket empty; 
+    * wrong payment amount entered.
 
 ### Classes and methods explained
 
 1. **Menu**
     * Properties
-        * `dishes` a hash which contains all menu items with prices.
+        * `dishes` a hash which contains a pre-defined list of menu items with prices.
 
     * Methods
         * `view_dishes` allows the user to view formatted list of items and prices.
-        * `check_availability` raises an error if the item entered in not in the menu.
+        * `check_availability` raises an error if the item entered is not in the menu.
 
 2. **Order**
     * Properties
-        * `basket` a default empty hash which will store the selected items.
+        * `basket` a default empty hash which will store the items selected by the user.
         * `menu` a new instance of the Menu class which can be called to view the menu.
 
     * Methods
-        * `add_dish` allows the user to add the item to the order. Raises an error if an item not available is added.
-        * `remove_dish` allows the user to remove the item from the order. Raises an error if the item not in the basket.
+        * `add_dish` allows the user to add the item to the order. Raises an error if an item which is not available is added.
+        * `remove_dish` allows the user to remove the item from the order. Raises an error if the item is not in the basket.
         * `view_basket` allows the user to view the basket with the items, their prices and quantities and the total of the order. Raises an error if the basket is empty.
-        * `place_order` allows the user to pay for the order. Raises an error if the wrong payment amount if entered. Triggers delivery of confirmation text SMS if payment is successful.
+        * `place_order` allows the user to pay for the order. Raises an error if the wrong payment amount is entered. Triggers delivery of confirmation text SMS if payment is successful.
 
 3. **TextMessage**
     * Properties
-        * `client` contains the Twilio credential.
+        * `client` contains the Twilio credentials used to send the text message.
 
     * Methods
         * `send_message` sends the text message from the Twilio API to the user.
