@@ -32,11 +32,11 @@ describe Order do
     end
   end
 
-  describe '#calculate_total' do
-    it 'adds up the total of the items in the basket' do
-      order.select_dish('puttanesca', 2)
-      order.select_dish('bolognese')
-      expect(order.calculate_total).to eq(18.50)
-    end
-  end
+  # describe '#calculate_total' do
+  #   it 'adds up the total of the items in the basket' do
+  #     order.select_dish('puttanesca', 2)
+  #     order.select_dish('bolognese')
+  #     expect(order.calculate_total).to eq(18.50)
+  #   end
+  # end
 end
