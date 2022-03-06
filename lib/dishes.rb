@@ -7,9 +7,12 @@ class Dishes
   end
 
   def see_dishes
-    @list.each do |dish|
-      puts "#{dish.name}  £#{dish.price}"
+    @list.each do |hash|
+      hash.each do |meal_number, dish|
+        puts "#{meal_number} => #{dish.name}  £#{dish.price}"
+      end
     end
+    puts "Please use the numbers on the left to choose your dishes"
   end
 
 end

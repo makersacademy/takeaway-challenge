@@ -55,10 +55,10 @@ _Breaking down this user story_
 
 Since we have no way for the user to select his meals, we change the **list** array into a hash. The keys will be the **meal-numbers** and the value will be the dish objects. This way the users can choose what meals they want by the meal numbers
 
-- [ ] change the **list** variable into a hash, where the keys represent meal numbers and the values are the Dish objects
-- [ ] change the output of #see_dishes to incorporate dish numbers
-- [ ] Add some instructions to the user at the end of the #see_dishes output on how to order
-- [ ] check to see if any tests are broken and fix any issues
+- [x] change the **list** variable into a hash, where the keys represent meal numbers and the values are the Dish objects
+- [x] change the output of #see_dishes to incorporate dish numbers
+- [x] Add some instructions to the user at the end of the #see_dishes output on how to order
+- [x] check to see if any tests are broken and fix any issues
 
 We then need a new method for selecting dishes (#select_dishes) this should initialize a new object called Order this will handle storing the order from the user and anything else to do with modifying the order.
 
