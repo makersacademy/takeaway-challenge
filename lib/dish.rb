@@ -13,6 +13,6 @@ class Dish
   private
 
   def price_as_integer(price)
-    price.round(2) * 100
+    (price * 100).round.to_i
   end
 end
