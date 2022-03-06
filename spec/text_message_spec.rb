@@ -6,4 +6,5 @@ describe TextMessage do
   it 'can create a TextMessage' do
     expect(text).to be_a_kind_of(TextMessage)
   end
+
 end
