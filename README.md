@@ -142,15 +142,15 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ### Classes and methods explained
 
-1. ##### Menu
+1. **Menu**
     * Properties
     * Methods
 
-2. ##### Order
+2. **Order**
     * Properties
     * Methods
 
-3. ##### TextMessage
+3. **TextMessage**
     * Properties
     * Methods
 
