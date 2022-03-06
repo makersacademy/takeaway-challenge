@@ -13,11 +13,10 @@ class Bill
     @order.order_list.each do |k, v|
       puts "#{k} --> #{v} * #{@menu.menu[k]}"
     end
-    puts "-----------------------------------"
-    puts "total = #{total_amount}"
-    puts "-----------------------------------"
-    puts ""
-    continue_with_the_order?
+    "--------------------------\n" + 
+    "total = #{total_amount}\n" +
+    "--------------------------\n"
+    # continue_with_the_order?
   end
 
   def total_amount
@@ -30,10 +29,10 @@ class Bill
 
   end
 
-  def continue_with_the_order?
-    puts "Enter continue if you are happy to proceed with the order:"
-    proceed_with_order = gets.chomp.downcase
-    @order.order_accepted if proceed_with_order == "continue"
-  end
+  # def continue_with_the_order?
+  #   puts "Enter continue if you are happy to proceed with the order:"
+  #   proceed_with_order = gets.chomp.downcase
+  #   @order.order_accepted if proceed_with_order == "continue"
+  # end
 
 end
