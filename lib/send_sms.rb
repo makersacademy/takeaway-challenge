@@ -11,7 +11,7 @@ def confirmation_text
   from = FROM # Your Twilio number
   to = TO # Your mobile phone number
 
-  delivery_time = (Time.now + 1800).strftime("%H:%M")
+  delivery_time = (Time.now + 3600).strftime("%H:%M")
 
   client.messages.create(
   from: from,
