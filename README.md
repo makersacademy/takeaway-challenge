@@ -134,19 +134,23 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 3. Built Menu class following TDD approach
 4. Built Order class following TDD approach
 5. Built Order class following TDD approach
-5. Edge cases taken into account: wrong item added to the order; wrong item removed from the order; view basket when empty; place order when basket empty; wrong payment amount entered.
+5. Edge cases taken into account:
+    * wrong item added to the order;
+    * wrong item removed from the order;
+    * view basket when empty;
+    * place order when basket empty; wrong payment amount entered.
 
 ### Classes and methods explained
 
-1. #####Menu
+1. ##### Menu
     * Properties
     * Methods
 
-2. #####Order
+2. ##### Order
     * Properties
     * Methods
 
-3. #####TextMessage
+3. ##### TextMessage
     * Properties
     * Methods
 
