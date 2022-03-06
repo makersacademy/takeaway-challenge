@@ -1,7 +1,6 @@
 require_relative 'menu'
 require_relative 'order'
 
-
 class Bill
 
   def initialize(order_instance, menu_instance)
@@ -28,11 +27,5 @@ class Bill
     return total
 
   end
-
-  # def continue_with_the_order?
-  #   puts "Enter continue if you are happy to proceed with the order:"
-  #   proceed_with_order = gets.chomp.downcase
-  #   @order.order_accepted if proceed_with_order == "continue"
-  # end
 
 end

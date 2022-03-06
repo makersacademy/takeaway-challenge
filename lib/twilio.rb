@@ -1,6 +1,5 @@
 require 'twilio-ruby'
 
-
 class TwilioClient
 
   @@account_sid = 'AC88463ee026ff8a7840058e37c3de2f75'
