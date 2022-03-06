@@ -6,3 +6,6 @@ notes-pk-README.md
 
 # Local cache of Rubocop remote config
 .rubocop-*
+ 
+# Credentials file in root of repo for storing Twilio Access Constants
+credentials.rb
