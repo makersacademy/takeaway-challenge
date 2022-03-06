@@ -10,4 +10,7 @@ end
 
 group :development, :test do
   gem 'rubocop', '1.20'
+  gem 'rack'
+  gem 'twilio-ruby'
+  gem 'dotenv'
 end
