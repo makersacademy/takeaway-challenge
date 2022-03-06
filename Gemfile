@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 ruby '3.0.2'
+gem 'twilio-ruby', '~> 5.65.0'
+gem 'rack'
 
 group :test do
   gem 'rspec'
