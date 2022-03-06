@@ -11,7 +11,6 @@ class Order
 
   def add(item, quantity = 1)
     @basket[item.capitalize] += quantity if menu.contains?(item)
-    puts "Basket after adding #{@basket}"
   end
 
   def total
@@ -19,9 +18,9 @@ class Order
     "£#{@order_total.round(2)}"
   end
 
-  def check_order_price(price)
-    puts "order total: #{@order_total}"
-    price == @order_total
+  def finalise
+    fetch_prices
+    @order_total.round(2)
   end
 
   private

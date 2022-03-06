@@ -41,9 +41,11 @@ describe Order do
       expect(subject.total).to eq "£13.15"
     end
 
-    it 'should verify an inputted price matches the total order' do
+    it 'should return the unformatted total' do
       subject.add(cod)
-      expect(subject.check_order_price(8.25)).to eq true
+      subject.add(chips)
+      subject.add("Gravy")
+      expect(subject.finalise).to eq 13.15
     end
 
   end
