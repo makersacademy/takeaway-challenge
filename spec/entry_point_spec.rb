@@ -15,16 +15,8 @@ require 'entry_point'
       allow($stdin).to receive(:gets).and_return("7404785572", "1", "2", "2", "1", "checkout")
       str = with_captured_stdout { take_order }
       expect(str).to include "total = 45"
+      expect(str).to include "Your order has been accepted"
     end
 
   end
 
-#   describe ".customer_phone_number" do
-#     it "should return cusotmers phone number" do
-#       allow($stdin).to receive(:gets).and_return( "7404785572", "1", "2", "2", "1", "checkout")
-#       menu = Menu.new
-#       order = Order.new(menu)
-#       take_order(menu, order)
-#       expect(customer_phone_number).to eq "+447404785572"
-#     end
-#   end

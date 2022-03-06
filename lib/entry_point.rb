@@ -1,13 +1,13 @@
 require_relative 'menu'
 require_relative 'order'
 require_relative 'bill'
+require_relative 'twilio'
 
 def take_order
     menu = Menu.new
     order = Order.new(menu)
     puts "Kindly provide your ten digit mobile number:"
-    @ten_digit_mobile_number = $stdin.gets.chomp
-    order.send_the_delivery_notification(customer_phone_number)
+    ten_digit_mobile_number = $stdin.gets.chomp
     puts "Enter checkout to end the order input"
     loop do
       menu.display_menu_card
@@ -20,11 +20,8 @@ def take_order
     end
 
     bill = Bill.new(order, menu)
-    bill.generate_bill
+    puts bill.generate_bill
+    puts "Your order has been accepted"
+    TwilioClient.send_message("+44" + ten_digit_mobile_number)
 
-  end
-
-  def customer_phone_number
-    country_code = "+44"
-    mobile_number_with_country_code = country_code + @ten_digit_mobile_number
   end
