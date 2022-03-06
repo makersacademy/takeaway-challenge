@@ -15,7 +15,7 @@ class Menu
     }
   end
 
-  def list_dishes
+  def view_dishes
     @dishes.each { |item, price| puts "#{item} £#{price}" }
   end
 
