@@ -1,19 +1,19 @@
 require 'bill'
 
 describe Bill do
-  describe ".display_bill" do
+  describe ".generate_bill" do
     it "should return the total cost of the order with order details" do
       menu = Menu.new
       order = Order.new(menu)
       bill = Bill.new(order, menu)
-      order.take_order(1, 2)
-      order.take_order(2, 1)
-      expect(bill.display_bill).to eq nil
+      order.add_order(1, 2)
+      order.add_order(2, 3)
+      expect(bill.generate_bill).to eq nil
     end
 
   end
 
-  describe ".display_bill" do
+  describe ".generate_bill" do
     def with_captured_stdout
       original_stdout = $stdout
       $stdout = StringIO.new
@@ -26,10 +26,10 @@ describe Bill do
       menu = Menu.new
       order = Order.new(menu)
       bill = Bill.new(order, menu)
-      order.take_order(1, 2)
-      order.take_order(2, 1)
-      str = with_captured_stdout { bill.display_bill }
-      expect(str).to eq "Vegan Burger --> 2 * 15\nEaling + Chips --> 1 * 15\n-----------------------------------\ntotal = 45\n"
+      order.add_order(1, 2)
+      order.add_order(2, 3)
+      str = with_captured_stdout { bill.generate_bill }
+      expect(str).to eq "Vegan Burger --> 2 * 15\nEaling + Chips --> 3 * 15\n-----------------------------------\ntotal = 75\n-----------------------------------\n\nEnter continue if you are happy to proceed with the order:\n"
     end
 
   end
@@ -39,29 +39,19 @@ describe Bill do
       menu = Menu.new
       order = Order.new(menu)
       bill = Bill.new(order, menu)
-      order.take_order(1, 2)
-      order.take_order(2, 1)
-      expect(bill.total_amount).to eq 45
+      order.add_order(1, 2)
+      order.add_order(2, 3)
+      expect(bill.total_amount).to eq 75
     end
   end
 
-  describe ".customer_phone_number" do
-    it "shoudl return the customer number with country code +44" do
+  describe ".continue_with_the_order?" do
+    it "should call order_accepted when typed continue" do
+      allow($stdin).to receive(:gets).and_return("continue")
       menu = Menu.new
       order = Order.new(menu)
       bill = Bill.new(order, menu)
-      bill.customer_phone_number
-      expect(bill.my_number).to eq "+447404785572"
-    end
-
-  end
-
-  describe ".order_accepted" do
-    it "should send a message to the customer saying the order will be delivered before 8:52" do
-      menu = Menu.new
-      order = Order.new(menu)
-      bill = Bill.new(order, menu)
-      bill.order_accepted
+      bill.continue_with_the_order?
     end
 
   end

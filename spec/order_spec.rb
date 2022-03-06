@@ -12,15 +12,12 @@ describe Order do
 
   end
 
-  describe ".take_order" do
-    it "should ask for the order" do
-      menu = Menu.new
-      order = Order.new(menu)
-      order.take_order(1, 2)
-      order.take_order(2, 1)
-      expect(order.order_list).to eq "Ealing + Chips"=>1, "Vegan Burger"=>2
-    end
-
-  end
+  # describe ".order_accepted" do
+  #   it "should call sen_message"
+  #   allow(TwilioClient).to receive(:customer_phone_number).and_return "+447404785572"
+  #   menu = Menu.new
+  #   order = Order.new(menu)
+  #   order.order_accepted
+  # end
 
 end
