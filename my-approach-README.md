@@ -15,20 +15,20 @@ I would like to see a list of dishes with prices
 _Breaking down this User Story:_
 
 We can create a single **Dish** class that will describe the Dish objects like their name and price
-- [ ] Create a tests for the Dish class, check to ensure a name and price can be stored correctly on the object
-- [ ] Make those tests pass 
-- [ ] Refactor your solution
+- [x] Create a tests for the Dish class, check to ensure a name and price can be stored correctly on the object
+- [x] Make those tests pass 
+- [x] Refactor your solution
 
 Create a **Dishes** Class that will represent all the dishes currently offered at the takeaway
 
 _Create the following tests for the Dishes Class:_
-- [ ] It should initialize Dish objects on creation, they should be saved in an array called **list**
-- [ ] It should be able to initialize any number of Dish objects 0 included.
-- [ ] It should have a method to **see_dishes**
-- [ ] **see_dishes** should display dishes using string interpolation with their name followed by price
+- [x] It should initialize Dish objects on creation, they should be saved in an array called **list**
+- [x] It should be able to initialize any number of Dish objects 0 included.
+- [x] It should have a method to **see_dishes**
+- [x] **see_dishes** should display dishes using string interpolation with their name followed by price
 
-- [ ] Make those tests pass
-- [ ] Refactor your solution
+- [x] Make those tests pass
+- [x] Refactor your solution
 
 After the above is completed the user should now be able to see the list of dishes with their prices included. 
 
