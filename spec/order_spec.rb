@@ -47,6 +47,11 @@ Order Total £22.5
 output
       ).to_stdout
     end
+
+    it 'raises an error if basket is empty' do
+      msg = "Your basket is currently empty. Please add item first."
+      expect { my_order.view_basket }.to raise_error msg
+    end
   end
 
   describe '#place_order' do
@@ -54,6 +59,11 @@ output
       my_order.add_dish('Pizza')
       my_order.add_dish('Pizza')
       expect(my_order.place_order(20)).to eq "Thank you for your order!"
+    end
+
+    it 'raises an error if basket is empty' do
+      msg = "Your basket is currently empty. Please add item first."
+      expect { my_order.place_order(2) }.to raise_error msg
     end
 
     it 'raises an error if payment is not equal to the total' do

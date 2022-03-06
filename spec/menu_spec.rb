@@ -9,7 +9,7 @@ describe Menu do
 
   describe '#view_dishes' do
     it 'prints a list of dishes with prices' do
-      expect { menu.list_dishes }.to output(<<-output
+      expect { menu.view_dishes }.to output(<<-output
 Olives £2.5
 Pizza £10
 Pasta £12

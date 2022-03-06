@@ -20,11 +20,13 @@ class Order
   end
 
   def view_basket
+    check_empty_basket
     print_subtotals
     print_total
   end
 
   def place_order(payment)
+    check_empty_basket
     review_payment(payment)
     thank_you(payment)
   end
@@ -52,6 +54,15 @@ class Order
   def print_total
     puts "----------------"
     puts "Order Total £#{checkout_total}"
+  end
+  
+  def empty_basket?
+    @basket.empty? || @basket.values.all? { |value| value <= 0 }
+  end
+
+  def check_empty_basket
+    msg = "Your basket is currently empty. Please add item first."
+    raise msg if empty_basket?
   end
 
   def review_payment(payment)
