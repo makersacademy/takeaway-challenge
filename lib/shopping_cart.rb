@@ -18,6 +18,12 @@ class ShoppingCart
     @cart_contents << @array_object
   end
 
+  def show_contents
+    @cart_contents.map { |dish| "#{dish.name} - £#{dish.price}" }.join("\n") + "\nTOTAL - £#{total}"
+  end
+
+  private
+
   def total
     sum = 0
     @cart_contents.each do |dish|
@@ -25,8 +31,6 @@ class ShoppingCart
     end
     sum
   end
-
-  # private 
 
   def find_user_input_in_available_dishes(dish_user_input)
     @available_dishes.array_of_dishes.find { |dish| dish.name == dish_user_input }

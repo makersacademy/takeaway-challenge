@@ -7,7 +7,7 @@ class AvailableDishes
   end
 
   def show_dishes
-    array_of_dishes.map { |dish| "#{dish.name} - £#{dish.price}" }.join("\n")
+    @array_of_dishes.map { |dish| "#{dish.name} - £#{dish.price}" }.join("\n")
   end
 
 end
