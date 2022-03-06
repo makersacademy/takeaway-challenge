@@ -28,5 +28,3 @@ cart.add_dish("Pepperoni")
 # p sum
 
 p cart.total
-
-
