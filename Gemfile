@@ -13,3 +13,4 @@ group :development, :test do
 end
 
 gem 'twilio-ruby', '~> 5.65.0'
+gem 'dotenv'
