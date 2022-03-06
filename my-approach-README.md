@@ -43,4 +43,39 @@ Try to read through the code, consider the names of the methods. Do they describ
 
 
 
+#### User Story 2
+
+```
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+```
+
+_Breaking down this user story_
+
+Since we have no way for the user to select his meals, we change the **list** array into a hash. The keys will be the **meal-numbers** and the value will be the dish objects. This way the users can choose what meals they want by the meal numbers
+
+- [ ] change the **list** variable into a hash, where the keys represent meal numbers and the values are the Dish objects
+- [ ] change the output of #see_dishes to incorporate dish numbers
+- [ ] Add some instructions to the user at the end of the #see_dishes output on how to order
+- [ ] check to see if any tests are broken and fix any issues
+
+We then need a new method for selecting dishes (#select_dishes) this should initialize a new object called Order this will handle storing the order from the user and anything else to do with modifying the order.
+
+_Create the following tests for Dishes:_
+- [ ] The #select_dishes method should take an array of numbers as an argument
+- [ ] It should output an array of chosen dishes and save this to a parameter called **chosen_dishes**
+- [ ] It should also initialize a new Order object
+
+- [ ] Make the above tests pass
+- [ ] refactor your code
+
+_Create the following tests for Order:_
+- [ ] It should take 1 argument and save it to current order
+
+- [ ] Make this test pass
+- [ ] Refactor your code
+
+
+
 
