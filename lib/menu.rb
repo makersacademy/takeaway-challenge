@@ -1,4 +1,4 @@
-require_relative 'dish'
+# require_relative 'dish'
 
 class Menu
   def initialize
