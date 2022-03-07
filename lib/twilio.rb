@@ -10,11 +10,12 @@ class TwilioClient
 
   def self.send_message(to_number)
     to = to_number # Your mobile phone number
+    t = Time.now
 
     @@client.messages.create(
     from: @@from,
     to: to,
-    body: "Thank you! Your order was placed and will be delivered before 18:52"
+    body: "Thank you! Your order was placed and will be delivered before #{t.hour+1}:#{t.min}"
     )
   end
 
