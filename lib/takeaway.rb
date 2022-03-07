@@ -18,3 +18,5 @@ class Takeaway
   end
 
 end
+
+puts ENV['ACCOUNT_SID']

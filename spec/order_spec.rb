@@ -34,7 +34,7 @@ describe Order do
       expect(subject.order_total).to eq 0
     end
   
-    it 'should total the sum of items added' do
+    it 'should return the formatted total' do
       subject.add(cod)
       subject.add(chips)
       subject.add("Gravy")
