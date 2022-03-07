@@ -174,6 +174,8 @@ Your total is 38.0
 
 With a basket in the form of a hash, the bill cannot separate multiple orders of the same dish (although it does charge the correct amount).
 
+I would also implement a separate Dish class to populate the Menu manually so the program can be reused for other restaurants.
+
 ## Technologies Used
 -------
 
