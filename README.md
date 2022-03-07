@@ -81,3 +81,15 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+please use my-approach-README.md to see a detailed account of my progress.
+
+I managed to get to the third User Story before I had to pull my changes to Github, will continue past the deadline and see if I can finish.
+
+I managed to make all of the classes, They adhere to the SRP quite well. To continue I need to add a Check_total method which prints something similar to a receipt for the user to see his order and total. 
+
+The Check_total method would requite possibly one or two private methods to support it, one to provide the name and price of each dish and another to total up the prices for all chosen dishes.
+
+And for the final user story I would need to use 'require Time' so I can record the current time the order was placed and provide the final message. This should automatically be called when the create order method is called.
+
+Finally, I believe the Dishes class may now have too many responsibilities, I might move the create order method to the Order class. 
