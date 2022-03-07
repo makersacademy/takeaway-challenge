@@ -14,20 +14,15 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+Installation
 -----
 
-* Fork this repo
+* Fork this repo and clone to your local drive
 * Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+
+Instructions
+---------
+Write a Takeaway program with the following user stories:
 
 ```
 As a customer
@@ -66,18 +61,29 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 >
 > :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+Tests
+-----
+There are a series of tests which can be run with the following (from the directory):
+```
+rspec
+```
+To run tests from specific class files, this can be done by:
+```
+rspec spec/<filename>.rb
+```
 
+Approach to challenge
+-----
+I created a UML diagram to model out the code to see what it would look like prior to writing any code or tests - as shown below.
 
-In code review we'll be hoping to see:
+![Screenshot 2022-03-05 at 13 37 08](https://user-images.githubusercontent.com/74867241/156885777-41655a4a-b22a-466c-92c1-ad6ed447c52b.png)
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Upon working through the challenge, I realised that perhaps another class 'Takeaway' would be appropriate. I therefore amended the diagram as shown below.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+![Screenshot 2022-03-06 at 17 19 20](https://user-images.githubusercontent.com/74867241/156934224-48983305-3dbc-429c-bf3c-f2ddc382b3b6.png)
 
-Notes on Test Coverage
-------------------
+I followed a strict TDD approach and ensured that I used mocking and doubles across various classes. I had a vague thought that dependency injection would be required, however as I had only been briefly exposed to this concept during this weeks Oystercard challenge, I was not confident enough to apply it. 
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+To complete the challenge I would be required to:
+* Complete the 4th user story where I would implement the Twilio API
+* Include tests for edge cases 
