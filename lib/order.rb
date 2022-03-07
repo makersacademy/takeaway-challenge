@@ -1,5 +1,5 @@
 require_relative 'menu'
-# require_relative 'sms'
+require_relative 'sms'
 
 class Order
   attr_reader :basket
@@ -39,12 +39,15 @@ class Order
   def complete_order
     calculate_order_price
     @basket = []
-    # send_sms #would be added once twilio functionality added
+    send_sms #would be added once twilio functionality added
   end
 
-  # def send_sms  
-  #   text = SMS.new
-  #   message = "Thank you! Your order was placed and will be delivered before #{(Time.now + 3600).strftime("%k:%M")}"
-  # end
+  private
+
+  def send_sms  
+    text = SMS.new
+    message = "Thank you! Your order was placed and will be delivered before #{(Time.now + 3600).strftime("%k:%M")}"
+    text.send_sms(message)
+  end
 
 end
