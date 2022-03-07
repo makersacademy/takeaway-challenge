@@ -10,7 +10,7 @@ describe Dishes do
   coke = Dish.new("Large Coke", 3)
 
   # Now lets create a menu to use in our tests
-  mcdonalds_menu = Dishes.new([cheeseburger, fish_burger, mcflurry, fries, coke])
+  mcdonalds_menu = Dishes.new([1 => cheeseburger, 2 => fish_burger, 3 => mcflurry, 4 => fries, 5 => coke])
 
   # Also create a small menu with just one dish
   small_menu = Dishes.new([{1 => cheeseburger}])
@@ -24,7 +24,7 @@ describe Dishes do
   end 
 
   it "should save all 5 dish objects in the list array" do
-    expect(mcdonalds_menu.list.length).to eq (5)
+    expect(mcdonalds_menu.list[0][5]).to eq (coke)
   end
 
   describe "#see_dishes" do
@@ -44,6 +44,18 @@ describe Dishes do
       expect do
         subject.see_dishes
       end.to output("#{help_message}").to_stdout
+    end
+  end
+
+  describe "#select_dishes" do
+    it "should not raise an error when passed an argument" do
+      expect do
+        mcdonalds_menu.select_dishes([1, 3, 4])
+      end.not_to raise_error
+    end
+
+    it "should take an array of numbers as an argument and output the corresponding dishes" do
+      expect(mcdonalds_menu.select_dishes([1, 3, 4])).to eq([cheeseburger, mcflurry, fries])
     end
   end
 

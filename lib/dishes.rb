@@ -15,4 +15,12 @@ class Dishes
     puts "Please use the numbers on the left to choose your dishes"
   end
 
-end
+  def select_dishes(selection)
+    @chosen_dishes = []
+    selection.each do |meal_number|
+      @chosen_dishes.push(list[0][meal_number])
+    end
+    @chosen_dishes
+  end
+
+end 

@@ -63,11 +63,10 @@ Since we have no way for the user to select his meals, we change the **list** ar
 We then need a new method for selecting dishes (#select_dishes) this should initialize a new object called Order this will handle storing the order from the user and anything else to do with modifying the order.
 
 _Create the following tests for Dishes:_
-- [ ] The #select_dishes method should take an array of numbers as an argument
-- [ ] It should output an array of chosen dishes and save this to a parameter called **chosen_dishes**
-- [ ] It should also initialize a new Order object
+- [x] The #select_dishes method should take an array of numbers as an argument
+- [x] It should output an array of chosen dishes and save this to a parameter called **chosen_dishes**
 
-- [ ] Make the above tests pass
+- [x] Make the above tests pass
 - [ ] refactor your code
 
 _Create the following tests for Order:_
