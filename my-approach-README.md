@@ -75,6 +75,20 @@ _Create the following tests for Order:_
 - [x] Make this test pass
 - [x] Refactor your code
 
+After conducting a feature test, I decided to add a new method for the Dishes class called #create_order. This will be resposible for creating the final order after the user has selected his dishes using #select_dishes
+
+
+#### User Story 3
+```
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+```
+
+_Create the following tests for Order:_
+
+
+
 
 
 

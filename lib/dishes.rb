@@ -1,4 +1,5 @@
 require_relative "dish"
+require_relative "order"
 class Dishes
   attr_reader :list
 
@@ -20,6 +21,11 @@ class Dishes
     dish_finder(selected_meal_numbers)
     @chosen_dishes
   end
+
+  def create_order
+    Order.new(@chosen_dishes)
+  end
+
 
   private
   def dish_finder(selected_meal_numbers)
