@@ -166,7 +166,7 @@ bolognese: 7.5
 puttanesca: 11.0
 *************
 Your total is 38.0
- => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order was placed and will arrive by 11:50 num_segments: 1 direction: outbound-api from: +16626678674 to: +447867513304 date_updated: 2022-03-06 10:51:00 +0000 price:  error_message:  uri: /2010-04-01/Accounts/ACadafd609098a3ba714c6f6e1917a6ce4/Messages/SM3bd3c82ea0f54256898ed9e9b6e47948.json account_sid: ACadafd609098a3ba714c6f6e1917a6ce4 num_media: 0 status: queued messaging_service_sid:  sid: SM3bd3c82ea0f54256898ed9e9b6e47948 date_sent:  date_created: 2022-03-06 10:51:00 +0000 error_code:  price_unit: USD api_version: 2010-04-01 subresource_uris: {"media"=>"/2010-04-01/Accounts/ACadafd609098a3ba714c6f6e1917a6ce4/Messages/SM3bd3c82ea0f54256898ed9e9b6e47948/Media.json"}> 
+ => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you! Your order was placed and will arrive by 11:50> 
 ```
 
 ## Improvements Needed
