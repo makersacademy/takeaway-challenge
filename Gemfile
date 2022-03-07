@@ -13,4 +13,5 @@ group :development, :test do
   gem 'rack'
   gem 'twilio-ruby'
   gem 'dotenv'
+  gem 'artii'
 end
