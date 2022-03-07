@@ -14,4 +14,5 @@ group :development, :test do
   gem 'rubocop', '1.20'
   gem "twilio-ruby", "~> 5.65.0"
   gem "rack"
+  gem 'dotenv-rails'
 end

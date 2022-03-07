@@ -12,6 +12,7 @@ describe ".take_order" do
   end
 
   it "should test successful order placing" do
+    allow(TwilioClient).to receive(:send_message).and_return nil
     allow($stdin).to receive(:gets).and_return("7404785572", "1", "2", "2", "1", "done", "yes")
     str = with_captured_stdout { take_order }
     expect(str).to include "total = 45"

@@ -33,7 +33,7 @@ def continue_with_the_order?(ten_digit_mobile_number)
   input = $stdin.gets.chomp
   if input == "yes"
     puts "Your order has been accepted"
-    # TwilioClient.send_message("+44" + ten_digit_mobile_number) # uncomment tomorrow
+    TwilioClient.send_message("+44" + ten_digit_mobile_number) # uncomment tomorrow
   else
     puts "Your order was not placed. See you soon!"
   end
