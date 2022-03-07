@@ -1,4 +1,6 @@
 class Menu
+  attr_reader :menu
+
   def initialize
     @menu = {
       "Pizza" => 8,
@@ -12,7 +14,6 @@ class Menu
   end
 
   def see_menu
-    @menu.each {|dish, price| puts "#{dish} - £#{price}"}
+    @menu.each { |dish, price| puts "#{dish} - £#{price}" }
   end
 end
-
