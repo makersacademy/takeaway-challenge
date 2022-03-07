@@ -67,13 +67,13 @@ _Create the following tests for Dishes:_
 - [x] It should output an array of chosen dishes and save this to a parameter called **chosen_dishes**
 
 - [x] Make the above tests pass
-- [ ] refactor your code
+- [x] refactor your code
 
 _Create the following tests for Order:_
-- [ ] It should take 1 argument and save it to current order
+- [x] It should take 1 argument and save it to current order
 
-- [ ] Make this test pass
-- [ ] Refactor your code
+- [x] Make this test pass
+- [x] Refactor your code
 
 
 
