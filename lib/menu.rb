@@ -1,8 +1,12 @@
 class Menu
-  # attr_reader :dishes
-
   def initialize
     @dishes = []
+  end
+  
+  # Passes a Dish instance into the array
+  # This allows all of the Dish methods to be called
+  def add_dish(dish)
+    @dishes << dish
   end
 
   def list_dishes
@@ -21,9 +25,5 @@ class Menu
     dish = @dishes.find { |dish| dish.name == search_name }
     puts 'No such dish' if dish.nil?
     dish
-  end
-
-  def add_dish(dish)
-    @dishes << dish
   end
 end

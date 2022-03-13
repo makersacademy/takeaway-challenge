@@ -51,8 +51,12 @@ class Takeaway
   end
 
   def current_order
-    @active_order = @active_order.nil? ? @order_template.dup : @active_order
+    @active_order ||= @order_template.dup
   end
+
+  # def current_order
+  #   @active_order = @active_order.nil? ? @order_template.dup : @active_order
+  # end
 
   def confirmation_string
     "Thank you! Your order was placed and will be delivered before #{time_in_an_hour}"
