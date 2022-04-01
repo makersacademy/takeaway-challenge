@@ -1,28 +1,40 @@
 require 'byebug'
-
-MENU = {
-  "Samosas" => 5.20,
-  "Chilli Chicken" => 7.50,
-  "Pau Bhaji" => 5.90,
-  "Chicken Ruby"  => 12.9, 
-  "Mattar Paneer" => 11.9, 
-  "Chole" => 9.50,
-  "Black Daal" => 7.50
-}
+require 'order_confirmation'
 
 class Takeaway
 
-  attr_accessor :menu_items, :args
+  attr_reader :menu, :args
+
+  MENU = {
+    "Samosas" => 5,
+    "Chilli Chicken" => 7,
+    "Pau Bhaji" => 5,
+    "Chicken Ruby"  => 12, 
+    "Mattar Paneer" => 11, 
+    "Chole" => 9,
+    "Black Daal" => 7
+  }
+
+  def initialize 
+    @clients_order = []
+  end
 
   def view_menu
     MENU
   end
 
-  def order(*args)
-    "Your ordered items are #{@args}" 
+  def select_dishes(*args)
+    @args = args
+    @clients_order.push(@args).flatten
   end
 
-  def receipt
-    MENU.select{|key, value| p value }
+  def check_total
+    order_total = @clients_order.flatten.map{ |value| MENU.fetch(value)}
+    order_total.sum
+  end
+  
+  def order_confirmation
+    order_confirmation = Order_confirmation.new
+    order_confirmation.text_message
   end
 end
