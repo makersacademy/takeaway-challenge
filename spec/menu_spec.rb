@@ -15,5 +15,7 @@ describe Menu do
       subject.add_item("Rice",4)
       expect(subject.full_list).to eq [{ item: "Rice", price: 4 }]
     end
+  
   end
+
 end

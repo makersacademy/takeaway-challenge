@@ -1,6 +1,6 @@
 require 'sendsms'
 class Order
-  attr_reader :takeaway_class, :final_order, :total_price, :message, :time
+  attr_reader :takeaway_class, :final_order, :total_price, :message, :time, :text_message
   
   def initialize(takeaway_class)
     @takeaway_class = takeaway_class
@@ -47,6 +47,6 @@ class Order
 
   def send_message
     message = "Thank you! Your order was placed and will be delivered before #{@time}" 
-    SendSms.new(message)
+    text_message = SendSms.new(message)
   end
 end

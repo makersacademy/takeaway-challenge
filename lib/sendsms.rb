@@ -1,8 +1,8 @@
 require 'twilio-ruby'
 
-
 class SendSms
-  
+  attr_reader :text_message
+
   def initialize(message)
     @text_message = message
     account_sid = ENV['account_sid']
