@@ -1,4 +1,4 @@
-require 'sendsms'
+#require 'sendsms'
 class Order
   attr_reader :takeaway_class, :final_order, :total_price, :message, :time, :text_message
   
@@ -11,6 +11,7 @@ class Order
   def item_selection(no_items, item)
     item_total = item_calculator(no_items, item)
     @final_order << { no_items: no_items, item: item, item_total: item_total }
+    p "you have selected #{no_items} x => #{item}'s"
   end
 
   def item_calculator(no_items, item)
@@ -46,7 +47,8 @@ class Order
   end
 
   def send_message
+    time_generator
     message = "Thank you! Your order was placed and will be delivered before #{@time}" 
-    text_message = SendSms.new(message)
+    SendSms.new(message)
   end
 end

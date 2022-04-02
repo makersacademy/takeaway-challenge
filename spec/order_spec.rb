@@ -25,13 +25,17 @@ describe Order do
       house.item_selection(4, "Samosa")
       expect(house.final_order).to eq [{ no_items: 4, item: "Samosa", item_total: 8 }] 
     end
-
+    it 'let you add items to your order' do
+      indian.add_item("Samosa", 2)
+      expect(house.item_selection(4, "Samosa")).to eq ("you have selected 4 x => Samosa's")
+    end
   end
   
   context '#verification_of_order' do
 
     it 'prints your order' do
       indian.add_item("Samosa", 2)
+      house = Order.new(langley)
       house.item_selection(4, "Samosa")
       expect(house.verify_order).to eq ("Your total is : 8")
     end
