@@ -4,6 +4,8 @@ require_relative 'twilio'
 
 class Takeaway
 
+  attr_reader :order
+
   def initialize(order = Order.new)
     @order = order
     @order_done = false
@@ -37,7 +39,7 @@ class Takeaway
     @order.item_list
     puts "Please type 'yes' to confirm this order"
     confirm = STDIN.gets.chomp
-    @order_done = true if confirm.capitalize.downcase! == 'yes'
+    @order_done = true if confirm.capitalize.downcase! == 'yes' #confirm.capitalize.downcase! so that it will accept 'yes' 'Yes' 'YEs' or any other capitalisation since if just downcase! then 'yes' will return error
   end
 
   def finish
