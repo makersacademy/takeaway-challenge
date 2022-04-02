@@ -61,7 +61,7 @@ Navigate to `http://localhost:4567/`
 
 ### Functional representation
 
-![Functional representation of user stories](https://drive.google.com/file/d/1PxrzzxJXFFHpzVcrHERAXxznjCUtWn1t/view?usp=sharing)
+![Functional representation of user stories](./takeaway_challenge.png)
 
 ----------------------------------------------
 
