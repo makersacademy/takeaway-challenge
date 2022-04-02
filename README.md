@@ -59,5 +59,9 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 Initial ideas regarding what classes will be needed with which instance variables and methods.
 
 ## References
-``` https://www.ellehallal.dev/blog/2018/11/2018-11-16-testing-user-input-with-rspec/```
+``` 
+https://www.ellehallal.dev/blog/2018/11/2018-11-16-testing-user-input-with-rspec/
+https://www.twilio.com/docs/libraries/ruby 
+```
 used the above in order to stub user input
+used the above in order to implement the text message functionality
