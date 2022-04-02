@@ -19,11 +19,6 @@ class Menu
         @menu
     end
 
-
-    def create_order
-        @order = Order.new(@ticket)
-    end
-
     private
 
     def view_order_numbers

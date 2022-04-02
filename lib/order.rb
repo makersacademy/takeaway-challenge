@@ -1,5 +1,6 @@
 require_relative 'dish'
 require_relative 'menu'
+require_relative 'TwilioTextMessenger'
 
 class Order
 
@@ -14,15 +15,25 @@ class Order
 
     def submit_order
         @order = @item_numbers.map { |dish| @menu.menu[dish-1]}
+        send_sms
     end
 
-    def check_order_price
-        calculate_order_price.each { |amount| @total_price+=amount}
-        @total_price
+    def bill
+        prepare_bill
     end
 
     private 
     def calculate_order_price
-        @order.map {|dish| dish.instance_variable_get(:@price)}
+        @amounts = @order.map {|dish| dish.instance_variable_get(:@price)}
+        @amounts.each { |amount| @total_price+=amount}
+        "Total to pay: £#{@total_price}"
+    end
+
+    def prepare_bill
+        @order.each { |dish| puts "#{dish.name}: £#{dish.price}"}
+    end
+
+    def send_sms
+        TwilioTextMessenger.new
     end
 end

@@ -14,6 +14,5 @@ class Dish
     def price
         @price
     end
-
-
+    
 end
