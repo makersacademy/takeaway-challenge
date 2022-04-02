@@ -1,4 +1,6 @@
 class Menu
+  
+attr_reader :menu
 
   MENU_HASH = { 
     "Fried Rice" => 6.0,
