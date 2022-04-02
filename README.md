@@ -45,16 +45,16 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 ## Domain Model Diagram
 
 | name     | takeaway        | order                    | menu               | twilio                    |
-| -------- | --------------- | ---------------------    | ------------------ | ------------------------- | 
+| -------- | -------------   | ---------------------    | ------------------ | ------------------------- | 
 |          |                 | @order: hash, reader     | @menu: hash, reader| @app_token: string, hidden|
 | variables|                 |                          |                    |                           |
 |          |                 |                          |                    |                           |
-| -------- | --------------- | ---------------------    | ------------------ | ------------------------- |
+| -------- | -------------   | ---------------------    | ------------------ | ------------------------- |
 |          | take_order      | add_to_order(item, qty)  | show_menu          | send_message(to)          |
 | methods  |                 | receipt                  |                    |                           |
 |          |                 | place_order              |                    |                           |
 |          |                 |                          |                    |                           |
-| -------- | --------------- | ---------------------    | ------------------ | ------------------------- |
+| -------- | -------------   | ---------------------    | ------------------ | ------------------------- |
 
 Initial ideas regarding what classes will be needed with which instance variables and methods.
 

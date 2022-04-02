@@ -6,17 +6,20 @@ class Takeaway
 
   attr_reader :order
 
-  def initialize(order = Order.new)
+  def initialize(order = Order.new, text_client = TwilioClient.new)
     @order = order
     @order_done = false
+    @text_client = text_client
   end
 
   def take_order
     puts "Welcome to Su's takeaway"
     @order.show_menu
+    puts "Please enter your 10 digit mobile number"
+    number = STDIN.gets.chomp
     order_dish
     if @order_done == true
-      finish
+      confirm_order(number)
     else
       order_dish
     end
@@ -42,13 +45,13 @@ class Takeaway
     @order_done = true if confirm.capitalize.downcase! == 'yes' #confirm.capitalize.downcase! so that it will accept 'yes' 'Yes' 'YEs' or any other capitalisation since if just downcase! then 'yes' will return error
   end
 
-  def finish
-    confirmation_text
+  def confirm_order(number)
+    confirmation_text(number)
     @order.finish_order
   end
 
-  def confirmation_text
-
+  def confirmation_text(number)
+    @text_client.send_text("+44" + number)
   end
 
 end

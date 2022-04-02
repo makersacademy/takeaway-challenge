@@ -5,7 +5,7 @@ describe Takeaway do
   let(:takeaway) { described_class.new(order_class)}
 
   it 'should be able to take a order and return the price' do
-    allow(STDIN).to receive(:gets).and_return("1", "1", "", "yes")
+    allow(STDIN).to receive(:gets).and_return("7712424689","1", "1", "", "yes")
     allow(order_class).to receive(:show_menu)
     allow(order_class).to receive(:dish_name).and_return("Fried Rice")
     allow(order_class).to receive(:add_to_order).and_return({ "Fried Rice" => 1 })
