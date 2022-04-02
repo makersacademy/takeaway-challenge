@@ -10,7 +10,7 @@ burger = my_menu.new_dish("Big Bad Burger", 13)
 sundae = my_menu.new_dish("Biscoff Sundae", 6)
 
 puts "Let's take a look at the menu"
-menu.view
+my_menu.view_menu
 
 puts "Let's select some dishes for a meal for two"
 menu.select("Cauliflower Buffalo Wings", 1)
