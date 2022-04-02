@@ -1,13 +1,11 @@
+require_relative './menu'
+
 class Takeaway
-  def initialize
-    @menu = [
-      { name: "Korma", price: 8.50 },
-      { name: "Jalfrezi", price: 9.00 },
-      { name: "Tikka Masala", price: 8.00 }
-    ]
+  def initialize(menu = Menu.new)
+    @menu = menu
   end
 
-  def list_menu
-    @menu.map { |item| "#{item[:name]}: £#{item[:price]}0" }.join("\n")
+  def show_menu
+    @menu.list_items
   end
 end
