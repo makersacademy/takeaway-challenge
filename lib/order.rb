@@ -4,7 +4,7 @@ class Order
   attr_reader :order
 
   def initialize(menu = Menu.new)
-    @order = Hash.new{0}
+    @order = Hash.new { 0 }
     @menu = menu
   end
 
@@ -38,7 +38,9 @@ class Order
   def item_list
     @order.each do |item, quantity| 
       price = menu[item]
-      puts "#{quantity}x #{item} £#{'%.2f' % price} each" end
+      multi_price = price * quantity
+      puts "#{quantity}x #{item} £#{'%.2f' % multi_price}" 
+    end
   end
 
   def menu
