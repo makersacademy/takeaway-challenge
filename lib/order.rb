@@ -1,6 +1,6 @@
 require 'sendsms'
 class Order
-  attr_reader :takeaway_class, :final_order, :total_price, :message
+  attr_reader :takeaway_class, :final_order, :total_price, :message, :time
   
   def initialize(takeaway_class)
     @takeaway_class = takeaway_class
@@ -37,7 +37,6 @@ class Order
       order_line.each { |_key,value| print " | #{value} | " }
     end
     total_calculator
-    send_message
     "Your total is : #{@total_price}"
   end
   

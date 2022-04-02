@@ -37,4 +37,20 @@ describe Order do
       expect(house.verify_order).to eq ("Your total is : 8")
     end
   end
+
+  context '#time_generator' do
+    it 'genrates current time + 1 hour' do
+      langley = Takeaway.new(indian)
+      house = Order.new(langley)
+      expect(house.time_generator).to eq(house.time)
+    end
+  end
+  context '#sendsms' do
+    it 'sends sms confirmation to the customer to confirm delivery time' do
+      langley = Takeaway.new(indian)
+      house = Order.new(langley)
+      allow(house).to receive(:send_message) {"Thank you! Your order was placed and will be delivered before 19:26"}
+      expect(house.send_message).to eq "Thank you! Your order was placed and will be delivered before 19:26"
+    end
+  end
 end
