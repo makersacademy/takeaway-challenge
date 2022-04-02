@@ -44,17 +44,17 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Domain Model Diagram
 
-| name      | takeaway                  | order                          | menu                      | twilio                    |
-| ----------| -------------------- | ------------------------- | -------------------- | -------------------- | 
-|           |                           | @order: hash, reader           | @menu: hash, reader       | @app_token: string, hidden|
-| variables |                           |                                |                           |
-|           |                           |                                |                           |                           |
-| ----------| --------------------| -------------------------- | -------------------- | -------------------- |
-|           | take_order                | add_to_order(item, quantity)   | show_menu                 | send_message(to)          |
-| methods   |                           | receipt                        |                           |                           |
-|           |                           | place_order                    |                           |                           |
-|           |                           |                                |                           |                           |
-| ----------| -------------------- | ------------------------- | -------------------- | -------------------- |
+| name     | takeaway        | order                    | menu               | twilio                    |
+| ---------| --------------- | ------------------------ | ------------------ | ------------------------- | 
+|          |                 | @order: hash, reader     | @menu: hash, reader| @app_token: string, hidden|
+| variables|                 |                          |                    |                           |
+|          |                 |                          |                    |                           |
+| ---------| --------------- | ------------------------ | ------------------ | ------------------------- |
+|          | take_order      | add_to_order(item, qty)  | show_menu          | send_message(to)          |
+| methods  |                 | receipt                  |                    |                           |
+|          |                 | place_order              |                    |                           |
+|          |                 |                          |                    |                           |
+| ---------| --------------- | ------------------------ | ------------------ | ------------------------- |
 
 Initial ideas regarding what classes will be needed with which instance variables and methods.
 
@@ -63,5 +63,5 @@ Initial ideas regarding what classes will be needed with which instance variable
 https://www.ellehallal.dev/blog/2018/11/2018-11-16-testing-user-input-with-rspec/
 https://www.twilio.com/docs/libraries/ruby 
 ```
-used the above in order to stub user input
+used the above in order to stub user input\
 used the above in order to implement the text message functionality
