@@ -1,4 +1,4 @@
-Takeaway Challenge
+David Campbell - Takeaway Challenge - Weekend 2
 ==================
 ```
                             _________
@@ -30,6 +30,10 @@ Task
 * Write a Takeaway program with the following user stories:
 
 ```
+
+user story modelling - https://docs.google.com/document/d/1r0EHAC_h9FZ6FXlEyc3kKvhB3UhVAegkIu0y0tP7TdY/edit
+
+# User Story 1:
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
