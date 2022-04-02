@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
   let(:order_class) { double "order_class" }
   let(:text_client) { double "text_client" }
-  let(:takeaway) { described_class.new(order_class, text_client)}
+  let(:takeaway) { described_class.new(order_class, text_client) }
 
   it 'should be able to take a order and return the price' do
     allow(STDIN).to receive(:gets).and_return("1111111111","1", "1", "", "yes")
