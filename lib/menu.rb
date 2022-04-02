@@ -5,13 +5,15 @@
 # can be asked to select a dish from list and add it to basket
 
 require_relative './dish'
+require_relative './basket'
 
 class Menu
-  attr_reader :available_dishes
+  attr_reader :available_dishes, :dish_class, :basket
   
-  def initialize(dish_class = Dish)
+  def initialize(dish_class = Dish, basket = Basket.new)
     @available_dishes = []
     @dish_class = dish_class
+    @basket = basket
   end
 
   def new_dish(name, price)
@@ -22,6 +24,15 @@ class Menu
     @available_dishes.each do |dish|
       puts "#{dish.name}: £ #{dish.price}"
     end
+  end
+
+  def select_dish(name, number)
+    @available_dishes.each do |dish|
+      if dish.name == name
+        number.times { @basket.add_to_basket(dish) }
+      end
+    end
+    @basket.basket_contents
   end
 
 end
