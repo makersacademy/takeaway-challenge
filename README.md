@@ -44,14 +44,16 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Domain Model Diagram
 
-| name      | user_interface            | order                          | menu                      | twilio                    |
+| name      | takeaway                  | order                          | menu                      | twilio                    |
 | ----------| ------------------------- | ------------------------------ | ------------------------- | ------------------------- | 
 |           |                           | @order: hash, reader           | @menu: hash, reader       | @app_token: string, hidden|
-| variables |                           | @current_orders: array, reader |                           |                           |
+| variables |                           |                                |                           |
 |           |                           |                                |                           |                           |
 | ----------| ------------------------- | ------------------------------ | ------------------------- | ------------------------- |
-|           | take_order                | place_order(order)             | show_menu                 | send_message(to)          |
+|           | take_order                | add_to_order(item, quantity)   | show_menu                 | send_message(to)          |
 | methods   |                           | receipt                        |                           |                           |
-|           |                           |                                |                           |                           |
+|           |                           | place_order                    |                           |                           |
 |           |                           |                                |                           |                           |
 | ----------| ------------------------- | ------------------------------ | ------------------------- | ------------------------- |
+
+Initial ideas regarding what classes will be needed with which instance variables and methods.
