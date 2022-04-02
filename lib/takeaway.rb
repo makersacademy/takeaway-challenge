@@ -50,6 +50,8 @@ class Takeaway
     @order.finish_order
   end
 
+  private
+
   def confirmation_text(number)
     @text_client.send_text("+44" + number)
   end
