@@ -1,5 +1,6 @@
+require 'sendsms'
 class Order
-  attr_reader :takeaway_class, :final_order, :total_price
+  attr_reader :takeaway_class, :final_order, :total_price, :message
   
   def initialize(takeaway_class)
     @takeaway_class = takeaway_class
@@ -30,12 +31,23 @@ class Order
   end
   
   def verify_order
+    puts "|No. of items| |Item| |Price(£)|"
     final_order.each do |order_line|
       puts
       order_line.each { |_key,value| print " | #{value} | " }
     end
     total_calculator
+    send_message
     "Your total is : #{@total_price}"
   end
+  
+  def time_generator
+    @time = Time.new + 3600
+    @time = time.strftime("%I:%M %p") 
+  end
 
+  def send_message
+    message = "Thank you! Your order was placed and will be delivered before #{@time}" 
+    SendSms.new(message)
+  end
 end
