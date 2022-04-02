@@ -12,11 +12,11 @@ describe Order do
     end
   end
 
-  describe "#place_order" do
-    it 'should be able to place a order of items from the menu, which will then work out the total price' do
+  describe "#finish_order" do
+    it 'should be able to finish placing an order of items from the menu, which will then work out the total price' do
       allow(menu).to receive(:menu).and_return({ "Fried Rice" => 6.0 })
       current_order.add_to_order(0,1)
-      current_order.place_order
+      current_order.finish_order
       expect(current_order.total_cost).to eq(6)
     end
   end

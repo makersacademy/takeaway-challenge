@@ -12,7 +12,7 @@ class Order
     @order[menu.keys[item_index]] += quantity
   end
 
-  def place_order
+  def finish_order
     total_cost
     receipt
   end
@@ -33,7 +33,13 @@ class Order
     total
   end
 
-  private
+  def show_menu
+    @menu.show_menu
+  end
+
+  def dish_name(index)
+    menu.keys[index]
+  end
 
   def item_list
     @order.each do |item, quantity| 
