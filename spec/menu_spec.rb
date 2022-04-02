@@ -28,9 +28,14 @@ describe Menu do
 
   describe 'view_menu' do
 
-    # it 'displays available dishes' do
-    #   expect(menu.)
-    # end
+    it 'displays available dishes' do
+      menu.new_dish( :name_of_dish, :price_of_dish )
+      allow( dish_double ).to receive( :[] ).with( :name ).and_return( :name_of_dish )
+      allow( dish_double ).to receive( :[] ).with( :price ).and_return( :price_of_dish )
+      expect { menu.view_menu }.to output(
+        "#{:name_of_dish}: £ #{:price_of_dish}\n"
+      ).to_stdout 
+    end
 
   end
 

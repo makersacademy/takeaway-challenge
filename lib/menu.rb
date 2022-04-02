@@ -17,4 +17,11 @@ class Menu
   def new_dish(name, price)
     @available_dishes << @dish_class.new(name, price)
   end
+
+  def view_menu
+    @available_dishes.each do |dish|
+      puts "#{dish.name}: £ #{dish.price}"
+    end
+  end
+
 end
