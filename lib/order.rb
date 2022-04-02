@@ -1,5 +1,5 @@
 class Order
-  attr_reader :total_price, :takeaway_class, :final_order
+  attr_reader :takeaway_class, :final_order, :total_price
   
   def initialize(takeaway_class)
     @takeaway_class = takeaway_class
@@ -13,9 +13,29 @@ class Order
   end
 
   def item_calculator(no_items, item)
-    p item
     price_array = @menu.full_list.select { |x| x[:item] == item }
-    price = price_array[0][:price]
-    item_total = no_items * price
+    item_total = (price_array[0][:price]) * no_items
   end
+
+  def total_calculator
+    sum = 0
+    total_price = @final_order.each do |hash|
+      hash.each do |key,value| 
+        if key == :item_total 
+          sum += value 
+        end  
+      end
+      @total_price = sum
+    end
+  end
+  
+  def verify_order
+    final_order.each do |order_line|
+      puts
+      order_line.each { |_key,value| print " | #{value} | " }
+    end
+    total_calculator
+    "Your total is : #{@total_price}"
+  end
+
 end
