@@ -59,9 +59,13 @@ Navigate to `http://localhost:4567/`
 
 ## My approach to the task
 
+### Domain diagram
+
+![Domain diagram from user stories](./takeaway_challenge.png)
+
 ### Functional representation
 
-![Functional representation of user stories](./takeaway_challenge.png)
+![Functional representation of classes](./takeaway-challenge%20functional%20representation.png)
 
 ----------------------------------------------
 
