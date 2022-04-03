@@ -85,4 +85,14 @@ Basket total price: £ 41.00\n"
     end
 
   end
+
+  describe '#items_total' do
+    it 'adds up the prices of the items in the basket' do
+      basket.add_to_basket(dish_double)
+      2.times { basket.add_to_basket(another_dish_double) }
+      basket.add_to_basket(dish_double)
+      basket.add_to_basket(a_third_dish_double)
+      expect(basket.items_total).to eq 41.0
+    end
+  end
 end
