@@ -18,11 +18,12 @@ class Dishes
       @dishes[index + 1] = {"Name" => name, "Price" => price}
     end
     contents.close
+    @dishes
   end
 
   def view_menu
     @dishes.each_with_index do |(key, value), index|
-      puts "#{key}. #{value["Name"]} : £#{value["Price"]}"
+      "#{key}. #{value["Name"]} : £#{value["Price"]}"
     end
   end
 

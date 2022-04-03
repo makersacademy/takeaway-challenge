@@ -16,7 +16,7 @@ Takeaway Challenge
 
 ## Task
 
-We have a request from a client to write the software to control the flow of planes at an airport. The planes can land and take off provided that the weather is sunny. Occasionally it may be stormy, in which case no planes can land or take off.
+In this task, I created a Takeaway program that allows the user to view a menu, add items to the basket, view the basket and send a text to confirm the order will arrive in 1 hour. To make the program versatile with any takeaway, it accesses a CSV file to collect menu information (e.g. food type, dish, price).
 
 I approached this challenge by using a test driven approach:
 
@@ -26,7 +26,6 @@ Create a failing test (red) in rspec
 Develop code to result in a passing test (green) in rspec
 Refactor the code and re-test in rspec (orange)
 Feature test the code in irb
-Once I have 1) high coverage, 2) passing rspec tests, 3) code that fulfills the user story. I will progress to the next user story and repeat steps 1-7
 
 ## Getting started
 
@@ -42,8 +41,20 @@ Run rspec from the main directory to test the code and check coverage
 
 Run code using irb
 
-`require .... # FILE NAME
-`require .... # FILE NAME
+`require './lib/dishes'
+
+## Commands
+
+`order = Dishes.new` - Creates object to allow use of commands
+
+`order.view_menu` - View the restaurant's menu
+
+`order.choose_dish(num)` - Add a dish to the basket
+
+`order.view_basket` - View the basket, including items, price, total number of items and total price
+
+`order.place_order` - Sends a text to confirm the order
+
 
 ## User Stories, Domain Models and Mermaid Diagrams
 
