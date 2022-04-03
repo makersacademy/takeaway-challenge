@@ -44,7 +44,7 @@ describe Takeaway do
 
   context "place order" do
     let (:takeaway) { Takeaway.new }
-    let (:order_confirmation) {OrderConfirmation.new}
+    let (:order_confirmation) { OrderConfirmation.new }
     
 
     it "places an order and confirms it" do

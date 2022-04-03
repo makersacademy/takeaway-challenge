@@ -20,7 +20,7 @@ class Takeaway
   end
 
   def view_menu
-    MENU.map { |dish, price| "#{dish} - £#{price}"}.join(', ')
+    MENU.map { |dish, price| "#{dish} - £#{price}" }.join(', ')
   end
 
   def select_dish(item)
@@ -30,8 +30,8 @@ class Takeaway
   end
 
   def order_with_prices
-    receipt = @clients_order.map { |i| "#{i} - £" + MENU[i].to_s }.join(", ")
-    receipt
+    @clients_order.map { |i| "#{i} - £" + MENU[i].to_s }.join(", ")
+    
   end
 
   def delete_item(item)
