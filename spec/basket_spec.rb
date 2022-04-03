@@ -45,7 +45,7 @@ describe Basket do
 
   describe '#view_basket' do 
 
-    it 'displays selected items' do
+    it 'displays selected items and running total' do # Can I split this test?
       basket.add_to_basket(dish_double)
       2.times { basket.add_to_basket(another_dish_double) }
       basket.add_to_basket(dish_double)
@@ -53,22 +53,21 @@ describe Basket do
       expect { basket.view_basket }.to output(
 "Item: #{a_third_dish_double.name} Number: 1 Subtotal: £ #{a_third_dish_double.price * 1}
 Item: #{another_dish_double.name} Number: 2 Subtotal: £ #{another_dish_double.price * 2}
-Item: #{dish_double.name} Number: 2 Subtotal: £ #{dish_double.price * 2}\n"
+Item: #{dish_double.name} Number: 2 Subtotal: £ #{dish_double.price * 2}
+Basket total price: £ 41.00\n"
       ).to_stdout 
     end
 
-      # 2.times { basket.add_tobasket(another_dish_double) }
+  end
+
+  describe '#check_total' do
+
+    it 'displays the total price of the basket' do
+      basket.add_to_basket(dish_double)
+      2.times { basket.add_to_basket(another_dish_double) }
+      basket.add_to_basket(dish_double)
+      basket.add_to_basket(a_third_dish_double)
+      expect(basket.check_total).to eq 41.0
+    end
   end
 end
-
-=begin
-let(:dish_class_double) { double :dish_class, new: dish_double }
-it 'displays available dishes' do
-  menu.new_dish(:name_of_dish, :price_of_dish)
-  allow(dish_double).to receive(:[]).with(:name).and_return(:name_of_dish) # no need for [] syntax anymore
-  allow(dish_double).to receive(:[]).with(:price).and_return(:price_of_dish)
-  expect { menu.view_menu }.to output(
-    "name_of_dish: £ price_of_dish\n"
-  ).to_stdout 
-end
-=end
