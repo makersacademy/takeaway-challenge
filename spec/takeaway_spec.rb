@@ -23,6 +23,12 @@ describe Takeaway do
       takeaway.take_order
       expect(takeaway.cost).to eq(6)
     end
+
+    it 'if you take order again before confirming or cancelling, will show cost of order' do
+      allow(order_class).to receive(:total_cost).and_return(6)
+      takeaway.take_order
+      expect(takeaway.take_order).to eq(6)
+    end
   end
 
   describe "#place_order" do
@@ -33,6 +39,10 @@ describe Takeaway do
       takeaway.take_order
       takeaway.place_order
       expect(takeaway.cost).to eq(0)
+    end
+
+    it 'cannot place a order without putting a order in yet' do
+      expect { takeaway.place_order }.to raise_error("You have not created a order yet")
     end
   end
 

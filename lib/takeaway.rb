@@ -12,15 +12,19 @@ class Takeaway
 
   def take_order
     puts "Welcome to Su's takeaway"
-    take_number
-    show_menu
+    take_number unless @order_done == true
+    show_menu unless @order_done == true
     edit_order until @order_done == true
     cost
   end
 
   def place_order
-    confirmation_text
-    reset_order
+    if @order_done == true
+      confirmation_text
+      reset_order
+    else
+      fail "You have not created a order yet"
+    end
   end
 
   def cancel_order
