@@ -8,6 +8,10 @@ class Menu
   end
 
   def list_items
-    @items.map { |item| "#{item[:name]}: £#{item[:price]}0" }.join("\n")
+    @items.map do |item| 
+      dish = item[:name]
+      cost = item[:price]
+      "#{dish}: £#{cost}0"
+    end.join("\n")
   end
 end
