@@ -20,10 +20,8 @@ class Basket
   end
 
   def view_basket
-    grouped_basket = @basket_contents.group_by { |item| item.name }.sort
-    grouped_basket.each do | dish_name, items |
-      puts "Item: #{dish_name} Number: #{items.length} Subtotal: £ #{items.length * items.first.price}"
-    end
+    grouped_basket = group_and_sort_basket
+    display_basket_by_dish(grouped_basket)
     # @basket_contents.each do |item|
       # puts "Item: #{item.name} Number:  Subtotal: £ #{item.price}"
   end
@@ -34,5 +32,17 @@ class Basket
     # output number of each dish
     # output subtotal, price of dish * number of that dish
     # while still being able to access dish name
+
+  private
+
+  def group_and_sort_basket
+    @basket_contents.group_by { |item| item.name }.sort
+  end
+
+  def display_basket_by_dish(grouped_basket)
+    grouped_basket.each do | dish_name, items |
+      puts "Item: #{dish_name} Number: #{items.length} Subtotal: £ #{items.length * items.first.price}"
+    end
+  end
 
 end
