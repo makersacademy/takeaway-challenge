@@ -41,6 +41,10 @@ describe Basket do
       expect { basket.add_to_basket(dish_double) }.to change { basket.basket_contents }.to end_with(dish_double)
     end
 
+    it 'updates the basket total wit the price of the dish' do
+      expect { basket.add_to_basket(dish_double) }.to change { basket.basket_total }.by(dish_double.price)
+    end
+
   end
 
   describe '#view_basket' do 
@@ -60,14 +64,25 @@ Basket total price: £ 41.00\n"
 
   end
 
-  describe '#check_total' do
+  describe '#basket_and_items_totals_match?' do
 
-    it 'displays the total price of the basket' do
-      basket.add_to_basket(dish_double)
-      2.times { basket.add_to_basket(another_dish_double) }
-      basket.add_to_basket(dish_double)
-      basket.add_to_basket(a_third_dish_double)
-      expect(basket.check_total).to eq 41.0
+    # context 'where running total not same as total price of all items in basket' do
+
+    #   let(:items_total) { basket.items_total - 5 }
+
+    #   it 'returns false' do
+    #     expect(basket.basket_and_items_totals_match?).to eq false
+    #   end
+    # end
+
+    context 'where running total is same as total price of all items in basket' do
+      it 'returns true' do
+        items_total = basket.items_total
+        if basket.basket_total == items_total
+          expect(basket.basket_and_items_totals_match?).to eq true
+        end
+      end
     end
+
   end
 end
