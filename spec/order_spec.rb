@@ -13,11 +13,11 @@ describe Order do
   end
 
   describe "#finish_order" do
-    it 'should be able to finish placing an order of items from the menu, which will then work out the total price' do
+    it 'should be able to finish placing an order of items from the menu, which would then remove the items so that a new order can be placed' do
       allow(menu).to receive(:list).and_return({ "Fried Rice" => 6.0 })
       current_order.add_to_order(0,1)
       current_order.finish_order
-      expect(current_order.total_cost).to eq(6)
+      expect(current_order.item_list).to eq Hash.new { 0 }
     end
   end
 
@@ -26,7 +26,14 @@ describe Order do
       allow(menu).to receive(:list).and_return({ "Fried Rice" => 6.0 })
       current_order.add_to_order(0,1)
       current_order.add_to_order(0,1)
-      expect { current_order.receipt }.to output("Thank you for ordering at Su's Takeaway\nYour order today was:\n2x Fried Rice £12.00\nThe total amount for this order is £12.00\n").to_stdout
+      expect { current_order.finish_order }.to output("Thank you for ordering at Su's Takeaway\nYour order today was:\n2x Fried Rice £12.00\nThe total amount for this order is £12.00\n").to_stdout
     end
   end
+
+  describe '#dish_name' do
+    it 'should show the name of a dish using the given index' do
+      allow(menu).to receive(:list).and_return({ "Fried Rice" => 6.0 })
+      expect(current_order.dish_name(0)).to eq "Fried Rice"
+    end 
+  end  
 end

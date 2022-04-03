@@ -14,13 +14,7 @@ class Order
   def finish_order
     total_cost
     receipt
-  end
-
-  def receipt
-    puts "Thank you for ordering at Su's Takeaway"
-    puts "Your order today was:"
-    item_list
-    puts "The total amount for this order is £#{'%.2f' % total_cost}"
+    @order = Hash.new { 0 }
   end
 
   def total_cost
@@ -46,5 +40,14 @@ class Order
       multi_price = price * quantity
       puts "#{quantity}x #{item} £#{'%.2f' % multi_price}" 
     end
+  end
+
+  private
+
+  def receipt
+    puts "Thank you for ordering at Su's Takeaway"
+    puts "Your order today was:"
+    item_list
+    puts "The total amount for this order is £#{'%.2f' % total_cost}"
   end
 end

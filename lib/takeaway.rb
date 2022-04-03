@@ -4,8 +4,6 @@ require_relative 'twilio'
 
 class Takeaway
 
-  attr_reader :order
-
   def initialize(order = Order.new, text_client = TwilioClient.new)
     @order = order
     @order_done = false
@@ -14,30 +12,28 @@ class Takeaway
 
   def take_order
     puts "Welcome to Su's takeaway"
-    show_menu
     take_number
+    show_menu
     edit_order until @order_done == true
-    confirm_order
+    cost
   end
 
   def confirm_order
     confirmation_text
-    @order.finish_order
+    reset_order
+  end
+
+  def cancel_order
+    @order = Order.new
+    @order_done = false
   end
 
   def show_menu
     @order.show_menu
   end
 
-  def edit_order
-    @order_done = false
-    order_dish
-    puts "You have ordered:"
-    @order.item_list
-    puts "Please type 'yes' to confirm this order"
-    confirm = STDIN.gets.chomp
-    @order_done = true if confirm.capitalize.downcase! == 'yes' 
-    # capitalize.downcase! so that it will accept all capitalisations w/o raising error
+  def cost 
+    @order.total_cost
   end
 
   private
@@ -47,16 +43,23 @@ class Takeaway
     @number = STDIN.gets.chomp
   end
 
+  def edit_order
+    order_dish
+    puts "You have ordered:"
+    @order.item_list
+    puts "Please type 'yes' to confirm this order. Type anything else to continue making additions"
+    confirm = STDIN.gets.chomp
+    @order_done = true if confirm.capitalize.downcase! == 'yes' 
+    # capitalize.downcase! so that it will accept all capitalisations w/o raising error
+  end
+
   def order_dish
     puts "Please enter the number of the dish that you wish to order (leave blank to finish)"
     item_index = STDIN.gets.chomp
     until item_index.empty? do
       item_index = item_index.to_i - 1 
-      # minus 1 because menu is shown beginning from 1, index is from 0
-      puts "You have ordered #{@order.dish_name(item_index)}." 
-      puts "How many would you like? (Enter 0 or just press enter if you pressed the wrong number)"
+      puts "You have ordered #{@order.dish_name(item_index)}. How many would you like?" 
       quantity = STDIN.gets.chomp.to_i
-      puts "You have ordered #{quantity}x #{@order.dish_name(item_index)}." unless quantity.zero?
       @order.add_to_order(item_index, quantity) unless quantity.zero?
       puts "Please enter the number of the dish that you wish to order (leave blank to finish)"
       item_index = STDIN.gets.chomp
@@ -67,4 +70,9 @@ class Takeaway
     @text_client.send_text("+44" + @number)
   end
 
+  def reset_order
+    @order_done = false
+    @number = nil
+    @order.finish_order
+  end
 end
