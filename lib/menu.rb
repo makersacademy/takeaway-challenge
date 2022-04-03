@@ -13,7 +13,7 @@ class Menu
   end
 
   def list_dishes
-    puts "YOUR MENU"
+    puts "MENU"
     sort_dishes_array
   end
 

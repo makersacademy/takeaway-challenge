@@ -26,7 +26,7 @@ class Order
 
   def print_order_total
     total = 0
-    @current_order.each { |name, price| total += price.to_i }
+    @current_order.each { |_, price| total += price.to_i }
     puts "Your total: £#{total}"
   end
 end
