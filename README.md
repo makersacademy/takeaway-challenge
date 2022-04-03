@@ -36,7 +36,13 @@ Installation
 Program Usage
 -----
 
-Use irb to run the program from the main repository:
+Use ruby to run the example program from the main repository:
+
+```zsh
+ruby ./spec/feature_test.rb
+```
+
+Or use irb from the main repository, to make your own dishes, menus, and orders:
 
 ```zsh
 irb -r './lib/order.rb'
@@ -50,6 +56,12 @@ Use rspec to run the tests from the main repository:
 
 ```zsh
 rspec
+```
+
+Feel free to check rubocop from the main repository:
+
+```zsh
+rubocop
 ```
 
 
@@ -70,6 +82,10 @@ I would like to be able to select some number of several available dishes
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
 
