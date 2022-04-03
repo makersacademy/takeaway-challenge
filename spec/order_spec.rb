@@ -8,19 +8,19 @@ describe Order do
 
   context "#creation" do
     it "has an empty order" do
-      expect(subject.list).to eq ""
+      expect(subject.bill).to eq "\nTotal: £0.00"
     end
   end
 
   context "#add" do
     it "adds a dish to the items list" do
       subject.add("Korma")
-      expect(subject.list).to eq "Korma: £8.50"
+      expect(subject.bill).to eq "Korma: £8.50\nTotal: £8.50"
     end
   end
 
   context "#bill" do
-    it "creates a bill with the total cost" do
+    it "creates a bill with the total cost of more than one item" do
       subject.add("Korma")
       subject.add("Jalfrezi")
       expect(subject.bill).to eq "Korma: £8.50\n" +

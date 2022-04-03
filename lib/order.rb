@@ -6,15 +6,11 @@ class Order
     @items = []
   end
 
-  def list
-    @items.join("\n")
-  end
-
   def add(dish)
     index = dish.length - 1
-    @menu.list_items.each_line do |line|
+    @menu.list_items.split("\n").each do |line|
       dish_name = line[..index]
-      @items.push(line[..-2]) if dish_name == dish
+      @items.push(line) if dish_name == dish
     end
   end
 
@@ -23,6 +19,10 @@ class Order
   end
 
   private
+
+  def list
+    @items.join("\n")
+  end
 
   def price(item)
     item[-4..]

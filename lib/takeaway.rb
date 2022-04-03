@@ -11,13 +11,13 @@ class Takeaway
     @menu.list_items
   end
 
-  def show_order
-    raise "There is no current order" if @current_order.nil?
-    @current_order.list
-  end
-
   def start_new_order
     @current_order = @order_class.new
+  end
+
+  def check_bill
+    raise "There is no current order" if @current_order.nil?
+    @current_order.bill
   end
 
   def add_to_order(dish)
