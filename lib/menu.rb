@@ -1,5 +1,5 @@
 require_relative './dish'
-# Creates a list of dishes.
+# Creates a menu with a list of dishes.
 
 class Menu
   attr_reader :dishes

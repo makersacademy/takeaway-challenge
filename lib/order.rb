@@ -1,5 +1,5 @@
 require_relative './menu'
-# Creates and checks out customer orders
+# Creates and checks out customer orders.
 
 class Order
   attr_reader :current_order
@@ -26,7 +26,7 @@ class Order
 
   def print_order_total
     total = 0
-    @current_order.each { |name, price| total += price }
+    @current_order.each { |name, price| total += price.to_i }
     puts "Your total: £#{total}"
   end
 end
