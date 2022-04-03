@@ -1,4 +1,4 @@
-# Creates a dish with a price
+# Creates a dish with a price.
 
 class Dish
   attr_reader :name, :price
