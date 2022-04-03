@@ -1,5 +1,4 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
 ```
                             _________
               r==           |       |
@@ -14,21 +13,60 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+## Task
+I have been asked to write a Takeaway program that will include a menu with a list of dishes with their respective prices. People will be able to use the program to place their orders, via selecting the dishes they want and their respective quantities. The program will work out the total cost of their order and I will use Twilio in order to send text messages to let people know when their order will be ready.\
+\
+During testing, I will try to use stubs and doubles in order to isolate my tests.\
+\
+Edge cases considered:
+- Customers will not be able to order items not on the menu
+- Customers have the ability to cancel orders
+- Customers can not create a new order until the previous one has been placed or cancelled
+- Customer will get a error if they try to place order without having created one yet
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Instructions
 
-Task
------
+Clone this repository to your desired location, run the command `gem install bundler` then run `bundle`.\
+\
+Run RSpec in the `takeaway_challenge` directory whilst in the terminal in order to run the unit tests.\
+\
+Run irb and load the file `takeaway.rb` inside the `lib` directory. Create a new takeaway within irb by using `Takeaway.new`. Use the command `show_menu` in order to see the menu, alternatively, if you use the command `take_order`, after inputting your 10 digit mobile phone number it will automatically show you the menu. Follow the on-screen instructions to place your order and it will show you what you have ordered when it asks to confirm your order. Input `yes` to confirm it, it will then show you the total cost.\
+\
+If you forget the cost of your order after confirming it, you can use the command `cost`. You can then use the command `place_order` in order to finalise it, which will send you a text message with the time it will be delivered by. If you wish to cancel your order instead, use the command `cancel_order`. Once you have placed or cancelled the order, you will be able to start on a new order. If you try to `take_order` having already confirmed a order, it will simply show you the cost again - if you wish to create a new order, you must do either `cancel_order` or `place_order`.\
+\
+Below is a example of using my code in irb:
+```
+irb(main):001:0> require './lib/takeaway'
+=> true
+irb(main):002:0> takeaway = Takeaway.new
+=> 
+#<Takeaway:0x00007fb205bf9528
+...
+irb(main):003:0> takeaway.take_order
+Welcome to Su's takeaway
+Please enter your 10 digit mobile number
+1111111111
+1. Fried Rice £6.00
+2. Chow Mein £6.10
+3. Chop Suey £6.20
+4. Satay £6.30
+...
+Please enter the number of the dish that you wish to order (leave blank to finish)
+3
+You have ordered Chop Suey. How many would you like?
+1
+Please enter the number of the dish that you wish to order (leave blank to finish)
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+You have ordered:
+1x Chop Suey £6.20
+Please type 'yes' to confirm this order. Type anything else to continue making additions
+yes
+=> 6.2
+irb(main):004:0> takeaway.cancel_order
+Your order has been cancelled.
+```
 
+## User Stories
 ```
 As a customer
 So that I can check if I want to order something
@@ -47,37 +85,28 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Domain Model Diagram
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+| name      | takeaway        | order                    | menu               | twilio                    |
+| --------  | -------------   | ---------------------    | ------------------ | ------------------------- | 
+| variables |                 | @order: hash, reader     | @menu: hash, reader| @app_token: string, hidden|
+| --------  | -------------   | ---------------------    | ------------------ | ------------------------- |
+|           | take_order      | add_to_order(item, qty)  | show_menu          | send_message(to)          |
+| methods   |                 | receipt                  |                    |                           |
+|           |                 | place_order              |                    |                           |
 
 
-In code review we'll be hoping to see:
+Initial ideas regarding what classes will be needed with which instance variables and methods.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+## References
+``` 
+https://www.ellehallal.dev/blog/2018/11/2018-11-16-testing-user-input-with-rspec/
+https://www.twilio.com/docs/libraries/ruby 
+```
+used the above in order to stub user input\
+used the above in order to implement the text message functionality
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+## Functionality yet to be added
+Checking if each user input is given correctly (i.e, someone can order the 99th item on the menu currently, which would just give a blank, and then eventually a error).\
+\
+Was going to add functionality to remove items from the order, but code ended up quite long and not very readable, so instead made function to cancel.
