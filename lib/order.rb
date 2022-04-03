@@ -2,16 +2,22 @@
 class Order
   attr_reader :takeaway_class, :final_order, :total_price, :message, :time, :text_message
   
-  def initialize(takeaway_class)
+  def initialize(takeaway_class = Takeaway.new)
     @takeaway_class = takeaway_class
     @final_order = []
     @menu = takeaway_class.menu_class
   end
 
-  def item_selection(no_items, item)
+  def item_selection(no_items = 1, item)
+    fail 'Item is not in the menu' if item_checker(item)
     item_total = item_calculator(no_items, item)
     @final_order << { no_items: no_items, item: item, item_total: item_total }
-    p "you have selected #{no_items} x => #{item}'s"
+    "you have selected #{no_items} x => #{item}'s"
+  end
+  
+  def item_checker(item)
+    item_array = @menu.full_list.select { |x| x[:item] == item }
+    item_array.empty? ? true : false
   end
 
   def item_calculator(no_items, item)

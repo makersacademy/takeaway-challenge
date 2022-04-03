@@ -29,6 +29,10 @@ describe Order do
       indian.add_item("Samosa", 2)
       expect(house.item_selection(4, "Samosa")).to eq ("you have selected 4 x => Samosa's")
     end
+    
+    it 'raise an error if the item is not in the menu' do
+       expect { house.item_selection(4,"Ladoo") }.to raise_error
+    end
   end
   
   context '#verification_of_order' do
