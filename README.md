@@ -18,7 +18,7 @@ I have been asked to write a Takeaway program that will include a menu with a li
 \
 During testing, I will try to use stubs and doubles in order to isolate my tests.\
 \
-Edge cases considered:\
+Edge cases considered:
 - Customers will not be able to order items not on the menu\
 - Customers have the ability to cancel orders\
 
@@ -28,7 +28,9 @@ Clone this repository to your desired location, run the command `gem install bun
 \
 Run RSpec in the `takeaway_challenge` directory whilst in the terminal in order to run the unit tests.\
 \
-Run irb and load the file `takeaway.rb` inside the `lib` directory. Create a new takeaway within irb by using `Takeaway.new`. Use the command `show_menu` in order to see the menu, alternatively, if you use the command `take_order`, after inputting your 10 digit mobile phone number it will automatically show you the menu. Follow the on-screen instructions to place your order and it will show you what you have ordered when it asks to confirm your order. Input `yes` to confirm it, it will then show you the total cost. If you forget the cost of your order after confirming it, you can use the command `cost`. You can then use the command `place_order` in order to finalise it, which will send you a text message with the time it will be delivered by. If you wish to cancel your order instead, use the command `cancel_order`. Once you have placed or cancelled the order, you will be able to start on a new order.\
+Run irb and load the file `takeaway.rb` inside the `lib` directory. Create a new takeaway within irb by using `Takeaway.new`. Use the command `show_menu` in order to see the menu, alternatively, if you use the command `take_order`, after inputting your 10 digit mobile phone number it will automatically show you the menu. Follow the on-screen instructions to place your order and it will show you what you have ordered when it asks to confirm your order. Input `yes` to confirm it, it will then show you the total cost.\
+\
+If you forget the cost of your order after confirming it, you can use the command `cost`. You can then use the command `place_order` in order to finalise it, which will send you a text message with the time it will be delivered by. If you wish to cancel your order instead, use the command `cancel_order`. Once you have placed or cancelled the order, you will be able to start on a new order.\
 \
 Below is a example of using my code in irb:
 ```
@@ -103,5 +105,5 @@ used the above in order to stub user input\
 used the above in order to implement the text message functionality
 
 ## Functionality yet to be added
-Checking if each user input is given correctly (i.e, someone can order the 99th item on the menu currently, which would just give a blank, and then eventually a error).
+Checking if each user input is given correctly (i.e, someone can order the 99th item on the menu currently, which would just give a blank, and then eventually a error).\
 Was going to add functionality to remove items from the order, but code ended up quite long and not very readable, so instead made function to cancel.
