@@ -42,7 +42,7 @@ describe Takeaway do
     end
 
     it 'cannot place a order without putting a order in yet' do
-      expect { takeaway.place_order }.to raise_error("You have not created a order yet")
+      expect { takeaway.place_order }.to raise_error("You have not created an order yet")
     end
   end
 
