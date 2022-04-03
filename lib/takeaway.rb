@@ -19,12 +19,9 @@ class Takeaway
   end
 
   def place_order
-    if @order_done == true
-      confirmation_text
-      reset_order
-    else
-      fail "You have not created a order yet"
-    end
+    fail "You have not created a order yet" unless @order_done == true
+    confirmation_text
+    reset_order
   end
 
   def cancel_order
