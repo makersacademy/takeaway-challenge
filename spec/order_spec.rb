@@ -6,7 +6,7 @@ describe Order do
     menu.add_dish("Fish",9)
     menu.add_dish("Korma",8)
     order = Order.new(menu,1,2)
-    #need to sort out submit_order and bill
+    order.submit_order
     it "#submit_order should put chosen dishes into an order" do
         expect(order.order[0]).to be_a(Dish)
         expect(order.order[1]).to be_a(Dish)
