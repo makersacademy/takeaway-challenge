@@ -83,15 +83,13 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## Domain Model Diagram
 
-| name     | takeaway        | order                    | menu               | twilio                    |
-| -------- | -------------   | ---------------------    | ------------------ | ------------------------- | 
-|          |                 | @order: hash, reader     | @menu: hash, reader| @app_token: string, hidden|
-| variables|                 |                          |                    |                           |
-|          |                 |                          |                    |                           |
-| -------- | -------------   | ---------------------    | ------------------ | ------------------------- |
-|          | take_order      | add_to_order(item, qty)  | show_menu          | send_message(to)          |
-| methods  |                 | receipt                  |                    |                           |
-|          |                 | place_order              |                    |                           |
+| name      | takeaway        | order                    | menu               | twilio                    |
+| --------  | -------------   | ---------------------    | ------------------ | ------------------------- | 
+| variables |                 | @order: hash, reader     | @menu: hash, reader| @app_token: string, hidden|
+| --------  | -------------   | ---------------------    | ------------------ | ------------------------- |
+|           | take_order      | add_to_order(item, qty)  | show_menu          | send_message(to)          |
+| methods   |                 | receipt                  |                    |                           |
+|           |                 | place_order              |                    |                           |
 
 
 Initial ideas regarding what classes will be needed with which instance variables and methods.
@@ -103,3 +101,7 @@ https://www.twilio.com/docs/libraries/ruby
 ```
 used the above in order to stub user input\
 used the above in order to implement the text message functionality
+
+## Functionality yet to be added
+Checking if each user input is given correctly (i.e, someone can order the 99th item on the menu currently, which would just give a blank, and then eventually a error).
+Was going to add functionality to remove items from the order, but code ended up quite long and not very readable, so instead made function to cancel.
