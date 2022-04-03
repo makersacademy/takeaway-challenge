@@ -54,12 +54,12 @@ I would like to see a list of dishes with prices`
 |  Objects        |  Messages      |
 | ----------      | -------------  | 
 | Customer        |                |
-| Dishes          | list_of_dishes |
+| Dishes          | open_menu, view_menu |
 
 ```mermaid
 graph TD
     A[Customer] -->B[Dishes]
-    B[Dishes] --> C[#list_of_dishes]
+    B[Dishes] --> |#open_menu|C[#view_menu]
 ```
 
 `As a customer
@@ -69,14 +69,14 @@ I would like to be able to select some number of several available dishes`
 |  Objects        |  Messages      |
 | ----------      | -------------  | 
 | Customer        |                |
-| Dishes        |   choose_dish    |
+| Dishes          | choose_dish(num)    |
 | Order           | add_to_basket |
 
 ```mermaid
 graph TD
     A[Customer] -->B[Dishes]
-    B[Dishes] --> C[#choose_dish]
-    C[#choose_dish] --> D[Order]
+    B[Dishes] --> C[#choose_dish(num)]
+    C[#choose_dish(num)] --> D[Order]
     D[Order] --> E[#add_to_basket]
 ```
 
@@ -87,12 +87,19 @@ I would like to check that the total I have been given matches the sum of the va
 |  Objects        |  Messages      |
 | ----------      | -------------  | 
 | Customer        |                |
+| Dishes          | view_basket |
 | Order           | view_basket |
+| VerifyOrder    | view_basket, view_total   |
 
 ```mermaid
 graph TD
-    A[Customer] -->B[Order]
-    B[Order] --> C[view_basket]
+    A[Customer] -->B[Dishes]
+    B[Dishes] --> C[#view_basket]
+    C[#view_basket] --> D[Order]
+    D[Order] --> E[#view_basket]
+    E[#view_basket] --> F[VerifyOrder]
+    F[VerifyOrder] --> G[#view_basket]
+    G[#view_basket] --> H[#view_total]
 ```
 
 `As a customer
@@ -102,10 +109,17 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 |  Objects        |  Messages      |
 | ----------      | -------------  | 
 | Customer        |                |
-| Order           | view_basket |
+| Dishes          | place_order |
+| Order           | order_confirmation |
+| VerifyOrder     | text_order_confirmation |
+
 
 ```mermaid
 graph TD
-    A[Customer] -->B[Order]
-    B[Order] --> C[view_basket]
+    A[Customer] -->B[Dishes]
+    B[Dishes] --> C[#place_order]
+    C[#place_order] --> D[Order]
+    D[Order] --> E[#order_confirmation]
+    E[#order_confirmation] --> F[VerifyOrder]
+    F[VerifyOrder] --> G[#text_order_confirmation]
 ```
