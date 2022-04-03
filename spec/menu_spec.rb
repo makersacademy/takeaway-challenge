@@ -51,6 +51,8 @@ describe Menu do
 
   describe 'select_dish' do
 
+    ## Review this to confirm not that test is testing Menu#select_dish,
+    ## and not just testing double behaviour
     it 'adds desired number of named dish to basket' do
       desired_number = rand(5)
       basket = []
