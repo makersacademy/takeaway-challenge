@@ -32,10 +32,26 @@ describe Order do
     end
   end
 
-  describe '#dish_name' do
+  describe "#dish_name" do
     it 'should show the name of a dish using the given index' do
       allow(menu).to receive(:list).and_return({ "Fried Rice" => 6.0 })
       expect(current_order.dish_name(0)).to eq "Fried Rice"
     end 
-  end  
+  end 
+  
+  describe "#item_list" do
+    it 'shows a list of the items ordered' do
+      allow(menu).to receive(:list).and_return({ "Fried Rice" => 6.0 })
+      current_order.add_to_order(0,1)
+      expect { current_order.item_list }.to output("1x Fried Rice £6.00\n").to_stdout
+    end
+  end
+
+  describe "#total_cost" do
+    it 'works out the cost of the order' do
+      allow(menu).to receive(:list).and_return({ "Fried Rice" => 6.0 })
+      current_order.add_to_order(0,1)
+      expect(current_order.total_cost).to eq(6)
+    end
+  end
 end

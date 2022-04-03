@@ -17,25 +17,31 @@ describe Takeaway do
   
   it { is_expected.to respond_to :cost }
 
-  it 'should be able to take a order and return the price' do
-    allow(order_class).to receive(:total_cost).and_return(6)
-    takeaway.take_order
-    expect(takeaway.cost).to eq(6)
+  describe "#take_order" do
+    it 'should be able to take a order and return the price' do
+      allow(order_class).to receive(:total_cost).and_return(6)
+      takeaway.take_order
+      expect(takeaway.cost).to eq(6)
+    end
   end
 
-  it 'should be able to complete a order from start to finish and then let people create a new order' do
-    allow(order_class).to receive(:total_cost).and_return(0)
-    allow(order_class).to receive(:finish_order)
-    allow(text_client).to receive(:send_text)
-    takeaway.take_order
-    takeaway.place_order
-    expect(takeaway.cost).to eq(0)
+  describe "#place_order" do
+    it 'should be able to complete a order from start to finish and then let people create a new order' do
+      allow(order_class).to receive(:total_cost).and_return(0)
+      allow(order_class).to receive(:finish_order)
+      allow(text_client).to receive(:send_text)
+      takeaway.take_order
+      takeaway.place_order
+      expect(takeaway.cost).to eq(0)
+    end
   end
 
-  it 'should be able to take a order and then cancel order' do
-    allow(order_class).to receive(:total_cost).and_return(0)
-    takeaway.take_order
-    takeaway.cancel_order
-    expect(takeaway.cost).to eq(0)
+  describe "#cancel_order" do
+    it 'should be able to take a order and then cancel order' do
+      allow(order_class).to receive(:total_cost).and_return(0)
+      takeaway.take_order
+      takeaway.cancel_order
+      expect(takeaway.cost).to eq(0)
+    end
   end
 end
