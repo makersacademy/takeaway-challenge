@@ -1,7 +1,6 @@
 require_relative 'menu'
 
 class Order
-  attr_reader :order
 
   def initialize(menu = Menu.new)
     @order = Hash.new { 0 }
@@ -9,7 +8,7 @@ class Order
   end
 
   def add_to_order(item_index,quantity)
-    @order[menu.keys[item_index]] += quantity
+    @order[@menu.list.keys[item_index]] += quantity
   end
 
   def finish_order
@@ -27,7 +26,7 @@ class Order
   def total_cost
     total = 0
     @order.each do |item, quantity|
-      price = menu[item] 
+      price = @menu.list[item] 
       total += price * quantity
     end
     total
@@ -38,18 +37,14 @@ class Order
   end
 
   def dish_name(index)
-    menu.keys[index]
+    @menu.list.keys[index]
   end
 
   def item_list
     @order.each do |item, quantity| 
-      price = menu[item]
+      price = @menu.list[item]
       multi_price = price * quantity
       puts "#{quantity}x #{item} £#{'%.2f' % multi_price}" 
     end
-  end
-
-  def menu
-    @menu.menu
   end
 end

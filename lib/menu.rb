@@ -1,7 +1,5 @@
 class Menu
   
-  attr_reader :menu
-
   MENU_HASH = { 
     "Fried Rice" => 6.0,
     "Chow Mein" => 6.1,
@@ -20,11 +18,11 @@ class Menu
   }.freeze
 
   def initialize
-    @menu = MENU_HASH
+    @list = MENU_HASH
   end
 
   def show_menu
-    @menu.each_with_index do |(item, price), index|
+    @list.each_with_index do |(item, price), index|
       puts "#{index + 1}. #{item} £#{'%.2f' % price}"
     end
   end

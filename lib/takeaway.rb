@@ -14,19 +14,40 @@ class Takeaway
 
   def take_order
     puts "Welcome to Su's takeaway"
+    show_menu
+    take_number
+    edit_order until @order_done == true
+    confirm_order
+  end
+
+  def confirm_order
+    confirmation_text
+    @order.finish_order
+  end
+
+  def show_menu
     @order.show_menu
-    puts "Please enter your 10 digit mobile number"
-    number = STDIN.gets.chomp
+  end
+
+  def edit_order
+    @order_done = false
     order_dish
-    if @order_done == true
-      confirm_order(number)
-    else
-      order_dish
-    end
+    puts "You have ordered:"
+    @order.item_list
+    puts "Please type 'yes' to confirm this order"
+    confirm = STDIN.gets.chomp
+    @order_done = true if confirm.capitalize.downcase! == 'yes' 
+    # capitalize.downcase! so that it will accept all capitalisations w/o raising error
+  end
+
+  private
+
+  def take_number
+    puts "Please enter your 10 digit mobile number"
+    @number = STDIN.gets.chomp
   end
 
   def order_dish
-    @order_done = false
     puts "Please enter the number of the dish that you wish to order (leave blank to finish)"
     item_index = STDIN.gets.chomp
     until item_index.empty? do
@@ -40,23 +61,10 @@ class Takeaway
       puts "Please enter the number of the dish that you wish to order (leave blank to finish)"
       item_index = STDIN.gets.chomp
     end
-    puts "You have ordered:"
-    @order.item_list
-    puts "Please type 'yes' to confirm this order"
-    confirm = STDIN.gets.chomp
-    @order_done = true if confirm.capitalize.downcase! == 'yes' 
-    # capitalize.downcase! so that it will accept all capitalisations w/o raising error
   end
 
-  def confirm_order(number)
-    confirmation_text(number)
-    @order.finish_order
-  end
-
-  private
-
-  def confirmation_text(number)
-    @text_client.send_text("+44" + number)
+  def confirmation_text
+    @text_client.send_text("+44" + @number)
   end
 
 end
