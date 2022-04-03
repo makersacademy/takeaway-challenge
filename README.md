@@ -19,8 +19,8 @@ I have been asked to write a Takeaway program that will include a menu with a li
 During testing, I will try to use stubs and doubles in order to isolate my tests.\
 \
 Edge cases considered:
-- Customers will not be able to order items not on the menu\
-- Customers have the ability to cancel orders\
+- Customers will not be able to order items not on the menu
+- Customers have the ability to cancel orders
 
 ## Instructions
 
@@ -106,4 +106,5 @@ used the above in order to implement the text message functionality
 
 ## Functionality yet to be added
 Checking if each user input is given correctly (i.e, someone can order the 99th item on the menu currently, which would just give a blank, and then eventually a error).\
+\
 Was going to add functionality to remove items from the order, but code ended up quite long and not very readable, so instead made function to cancel.
