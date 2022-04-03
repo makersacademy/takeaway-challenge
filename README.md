@@ -61,7 +61,7 @@ Navigate to `http://localhost:4567/`
 
 ### Domain diagram
 
-![Domain diagram from user stories](./takeaway_challenge.png)
+![Domain diagram from user stories](./takeaway_challenge_domain_diagram.png)
 
 ### Functional representation
 
