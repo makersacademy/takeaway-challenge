@@ -12,3 +12,4 @@ order = Order.new
 order.add_to_order(dish1)
 order.add_to_order(dish2)
 order.view_order_summary
+order.confirm_purchase

@@ -21,7 +21,7 @@ This program will allow customers to do the following:
 - View a takeaway menu.
 - Add selected dishes to an order.
 - View the sum of the order.
-- Receive an order confirmation & delivery time text after checkout completion.
+- Receive an order confirmation & delivery time after checkout completion.
 
 Installation
 -----
@@ -70,14 +70,12 @@ I would like to be able to select some number of several available dishes
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
-
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
 
-User Story Breakdown
+User Story Wireframe
 -----
 
-You can view my initial plan of the progam [here](https://wireframe.cc/3Klfur)
+You can view my initial plan of the progam [here](https://wireframe.cc/3Klfur). This includes the user story dealing with the text, along with another class to manage the interface. Since I had less than an afternoon to complete this I decided to focus on the first three user stories.
+
+In future I would be interested in adding these other functions.

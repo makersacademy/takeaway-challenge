@@ -14,12 +14,12 @@ class Menu
 
   def list_dishes
     puts "MENU"
-    sort_dishes_array
+    print_sorted_dishes
   end
 
   private
 
-  def sort_dishes_array
+  def print_sorted_dishes
     @dishes.each do |dish|
       puts "#{dish.name}, £#{dish.price}"
     end

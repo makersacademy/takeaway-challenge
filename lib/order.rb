@@ -14,13 +14,18 @@ class Order
 
   def view_order_summary
     puts "YOUR ORDER"
-    print_current_order_array
+    print_sorted_order
     print_order_total
+  end
+
+  def confirm_purchase
+    raise "You have not added any dishes" if @current_order.empty?
+    puts "Thank you! Your order was placed and will be delivered before #{time_of_delivery}!"
   end
 
   private
 
-  def print_current_order_array
+  def print_sorted_order
     @current_order.each { |name, price| puts "#{name}, £#{price}" }
   end
 
@@ -28,5 +33,9 @@ class Order
     total = 0
     @current_order.each { |_, price| total += price.to_i }
     puts "Your total: £#{total}"
+  end
+
+  def time_of_delivery
+    (Time.now + 3600).strftime("%H:%M")
   end
 end
