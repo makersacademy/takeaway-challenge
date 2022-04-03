@@ -17,4 +17,22 @@ class Order
       @items.push(line[..-2]) if dish_name == dish
     end
   end
+
+  def bill
+    "#{list}\nTotal: £#{total}0"
+  end
+
+  private
+
+  def price(item)
+    item[-4..]
+  end
+
+  def total
+    count = 0.0
+    @items.each do |item|
+      count += price(item).to_f
+    end
+    count
+  end
 end

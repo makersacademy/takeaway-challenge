@@ -18,4 +18,14 @@ describe Order do
       expect(subject.list).to eq "Korma: £8.50"
     end
   end
+
+  context "#bill" do
+    it "creates a bill with the total cost" do
+      subject.add("Korma")
+      subject.add("Jalfrezi")
+      expect(subject.bill).to eq "Korma: £8.50\n" +
+                                 "Jalfrezi: £9.00\n" +
+                                 "Total: £17.50"
+    end
+  end
 end

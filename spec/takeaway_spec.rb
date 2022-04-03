@@ -5,8 +5,8 @@ describe Takeaway do
                                                   "Jalfrezi: £9.00\n" +
                                                   "Tikka Masala: £8.00")) 
   }
-  let (:empty_order_double) { double(:order, list: "") }
-  let (:empty_order_class_double) { double(:order_class, new: empty_order_double) }
+  let (:empty_order_double) { double(:empty_order, list: "") }
+  let (:empty_order_class_double) { double(:empty_order_class, new: empty_order_double) }
   let (:subject) { Takeaway.new(menu_double, empty_order_class_double) }
 
   let (:order_double) { double(:order, add: true, list: "Korma: £8.50") }
@@ -37,7 +37,7 @@ describe Takeaway do
       expect { subject.add_to_order("Korma") }.to raise_error "There is no current order"
     end
 
-    it "adds dishes to the current order" do
+    it "adds a dish after an order has been started" do
       takeaway.start_new_order
       takeaway.add_to_order("Korma")
       expect(takeaway.show_order).to eq "Korma: £8.50"
