@@ -3,9 +3,9 @@ require_relative '../lib/menu'
 describe Menu do
   let (:menu) { Menu.new }
 
-  context 'on creating a menu' do
+  context 'when creating a menu' do
 
-    it 'adds an empty array' do
+    it 'an empty array is created' do
       expect(menu.dishes).to be_empty
     end
   end
@@ -13,8 +13,8 @@ describe Menu do
   context 'when adding to the menu' do
 
     before do
-      @fake_dish = double ('fake dish')
-      menu.add_dish(@fake_dish)
+      @fake_dish = double('fake dish', name: 'pasta', price: 10)
+      menu.add_dish(@fake_dish)      
     end
 
     it 'the dish is added to the dishes array' do
@@ -22,7 +22,9 @@ describe Menu do
     end
 
     it 'the list of dishes added can be viewed' do
-      expect(menu.list_dishes).to eq ([@fake_dish])
+      expect do
+        menu.list_dishes
+      end.to output(a_string_including("pasta, £10")).to_stdout
     end
   end
 end
