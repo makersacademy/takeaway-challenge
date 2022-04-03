@@ -4,6 +4,8 @@ describe Order do
   let(:menu) { double "Menu" }
   let(:current_order) { described_class.new(menu) }
 
+  it { is_expected.to respond_to :show_menu }
+
   describe "#add_to_order" do
     it 'should be able to add items to an order' do
       allow(menu).to receive(:list).and_return({ "Fried Rice" => 6.0 })

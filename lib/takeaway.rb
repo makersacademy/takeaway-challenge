@@ -18,7 +18,7 @@ class Takeaway
     cost
   end
 
-  def confirm_order
+  def place_order
     confirmation_text
     reset_order
   end
@@ -26,6 +26,7 @@ class Takeaway
   def cancel_order
     @order = Order.new
     @order_done = false
+    puts "Your order has been cancelled."
   end
 
   def show_menu
