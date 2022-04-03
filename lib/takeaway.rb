@@ -1,9 +1,10 @@
-require_relative './menu'
+require_relative './order'
 
 class Takeaway
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order_class = Order)
     @menu = menu
-    @current_order = []
+    @order_class = order_class
+    @current_order = nil
   end
 
   def show_menu
@@ -11,14 +12,16 @@ class Takeaway
   end
 
   def show_order
-    @current_order.join
+    raise "There is no current order" if @current_order.nil?
+    @current_order.list
+  end
+
+  def start_new_order
+    @current_order = @order_class.new
   end
 
   def add_to_order(dish)
-    index = dish.length - 1
-    show_menu.each_line do |line|
-      dish_name = line[..index]
-      @current_order.push(line) if dish_name == dish
-    end
+    raise "There is no current order" if @current_order.nil?
+    @current_order.add(dish)
   end
 end
