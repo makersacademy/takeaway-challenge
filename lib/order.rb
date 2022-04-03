@@ -14,6 +14,14 @@ class Order
     end
   end
 
+  def total
+    count = 0.0
+    @items.each do |item|
+      count += price(item)
+    end
+    count
+  end
+
   def bill
     "#{list}\nTotal: £#{total}0"
   end
@@ -25,14 +33,6 @@ class Order
   end
 
   def price(item)
-    item[-4..]
-  end
-
-  def total
-    count = 0.0
-    @items.each do |item|
-      count += price(item).to_f
-    end
-    count
+    item[-4..].to_f
   end
 end
