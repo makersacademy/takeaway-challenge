@@ -1,18 +1,19 @@
 require 'order_confirmation' 
 
 describe 'Order Confirmation' do
-
-client = double("client double")
-allow(client).to receive(Twilio::REST::Client.new(account_sid, auth_token))
-allow(client).to receive(messages)
-messages = double("messages double")
-allow(messages).to receive(client)
-create = double("create double")
-
   it "sends a message" do
-    order_confirmation = Order_confirmation.new
-    allow(text_message).to receive(:text_message).and_return 'SM770c036e0c934726871d18958ca4558e'
-    expect(order_confirmation.text_message).to eq 'SM770c036e0c934726871d18958ca4558e'
-  end
+    time = Time.now + 1 * 60 * 60
 
+    client = double("client double")
+    messages = double("messages double")
+    create = double("create double")
+    message = double("message double")
+
+    allow(Twilio::REST::Client).to receive(:new).and_return client
+    allow(client).to receive(:messages).and_return messages
+    expect(messages).to receive(:create).with(to: "+447824701051", from: "+447360542270", body: "Thank you! Your order was placed and will be delivered before #{time.strftime("%I:%M %p")}")
+
+    order_confirmation = OrderConfirmation.new
+    order_confirmation.send_text_message
+  end
 end

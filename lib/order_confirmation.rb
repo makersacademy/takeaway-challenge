@@ -1,28 +1,24 @@
 require 'rubygems'
 require 'twilio-ruby'
 
-class Order_confirmation
+class OrderConfirmation
 
-  def text_message
+  def send_text_message
+    
+    
+    account_sid = ENV["ACC_SID"]
+    auth_token = ENV["AUTH_TOKEN"]
 
-  account_sid = 'ACbd5d9bebb38ff6e46ea9426ec80f0f6d'
-  auth_token = '6dbf8df5888bf320d8949c456dcde209'
+    client = Twilio::REST::Client.new(account_sid, auth_token)
 
-  client = Twilio::REST::Client.new(account_sid, auth_token)
-
-  message = client.messages.create(
-      to: "+447824701051",
-      from: "+447360542270",
-      body: "Thank you! Your order was placed and will be delivered before 18:52")
-
-    puts message.sid
+    message = client.messages.create(
+        to: ENV["PH_NUMBER"],
+        from: "+447360542270",
+        body: "Thank you! Your order was placed and will be delivered before #{time}")
   end
-# def send_confirmation_text
-#   client = TwilioAdapter.new
-#   client.send_sms(
-#     to: customer.mobile_phone_number,
-#     body: "Your verification code is #{verification_code}"
-#   )
-# end
 
+  def time
+    time = Time.now + 1 * 60 * 60
+    time.strftime("%I:%M %p")
+  end
 end
