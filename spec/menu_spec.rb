@@ -43,7 +43,7 @@ describe Menu do
       allow(dish_double).to receive(:[]).with(:name).and_return(:name_of_dish) # no need for [] syntax anymore
       allow(dish_double).to receive(:[]).with(:price).and_return(:price_of_dish)
       expect { menu.view_menu }.to output(
-        "name_of_dish: £ price_of_dish\n"
+        "1 name_of_dish: £ price_of_dish\n"
       ).to_stdout 
     end
 

@@ -38,10 +38,14 @@ class Basket
     total = basket_contents.inject(0.0) do |total, item|
       total += item.price
     end
+    puts "Your basket total is £ #{total}"
+    total
   end
 
   def complete_order
-    @order.new(self)
+    order = @order.new(self)
+    order.confirm_order
+    order
   end
 
   private

@@ -47,25 +47,67 @@ Run `bundle` in the project directory to ensure you have all the gems
 
 ## Usage
 
-`command_to_start` (e.g. `rackup` or `rails s`)
-Navigate to `http://localhost:4567/`
-
+From takeaway-challenge folder:
+``` ruby
+irb
+require './setup.rb'
+my_menu = setup_menu
+require './run.rb'
+run(my_menu)
+```
 
 ## Running tests
 
-`test_command` (e.g. `rspec`)
+From takeaway-challenge folder:
+`rspec`
 
 ## File manifest
 
+in `./`
+* `setup.rb`
+* `run.rb`
+* `README.md`
+* `INSTRUCTION.md`
+* `LICENSE`
+* `Gemfile`
+in `./lib/`
+* `dish.rb`
+* `menu.rb`
+* `basket.rb`
+* `order.rb`
+* `confirmation.rb`
+in `./spec/`
+* `dish_spec.rb`
+* `menu_spec.rb`
+* `basket_spec.rb`
+* `order_spec.rb`
+* `confirmation_spec.rb`
+* `spec_help.rb`
+* Not used `feature_spec.rb`
+
 ## My approach to the task
 
-### Domain diagram
+### Object-oriented design
+
+#### Domain diagram
 
 ![Domain diagram from user stories](./takeaway_challenge_domain_diagram.png)
 
-### Functional representation
+#### Functional representation
 
 ![Functional representation of classes](./takeaway-challenge%20functional%20representation.png)
+
+### Test Driven Development
+
+Isolated class tests from other classes. Used Rspec
+
+### Linting
+
+Used Rubocop
+
+### User interface
+
+Prototyped (not with TDD) a user interface that can be run from `run.rb` (run `setup.rb` first to set up the menu)
 
 ----------------------------------------------
 

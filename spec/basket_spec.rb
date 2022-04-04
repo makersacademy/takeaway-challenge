@@ -24,12 +24,13 @@ describe Basket do
     another_dish_double,
     dish_double,
     a_third_dish_double
-  ]}
+  ]
+  }
 
-  let(:order_double) { double(:order, ordered: ordered) }
+  let(:order_double) { double(:order, ordered: ordered, confirm_order: :order_confirmed) }
   let(:order_class_double) { double(:order_class, new: order_double) }
 
-  let(:basket) { described_class.new }
+  let(:basket) { described_class.new(order = order_class_double) }
 
   describe '#initialize' do
 
@@ -77,15 +78,6 @@ Basket total price: £ 41.00\n"
   end
 
   describe '#basket_and_items_totals_match?' do
-
-    # context 'where running total not same as total price of all items in basket' do
-
-    #   let(:items_total) { basket.items_total - 5 }
-
-    #   it 'returns false' do
-    #     expect(basket.basket_and_items_totals_match?).to eq false
-    #   end
-    # end
 
     context 'where running total is same as total price of all items in basket' do
       it 'returns true' do

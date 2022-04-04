@@ -21,8 +21,10 @@ class Menu
   end
 
   def view_menu
+    numbering = 0
     @available_dishes.each do |dish|
-      puts "#{dish.name}: £ #{dish.price}"
+      numbering += 1
+      puts "#{numbering} #{dish.name}: £ #{dish.price}"
     end
   end
 
