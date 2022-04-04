@@ -35,8 +35,8 @@ class Confirmation
     message = @client.messages
     .create(
       :body => @confirmation_body,
-      :from => '+12677107250',
-      :to => '+447462326497'
+      :from => ENV['TWILIO_FREE'],
+      :to => ENV['MOBILE']
     )
     puts message.sid
   end
