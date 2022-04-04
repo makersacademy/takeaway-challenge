@@ -10,4 +10,15 @@ end
 
 group :development, :test do
   gem 'rubocop', '1.20'
+  gem 'twilio-ruby'
+  gem 'twilio'
+  gem 'rack'
+  gem 'sinatra'
+  gem 'thin'
+  gem 'puma'
+  gem 'reel'
+  gem 'http'
+  gem 'webrick'
+  gem 'eventmachine'
+  gem 'dotenv'
 end
