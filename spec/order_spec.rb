@@ -5,6 +5,7 @@ describe Order do
                                                 "Jalfrezi: £9.00\n" +
                                                 "Tikka Masala: £8.00")
   }
+  let(:subject) { Order.new(menu_double) }
 
   context "#creation" do
     it "has an empty order" do
