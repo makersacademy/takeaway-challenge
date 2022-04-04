@@ -14,21 +14,19 @@ Takeaway Challenge
 
  ```
 
-Instructions
+## Task
 -------
+To write a Takeaway programme which will include a menu that lists dishes & prices of each dish. Customers will be able to use the programme to place an order & select several dishes they want with quantities, the programme will be able to calculate the total cost of the order as well.
+I will be using Twilio in order to send text messages to customers to inform them when their order will be delivered. Within the testing process, I will try to use stubs and doubles in order to isolate my tests. 
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Instructions
+----------------
+Instructions
+Clone this repository to your desired location, 
+Run the command 'bundle' in the project directory to ensure you have all the gems.
+Run RSpec in the `takeaway_challenge` directory in order to run the unit tests.
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+## User Story
 ```
 As a customer
 So that I can check if I want to order something
@@ -46,6 +44,17 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+
+## Domain Model Table
+------------------------------------
+|  Objects       |  Messages      |
+| -------------- | -------------  | 
+| Menu/dishes    | list of dishes |
+| Prices         | list prices of dishes|
+| Order          | place an order |
+| Text           | receive texts  |
+-----------------------------------
+
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
