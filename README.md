@@ -1,5 +1,7 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
+This is my solution to the week 2 weekend challenge at [Maker's Academy](https://makers.tech/).
+
 ```
                             _________
               r==           |       |
@@ -14,22 +16,11 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+ ## Task
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ Write a Takeaway programm with the following user stories:
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
+ ```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
@@ -47,37 +38,87 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Getting started
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Fork this repo:
+`https://github.com/almorcrette/takeaway-challenge`
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+Run `bundle` in the project directory to ensure you have all the gems
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+## Usage
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+From takeaway-challenge folder:
+``` ruby
+irb
+require './setup.rb'
+my_menu = setup_menu
+require './run.rb'
+run(my_menu)
+```
 
+## Running tests
 
-In code review we'll be hoping to see:
+From takeaway-challenge folder:
+`rspec`
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+## File manifest
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+in `./`
+* `setup.rb`
+* `run.rb`
+* `README.md`
+* `INSTRUCTION.md`
+* `LICENSE`
+* `Gemfile`
+in `./lib/`
+* `dish.rb`
+* `menu.rb`
+* `basket.rb`
+* `order.rb`
+* `confirmation.rb`
+in `./spec/`
+* `dish_spec.rb`
+* `menu_spec.rb`
+* `basket_spec.rb`
+* `order_spec.rb`
+* `confirmation_spec.rb`
+* `spec_help.rb`
+* Not used `feature_spec.rb`
 
-Notes on Test Coverage
-------------------
+## My approach to the task
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+### Object-oriented design
+
+#### Domain diagram
+
+![Domain diagram from user stories](./takeaway_challenge_domain_diagram.png)
+
+#### Functional representation
+
+![Functional representation of classes](./takeaway-challenge%20functional%20representation.png)
+
+### Test Driven Development
+
+Isolated class tests from other classes. Used Rspec
+
+### Linting
+
+Used Rubocop
+
+### User interface
+
+Prototyped (not with TDD) a user interface that can be run from `run.rb` (run `setup.rb` first to set up the menu)
+
+----------------------------------------------
+
+At the barest minimum, it should contain a description of what the code does, how to install it, how to use it and how to run its tests. In addition, READMEs often include other information such as:
+
+- Configuration instructions
+- A file manifest (list of files included)
+- Copyright and licensing information
+- Contact information for the distributor or programmer
+- Known bugs
+- Troubleshooting
+- Credits and acknowledgments
+- A changelog (usually for programmers)
+- A news section (usually for users)
