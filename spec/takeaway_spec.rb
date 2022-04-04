@@ -4,9 +4,11 @@ describe Takeaway do
   subject(:takeaway) { described_class.new(menu: menu) }
 
   let(:menu) { double(:menu, display: display_menu) }
-  let(:display_menu) { 'Chicken Tikka Masala: £6.50' }
+  let(:menu) { Menu.new }
 
-  it 'displays menu with list of dishes and prices' do
-    expect(subject.display_menu).to eq(display_menu)
+context 'Menu' do
+  it 'displays a list of dishes' do
+    expect(menu.menu_items).to include['Chicken Tikka Masala']
+    end
   end
 end

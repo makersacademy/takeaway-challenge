@@ -1,11 +1,13 @@
+require_relative 'menu'
+
 class Takeaway
   attr_reader :menu
 
   def initialize(menu:)
-    @menu = menu.display
+    @menu = menu
   end
 
   def display_menu
-    'Chicken Tikka Masala: £6.50'
+    menu.list_of_dishes
   end
 end
