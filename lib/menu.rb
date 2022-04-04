@@ -18,4 +18,13 @@ class Menu
           "chip Roll" => 4.50,   
         }
   end 
+  
+  def view_dishes
+    @list_hash.each { |item, price| puts "#{item} £#{price}" }
+  end
+
+  def check_availability(item)
+    message = "Dish not available. Please make a new selection."
+    raise message if @list_hash[item].nil?
+  end
 end
