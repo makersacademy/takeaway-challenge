@@ -11,7 +11,7 @@ class TwilioTextMessenger
         client.messages.create(
             from: 'my twilio number',
             to: 'my phone number',
-            body: "Thank you! Your order was placed and will be delivered before 18:52"
+            body: "Thank you! Your order was placed and will be delivered before #{Time.now + 1*60*60}"
             )
     end
 end
