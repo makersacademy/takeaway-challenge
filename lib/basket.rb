@@ -6,12 +6,16 @@
 # can be asked to check total
 # can be asked to complete order
 
+require_relative './order'
+require_relative './confirmation'
+
 class Basket
   attr_reader :basket_contents, :basket_total
 
-  def initialize
+  def initialize(order = Order)
     @basket_contents = []
     @basket_total = 0
+    @order = order
   end
 
   def add_to_basket(dish)
@@ -34,6 +38,10 @@ class Basket
     total = basket_contents.inject(0.0) do |total, item|
       total += item.price
     end
+  end
+
+  def complete_order
+    @order.new(self)
   end
 
   private

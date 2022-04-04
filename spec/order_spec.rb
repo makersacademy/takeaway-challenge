@@ -11,7 +11,7 @@ describe Order do
   let(:confirmation_double) { double :confirmation, send_text: :text_sent_confirmation }
   let(:confirmation_class_double) { double :confirmation_class, new: confirmation_double }
 
-  let(:order) { described_class.new(basket_double, confirmation_class_double) }
+  let(:order) { described_class.new(basket_double) }
 
   describe '#initalize' do
 
@@ -24,7 +24,7 @@ describe Order do
   describe '#confirm_order' do
 
     it 'sends a text to confirm the order' do
-      expect(order.confirm_order).to eq :text_sent_confirmation
+      expect(order.confirm_order(confirmation_class_double)).to eq :text_sent_confirmation
     end
 
   end

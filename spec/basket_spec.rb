@@ -17,6 +17,18 @@ describe Basket do
     name: :name_of_a_third_dish,
     price: 5
   }
+
+  let(:ordered) { [
+    dish_double,
+    another_dish_double,
+    another_dish_double,
+    dish_double,
+    a_third_dish_double
+  ]}
+
+  let(:order_double) { double(:order, ordered: ordered) }
+  let(:order_class_double) { double(:order_class, new: order_double) }
+
   let(:basket) { described_class.new }
 
   describe '#initialize' do
@@ -93,6 +105,16 @@ Basket total price: £ 41.00\n"
       basket.add_to_basket(dish_double)
       basket.add_to_basket(a_third_dish_double)
       expect(basket.items_total).to eq 41.0
+    end
+  end
+
+  describe '#complete_order' do
+    it 'confirms order of items in basket' do
+      basket.add_to_basket(dish_double)
+      2.times { basket.add_to_basket(another_dish_double) }
+      basket.add_to_basket(dish_double)
+      basket.add_to_basket(a_third_dish_double)
+      expect(basket.complete_order.ordered).to eq ordered
     end
   end
 end
