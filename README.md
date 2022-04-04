@@ -20,7 +20,7 @@ Getting Started
 -----
 To set up:
 ```
-git clone https://github.com/jmcnally17/airport_challenge.git
+git clone https://github.com/jmcnally17/takeaway-challenge.git
 bundle
 ```
 Run `gem install bundler` first if you haven't already got it installed.
