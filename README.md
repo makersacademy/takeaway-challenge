@@ -14,21 +14,41 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+This is a program that simulates a customer ordering a takeaway. The user is able to start new orders, add to the current order and check the bill which prints the total cost of the current order on the bottom. The [Order class](./lib/order.rb) contains the methods for monitoring the current order which can be started using the [Takeaway class](./lib/takeaway.rb). Both of these classes also contain information regarding the [Menu class](./lib/menu) which stores the items in the takeaway. Once the customer is satisfied with their order, they can then place the order using the takeaway class which uses the [text file](./lib/text.rb) to then send a confirmation text to the phone number that is stored in the environment variables.
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+Getting Started
 -----
+To set up:
+```
+git clone https://github.com/jmcnally17/takeaway-challenge.git
+bundle
+```
+Run `gem install bundler` first if you haven't already got it installed.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+How to Use
+-----
+Then, when in the [parent](.) directory:
+```
+irb
+require './lib/takeaway'
+```
+The takeaway file is the only file needed to be loaded as it indirectly requires all other files in the [lib](./lib) directory.
 
+The user can then start using the takeaway class by using `<takeaway_name> = Takeaway.new`. Showing the menu and then starting an order will be done by:
+```
+<takeaway_name>.show_menu
+<takeaway_name>.start_new_order
+```
+The user can then start adding items to their order with `<takeaway_name>.add_to_order(<item_name>)` if the `<item_name>` is present in the menu. Then the total cost of the order can be checked using `<takeaway_name>.check_bill` for placing the order with `<takeaway_name>.place_order` which will then send the confirmation text to the number provided in an environment variables document that the user can create(which is hidden from Github due this being sensitive information).
+
+Tests
+-----
+Tests were ran during the development of this program. Full coverage wasn't completely achieved but the user can run `rspec` from the [main](.) directory to see the results of these tests.
+
+_Note: The rspec tests did not cover the order being placed. A lot of time had been spent on this challenge and I felt that I wouldn't have been as productive figuring out how to run an rspec test without sending the confirmation text. I am happy with the general function of the program and may research how to cover these parts of the challenge later._
+
+User Stories
+-----
 ```
 As a customer
 So that I can check if I want to order something
@@ -46,38 +66,3 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
-
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
-
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
