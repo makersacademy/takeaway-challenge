@@ -4,6 +4,7 @@ ruby '3.0.2'
 
 group :test do
   gem 'rspec'
+  gem 'twilio-ruby'
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
 end
