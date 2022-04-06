@@ -5,7 +5,6 @@ class Order
   def initialize(list_of_choices)
     @list_of_choices = list_of_choices
     @total = 0.0
-    @confirmation = Confirmation.new
   end
 
   def show_bill
@@ -15,7 +14,7 @@ class Order
   def pay(amount)
     raise 'Please calculate the bill first' if @total == 0
     raise 'That was not enough, please try to pay again' if @total > amount
-    @confirmation.text
+    Confirmation.new.text
     'Thank you, your confirmation text is on the way'
   end
 

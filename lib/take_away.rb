@@ -21,7 +21,7 @@ class TakeAway
 
   def finalise
     raise "You haven't chosen anything yet.." if @list_of_choices.empty?
-    @order = Order.new(@list_of_choices)
+    Order.new(@list_of_choices)
   end
 
   private
