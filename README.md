@@ -15,6 +15,23 @@ Takeaway Challenge
  ```
 
  In this challenge my 'client' has instructed me to create a program that allows a user to view and order dishes as well as receive a text message from the restaurant letting them know that their order will be with them in one hours time.
+ 
+ How to use the program
+-------
+**To install**
+- Make sure you have already installed ruby
+- Clone this repository 
+- Install all dependencies using `bundle install`
+
+
+**To run the program**
+ - This is a command line program that can be run in IRB
+ - Once you have opened IRB require the file using `require './lib/takeaway.rb'`
+ - Instantiate a new object of the Restaurant class e.g. `mycafe = Restaurant.new`
+ - To see all dishes use the list method `mycafe.list`
+ - To add an item to your order use the select method e.g. `mycafe.select("Chocolate muffin")`
+ - To see your order total use the total method e.g. `mycafe.total`
+
 
 Approaching the challenge
 -------
