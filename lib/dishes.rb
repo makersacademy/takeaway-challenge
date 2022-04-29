@@ -1,13 +1,13 @@
 class Dishes
 
   def initialize
-    @menu = ["Avocado On Toast", 
-      "Poached Egg On Toast", 
-      "Sliced Banana On Toast", 
-      "Jam On Toast", 
-      "Peanut Butter On Toast",
-      "Scrambled Eggs On Toast",
-      "Greek Yoghurt + Strawberries on Toast"]
+    @menu = {"Avocado On Toast" => 5.50, 
+      "Poached Egg On Toast" => 5.00, 
+      "Sliced Banana On Toast" => 4.50, 
+      "Jam On Toast" => 4.50, 
+      "Peanut Butter On Toast" => 5.50,
+      "Scrambled Eggs On Toast" => 5.00,
+      "Greek Yoghurt + Strawberries on Toast" => 6.50}
   end
 
   def show_menu
