@@ -13,7 +13,7 @@ Takeaway
 
   when at least one item is provided
     when all the items match dishes on the Menu
-      should change current_order selected_items by at least 1
+      should change current_order basket by at least 1
 
     when not all the items match dishes on the Menu
       should raise error
@@ -22,24 +22,27 @@ Takeaway
     should raise error
 
   place_order
-    when current_order and selected_items are not empty
+    when current_order and basket are not empty
       should change current_order order_complete from false to true
       should instruct Text to send_text
     
-    when current_order selected_items are empty
+    when current_order basket are empty
       should raise error
 
 Order
-  @selected_items []
+  @basket []
   @order_total_price 0.00
   @order_complete false
   @order_placed_time Time
 
-  check_order_total_matches_item_total
-    when selected_items are not empty
-      should return list of selected_items, prices and order_total_price
+  add_to_basket
+    should change basket by number of dishes
 
-    when selected_items are empty
+  check_order_total_matches_item_total
+    when basket are not empty
+      should return list of basket, prices and order_total_price
+
+    when basket are empty
       should raise error
 
 Menu
