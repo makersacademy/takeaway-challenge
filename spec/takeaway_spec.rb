@@ -15,4 +15,12 @@ describe Takeaway do
     takeaway.order_dishes("Avocado On Toast", 2)
     expect(takeaway.show_order).to eq([{ name: "Avocado On Toast", price: 5.50 }, { name: "Avocado On Toast", price: 5.50 }])
   end
+
+  it "checks order total" do
+    takeaway = Takeaway.new
+    takeaway.order_dishes("Avocado On Toast", 2)
+    takeaway.order_dishes("Jam On Toast")
+    expect(takeaway.order_total).to eq(15.5)
+  end
+
 end
