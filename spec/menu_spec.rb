@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { described_class.new }
+  subject(:menu) { Menu.new }
 
   it 'creates an instance of the class' do
     expect(menu).to be_instance_of(Menu)
