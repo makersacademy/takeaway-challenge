@@ -1,4 +1,4 @@
-require "order"
+require "takeaway"
 
 describe Order do
   it "can make a new instance of order" do
