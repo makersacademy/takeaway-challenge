@@ -7,7 +7,6 @@ class Order
 
   def add_to_basket(dishes)
     dishes.each { |dish| basket << dish }
-    puts "basket = #{basket}"
   end
   
 end

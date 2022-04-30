@@ -1,6 +1,7 @@
 describe Takeaway do
-  let(:menu) { instance_double('Menu') }
-  subject(:takeaway) { Takeaway.new(menu)}
+  let(:menu) { instance_double('Menu', :display_available_dishes) }
+  let(:order) { instance_double('Order', :add_to_basket) }
+  subject(:takeaway) { Takeaway.new(menu, order)}
 
   describe '#display_menu' do
     it 'should instruct Menu to return available dishes' do
@@ -10,8 +11,10 @@ describe Takeaway do
   end
 
   describe '#add_to_order' do
-    it 'should create a new order' do
-      expect { takeaway.add_to_order }.to change(takeaway, :current_order).from(nil).to(be_an_instance_of Order)
+    it 'should instruct Order to add dishes to basket' do
+      expect(order).to receive(:add_to_basket)
+      dishes = ['pizza', 'pasta']
+      takeaway.add_to_order(dishes)
     end
   end
 end
