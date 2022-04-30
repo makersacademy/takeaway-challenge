@@ -6,7 +6,7 @@ class Takeaway
 
     @menu = { "Apple Pie" => 4.5,
       "Banana Pie" => 4.5,
-      "Tiramisu" => 5}
+      "Tiramisu" => 5 }
 
     @order = {}
 
@@ -20,7 +20,7 @@ class Takeaway
 
   end
 
-  def add_to_order (dish, quantity)
+  def add_to_order(dish, quantity)
 
     fail 'Not part of the menu' unless dish_on_menu?(dish)
     @order[dish] = quantity
@@ -30,6 +30,18 @@ class Takeaway
   def dish_on_menu?(dish)
 
     @menu[dish]
+
+  end
+
+  def check_order
+
+    total = 0
+    @order.each do |dish, quantity|
+      puts "#{dish}: #{quantity} --> £%.2f" % (@menu[dish] * quantity)
+      total += (quantity * @menu[dish])
+    end
+    puts "--------------"
+    puts "Total --> £%.2f" % total
 
   end
 
