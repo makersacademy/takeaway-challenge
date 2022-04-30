@@ -7,13 +7,13 @@ describe Dishes do
   end
 
   it "Shows menu of dishes" do
-    dishes = {"Avocado On Toast" => 5.50, 
-      "Poached Egg On Toast" => 5.00, 
-      "Sliced Banana On Toast" => 4.50, 
-      "Jam On Toast" => 4.50, 
-      "Peanut Butter On Toast" => 5.50,
-      "Scrambled Eggs On Toast" => 5.00,
-      "Greek Yoghurt + Strawberries on Toast" => 6.50}
+    dishes = [{ name: "Avocado On Toast", price: 5.50 }, 
+      { name: "Poached Egg On Toast", price: 5.00 }, 
+      { name: "Sliced Banana On Toast", price: 4.50 }, 
+      { name: "Jam On Toast", price: 4.50 }, 
+      { name: "Peanut Butter On Toast", price: 5.50 },
+      { name: "Scrambled Eggs On Toast", price: 5.00 },
+      { name: "Greek Yoghurt + Strawberries on Toast", price: 6.50 }]
 
     expect(subject.show_menu).to eq(dishes)
   end
