@@ -11,7 +11,7 @@ describe Takeaway do
 
   describe '#add_to_order' do
     it 'should create a new order' do
-      expect(takeaway.current_order).to be_instance_of Order
+      expect { takeaway.add_to_order }.to change(takeaway, :current_order).from(nil).to(be_an_instance_of Order)
     end
   end
 end

@@ -5,8 +5,8 @@ Takeaway
   @menu Menu
   @current_order Order
   
-  view_menu
-    should return Menu
+  display_menu
+    should instruct Menu to display available dishes
 
   add_to_order(items)
     should create a new Order
