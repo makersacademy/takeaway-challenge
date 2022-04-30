@@ -12,4 +12,21 @@ describe Takeaway do
 
   end
 
+  describe '#add_to_order' do
+
+    it 'adds to order if part of menu' do
+
+      subject.add_to_order("Apple Pie", 2)
+      expect(subject.order).to eq ({"Apple Pie" => 2})
+
+    end
+
+    it 'raises an error if dish is no part of the menu' do
+
+      expect { subject.add_to_order("Coffee Pie", 4) }.to raise_error 'Not part of the menu'
+
+    end
+
+  end
+
 end
