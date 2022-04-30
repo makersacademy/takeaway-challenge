@@ -13,23 +13,19 @@ describe Menu do
   end
 
   it 'initializes wiht a dishes array that contains dishes' do
-    expect(menu.dishes).to include({id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true})
+    expect(menu.dishes).to include({id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true, quantity: 0})
   end
 
   it 'contains multiple dishes' do
-    expect(menu.dishes).to include({id: 11, name: 'Phad Thai', price: 11, available?: true})
+    expect(menu.dishes).to include({id: 11, name: 'Phad Thai', price: 11, available?: true, quantity: 0})
   end
 
   it 'displays all of the dishes' do
-    expect(menu.display_dishes[1]).to eq("2. Veggie Breakfast - £8 - available")
+    expect(menu.display[1]).to eq("2. Veggie Breakfast - £8 - available")
   end
 
   it 'selects a dish' do
-    expect(menu.select_dish(1)).to eq({id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true})
-  end
-
-  it 'returns a price of a dish' do
-    expect(menu.dish_price(1)).to eq 7
+    expect(menu.select_dish(1)).to eq({id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true, quantity: 0})
   end
 
   it 'informs whether the dish is available' do
