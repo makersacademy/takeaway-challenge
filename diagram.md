@@ -11,7 +11,7 @@ Takeaway
   add_to_order(dishes)
     when at least one item is chosen
       when all the dishes match dishes on the Menu
-        should change current_order basket by at least 1
+        should instruct 
 
       when not all the dishes match dishes on the Menu
         should raise error
