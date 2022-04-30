@@ -14,9 +14,9 @@ class Text
     @client = client
   end
 
-  def send_completion_message
+  def send_completion_message(time)
     message = client.messages.create(
-        body: COMPLETION_MESSAGE_BODY,
+        body: COMPLETION_MESSAGE_BODY + time,
         from: FROM_NUMBER,
         to: TO_NUMBER
       )

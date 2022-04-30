@@ -37,4 +37,11 @@ describe Takeaway do
       takeaway.place_order
     end
   end
+
+  describe '#verify_order_basket_total' do 
+    it 'should instruct current_order to return dishes and prices'
+
+    it 'should return current_order'
+
+  end
 end

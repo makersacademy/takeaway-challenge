@@ -1,4 +1,6 @@
 class Takeaway
+  STANDARD_DELIVERY_TIMEFRAME = 3600
+
   def initialize(
     menu = Menu.new,
     current_order = Order.new,
@@ -18,11 +20,20 @@ class Takeaway
   end
 
   def place_order
-    current_order.complete_order
-    text.send_completion_message
+    current_order.complete_order(completion_time = current_time)
+    text.send_completion_message(expected_delivery_time = standard_delivery_time)
   end
 
   private
 
   attr_reader :menu, :current_order, :text
+
+  def standard_delivery_time
+    time = current_time + STANDARD_DELIVERY_TIMEFRAME
+    time.strftime("%H:%M")
+  end
+
+  def current_time
+    Time.now
+  end
 end

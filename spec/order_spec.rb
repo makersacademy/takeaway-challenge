@@ -11,7 +11,7 @@ describe Order do
 
   describe '#complete_order' do
     it 'should change complete_status to completed' do
-      expect { order.complete_order }.to change { order.complete_status}.from(false).to(true)
+      expect { order.complete_order('time') }.to change { order.complete_status}.from(false).to(true)
     end
   end
 end
