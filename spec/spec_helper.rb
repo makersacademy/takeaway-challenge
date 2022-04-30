@@ -18,3 +18,4 @@ end
 
 require 'text'
 require 'takeaway'
+require 'menu'
