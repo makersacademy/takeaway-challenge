@@ -2,15 +2,17 @@ require 'menu'
 
 describe Menu do
 
-  subject(:menu) { Menu.new("pizza_menu.csv") }
+  subject(:menu) { Menu.new("pizza") }
 
   it 'creates new instances of Menu class' do
     expect(menu).to be_an_instance_of(Menu)
   end
 
-  describe '# read_menu' do
-    it 'reads the menu without raising error' do
-      expect { menu.read_menu }.not_to raise_error
+  describe '# view_menu' do
+    it 'displays the selected menu' do
+      text = "Margherita, £9.00\nCured Meat, £12.50\nAnchoa, £12.50\nThe Devil, £12.50\nFlorence, £12.50\nMarinara, £7.50\nNew Yorker, £13.50" 
+      
+      expect(menu.read_menu).to eq text
     end
   end
 
