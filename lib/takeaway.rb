@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Takeaway
 
   attr_reader :order
@@ -42,6 +44,23 @@ class Takeaway
     end
     puts "--------------"
     puts "Total --> £%.2f" % total
+
+  end
+
+  def send_message
+
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = ENV['TWILIO_PHONE'] # Your Twilio number
+    to = ENV['MY_PHONE'] # Your mobile phone number
+
+    client.messages.create(
+    from: from,
+    to: to,
+    body: "Mensaje de prueba"
+    )
 
   end
 
