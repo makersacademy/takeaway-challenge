@@ -1,23 +1,20 @@
 describe Menu do
-  subject(:menu) { Menu.new }
+  subject(:menu) { Menu.new([
+    { name: 'pizza', price: 9.50 ,available: true },
+    { name: 'pasta', price: 8.20 ,available: true },
+    { name: 'tiramisu', price: 4.50 ,available: false }
+  ]) }
 
   describe '#display_available_dishes' do
-    it 'should only return available dishes' do
-      expect(menu.available_dishes).to include(hash_including(:name, :price, available: true)) 
-    end
+    context 'when some dishes are unavailable' do
+      it 'should only return available dish names and prices' do
+        expect(menu.display_available_dishes).to include("pizza" => 9.5, "pasta" => 8.2)
+      end
 
-    context 'when unavailable dishes have been removed' do
-      let(:available_dishes) { [
-        { name: 'pizza', price: 9.50 },
-        { name: 'pasta', price: 8.20 },
-      ] }
-
-      it 'should return available dish names and prices' do
-        expect(menu.display_available_dishes).to contain_exactly(
-          ['pizza', 9.50],
-          ['pasta', 8.20]
-        )
+      it 'should not return unavailable dishes' do
+        expect(menu.display_available_dishes).not_to include("tiramisu" => 4.5)
       end
     end
   end
 end
+

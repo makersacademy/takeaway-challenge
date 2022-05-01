@@ -1,26 +1,13 @@
 class Menu
-  attr_reader :available_dishes
+  attr_reader :dishes, :available_dishes
 
-  def initialize
-    @dishes = [
-      { name: 'pizza', price: 9.50 ,available: true },
-      { name: 'pasta', price: 8.20 ,available: true },
-      { name: 'tiramisu', price: 4.50 ,available: false }
-    ]
+  def initialize(dishes)
+    @dishes = dishes
     @available_dishes = filter_dishes_by_available
   end
 
   def display_available_dishes
-    display_dishes = []
-
-    available_dishes.each do |dish| 
-      name = dish[:name]
-      price = dish[:price]
-
-      display_dishes << [name, price]
-    end
-
-    display_dishes
+    available_dishes
   end
 
   private
@@ -29,6 +16,25 @@ class Menu
   attr_writer :available_dishes
 
   def filter_dishes_by_available
-    self.available_dishes = dishes.select { |dish| dish[:available] == true}
+    self.available_dishes = dishes.select { 
+      |dish| dish[:available] == true }
+
+    format_available_dishes
+  end
+
+  def format_available_dishes
+    formatted_available_dishes = {}
+
+    self.available_dishes = available_dishes.each do |dish| 
+      formatted_available_dishes.merge!(dish[:name] => dish[:price])
+    end
+
+    formatted_available_dishes
   end
 end
+
+$menu = Menu.new([
+  { name: 'pizza', price: 9.50 ,available: true },
+  { name: 'pasta', price: 8.20 ,available: true },
+  { name: 'tiramisu', price: 4.50 ,available: false }
+])
