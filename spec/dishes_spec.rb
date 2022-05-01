@@ -22,7 +22,11 @@ describe Dishes do
 
   describe "#dishes_available?" do
     it "returns true when dishes available" do
-      expect(subject.dish_available?).to eq(true)
+      expect(subject.dish_available?(1)).to eq(true)
+    end
+
+    it "returns true when dishes available" do
+      expect(subject.dish_available?(10)).to eq(false)
     end
   end
 end

@@ -1,5 +1,7 @@
+require_relative 'order'
+
 class Dishes
-  attr_reader :menu, :available
+  attr_reader :menu
   
   def initialize
     @menu = [
@@ -9,7 +11,6 @@ class Dishes
       {name: "Hold my beer Pizza", price: 8.99},
       {name: "Once in a lifetime Pizza", price: 9.99}
     ]
-    @available = true
   end
 
   def show_dishes
@@ -19,7 +20,7 @@ class Dishes
     @menu
   end
 
-  def dish_available?
-    @available
+  def dish_available?(index)
+    @menu[index] != nil
   end
 end
