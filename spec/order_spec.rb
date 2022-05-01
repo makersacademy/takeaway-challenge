@@ -12,7 +12,7 @@ describe Order do
   describe '#display_basket_total' do
     it 'should return basket dishes and prices and total' do
       order.add_to_basket(dishes)
-      expect(order.display_basket_total).to eq(dishes => 17.70)
+      expect(order.display_basket_and_total).to eq(dishes => 17.70)
     end
   end
 
@@ -24,10 +24,6 @@ describe Order do
         expect { order.complete_order('time') }.to change { 
           order.complete_status }.from(false).to(true)
       end
-
-      it 'should set time order completed'
-
-      it 'should set estimated delivery time'
 
       it 'should not allow a completed order to be completed again' do
         allow(order).to receive(:complete_status).and_return(true)

@@ -3,7 +3,6 @@ class Order
 
   def initialize
     @basket = [] # [{'pizza': 9.50}, {'pasta': 8.20}]
-    @basket_total = 0
     @complete_status = false
   end
 
@@ -12,7 +11,7 @@ class Order
     calculate_basket_total
   end
 
-  def display_basket_total
+  def display_basket_and_total
     {basket => basket_total}
   end
 

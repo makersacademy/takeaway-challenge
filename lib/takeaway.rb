@@ -15,17 +15,20 @@ class Takeaway
     menu.display_available_dishes
   end
 
-  def add_to_order(*dishes)
+  def add_to_order(*dishes) # {'pizza': 9.50}, {'pasta': 8.20}
     current_order.add_to_basket(dishes)
   end
 
-  def check_order_total
+  def check_order
     current_order.display_basket_and_total
   end
 
   def place_order
-    current_order.complete_order(completion_time = current_time)
-    text.send_completion_message(expected_delivery_time = standard_delivery_time)
+    current_order.complete_order(
+      completion_time = current_time)
+      
+    text.send_completion_message(
+      expected_delivery_time = standard_delivery_time)
   end
 
   private

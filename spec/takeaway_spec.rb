@@ -20,10 +20,10 @@ describe Takeaway do
     end
   end
 
-  describe '#check_order_total' do 
-    xit 'should instruct current_order to return dishes, prices and total' do
+  describe '#check_order' do 
+    it 'should instruct current_order to return dishes, prices and total' do
       expect(order).to receive(:display_basket_and_total)
-      takeaway.check_order_total
+      takeaway.check_order
     end
   end
 
