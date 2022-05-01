@@ -19,14 +19,14 @@ class Text
     and then it will be on it's way to you in no time.
     Listen out for the doorbell around #{completion_time}"
 
-    send(completion_message)
+    public_send(completion_message)
   end
 
   private
 
   attr_reader :client
 
-  def send(message)
+  def public_send(message)
     new_text = client.messages.create(
       body: message,
       from: FROM_NUMBER,

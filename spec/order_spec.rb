@@ -1,6 +1,6 @@
 describe Order do
   subject(:order) { Order.new }
-  dishes = [{'pizza': 9.50}, {'pasta': 8.20}]
+  dishes = [{ pizza: 9.50 }, { pasta: 8.20 }]
 
   describe '#add_to_basket' do
     it 'should change basket to include dishes' do
@@ -22,7 +22,8 @@ describe Order do
       
       it 'should change order status to completed' do
         expect { order.complete_order('time') }.to change { 
-          order.complete_status }.from(false).to(true)
+                                                     order.complete_status
+                                                   }.from(false).to(true)
       end
 
       it 'should not allow a completed order to be completed again' do

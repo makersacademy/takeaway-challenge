@@ -12,7 +12,7 @@ class Order
   end
 
   def display_basket_and_total
-    {basket => basket_total}
+    { basket => basket_total }
   end
 
   def complete_order(completion_time)

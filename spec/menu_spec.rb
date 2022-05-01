@@ -1,9 +1,10 @@
 describe Menu do
   subject(:menu) { Menu.new([
-    { name: 'pizza', price: 9.50 ,available: true },
-    { name: 'pasta', price: 8.20 ,available: true },
-    { name: 'tiramisu', price: 4.50 ,available: false }
-  ]) }
+    { name: 'pizza', price: 9.50,available: true },
+    { name: 'pasta', price: 8.20,available: true },
+    { name: 'tiramisu', price: 4.50,available: false }
+  ])
+  }  
 
   describe '#display_available_dishes' do
     context 'when some dishes are unavailable' do
@@ -17,4 +18,3 @@ describe Menu do
     end
   end
 end
-

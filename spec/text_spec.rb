@@ -1,5 +1,5 @@
 describe Text do
-  let(:client) { instance_double('Client', messages: self)}
+  let(:client) { instance_double('Client', messages: self) }
   
   subject(:text) { Text.new(client) }
 

@@ -1,9 +1,9 @@
 class Menu
   DEFAULT_DISHES = [
-    { name: 'pizza', price: 9.50 ,available: true },
-    { name: 'pasta', price: 8.20 ,available: true },
-    { name: 'tiramisu', price: 4.50 ,available: false }
-  ]
+    { name: 'pizza', price: 9.50,available: true },
+    { name: 'pasta', price: 8.20,available: true },
+    { name: 'tiramisu', price: 4.50,available: false }
+  ].freeze
 
   attr_reader :dishes, :available_dishes
 
@@ -18,12 +18,12 @@ class Menu
 
   private
 
-  attr_accessor :dishes
-  attr_writer :available_dishes
+  attr_writer :dishes, :available_dishes
 
   def filter_dishes_by_available
-    self.available_dishes = dishes.select { 
-      |dish| dish[:available] == true }
+    self.available_dishes = dishes.select do 
+      |dish| dish[:available] == true
+    end                            
 
     format_available_dishes
   end
