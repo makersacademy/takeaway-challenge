@@ -1,19 +1,22 @@
 class Dishes
-  attr_reader :menu
+  attr_reader :menu, :available
   
   def initialize
-    @menu = {
-      "Diet (not really) Pizza" => 5.99,
-      "Make me fat Pizza" => 6.99,
-      "Easy-Peasy Pizza" => 7.99,
-      "Hold my beer Pizza" => 8.99,
-      "Once in a lifetime Pizza" => 9.99
-    }
+    @menu = [
+      {name: "Diet (not really) Pizza", price: 5.99},
+      {name: "Make me fat Pizza", price: 6.99},
+      {name: "Easy-Peasy Pizza", price: 7.99},
+      {name: "Hold my beer Pizza", price: 8.99},
+      {name: "Once in a lifetime Pizza", price: 9.99}
+    ]
     @available = true
   end
 
   def show_dishes
-    @menu.each { |meal, price| puts "#{meal} £#{price}" }
+    @menu.each_with_index { |meal, index| 
+      puts "#{index + 1}. #{meal[:name]} £#{meal[:price]}"
+    }
+    @menu
   end
 
   def dish_available?
