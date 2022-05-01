@@ -1,14 +1,12 @@
-class Menu
-  DEFAULT_DISHES = [
-    { name: 'pizza', price: 9.50,available: true },
-    { name: 'pasta', price: 8.20,available: true },
-    { name: 'tiramisu', price: 4.50,available: false }
-  ].freeze
+require 'csv'
 
+class Menu
   attr_reader :dishes, :available_dishes
 
-  def initialize(dishes = DEFAULT_DISHES)
-    @dishes = dishes
+  def initialize(dishes_file = "./assets/dishes.csv")
+    @dishes = []
+    load_dishes(dishes_file)
+
     @available_dishes = filter_dishes_by_available
   end
 
@@ -20,10 +18,22 @@ class Menu
 
   attr_writer :dishes, :available_dishes
 
+  def load_dishes(dishes_file)
+    CSV.foreach(dishes_file, headers: true, header_converters: :symbol) do |row|
+      name, price, available = row[:name], row[:price], row[:available]
+
+      @dishes << { name: name.to_sym, price: price.to_f, available: true?(available) }
+    end
+  end
+
+  def true?(available)
+    available == "true"
+  end
+
   def filter_dishes_by_available
-    self.available_dishes = dishes.select do 
-      |dish| dish[:available] == true
-    end                            
+    self.available_dishes = dishes.select do |dish| 
+      dish[:available] == true
+    end
 
     format_available_dishes
   end

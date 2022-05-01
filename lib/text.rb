@@ -14,7 +14,10 @@ class Text
   end
 
   def send_completion_message(completion_time)
-    completion_message = "Thanks for your order! Our chefs are already busy preparing your food, and then it will be on it's way to you in no time. Listen out for the doorbell around #{completion_time}"
+    completion_message = "Thanks for your order!" +
+     "Our chefs are already busy preparing your food, " +
+     "and then it will be on it's way to you in no time. " +
+     "Listen out for the doorbell around #{completion_time}"
 
     public_send(completion_message)
   end
