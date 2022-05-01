@@ -11,19 +11,22 @@ describe Takeaway do
   end
 
   context '#order' do
-    it 'this is my test' do
-      output = place_order_with_input("Broccoli")
+    it 'can order one item from menu' do
+      output = place_order_with_input("Broccoli", 1)
 
-      expect(output).to eq "Please type each dish you require followed by return. When you have finished your order press return twice.\n"
-    end
+      expect(output).to eq <<~OUTPUT
+        Please type each dish you require followed by return. When you have finished your order press return twice.
+        how many do you want?
+        OUTPUT
+      end
   end
 
-  def place_order_with_input(order)
-    input = StringIO.new(order)
+  def place_order_with_input(*order)
+    input = StringIO.new(order.join("\n") + "\n")
     output= StringIO.new
 
     takeaway = Takeaway.new(input: input, output: output)
-    expect(takeaway.order).to eq input.string
+    expect(takeaway.order).to eq true
 
     output.string
   end
