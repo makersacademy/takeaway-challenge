@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'capybara'
-gem 'rake'
-gem 'rspec'
-gem 'rubocop', '0.71.0'
-gem 'simplecov', require: false, group: :test
-gem 'simplecov-console', require: false, group: :test
+ruby '3.0.2'
+
+group :test do
+  gem 'rspec'
+  gem 'simplecov', require: false, group: :test
+  gem 'simplecov-console', require: false, group: :test
+end
+
+group :development, :test do
+  gem 'rubocop', '1.20'
+end

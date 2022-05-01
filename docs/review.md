@@ -3,8 +3,6 @@ Welcome to the code review for Takeaway Challenge!  Again, don't worry - you are
 
 If you don't feel comfortable giving technical feedback at this stage, try going through this guide with your reviewee and review the code together.
 
-Please use [this form](https://goo.gl/forms/kl8BCIwaEqu9G0Nx2) to tick off where your reviewee has successfully avoided these issues!  This form helps us get an overall picture of how the whole cohort is doing - it's not an assessment of an individual student.
-
 # Step 0: Checkout and Run tests
 
 Please checkout your reviewee's code and run their tests. Read the code and try some manual feature tests in IRB. How easy is it to understand the structure of their code? How readable is their code? Did you need to make any cognitive leaps to 'get it'?
@@ -17,7 +15,7 @@ Please do include all the gems you use in your Gemfile. This is an important cou
 
 ## README updated
 
-Every good code base will have its README updated following the [contribution notes](https://github.com/makersacademy/takeaway-challenge/blob/master/CONTRIBUTING.md), i.e.
+Every good code base will have its README updated following the [contribution notes](https://github.com/makersacademy/takeaway-challenge/blob/main/CONTRIBUTING.md), i.e.
 
 * Make sure you have written your own README that briefly explains your approach to solving the challenge.
 * If your code isn't finished it's not ideal but acceptable as long as you explain in your README where you got to and how you would plan to finish the challenge.
@@ -54,7 +52,7 @@ The README is a great place to show the full story of how your app is used (from
 
 ## Tests should test real behaviours not stubs
 
-We already talked about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
+You may have read about ["Vacuous" tests](https://github.com/makersacademy/airport_challenge/blob/main/docs/review.md#avoid-vacuous-tests) in the airport challenge code review.  The example there focused on how we shouldn't test the behaviour of a double; but we can get into similar trouble if we are stubbing a real object, e.g.
 
 ```ruby
 it 'sends a payment confirmation text message' do
@@ -65,9 +63,9 @@ end
 
 In the above the `expect(subject).to receive(:send_sms)` command "stubs" out any existing method called `send_sms` on the subject.  Using `expect` instead of `allow` means that at the end of the it block, RSpec checks that subject did receive the message `send_sms`, which we have ensured by calling `subject.send_sms`, so this test passes without ever touching the application code.
 
-You can confirm this test is 'vacuous' by checking that the [test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) doesn't change when you remove it.
+You can confirm this test is 'vacuous' by checking that the [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) doesn't change when you remove it.
 
-In general you shouldn't be stubbing out behaviour on the object under test.  The two key exceptions are when you have randomness or a 3rd party API.  We saw how to [stub random behaviour](https://github.com/makersacademy/airport_challenge/blob/master/docs/review.md#handling-randomness-in-tests) in the airport challenge code review, but how do we stub a 3rd party API?  See the next section.
+In general you shouldn't be stubbing out behaviour on the object under test.  The two key exceptions are when you have randomness or a 3rd party API.  We saw how to [stub random behaviour](https://github.com/makersacademy/airport_challenge/blob/main/docs/review.md#handling-randomness-in-tests) in the airport challenge code review, but how do we stub a 3rd party API?  See the next section.
 
 ## Stubbing the Twilio API
 
@@ -78,7 +76,7 @@ The simplest approach is to stub out a method that calls the service, for exampl
 ```ruby
 class Takeaway
 
-  def complete_order
+  def complete_order(price)
     send_text("Thank you for your order: £#{total_price}")
   end
 
@@ -107,11 +105,11 @@ describe Takeaway
 end
 ```
 
-This ensures that Takeaway#complete_order gets some test coverage and that no SMS will be sent by our tests.  This is acceptable, but we still don't have very good test coverage.  See the pill on [levels of stubbing 3rd party services](https://github.com/makersacademy/course/blob/master/pills/levels_of_stubbing.md) for some alternatives.
+This ensures that Takeaway#complete_order gets some test coverage and that no SMS will be sent by our tests.  This is acceptable, but we still don't have very good test coverage.  See the pill on [levels of stubbing 3rd party services](https://github.com/makersacademy/course/blob/main/pills/levels_of_stubbing.md) for some alternatives.
 
 ## Unit vs Integration tests
 
-Note that if you create real objects (not doubles) in your unit tests other than that which is the subject, then you are using the [Chicago style)[http://programmers.stackexchange.com/questions/123627/what-are-the-london-and-chicago-schools-of-tdd] of unit testing (also called [integration testing](http://stackoverflow.com/a/7876055/316729)).  In general you want to separate up your unit from your integration (or "feature") tests.  Unit tests can just rest in the root of the spec folder, but features of integration tests should go in a subfolder (spec/features or spec/integration) or even in a separate folder on the root directory to allow them to run completely separately.
+Note that if you create real objects (not doubles) in your unit tests other than that which is the subject, then you are using the [Chicago style](http://programmers.stackexchange.com/questions/123627/what-are-the-london-and-chicago-schools-of-tdd) of unit testing (also called [integration testing](http://stackoverflow.com/a/7876055/316729)).  In general you want to separate up your unit from your integration (or "feature") tests.  Unit tests can just rest in the root of the spec folder, but features of integration tests should go in a subfolder (spec/features or spec/integration) or even in a separate folder on the root directory to allow them to run completely separately.
 
 At Makers Academy we recommend using the London style with doubles to effectively isolate the single class being tested in a unit test.
 
@@ -186,7 +184,7 @@ end
 
 ## Use of modules
 
-There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are sometimes a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behavioiur can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on (e.g. sending text messages for the restaurant) should be injected (see [Appropriate use of Dependency Injection](appropriate-use-of-dependency-injection)).
+There are two main uses of modules in Ruby; one is to provide 'utility' libraries (which are sometimes a code smell) and the other is to provide mixins.  However, using a module as a mixin can violate the Single Responsibility Principle.  Although code is _defined_ in the module, when it is `include`d in a class, its behaviour becomes part of that class and therefore part of the class's responsibilities.  Shared behaviour can be refactored into mixins (e.g. `BikeContainer` in Boris Bikes), but other responsibilities the class is dependent on (e.g. sending text messages for the restaurant) should be injected (see [this practical on dependency injection](https://github.com/makersacademy/skills-workshops/blob/f5b4801840fe07d26ff70341652dc81dcda12289/practicals/object_oriented_design/dependency_injection.md)).
 
 ## Law of Demeter
 
