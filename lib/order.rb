@@ -21,6 +21,6 @@ class Order
   end
 
   def check_basket
-    return @basket
+    @basket
   end
 end

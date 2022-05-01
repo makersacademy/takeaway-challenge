@@ -1,33 +1,44 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  F.I. |   ))))
           |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
+            //  \_____:_____.-------D   )))))
            //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
+       .:'//.   \ \=|   \ /  .:'':./    ))))))
+      :  //  :   \ \ ''..'--:'-..  :
+      '  ''  '    \:.....:--'.-''  '
        ':..:'                ':..:'
 
  ```
 
 Instructions
--------
+------
 
 * Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
 * Fork this repo
+* Clone to your local machine
 * Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+* Test the code using rspec in the cloned directory on the command line terminal
+* Can also be tested using irb on the command line terminal and using the below to load all the files to implement all the methods
+```
+irb
+require './lib/menu'
+=> true
+require './lib/view_menu'
+=> true
+require './lib/order'
+=> true
+```
+<br>
+
+## Task
+------
+* Write a Takeaway program with the below user stories:
+<br>
+<br>
 
 ```
 As a customer
@@ -46,34 +57,26 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+## My Approach
+* Carried over learning from [Oystercard](https://github.com/Farzan-I/Oystercardday5) project
+* Drew up a diagram using pen and paper for the first three user stories to aid the nouns and verbs that would become class names and method names
+* Managed to get a total of 7 tests across 3 spec files to have 100% coverage and passing
+* Didn't manage to implement the Twilio aspect of the code as I didn't have enough time. If I had, I'd look into doing this to complete the user stories
+* The above would be done using tutorials on YouTube and using Google to aid the creation of the final piece of code
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Complications
+* Had issues with the total instance variable (@total) as it would not return the total of the basket instance variable (@basket)
+* This was rectified using solely a hash in the dishes instance variable (@dishes) rather than having the hash stored in an array as well
+* One complication that hasn't been rectified is when a customer would add dishes (i.e. "meatball sub") to the basket, they could view the basket but it wouldn't give the total price. However, when the total method was called, it would give the total price of the basket but if the customer was to add something else, it would not increment the price accordingly
+* If I had time, I would've wrote a whole new total method to rectify this issue as I tried to focus on user experience rather than anything else
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
-
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
+## Code Review
 
 * All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
+* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (100%)
 * The code is elegant: every class has a clear responsibility, methods are short etc.
+
+
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
 
