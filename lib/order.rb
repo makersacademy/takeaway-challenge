@@ -2,6 +2,19 @@ require_relative 'menu'
 require 'rubygems'
 require 'twilio-ruby'
 require 'time'
+require 'sinatra'
+
+# post '/message' do
+#   number = params['From']
+#   body = params['Body']
+
+#   content_type 'text/xml'
+#   "<Response>
+#     <Message>
+#       Hello #{number}. You said: #{body}
+#     </Message>
+#   </Response>"
+# end
 
 class Order
 
@@ -13,8 +26,8 @@ class Order
     @order = []
     @order_total = 0
 
-    account_sid = ENV["ACCOUNT_SID"]
-    auth_token = ENV["AUTH_TOKEN"]
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
@@ -46,6 +59,7 @@ class Order
       end
     end
     @order_total + count
+
   end
 
   def arrival_time
@@ -67,7 +81,7 @@ class Order
 
     @client.messages.create(
       from: '+19805504523',
-      to: ENV["PHONE_NUM"],
+      to: ENV['PHONE_NUM'],
       body: "Thanks! Your order has been received and will be with you by #{arrival_time}"
     )
 

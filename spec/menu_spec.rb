@@ -4,7 +4,7 @@ describe Menu do
   
   context "the menu can list its items, along with their prices" do
     
-    it "initialises with an array, which is the menu" do
+    it "initialises with a hash, which is the menu" do
       
       expect(subject.menu).to eq({
         "Pepperoni Pizza" => 9,
