@@ -12,13 +12,25 @@ describe Takeaway do
 
   context '#order' do
     it 'can order one item from menu' do
-      output = place_order_with_input("Broccoli", 1)
-
+      output = place_order_with_input("Broccoli")
+      
       expect(output).to eq <<~OUTPUT
         Please type each dish you require followed by return. When you have finished your order press return twice.
         how many do you want?
         OUTPUT
-      end
+    end
+    xit 'can order three items from menu' do
+      output = place_order_with_input("Broccoli", 2, "Chips", 1, "Ice_cream", 1)
+      
+      expect(output).to eq <<~OUTPUT
+        Please type each dish you require followed by return. When you have finished your order press return twice.
+        how many do you want?
+        Please type each dish you require followed by return. When you have finished your order press return twice.
+        how many do you want?
+        Please type each dish you require followed by return. When you have finished your order press return twice.
+        how many do you want?
+        OUTPUT
+    end
   end
 
   def place_order_with_input(*order)
@@ -26,6 +38,7 @@ describe Takeaway do
     output= StringIO.new
 
     takeaway = Takeaway.new(input: input, output: output)
+    allow(takeaway.menu).to receive(:check).and_return(true)
     expect(takeaway.order).to eq true
 
     output.string
