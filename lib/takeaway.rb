@@ -15,8 +15,12 @@ class Takeaway
     menu.display_available_dishes
   end
 
-  def add_to_order(dishes)
+  def add_to_order(*dishes)
     current_order.add_to_basket(dishes)
+  end
+
+  def check_order_total
+    current_order.display_basket_and_total
   end
 
   def place_order
