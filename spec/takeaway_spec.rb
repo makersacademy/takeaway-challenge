@@ -41,4 +41,14 @@ describe Takeaway do
 
   end
 
+  describe '#prepare_message' do
+
+    it 'return message to be sent' do
+
+      expect(subject.prepare_message).to eq ("Thank you! Your order was placed and will be delivered before #{(Time.new + 3600).strftime("%k:%M")}")
+
+    end
+
+  end
+
 end

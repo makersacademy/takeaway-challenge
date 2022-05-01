@@ -1,4 +1,4 @@
-require 'twilio-ruby'
+require_relative 'message'
 
 class Takeaway
 
@@ -49,19 +49,15 @@ class Takeaway
 
   def send_message
 
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
-    client = Twilio::REST::Client.new(account_sid, auth_token)
+    Message.new(prepare_message).send
 
-    from = ENV['TWILIO_PHONE'] # Your Twilio number
-    to = ENV['MY_PHONE'] # Your mobile phone number
+  end
 
-    client.messages.create(
-    from: from,
-    to: to,
-    body: "Mensaje de prueba"
-    )
+  def prepare_message
 
+    delivery_time = (Time.new + 3600).strftime("%k:%M")
+    "Thank you! Your order was placed and will be delivered before #{delivery_time}"
+    
   end
 
 end
