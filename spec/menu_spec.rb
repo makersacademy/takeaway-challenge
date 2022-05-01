@@ -16,10 +16,10 @@ describe Menu do
     end
   end
 
-  describe '# csv_to_hash' do
-    it 'converts a csv file into a hash' do
-      expect(menu.csv_to_hash).to be_an_instance_of(Hash)
-    end
-  end
+  # describe '# csv_to_hash' do
+  #   it 'converts a csv file into a hash' do
+  #     expect(menu.csv_to_hash).to be_an_instance_of(Hash)
+  #   end
+  # end
 
 end

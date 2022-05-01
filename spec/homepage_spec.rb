@@ -16,9 +16,18 @@ describe Homepage do
     # end
   end
 
-  # describe '# find_restaurants' do
-  #   it 'extracts the name of restaurants from the csv files available' do
-  #     expect(subject.find_restaurants).to be_an_instance_of(Array)
-  #   end
-  # end
+  describe '# see_restaurant_menu' do
+    it 'creates an instance of menu' do
+      subject.see_restaurant_menu('pizza')
+
+      expect(subject.currently_viewed_menu).to be_an_instance_of Menu
+    end
+
+    it 'displays the selected menu' do
+      text = "Margherita, £9.00\nCured Meat, £12.50\nAnchoa, £12.50\nThe Devil, £12.50\nFlorence, £12.50\nMarinara, £7.50\nNew Yorker, £13.50"
+
+      expect(subject.see_restaurant_menu('pizza')).to eq text
+    end
+
+  end
 end
