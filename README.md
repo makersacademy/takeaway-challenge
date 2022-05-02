@@ -14,8 +14,6 @@ Takeaway Challenge
 
  ```
 
-# Airport Traffic Control System
-
 This program is designed to manage Planes flying in and out of an airport. The airport has been created through the guidance of the user stories provided:
 
 > As a customer,\
