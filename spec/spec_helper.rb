@@ -18,7 +18,7 @@ module FormatterOverrides
   end
 end
 
-RSpec::Core::Formatters::DocumentationFormatter.prepend FormatterOverrides
+# RSpec::Core::Formatters::DocumentationFormatter.prepend FormatterOverrides
 
 require 'text'
 require 'takeaway'

@@ -1,13 +1,7 @@
 require 'csv'
 
 describe Menu do
-  subject(:menu) { Menu.new }
-
-  # let(:menu) { double('Menu', :display_available_dishes, :dishes => [
-  #   { name: 'pizza', price: 9.50,available: true },
-  #   { name: 'pasta', price: 8.20,available: true },
-  #   { name: 'tiramisu', price: 4.50,available: false }
-  # ]) }
+  subject(:menu) { Menu.new('./spec/dishes_spec.csv') }
 
   describe '#display_available_dishes' do
 
