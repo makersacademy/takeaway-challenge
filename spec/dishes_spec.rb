@@ -3,8 +3,8 @@ require 'dishes'
 describe Dishes do
   # subject(:dishes) { described_class.new }
 
-  it "can create menu" do
-    expect(subject).to be_kind_of(Dishes)
+  it "creates an instance of the class" do
+    expect(subject).to be_instance_of(Dishes)
   end
 
   describe "#show_dishes" do

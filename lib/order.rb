@@ -1,10 +1,8 @@
 require_relative 'dishes'
-
-# create csv file
-# define NUMBER_OF_ORDERS ???
+require_relative 'text'
 
 class Order
-  attr_reader :basket, :menu, :dishes, :complete
+  attr_reader :basket, :menu, :dishes, :complete, :text
 
   def initialize
     @basket = Array.new(0)
@@ -12,6 +10,7 @@ class Order
     @menu = dishes.menu
     @dishes = dishes
     @complete = false
+    @text = Text.new
   end
 
   def select_dishes(index)
@@ -35,6 +34,7 @@ class Order
   def confirm_order
     @complete = true
     puts "Order complete."
+  
     return check_total
   end
 end
