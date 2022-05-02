@@ -1,5 +1,8 @@
 /**/.DS_Store
 /coverage
 
+# Environment variables (including keys and phone number)
+.env
+
 # Local cache of Rubocop remote config
 .rubocop-*

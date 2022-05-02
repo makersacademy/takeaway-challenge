@@ -1,4 +1,7 @@
 require_relative 'menu'
+require 'rubygems'
+require 'twilio-ruby'
+require 'time'
 
 class Order
 
@@ -7,6 +10,12 @@ class Order
   def initialize(menu = Menu.new)
     @menu = menu
     @customer_order = Hash.new(0)
+
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
   end
 
   def add_dish(item)
@@ -17,6 +26,11 @@ class Order
   def view_order
     order_subtotals
     order_total
+  end
+
+  def place_order
+    send_text
+    "Thank you! Your order was placed and will be delivered by #{arrival_time}"
   end
 
   private 
@@ -37,5 +51,18 @@ class Order
   def order_total
     puts "=========="
     puts "TOTAL: £#{checkout_total}"
+  end
+
+  def arrival_time
+    (Time.now + 1 * 60 * 60).strftime("%k:%M")
+  end
+
+  def send_text
+    
+    @client.messages.create(
+    from: ENV['TWILIO_NUM'],
+    to: ENV['PHONE_NUM'],
+    body: "Thank you! Your order was placed and will be delivered by #{arrival_time}"
+    )
   end
 end
