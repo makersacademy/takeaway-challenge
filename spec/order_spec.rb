@@ -1,14 +1,14 @@
 require 'order'
 
 describe Order do
-  it { is_expected.to be_instance_of(Order)}
 
-  # it 'should include an array to store the meals a customer has selected' do
-  #   expect(subject).to include(:selection)
+  describe "confirm order" do
 
-  describe '#view_menu' do
-		it 'should show dishes that can be purchased in an array of hashes' do
-      expect(subject.view_menu).to eq (Menu.new.view_menu)
+  # let(:user) { "complete order" }
+
+    xit 'should allow user to confirm order' do
+      allow(Order).to receive(:user).and_return("complete order")
+      expect subject.checkout_confirmation
     end
   end
 
@@ -28,7 +28,23 @@ describe Order do
 
     context 'when a customer selects a dish' do
       it 'it should change the confirmation message accordingly' do
-        expect { subject.add(1) }.to change(subject, :confirmation)
+        expect { subject.add(1) }.to change(subject, :item_added_confirmation)
+      end
+    end
+
+  describe '#summary' do
+      context 'when a customer has finished choosing meals and clicks on checkout' do
+        it 'should show the customer their summary' do
+          subject.add(1)
+          subject.stub(:gets) {"complete order"}
+          expect(subject.checkout).to include(subject.selection)
+        end
+
+        it 'should prompt the customer to compare the total against the order summary' do
+          subject.add(1)
+          subject.stub(:gets) {"complete order"}
+          expect(subject.checkout).to include("Please check your order against your total:")
+        end
       end
     end
   end
