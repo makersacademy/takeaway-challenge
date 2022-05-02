@@ -11,6 +11,7 @@ end
 
 def place_order(dishes)
   dishes.each { |dish, quantity| order.add(dish, quantity) }
+  order.total
 end
 private
 

@@ -16,4 +16,11 @@ describe Menu do
     expect(menu.print_menu).to eq(printed_menu)
   end
 
+  it 'tells if a dish is on the menu' do
+    expect(menu.has_dish?(:"Prawn Toast")).to be true
+  end
+  
+  it 'claculates a price' do
+    expect(menu.price(:"Prawn Toast")).to eq(dishes[:"Prawn Toast"])
+  end
 end
