@@ -1,4 +1,4 @@
- class Order
+class Order
 
   attr_reader :current_order, :printed_order, :menu
 
@@ -37,6 +37,11 @@
     calculate_total
     return "£#{'%.2f' % @total}"
   end
+
+  # def confirm_order(number, acc_sid, a_token)
+  #   # method required to send order to restaurant
+  #   sms = Text.new(number, acc_sid, a_token)
+  # end
 
   private
 

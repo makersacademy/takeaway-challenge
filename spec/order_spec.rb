@@ -70,4 +70,10 @@ describe 'Order' do
       expect(order.order_total).to eq '£67.50'
     end
   end
+
+  # describe '# confirm_order' do
+  #   it 'creates new instance of text' do
+  #     expect(order.confirm_order('user number', 'account SID', 'auth token')).to be_an_instance_of(Text)
+  #   end
+  # end
 end

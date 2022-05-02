@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+
 class Text
   def initialize(number, acc_sid, a_token)
     @time = Time.now + 3600
