@@ -1,6 +1,23 @@
 require 'SMS'
+# require 'dotenv/load'
+
 describe SMS do
-  xit "requests a user's phone number" do
+
+  subject(:sms) {described_class.new}
+
+  before do
+    allow(sms).to receive(:sms)
+  end
+
+    it 'sends a payment confirmation text message' do
+      expect(sms).to receive(:sms)
+      sms.send_sms(+123456789)
+    end
+
+  describe '#send_sms' do
+    it "takes a phone number as an argument" do
+      expect(subject).to respond_to(:send_sms).with(1).argument
+    end
   end
 
   xit 'sends a confirmation sms to that phone number' do
@@ -10,7 +27,7 @@ describe SMS do
   end
 
   it 'changes the status of sent? to true when a message is sent' do
-    expect {subject.send_sms}.to change(subject, :sent?).to true
+    expect {subject.send_sms(+123456789)}.to change(subject, :sent?).to true
   end
 
   it 'confirms a message has been sent' do
