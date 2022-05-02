@@ -14,7 +14,7 @@ Takeaway Challenge
 
  ```
 
-This program is designed to manage Planes flying in and out of an airport. The airport has been created through the guidance of the user stories provided:
+This program is designed to manage takeaway orders. The takeaway has been created through the guidance of the user stories provided:
 
 > As a customer,\
 So that I can check if I want to order something,\
