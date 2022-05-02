@@ -14,70 +14,56 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+# Airport Traffic Control System
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This program is designed to manage Planes flying in and out of an airport. The airport has been created through the guidance of the user stories provided:
 
-Task
------
+> As a customer,\
+So that I can check if I want to order something,\
+I would like to see a list of dishes with prices.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+> As a customer,\
+So that I can order the meal I want,\
+I would like to be able to select some number of several available dishes.
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+> As a customer,\
+So that I can verify that my order is correct,\
+I would like to check that the total I have been given matches the sum of the various dishes in my order.
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+> As a customer,\
+So that I am reassured that my order will be delivered on time,\
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered.
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+The idea of this program is to be able to place an order from a restuarant as a takeaway. You can see the menu, add show the order in progress, see the total whenever you'd like whilst ordering new food & recieve a text once you place the order with an estimated delivery date.
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+This system was built using the following [TDD](https://en.wikipedia.org/wiki/Test-driven_development#:~:text=Test%2Ddriven%20development%20(TDD),software%20against%20all%20test%20cases.).
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Installation
+Fork or download this repo.\
+Use `gem install bundler` to install the correct gems to use and test this code.\
+When installation completes, run `bundle`.\
+You may also need to install the Twilio gem, [you can install that here](https://www.twilio.com/docs/libraries/ruby).
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## How To Use
+Load `takeaway.rb` in with `irb`.\
+Make a new instance of takeaway with `Takeaway.new`.\
+Call `show_menu` to show the menu and the prices. (Yes, its a toast bar).\
+Call `order_dishes(dish, quantity)` to order a dish and set a quantity of how many you'd like to order. The default quantity is 1.\
+Call `show_order` to show what you have currently added to your order.\
+Call `order_total` to show the current price total of the order. This value changes after you add an order to it.
+Call `place_order` to place your order and send a text to the recipient.\
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+In order to send a text succesfully, you will need to register for the [Twilio API here](https://www.twilio.com/docs/sms). You will need to hop into `text.rb` to update:\
+* `account_sid`
+* `auth_token`
+* `from:` phone number, (provided by Twilio).
+* `to:` phone number of your choice.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+## How To Test
+Run `rspec` to run through tests.\
+Run `rubocop` to run through code efficiency.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+## Bugs/Future Changes To The Code
+* Testing the sent text is still something I am working on. Currently the test doesn't really make sense as it is testing a mock which doesn't make sense right now, but it shall be fixed within the week.
+* I would like to add a reset_order method to reset the order.
+* I would like to add a method to place an order via text.
