@@ -15,10 +15,9 @@ class Menu
   end
 
   def check(dish)
-    _dish = dish.to_sym
+    the_dish = dish.to_sym
     @dishes.each do |dish|
-      "food #{dish[:food]}"
-      if _dish == dish[:food]
+      if the_dish == dish[:food]
         return true
       end
     end
@@ -26,4 +25,3 @@ class Menu
   end
 
 end
-

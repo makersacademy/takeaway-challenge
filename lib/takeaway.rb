@@ -1,16 +1,14 @@
 require './lib/menu'
 
 class Takeaway
-  
+  attr_reader :menu, :summary
+
   def initialize(input: $stdin, output: $stdout)
     @input = input
     @output = output
     @menu = Menu.new
     @dishes = []
-  end
-
-  def menu
-    @menu
+    @summary = []
   end
 
   def show_menu
@@ -19,24 +17,45 @@ class Takeaway
 
   def order
     loop do
-      @output.puts "Please type each dish you require followed by return. When you have finished your order press return twice."
-      dish = @input.gets.chomp
-      # return true if dish == "" 
+      dish = ask_for_order
+      return true if dish == "" 
       if menu.check(dish)
-        @output.puts "how many do you want?"
-        quantity = @input.gets.to_i
-        return true
+        quantity = ask_for_quantity
+        log_order(dish, quantity)
       else
-        @output.puts "Sorry, we don't have that dish - perhaps you've made a spelling mistake?"
+        clarify_order
       end
     end
   end
+
+  private
+
+  def confirm_order
+    true
+  end
+
+  def ask_for_order
+    @output.puts <<~ORDER 
+    Please type each dish you require followed by return. 
+    When you have finished your order press return twice.
+    ORDER
+    dish = @input.gets.chomp
+  end
+
+  def clarify_order
+    @output.puts "Sorry, we don't have that dish - perhaps you've made a spelling mistake?"
+  end
+
+  def ask_for_quantity
+    @output.puts "how many do you want?"
+    quantity = @input.gets.to_i
+  end
+
+  def log_order(dish, quantity)
+    order_item = {}
+    order_item[:food] = dish
+    order_item[:quantity] = quantity
+    @summary << order_item
+  end
   
 end
-
-
-# need to get the method order looping to keep asking until double return
-# line 24 and removing line 28 does this for an irb test but it breaks 
-# the rspec tests. Until this is fixed we can't run the 3 items test
-# also the order is not being put anywhere yet - needs to be added to a 
-# hash - and perhaps to and order class
