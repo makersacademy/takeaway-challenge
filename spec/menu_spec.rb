@@ -13,11 +13,11 @@ describe Menu do
   end
 
   it 'initializes wiht a dishes array that contains dishes' do
-    expect(menu.dishes).to include({id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true, quantity: 0})
+    expect(menu.dishes).to include({ id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true, quantity: 0 })
   end
 
   it 'contains multiple dishes' do
-    expect(menu.dishes).to include({id: 11, name: 'Phad Thai', price: 11, available?: true, quantity: 0})
+    expect(menu.dishes).to include({ id: 11, name: 'Phad Thai', price: 11, available?: true, quantity: 0 })
   end
 
   it 'displays all of the dishes' do
@@ -25,11 +25,31 @@ describe Menu do
   end
 
   it 'selects a dish' do
-    expect(menu.select_dish(1)).to eq({id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true, quantity: 0})
+    expect(menu.select_dish(1)).to eq({ id: 1, name: 'Spinach & Cheddar Pancakes', price: 7, available?: true, quantity: 0 })
   end
 
-  it 'informs whether the dish is available' do
-    expect(menu.dish_available?(1)).to eq true
+  context 'dish available' do
+    it 'informs whether the dish is available' do
+      expect(menu.dish_available?(1)).to eq true
+    end
+  end
+
+  context 'dish unavailable' do
+    it 'informs whether the dish is available' do
+      expect(menu.dish_available?(12)).to eq false
+    end
+  end
+
+  context 'id valid' do
+    it 'checks if id is valid' do
+      expect(menu.id_valid?(1)).to eq true
+    end
+  end
+
+  context 'id invalid' do
+    it 'checks if if is valid' do
+      expect(menu.id_valid?(30)).to eq false
+    end
   end
 
 end
