@@ -11,14 +11,6 @@ class Dishes
   end
 
   def show_menu
-    pretty_menu
-  end
-
-  private
-
-  def pretty_menu
-    for dish in @menu
-      puts "#{dish[:name]}: £#{dish[:price]}"
-    end
+    @menu
   end
 end

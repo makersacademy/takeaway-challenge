@@ -1,4 +1,5 @@
 require_relative "dishes"
+require_relative "text"
 
 class Takeaway
 
@@ -6,6 +7,7 @@ class Takeaway
     @order = []
     @dishes = Dishes.new
     @order_total = 0
+    @text = Text.new
   end
 
   def order_dishes(dish, quantity = 1)
@@ -13,7 +15,7 @@ class Takeaway
   end
 
   def show_order
-    pretty_order
+    @order
   end
 
   def show_menu
@@ -22,6 +24,10 @@ class Takeaway
 
   def order_total
     calculate_total
+  end
+
+  def place_order
+    @text.send_text
   end
 
   private
@@ -40,10 +46,4 @@ class Takeaway
     @order_total
   end
 
-  def pretty_order
-    @order.each do |dish|
-      puts "#{dish[:name]}: #{dish[:price]}"
-    end
-    puts "Order total: £#{order_total}"
-  end
 end
