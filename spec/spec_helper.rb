@@ -8,15 +8,17 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 ])
 SimpleCov.start do
   add_filter 'spec'
+  require 'shields_badge'
+  SimpleCov.formatter = SimpleCov::Formatter::ShieldsBadge
 end
 
-module FormatterOverrides
-  def example_pending(_)
-  end
+# module FormatterOverrides
+#   def example_pending(_)
+#   end
 
-  def dump_pending(_)
-  end
-end
+#   def dump_pending(_)
+#   end
+# end
 
 # RSpec::Core::Formatters::DocumentationFormatter.prepend FormatterOverrides
 
