@@ -1,15 +1,16 @@
 require_relative 'message'
 require_relative 'menu'
+require_relative 'order'
 
 class Takeaway
 
   attr_reader :order
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, order = Order.new)
 
     @menu = menu
 
-    @order = {}
+    @order = order
 
   end
 
@@ -22,14 +23,14 @@ class Takeaway
   def add_to_order(dish, quantity)
 
     fail 'Not part of the menu' unless @menu.in_menu?(dish)
-    @order[dish] = quantity
+    @order.add_to_order(dish, quantity)
 
   end
 
   def check_order
 
     total = 0
-    @order.each do |dish, quantity|
+    @order.dishes_ordered.each do |dish, quantity|
       puts "#{dish}: #{quantity} --> £%.2f" % (@menu.dishes[dish] * quantity)
       total += (quantity * @menu.dishes[dish])
     end

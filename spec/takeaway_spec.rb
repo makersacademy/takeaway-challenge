@@ -17,7 +17,7 @@ describe Takeaway do
     it 'adds to order if part of menu' do
 
       subject.add_to_order("Apple Pie", 2)
-      expect(subject.order).to eq ({ "Apple Pie" => 2 })
+      expect(subject.order.dishes_ordered).to eq ({ "Apple Pie" => 2 })
 
     end
 
