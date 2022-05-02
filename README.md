@@ -51,9 +51,9 @@ Call `show_menu` to show the menu and the prices. (Yes, its a toast bar).\
 Call `order_dishes(dish, quantity)` to order a dish and set a quantity of how many you'd like to order. The default quantity is 1.\
 Call `show_order` to show what you have currently added to your order.\
 Call `order_total` to show the current price total of the order. This value changes after you add an order to it.
-Call `place_order` to place your order and send a text to the recipient.\
+Call `place_order` to place your order and send a text to the recipient.
 
-In order to send a text succesfully, you will need to register for the [Twilio API here](https://www.twilio.com/docs/sms). You will need to hop into `text.rb` to update:\
+In order to send a text succesfully, you will need to register for the [Twilio API here](https://www.twilio.com/docs/sms). You will need to hop into `text.rb` to update:
 * `account_sid`
 * `auth_token`
 * `from:` phone number, (provided by Twilio).
