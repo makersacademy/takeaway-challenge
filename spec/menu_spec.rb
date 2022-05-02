@@ -15,8 +15,8 @@ describe Menu do
 
   describe '#check_if_available' do
 
-    it 'returns a message if the dish is not available on the menu' do
-      expect(subject.check_if_available("Pie")).to eq('That dish is not available. Please select another dish.')
+    it 'raises an error message if the dish is not available on the menu' do
+      expect{ subject.check_if_available("Pie") }.to raise_error 'That dish is not available. Please select another dish.'
     end
   end
 end

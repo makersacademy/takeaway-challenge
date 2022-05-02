@@ -20,6 +20,6 @@ class Menu
   end
 
   def check_if_available(item)
-    return 'That dish is not available. Please select another dish.' if @dishes[item].nil?
+    raise 'That dish is not available. Please select another dish.' if @dishes[item].nil?
   end
 end
