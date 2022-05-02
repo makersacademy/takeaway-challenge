@@ -49,12 +49,13 @@ class Order
     @current_order.map { |dish| dish[:price] * dish[:quantity] }.reduce(:+)
   end
 
-  def place_order
+  def place_order(confirmation)
     fail_if_order_empty || (fail 'Order already placed' if @order_placed == true)
     @order_placed = true
     puts "Your order has been placed. Order summary:"
     show_current_order
-    Confirmation.new.send_text ### this would have had the tel number passed on as argument
+    confirmation.send_text
+    #Confirmation.new.send_text ### this would have had the tel number passed on as argument
   end
 
   private

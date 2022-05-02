@@ -122,11 +122,19 @@ describe Order do
   it 'places order' do
     order.add_dish(1, 1)
     order.add_dish(1, 1)
-    expect { order.place_order }.to output.to_stdout
+    confirmation = double('Confirmation', :send_text => 'Message sent')
+    order.place_order(confirmation)
+    expect(order.order_placed).to be true
   end
 
   it 'fails to place order if current order is empty' do
-    expect { order.place_order }.to raise_error 'Current order empty'
+    expect { order.place_order('confirmation') }.to raise_error 'Current order empty'
+  end
+
+  it 'sends a confirmation text message' do
+    order.add_dish(1, 1)
+    confirmation = double('Confirmation', :send_text => 'Message sent')
+    expect(order.place_order(confirmation)).to eq 'Message sent'
   end
 
 end
