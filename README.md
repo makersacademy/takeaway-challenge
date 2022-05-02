@@ -59,6 +59,12 @@ run complete_order and provide your telephone number to receive a confirmation
 (e.g order.complete_order(+1 23456 789 10123)
 10. Enjoy!
 
+How to test
+
+-------
+
+Run rspec
+
 
 Instructions
 -------
