@@ -13,7 +13,7 @@ class Takeaway
   end
 
   def show_order
-    @order
+    pretty_order
   end
 
   def show_menu
@@ -21,7 +21,7 @@ class Takeaway
   end
 
   def order_total
-    total
+    calculate_total
   end
 
   private
@@ -32,10 +32,18 @@ class Takeaway
     end
   end
 
-  def total
+  def calculate_total
+    @order_total = 0
     @order.each do |dish|
       @order_total += dish[:price]
     end
     @order_total
+  end
+
+  def pretty_order
+    @order.each do |dish|
+      puts "#{dish[:name]}: #{dish[:price]}"
+    end
+    puts "Order total: £#{order_total}"
   end
 end
