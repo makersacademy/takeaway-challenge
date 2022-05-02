@@ -6,6 +6,7 @@
     @current_order = []
     @printed_order = ""
     @menu = Menu.new(restaurant)
+    @total = 0
   end
 
   def add(item)
@@ -31,6 +32,12 @@
     end
   end 
 
+  def order_total
+    @total = 0
+    calculate_total
+    return "£#{'%.2f' % @total}"
+  end
+
   private
 
   def format_order
@@ -39,4 +46,11 @@
     end
     @printed_order.chomp
   end
+
+  def calculate_total
+    @current_order.each do |selection|
+      selection.each { |item, price| @total += price.to_f }
+    end
+  end
+
  end

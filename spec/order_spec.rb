@@ -60,7 +60,14 @@ describe 'Order' do
 
   describe '# order_total' do
     it 'correctly sums the value of all items in current order' do
-      
+      order.add('Margherita')
+      order.add('Cured Meat')
+      order.add('Anchoa')
+      order.add('Marinara')
+      order.add('Anchoa')
+      order.add('New Yorker')
+
+      expect(order.order_total).to eq '£67.50'
     end
   end
 end
