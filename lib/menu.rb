@@ -24,4 +24,14 @@ class Menu
     return false
   end
 
+  def price(dish)
+    the_dish = dish.to_sym
+    @dishes.each do |dish|
+      if the_dish == dish[:food]
+        return dish[:price]
+      end
+    end
+    return false
+  end
+
 end

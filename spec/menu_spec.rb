@@ -27,4 +27,9 @@ describe Menu do
     end
   end
 
+  context '#price' do
+    it 'returns the price of an item' do
+      expect(subject.price("Broccoli")).to eq 1
+    end
+  end
 end

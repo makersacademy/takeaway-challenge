@@ -14,6 +14,8 @@ describe 'Featuretest' do
         how many do you want?
         Please type each dish you require followed by return. 
         When you have finished your order press return twice.
+        0 order of Broccoli at £1 each
+        Total order is £1
         OUTPUT
     end
   end
@@ -23,7 +25,7 @@ describe 'Featuretest' do
     output = StringIO.new
 
     takeaway = Takeaway.new(input: input, output: output)
-    expect(takeaway.order).to eq true
+    takeaway.order
 
     output.string
   end

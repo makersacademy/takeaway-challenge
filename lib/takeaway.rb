@@ -9,6 +9,7 @@ class Takeaway
     @menu = Menu.new
     @dishes = []
     @summary = []
+    @total = 0
   end
 
   def show_menu
@@ -18,7 +19,7 @@ class Takeaway
   def order
     loop do
       dish = ask_for_order
-      return true if dish == "" 
+      return confirm_order if dish == "" 
       if menu.check(dish)
         quantity = ask_for_quantity
         log_order(dish, quantity)
@@ -28,11 +29,16 @@ class Takeaway
     end
   end
 
+  def confirm_order
+    @summary.each do |dish|
+        @output.puts "#{dish[:quantity]} order of #{dish[:food]} at £#{menu.price(dish[:food])} each"
+        @total += menu.price(dish[:food])
+    end
+    @output.puts "Total order is £#{@total}"
+  end
+
   private
 
-  def confirm_order
-    true
-  end
 
   def ask_for_order
     @output.puts <<~ORDER 
