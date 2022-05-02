@@ -14,7 +14,6 @@ class Confirmation
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     from = ENV['FROM_PHONE_NUMBER']
-    #to = ENV['TO_PHONE_NUMBER']
 
     client.messages.create(
       from: from,
@@ -26,7 +25,7 @@ class Confirmation
   def delivery_time
     time = Time.now
     delivered_by = (time + (60 * 60))
-    delivered_by.to_s.split(" ")[1][0,5]
+    delivered_by.to_s.split()[1][0,5]
   end
 
 end

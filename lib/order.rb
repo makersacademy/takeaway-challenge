@@ -54,8 +54,7 @@ class Order
     @order_placed = true
     puts "Your order has been placed. Order summary:"
     show_current_order
-    confirmation.send_text
-    #Confirmation.new.send_text ### this would have had the tel number passed on as argument
+    confirmation.send_text ### this would have had the tel number passed on as argument
   end
 
   private

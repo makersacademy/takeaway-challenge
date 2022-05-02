@@ -80,25 +80,25 @@ describe Order do
 
   end
 
-    describe '#update_dish_quantity' do
+  describe '#update_dish_quantity' do
 
-      it 'updates the quantity if the same dish is added twice' do
-        order.add_dish(1, 1)
-        order.add_dish(1, 1)
-        expect(order.current_order).to eq([dish2])
-      end
-      
-      it 'removes the dish from the current order if the quantity is zero' do
-        order.add_dish(1, 1)
-        order.update_dish_quantity(1, 0)
-        expect(order.current_order).to eq([])
-      end
-
-      it 'raises an error when dish has not been added' do
-        expect { order.update_dish_quantity(1, 1) }.to raise_error 'Dish has not been added'
-      end
-  
+    it 'updates the quantity if the same dish is added twice' do
+      order.add_dish(1, 1)
+      order.add_dish(1, 1)
+      expect(order.current_order).to eq([dish2])
     end
+    
+    it 'removes the dish from the current order if the quantity is zero' do
+      order.add_dish(1, 1)
+      order.update_dish_quantity(1, 0)
+      expect(order.current_order).to eq([])
+    end
+
+    it 'raises an error when dish has not been added' do
+      expect { order.update_dish_quantity(1, 1) }.to raise_error 'Dish has not been added'
+    end
+
+  end
 
   xit 'shows the current order' do ### test pending, method prints & doesn't return statements
     order.add_dish(2, 1)
