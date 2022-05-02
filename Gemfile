@@ -1,5 +1,3 @@
-gem 'dotenv-rails', groups: [:development, :test]
-
 source 'https://rubygems.org'
 
 ruby '3.0.2'
@@ -12,4 +10,6 @@ end
 
 group :development, :test do
   gem 'rubocop', '1.20'
+  gem 'twilio-ruby'
+  gem 'dotenv-rails'
 end
