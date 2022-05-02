@@ -26,6 +26,12 @@ describe Takeaway do
   it "sends text after placing order" do
     takeaway = Takeaway.new
     takeaway.order_dishes("Avocado On Toast", 2)
+    takeaway.stub(:place_order) {"Order placed. Text sent."}
     expect(takeaway.place_order).to eq "Order placed. Text sent."
+  end
+
+  it "fails to place order if nothing is ordered" do
+    takeaway = Takeaway.new
+    expect { takeaway.place_order }.to raise_error("Cannot complete order. Nothing has been ordered.")
   end
 end

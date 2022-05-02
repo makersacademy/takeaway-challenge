@@ -27,6 +27,7 @@ class Takeaway
   end
 
   def place_order
+    fail "Cannot complete order. Nothing has been ordered." if order_empty?
     @text.send_text
   end
 
@@ -44,6 +45,10 @@ class Takeaway
       @order_total += dish[:price]
     end
     @order_total
+  end
+
+  def order_empty?
+    @order.empty?
   end
 
 end
