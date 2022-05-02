@@ -1,19 +1,15 @@
 class TakeAway
 
-attr_reader :basket
-
-def initialize(menu: Menu)
-@menu = menu
-@basket = []
+def initialize(menu:)
+  @menu = menu
 end
 
 def view_menu
- " "
+  menu.print
 end
 
-def select(item)
-@basket << item
-end
+private
 
+attr_reader :menu
 
 end
