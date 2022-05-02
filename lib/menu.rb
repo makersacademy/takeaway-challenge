@@ -4,6 +4,8 @@ require 'csv'
 
 class Menu
 
+  attr_reader :menu_hash
+
   def initialize(file_name) 
     @file = File.open("./lib/#{file_name}_menu.csv", "r")
     @menu_hash = {}
@@ -13,14 +15,10 @@ class Menu
   def read_menu
     if @printed_menu.empty?
       csv_to_hash
-      @menu_hash.each do |item, price|
-        @printed_menu << "#{item}, £#{price}"
-      end
+      format_menu
     end
     @printed_menu.join("\n")
   end
-
-  private
 
   def csv_to_hash
     @file.readlines.each do |line|
@@ -28,5 +26,13 @@ class Menu
       @menu_hash[key] = value
     end
     @menu_hash
+  end
+
+  private
+
+  def format_menu
+    @menu_hash.each do |item, price|
+      @printed_menu << "#{item}, £#{price}"
+    end
   end
 end
