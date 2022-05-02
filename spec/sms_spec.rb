@@ -20,12 +20,6 @@ describe SMS do
     end
   end
 
-  xit 'sends a confirmation sms to that phone number' do
-  end
-
-  xit 'informs the recipient that their meal is on their way and lets them know it will arrive in an hour' do
-  end
-
   it 'changes the status of sent? to true when a message is sent' do
     expect {subject.send_sms(ENV['MY_PHONE'])}.to change(subject, :sent?).to true
   end

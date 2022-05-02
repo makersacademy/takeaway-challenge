@@ -16,10 +16,11 @@ class Order
   end
 
   def add(dish_index)
-    @selection << @dishes[dish_index -1]
-    @total += @dishes[dish_index -1][:price]
-    @selected_dish = @dishes[dish_index -1][:smoothie]
-    item_added_confirmation
+    fail 'item not available' if @dishes[dish_index - 1][:available] == false
+      @selection << @dishes[dish_index -1]
+      @total += @dishes[dish_index -1][:price]
+      @selected_dish = @dishes[dish_index -1][:smoothie]
+      item_added_confirmation
   end
 
 #bit of a problem in that I can only get the sequence below to work if
@@ -44,7 +45,7 @@ class Order
   end
 
   def total_summary
-    "Your total is: £#{@total}."
+    "Your total is: £#{@total}. Please use the complete_order function, entering your phone number as an argument, to complete your order"
   end
 
   # def checkout_confirmation
@@ -57,5 +58,9 @@ class Order
 
   def item_added_confirmation
     "You successfully added #{@selected_dish} to your basket"
+  end
+
+  def complete_order(phone_number)
+    SMS.new.send_sms(phone_number)
   end
 end
