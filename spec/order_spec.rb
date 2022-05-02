@@ -13,7 +13,7 @@ describe Order do
 
     it "A customer can start their order by adding an item to their order" do
       
-      subject.pick_item("Pepperoni Pizza")
+      subject.pick_item("Pepperoni Pizza", 1)
       expect(subject.order).to eq(["Pepperoni Pizza"])
 
     end
@@ -29,6 +29,19 @@ describe Order do
       
       subject.pick_multi_items(["Pepperoni Pizza", "Neapolitan Pizza", "Fiorentina Pizza"])
       expect(subject.order_value).to eq 30
+
+    end
+
+    it "Raises an error when customers try to order something that's not on the menu" do
+      
+      expect {subject.pick_item("Hawaiian", 1) }.to raise_error("Please choose from the menu")
+
+    end
+
+    it "A customer can order an item multiple times in one go" do
+      
+      subject.pick_item("Pepperoni Pizza", 4)
+      expect(subject.order).to eq(["Pepperoni Pizza", "Pepperoni Pizza", "Pepperoni Pizza", "Pepperoni Pizza"])
 
     end
 
@@ -48,6 +61,24 @@ describe Order do
       allow(subject).to receive(:send_order_text).and_return "Text sent!"
 
       expect(subject.place_order).to eq "Thanks! Your order has been received and will be with you by #{subject.arrival_time}"
+
+    end
+
+    it "a customer gets an current order summary when adding an item to their order" do
+      
+      subject.pick_item("Pepperoni Pizza", 4)
+
+      expect(subject.order_summary).to eq "Your order so far is: #{subject.simp_order}"
+
+    end
+
+    it "a simplified order summary gives quantities of items ordered" do
+      
+      subject.pick_item("Pepperoni Pizza", 4)
+      subject.pick_item("Fiorentina Pizza", 4)
+      subject.order_value
+
+      expect(subject.simplify_order).to eq "4x Pepperoni Pizza 4x Fiorentina Pizza | Totalling: £#{subject.order_value}"
 
     end
 

@@ -2,7 +2,7 @@ require_relative 'menu'
 require 'rubygems'
 require 'twilio-ruby'
 require 'time'
-require 'sinatra'
+# require 'sinatra'
 
 # post '/message' do
 #   number = params['From']
@@ -18,13 +18,14 @@ require 'sinatra'
 
 class Order
 
-  attr_reader :order, :order_total
+  attr_reader :order, :order_total, :simp_order
 
   def initialize
 
     @menu = Menu.new
     @order = []
     @order_total = 0
+    @simp_order = ""
 
     account_sid = ENV['ACCOUNT_SID']
     auth_token = ENV['AUTH_TOKEN']
@@ -33,10 +34,10 @@ class Order
 
   end
 
-  def pick_item(item)
+  def pick_item(item, quantity)
 
-    return unless @menu.menu.has_key?(item)
-    @order << item
+    fail "Please choose from the menu" unless @menu.menu.has_key?(item)
+    quantity.times { @order << item }
 
   end
 
@@ -75,6 +76,28 @@ class Order
 
   end
 
+  def order_summary
+
+    "Your order so far is: #{simplify_order}"
+
+  end
+
+  def simplify_order
+
+    pep = @order.count("Pepperoni Pizza")
+    marg = @order.count("Margherita Pizza")
+    neap = @order.count("Neapolitan Pizza")
+    fior = @order.count("Fiorentina Pizza")
+
+    @simp_order << "#{pep}x Pepperoni Pizza " if @order.include?("Pepperoni Pizza")
+    @simp_order << "#{marg}x Margherita Pizza " if @order.include?("Margherita Pizza")
+    @simp_order << "#{neap}x Neapolitan Pizza " if @order.include?("Neapolitan Pizza")
+    @simp_order << "#{fior}x Fiorentina Pizza " if @order.include?("Fiorentina Pizza")
+
+    @simp_order << "| Totalling: £#{order_value}"
+      
+  end
+
   private
 
   def send_order_text
@@ -82,7 +105,7 @@ class Order
     @client.messages.create(
       from: '+19805504523',
       to: ENV['PHONE_NUM'],
-      body: "Thanks! Your order has been received and will be with you by #{arrival_time}"
+      body: "Thanks for your order! #{@simp_order} will be with you by: #{arrival_time}"
     )
 
   end
