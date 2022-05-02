@@ -11,7 +11,7 @@ describe SMS do
 
     it 'sends a payment confirmation text message' do
       expect(sms).to receive(:sms)
-      sms.send_sms(+123456789)
+      sms.send_sms(ENV['MY_PHONE'])
     end
 
   describe '#send_sms' do
@@ -27,7 +27,7 @@ describe SMS do
   end
 
   it 'changes the status of sent? to true when a message is sent' do
-    expect {subject.send_sms(+123456789)}.to change(subject, :sent?).to true
+    expect {subject.send_sms(ENV['MY_PHONE'])}.to change(subject, :sent?).to true
   end
 
   it 'confirms a message has been sent' do
