@@ -6,7 +6,7 @@ describe Takeaway do
 
     it 'puts menu' do
 
-      expect { subject.print_menu }.to output("Apple Pie: 4.5\nBanana Pie: 4.5\nTiramisu: 5\n").to_stdout
+      expect { subject.print_menu }.to output("Apple Pie: 4.5\nBanana Pie: 4.5\nTiramisu: 5\nCarrot Cake: 4\nBrownie: 4\n").to_stdout
 
     end
 

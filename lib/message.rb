@@ -2,24 +2,25 @@ require 'twilio-ruby'
 
 class Message
 
+  attr_reader :message
+
   def initialize(message)
 
     @message = message
+    @account_sid = ENV['TWILIO_ACCOUNT_SID']
+    @auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @from = ENV['TWILIO_PHONE']
+    @to = ENV['MY_PHONE']
 
   end
 
   def send
 
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    from = ENV['TWILIO_PHONE'] # Your Twilio number
-    to = ENV['MY_PHONE'] # Your mobile phone number
+    client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
     client.messages.create(
-    from: from,
-    to: to,
+    from: @from,
+    to: @to,
     body: @message
     )
 
