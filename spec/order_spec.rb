@@ -18,23 +18,16 @@ describe Order do
 
     end
 
-    it "A customer can add multiple items to their order" do
-      
-      subject.pick_multi_items(["Pepperoni Pizza", "Neapolitan Pizza", "Fiorentina Pizza"])
-      expect(subject.order).to eq(["Pepperoni Pizza", "Neapolitan Pizza", "Fiorentina Pizza"])
-
-    end
-
     it "A customer can check their order total is correct by summing up the prices of their order items" do
       
-      subject.pick_multi_items(["Pepperoni Pizza", "Neapolitan Pizza", "Fiorentina Pizza"])
-      expect(subject.order_value).to eq 30
+      subject.pick_item("Pepperoni Pizza", 4)
+      expect(subject.order_value).to eq 36
 
     end
 
     it "Raises an error when customers try to order something that's not on the menu" do
       
-      expect {subject.pick_item("Hawaiian", 1) }.to raise_error("Please choose from the menu")
+      expect { subject.pick_item("Hawaiian", 1) }.to raise_error("Please choose from the menu")
 
     end
 
@@ -57,7 +50,7 @@ describe Order do
 
     it "a customer can submit their order" do
       
-      subject.pick_multi_items(["Pepperoni Pizza", "Neapolitan Pizza", "Fiorentina Pizza"])
+      subject.pick_item("Pepperoni Pizza", 4)
       allow(subject).to receive(:send_order_text).and_return "Text sent!"
 
       expect(subject.place_order).to eq "Thanks! Your order has been received and will be with you by #{subject.arrival_time}"

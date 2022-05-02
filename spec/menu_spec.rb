@@ -15,6 +15,12 @@ describe Menu do
 
     end
 
+    it "displays the menu when called" do
+      
+      expect(subject.show_menu).to eq subject.menu
+
+    end
+
   end
 
 end

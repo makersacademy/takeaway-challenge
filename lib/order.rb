@@ -40,16 +40,6 @@ class Order
     quantity.times { @order << item }
 
   end
-
-  def pick_multi_items(items)
-
-    items.each do |item| 
-      if @menu.menu.has_key?(item)
-        @order << item
-      end
-    end
-
-  end
   
   def order_value
 

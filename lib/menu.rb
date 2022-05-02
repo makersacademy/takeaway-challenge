@@ -13,4 +13,10 @@ class Menu
 
   end
 
+  def show_menu
+
+    @menu
+
+  end
+
 end
