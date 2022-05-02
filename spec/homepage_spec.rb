@@ -29,5 +29,10 @@ describe Homepage do
       expect(subject.see_restaurant_menu('pizza')).to eq text
     end
 
+    describe '# create_order' do
+      it 'creates new instnace of order' do
+        expect(subject.create_order('pizza')).to be_an_instance_of(Order)
+      end
+    end
   end
 end

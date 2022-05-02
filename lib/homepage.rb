@@ -6,9 +6,11 @@ class Homepage
     @restaurant_menus = []
     @restaurants = []
     @currently_viewed_menu = nil
+    @order = nil
   end
 
   def display_restaurants
+    return @restaurants.join("\n") unless @restaurants.empty?
     find_restaurants
     @restaurant_menus.each_with_index do |name, index|
       @restaurants << "#{index + 1}: #{name.chomp('_menu.csv').gsub("./lib/", "")}"
@@ -16,9 +18,13 @@ class Homepage
     @restaurants.join("\n")
   end
 
-  def see_restaurant_menu(name)
-    @currently_viewed_menu = Menu.new(name)
+  def see_restaurant_menu(restaurant)
+    @currently_viewed_menu = Menu.new(restaurant)
     @currently_viewed_menu.read_menu
+  end
+
+  def create_order(restaurant)
+    @order = Order.new(restaurant)
   end
 
   private 
@@ -27,7 +33,3 @@ class Homepage
    @restaurant_menus = Dir["./lib/*_menu.csv"]
   end
 end
-
-
-homepage = Homepage.new
-puts homepage.display_restaurants
