@@ -1,8 +1,6 @@
 require 'dishes'
 
 describe Dishes do
-  # subject(:dishes) { described_class.new }
-
   it "creates an instance of the class" do
     expect(subject).to be_instance_of(Dishes)
   end
@@ -26,7 +24,8 @@ describe Dishes do
     end
 
     it "returns true when dishes available" do
-      expect(subject.dish_available?(10)).to eq(false)
+      expect(subject.dish_available?(10)).to eq false
     end
   end
 end
+

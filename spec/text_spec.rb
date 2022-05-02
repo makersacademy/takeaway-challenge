@@ -4,12 +4,11 @@ require 'twilio_mock'
 require 'twilio-ruby'
 
 describe Text do
-
   let(:client) { double :client }
   subject(:text) { described_class.new }
 
   it "creates an instance of the class" do
-    expect(subject). to be_instance_of(Text)
+    expect(subject).to be_instance_of(Text)
   end
 
   describe "#send_message" do
@@ -35,5 +34,4 @@ describe Text do
       end
     end
   end
-
 end

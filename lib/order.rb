@@ -34,7 +34,7 @@ class Order
   def confirm_order
     @complete = true
     puts "Order complete."
-  
+    text.send_message
     return check_total
   end
 end

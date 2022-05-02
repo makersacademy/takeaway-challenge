@@ -1,7 +1,5 @@
-require 'order'
 require 'twilio-ruby'
 require 'dotenv'
-
 
 class Text
   TIME_FORMAT = "%k:%M"
@@ -25,12 +23,10 @@ class Text
       )
       puts message.sid
     rescue
-      puts 'Invalid number'
     end
   end
 
   def delivery_time
-    time = (Time.now + 60*60).strftime(TIME_FORMAT)
+    time = (Time.now + 60 * 60).strftime(TIME_FORMAT)
   end
-
 end

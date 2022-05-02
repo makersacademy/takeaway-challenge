@@ -19,4 +19,3 @@ RSpec.configure do |config|
     TwilioMock::Mocker.new.clean
   end
 end
-
