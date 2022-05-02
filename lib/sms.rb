@@ -3,7 +3,7 @@ require 'dotenv/load'
 
 class SMS
 
-ETA = (Time.now + 3600).strftime("%H:%M")
+  ETA = (Time.now + 3600).strftime("%H:%M")
 
   attr_reader :sent, :phone_number
 
@@ -12,12 +12,10 @@ ETA = (Time.now + 3600).strftime("%H:%M")
   end
 
   def sms
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
 
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     message = @client.messages.create(
-        body: "Your order has been sent and will be with before #{ETA}",
+        body: "Thank you! Your order has been logged and will be with before #{ETA}",
         to: "+#{@phone_number}",
         from: ENV['TWILIO_PHONE'])
 
@@ -30,7 +28,8 @@ ETA = (Time.now + 3600).strftime("%H:%M")
     @sent = true
     sms_sent_confirmation
   end
-  #do I need both sent? AND the sent attr_reader???
+
+  # do I need both sent? AND the sent attr_reader??? Tests work without it, was mostly used for making sure the tests were running correctly...
   def sent?
     @sent
   end

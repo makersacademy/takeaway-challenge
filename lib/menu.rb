@@ -1,15 +1,16 @@
 class Menu
 
-attr_reader :dishes
+  attr_reader :items
 
   def initialize
-    @dishes = [{order_number: 1, smoothie: "hot pea", price: 3.99, available: true},
-      {order_number: 2, smoothie: "hot tomato", price: 4.25, available: true},
-      {order_number: 3, smoothie: "iced broccoli", price: 4.00, available: false}
+    @items = [{ item_number: 1, scaldy: "hot pea", price: 4.00, available: true },
+      { item_number: 2, scaldy: "hot tomato", price: 4.25, available: true },
+      { item_number: 3, scaldy: "matzo ball", price: 5.00, available: false },
+      { item_number: 4, scaldy: "hot potato", price: 3.75, available: true}
     ]
   end
 
   def view_menu
-    @dishes
+    @items
   end
 end
