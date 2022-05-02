@@ -26,7 +26,7 @@ describe Order do
     expect(order.show_dishes[1]).to eq("2. Veggie Breakfast - £8 - available")
   end
 
-  describe '#select_dish' do ### tested the method when wasn't private
+  describe '#select_dish' do ### tested when the method wasn't private
 
     it 'selects a dish from the menu' do
       allow(menu).to receive_messages(:select_dish => dish0)

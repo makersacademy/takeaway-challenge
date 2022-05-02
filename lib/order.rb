@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'confirmation'
 
 class Order
 
@@ -53,7 +54,7 @@ class Order
     @order_placed = true
     puts "Your order has been placed. Order summary:"
     show_current_order
-    # SendText.new(@current_order)
+    Confirmation.new.send_text ### this would have had the tel number passed on as argument
   end
 
   private
