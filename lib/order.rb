@@ -15,8 +15,12 @@ class Order
 
   def add_dish(id, quantity)
     select_dish(id)
-    @dish[:quantity] = quantity
-    dish_already_added?(id) ? update_dish_quantity(id, quantity) : @current_order << @dish
+    if dish_already_added?(id) 
+      add_by_updating_quantity(id, quantity)
+    else
+      @dish[:quantity] = quantity
+      @current_order << @dish
+    end
   end
 
   def remove_dish(id)
@@ -28,7 +32,7 @@ class Order
   def update_dish_quantity(id, quantity)
     fail_if_dish_not_added(id)
     remove_dish(id) if quantity < 1
-    @current_order.each { |dish| dish[:quantity] += quantity if dish[:id] == id }
+    @current_order.each { |dish| dish[:quantity] = quantity if dish[:id] == id }
   end
 
   def show_current_order
@@ -59,6 +63,10 @@ class Order
   def select_dish(id)
     fail_if_invalid_id(id) || fail_if_dish_unavailable(id)
     @dish = @@menu.select_dish(id)
+  end
+
+  def add_by_updating_quantity(id, quantity)
+    @current_order.each { |dish| dish[:quantity] = (dish[:quantity] + quantity) if dish[:id] == id }
   end
 
   def fail_if_invalid_id(id)
