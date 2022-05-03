@@ -1,3 +1,4 @@
+
 require 'twilio-ruby'
 require 'dotenv/load'
 
@@ -29,7 +30,6 @@ class SMS
     sms_sent_confirmation
   end
 
-  # do I need both sent? AND the sent attr_reader??? Tests work without it, was mostly used for making sure the tests were running correctly...
   def sent?
     @sent
   end
