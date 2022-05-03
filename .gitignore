@@ -3,3 +3,5 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+./lib/text.env
+./lib/txt.env
