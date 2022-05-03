@@ -1,0 +1,4 @@
+name, price, available
+pizza, 9.50,true
+pasta, 8.20,true
+tiramisu, 4.50,false
