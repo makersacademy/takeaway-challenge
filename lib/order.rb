@@ -2,6 +2,7 @@ require_relative 'menu'
 require 'rubygems'
 require 'twilio-ruby'
 require 'time'
+require 'dotenv/load'
 
 class Order
 
