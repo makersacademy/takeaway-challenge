@@ -14,13 +14,15 @@ Takeaway Challenge
 
  ```
 
-Instructions
+Instructions on how to use
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Open IRB. require './lib/order.rb'.
+* Create a new instance of Order.
+* Type order.menu.view_dishes to see the list of dishes with prices.
+* Type order.add_dish('Burger') to add a dish and see price.
+* Type order.view_order to see a subtotal and total of your order.
+* To finish the task I would Implement twilio text message so the customer would know their order was placed and would arrive at a certain time.
 
 Task
 -----
