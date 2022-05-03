@@ -2,7 +2,7 @@ class Order
   attr_reader :basket, :complete_status, :basket_total
 
   def initialize
-    @basket = [] # [{'pizza': 9.50}, {'pasta': 8.20}]
+    @basket = []
     @complete_status = false
   end
 

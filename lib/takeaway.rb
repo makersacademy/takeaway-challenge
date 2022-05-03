@@ -15,7 +15,7 @@ class Takeaway
     menu.display_available_dishes
   end
 
-  def add_to_order(*dishes) # {'pizza': 9.50}, {'pasta': 8.20}
+  def add_to_order(*dishes)
     current_order.add_to_basket(dishes)
   end
 
