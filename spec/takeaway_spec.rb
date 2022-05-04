@@ -26,7 +26,7 @@ describe Takeaway do
   it "sends text after placing order" do
     takeaway = Takeaway.new
     takeaway.order_dishes("Avocado On Toast", 2)
-    takeaway.stub(:place_order) {"Order placed. Text sent."}
+    takeaway.stub(:place_order) { "Order placed. Text sent." }
     expect(takeaway.place_order).to eq "Order placed. Text sent."
   end
 

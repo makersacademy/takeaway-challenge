@@ -3,11 +3,11 @@ require_relative "text"
 
 class Takeaway
 
-  def initialize
+  def initialize(dishes = Dishes.new, text = Text.new)
     @order = []
-    @dishes = Dishes.new
+    @dishes = dishes
     @order_total = 0
-    @text = Text.new
+    @text = text
   end
 
   def order_dishes(dish, quantity = 1)
