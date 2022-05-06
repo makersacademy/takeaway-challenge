@@ -1,3 +1,8 @@
+OK I got pretty lost on this one, and ended up running out of time. I initially went round a rabbit hole of having a separate Dish class but then didn't manage to work out how to test it properly. I decided to leave it any try to get Twilio working - but keep bumping into Syntax errors when I try to wrap it in a class.
+
+I hadn't even started on the user interface, and did a rush job on that and it's semi-finished. To be honest, a lot of the code in here now doesn't work together and is a bit janky, but hey. It's a partial solution and gave me lots of things to work on.
+
+
 Takeaway Challenge
 ==================
 ```
