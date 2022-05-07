@@ -37,3 +37,25 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+
+## Getting started
+
+
+Run `bundle` in the project directory to ensure you have all the gems
+
+## Usage
+
+From takeaway-challenge folder:
+``` ruby
+irb
+require './setup.rb'
+my_menu = setup_menu
+require './run.rb'
+run(my_menu)
+```
+
+## Running tests
+Run `rspec`
+
+
+
