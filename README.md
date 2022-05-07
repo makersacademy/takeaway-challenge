@@ -16,7 +16,7 @@ Takeaway Challenge
 
 
 
-Task
+User Stories
 -----
 
 ```
@@ -37,13 +37,22 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-
 ## Getting started
 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Run `bundle` in the project directory to ensure you have all the gems
 
-## Usage
+1) `git clone `
+
+2) Install bundler via `gem install bundle` (if you don't have bundler already)
+
+4) Install dependencies via `bundle`
+
+## Running tests
+
+Run `rspec` from the main directory to test the code and check coverage
+
+## Deployment
 
 From takeaway-challenge folder:
 ``` ruby
@@ -53,9 +62,5 @@ my_menu = setup_menu
 require './run.rb'
 run(my_menu)
 ```
-
-## Running tests
-Run `rspec`
-
 
 
