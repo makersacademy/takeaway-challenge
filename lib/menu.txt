@@ -1,0 +1,6 @@
+1. noodles,9
+2. rice,6.5
+3. seaweed,5
+4. squid,7.5
+5. sweet_and_sour_chicken,9.5
+6. spring_rolls,8
