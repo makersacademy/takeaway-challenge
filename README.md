@@ -2,7 +2,7 @@ Takeaway Challenge
 ==================
 
 
-Instalation
+Installation
 -------
 ```
 $ git clone https://github.com/LGretzk/takeaway-challenge.git
