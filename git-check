@@ -1,0 +1,2 @@
+git status
+git log --oneline | head -n 10

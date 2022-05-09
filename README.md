@@ -1,9 +1,9 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            |  W.H. |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -13,6 +13,116 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+## Tests
+
+To run Feature and Unit tests run script:
+./tdd.test
+
+## Feature Tests
+
+To test all User Stories run script:
+./tdd.feature-test
+
+Script will pause after each story, press Control-C to continue.
+
+To feature test an individual object run:
+./tdd.feature-test object-name
+
+For example:
+./tdd.feature-test order
+
+## Unit Tests
+
+To test all Unit Tests and run rubocop, run script:
+./tdd.unit-test
+
+To unit test an individual object run:
+./tdd.unit-test object-name
+
+For example:
+./tdd.unit-test order
+
+
+## Model
+
+* A Dish has a unique identifier (number), a price and a description
+* A Menu consists of a number of Dishes
+* A Restaurant has a Menu and can take Orders
+* A Order is a selection of Dishes
+* A Customer can view all Dishes in a Menu
+* A Customer can create an Order
+* A Customer can ask when their Order will arrive
+* A TextMessage contains a message
+* A Text Message will be sent by the Restaurant to the Customer to tell them when their Order will be ready
+
+## Classes
+
+### Key
+:x: = Not implemented, fails tests  
+:negative_squared_cross_mark: = Partial implementation, passes tests  
+:white_check_mark: = Full implemented, passes tests  
+
+| ```Status```       |  ```Class```      | ```Notes``` |
+|:--:                |                --:|:--          |
+| :x:                | ```Customer```    | Container for everything about the Customer |
+| :x:                | ```Restaurant```  | Container for everything about the Restaurant |
+| :negative_squared_cross_mark: | ```Menu```        | Holds list of dishes with prices |
+| :white_check_mark: | ```Dish```        | Holds everything about a dish |
+| :negative_squared_cross_mark: | ```Order```       | Holds everything about an order |
+| :negative_squared_cross_mark: | ```TextMessage``` | Handles everything related to sending and receiving text messages |
+
+## Methods
+
+| ```Status```       |  ```Class```      | ```Method```           | ```Notes``` |
+|:--:                |                --:|:--                     |:--          |
+| :white_check_mark: | ```Dish```        | ```new(number, price, name)``` |  |
+| :white_check_mark: | ```Dish```        | ```number``` | Returns the number |
+| :white_check_mark: | ```Dish```        | ```price``` | Returns the price |
+| :white_check_mark: | ```Dish```        | ```name``` | Returns the name |
+| :white_check_mark: | ```Menu```        | ```new``` |  |
+| :white_check_mark: | ```Menu```        | ```add(dish)``` | Each dish.number must be unique |
+| :x:                | ```Menu```        | ```remove(dish)``` | Not implemented currently |
+| :white_check_mark: | ```Menu```        | ```get(number)``` | Returns Dish corresponding to Dish.number |
+| :white_check_mark: | ```Menu```        | ```dishes``` | Returns all dishes |
+| :white_check_mark: | ```Menu```        | ```include?(dish)``` | Private, returns true if dish has been added |
+| :white_check_mark: | ```Order```       | ```new``` |  |
+| :white_check_mark: | ```Order```       | ```add(number, menu)``` | Checks number is on the menu before adding |
+| :x:                | ```Order```       | ```remove(number)``` | Not implemented currently |
+| :white_check_mark: | ```Order```       | ```total``` |  |
+| :white_check_mark: | ```Order```       | ```order``` | Returns array containing dish numbers |
+| :white_check_mark: | ```Order```       | ```time``` | Returns time of last change to order |
+| :white_check_mark: | ```TextMessage``` | ```new``` |  |
+| :negative_squared_cross_mark: | ```TextMessage``` | ```send_message(order)``` | Doesn't use API to send message currently |
+| :x:                | ```Restaurant```  | ```new``` |  |
+| :x:                | ```Restaurant```  | ```create_menu``` |  |
+| :x:                | ```Restaurant```  | ```receive(order)``` |  |
+| :x:                | ```Restaurant```  | ```add(menu, dish)``` |  |
+| :x:                | ```Restaurant```  | ```remove(menu, dish)``` |  |
+| :x:                | ```Customer```    | ```new``` |  |
+| :x:                | ```Customer```    | ```read_menu``` |  |
+| :x:                | ```Customer```    | ```create_order``` |  |
+| :x:                | ```Customer```    | ```add(order, dish)``` |  |
+| :x:                | ```Customer```    | ```remove(order, dish)``` |  |
+| :x:                | ```Customer```    | ```total(order)``` |  |
+
+
+
+
+
+
+## Improvements
+
+* Dish could probably just be a Hash
+* Dish price would be more efficient as an Integer represented in pence, but presented as a two decimal place Float
+* Dish could have a description as well as a name
+* Implement Menu.remove(dish) method
+* Implement Order.remove(number) method
+* Add Order number unique identifier to Order (and send with TextMessage)
+* Add Orders Class to hold all Orders
+
+
+
+# Original README
 
 Instructions
 -------
