@@ -1,0 +1,25 @@
+irb
+require './lib/menu/'
+m = Menu.new
+o = Order.new("Pizza", 2)
+m.print_menu
+m.select_dishes("Chicken", 2)
+order = {order:  [dish], quantity: [quantity]}
+
+###### I'm using this one
+irb
+require './lib/takeaway/'
+t = Takeaway.new
+t.view_menu
+o = Order.new("Pizza", 2)
+t.add_order(o)
+p = Order.new("Chicken", 1)
+t.add_order(p)
+
+irb
+require './lib/takeaway/'
+t = Takeaway.new
+t.view_menu
+t.place_order("Chicken", 2)
+t.place_order("Pizza", 1)
+=> Order:
