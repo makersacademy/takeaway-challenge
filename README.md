@@ -14,6 +14,18 @@ Takeaway Challenge
 
  ```
 
+
+# Domain model 
+please see for domain model (https://miro.com/app/board/o9J_kux70qo=/)
+
+* please note that the Print class from the domain model was  extracted from the Order class but  then I accidentally deleted this change when deleting a commit 
+
+
+# To change 
+* at the moment when sending the text I have the Order class require the 'send_sms' file - I need to put the send sms functionality into a class and then put into the Order class 
+* then I need to rspec with mocking (tried to mock when it  is a require file but could not work out how and I am not sure if it is  even possible)
+
+
 Instructions
 -------
 
