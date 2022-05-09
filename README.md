@@ -1,3 +1,33 @@
+
+My Notes: 
+
+This week was very difficult for me, I feel my planning could be improved and I was confused with the splitting one class into two. I know my error was skipping straight into separate classes, instead of starting with one class and splitting out into multiple classes, then using dependancy injection to ensure that the test coverage was maintained and functioning. Once I realised this I carried on with using one class. I'm going to work on this further in my spare time next week to progress this challenge to the level I want it to be. 
+
+Object 1: Takeaway
+Object 2: Menu
+Object 3: Basket (tested using doubles)
+
+Most of the program can be tested in Takeaway, but Menu has its own separate object. I have tested 'basket' using doubles in my Takeaway code but have not yet created a seperate class for this yet, this would have been my next step.
+
+User stories achieved:
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+Thanks
+Jo
+
+
+
 Takeaway Challenge
 ==================
 ```
