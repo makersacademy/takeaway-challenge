@@ -1,3 +1,70 @@
+Takeaway Challenge Attempt
+==========================
+
+The original README text is retained below.
+
+
+Current Issues
+--------------
+
+- The final user story regarding a text response is yet to be implemented.
+- Some of the outputs are not particularly easy to read and include object memory references, I did have methods for these but removed them due to testing/time constraints.
+- My tests are very poor, I have not properly utilised doubles, stubs or mocks and so the tests are
+not independant of external classes.
+
+
+Approach
+--------
+
+Divide responsibilities up between classes, keep methods short, use private methods when
+appropriate, use a strict TDD approach to develop classes and methods, make sure tests are independent, stick to the Single Responsibility Principle as much as possible.
+
+Initial concept
+---------------
+
+A Takeaway class handles the taking of orders, gets the details of ordered items from a menu
+then adds them to a basket where a price is calculated and given to the customer, when the order
+is complete, the Takeaway will instruct a messanger object to send a text to the customer confirming
+the order and the total price.
+
+Example outputs
+---------------
+
+````
+2.6.5 :001 > # create a new instance of takeaway
+ => nil 
+2.6.5 :002 > PapaGraemes = Takeaway.new
+ => #<Takeaway:0x00007fb7c285cfb0 @order=[], @menu=#<Menu:0x00007fb7c285cf60 @dishes=[{:name=>"Pizza", :price=>10}, {:name=>"Parmo", :price=>9}, {:name=>"Calzone", :price=>11}]>> 
+2.6.5 :003 > # check the menu
+2.6.5 :004 > PapaGraemes.menu
+ => #<Menu:0x00007fb7c285cf60 @dishes=[{:name=>"Pizza", :price=>10}, {:name=>"Parmo", :price=>9}, {:name=>"Calzone", :price=>11}]> 
+2.6.5 :005 > # we can order an item that is on the menu with .order_dish
+2.6.5 :006 > PapaGraemes.order_dish("Pizza")
+ => [{:name=>"Pizza", :price=>10}] 
+2.6.5 :007 > # we can order multiple items too
+2.6.5 :008 > PapaGraemes.order_dish(5, "Parmo")
+ => [{:name=>"Pizza", :price=>10}, {:name=>"Parmo", :price=>9}, {:name=>"Parmo", :price=>9}, {:name=>"Parmo", :price=>9}, {:name=>"Parmo", :price=>9}, {:name=>"Parmo", :price=>9}] 
+2.6.5 :009 > # thats a lot of food, we can complete out order, get an itimised receipt and a total price
+2.6.5 :010 > PapaGraemes.complete_order
+Pizza - £10
+Parmo - £9
+Parmo - £9
+Parmo - £9
+Parmo - £9
+Parmo - £9
+Total - £55
+ => 55 
+2.6.5 :011 >
+````
+I have removed some of the nil returns for brevity but retained the important outputs.
+
+Original README below
+
+================================================================================
+
+
+
+
 Takeaway Challenge
 ==================
 ```
