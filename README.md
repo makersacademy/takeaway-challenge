@@ -17,6 +17,14 @@ Takeaway Challenge
 Instructions
 -------
 
+Please note that you will have to set the following information in a .env for the program to work: 
+
+- CUSTOMER_PHONE_NUMBER
+- TWILIO_PHONE_NUMBER
+- TWILIO_ACCOUNT_NUMBER
+- TWILIO_TOKEN 
+
+-------
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
