@@ -25,6 +25,3 @@ describe SMS do
     expect(subject.sms_sent_confirmation).to eq('A confirmation message has been sent to the number you provided')
   end
 end
-
-#do these tests actually check an sms has been sent, or just that
-#the class acts as though a message has been sent (e.g. changes sent_confirmation)

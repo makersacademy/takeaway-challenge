@@ -33,13 +33,6 @@ class Order
     "Please check your order against your total:"
   end
 
-  #did I understand User Story 3 correctly or did I go overboard?
-#   'As a customer
-# So that I can verify that my order is correct
-# I would like to check that the total I have been given matches
-# the sum of the various dishes in my order'
-#did I satisfy this condition simply by giving the customer a 'total' method?
-
   def selection_summary
     @selection
   end
@@ -56,6 +49,3 @@ class Order
     SMS.new.send_sms(phone_number)
   end
 end
-
-#complete_order is failing its tests, saying that it expected 1 argument
-#and got 0, even
