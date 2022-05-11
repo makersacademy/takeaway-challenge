@@ -5,18 +5,18 @@ class Order
 
   attr_reader :selection, :items, :total
 
-  def initialize
+  def initialize(items = Menu.new.items)
     @selection = []
-    @items = Menu.new.items
+    @items = items
     @total = 0
   end
 
   def view_menu
-    Menu.new
+    @items
   end
 
   def add(item_index)
-    
+
     fail 'item not available' if @items[item_index - 1][:available] == false
     @selection << @items[item_index - 1]
     @total += @items[item_index - 1][:price]
@@ -32,6 +32,13 @@ class Order
   def check_order_prompt
     "Please check your order against your total:"
   end
+
+  #did I understand User Story 3 correctly or did I go overboard?
+#   'As a customer
+# So that I can verify that my order is correct
+# I would like to check that the total I have been given matches
+# the sum of the various dishes in my order'
+#did I satisfy this condition simply by giving the customer a 'total' method?
 
   def selection_summary
     @selection
@@ -49,3 +56,6 @@ class Order
     SMS.new.send_sms(phone_number)
   end
 end
+
+#complete_order is failing its tests, saying that it expected 1 argument
+#and got 0, even

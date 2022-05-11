@@ -48,15 +48,18 @@ describe Order do
       it 'should call the SMS class' do
         subject.add(1)
         subject.checkout
-        expect(subject).to respond_to(subject.complete_order).with(SMS.new.send_sms(ENV['MY_PHONE']))
+        expect(subject).to respond_to(:complete_order).with(1).argument
       end
     end
+
+    #how to actually check that the complete_order((ENV['MY_PHONE'])) calls
+    # SMS.new.send_sms?
 
     context 'when a customer has checked their summary and enters complete_order' do
       it 'should be instance of SMS' do
         subject.add(1)
         subject.checkout
-        expect(subject.complete_order).to_(SMS.new.send_sms)
+        expect(subject.complete_order).to respond_to(SMS.new.send_sms)
       end
     end
   end

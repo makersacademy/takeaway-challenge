@@ -13,4 +13,5 @@ class Menu
   def view_menu
     @items
   end
+  #is this method necessary? Taking it out doesn't break tests...
 end

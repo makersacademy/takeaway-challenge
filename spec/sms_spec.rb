@@ -1,6 +1,3 @@
-require 'SMS'
-# require 'dotenv/load'
-
 describe SMS do
 
   subject(:sms) { described_class.new }
@@ -19,7 +16,7 @@ describe SMS do
       expect(subject).to respond_to(:send_sms).with(1).argument
     end
   end
-  
+
   it 'changes the status of sent? to true when a message is sent' do
     expect { subject.send_sms(ENV['MY_PHONE']) }.to change(subject, :sent?).to true
   end
@@ -28,3 +25,6 @@ describe SMS do
     expect(subject.sms_sent_confirmation).to eq('A confirmation message has been sent to the number you provided')
   end
 end
+
+#do these tests actually check an sms has been sent, or just that
+#the class acts as though a message has been sent (e.g. changes sent_confirmation)
