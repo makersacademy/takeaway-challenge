@@ -52,9 +52,6 @@ describe Order do
       end
     end
 
-    #how to actually check that the complete_order((ENV['MY_PHONE'])) calls
-    # SMS.new.send_sms?
-
     context 'when a customer has checked their summary and enters complete_order' do
       it 'should be instance of SMS' do
         subject.add(1)
