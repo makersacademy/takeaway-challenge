@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Take Away Restaurant</title>
+  <meta name="description" content="Take away ordering">
+  <link rel="stylesheet" type=text/css src="styles/style.css">
+</head>
+<body>
+<label for="menu">Choose a dish:</label>
+<select name="menu" id="menu">
+  <% @menu.each do |dish| %>
+    <option value="
+        <% dish.description %>">
+      <%= dish.description %>: £<%= dish.price %>
+    </option>
+    </select>
+  <% end %>
+  <script>
+
+  </script>
+  </body>
+</html>
