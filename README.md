@@ -1,3 +1,22 @@
+## Approach
+
+* Read through each user story
+* Created a model of each class and method
+* Created each class and method by first writing a minimum test then getting it to pass
+* Ran rubocop before each git commit to keep the code clean
+* Re-worked the model a few times as I began integrating them together
+* Once menu, order, and sms were feature complete I created takeaway.rb to provide a user interface
+
+## Thoughts
+* Creating a model helped but I had to re-work it anyway as I built the functionality
+* If I were to do this again I would try and take a similar approach but likely use additional classes
+such as creating one for menu items
+
+## Outstanding issues
+* I could not figure out how to text the SMS feature without sending a message
+* I think I'd have to mock the functionality of several parts
+
+
 Takeaway Challenge
 ==================
 ```
