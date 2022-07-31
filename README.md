@@ -14,6 +14,12 @@ Takeaway Challenge
 
  ```
 
+ My Progress :
+ -------------
+ I tried to code the example first without testing. I hit a blocker on trying to record the totals for the order.  I wanted to save the order into a hash and have the ability to sum each dish as each dish was ordered x number of times.  I would have liked to have been able to pass the returns from the order method into the select_dish method. Thanks. 
+
+
+
 Instructions
 -------
 
