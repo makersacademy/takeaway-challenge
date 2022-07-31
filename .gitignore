@@ -1,5 +1,8 @@
 /**/.DS_Store
 /coverage
+/.env
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+twilio phone-numbers:buy:local --country-code GB --sms-enabled

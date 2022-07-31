@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 ruby '3.0.2'
+gem 'twilio-ruby', '~> 5.58', '>= 5.58.3'
 
 group :test do
   gem 'rspec'
