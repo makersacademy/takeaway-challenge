@@ -1,5 +1,5 @@
-/**/.DS_Store
-/coverage
+# Ignore Gradle project-specific cache directory
+.gradle
 
-# Local cache of Rubocop remote config
-.rubocop-*
+# Ignore Gradle build output directory
+build
