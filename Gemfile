@@ -11,3 +11,10 @@ end
 group :development, :test do
   gem 'rubocop', '1.20'
 end
+
+gem 'twilio-ruby'
+gem 'dotenv'
+
+group :test do
+  gem "webmock"
+end
