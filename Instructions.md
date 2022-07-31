@@ -13,9 +13,20 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+
+Instructions
+-------
+
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday morning
+
 Task
 -----
 
+* Fork this repo
+* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -36,67 +47,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-Expected User Journey
------
-
-1) User presented with a displayed menu
-2) User can input number corresponding to item on the menu (if number entered doesn't match any items on the menu, prompt is redisplayed)
-3) Item selected is added to the order
-4) Output displays current order status (number of items, total price)
-5) User can add another item or finish their order
-6) Finishing order displays final summary of the order
-7) Once user confirms order, text message is sent
-
-How To Use The App
------
-CD into program directory
-
-If you don't have bundler installed:
-
-```
-gem install bundler
-```
-
-Then run:
-
-```
-bundle install
-```
-
-You can then start the app using:
-
-```
-ruby menu.rb
-```
-
-When running RSpec, you need to comment out the following code in menu.rb:
-
-```
-start = Menu.new
-start.app
-```
-
-![Start The Order](https://github.com/s-palmer/takeaway-challenge/blob/main/images/start_order.png)
-![Order Confirmation](https://github.com/s-palmer/takeaway-challenge/blob/main/images/order_confirmation.png)
-
-Current Functionality
------
-* Users are able to select from a choice of 8 menu items by entering the number corresponding to the dish they want to add.
-* Once they have selected all dishes, they can complete their order and will be presented an order summary with a total price.
-
-Current Bugs
------
-* Entering non-numeric characters or characters outside of the menu range will raise issues, either:
-- Crashing the app
-- Causing erroneous items to be added.
-
-Things to work on
------
-* Some Class extraction to move some methods from menu class to order class
-* Twilio SMS sending
-* Tests
-
-## Hints on functionality to implement:
+* Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
   * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
   * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
