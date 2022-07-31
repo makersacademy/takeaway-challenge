@@ -1,5 +1,11 @@
-Takeaway Challenge
+Takeaway Challenge :hamburger: :pizza: :fries:
 ==================
+Weekend challenge for weekend 2 of the Makers bootcamp. This task was completed independently.
+
+The challenge was to create a command line based application which allows a customer to order food from a menu. Upon completing the order a text message is sent to the customer to inform them their delivery will be with them 1 hour after ordering.
+
+This application was completed with TDD to 96% coverage.
+
 ```
                             _________
               r==           |       |
