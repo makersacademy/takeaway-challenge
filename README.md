@@ -13,39 +13,39 @@ Takeaway Challenge
        ':..:'                ':..:'
 
  ```
+Takeaway Challenge
+My second weekend challenge of the Makers Academy course. The task being to design a simple takeaway service.
 
-Instructions
--------
+First user story provided:
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
-```
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
+
+For this, I created a Menu class, containing a list of dishes and prices, which can be printed to the screen. The list is in the form of a hash, enabling access to the item/price pairs as key/value. The 'print_menu' method will iterate over the the hash and print the menu to the screen in a readable format.
+
+Second user story:
 
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
+To separate responsibility, I created an Order class, within which, an 'add_order' method allows the customer to select dishes and quantities as arguments. These are then stored in the 'selection' hash.
+
+Third user story:
+
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+Within the Order class, the 'total' method iterates through the 'selection' hash and multiplies the price of the dish (from the dishes hash in Menu class) by the quantity and updates the total, which is printed to enable the customer to check their choices match.
+
+Fourth user story:
+
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
