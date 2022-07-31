@@ -6,8 +6,11 @@ group :test do
   gem 'rspec'
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false, group: :test
+  gem 'twilio-ruby'
 end
 
 group :development, :test do
   gem 'rubocop', '1.20'
+  gem 'dotenv-rails'
+
 end
