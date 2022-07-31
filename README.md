@@ -1,3 +1,62 @@
+# Mabon ap Gwyn's submission of Week 2's Takeaway Challenge
+
+I decided to tackle the user stories using a TDD approach. Dishes are stored in 'dishes.csv' and are loaded into a Menu object's attribute upon instantiation. Menu object creation is linked to a Restaurant's instantiation. When initializing an Order instance, it is passed the Restaurant object as an argument allowing the menu to be viewed via calling on one of the Restaurant's attibutes within the Order class. A finalised order is then passed to the Restaurant object for confirmation.
+
+## How to run
+
+* clone the repository `git clone https://github.com/Maby0/takeaway-challenge.git`
+* launch IRB from the cloned directory, passing the order.rb file `irb -r './lib/order'`
+* instantiate a new Restaurant object and assign it a variable `your_restaurant = Restaurant.new`
+* instantiate a new Order object, pass it your previously created Restaurant as an argument and assign it a variable `order = Order.new(your_restaurant)`
+* call methods #view_menu, #add_to_order(dish_number), #remove_from_order(dish_number), #total on your Order instance to build your desired order `order.add_to_order(2)`
+* pass the final order to your restaurant `order.send_order_to_restaurant`
+* restaurant can then view the order and finalise it `your_restaurant.order` `your_restaurant.confirm_order`
+* once you have configured your own environment variables in the twilio.rb, calling the method #confirm_order on the Restaurant object will trigger a confirmation text message to be sent using Twilio API.
+
+
+
+A total of 11 RSpec tests were written which successfully covered 100% of the codebase. A Rubocop inspection was also ran on the code with zero offenses detected.
+
+```
+Student@MA123 takeaway-challenge % rspec
+
+Menu
+  loads 10 dishes on initialization
+  :list returns menu items
+
+Order
+  is able to view the menu
+  is able to add to :current_order
+  is able to remove from :current_order
+  notifies if specified dish is not in :current_order
+  is able to view total price
+  is able to send an order to restaurant
+
+Restaurant
+  is able to be passed an order
+  raises error when confirming order without receiving one
+  notifies when order has been submitted
+
+Have you considered running rubocop? It will help you improve your code!
+Try it now! Just run: rubocop
+
+Finished in 0.03888 seconds (files took 0.2133 seconds to load)
+11 examples, 0 failures
+
+
+COVERAGE: 100.00% -- 101/101 lines in 6 files
+
+Student@MA123 takeaway-challenge % rubocop
+Inspecting 9 files
+.........
+
+9 files inspected, no offenses detected
+```
+
+
+Challenge details are outlined below.
+
+
 Takeaway Challenge
 ==================
 ```
