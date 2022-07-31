@@ -16,17 +16,20 @@ Takeaway Challenge
 
 Instructions
 -------
+This is my Takeaway Challenge work completed so far. It is not finished - I have not passed the rspec test I set for the #total method, nor have I added the function for sending an automated text message. 
+I believe I have overcomplicated the solution with the multiple food classes, this in turn caused problems later down the line as I was writing far too many lines for each method. 
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The exercise has been helpful in showing me where I need to improve. Namely, I need to work on my diagramming and planning of the
+solution, perhaps planning the entire exercise instead of just planning one step then adding on to it with each instruction. 
+Nevertheless the challenge was helpful in solidifying my rspec skills, practicing dependency injection and designing
+a programme with numerous classes. 
+
+To use the programme, you will need to create a new Order object. Then pass .menu for the list of dishes, .select food to make 
+your order. .total is incomplete. 
 
 Task
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
 * Write a Takeaway program with the following user stories:
 
 ```
@@ -45,7 +48,10 @@ I would like to check that the total I have been given matches the sum of the va
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
 ```
+
+Strategy : setup a Order class which allows a person to order the dishes, create a total and receive a text. I will also create numerous dish classes which contain meals 
 
 * Hints on functionality to implement:
   * Ensure you have a list of dishes with prices
