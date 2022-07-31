@@ -1,3 +1,17 @@
+For this challenge I put together a Class diagram in order to get clarity on how I want my program to function. I decided at this point that two classes would be ideal (customer and restraunt) with the main responsibility being on the restraunt class to handle the order and that the customer acted like a menu/option screen where they could choose a couple of methods such as add item to order and view menu.
+
+This worked out well for me and meant that the understanding of the codes framework was one thing I no longer had to worry about. 
+
+I have noticed while writing this that I became so engrossed in the code that I forgot to commit regulary and this is something that  would be changed/improved for next time :/
+
+Overall I like how the code turned out however the code could be more 'private' and this is something that I would work on given more time.
+
+The code works from the customer class and starts by viewing the menu using subject.menu (In RSPEC or create a customer class instance).The user is then intended to add a item to the order (using add_to_order(item)) and if the item is recognised it is stored in the restraunts order list. The user can also request order total at any time to check the order total is as expected.
+
+The customer can then add more items or complete order using order.complete(phonenumber) to which a text will then be sent to the customer confirming the order.
+
+Thanks for reading, Jamie
+=====================================
 Takeaway Challenge
 ==================
 ```
