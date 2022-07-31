@@ -14,6 +14,53 @@ Takeaway Challenge
 
  ```
 
+I haven't fully completed the challenege yet. 
+- My next steps would be to create a seprate class for Menu and Order/Confirmation. 
+- To include doubles in my tests whilst I add more methods 
+- To include the Twilio API 
+
+What I have done:
+- One class for Takeaway and two methods dish_price and select_dish 
+
+Plan 
+
+Nouns and verbs 
+
+As a customer
+So that I can check if I want to order something
+I would like to see a list of dishes with prices
+
+Dishes --> see_price --> list_of_prices 
+
+As a customer
+So that I can order the meal I want
+I would like to be able to select some number of several available dishes
+
+Dishes --> list_of_prices --> select_dish --> dishes_selected 
+
+As a customer
+So that I can verify that my order is correct
+I would like to check that the total I have been given matches the sum of the various dishes in my order
+
+Confirmation --> dishes_selected --> selected_dish_total --> confirmed 
+
+As a customer
+So that I am reassured that my order will be delivered on time
+I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Confirmation --> confirmed --> text_sent --> "Thank you! Your order was placed and will be delivered before 18:52"
+
+Steps in plain English 
+
+1. Make a class called Takeaway 
+2. Make a hash - dish as key and price as values
+3. Show the prices for each dish 
+4. Select number of dishes 
+5. Store selected number of dishes in a list 
+6. Make a class called Confirmation 
+7. Show sum of total dishes selected and if equal to dishes selected total return true 
+8. If total is true send text "Thank you! Your order was placed and will be delivered before 18:52"
+
 Instructions
 -------
 
