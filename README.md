@@ -1,5 +1,5 @@
-Takeaway Challenge
-==================
+# Takeaway Challenge
+
 ```
                             _________
               r==           |       |
@@ -14,21 +14,11 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+## Specification
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Write a Takeaway program using the following:
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+### User stories
 ```
 As a customer
 So that I can check if I want to order something
@@ -47,37 +37,62 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+## Approach
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+This project is to be implemented using a TDD process with a particular focus on testing behaviour.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+- Extract domain model from user stories.
+    - Categorise key nouns and verbs from the user stories into classes, properties and methods.
+    - Create diagrams of the relationships between the domain model elements.
+- Apply TDD process.
+    1. Write failing feature test.
+    1. Write failing unit test.
+    1. Implement code to pass tests.
+    1. Refactor
+    1. Repeat until all software requirements are met.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+The aim is to build a program with easy-to-use commands. The user stories will be used a base to try to achieve an efficient process of ordering a takeaway.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## Getting started
+
+```irb
+3.0.2 :001 > require './lib/takeaway'
+ => true 
+3.0.2 :002 > takeaway = Takeaway.new
+ => 
+#<Takeaway:0x00007f8c4695d538
+... 
+```
+
+### How to use
+
+After creating a new instance of a takeaway, the following commands can be used:
+
+```
+takeaway = Takeaway.new
+```
+`takeaway`
+
+- `.view_menu`
+- `.select()`
+  - One or more numbers corresponding to dishes on the menu can be passed as arguments to `select` e.g. `select(2, 4, 5)`
+- `.view_order `
+  - to see a summary of your current order.
+- '.order' (not yet available)
+  - will place the order and send you a text comfirming your order.
 
 
-In code review we'll be hoping to see:
+## IMPROVEMENTS
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+A feature to allow a customer to chose the quantity of an item would make the program more user friendly.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+More consideration should be given to make the structure of the tests and implementation code more efficient - aiming for low coupling and high cohesion.
 
-Notes on Test Coverage
-------------------
+#### Addtional features
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+An additional feature could be to allow a customer to change or remove items from their order.
+
+
+#### Completion
+
+To address the last user story, an 'order' feature would be implemented by following the documented process for using the Twilio API.
