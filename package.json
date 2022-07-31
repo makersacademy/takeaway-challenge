@@ -1,0 +1,39 @@
+{
+  "name": "takeaway-challenge",
+  "version": "1.0.0",
+  "description": "The Makers Takeaway Challenge - in JavaScript",
+  "main": "takeaway.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatrickBarsch/takeaway-challenge.git"
+  },
+  "keywords": [
+    "Makers",
+    "-",
+    "Individual",
+    "Challenge"
+  ],
+  "author": "Patrick Barsch",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/PatrickBarsch/takeaway-challenge/issues"
+  },
+  "homepage": "https://github.com/PatrickBarsch/takeaway-challenge#readme",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "cypress": "^9.0.0",
+    "eslint": "^8.2.0"
+  },
+  "dependencies": {
+    "http-server": "^14.0.0"
+  }
+}

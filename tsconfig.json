@@ -1,0 +1,19 @@
+{
+  "files": [
+    "src/dish.ts",
+    "src/menu.ts",
+    "src/cart.ts",
+    "src/interface.ts"
+  ],
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Recommended"
+}

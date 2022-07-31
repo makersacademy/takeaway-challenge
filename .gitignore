@@ -1,5 +1,9 @@
 /**/.DS_Store
 /coverage
+/src/sum.js
+/spec/sum.test.js
+/node_modules
+/cypress/integration/1-getting-started
 
 # Local cache of Rubocop remote config
 .rubocop-*
