@@ -1,5 +1,9 @@
 /**/.DS_Store
 /coverage
 
+# .env file storing personal data
+*.env
+
 # Local cache of Rubocop remote config
 .rubocop-*
+
