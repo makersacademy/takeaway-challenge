@@ -1,83 +1,101 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
-
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
+User Stories
 -----
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
 ```
+User story 1:
 As a customer
 So that I can check if I want to order something
 I would like to see a list of dishes with prices
 
+User story 2:
 As a customer
 So that I can order the meal I want
 I would like to be able to select some number of several available dishes
 
+User story 3:
 As a customer
 So that I can verify that my order is correct
 I would like to check that the total I have been given matches the sum of the various dishes in my order
 
+User story 4:
 As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+My approach
+-----
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+User story 1:
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+- created a menu class. It is responsible for creating the menu. On initialization it is given the attribute @dishes which is equal to an array hashes. Each hash represents a dish, with a key/value pair of name/price. The menu class is also responsible for showing the menu via the view_menu method. It outputs a readable list showing each dish name and it's price.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+User story 2:
+- created an order class. It is responsible for creating a basket, adding dishes to the basket and displaying the basket. On initialization it is given the attribute @basket which is an empty array. Adding a dishes adds the dishes to @basket. Displaying the basket shows the dishes in the basket and their prices.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+User story 3:
+- added responsibility for calculating and displaying the cost of the basket to the order class. The total cost method shows the sum of the price for each dish in the basket.
+
+User story 4:
+- I ran out of time
 
 
-In code review we'll be hoping to see:
+Example feature tests
+-----
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+User story 1:
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+Create a new menu and view it:
+```
+require './lib/menu'
+menu = Menu.new
+menu.view_menu
+```
 
-Notes on Test Coverage
-------------------
+User story 2:
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+Add dishes to order:
+```
+require './lib/order.rb'
+order = Order.new
+order.add_dish("Chips", 3)
+order.add_dish("Cheese burger", 2)
+order.display_basket
+```
+
+User story 3:
+
+```
+require './lib/order.rb'
+order = Order.new
+order.add_dish("Chips", 3)
+order.add_dish("Cheese burger", 2)
+order.total_cost
+```
+
+
+Test coverage
+-----
+
+100%
+
+
+Reference
+-----
+I referred to another student's challenge - https://github.com/RPGrimes/takeaway-challenge
+
+
+Time spent on challenge
+-----
+Sunday 9am to 8:30pm
+
+
+Reflections and mistakes along the way
+-----
+
+- I spent a lot of time creating a Dish class and using that to try and populate a menu - this wasn't necessary for the challenge. I could have gone straight to creating a Menu in the Menu class since the Menu didn't need to change over time for the challenge. Better planning up front would have helped with this.
+- I don't have a good understanding on accessing variables and using them across different classes. I need more practice! For example, creating a Menu in the Menu class, I needed to refer to another student's code to work out how I could access the Menu in the order class (in the end it was creating a new instance of Menu and making it an attribute of Order)
+- Understand what tests to write before you know what code you need to meet the requirements of the challenge is hard. Again I need more and more practice of this!
