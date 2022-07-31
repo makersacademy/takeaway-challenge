@@ -3,3 +3,6 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+.notes.md
+./spec/feature_spec.rb
+.env
