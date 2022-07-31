@@ -1,0 +1,20 @@
+attr_reader :dishes, :price
+
+def initialize(dishes, price)
+@dishes = dishes
+@price = price
+end
+
+# create the array from dishes etc for a list
+
+def 
+
+it "should recognise a dish" do
+    expect(subject.dishes).to eq('rice')
+  end
+  
+  it "should recognise a price" do
+    expect(subject.price).to eq(5)
+  end
+
+describe '#menu'
