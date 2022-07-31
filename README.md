@@ -1,5 +1,28 @@
 Takeaway Challenge
 ==================
+
+**Makers Academy Week 2 Weekend Challenge**
+
+*Summary: A project which follows 4 user stories to build takeaway ordering system.
+
+# Undertaking
+Created classes to represent an order sheet and dishes. Created methods for adding and removing orders from a basket, submitting orders and getting an order summary. Controlled program behaviour against edge cases, such as trying to add unavailable dishes/remove unselected dishes. Used Twilio API to send confirmation texts to customets. Each step was guided by converting user stories into irb feature test, then unit tests and then using TDD to drive the development of production code.
+
+## Technologies 
+- Ruby
+- rspec
+- git
+- Twilio API
+
+# Skills 
+- Test Driven Development
+- Feature Testing
+- Unit Testing
+- Mocking
+- Encapsulation
+- SRP
+- DRY
+
 ```
                             _________
               r==           |       |
