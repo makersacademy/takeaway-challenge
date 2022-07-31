@@ -14,20 +14,8 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+This is my code for the second Makers Academy end of week challenge. The aim of this project was to build a Takeaway Ordering System; the design of which was based on the following user stories: 
 
 ```
 As a customer
@@ -47,37 +35,32 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+Method
+-------
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+Following a TDD approach, I created a number of interacting objects which form the Takeaway Ordering System. I allowed Rspec tests to guide this process. 
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+I first developed a simple Menu class which could be used to order items from via an Order class. The Takeaway class is for the most part, to be used as an interface while much of the logic is taken care of by the Order object. 
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+Improvements
+-------
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* One interesting feature of the software is the ability to send a confirmation SMS using the Twilio API. Given more time I would like to add the capability to order via SMS.
 
+* I would like to add further functionality to the software such as editing/deleting items from the order.
 
-In code review we'll be hoping to see:
+* The software largely makes use of hashes to store data from the user. An improvement on this would be to load/save the data to/from a JSON file(s). This would allow for added features such as saving an order for future use.
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Instructions
+-------
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+A test file (test_file.rb) has been provdided, should you wish to run a pre-made demonstation. To do this, simply run "ruby lib/test_file.rb" in your terminal. You will need a Twilio account if you would like to receive a confirmation text. To do this, add your Twilio account details in the variables provided. As the default value of '@sms' is set to nil the program will still run so long as you do not provide an 'sms' argument to the take_away object: 
 
-Notes on Test Coverage
-------------------
+(Replace line 25 of the test file with: take_away = Takeaway.new(menu) )
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+Testing Information
+-------
+
+* Rspec: 15 examples, 0 failures
+* COVERAGE: 100.00% -- 159/159 lines in 10 files
+* Rubocop: 13 files inspected, no offenses detected
