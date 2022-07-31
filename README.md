@@ -81,3 +81,38 @@ Notes on Test Coverage
 ------------------
 
 You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+
+
+## Project Development
+
+1. Read all user stories
+2. Identify classes, states and behaviours using the black box model
+3. Write unit tests that fail
+4. Write methods to satisfy the requirements of the unit tests above, until they all pass
+5. Review code before submissions to ensure:
+- Is this code presentable? Am I proud to show it off to others?
+- Have I cleaned up things like whitespace, commented-out code, debugger       statements from my code?
+- Does the indentation look right?
+- Have I conformed my code to styleguide rules (Hound will help you out here)?
+- Is it clear to someone unfamiliar with my codebase what's going on?
+6. Submit a pull request
+
+
+![Menu Class](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Menu%20Class.png)
+
+![Basket Class](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Basket%20Class.png)
+
+![Takeaway Class](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Takeaway%20Class.png)
+
+![Black Box Model](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Black%20Box%20Model.png)
+
+
+## Demo
+
+![Irb testing menu](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Irb%20testing%20menu.png)
+
+![Irb testing order confirmation](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Irb%20testing%20order%20confirmation.png)
+
+![Irb testing subtotal](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Irb%20testing%20subtotal.png)
+
+![Twilio functionality](https://github.com/delexii/takeaway-challenge/blob/c1d77579276e87de4b300e5de37cc52b8ab79931/images/Twilio%20Functionality.png)
