@@ -1,34 +1,6 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
-
- ```
-
-Instructions
--------
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+Introduction
+---------
+This repo contains the code I wrote for the Takeaway Challenge, the Makers Academy Week 2 end-of-week challenge. This involved creating software for a takeaway program based on the following user stories:
 ```
 As a customer
 So that I can check if I want to order something
@@ -47,37 +19,32 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+My approach
+---------
+This challenge came at the end of a week spent working with rspec doubles and class objects. I decided to approach this challenging by establishing several different classes and writing code for them based on a TDD approach.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+I began by creating a single class Order class with all functionality included in it. I then extracted Menu, Item and Basket classes. All rspec tests have been made with doubles to ensuring testing isolation.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+Once all classes were built, fully functional, linted, refactored and successfully tested, I research sms capabilities and used Twilio to allow the program to send text messages.
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+All four user stories have been addressed (see Instructions for use below).
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+With more time, I would have developed SMS capabilities further by allowing users to order by SMS. I would also have used environment variables to fill out SMS details, and I would also have created rspec tests to ensure 100% coverage.
+
+Total rspec testing coverage: 97.45%; 17 rspec tests; rubocop passed with no offences.
 
 
-In code review we'll be hoping to see:
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Instructions for use
+---------
+### Setup:
+1) If you want to send text messages, find the send_sms.rb file in the lib folder. The $account_sid, $auth_token, $to and $from variables are all filled as empty strings. Change these to the appropriate Twilio account details, with to and from phone numbers. Note: if you don't fill these out, the program can still be used, but text messaging will be disabled, and yo will receive a warning informing you of this when you run the program in irb
+2) Initiate irb in a command line terminal
+3) Require takeaway.rb, e.g. enter 'require "./lib/atc.rb"'
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+### Ordering:
+1) Create a new order by calling **my_order = Order.new**
+2) To review the menu of options, enter **my_order.review_menu**
+3) To add an item to your basket, enter **my_order.add_to_basket(n1, n2)**, where n1 is the menu number of the food item to be added, and n2 is the quantity
+3) To review your basket, enter **my_order.review_basket** (note: this is displayed automatically whenever something is added to the basket)
+4) To place an order, enter **my_order.place_order**. You will see a confirmation message if successful. If texting is enabled, you will receive a text at this time
