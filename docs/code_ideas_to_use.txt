@@ -1,0 +1,29 @@
+from https://github.com/makersacademy/skills-workshops/blob/main/practicals/object_oriented_design/dependency_injection.md
+
+class Menu (dishes, formatter) maybe?
+  @menu_items = []
+  @dish = Dish
+  @formatter = formatter
+  
+  def add_menu_item (dish_name, price)
+    menu_items << @dish.new(dish_name, price)
+
+  def show_menu
+    menu_items.each
+      formatter.format (each dish)
+
+end
+
+class MenuFormatter
+  def format(dish)
+    "Dish: #{dish.title} Price #{dish.price}\n"
+
+class Order
+  # method injection
+  confirm_order ( SMSClient, message)
+
+  add_dish (Dish)
+
+class SMSClient
+  def send (message)
+

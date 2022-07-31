@@ -1,0 +1,16 @@
+Noun                  Messages (Verbs)            attributes
+
+Customer              
+
+Menu                  show_menu
+                      select_dish
+                      add_menu_item - idea to add better functionality 
+
+Dish                  
+
+Order                 add_dish
+                      total_price
+                      confirm_order
+
+SMSClient             send
+         

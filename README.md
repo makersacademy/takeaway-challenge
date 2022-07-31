@@ -14,70 +14,104 @@ Takeaway Challenge
 
  ```
 
-Instructions
+-------------------------------------------------------------
+
+Author Notes
 -------
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is a suite of classes which can be used to mimic a take away service. 
 
-Task
------
+There is a menu class for the customer to peruse what's on offer. The customer can choose the dishes they want and add them to an order, once satisfied with their selection they can get a view of the ordered items including total price. When the customer confirms their order a confirmation text will be sent to the customer.
 
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+There is also functionality regarding a listening SMS server (OrderServer), this server on receiving a text with order details will save to a file so the OrderManager can process later to generate an order
 
-```
-As a customer
-So that I can check if I want to order something
-I would like to see a list of dishes with prices
+## Installation
 
-As a customer
-So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+-------------------------------------------------------------
+Install gems with [bundler](https://bundler.io/ "bundler") 
+~~~~
+bundle install 
+~~~~
+To install code from the latest source
+~~~~
+git clone git@github.com:nyahehnagi/takeaway-challenge.git
+~~~~
+Twilio is used for the SMS messaging service.
 
-As a customer
-So that I can verify that my order is correct
-I would like to check that the total I have been given matches the sum of the various dishes in my order
+All unit tests are fully stubbed to prohibit actual calls to the Twilio service. 
 
-As a customer
-So that I am reassured that my order will be delivered on time
-I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
-```
+## Sending a Text
+If you wish to run the SMS service for real and test the send process in the feature tests, do the following:
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+* Ensure Twilio is configured on your machine - There is a guide here https://www.twilio.com/docs/sms/quickstart/ruby
+* Create a `.env` file in the project root. This project uses the dotenv gem which will have been installed via bundler
+* Add the `.env` file to your `.gitignore` file. **You do not want to be commiting this file to github! It will contain real information about your Twilio account/phone numbers used**
+* Add the following lines to the .env file
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+~~~~
+TWILIO_AUTH_TOKEN=<your_auth_token>
+TWILIO_ACCOUNT_SID=<your_account_sid>
+FROM_TELEPHONE_NO=<your twillio number>
+TO_TELEPHONE_NO=<your send number>
+~~~~
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+* Activate the pending feature test - User Story 4 - Send a real text in the `./spec/features/feature_spec.rb` file
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+## Receiving a Text
+The order server is very much a work in progress. However if you wish to send a text this can be achieved manually by doing the following:
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+In a new terminal run 
+~~~~
+twilio phone-numbers:update "<Twilio phone number here>" --sms-url="http://localhost:4567/receive_order"
+~~~~
+This will create a tunnel to an external site and effectively mimic your local machine as an external server accepting POST requests from Twilio
+
+You will see something like this in your terminal if it's woking 
+~~~~
+SID                                 Result   SMS URL                                          
+PN7a51b877ef42145566170283b95dff81  Success  https://a5bd-88-110-42-114.ngrok.io/receive_order
+ngrok is running. Open http://127.0.0.1:4041 to view tunnel activity.
+Press CTRL-C to exit.
+~~~~
 
 
-In code review we'll be hoping to see:
+Run `./lib/order_server.rb` as a stand alone application.. I use VS Code and right click the file and choose run code as the option. You could call directly from another terminal with `ruby './lib/order_server.rb'`
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+This will start the Sinatra server. You will see something like this if it works ok
+~~~~
+Puma starting in single mode...
+* Puma version: 5.5.2 (ruby 3.0.0-p0) ("Zawgyi")
+*  Min threads: 0
+*  Max threads: 5
+*  Environment: development
+*          PID: 11690
+* Listening on http://127.0.0.1:4567
+* Listening on http://[::1]:4567
+Use Ctrl-C to stop
+~~~~
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+Now all you have to do is send a text to your Twilio number.
 
-Notes on Test Coverage
-------------------
+text format is a comma seperate string of menu_item,quantity_to_order e.g Spagbol,1,Cottage Pie,2
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+I have not put any checking on this to see if the format is correct!
+
+You can test this through the feature tests by un-pending the test "Order Manager creates an order from an incoming message"
+
+
+
+----------------------------------
+
+## Project Structure
+All spec test files reside in the `./spec` directory
+Please note that the `feature_spec.rb` file resides in the `./spec/features` directory
+
+All code files reside in the `./lib` diecrtory
+
+All documentation files reside in the `./doc` directory
+
+All data files reside in the `./data` directory
+
+As mentioned environment data is stored in the root in a `.env` file
+
+----------------------------------
