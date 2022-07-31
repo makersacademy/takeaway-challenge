@@ -3,3 +3,7 @@
 
 # Local cache of Rubocop remote config
 .rubocop-*
+
+
+key_value_pairs.env
+quickstart.rb
