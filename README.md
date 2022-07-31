@@ -1,42 +1,59 @@
-Takeaway Challenge
-==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
+# Takeaway-challenge
 
- ```
+### Functionality:
+- user can create a Takeaway (it needs a corresponding csv file with a menu)
+- user can make an order at a specific Takeaway
+- user receives an sms confirmation after completing an order
 
-Instructions
--------
+### Unresolved problems:
+- do we need to test (how?) for sending the message
+- the code could be refactored further
+- needs to be accomoddated for unintended usage
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
+## Demo:
 
 ```
+➜  takeaway-challenge git:(main) ✗ irb -r './lib/takeaway.rb'
+3.0.2 :001 > mcdonalds = Takeaway.new('mcdonalds')
+ => 
+#<Takeaway:0x00007fb586c4d428
+... 
+3.0.2 :002 > mcdonalds.show_menu
+ => "hamburger - 2, cheeseburger - 3, chicken nuggets - 5" 
+3.0.2 :003 > my_order = mcdonalds.make_order
+ => 
+#<Order:0x00007fb586b66be0
+...
+3.0.2 :004 > my_order.add('hamburger', 3)
+ => [{#<Dish:0x00007fb586c4d0b8 @name="hamburger", @price=2>=>3}] 
+3.0.2 :005 > my_order.add('chicken nuggets')
+ => [{#<Dish:0x00007fb586c4d0b8 @name="hamburger", @price=2>=>3}, {#<Dish:0x00007fb586c4ce88 @name="chicken nuggets", @price=5>=>1}] 
+3.0.2 :006 > my_order.add('pasta')
+/Users/mateuszdiak/Documents/Projects/takeaway-challenge/lib/order.rb:52:in `find_dish': Not on the menu. (RuntimeError)
+        from /Users/mateuszdiak/Documents/Projects/takeaway-challenge/lib/order.rb:13:in `add'
+        from (irb):6:in `<main>'
+        from /Users/mateuszdiak/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/mateuszdiak/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/mateuszdiak/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+3.0.2 :007 > my_order.total
+ => 11 
+3.0.2 :008 > my_order.summary
+ => "hamburger: 2 x 3 = 6\nchicken nuggets: 5 x 1 = 5" 
+3.0.2 :009 > my_order.finish
+ => <Twilio.Api.V2010.MessageInstance body: Sent from your Twilio trial account - Thank you. Your order was placed and will arrive before 18:49 num_segments: 1 direction: outbound-api from: +19284517223 to: +447424242488 date_updated: 2022-01-03 17:50:26 +0000 price:  error_message:  uri: /2010-04-01/Accounts/AC15fccacb29bf760c7b890ca216ebe237/Messages/SMa37d0d01786a43f58f67d4b787bd1100.json account_sid: AC15fccacb29bf760c7b890ca216ebe237 num_media: 0 status: queued messaging_service_sid:  sid: SMa37d0d01786a43f58f67d4b787bd1100 date_sent:  date_created: 2022-01-03 17:50:26 +0000 error_code:  price_unit: USD api_version: 2010-04-01 subresource_uris: {"media"=>"/2010-04-01/Accounts/AC15fccacb29bf760c7b890ca216ebe237/Messages/SMa37d0d01786a43f58f67d4b787bd1100/Media.json"}> 
+```
+
+User stories:
+
+```ruby
 As a customer
 So that I can check if I want to order something
-I would like to see a list of dishes with prices
+I would like to see a **list** of **dishes** with **prices**
 
 As a customer
 So that I can order the meal I want
-I would like to be able to select some number of several available dishes
+I would like to be able to select some number of several available **dishes**
 
 As a customer
 So that I can verify that my order is correct
@@ -47,37 +64,7 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+# Domain model:
+![Domain Model Image](/assets/domain_model.jpg)
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
-
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
-
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
-
-Notes on Test Coverage
-------------------
-
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
