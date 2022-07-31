@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    Order summary:
+    <div><br>
+    <% Object.keys(summary).forEach(function(prop) { %>
+      <li style="list-style-type:none"> 
+        <%= `${summary[prop].name} `%> <br>
+        <%=`£${summary[prop].price}` %>
+      </li><br>
+    <% }); %>
+    </div>
+    Sum:
+    <%= `£${order.getTotal().toFixed(2)}` %>
+    <br>
+    <br>
+    Delivery: £2.99<br>
+    Total: <%= `£${(order.getTotal() + delivery).toFixed(2)}` %>
+  </div>
+</body>
+</html>

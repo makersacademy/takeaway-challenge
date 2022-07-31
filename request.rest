@@ -1,0 +1,10 @@
+
+
+
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+  "password": "Bcrypt",
+  "email": "123456@gmail.com"
+}
