@@ -1,18 +1,19 @@
 Takeaway Challenge
 ==================
-```
-                            _________
-              r==           |       |
-           _  //            |  M.A. |   ))))
-          |_)//(''''':      |       |
-            //  \_____:_____.-------D     )))))
-           //   | ===  |   /        \
-       .:'//.   \ \=|   \ /  .:'':./    )))))
-      :' // ':   \ \ ''..'--:'-.. ':
-      '. '' .'    \:.....:--'.-'' .'
-       ':..:'                ':..:'
 
- ```
+Progress to Date - 4 Aug 2019:
+-------
+
+Implemented 3 user stories so far:
+* see list of dishes with prices
+* select some number of several available dishes
+* check that the total I have been given matches the sum of the various dishes in my order
+
+User stories yet to be implemented:
+* receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+
+Original Instructions from Makers:
+==================
 
 Instructions
 -------
