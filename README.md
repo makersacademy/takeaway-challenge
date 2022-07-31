@@ -1,9 +1,9 @@
-Takeaway Challenge
+Bob's Burritos - Takeaway Challenge
 ==================
 ```
                             _________
               r==           |       |
-           _  //            |  M.A. |   ))))
+           _  //            | Bob's |   ))))
           |_)//(''''':      |       |
             //  \_____:_____.-------D     )))))
            //   | ===  |   /        \
@@ -14,21 +14,12 @@ Takeaway Challenge
 
  ```
 
-Instructions
--------
+## Makers Week 2 Challenge
+For my second solo challenge at [Makers](https://www.makers.tech/) I was tasked with creating an ordering system for a takeaway restaurant.
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Get ready to salivate as you get to know Bob and his amazing Burritos.
 
-Task
------
-
-* Fork this repo
-* Run the command 'bundle' in the project directory to ensure you have all the gems
-* Write a Takeaway program with the following user stories:
-
+I was working from the following user stories:
 ```
 As a customer
 So that I can check if I want to order something
@@ -46,38 +37,69 @@ As a customer
 So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
+## Installation
 
-* Hints on functionality to implement:
-  * Ensure you have a list of dishes with prices
-  * The text should state that the order was placed successfully and that it will be delivered 1 hour from now, e.g. "Thank you! Your order was placed and will be delivered before 18:52".
-  * The text sending functionality should be implemented using Twilio API. You'll need to register for it. It’s free.
-  * Use the twilio-ruby gem to access the API
-  * Use the Gemfile to manage your gems
-  * Make sure that your Takeaway is thoroughly tested and that you use mocks and/or stubs, as necessary to not to send texts when your tests are run
-  * However, if your Takeaway is loaded into IRB and the order is placed, the text should actually be sent
-  * Note that you can only send texts in the same country as you have your account. I.e. if you have a UK account you can only send to UK numbers.
+1. Clone this repo to your local machine
+2. Run the command ```gem install bundler``` (if you don't have bundler already)
+3. When the installation completes, run ```bundle```
 
-* Advanced! (have a go if you're feeling adventurous):
-  * Implement the ability to place orders via text message.
+## Set Up For Twilio
+You can only try out the SMS message functionality if you have (or want to get) a Twilio account.
 
-* A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
+You will need to edit the ```.env``` file and fill it in with your details. 
 
-> :warning: **WARNING:** think twice before you push your **mobile number** or **Twilio API Key** to a public space like GitHub :eyes:
->
-> :key: Now is a great time to think about security and how you can keep your private information secret. You might want to explore environment variables.
+Head to https://console.twilio.com/ to get your details or set up an account.
 
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+## Running Tests
+
+Run ```rspec```
 
 
-In code review we'll be hoping to see:
+## Usage
+Launch ```irb``` and use as below:
+```ruby
+You@YourComputer takeaway-challenge % irb
+3.0.2 :001 > require './lib/takeaway'
+ => true 
+3.0.2 :002 > bobs = Takeaway.new
+#<Takeaway:0x00007f82e52dd308
+... 
+3.0.2 :003 > bobs.menu
+                               Welcome to Bob's Burritos!
 
-* All tests passing
-* High [Test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+                 Mega Everything Burrito - dish: 1 -  £15.00
+                            Beef Burrito - dish: 2 -  £10.00
+                         Chicken Burrito - dish: 3 -   £9.00
+                          Veggie Burrito - dish: 4 -   £8.00
+                           Super Sangria - dish: 5 -   £7.00
+ => "To order: bobs.order(dish:4) to order 1, or bobs.order(dish: 4, x: 13) if you're really hungry!" 
+3.0.2 :004 > bobs.order(dish: 1)
+ => "1 x  Mega Everything Burrito - added to your order :)" 
+3.0.2 :005 > bobs.order(dish: 4, x: 3)
+ => "3 x  Veggie Burrito - added to your order :)" 
+3.0.2 :006 > bobs.order(dish: 5, x: 50)
+ => "50 x  Super Sangria - added to your order :)" 
+3.0.2 :007 > bobs.basket
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this at this moment.
+         Your Basket of Burrito Goodness
 
-Notes on Test Coverage
-------------------
+  Mega Everything Burrito x 1     £15.00
+           Veggie Burrito x 3     £24.00
+          Super Sangria x 50     £350.00
+                       Total:    £389.00
+ => "Order some more items, or if all looks good type: bobs.checkout('+yournumber')" 
+3.0.2 :008 > bobs.unorder(dish: 5, x: 45)
+ => "45 x  Super Sangria - removed from your order :)" 
+3.0.2 :009 > bobs.basket
 
-You can see your [test coverage](https://github.com/makersacademy/course/blob/main/pills/test_coverage.md) when you run your tests.
+         Your Basket of Burrito Goodness
+
+  Mega Everything Burrito x 1     £15.00
+           Veggie Burrito x 3     £24.00
+            Super Sangria x 5     £35.00
+
+                        Total:    £74.00
+ => "Order some more items, or if all looks good type: bobs.checkout('+yournumber')" 
+3.0.2 :010 > bobs.checkout('+4475551342')
+ => "Thank you! Your order was placed and will be delivered before 13:42"
+```
