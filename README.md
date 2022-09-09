@@ -14,27 +14,6 @@
 
 ```
 
-Student notes for coach:
-
-Firstly, all credit for the idea of a hot smoothie goes to Jonathan Goldstein, Howard Chackowicz, and Wiretap in general.
-
-1. I was unable to implement all the tests I wanted. You'll see that I couldn't test that calling the complete_order method instantiated
-   a new instance of SMS. I tried a couple of tests for this, but neither worked
-
-2. I spent a while trying to prompt the user for input to confirm their order matched their total, as I thought this would be closer to how an app would actually work (albeit with clicking instead of typing) but despite some experiments with stubbing, I was unable to get RSpec to run without at least once prompting me for input, so I ditched this.
-
-3. I _think_ I got the stubbing to work for the twilio app. In any case, rspec runs the tests without sending a message and IRB is able to send a message to my phone.
-   However, when I tried to implement the last two tests (point 1), I did sometimes find that rspec would send out a text. I would be keen to understand this better, so any resources on stubbing and how to get my head around it would be much appreciated.
-
-4. I also spent a while trying to find a good test for raising an error if an item was unavailable. As things stand, I guess I ended up
-   hardcoding the rspec, which isn't great if this were a real app and availability needed to be changed as the test would then fail. I couldn't work out how to use doubles to instantiate a double of an unavailable item and then use that to raise the error (assuming that is what I was
-   supposed to be doing). The only other thing I could think of would be to create a new class for each item for sale and then have a raise_error
-   if that item's 'available' method was set to false, but this seems really convoluted... I'm assuming there's a way to use doubles to simulate an unavailable item, but I didn't have any joy with this, so again a nudge in the right direction would be great.
-
-5. Another idea for improvement would be to adjust stock levels. Ideally stock would be adjusted according to what was ordered, so that the available key would return an integer rather than a boolean, and once that integer was 0, it would raise an error. There could also be low availability warnings when stock levels fell below a certain number.
-
-6. That's everything I can think of. If you'd like to see my diagramming for this exercise, it can be found here: https://www.notion.so/Takeaway-Challenge-April-29-2022-4d2c57cfba8a4486981a71355c5c9a1b
-
 ## How to install the program
 
 1. Run git clone https://github.com/S-Spiegl/takeaway-challenge-new
