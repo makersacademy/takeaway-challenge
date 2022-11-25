@@ -28,3 +28,19 @@ that? How will you keep that information out of your repository?
 
 A: I plan on storing the private key in twilio.env and adding twilio.env to the .gitignore file - I should be able to access the key in the application files with something like private_key = ENV['TWILIO_KEY']     
 Here is a good [article](https://medium.com/coffee-and-codes/the-simplest-and-powerful-ruby-gem-dotenv-74d64cbc5d5d) on the gem dotenv
+
+## Getting started
+
+`git clone https://github.com/jillwones/Golden-Square-Challenges.git`       
+`bundle install`       
+`add a twilio.env file to the root of 04_solo_project and inside it write:`      
+`export TWILIO_ACCOUNT_SID=xxxxxxxxxxxxxxxxxxxxxxxxxxxx`      
+`export TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+
+## Usage
+
+`ruby lib/run_on_terminal.rb` 
+
+## Running tests
+
+`rspec`
