@@ -37,6 +37,8 @@ Here is a good [article](https://medium.com/coffee-and-codes/the-simplest-and-po
 `export TWILIO_ACCOUNT_SID=xxxxxxxxxxxxxxxxxxxxxxxxxxxx`      
 `export TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
+If you want the confirmation text to go to your phone number and not mine please change the default number in the send_text method in FinishMyOrder class to your phone number.
+
 ## Usage
 
 `ruby lib/run_on_terminal.rb` 
