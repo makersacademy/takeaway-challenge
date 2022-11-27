@@ -1,3 +1,12 @@
+My first challenge submission. I couldn't get an account and phone number working with Twilio so this aspect of the challenge hasn't been implemented at all. This is a basic series of tests on basic code. I'm hoping to learn from it.
+
+Nothing is needed to run it. There is no front-end app.
+
+Thanks.
+
+
+
+
 Takeaway Challenge
 ==================
 ```
