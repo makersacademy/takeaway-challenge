@@ -2,6 +2,8 @@ My first challenge submission. I couldn't get an account and phone number workin
 
 Nothing is needed to run it. There is no front-end app.
 
+I'm also very aware that I didn't commit enough. I was concentrating hard on the problem of the Ruby code so this is an omission, I know.
+
 Thanks.
 
 
